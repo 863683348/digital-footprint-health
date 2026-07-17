@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# build / cache
+*.tsbuildinfo
+next-env.d.ts
+
+# local database & runtime data (PII-ish, ephemeral)
+*.db
+*.db-shm
+*.db-wal
+data/archives/
+data/tmp/
+data/*.enc
+
+# keep the demo fixture
+!data/sample/
+!data/sample/tweets.csv
+
+# vercel
+.vercel
+
+# env / secrets
+.env
+.env.local
+.env*.local
+
+# coverage / logs
+coverage/
+*.log
+.DS_Store

@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #2e5bcb;
+  --color-primary-weak: #eaf0fc;
+  --color-ok: #16a34a;
+  --color-warn: #d97706;
+  --color-danger: #dc2626;
+  --color-ink: #1f2933;
+  --color-ink-soft: #5b6573;
+  --color-line: #e3e8ef;
+  --color-bg: #f7f9fc;
+  --color-surface: #ffffff;
+  --font-sans: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --space: 4px;
+  --radius: 10px;
+  --ease-calm: cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Type scale (8 levels) */
+.t-1 { font-size: 30px; line-height: 1.25; font-weight: 700; }
+.t-2 { font-size: 24px; line-height: 1.3; font-weight: 700; }
+.t-3 { font-size: 20px; line-height: 1.35; font-weight: 600; }
+.t-4 { font-size: 17px; line-height: 1.45; font-weight: 600; }
+.t-5 { font-size: 15px; line-height: 1.6; font-weight: 500; }
+.t-6 { font-size: 13px; line-height: 1.5; font-weight: 500; }
+.t-7 { font-size: 12px; line-height: 1.5; font-weight: 500; }
+.t-8 { font-size: 11px; line-height: 1.4; font-weight: 500; }
+
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* Calm, uniform transitions only — no bounce */
+.transition-calm {
+  transition-property: background-color, color, border-color, box-shadow, transform, opacity;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-calm);
+}
+
+/* Semantic color used ONLY for risk indication */
+.risk-ok { color: var(--color-ok); }
+.risk-warn { color: var(--color-warn); }
+.risk-danger { color: var(--color-danger); }
+.bg-ok-weak { background: #ecfdf3; }
+.bg-warn-weak { background: #fffaeb; }
+.bg-danger-weak { background: #fef3f2; }

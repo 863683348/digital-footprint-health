@@ -11,6 +11,9 @@
     "test": "cross-env NODE_OPTIONS=--experimental-sqlite vitest run",
     "demo": "cross-env NODE_OPTIONS=--experimental-sqlite DFH_DB_PATH=./data/demo.db tsx scripts/demo.ts"
   },
+  "engines": {
+    "node": "22.x"
+  },
   "dependencies": {
     "csv-parse": "^5.5.6",
     "lucide-react": "^0.460.0",

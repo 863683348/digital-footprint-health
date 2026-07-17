@@ -59,6 +59,7 @@ const zh: Record<string, string> = {
   'report.reupload': '重新上传',
   'report.loading': '加载中…',
   'report.loaderror': '加载失败',
+  'report.missing': '未找到该报告，可能已过期。请重新上传归档。',
 
   // dimensions
   'dim.pii': '个人身份信息',
@@ -109,6 +110,7 @@ const zh: Record<string, string> = {
   'progress.dryrun.note': '试运行：未真实删除、未计费。验证无误后可在确认页关闭试运行重新发起。',
   'progress.detail.title': '任务明细（最近 {n} 条）',
   'progress.missing': '缺少任务参数。',
+  'progress.notfound': '未找到删除结果，请重新操作。',
   'progress.loading': '加载中…',
 
   // job / status labels
@@ -206,6 +208,7 @@ const en: Record<string, string> = {
   'report.reupload': 'Re-upload',
   'report.loading': 'Loading…',
   'report.loaderror': 'Failed to load',
+  'report.missing': 'Report not found — it may have expired. Please re-upload your archive.',
 
   'dim.pii': 'Personal info',
   'dim.sensitive': 'Sensitive content',
@@ -253,6 +256,7 @@ const en: Record<string, string> = {
     'Dry run: nothing was actually deleted or charged. Once verified, turn off dry-run on the confirm page and start again.',
   'progress.detail.title': 'Job details (latest {n})',
   'progress.missing': 'Missing job parameter.',
+  'progress.notfound': 'No deletion result found — please start again.',
   'progress.loading': 'Loading…',
 
   'status.queued': 'Queued',

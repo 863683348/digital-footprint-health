@@ -2,34 +2,25 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { api, ApiError } from '@/lib/api-client';
+import { loadArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
 import { ScoreGauge } from '@/components/ScoreGauge';
 import { Card, RiskFlag, Callout, Button } from '@/components/ui';
-import type { ReportDetail, ScoreBreakdown, ScoreDimension } from '@/lib/types';
+import type { ArchiveData, ScoreDimension } from '@/lib/types';
 
 export default function ReportPage({ params }: { params: { id: string } }) {
-  const { t, te } = useI18n();
-  const [report, setReport] = useState<ReportDetail | null>(null);
-  const [breakdown, setBreakdown] = useState<ScoreBreakdown | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const { t } = useI18n();
+  // undefined = still loading from localStorage; null = not found
+  const [archive, setArchive] = useState<ArchiveData | null | undefined>(undefined);
 
   useEffect(() => {
-    Promise.all([api.getReport(params.id), api.getBreakdown(params.id)])
-      .then(([r, b]) => {
-        setReport(r);
-        setBreakdown(b);
-      })
-      .catch((e: any) => {
-        const err = e instanceof ApiError ? e : new ApiError(e?.message || '', e?.code);
-        setError(te(err.code, err.message) || t('report.loaderror'));
-      });
-  }, [params.id, t, te]);
+    setArchive(loadArchive(params.id));
+  }, [params.id]);
 
-  if (error) return <Callout tone="danger">{error}</Callout>;
-  if (!report || !breakdown) return <div className="t-5 text-ink-soft">{t('report.loading')}</div>;
+  if (archive === undefined) return <div className="t-5 text-ink-soft">{t('report.loading')}</div>;
+  if (archive === null) return <Callout tone="danger">{t('report.missing')}</Callout>;
 
-  const { details } = breakdown;
+  const { details, score } = archive;
 
   if (details.insufficientSample) {
     return (
@@ -51,17 +42,17 @@ export default function ReportPage({ params }: { params: { id: string } }) {
         <div>
           <h1 className="t-2 font-bold">{t('report.title')}</h1>
           <p className="t-6 text-ink-soft">
-            {t('report.subtitle', { fileName: report.archive.fileName, count: report.archive.rowCount })}
+            {t('report.subtitle', { fileName: archive.fileName, count: archive.rowCount })}
           </p>
         </div>
-        <Link href={`/delete/confirm?archiveId=${report.archive.id}`}>
+        <Link href={`/delete/confirm?archiveId=${archive.id}`}>
           <Button>{t('report.goDelete')}</Button>
         </Link>
       </div>
 
       <div className="grid md:grid-cols-[200px_1fr] gap-6 items-start">
         <Card className="flex flex-col items-center">
-          <ScoreGauge score={breakdown.score} />
+          <ScoreGauge score={score} />
           <p className="t-7 text-ink-soft mt-2">{t('report.gauge.hint')}</p>
         </Card>
 

@@ -2,51 +2,50 @@
 
 import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { api, ApiError } from '@/lib/api-client';
+import { loadArchive, saveSim } from '@/lib/store';
+import { estimateDelete } from '@/lib/payment';
+import { simulateDeletion } from '@/lib/delete-sim';
 import { useI18n } from '@/components/I18nProvider';
 import { Button, Card, FeeEstimateCard, Callout } from '@/components/ui';
 import { Loading } from '@/components/Loading';
-import type { DeleteEstimate } from '@/lib/types';
+import type { ArchiveData, DeleteEstimate } from '@/lib/types';
 
 function ConfirmInner() {
   const router = useRouter();
-  const { t, te } = useI18n();
+  const { t } = useI18n();
   const search = useSearchParams();
   const archiveId = search.get('archiveId');
 
+  // undefined = loading, null = not found
+  const [archive, setArchive] = useState<ArchiveData | null | undefined>(undefined);
   const [estimate, setEstimate] = useState<DeleteEstimate | null>(null);
   const [dryRun, setDryRun] = useState(true);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!archiveId) return;
-    api
-      .estimate(archiveId)
-      .then(setEstimate)
-      .catch((e: any) => {
-        const err = e instanceof ApiError ? e : new ApiError(e?.message || '', e?.code);
-        setError(te(err.code, err.message));
-      });
-  }, [archiveId, t, te]);
-
-  async function start() {
-    if (!archiveId) return;
-    setBusy(true);
-    try {
-      const { jobId } = await api.createJob(archiveId, dryRun);
-      router.push(`/delete/progress?jobId=${jobId}`);
-    } catch (e: any) {
-      const err = e instanceof ApiError ? e : new ApiError(e?.message || '', e?.code);
-      setError(te(err.code, err.message) || t('delete.createFail'));
-      setBusy(false);
+    if (!archiveId) {
+      setArchive(null);
+      return;
     }
+    setArchive(loadArchive(archiveId));
+  }, [archiveId]);
+
+  useEffect(() => {
+    if (!archive) return;
+    setEstimate(estimateDelete(archive.rowCount));
+  }, [archive]);
+
+  function start() {
+    if (!archive) return;
+    setBusy(true);
+    // Dry-run simulation is pure compute — no server, no X API, no charge.
+    const result = simulateDeletion(archive.tweets, { dryRun });
+    saveSim(archive.id, result);
+    router.push(`/delete/progress?archiveId=${archive.id}`);
   }
 
-  if (!archiveId) {
-    return <Callout tone="warn">{t('delete.confirm.noArchive')}</Callout>;
-  }
-  if (error) return <Callout tone="danger">{error}</Callout>;
+  if (archive === undefined) return <div className="t-5 text-ink-soft">{t('delete.confirm.calc')}</div>;
+  if (!archiveId || archive === null) return <Callout tone="warn">{t('delete.confirm.noArchive')}</Callout>;
   if (!estimate) return <div className="t-5 text-ink-soft">{t('delete.confirm.calc')}</div>;
 
   return (

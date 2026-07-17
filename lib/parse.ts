@@ -135,6 +135,21 @@ export function parseArchiveFile(filePath: string): ParsedTweet[] {
   return out;
 }
 
+// Public: parse an in-memory archive buffer (used by the upload route, which
+// receives the file as multipart form-data). No disk write.
+export function parseArchiveBuffer(buf: Buffer, fileName: string): ParsedTweet[] {
+  const lower = fileName.toLowerCase();
+  const parsed = lower.endsWith('.js') || lower.endsWith('.json') ? parseJs(buf) : parseCsv(buf);
+  const seen = new Set<string>();
+  const out: ParsedTweet[] = [];
+  for (const t of parsed) {
+    if (seen.has(t.id)) continue;
+    seen.add(t.id);
+    out.push(t);
+  }
+  return out;
+}
+
 export function persistUpload(fileName: string, encryptedPayload: string): string {
   const dir = path.join(process.cwd(), 'data', 'archives');
   fs.mkdirSync(dir, { recursive: true });

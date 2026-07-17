@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS=--experimental-sqlite next dev",
-    "build": "cross-env NODE_OPTIONS=--experimental-sqlite next build",
-    "start": "cross-env NODE_OPTIONS=--experimental-sqlite next start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "test": "cross-env NODE_OPTIONS=--experimental-sqlite vitest run",
-    "demo": "cross-env NODE_OPTIONS=--experimental-sqlite DFH_DB_PATH=./data/demo.db tsx scripts/demo.ts"
+    "test": "vitest run",
+    "demo": "tsx scripts/demo.ts"
   },
   "engines": {
     "node": "22.x"

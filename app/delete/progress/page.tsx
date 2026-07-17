@@ -2,126 +2,111 @@
 
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { api, ApiError } from '@/lib/api-client';
+import Link from 'next/link';
+import { loadSim } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
 import { Loading } from '@/components/Loading';
 import { Button, Card, ProgressBar, Badge } from '@/components/ui';
-import type { DeleteJobDetail, DeleteJobItem } from '@/lib/types';
-
-const TERMINAL = new Set(['completed', 'cancelled', 'failed']);
+import type { DeleteSimItem, DeleteSimResult } from '@/lib/types';
 
 function ProgressInner() {
   const search = useSearchParams();
   const { t } = useI18n();
-  const jobId = search.get('jobId');
-  const [job, setJob] = useState<DeleteJobDetail | null>(null);
-  const [items, setItems] = useState<DeleteJobItem[]>([]);
-  const [busy, setBusy] = useState<string | null>(null);
+  const archiveId = search.get('archiveId');
+
+  const [sim, setSim] = useState<DeleteSimResult | null>(null);
+  const [shown, setShown] = useState(0); // how many items revealed (animation)
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  async function refresh() {
-    if (!jobId) return;
-    const [j, it] = await Promise.all([api.getJob(jobId), api.getItems(jobId)]);
-    setJob(j);
-    setItems(it.items);
-    if (TERMINAL.has(j.job.status) && timer.current) {
-      clearInterval(timer.current);
-      timer.current = null;
-    }
-  }
-
   useEffect(() => {
-    if (!jobId) return;
-    refresh();
-    timer.current = setInterval(refresh, 1000);
+    if (!archiveId) return;
+    const r = loadSim(archiveId);
+    setSim(r);
+    if (r) {
+      let i = 0;
+      const total = r.items.length;
+      const step = Math.max(1, Math.ceil(total / 40));
+      timer.current = setInterval(() => {
+        i = Math.min(total, i + step);
+        setShown(i);
+        if (i >= total && timer.current) {
+          clearInterval(timer.current);
+          timer.current = null;
+        }
+      }, 60);
+    }
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [jobId]);
+  }, [archiveId]);
 
-  async function act(kind: 'pause' | 'resume' | 'cancel') {
-    if (!jobId) return;
-    setBusy(kind);
-    try {
-      if (kind === 'pause') await api.pauseJob(jobId);
-      if (kind === 'resume') await api.resumeJob(jobId);
-      if (kind === 'cancel') await api.cancelJob(jobId);
-      await refresh();
-    } finally {
-      setBusy(null);
-    }
-  }
+  if (!archiveId) return <div className="t-5 text-ink-soft">{t('progress.missing')}</div>;
+  if (!sim) return <div className="t-5 text-ink-soft">{t('progress.notfound')}</div>;
 
-  if (!jobId) return <div className="t-5 text-ink-soft">{t('progress.missing')}</div>;
-  if (!job) return <div className="t-5 text-ink-soft">{t('progress.loading')}</div>;
+  const total = sim.items.length;
+  const processed = Math.min(shown, total);
+  const pct = total > 0 ? Math.round((processed / total) * 100) : 100;
+  const revealed = sim.items.slice(0, shown);
+  const succeeded = revealed.filter((i) => i.status === 'done').length;
+  const failed = revealed.filter((i) => i.status === 'failed').length;
+  const done = shown >= total;
 
-  const pct = job.job.total > 0 ? Math.round((job.job.processed / job.job.total) * 100) : 0;
-
-  const itemBadge = (s: DeleteJobItem['status']) => {
-    if (s === 'done') return <Badge tone="ok">{t('jobitem.done')}</Badge>;
-    if (s === 'failed') return <Badge tone="danger">{t('jobitem.failed')}</Badge>;
-    if (s === 'processing') return <Badge tone="warn">{t('jobitem.processing')}</Badge>;
-    return <Badge>{t('jobitem.pending')}</Badge>;
-  };
+  const itemBadge = (s: DeleteSimItem['status']) =>
+    s === 'done' ? (
+      <Badge tone="ok">{t('jobitem.done')}</Badge>
+    ) : (
+      <Badge tone="danger">{t('jobitem.failed')}</Badge>
+    );
 
   return (
     <div className="max-w-[720px] mx-auto space-y-5">
       <div className="flex items-center justify-between">
         <h1 className="t-2 font-bold">{t('progress.title')}</h1>
         <div className="flex items-center gap-2">
-          {job.job.dryRun && <Badge tone="warn">{t('progress.dryrun.badge')}</Badge>}
-          <Badge
-            tone={
-              job.job.status === 'completed' ? 'ok' : job.job.status === 'failed' ? 'danger' : 'warn'
-            }
-          >
-            {t(`status.${job.job.status}`)}
+          <Badge tone="warn">{t('progress.dryrun.badge')}</Badge>
+          <Badge tone={done ? 'ok' : 'warn'}>
+            {done ? t('status.completed') : t('status.running')}
           </Badge>
         </div>
       </div>
 
       <Card>
         <div className="flex justify-between text-t-6 mb-2">
-          <span>{t('progress.processed', { processed: job.job.processed, total: job.job.total })}</span>
-          <span className="mono">
-            {t('progress.success', { succeeded: job.job.succeeded, failed: job.job.failed })}
-          </span>
+          <span>{t('progress.processed', { processed, total })}</span>
+          <span className="mono">{t('progress.success', { succeeded, failed })}</span>
         </div>
         <ProgressBar value={pct} />
-        <div className="mt-4 flex items-center gap-2">
-          {job.job.status === 'running' && (
-            <Button variant="ghost" onClick={() => act('pause')} disabled={busy === 'pause'}>
-              {t('progress.pause')}
-            </Button>
-          )}
-          {job.job.status === 'paused' && (
-            <Button onClick={() => act('resume')} disabled={busy === 'resume'}>
-              {t('progress.resume')}
-            </Button>
-          )}
-          {!TERMINAL.has(job.job.status) && (
-            <Button variant="danger" onClick={() => act('cancel')} disabled={busy === 'cancel'}>
-              {t('progress.cancel')}
-            </Button>
-          )}
-        </div>
-        {job.job.dryRun && (
-          <p className="mt-3 text-t-7 text-ink-soft">{t('progress.dryrun.note')}</p>
+        {done && (
+          <p className="mt-3 text-t-7 text-ink-soft">
+            {t('progress.dryrun.note')}
+          </p>
         )}
       </Card>
 
       <Card>
-        <div className="t-4 font-semibold mb-3">{t('progress.detail.title', { n: items.length })}</div>
-        <ul className="divide-y divide-line">
-          {items.slice(0, 30).map((it) => (
-            <li key={it.id} className="flex items-center justify-between py-2">
-              <span className="mono text-t-7 text-ink-soft">{it.tweetId}</span>
-              {itemBadge(it.status)}
-            </li>
-          ))}
-        </ul>
+        <div className="t-4 font-semibold mb-3">{t('progress.detail.title', { n: revealed.length })}</div>
+        {revealed.length === 0 ? (
+          <p className="text-t-7 text-ink-soft">{t('progress.loading')}</p>
+        ) : (
+          <ul className="divide-y divide-line">
+            {revealed.slice(0, 30).map((it) => (
+              <li key={it.tweetId} className="flex items-center justify-between py-2">
+                <span className="mono text-t-7 text-ink-soft">{it.tweetId}</span>
+                {itemBadge(it.status)}
+              </li>
+            ))}
+          </ul>
+        )}
       </Card>
+
+      {done && (
+        <div className="flex justify-end">
+          <Link href="/upload">
+            <Button variant="ghost">{t('report.reupload')}</Button>
+          </Link>
+        </div>
+      )}
     </div>
   );
 }

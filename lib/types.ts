@@ -1,6 +1,8 @@
 // Shared API contract types — mirrors docs/phase2-arch.md §2.
 // Used by both server routes and the frontend api-client.
 
+import type { ParsedTweet } from './parse';
+
 export type ApiError = { code: string; message: string };
 export type ApiResponse<T> =
   | { ok: true; data: T }
@@ -44,6 +46,20 @@ export interface HealthReport {
   score: number | null; // null when insufficientSample
   details: ScoreDetails;
   createdAt: string;
+}
+
+// Fully client-held archive (stored in localStorage after upload).
+// The Vercel/serverless build keeps NO database, so the browser is the source
+// of truth for the report + delete flow.
+export interface ArchiveData {
+  id: string;
+  fileName: string;
+  rowCount: number;
+  tweets: ParsedTweet[];
+  score: number | null;
+  details: ScoreDetails;
+  createdAt: string;
+  insufficientSample: boolean;
 }
 
 export interface ScoreDimension {
@@ -120,6 +136,17 @@ export interface DeleteJobItem {
   status: 'pending' | 'processing' | 'done' | 'failed' | 'skipped';
   result: string | null;
   charged: number;
+}
+
+// Stateless dry-run simulation result (no DB, no job queue).
+export interface DeleteSimItem {
+  tweetId: string;
+  status: 'done' | 'failed';
+  result: string;
+}
+export interface DeleteSimResult {
+  items: DeleteSimItem[];
+  summary: { total: number; succeeded: number; failed: number };
 }
 export interface DeleteJobDetail {
   job: {

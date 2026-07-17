@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { api, ApiError } from '@/lib/api-client';
+import { saveArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
 import { Button, Card, Callout } from '@/components/ui';
 
@@ -18,9 +19,10 @@ export default function UploadPage() {
     setBusy(true);
     setError(null);
     try {
-      const { archiveId } = await api.uploadArchive(file);
-      const { reportId } = await api.generateReport(archiveId);
-      router.push(`/report/${reportId}`);
+      const { archiveId, archive } = await api.uploadArchive(file);
+      // Hold the archive in the browser; the server keeps no database.
+      saveArchive(archive);
+      router.push(`/report/${archiveId}`);
     } catch (e: any) {
       const err = e instanceof ApiError ? e : new ApiError(e?.message || '', e?.code);
       setError(te(err.code, err.message) || t('upload.error'));

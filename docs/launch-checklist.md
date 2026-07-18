@@ -9,13 +9,15 @@
 
 ## 总览
 
+> 更新于 2026-07-19：已完成 #4 亮黑 UI、#9 SEO；#8 移动端适配代码 + 构建验证 + push 均已完成，仅剩「Vercel 重新部署上线」一步（需 Vercel token，当前环境无凭证）。
+
 | 状态 | 数量 | 占比 |
 |------|------|------|
-| ✅ 已完成 | 3 项 | 30% |
-| ⚠️ 部分完成 | 3 项 | 30% |
+| ✅ 已完成 | 5 项 | 50% |
+| ⚠️ 部分完成 | 1 项 | 10% |
 | ❌ 未完成 | 4 项 | 40% |
 
-**结论：10 项中 3 项完成、3 项部分完成、4 项未做。当前处于 MVP 可演示状态，距离正式上线还有 4 项硬缺口。**
+**结论：10 项中 5 项完成、1 项部分完成（#8 仅差线上重新部署）、4 项未做（#5 登录 / #6 支付 / #7 分析 / #10 安全）。**
 
 ---
 
@@ -67,18 +69,21 @@
 
 ---
 
-### ④ 亮黑 UI 设定 ❌ 未完成
+### ④ 亮黑 UI 设定 ✅ 已完成
 
 | 检查项 | 结果 |
 |--------|------|
-| Tailwind darkMode 配置 | ❌ `tailwind.config.ts` 未设置 `darkMode: 'class'` |
-| 深色 Token / CSS 变量 | ❌ `globals.css` 只有 `:root`（浅色），无 `:root.dark` 或 `[data-theme="dark"]` |
-| `dark:` 工具类 | ❌ 项目代码中无任何 `dark:` class 使用 |
-| 主题切换组件 | ❌ 无开关/按钮 |
+| Tailwind darkMode 配置 | ✅ `tailwind.config.ts` 设置 `darkMode: 'class'` |
+| 深色 Token / CSS 变量 | ✅ `globals.css` 新增 `.dark { … }` 变量集（深色 bg/surface/line/ink/primary 等） |
+| 颜色映射 | ✅ Tailwind 颜色全部改为引用 CSS 变量，翻转变量即全站换肤 |
+| 主题 Provider | ✅ 新增 `components/ThemeProvider.tsx`，localStorage 记忆偏好 + 跟随系统 |
+| 防闪烁 | ✅ `layout.tsx` 注入 no-flash 内联脚本，首屏前定主题 |
+| 主题切换组件 | ✅ NavBar 新增明暗切换按钮（Lucide Sun/Moon 图标，非 emoji） |
+| 弱语义背景适配 | ✅ `.dark .bg-ok-weak/.bg-warn-weak/.bg-danger-weak` 改为深色微染底 |
 
-**说明**：当前只有浅色主题。设计 Token（颜色/字体/圆角/阴影）已定义且统一，但深色模式完全未做。
+**说明**：2026-07-19 完成。采用「CSS 变量换肤」方案，组件无需逐个加 `dark:` 类，扩展性与一致性最佳。深色调参考 GitHub Dark 配色。
 
-**差距**：需要新增 dark token 集 + `darkMode: 'class'` 配置 + 主题切换按钮 + 全组件 `dark:` 适配。
+**验证**：`npm run build` 通过，类型检查通过，6 个单测通过。
 
 ---
 
@@ -132,7 +137,7 @@
 
 ---
 
-### ⑧ 移动端适配 ⚠️ 部分完成
+### ⑧ 移动端适配 ✅ 代码完成，仅差线上重新部署
 
 | 检查项 | 结果 |
 |--------|------|
@@ -142,32 +147,33 @@
 | 报告页响应式 | ✅ 标题行堆叠，按钮 `w-full sm:w-auto` |
 | 删除页响应式 | ✅ 提交按钮 `w-full sm:w-auto` |
 | ScoreGauge 响应式 | ✅ `w-[168px] sm:w-[200px]` |
-| 构建验证 | ❌ 代码已写但 `npm run build` 被打断，未确认构建通过 |
-| 线上验证 | ❌ 未 commit + push，Vercel 未重新部署 |
-| 移动端真机测试 | ❌ 未做 |
+| 构建验证 | ✅ `npm run build` 通过（11 路由全编出，无类型/ lint 错误） |
+| 代码提交 | ✅ 已 commit（`6e8d092`）+ push 至 `origin/main` |
+| Vercel 重新部署 | ❌ 当前环境无 Vercel 凭证（CLI 未登录），无法触发 `vercel deploy`；旧部署已被 Vercel 回收（URL 现返回 410） |
+| 移动端真机测试 | ⚠️ 待部署后手机访问验证 |
 
-**说明**：响应式 CSS 已写入全部页面，但尚未构建验证和上线。需要：构建通过 → commit → push → Vercel 自动部署 → 手机访问验证。
+**说明**：2026-07-19 完成构建验证 + 提交推送。响应式 CSS 已覆盖全部页面，构建产物含全部路由。
 
-**差距**：验证构建 + 部署上线 + 真机测试。
+**差距（唯一阻塞）**：需要 Vercel 部署 token（`vcp_…`）由我执行 `vercel deploy --prod`，或用户在 Vercel Dashboard 点一下 Redeploy。部署后建议用手机访问做一次真机回归。
 
 ---
 
-### ⑨ SEO 操作 ⚠️ 部分完成
+### ⑨ SEO 操作 ✅ 已完成
 
 | 检查项 | 结果 |
 |--------|------|
-| 页面 title/description | ✅ `layout.tsx` 有 `metadata` 含中英双语 title + description |
-| `<html lang>` | ⚠️ 写死 `lang="zh-CN"`，未根据 i18n 状态动态切换 |
-| sitemap.xml | ❌ 无 `app/sitemap.ts` 或 `public/sitemap.xml` |
-| robots.txt | ❌ 无 `app/robots.ts` 或 `public/robots.txt` |
-| JSON-LD 结构化数据 | ❌ 无 `Script` 组件注入 schema.org markup |
-| Open Graph | ❌ 无 `openGraph` 字段在 metadata 中 |
-| canonical URL | ❌ 未设置 |
-| Google Search Console | ❌ 未验证域名 |
+| 页面 title/description | ✅ `layout.tsx` 含中英双语 title + description |
+| sitemap.xml | ✅ 新增 `app/sitemap.ts`（首页/upload/删除确认，weekly） |
+| robots.txt | ✅ 新增 `app/robots.ts`（allow `/`，disallow 报告/进度页，含 sitemap 指向） |
+| Open Graph | ✅ `metadata.openGraph` + `metadata.twitter` 已配置 |
+| canonical URL | ✅ `metadata.alternates.canonical: '/'` + `metadataBase` |
+| JSON-LD 结构化数据 | ✅ 首页注入 `WebApplication` schema（含 offers/inLanguage） |
+| `<html lang>` | ⚠️ 仍写死 `zh-CN`（SSR 默认；客户端 I18nProvider 会按语言更新，SEO 影响极小） |
+| Google Search Console | ❌ 未验证域名（部署后需在 GSC 提交 sitemap.xml） |
 
-**说明**：只有最基础的 title/description，其余 SEO 必要项全部缺失。
+**说明**：2026-07-19 完成。构建产物已生成 `/sitemap.xml` 与 `/robots.txt` 两个静态路由。
 
-**差距**：需要 sitemap + robots + OG tags + JSON-LD + Search Console 验证。
+**差距**：部署后到 GSC 验证域名并提交 sitemap（纯配置，不阻塞上线）。
 
 ---
 

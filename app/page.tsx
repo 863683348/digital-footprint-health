@@ -4,6 +4,24 @@ import Link from 'next/link';
 import { Card } from '@/components/ui';
 import { useI18n } from '@/components/I18nProvider';
 
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Digital Footprint Health Report',
+  alternateName: '数字足迹体检报告',
+  url: 'https://dfh-fgbk5c1y2-863683348s-projects.vercel.app',
+  description:
+    'Upload your X/Twitter archive and generate a local privacy health report that flags risky tweets (phone, email, location, sensitive topics), with on-demand batch deletion.',
+  applicationCategory: 'PrivacyApplication',
+  operatingSystem: 'Web',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'CNY',
+  },
+  inLanguage: ['zh-CN', 'en'],
+};
+
 const STEPS = [
   { n: '1', titleKey: 'landing.step1.title', descKey: 'landing.step1.desc' },
   { n: '2', titleKey: 'landing.step2.title', descKey: 'landing.step2.desc' },
@@ -13,20 +31,24 @@ const STEPS = [
 export default function HomePage() {
   const { t } = useI18n();
   return (
-    <div className="space-y-10">
+    <div className="space-y-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+      />
       <section className="pt-6">
         <h1 className="t-1 max-w-[18ch]">{t('landing.hero.title')}</h1>
         <p className="t-4 text-ink-soft mt-3 max-w-[60ch]">{t('landing.hero.desc')}</p>
-        <div className="mt-6 flex items-center gap-3">
+        <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <Link
             href="/upload"
-            className="inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-primary text-white hover:brightness-95 transition-calm"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-primary text-white hover:brightness-95 transition-calm"
           >
             {t('landing.cta.start')}
           </Link>
           <Link
             href="/delete/confirm"
-            className="inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-surface text-ink border border-line hover:bg-canvas transition-calm"
+            className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-surface text-ink border border-line hover:bg-canvas transition-calm"
           >
             {t('landing.cta.delete')}
           </Link>

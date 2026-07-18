@@ -61,7 +61,7 @@ function ProgressInner() {
 
   return (
     <div className="max-w-[720px] mx-auto space-y-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="t-2 font-bold">{t('progress.title')}</h1>
         <div className="flex items-center gap-2">
           <Badge tone="warn">{t('progress.dryrun.badge')}</Badge>
@@ -102,8 +102,8 @@ function ProgressInner() {
 
       {done && (
         <div className="flex justify-end">
-          <Link href="/upload">
-            <Button variant="ghost">{t('report.reupload')}</Button>
+          <Link href="/upload" className="w-full sm:w-auto">
+            <Button variant="ghost" className="w-full sm:w-auto">{t('report.reupload')}</Button>
           </Link>
         </div>
       )}

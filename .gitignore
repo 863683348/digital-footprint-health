@@ -33,3 +33,5 @@ data/*.enc
 coverage/
 *.log
 .DS_Store
+
+.vercel

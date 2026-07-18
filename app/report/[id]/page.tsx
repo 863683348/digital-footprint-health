@@ -27,8 +27,8 @@ export default function ReportPage({ params }: { params: { id: string } }) {
       <div className="max-w-[640px] mx-auto space-y-4">
         <h1 className="t-2 font-bold">{t('report.insufficient.title')}</h1>
         <Callout tone="warn">{t('report.insufficient.desc', { count: details.sampleSize })}</Callout>
-        <Link href="/upload" className="inline-block">
-          <Button variant="ghost">{t('report.reupload')}</Button>
+        <Link href="/upload" className="inline-block w-full sm:w-auto">
+          <Button variant="ghost" className="w-full sm:w-auto">{t('report.reupload')}</Button>
         </Link>
       </div>
     );
@@ -38,15 +38,15 @@ export default function ReportPage({ params }: { params: { id: string } }) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="min-w-0">
           <h1 className="t-2 font-bold">{t('report.title')}</h1>
           <p className="t-6 text-ink-soft">
             {t('report.subtitle', { fileName: archive.fileName, count: archive.rowCount })}
           </p>
         </div>
-        <Link href={`/delete/confirm?archiveId=${archive.id}`}>
-          <Button>{t('report.goDelete')}</Button>
+        <Link href={`/delete/confirm?archiveId=${archive.id}`} className="w-full sm:w-auto shrink-0">
+          <Button className="w-full sm:w-auto">{t('report.goDelete')}</Button>
         </Link>
       </div>
 

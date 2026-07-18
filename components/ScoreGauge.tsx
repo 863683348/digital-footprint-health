@@ -24,7 +24,12 @@ export function ScoreGauge({ score }: { score: number | null }) {
   const label = t('gauge.label');
 
   return (
-    <svg viewBox="0 0 200 200" width="200" height="200" role="img" aria-label={label}>
+    <svg
+      viewBox="0 0 200 200"
+      className="w-[168px] h-[168px] sm:w-[200px] sm:h-[200px]"
+      role="img"
+      aria-label={label}
+    >
       <circle cx="100" cy="100" r={R} fill="none" stroke="var(--color-line)" strokeWidth="14" />
       {hasScore && (
         <circle

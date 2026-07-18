@@ -72,7 +72,7 @@ function ConfirmInner() {
       <Callout>{t('delete.confirm.callout')}</Callout>
 
       <div className="flex justify-end">
-        <Button onClick={start} disabled={busy}>
+        <Button className="w-full sm:w-auto" onClick={start} disabled={busy}>
           {busy ? t('delete.creating') : dryRun ? t('delete.start.dryrun') : t('delete.start.real')}
         </Button>
       </div>

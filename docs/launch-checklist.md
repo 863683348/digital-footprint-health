@@ -3,7 +3,7 @@
 > 检查日期：2026-07-13
 > 基于：dafeixiang-saas-launch skill 的 10 项上线工作清单
 > 项目：digital-footprint-health (dfh-mvp)
-> 部署地址：https://dfh-fgbk5c1y2-863683348s-projects.vercel.app
+> 部署地址：https://digital-footprint-health.vercel.app （Vercel Git 自动部署已生效；旧址 dfh-fgbk5c1y2-863683348s-projects.vercel.app 已 410 回收）
 
 ---
 

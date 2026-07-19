@@ -5,7 +5,7 @@ import { Footer } from '@/components/Footer';
 import { I18nProvider } from '@/components/I18nProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 
-const SITE_URL = 'https://dfh-fgbk5c1y2-863683348s-projects.vercel.app';
+const SITE_URL = 'https://digital-footprint-health.vercel.app';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

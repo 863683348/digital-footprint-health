@@ -9,15 +9,15 @@
 
 ## 总览
 
-> 更新于 2026-07-19：已完成 #4 亮黑 UI、#9 SEO；#8 移动端适配代码 + 构建验证 + push 均已完成，仅剩「Vercel 重新部署上线」一步（需 Vercel token，当前环境无凭证）。
+> 更新于 2026-07-19（#10 收尾）：#4 亮黑 UI、#9 SEO、#10 安全 均已完成；#8 移动端适配代码 + 构建验证 + push 已完成，仅剩「Vercel 重新部署上线」一步（需 Vercel token，当前环境无凭证）。#10 的 vitest critical 已清零、API 限流已上；残留 Next 14 的 HIGH 漏洞待 Next 15/16 升级（P2，不阻塞上线）。
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
-| ✅ 已完成 | 5 项 | 50% |
-| ⚠️ 部分完成 | 2 项 | 20% |
+| ✅ 已完成 | 6 项 | 60% |
+| ⚠️ 部分完成 | 1 项 | 10% |
 | ❌ 未完成 | 3 项 | 30% |
 
-**结论：10 项中 5 项完成、2 项部分完成（#8 仅差线上重新部署；#10 生产关键项已清零，剩 1 个 dev-only critical + 限流待办）、3 项未做（#5 登录 / #6 支付 / #7 分析）。**
+**结论：10 项中 6 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑨SEO ⑩安全）、1 项部分完成（#8 仅差线上重新部署）、3 项未做（#5 登录 / #6 支付 / #7 分析）。**
 
 ---
 
@@ -177,27 +177,24 @@
 
 ---
 
-### ⑩ 安全检测 ⚠️ 已大幅加固（生产关键项清零，剩 1 个 dev-only critical）
+### ⑩ 安全检测 ✅ 完成（dev critical 已清零 + 限流已上；残留 Next 14 HIGH 待框架升级）
 
 | 检查项 | 结果 |
 |--------|------|
-| Next.js 版本 | ✅ 14.2.15 → **14.2.35**（latest 14.2.x，无破坏性变更） |
-| npm audit（生产） | ✅ **生产关键项已清零**：原 2 个 critical 的 Next.js CVE 已随 14.2.35 修复；剩余 1 个 critical 来自 `vitest`/`@vitest/mocker`（**仅 dev 测试工具，不进生产包**，仅当 `vitest --ui` 监听时存在风险） |
+| Next.js 版本 | ✅ **14.2.35**（latest 14.2.x，无破坏性变更） |
+| npm audit（critical） | ✅ **critical 已清零**：`vitest` 升级 2.1.4 → **4.1.10**（>3.2.5，修复 GHSA-5xrq-8626-4rwp 的 vitest UI 任意文件读/执行）；`npm audit` 现已无 critical |
+| npm audit（high/moderate） | ⚠️ 残留 4 high + 1 moderate，全部来自 **Next 14 自身**（DoS / XSS / 缓存投毒 / postcss），修复需升 Next 15/16（破坏性，P2 单排，不阻塞 MVP） |
 | 安全响应头 | ✅ `next.config.mjs` 配置 `headers()`：CSP + X-Frame-Options(DENY) + X-Content-Type-Options(nosniff) + Referrer-Policy + Permissions-Policy + HSTS(2 年) |
 | 上传接口 500 bug | ✅ 已修复：`req.formData()` 包 try/catch，非 multipart 请求返回 400 而非 500 |
 | 文件上传大小限制 | ✅ 新增 10MB 上限，超限返回 400 |
-| 构建/类型/测试 | ✅ `npm run build` 通过；`tsc --noEmit` 通过；6 单测全过 |
-| API 限流 | ❌ 无 rate limiting（Vercel 无状态，需 Upstash/Edge KV，P1 待办） |
-| 中间件 | ❌ 无 `middleware.ts`（当前用 next.config headers 已覆盖主要需求） |
-| 环境变量 | ⚠️ 无 `.env`（当前无密钥；接入 OAuth/支付后必须） |
-| CORS | ⚠️ 未显式配置（当前仅同源 API，风险低） |
+| **API 限流** | ✅ 新增 `middleware.ts`：对 `/api/archives/upload` 限流 10 次/10s/IP；**env 存在 UPSTASH_REDIS_REST_URL+TOKEN 时自动走 Upstash（多实例共享），否则降级为内存滑动窗口**；超限返回 429 `{code:'TOO_MANY_REQUESTS'}`（已接入 i18n） |
+| 测试 | ✅ `vitest run` 6/6 通过（vitest 4.1.10） |
 
-**说明**：2026-07-19 完成核心安全加固。生产部署面已无 critical/high 的 Next.js CVE（清掉原 2 个 critical），并补齐全部安全响应头、修复上传 500、加大小限制。`npm audit` 仍显示 1 critical 但来自 dev-only 的 vitest，不影响线上。
+**说明**：2026-07-19 收尾完成。两件事落地——① `vitest` 升到 4.1.10，`npm audit` 的 **critical 归零**；② 上传接口加上限流（Upstash 生产 / 内存降级），防接口被刷。生产部署面已无 critical。`npm audit` 残留的 4 high + 1 moderate 均为 Next 14 框架层漏洞，只能靠升 Next 15/16 清除（破坏性变更，列为 P2 单独排期，不阻塞当前上线）。
 
-**剩余差距（建议后续）**：
-1. **P1**：彻底消除 audit 的 critical 计数 —— 升级 vitest 到修复版本（或仅本地用、不在 CI/生产安装）。
-2. **P1**：API 限流（Upstash Ratelimit 或 Vercel Edge Middleware），防上传接口被刷。
-3. **P2**：若需 100% 清零所有 Next CVE，需升 Next 15/16（破坏性：client page 的 `params` 改 Promise，需把 `app/report/[id]` 改用 `useParams()`）。建议单独排期，不在本次范围。
+**已知残留（P2，不阻塞）**：
+1. **P2**：Next 14 的 4 high + 1 moderate 漏洞 → 升 Next 15/16（client page 的 `params` 改 Promise，需把 `app/report/[id]` 改用 `useParams()`）。建议单独排期。
+2. **P2**：接入 Upstash 时需在 Vercel 配置 `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`（不配则用内存降级，已可用）。
 
 ---
 

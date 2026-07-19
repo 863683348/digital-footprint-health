@@ -150,6 +150,7 @@ const zh: Record<string, string> = {
   'error.VALIDATION': '请求参数有误',
   'error.PARSE_FAILED': '归档解析失败',
   'error.ALREADY_RUNNING': '已有进行中的任务',
+  'error.TOO_MANY_REQUESTS': '请求过于频繁，请稍后再试',
   'error.FORBIDDEN': '无权限',
   'error.INTERNAL': '服务器内部错误',
 };
@@ -292,6 +293,7 @@ const en: Record<string, string> = {
   'error.NOT_FOUND': 'Resource not found',
   'error.VALIDATION': 'Invalid request parameters',
   'error.PARSE_FAILED': 'Archive parsing failed',
+  'error.TOO_MANY_REQUESTS': 'Too many requests, please try again later',
   'error.ALREADY_RUNNING': 'A job is already running',
   'error.FORBIDDEN': 'Forbidden',
   'error.INTERNAL': 'Internal server error',

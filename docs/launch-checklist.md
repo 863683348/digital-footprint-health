@@ -152,9 +152,9 @@
 | Vercel 重新部署 | ❌ 当前环境无 Vercel 凭证（CLI 未登录），无法触发 `vercel deploy`；旧部署已被 Vercel 回收（URL 现返回 410） |
 | 移动端真机测试 | ⚠️ 待部署后手机访问验证 |
 
-**说明**：2026-07-19 完成构建验证 + 提交推送。响应式 CSS 已覆盖全部页面，构建产物含全部路由。
+**说明**：2026-07-19 完成构建验证 + 提交推送。响应式 CSS 已覆盖全部页面，构建产物含全部路由（最新 build 含 Middleware 51.8kB，限流已编入）。
 
-**差距（唯一阻塞）**：需要 Vercel 部署 token（`vcp_…`）由我执行 `vercel deploy --prod`，或用户在 Vercel Dashboard 点一下 Redeploy。部署后建议用手机访问做一次真机回归。
+**差距（唯一阻塞）**：需要 Vercel 部署 token（`vcp_…`）由我执行 `vercel deploy --prod`，或用户在 Vercel Dashboard 点一下 Redeploy。本环境再次确认无 Vercel 凭证（`VERCEL_TOKEN` 未设置、`vercel whoami` 报无凭证、无 `~/.vercel/auth.json`）。部署后建议用手机访问做一次真机回归。
 
 ---
 

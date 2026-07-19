@@ -2,20 +2,23 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { loadArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
 import { ScoreGauge } from '@/components/ScoreGauge';
 import { Card, RiskFlag, Callout, Button } from '@/components/ui';
 import type { ArchiveData, ScoreDimension } from '@/lib/types';
 
-export default function ReportPage({ params }: { params: { id: string } }) {
+export default function ReportPage() {
+  const params = useParams<{ id: string }>();
+  const id = params.id;
   const { t } = useI18n();
   // undefined = still loading from localStorage; null = not found
   const [archive, setArchive] = useState<ArchiveData | null | undefined>(undefined);
 
   useEffect(() => {
-    setArchive(loadArchive(params.id));
-  }, [params.id]);
+    setArchive(loadArchive(id));
+  }, [id]);
 
   if (archive === undefined) return <div className="t-5 text-ink-soft">{t('report.loading')}</div>;
   if (archive === null) return <Callout tone="danger">{t('report.missing')}</Callout>;

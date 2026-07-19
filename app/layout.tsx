@@ -1,5 +1,6 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
+import Script from 'next/script';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { I18nProvider } from '@/components/I18nProvider';
@@ -39,6 +40,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-5NWEFJTMBZ"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5NWEFJTMBZ');`}
+        </Script>
       </head>
       <body>
         <ThemeProvider>

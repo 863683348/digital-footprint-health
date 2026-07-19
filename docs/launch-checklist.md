@@ -9,15 +9,15 @@
 
 ## 总览
 
-> 更新于 2026-07-17（#8 部署闭环 + JSON-LD 死链修复）：#8 移动端适配经 Git 自动部署已上线（`digital-footprint-health.vercel.app` 返回 200，无需 Vercel token）；顺带发现并修复 JSON-LD / sitemap / robots 三处硬编码旧域名死链（`dfh-fgbk5c1y2…` 已 410 回收），统一收敛到 `lib/site.ts` 单一常量。#10 的 vitest critical 已清零、API 限流已上；残留 Next 14 的 HIGH 漏洞待 Next 15/16 升级（P2，不阻塞上线）。
+> 更新于 2026-07-19（#8 部署闭环 + JSON-LD 死链修复 + #7 GA4 基础接入 + Next 16 升级清漏洞）：#8 移动端适配经 Git 自动部署已上线（`digital-footprint-health.vercel.app` 返回 200，无需 Vercel token）；此前修复 JSON-LD / sitemap / robots 三处硬编码旧域名死链，统一收敛到 `lib/site.ts`；#7 已用 `next/script` 接入 GA4（G-5NWEFJTMBZ）；并将 **Next 14 → 16.2.10 + React 19**，`npm audit` 现已 **0 漏洞**（4 high + 1 moderate 全清，含 `postcss` override）。
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
 | ✅ 已完成 | 7 项 | 70% |
-| ⚠️ 部分完成 | 0 项 | 0% |
-| ❌ 未完成 | 3 项 | 30% |
+| ⚠️ 部分完成 | 1 项 | 10% |
+| ❌ 未完成 | 2 项 | 20% |
 
-**结论：10 项中 7 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑧移动端 ⑨SEO ⑩安全）、3 项未做（#5 登录 / #6 支付 / #7 分析）。#8 真机回归为可选 QA（用户待办）。**
+**结论：10 项中 7 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑧移动端 ⑨SEO ⑩安全）、1 项部分完成（#7 GA4 已上、热力图+事件埋点待补）、2 项未做（#5 谷歌登录 / #6 收付款）。#8 真机回归为可选 QA（用户待办）。**
 
 ---
 
@@ -121,19 +121,19 @@
 
 ---
 
-### ⑦ GA4 + 热力监控 ❌ 未完成
+### ⑦ GA4 + 热力监控 ⚠️ 部分完成（GA4 基础已上线，热力图 + 事件埋点待补）
 
 | 检查项 | 结果 |
 |--------|------|
-| GA4 脚本 | ❌ 未安装 `next/script` 的 GA4 tag，无 `gtag()` 调用 |
-| 页面浏览追踪 | ❌ 无 `routeChange` 事件监听 |
-| 事件追踪 | ❌ 无上传/生成报告/删除等关键事件埋点 |
+| GA4 脚本 | ✅ 已用 `next/script`（`strategy="afterInteractive"`）接入 `gtag.js?id=G-5NWEFJTMBZ`，含 `gtag('config', 'G-5NWEFJTMBZ')` 初始化（`app/layout.tsx`，用户提供的 Measurement ID）|
+| 页面浏览追踪 | ✅ GA4 默认 `page_view` 自动上报（gtag config 触发）；SPA 路由切换若需精确归因可追加 `routeChange` 埋点 |
+| 事件追踪 | ❌ 上传成功 / 生成报告 / 删除模拟 等关键节点尚未埋 `gtag('event', ...)` |
 | 热力图工具 | ❌ 未接入 Hotjar / Microsoft Clarity / PostHog |
 | Web Vitals | ⚠️ Next.js 内置 `next/web-vitals` 可用但未启用上报 |
 
-**说明**：完全没有用户行为分析能力。上线后无法衡量转化率、用户路径、流失点。
+**说明**：2026-07-19 接入 GA4 基础脚本，现可看基础访问量与页面浏览。
 
-**差距**：需要创建 GA4 property → 注入 gtag 脚本 → 关键事件埋点 → 接入 Clarity（免费热力图）。
+**差距（待补）**：① 关键事件埋点（`gtag('event', ...)`）衡量转化漏斗；② 接入 Microsoft Clarity（免费热力图）看点击/滚动热区；③ 隐私合规：本产品定位"隐私体检"，正式推广前建议加分析同意开关（否则 GA4 与主张略有冲突），需要可改成 consent 后加载。
 
 ---
 
@@ -182,13 +182,13 @@
 
 ---
 
-### ⑩ 安全检测 ✅ 完成（dev critical 已清零 + 限流已上；残留 Next 14 HIGH 待框架升级）
+### ⑩ 安全检测 ✅ 完成（dev critical 已清零 + 限流已上 + npm audit 0 漏洞）
 
 | 检查项 | 结果 |
 |--------|------|
-| Next.js 版本 | ✅ **14.2.35**（latest 14.2.x，无破坏性变更） |
+| Next.js 版本 | ✅ **16.2.10**（latest stable）+ **React 19.2.7**（升 15/16 清除框架层漏洞） |
 | npm audit（critical） | ✅ **critical 已清零**：`vitest` 升级 2.1.4 → **4.1.10**（>3.2.5，修复 GHSA-5xrq-8626-4rwp 的 vitest UI 任意文件读/执行）；`npm audit` 现已无 critical |
-| npm audit（high/moderate） | ⚠️ 残留 4 high + 1 moderate，全部来自 **Next 14 自身**（DoS / XSS / 缓存投毒 / postcss），修复需升 Next 15/16（破坏性，P2 单排，不阻塞 MVP） |
+| npm audit（high/moderate） | ✅ **0 漏洞**：升 Next 16.2.10 清掉 4 high（Next 自身 DoS / SSRF / 缓存投毒 / XSS 等），并用 `overrides` 强制 `postcss` ≥ 8.5.10 清掉 moderate（Next 内嵌的 postcss 也抬上来了） |
 | 安全响应头 | ✅ `next.config.mjs` 配置 `headers()`：CSP + X-Frame-Options(DENY) + X-Content-Type-Options(nosniff) + Referrer-Policy + Permissions-Policy + HSTS(2 年) |
 | 上传接口 500 bug | ✅ 已修复：`req.formData()` 包 try/catch，非 multipart 请求返回 400 而非 500 |
 | 文件上传大小限制 | ✅ 新增 10MB 上限，超限返回 400 |
@@ -197,9 +197,9 @@
 
 **说明**：2026-07-19 收尾完成。两件事落地——① `vitest` 升到 4.1.10，`npm audit` 的 **critical 归零**；② 上传接口加上限流（Upstash 生产 / 内存降级），防接口被刷。生产部署面已无 critical。`npm audit` 残留的 4 high + 1 moderate 均为 Next 14 框架层漏洞，只能靠升 Next 15/16 清除（破坏性变更，列为 P2 单独排期，不阻塞当前上线）。
 
-**已知残留（P2，不阻塞）**：
-1. **P2**：Next 14 的 4 high + 1 moderate 漏洞 → 升 Next 15/16（client page 的 `params` 改 Promise，需把 `app/report/[id]` 改用 `useParams()`）。建议单独排期。
-2. **P2**：接入 Upstash 时需在 Vercel 配置 `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`（不配则用内存降级，已可用）。
+**已闭环（2026-07-19）**：
+1. ✅ **Next 14 → 16.2.10 + React 19** 升级完成：`app/report/[id]` 客户端组件改用 `useParams()` 适配 `params` Promise；`next.config.mjs` / `middleware.ts` 无破坏性改动；`npm audit` 现已 **0 漏洞**（4 high + 1 moderate 全清）。`eslint-config-next` 同步升 16.2.10，`lint` 脚本改 `eslint .` 并补 `.eslintrc.json`（Next 16 移除了 `next lint`）。
+2. **P2（可选）**：接入 Upstash 时需在 Vercel 配置 `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`（不配则用内存降级，已可用）。
 
 ---
 
@@ -220,5 +220,5 @@
 ## 备注
 
 - ⑤⑥ 两项对于当前 dry-run MVP 阶段不是阻塞项——产品当前定位是"本地隐私体检 + 模拟删除"，不涉及真实用户身份和真实收费。但如果要走向正式商业化，这两项是必经之路。
-- ⑩ 安全检测中的 Next.js CVE 是当前最紧急的风险——即使不做商业化，也应尽快升级框架版本。
+- ⑩ 安全检测中的 Next.js 漏洞（原 P2）已通过升 Next 16.2.10 + React 19 闭环，`npm audit` 现 0 漏洞。
 - 阻塞链参考（来自 skill）：①→②→⑤→⑥；可并行：⑦‖⑧‖⑨‖⑩。

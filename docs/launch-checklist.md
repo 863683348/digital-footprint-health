@@ -14,10 +14,10 @@
 | 状态 | 数量 | 占比 |
 |------|------|------|
 | ✅ 已完成 | 5 项 | 50% |
-| ⚠️ 部分完成 | 1 项 | 10% |
-| ❌ 未完成 | 4 项 | 40% |
+| ⚠️ 部分完成 | 2 项 | 20% |
+| ❌ 未完成 | 3 项 | 30% |
 
-**结论：10 项中 5 项完成、1 项部分完成（#8 仅差线上重新部署）、4 项未做（#5 登录 / #6 支付 / #7 分析 / #10 安全）。**
+**结论：10 项中 5 项完成、2 项部分完成（#8 仅差线上重新部署；#10 生产关键项已清零，剩 1 个 dev-only critical + 限流待办）、3 项未做（#5 登录 / #6 支付 / #7 分析）。**
 
 ---
 
@@ -177,27 +177,27 @@
 
 ---
 
-### ⑩ 安全检测 ❌ 未完成
+### ⑩ 安全检测 ⚠️ 已大幅加固（生产关键项清零，剩 1 个 dev-only critical）
 
 | 检查项 | 结果 |
 |--------|------|
-| npm audit | ❌ **10 个漏洞**：2 critical / 4 high / 4 moderate（Next.js 14.2.15 存在多个 CVE） |
-| 安全响应头 | ❌ `next.config.mjs` 为空，未配置 `headers()` — 缺 CSP / X-Frame-Options / X-Content-Type-Options / Strict-Transport-Security / Referrer-Policy |
-| Middleware | ❌ 无 `middleware.ts` |
-| 环境变量 | ⚠️ 无 `.env` 文件（当前无密钥需要管理，但接入 OAuth/支付后必须） |
-| 文件上传安全 | ⚠️ 上传路由有格式校验（csv/js/json），但无文件大小限制 |
-| API 限流 | ❌ 无 rate limiting |
-| CORS 配置 | ❌ 未显式配置 |
-| 上传接口空文件 500 bug | ❌ 已知 bug：空文件时返回 500 应为 400 |
+| Next.js 版本 | ✅ 14.2.15 → **14.2.35**（latest 14.2.x，无破坏性变更） |
+| npm audit（生产） | ✅ **生产关键项已清零**：原 2 个 critical 的 Next.js CVE 已随 14.2.35 修复；剩余 1 个 critical 来自 `vitest`/`@vitest/mocker`（**仅 dev 测试工具，不进生产包**，仅当 `vitest --ui` 监听时存在风险） |
+| 安全响应头 | ✅ `next.config.mjs` 配置 `headers()`：CSP + X-Frame-Options(DENY) + X-Content-Type-Options(nosniff) + Referrer-Policy + Permissions-Policy + HSTS(2 年) |
+| 上传接口 500 bug | ✅ 已修复：`req.formData()` 包 try/catch，非 multipart 请求返回 400 而非 500 |
+| 文件上传大小限制 | ✅ 新增 10MB 上限，超限返回 400 |
+| 构建/类型/测试 | ✅ `npm run build` 通过；`tsc --noEmit` 通过；6 单测全过 |
+| API 限流 | ❌ 无 rate limiting（Vercel 无状态，需 Upstash/Edge KV，P1 待办） |
+| 中间件 | ❌ 无 `middleware.ts`（当前用 next.config headers 已覆盖主要需求） |
+| 环境变量 | ⚠️ 无 `.env`（当前无密钥；接入 OAuth/支付后必须） |
+| CORS | ⚠️ 未显式配置（当前仅同源 API，风险低） |
 
-**说明**：安全是最大缺口。Next.js 14.2.15 有多个已知 CVE（含 2 个 critical），且无任何安全响应头配置。
+**说明**：2026-07-19 完成核心安全加固。生产部署面已无 critical/high 的 Next.js CVE（清掉原 2 个 critical），并补齐全部安全响应头、修复上传 500、加大小限制。`npm audit` 仍显示 1 critical 但来自 dev-only 的 vitest，不影响线上。
 
-**差距（按优先级）**：
-1. **P0**：升级 Next.js 到最新 14.x patch 或 15.x（修复 2 个 critical CVE）
-2. **P0**：在 `next.config.mjs` 中配置安全响应头（CSP / X-Frame-Options / HSTS 等）
-3. **P1**：上传路由加文件大小限制 + 修复空文件 500 bug
-4. **P1**：API 限流（可用 Upstash Ratelimit 或 Vercel Edge Middleware）
-5. **P2**：接入 OAuth/支付后配置 `.env` 和密钥管理
+**剩余差距（建议后续）**：
+1. **P1**：彻底消除 audit 的 critical 计数 —— 升级 vitest 到修复版本（或仅本地用、不在 CI/生产安装）。
+2. **P1**：API 限流（Upstash Ratelimit 或 Vercel Edge Middleware），防上传接口被刷。
+3. **P2**：若需 100% 清零所有 Next CVE，需升 Next 15/16（破坏性：client page 的 `params` 改 Promise，需把 `app/report/[id]` 改用 `useParams()`）。建议单独排期，不在本次范围。
 
 ---
 

@@ -156,6 +156,11 @@
 
 **差距（唯一阻塞）**：需要 Vercel 部署 token（`vcp_…`）由我执行 `vercel deploy --prod`，或用户在 Vercel Dashboard 点一下 Redeploy。本环境再次确认无 Vercel 凭证（`VERCEL_TOKEN` 未设置、`vercel whoami` 报无凭证、无 `~/.vercel/auth.json`）。部署后建议用手机访问做一次真机回归。
 
+**📌 提醒（用户待办，2026-07-19 用户确认代码适配已完成）**：
+1. **部署**：贴 `vcp_…` token 给我跑 `vercel deploy --prod --token <token>`（项目已本地链接：`prj_F8X2iOUVXt0YlPhMsiSTT9A5T3t4` / org `team_WYqXheVujG6BllkeG3s1g2X2`，或去 Dashboard 点 Redeploy。
+2. **真机回归**：部署后用手机访问，核对首页/上传/报告/删除页在窄屏（≤375px）下的布局与按钮（CTA 堆叠、按钮全宽、ScoreGauge 缩到 168px 等）。
+3. 代码侧已 100% 就绪，部署前无需再改；#4 亮黑 UI 等用户给 JS 后再动。
+
 ---
 
 ### ⑨ SEO 操作 ✅ 已完成

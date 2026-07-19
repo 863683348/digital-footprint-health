@@ -1,13 +1,36 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Moon, Sun } from 'lucide-react';
 import { useI18n } from '@/components/I18nProvider';
 import { useTheme } from '@/components/ThemeProvider';
 
+interface SessionUser {
+  sub: string;
+  email: string;
+  name: string;
+  picture?: string;
+}
+
 export function NavBar() {
   const { lang, setLang, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
+  const [user, setUser] = useState<SessionUser | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/auth/session')
+      .then((r) => r.json())
+      .then((d) => setUser(d.user ?? null))
+      .catch(() => setUser(null))
+      .finally(() => setLoading(false));
+  }, []);
+
+  async function handleSignout() {
+    await fetch('/api/auth/signout', { method: 'POST' });
+    setUser(null);
+  }
   return (
     <header className="border-b border-line bg-surface">
       <div className="max-w-[1040px] mx-auto px-4 h-14 flex items-center justify-between">
@@ -53,6 +76,32 @@ export function NavBar() {
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
+          {!loading &&
+            (user ? (
+              <div className="flex items-center gap-2 ml-2">
+                <span
+                  className="hidden sm:inline text-t-7 text-ink-soft truncate max-w-[120px]"
+                  title={user.email}
+                >
+                  {user.name}
+                </span>
+                <button
+                  type="button"
+                  onClick={handleSignout}
+                  className="inline-flex h-7 items-center rounded-lg border border-line px-2 text-t-7 text-ink-soft hover:text-ink hover:bg-canvas transition-calm"
+                >
+                  {t('auth.signout')}
+                </button>
+              </div>
+            ) : (
+              <a
+                href="/api/auth/google"
+                className="ml-2 inline-flex h-7 items-center rounded-lg border border-line px-2 text-t-7 text-ink-soft hover:text-ink hover:bg-canvas transition-calm"
+                title={t('auth.withGoogle')}
+              >
+                {t('auth.signin')}
+              </a>
+            ))}
         </nav>
       </div>
     </header>

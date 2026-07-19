@@ -9,15 +9,15 @@
 
 ## 总览
 
-> 更新于 2026-07-19（#8 部署闭环 + JSON-LD 死链修复 + #7 GA4 基础接入 + Next 16 升级清漏洞）：#8 移动端适配经 Git 自动部署已上线（`digital-footprint-health.vercel.app` 返回 200，无需 Vercel token）；此前修复 JSON-LD / sitemap / robots 三处硬编码旧域名死链，统一收敛到 `lib/site.ts`；#7 已用 `next/script` 接入 GA4（G-5NWEFJTMBZ）；并将 **Next 14 → 16.2.10 + React 19**，`npm audit` 现已 **0 漏洞**（4 high + 1 moderate 全清，含 `postcss` override）。
+> 更新于 2026-07-20（#5 谷歌登录代码完成）：采用轻量自研 Google OAuth（authorization code flow + HMAC 签名 httpOnly session cookie），不引入 beta 版 Auth.js，契合产品 stateless 架构；登录为可选入口（非阻断）。**注意：功能需用户在 Google Cloud Console 创建 OAuth 凭据 + 在 Vercel 配置 3 个环境变量后才真正可用**（详见 #5）。此前：#8 移动端适配已上线；JSON-LD/sitemap/robots 死链已收敛到 `lib/site.ts`；#7 已接 GA4（G-5NWEFJTMBZ）；Next 14→16.2.10 + React 19，`npm audit` 0 漏洞。
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
-| ✅ 已完成 | 7 项 | 70% |
+| ✅ 已完成 | 8 项 | 80% |
 | ⚠️ 部分完成 | 1 项 | 10% |
-| ❌ 未完成 | 2 项 | 20% |
+| ❌ 未完成 | 1 项 | 10% |
 
-**结论：10 项中 7 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑧移动端 ⑨SEO ⑩安全）、1 项部分完成（#7 GA4 已上、热力图+事件埋点待补）、2 项未做（#5 谷歌登录 / #6 收付款）。#8 真机回归为可选 QA（用户待办）。**
+**结论：10 项中 8 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑤谷歌登录[代码] ⑧移动端 ⑨SEO ⑩安全）、1 项部分完成（#7 GA4 已上、热力图+事件埋点待补）、1 项未做（#6 收付款）。#5 代码已完成，待用户配置 OAuth 凭据即生效；#8 真机回归为可选 QA（用户待办）。**
 
 ---
 
@@ -87,19 +87,36 @@
 
 ---
 
-### ⑤ 谷歌登录 ❌ 未完成
+### ⑤ 谷歌登录 ✅ 已完成（代码就绪，待用户配置 OAuth 凭据后生效）
 
 | 检查项 | 结果 |
 |--------|------|
-| NextAuth / Auth.js | ❌ 未安装，未配置 |
-| Google OAuth | ❌ 无 OAuth client ID / callback 路由 |
-| Session 管理 | ❌ 无 session/JWT 代码 |
-| 登录/注册页面 | ❌ 无 `/login` 或 `/auth` 路由 |
-| 受保护路由 | ❌ 无 middleware 做鉴权拦截 |
+| 方案选型 | ✅ 轻量自研 Google OAuth（authorization code flow），**不引入 Auth.js beta**——产品 stateless，登录只是可选身份绑定，自研更可控、零额外依赖 |
+| Google OAuth 跳转 | ✅ `GET /api/auth/google` 生成 `state` 防 CSRF，重定向到 Google 授权页 |
+| OAuth 回调 | ✅ `GET /api/auth/callback` 校验 state → 用 code 换 token → 拉取 userinfo → 写 session cookie |
+| Session 管理 | ✅ `lib/session.ts`：HMAC-SHA256 签名的 httpOnly cookie（无数据库、无 JWT 库），`parseSession()` 做常量时间校验 |
+| 登录态读取 | ✅ `GET /api/auth/session` 返回 `{user:null\|SessionUser}`，供 NavBar 客户端渲染登录态 |
+| 退出登录 | ✅ `POST /api/auth/signout` 清除 session cookie |
+| 登录/退出 UI | ✅ NavBar 客户端组件：挂载时拉 `/api/auth/session`，登录态显示用户名 + 「退出」，未登录显示「登录」链接（非阻断入口，可选） |
+| 国际化 | ✅ `auth.signin` / `auth.signout` / `auth.withGoogle` 已加 zh/en |
+| 环境变量模板 | ✅ `.env.example` 含 `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `AUTH_SECRET` 占位（真实 `.env.local` 已被 `.gitignore` 忽略） |
+| 安全响应头兼容 | ✅ cookie 设 `httpOnly` + `sameSite=lax` + 生产 `secure`，与现有 CSP 无冲突 |
 
-**说明**：当前 MVP 是 stateless 架构——上传即解析，客户端 localStorage 持有数据，无需登录。但正式上线（尤其是付费删除功能）需要用户身份。
+**说明**：2026-07-20 完成。定位「隐私体检」产品，登录是**可选身份绑定**（不强制、不阻断上传/报告流程），仅用于后续付费/删除的身份关联。状态通过 HMAC 签名 cookie 持有，服务端可验证、客户端不可篡改。
 
-**差距**：完整缺失。需安装 NextAuth + 配置 Google OAuth + 设计登录流程 + 受保护路由。
+**🔧 待用户在侧完成（功能才真正可用）**：
+1. 打开 https://console.cloud.google.com/apis/credentials → 创建 **OAuth 2.0 客户端 ID**（应用类型：Web 应用）。
+2. 「已获授权的重定向 URI」添加：
+   - `https://digital-footprint-health.vercel.app/api/auth/callback`（生产，必填）
+   - `http://localhost:3000/api/auth/callback`（本地调试，可选）
+3. 在 Vercel 项目环境变量（Settings → Environment Variables）添加：
+   - `GOOGLE_CLIENT_ID` = 上一步拿到的客户端 ID
+   - `GOOGLE_CLIENT_SECRET` = 上一步拿到的客户端密钥
+   - `AUTH_SECRET` = 强随机值（生成：`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`）
+4. 重新部署（改环境变量后 Vercel 需 redeploy；push 会自动触发，或手动 Redeploy）。
+5. 验证：首页 NavBar 点「登录」→ Google 授权 → 跳回首页且显示用户名；点「退出」即清除。
+
+**差距（如未来需要）**：当前未做 middleware 受保护路由（因登录非强制）；若付费删除要绑定登录态，再在 `middleware.ts` 或具体路由加 `parseSession` 校验即可，接口已就绪。
 
 ---
 
@@ -212,7 +229,7 @@
 | **P1** | ⑨ SEO 操作 — sitemap + robots + OG + JSON-LD | 小 |
 | **P1** | ④ 亮黑 UI — dark token + 切换按钮 + 组件适配 | 中 |
 | **P2** | ⑦ GA4 + 热力图 — GA4 + Clarity 接入 | 小 |
-| **P2** | ⑤ 谷歌登录 — NextAuth + Google OAuth | 中 |
+| **P2** | ⑤ 谷歌登录 — 自研 Google OAuth（已完成，待配凭据） | 中 |
 | **P2** | ⑥ 收付款 — PayPal/Stripe + webhook + 退款 | 大 |
 
 ---

@@ -9,15 +9,15 @@
 
 ## 总览
 
-> 更新于 2026-07-19（#10 收尾）：#4 亮黑 UI、#9 SEO、#10 安全 均已完成；#8 移动端适配代码 + 构建验证 + push 已完成，仅剩「Vercel 重新部署上线」一步（需 Vercel token，当前环境无凭证）。#10 的 vitest critical 已清零、API 限流已上；残留 Next 14 的 HIGH 漏洞待 Next 15/16 升级（P2，不阻塞上线）。
+> 更新于 2026-07-17（#8 部署闭环 + JSON-LD 死链修复）：#8 移动端适配经 Git 自动部署已上线（`digital-footprint-health.vercel.app` 返回 200，无需 Vercel token）；顺带发现并修复 JSON-LD / sitemap / robots 三处硬编码旧域名死链（`dfh-fgbk5c1y2…` 已 410 回收），统一收敛到 `lib/site.ts` 单一常量。#10 的 vitest critical 已清零、API 限流已上；残留 Next 14 的 HIGH 漏洞待 Next 15/16 升级（P2，不阻塞上线）。
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
-| ✅ 已完成 | 6 项 | 60% |
-| ⚠️ 部分完成 | 1 项 | 10% |
+| ✅ 已完成 | 7 项 | 70% |
+| ⚠️ 部分完成 | 0 项 | 0% |
 | ❌ 未完成 | 3 项 | 30% |
 
-**结论：10 项中 6 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑨SEO ⑩安全）、1 项部分完成（#8 仅差线上重新部署）、3 项未做（#5 登录 / #6 支付 / #7 分析）。**
+**结论：10 项中 7 项完成（①需求设计 ②MVP搭建 ③中英文i18n ④亮黑UI ⑧移动端 ⑨SEO ⑩安全）、3 项未做（#5 登录 / #6 支付 / #7 分析）。#8 真机回归为可选 QA（用户待办）。**
 
 ---
 
@@ -137,7 +137,7 @@
 
 ---
 
-### ⑧ 移动端适配 ✅ 代码完成，仅差线上重新部署
+### ⑧ 移动端适配 ✅ 已完成（已部署上线）
 
 | 检查项 | 结果 |
 |--------|------|
@@ -149,17 +149,15 @@
 | ScoreGauge 响应式 | ✅ `w-[168px] sm:w-[200px]` |
 | 构建验证 | ✅ `npm run build` 通过（11 路由全编出，无类型/ lint 错误） |
 | 代码提交 | ✅ 已 commit（`6e8d092`）+ push 至 `origin/main` |
-| Vercel 重新部署 | ❌ 当前环境无 Vercel 凭证（CLI 未登录），无法触发 `vercel deploy`；旧部署已被 Vercel 回收（URL 现返回 410） |
-| 移动端真机测试 | ⚠️ 待部署后手机访问验证 |
+| Vercel 部署 | ✅ **Git 自动部署已生效**：push 到 `main` 即自动构建上线，`digital-footprint-health.vercel.app` 返回 200（无需 Vercel token，本环境已验证） |
+| 死链修复 | ✅ 旧域名 `dfh-fgbk5c1y2-…vercel.app`（已 410 回收）在 JSON-LD / sitemap / robots 三处硬编码死链已修复，统一收敛到 `lib/site.ts` 单一常量 |
+| 移动端真机测试 | ⚠️ 待用户手机访问回归（非代码阻塞项） |
 
-**说明**：2026-07-19 完成构建验证 + 提交推送。响应式 CSS 已覆盖全部页面，构建产物含全部路由（最新 build 含 Middleware 51.8kB，限流已编入）。
+**说明**：2026-07-17 完成部署闭环。响应式 CSS 已覆盖全部页面，构建产物含全部 11 路由（含 Middleware 51.8kB 限流）。部署走 GitHub → Vercel Git 集成自动触发，无需 token。
 
-**差距（唯一阻塞）**：需要 Vercel 部署 token（`vcp_…`）由我执行 `vercel deploy --prod`，或用户在 Vercel Dashboard 点一下 Redeploy。本环境再次确认无 Vercel 凭证（`VERCEL_TOKEN` 未设置、`vercel whoami` 报无凭证、无 `~/.vercel/auth.json`）。部署后建议用手机访问做一次真机回归。
-
-**📌 提醒（用户待办，2026-07-19 用户确认代码适配已完成）**：
-1. **部署**：贴 `vcp_…` token 给我跑 `vercel deploy --prod --token <token>`（项目已本地链接：`prj_F8X2iOUVXt0YlPhMsiSTT9A5T3t4` / org `team_WYqXheVujG6BllkeG3s1g2X2`，或去 Dashboard 点 Redeploy。
-2. **真机回归**：部署后用手机访问，核对首页/上传/报告/删除页在窄屏（≤375px）下的布局与按钮（CTA 堆叠、按钮全宽、ScoreGauge 缩到 168px 等）。
-3. 代码侧已 100% 就绪，部署前无需再改；#4 亮黑 UI 等用户给 JS 后再动。
+**📌 提醒（用户待办）**：
+1. **真机回归**：用手机访问 `https://digital-footprint-health.vercel.app`，核对首页/上传/报告/删除页在窄屏（≤375px）下的布局与按钮（CTA 堆叠、按钮全宽、ScoreGauge 缩到 168px 等）。代码侧已 100% 就绪，无需再改。
+2. **#4 亮黑 UI**：等用户给 JS 后再动（组件已支持，但用户要补的脚本尚未提供）。
 
 ---
 
@@ -179,6 +177,8 @@
 **说明**：2026-07-19 完成。构建产物已生成 `/sitemap.xml` 与 `/robots.txt` 两个静态路由。
 
 **差距**：部署后到 GSC 验证域名并提交 sitemap（纯配置，不阻塞上线）。
+
+**补充（2026-07-17）**：修复 JSON-LD 的 `url` 字段曾硬编码旧域名死链（`dfh-fgbk5c1y2-…`）的问题，现已统一引用 `lib/site.ts` 的 `SITE_URL`，与 canonical / OG / sitemap / robots 完全一致。
 
 ---
 

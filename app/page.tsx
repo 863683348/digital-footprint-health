@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import { Card } from '@/components/ui';
 import { useI18n } from '@/components/I18nProvider';
+import { SITE_URL } from '@/lib/site';
 
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
   name: 'Digital Footprint Health Report',
   alternateName: '数字足迹体检报告',
-  url: 'https://dfh-fgbk5c1y2-863683348s-projects.vercel.app',
+  url: SITE_URL,
   description:
     'Upload your X/Twitter archive and generate a local privacy health report that flags risky tweets (phone, email, location, sensitive topics), with on-demand batch deletion.',
   applicationCategory: 'PrivacyApplication',

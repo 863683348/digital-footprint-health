@@ -3,7 +3,7 @@
 > 检查日期：2026-07-13
 > 基于：dafeixiang-saas-launch skill 的 10 项上线工作清单
 > 项目：digital-footprint-health (dfh-mvp)
-> 部署地址：https://digital-footprint-health.vercel.app （Vercel Git 自动部署已生效；旧址 dfh-fgbk5c1y2-863683348s-projects.vercel.app 已 410 回收）
+> 部署地址：https://digital-footprint-health.shop （**正式域名**，2026-07-24 切换；底层 Vercel 自动分配的 digital-footprint-health.vercel.app 仍可作为回退）
 
 ---
 
@@ -102,18 +102,21 @@
 | 环境变量模板 | ✅ `.env.example` 含 `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `AUTH_SECRET` 占位（真实 `.env.local` 已被 `.gitignore` 忽略） |
 | 安全响应头兼容 | ✅ cookie 设 `httpOnly` + `sameSite=lax` + 生产 `secure`，与现有 CSP 无冲突 |
 
-**说明**：2026-07-20 完成。定位「隐私体检」产品，登录是**可选身份绑定**（不强制、不阻断上传/报告流程），仅用于后续付费/删除的身份关联。状态通过 HMAC 签名 cookie 持有，服务端可验证、客户端不可篡改。
+**说明**：2026-07-20 完成代码 + 用户已提供 Google OAuth 凭据。定位「隐私体检」产品，登录是**可选身份绑定**（不强制、不阻断上传/报告流程），仅用于后续付费/删除的身份关联。状态通过 HMAC 签名 cookie 持有，服务端可验证、客户端不可篡改。本地 `.env.local` 已用真实凭据接好（gitignored，不进仓库）；生产需用户在 Vercel 后台填同样三个变量后 redeploy 才生效。
 
 **🔧 待用户在侧完成（功能才真正可用）**：
-1. 打开 https://console.cloud.google.com/apis/credentials → 创建 **OAuth 2.0 客户端 ID**（应用类型：Web 应用）。
-2. 「已获授权的重定向 URI」添加：
-   - `https://digital-footprint-health.vercel.app/api/auth/callback`（生产，必填）
-   - `http://localhost:3000/api/auth/callback`（本地调试，可选）
-3. 在 Vercel 项目环境变量（Settings → Environment Variables）添加：
-   - `GOOGLE_CLIENT_ID` = 上一步拿到的客户端 ID
-   - `GOOGLE_CLIENT_SECRET` = 上一步拿到的客户端密钥
-   - `AUTH_SECRET` = 强随机值（生成：`node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`）
-4. 重新部署（改环境变量后 Vercel 需 redeploy；push 会自动触发，或手动 Redeploy）。
+1. （如尚未创建）打开 https://console.cloud.google.com/apis/credentials → 该 client 已存在，确认 **OAuth 2.0 客户端 ID** 的两条配置都已含：
+   - **已获授权的 JavaScript 起源**：`https://digital-footprint-health.shop`（必填）
+   - **已获授权的重定向 URI**：
+     - `https://digital-footprint-health.shop/api/auth/callback`（**正式生产，必填**）
+     - `https://digital-footprint-health.vercel.app/api/auth/callback`（旧 Vercel 域名，建议保留作回退）
+     - `http://localhost:3000/api/auth/callback`、`http://localhost:3001/api/auth/callback`（本地调试，可选）
+2. （如用个人 Google 账号测试）在 **OAuth 同意屏幕** 把你的 Google 账号加为「测试用户」，否则会报 "access blocked"。
+3. 在 Vercel 项目环境变量（Settings → Environment Variables，Production 环境）添加：
+   - `GOOGLE_CLIENT_ID` = `1074386987169-eeu18i13ogmbtoqp6uuhunn5db5cmero.apps.googleusercontent.com`
+   - `GOOGLE_CLIENT_SECRET` = `<从 Google Cloud Console 复制，勿提交到仓库>`
+   - `AUTH_SECRET` = `<用 node -e "require('crypto').randomBytes(32).toString('hex')" 生成，勿提交>`
+4. 重新部署（改环境变量后 Vercel 需 redeploy；可在 Deployments 里手动 Redeploy 上次的 build）。
 5. 验证：首页 NavBar 点「登录」→ Google 授权 → 跳回首页且显示用户名；点「退出」即清除。
 
 **差距（如未来需要）**：当前未做 middleware 受保护路由（因登录非强制）；若付费删除要绑定登录态，再在 `middleware.ts` 或具体路由加 `parseSession` 校验即可，接口已就绪。
@@ -166,14 +169,14 @@
 | ScoreGauge 响应式 | ✅ `w-[168px] sm:w-[200px]` |
 | 构建验证 | ✅ `npm run build` 通过（11 路由全编出，无类型/ lint 错误） |
 | 代码提交 | ✅ 已 commit（`6e8d092`）+ push 至 `origin/main` |
-| Vercel 部署 | ✅ **Git 自动部署已生效**：push 到 `main` 即自动构建上线，`digital-footprint-health.vercel.app` 返回 200（无需 Vercel token，本环境已验证） |
+| Vercel 部署 | ✅ **Git 自动部署已生效**：push 到 `main` 即自动构建上线；正式域名 `digital-footprint-health.shop`（2026-07-24 起），底层 `digital-footprint-health.vercel.app` 仍可用作回退（无需 Vercel token，本环境已验证） |
 | 死链修复 | ✅ 旧域名 `dfh-fgbk5c1y2-…vercel.app`（已 410 回收）在 JSON-LD / sitemap / robots 三处硬编码死链已修复，统一收敛到 `lib/site.ts` 单一常量 |
 | 移动端真机测试 | ⚠️ 待用户手机访问回归（非代码阻塞项） |
 
 **说明**：2026-07-17 完成部署闭环。响应式 CSS 已覆盖全部页面，构建产物含全部 11 路由（含 Middleware 51.8kB 限流）。部署走 GitHub → Vercel Git 集成自动触发，无需 token。
 
 **📌 提醒（用户待办）**：
-1. **真机回归**：用手机访问 `https://digital-footprint-health.vercel.app`，核对首页/上传/报告/删除页在窄屏（≤375px）下的布局与按钮（CTA 堆叠、按钮全宽、ScoreGauge 缩到 168px 等）。代码侧已 100% 就绪，无需再改。
+1. **真机回归**：用手机访问 `https://digital-footprint-health.shop`，核对首页/上传/报告/删除页在窄屏（≤375px）下的布局与按钮（CTA 堆叠、按钮全宽、ScoreGauge 缩到 168px 等）。代码侧已 100% 就绪，无需再改。
 2. **#4 亮黑 UI**：等用户给 JS 后再动（组件已支持，但用户要补的脚本尚未提供）。
 
 ---

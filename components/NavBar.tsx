@@ -17,14 +17,16 @@ export function NavBar() {
   const { lang, setLang, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
   const [user, setUser] = useState<SessionUser | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/auth/session')
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 5000);
+    fetch('/api/auth/session', { signal: ctrl.signal })
       .then((r) => r.json())
-      .then((d) => setUser(d.user ?? null))
+      .then((d) => setUser(d?.user ?? null))
       .catch(() => setUser(null))
-      .finally(() => setLoading(false));
+      .finally(() => clearTimeout(timer));
+    return () => ctrl.abort();
   }, []);
 
   async function handleSignout() {
@@ -76,8 +78,7 @@ export function NavBar() {
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          {!loading &&
-            (user ? (
+          {user ? (
               <div className="flex items-center gap-2 ml-2">
                 <span
                   className="hidden sm:inline text-t-7 text-ink-soft truncate max-w-[120px]"
@@ -101,7 +102,7 @@ export function NavBar() {
               >
                 {t('auth.signin')}
               </a>
-            ))}
+            )}
         </nav>
       </div>
     </header>

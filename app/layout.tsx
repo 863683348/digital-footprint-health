@@ -41,14 +41,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-5NWEFJTMBZ"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4Q62GFVX40"
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-5NWEFJTMBZ');`}
+  gtag('config', 'G-4Q62GFVX40');`}
         </Script>
       </head>
       <body>

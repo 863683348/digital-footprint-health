@@ -9,7 +9,7 @@
 
 ## 总览
 
-> 更新于 2026-07-25（#7 GA4 测量 ID 更换 + 域名切 .shop 待合并）：GA4 Measurement ID 由 `G-5NWEFJTMBZ` 更换为 `G-4Q62GFVX40`（`app/layout.tsx`，2026-07-25）。此前：#5 谷歌登录代码完成（自研 OAuth）；#7 已接 GA4 基础脚本；#8 移动端适配已上线；JSON-LD/sitemap/robots 死链已收敛到 `lib/site.ts`；Next 14→16.2.10 + React 19，`npm audit` 0 漏洞。
+> 更新于 2026-07-25（GA4 ID 已合并上线 + 线上验证通过）：GA4 Measurement ID `G-4Q62GFVX40` 已合并 PR #2 到 `main`（commit `e727323`），Vercel Production 部署 `01:54 UTC`，线上验证：sitemap `.shop` 域名 ✅、首页 gtag `G-4Q62GFVX40` ✅、canonical `.shop` ✅、session API `{"user":null}` ✅。此前：#5 谷歌登录代码完成（自研 OAuth）；#7 已接 GA4 基础脚本；#8 移动端适配已上线；JSON-LD/sitemap/robots 死链已收敛到 `lib/site.ts`；Next 14→16.2.10 + React 19，`npm audit` 0 漏洞。
 
 | 状态 | 数量 | 占比 |
 |------|------|------|
@@ -145,7 +145,7 @@
 
 | 检查项 | 结果 |
 |--------|------|
-| GA4 脚本 | ✅ 已用 `next/script`（`strategy="afterInteractive"`）接入 `gtag.js?id=G-4Q62GFVX40`，含 `gtag('config', 'G-4Q62GFVX40')` 初始化（`app/layout.tsx`，用户提供的 Measurement ID，2026-07-25 由 G-5NWEFJTMBZ 更换）|
+| GA4 脚本 | ✅ 已用 `next/script`（`strategy="afterInteractive"`）接入 `gtag.js?id=G-4Q62GFVX40`，含 `gtag('config', 'G-4Q62GFVX40')` 初始化（`app/layout.tsx`，用户提供的 Measurement ID，2026-07-25 合并 PR #2 上线，线上已验证）|
 | 页面浏览追踪 | ✅ GA4 默认 `page_view` 自动上报（gtag config 触发）；SPA 路由切换若需精确归因可追加 `routeChange` 埋点 |
 | 事件追踪 | ❌ 上传成功 / 生成报告 / 删除模拟 等关键节点尚未埋 `gtag('event', ...)` |
 | 热力图工具 | ❌ 未接入 Hotjar / Microsoft Clarity / PostHog |

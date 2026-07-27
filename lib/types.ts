@@ -177,6 +177,67 @@ export interface BillingInfo {
   refundPolicyKey: string; // localized on frontend via i18n catalog
 }
 
+// ----- PayPal orders -----
+export type OrderStatus = 'created' | 'approved' | 'paid' | 'refunded' | 'cancelled' | 'failed';
+
+/**
+ * Order record persisted in Upstash Redis (reuses the same env vars as the
+ * rate limiter). Keyed by an internal id; the PayPal order id is stored on
+ * the record so webhook events can be mapped back.
+ */
+export interface OrderRecord {
+  /** Internal id, format: ord_<base36 timestamp>. Also written to PayPal custom_id. */
+  id: string;
+  /** PayPal order id (from createOrder response). */
+  paypalOrderId: string | null;
+  /** PayPal capture id (set after successful capture). */
+  captureId: string | null;
+  /** PayPal refund id (set after refund). */
+  refundId: string | null;
+  /** Owning user (from session). */
+  userId: string;
+  /** Billing plan id. */
+  plan: BillingPlan['id'];
+  /** Amount actually charged (PayPal side, USD). */
+  amount: { currency: 'USD'; value: string };
+  /** Original CNY amount for display / audit. */
+  cnyAmount: number;
+  /** Number of tweets this order covers (for refund calc). */
+  tweetCount: number;
+  status: OrderStatus;
+  /** Archive id this order is associated with. */
+  archiveId: string;
+  createdAt: string; // ISO
+  paidAt: string | null;
+  refundedAt: string | null;
+  /** Refund reason / note. */
+  refundNote: string | null;
+  /** For partial refunds: how many tweets were already deleted. */
+  deletedCount: number;
+}
+
+export interface CreateOrderRequest {
+  plan: BillingPlan['id'];
+  archiveId: string;
+  tweetCount: number;
+}
+
+export interface OrderCreateResponse {
+  orderId: string; // internal id
+  paypalOrderId: string;
+  approveUrl: string;
+}
+
+export interface OrderStatusResponse {
+  id: string;
+  status: OrderStatus;
+  amount: { currency: 'USD'; value: string };
+  cnyAmount: number;
+  plan: BillingPlan['id'];
+  paidAt: string | null;
+  refundedAt: string | null;
+}
+
 export const ERROR_CODES = {
   NOT_FOUND: 'NOT_FOUND',
   VALIDATION: 'VALIDATION',

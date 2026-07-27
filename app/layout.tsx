@@ -9,26 +9,39 @@ import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: '数字足迹体检报告 · Digital Footprint Health Report',
+  title: '数字足迹体检报告 | 在线检查 Twitter/X 隐私泄露 批量删除旧推文',
   description:
-    '本地生成你的 Twitter/X 数字足迹体检报告，识别隐私风险，按需清理历史推文。 / Generate a local privacy health report for your Twitter/X archive.',
+    '免费上传你的 X/Twitter 归档文件，本地生成隐私体检报告，自动检测手机号、地址、定位等风险推文，一键批量删除。数据全程不出本机，报告即时可得。',
   alternates: {
     canonical: '/',
+    languages: {
+      'zh-CN': '/',
+      'en': '/en',
+    },
   },
   openGraph: {
     type: 'website',
     url: SITE_URL,
     siteName: 'Digital Footprint Health Report',
-    title: '数字足迹体检报告 · Digital Footprint Health Report',
+    title: '数字足迹体检报告 | 在线检查 Twitter/X 隐私泄露 批量删除旧推文',
     description:
-      '上传你的 X 归档，本机生成隐私体检报告，标出含手机号、住址、定位等风险的推文，并可按需批量删除。',
+      '免费上传你的 X/Twitter 归档文件，本地生成隐私体检报告，自动检测手机号、地址、定位等风险推文，一键批量删除。数据全程不出本机。',
+    images: [
+      {
+        url: '/opengraph-image.png',
+        width: 1200,
+        height: 630,
+        alt: '数字足迹体检报告 - Digital Footprint Health Report',
+      },
+    ],
     locale: 'zh_CN',
   },
   twitter: {
     card: 'summary_large_image',
-    title: '数字足迹体检报告 · Digital Footprint Health Report',
+    title: '数字足迹体检报告 | 在线检查 Twitter/X 隐私泄露 批量删除旧推文',
     description:
-      '上传你的 X 归档，本机生成隐私体检报告，标出隐私风险推文，并可按需批量删除。',
+      '免费上传你的 X/Twitter 归档文件，本地生成隐私体检报告，自动检测风险推文，一键批量删除。数据不出本机。',
+    images: ['/opengraph-image.png'],
   },
 };
 

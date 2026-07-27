@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Moon, Sun } from 'lucide-react';
 import { useI18n } from '@/components/I18nProvider';
 import { useTheme } from '@/components/ThemeProvider';
@@ -14,6 +15,8 @@ interface SessionUser {
 }
 
 export function NavBar() {
+  const pathname = usePathname();
+  const isEn = pathname.startsWith('/en');
   const { lang, setLang, t } = useI18n();
   const { theme, toggleTheme } = useTheme();
   const [user, setUser] = useState<SessionUser | null>(null);
@@ -51,23 +54,19 @@ export function NavBar() {
             {t('nav.delete')}
           </Link>
           <div className="flex items-center gap-1 ml-2 text-t-8 select-none">
-            <button
-              type="button"
-              onClick={() => setLang('zh')}
-              className={lang === 'zh' ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
-              aria-pressed={lang === 'zh'}
+            <Link
+              href="/"
+              className={!isEn ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
             >
               中
-            </button>
+            </Link>
             <span className="text-line">/</span>
-            <button
-              type="button"
-              onClick={() => setLang('en')}
-              className={lang === 'en' ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
-              aria-pressed={lang === 'en'}
+            <Link
+              href="/en"
+              className={isEn ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
             >
               EN
-            </button>
+            </Link>
           </div>
           <button
             type="button"

@@ -34,4 +34,5 @@ coverage/
 *.log
 .DS_Store
 
-.vercel
+# workbuddy AI memory + internal analysis
+.workbuddy/

@@ -56,6 +56,7 @@ export function NavBar() {
           <div className="flex items-center gap-1 ml-2 text-t-8 select-none">
             <Link
               href="/"
+              onClick={() => setLang('zh')}
               className={!isEn ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
             >
               中
@@ -63,6 +64,7 @@ export function NavBar() {
             <span className="text-line">/</span>
             <Link
               href="/en"
+              onClick={() => setLang('en')}
               className={isEn ? 'font-bold text-ink' : 'text-ink-soft hover:text-ink'}
             >
               EN

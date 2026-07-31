@@ -137,6 +137,7 @@ const zh: Record<string, string> = {
   'fee.base': '基础费',
   'fee.pertweet': '单条费（{count} 条 × ¥{rate}）',
   'fee.rate': 'X 写费基准（参考）',
+  'fee.perunit': '/条',
 
   // delete progress
   'progress.title': '删除进度',
@@ -323,6 +324,7 @@ const en: Record<string, string> = {
   'fee.base': 'Base fee',
   'fee.pertweet': 'Per-tweet fee ({count} × ¥{rate})',
   'fee.rate': 'X write fee base (reference)',
+  'fee.perunit': '/tweet',
 
   'progress.title': 'Deletion progress',
   'progress.dryrun.badge': 'Dry run',

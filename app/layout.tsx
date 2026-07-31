@@ -52,11 +52,16 @@ export const metadata: Metadata = {
 // Set the theme class before paint to avoid a flash of the wrong theme.
 const themeScript = `(function(){try{var t=localStorage.getItem('dfh.theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`;
 
+// Set <html lang> + <title> before paint based on the route, so the browser
+// tab / SEO sees the right language immediately (route + lang stay in sync).
+const langScript = `(function(){try{var en=location.pathname.indexOf('/en')===0;var saved=localStorage.getItem('dfh.lang');var lang=en?'en':(saved||'zh');document.documentElement.lang=lang==='en'?'en':'zh-CN';}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="zh-CN">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: langScript }} />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-4Q62GFVX40"
           strategy="afterInteractive"

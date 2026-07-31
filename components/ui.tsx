@@ -103,7 +103,7 @@ export function FeeEstimateCard({ estimate }: { estimate: DeleteEstimate }) {
         )}
         <div className="flex justify-between">
           <dt>{t('fee.rate')}</dt>
-          <dd className="mono">¥{estimate.ratePerTweet}/条</dd>
+          <dd className="mono">¥{estimate.ratePerTweet}{t('fee.perunit')}</dd>
         </div>
       </dl>
     </Card>

@@ -9,6 +9,8 @@ type Vars = Record<string, string | number>;
 const zh: Record<string, string> = {
   brand: '数字足迹体检报告',
 
+  'ad.label': '广告',
+
   'nav.home': '首页',
   'nav.upload': '上传归档',
   'nav.delete': '去删除',
@@ -186,6 +188,8 @@ const zh: Record<string, string> = {
 
 const en: Record<string, string> = {
   brand: 'Digital Footprint Health Report',
+
+  'ad.label': 'Advertisement',
 
   'nav.home': 'Home',
   'nav.upload': 'Upload Archive',

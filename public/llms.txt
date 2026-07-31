@@ -1,0 +1,31 @@
+# Digital Footprint Health Report · 数字足迹体检报告
+> Upload your X/Twitter archive and generate a local privacy health report. Auto-detect risky tweets (phone numbers, emails, addresses, locations) with on-demand batch deletion. Your data never leaves your device.
+
+## Core Pages
+- [Home](https://digital-footprint-health.shop/): Upload X archive → generate privacy score → batch delete risky tweets (Chinese)
+- [English Home](https://digital-footprint-health.shop/en): Same tool, English interface
+- [Upload Archive](https://digital-footprint-health.shop/upload): Upload your X/Twitter tweets.csv or tweets.js
+- [Delete Confirmation](https://digital-footprint-health.shop/delete/confirm): Confirm and pay for tweet deletion
+
+## Privacy & Legal
+- [Privacy Policy](https://digital-footprint-health.shop/privacy): Data handling policy — all processing is local, no server upload
+- [FAQ](https://digital-footprint-health.shop/faq): 12 frequently asked questions about digital footprint privacy
+
+## Blog
+- [How to Delete Old Tweets — 2026 Complete Guide](https://digital-footprint-health.shop/blog/how-to-delete-old-tweets-2026): Chinese guide covering 5 methods (manual, cloud service, browser extension, local archive, custom script) with comparison table
+
+## About
+- [About Us](https://digital-footprint-health.shop/about): Mission, principles, tech stack, contact info
+
+## Technical
+- [Sitemap](https://digital-footprint-health.shop/sitemap.xml): XML sitemap for search engines
+- [Robots](https://digital-footprint-health.shop/robots.txt): Crawler rules
+- [Open Graph Image](https://digital-footprint-health.shop/opengraph-image.png): Auto-generated OG image (1200×630)
+
+## Tech Stack
+- **Framework:** Next.js 16 (App Router)
+- **Auth:** Supabase
+- **Deploy:** Vercel Edge Network
+- **Payment:** Stripe + PayPal
+- **Data Processing:** 100% local browser-side (no server upload)
+- **Analytics:** Google Analytics 4

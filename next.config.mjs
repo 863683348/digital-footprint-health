@@ -26,11 +26,13 @@ const securityHeaders = [
     key: 'Content-Security-Policy',
     value: [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com",
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://pagead2.googlesyndication.com https://securepubads.g.doubleclick.net https://www.gstatic.com",
       "style-src 'self' 'unsafe-inline'",
-      "img-src 'self' data: https://www.google-analytics.com https://stats.g.doubleclick.net",
+      "img-src 'self' data: https://www.google-analytics.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://*.doubleclick.net https://adservice.google.com https://www.google.com",
       "font-src 'self'",
-      "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net",
+      "connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net https://pagead2.googlesyndication.com https://securepubads.g.doubleclick.net https://www.google.com",
+      // AdSense renders creatives inside cross-origin iframes.
+      "frame-src 'self' https://googleads.g.doubleclick.net https://tpc.googlesyndication.com https://pagead2.googlesyndication.com https://www.google.com https://www.google.com.adsensecustomsearchads.com https://adservice.google.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",

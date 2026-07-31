@@ -7,6 +7,10 @@ import { I18nProvider } from '@/components/I18nProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { SITE_URL } from '@/lib/site';
 
+// Google AdSense publisher id (ca-pub-xxxxxxxx). Empty in local dev / before
+// the user configures it — the loader script is skipped and AdUnit renders null.
+const ADSENSE_CLIENT = process.env.NEXT_PUBLIC_GOOGLE_ADSENSE_CLIENT;
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: '数字足迹体检报告 | 在线检查 Twitter/X 隐私泄露 批量删除旧推文',
@@ -63,6 +67,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   gtag('js', new Date());
   gtag('config', 'G-4Q62GFVX40');`}
         </Script>
+        {ADSENSE_CLIENT && (
+          <Script
+            id="adsbygoogle-client"
+            async
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          />
+        )}
       </head>
       <body>
         <ThemeProvider>

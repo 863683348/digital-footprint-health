@@ -1,0 +1,203 @@
+# Digital Footprint Health Report · 数字足迹体检报告
+
+> Upload your X/Twitter archive and generate a local privacy health report. Auto-detect tweets that leak phone numbers, emails, addresses, locations, and sensitive topics. Get a 0–100 privacy score with a risk list. Batch delete risky tweets on demand. **Your data never leaves your device** — all processing is 100% local browser-side.
+
+**Website:** https://digital-footprint-health.shop/
+**English:** https://digital-footprint-health.shop/en/
+**Repository:** https://github.com/863683348/digital-footprint-health
+
+---
+
+## Table of Contents
+
+1. Product Overview
+2. How It Works
+3. Key Features
+4. Privacy & Security
+5. Pricing
+6. FAQ Summary
+7. Blog Content
+8. Technical Stack
+9. SEO & Structured Data
+
+---
+
+## 1. Product Overview
+
+Digital Footprint Health Report is a privacy protection tool that helps X (formerly Twitter) users:
+
+1. **Download** their data archive from X
+2. **Upload** it to a browser-based tool that parses everything locally
+3. **Scan** for risky tweets containing phone numbers, email addresses, home addresses, location data, and sensitive topics
+4. **Review** a 0–100 privacy health score with a categorized risk list
+5. **Delete** risky tweets in batch via X's official write API (paid, per-tweet pricing)
+
+The tool was built because most tweet-deletion services either:
+- Upload your data to third-party servers (privacy risk)
+- Only access the most recent 3,200 tweets (API limitation)
+- Require OAuth permissions that read your entire account
+
+Our approach: the X archive is parsed entirely in your browser. Nothing is uploaded. Only the deletion request itself touches X's API.
+
+---
+
+## 2. How It Works
+
+### Step 1: Download Your X Archive
+Go to X Settings → Your account → Download an archive of your data. X emails you a ZIP file (typically 24 hours).
+
+### Step 2: Upload & Parse Locally
+Upload the tweets.csv or tweets.js file from the ZIP. All parsing happens in-browser — no data sent to any server.
+
+### Step 3: Generate Privacy Report
+The tool auto-detects:
+- Phone numbers
+- Email addresses
+- Physical addresses
+- Location data (check-ins, coordinates)
+- Sensitive topics (health, political, financial)
+- Stale/old content
+
+Results in a 0–100 health score with a six-dimension risk distribution chart.
+
+### Step 4: Batch Delete (Optional)
+Select detected tweets and confirm deletion. Pricing is transparent:
+- Small tier: ≤1,000 tweets
+- Medium tier: 1,001–10,000 tweets
+- Large tier: >10,000 tweets (¥20 base + ¥0.15/tweet)
+
+Pay via PayPal. Jobs can be paused, resumed, or cancelled anytime. Full refund before deletion starts; prorated refund while running.
+
+---
+
+## 3. Key Features
+
+| Feature | Description |
+|---------|-------------|
+| Local Processing | All archive parsing in browser, no server upload |
+| Risk Detection | Auto-flag phone, email, address, location, sensitive content |
+| Health Score | 0–100 score with 6-dimension breakdown |
+| Batch Delete | On-demand, pausable, resume-able |
+| Secure Payment | PayPal + Stripe |
+| Multi-language | Chinese (zh-CN) and English |
+| Google Login | Secure OAuth authentication |
+| Transparent Pricing | Per-tweet pricing with full refund policy |
+
+---
+
+## 4. Privacy & Security
+
+**Core Design Principle:** Your data belongs to you. We collect as little as possible.
+
+- **Archive processing:** 100% local browser-side. The uploaded file is never sent to our servers or any third party.
+- **Storage:** Parsed data is stored encrypted in browser local storage. Decryption keys stay on your device.
+- **Deletion:** Only the delete request touches X's official API — no reading of DMs, followers, or other private data.
+- **Payment:** Handled by PayPal/Stripe — we never see your card details.
+- **Analytics:** Google Analytics 4 for anonymous usage stats (page views, feature usage). Not personally identifiable.
+
+See full [Privacy Policy](https://digital-footprint-health.shop/privacy) for details.
+
+---
+
+## 5. Pricing
+
+Archive upload and health report generation are **free**.
+
+Tweet deletion is charged per tweet, tiered by count:
+
+| Tier | Tweet Count | Pricing |
+|------|-------------|---------|
+| Small | ≤1,000 | Per-tier rate |
+| Medium | 1,001–10,000 | Per-tier rate |
+| Large | >10,000 | ¥20 base + ¥0.15/tweet |
+
+Refund policy:
+- Before deletion starts: full refund
+- During deletion: prorated by deleted count
+- After completion: not refundable
+
+---
+
+## 6. FAQ Summary
+
+Full FAQ page: https://digital-footprint-health.shop/faq
+
+**Q: Is my data safe? Does it get uploaded to a server?**
+A: Very safe. Archives are parsed 100% locally in your browser. Nothing is uploaded. Only deletion requests hit X's API.
+
+**Q: How much does it cost?**
+A: Upload and report generation are free. Deletion is per-tweet, tiered by volume. Pausable and refundable.
+
+**Q: Can it delete ALL my old tweets?**
+A: Yes. By uploading your X data archive (which contains every tweet since day one), we can reach tweets beyond the 3,200-post API limit.
+
+**Q: How do I download my X archive?**
+A: X Settings → Your data → Download archive. Takes ~24 hours.
+
+**Q: What file formats are supported?**
+A: tweets.csv and tweets.js (from the X data archive ZIP).
+
+**Q: Can I recover deleted tweets?**
+A: No, deletion is permanent. We recommend backing up your archive before deleting.
+
+**Q: Will X ban me for bulk deleting?**
+A: No. Our deletion respects API rate limits, mimicking normal user behavior.
+
+**Q: Can I filter which tweets to delete?**
+A: Yes. The system auto-detects risk types (phone, email, address, location, sensitive content). You can filter by risk type.
+
+---
+
+## 7. Blog Content
+
+### How to Delete Old Tweets — 2026 Complete Guide
+**URL:** /blog/how-to-delete-old-tweets-2026  
+**Language:** Chinese  
+**Content covers 5 methods:**
+
+1. **Manual deletion** — Slow but private (~5 sec/tweet, 14 hours for 10k tweets)
+2. **Third-party cloud services** (TweetDelete, Circleboom, TweetEraser) — Simple but uploads data to servers
+3. **Browser extensions** (X Cleaner) — Safer than cloud, but limited to recent 3,200 tweets
+4. **Archive + local processing** — Recommended. Full history, most secure, 100% local
+5. **Custom Python script** — Full control, but requires X API ($100/month) and dev skills
+
+Includes a comparison table and FAQ section.
+
+---
+
+## 8. Technical Stack
+
+- **Framework:** Next.js 16 (App Router, React Server Components)
+- **Backend:** Supabase (Auth + Database)
+- **Deployment:** Vercel Edge Network
+- **Payments:** Stripe (primary) + PayPal (secondary)
+- **Data Processing:** Pure browser-side JavaScript (no Node.js backend for parsing)
+- **Analytics:** Google Analytics 4
+- **Auth:** Google OAuth
+- **Rate Limiting:** Upstash Redis (optional) / in-memory fallback
+- **Security:** Strict CSP, HSTS (max-age=63072000), X-Frame-Options DENY
+
+### Key NPM Dependencies
+- next: 16.x
+- supabase: latest
+- @stripe/stripe-js: latest
+- @paypal/react-paypal-js: latest
+
+---
+
+## 9. SEO & Structured Data
+
+The site has been fully SEO-optimized. Current status:
+
+| Metric | Status |
+|--------|--------|
+| Indexable Pages | 9+ (home, /en, /blog, /faq, /privacy, /about, /upload, /delete/confirm, + blog posts) |
+| Schema Types | WebApplication, Article + HowTo (blog), FAQPage (/faq), BreadcrumbList (6 pages) |
+| Hreflang | zh-CN ↔ en (bidirectional) |
+| OG Image | Auto-generated 1200×630 via next/og |
+| Sitemap | Dynamic, includes all static routes + blog posts |
+| Internal Links | 6 links in footer + breadcrumb nav |
+| Core Web Vitals | LCP < 2.5s, INP < 200ms, CLS < 0.1 (Next.js static generation) |
+
+### Sitemap
+URLs in sitemap: /, /en, /upload, /delete/confirm, /blog, /faq, /privacy, /about, /blog/how-to-delete-old-tweets-2026

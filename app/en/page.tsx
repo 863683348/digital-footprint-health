@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { SITE_URL } from '@/lib/site';
+import { AdUnit } from '@/components/AdUnit';
+
+// Replace with the real AdSense slot id from your dashboard once approved.
+const EN_HOME_AD_SLOT = '6642233840';
 
 export const metadata: Metadata = {
   title: 'Digital Footprint Health Report | Check X/Twitter Privacy & Delete Old Tweets',
@@ -152,6 +156,8 @@ export default function EnglishHomePage() {
           </li>
         </ul>
       </section>
+
+      <AdUnit slot={EN_HOME_AD_SLOT} minHeight="120px" />
     </div>
   );
 }

@@ -6,8 +6,12 @@ import { useParams } from 'next/navigation';
 import { loadArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
 import { ScoreGauge } from '@/components/ScoreGauge';
+import { AdUnit } from '@/components/AdUnit';
 import { Card, RiskFlag, Callout, Button } from '@/components/ui';
 import type { ArchiveData, ScoreDimension } from '@/lib/types';
+
+// Replace with the real AdSense slot id from your dashboard once approved.
+const REPORT_AD_SLOT = '6642233840';
 
 export default function ReportPage() {
   const params = useParams<{ id: string }>();
@@ -106,6 +110,8 @@ export default function ReportPage() {
           </ul>
         )}
       </Card>
+
+      <AdUnit slot={REPORT_AD_SLOT} className="mt-6" minHeight="120px" />
     </div>
   );
 }

@@ -2,8 +2,12 @@
 
 import Link from 'next/link';
 import { Card } from '@/components/ui';
+import { AdUnit } from '@/components/AdUnit';
 import { useI18n } from '@/components/I18nProvider';
 import { SITE_URL } from '@/lib/site';
+
+// Replace with the real AdSense slot id from your dashboard once approved.
+const HOME_AD_SLOT = '6642233840';
 
 const JSON_LD = {
   '@context': 'https://schema.org',
@@ -78,6 +82,8 @@ export default function HomePage() {
           </ul>
         </Card>
       </section>
+
+      <AdUnit slot={HOME_AD_SLOT} className="mt-2" minHeight="120px" />
     </div>
   );
 }

@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { AdUnit } from '@/components/AdUnit';
+
+// Replace with the real AdSense slot id from your dashboard once approved.
+const FAQ_AD_SLOT = '6642233840';
 
 export const metadata: Metadata = {
   title: '常见问题 | 数字足迹体检报告',
@@ -111,6 +115,8 @@ export default function FAQPage() {
             </details>
           ))}
         </div>
+
+        <AdUnit slot={FAQ_AD_SLOT} minHeight="120px" />
       </div>
     </>
   );

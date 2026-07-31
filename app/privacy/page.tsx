@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <div className="max-w-[720px] mx-auto space-y-6">
-      <Breadcrumb items={[{ label: '隐私政策', href: '/privacy' }]} />
+      <Breadcrumb items={[{ labelKey: 'nav.privacy', href: '/privacy' }]} />
       <h1 className="t-2 font-bold">隐私政策</h1>
       <p className="t-6 text-ink-soft">最后更新：2026 年 7 月 27 日</p>
 

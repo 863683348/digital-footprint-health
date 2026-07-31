@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <div className="max-w-[720px] mx-auto space-y-8">
-      <Breadcrumb items={[{ label: '关于我们', href: '/about' }]} />
+      <Breadcrumb items={[{ labelKey: 'nav.about', href: '/about' }]} />
       <h1 className="t-2 font-bold">关于我们</h1>
 
       <section className="space-y-4">

@@ -76,7 +76,7 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <article className="max-w-[720px] mx-auto space-y-6">
         <Breadcrumb items={[
-          { label: '博客', href: '/blog' },
+          { labelKey: 'nav.blog', href: '/blog' },
           { label: post.title, href: post.canonical },
         ]} />
 

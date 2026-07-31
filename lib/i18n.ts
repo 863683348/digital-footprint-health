@@ -14,10 +14,18 @@ const zh: Record<string, string> = {
   'nav.home': '首页',
   'nav.upload': '上传归档',
   'nav.delete': '去删除',
+  'nav.blog': '博客',
+  'nav.faq': '常见问题',
+  'nav.privacy': '隐私政策',
+  'nav.about': '关于我们',
+  'nav.breadcrumb.aria': '面包屑导航',
 
   'auth.signin': '登录',
   'auth.signout': '退出',
   'auth.withGoogle': '使用 Google 账号登录',
+
+  'theme.toggle.light': '切换到浅色',
+  'theme.toggle.dark': '切换到深色',
 
   'footer.privacy':
     '你的归档文件仅在本机解析，不会上传到任何服务器。删除操作通过 X 官方接口执行，费用透明、可随时暂停。',
@@ -194,10 +202,18 @@ const en: Record<string, string> = {
   'nav.home': 'Home',
   'nav.upload': 'Upload Archive',
   'nav.delete': 'Delete',
+  'nav.blog': 'Blog',
+  'nav.faq': 'FAQ',
+  'nav.privacy': 'Privacy',
+  'nav.about': 'About',
+  'nav.breadcrumb.aria': 'Breadcrumb',
 
   'auth.signin': 'Sign in',
   'auth.signout': 'Sign out',
   'auth.withGoogle': 'Sign in with Google',
+
+  'theme.toggle.light': 'Switch to light mode',
+  'theme.toggle.dark': 'Switch to dark mode',
 
   'footer.privacy':
     'Your archive is parsed only on this device and never uploaded to any server. Deletions run through X’s official API — transparent pricing, pausable anytime.',

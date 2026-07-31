@@ -72,8 +72,8 @@ export function NavBar() {
             type="button"
             onClick={toggleTheme}
             className="ml-1 inline-flex h-7 w-7 items-center justify-center rounded-lg border border-line text-ink-soft hover:text-ink hover:bg-canvas transition-calm"
-            aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-            title={theme === 'dark' ? '浅色' : '深色'}
+            aria-label={theme === 'dark' ? t('theme.toggle.light') : t('theme.toggle.dark')}
+            title={theme === 'dark' ? t('theme.toggle.light') : t('theme.toggle.dark')}
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>

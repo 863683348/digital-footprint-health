@@ -89,7 +89,7 @@ export default function FAQPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <div className="max-w-[720px] mx-auto space-y-6">
-        <Breadcrumb items={[{ label: '常见问题', href: '/faq' }]} />
+        <Breadcrumb items={[{ labelKey: 'nav.faq', href: '/faq' }]} />
         <h1 className="t-2 font-bold">常见问题</h1>
         <p className="t-5 text-ink-soft">
           关于数字足迹体检报告、隐私检查与推文删除的常见问题。

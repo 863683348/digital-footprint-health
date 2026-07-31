@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   return (
     <div className="space-y-8">
-      <Breadcrumb items={[{ label: '博客', href: '/blog' }]} />
+      <Breadcrumb items={[{ labelKey: 'nav.blog', href: '/blog' }]} />
       <h1 className="t-2 font-bold">博客 · 数字足迹与隐私指南</h1>
       <p className="t-5 text-ink-soft max-w-[60ch]">
         从隐私风险识别到社交媒体清理实操，帮你全面管理自己的数字足迹。

@@ -12,10 +12,10 @@ export function Footer() {
           <Link href="/" className="hover:text-ink transition-calm">{t('nav.home')}</Link>
           <Link href="/upload" className="hover:text-ink transition-calm">{t('nav.upload')}</Link>
           <Link href="/delete/confirm" className="hover:text-ink transition-calm">{t('nav.delete')}</Link>
-          <Link href="/blog" className="hover:text-ink transition-calm">博客</Link>
-          <Link href="/faq" className="hover:text-ink transition-calm">常见问题</Link>
-          <Link href="/privacy" className="hover:text-ink transition-calm">隐私政策</Link>
-          <Link href="/about" className="hover:text-ink transition-calm">关于我们</Link>
+          <Link href="/blog" className="hover:text-ink transition-calm">{t('nav.blog')}</Link>
+          <Link href="/faq" className="hover:text-ink transition-calm">{t('nav.faq')}</Link>
+          <Link href="/privacy" className="hover:text-ink transition-calm">{t('nav.privacy')}</Link>
+          <Link href="/about" className="hover:text-ink transition-calm">{t('nav.about')}</Link>
         </nav>
         <p className="text-t-7 text-ink-soft">{t('footer.privacy')}</p>
         <p className="mt-1 text-t-7 text-ink-soft">{t('footer.version')}</p>

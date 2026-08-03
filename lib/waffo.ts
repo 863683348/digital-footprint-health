@@ -43,6 +43,17 @@ function waffoBaseUrl(): string {
 
 let _client: WaffoPancake | null = null;
 
+// Vercel env-paste UIs sometimes wrap a bare base64 key with newlines/spaces,
+// which breaks crypto key parsing ("Private key could not be parsed"). Normalize:
+// PEM keeps its structure; bare base64 gets all whitespace stripped (base64 has
+// no meaningful whitespace).
+function sanitizePrivateKey(raw: string | undefined): string | undefined {
+  if (!raw) return undefined;
+  const s = raw.trim();
+  if (s.includes('BEGIN')) return s;
+  return s.replace(/\s+/g, '');
+}
+
 export function getClient(): WaffoPancake {
   if (!isConfigured()) {
     throw new Error(
@@ -52,7 +63,7 @@ export function getClient(): WaffoPancake {
   if (_client) return _client;
   _client = new WaffoPancake({
     merchantId: process.env.WAFFO_MERCHANT_ID!,
-    privateKey: process.env.WAFFO_PRIVATE_KEY!,
+    privateKey: sanitizePrivateKey(process.env.WAFFO_PRIVATE_KEY)!,
     baseUrl: waffoBaseUrl(),
     webhookPublicKey: process.env.WAFFO_WEBHOOK_PUBLIC_KEY,
   });

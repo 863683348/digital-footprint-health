@@ -86,7 +86,8 @@ export async function POST(req: NextRequest) {
     });
   } catch (e) {
     console.error('[orders] createCheckout failed:', e);
-    return fail('INTERNAL', 'Failed to create Waffo checkout.', 502);
+    const detail = e instanceof Error ? e.message : String(e);
+    return fail('INTERNAL', `Failed to create Waffo checkout: ${detail}`, 502);
   }
 
   const record: OrderRecord = {

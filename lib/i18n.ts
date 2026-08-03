@@ -109,7 +109,7 @@ const zh: Record<string, string> = {
   'pay.paypal': 'PayPal',
   'pay.paypal.desc': '通过 PayPal 安全支付，支持信用卡和 PayPal 余额',
   'pay.amount': '支付金额',
-  'pay.usd.equivalent': '约 ${usd}（按 1 USD = 7.2 CNY 换算）',
+  'pay.usd.equivalent': '约 {usd}（按 1 USD = 7.2 CNY 换算）',
   'pay.creating': '正在创建支付订单…',
   'pay.approving': '请在 PayPal 弹窗中完成支付',
   'pay.capturing': '正在确认支付…',
@@ -125,7 +125,7 @@ const zh: Record<string, string> = {
   'pay.refund.none': '不可退款（删除已完成）',
   'pay.refund.button': '申请退款',
   'pay.refund.processing': '退款处理中…',
-  'pay.refund.success': '退款成功：${amount}',
+  'pay.refund.success': '退款成功：{amount}',
   'pay.refund.failed': '退款失败：{reason}',
 
   // fee estimate card
@@ -368,7 +368,7 @@ const en: Record<string, string> = {
   'pay.paypal': 'PayPal',
   'pay.paypal.desc': 'Pay securely via PayPal — supports credit cards and PayPal balance',
   'pay.amount': 'Amount due',
-  'pay.usd.equivalent': 'Approx. ${usd} (at 1 USD = 7.2 CNY)',
+  'pay.usd.equivalent': 'Approx. {usd} (at 1 USD = 7.2 CNY)',
   'pay.creating': 'Creating payment order…',
   'pay.approving': 'Please complete payment in the PayPal popup',
   'pay.capturing': 'Confirming payment…',
@@ -384,7 +384,7 @@ const en: Record<string, string> = {
   'pay.refund.none': 'Not refundable (deletion completed)',
   'pay.refund.button': 'Request refund',
   'pay.refund.processing': 'Processing refund…',
-  'pay.refund.success': 'Refund successful: ${amount}',
+  'pay.refund.success': 'Refund successful: {amount}',
   'pay.refund.failed': 'Refund failed: {reason}',
 
   'fee.title': 'Fee estimate',

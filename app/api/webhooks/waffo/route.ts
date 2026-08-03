@@ -33,7 +33,11 @@ export async function POST(req: NextRequest) {
 
   try {
     switch (event.eventType) {
+      // One-time first payment AND subscription first payment (activation) both
+      // mean the order is paid. Subscription renewals keep it paid (idempotent).
       case 'order.completed':
+      case 'subscription.activated':
+      case 'subscription.payment_succeeded':
         await handleOrderCompleted(event);
         break;
       case 'refund.succeeded':

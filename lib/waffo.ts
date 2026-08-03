@@ -34,10 +34,11 @@ export function isConfigured(): boolean {
 }
 
 function waffoBaseUrl(): string {
+  // Verified against the sandbox: Waffo's environment is bound to the MERCHANT
+  // ACCOUNT, not the domain — test merchants authenticate on the same host.
+  // The sandbox.api.waffo.ai hostname does not exist (connection refused).
   if (process.env.WAFFO_BASE_URL) return process.env.WAFFO_BASE_URL;
-  const env = (process.env.WAFFO_ENV ?? 'sandbox').toLowerCase();
-  const isLive = env === 'production' || env === 'prod' || env === 'live';
-  return isLive ? 'https://api.waffo.ai' : 'https://sandbox.api.waffo.ai';
+  return 'https://api.waffo.ai';
 }
 
 let _client: WaffoPancake | null = null;

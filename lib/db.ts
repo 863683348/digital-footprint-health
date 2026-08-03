@@ -66,6 +66,9 @@ export function ensureSchema(): Promise<void> {
         );
         CREATE INDEX IF NOT EXISTS idx_orders_user  ON orders(user_id);
         CREATE INDEX IF NOT EXISTS idx_orders_waffo ON orders(waffo_checkout_id);
+        -- Idempotent migration: tables created before payment_id existed
+        -- (CREATE TABLE IF NOT EXISTS does NOT add columns to existing tables).
+        ALTER TABLE orders ADD COLUMN IF NOT EXISTS payment_id TEXT;
       `);
     })().catch((e) => {
       // Allow a later call to retry if bootstrap failed.

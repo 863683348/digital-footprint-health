@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { allPosts } from '@/content/posts';
 import { SITE_URL } from '@/lib/site';
 import { Breadcrumb } from '@/components/Breadcrumb';
+import { LangLink } from '@/components/LangLink';
 
 export const metadata: Metadata = {
   title: '博客 | 数字足迹与隐私保护指南 — 数字足迹体检报告',
@@ -27,7 +27,7 @@ export default function BlogIndex() {
 
       <div className="grid gap-6">
         {allPosts.map((post) => (
-          <Link
+          <LangLink
             key={post.slug}
             href={`/blog/${post.slug}`}
             className="block rounded-xl2 border border-line bg-surface p-5 hover:border-primary transition-calm"
@@ -55,7 +55,7 @@ export default function BlogIndex() {
                 </span>
               ))}
             </div>
-          </Link>
+          </LangLink>
         ))}
       </div>
 

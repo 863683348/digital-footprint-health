@@ -15,6 +15,7 @@ const zh: Record<string, string> = {
   'nav.upload': '上传归档',
   'nav.delete': '去删除',
   'nav.blog': '博客',
+  'nav.pricing': '定价',
   'nav.faq': '常见问题',
   'nav.privacy': '隐私政策',
   'nav.about': '关于我们',
@@ -245,6 +246,24 @@ const zh: Record<string, string> = {
   'order.status.refunded': '已退款',
   'order.status.cancelled': '已取消',
   'order.status.failed': '失败',
+
+  // pricing
+  'pricing.title': '定价方案',
+  'pricing.subtitle': '按需删除，或开通 Pro 享每月删除额度',
+  'pricing.free': '免费版',
+  'pricing.perMonth': '/月',
+  'pricing.perYear': '/年',
+  'pricing.popular': '最受欢迎',
+  'pricing.current': '当前方案',
+  'pricing.memberCta': '开通会员',
+  'pricing.freeCta': '免费开始',
+  'pricing.oneTime': '单次删除',
+  'pricing.oneTimeDesc': '按归档推文量一次性付费，无需开通会员',
+  'pricing.startDelete': '去删除',
+  'pricing.usage': '按量计费',
+  'pricing.freeInclude': '上传归档 · 生成体检报告 · 查看风险',
+  'pricing.proMonthlyInclude': '每月 2000 条删除额度',
+  'pricing.proAnnualInclude': '每年 24000 条删除额度，立省 ¥169',
 };
 
 const en: Record<string, string> = {
@@ -256,6 +275,7 @@ const en: Record<string, string> = {
   'nav.upload': 'Upload Archive',
   'nav.delete': 'Delete',
   'nav.blog': 'Blog',
+  'nav.pricing': 'Pricing',
   'nav.faq': 'FAQ',
   'nav.privacy': 'Privacy',
   'nav.about': 'About',
@@ -481,6 +501,24 @@ const en: Record<string, string> = {
   'order.status.refunded': 'Refunded',
   'order.status.cancelled': 'Cancelled',
   'order.status.failed': 'Failed',
+
+  // pricing
+  'pricing.title': 'Pricing',
+  'pricing.subtitle': 'Pay per deletion, or go Pro for a monthly deletion quota',
+  'pricing.free': 'Free',
+  'pricing.perMonth': '/mo',
+  'pricing.perYear': '/yr',
+  'pricing.popular': 'Most popular',
+  'pricing.current': 'Current plan',
+  'pricing.memberCta': 'Get Pro',
+  'pricing.freeCta': 'Start free',
+  'pricing.oneTime': 'One-time deletion',
+  'pricing.oneTimeDesc': 'Pay once based on your archive size — no membership needed',
+  'pricing.startDelete': 'Start deletion',
+  'pricing.usage': 'Usage-based',
+  'pricing.freeInclude': 'Upload archive · Generate report · View risks',
+  'pricing.proMonthlyInclude': '2,000 deletions per month',
+  'pricing.proAnnualInclude': '24,000 deletions per year — save ¥169',
 };
 
 export const catalogs: Record<Lang, Record<string, string>> = { zh, en };

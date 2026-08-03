@@ -1,45 +1,15 @@
-// Order state management — backed by Upstash Redis (same env vars as the
-// rate limiter). When Upstash is not configured, falls back to an in-memory
-// Map so the dev flow still works; production MUST set the env vars.
+// Order state management — backed by Neon Postgres (see lib/db.ts).
 //
-// Key scheme:
-//   dfh:order:<id>          — JSON OrderRecord
-//   dfh:order:waffo:<cid>   — internal id (for webhook lookup by waffoCheckoutId)
-//   dfh:order:user:<uid>    — set of internal ids (user's order history)
+// All order records are persisted in the `orders` table. The public API
+// (createOrderRecord / getOrderRecord / getOrderByWaffoId / listUserOrders /
+// updateOrderRecord / transitionOrder / canTransition / calculateRefundAmount /
+// findPlan / cnyToUsd / generateOrderId) is unchanged from the previous
+// Upstash-backed implementation, so route handlers and the account page are
+// unaffected by the storage swap.
 
 import type { BillingPlan, OrderRecord, OrderStatus } from './types';
 import { BILLING_PLANS } from './payment';
-
-const KEY_ORDER = (id: string) => `dfh:order:${id}`;
-const KEY_WAFFO = (checkoutId: string) => `dfh:order:waffo:${checkoutId}`;
-const KEY_USER = (userId: string) => `dfh:order:user:${userId}`;
-
-const hasUpstash = Boolean(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN,
-);
-
-// ---- Upstash client (lazy) ----
-type Redis = import('@upstash/redis').Redis;
-let redis: Redis | null = null;
-let redisInit: Promise<Redis | null> | null = null;
-
-function getRedis(): Promise<Redis | null> {
-  if (redis) return Promise.resolve(redis);
-  if (!hasUpstash) return Promise.resolve(null);
-  if (!redisInit) {
-    redisInit = (async () => {
-      const { Redis } = await import('@upstash/redis');
-      redis = Redis.fromEnv();
-      return redis;
-    })();
-  }
-  return redisInit;
-}
-
-// ---- In-memory fallback ----
-const memStore = new Map<string, string>(); // id -> JSON
-const memWaffoIndex = new Map<string, string>(); // waffoCheckoutId -> internalId
-const memUserIndex = new Map<string, Set<string>>(); // userId -> set of ids
+import { query, ensureSchema } from './db';
 
 // ---- CNY → USD conversion ----
 // Fixed rate for deterministic pricing. Adjust if you start hedging FX.
@@ -56,63 +26,124 @@ export function generateOrderId(): string {
   return `ord_${Date.now().toString(36)}_${Math.random().toString(36).slice(2, 8)}`;
 }
 
+// ---- Row <-> OrderRecord mapping ----
+interface OrderRow {
+  id: string;
+  waffo_checkout_id: string | null;
+  refund_id: string | null;
+  user_id: string;
+  plan: string;
+  amount_currency: string;
+  amount_value: string;
+  cny_amount: string | number;
+  tweet_count: string | number;
+  status: string;
+  archive_id: string;
+  created_at: string;
+  paid_at: string | null;
+  refunded_at: string | null;
+  refund_note: string | null;
+  deleted_count: string | number;
+}
+
+function rowToRecord(row: OrderRow): OrderRecord {
+  return {
+    id: row.id,
+    waffoCheckoutId: row.waffo_checkout_id,
+    refundId: row.refund_id,
+    userId: row.user_id,
+    plan: row.plan as BillingPlan['id'],
+    amount: { currency: 'USD', value: String(row.amount_value) },
+    cnyAmount: Number(row.cny_amount),
+    tweetCount: Number(row.tweet_count),
+    status: row.status as OrderStatus,
+    archiveId: row.archive_id,
+    createdAt: row.created_at,
+    paidAt: row.paid_at,
+    refundedAt: row.refunded_at,
+    refundNote: row.refund_note,
+    deletedCount: Number(row.deleted_count),
+  };
+}
+
+const COLUMNS = [
+  'id',
+  'waffo_checkout_id',
+  'refund_id',
+  'user_id',
+  'plan',
+  'amount_currency',
+  'amount_value',
+  'cny_amount',
+  'tweet_count',
+  'status',
+  'archive_id',
+  'created_at',
+  'paid_at',
+  'refunded_at',
+  'refund_note',
+  'deleted_count',
+].join(', ');
+
 // ---- CRUD ----
 export async function createOrderRecord(record: OrderRecord): Promise<void> {
-  const r = await getRedis();
-  if (r) {
-    await r.set(KEY_ORDER(record.id), JSON.stringify(record));
-    await r.sadd(KEY_USER(record.userId), record.id);
-    if (record.waffoCheckoutId) {
-      await r.set(KEY_WAFFO(record.waffoCheckoutId), record.id);
-    }
-  } else {
-    memStore.set(record.id, JSON.stringify(record));
-    if (!memUserIndex.has(record.userId)) {
-      memUserIndex.set(record.userId, new Set());
-    }
-    memUserIndex.get(record.userId)!.add(record.id);
-    if (record.waffoCheckoutId) {
-      memWaffoIndex.set(record.waffoCheckoutId, record.id);
-    }
-  }
+  await ensureSchema();
+  await query(
+    `INSERT INTO orders
+       (id, waffo_checkout_id, refund_id, user_id, plan,
+        amount_currency, amount_value, cny_amount, tweet_count,
+        status, archive_id, created_at, paid_at, refunded_at,
+        refund_note, deleted_count)
+     VALUES
+       ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)`,
+    [
+      record.id,
+      record.waffoCheckoutId,
+      record.refundId,
+      record.userId,
+      record.plan,
+      record.amount.currency,
+      record.amount.value,
+      record.cnyAmount,
+      record.tweetCount,
+      record.status,
+      record.archiveId,
+      record.createdAt,
+      record.paidAt,
+      record.refundedAt,
+      record.refundNote,
+      record.deletedCount,
+    ],
+  );
 }
 
 export async function getOrderRecord(id: string): Promise<OrderRecord | null> {
-  const r = await getRedis();
-  if (r) {
-    const raw = await r.get<string>(KEY_ORDER(id));
-    if (!raw) return null;
-    return JSON.parse(raw) as OrderRecord;
-  }
-  const mem = memStore.get(id);
-  return mem ? (JSON.parse(mem) as OrderRecord) : null;
+  await ensureSchema();
+  const { rows } = await query<OrderRow>(
+    `SELECT ${COLUMNS} FROM orders WHERE id = $1`,
+    [id],
+  );
+  return rows[0] ? rowToRecord(rows[0]) : null;
 }
 
 export async function getOrderByWaffoId(
   waffoCheckoutId: string,
 ): Promise<OrderRecord | null> {
-  const r = await getRedis();
-  let internalId: string | null = null;
-  if (r) {
-    internalId = await r.get<string>(KEY_WAFFO(waffoCheckoutId));
-  } else {
-    internalId = memWaffoIndex.get(waffoCheckoutId) ?? null;
-  }
-  if (!internalId) return null;
-  return getOrderRecord(internalId);
+  await ensureSchema();
+  const { rows } = await query<OrderRow>(
+    `SELECT ${COLUMNS} FROM orders WHERE waffo_checkout_id = $1`,
+    [waffoCheckoutId],
+  );
+  return rows[0] ? rowToRecord(rows[0]) : null;
 }
 
 export async function listUserOrders(userId: string): Promise<OrderRecord[]> {
-  const r = await getRedis();
-  let ids: string[];
-  if (r) {
-    const set = (await r.smembers(KEY_USER(userId))) as string[] | null;
-    ids = set ?? [];
-  } else {
-    ids = Array.from(memUserIndex.get(userId) ?? []);
-  }
-  const records = await Promise.all(ids.map((id) => getOrderRecord(id)));
-  return records.filter((x): x is OrderRecord => x !== null);
+  await ensureSchema();
+  const { rows } = await query<OrderRow>(
+    `SELECT ${COLUMNS} FROM orders WHERE user_id = $1 ORDER BY created_at DESC`,
+    [userId],
+  );
+  return rows.map(rowToRecord);
 }
 
 export async function updateOrderRecord(
@@ -123,18 +154,44 @@ export async function updateOrderRecord(
   if (!current) return null;
   const updated: OrderRecord = { ...current, ...patch };
 
-  const r = await getRedis();
-  if (r) {
-    await r.set(KEY_ORDER(id), JSON.stringify(updated));
-    if (patch.waffoCheckoutId && patch.waffoCheckoutId !== current.waffoCheckoutId) {
-      await r.set(KEY_WAFFO(patch.waffoCheckoutId), id);
-    }
-  } else {
-    memStore.set(id, JSON.stringify(updated));
-    if (patch.waffoCheckoutId && patch.waffoCheckoutId !== current.waffoCheckoutId) {
-      memWaffoIndex.set(patch.waffoCheckoutId, id);
-    }
-  }
+  await ensureSchema();
+  await query(
+    `UPDATE orders SET
+       waffo_checkout_id = $1,
+       refund_id          = $2,
+       user_id            = $3,
+       plan               = $4,
+       amount_currency    = $5,
+       amount_value       = $6,
+       cny_amount         = $7,
+       tweet_count        = $8,
+       status             = $9,
+       archive_id         = $10,
+       created_at         = $11,
+       paid_at            = $12,
+       refunded_at        = $13,
+       refund_note        = $14,
+       deleted_count      = $15
+     WHERE id = $16`,
+    [
+      updated.waffoCheckoutId,
+      updated.refundId,
+      updated.userId,
+      updated.plan,
+      updated.amount.currency,
+      updated.amount.value,
+      updated.cnyAmount,
+      updated.tweetCount,
+      updated.status,
+      updated.archiveId,
+      updated.createdAt,
+      updated.paidAt,
+      updated.refundedAt,
+      updated.refundNote,
+      updated.deletedCount,
+      id,
+    ],
+  );
   return updated;
 }
 

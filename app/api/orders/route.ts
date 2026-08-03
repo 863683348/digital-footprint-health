@@ -20,7 +20,7 @@ function requireUser(req: NextRequest) {
 }
 
 // POST /api/orders — create a Waffo checkout
-// Body: { plan, archiveId, tweetCount }
+// Body: { plan, archiveId?, tweetCount }
 export async function POST(req: NextRequest) {
   const user = requireUser(req);
   if (!user) {
@@ -43,12 +43,12 @@ export async function POST(req: NextRequest) {
   }
 
   const { plan, archiveId, tweetCount } = body;
-  if (!plan || !archiveId || typeof tweetCount !== 'number' || tweetCount < 0) {
-    return fail(
-      'VALIDATION',
-      'Missing fields: plan, archiveId, tweetCount are required.',
-      400,
-    );
+  const isMembership = plan === 'pro_monthly' || plan === 'pro_annual';
+  if (!plan || typeof tweetCount !== 'number' || tweetCount < 0) {
+    return fail('VALIDATION', 'Missing fields: plan and tweetCount are required.', 400);
+  }
+  if (!isMembership && !archiveId) {
+    return fail('VALIDATION', 'archiveId is required for deletion plans.', 400);
   }
 
   const planDef = findPlan(plan);
@@ -57,23 +57,25 @@ export async function POST(req: NextRequest) {
   }
 
   if (planDef.price === 0 && plan !== 'free') {
-    return fail(
-      'VALIDATION',
-      'This plan is free; no order required.',
-      400,
-    );
+    return fail('VALIDATION', 'This plan is free; no order required.', 400);
   }
 
   const cnyAmount = planDef.price;
   const usdAmount = cnyToUsd(cnyAmount);
   const internalId = generateOrderId();
 
-  // Build absolute URLs for Waffo redirect. Preserve the user's locale so the
-  // buyer returns to the matching /en or / (zh) confirm page.
+  // Build absolute URLs for the Waffo redirect. Membership purchases land on
+  // /account (no archive); deletion purchases return to the confirm page.
   const localePrefix = body.lang === 'en' ? '/en' : '';
   const origin = req.nextUrl.origin;
-  const successUrl = `${origin}${localePrefix}/delete/confirm?archiveId=${archiveId}&orderId=${internalId}&waffo=return`;
-  const cancelUrl = `${origin}${localePrefix}/delete/confirm?archiveId=${archiveId}&canceled=1`;
+  const successPath = isMembership
+    ? `${localePrefix}/account?waffo=return&orderId=${internalId}`
+    : `${localePrefix}/delete/confirm?archiveId=${archiveId}&orderId=${internalId}&waffo=return`;
+  const cancelPath = isMembership
+    ? `${localePrefix}/account?canceled=1`
+    : `${localePrefix}/delete/confirm?archiveId=${archiveId}&canceled=1`;
+  const successUrl = `${origin}${successPath}`;
+  const cancelUrl = `${origin}${cancelPath}`;
 
   let waffoRes;
   try {
@@ -99,7 +101,7 @@ export async function POST(req: NextRequest) {
     cnyAmount,
     tweetCount,
     status: 'created',
-    archiveId,
+    archiveId: archiveId || '',
     createdAt: new Date().toISOString(),
     paidAt: null,
     refundedAt: null,

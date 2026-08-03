@@ -54,6 +54,12 @@ export function NavBar() {
           <LangLink href="/delete/confirm" className="hover:text-ink transition-calm">
             {t('nav.delete')}
           </LangLink>
+          <LangLink href="/blog" className="hover:text-ink transition-calm">
+            {t('nav.blog')}
+          </LangLink>
+          <LangLink href="/pricing" className="hover:text-ink transition-calm">
+            {t('nav.pricing')}
+          </LangLink>
           {user && (
             <LangLink href="/account" className="hover:text-ink transition-calm">
               {t('nav.account')}

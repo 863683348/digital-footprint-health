@@ -181,9 +181,9 @@ export interface BillingInfo {
 export type OrderStatus = 'created' | 'paid' | 'refunded' | 'cancelled' | 'failed';
 
 /**
- * Order record persisted in Upstash Redis (reuses the same env vars as the
- * rate limiter). Keyed by an internal id; the Waffo checkout id is stored on
- * the record so webhook events can be mapped back.
+ * Order record persisted in Neon Postgres (`orders` table — see lib/order.ts +
+ * lib/db.ts). Keyed by an internal id; the Waffo checkout id is stored on the
+ * record so webhook events can be mapped back.
  */
 export interface OrderRecord {
   /** Internal id, format: ord_<base36 timestamp>. Also sent as merchantOrderId. */

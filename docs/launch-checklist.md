@@ -131,13 +131,13 @@
 | 费用预估 | ✅ `estimateDelete()` 按 tweet 量算费 |
 | Billing API | ✅ `GET /api/settings/billing` 返回计费方案 |
 | 费用展示 UI | ✅ 删除确认页展示费用预估卡片 |
-| 真实支付网关 | ✅ Waffo Pancake（托管收银台 + HMAC 签名），`lib/waffo.ts` + `/api/orders` |
-| 支付回调/Webhook | ✅ `POST /api/webhooks/waffo`，HMAC 验签 + 幂等状态机 |
+| 真实支付网关 | ✅ Waffo Pancake（Merchant-of-Record 托管收银台 + RSA-SHA256 签名），`@waffo/pancake-ts` SDK + `lib/waffo.ts` + `/api/orders` |
+| 支付回调/Webhook | ✅ `POST /api/webhooks/waffo`，RSA-SHA256 验签 + 幂等状态机 |
 | 退款逻辑 | ✅ `POST /api/orders/:id/refund`，按已删除条数比例退款 |
 
-**说明**：计费模型设计完整，支付链路已接入 Waffo Pancake（sandbox）。上线真实删除前需在 Vercel 配置 `WAFFO_MERCHANT_ID` / `WAFFO_PRIVATE_KEY` 并切换 `WAFFO_ENV=production`。
+**说明**：计费模型设计完整，支付链路已接入 Waffo Pancake（sandbox，官方 @waffo/pancake-ts SDK，产品制收银台）。上线真实删除前需在 Vercel 配置 `WAFFO_MERCHANT_ID` / `WAFFO_PRIVATE_KEY` / `WAFFO_WEBHOOK_PUBLIC_KEY` / `WAFFO_STORE_ID` / 五个 `WAFFO_PRODUCT_*` 并切换 `WAFFO_ENV=production`。
 
-**差距**：支付 vendor 已选型 Waffo Pancake 并完成 webhook 验签 → 订单状态机 → 退款逻辑；剩余为生产凭证配置与端到端联调。
+**差距**：支付 vendor 已选型 Waffo Pancake（官方 SDK）并完成 webhook 验签 → 订单状态机 → 退款逻辑；剩余为生产凭证配置与端到端联调。
 
 ---
 

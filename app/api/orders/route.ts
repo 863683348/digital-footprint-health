@@ -71,20 +71,18 @@ export async function POST(req: NextRequest) {
   const successPath = isMembership
     ? `${localePrefix}/account?waffo=return&orderId=${internalId}`
     : `${localePrefix}/delete/confirm?archiveId=${archiveId}&orderId=${internalId}&waffo=return`;
-  const cancelPath = isMembership
-    ? `${localePrefix}/account?canceled=1`
-    : `${localePrefix}/delete/confirm?archiveId=${archiveId}&canceled=1`;
   const successUrl = `${origin}${successPath}`;
-  const cancelUrl = `${origin}${cancelPath}`;
 
   let waffoRes;
   try {
     waffoRes = await createCheckout({
-      amount: usdAmount,
+      plan: planDef.id,
       internalOrderId: internalId,
-      description: `TweetDelete — ${planDef.id} plan (${tweetCount} tweets)`,
+      buyerIdentity: user.sub,
+      buyerEmail: user.email,
       successUrl,
-      cancelUrl,
+      // single_large has a dynamic price; everything else uses the dashboard price.
+      priceSnapshotUsd: plan === 'single_large' ? usdAmount.value : undefined,
     });
   } catch (e) {
     console.error('[orders] createCheckout failed:', e);
@@ -94,6 +92,7 @@ export async function POST(req: NextRequest) {
   const record: OrderRecord = {
     id: internalId,
     waffoCheckoutId: waffoRes.checkoutId,
+    paymentId: null,
     refundId: null,
     userId: user.sub,
     plan: planDef.id,

@@ -1,26 +1,79 @@
-// Waffo Pancake payment integration — REST, no SDK.
-// Base: https://api.waffo.ai/v1 (live) | https://sandbox.api.waffo.ai/v1 (sandbox)
+// Waffo Pancake payment integration — official SDK wrapper.
 //
-// Auth model: every server → Waffo request carries three headers:
-//   X-Merchant-Id   — WAFFO_MERCHANT_ID
-//   X-Timestamp     — Unix seconds (string)
-//   X-Signature     — HMAC-SHA256( WAFFO_PRIVATE_KEY, `${ts}.${rawBody}` )
-// Waffo → server webhooks are verified with WAFFO_WEBHOOK_SECRET over the same
-// `${ts}.${rawBody}` signing scheme.
+// Uses @waffo/pancake-ts (v0.16.x). Waffo is a Merchant-of-Record platform;
+// checkouts are PRODUCT-based (a productId created in the Waffo Dashboard),
+// not arbitrary-amount charges. Real authentication is RSA-SHA256, which the
+// SDK handles automatically — we only hand it the merchant id + private key.
+//
+// Required env:
+//   WAFFO_MERCHANT_ID            — MER_xxx
+//   WAFFO_PRIVATE_KEY            — RSA private key PEM (signs server→Waffo calls)
+//   WAFFO_WEBHOOK_PUBLIC_KEY     — RSA public key PEM (verifies Waffo→server webhooks)
+//   WAFFO_ENV                    — "sandbox" (default) | "production" | "prod" | "live"
+//   WAFFO_PRODUCT_SINGLE_SMALL   — productId for the single_small plan
+//   WAFFO_PRODUCT_SINGLE_MEDIUM  — productId for the single_medium plan
+//   WAFFO_PRODUCT_SINGLE_LARGE   — productId for the single_large plan (price overridden)
+//   WAFFO_PRODUCT_PRO_MONTHLY    — productId for the pro_monthly plan
+//   WAFFO_PRODUCT_PRO_ANNUAL     — productId for the pro_annual plan
+//   WAFFO_STORE_ID               — store the products belong to (needed for refunds)
 
-import crypto from 'crypto';
+import {
+  WaffoPancake,
+  verifyWebhook as sdkVerifyWebhook,
+  TaxCategory,
+  type WebhookEvent,
+  type AuthenticatedCheckoutParams,
+} from '@waffo/pancake-ts';
 
-const LIVE_BASE = 'https://api.waffo.ai/v1';
-const SANDBOX_BASE = 'https://sandbox.api.waffo.ai/v1';
+export type { WebhookEvent as WaffoWebhookEvent };
 
-export function baseUrl(): string {
-  if (process.env.WAFFO_BASE_URL) return process.env.WAFFO_BASE_URL;
-  return process.env.WAFFO_SANDBOX === 'false' ? LIVE_BASE : SANDBOX_BASE;
-}
+// ---- Config ----
 
 export function isConfigured(): boolean {
   return Boolean(process.env.WAFFO_MERCHANT_ID && process.env.WAFFO_PRIVATE_KEY);
 }
+
+function waffoBaseUrl(): string {
+  if (process.env.WAFFO_BASE_URL) return process.env.WAFFO_BASE_URL;
+  const env = (process.env.WAFFO_ENV ?? 'sandbox').toLowerCase();
+  const isLive = env === 'production' || env === 'prod' || env === 'live';
+  return isLive ? 'https://api.waffo.ai' : 'https://sandbox.api.waffo.ai';
+}
+
+let _client: WaffoPancake | null = null;
+
+export function getClient(): WaffoPancake {
+  if (!isConfigured()) {
+    throw new Error(
+      'Waffo not configured: WAFFO_MERCHANT_ID and WAFFO_PRIVATE_KEY are required.',
+    );
+  }
+  if (_client) return _client;
+  _client = new WaffoPancake({
+    merchantId: process.env.WAFFO_MERCHANT_ID!,
+    privateKey: process.env.WAFFO_PRIVATE_KEY!,
+    baseUrl: waffoBaseUrl(),
+    webhookPublicKey: process.env.WAFFO_WEBHOOK_PUBLIC_KEY,
+  });
+  return _client;
+}
+
+// ---- Plan → product mapping ----
+
+const PLAN_PRODUCT_ENV: Record<string, string> = {
+  single_small: 'WAFFO_PRODUCT_SINGLE_SMALL',
+  single_medium: 'WAFFO_PRODUCT_SINGLE_MEDIUM',
+  single_large: 'WAFFO_PRODUCT_SINGLE_LARGE',
+  pro_monthly: 'WAFFO_PRODUCT_PRO_MONTHLY',
+  pro_annual: 'WAFFO_PRO_ANNUAL',
+};
+
+export function productIdForPlan(plan: string): string | undefined {
+  const envKey = PLAN_PRODUCT_ENV[plan];
+  return envKey ? process.env[envKey] : undefined;
+}
+
+// ---- Types ----
 
 export interface WaffoMoney {
   currency: 'USD' | 'CNY';
@@ -28,15 +81,27 @@ export interface WaffoMoney {
 }
 
 export interface WaffoCheckoutInput {
-  amount: WaffoMoney; // USD
+  /** Plan id — used to resolve the Waffo product + whether to override price. */
+  plan: string;
+  /** Internal order id, echoed back on webhooks as orderMerchantExternalId. */
   internalOrderId: string;
-  description: string;
+  /** Stable customer id (we use the session sub). */
+  buyerIdentity: string;
+  /** Pre-fills the checkout email field. */
+  buyerEmail?: string;
+  /** Absolute URL Waffo redirects to after a successful payment. */
   successUrl: string;
-  cancelUrl: string;
+  /**
+   * Override price (USD, 2-decimal string) for plans whose amount is dynamic
+   * (single_large). Omit for fixed-price plans — Waffo uses the dashboard price.
+   */
+  priceSnapshotUsd?: string;
 }
 
 export interface WaffoCheckoutResult {
+  /** Checkout session id (Waffo sessionId). Stored for traceability. */
   checkoutId: string;
+  /** Hosted checkout URL to redirect the customer to. */
   checkoutUrl: string;
 }
 
@@ -45,93 +110,97 @@ export interface WaffoRefundResult {
   status: string;
 }
 
-export interface WaffoWebhookEvent {
-  id: string;
-  type: string;
-  createdAt?: string;
-  data: {
-    checkoutId?: string;
-    orderId?: string;
-    [k: string]: unknown;
-  };
-}
+// ---- Checkout ----
 
-function signWithKey(key: string, timestamp: string, rawBody: string): string {
-  return crypto.createHmac('sha256', key).update(`${timestamp}.${rawBody}`).digest('hex');
-}
-
-async function signedPost<T>(path: string, body: unknown): Promise<T> {
-  const rawBody = JSON.stringify(body);
-  const timestamp = Math.floor(Date.now() / 1000).toString();
-  const merchantId = process.env.WAFFO_MERCHANT_ID ?? '';
-  const signature = signWithKey(process.env.WAFFO_PRIVATE_KEY ?? '', timestamp, rawBody);
-
-  const res = await fetch(`${baseUrl()}${path}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-Merchant-Id': merchantId,
-      'X-Timestamp': timestamp,
-      'X-Signature': signature,
-    },
-    body: rawBody,
-  });
-
-  const text = await res.text();
-  if (!res.ok) {
-    throw new Error(`Waffo ${path} failed (${res.status}): ${text}`);
+export async function createCheckout(
+  input: WaffoCheckoutInput,
+): Promise<WaffoCheckoutResult> {
+  const productId = productIdForPlan(input.plan);
+  if (!productId) {
+    throw new Error(
+      `Waffo product not configured for plan "${input.plan}". ` +
+        `Set the matching WAFFO_PRODUCT_* env var.`,
+    );
   }
-  return JSON.parse(text) as T;
+
+  const client = getClient();
+  const params: AuthenticatedCheckoutParams = {
+    productId,
+    currency: 'USD',
+    buyerIdentity: input.buyerIdentity,
+    buyerEmail: input.buyerEmail,
+    successUrl: input.successUrl,
+    orderMerchantExternalId: input.internalOrderId,
+  };
+
+  // Dynamic pricing only — fixed plans use the dashboard price.
+  if (input.priceSnapshotUsd) {
+    params.priceSnapshot = {
+      amount: input.priceSnapshotUsd,
+      taxCategory: TaxCategory.SaaS,
+    };
+  }
+
+  const res = await client.checkout.authenticated.create(params);
+  return { checkoutId: res.sessionId, checkoutUrl: res.checkoutUrl };
 }
 
-export async function createCheckout(input: WaffoCheckoutInput): Promise<WaffoCheckoutResult> {
-  const payload = {
-    merchantOrderId: input.internalOrderId,
-    amount: input.amount,
-    description: input.description,
-    redirectUrl: input.successUrl,
-    cancelUrl: input.cancelUrl,
-  };
-  const data = await signedPost<{
-    id: string;
-    checkoutId?: string;
-    url?: string;
-    checkoutUrl?: string;
-  }>('/checkouts', payload);
+// ---- Refund (customer-side ticket) ----
+//
+// Waffo is a Merchant-of-Record: the SDK only exposes refunds as customer
+// refund tickets. We issue a fresh customer session token (tied to the same
+// buyerIdentity used at checkout) and file the ticket against the payment id
+// captured from the order.completed webhook.
 
-  const checkoutId = data.checkoutId ?? data.id;
-  const checkoutUrl = data.checkoutUrl ?? data.url ?? '';
-  if (!checkoutId || !checkoutUrl) {
-    throw new Error('Waffo createCheckout: missing checkoutId/checkoutUrl in response');
-  }
-  return { checkoutId, checkoutUrl };
+export interface WaffoRefundInput {
+  /** Store the product belongs to (WAFFO_STORE_ID). */
+  storeId: string;
+  /** Same buyerIdentity used at checkout (session sub). */
+  buyerIdentity: string;
+  /** Idempotency/business id for the refund ticket. */
+  merchantRefundId: string;
 }
 
 export async function refundCheckout(
-  checkoutId: string,
+  _orderId: string,
+  paymentId: string,
   amount: WaffoMoney,
+  opts: WaffoRefundInput,
 ): Promise<WaffoRefundResult> {
-  const payload = { amount, reason: 'customer_request' };
-  const data = await signedPost<{ id: string; refundId?: string; status?: string }>(
-    `/checkouts/${encodeURIComponent(checkoutId)}/refund`,
-    payload,
-  );
+  const client = getClient();
+  const { token } = await client.auth.issueSessionToken({
+    storeId: opts.storeId,
+    buyerIdentity: opts.buyerIdentity,
+  });
+  const customer = client.customer(token);
+  const { ticket } = await customer.createRefundTicket({
+    paymentId,
+    reason: 'customer_request',
+    requestedAmount: { amount: amount.value, currency: amount.currency },
+    refundTicketMerchantExternalId: opts.merchantRefundId,
+  });
   return {
-    refundId: data.refundId ?? data.id,
-    status: data.status ?? 'pending',
+    refundId: ticket.refundTicketMerchantExternalId ?? ticket.id,
+    status: ticket.status,
   };
 }
 
+// ---- Webhook verification ----
+//
+// Delegates to the SDK's standalone verifyWebhook, which parses the
+// X-Waffo-Signature header (t=<ts>,v1=<sig>), verifies RSA-SHA256 over
+// `${ts}.${rawBody}`, and returns the parsed event (or throws). The SDK reads
+// WAFFO_WEBHOOK_PUBLIC_KEY from the environment automatically.
+// Returns null on any verification failure so callers can 401 without throwing.
+
 export function verifyWebhook(
   rawBody: string,
-  signature: string | null,
-  timestamp: string | null,
-): boolean {
-  const secret = process.env.WAFFO_WEBHOOK_SECRET;
-  if (!secret || !signature || !timestamp) return false;
-  const expected = signWithKey(secret, timestamp, rawBody);
-  const a = Buffer.from(signature);
-  const b = Buffer.from(expected);
-  if (a.length !== b.length) return false;
-  return crypto.timingSafeEqual(a, b);
+  signatureHeader: string | null,
+): WebhookEvent | null {
+  if (!signatureHeader) return null;
+  try {
+    return sdkVerifyWebhook(rawBody, signatureHeader);
+  } catch {
+    return null;
+  }
 }

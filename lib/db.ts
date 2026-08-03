@@ -48,6 +48,7 @@ export function ensureSchema(): Promise<void> {
         CREATE TABLE IF NOT EXISTS orders (
           id                TEXT PRIMARY KEY,
           waffo_checkout_id TEXT UNIQUE,
+          payment_id        TEXT,
           refund_id         TEXT,
           user_id           TEXT NOT NULL,
           plan              TEXT NOT NULL,

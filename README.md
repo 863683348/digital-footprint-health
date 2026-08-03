@@ -43,7 +43,7 @@ Digital Footprint Health Report 是一款隐私保护工具，帮助你：
 | **框架** | Next.js 16 (App Router) |
 | **后端** | Supabase (Auth + Database) |
 | **部署** | Cloudflare Pages / Workers |
-| **支付** | Waffo Pancake（托管收银台 + HMAC 签名 + Webhook） |
+| **支付** | Waffo Pancake（Merchant-of-Record 托管收银台 + RSA-SHA256 签名 + Webhook） |
 | **解析** | 纯前端浏览器本地解析 |
 | **分析** | Google Analytics 4 |
 
@@ -78,11 +78,17 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
-# Payment (Waffo Pancake)
+# Payment (Waffo Pancake — Merchant of Record, official @waffo/pancake-ts SDK)
 WAFFO_MERCHANT_ID=
 WAFFO_PRIVATE_KEY=
+WAFFO_WEBHOOK_PUBLIC_KEY=
 WAFFO_ENV=sandbox
-WAFFO_WEBHOOK_SECRET=
+WAFFO_STORE_ID=
+WAFFO_PRODUCT_SINGLE_SMALL=
+WAFFO_PRODUCT_SINGLE_MEDIUM=
+WAFFO_PRODUCT_SINGLE_LARGE=
+WAFFO_PRODUCT_PRO_MONTHLY=
+WAFFO_PRODUCT_PRO_ANNUAL=
 ```
 
 ---

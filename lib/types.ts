@@ -188,8 +188,10 @@ export type OrderStatus = 'created' | 'paid' | 'refunded' | 'cancelled' | 'faile
 export interface OrderRecord {
   /** Internal id, format: ord_<base36 timestamp>. Also sent as merchantOrderId. */
   id: string;
-  /** Waffo checkout id (from createCheckout response). */
+  /** Waffo checkout id (from createCheckout response; the session id). */
   waffoCheckoutId: string | null;
+  /** Waffo payment id (captured from the order.completed webhook). Needed for refunds. */
+  paymentId: string | null;
   /** Waffo refund id (set after refund). */
   refundId: string | null;
   /** Owning user (from session). */

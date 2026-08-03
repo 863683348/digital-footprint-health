@@ -6,6 +6,8 @@ import { WaffoPaymentButton } from '@/components/WaffoPaymentButton';
 import { LangLink } from '@/components/LangLink';
 import { BILLING_PLANS } from '@/lib/payment';
 
+// Waffo charges in USD. Plan prices in lib/payment.ts are CNY; display the
+// same converted amount the checkout will actually charge (1 USD = 7.2 CNY).
 const CNY_TO_USD = 1 / 7.2;
 const SINGLE = new Set(['single_small', 'single_medium', 'single_large']);
 
@@ -31,7 +33,7 @@ export function PricingView() {
         {/* Free */}
         <Card className="flex flex-col">
           <div className="t-4 font-semibold">{t('pricing.free')}</div>
-          <div className="mt-3 t-1 font-bold">¥0</div>
+          <div className="mt-3 t-1 font-bold">$0</div>
           <p className="mt-3 t-7 text-ink-soft flex-1">{t('pricing.freeInclude')}</p>
           <LangLink
             href="/upload"
@@ -46,7 +48,7 @@ export function PricingView() {
           <Card className="flex flex-col border-primary">
             <div className="t-4 font-semibold">{t('plan.pro_monthly.name')}</div>
             <div className="mt-3 t-1 font-bold">
-              ¥{monthly.price}
+              ${usd(monthly.price)}
               <span className="t-6 font-normal text-ink-soft">{t('pricing.perMonth')}</span>
             </div>
             <p className="mt-3 t-7 text-ink-soft flex-1">{t('pricing.proMonthlyInclude')}</p>
@@ -64,7 +66,7 @@ export function PricingView() {
               <Badge tone="ok">{t('pricing.popular')}</Badge>
             </div>
             <div className="mt-3 t-1 font-bold">
-              ¥{annual.price}
+              ${usd(annual.price)}
               <span className="t-6 font-normal text-ink-soft">{t('pricing.perYear')}</span>
             </div>
             <p className="mt-3 t-7 text-ink-soft flex-1">{t('pricing.proAnnualInclude')}</p>
@@ -83,7 +85,9 @@ export function PricingView() {
           {singles.map((p) => (
             <Card key={p.id} className="flex flex-col">
               <div className="t-5 font-semibold">{t(`plan.${p.id}.name`)}</div>
-              <div className="mt-1 t-3 font-bold">{p.price > 0 ? `¥${p.price}` : t('pricing.usage')}</div>
+              <div className="mt-1 t-3 font-bold">
+                {p.price > 0 ? `$${usd(p.price)}` : t('pricing.usage')}
+              </div>
               <p className="mt-2 t-7 text-ink-soft flex-1">{t(`plan.${p.id}.desc`)}</p>
               <LangLink
                 href="/delete/confirm"

@@ -30,6 +30,7 @@ export function generateOrderId(): string {
 interface OrderRow {
   id: string;
   waffo_checkout_id: string | null;
+  payment_id: string | null;
   refund_id: string | null;
   user_id: string;
   plan: string;
@@ -50,6 +51,7 @@ function rowToRecord(row: OrderRow): OrderRecord {
   return {
     id: row.id,
     waffoCheckoutId: row.waffo_checkout_id,
+    paymentId: row.payment_id,
     refundId: row.refund_id,
     userId: row.user_id,
     plan: row.plan as BillingPlan['id'],
@@ -69,6 +71,7 @@ function rowToRecord(row: OrderRow): OrderRecord {
 const COLUMNS = [
   'id',
   'waffo_checkout_id',
+  'payment_id',
   'refund_id',
   'user_id',
   'plan',
@@ -90,15 +93,16 @@ export async function createOrderRecord(record: OrderRecord): Promise<void> {
   await ensureSchema();
   await query(
     `INSERT INTO orders
-       (id, waffo_checkout_id, refund_id, user_id, plan,
+       (id, waffo_checkout_id, payment_id, refund_id, user_id, plan,
         amount_currency, amount_value, cny_amount, tweet_count,
         status, archive_id, created_at, paid_at, refunded_at,
         refund_note, deleted_count)
      VALUES
-       ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)`,
+       ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)`,
     [
       record.id,
       record.waffoCheckoutId,
+      record.paymentId,
       record.refundId,
       record.userId,
       record.plan,
@@ -158,23 +162,25 @@ export async function updateOrderRecord(
   await query(
     `UPDATE orders SET
        waffo_checkout_id = $1,
-       refund_id          = $2,
-       user_id            = $3,
-       plan               = $4,
-       amount_currency    = $5,
-       amount_value       = $6,
-       cny_amount         = $7,
-       tweet_count        = $8,
-       status             = $9,
-       archive_id         = $10,
-       created_at         = $11,
-       paid_at            = $12,
-       refunded_at        = $13,
-       refund_note        = $14,
-       deleted_count      = $15
-     WHERE id = $16`,
+       payment_id        = $2,
+       refund_id          = $3,
+       user_id            = $4,
+       plan               = $5,
+       amount_currency    = $6,
+       amount_value       = $7,
+       cny_amount         = $8,
+       tweet_count        = $9,
+       status             = $10,
+       archive_id         = $11,
+       created_at         = $12,
+       paid_at            = $13,
+       refunded_at        = $14,
+       refund_note        = $15,
+       deleted_count      = $16
+     WHERE id = $17`,
     [
       updated.waffoCheckoutId,
+      updated.paymentId,
       updated.refundId,
       updated.userId,
       updated.plan,

@@ -67,11 +67,27 @@ export async function POST(
     });
   }
 
+  // The SDK refund is a customer-side ticket filed against the Waffo payment id
+  // captured from the order.completed webhook.
+  if (!workingRecord.paymentId) {
+    return fail('VALIDATION', 'Cannot refund: no Waffo payment captured for this order yet.', 400);
+  }
+  const storeId = process.env.WAFFO_STORE_ID;
+  if (!storeId) {
+    return fail('INTERNAL', 'WAFFO_STORE_ID is not configured; cannot issue refund.', 503);
+  }
+
   let refund;
   try {
     refund = await refundCheckout(
-      workingRecord.waffoCheckoutId as string,
+      id,
+      workingRecord.paymentId,
       refundAmount,
+      {
+        storeId,
+        buyerIdentity: user.sub,
+        merchantRefundId: `refund_${id}`,
+      },
     );
   } catch (e) {
     console.error('[refund] refundCheckout failed:', e);

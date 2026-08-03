@@ -65,8 +65,8 @@ const PLAN_PRODUCT_ENV: Record<string, string> = {
   single_small: 'WAFFO_PRODUCT_SINGLE_SMALL',
   single_medium: 'WAFFO_PRODUCT_SINGLE_MEDIUM',
   single_large: 'WAFFO_PRODUCT_SINGLE_LARGE',
-  pro_monthly: 'WAFFO_PRODUCT_PRO_MONTHLY',
-  pro_annual: 'WAFFO_PRO_ANNUAL',
+  pro_monthly: 'WAFFO_PRODUCT_SINGLE_PRO_MONTHLY',
+  pro_annual: 'WAFFO_PRODUCT_SINGLE_PRO_ANNUAL',
 };
 
 export function productIdForPlan(plan: string): string | undefined {

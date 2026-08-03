@@ -1,5 +1,9 @@
 # Phase 2 详细设计 — 数字足迹体检报告 MVP
 
+> ⚠️ 实现状态说明（2026-08-04）：本文档为早期设计稿。**当前生产实现已改为
+> Google OAuth（第三方认证）+ JWT 签名 cookie 会话，数据库只有 `orders` 表，
+> 不建 `users` 表**（orders.user_id 存 Google sub）。下方 users 表 / 外键部分仅作历史参考。
+
 > 阶段：Phase 1.5 Spec 已锁定 → Phase 2 设计细化（**只产出契约/规格，不写应用代码**）
 > 依据：Spec v1.0.0（§3 技术架构 / §4 API 端点 / §5 数据库表）为唯一开发依据
 > 本地底座：SQLite（better-sqlite3）+ 进程内 Worker + 令牌桶（对齐生产 Postgres/Redis 语义，Schema 1:1）

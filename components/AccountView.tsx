@@ -1,10 +1,12 @@
 import { cookies } from 'next/headers';
+import { Suspense } from 'react';
 import { User, Crown, CreditCard, CalendarDays, ArrowUpRight, Receipt } from 'lucide-react';
 import { parseSession, SESSION_COOKIE, SessionUser } from '@/lib/session';
 import { listUserOrders, findPlan } from '@/lib/order';
 import { translate, Lang } from '@/lib/i18n';
 import { Card, Badge } from '@/components/ui';
 import { AccountSettings } from '@/components/AccountSettings';
+import { OrderReturnPoller } from '@/components/OrderReturnPoller';
 
 const PRO_PLANS = new Set(['pro_monthly', 'pro_annual']);
 
@@ -65,6 +67,10 @@ export async function AccountView({ lang }: { lang: Lang }) {
 
   return (
     <div className="max-w-[720px] mx-auto space-y-6">
+      {/* Auto-refresh when returning from a Waffo checkout (waffo=return). */}
+      <Suspense fallback={null}>
+        <OrderReturnPoller />
+      </Suspense>
       <div className="flex items-center gap-3">
         <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-weak text-primary">
           <User size={20} />

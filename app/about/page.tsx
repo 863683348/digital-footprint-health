@@ -72,7 +72,7 @@ export default function AboutPage() {
       <section className="space-y-4">
         <h2 className="t-4 font-semibold">技术栈</h2>
         <p className="t-5 text-ink-soft leading-relaxed">
-          网站构建于 Next.js 之上，部署在 Vercel Edge Network。数据解析使用 Web 原生 API 在前端完成，删除操作通过 X 官方 API v2 执行。支付由 PayPal 处理。
+          网站构建于 Next.js 之上，部署在 Vercel Edge Network。数据解析使用 Web 原生 API 在前端完成，删除操作通过 X 官方 API v2 执行。支付由 Waffo 处理。
         </p>
       </section>
 

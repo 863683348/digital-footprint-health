@@ -2,7 +2,7 @@ import { NextRequest } from 'next/server';
 import { parseSession, SESSION_COOKIE } from '@/lib/session';
 import { ok, fail } from '@/lib/resp';
 import { getOrderRecord, transitionOrder, calculateRefundAmount } from '@/lib/order';
-import { refundCapture } from '@/lib/paypal';
+import { refundCheckout } from '@/lib/waffo';
 
 export const runtime = 'nodejs';
 
@@ -35,9 +35,8 @@ export async function POST(
       400,
     );
   }
-  if (!record.captureId) {
-    return fail('INTERNAL', 'Order has no capture id; cannot refund.', 500);
-  }
+  // Waffo auto-captures on its hosted page, so a paid order is ready to refund
+  // without a separate capture step. Just ensure it is in the paid state.
 
   // Optional body: update deletedCount for partial refund calc.
   let body: { deletedCount?: number } = {};
@@ -70,27 +69,27 @@ export async function POST(
 
   let refund;
   try {
-    refund = await refundCapture(
-      workingRecord.captureId as string,
+    refund = await refundCheckout(
+      workingRecord.waffoCheckoutId as string,
       refundAmount,
     );
   } catch (e) {
-    console.error('[refund] refundCapture failed:', e);
-    return fail('INTERNAL', 'PayPal refund failed.', 502);
+    console.error('[refund] refundCheckout failed:', e);
+    return fail('INTERNAL', 'Waffo refund failed.', 502);
   }
 
   const isFullRefund =
     parseFloat(refundAmount.value) >= parseFloat(workingRecord.amount.value);
 
   const updated = await transitionOrder(id, 'refunded', {
-    refundId: refund.id,
+    refundId: refund.refundId,
     refundNote: refundAmount.reason,
   });
 
   return ok({
     id: updated?.id ?? id,
     status: updated?.status ?? 'refunded',
-    refundId: refund.id,
+    refundId: refund.refundId,
     refundAmount,
     refundStatus: refund.status,
     isFullRefund,

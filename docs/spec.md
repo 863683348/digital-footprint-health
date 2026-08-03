@@ -63,7 +63,7 @@
 - 删除队列：**进程内 Worker**（Node setInterval 消费本地任务表）+ **令牌桶限速**（50/15min，内存实现）。无需 Redis。
 - 归档存储：**本地加密文件**（AES-256-GCM，密钥取自 `ARCHIVE_ENC_KEY` 环境变量，缺省用固定开发密钥并告警）；带保留期自动销毁 + 主动擦除接口。
 - X 删除执行：实现完整 `DELETE /2/tweets/:id` 客户端 + 限速 + 退避 + 续传；提供 **dry-run 模拟模式**（无真实 token 时按限速时钟推进并产出与真实一致的进度/费用报告），保证无凭证也能演示完整「治疗」闭环。
-- 支付：实现 Stripe 测试集成骨架 + 无凭证时的「本地模拟支付」回环（标记订单 paid），保证删除流程可端到端跑通；真实 vendor/KYC 留待上线阶段。
+- 支付：实现 Waffo Pancake 集成（`lib/waffo.ts`：REST + HMAC-SHA256 签名 + 托管收银台重定向 + Webhook 验签）+ 无凭证时的「本地模拟支付」回环（标记订单 paid），保证删除流程可端到端跑通；生产凭证/KYC 留待上线阶段。
 
 ### 认证方案
 - X OAuth 2.0 PKCE（scope：`tweet.write users.read`），前端不持 client_secret/令牌；会话用 HttpOnly cookie。

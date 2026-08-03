@@ -421,7 +421,7 @@ DeleteConfirmPage
 **DangerButton armed 机制**：
 - checkbox 未勾 → `Disabled`（opacity 0.5，不可点），视觉为 `--color-error` 但灰化。
 - checkbox 勾选 → 解除 Disabled，`--duration-fast` 内 `opacity 0.5→1` + 轻微「亮起」（`--shadow-sm`→略强或 bg 由 `#DC2626` 提至全饱和），文字变 `#FFFFFF` 清晰。
-- 点击 → 触发支付（Stripe）二次确认（Phase 3 实现），此处仅标注交互边界。
+- 点击 → 触发支付（Waffo Pancake 托管收银台重定向）二次确认（Phase 3 实现），此处仅标注交互边界。
 
 ### 4. 微交互
 - **ScopeRadio 选中**：边框 `--border-default`→`--color-primary-border`，bg `--bg-surface`→`--color-primary-subtle`，`--duration-fast`；同时展开对应 Filter（`height 0→auto` / `opacity 0→1`，`--duration-normal`）。

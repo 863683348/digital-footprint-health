@@ -9,6 +9,12 @@ export interface BlogPost {
   tags: string[];
   content: string;    // HTML content
   canonical: string;
+  /** English translations (optional; the EN blog pages fall back to zh when absent). */
+  titleEn?: string;
+  excerptEn?: string;
+  categoryEn?: string;
+  tagsEn?: string[];
+  contentEn?: string;
 }
 
 /** All blog posts, sorted by date descending. */
@@ -24,6 +30,82 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '隐私保护', '删除推文', '数字足迹'],
     canonical: '/blog/how-to-delete-old-tweets-2026',
+    titleEn: 'How to Delete Old Tweets on X (Twitter) — The Complete 2026 Guide',
+    excerptEn:
+      'Want to bulk-delete those old, embarrassing tweets on X/Twitter? This guide breaks down 5 methods — from manual deletion to local archive parsing — to help you find the safest, most efficient approach.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'privacy', 'delete tweets', 'digital footprint'],
+    contentEn: `
+<p>How many tweets are in your X (formerly Twitter) account? 50? 500? Or several thousand?</p>
+<p>Whichever it is, there's always some content that makes you cringe in hindsight — edgy retweets from years ago, carelessly shared locations, a phone number leaked without thinking, old opinions you no longer hold.</p>
+<p>More importantly, those old tweets may be leaking your privacy right now.</p>
+
+<h2>Why clean up old tweets</h2>
+
+<p>You might think: "Who would dig through my tweets from years ago?" The answer: more people than you'd expect.</p>
+
+<ul>
+  <li><strong>Recruiting background checks:</strong> Over 70% of recruiters search a candidate's social-media history before hiring. A single tweet from years ago can derail a career opportunity.</li>
+  <li><strong>Privacy leaks:</strong> Tweets can contain your phone number, home address, check-in locations, and family-member information. Over time, combinations of this data can be used for identity theft or targeted scams.</li>
+  <li><strong>Image management:</strong> Your taste and opinions evolve, but the internet doesn't forget. Cleaning up old tweets is the digital-age equivalent of a thorough "house cleaning."</li>
+  <li><strong>X likes are public:</strong> Since 2024, X has made like records publicly visible. You may not care, but your historical likes may be tied to content you no longer endorse.</li>
+</ul>
+
+<h2>Method 1: Delete manually, one by one (huge effort)</h2>
+<p>The most direct but least recommended method. Each tweet requires: tap ⋮ → delete → confirm. At an average of 5 seconds per tweet, 5,000 tweets = nearly 7 hours of non-stop mechanical work. X also enforces temporary limits after a certain volume of actions, making the whole process even more painful. Unless your account has only a few dozen tweets, we don't recommend it.</p>
+
+<h2>Method 2: Third-party cloud services (convenient but risky for privacy)</h2>
+<p>There are many online tweet-deletion tools, such as TweetDelete, Circleboom, and TweetEraser. They connect to your X account via OAuth and offer bulk filtering and deletion.</p>
+<p>Pros: simple to use, no software to download.</p>
+<p>Cons: your tweet data is uploaded to third-party servers. In 2023, a well-known deletion tool was hacked, exposing the tweet data of millions of users.</p>
+
+<h2>Method 3: Browser extensions (safer)</h2>
+<p>Chrome extensions like X Cleaner run directly in your browser, using your current login session without sending data to a remote server.</p>
+<p>Pros: safer than cloud services.</p>
+<p>Cons: still require granting the extension permission to read X's page content, and are limited by X's API limits (can only process the most recent 3,200 tweets).</p>
+
+<h2>Method 4: X archive + local solution (most recommended)</h2>
+<p>This is the safest approach and the only one that can delete your entire tweet history. How it works:</p>
+<ol>
+  <li>Request a download of your full data archive in X's settings (includes every tweet since you registered).</li>
+  <li>Upload the archive to a tool that does <strong>pure local processing</strong> to parse it.</li>
+  <li>The tool analyzes risky tweets on your device, then deletes them on demand through X's official write API.</li>
+</ol>
+<p>The key advantage of this approach is that your data never leaves your own device — no server upload, no third-party storage, no data-leak risk.</p>
+<p>This is exactly what <strong>Digital Footprint Health</strong> does. We don't call X's read API; all analysis happens locally in your browser. Only when you want to delete tweets do we execute the deletion through X's official interface, with transparent per-tweet pricing.</p>
+
+<h2>Method 5: Python script (for developers)</h2>
+<p>If you can code, you can write a custom deletion script using the X API v2. The upside is full control, but it takes development time and API costs (the basic API is $100/month).</p>
+
+<h2>Summary: comparing the 5 methods</h2>
+
+<table>
+  <thead>
+    <tr><th>Method</th><th>Difficulty</th><th>Deletes all?</th><th>Privacy safety</th><th>Time (10k tweets)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Manual deletion</td><td>Simple but exhausting</td><td>Yes</td><td>Highest</td><td>~14 hours</td></tr>
+    <tr><td>Third-party cloud</td><td>Simple</td><td>Partial (3,200 limit)</td><td>Low (data uploaded)</td><td>1–3 hours</td></tr>
+    <tr><td>Browser extension</td><td>Simple</td><td>Partial (3,200 limit)</td><td>Medium</td><td>1–3 hours</td></tr>
+    <tr><td><strong>Archive + local</strong></td><td><strong>Simple</strong></td><td><strong>Yes (all)</strong></td><td><strong>Highest (pure local)</strong></td><td><strong>1–2 hours</strong></td></tr>
+    <tr><td>Custom script</td><td>Hard</td><td>Yes</td><td>Depends on implementation</td><td>Hours + dev time</td></tr>
+  </tbody>
+</table>
+
+<h2>Frequently asked questions</h2>
+
+<h3>Can deleted tweets be recovered?</h3>
+<p>No. Once deleted, a tweet is gone permanently. We recommend downloading your X data archive as a backup before bulk deletion.</p>
+
+<h3>Will X ban my account for bulk deletion?</h3>
+<p>Normal deletion will not get you banned. But watch your speed and stay within X's API limits. A good deletion tool handles rate limiting automatically.</p>
+
+<h3>Are free deletion tools safe?</h3>
+<p>Not necessarily. Some free tools profit by collecting your data. Prefer tools that explicitly state "data is not uploaded to a server," or use a pure local solution.</p>
+
+<h3>Can I delete only tweets within a specific time range?</h3>
+<p>Yes. Digital Footprint Health supports filtering by year, keyword, engagement, and more, so you can precisely target the content you want to remove.</p>
+    `.trim(),
     content: `
 <p>你的 X（原 Twitter）账号里有多少条推文？50 条？500 条？还是几千上万条？</p>
 <p>不管多少，里面总有一些"现在回头看有点尴尬"的内容——几年前转发的中二言论、随手发的定位、无意识泄露手机号的聊天、早已不信的旧观点。</p>

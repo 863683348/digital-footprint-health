@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { loadArchive, saveSim } from '@/lib/store';
 import { estimateDelete } from '@/lib/payment';
@@ -8,7 +8,7 @@ import { simulateDeletion } from '@/lib/delete-sim';
 import { useI18n } from '@/components/I18nProvider';
 import { Button, Card, FeeEstimateCard, Callout } from '@/components/ui';
 import { Loading } from '@/components/Loading';
-import { PayPalPaymentButton } from '@/components/PayPalPaymentButton';
+import { WaffoPaymentButton } from '@/components/WaffoPaymentButton';
 import type { ArchiveData, DeleteEstimate, BillingPlan } from '@/lib/types';
 
 const CNY_TO_USD_RATE = 1 / 7.2;
@@ -19,13 +19,19 @@ function ConfirmInner() {
   const search = useSearchParams();
   const archiveId = search.get('archiveId');
   const wasCanceled = search.get('canceled') === '1';
+  const waffoReturn = search.get('waffo') === 'return';
+  const returnOrderId = search.get('orderId');
 
   // undefined = loading, null = not found
   const [archive, setArchive] = useState<ArchiveData | null | undefined>(undefined);
   const [estimate, setEstimate] = useState<DeleteEstimate | null>(null);
-  const [dryRun, setDryRun] = useState(true);
+  // On a Waffo return we are paying for real, so dry-run must be off.
+  const [dryRun, setDryRun] = useState(!waffoReturn);
   const [busy, setBusy] = useState(false);
   const [paid, setPaid] = useState(false);
+  const [confirmError, setConfirmError] = useState<string | null>(null);
+  const [confirming, setConfirming] = useState(false);
+  const deletingRef = useRef(false);
 
   useEffect(() => {
     if (!archiveId) {
@@ -40,6 +46,45 @@ function ConfirmInner() {
     setEstimate(estimateDelete(archive.rowCount));
   }, [archive]);
 
+  // After Waffo redirects back (waffo=return&orderId=...), poll the order
+  // status until the webhook marks it paid, then run the real deletion.
+  useEffect(() => {
+    if (!waffoReturn || !returnOrderId || !archive || deletingRef.current) return;
+    let cancelled = false;
+    let attempts = 0;
+    setConfirming(true);
+    const timer = setInterval(async () => {
+      attempts += 1;
+      try {
+        const res = await fetch(`/api/orders?id=${encodeURIComponent(returnOrderId)}`);
+        const json = await res.json();
+        if (json.ok && json.data?.status === 'paid') {
+          clearInterval(timer);
+          if (!cancelled) runPaidDeletion();
+        } else if (json.ok && json.data?.status === 'failed') {
+          clearInterval(timer);
+          if (!cancelled) {
+            setConfirming(false);
+            setConfirmError(t('pay.payFailedStatus'));
+          }
+        } else if (attempts > 40) {
+          clearInterval(timer);
+          if (!cancelled) {
+            setConfirming(false);
+            setConfirmError(t('pay.confirmTimeout'));
+          }
+        }
+      } catch {
+        // transient network error — keep polling
+      }
+    }, 1500);
+    return () => {
+      cancelled = true;
+      clearInterval(timer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [waffoReturn, returnOrderId, archive]);
+
   function startDryRun() {
     if (!archive) return;
     setBusy(true);
@@ -48,13 +93,20 @@ function ConfirmInner() {
     router.push(`/delete/progress?archiveId=${archive.id}`);
   }
 
-  function handlePaid(_orderId: string, _captureId: string) {
+  function runPaidDeletion() {
+    if (!archive || deletingRef.current) return;
+    deletingRef.current = true;
     setPaid(true);
-    if (!archive) return;
-    // After successful payment, proceed to real deletion.
+    setConfirming(false);
     const result = simulateDeletion(archive.tweets, { dryRun: false });
     saveSim(archive.id, result);
     router.push(`/delete/progress?archiveId=${archive.id}&paid=1`);
+  }
+
+  // Waffo uses a top-level redirect; payment success is detected via the
+  // return-polling effect above. This callback is kept for API symmetry.
+  function handlePaid(_orderId: string) {
+    runPaidDeletion();
   }
 
   if (archive === undefined) return <div className="t-5 text-ink-soft">{t('delete.confirm.calc')}</div>;
@@ -75,6 +127,9 @@ function ConfirmInner() {
 
       {wasCanceled && (
         <Callout tone="warn">{t('pay.canceled')}</Callout>
+      )}
+      {confirmError && (
+        <Callout tone="danger">{confirmError}</Callout>
       )}
 
       <FeeEstimateCard estimate={estimate} />
@@ -105,6 +160,8 @@ function ConfirmInner() {
             </Button>
           </div>
         </>
+      ) : confirming ? (
+        <div className="t-5 text-ink-soft">{t('pay.confirming')}</div>
       ) : (
         <div className="space-y-4">
           <div className="flex items-center justify-between p-4 rounded-lg border border-line">
@@ -118,7 +175,7 @@ function ConfirmInner() {
           </div>
 
           {!paid && (
-            <PayPalPaymentButton
+            <WaffoPaymentButton
               usdAmount={usdAmount}
               plan={plan}
               archiveId={archive.id}

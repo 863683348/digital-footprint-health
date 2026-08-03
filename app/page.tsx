@@ -1,6 +1,6 @@
 'use client';
 
-import Link from 'next/link';
+import { LangLink } from '@/components/LangLink';
 import { Card } from '@/components/ui';
 import { AdUnit } from '@/components/AdUnit';
 import { useI18n } from '@/components/I18nProvider';
@@ -45,18 +45,18 @@ export default function HomePage() {
         <h1 className="t-1 max-w-[18ch]">{t('landing.hero.title')}</h1>
         <p className="t-4 text-ink-soft mt-3 max-w-[60ch]">{t('landing.hero.desc')}</p>
         <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <Link
+          <LangLink
             href="/upload"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-primary text-white hover:brightness-95 transition-calm"
           >
             {t('landing.cta.start')}
-          </Link>
-          <Link
+          </LangLink>
+          <LangLink
             href="/delete/confirm"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-surface text-ink border border-line hover:bg-canvas transition-calm"
           >
             {t('landing.cta.delete')}
-          </Link>
+          </LangLink>
         </div>
       </section>
 

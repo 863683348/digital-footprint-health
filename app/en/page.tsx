@@ -90,13 +90,13 @@ export default function EnglishHomePage() {
         </p>
         <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
           <Link
-            href="/upload"
+            href="/en/upload"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-primary text-white hover:brightness-95 transition-calm"
           >
             Start checkup
           </Link>
           <Link
-            href="/delete/confirm"
+            href="/en/delete/confirm"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-surface text-ink border border-line hover:bg-canvas transition-calm"
           >
             I want to delete tweets
@@ -135,22 +135,22 @@ export default function EnglishHomePage() {
         <h2 className="t-4 font-semibold mb-3">Learn more</h2>
         <ul className="space-y-2 t-5">
           <li>
-            <Link href="/blog/how-to-delete-old-tweets-2026" className="text-primary hover:underline">
+            <Link href="/en/blog/how-to-delete-old-tweets-2026" className="text-primary hover:underline">
               How to Delete Old Tweets — Complete Guide 2026
             </Link>
           </li>
           <li>
-            <Link href="/faq" className="text-primary hover:underline">
+            <Link href="/en/faq" className="text-primary hover:underline">
               Frequently Asked Questions
             </Link>
           </li>
           <li>
-            <Link href="/privacy" className="text-primary hover:underline">
+            <Link href="/en/privacy" className="text-primary hover:underline">
               Privacy Policy
             </Link>
           </li>
           <li>
-            <Link href="/blog" className="text-primary hover:underline">
+            <Link href="/en/blog" className="text-primary hover:underline">
               Blog — Privacy & Digital Footprint Guides
             </Link>
           </li>

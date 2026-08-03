@@ -258,7 +258,7 @@
 
 > 属跨职能（vendor 选型 / 退款政策 / KYC 合规）事项，PRD §9.5 列为待 team-lead/业务拍板项。**不阻塞 MVP 非支付部分（预估 / 累计 / 预算截断 / 对账报告）的收口。**
 
-- **支付模块（收款）**：接入支付 vendor（如 Stripe），用户按档位付 ¥；处理下单、回调、退款。vendor 选型与退款/KYC 政策待业务拍板。
+- **支付模块（收款）**：接入支付 vendor Waffo Pancake（托管收银台 + Webhook 模式），用户按档位付 ¥；处理下单、回调、退款。已落地 `lib/waffo.ts`（REST + HMAC 签名）、`/api/orders`、`/api/webhooks/waffo`、订单状态机与退款逻辑；退款/KYC 政策细节待业务拍板。
 - **额度托管模块**：记录用户档位权益（如 Pro 2k 条/月），每次成功删除核销 1 条额度；额度耗尽则阻断或提示升级。
 - **串联链路**：`用户付费（¥）→ 平台授予/核销 X 额度 → Worker 执行删除（代缴 $0.01/条）→ cost_incurred_usd 累计`。平台毛利 = 档位价 − X 写费。
 - 实现前置条件：team-lead 确认支付 vendor 与合规策略后再落地；本期仅预留接口与数据位（如 `tiers`、`user_entitlements` 表待定），不写实现。

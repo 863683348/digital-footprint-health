@@ -34,7 +34,7 @@ export default function PrivacyPage() {
         <ul className="list-disc list-inside space-y-1.5 t-5 text-ink-soft">
           <li><strong>X 归档文件：</strong>你上传的归档文件（tweets.csv / tweets.js）仅在你本机的浏览器内存中解析。文件内容不会发送到我们的服务器或任何第三方服务器。</li>
           <li><strong>必要账户信息：</strong>当你进行删除操作时，我们需要通过 X 的 OAuth 流程获取必要的删除权限。我们只请求删除推文所需的最低权限，不会读取你的私信、关注列表或其他隐私数据。</li>
-          <li><strong>支付信息：</strong>删除推文为付费服务，我们使用 PayPal 处理支付。我们不会存储你的信用卡信息。</li>
+          <li><strong>支付信息：</strong>删除推文为付费服务，我们使用 Waffo 处理支付。我们不会存储你的信用卡信息。</li>
           <li><strong>网站分析：</strong>我们使用 Google Analytics 4 收集匿名的网站使用数据（页面浏览量、功能使用情况等），以帮助我们改进产品。这些数据不能用于识别你的个人身份。</li>
         </ul>
       </section>
@@ -60,7 +60,7 @@ export default function PrivacyPage() {
         <h2 className="t-4 font-semibold">5. 第三方服务</h2>
         <ul className="list-disc list-inside space-y-1.5 t-5 text-ink-soft">
           <li><strong>X（Twitter）API：</strong>仅用于执行推文删除操作，受 X 的<a href="https://x.com/en/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
-          <li><strong>PayPal：</strong>用于处理支付，受 PayPal 的<a href="https://www.paypal.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
+          <li><strong>Waffo：</strong>用于处理支付，受 Waffo 的<a href="https://waffo.ai/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
           <li><strong>Google Analytics：</strong>用于网站分析，受 Google 的<a href="https://policies.google.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
           <li><strong>Vercel：</strong>网站托管在 Vercel 上，受 Vercel 的<a href="https://vercel.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
         </ul>

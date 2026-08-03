@@ -131,13 +131,13 @@
 | 费用预估 | ✅ `estimateDelete()` 按 tweet 量算费 |
 | Billing API | ✅ `GET /api/settings/billing` 返回计费方案 |
 | 费用展示 UI | ✅ 删除确认页展示费用预估卡片 |
-| 真实支付网关 | ❌ 无 PayPal / Stripe / 支付宝对接，只有 `mockCharge()` 返回假订单号 |
-| 支付回调/Webhook | ❌ 无 webhook 路由 |
-| 退款逻辑 | ❌ 仅 i18n 文案描述退款政策，无实际退款代码 |
+| 真实支付网关 | ✅ Waffo Pancake（托管收银台 + HMAC 签名），`lib/waffo.ts` + `/api/orders` |
+| 支付回调/Webhook | ✅ `POST /api/webhooks/waffo`，HMAC 验签 + 幂等状态机 |
+| 退款逻辑 | ✅ `POST /api/orders/:id/refund`，按已删除条数比例退款 |
 
-**说明**：计费模型设计完整，但支付链路是 mock。当前 dry-run 模式不需要真实收费，但如果要上线真实删除功能，必须接入支付网关。
+**说明**：计费模型设计完整，支付链路已接入 Waffo Pancake（sandbox）。上线真实删除前需在 Vercel 配置 `WAFFO_MERCHANT_ID` / `WAFFO_PRIVATE_KEY` 并切换 `WAFFO_ENV=production`。
 
-**差距**：需要接入 PayPal（出海首选）或 Stripe → 支付 webhook 验签 → 订单状态机 → 退款逻辑。
+**差距**：支付 vendor 已选型 Waffo Pancake 并完成 webhook 验签 → 订单状态机 → 退款逻辑；剩余为生产凭证配置与端到端联调。
 
 ---
 
@@ -233,7 +233,7 @@
 | **P1** | ④ 亮黑 UI — dark token + 切换按钮 + 组件适配 | 中 |
 | **P2** | ⑦ GA4 + 热力图 — GA4 + Clarity 接入 | 小 |
 | **P2** | ⑤ 谷歌登录 — 自研 Google OAuth（已完成，待配凭据） | 中 |
-| **P2** | ⑥ 收付款 — PayPal/Stripe + webhook + 退款 | 大 |
+| **P2** | ⑥ 收付款 — Waffo Pancake + webhook + 退款（已接入，待生产凭证联调） | 中 |
 
 ---
 

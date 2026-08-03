@@ -32,7 +32,7 @@ Digital Footprint Health Report 是一款隐私保护工具，帮助你：
 | ✅ 批量删除 | 按条付费，支持暂停/续传/取消 |
 | ✅ 双语支持 | 中文 + 英文 |
 | ✅ Google 登录 | 安全的 OAuth 认证 |
-| ✅ PayPal 支付 | 安全的跨境支付处理 |
+| ✅ Waffo 支付 | 托管收银台 + Webhook，支持信用卡与本地支付方式 |
 
 ---
 
@@ -43,7 +43,7 @@ Digital Footprint Health Report 是一款隐私保护工具，帮助你：
 | **框架** | Next.js 16 (App Router) |
 | **后端** | Supabase (Auth + Database) |
 | **部署** | Cloudflare Pages / Workers |
-| **支付** | Stripe (主) + PayPal (辅) |
+| **支付** | Waffo Pancake（托管收银台 + HMAC 签名 + Webhook） |
 | **解析** | 纯前端浏览器本地解析 |
 | **分析** | Google Analytics 4 |
 
@@ -78,11 +78,11 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
 
-# Payment
-STRIPE_SECRET_KEY=
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-PAYPAL_CLIENT_ID=
-PAYPAL_CLIENT_SECRET=
+# Payment (Waffo Pancake)
+WAFFO_MERCHANT_ID=
+WAFFO_PRIVATE_KEY=
+WAFFO_ENV=sandbox
+WAFFO_WEBHOOK_SECRET=
 ```
 
 ---

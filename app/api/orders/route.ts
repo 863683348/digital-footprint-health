@@ -8,7 +8,7 @@ import {
   cnyToUsd,
   findPlan,
 } from '@/lib/order';
-import { createOrder, isConfigured } from '@/lib/paypal';
+import { createCheckout, isConfigured } from '@/lib/waffo';
 import type { CreateOrderRequest, OrderRecord } from '@/lib/types';
 
 export const runtime = 'nodejs';
@@ -19,7 +19,7 @@ function requireUser(req: NextRequest) {
   return session;
 }
 
-// POST /api/orders — create a PayPal order
+// POST /api/orders — create a Waffo checkout
 // Body: { plan, archiveId, tweetCount }
 export async function POST(req: NextRequest) {
   const user = requireUser(req);
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   if (!isConfigured()) {
     return fail(
       'INTERNAL',
-      'PayPal is not configured on the server. Set PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET.',
+      'Payment is not configured on the server. Set WAFFO_MERCHANT_ID / WAFFO_PRIVATE_KEY.',
       503,
     );
   }
@@ -68,35 +68,30 @@ export async function POST(req: NextRequest) {
   const usdAmount = cnyToUsd(cnyAmount);
   const internalId = generateOrderId();
 
-  // Build absolute URLs for PayPal redirect.
+  // Build absolute URLs for Waffo redirect. Preserve the user's locale so the
+  // buyer returns to the matching /en or / (zh) confirm page.
+  const localePrefix = body.lang === 'en' ? '/en' : '';
   const origin = req.nextUrl.origin;
-  const returnUrl = `${origin}/api/orders/${internalId}/capture`;
-  const cancelUrl = `${origin}/delete/confirm?archiveId=${archiveId}&canceled=1`;
+  const successUrl = `${origin}${localePrefix}/delete/confirm?archiveId=${archiveId}&orderId=${internalId}&waffo=return`;
+  const cancelUrl = `${origin}${localePrefix}/delete/confirm?archiveId=${archiveId}&canceled=1`;
 
-  let paypalRes;
+  let waffoRes;
   try {
-    paypalRes = await createOrder({
+    waffoRes = await createCheckout({
       amount: usdAmount,
       internalOrderId: internalId,
       description: `TweetDelete — ${planDef.id} plan (${tweetCount} tweets)`,
-      returnUrl,
+      successUrl,
       cancelUrl,
     });
   } catch (e) {
-    console.error('[orders] createOrder failed:', e);
-    return fail('INTERNAL', 'Failed to create PayPal order.', 502);
-  }
-
-  const approveLink = paypalRes.links.find((l) => l.rel === 'approve');
-  if (!approveLink) {
-    console.error('[orders] PayPal response missing approve link:', paypalRes);
-    return fail('INTERNAL', 'PayPal response missing approval URL.', 502);
+    console.error('[orders] createCheckout failed:', e);
+    return fail('INTERNAL', 'Failed to create Waffo checkout.', 502);
   }
 
   const record: OrderRecord = {
     id: internalId,
-    paypalOrderId: paypalRes.id,
-    captureId: null,
+    waffoCheckoutId: waffoRes.checkoutId,
     refundId: null,
     userId: user.sub,
     plan: planDef.id,
@@ -121,8 +116,8 @@ export async function POST(req: NextRequest) {
 
   return ok({
     orderId: internalId,
-    paypalOrderId: paypalRes.id,
-    approveUrl: approveLink.href,
+    checkoutId: waffoRes.checkoutId,
+    checkoutUrl: waffoRes.checkoutUrl,
   });
 }
 
@@ -148,7 +143,7 @@ export async function GET(req: NextRequest) {
       amount: record.amount,
       cnyAmount: record.cnyAmount,
       plan: record.plan,
-      paypalOrderId: record.paypalOrderId,
+      waffoCheckoutId: record.waffoCheckoutId,
       paidAt: record.paidAt,
       refundedAt: record.refundedAt,
       tweetCount: record.tweetCount,

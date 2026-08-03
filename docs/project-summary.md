@@ -204,7 +204,7 @@ digital-footprint-health/
 
 ### 代码侧可推进
 
-1. **#6 收付款对接** — 接 PayPal/Stripe + webhook + 退款逻辑。工作量大，但当前 dry-run 模式不阻塞上线。
+1. **#6 收付款对接** — 已切换至 Waffo Pancake（托管收银台 + HMAC 签名 + Webhook + 退款状态机）。`lib/waffo.ts`、`/api/orders`、`/api/webhooks/waffo`、`/api/orders/:id/refund` 已落地；待配生产凭证联调。
 
 ### 用户侧待办
 

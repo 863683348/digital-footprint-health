@@ -20,6 +20,144 @@ export interface BlogPost {
 /** All blog posts, sorted by date descending. */
 export const allPosts: BlogPost[] = [
   {
+    slug: 'what-is-digital-footprint-check',
+    title: '你的 X 账号有"数字足迹"吗？什么是隐私体检',
+    excerpt:
+      '你在 X（Twitter）上发过的每一条推文，都可能留下手机号、住址、定位等隐私痕迹——这就是你的"数字足迹"。数字足迹体检通过解析你的 X 数据归档，在本机生成 0-100 健康评分与风险清单。100% 本机处理，数据不出你的电脑。',
+    date: '2026-08-04',
+    updatedAt: '2026-08-04',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '隐私体检', '隐私保护'],
+    canonical: '/blog/what-is-digital-footprint-check',
+    titleEn: 'What Is a Digital Footprint Check for Your X Account?',
+    excerptEn:
+      'Your tweets on X (Twitter) may carry privacy traces like phone numbers, home addresses, and locations — that is your digital footprint. A digital footprint check parses your X archive on-device and produces a 0-100 health score plus a risk list. 100% on-device: your data never leaves your computer.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy check', 'privacy'],
+    contentEn: `
+<p>You probably don't remember 90% of your old tweets. But recruiters, scammers, and search engines do.</p>
+<p>Between 2009 and 2018, most of us tweeted things we would never post today — a new home address, a boarding pass, a workplace badge photo, an unflattering rant about an old employer. These tweets do not disappear. They get indexed, scraped, screenshotted, and occasionally resurrected at the worst possible moment: job applications, media controversies, background checks.</p>
+
+<h2>What is a digital footprint?</h2>
+<p>Your <strong>digital footprint</strong> is every trace you leave online. On X, the most common types fall into three buckets:</p>
+<ul>
+  <li><strong>Contact information</strong> — phone numbers, emails, WeChat IDs (high risk: direct entry for scams and harassment).</li>
+  <li><strong>Location data</strong> — home addresses, office addresses, travel check-ins (high risk: real-world safety).</li>
+  <li><strong>Sensitive content</strong> — rants about former employers, immature opinions, identity documents (medium risk: career and reputation).</li>
+</ul>
+<p>These traces hide inside tweet text, image EXIF, and location tags. Going through them manually is practically impossible — which is exactly why a tool is needed.</p>
+
+<h2>Why X is the riskiest platform for your footprint</h2>
+<ul>
+  <li><strong>Public tweets get indexed by search engines</strong> — anyone can find your old posts via Google.</li>
+  <li><strong>X only lets you delete the most recent ~3,200 tweets</strong> — your older posts are locked away from your own control.</li>
+  <li><strong>The data archive is the only way through</strong> — X packages your entire history into a ZIP; only by parsing that archive can you reach and clean tweets older than 3,200.</li>
+  <li><strong>Old tweets are "excavation" targets</strong> — during job hunts or controversies, a single old tweet can be screenshotted and spread.</li>
+</ul>
+
+<h2>What is a digital footprint check?</h2>
+<p>A <strong>digital footprint check</strong> is an automated privacy audit. Upload your X data archive (ZIP), and the tool parses every tweet <strong>on your own device</strong>, scanning for phone numbers, emails, addresses, locations, and sensitive topics. You get:</p>
+<ul>
+  <li><strong>0-100 health score</strong> — how risky your account's footprint is.</li>
+  <li><strong>Risk labels per tweet</strong> — phone / address / location / sensitive topic.</li>
+  <li><strong>Prioritized cleanup queue</strong> — delete the dangerous stuff first.</li>
+  <li><strong>Filters</strong> — by date (e.g. everything before 2018), keyword, or label.</li>
+</ul>
+<p>The check itself is <strong>free and read-only</strong>. It never deletes anything. Deleting is a separate, optional step — per-tweet priced, pauseable, resumable, refundable.</p>
+
+<h2>Why on-device processing matters</h2>
+<p>Privacy tools have a fundamental tension: they process your most sensitive data, yet many upload it to their servers. A trustworthy footprint check should never need to:</p>
+<ul>
+  <li>Upload your archive to a cloud server</li>
+  <li>Call X's read API to pull more data</li>
+  <li>Store your tweets in a database</li>
+</ul>
+<p>With a 100% on-device check, your archive is parsed locally, stored encrypted with a key that never leaves your machine, and only touched by X's write API when you explicitly choose to delete.</p>
+
+<h2>Common misconceptions</h2>
+<ul>
+  <li><strong>"My account is private, so I'm safe."</strong> — Your old tweets were public for years; they have been indexed and screenshotted already.</li>
+  <li><strong>"Deleted tweets are gone forever."</strong> — Deletion is damage control, not a time machine. Start early.</li>
+  <li><strong>"A check means deletion."</strong> — No. A check is free, read-only analysis with zero side effects.</li>
+</ul>
+
+<h2>Get started</h2>
+<p>Your X account is a public diary of the last decade of your life. A digital footprint check helps you see what is really in it, score how risky it is, and clean up what should be cleaned — before someone else finds it first.</p>
+<ol>
+  <li>Download your X archive: Settings → Your account → Download an archive of your data.</li>
+  <li>Run a free footprint check — 100% on-device.</li>
+  <li>Review your 0-100 health score and prioritized risk list.</li>
+  <li>Clean up what matters, only when you decide to.</li>
+</ol>
+<p>Want the full walkthrough? Read our <a href="/blog/how-to-delete-old-tweets-2026">complete guide to deleting old tweets on X</a>.</p>
+    `.trim(),
+    content: `
+<p>你在 X（原 Twitter）上发过的每一条推文，都可能留下隐私痕迹——手机号、住址、定位、旧观点。这就是你的"数字足迹"。</p>
+<p>2009 年你发过一条"今天搬家到 xx 路 xx 号"；2014 年你晒了张登机牌；2018 年你在深夜吐槽前公司。这些推文当年只是情绪，今天却可能是简历上的污点、诈骗分子眼里的素材、猎头搜索你的第一个结果。</p>
+<p>大多数人不知道自己到底在 X 上留下了多少隐私痕迹——因为你 90% 的旧推文，自己早就忘了。数字足迹体检（digital footprint check）就是把这个"忘了的过去"翻出来，一次看明白。</p>
+
+<h2>什么是数字足迹？三种最常见的痕迹</h2>
+<p><strong>数字足迹（digital footprint）</strong> 是指你在网上留下的一切可追踪信息。在 X 上，最常见的是三类：</p>
+<table>
+  <thead>
+    <tr><th>类型</th><th>例子</th><th>风险等级</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>联系信息</td><td>手机号、邮箱、微信号</td><td>🔴 高——诈骗/骚扰直接入口</td></tr>
+    <tr><td>位置信息</td><td>家庭住址、公司地址、旅行打卡</td><td>🔴 高——现实安全风险</td></tr>
+    <tr><td>敏感内容</td><td>抱怨前公司、不成熟言论、身份信息</td><td>🟡 中——求职/名誉风险</td></tr>
+  </tbody>
+</table>
+<p>这些内容藏在推文正文、图片 EXIF、定位标签里，人工一条条翻几乎不可能——这正是需要工具的原因。</p>
+
+<h2>为什么 X 的数字足迹最危险</h2>
+<ul>
+  <li><strong>X 内容可被搜索引擎索引</strong>：你的公开推文可能出现在 Google 结果里，任何人都能搜到。</li>
+  <li><strong>X 官方只允许删除最近约 3,200 条推文</strong>：早年的推文你"想删都删不了"——这是平台硬限制。</li>
+  <li><strong>归档（archive）是唯一途径</strong>：X 会把你全部历史推文打包成 ZIP 归档，只有解析这份归档，才能触达并清理 3,200 条之前的旧推文。</li>
+  <li><strong>旧推文是"被考古"重灾区</strong>：求职季、舆论事件时，多年前的一句话可能被截图传播。</li>
+</ul>
+
+<h2>什么是数字足迹体检</h2>
+<p><strong>数字足迹体检</strong>是一种自动化隐私审计：上传你的 X 数据归档（ZIP），工具在本机解析所有推文，扫描出含手机号、邮箱、住址、定位、敏感话题的内容，并给出：</p>
+<ul>
+  <li><strong>0-100 健康评分</strong>：你的账号隐私风险有多高。</li>
+  <li><strong>风险清单</strong>：每条高危推文 + 为什么危险。</li>
+  <li><strong>清理建议</strong>：按风险优先级排序，告诉你先删哪条。</li>
+  <li><strong>筛选工具</strong>：按日期、关键词、标签精确挑选要删的内容。</li>
+</ul>
+<p>体检本身<strong>免费且只读</strong>，不会删除任何内容。只有当你决定批量删除历史推文时，才按条计费（可暂停、续传、退款）。</p>
+
+<h2>隐私安全：为什么可以放心上传归档</h2>
+<p>隐私工具最大的矛盾是：处理隐私数据，却要上传数据。数字足迹体检的核心设计是：</p>
+<ul>
+  <li><strong>100% 本机解析</strong>：归档上传后在你自己的浏览器/设备上完成分析，不经过云端。</li>
+  <li><strong>归档加密落盘</strong>：文件加密存储，解密密钥只存在于你的本机。</li>
+  <li><strong>不调 X 读取接口</strong>：体检只读你上传的归档，不读取你账号的其他数据。</li>
+  <li><strong>删除才走 X 写接口</strong>：只有执行删除时才调用 X 的删除接口，权限最小化。</li>
+</ul>
+<p>这意味着：你的推文数据，只有你自己看得见。</p>
+
+<h2>常见误区</h2>
+<ul>
+  <li><strong>"我设置了私密账号，就安全了。"</strong> —— 你的旧推文在公开期已被收录/截图，且平台政策随时可能变化。</li>
+  <li><strong>"删掉的推文就消失了。"</strong> —— 被搜索引擎、第三方归档、截图保存的内容不会因为删除而消失；删除是"止损"，越早越好。</li>
+  <li><strong>"体检 = 删除。"</strong> —— 体检是只读分析，免费且无副作用；删除是独立的可选步骤，按条付费、完全可控。</li>
+</ul>
+
+<h2>如何开始</h2>
+<p>你的 X 账号是你 10 年人生的公开日记。数字足迹体检帮你：看清、打分、行动。</p>
+<ol>
+  <li>下载 X 数据归档：设置 → 你的账号 → 下载数据归档。</li>
+  <li>免费运行一次数字足迹体检——100% 本机处理。</li>
+  <li>查看 0-100 健康评分与按风险排序的清理队列。</li>
+  <li>按自己的节奏清理该清理的内容。</li>
+</ol>
+<p>想了解完整删除流程？请看我们的<a href="/blog/how-to-delete-old-tweets-2026">X 旧推文删除完整指南（2026）</a>。</p>
+    `.trim(),
+  },
+  {
     slug: 'how-to-delete-old-tweets-2026',
     title: '如何删除 X (Twitter) 上的旧推文 — 2026 完整指南',
     excerpt:

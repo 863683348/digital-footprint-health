@@ -316,8 +316,114 @@ export const allPosts: BlogPost[] = [
 <p>可以。Digital Footprint Health 支持按年份、关键词、互动量等条件过滤，精准定位你想删除的内容。</p>
     `.trim(),
   },
-];
 
-export function getPost(slug: string): BlogPost | undefined {
-  return allPosts.find((p) => p.slug === slug);
-}
+  {
+    slug: 'how-to-download-x-archive',
+    title: '如何下载 X 数据归档（2026 版 4 步教程）',
+    excerpt:
+      'X（Twitter）的数据归档是清理旧推文、做隐私体检的唯一切入点——尤其对 3200 条限制之外的推文。这篇教程教你 4 步下载你的完整 X 数据 ZIP，并说明归档里到底有什么。',
+    date: '2026-08-05',
+    updatedAt: '2026-08-05',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数据归档', '教程', '隐私保护'],
+    canonical: '/blog/how-to-download-x-archive',
+    titleEn: 'How to Download Your X Data Archive (2026, 4 Steps)',
+    excerptEn:
+      'Your X (Twitter) data archive is the only way to clean up tweets older than the ~3,200-tweet limit and to run a privacy check. This tutorial walks you through the 4 steps to download your full X data ZIP and what is inside it.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'data archive', 'tutorial', 'privacy'],
+    content: `
+<p>X 的数据归档（Data Archive）是清理旧推文、做隐私体检的<strong>唯一切入点</strong>——尤其对超过 3,200 条限制的旧推文，界面上一页页翻根本翻不完，归档才能拿到全部历史。</p>
+
+<h2>为什么需要数据归档？</h2>
+<ul>
+  <li><strong>X 只允许你删除最近约 3,200 条推文</strong>——更早的推文界面里根本看不到，只有归档里才有。</li>
+  <li><strong>归档包含全部历史</strong>——2009 年以来的每条推文、转推、点赞、媒体文件。</li>
+  <li><strong>隐私体检必须基于归档</strong>——只有解析归档，才能扫描出手机号、住址、定位等风险内容。</li>
+</ul>
+
+<h2>4 步下载 X 数据归档（2026 版）</h2>
+
+<h3>第 1 步：登录 X 并进入设置</h3>
+<p>打开 X（twitter.com）→ 左侧菜单 → <strong>更多 / More</strong> → <strong>设置与隐私 / Settings and privacy</strong>。</p>
+
+<h3>第 2 步：找到"下载数据"入口</h3>
+<p>设置 → <strong>你的账号 / Your account</strong> → <strong>下载 X 数据 / Download an archive of your data</strong>。系统会要求重新验证密码和邮箱。</p>
+
+<h3>第 3 步：请求归档并等待</h3>
+<p>点击「请求归档 / Request archive」→ X 会处理你的全部历史数据。处理时间取决于账号历史量——通常几小时到 1-2 天，完成后会收到邮件或站内通知，链接有效期通常 24 小时。</p>
+
+<h3>第 4 步：下载并解压 ZIP</h3>
+<p>点通知里的下载链接 → 得到一个 ZIP（可能几百 MB）→ 解压后你会看到：</p>
+<ul>
+  <li><strong>tweets.js</strong>——全部推文（含日期、文本、URL、媒体引用），隐私体检的核心文件</li>
+  <li><strong>data/ 目录</strong>——图片、视频、头像等媒体文件</li>
+  <li><strong>account.js / following.js 等</strong>——账号资料、关注列表等元数据</li>
+</ul>
+
+<h2>拿到归档之后</h2>
+<p>把 ZIP（或解压后的文件夹）交给数字足迹体检工具，它会在<strong>你本机</strong>解析归档，扫描手机号、邮箱、地址、定位等风险内容，生成 0-100 健康评分和风险清单。全程数据不出你的电脑。</p>
+
+<h2>常见问题（FAQ）</h2>
+
+<h3>下载归档要钱吗？</h3>
+<p>不要钱，X 官方功能，免费。</p>
+
+<h3>归档包含已删除的推文吗？</h3>
+<p>不包含——已删除的推文不会出现在归档里。如果你之前删过推文，它们已经消失了。</p>
+
+<h3>归档多久生成一次？</h3>
+<p>每次点「请求归档」都会重新生成一份最新的；通常建议每 3-6 个月拉一次最新归档做体检。</p>
+
+<h3>解压后的文件夹可以只传 tweets.js 吗？</h3>
+<p>可以——tweets.js 包含全部文本数据，体检工具主要用它；媒体文件不影响扫描结果。</p>
+`,
+    contentEn: `
+<p>Your X data archive is the <strong>only way</strong> to clean up tweets older than the ~3,200-tweet limit and to run a privacy check — scrolling through the UI will never get you there.</p>
+
+<h2>Why you need the archive</h2>
+<ul>
+  <li><strong>X only lets you delete the most recent ~3,200 tweets</strong> — older ones are invisible in the UI; only the archive has them.</li>
+  <li><strong>The archive holds your full history</strong> — every tweet, retweet, like, and media file since 2009.</li>
+  <li><strong>A privacy check must be archive-based</strong> — only by parsing the archive can you scan for phone numbers, addresses, locations, and other risky content.</li>
+</ul>
+
+<h2>4 steps to download your X archive (2026)</h2>
+
+<h3>Step 1: Sign in and open settings</h3>
+<p>Open X (twitter.com) → left menu → <strong>More</strong> → <strong>Settings and privacy</strong>.</p>
+
+<h3>Step 2: Find the data download entry</h3>
+<p>Settings → <strong>Your account</strong> → <strong>Download an archive of your data</strong>. X will ask you to re-verify your password and email.</p>
+
+<h3>Step 3: Request the archive and wait</h3>
+<p>Click <strong>Request archive</strong> → X processes your full history. Depending on account size this takes from a few hours to 1-2 days; you'll get an email or in-app notification with a link valid for ~24 hours.</p>
+
+<h3>Step 4: Download and unzip</h3>
+<p>Open the link → download the ZIP (can be hundreds of MB) → unzip and you'll find:</p>
+<ul>
+  <li><strong>tweets.js</strong> — all tweets (dates, text, URLs, media references); the core file for a privacy check</li>
+  <li><strong>data/ folder</strong> — images, videos, profile media</li>
+  <li><strong>account.js / following.js etc.</strong> — profile, follow lists, and other metadata</li>
+</ul>
+
+<h2>After you have the archive</h2>
+<p>Hand the ZIP (or the unzipped folder) to a digital footprint check tool — it parses the archive <strong>on your own device</strong>, scans for phone numbers, emails, addresses, locations, and other risky content, and produces a 0-100 health score plus a risk list. Your data never leaves your computer.</p>
+
+<h2>FAQ</h2>
+
+<h3>Does downloading the archive cost money?</h3>
+<p>No — it's an official, free X feature.</p>
+
+<h3>Does the archive include deleted tweets?</h3>
+<p>No — deleted tweets are gone and won't appear. If you deleted tweets before, they are permanently removed.</p>
+
+<h3>How often is the archive generated?</h3>
+<p>Each time you request it, X generates a fresh copy. A good cadence is every 3-6 months for a routine check.</p>
+
+<h3>Can I just upload tweets.js instead of the whole folder?</h3>
+<p>Yes — tweets.js holds all the text data and is what a check tool mainly uses; media files don't affect the scan.</p>
+`,
+  },
+]

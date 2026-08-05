@@ -426,6 +426,97 @@ export const allPosts: BlogPost[] = [
 <p>Yes — tweets.js holds all the text data and is what a check tool mainly uses; media files don't affect the scan.</p>
 `,
   },
+  {
+    slug: 'whats-inside-x-archive-tweets-js',
+    title: '归档文件里到底有什么？tweets.js 大揭秘',
+    excerpt:
+      'X 数据归档解压后，tweets.js 是最重要的文件——里面是全部推文的结构化数据。本文拆解它的内部格式（window.YTD.tweets 数组、每条的 createdAt/full_text/entities 字段），以及它如何支撑隐私体检。',
+    date: '2026-08-06',
+    updatedAt: '2026-08-06',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', 'tweets.js', '数据归档', '隐私体检'],
+    canonical: '/blog/whats-inside-x-archive-tweets-js',
+    titleEn: "What's Inside the X Archive? tweets.js Explained",
+    excerptEn:
+      'After you download your X archive, tweets.js is the file that matters — structured JSON of every tweet you ever posted. This post breaks down its internal format and how a privacy check reads it.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'tweets.js', 'data archive', 'privacy check'],
+    content: `
+<p>X（Twitter）数据归档解压后你会看到一堆文件，但真正藏着你全部隐私痕迹的是 <strong>tweets.js</strong>。这篇把它彻底拆开：里面长什么样、每个字段什么意思、以及为什么隐私体检只看它就够。</p>
+
+<h2>tweets.js 是什么</h2>
+<p>它是 X 官方导出的<strong>全部推文的结构化数据</strong>，格式是 JavaScript 赋值语句：<code>window.YTD.tweets.part0 = [ ... ]</code>，括号里是一个数组，数组里每个对象代表一条推文。隐私体检工具就是解析这个数组。</p>
+
+<h2>每条推文里有什么</h2>
+<ul>
+  <li><strong>created_at</strong>——发布时间（UTC 字符串，例如 "Fri Jan 15 02:45:00 +0000 2010"）</li>
+  <li><strong>full_text</strong>——推文全文，手机号、邮箱、住址等风险内容主要藏在这里</li>
+  <li><strong>entities</strong>——URL、媒体、提及的结构化引用（截图里的网址也在此）</li>
+  <li><strong>id_str</strong>——推文唯一 ID，删除操作按它定位</li>
+  <li><strong>retweeted_status / in_reply_to_status_id</strong>——转发、回复的关联信息</li>
+</ul>
+
+<h2>为什么它支撑隐私体检</h2>
+<p>体检原理很简单：逐条扫描 <code>full_text</code> 和 <code>entities</code>，用正则与规则匹配手机号、邮箱、地址、定位和敏感话题，给每条推文打风险标签（<code>phone</code>/<code>address</code>/<code>location</code>/<code>sensitive</code>），再汇总成 0-100 健康评分。整个过程在<strong>你本机</strong>完成，tweets.js 不出你的电脑。</p>
+
+<h2>归档里还有哪些文件</h2>
+<ul>
+  <li><strong>data/ 目录</strong>——图片、视频、头像等媒体（不影响文本扫描）</li>
+  <li><strong>account.js</strong>——账号资料（用户名、创建时间、邮箱前缀掩码）</li>
+  <li><strong>following.js / follower.js</strong>——关注与被关注列表</li>
+  <li><strong>direct-messages.js</strong>——私信（同样含敏感内容）</li>
+</ul>
+
+<h2>常见问题（FAQ）</h2>
+
+<h3>tweets.js 能直接打开看吗？</h3>
+<p>可以，但建议用工具解析——文件可能几 MB 到几十 MB，人眼翻不完。交给数字足迹体检，几分钟出结果。</p>
+
+<h3>tweets.js 包含已删除的推文吗？</h3>
+<p>包含<strong>你删除之前</strong>的推文。归档是你账号在导出时刻的快照，已删推文若在导出前删掉就不在内；但更早的、平台 3,200 条限制之外的历史推文，这里都有。</p>
+
+<h3>只上传 tweets.js 够吗？</h3>
+<p>够。隐私体检的核心是文本扫描，tweets.js 包含全部文本与 URL；媒体文件不参与扫描。</p>
+`,
+    contentEn: `
+<p>After you unzip your X archive, the file that actually matters is <strong>tweets.js</strong> — structured data of every tweet you've ever posted. This post opens it up: what the format looks like, what each field means, and why a privacy check only needs this one file.</p>
+
+<h2>What tweets.js is</h2>
+<p>It's X's official export of your full tweet history as structured data. The format is a JavaScript assignment: <code>window.YTD.tweets.part0 = [ ... ]</code> — an array where each object is one tweet. A privacy-check tool parses this array.</p>
+
+<h2>What's inside each tweet</h2>
+<ul>
+  <li><strong>created_at</strong> — posting time (UTC string, e.g. "Fri Jan 15 02:45:00 +0000 2010")</li>
+  <li><strong>full_text</strong> — the tweet body; phone numbers, emails and addresses mostly hide here</li>
+  <li><strong>entities</strong> — structured references to URLs, media, mentions</li>
+  <li><strong>id_str</strong> — unique tweet ID; deletions target it</li>
+  <li><strong>retweeted_status / in_reply_to_status_id</strong> — retweet and reply links</li>
+</ul>
+
+<h2>Why it powers a privacy check</h2>
+<p>The check is simple: scan <code>full_text</code> and <code>entities</code> tweet by tweet, match phones, emails, addresses, locations and sensitive topics, tag each tweet (<code>phone</code>/<code>address</code>/<code>location</code>/<code>sensitive</code>), then roll everything into a 0-100 health score. All of it runs <strong>on your device</strong> — tweets.js never leaves your computer.</p>
+
+<h2>What else is in the archive</h2>
+<ul>
+  <li><strong>data/ folder</strong> — images, videos, profile media (irrelevant to text scanning)</li>
+  <li><strong>account.js</strong> — profile info (handle, creation date, masked email prefix)</li>
+  <li><strong>following.js / follower.js</strong> — follow lists</li>
+  <li><strong>direct-messages.js</strong> — DMs (equally sensitive)</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>Can I open tweets.js directly?</h3>
+<p>You can, but a tool is better — the file can be several MB to tens of MB. Hand it to a digital footprint check and get results in minutes.</p>
+
+<h3>Does tweets.js include deleted tweets?</h3>
+<p>It includes anything that existed at export time. The archive is a snapshot — tweets deleted before export won't appear, but the old history beyond X's ~3,200-tweet delete limit is all there.</p>
+
+<h3>Is uploading just tweets.js enough?</h3>
+<p>Yes. The check is text-based; tweets.js has all the text and URLs, and media files don't affect the scan.</p>
+`,
+  },
 ]
 
 export function getPost(slug: string): BlogPost | undefined {

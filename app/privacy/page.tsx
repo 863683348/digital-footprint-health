@@ -63,6 +63,7 @@ export default function PrivacyPage() {
           <li><strong>Waffo：</strong>用于处理支付，受 Waffo 的<a href="https://waffo.ai/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
           <li><strong>Google Analytics：</strong>用于网站分析，受 Google 的<a href="https://policies.google.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
           <li><strong>Vercel：</strong>网站托管在 Vercel 上，受 Vercel 的<a href="https://vercel.com/privacy" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">隐私政策</a>约束。</li>
+          <li><strong>Google AdSense：</strong>本网站展示由 Google AdSense（第三方广告服务商）投放的广告。Google 及其合作伙伴可能使用 Cookie（包括 DART Cookie）及类似技术，根据您对本站及其他网站的访问记录向您投放广告，并衡量广告效果。您可以通过 Google 广告设置（<a href="https://www.google.com/settings/ads" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://www.google.com/settings/ads</a>）或 Your Online Choices（<a href="http://www.aboutads.info/choices" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">http://www.aboutads.info/choices</a>）退出个性化广告。关于 Google 如何使用数据，请参阅其广告隐私政策（<a href="https://policies.google.com/technologies/ads" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">https://policies.google.com/technologies/ads</a>）。</li>
         </ul>
       </section>
 

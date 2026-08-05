@@ -130,6 +130,59 @@ export default function HomePage() {
         </ul>
       </section>
 
+      <section className="space-y-4 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">如何从 X（Twitter）导出你的数据归档</h2>
+        <p className="t-5 text-ink-soft">
+          生成"数字足迹体检报告"的第一步，是把你在 X 上的历史数据下载到本地。整个过程由 X 官方提供，免费且无需任何第三方授权：
+        </p>
+        <ol className="list-decimal list-inside space-y-1.5 t-5 text-ink-soft">
+          <li>登录 X，进入「设置与隐私 → 你的账户 → 下载你的数据」。</li>
+          <li>点击「请求数据归档」，X 会在几分钟到数小时内把打包链接发到你的注册邮箱。</li>
+          <li>打开邮件中的链接，下载得到一份 <code className="mono">X-data-archive.zip</code>，解压后找到 <code className="mono">data/tweets.js</code> 或 <code className="mono">tweets.csv</code>。</li>
+          <li>把该文件拖入本工具的「上传归档」区域，即可在浏览器本地完成解析与体检——文件不会上传到任何服务器。</li>
+        </ol>
+        <p className="t-5 text-ink-soft">
+          整个过程都在你的设备本地完成：归档文件不会离开浏览器，体检结果只保存在你自己的机器里，解析和扫描也不依赖联网。
+        </p>
+      </section>
+
+      <section className="space-y-4 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">真实场景：数字足迹体检能帮你解决什么</h2>
+        <div className="space-y-3 t-5 text-ink-soft">
+          <p>
+            <strong>场景一 · 重新包装个人品牌。</strong> 一位 freelancer 在换赛道前，用本工具扫描出 300 多条早年吐槽前雇主、暴露真实姓名的推文，批量删除后安心开启新账号，避免了被新客户"挖坟"。
+          </p>
+          <p>
+            <strong>场景二 · 防范人肉搜索。</strong> 一位普通用户发现自己的多条推文无意中带出了家庭住址附近的地标、常去健身房和子女学校，及时删除并调整了发推习惯，降低了被定位的风险。
+          </p>
+          <p>
+            <strong>场景三 · 注销前的清理。</strong> 准备停用 X 账号的人，先用工具导出并体检，确认没有遗留可识别身份的敏感信息，再执行注销，避免"人走了痕迹还在"。
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-3 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">常见问题（FAQ）</h2>
+        <dl className="space-y-3 t-5 text-ink-soft">
+          <div>
+            <dt className="font-semibold text-ink">体检报告会泄露我的推文吗？</dt>
+            <dd className="mt-1">不会。所有解析与扫描都在你的浏览器本地完成，归档文件不会上传到任何服务器，结果也只保存在你自己的设备里。</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">支持中文以外的语言吗？</dt>
+            <dd className="mt-1">支持。工具界面与报告均提供中文和英文，可随时切换；推文内容本身的语言不影响扫描。</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">批量删除安全吗？会不会误删？</dt>
+            <dd className="mt-1">删除前你可以逐条确认风险推文，只有你主动勾选并确认的条目才会被删除；删除动作通过 X 官方接口执行，过程透明可控。</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">免费的吗？有次数限制吗？</dt>
+            <dd className="mt-1">基础体检免费，可反复使用；高阶功能（如更大归档、批量删除额度）可在定价页查看对应方案。</dd>
+          </div>
+        </dl>
+      </section>
+
       <AdUnit slot={HOME_AD_SLOT} className="mt-2" minHeight="120px" />
     </div>
   );

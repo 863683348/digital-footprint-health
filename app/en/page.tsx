@@ -146,6 +146,68 @@ export default function EnglishHomePage() {
         </ul>
       </section>
 
+      <section className="space-y-4 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">How to download your X data archive</h2>
+        <p className="t-5 text-ink-soft">
+          The first step to a footprint checkup is downloading your history from X. It is an
+          official, free X feature — no third-party access is ever required:
+        </p>
+        <ol className="list-decimal list-inside space-y-1.5 t-5 text-ink-soft">
+          <li>Sign in to X, then go to Settings and privacy → Your account → Download an archive of your data.</li>
+          <li>Click Request archive. X packages your full history and emails you a download link — usually within minutes to a few hours.</li>
+          <li>Open the email link and download the ZIP. Unzip it and find <code className="mono">data/tweets.js</code> or <code className="mono">tweets.csv</code>.</li>
+          <li>Drop the file into the upload area of this tool. It is parsed entirely in your browser — the file is never uploaded to any server.</li>
+        </ol>
+        <p className="t-5 text-ink-soft">
+          Everything runs on your device: the archive never leaves your browser, the report is
+          saved only on your machine, and the scan works without any network round-trips.
+        </p>
+      </section>
+
+      <section className="space-y-4 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">Real scenarios: what a footprint checkup solves</h2>
+        <div className="space-y-3 t-5 text-ink-soft">
+          <p>
+            <strong>Scenario 1 · Rebranding.</strong> Before switching careers, a freelancer
+            scanned their account and found 300+ old tweets that badmouthed a former employer and
+            exposed their real name. After batch deletion they started fresh with confidence — no
+            more "digging up dirt" by new clients.
+          </p>
+          <p>
+            <strong>Scenario 2 · Doxxing defense.</strong> A regular user discovered tweets that
+            hinted at home-area landmarks, their usual gym, and their kids' school. Removing those
+            posts — and adjusting how they post — significantly cut their real-world exposure.
+          </p>
+          <p>
+            <strong>Scenario 3 · Before deactivating.</strong> Someone closing their X account
+            exported and checked their history first, confirmed no identifying information
+            remained, then deactivated — so their "digital ghost" was not left behind.
+          </p>
+        </div>
+      </section>
+
+      <section className="space-y-3 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">Frequently asked questions</h2>
+        <dl className="space-y-3 t-5 text-ink-soft">
+          <div>
+            <dt className="font-semibold text-ink">Will the report leak my tweets?</dt>
+            <dd className="mt-1">No. All parsing and scanning happens locally in your browser. Your archive is never uploaded to a server, and the report stays on your own device.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Is English supported?</dt>
+            <dd className="mt-1">Yes — the interface and report are available in both English and Chinese, and you can switch at any time. The language of your tweets does not affect the scan.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Is bulk deletion safe? Could it delete the wrong tweets?</dt>
+            <dd className="mt-1">You review risky tweets one by one before anything is deleted. Only tweets you explicitly select and confirm are removed, through X's official API — transparent and under your control at every step.</dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-ink">Is it free? Is there a limit?</dt>
+            <dd className="mt-1">The basic checkup is free and repeatable. Advanced features (larger archives, more deletion quota) are available on the pricing page.</dd>
+          </div>
+        </dl>
+      </section>
+
       {/* Internal links for SEO */}
       <section className="border-t border-line pt-6">
         <h2 className="t-4 font-semibold mb-3">Learn more</h2>

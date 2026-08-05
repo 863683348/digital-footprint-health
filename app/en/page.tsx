@@ -130,6 +130,22 @@ export default function EnglishHomePage() {
         </div>
       </section>
 
+      <section className="space-y-4 border-t border-line pt-6">
+        <h2 className="t-4 font-semibold">Why run a digital-footprint checkup</h2>
+        <p className="t-5 text-ink-soft">
+          Years of tweets can unintentionally reveal your phone number, home address, daily locations, real name, and even political or religious leanings. Once indexed by search engines or browsed by strangers, that trail can lead to spam, scams, or unwanted exposure. Digital Footprint Health finds these hidden landmines in one pass.
+        </p>
+        <p className="t-5 text-ink-soft">
+          Everything runs locally in your browser: your archive is never uploaded to any server, and the report stays on your own device. You can review risky tweets one by one or batch-delete them after confirmation — you stay in control the whole time.
+        </p>
+        <h2 className="t-4 font-semibold pt-2">Who it is for</h2>
+        <ul className="list-disc list-inside space-y-1.5 t-5 text-ink-soft">
+          <li>Anyone rebranding or cleaning up their personal history on X</li>
+          <li>Privacy-conscious users worried about doxxing or phishing</li>
+          <li>Accounts that need to batch-delete old tweets and reduce digital risk</li>
+        </ul>
+      </section>
+
       {/* Internal links for SEO */}
       <section className="border-t border-line pt-6">
         <h2 className="t-4 font-semibold mb-3">Learn more</h2>

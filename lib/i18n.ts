@@ -19,6 +19,8 @@ const zh: Record<string, string> = {
   'nav.faq': '常见问题',
   'nav.privacy': '隐私政策',
   'nav.about': '关于我们',
+  'nav.terms': '服务条款',
+  'nav.contact': '联系我们',
   'nav.breadcrumb.aria': '面包屑导航',
 
   'auth.signin': '登录',
@@ -279,6 +281,8 @@ const en: Record<string, string> = {
   'nav.faq': 'FAQ',
   'nav.privacy': 'Privacy',
   'nav.about': 'About',
+  'nav.terms': 'Terms',
+  'nav.contact': 'Contact',
   'nav.breadcrumb.aria': 'Breadcrumb',
 
   'auth.signin': 'Sign in',

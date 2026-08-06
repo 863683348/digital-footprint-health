@@ -517,6 +517,93 @@ export const allPosts: BlogPost[] = [
 <p>Yes. The check is text-based; tweets.js has all the text and URLs, and media files don't affect the scan.</p>
 `,
   },
+  {
+    slug: 'why-can-you-only-delete-3200-tweets',
+    title: '为什么只能删 3,200 条？X 的硬限制与破解',
+    excerpt:
+      'X 的删除接口只允许你动最近 3,200 条推文，更早的历史推文在界面上"删不到"。但你的数据归档里有全部历史——用归档批量删除，就是绕过这堵墙的正规路子。',
+    date: '2026-08-07',
+    updatedAt: '2026-08-07',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '3200 限制', '批量删推', '数据归档'],
+    canonical: '/blog/why-can-you-only-delete-3200-tweets',
+    titleEn: 'Why Can You Only Delete 3,200 Tweets? The Wall and How to Beat It',
+    excerptEn:
+      'X\'s delete path only touches your most recent 3,200 tweets — older history is unreachable in the UI. Your data archive contains everything, though, and batch-deleting from the archive is the legitimate way around the wall.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', '3200 limit', 'bulk delete', 'data archive'],
+    content: `
+<p>很多人第一次想清理自己 X（Twitter）账号的时候，都会撞上同一堵墙：<strong>3,200 条限制</strong>。界面里往前翻，最多翻到大约 3,200 条，再早的推文就好像不存在一样。删除操作也一样——你只能删最近这 3,200 条，更早的想删都删不到。这篇讲清这堵墙是怎么回事，以及怎么正规地绕过它。</p>
+
+<h2>3,200 条限制到底卡在哪一层</h2>
+<p>限制不在你的账号里，而在接口层。X 的公开接口（包括网页端和 App 用的那套）出于性能和商业考虑，只提供最近约 3,200 条推文的分页访问。你看到的"删完了"，只是把最近这 3,200 条删光了；更早的历史推文还在，只是没有入口。</p>
+<p>注意区分：你的<strong>数据归档</strong>（Settings → Your account → Download an archive）里是全部历史，不受 3,200 限制。这也是为什么隐私体检工具能扫到十年前的老推文——它读的是归档，不是网页。</p>
+
+<h2>为什么这堵墙值得认真对待</h2>
+<ul>
+  <li>老推文是隐私重灾区：十年前随手发的手机号、住址、打卡定位，现在还挂在网上</li>
+  <li>搜索引擎会索引旧推文：招聘方、背景调查方搜得到你早已忘记的内容</li>
+  <li>手动删不现实：几千条推文逐条删，一天都删不完，而且永远删不到 3,200 条以外的</li>
+</ul>
+
+<h2>正规破解：用归档 + 批量删除</h2>
+<p>绕过 3,200 限制的合法路径只有一条：先下载完整数据归档，从归档里拿到全部推文 ID，再对每一条调用删除接口。步骤是：</p>
+<ol>
+  <li><strong>下载归档</strong>：设置 → 你的账号 → 下载数据归档。X 打包可能需要几小时到一两天，做好心理准备</li>
+  <li><strong>解析 tweets.js</strong>：归档里所有推文 ID 和全文都在这个文件里（详见我们之前写的 <a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 拆解</a>）</li>
+  <li><strong>批量删除</strong>：用脚本或工具按 ID 逐条删除。速度取决于 X 的接口限流，通常每分钟能删几十到几百条</li>
+  <li><strong>验证</strong>：删完后重新下载一份归档，确认旧内容确实没了</li>
+</ol>
+<p>这一步之后，你的账号才是真正清空了——包括 3,200 条之外的旧账。</p>
+
+<h2>常见问题（FAQ）</h2>
+
+<h3>3,200 条限制会永久存在吗？</h3>
+<p>短期内不会消失。这是接口设计层面的限制，除非 X 重做时间线 API，否则旧推文只能通过归档访问。</p>
+
+<h3>删除后真的消失了吗？</h3>
+<p>删除会从公开界面和搜索结果中移除；已删内容是否残留于第三方缓存属于另一个话题。至少你自己的账号层面是清干净了。</p>
+
+<h3>批量删除会被封号吗？</h3>
+<p>按正常速率逐条删除是合规操作，X 官方文档也支持通过 API 删除自己的推文。真正危险的是超高速率的第三方"清粉删推"工具，注意别用那些。</p>
+`,
+    contentEn: `
+<p>The first time most people try to clean up their X (Twitter) account, they hit the same wall: the <strong>3,200 tweet limit</strong>. Scroll back far enough in the UI and the timeline simply stops around 3,200 tweets, as if the older ones never existed. Deletion works the same way — you can only delete the most recent 3,200, and anything older is unreachable. This post explains where the wall lives and how to get around it legitimately.</p>
+
+<h2>Where the 3,200 limit actually sits</h2>
+<p>The limit is not on your account. It lives at the API layer: X's public endpoints (including the ones the web app and mobile app use) only page through roughly the most recent 3,200 tweets, for performance and commercial reasons. When the UI says "you're caught up," it means the recent window is empty — older history still exists, it just has no entry point.</p>
+<p>One important distinction: your <strong>data archive</strong> (Settings → Your account → Download an archive) contains your full history, with no 3,200 cap. That is why a privacy check tool can scan decade-old tweets — it reads the archive, not the web timeline.</p>
+
+<h2>Why the wall is worth caring about</h2>
+<ul>
+  <li>Old tweets are privacy landmines: phone numbers, home addresses, and check-ins posted years ago are still live</li>
+  <li>Search engines index old tweets: recruiters and background checkers can find things you forgot you posted</li>
+  <li>Manual deletion is hopeless: thousands of tweets one by one, and it never reaches past 3,200 anyway</li>
+</ul>
+
+<h2>The legitimate workaround: archive + bulk delete</h2>
+<p>There is exactly one legal path around the 3,200 wall: download your full archive, collect every tweet ID from it, then call the delete endpoint for each one. The steps:</p>
+<ol>
+  <li><strong>Download the archive</strong>: Settings → Your account → Download data archive. X can take hours to a couple of days to pack it — plan accordingly</li>
+  <li><strong>Parse tweets.js</strong>: every tweet ID and full text lives in this file (see our <a href="/blog/whats-inside-x-archive-tweets-js">tweets.js deep dive</a>)</li>
+  <li><strong>Bulk delete</strong>: run a script or tool that deletes by ID, respecting X's rate limits — typically tens to hundreds per minute</li>
+  <li><strong>Verify</strong>: download a fresh archive afterwards and confirm the old content is actually gone</li>
+</ol>
+<p>After that, your account is truly clean — including everything beyond the 3,200 window.</p>
+
+<h2>FAQ</h2>
+
+<h3>Will the 3,200 limit ever go away?</h3>
+<p>Not anytime soon. It is baked into the API design; unless X rebuilds the timeline endpoints, old tweets stay archive-only.</p>
+
+<h3>Are deleted tweets really gone?</h3>
+<p>Deletion removes them from public views and search results. Whether third-party caches still hold copies is a separate story — at the account level, though, you are clean.</p>
+
+<h3>Can bulk deletion get me banned?</h3>
+<p>Deleting your own tweets at a normal rate is supported by X's API and is not a violation. What gets accounts flagged is third-party tools that hammer the API at extreme speeds — avoid those.</p>
+`,
+  },
 ]
 
 export function getPost(slug: string): BlogPost | undefined {

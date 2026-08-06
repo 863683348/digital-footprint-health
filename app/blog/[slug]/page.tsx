@@ -37,6 +37,8 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPost(slug);
   if (!post) notFound();
 
+  const relatedPosts = allPosts.filter((p) => p.slug !== post.slug).slice(0, 4);
+
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': ['Article', 'HowTo'],
@@ -112,6 +114,19 @@ export default async function BlogPostPage({ params }: Props) {
             </span>
           ))}
         </footer>
+
+        <section className="border-t border-line pt-6 mt-6">
+          <h2 className="t-3 font-bold mb-3">相关阅读</h2>
+          <ul className="space-y-2">
+            {relatedPosts.map((p) => (
+              <li key={p.slug}>
+                <Link href={p.canonical} className="text-primary hover:underline">
+                  {p.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </article>
     </>
   );

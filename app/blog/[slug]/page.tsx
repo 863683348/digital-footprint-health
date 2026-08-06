@@ -56,6 +56,7 @@ export default async function BlogPostPage({ params }: Props) {
       name: 'Digital Footprint Health Report',
       url: SITE_URL,
     },
+    image: SITE_URL + '/opengraph-image.png',
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': `${SITE_URL}${post.canonical}`,

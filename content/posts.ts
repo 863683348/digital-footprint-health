@@ -604,6 +604,115 @@ export const allPosts: BlogPost[] = [
 <p>Deleting your own tweets at a normal rate is supported by X's API and is not a violation. What gets accounts flagged is third-party tools that hammer the API at extreme speeds — avoid those.</p>
 `,
   },
+  {
+    slug: 'digital-footprint-health-score',
+    title: '0-100 健康评分：你的数字足迹有多"健康"',
+    excerpt:
+      '数字足迹体检的核心输出是一个 0-100 的健康评分：扣分项包括暴露的手机号、邮箱、住址、定位打卡和敏感话题。这篇讲评分怎么算、什么行为最扣分、以及怎么把分数救回来。',
+    date: '2026-08-08',
+    updatedAt: '2026-08-08',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '健康评分', '隐私体检'],
+    canonical: '/blog/digital-footprint-health-score',
+    titleEn: 'Your 0-100 Score: How Healthy Is Your Digital Footprint?',
+    excerptEn:
+      'The core output of a digital footprint check is a 0-100 health score. Deductions come from exposed phone numbers, emails, home addresses, check-ins, and sensitive topics. This post explains how the score works, what costs you points, and how to get it back up.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'health score', 'privacy check'],
+    content: `
+<p>体检报告拿到手，第一个看的永远是那个数字：<strong>0-100 的数字化足迹健康评分</strong>。它把"我的旧推文有没有问题"这个模糊的问题，变成一个可以比较、可以追踪的分数。这篇讲清楚评分是怎么算出来的、哪些行为最扣分，以及把分数救回来要做什么。</p>
+
+<h2>评分是怎么来的</h2>
+<p>评分不是玄学，是对你 X 数据归档逐条扫描后的加权结果。工具会识别出推文里包含的隐私敏感信息，按风险等级扣分：</p>
+<ul>
+  <li><strong>高危险</strong>：手机号、家庭住址、身份证件号——单条就扣大头</li>
+  <li><strong>中危险</strong>：邮箱、精确定位打卡、裸照类敏感内容</li>
+  <li><strong>低危险</strong>：工作吐槽、政治/宗教观点、可推断出身份的信息</li>
+</ul>
+<p>0 分意味着账号里几乎全是公开敏感信息；100 分意味着扫描后没有发现明显的隐私暴露。多数人第一次扫描在 40-70 分之间——不是因为你"脏"，而是因为十年推文里总会攒下几颗雷。</p>
+
+<h2>什么最扣分：一个真实分布</h2>
+<table>
+  <tr><th>风险类型</th><th>占比（典型账号）</th><th>单条扣分</th></tr>
+  <tr><td>手机号</td><td>1-3%</td><td>重</td></tr>
+  <tr><td>邮箱</td><td>2-5%</td><td>中</td></tr>
+  <tr><td>住址/门牌</td><td>0.5-2%</td><td>重</td></tr>
+  <tr><td>定位打卡</td><td>5-15%</td><td>中</td></tr>
+  <tr><td>敏感话题</td><td>10-30%</td><td>轻</td></tr>
+</table>
+<p>注意：扣分看的是<strong>风险条数 × 风险等级</strong>，不是推文总量。一个 2014 年手滑发出的手机号，比一百条无关紧要的日常推文都更拉分。</p>
+
+<h2>为什么 3,200 条限制让评分变得必要</h2>
+<p>手动删除永远只碰得到最近 3,200 条，而风险最高的老推文恰恰在更早的历史里（详见我们之前写的 <a href="/blog/why-can-you-only-delete-3200-tweets">3,200 条限制拆解</a>）。体检读的是完整归档，所以评分覆盖全部历史——这也是"评分 + 批量删除"要配套用的原因：先让分数告诉你问题在哪，再按风险优先级清理。</p>
+
+<h2>怎么把分数救回来</h2>
+<ol>
+  <li><strong>按风险排序删</strong>：先删手机号、住址这类高危险推文，分数回升最快</li>
+  <li><strong>处理定位打卡</strong>：旅行晒图是重灾区，批量删掉打卡类推文</li>
+  <li><strong>白名单保留</strong>：有纪念意义的推文留下，别一刀切</li>
+  <li><strong>定期复查</strong>：每季度重新扫描一次，把新增的暴露及时清掉</li>
+</ol>
+<p>分数回到 90+ 并不是"完美"，而是"当前扫描没发现明显暴露"。数字足迹是动态的，评分是体检表，不是毕业证——保持定期复查的习惯，比追求一次性的 100 分更重要。想从零开始，先看这篇<a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>。</p>
+
+<h2>常见问题（FAQ）</h2>
+
+<h3>100 分代表绝对安全吗？</h3>
+<p>不代表。它只说明扫描范围内没有发现已识别的敏感信息模式。第三方缓存、已删内容的残留属于另一个话题，评分覆盖的是你账号内仍然可见的内容。</p>
+
+<h3>评分会因为我发新推文而变低吗？</h3>
+<p>会。如果你新发的推文里又带了手机号、定位或敏感话题，分数会相应下降。这也是为什么建议定期复查，而不是只做一次。</p>
+
+<h3>怎么知道哪条推文扣了分？</h3>
+<p>体检报告会按风险标签列出具体推文和原文，并标出命中的敏感字段。你可以逐条核对后再决定删除，避免误删。</p>
+`,
+    contentEn: `
+<p>The first thing anyone looks at in a footprint report is the number: a <strong>0-100 digital footprint health score</strong>. It turns the vague question "are my old tweets a problem?" into something you can compare and track over time. This post explains how the score is calculated, what costs you points, and what it takes to bring it back up.</p>
+
+<h2>Where the score comes from</h2>
+<p>The score is not a vibe. It is a weighted result of scanning your X archive tweet by tweet. The tool detects privacy-sensitive information and deducts points by risk level:</p>
+<ul>
+  <li><strong>High risk</strong>: phone numbers, home addresses, ID numbers — each one is a big deduction</li>
+  <li><strong>Medium risk</strong>: emails, precise location check-ins, sensitive media</li>
+  <li><strong>Low risk</strong>: workplace rants, political or religious opinions, anything that could identify you indirectly</li>
+</ul>
+<p>0 means your account is almost all exposed sensitive information; 100 means the scan found no obvious exposure. Most people land between 40 and 70 on their first scan. Not because you are "dirty" — because ten years of tweets always accumulate a few landmines.</p>
+
+<h2>What costs the most: a typical distribution</h2>
+<table>
+  <tr><th>Risk type</th><th>Share (typical account)</th><th>Per-tweet deduction</th></tr>
+  <tr><td>Phone number</td><td>1-3%</td><td>Heavy</td></tr>
+  <tr><td>Email</td><td>2-5%</td><td>Medium</td></tr>
+  <tr><td>Home address</td><td>0.5-2%</td><td>Heavy</td></tr>
+  <tr><td>Location check-in</td><td>5-15%</td><td>Medium</td></tr>
+  <tr><td>Sensitive topic</td><td>10-30%</td><td>Light</td></tr>
+</table>
+<p>Note that the score weighs <strong>risk count times risk level</strong>, not raw tweet volume. A phone number slipped out in 2014 costs more than a hundred harmless daily posts.</p>
+
+<h2>Why the 3,200 limit makes the score necessary</h2>
+<p>Manual deletion only ever touches the most recent 3,200 tweets, and the riskiest old content sits further back (see our <a href="/blog/why-can-you-only-delete-3200-tweets">3,200 limit deep dive</a>). A footprint check reads the full archive, so the score covers your whole history — which is why "score plus bulk delete" is the combo that works: let the score tell you where the problems are, then clean by risk priority.</p>
+
+<h2>How to bring the score back up</h2>
+<ol>
+  <li><strong>Delete by risk first</strong>: phone numbers and addresses first, fastest recovery</li>
+  <li><strong>Handle check-ins</strong>: travel posts are a minefield; batch-delete location-tagged tweets</li>
+  <li><strong>Whitelist what matters</strong>: keep the tweets with real meaning to you</li>
+  <li><strong>Re-check regularly</strong>: rescan quarterly and clear new exposures before they pile up</li>
+</ol>
+<p>Getting back above 90 does not mean "perfect," it means "no obvious exposure found in the current scan." A digital footprint is dynamic; the score is a checkup, not a diploma. Keeping a regular re-scan habit matters more than chasing a one-time 100. New to all this? Start with <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
+
+<h2>FAQ</h2>
+
+<h3>Does 100 mean I am absolutely safe?</h3>
+<p>No. It only means the scan found no recognized sensitive patterns in scope. Third-party caches and deleted-content residue are a separate story; the score covers what is still visible on your account.</p>
+
+<h3>Can my score drop as I keep posting?</h3>
+<p>Yes. New tweets with phone numbers, locations, or sensitive topics will lower it. That is why regular re-scans beat a one-time check.</p>
+
+<h3>How do I know which tweet cost me points?</h3>
+<p>The report lists flagged tweets by risk label with the original text and the matched sensitive field. You can review each one before deciding to delete, so you do not over-delete.</p>
+`,
+  },
 ]
 
 export function getPost(slug: string): BlogPost | undefined {

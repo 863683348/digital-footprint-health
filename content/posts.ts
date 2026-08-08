@@ -713,6 +713,52 @@ export const allPosts: BlogPost[] = [
 <p>The report lists flagged tweets by risk label with the original text and the matched sensitive field. You can review each one before deciding to delete, so you do not over-delete.</p>
 `,
   },
+  {
+    slug: 'phone-number-in-tweets-check',
+    title: '手机号暴露在推文里？体检怎么发现它',
+    excerpt:
+      '你的手机号可能就躺在一句十几年前的推文里，而你自己早就忘了。体检是怎么在几千条旧推文中找出它的？匹配逻辑、误报处理，以及发现后怎么办。',
+    date: '2026-08-09',
+    updatedAt: '2026-08-09',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '手机号', '隐私泄露', '数字足迹体检'],
+    canonical: '/blog/phone-number-in-tweets-check',
+    titleEn: 'Is Your Phone Number in Your Tweets? How the Check Finds It',
+    excerptEn:
+      'Your phone number may be sitting inside a tweet from a decade ago, and you have probably forgotten it exists. How the check finds it across thousands of old tweets, how it handles false positives, and what to do once it is found.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'phone number', 'privacy leak', 'footprint check'],
+    content: `
+<p>手机号是数字足迹里最危险的一类信息，因为它几乎无法回收：号码换不了，泄露了就是泄露了。而很多人不知道，自己的手机号可能就躺在一句十几年前的推文里——比如当年随手发过"打车打不到，谁打我电话 13X..."。这篇讲体检是怎么在几千条旧推文中把这种手机号找出来的，以及找到之后怎么办。</p>
+
+<h2>体检怎么发现推文里的手机号</h2>
+<p>逻辑比你想象的老实：体检会把每条推文的全文切成小块，然后跑两套匹配。第一套是格式识别，识别国际区号、号码分段和常见写法（包括用空格、短横线、括号分隔的变体）；第二套是上下文命中，比如"打我电话""call me""text me"+ 数字组合，这类推文即使格式不规范也会被捞出来。两套结果合并去重后，再按风险级别排序。</p>
+
+<h2>误报是怎么处理的</h2>
+<p>识别器会把一些不是手机号的数字也捞进来：订单号、账号 ID、电话号码列表里的座机号。处理方式是三层过滤：第一层排除明显过短或过长的数字串；第二层用号码库交叉验证区号和号段（比如区号不存在的直接判负）；第三层是把疑似项列进"待确认"清单，由你在报告里人工勾选，而不是直接当成泄露。所以报告的结论是"发现 N 条疑似，其中 M 条已确认"，不会一上来就吓你。</p>
+
+<h2>找到之后怎么办</h2>
+<ol>
+  <li><strong>优先删掉确认的推文</strong>：手机号的扣分权重最高，删一条的收益大于删一百条普通推文</li>
+  <li><strong>检查同账号的其他平台</strong>：同一个号码可能也在你的简介、置顶推文或回复里出现过，体检只扫推文正文</li>
+  <li><strong>评估是否要换号</strong>：如果号码和实名信息绑定很深（银行、外卖、社交验证），删除推文足够；如果被骚扰或人肉过，才考虑换号</li>
+  <li><strong>以后别发</strong>：发号前停三秒，这是唯一不需要补救的做法</li>
+</ol>
+<p>发现手机号在推文里只是第一步，删完之后记得重新体检一次确认干净。想先理解体检的整体逻辑，可以看 <a href="/blog/digital-footprint-health-score">0-100 健康评分</a> 那篇，或者从 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 开始。</p>
+
+<h2>FAQ</h2>
+
+<h3>体检能识别带空格的手机号吗？</h3>
+<p>能。识别器覆盖了空格、短横线、括号、国际区号等常见写法变体，不是只认纯数字连写。</p>
+
+<h3>座机号会被误报成手机号吗？</h3>
+<p>会有疑似项，但会被区号、号段交叉验证过滤，剩下无法确认的会进入"待确认"清单由你勾选，不会直接定性为泄露。</p>
+
+<h3>删掉手机号推文后我的号码还安全吗？</h3>
+<p>公开渠道删掉后，主要的搜索路径就断了。第三方缓存和存档站点是另一回事，但账号层面的暴露已经被清除。</p>
+`,
+  },
 ]
 
 export function getPost(slug: string): BlogPost | undefined {

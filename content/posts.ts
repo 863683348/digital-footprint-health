@@ -759,6 +759,78 @@ export const allPosts: BlogPost[] = [
 <p>公开渠道删掉后，主要的搜索路径就断了。第三方缓存和存档站点是另一回事，但账号层面的暴露已经被清除。</p>
 `,
   },
+  {
+    slug: 'address-location-tweets-risk',
+    title: '住址与定位：最危险的一类旧推文',
+    excerpt:
+      '定位推文的危险在于它是"可叠加的"：一条定位 + 一条工作 + 一条生日，生活半径就拼出来了。体检怎么识别这类推文、为什么它们最危险、以及怎么清理。',
+    date: '2026-08-10',
+    updatedAt: '2026-08-10',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '定位', '住址', '数字足迹体检'],
+    canonical: '/blog/address-location-tweets-risk',
+    titleEn: 'Addresses and Locations: The Riskiest Old Tweets',
+    excerptEn:
+      'Location tweets stack: one location tweet plus one work tweet plus one birthday tweet maps your life radius. How the check finds them, why they are riskier than they look, and how to clean up.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'location', 'address', 'footprint check'],
+    content: `
+<p>如果说手机号是数字足迹里最贵的一类信息，那 location in tweets 就是最危险的一类。原因很简单：手机号泄露是"号码被知道了"，住址泄露是"你家被知道了"。一条十年前随手发的定位推文，配合其他公开信息，足以把一个人从互联网上"找出来"。这篇讲体检怎么识别这类推文、为什么它们最危险、以及怎么清理。</p>
+
+<h2>为什么定位推文比想象中危险</h2>
+<p>先看一个常见误区：很多人觉得"我又没发过家庭住址"。但推文里的定位不一定是文字，还有三种隐蔽形态：</p>
+<ul>
+  <li>平台定位标签：发推时附带的 GPS 坐标，精确到街区和时间</li>
+  <li>照片 EXIF：手机照片自带拍摄地点，部分平台的缩略图会暴露</li>
+  <li>文本里的位置：随口一句"刚从 XX 小区门口路过""在 XX 医院陪床"，都是线索</li>
+</ul>
+<p>单独看每一条都很"普通"，但组合起来就是一张移动轨迹。address in tweets 的危险在于它是"可叠加的"：一条定位推文 + 一条工作相关推文 + 一条生日相关推文，你的生活半径就拼出来了。</p>
+
+<h2>体检怎么识别定位类推文</h2>
+<p>识别逻辑分三层：</p>
+<ol>
+  <li><strong>坐标与标签</strong>：直接命中推文自带的 GPS 定位标签和地点标签</li>
+  <li><strong>地点名匹配</strong>：识别文本中的省市、街道、小区、地标名称，与常用地点库比对</li>
+  <li><strong>时间-地点关联</strong>：把定位推文与同一时段的其他推文关联，判断这条推文暴露的是"路过"还是"常驻"</li>
+</ol>
+<p>第三层最关键：在某个城市出差一周的定位推文，和连续 20 条深夜发在同一个小区附近的推文，风险等级完全不同。体检按"常驻地点"和"一次性地点"分开标注，而不是一刀切。</p>
+
+<h2>清理优先级：先动这三类</h2>
+<table>
+  <tr><th>优先级</th><th>推文类型</th><th>为什么</th></tr>
+  <tr><td>高</td><td>家庭住址相关（小区/楼栋/门牌）</td><td>直接暴露常驻地点，配合快递、外卖信息可定位到人</td></tr>
+  <tr><td>高</td><td>工作地点 + 通勤路线</td><td>暴露每日行踪规律，容易推算上下班时间</td></tr>
+  <tr><td>中</td><td>度假定位（含"不在家"信号）</td><td>等于公开告诉别人你家空着</td></tr>
+  <tr><td>低</td><td>公共场所打卡（餐厅、景点）</td><td>暴露的是过去，风险可控</td></tr>
+</table>
+
+<h2>清理之后还要做什么</h2>
+<p>删推文只是第一步。定位信息会被复制：第三方存档、截图、搜索引擎缓存。所以删完后：</p>
+<ol>
+  <li>在 X 的隐私设置里关闭"显示位置"默认开关，防止新推文继续带定位</li>
+  <li>检查照片上传设置，关闭照片地理位置信息</li>
+  <li>重新体检一次，确认没有残留的定位类推文</li>
+</ol>
+<p>把体检当作月度习惯，而不是一次性的"大扫除"。数字足迹是持续产生的，检查也要持续。</p>
+
+<h2>FAQ</h2>
+
+<h3>推文定位标签删掉推文就彻底消失了吗？</h3>
+<p>账号层面是的，但第三方存档（如 archive.org）和搜索引擎缓存可能还有残留。删除后做一次搜索自查，发现残留可以申请从存档移除。</p>
+
+<h3>体检能识别图片里的定位吗？</h3>
+<p>目前体检主要覆盖文本和推文元数据中的定位信息，图片 EXIF 需要结合照片元数据检测，属于更高阶的能力，正在迭代中。</p>
+
+<h3>我没发过定位，也需要担心吗？</h3>
+<p>需要。文本里的地名、照片位置、平台自动添加的定位标签都可能暴露位置，未必是你主动发的。建议做一次全量体检，看看"你以为的没有"和"实际上的有"差多少。</p>
+
+<h3>删掉定位推文会影响账号吗？</h3>
+<p>不会。删除推文不影响账号状态、粉丝和关注列表，只是内容不再公开可见。</p>
+
+<p>删完定位推文之后，记得做一次完整体检确认干净。想先理解体检的整体逻辑，可以看 <a href="/blog/digital-footprint-health-score">0-100 健康评分</a> 那篇，或者从 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 开始。如果你还没处理过手机号类推文，先看 <a href="/blog/phone-number-in-tweets-check">手机号暴露在推文里</a> 那篇，这两类是最值得优先清理的。</p>
+`,
+  },
 ]
 
 export function getPost(slug: string): BlogPost | undefined {

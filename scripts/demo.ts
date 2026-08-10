@@ -1,7 +1,8 @@
 // Headless demo of the MVP engine — no HTTP, no X credentials, no database.
 // Proves the stateless pipeline: parse -> score -> dry-run simulate.
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
-import { parseArchiveFile } from '../lib/parse';
+import { parseArchiveString } from '../lib/parse';
 import { scoreArchive } from '../lib/scoring';
 import { simulateDeletion } from '../lib/delete-sim';
 
@@ -12,7 +13,8 @@ function section(title: string) {
 }
 
 section('1. Parse archive');
-const parsed = parseArchiveFile(sample);
+const text = readFileSync(sample, 'utf8');
+const parsed = parseArchiveString(text, 'tweets.csv');
 console.log(`parsed ${parsed.length} tweets`);
 
 section('2. Score archive');

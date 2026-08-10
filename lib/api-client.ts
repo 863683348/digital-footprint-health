@@ -1,4 +1,4 @@
-import type { ArchiveData, BillingInfo } from './types';
+import type { BillingInfo } from './types';
 
 const BASE = '/api';
 
@@ -21,18 +21,9 @@ async function req<T>(path: string, init?: RequestInit): Promise<T> {
   return j.data as T;
 }
 
-// The server is now pure stateless compute:
-//  - uploadArchive: parse + score, returns the full archive (no DB write)
-//  - billing: static pricing config
-// All archive state thereafter lives in the browser (see lib/store.ts).
+// The browser parses + scores the archive locally (see app/upload/page.tsx),
+// so no upload endpoint is needed. The only remaining server call is the
+// static billing config.
 export const api = {
-  uploadArchive: (file: File): Promise<{ archiveId: string; archive: ArchiveData }> => {
-    const fd = new FormData();
-    fd.append('file', file);
-    return req<{ archiveId: string; archive: ArchiveData }>('/archives/upload', {
-      method: 'POST',
-      body: fd,
-    });
-  },
   billing: () => req<BillingInfo>('/settings/billing'),
 };

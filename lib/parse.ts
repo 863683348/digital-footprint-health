@@ -1,6 +1,3 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import { parse as parseCsvSync } from 'csv-parse/sync';
 import {
   detectPii,
   detectSensitive,
@@ -37,16 +34,84 @@ function toIso(raw: string): string {
 }
 
 // ---- CSV (tweets.csv) ----
-function parseCsv(buf: Buffer): ParsedTweet[] {
-  const text = buf.toString('utf8');
-  const records = parseCsvSync(text, { columns: true, skip_empty_lines: true, relax_quotes: true });
+// Minimal RFC-4180-ish parser, no external dependency so this module can run
+// in the browser. Handles quoted fields with embedded commas / newlines / the
+// "" escape. A quote that appears mid-field (relax_quotes behavior) is treated
+// as a literal character. Returns normalized tweets directly.
+function parseCsv(text: string): ParsedTweet[] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let field = '';
+  let inQuotes = false;
+  const n = text.length;
+  let i = 0;
+  while (i < n) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') {
+          field += '"';
+          i += 2;
+          continue;
+        }
+        inQuotes = false;
+        i++;
+        continue;
+      }
+      field += c;
+      i++;
+      continue;
+    }
+    if (c === '"' && field === '') {
+      inQuotes = true;
+      i++;
+      continue;
+    }
+    if (c === ',') {
+      row.push(field);
+      field = '';
+      i++;
+      continue;
+    }
+    if (c === '\r') {
+      i++;
+      continue;
+    }
+    if (c === '\n') {
+      row.push(field);
+      rows.push(row);
+      row = [];
+      field = '';
+      i++;
+      continue;
+    }
+    field += c;
+    i++;
+  }
+  if (field.length > 0 || row.length > 0) {
+    row.push(field);
+    rows.push(row);
+  }
+  if (rows.length === 0) return [];
+  const header = rows[0].map((h) => h.trim());
   const out: ParsedTweet[] = [];
-  for (const r of records as Record<string, string>[]) {
-    const id = pick(r, ['tweet_id', 'id', 'id_str']);
-    const created = pick(r, ['created_at', 'createdAt', 'timestamp']);
-    const textVal = pick(r, ['text', 'full_text', 'content']) ?? '';
+  for (let r = 1; r < rows.length; r++) {
+    const cells = rows[r];
+    if (cells.length === 1 && cells[0] === '') continue; // skip blank lines
+    const rec: Record<string, string> = {};
+    for (let c = 0; c < header.length; c++) rec[header[c]] = cells[c] ?? '';
+    const id = pick(rec, ['tweet_id', 'id', 'id_str']);
     if (!id) continue;
-    out.push(normalize(id, created ?? '', textVal, Number(pick(r, ['favorite_count', 'favorites', 'like_count']) || 0)));
+    const created = pick(rec, ['created_at', 'createdAt', 'timestamp']);
+    const textVal = pick(rec, ['text', 'full_text', 'content']) ?? '';
+    out.push(
+      normalize(
+        id,
+        created ?? '',
+        textVal,
+        Number(pick(rec, ['favorite_count', 'favorites', 'like_count']) || 0),
+      ),
+    );
   }
   return out;
 }
@@ -60,9 +125,18 @@ function extractJsonArray(text: string): string | null {
   let esc = false;
   for (let i = start; i < text.length; i++) {
     const c = text[i];
-    if (esc) { esc = false; continue; }
-    if (c === '\\') { esc = true; continue; }
-    if (c === '"') { inStr = !inStr; continue; }
+    if (esc) {
+      esc = false;
+      continue;
+    }
+    if (c === '\\') {
+      esc = true;
+      continue;
+    }
+    if (c === '"') {
+      inStr = !inStr;
+      continue;
+    }
     if (inStr) continue;
     if (c === '[') depth++;
     else if (c === ']') {
@@ -73,8 +147,7 @@ function extractJsonArray(text: string): string | null {
   return null;
 }
 
-function parseJs(buf: Buffer): ParsedTweet[] {
-  const text = buf.toString('utf8');
+function parseJs(text: string): ParsedTweet[] {
   const arrStr = extractJsonArray(text);
   if (!arrStr) return [];
   const arr = JSON.parse(arrStr) as any[];
@@ -119,27 +192,13 @@ function normalize(
   };
 }
 
-// Public: parse an uploaded archive file (CSV or JS) into deduped tweets.
-export function parseArchiveFile(filePath: string): ParsedTweet[] {
-  const buf = fs.readFileSync(filePath);
-  const lower = filePath.toLowerCase();
-  const parsed = lower.endsWith('.js') || lower.endsWith('.json') ? parseJs(buf) : parseCsv(buf);
-  // dedupe by id, keep first
-  const seen = new Set<string>();
-  const out: ParsedTweet[] = [];
-  for (const t of parsed) {
-    if (seen.has(t.id)) continue;
-    seen.add(t.id);
-    out.push(t);
-  }
-  return out;
-}
-
-// Public: parse an in-memory archive buffer (used by the upload route, which
-// receives the file as multipart form-data). No disk write.
-export function parseArchiveBuffer(buf: Buffer, fileName: string): ParsedTweet[] {
+// Public: parse an archive's text content (CSV or JS) into deduped tweets.
+// Runs entirely in the browser — the archive file never leaves the user's
+// device, which is what keeps origin transfer (Fast Origin Transfer) at ~0 for
+// the upload flow and honors the "100% on-device" privacy promise.
+export function parseArchiveString(text: string, fileName: string): ParsedTweet[] {
   const lower = fileName.toLowerCase();
-  const parsed = lower.endsWith('.js') || lower.endsWith('.json') ? parseJs(buf) : parseCsv(buf);
+  const parsed = lower.endsWith('.js') || lower.endsWith('.json') ? parseJs(text) : parseCsv(text);
   const seen = new Set<string>();
   const out: ParsedTweet[] = [];
   for (const t of parsed) {
@@ -148,12 +207,4 @@ export function parseArchiveBuffer(buf: Buffer, fileName: string): ParsedTweet[]
     out.push(t);
   }
   return out;
-}
-
-export function persistUpload(fileName: string, encryptedPayload: string): string {
-  const dir = path.join(process.cwd(), 'data', 'archives');
-  fs.mkdirSync(dir, { recursive: true });
-  const id = `arc_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 8)}`;
-  fs.writeFileSync(path.join(dir, `${id}.enc`), encryptedPayload, 'utf8');
-  return id;
 }

@@ -60,6 +60,9 @@ const zh: Record<string, string> = {
   'upload.parsing': '解析中…',
   'upload.privacy': '你的归档不会上传到任何服务器。报告完全由本机文件生成，删除推文时才通过 X 官方接口执行。',
   'upload.error': '处理失败，请重试',
+  'upload.tooLarge': '文件过大（上限 10MB）',
+  'upload.badType': '仅支持 X 归档的 CSV / JS / JSON 文件',
+  'upload.parseFailed': '未能解析出推文，请确认是 Twitter/X 归档文件',
 
   // report
   'report.insufficient.title': '样本不足',
@@ -324,6 +327,9 @@ const en: Record<string, string> = {
   'upload.privacy':
     'Your archive is never uploaded to any server. The report is built entirely from local files; deletions run through X’s official API only when you start them.',
   'upload.error': 'Processing failed, please retry',
+  'upload.tooLarge': 'File too large (max 10MB)',
+  'upload.badType': 'Only X archive CSV / JS / JSON files are supported',
+  'upload.parseFailed': 'Could not parse any tweets — please confirm this is a Twitter/X archive',
 
   'report.insufficient.title': 'Insufficient sample',
   'report.insufficient.desc':

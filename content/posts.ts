@@ -830,6 +830,114 @@ export const allPosts: BlogPost[] = [
 
 <p>删完定位推文之后，记得做一次完整体检确认干净。想先理解体检的整体逻辑，可以看 <a href="/blog/digital-footprint-health-score">0-100 健康评分</a> 那篇，或者从 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 开始。如果你还没处理过手机号类推文，先看 <a href="/blog/phone-number-in-tweets-check">手机号暴露在推文里</a> 那篇，这两类是最值得优先清理的。</p>
 `,
+  },  {
+    slug: 'on-device-analysis-privacy',
+    title: '体检报告 100% 本机生成，这意味着什么',
+    excerpt:
+      '你的 X 数据归档（tweets.js）解析时，文件有没有离开你的电脑？Digital Footprint Health 的 on-device analysis 方案：全部解析在本机完成，tweets.js 不上传、不落盘、不经过任何服务器。这篇讲清楚"本机生成"到底意味着什么。',
+    date: '2026-08-11',
+    updatedAt: '2026-08-11',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '本机解析', '隐私体检', 'tweets.js'],
+    canonical: '/blog/on-device-analysis-privacy',
+    titleEn: '100% On-Device Analysis: What It Means for You',
+    excerptEn:
+      'When your X archive (tweets.js) gets parsed, does the file leave your computer? Digital Footprint Health runs on-device analysis: the entire parse happens locally, tweets.js is never uploaded, stored, or routed through any server. Here is what that actually means.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'on-device analysis', 'privacy scan', 'tweets.js'],
+    content: `
+<p>你的 X 数据归档（tweets.js）解析时，文件有没有离开你的电脑？这是隐私体检最核心的分水岭。Digital Footprint Health 的 on-device analysis 方案，全部解析在本机完成，tweets.js 不上传、不落盘、不经过任何服务器。这篇讲清楚"本机生成"到底意味着什么，以及为什么这对隐私保护是质变。</p>
+
+<h2>什么是 100% 本机解析</h2>
+<p>大多数在线服务处理你的数据，流程是"上传 → 服务器解析 → 返回结果"。你的 tweets.js 会经过对方的服务器，哪怕对方承诺"不留存"，传输过程中文件也离开了你的控制。on-device analysis 完全不同：解析代码在你自己的浏览器里跑，文件从打开到出报告，全程没有离开过你的设备。</p>
+<p>这意味着三点：没有上传就没有拦截的可能；没有服务器就没有留存的问题；没有传输就没有第三方拿到的机会。local analysis privacy 的本质，是把"信任某家公司"换成"不依赖任何公司"。</p>
+
+<h2>为什么这对归档文件尤其重要</h2>
+<p>X 数据归档（tweets.js）几乎是你网络生活的完整副本：每一条推文、时间、设备、可能的位置信息。这种文件一旦泄露，比单条推文泄露严重得多。把它交给一个"处理完就删"的在线服务，本质上是在赌对方的承诺。</p>
+<p>本机解析直接把这个问题消解掉：文件不需要交给任何人，也就不存在"对方怎么处理"的环节。你的归档只和你的浏览器打交道，这是 no upload archive 模式的核心价值。</p>
+
+<h2>本机解析和服务器解析的对比</h2>
+<table>
+  <tr><th>维度</th><th>本机解析（on-device）</th><th>服务器解析（cloud）</th></tr>
+  <tr><td>文件是否离开设备</td><td>否</td><td>是</td></tr>
+  <tr><td>是否存在服务器留存</td><td>不存在</td><td>取决于对方策略</td></tr>
+  <tr><td>传输过程风险</td><td>无传输</td><td>有拦截/窃听面</td></tr>
+  <tr><td>结果准确性</td><td>完全一致</td><td>完全一致</td></tr>
+  <tr><td>适用场景</td><td>任何，尤其是高敏归档</td><td>需谨慎评估信任</td></tr>
+</table>
+<p>关键结论：两者对"解析结果"没有差异，差异全在数据安全边界上。既然结果一样，为什么不选边界更安全的那一个？</p>
+
+<h2>本机解析还意味着什么</h2>
+<ul>
+  <li>无需注册账号：没有账号体系，就没有"数据与账号绑定"的问题</li>
+  <li>可断网使用：解析只依赖浏览器能力，断网也能出报告</li>
+  <li>结果即时：不用等服务器排队，几秒出结果</li>
+  <li>无痕：不设云端报告存储，报告只在你的浏览器里</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>本机解析真的完全不上传吗？</h3>
+<p>是的。解析代码在浏览器本地运行，tweets.js 文件全程不离开你的设备。没有上传动作，就没有服务器介入。</p>
+
+<h3>结果和云端解析一样准确吗？</h3>
+<p>完全一样。解析逻辑相同，本机解析只是把执行位置从服务器搬到了浏览器，不影响结果准确性。</p>
+
+<h3>我可以断网使用吗？</h3>
+<p>可以。本机解析不依赖服务器，断网状态下同样能完成体检。</p>
+
+<h3>报告会保存到哪里？</h3>
+<p>报告只生成在浏览器内存和你的本地下载里，我们不提供云端报告存储，报告内容不会上传。</p>
+
+<p>上传归档到 <a href="/">首页</a> 即可开始体检，数据不出你的电脑。想先理解体检的整体逻辑，看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 那篇。</p>
+`,
+    contentEn: `
+<p>When your X archive (tweets.js) gets parsed, does the file leave your computer? That is the dividing line in privacy scanning. Digital Footprint Health runs <strong>on-device analysis</strong>: the entire parse happens locally, tweets.js is never uploaded, never stored, never routed through any server. This post explains what "generated on your machine" actually means, and why it changes the privacy calculus.</p>
+
+<h2>What 100% on-device parsing means</h2>
+<p>Most online services process your data as: upload, parse on server, return results. Your tweets.js passes through their servers, and even with a "we do not keep it" promise, the file left your control in transit. On-device analysis is different: the parsing code runs inside your own browser. From file open to report out, the data never leaves your device.</p>
+<p>Three consequences follow. No upload means nothing to intercept. No server means nothing to retain. No transfer means no third party ever gets a handle on it. The essence of local analysis privacy is swapping "trust this company" for "depend on no company".</p>
+
+<h2>Why this matters for archive files specifically</h2>
+<p>An X data archive is close to a complete copy of your online life: every tweet, timestamp, device, possibly locations. A leak of that file is far more serious than a leaked single tweet. Handing it to an online service that promises to delete it after processing is essentially betting on that promise.</p>
+<p>On-device parsing dissolves the problem: the file needs no intermediary, so there is no "how does the other side handle it" step. Your archive only ever talks to your browser. That is the core value of the no upload archive model.</p>
+
+<h2>On-device vs server-side parsing</h2>
+<table>
+  <tr><th>Dimension</th><th>On-device</th><th>Cloud</th></tr>
+  <tr><td>File leaves your device</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Server-side retention</td><td>None</td><td>Depends on their policy</td></tr>
+  <tr><td>In-transit risk</td><td>No transfer</td><td>Interception surface</td></tr>
+  <tr><td>Result accuracy</td><td>Identical</td><td>Identical</td></tr>
+  <tr><td>Best fit</td><td>Any, especially sensitive archives</td><td>Only with careful trust review</td></tr>
+</table>
+<p>The key takeaway: the parse results are the same. The difference is entirely in the data-security boundary. When the output is identical, why not pick the safer boundary?</p>
+
+<h2>What else on-device parsing means</h2>
+<ul>
+  <li>No account needed: no account system, no data tied to an identity</li>
+  <li>Works offline: parsing relies on browser capability, reports generate without a network</li>
+  <li>Instant results: no server queue, results in seconds</li>
+  <li>No trail: no cloud report storage, the report lives only in your browser</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>Does on-device analysis really never upload?</h3>
+<p>Yes. The parsing code runs locally in your browser, and the tweets.js file never leaves your device. No upload action means no server involvement.</p>
+
+<h3>Is the result as accurate as cloud parsing?</h3>
+<p>Identical. The logic is the same; on-device just moves the execution from a server to your browser.</p>
+
+<h3>Can I use it offline?</h3>
+<p>Yes. On-device parsing does not depend on a server, so the scan works without a network connection.</p>
+
+<h3>Where is my report stored?</h3>
+<p>The report is generated in your browser memory and your local downloads. We do not offer cloud report storage, and report content is never uploaded.</p>
+
+<p>Upload your archive on the <a href="/">homepage</a> to start the scan, your data never leaves your computer. New to the concept? Read <a href="/blog/what-is-digital-footprint-check">What Is a Digital Footprint Check</a> first.</p>
+`,
   },
 ]
 

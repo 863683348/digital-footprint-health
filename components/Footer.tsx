@@ -14,7 +14,6 @@ export function Footer() {
           <LangLink href="/upload" className="hover:text-ink transition-calm">{t('nav.upload')}</LangLink>
           <LangLink href="/delete/confirm" className="hover:text-ink transition-calm">{t('nav.delete')}</LangLink>
           <LangLink href="/account" className="hover:text-ink transition-calm">{t('nav.account')}</LangLink>
-          <LangLink href="/blog" className="hover:text-ink transition-calm">{t('nav.blog')}</LangLink>
           <LangLink href="/faq" className="hover:text-ink transition-calm">{t('nav.faq')}</LangLink>
           <LangLink href="/privacy" className="hover:text-ink transition-calm">{t('nav.privacy')}</LangLink>
           <LangLink href="/terms" className="hover:text-ink transition-calm">{t('nav.terms')}</LangLink>

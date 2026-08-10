@@ -26,7 +26,9 @@ export default function BlogIndex() {
       </p>
 
       <div className="grid gap-6">
-        {allPosts.map((post) => (
+        {[...allPosts]
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .map((post) => (
           <LangLink
             key={post.slug}
             href={`/blog/${post.slug}`}

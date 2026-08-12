@@ -830,6 +830,184 @@ export const allPosts: BlogPost[] = [
 
 <p>删完定位推文之后，记得做一次完整体检确认干净。想先理解体检的整体逻辑，可以看 <a href="/blog/digital-footprint-health-score">0-100 健康评分</a> 那篇，或者从 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 开始。如果你还没处理过手机号类推文，先看 <a href="/blog/phone-number-in-tweets-check">手机号暴露在推文里</a> 那篇，这两类是最值得优先清理的。</p>
 `,
+  },  {
+    slug: 'on-device-analysis-privacy',
+    title: '体检报告 100% 本机生成，这意味着什么',
+    excerpt:
+      '你的 X 数据归档（tweets.js）解析时，文件有没有离开你的电脑？Digital Footprint Health 的 on-device analysis 方案：全部解析在本机完成，tweets.js 不上传、不落盘、不经过任何服务器。这篇讲清楚"本机生成"到底意味着什么。',
+    date: '2026-08-11',
+    updatedAt: '2026-08-11',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '本机解析', '隐私体检', 'tweets.js'],
+    canonical: '/blog/on-device-analysis-privacy',
+    titleEn: '100% On-Device Analysis: What It Means for You',
+    excerptEn:
+      'When your X archive (tweets.js) gets parsed, does the file leave your computer? Digital Footprint Health runs on-device analysis: the entire parse happens locally, tweets.js is never uploaded, stored, or routed through any server. Here is what that actually means.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'on-device analysis', 'privacy scan', 'tweets.js'],
+    content: `
+<p>你的 X 数据归档（tweets.js）解析时，文件有没有离开你的电脑？这是隐私体检最核心的分水岭。Digital Footprint Health 的 on-device analysis 方案，全部解析在本机完成，tweets.js 不上传、不落盘、不经过任何服务器。这篇讲清楚"本机生成"到底意味着什么，以及为什么这对隐私保护是质变。</p>
+
+<h2>什么是 100% 本机解析</h2>
+<p>大多数在线服务处理你的数据，流程是"上传 → 服务器解析 → 返回结果"。你的 tweets.js 会经过对方的服务器，哪怕对方承诺"不留存"，传输过程中文件也离开了你的控制。on-device analysis 完全不同：解析代码在你自己的浏览器里跑，文件从打开到出报告，全程没有离开过你的设备。</p>
+<p>这意味着三点：没有上传就没有拦截的可能；没有服务器就没有留存的问题；没有传输就没有第三方拿到的机会。local analysis privacy 的本质，是把"信任某家公司"换成"不依赖任何公司"。</p>
+
+<h2>为什么这对归档文件尤其重要</h2>
+<p>X 数据归档（tweets.js）几乎是你网络生活的完整副本：每一条推文、时间、设备、可能的位置信息。这种文件一旦泄露，比单条推文泄露严重得多。把它交给一个"处理完就删"的在线服务，本质上是在赌对方的承诺。</p>
+<p>本机解析直接把这个问题消解掉：文件不需要交给任何人，也就不存在"对方怎么处理"的环节。你的归档只和你的浏览器打交道，这是 no upload archive 模式的核心价值。</p>
+
+<h2>本机解析和服务器解析的对比</h2>
+<table>
+  <tr><th>维度</th><th>本机解析（on-device）</th><th>服务器解析（cloud）</th></tr>
+  <tr><td>文件是否离开设备</td><td>否</td><td>是</td></tr>
+  <tr><td>是否存在服务器留存</td><td>不存在</td><td>取决于对方策略</td></tr>
+  <tr><td>传输过程风险</td><td>无传输</td><td>有拦截/窃听面</td></tr>
+  <tr><td>结果准确性</td><td>完全一致</td><td>完全一致</td></tr>
+  <tr><td>适用场景</td><td>任何，尤其是高敏归档</td><td>需谨慎评估信任</td></tr>
+</table>
+<p>关键结论：两者对"解析结果"没有差异，差异全在数据安全边界上。既然结果一样，为什么不选边界更安全的那一个？</p>
+
+<h2>本机解析还意味着什么</h2>
+<ul>
+  <li>无需注册账号：没有账号体系，就没有"数据与账号绑定"的问题</li>
+  <li>可断网使用：解析只依赖浏览器能力，断网也能出报告</li>
+  <li>结果即时：不用等服务器排队，几秒出结果</li>
+  <li>无痕：不设云端报告存储，报告只在你的浏览器里</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>本机解析真的完全不上传吗？</h3>
+<p>是的。解析代码在浏览器本地运行，tweets.js 文件全程不离开你的设备。没有上传动作，就没有服务器介入。</p>
+
+<h3>结果和云端解析一样准确吗？</h3>
+<p>完全一样。解析逻辑相同，本机解析只是把执行位置从服务器搬到了浏览器，不影响结果准确性。</p>
+
+<h3>我可以断网使用吗？</h3>
+<p>可以。本机解析不依赖服务器，断网状态下同样能完成体检。</p>
+
+<h3>报告会保存到哪里？</h3>
+<p>报告只生成在浏览器内存和你的本地下载里，我们不提供云端报告存储，报告内容不会上传。</p>
+
+<p>上传归档到 <a href="/">首页</a> 即可开始体检，数据不出你的电脑。想先理解体检的整体逻辑，看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 那篇。</p>
+`,
+    contentEn: `
+<p>When your X archive (tweets.js) gets parsed, does the file leave your computer? That is the dividing line in privacy scanning. Digital Footprint Health runs <strong>on-device analysis</strong>: the entire parse happens locally, tweets.js is never uploaded, never stored, never routed through any server. This post explains what "generated on your machine" actually means, and why it changes the privacy calculus.</p>
+
+<h2>What 100% on-device parsing means</h2>
+<p>Most online services process your data as: upload, parse on server, return results. Your tweets.js passes through their servers, and even with a "we do not keep it" promise, the file left your control in transit. On-device analysis is different: the parsing code runs inside your own browser. From file open to report out, the data never leaves your device.</p>
+<p>Three consequences follow. No upload means nothing to intercept. No server means nothing to retain. No transfer means no third party ever gets a handle on it. The essence of local analysis privacy is swapping "trust this company" for "depend on no company".</p>
+
+<h2>Why this matters for archive files specifically</h2>
+<p>An X data archive is close to a complete copy of your online life: every tweet, timestamp, device, possibly locations. A leak of that file is far more serious than a leaked single tweet. Handing it to an online service that promises to delete it after processing is essentially betting on that promise.</p>
+<p>On-device parsing dissolves the problem: the file needs no intermediary, so there is no "how does the other side handle it" step. Your archive only ever talks to your browser. That is the core value of the no upload archive model.</p>
+
+<h2>On-device vs server-side parsing</h2>
+<table>
+  <tr><th>Dimension</th><th>On-device</th><th>Cloud</th></tr>
+  <tr><td>File leaves your device</td><td>No</td><td>Yes</td></tr>
+  <tr><td>Server-side retention</td><td>None</td><td>Depends on their policy</td></tr>
+  <tr><td>In-transit risk</td><td>No transfer</td><td>Interception surface</td></tr>
+  <tr><td>Result accuracy</td><td>Identical</td><td>Identical</td></tr>
+  <tr><td>Best fit</td><td>Any, especially sensitive archives</td><td>Only with careful trust review</td></tr>
+</table>
+<p>The key takeaway: the parse results are the same. The difference is entirely in the data-security boundary. When the output is identical, why not pick the safer boundary?</p>
+
+<h2>What else on-device parsing means</h2>
+<ul>
+  <li>No account needed: no account system, no data tied to an identity</li>
+  <li>Works offline: parsing relies on browser capability, reports generate without a network</li>
+  <li>Instant results: no server queue, results in seconds</li>
+  <li>No trail: no cloud report storage, the report lives only in your browser</li>
+</ul>
+
+<h2>FAQ</h2>
+
+<h3>Does on-device analysis really never upload?</h3>
+<p>Yes. The parsing code runs locally in your browser, and the tweets.js file never leaves your device. No upload action means no server involvement.</p>
+
+<h3>Is the result as accurate as cloud parsing?</h3>
+<p>Identical. The logic is the same; on-device just moves the execution from a server to your browser.</p>
+
+<h3>Can I use it offline?</h3>
+<p>Yes. On-device parsing does not depend on a server, so the scan works without a network connection.</p>
+
+<h3>Where is my report stored?</h3>
+<p>The report is generated in your browser memory and your local downloads. We do not offer cloud report storage, and report content is never uploaded.</p>
+
+<p>Upload your archive on the <a href="/">homepage</a> to start the scan, your data never leaves your computer. New to the concept? Read <a href="/blog/what-is-digital-footprint-check">What Is a Digital Footprint Check</a> first.</p>
+`,
+  },  {
+    slug: 'how-old-tweets-cost-people-jobs',
+    title: '旧推文是如何"杀死"求职者的',
+    excerpt:
+      '一条多年前的推文，让候选人当场出局。旧推文翻车不是段子，是真实的招聘背景调查环节。这篇讲它怎么发生、HR 到底搜什么、以及你现在就该做的清理动作。',
+    date: '2026-08-12',
+    updatedAt: '2026-08-12',
+    author: 'Digital Footprint Health Team',
+    category: '求职安全',
+    tags: ['旧推文', '求职', '背景调查', '数字足迹'],
+    canonical: '/blog/how-old-tweets-cost-people-jobs',
+    titleEn: 'How Old Tweets Cost People Their Jobs',
+    excerptEn:
+      'One old tweet can end a job candidacy in a single click. Old tweets getting people fired is not a meme, it is a real part of modern hiring background checks. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.',
+    content: `
+<p>old tweets job 这四个词背后是一个真实的招聘场景：候选人简历漂亮、面试顺利，然后 HR 在背景调查环节搜了搜他的 X 账号，翻出一条三年前的推文，offer 没了。旧推文翻车不是段子，是 2026 年招聘流程里的一环。这篇讲它怎么发生、HR 到底搜什么、以及你现在就该做的清理动作。</p>
+
+<h2>旧推文为什么会"杀死"求职</h2>
+<p>招聘背景调查早就从"打电话给前雇主"扩展到了"搜遍公开社交"。X 的搜索框是其中最低成本的一环：输入候选人姓名，几秒内就能看到历史推文。多数 HR 不会刻意找茬，但他们会看三样东西：立场极端化、歧视性言论、以及和简历不符的言行。</p>
+<p>问题在于推文的半衰期很长。X 的公开搜索索引保留着多年前的推文，而人的观点和处境会变。五年前开的一句没头没尾的玩笑，今天被断章取义地截图放进面试讨论里，你没有解释的机会。这就是 old tweets 求职事故的典型路径。</p>
+
+<h2>HR 到底在搜什么</h2>
+<ul>
+<li>立场极端化：激进的政治或宗教言论，尤其是涉歧视的</li>
+<li>言行不一致：公开吐槽前雇主、泄露工作内容、和简历宣称的人设冲突</li>
+<li>不当行为：霸凌、骚扰、违法内容的痕迹</li>
+</ul>
+<p>注意：HR 搜的不是"完美无瑕"，是"风险信号"。哪怕只有一条高危推文，都会触发"再想想"的犹豫，而在候选人池足够大的岗位，犹豫就是出局。</p>
+
+<h2>现在就该做的清理动作</h2>
+<p>别慌，大部分人有救。第一步：以"招聘者视角"搜索自己。用几个不同关键词组合搜你的名字，看看公开能看到的都是什么。第二步：逐条清理高危内容——删除、设为仅自己可见、或者发一条澄清推文都行。第三步：把旧的私人账号和现在的主账号分开，或者彻底注销不用的旧号。</p>
+<p>更主动的做法：在 X 数据归档里跑一次本地扫描。X 允许你导出完整数据归档，包含所有推文和元数据。在本地解析这份归档，你就能看到自己发过的每一条推文的完整历史，比在网页上翻页高效得多，也更彻底。</p>
+
+<h2>数据归档扫描怎么做</h2>
+<p>X 的归档导出包含 tweets.js 等文件，里面是全部历史推文的 JSON 数据。在本地解析它，可以按关键词、时间、互动量筛选出高风险推文。整个过程在本地完成，归档不出你的电脑，不涉及任何上传。这也是数字足迹健康检查的核心思路：先看清自己的足迹，再决定怎么清。</p>
+<p>注意两个常见陷阱：一是旧推文的转发（quote）也可能被别人截图为证，删原推不等于销毁证据；二是改名不解决问题，X 的归档和搜索引擎快照仍可能关联到旧内容。</p>
+
+<h2>长期策略：让新内容盖过旧内容</h2>
+<p>清理是防守，持续发布高质量内容是进攻。求职季开始前 3-6 个月，持续在公开渠道输出与你目标岗位相关的内容：行业观点、项目复盘、专业分享。当 HR 搜索你时，看到的是这些，而不是那条三年前的玩笑。搜索引擎排序更看重新鲜和相关性，新内容自然会压过旧内容。</p>
+
+<p>想知道自己的公开数字足迹是什么样？在<a href="/">首页</a>上传你的 X 数据归档，本地解析你的推文历史，看看哪些内容会成为招聘者的风险信号。数据全程留在你的电脑上。</p>
+`,
+    contentEn: `
+<p>The phrase old tweets job describes a real hiring scenario: strong resume, smooth interviews, then HR digs up a three-year-old tweet during background checks and the offer evaporates. People getting hurt by old tweets is not a meme, it is a standard part of hiring in 2026. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.</p>
+
+<h2>Why old tweets sink candidacies</h2>
+<p>Background checks grew from "call the previous employer" to "search all public social media". X's search box is the cheapest step: type a candidate's name and their tweet history appears in seconds. Most HR people are not hunting for trouble, but they check three things: extreme positions, discriminatory language, and behavior that contradicts the resume.</p>
+<p>The core problem is that tweets have a long half-life. X's public search index keeps tweets from years ago, while people's views and circumstances change. A throwaway joke from five years back gets screenshotted out of context and dropped into the interview discussion. You never get to explain. That is the typical path of an old tweet hiring incident.</p>
+
+<h2>What HR actually searches for</h2>
+<ul>
+<li>Extreme positions: aggressive political or religious posts, especially discriminatory ones</li>
+<li>Inconsistency: trashing a former employer, leaking work content, clashing with the resume persona</li>
+<li>Misconduct: traces of bullying, harassment, or illegal behavior</li>
+</ul>
+<p>Note that HR is not hunting for "flawless", they are hunting for "risk signal". Even one high-risk tweet triggers a "let's think twice" hesitation, and in a deep candidate pool, hesitation is elimination.</p>
+
+<h2>Cleanup moves you can make today</h2>
+<p>Do not panic, most people are salvageable. Step one: search yourself from a recruiter's perspective. Run several keyword combos and see what is publicly visible. Step two: clean the high-risk content one by one, delete it, set it to followers-only, or post a clarifying thread. Step three: separate old personal accounts from your main one, or fully deactivate accounts you no longer use.</p>
+<p>A more thorough approach: run a local scan of your X data archive. X lets you export your full archive including every tweet and its metadata. Parsing that archive locally shows you your complete tweet history, far more efficient than paging through the web UI, and more complete.</p>
+
+<h2>How the archive scan works</h2>
+<p>The X archive export includes files like tweets.js containing all your historical tweets as JSON. Parsing it locally lets you filter by keyword, time, and engagement to surface high-risk posts. The whole process runs on your machine, the archive never leaves your computer, nothing is uploaded. That is the core idea of a digital footprint health check: see your footprint first, then decide what to clean.</p>
+<p>Two common traps: quote-tweets of your posts can be screenshotted by others, so deleting the original does not destroy the evidence; and changing your handle does not solve anything, archives and search snapshots can still link back to old content.</p>
+
+<h2>The long game: let new content bury the old</h2>
+<p>Cleaning is defense, consistent publishing is offense. In the 3-6 months before job season, keep publishing public content related to your target role: industry takes, project post-mortems, professional shares. When HR searches you, they see those, not the three-year-old joke. Search engines favor fresh and relevant, so new content naturally pushes old content down.</p>
+
+<p>Curious about your public digital footprint? Upload your X archive on the <a href="/">homepage</a>, parse your tweet history locally, and see which posts would read as risk signals to a recruiter. The data stays on your computer the whole time.</p>
+`,
   },
 ]
 

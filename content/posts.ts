@@ -938,6 +938,76 @@ export const allPosts: BlogPost[] = [
 
 <p>Upload your archive on the <a href="/">homepage</a> to start the scan, your data never leaves your computer. New to the concept? Read <a href="/blog/what-is-digital-footprint-check">What Is a Digital Footprint Check</a> first.</p>
 `,
+  },  {
+    slug: 'how-old-tweets-cost-people-jobs',
+    title: '旧推文是如何"杀死"求职者的',
+    excerpt:
+      '一条多年前的推文，让候选人当场出局。旧推文翻车不是段子，是真实的招聘背景调查环节。这篇讲它怎么发生、HR 到底搜什么、以及你现在就该做的清理动作。',
+    date: '2026-08-12',
+    updatedAt: '2026-08-12',
+    author: 'Digital Footprint Health Team',
+    category: '求职安全',
+    tags: ['旧推文', '求职', '背景调查', '数字足迹'],
+    canonical: '/blog/how-old-tweets-cost-people-jobs',
+    titleEn: 'How Old Tweets Cost People Their Jobs',
+    excerptEn:
+      'One old tweet can end a job candidacy in a single click. Old tweets getting people fired is not a meme, it is a real part of modern hiring background checks. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.',
+    content: `
+<p>old tweets job 这四个词背后是一个真实的招聘场景：候选人简历漂亮、面试顺利，然后 HR 在背景调查环节搜了搜他的 X 账号，翻出一条三年前的推文，offer 没了。旧推文翻车不是段子，是 2026 年招聘流程里的一环。这篇讲它怎么发生、HR 到底搜什么、以及你现在就该做的清理动作。</p>
+
+<h2>旧推文为什么会"杀死"求职</h2>
+<p>招聘背景调查早就从"打电话给前雇主"扩展到了"搜遍公开社交"。X 的搜索框是其中最低成本的一环：输入候选人姓名，几秒内就能看到历史推文。多数 HR 不会刻意找茬，但他们会看三样东西：立场极端化、歧视性言论、以及和简历不符的言行。</p>
+<p>问题在于推文的半衰期很长。X 的公开搜索索引保留着多年前的推文，而人的观点和处境会变。五年前开的一句没头没尾的玩笑，今天被断章取义地截图放进面试讨论里，你没有解释的机会。这就是 old tweets 求职事故的典型路径。</p>
+
+<h2>HR 到底在搜什么</h2>
+<ul>
+<li>立场极端化：激进的政治或宗教言论，尤其是涉歧视的</li>
+<li>言行不一致：公开吐槽前雇主、泄露工作内容、和简历宣称的人设冲突</li>
+<li>不当行为：霸凌、骚扰、违法内容的痕迹</li>
+</ul>
+<p>注意：HR 搜的不是"完美无瑕"，是"风险信号"。哪怕只有一条高危推文，都会触发"再想想"的犹豫，而在候选人池足够大的岗位，犹豫就是出局。</p>
+
+<h2>现在就该做的清理动作</h2>
+<p>别慌，大部分人有救。第一步：以"招聘者视角"搜索自己。用几个不同关键词组合搜你的名字，看看公开能看到的都是什么。第二步：逐条清理高危内容——删除、设为仅自己可见、或者发一条澄清推文都行。第三步：把旧的私人账号和现在的主账号分开，或者彻底注销不用的旧号。</p>
+<p>更主动的做法：在 X 数据归档里跑一次本地扫描。X 允许你导出完整数据归档，包含所有推文和元数据。在本地解析这份归档，你就能看到自己发过的每一条推文的完整历史，比在网页上翻页高效得多，也更彻底。</p>
+
+<h2>数据归档扫描怎么做</h2>
+<p>X 的归档导出包含 tweets.js 等文件，里面是全部历史推文的 JSON 数据。在本地解析它，可以按关键词、时间、互动量筛选出高风险推文。整个过程在本地完成，归档不出你的电脑，不涉及任何上传。这也是数字足迹健康检查的核心思路：先看清自己的足迹，再决定怎么清。</p>
+<p>注意两个常见陷阱：一是旧推文的转发（quote）也可能被别人截图为证，删原推不等于销毁证据；二是改名不解决问题，X 的归档和搜索引擎快照仍可能关联到旧内容。</p>
+
+<h2>长期策略：让新内容盖过旧内容</h2>
+<p>清理是防守，持续发布高质量内容是进攻。求职季开始前 3-6 个月，持续在公开渠道输出与你目标岗位相关的内容：行业观点、项目复盘、专业分享。当 HR 搜索你时，看到的是这些，而不是那条三年前的玩笑。搜索引擎排序更看重新鲜和相关性，新内容自然会压过旧内容。</p>
+
+<p>想知道自己的公开数字足迹是什么样？在<a href="/">首页</a>上传你的 X 数据归档，本地解析你的推文历史，看看哪些内容会成为招聘者的风险信号。数据全程留在你的电脑上。</p>
+`,
+    contentEn: `
+<p>The phrase old tweets job describes a real hiring scenario: strong resume, smooth interviews, then HR digs up a three-year-old tweet during background checks and the offer evaporates. People getting hurt by old tweets is not a meme, it is a standard part of hiring in 2026. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.</p>
+
+<h2>Why old tweets sink candidacies</h2>
+<p>Background checks grew from "call the previous employer" to "search all public social media". X's search box is the cheapest step: type a candidate's name and their tweet history appears in seconds. Most HR people are not hunting for trouble, but they check three things: extreme positions, discriminatory language, and behavior that contradicts the resume.</p>
+<p>The core problem is that tweets have a long half-life. X's public search index keeps tweets from years ago, while people's views and circumstances change. A throwaway joke from five years back gets screenshotted out of context and dropped into the interview discussion. You never get to explain. That is the typical path of an old tweet hiring incident.</p>
+
+<h2>What HR actually searches for</h2>
+<ul>
+<li>Extreme positions: aggressive political or religious posts, especially discriminatory ones</li>
+<li>Inconsistency: trashing a former employer, leaking work content, clashing with the resume persona</li>
+<li>Misconduct: traces of bullying, harassment, or illegal behavior</li>
+</ul>
+<p>Note that HR is not hunting for "flawless", they are hunting for "risk signal". Even one high-risk tweet triggers a "let's think twice" hesitation, and in a deep candidate pool, hesitation is elimination.</p>
+
+<h2>Cleanup moves you can make today</h2>
+<p>Do not panic, most people are salvageable. Step one: search yourself from a recruiter's perspective. Run several keyword combos and see what is publicly visible. Step two: clean the high-risk content one by one, delete it, set it to followers-only, or post a clarifying thread. Step three: separate old personal accounts from your main one, or fully deactivate accounts you no longer use.</p>
+<p>A more thorough approach: run a local scan of your X data archive. X lets you export your full archive including every tweet and its metadata. Parsing that archive locally shows you your complete tweet history, far more efficient than paging through the web UI, and more complete.</p>
+
+<h2>How the archive scan works</h2>
+<p>The X archive export includes files like tweets.js containing all your historical tweets as JSON. Parsing it locally lets you filter by keyword, time, and engagement to surface high-risk posts. The whole process runs on your machine, the archive never leaves your computer, nothing is uploaded. That is the core idea of a digital footprint health check: see your footprint first, then decide what to clean.</p>
+<p>Two common traps: quote-tweets of your posts can be screenshotted by others, so deleting the original does not destroy the evidence; and changing your handle does not solve anything, archives and search snapshots can still link back to old content.</p>
+
+<h2>The long game: let new content bury the old</h2>
+<p>Cleaning is defense, consistent publishing is offense. In the 3-6 months before job season, keep publishing public content related to your target role: industry takes, project post-mortems, professional shares. When HR searches you, they see those, not the three-year-old joke. Search engines favor fresh and relevant, so new content naturally pushes old content down.</p>
+
+<p>Curious about your public digital footprint? Upload your X archive on the <a href="/">homepage</a>, parse your tweet history locally, and see which posts would read as risk signals to a recruiter. The data stays on your computer the whole time.</p>
+`,
   },
 ]
 

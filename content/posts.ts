@@ -1008,6 +1008,48 @@ export const allPosts: BlogPost[] = [
 
 <p>Curious about your public digital footprint? Upload your X archive on the <a href="/">homepage</a>, parse your tweet history locally, and see which posts would read as risk signals to a recruiter. The data stays on your computer the whole time.</p>
 `,
+  },  {
+    slug: 'cancel-culture-101-old-tweets',
+    title: '网红翻车学：被考古的推文有多可怕',
+    excerpt:
+      '一条五年前的推文，能让一个百万粉博主一夜掉粉。被考古的推文不是娱乐圈专属，任何有公开账号的人都可能中招。这篇讲翻车的完整路径、为什么"删了也没用"、以及怎么把风险按下来。',
+    date: '2026-08-13',
+    updatedAt: '2026-08-13',
+    author: 'Digital Footprint Health Team',
+    category: '社交安全',
+    tags: ['旧推文', '翻车', '数字足迹', '社交账号'],
+    canonical: '/blog/cancel-culture-101-old-tweets',
+    titleEn: 'Cancel Culture 101: When Old Tweets Get Excavated',
+    excerptEn:
+      'One five-year-old tweet can tank a million-follower account overnight. Tweet excavation is not an influencer-only problem, anyone with a public account is exposed. This post covers the full pipeline, why deleting does not help, and how to press the risk down.',
+    content: `
+<p>old tweets cancel 的故事几乎每个月都在上演：某个博主或品牌账号被人翻出五年前、甚至十年前的一条推文，截图迅速传播，当事人连夜删号。被考古的推文听起来是娱乐圈的事，其实任何有公开账号的人都可能中招。这篇拆开翻车的完整路径，讲清楚为什么"删了也没用"，以及现在能做的风险管理。</p>
+
+<h2>翻车是怎么发生的</h2>
+<p>路径通常是这样：有人（可能是对手、前同事、或者单纯闲的网友）用关键词搜索挖出一张旧截图，发到传播快的平台，配上一句引导性的文案。转发滚起来后，媒体和营销号跟进，当事人开始被要求回应。整个过程从第一条截图到全网传播，往往不超过 48 小时。</p>
+<p>被挖的推文有个共同特征：脱离语境后显得特别糟。当年的梗、当时的政治气候、你那时候的圈子，全都看不见了，只剩一行字被截出来。这解释了为什么很多翻车当事人喊冤：他们确实发过，但截图背后的上下文已经没有人关心。</p>
+
+<h2>为什么"删了"没用</h2>
+<ul>
+<li>截图传播后，删除动作反而成了"认罪"证据，截图会更广地传</li>
+<li>搜索引擎快照和第三方归档服务保存了历史版本，删原推不等于删除记录</li>
+<li>下载过数据的账号手里有完整档案，随时可以再发一次</li>
+</ul>
+<p>换句话说，删除处理的是"源头"，但传播已经离开了源头。翻车一旦启动，你能控制的只剩回应方式，而不是内容本身。</p>
+
+<h2>回应的正确姿势</h2>
+<p>先别急着删号和写长文。翻车回应的第一原则是快但不过度：24 小时内给出简短、具体、不推卸的回应。承认发过，说明当时的语境，表达现在的立场，然后闭嘴。长篇道歉信在传播语境里只会被逐句拆解，继续喂给舆论。</p>
+<p>第二个原则是别删评论区和转发。删评论会制造"心虚"的信号，而且截图工具会保留你删之前的记录。让讨论自然降温，比对抗传播更有效。</p>
+
+<h2>怎么把风险按下来</h2>
+<p>翻车不可预测，但风险可以管理。第一步：用几个不同关键词组合搜自己的公开账号，以"路人视角"看看能搜到什么。第二步：把高危内容清理一遍，删除或者设私密，尤其是有争议立场、歧视性内容、和职场冲突相关的推文。第三步：给旧账号和新账号划清界限，长期不用的旧号直接注销。</p>
+<p>更系统一点的做法是导出账号数据归档，在本地扫描一遍历史推文，按关键词和时间筛出潜在风险项。整个过程在本地完成，不需要上传任何内容。这也是数字足迹健康检查的核心思路：先把自家院子扫一遍，再谈风险管理。</p>
+
+<h2>长期视角：翻车免疫不存在，但可以降低概率</h2>
+<p>任何人都有翻车的可能，因为人都会变，而互联网不让你变。能做的不是追求"永不出错"，而是让公开形象经得起考古：减少立场极端的内容、减少情绪化发言、定期清理旧内容、让新内容占比持续变大。搜索引擎排序看新鲜度和相关性，持续发布高质量内容，旧推文的排名自然会被压下去。</p>
+
+<p>想知道自己的公开账号经不经得起考古？用 <a href="/">数字足迹健康检查</a> 从本机扫描你的数据归档，看看历史内容里藏着哪些风险项。</p>
+`,
   },
 ]
 

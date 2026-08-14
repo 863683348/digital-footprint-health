@@ -1,40 +1,57 @@
-'use client';
-
-import Link from 'next/link';
+import type { Metadata } from 'next';
 import { allPosts } from '@/content/posts';
-import { useI18n } from '@/components/I18nProvider';
+import { SITE_URL } from '@/lib/site';
+import { BlogList } from './blog-list';
+
+const PAGE_URL = `${SITE_URL}/blog`;
+
+export const metadata: Metadata = {
+  title: 'Blog',
+  description:
+    'Guides on protecting your X/Twitter digital footprint: how to check your archive, find tweets that leak personal data, and delete old risky posts.',
+  alternates: { canonical: PAGE_URL },
+  openGraph: {
+    type: 'website',
+    url: PAGE_URL,
+    title: 'Blog | Digital Footprint Health',
+    description:
+      'Guides on protecting your X/Twitter digital footprint: how to check your archive, find tweets that leak personal data, and delete old risky posts.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Blog | Digital Footprint Health',
+    description:
+      'Guides on protecting your X/Twitter digital footprint: check your archive, find risky tweets, delete old posts.',
+  },
+};
 
 export default function BlogPage() {
-  const { lang } = useI18n();
   const posts = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
 
+  // Structured data so search engines can treat /blog as a real index page.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Blog',
+    url: PAGE_URL,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: posts.map((p, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${SITE_URL}/blog/${p.slug}`,
+        name: p.title,
+      })),
+    },
+  };
+
   return (
-    <article className="max-w-3xl mx-auto py-12 px-4">
-      <h1 className="text-3xl font-bold mb-8">
-        {lang === 'en' ? 'Blog' : '博客'}
-      </h1>
-      <div className="space-y-8">
-        {posts.map(post => {
-          const title = lang === 'en' ? (post.titleEn || post.title) : post.title;
-          const excerpt = lang === 'en' ? (post.excerptEn || post.excerpt) : post.excerpt;
-          const category = lang === 'en' ? (post.categoryEn || post.category) : post.category;
-          const href = `/blog/${post.slug}`;
-          return (
-            <Link
-              key={post.slug}
-              href={href}
-              className="block p-6 rounded-lg border border-border hover:border-accent transition-colors bg-card"
-            >
-              <div className="flex items-center gap-3 text-sm text-muted mb-2">
-                <span className="px-2 py-1 rounded bg-accent/10 text-accent">{category}</span>
-                <span>{post.date}</span>
-              </div>
-              <h2 className="text-xl font-semibold mb-2 hover:text-accent">{title}</h2>
-              <p className="text-muted">{excerpt}</p>
-            </Link>
-          );
-        })}
-      </div>
-    </article>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogList posts={posts} />
+    </>
   );
 }

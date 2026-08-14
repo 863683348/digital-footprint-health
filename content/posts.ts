@@ -1224,7 +1224,325 @@ export const allPosts: BlogPost[] = [
 <p>Want to see your own footprint report? Upload your X archive on the <a href="/">digital-footprint-health.shop homepage</a> and get a privacy score plus a labeled risk list in minutes, all processed on your computer. Your data never leaves the device.</p>
 `,
   },
-]
+  {
+    slug: 'which-tweets-to-clean-by-risk',
+    title: '我该清理哪些推文？按风险优先级排序',
+    excerpt:
+      '两万条推文一条条看，人早就疯了。删推文不该靠感觉，该靠优先级：P0 直接暴露身份的今天就得清，P1 能画出生活轨迹的尽快处理，P2 对职业有影响的择机清理。这套分级框架帮你先删最危险的。',
+    date: '2026-08-15',
+    updatedAt: '2026-08-15',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '推文清理', '风险优先级'],
+    canonical: '/blog/which-tweets-to-clean-by-risk',
+    faq: [],
+    titleEn: 'Which Tweets Should You Clean? Rank by Risk',
+    excerptEn:
+      'Going through twenty thousand tweets one by one would drive anyone mad. Deleting tweets should not run on feelings; it should run on priority. This tiered framework ranks P0 identity-exposing tweets first, then P1 location-routine traces, then P2 career-sensitive posts, so you clean the dangerous ones first.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'tweet cleanup', 'risk priority'],
+    content: `
+    <p>上周有个朋友发来一张截图，是他 X 账号的隐私体检报告：7 年、两万三千条推文，红色高危标签挂了 61 处。他盯着屏幕问我："我总不能全删吧？到底该先删哪些？"</p>
+    <p>这个问题特别实在。两万条推文一条条看，人早就疯了，而且大多数确实不用动。删推文不该靠感觉，该靠优先级。下面这套分级，是我自己扫完五万条历史推文以后总结出来的，你照着排就行。</p>
+    <h2>P0：直接暴露身份的东西，今天就得清</h2>
+    <p>这是最高风险等级，标准就一条：**陌生人拿到这条推文，能不能直接定位到"现实中的你"**。</p>
+    <p>典型例子：</p>
+    <ul>
+    <li>手机号——哪怕只发过一次，哪怕是在回复里</li>
+    <li>私人邮箱——尤其那种拼着自己真名的</li>
+    <li>家庭住址、门牌号，或者"今晚收快递"这种暗示在家的推文</li>
+    <li>证件照、身份证、护照、驾照的照片</li>
+    <li>入职/离职时间配合实名公司名，能把你的档案拼出来</li>
+    </ul>
+    <p>判断标准很简单：删之前问自己一句，"发这条推的时候，我是不是忘了这世界上有陌生人在看？"如果答案是肯定的，P0。</p>
+    <h2>P1：能画出你生活轨迹的，尽快处理</h2>
+    <p>这一档的推文不直接暴露身份，但能拼出你的行动规律。风险标签会帮你把这类内容单独标出来。</p>
+    <ul>
+    <li>打卡式定位——"刚到虹桥站""在望京开会，堵死了"</li>
+    <li>家庭地址周边——"楼下的煎饼摊""小区今晚停水"</li>
+    <li>固定的通勤路线、常去的健身房和医院</li>
+    <li>旅行行程——"周五飞东京，住新宿"</li>
+    </ul>
+    <p>单独一条没什么，攒起来就是一份很完整的行动地图。它们对应的风险标签通常和 location、行程相关，体检报告里会给你标好。</p>
+    <h2>P2：跟人、跟事有关，容易反噬的</h2>
+    <p>这一档更"软"，但麻烦起来更头疼。</p>
+    <ul>
+    <li>对前雇主、前同事的负面评价——你换工作了，下家 HR 会搜</li>
+    <li>政治敏感发言、地域/性别/年龄段子的截图——脱离当时语境，会被单独拎出来</li>
+    <li>跟别人吵架的旧推文，尤其是被转发过的</li>
+    <li>吐槽合作方、供应商的，哪怕当时说的是对的</li>
+    </ul>
+    <p>判断标准换成："如果这条被单独截图发到新同事群里，我还能圆场吗？"不能就删。</p>
+    <h2>P3：尴尬但无害的，看心情</h2>
+    <p>中二时期的诗、深夜感伤、给爱豆转发的八百条物料。这类不构成实际风险，留着反而像人生痕迹，删不删纯看你心情。不过如果一条推文让你现在点开就脚趾抠地，删了也没坏处。</p>
+    <h2>风险标签就是你的排序工具</h2>
+    <p>不用自己一条条判断。上传 X 数据归档之后，体检报告会给每条高危推文打上风险标签（phone、email、address、location、sensitive 这些），评分从高到低排好。你要做的只是从 P0 开始往下扫，批量选中、删除，一分钟的事。</p>
+    <h2>实际怎么操作：五分钟流程</h2>
+    <p>说点具体的，别光看理论。整个清理过程我是这么走的：</p>
+    <ol>
+    <li>导出 X 数据归档（设置里能下，ZIP 文件，几十分钟到几小时不等）</li>
+    <li>把 ZIP 拖进体检工具，等它本机解析完</li>
+    <li>按 P0 过滤，先看那几条高危推文的原文，确认没有误判，全选删除</li>
+    <li>顺手把 P1 里跟定位、住址相关的也清了</li>
+    <li>P2 留到周末，心情好的时候一条条过，看到原文截图走人就删</li>
+    </ol>
+    <p>一共十分钟出头。别想着一次清完，P0、P1 先清零，这个账号的安全底线就立住了，剩下的慢慢来。</p>
+    <p>关键点在于：**删除发生在你自己设备上，用你自己的账号凭证执行**。工具只负责把"该删什么"列出来，动手的还是你。这样既放心，也留得住后悔药——真要删错了，个别平台还有恢复窗口。</p>
+    <p>优先级表：</p>
+    <table><tr><td>等级</td><td>风险标签</td><td>典型内容</td><td>建议动作</td><td>例子</td></tr></table>
+    <table><tr><td>P0</td><td>phone / email / identity</td><td>手机号、私人邮箱、证件照、住址</td><td>今天删，全部删</td><td>回复里贴过手机号</td></tr></table>
+    <table><tr><td>P1</td><td>location / address</td><td>打卡定位、家庭周边、行程</td><td>一周内处理</td><td>"刚到虹桥站"</td></tr></table>
+    <table><tr><td>P2</td><td>sensitive</td><td>前雇主吐槽、政治发言、骂战</td><td>一个月内清理</td><td>吐槽前同事被转发过</td></tr></table>
+    <table><tr><td>P3</td><td>无高风险标签</td><td>中二旧推、深夜感伤</td><td>可选</td><td>十年前的诗</td></tr></table>
+    <h2>常见问题</h2>
+    <p>**Q：删掉以后就彻底消失了吗？**</p>
+    <p>A：删除是生效的，但被截图、被存下来的内容你删不掉。所以重点永远是"别再留新的"。这也是为什么删完之后，建议把容易口嗨的类型记下来，发之前想两秒。</p>
+    <p>**Q：有些推文我舍不得删，怎么办？**</p>
+    <p>A：P0 和 P1 没有商量的余地。P2、P3 舍不得就留着，报告只提醒，不逼你。真正的自由是"能删"，不是"必须删"。</p>
+    <p>**Q：批量删除会不会误删有用的？**</p>
+    <p>A：按风险等级过滤后再选，基本不会。报告里每条高风险推文都带原文预览，先看再勾，别全选。</p>
+    <p>**Q：为什么我之前删过，报告里还有？**</p>
+    <p>A：你手动删的可能只是某条推文的一个版本，或者删得不彻底。体检基于整份归档重新解析，会把你以为已经删掉的东西重新翻出来。</p>
+    <p>**Q：多久做一次体检合适？**</p>
+    <p>A：新号可以半年一次，老账号建议一个季度。推文是持续生产的，报告只反映你上传那一刻的状态。</p>
+    <h2>别让旧推文替你说话</h2>
+    <p>你现在回头看五年前的中二发言，会尴尬；五年前的陌生人也可能正在用你当年的手机号那条推文骚扰你。清理推文不是要消灭过去，是把"想被别人看到的那部分"和"不想被别人看到的那部分"分开。从 P0 开始，花十分钟，剩下的交给风险标签。</p>
+    <p>**<a href="/zh">把 X 数据归档传上来，本机生成你的风险优先级清单 →</a>**</p>
+    `,
+    contentEn: `
+    <p>Last week a friend sent me a screenshot of his X account's privacy checkup: seven years, 23,000 tweets, 61 red high-risk labels. He stared at the screen and asked, "I can't delete everything, can I? What tweets to delete first?"</p>
+    <p>Fair question. Nobody reads twenty thousand tweets one by one, and most of them honestly don't need to go. Cleaning your timeline shouldn't run on vibes. It should run on priority. The tiers below are what I landed on after scanning 50,000 of my own historical tweets, and you can copy the order directly.</p>
+    <h2>P0: Anything that exposes who you really are, clean today</h2>
+    <p>One test for this tier: **could a stranger reading this tweet point straight to the real-life you?**</p>
+    <p>Typical examples:</p>
+    <ul>
+    <li>A phone number, even if posted once, even in a reply</li>
+    <li>A personal email, especially one built around your real name</li>
+    <li>Home address, door number, or something like "waiting for my package tonight" that implies you're home</li>
+    <li>Photos of ID cards, passports, driver's licenses</li>
+    <li>A real-name company paired with start and end dates, which lets people reconstruct your work history</li>
+    </ul>
+    <p>The rule is simple. Before deleting, ask yourself: when I wrote this, did I forget strangers were watching? If yes, P0.</p>
+    <h2>P1: Things that map your daily life, handle soon</h2>
+    <p>This tier doesn't expose identity directly. It exposes patterns. The risk labels in your report will flag this kind of content for you.</p>
+    <ul>
+    <li>Check-in geotags, like "just landed at the station" or "in the office, traffic is a nightmare"</li>
+    <li>Anything around your home, the pancake stand downstairs, the neighborhood water outage</li>
+    <li>Fixed commute routes, the gym and hospital you always go to</li>
+    <li>Travel plans, "flying to Tokyo on Friday, staying in Shinjuku"</li>
+    </ul>
+    <p>One post alone means nothing. Fifty of them are a very complete map of your movements. These usually carry location-related labels, and the report marks them for you.</p>
+    <h2>P2: Person-related and easy to weaponize</h2>
+    <p>This tier is softer, but when it bites, it hurts more.</p>
+    <ul>
+    <li>Negative takes on former employers or coworkers, because your next HR will search</li>
+    <li>Screenshots of politically sensitive posts or jokes about regions and genders, which get taken out of context and shared on their own</li>
+    <li>Old fights with people, especially anything that got quote-tweeted</li>
+    <li>Complaints about clients or suppliers, even when you were right</li>
+    </ul>
+    <p>Try this test instead: if this tweet got screenshotted into your new team's group chat, could you smooth it over? If not, it goes.</p>
+    <h2>P3: Embarrassing but harmless, your call</h2>
+    <p>Angsty poetry from your twenties, 2 a.m. sorrow, eight hundred reposts for your favorite idol. These don't pose real risk, and keeping them actually makes the account look human. Delete them if you want, or leave them alone. If one tweet makes you cringe every time you see it, deleting costs you nothing.</p>
+    <h2>Risk labels are your sorting tool</h2>
+    <p>You don't have to judge each tweet yourself. Upload your X data archive, and the report tags every high-risk tweet with labels like phone, email, address, location, and sensitive, ranked from highest to lowest risk. Your job is to sweep from P0 downward, batch-select, delete. Takes about a minute.</p>
+    <h2>What this looks like in practice: a five-minute flow</h2>
+    <p>Let me get concrete, because theory only gets you so far. This is how I run a cleanup myself:</p>
+    <ol>
+    <li>Export your X data archive from the settings menu. It arrives as a ZIP, and depending on account age it can take anywhere from twenty minutes to a few hours to generate.</li>
+    <li>Drag the ZIP into the checkup tool and let it parse locally.</li>
+    <li>Filter by P0 first. Read the original text of those few high-risk tweets, make sure nothing was mislabeled, then batch-delete the whole tier.</li>
+    <li>Move on to P1 and clear out the location and home-address related posts while you're in the zone.</li>
+    <li>Save P2 for the weekend. Go through them one by one when you're in a decent mood, and if reading the original screenshot makes you wince, it goes.</li>
+    </ol>
+    <p>All in, about ten minutes. Don't aim for one perfect sweep. Getting P0 and P1 to zero sets the safety floor for your whole account, and everything after that can wait.</p>
+    <p>One thing worth stressing: **the deletions run on your own device, using your own account credentials**. The tool only tells you what to remove. You press the buttons. That keeps control in your hands and leaves room for second thoughts, since some platforms keep a short undelete window if you do hit the wrong thing.</p>
+    <p>Priority table:</p>
+    <table><tr><td>Tier</td><td>Risk labels</td><td>Typical content</td><td>Suggested action</td><td>Example</td></tr></table>
+    <table><tr><td>P0</td><td>phone / email / identity</td><td>Phone number, personal email, ID photos, address</td><td>Delete today, all of it</td><td>Posted your number in a reply</td></tr></table>
+    <table><tr><td>P1</td><td>location / address</td><td>Geotag check-ins, home surroundings, trips</td><td>Handle within a week</td><td>"Just arrived at the station"</td></tr></table>
+    <table><tr><td>P2</td><td>sensitive</td><td>Employer rants, political posts, flame wars</td><td>Clean within a month</td><td>A coworker rant that got shared</td></tr></table>
+    <table><tr><td>P3</td><td>No high-risk labels</td><td>Angsty old tweets, late-night feelings</td><td>Optional</td><td>A poem from ten years ago</td></tr></table>
+    `,
+  },
+
+  {
+    slug: 'risk-labels-explained',
+    title: '体检报告里的每个风险标签代表什么',
+    excerpt:
+      '手机号、邮箱、住址、定位、敏感话题——体检报告里的每个风险标签都有明确的触发条件和风险等级。这篇逐个拆解标签含义、对应风险与建议动作，让你看得懂报告、知道先处理哪一类。',
+    date: '2026-08-15',
+    updatedAt: '2026-08-15',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '风险标签', '体检报告'],
+    canonical: '/blog/risk-labels-explained',
+    faq: [],
+    titleEn: 'Every Risk Label in Your Report, Explained',
+    excerptEn:
+      'Phone, email, address, location, sensitive topic: every risk label in a footprint report has a clear trigger and a risk level. This guide explains each label, what triggers it, and what action it recommends, so you can read your report and know what to clean first.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'risk labels', 'report'],
+    content: `
+    <p>第一次打开体检报告的人，多半会被一屏的标签搞懵：phone、email、address、location、sensitive、identity……红橙黄绿一片。我当时也是。这篇就把每个标签拆开讲清楚：它为什么出现、风险有多高、你该做什么。</p>
+    <p>先说结论：标签不是判死刑，是给你一张地图。知道每个标签在说什么，你才知道先处理哪一块。</p>
+    <h2>phone 和 email：你的联系方式</h2>
+    <p>这两个标签含义直白：这条推文里出现了疑似手机号或邮箱。触发条件也简单——匹配到一串 11 位手机号格式的数字，或者标准邮箱格式的字符串。</p>
+    <p>风险很高，因为联系方式是陌生人接触你的最短路径。看到这两个标签，不用犹豫，直接看原文，是真的就删。也要留意一种情况：号码是别人发的、你转发过，这种照样算，因为你账号的关联性会让号码和你绑在一起。</p>
+    <h2>address 和 location：你在哪、住哪</h2>
+    <p>address 指的是住址类信息：门牌号、小区名、街道加城市。location 更宽泛，覆盖打卡定位、公司位置、常去的地点。</p>
+    <p>风险等级有差别。address 是直接的住址暴露，接近 P0；location 是轨迹类，单条无害，攒起来就是行动地图。报告里同一级别的 address 会排在 location 前面，就是提醒你先后顺序。</p>
+    <h2>sensitive：敏感话题</h2>
+    <p>这是最需要人工判断的一个标签。它捕捉的是政治敏感发言、种族/地域/性别类玩笑、对特定群体的攻击性言论。</p>
+    <p>它不是说你"说错了"，而是说这条推文脱离了原语境很容易被单独截图传播。你当年在群里吐槽朋友的口嗨，被截图发出去就是另一个故事。风险等级中高，处理方式是看原文、自己掂量。</p>
+    <h2>identity：身份拼图</h2>
+    <p>identity 是你个人身份信息的集合：实名、证件照、出生日期、工作单位、教育经历。它跟前面几个标签不同，不靠单一匹配，而是靠"组合"触发——比如一条推文里同时出现你的真名和公司名，或者实名邮箱。</p>
+    <p>单一信息风险有限，组合起来就能精准定位到你。这个标签一旦出现，基本可以按 P0 对待。</p>
+    <h2>标签怎么组合工作</h2>
+    <p>真实情况里，一条推文往往同时挂好几个标签。比如"入职 XX 公司第三天，工牌晒一个"——既有 identity（公司名+工牌照），又有 location（可能带公司定位）。体检报告按"最高风险标签"给整条推文定级，这样你按等级排序清理时，不会漏掉组合型风险。</p>
+    <p>标签对照表：</p>
+    <table><tr><td>标签</td><td>含义</td><td>触发条件</td><td>风险等级</td><td>建议动作</td></tr></table>
+    <table><tr><td>phone</td><td>手机号</td><td>11 位号码格式</td><td>高（P0）</td><td>核实后删除</td></tr></table>
+    <table><tr><td>email</td><td>邮箱</td><td>标准邮箱格式</td><td>高（P0）</td><td>核实后删除</td></tr></table>
+    <table><tr><td>address</td><td>住址</td><td>门牌号/小区/街道</td><td>高（P0）</td><td>删除，别留档</td></tr></table>
+    <table><tr><td>location</td><td>定位轨迹</td><td>打卡/公司/常去地</td><td>中高（P1）</td><td>批量清理</td></tr></table>
+    <table><tr><td>sensitive</td><td>敏感话题</td><td>政治/地域/攻击性言论</td><td>中高（P2）</td><td>人工判断</td></tr></table>
+    <table><tr><td>identity</td><td>身份拼图</td><td>真名+公司/证件/出生日期</td><td>高（P0）</td><td>单独核对每条</td></tr></table>
+    <h2>常见问题</h2>
+    <p>**Q：标签会不会误报？**</p>
+    <p>A：会。正则匹配不是人眼，"111"开头的生日或座机号可能被标成 phone。所以每个标签你都要看原文确认，报告里也都能展开原文。误报不等于假报告，多数标签准，个别的要你过目。</p>
+    <p>**Q：没有标签的推文就完全安全吗？**</p>
+    <p>A：不是。标签只抓"机器能识别的规律"，你随口提的同事全名、抱怨过的体检机构，标签未必抓得到。低风险不等于零风险，只是说明不需要优先处理。</p>
+    <p>**Q：同一个标签为什么颜色不一样？**</p>
+    <p>A：颜色对应整条推文的综合风险分，不只是标签本身。一条被转发过 500 次的手机号推文，比没转发的同款更红，因为传播范围大。</p>
+    <p>**Q：标签体系是固定的吗？**</p>
+    <p>A：不是。规则会随新暴露方式更新，比如短链接、名片二维码这些。隔几个月重跑一次体检，标签也会变。</p>
+    <h2>看懂标签，才算看懂报告</h2>
+    <p>标签是报告的语言。花十分钟弄懂 phone 和 identity 的差别，比你瞎删两百条有用得多。优先级清楚，动作就干净。</p>
+    <p>**<a href="/zh">上传 X 数据归档，本机解析生成完整风险标签报告 →</a>**</p>
+    `,
+    contentEn: `
+    <p>The first time you open a footprint report, the wall of tags is overwhelming. phone, email, address, location, sensitive, identity, all in a mess of reds and oranges and greens. I felt the same way when I saw mine. This post breaks down every label one by one: why it shows up, how risky it is, and what you should do about it.</p>
+    <p>Here's the short version first. Labels aren't a death sentence. They're a map. Once you know what each one is telling you, you know which corner of the account to clean first.</p>
+    <h2>phone and email: your contact lines</h2>
+    <p>These two are straightforward. The label means a tweet contains something that looks like a mobile number or an email address. The trigger is simple: a string matching an 11-digit phone format, or a standard email pattern.</p>
+    <p>The risk is high, because contact details are the shortest route a stranger has to reach you. When you see these tags, don't overthink it. Open the original tweet, confirm it's real, delete. One edge case worth knowing: if someone else posted the number and you reposted it, it still counts. Your account's association ties that number to you either way.</p>
+    <h2>address and location: where you are, where you live</h2>
+    <p>address means home-type information: door numbers, neighborhood names, a street plus a city. location is broader. It covers check-in geotags, your office, the places you frequent.</p>
+    <p>The risk levels differ. address is direct exposure of where you live, close to P0. location is pattern-based, harmless one post at a time, dangerous when fifty of them stack into a movement map. When both appear, the report ranks address above location, which is your ordering hint.</p>
+    <h2>sensitive: conversations that age badly</h2>
+    <p>This is the label that most needs human judgment. It catches politically sensitive remarks, jokes about regions, genders, or ethnic groups, and attack-style comments toward specific communities.</p>
+    <p>It's not saying you were wrong. It's saying this tweet, ripped out of its original context, travels really well as a screenshot. That late-night rant you aimed at a friend reads like a completely different story when it circulates on its own. Risk is medium-high, and the fix is reading the original and deciding for yourself.</p>
+    <h2>identity: the puzzle pieces</h2>
+    <p>identity is the collection of personal identifiers: your real name, ID photos, birth date, employer, education history. Unlike the other labels, it doesn't trigger on a single match. It fires on combinations, like a tweet that pairs your full name with your company, or a personal email built on your real name.</p>
+    <p>One data point on its own is limited. Several combined pinpoint you precisely. When this label appears, treat it like P0.</p>
+    <h2>How labels work together</h2>
+    <p>In the wild, one tweet usually carries several labels at once. Take "third day at Acme Corp, here's my badge" which bundles identity, company name plus badge photo, with a possible location tag if the office is geotagged. The report grades the whole tweet by its highest-risk label, so when you sort by tier for cleanup, combined risks don't slip past you.</p>
+    <p>Label reference table:</p>
+    <table><tr><td>Label</td><td>Meaning</td><td>Trigger</td><td>Risk level</td><td>Suggested action</td></tr></table>
+    <table><tr><td>phone</td><td>Mobile number</td><td>11-digit pattern</td><td>High (P0)</td><td>Verify, then delete</td></tr></table>
+    <table><tr><td>email</td><td>Email address</td><td>Standard email pattern</td><td>High (P0)</td><td>Verify, then delete</td></tr></table>
+    <table><tr><td>address</td><td>Home address</td><td>Door number / neighborhood / street</td><td>High (P0)</td><td>Delete, don't archive</td></tr></table>
+    <table><tr><td>location</td><td>Movement traces</td><td>Check-ins / office / frequent spots</td><td>Medium-high (P1)</td><td>Batch cleanup</td></tr></table>
+    <table><tr><td>sensitive</td><td>Sensitive topics</td><td>Politics / region / attack comments</td><td>Medium-high (P2)</td><td>Human judgment</td></tr></table>
+    <table><tr><td>identity</td><td>Identity puzzle</td><td>Real name + employer / ID / birth date</td><td>High (P0)</td><td>Check each one</td></tr></table>
+    `,
+  },
+
+  {
+    slug: 'health-score-calculated-1min',
+    title: '一分钟看懂 0-100 健康分怎么算',
+    excerpt:
+      '0-100 健康分到底怎么算的？风险推文占比、高风险类别权重、时间衰减、数量影响——四个维度合出一个分。分数低不等于必须删，它只是提醒你风险集中在哪。',
+    date: '2026-08-15',
+    updatedAt: '2026-08-15',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '健康分', '评分机制'],
+    canonical: '/blog/health-score-calculated-1min',
+    faq: [],
+    titleEn: 'How Your 0-100 Health Score Is Calculated in 1 Minute',
+    excerptEn:
+      'How is the 0-100 health score actually calculated? Four dimensions combine into one number: risky tweet ratio, high-risk category weights, time decay, and volume impact. A low score does not mean you must delete; it only shows where your risk concentrates.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'health score', 'scoring'],
+    content: `
+    <p>报告出来第一眼，谁都会先看那个分数。79 分，到底算好算坏？为什么朋友 91 分我只有 79？这篇不背公式给你听，只讲清打分的思路，看完你自己就能估出个大概。</p>
+    <p>先把最重要的说在前面：**这个分数不是考试，不是越高越好，更没有及格线。**它是一面镜子，只反映你账号当下的暴露程度。</p>
+    <h2>四个维度在打架，最后加权求和</h2>
+    <p>健康分不是拍脑袋出来的。它由四块拼成，每块权重不同：</p>
+    <ul>
+    <li>**风险推文占比**：高危推文数 ÷ 总推文数。这是最大的变量，权重最重。账号大、风险推文多，这一项直接拉垮。</li>
+    <li>**高风险类别权重**：不是所有风险等价。挂 phone、email、identity 的推文，比挂 sensitive 的推文扣分更狠。类别越危险，单条扣分越多。</li>
+    <li>**时间衰减**：这是很多人没想到的。2016 年的手机号推文，比 2024 年的同款危害小，因为号码可能早注销了。越久远的推文，扣分越轻，但不算清零，毕竟别人手里可能还留着截图。</li>
+    <li>**数量效应**：不是线性累加。一条手机号推文和十条手机号推文，危害差距不是十倍，是"一条是偶然，十条是习惯"的差别。数量越多，边际危害越大。</li>
+    </ul>
+    <p>四个维度加权求和，再映射到 0-100，就是你的数字足迹健康分。</p>
+    <h2>分数区间大概长什么样</h2>
+    <table><tr><td>分数区间</td><td>含义</td><td>典型账号</td><td>优先动作</td></tr></table>
+    <table><tr><td>90-100</td><td>干净</td><td>新号、克制型账号</td><td>保持即可</td></tr></table>
+    <table><tr><td>70-89</td><td>基本健康</td><td>老号但有零散暴露</td><td>清 P1、留意敏感</td></tr></table>
+    <table><tr><td>40-69</td><td>风险累积</td><td>多年口嗨史、有定位打卡</td><td>从 P0 开始清</td></tr></table>
+    <table><tr><td>0-39</td><td>高危</td><td>联系方式+身份信息外泄</td><td>立即处理 P0/P1</td></tr></table>
+    <p>区间是我按观察划的，不是精确刻度，但方向是对的：分数跌进 40 以下，别等了。</p>
+    <h2>为什么"分数低"不等于"必须删"</h2>
+    <p>这条要反复强调。分数低只说明暴露多，不说明你要把账号清空。</p>
+    <p>三个原因。第一，你舍不得的、有情感价值的推文，不在扣分清单里，除非它带风险标签。第二，分数低但全是 P3 级的尴尬内容，那叫"社死但不危险"，优先级低。第三，有些暴露你根本控制不了，比如别人发的、截图出去的，删自己账号只是止损的第一步。</p>
+    <p>分数是提醒，不是判决。它告诉你"这里有雷"，至于排不排雷、先排哪个，是你的决定。</p>
+    <h2>评分维度表</h2>
+    <table><tr><td>维度</td><td>权重思路</td><td>扣分逻辑</td><td>常见场景</td></tr></table>
+    <table><tr><td>风险推文占比</td><td>最重</td><td>占比越高扣越多</td><td>老号两万条里有 200 条高危</td></tr></table>
+    <table><tr><td>类别权重</td><td>次重</td><td>identity &gt; phone &gt; location &gt; sensitive</td><td>手机号比吐槽推文扣得多</td></tr></table>
+    <table><tr><td>时间衰减</td><td>中</td><td>越久远越轻，不归零</td><td>2016 年的旧号码推文</td></tr></table>
+    <table><tr><td>数量效应</td><td>中</td><td>非线性，越多越狠</td><td>一条 vs 十条手机号推文</td></tr></table>
+    <h2>常见问题</h2>
+    <p>**Q：删掉几条推文，分数会立刻涨吗？**</p>
+    <p>A：会，但要看删的是什么。删掉一条 identity 级别的，比删掉十张自拍明显。分数是加权结果，动的越多，涨得越明显。</p>
+    <p>**Q：分数会随时间自己变化吗？**</p>
+    <p>A：在报告生成那一刻是固定的。时间衰减是按推文发布年份算的，不会因为你隔三个月再看就自动变化，除非重跑体检。</p>
+    <p>**Q：为什么分数只给到 100？**</p>
+    <p>A：100 是"当前报告范围内没发现可识别风险"，不代表绝对安全，也不代表永远安全。你明天发一条带手机号的推文，重跑就下来了。</p>
+    <p>**Q：分数低的账号还有救吗？**</p>
+    <p>A：有。分数低通常意味着 P0、P1 的推文没清。按优先级清一轮，占比和类别两项会立刻改善，重跑体检分数能明显回升。</p>
+    <p>**Q：这个分数是行业标准吗？**</p>
+    <p>A：不是。各家隐私工具算法不同，分数不可直接比较。它在本工具内部有稳定的含义，纵向看自己账号的变化比横向跟别人比更有意义。</p>
+    <h2>分数只是起点</h2>
+    <p>79 分和 91 分的差别，往往就是二十条 P1 定位推文的距离。看懂算法，你就知道往哪用力。分数低先清 P0 和 P1，分数高也别松懈，保持现状就好。</p>
+    <p>**<a href="/zh">上传 X 数据归档，一分钟拿到你的 0-100 健康分 →</a>**</p>
+    `,
+    contentEn: `
+    <p>When a report opens, everybody looks at the number first. 79. Is that good or bad? Why does my friend have 91 and I'm stuck at 79? I'm not going to recite formulas at you. I'll explain the thinking behind the score, and you'll be able to estimate your own in your head.</p>
+    <p>The most important thing first: **this score is not an exam. Higher isn't automatically better, and there's no passing line.** It's a mirror. It only reflects how exposed your account is right now.</p>
+    <h2>Four dimensions fight each other, then get weighted</h2>
+    <p>The score doesn't come out of thin air. Four blocks build it, each with a different weight:</p>
+    <ul>
+    <li>**Share of risky tweets**: risky tweets divided by total tweets. This is the biggest variable and carries the most weight. Big account, lots of risk, this number drags everything down.</li>
+    <li>**High-risk category weight**: not all risk is equal. A tweet tagged phone, email, or identity costs more points than one tagged sensitive. The more dangerous the category, the heavier the single-tweet penalty.</li>
+    <li>**Time decay**: most people don't see this coming. A phone number tweeted in 2016 is less dangerous than the same tweet from 2024, because the number has probably been deactivated. Older tweets lose fewer points, but not zero, since screenshots stick around in other people's hands.</li>
+    <li>**Quantity effect**: this isn't linear. One phone number tweet versus ten phone number tweets isn't a tenfold difference. It's the difference between "an accident" and "a habit." More posts mean higher marginal harm.</li>
+    </ul>
+    <p>Those four get weighted, summed, and mapped onto 0-100. That's your digital footprint score.</p>
+    <h2>Roughly what the bands look like</h2>
+    <table><tr><td>Band</td><td>Meaning</td><td>Typical account</td><td>Priority action</td></tr></table>
+    <table><tr><td>90-100</td><td>Clean</td><td>New accounts, restrained posters</td><td>Just maintain</td></tr></table>
+    <table><tr><td>70-89</td><td>Mostly healthy</td><td>Older account with scattered exposure</td><td>Clear P1, mind sensitive</td></tr></table>
+    <table><tr><td>40-69</td><td>Risk building up</td><td>Years of loose talk, geotag check-ins</td><td>Start at P0</td></tr></table>
+    <table><tr><td>0-39</td><td>High risk</td><td>Contact details and identity leaked</td><td>Handle P0/P1 now</td></tr></table>
+    <p>The bands are my own observation, not a precise scale, but the direction is right. If you drop below 40, don't wait.</p>
+    <h2>Why a low score doesn't mean you must delete</h2>
+    <p>I want to repeat this one. A low score means more exposure. It does not mean you have to empty your account.</p>
+    <p>Three reasons. First, the tweets you treasure, the ones with real emotional value, aren't on the penalty list unless they carry a risk label. Second, a low score can come entirely from P3-level embarrassment, which is cringe but not dangerous, so the priority stays low. Third, some exposure you never controlled, posts from other people, screenshots already out there. Deleting your own account is only the first step of damage control.</p>
+    <p>The score reminds, it doesn't sentence. It tells you mines are here. Whether to clear them, and in what order, is your call.</p>
+    <h2>Scoring dimension table</h2>
+    <table><tr><td>Dimension</td><td>Weight logic</td><td>Penalty logic</td><td>Common scenario</td></tr></table>
+    <table><tr><td>Share of risky tweets</td><td>Heaviest</td><td>Higher share, bigger penalty</td><td>20k-tweet account with 200 high-risk</td></tr></table>
+    <table><tr><td>Category weight</td><td>Second</td><td>identity &gt; phone &gt; location &gt; sensitive</td><td>A phone number costs more than a rant</td></tr></table>
+    <table><tr><td>Time decay</td><td>Medium</td><td>Older is lighter, never zero</td><td>A stale number from 2016</td></tr></table>
+    <table><tr><td>Quantity effect</td><td>Medium</td><td>Nonlinear, more means worse</td><td>One vs ten phone number tweets</td></tr></table>
+    `,
+  },
+
+];
+
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

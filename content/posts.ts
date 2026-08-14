@@ -15,6 +15,13 @@ export interface BlogPost {
   categoryEn?: string;
   tagsEn?: string[];
   contentEn?: string;
+  /** Bilingual FAQ (used to render a FAQ section + FAQPage JSON-LD). */
+  faq?: {
+    q: string;
+    a: string;
+    qEn: string;
+    aEn: string;
+  }[];
 }
 
 /** All blog posts, sorted by date descending. */
@@ -30,6 +37,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '数字足迹', '隐私体检', '隐私保护'],
     canonical: '/blog/what-is-digital-footprint-check',
+    faq: [
+      { q: "什么是数字足迹体检？", a: "数字足迹体检是自动化的隐私审计：上传你的 X 数据归档（ZIP），工具在本机解析每一条推文，扫描手机号、邮箱、地址、定位和敏感话题，输出 0-100 健康评分与风险清单。", qEn: "What is a digital footprint check?", aEn: "A digital footprint check is an automated privacy audit. You upload your X data archive (ZIP) and the tool parses every tweet on your own device, scanning for phone numbers, emails, addresses, locations and sensitive topics, then outputs a 0-100 health score and a prioritized risk list." },
+      { q: "数字足迹体检免费吗？", a: "体检本身完全免费且只读，不会删除任何内容。只有当你决定清理时，才按需付费删除风险推文，支持暂停、恢复和退款。", qEn: "Is a digital footprint check free?", aEn: "Yes — the check itself is completely free and read-only; it never deletes anything. Only when you decide to clean up do you pay per tweet for deletion, which is pauseable, resumable and refundable." },
+      { q: "体检会删除我的推文吗？", a: "不会。体检只做分析和评分，删除是独立、可选、按条计费的步骤，完全由你决定。", qEn: "Does the check delete my tweets?", aEn: "No. The check only analyzes and scores. Deletion is a separate, optional, per-tweet step that you control entirely." },
+    ],
     titleEn: 'What Is a Digital Footprint Check for Your X Account?',
     excerptEn:
       'Your tweets on X (Twitter) may carry privacy traces like phone numbers, home addresses, and locations — that is your digital footprint. A digital footprint check parses your X archive on-device and produces a 0-100 health score plus a risk list. 100% on-device: your data never leaves your computer.',
@@ -168,6 +180,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '隐私保护', '删除推文', '数字足迹'],
     canonical: '/blog/how-to-delete-old-tweets-2026',
+    faq: [
+      { q: "能删除 3,200 条之前的旧推文吗？", a: "可以。X 官方界面只允许删除最近约 3,200 条推文，但通过解析 X 数据归档，可以触达并批量清理 3,200 条之前的全部历史推文。", qEn: "Can I delete tweets older than 3,200?", aEn: "Yes. X's official interface only lets you delete your most recent ~3,200 tweets, but by parsing your X data archive you can reach and batch-delete tweets older than the 3,200 wall." },
+      { q: "批量删除要多久？", a: "取决于推文数量和 X 的接口限速。工具支持暂停/恢复，删除按条计费，可随时中断而不丢进度。", qEn: "How long does bulk deletion take?", aEn: "It depends on tweet count and X API rate limits. The tool is pauseable and resumable, billed per tweet, so you can interrupt at any time without losing progress." },
+      { q: "批量删除安全吗？", a: "安全。删除走你本人的 X 授权，工具不会读取或存储无关数据；删除操作可暂停、可恢复、可退款。", qEn: "Is bulk tweet deletion safe?", aEn: "Yes. Deletion runs through your own X authorization, the tool does not read or store unrelated data, and the process is pauseable, resumable and refundable." },
+    ],
     titleEn: 'How to Delete Old Tweets on X (Twitter) — The Complete 2026 Guide',
     excerptEn:
       'Want to bulk-delete those old, embarrassing tweets on X/Twitter? This guide breaks down 5 methods — from manual deletion to local archive parsing — to help you find the safest, most efficient approach.',
@@ -328,6 +345,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '数据归档', '教程', '隐私保护'],
     canonical: '/blog/how-to-download-x-archive',
+    faq: [
+      { q: "怎么下载 X 数据归档？", a: "在 X 网页版进入 设置 → 你的账户 → 下载数据归档，选择\"全部数据\"并确认，X 会打包你的完整推文历史为 ZIP 文件，准备完成后邮件通知下载。", qEn: "How do I download my X data archive?", aEn: "On X web: Settings → Your account → Download an archive of your data. Choose \"all data\", confirm, and X will package your full tweet history into a ZIP; you get an email when it is ready to download." },
+      { q: "X 准备归档要多久？", a: "通常从几分钟到 24 小时不等，取决于账户历史数据量；数据量大的老账户可能更久。", qEn: "How long does X take to prepare the archive?", aEn: "Usually anywhere from a few minutes to 24 hours depending on account history size; older, larger accounts can take longer." },
+      { q: "归档是什么格式？", a: "X 返回一个 ZIP 压缩包，内含 HTML 页面和 tweets.js 等数据文件，所有推文以 JSON 形式存在 tweets.js 中。", qEn: "What format is the X archive in?", aEn: "X returns a ZIP file containing HTML pages and data files such as tweets.js, where all tweets are stored as JSON." },
+    ],
     titleEn: 'How to Download Your X Data Archive (2026, 4 Steps)',
     excerptEn:
       'Your X (Twitter) data archive is the only way to clean up tweets older than the ~3,200-tweet limit and to run a privacy check. This tutorial walks you through the 4 steps to download your full X data ZIP and what is inside it.',
@@ -437,6 +459,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', 'tweets.js', '数据归档', '隐私体检'],
     canonical: '/blog/whats-inside-x-archive-tweets-js',
+    faq: [
+      { q: "X 归档里的 tweets.js 是什么？", a: "tweets.js 是归档中的数据文件，以 JSON 数组形式记录你发过的每一条推文的完整字段（时间、文本、ID 等），是解析历史推文的核心文件。", qEn: "What is tweets.js in the X archive?", aEn: "tweets.js is the data file inside the archive that records every tweet you ever posted as a JSON array — timestamp, text, ID and more. It is the core file for parsing your history." },
+      { q: "tweets.js 包含已删除的推文吗？", a: "不包含。归档只含归档生成时刻仍然存在的推文；已删除的内容不会出现在 tweets.js 中。", qEn: "Does tweets.js include deleted tweets?", aEn: "No. The archive only contains tweets that still exist at the time it was generated; deleted content does not appear in tweets.js." },
+      { q: "我能自己读取 tweets.js 吗？", a: "可以，但文件可能非常大且结构不友好。用体检工具解析更省事：自动提取文本、时间、风险标签并生成可筛选的清单。", qEn: "Can I read tweets.js myself?", aEn: "Technically yes, but the file can be huge and awkward to parse. A footprint check tool is easier: it extracts text, timestamps and risk labels automatically into a filterable list." },
+    ],
     titleEn: "What's Inside the X Archive? tweets.js Explained",
     excerptEn:
       'After you download your X archive, tweets.js is the file that matters — structured JSON of every tweet you ever posted. This post breaks down its internal format and how a privacy check reads it.',
@@ -528,6 +555,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '3200 限制', '批量删推', '数据归档'],
     canonical: '/blog/why-can-you-only-delete-3200-tweets',
+    faq: [
+      { q: "为什么 X 限制只能删除 3,200 条推文？", a: "这是 X 官方界面的硬性限制：无论是网页、App 还是官方 API，都只暴露最近约 3,200 条推文供管理，更早的推文只能通过数据归档触达。", qEn: "Why does X limit deletion to 3,200 tweets?", aEn: "It is a hard limit of X's official interface: web, app and API only expose your most recent ~3,200 tweets for management. Older tweets can only be reached through your data archive." },
+      { q: "如何删除超出 3,200 条的推文？", a: "下载 X 数据归档 → 解析归档（覆盖全部历史）→ 选择要删除的风险推文 → 通过授权批量删除。这是目前唯一能清理全部历史的合规途径。", qEn: "How can I delete tweets beyond the 3,200 limit?", aEn: "Download your X archive → parse it (covers your entire history) → select risky tweets → batch-delete them through your own authorization. This is the only compliant way to clean up beyond the limit." },
+      { q: "X 以后会移除 3,200 条限制吗？", a: "目前没有官方消息。在限制解除之前，归档 + 批量删除仍是清理全部历史推文的唯一可靠方案。", qEn: "Will X ever remove the 3,200 limit?", aEn: "There is no official word. Until it is lifted, archive parsing plus batch deletion remains the only reliable way to clean up your full history." },
+    ],
     titleEn: 'Why Can You Only Delete 3,200 Tweets? The Wall and How to Beat It',
     excerptEn:
       'X\'s delete path only touches your most recent 3,200 tweets — older history is unreachable in the UI. Your data archive contains everything, though, and batch-deleting from the archive is the legitimate way around the wall.',
@@ -615,6 +647,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '数字足迹', '健康评分', '隐私体检'],
     canonical: '/blog/digital-footprint-health-score',
+    faq: [
+      { q: "数字足迹健康分是怎么计算的？", a: "工具逐条扫描推文中的手机号、邮箱、地址、定位和敏感话题，按风险类型与数量加权扣分，最终映射为 0-100 的健康分：越高越安全。", qEn: "How is my digital footprint health score calculated?", aEn: "The tool scans every tweet for phone numbers, emails, addresses, locations and sensitive topics, deducts points weighted by risk type and volume, and maps the result to a 0-100 score — the higher, the safer." },
+      { q: "多少分算健康？", a: "一般 80 分以上视为较健康；60-79 分存在中风险痕迹需要关注；60 分以下建议优先清理高风险推文（手机号、住址、定位）。", qEn: "What is a good digital footprint score?", aEn: "Roughly: 80+ is fairly healthy; 60-79 shows medium-risk traces worth attention; below 60 means you should prioritize deleting high-risk tweets (phone numbers, addresses, locations)." },
+      { q: "怎么提升我的分数？", a: "优先删除高风险类别（联系方式、家庭地址、行程打卡），再处理敏感话题内容；清理后可重新解析归档复查分数变化。", qEn: "How can I improve my score?", aEn: "Delete the highest-risk categories first (contact info, home addresses, travel check-ins), then handle sensitive-topic content. Re-parse your archive afterwards to verify the score change." },
+    ],
     titleEn: 'Your 0-100 Score: How Healthy Is Your Digital Footprint?',
     excerptEn:
       'The core output of a digital footprint check is a 0-100 health score. Deductions come from exposed phone numbers, emails, home addresses, check-ins, and sensitive topics. This post explains how the score works, what costs you points, and how to get it back up.',
@@ -724,6 +761,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '手机号', '隐私泄露', '数字足迹体检'],
     canonical: '/blog/phone-number-in-tweets-check',
+    faq: [
+      { q: "工具如何识别推文里的手机号？", a: "使用针对全球常见号码格式（国家码、区号、号码长度）的正则与启发式匹配，在本机扫描推文文本和图片 EXIF 元数据。", qEn: "How does the check find phone numbers in tweets?", aEn: "It uses regex and heuristic matching for common global number formats (country codes, area codes, digit lengths), scanning tweet text and image EXIF metadata entirely on-device." },
+      { q: "推文里的手机号有什么风险？", a: "手机号是诈骗、骚扰、社工攻击的直接入口：骗子可借此做号码反查、精准钓鱼，甚至用于账号接管。", qEn: "Why is a phone number in a tweet risky?", aEn: "A phone number is a direct entry point for scams, harassment and social engineering: attackers can reverse-lookup it, run targeted phishing, or use it in account takeover attempts." },
+      { q: "发现手机号在旧推文里怎么办？", a: "立即删除含手机号的推文；若号码已被搜索引擎收录，可同步提交 Google 移除请求并留意后续社工钓鱼。", qEn: "What should I do if my phone number is in an old tweet?", aEn: "Delete the tweet containing it immediately. If search engines already indexed it, submit a Google removal request and stay alert for follow-up phishing." },
+    ],
     titleEn: 'Is Your Phone Number in Your Tweets? How the Check Finds It',
     excerptEn:
       'Your phone number may be sitting inside a tweet from a decade ago, and you have probably forgotten it exists. How the check finds it across thousands of old tweets, how it handles false positives, and what to do once it is found.',
@@ -770,6 +812,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '定位', '住址', '数字足迹体检'],
     canonical: '/blog/address-location-tweets-risk',
+    faq: [
+      { q: "为什么定位类推文最危险？", a: "家庭住址、公司地址、旅行打卡等定位信息会暴露你的现实活动轨迹，带来真实世界的人身安全风险，也是社工攻击的素材。", qEn: "Why are location tweets risky?", aEn: "Home addresses, office addresses and travel check-ins expose your real-world movement patterns, creating physical safety risks and material for social engineering." },
+      { q: "怎么找出归档里的地址推文？", a: "体检工具按\"地址/定位\"风险标签自动过滤，并结合关键词（家、住、公司、搬到了、XX 路等）与坐标元数据定位相关推文。", qEn: "How do I find address tweets in my archive?", aEn: "The check filters by an \"address/location\" risk label, combining keywords (home, moved to, office, street names) with coordinate metadata to locate relevant tweets." },
+      { q: "推文的定位标签能单独移除吗？", a: "X 不提供批量移除历史定位标签的功能；可行做法是删除含定位的旧推文，今后发布时关闭位置标签。", qEn: "Can X location tags be removed individually?", aEn: "X offers no bulk removal of historical location tags. The practical approach is deleting old location tweets, and turning off location tagging for future posts." },
+    ],
     titleEn: 'Addresses and Locations: The Riskiest Old Tweets',
     excerptEn:
       'Location tweets stack: one location tweet plus one work tweet plus one birthday tweet maps your life radius. How the check finds them, why they are riskier than they look, and how to clean up.',
@@ -841,6 +888,11 @@ export const allPosts: BlogPost[] = [
     category: '隐私指南',
     tags: ['X/Twitter', '本机解析', '隐私体检', 'tweets.js'],
     canonical: '/blog/on-device-analysis-privacy',
+    faq: [
+      { q: "\"100% 本机分析\"是什么意思？", a: "你的 X 归档在浏览器/本机完成解析与扫描，数据不上传到任何服务器；只有你主动执行删除时，才调用 X 官方写入接口。", qEn: "What does 100% on-device analysis mean?", aEn: "Your X archive is parsed and scanned locally in your browser — the data never touches any server. Only when you explicitly delete does the tool call X's official write API." },
+      { q: "我的 X 归档会传到服务器吗？", a: "不会。归档解密与扫描全部在本机进行，工具不存储、不上传你的推文内容。", qEn: "Is my X archive uploaded to a server?", aEn: "No. Decryption and scanning happen entirely on your device; the tool does not store or upload your tweet content." },
+      { q: "分析期间我的数据如何保护？", a: "归档在本机加密存储，密钥永不离开你的设备；删除请求仅携带必要的推文 ID 走官方授权接口。", qEn: "How is my data protected during analysis?", aEn: "The archive is stored locally with encryption whose key never leaves your device. Deletion requests only carry the necessary tweet IDs through official authorized APIs." },
+    ],
     titleEn: '100% On-Device Analysis: What It Means for You',
     excerptEn:
       'When your X archive (tweets.js) gets parsed, does the file leave your computer? Digital Footprint Health runs on-device analysis: the entire parse happens locally, tweets.js is never uploaded, stored, or routed through any server. Here is what that actually means.',
@@ -949,6 +1001,11 @@ export const allPosts: BlogPost[] = [
     category: '求职安全',
     tags: ['旧推文', '求职', '背景调查', '数字足迹'],
     canonical: '/blog/how-old-tweets-cost-people-jobs',
+    faq: [
+      { q: "旧推文真的会导致丢工作吗？", a: "会。招聘方、HR 和背景调查机构会搜索候选人公开推文，一条多年前的种族/性别言论或对前雇主的吐槽，就可能导致 offer 撤回或解雇。", qEn: "Can old tweets really cost people jobs?", aEn: "Yes. Recruiters, HR and background-check firms search candidates' public tweets; one old racial/sexist remark or rant about a former employer can cost you an offer or your job." },
+      { q: "雇主会真的搜索候选人的推文吗？", a: "会的。大量招聘流程包含社交媒体筛查（social media screening），公开推文是最容易获取的候选人信息源之一。", qEn: "Do employers really search candidates' tweets?", aEn: "Yes. Many hiring processes include social media screening, and public tweets are one of the easiest sources of candidate information." },
+      { q: "怎么保护职业生涯不受旧推文影响？", a: "定期体检并清理高风险旧推文；删除前先评估、删除后提交搜索引擎移除；未来发布时避免争议性话题和可识别个人信息。", qEn: "How can I protect my career from old tweets?", aEn: "Run periodic checks and clean high-risk old tweets; request search-engine removal after deleting; and avoid controversial topics and identifying personal info in future posts." },
+    ],
     titleEn: 'How Old Tweets Cost People Their Jobs',
     excerptEn:
       'One old tweet can end a job candidacy in a single click. Old tweets getting people fired is not a meme, it is a real part of modern hiring background checks. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.',
@@ -1019,6 +1076,11 @@ export const allPosts: BlogPost[] = [
     category: '社交安全',
     tags: ['旧推文', '翻车', '数字足迹', '社交账号'],
     canonical: '/blog/cancel-culture-101-old-tweets',
+    faq: [
+      { q: "什么是\"推文考古\"（tweet excavating）？", a: "指他人翻出你多年前的旧推文并传播，使其成为公众舆论靶子的行为，常见于社会事件、求职和声誉纠纷中。", qEn: "What is tweet excavating?", aEn: "It is when someone digs up your old tweets from years ago and spreads them, turning them into a public-relations target — common during controversies, job hunts and reputation disputes." },
+      { q: "删除的推文还能被找到吗？", a: "可能。已被搜索引擎索引或他人截图保存的内容，删除后仍可能残留；所以清理越早越好，且删除后要请求搜索引擎移除。", qEn: "Can deleted tweets still be found?", aEn: "Possibly. Content already indexed by search engines or screenshotted by others can survive deletion — so clean up early and request search-engine removal afterwards." },
+      { q: "怎么降低被\"冲\"的风险？", a: "尽早清理历史高风险推文、避免发表争议性言论、删除后可提交搜索引擎移除请求；保持账号内容与你的现实身份一致。", qEn: "How do I minimize my risk of being canceled?", aEn: "Clean high-risk tweets early, avoid controversial posts, request search-engine removal after deleting, and keep your account content consistent with your real identity." },
+    ],
     titleEn: 'Cancel Culture 101: When Old Tweets Get Excavated',
     excerptEn:
       'One five-year-old tweet can tank a million-follower account overnight. Tweet excavation is not an influencer-only problem, anyone with a public account is exposed. This post covers the full pipeline, why deleting does not help, and how to press the risk down.',
@@ -1049,6 +1111,117 @@ export const allPosts: BlogPost[] = [
 <p>任何人都有翻车的可能，因为人都会变，而互联网不让你变。能做的不是追求"永不出错"，而是让公开形象经得起考古：减少立场极端的内容、减少情绪化发言、定期清理旧内容、让新内容占比持续变大。搜索引擎排序看新鲜度和相关性，持续发布高质量内容，旧推文的排名自然会被压下去。</p>
 
 <p>想知道自己的公开账号经不经得起考古？用 <a href="/">数字足迹健康检查</a> 从本机扫描你的数据归档，看看历史内容里藏着哪些风险项。</p>
+`,
+  },  {
+    slug: 'anatomy-of-a-footprint-report',
+    title: '体检报告长什么样？逐项解读每个风险标签',
+    excerpt:
+      '一份体检报告（footprint report）把几年旧推文压缩成隐私健康分加风险清单。这篇逐项解读每个板块，把手机号、邮箱、住址、定位、敏感话题等风险标签都翻译清楚，并告诉你该先清什么。',
+    date: '2026-08-14',
+    updatedAt: '2026-08-14',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['体检报告', '风险标签', '数字足迹', '隐私体检'],
+    canonical: '/blog/anatomy-of-a-footprint-report',
+    faq: [
+      { q: "数字足迹体检报告包含什么？", a: "报告包含 0-100 健康评分、风险推文清单（按手机号/邮箱/地址/定位/敏感话题分类）、时间与关键词筛选器，以及清理优先级建议。", qEn: "What does a footprint report include?", aEn: "A 0-100 health score, a risk-tweet list categorized by phone/email/address/location/sensitive topic, filters by date and keyword, plus prioritized cleanup recommendations." },
+      { q: "风险标签有什么区别？", a: "🔴 高风险（手机号、住址、定位）直接影响现实安全与诈骗风险；🟡 中风险（敏感话题、身份信息）影响求职与名誉。", qEn: "What is the difference between risk labels?", aEn: "🔴 High-risk (phone numbers, home addresses, locations) affects physical safety and scam exposure; 🟡 Medium-risk (sensitive topics, identity documents) affects jobs and reputation." },
+      { q: "拿到报告后第一步做什么？", a: "先清理 🔴 高风险类别（联系方式、住址、定位），再处理敏感话题；清理完成可重新解析归档复查分数变化。", qEn: "What is the first step after getting my report?", aEn: "Delete the 🔴 high-risk categories first (contact info, addresses, locations), then handle sensitive topics. Re-parse your archive afterwards to verify the score change." },
+    ],
+    titleEn: 'Anatomy of a Footprint Report: Every Risk Label Decoded',
+    excerptEn:
+      'A footprint report turns years of old tweets into one privacy score and a list of flagged posts. This guide decodes every section and each risk label (phone, email, address, location, sensitive topic), and tells you what to clean first.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['footprint report', 'risk labels', 'digital footprint', 'privacy check'],
+    content: `
+<p>体检报告（footprint report）是你上传 X（Twitter）归档、跑完一次数字足迹体检后看到的第一样东西。它把你几年的旧推文压缩成一个隐私健康分，外加一份被标记的高风险推文清单。问题是，大多数人打开报告，看到"手机号""定位""敏感话题"这类标签，却根本不知道哪个真要紧。这篇就把一份体检报告的每个板块拆开讲，把每个风险标签都翻译清楚，让你知道该清什么，而不是瞎猜。</p>
+
+<h2>一份体检报告到底由什么组成</h2>
+<p>报告完全由你的 X 数据导出文件在本机解析生成，不会再去 X 服务器拉任何新数据。真正有分量的是两个数字：0-100 的健康分（越高越安全），以及按标签分组统计的被标记推文数量。往下是你会花最多时间的逐条推文列表。整个过程都在本地，这也是隐私体检的核心。</p>
+
+<h2>体检报告解读：从上往下怎么看</h2>
+<p>按顺序读报告最省时间。头部是健康分和总标记数；分类汇总把标记分组，让你一眼看出风险集中在联系方式、定位还是内容；推文列表按严重程度排序，最危险的排在前面；最后是筛选栏，可以按标签、年份、关键词收窄范围。如果你已经知道要找什么，直接跳到筛选栏。</p>
+
+<h2>每个风险标签到底是什么意思</h2>
+<p>下面是各标签的含义，以及大致该担心的程度：</p>
+<table>
+  <thead>
+    <tr><th>风险标签</th><th>抓到什么</th><th>典型风险</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>手机号</td><td>推文正文或图片里的电话号码</td><td>高——诈骗和垃圾信息的直接入口</td></tr>
+    <tr><td>邮箱</td><td>邮箱地址，包括已经弃用的</td><td>高——账号被盗风险</td></tr>
+    <tr><td>住址</td><td>家庭或公司地址</td><td>高——现实安全</td></tr>
+    <tr><td>定位</td><td>打卡、城市标签、出行帖</td><td>中——生活规律暴露</td></tr>
+    <tr><td>敏感话题</td><td>吐槽前公司、政治、身份相关内容</td><td>中——求职与名誉</td></tr>
+  </tbody>
+</table>
+<p>这些标签是模式匹配出来的猜测，不是判决。一条"打我电话 555"的玩笑被标成"手机号"，就是可以无视的误报；住址和邮箱的命中才是要认真处理的。</p>
+
+<h2>风险标签在 Twitter 上为什么专挑旧推文</h2>
+<p>报告标记出来的推文，绝大多数都是旧的。Twitter 把你的历史一直保留并能被搜索引擎索引，2015 年一条带旧住址的推文，今天照样能被 Google 搜到。所以报告翻出来的，往往是你早忘了发过的东西。风险标签盯的不是你现在发的，而是这些年一直公开挂在那里的历史。招聘者或陌生人能读到，而你完全不知道。</p>
+
+<h2>该先处理哪些</h2>
+<p>先动手机号、邮箱、住址这三类，它们是具体、可被利用的。定位次之，尤其是你发过固定日常路线的话。敏感话题帖在你求职或处在公众视角时最要紧，所以结合自己的情况权衡，别恐慌式全删。用筛选功能把真正危险的批量挑出来，剩下的再慢慢判断。</p>
+
+<h3>体检报告会删东西吗？</h3>
+<p>不会。报告是只读的，只告诉你有什么、风险多高。删除是另一个你主动选择的步骤，一条条来，随时能停。</p>
+
+<h3>报告能离线打开吗？</h3>
+<p>可以。解析在本机完成，不需要联网，报告也不会存到任何云端。</p>
+
+<h3>风险标签准吗？</h3>
+<p>够你行动，但不完美。模式匹配抓真实手机号和住址相当可靠，也会把玩笑式的引用一起标出来。清理前每条都看一眼。</p>
+
+<h3>我的报告会被别人看到吗？</h3>
+<p>不会。报告只存在你的浏览器内存和本机下载里，不上传，工具方也没有你归档的服务器副本。</p>
+
+<p>想看看自己的体检报告长什么样？在 <a href="/">digital-footprint-health.shop 首页</a> 上传你的 X 归档，几分钟拿到隐私评分和带标签的风险清单，全程在本机处理，数据不出你的电脑。</p>
+`,
+    contentEn: `
+<p>A footprint report is the first thing you see after running a digital footprint check on your X (Twitter) archive. It takes years of old tweets and boils them down to one privacy score plus a list of flagged posts. The catch is that most people open the report, see labels like phone, address, or sensitive topic, and have no idea which ones actually matter. This guide breaks down every section of a footprint report and decodes each risk label, so you can decide what to clean instead of guessing.</p>
+
+<h2>What a footprint report is actually made of</h2>
+<p>The report comes straight from your X data export, parsed on your own device. It does not pull anything new from X's servers. Two numbers do most of the work: a 0-100 health score where higher means safer, and a count of flagged tweets grouped by label. Underneath sits the per-tweet list, the part you'll spend real time in. None of it leaves your machine, which is the whole point of a privacy check.</p>
+
+<h2>Report sections explained, top to bottom</h2>
+<p>Read the report in order and you save time. The header shows the score and the total flagged count. The category breakdown groups those flags so you can see at a glance whether your risk is contact info, location, or content. The tweet list is sorted by severity, so the worst posts sit at the top. Last is a filter bar where you can narrow by label, year, or keyword. If you already know what you're hunting for, skip to the filter.</p>
+
+<h2>Every risk label decoded</h2>
+<p>Here is what each label means and roughly how worried you should be:</p>
+<table>
+  <thead>
+    <tr><th>Risk label</th><th>What it catches</th><th>Typical risk</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Phone</td><td>Phone numbers in tweet text or images</td><td>High: direct scam and spam entry</td></tr>
+    <tr><td>Email</td><td>Email addresses, including old ones</td><td>High: account takeover attempts</td></tr>
+    <tr><td>Address</td><td>Home or workplace addresses</td><td>High: real-world safety</td></tr>
+    <tr><td>Location</td><td>Check-ins, city tags, travel posts</td><td>Medium: reveals your routine</td></tr>
+    <tr><td>Sensitive topic</td><td>Rants about employers, politics, identity</td><td>Medium: hiring and reputation</td></tr>
+  </tbody>
+</table>
+<p>These labels are guesses from pattern matching, not verdicts. A phone hit on a joke like "call me at 555" is a false positive you can ignore. The address and email hits are the ones to take seriously.</p>
+
+<h2>Risk labels on Twitter and why old tweets get flagged</h2>
+<p>Most posts a footprint report flags are old. Twitter keeps your history indexed for years, and a single 2015 tweet with your old address is still reachable through Google today. That's why the report surfaces tweets you forgot you posted. The risk labels on Twitter are not about what you post now; they're about what has sat public the whole time. A hiring manager or a stranger can read it without you ever knowing.</p>
+
+<h2>What to fix first</h2>
+<p>Start with phone, email, and address labels. Those are the concrete, exploitable ones. Location comes next if you posted a regular routine. Sensitive topic posts matter most when you're job hunting or in a visible role, so weigh them against your situation instead of deleting everything in a panic. Use the filters to batch the genuinely dangerous ones, then reconsider the rest.</p>
+
+<h3>Does a footprint report delete anything?</h3>
+<p>No. The report is read-only. It shows you what's there and scores the risk. Deleting is a separate step you choose, tweet by tweet, and you can stop at any time.</p>
+
+<h3>Can I open the report offline?</h3>
+<p>Yes. Parsing happens on your device, so the report works without a connection. Nothing about it is stored in the cloud.</p>
+
+<h3>How accurate are the risk labels?</h3>
+<p>Good enough to act on, not perfect. Pattern matching catches real phone numbers and addresses reliably, but it also flags joking references. Read each hit before you clean it.</p>
+
+<h3>Is my report shared with anyone?</h3>
+<p>No. The report lives in your browser memory and your local downloads. It is never uploaded, and there is no server copy of your archive.</p>
+
+<p>Want to see your own footprint report? Upload your X archive on the <a href="/">digital-footprint-health.shop homepage</a> and get a privacy score plus a labeled risk list in minutes, all processed on your computer. Your data never leaves the device.</p>
 `,
   },
 ]

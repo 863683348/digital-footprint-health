@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { Card } from '@/components/ui';
 import { useI18n } from '@/components/I18nProvider';
 import { SITE_URL } from '@/lib/site';
+import { allPosts } from '@/content/posts';
 
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'WebApplication',
-  name: 'Digital Footprint Health Report',
+  name: 'Digital Footprint Health Check',
   alternateName: '数字足迹体检报告',
   url: SITE_URL,
   description:
@@ -18,9 +19,19 @@ const JSON_LD = {
   offers: {
     '@type': 'Offer',
     price: '0',
-    priceCurrency: 'CNY',
+    priceCurrency: 'USD',
   },
-  inLanguage: ['zh-CN', 'en'],
+  featureList: [
+    '0-100 digital footprint health score',
+    'Scan tweets for phone numbers, emails, addresses & locations',
+    '100% on-device analysis — your archive never leaves your computer',
+    'Batch delete old tweets, including beyond the 3,200-tweet limit',
+  ],
+  inLanguage: ['en', 'zh-CN'],
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'X/Twitter users concerned about online privacy',
+  },
 };
 
 const STEPS = [
@@ -30,7 +41,10 @@ const STEPS = [
 ];
 
 export default function HomePage() {
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
+  const featured = [...allPosts]
+    .sort((a, b) => b.date.localeCompare(a.date))
+    .slice(0, 3);
   return (
     <div className="space-y-8">
       <script
@@ -77,6 +91,32 @@ export default function HomePage() {
             <li>{t('landing.trust.3')}</li>
           </ul>
         </Card>
+      </section>
+
+      <section>
+        <div className="flex items-center justify-between">
+          <h2 className="t-3 font-semibold">
+            {lang === 'en' ? 'Latest from the blog' : '最新博客'}
+          </h2>
+          <Link href="/blog" className="t-6 text-primary hover:underline">
+            {lang === 'en' ? 'All posts →' : '全部文章 →'}
+          </Link>
+        </div>
+        <div className="mt-4 grid md:grid-cols-3 gap-4">
+          {featured.map((post) => {
+            const pTitle = lang === 'en' ? (post.titleEn || post.title) : post.title;
+            const pExcerpt = lang === 'en' ? (post.excerptEn || post.excerpt) : post.excerpt;
+            return (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
+                <Card className="h-full flex flex-col gap-2 hover:border-primary transition-calm">
+                  <div className="t-5 font-semibold leading-snug">{pTitle}</div>
+                  <p className="t-6 text-ink-soft line-clamp-3">{pExcerpt}</p>
+                  <div className="t-7 text-ink-faint mt-auto">{post.date}</div>
+                </Card>
+              </Link>
+            );
+          })}
+        </div>
       </section>
     </div>
   );

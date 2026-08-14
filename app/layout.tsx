@@ -9,26 +9,44 @@ import { SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: '数字足迹体检报告 · Digital Footprint Health Report',
+  title: {
+    default:
+      'Digital Footprint Health Check: Find & Clean Risky X/Twitter Tweets',
+    template: '%s | Digital Footprint Health',
+  },
   description:
-    '本地生成你的 Twitter/X 数字足迹体检报告，识别隐私风险，按需清理历史推文。 / Generate a local privacy health report for your Twitter/X archive.',
+    'Free on-device digital footprint check for X/Twitter. Upload your archive, get a 0-100 privacy health score, and find risky tweets with phone numbers, addresses & locations — then delete them in batches.',
+  keywords: [
+    'digital footprint check',
+    'delete old tweets',
+    'X archive',
+    'Twitter privacy',
+    'remove personal info from tweets',
+    'clean digital footprint',
+    'online reputation cleanup',
+  ],
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     url: SITE_URL,
-    siteName: 'Digital Footprint Health Report',
-    title: '数字足迹体检报告 · Digital Footprint Health Report',
+    siteName: 'Digital Footprint Health',
+    title: 'Digital Footprint Health Check: Find & Clean Risky X/Twitter Tweets',
     description:
-      '上传你的 X 归档，本机生成隐私体检报告，标出含手机号、住址、定位等风险的推文，并可按需批量删除。',
-    locale: 'zh_CN',
+      'Free on-device check that scores your X/Twitter footprint 0-100 and flags tweets with phone numbers, addresses & locations — then batch-delete the risky ones.',
+    locale: 'en_US',
+    alternateLocale: ['zh_CN'],
   },
   twitter: {
     card: 'summary_large_image',
-    title: '数字足迹体检报告 · Digital Footprint Health Report',
+    title: 'Digital Footprint Health Check: Find & Clean Risky Tweets',
     description:
-      '上传你的 X 归档，本机生成隐私体检报告，标出隐私风险推文，并可按需批量删除。',
+      'Free on-device check that scores your X/Twitter footprint 0-100 and flags risky tweets — then batch-delete them.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

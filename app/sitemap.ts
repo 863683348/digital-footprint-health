@@ -7,7 +7,7 @@ import { allPosts } from '@/content/posts';
 export const revalidate = 86400;
 
 // Build timestamp — update this when you deploy significant content changes.
-const BUILD_DATE = '2026-07-27';
+const BUILD_DATE = '2026-08-14';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
@@ -16,9 +16,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/upload', priority: 0.7 },
     { path: '/delete/confirm', priority: 0.7 },
     { path: '/blog', priority: 0.8 },
-    { path: '/privacy', priority: 0.5 },
-    { path: '/faq', priority: 0.8 },
-    { path: '/about', priority: 0.5 },
+    { path: '/pricing', priority: 0.6 },
+    { path: '/terms', priority: 0.3 },
+    { path: '/report', priority: 0.4 },
   ];
 
   const staticPages = staticRoutes.map(({ path, priority }) => ({

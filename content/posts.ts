@@ -1050,6 +1050,112 @@ export const allPosts: BlogPost[] = [
 
 <p>想知道自己的公开账号经不经得起考古？用 <a href="/">数字足迹健康检查</a> 从本机扫描你的数据归档，看看历史内容里藏着哪些风险项。</p>
 `,
+  },  {
+    slug: 'anatomy-of-a-footprint-report',
+    title: '体检报告长什么样？逐项解读每个风险标签',
+    excerpt:
+      '一份体检报告（footprint report）把几年旧推文压缩成隐私健康分加风险清单。这篇逐项解读每个板块，把手机号、邮箱、住址、定位、敏感话题等风险标签都翻译清楚，并告诉你该先清什么。',
+    date: '2026-08-14',
+    updatedAt: '2026-08-14',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['体检报告', '风险标签', '数字足迹', '隐私体检'],
+    canonical: '/blog/anatomy-of-a-footprint-report',
+    titleEn: 'Anatomy of a Footprint Report: Every Risk Label Decoded',
+    excerptEn:
+      'A footprint report turns years of old tweets into one privacy score and a list of flagged posts. This guide decodes every section and each risk label (phone, email, address, location, sensitive topic), and tells you what to clean first.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['footprint report', 'risk labels', 'digital footprint', 'privacy check'],
+    content: `
+<p>体检报告（footprint report）是你上传 X（Twitter）归档、跑完一次数字足迹体检后看到的第一样东西。它把你几年的旧推文压缩成一个隐私健康分，外加一份被标记的高风险推文清单。问题是，大多数人打开报告，看到"手机号""定位""敏感话题"这类标签，却根本不知道哪个真要紧。这篇就把一份体检报告的每个板块拆开讲，把每个风险标签都翻译清楚，让你知道该清什么，而不是瞎猜。</p>
+
+<h2>一份体检报告到底由什么组成</h2>
+<p>报告完全由你的 X 数据导出文件在本机解析生成，不会再去 X 服务器拉任何新数据。真正有分量的是两个数字：0-100 的健康分（越高越安全），以及按标签分组统计的被标记推文数量。往下是你会花最多时间的逐条推文列表。整个过程都在本地，这也是隐私体检的核心。</p>
+
+<h2>体检报告解读：从上往下怎么看</h2>
+<p>按顺序读报告最省时间。头部是健康分和总标记数；分类汇总把标记分组，让你一眼看出风险集中在联系方式、定位还是内容；推文列表按严重程度排序，最危险的排在前面；最后是筛选栏，可以按标签、年份、关键词收窄范围。如果你已经知道要找什么，直接跳到筛选栏。</p>
+
+<h2>每个风险标签到底是什么意思</h2>
+<p>下面是各标签的含义，以及大致该担心的程度：</p>
+<table>
+  <thead>
+    <tr><th>风险标签</th><th>抓到什么</th><th>典型风险</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>手机号</td><td>推文正文或图片里的电话号码</td><td>高——诈骗和垃圾信息的直接入口</td></tr>
+    <tr><td>邮箱</td><td>邮箱地址，包括已经弃用的</td><td>高——账号被盗风险</td></tr>
+    <tr><td>住址</td><td>家庭或公司地址</td><td>高——现实安全</td></tr>
+    <tr><td>定位</td><td>打卡、城市标签、出行帖</td><td>中——生活规律暴露</td></tr>
+    <tr><td>敏感话题</td><td>吐槽前公司、政治、身份相关内容</td><td>中——求职与名誉</td></tr>
+  </tbody>
+</table>
+<p>这些标签是模式匹配出来的猜测，不是判决。一条"打我电话 555"的玩笑被标成"手机号"，就是可以无视的误报；住址和邮箱的命中才是要认真处理的。</p>
+
+<h2>风险标签在 Twitter 上为什么专挑旧推文</h2>
+<p>报告标记出来的推文，绝大多数都是旧的。Twitter 把你的历史一直保留并能被搜索引擎索引，2015 年一条带旧住址的推文，今天照样能被 Google 搜到。所以报告翻出来的，往往是你早忘了发过的东西。风险标签盯的不是你现在发的，而是这些年一直公开挂在那里的历史。招聘者或陌生人能读到，而你完全不知道。</p>
+
+<h2>该先处理哪些</h2>
+<p>先动手机号、邮箱、住址这三类，它们是具体、可被利用的。定位次之，尤其是你发过固定日常路线的话。敏感话题帖在你求职或处在公众视角时最要紧，所以结合自己的情况权衡，别恐慌式全删。用筛选功能把真正危险的批量挑出来，剩下的再慢慢判断。</p>
+
+<h3>体检报告会删东西吗？</h3>
+<p>不会。报告是只读的，只告诉你有什么、风险多高。删除是另一个你主动选择的步骤，一条条来，随时能停。</p>
+
+<h3>报告能离线打开吗？</h3>
+<p>可以。解析在本机完成，不需要联网，报告也不会存到任何云端。</p>
+
+<h3>风险标签准吗？</h3>
+<p>够你行动，但不完美。模式匹配抓真实手机号和住址相当可靠，也会把玩笑式的引用一起标出来。清理前每条都看一眼。</p>
+
+<h3>我的报告会被别人看到吗？</h3>
+<p>不会。报告只存在你的浏览器内存和本机下载里，不上传，工具方也没有你归档的服务器副本。</p>
+
+<p>想看看自己的体检报告长什么样？在 <a href="/">digital-footprint-health.shop 首页</a> 上传你的 X 归档，几分钟拿到隐私评分和带标签的风险清单，全程在本机处理，数据不出你的电脑。</p>
+`,
+    contentEn: `
+<p>A footprint report is the first thing you see after running a digital footprint check on your X (Twitter) archive. It takes years of old tweets and boils them down to one privacy score plus a list of flagged posts. The catch is that most people open the report, see labels like phone, address, or sensitive topic, and have no idea which ones actually matter. This guide breaks down every section of a footprint report and decodes each risk label, so you can decide what to clean instead of guessing.</p>
+
+<h2>What a footprint report is actually made of</h2>
+<p>The report comes straight from your X data export, parsed on your own device. It does not pull anything new from X's servers. Two numbers do most of the work: a 0-100 health score where higher means safer, and a count of flagged tweets grouped by label. Underneath sits the per-tweet list, the part you'll spend real time in. None of it leaves your machine, which is the whole point of a privacy check.</p>
+
+<h2>Report sections explained, top to bottom</h2>
+<p>Read the report in order and you save time. The header shows the score and the total flagged count. The category breakdown groups those flags so you can see at a glance whether your risk is contact info, location, or content. The tweet list is sorted by severity, so the worst posts sit at the top. Last is a filter bar where you can narrow by label, year, or keyword. If you already know what you're hunting for, skip to the filter.</p>
+
+<h2>Every risk label decoded</h2>
+<p>Here is what each label means and roughly how worried you should be:</p>
+<table>
+  <thead>
+    <tr><th>Risk label</th><th>What it catches</th><th>Typical risk</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Phone</td><td>Phone numbers in tweet text or images</td><td>High: direct scam and spam entry</td></tr>
+    <tr><td>Email</td><td>Email addresses, including old ones</td><td>High: account takeover attempts</td></tr>
+    <tr><td>Address</td><td>Home or workplace addresses</td><td>High: real-world safety</td></tr>
+    <tr><td>Location</td><td>Check-ins, city tags, travel posts</td><td>Medium: reveals your routine</td></tr>
+    <tr><td>Sensitive topic</td><td>Rants about employers, politics, identity</td><td>Medium: hiring and reputation</td></tr>
+  </tbody>
+</table>
+<p>These labels are guesses from pattern matching, not verdicts. A phone hit on a joke like "call me at 555" is a false positive you can ignore. The address and email hits are the ones to take seriously.</p>
+
+<h2>Risk labels on Twitter and why old tweets get flagged</h2>
+<p>Most posts a footprint report flags are old. Twitter keeps your history indexed for years, and a single 2015 tweet with your old address is still reachable through Google today. That's why the report surfaces tweets you forgot you posted. The risk labels on Twitter are not about what you post now; they're about what has sat public the whole time. A hiring manager or a stranger can read it without you ever knowing.</p>
+
+<h2>What to fix first</h2>
+<p>Start with phone, email, and address labels. Those are the concrete, exploitable ones. Location comes next if you posted a regular routine. Sensitive topic posts matter most when you're job hunting or in a visible role, so weigh them against your situation instead of deleting everything in a panic. Use the filters to batch the genuinely dangerous ones, then reconsider the rest.</p>
+
+<h3>Does a footprint report delete anything?</h3>
+<p>No. The report is read-only. It shows you what's there and scores the risk. Deleting is a separate step you choose, tweet by tweet, and you can stop at any time.</p>
+
+<h3>Can I open the report offline?</h3>
+<p>Yes. Parsing happens on your device, so the report works without a connection. Nothing about it is stored in the cloud.</p>
+
+<h3>How accurate are the risk labels?</h3>
+<p>Good enough to act on, not perfect. Pattern matching catches real phone numbers and addresses reliably, but it also flags joking references. Read each hit before you clean it.</p>
+
+<h3>Is my report shared with anyone?</h3>
+<p>No. The report lives in your browser memory and your local downloads. It is never uploaded, and there is no server copy of your archive.</p>
+
+<p>Want to see your own footprint report? Upload your X archive on the <a href="/">digital-footprint-health.shop homepage</a> and get a privacy score plus a labeled risk list in minutes, all processed on your computer. Your data never leaves the device.</p>
+`,
   },
 ]
 

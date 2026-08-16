@@ -990,7 +990,8 @@ export const allPosts: BlogPost[] = [
 
 <p>Upload your archive on the <a href="/">homepage</a> to start the scan, your data never leaves your computer. New to the concept? Read <a href="/blog/what-is-digital-footprint-check">What Is a Digital Footprint Check</a> first.</p>
 `,
-  },  {
+  },
+  {
     slug: 'how-old-tweets-cost-people-jobs',
     title: '旧推文是如何"杀死"求职者的',
     excerpt:
@@ -1797,6 +1798,191 @@ export const allPosts: BlogPost[] = [
     <p><strong>What if I switch accounts mid-deletion?</strong> Authorization is tied to the account, not your email. Switching accounts ends the old task automatically. Authorize the new account and start a new task; progress usually does not carry over.</p>
     <p>Deletion should not be an all-in bet. See how a deletion task can be pausable, resumable, and clearly priced at digital-footprint-health.shop.</p>
     `,
+  },
+  {
+    "slug": "delete-tweets-by-date",
+    "title": "按日期删：把 2018 年以前的所有推文删光",
+    "excerpt": "想按日期删推文？这篇讲清楚按日期删除的原理和做法：X 归档里怎么按时间筛选、跨年份批量删的注意点、以及为什么“删掉旧推文”不等于“抹掉过去”。",
+    "date": "2026-08-17",
+    "updatedAt": "2026-08-17",
+    "author": "Digital Footprint Health Team",
+    "category": "删除教程",
+    "tags": [
+      "X/Twitter",
+      "数字足迹"
+    ],
+    "canonical": "/blog/delete-tweets-by-date",
+    "faq": [
+      {
+        "q": "按日期删推文能精确到哪天吗？",
+        "a": "能。X 归档的 tweets.js 里每条推文都有时间戳，按日期筛选是精确的。常见做法是“删掉某年以前”，比如删光 2018 年以前的，保留最近几年的。",
+        "qEn": "Can date-based deletion be precise to the day?",
+        "aEn": "Yes. Every tweet in the X archive tweets.js has a timestamp, so date filtering is exact. The common pattern is \"delete everything before year X\", like wiping pre-2018 while keeping recent years."
+      },
+      {
+        "q": "删旧推文有没有风险？",
+        "a": "有。旧推文里可能有你后来忘记的私人信息，也可能有值得留的回忆。批量删之前先导出备份、抽几篇看一眼，再决定边界。",
+        "qEn": "Any risk in deleting old tweets?",
+        "aEn": "Yes. Old tweets can hold personal info you forgot about, or memories worth keeping. Back up the archive, sample a few tweets, then set the boundary before bulk deleting."
+      },
+      {
+        "q": "2018 年以前的推文为什么特别值得清理？",
+        "a": "账号早期内容通常最不设防：随意发过的心情、定位打卡、过期联系方式。而且年代越久，越可能包含现在会尴尬或泄露的信息。",
+        "qEn": "Why are pre-2018 tweets worth cleaning especially?",
+        "aEn": "Early account content is usually the least guarded: random moods, location check-ins, outdated contact info. The older it is, the more likely it contains something embarrassing or revealing now."
+      }
+    ],
+    "titleEn": "Delete by Date: Wipe Everything Before 2018",
+    "content": "<p>很多人清理账号的第一步，不是删最新内容，而是回头看最早的推文。十年前随手发的东西，现在再看往往只剩尴尬，偶尔还有真隐患。按日期删推文，就是把“某个时间点以前”的内容整体清掉，一次解决一大片。</p>\n    <h2>为什么按日期删是最高效的起点</h2>\n    <p>账号早期内容有三个共同点：不设防、无价值、占大头。刚注册时谁都发过“今天好累”“这个真好吃”这类随手心情，十年后它们既不代表你，又可能埋着定位、学校、手机号之类信息。按日期批量删，正好把这块最陈旧的区域整体处理掉。</p>\n    <h2>先导出归档，再定边界</h2>\n    <p>删之前先做两件事：第一，在 X 设置里导出完整归档，本地留一份备份；第二，打开 tweets.js，把最早几年的推文抽样看一遍，确认边界。推荐从“2018 年以前”开始，这个年份对多数账号来说，是“没什么可保留”和“还有点意思”的分界。</p>\n    <h2>按日期删的实操路径</h2>\n    <ul>\n    <li>导出归档：设置 → 账号 → 下载数据，等邮件通知</li>\n    <li>解压后打开 tweets.js，按 created_at 排序，确认要删的时间段</li>\n    <li>用按日期筛选的清理工具，设置起始与截止时间</li>\n    <li>先小范围试删（比如只删某一年的），确认无误再扩到全部</li>\n    </ul>\n    <h2>别把“删旧”当“抹掉过去”</h2>\n    <p>一个诚实的提醒：按日期删删掉的是公开可见的推文，不等于抹掉过去。转发、截图、别人的提及，都可能让内容继续存在。清理的价值在于减少公开暴露面，而不是追求物理上的删除。</p>\n    <h2>FAQ</h2>\n    <p><strong>按日期删推文能精确到哪天吗？</strong> 能。X 归档的 tweets.js 里每条推文都有时间戳，按日期筛选是精确的。常见做法是“删掉某年以前”，比如删光 2018 年以前的，保留最近几年的。</p>\n    <p><strong>删旧推文有没有风险？</strong> 有。旧推文里可能有你后来忘记的私人信息，也可能有值得留的回忆。批量删之前先导出备份、抽几篇看一眼，再决定边界。</p>\n    <p><strong>2018 年以前的推文为什么特别值得清理？</strong> 账号早期内容通常最不设防：随意发过的心情、定位打卡、过期联系方式。而且年代越久，越可能包含现在会尴尬或泄露的信息。</p>\n    <p>想把账号的历史包袱卸掉？来 digital-footprint-health.shop 看看按日期筛选是怎么做的。</p>",
+    "contentEn": "<p>Most account cleanups do not start with the newest posts. They start with the oldest. Things you tweeted ten years ago now read as awkward at best, risky at worst. Deleting tweets by date clears everything before a cutoff in one sweep.</p>\n    <h2>Why by-date is the most efficient starting point</h2>\n    <p>Early account content shares three traits: unguarded, low value, and huge in volume. Everyone posted \"today was long\" and \"this is delicious\" right after signing up. A decade later those tweets represent nothing and may still carry locations, school names, or old phone numbers. Wiping by date handles this stale region in one pass.</p>\n    <h2>Export the archive, then set the boundary</h2>\n    <p>Do two things before deleting. First, export your full archive from X settings and keep a local backup. Second, open tweets.js and sample the earliest years to confirm the boundary. A good default is \"everything before 2018\" — for most accounts that is where nothing worth keeping meets nothing interesting anyway.</p>\n    <h2>How date-based deletion works</h2>\n    <ul>\n    <li>Export archive: Settings → Account → Download data, wait for the email</li>\n    <li>Unzip, open tweets.js, sort by created_at, confirm the range</li>\n    <li>Use a cleanup tool with date filtering, set start and end times</li>\n    <li>Test on one year first, confirm, then expand to the full range</li>\n    </ul>\n    <h2>Deleting old is not erasing the past</h2>\n    <p>An honest note: deleting by date removes publicly visible tweets, not the past. Retweets, screenshots, and other people's mentions can keep content alive. The value of cleanup is shrinking the public exposure surface, not achieving physical deletion.</p>\n    <h2>FAQ</h2>\n    <p><strong>Can date-based deletion be precise to the day?</strong> Yes. Every tweet in the X archive tweets.js has a timestamp, so date filtering is exact. The common pattern is \"delete everything before year X\", like wiping pre-2018 while keeping recent years.</p>\n    <p><strong>Any risk in deleting old tweets?</strong> Yes. Old tweets can hold personal info you forgot about, or memories worth keeping. Back up the archive, sample a few tweets, then set the boundary before bulk deleting.</p>\n    <p><strong>Why are pre-2018 tweets worth cleaning especially?</strong> Early account content is usually the least guarded: random moods, location check-ins, outdated contact info. The older it is, the more likely it contains something embarrassing or revealing now.</p>\n    <p>Ready to drop the historical baggage? See how date filtering works at digital-footprint-health.shop.</p>"
+  },
+  {
+    "slug": "delete-tweets-by-keyword",
+    "title": "按关键词删：批量清理\"中二时期\"内容",
+    "excerpt": "按关键词删推文是最省力的清理方式：输入一个词，所有含它的推文列出来，确认后一键删。这篇讲关键词删除的适用场景、常见坑，以及怎么避免误删。",
+    "date": "2026-08-17",
+    "updatedAt": "2026-08-17",
+    "author": "Digital Footprint Health Team",
+    "category": "删除教程",
+    "tags": [
+      "X/Twitter",
+      "数字足迹"
+    ],
+    "canonical": "/blog/delete-tweets-by-keyword",
+    "faq": [
+      {
+        "q": "按关键词删能删掉所有匹配的推文吗？",
+        "a": "能删掉所有公开推文中含该关键词的。注意只匹配你发的推文，不匹配别人的提及和转发。匹配规则通常是包含关系，比如“晚安”会匹配“说晚安”。",
+        "qEn": "Does keyword deletion remove every matching tweet?",
+        "aEn": "It removes all your public tweets containing the keyword. It only matches your own tweets, not mentions or retweets by others. Matching is usually containment, so \"goodnight\" also catches \"said goodnight\"."
+      },
+      {
+        "q": "关键词删会不会误删？",
+        "a": "有可能。一个词可能有多种含义，比如“分手”既可能是你的心情也可能是转发歌词。批量删前先看匹配列表，逐条勾选或先小范围试删。",
+        "qEn": "Can keyword deletion cause false positives?",
+        "aEn": "Yes. A word can have multiple meanings: \"break up\" might be your mood or a lyric you retweeted. Review the match list before deleting, or test on a small set first."
+      },
+      {
+        "q": "适合用关键词删哪些内容？",
+        "a": "典型的“中二时期”关键词：中二的自我宣言、特定前任的名字、旧学校名、过期的自嘲梗。删完再看一遍列表，往往能回忆起自己还发过什么。",
+        "qEn": "What is keyword deletion best for?",
+        "aEn": "Classic cringe-era terms: dramatic self-declarations, an ex's name, your old school name, expired self-deprecating memes. Reviewing the match list often reminds you of what else you posted."
+      }
+    ],
+    "titleEn": "Delete by Keyword: Clean Up Your Cringe Era",
+    "content": "<p>按日期删解决“时间范围”，按关键词删解决“内容类型”。你不需要翻完十年推文，只需要记得几个关键词——前任的名字、中二的宣言、过期的梗——输入进去，所有匹配的推文就全列出来了。</p>\n    <h2>关键词删除的本质</h2>\n    <p>它本质是一个过滤器：在你自己发的全部推文里，找出含指定词的所有条目，列成清单，确认后批量删除。关键词匹配通常包含字符组合，比如删“晚安”会把“说晚安”“晚安世界”都带出来。</p>\n    <h2>最值得删的三类关键词</h2>\n    <ul>\n    <li>人名类：前任、绝交的朋友、旧同事——尤其带着情绪发过的</li>\n    <li>地点类：旧学校、旧公司、老地址——暴露信息往往藏在里面</li>\n    <li>状态类：“中二宣言”“再也不……”“此生无悔”这类情绪峰值内容</li>\n    </ul>\n    <h2>怎么避免误删</h2>\n    <p>一个词往往有多个含义。批量删之前，先看匹配清单，逐条扫一眼：这条是不是转发歌词？那条是不是在聊别人？拿不准的先保留。实操建议：先删确定性的（前任名字），再处理模糊的（通用词）。</p>\n    <h2>关键词删完还能补救吗</h2>\n    <p>删了就是删了，X 的删除不可逆，只有本地备份能兜底。所以批量删之前，一定先导出归档。归档里的内容是完整的，删错了也能查，只是不能恢复成公开状态。</p>\n    <h2>FAQ</h2>\n    <p><strong>按关键词删能删掉所有匹配的推文吗？</strong> 能删掉所有公开推文中含该关键词的。注意只匹配你发的推文，不匹配别人的提及和转发。匹配规则通常是包含关系，比如“晚安”会匹配“说晚安”。</p>\n    <p><strong>关键词删会不会误删？</strong> 有可能。一个词可能有多种含义，比如“分手”既可能是你的心情也可能是转发歌词。批量删前先看匹配列表，逐条勾选或先小范围试删。</p>\n    <p><strong>适合用关键词删哪些内容？</strong> 典型的“中二时期”关键词：中二的自我宣言、特定前任的名字、旧学校名、过期的自嘲梗。删完再看一遍列表，往往能回忆起自己还发过什么。</p>\n    <p>想按关键词清理黑历史？来 digital-footprint-health.shop 看看关键词筛选是怎么做的。</p>",
+    "contentEn": "<p>By-date deletion handles the time range; by-keyword deletion handles the content type. You do not need to read ten years of tweets, just remember a few words — an ex's name, a dramatic declaration, an expired meme — type them in, and every match appears in one list.</p>\n    <h2>What keyword deletion really is</h2>\n    <p>It is a filter: search all your own tweets for entries containing a given word, list them, confirm, and delete in bulk. Matching is usually containment, so deleting \"goodnight\" also pulls \"said goodnight\" and \"goodnight world\".</p>\n    <h2>Three keyword categories worth deleting first</h2>\n    <ul>\n    <li>Names: exes, cut-off friends, old colleagues — especially the ones posted with emotion</li>\n    <li>Places: old schools, old employers, old addresses — leaks often hide here</li>\n    <li>States: dramatic declarations, \"never again\" lines, peak-emotion posts</li>\n    </ul>\n    <h2>How to avoid false positives</h2>\n    <p>One word can carry many meanings. Review the match list before batch deleting: is this a lyric retweet? Is that about someone else? Keep the ambiguous ones. Practically, delete the certain ones first (the ex's name), then handle the fuzzy ones (generic words).</p>\n    <h2>Can you undo keyword deletion?</h2>\n    <p>Deleted is deleted. X deletion is irreversible, and only a local backup can help. So export the archive before batch deleting. The archive holds everything, so you can still look things up, you just cannot restore them publicly.</p>\n    <h2>FAQ</h2>\n    <p><strong>Does keyword deletion remove every matching tweet?</strong> It removes all your public tweets containing the keyword. It only matches your own tweets, not mentions or retweets by others. Matching is usually containment, so \"goodnight\" also catches \"said goodnight\".</p>\n    <p><strong>Can keyword deletion cause false positives?</strong> Yes. A word can have multiple meanings: \"break up\" might be your mood or a lyric you retweeted. Review the match list before deleting, or test on a small set first.</p>\n    <p><strong>What is keyword deletion best for?</strong> Classic cringe-era terms: dramatic self-declarations, an ex's name, your old school name, expired self-deprecating memes. Reviewing the match list often reminds you of what else you posted.</p>\n    <p>Want to clean your cringe era by keyword? See how keyword filtering works at digital-footprint-health.shop.</p>"
+  },
+  {
+    "slug": "remove-location-tweets",
+    "title": "定位推文批量清理：旅行打卡也能删",
+    "excerpt": "打卡推文是隐私大户：位置标签、定位记录、行程暴露，全在里面。这篇讲怎么批量删除带定位的推文、为什么定位数据风险被低估，以及清理打卡推文的操作要点。",
+    "date": "2026-08-17",
+    "updatedAt": "2026-08-17",
+    "author": "Digital Footprint Health Team",
+    "category": "删除教程",
+    "tags": [
+      "X/Twitter",
+      "数字足迹"
+    ],
+    "canonical": "/blog/remove-location-tweets",
+    "faq": [
+      {
+        "q": "定位推文的风险在哪？",
+        "a": "打卡推文会暴露你的行程规律：常去的地方、不在家的时段、旅行的日期。把这些拼起来，可以推断你的住址、工作地点和作息，是隐私泄露里被低估的一类。",
+        "qEn": "What is the risk of location tweets?",
+        "aEn": "Check-in tweets expose your routines: frequented places, hours you are away, travel dates. Stitched together they reveal your address, workplace, and schedule — a severely underestimated leak category."
+      },
+      {
+        "q": "怎么找到所有带定位的推文？",
+        "a": "归档里每条带位置信息的推文都有 place 或 coordinates 字段，清理工具可以按这个筛选。也可以按“打卡关键词”过滤：签到、位置、check-in、地名等。",
+        "qEn": "How do I find all location tweets?",
+        "aEn": "In the archive, tweets with location carry place or coordinates fields, and cleanup tools can filter on those. You can also filter by check-in keywords like \"check-in\", \"at\", and place names."
+      },
+      {
+        "q": "删打卡推文会影响别的吗？",
+        "a": "不会。定位数据只是推文的一个字段，删除它不影响其他内容。需要留意的是：某些平台的定位在发布时已写入推文文本，那种要按关键词处理。",
+        "qEn": "Does deleting check-in tweets affect anything else?",
+        "aEn": "No. Location is just one field on a tweet; removing it leaves everything else intact. Note that some platforms bake the location into the tweet text at publish time, which needs keyword handling instead."
+      }
+    ],
+    "titleEn": "Remove Location-Tagged Tweets in Bulk",
+    "content": "<p>旅行打卡、餐厅签到、飞机落地报平安——这些推文看起来人畜无害，却是账号里隐私浓度最高的一类。定位数据把“你去过哪、什么时候在、常待在哪”拼成一张完整的行踪图，而多数人从来没想过清理它们。</p>\n    <h2>为什么定位数据被低估</h2>\n    <p>打卡推文的危害不在单条，在聚合。一条“在杭州”没什么；一年三十条“在杭州”“在深圳”“在机场”，就把你的常住城市、出差节奏、休假习惯全暴露了。顺着时间线看，连“这个点他通常不在家”都推算得出来。</p>\n    <h2>归档里怎么识别定位推文</h2>\n    <p>X 归档的 tweets.js 里，带定位的推文会有 place 或 coordinates 字段。手动翻很痛苦，但清理工具可以按这个字段自动筛出所有带定位的推文，一次列全。</p>\n    <h2>批量清理的操作要点</h2>\n    <ul>\n    <li>先用归档筛选功能把带定位的推文全列出来，看数量</li>\n    <li>浏览一遍，确认哪些是真的定位推文，哪些是误匹配</li>\n    <li>按时间或按“全部定位推文”批量删除</li>\n    <li>删完再扫一遍：文本里直接写地名的（如“刚落地北京”）不在 place 字段里，要用关键词补删</li>\n    </ul>\n    <h2>以后还打卡吗</h2>\n    <p>清理完，建议把发布习惯也改掉：实时打卡改成事后分享，不带定位；非要发位置，等离开后再发。行踪信息给得越晚、越模糊，聚合出来的图就越没用。</p>\n    <h2>FAQ</h2>\n    <p><strong>定位推文的风险在哪？</strong> 打卡推文会暴露你的行程规律：常去的地方、不在家的时段、旅行的日期。把这些拼起来，可以推断你的住址、工作地点和作息，是隐私泄露里被低估的一类。</p>\n    <p><strong>怎么找到所有带定位的推文？</strong> 归档里每条带位置信息的推文都有 place 或 coordinates 字段，清理工具可以按这个筛选。也可以按“打卡关键词”过滤：签到、位置、check-in、地名等。</p>\n    <p><strong>删打卡推文会影响别的吗？</strong> 不会。定位数据只是推文的一个字段，删除它不影响其他内容。需要留意的是：某些平台的定位在发布时已写入推文文本，那种要按关键词处理。</p>\n    <p>想把行踪图从账号里抹掉？来 digital-footprint-health.shop 看看定位筛选是怎么做的。</p>",
+    "contentEn": "<p>Travel check-ins, restaurant tags, \"landed safe\" updates — they look harmless, but they are the highest-privacy-density content on your account. Location data stitches \"where you went, when you were there, where you stay\" into one readable map, and almost nobody ever thinks to clean it.</p>\n    <h2>Why location data is underestimated</h2>\n    <p>Check-in tweets are dangerous in aggregate, not individually. One \"in Hangzhou\" means nothing. Thirty of them across a year expose your home city, travel rhythm, and holiday habits. Read chronologically, they even reveal \"around this hour he is usually not home\".</p>\n    <h2>How to spot location tweets in the archive</h2>\n    <p>In the X archive tweets.js, tweets with location carry place or coordinates fields. Scanning by hand is miserable, but cleanup tools can auto-filter all location tweets from the archive in one pass.</p>\n    <h2>Bulk cleanup, step by step</h2>\n    <ul>\n    <li>Use archive filtering to list all location tweets, check the count</li>\n    <li>Review the list, confirm which are real check-ins and which are false matches</li>\n    <li>Batch delete by time range or \"all location tweets\"</li>\n    <li>Rescan after deleting: tweets with place names in the text (\"just landed in Beijing\") are not in the place field and need keyword deletion</li>\n    </ul>\n    <h2>Check in less, or check in later</h2>\n    <p>After the cleanup, change the habit: share after the fact instead of in real time, without the location tag. Or post the place after you have left. The later and vaguer the location, the less useful the aggregated map.</p>\n    <h2>FAQ</h2>\n    <p><strong>What is the risk of location tweets?</strong> Check-in tweets expose your routines: frequented places, hours you are away, travel dates. Stitched together they reveal your address, workplace, and schedule — a severely underestimated leak category.</p>\n    <p><strong>How do I find all location tweets?</strong> In the archive, tweets with location carry place or coordinates fields, and cleanup tools can filter on those. You can also filter by check-in keywords like \"check-in\", \"at\", and place names.</p>\n    <p><strong>Does deleting check-in tweets affect anything else?</strong> No. Location is just one field on a tweet; removing it leaves everything else intact. Note that some platforms bake the location into the tweet text at publish time, which needs keyword handling instead.</p>\n    <p>Want to erase the map from your account? See how location filtering works at digital-footprint-health.shop.</p>"
+  },
+  {
+    "slug": "precision-delete-phone-email",
+    "title": "只删含手机号/邮箱的推文？精准删除",
+    "excerpt": "不是所有旧推文都需要删，需要删的是那些带敏感信息的。这篇讲精准删除的思路：怎么只筛选含手机号、邮箱、地址的推文，把清理目标从“全部”缩小到“真正危险的”。",
+    "date": "2026-08-17",
+    "updatedAt": "2026-08-17",
+    "author": "Digital Footprint Health Team",
+    "category": "删除教程",
+    "tags": [
+      "X/Twitter",
+      "数字足迹"
+    ],
+    "canonical": "/blog/precision-delete-phone-email",
+    "faq": [
+      {
+        "q": "怎么只删含手机号的推文？",
+        "a": "归档筛选可以按正则匹配手机号格式，把所有含 11 位数字或特定区号模式的推文列出来。邮箱同理，匹配 xxx@yyy.zzz 模式。列出来后确认、批量删。",
+        "qEn": "How do I delete only tweets with phone numbers?",
+        "aEn": "Archive filtering can regex-match phone formats and list every tweet containing an 11-digit number or specific country-code patterns. Emails work the same way, matching xxx@yyy.zzz patterns. Confirm the list, then batch delete."
+      },
+      {
+        "q": "手机号推文的风险是什么？",
+        "a": "手机号是身份验证的关键凭据，泄露后可能被用来撞库、社工、甚至尝试接管账号。它比邮箱更危险，因为很多服务默认手机号即身份。",
+        "qEn": "What is the risk of phone-number tweets?",
+        "aEn": "Phone numbers are key identity credentials. Leaked, they enable credential stuffing, social engineering, and even account takeover attempts. They are more dangerous than emails because many services treat the number as identity by default."
+      },
+      {
+        "q": "邮箱出现在推文里怎么办？",
+        "a": "同样按模式筛选删除。删完再搜一遍自己常用邮箱的变体（加点、下划线、不同域名），因为发帖时可能用过多个变体。",
+        "qEn": "What if an email appears in tweets?",
+        "aEn": "Filter and delete by pattern the same way. After deleting, search variants of your common email (dots, underscores, different domains), since you may have posted several variants."
+      }
+    ],
+    "titleEn": "Precision Deletion: Only Tweets with Phone & Email",
+    "content": "<p>全面清理是理想，精准删除是现实。多数人并不需要删光全部推文——几百条值得留的回忆没必要陪葬。真正必须清掉的，是那些带手机号、邮箱、地址的推文。把目标从“全部”缩小到“真正危险的”，才是可持续的清理策略。</p>\n    <h2>为什么精准删除更现实</h2>\n    <p>全量删除会误伤有价值的内容，而且心理门槛高，容易拖着不做。精准删除只处理含敏感信息的条目，量小、目标明确、做完有强烈的完成感。清理不是一次性清空，是持续地剪掉危险枝条。</p>\n    <h2>手机号：最该优先清的信息</h2>\n    <p>手机号是身份验证的第一道门。泄露后可以被用来撞库、社工、甚至尝试接管账号。而且手机号比邮箱更难换——换邮箱十分钟，换手机号要跑营业厅。所以含手机号的推文，优先级最高。</p>\n    <h2>邮箱和地址：次一级但同样重要</h2>\n    <p>邮箱泄露的风险低于手机号，但配合撞库数据库，可能暴露你在哪些平台注册过。地址（家庭住址、公司地址）则直接关联线下风险。这三类都是“删了不心疼、留着有隐患”的内容。</p>\n    <h2>精准删除的操作路径</h2>\n    <ul>\n    <li>导出归档，用正则筛选手机号模式（如 11 位数字）和邮箱模式</li>\n    <li>人工浏览匹配列表，排除误匹配（比如转发别人的号码）</li>\n    <li>确认后批量删除</li>\n    <li>再用关键词搜自己姓名+城市、手机号变体，补漏</li>\n    </ul>\n    <h2>删完之后</h2>\n    <p>精准删除做完，账号的“危险密度”会明显下降。之后每半年扫一次归档，把新出现的敏感信息清掉，比攒十年再大扫除轻松得多。</p>\n    <h2>FAQ</h2>\n    <p><strong>怎么只删含手机号的推文？</strong> 归档筛选可以按正则匹配手机号格式，把所有含 11 位数字或特定区号模式的推文列出来。邮箱同理，匹配 xxx@yyy.zzz 模式。列出来后确认、批量删。</p>\n    <p><strong>手机号推文的风险是什么？</strong> 手机号是身份验证的关键凭据，泄露后可能被用来撞库、社工、甚至尝试接管账号。它比邮箱更危险，因为很多服务默认手机号即身份。</p>\n    <p><strong>邮箱出现在推文里怎么办？</strong> 同样按模式筛选删除。删完再搜一遍自己常用邮箱的变体（加点、下划线、不同域名），因为发帖时可能用过多个变体。</p>\n    <p>想精准清掉危险信息？来 digital-footprint-health.shop 看看敏感信息筛选是怎么做的。</p>",
+    "contentEn": "<p>Full cleanup is the ideal; precision deletion is the reality. Most people do not need to wipe every tweet — hundreds of tweets worth keeping do not deserve to die with the junk. The ones that must go are tweets carrying phone numbers, emails, and addresses. Shrinking the target from \"everything\" to \"genuinely dangerous\" is the sustainable strategy.</p>\n    <h2>Why precision deletion is more realistic</h2>\n    <p>Full deletion damages valuable content and carries a high psychological threshold, so people put it off forever. Precision deletion only touches entries with sensitive info: smaller volume, clear target, and a satisfying sense of completion. Cleanup is not a one-time empty; it is continuously pruning the dangerous branches.</p>\n    <h2>Phone numbers: clean these first</h2>\n    <p>The phone number is the first gate of identity verification. Leaked, it enables credential stuffing, social engineering, and even account takeover attempts. It is also harder to change than an email — swapping an email takes ten minutes, swapping a number takes a trip to the carrier. Tweets with phone numbers rank first in priority.</p>\n    <h2>Emails and addresses: next tier, same importance</h2>\n    <p>Email leaks rank below phone numbers in risk, but combined with breach databases they reveal which platforms you registered on. Addresses (home, workplace) link directly to offline risk. All three are content that costs nothing to delete and carries hidden danger to keep.</p>\n    <h2>How precision deletion works</h2>\n    <ul>\n    <li>Export the archive, regex-filter phone patterns (like 11-digit numbers) and email patterns</li>\n    <li>Manually review the match list, drop false positives (like retweeted numbers)</li>\n    <li>Confirm, then batch delete</li>\n    <li>Search again by name+city and phone variants to catch leftovers</li>\n    </ul>\n    <h2>After the deletion</h2>\n    <p>Precision deletion drops the account's \"danger density\" noticeably. Scan the archive every six months and clear new sensitive info, which is far easier than a decade-scale deep clean.</p>\n    <h2>FAQ</h2>\n    <p><strong>How do I delete only tweets with phone numbers?</strong> Archive filtering can regex-match phone formats and list every tweet containing an 11-digit number or specific country-code patterns. Emails work the same way, matching xxx@yyy.zzz patterns. Confirm the list, then batch delete.</p>\n    <p><strong>What is the risk of phone-number tweets?</strong> Phone numbers are key identity credentials. Leaked, they enable credential stuffing, social engineering, and even account takeover attempts. They are more dangerous than emails because many services treat the number as identity by default.</p>\n    <p><strong>What if an email appears in tweets?</strong> Filter and delete by pattern the same way. After deleting, search variants of your common email (dots, underscores, different domains), since you may have posted several variants.</p>\n    <p>Want to precisely remove the dangerous bits? See how sensitive-info filtering works at digital-footprint-health.shop.</p>"
+  },
+  {
+    "slug": "delete-wrong-tweet-prechecks",
+    "title": "删错了怎么办？删除前必做的 3 件事",
+    "excerpt": "删除不可逆，删错一篇就少一篇。这篇讲批量删推文前必做的三件事：先备份、先小范围试删、先确认筛选条件。做好这三步，误删概率降到接近零。",
+    "date": "2026-08-17",
+    "updatedAt": "2026-08-17",
+    "author": "Digital Footprint Health Team",
+    "category": "删除教程",
+    "tags": [
+      "X/Twitter",
+      "数字足迹"
+    ],
+    "canonical": "/blog/delete-wrong-tweet-prechecks",
+    "faq": [
+      {
+        "q": "删错的推文能恢复吗？",
+        "a": "公开层面不能。X 删除不可逆，只有本地归档备份能兜底——备份里的内容还在，只是无法恢复为公开状态。所以备份永远是删除前第一步。",
+        "qEn": "Can deleted tweets be restored?",
+        "aEn": "Not publicly. X deletion is irreversible; only a local archive backup helps — the content still exists there, just not publicly. That is why backup is always step one."
+      },
+      {
+        "q": "怎么避免删错？",
+        "a": "三件事：备份归档、先小范围试删、核对筛选条件。小范围试删是关键——先删一个月或一个关键词集合，隔天再确认，比一次清十年稳妥得多。",
+        "qEn": "How do I avoid deleting the wrong tweet?",
+        "aEn": "Three things: back up the archive, test on a small set first, and verify the filter conditions. Small-scale testing is the key — delete one month or one keyword set, confirm the next day, far safer than wiping ten years at once."
+      },
+      {
+        "q": "删除服务的“撤销”按钮是真的吗？",
+        "a": "看实现。正规服务在任务执行期间可以暂停，但已删的推文无法撤销——删除请求发出去就是真删。任何声称能“恢复已删推文”的服务，都要警惕。",
+        "qEn": "Are \"undo\" buttons on deletion services real?",
+        "aEn": "Depends on the implementation. Legitimate services can pause during execution, but already-deleted tweets cannot be undone — once the delete request goes out, it is gone. Be wary of any service claiming to \"restore deleted tweets\"."
+      }
+    ],
+    "titleEn": "What If You Delete the Wrong Tweet? 3 Pre-Checks",
+    "content": "<p>删除是唯一不可逆的账号操作。发错一条可以删，删错一条却找不回来。批量清理最容易出事的地方，恰恰是“图快”：一口气选了几千条，确认键一按，回不了头。这篇讲批量删推文前必做的三件事，把误删概率压到接近零。</p>\n    <h2>第一件事：先备份归档</h2>\n    <p>在 X 设置里导出完整归档，下载到本地，解压确认 tweets.js 可读。备份的价值不是“能恢复”，而是“还能查”——删错了，你能在备份里找到原文，也确认它确实没了。没有备份的批量删除，等于闭眼跳。</p>\n    <h2>第二件事：先小范围试删</h2>\n    <p>别一上来就清十年。先选一个月、一个关键词集合或一小批定位推文，删完隔天看效果，确认筛选逻辑没问题，再扩大到全量。试删是删除流程里最被低估的一步，它把“猜错”的成本从不可逆变成可重来。</p>\n    <h2>第三件事：核对筛选条件</h2>\n    <p>删除前把筛选条件读一遍：时间范围对不对？关键词有没有歧义？匹配的是“自己发的”还是“别人提及的”？工具通常有预览清单，务必滚动看一遍，尤其是首尾部分——批量操作的边界最容易被忽视。</p>\n    <h2>真的删错了怎么办</h2>\n    <p>先别慌。第一，去本地备份查原文，确认内容；第二，评估影响——多数误删是“可惜”而不是“灾难”；第三，如果删的是敏感内容之外的普通推文，就当清理过度，停止操作，别再扩大。删错的推文无法恢复，但后续操作可以更谨慎。</p>\n    <h2>FAQ</h2>\n    <p><strong>删错的推文能恢复吗？</strong> 公开层面不能。X 删除不可逆，只有本地归档备份能兜底——备份里的内容还在，只是无法恢复为公开状态。所以备份永远是删除前第一步。</p>\n    <p><strong>怎么避免删错？</strong> 三件事：备份归档、先小范围试删、核对筛选条件。小范围试删是关键——先删一个月或一个关键词集合，隔天再确认，比一次清十年稳妥得多。</p>\n    <p><strong>删除服务的“撤销”按钮是真的吗？</strong> 看实现。正规服务在任务执行期间可以暂停，但已删的推文无法撤销——删除请求发出去就是真删。任何声称能“恢复已删推文”的服务，都要警惕。</p>\n    <p>删除不该靠赌。来 digital-footprint-health.shop 看看删除前检查是怎么做的。</p>",
+    "contentEn": "<p>Deletion is the only irreversible account operation. A wrong post can be deleted; a wrongly deleted post cannot be found again. The most dangerous part of bulk cleanup is precisely \"going fast\": select a few thousand tweets in one go, hit confirm, and there is no turning back. Here are three pre-checks before batch deleting, to push the mis-delete rate near zero.</p>\n    <h2>Pre-check 1: back up the archive</h2>\n    <p>Export the full archive from X settings, download it locally, unzip and confirm tweets.js reads fine. The value of backup is not \"restore\" but \"still verifiable\" — after a wrong delete, you can find the original in the backup and confirm it is gone. Bulk deleting without a backup is jumping blind.</p>\n    <h2>Pre-check 2: test on a small set</h2>\n    <p>Do not wipe ten years in one go. Pick one month, one keyword set, or a small batch of location tweets first. Check the result the next day, confirm the filter logic works, then expand to the full range. Test deletion is the most underestimated step in the process; it turns \"guessing wrong\" from irreversible into redoable.</p>\n    <h2>Pre-check 3: verify the filter conditions</h2>\n    <p>Read the filter conditions once more before deleting: is the time range right? Does the keyword carry ambiguity? Does it match \"your own tweets\" or \"mentions by others\"? Tools usually show a preview list — scroll through it, especially the start and end, because the edges of batch operations are where mistakes hide.</p>\n    <h2>What to do when you actually deleted wrong</h2>\n    <p>Do not panic. First, look up the original in the local backup and confirm the content. Second, assess the impact — most wrong deletes are \"a pity\", not \"a disaster\". Third, if what got deleted is ordinary content rather than sensitive, treat it as over-cleaning, stop the operation, and do not expand it. Deleted tweets cannot return, but subsequent operations can be more careful.</p>\n    <h2>FAQ</h2>\n    <p><strong>Can deleted tweets be restored?</strong> Not publicly. X deletion is irreversible; only a local archive backup helps — the content still exists there, just not publicly. That is why backup is always step one.</p>\n    <p><strong>How do I avoid deleting the wrong tweet?</strong> Three things: back up the archive, test on a small set first, and verify the filter conditions. Small-scale testing is the key — delete one month or one keyword set, confirm the next day, far safer than wiping ten years at once.</p>\n    <p><strong>Are \"undo\" buttons on deletion services real?</strong> Depends on the implementation. Legitimate services can pause during execution, but already-deleted tweets cannot be undone — once the delete request goes out, it is gone. Be wary of any service claiming to \"restore deleted tweets\".</p>\n    <p>Deletion should not be a gamble. See how pre-deletion checks work at digital-footprint-health.shop.</p>"
   },
 ];
 

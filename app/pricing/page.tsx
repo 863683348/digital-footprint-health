@@ -1,10 +1,9 @@
 import { PricingView } from '@/components/PricingView';
 
-// Pricing content is static (BILLING_PLANS) and has no per-request data, so
-// let it be statically rendered and served from the CDN cache instead of
-// re-rendering from the origin on every visit (reduces Fast Origin Transfer).
-export const dynamic = 'force-static';
-
+// The root layout reads headers() to resolve the language (x-locale), which
+// makes the whole tree render dynamically per request, so force-static is no
+// longer applicable here — PricingView is a client component and resolves the
+// language from the route on the client regardless.
 export default function Page() {
   return <PricingView />;
 }

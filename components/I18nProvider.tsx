@@ -22,15 +22,27 @@ function langFromRoute(pathname: string): Lang {
  * Language is bound to the route: /en* → en, anything else → zh.
  * - NavBar's 中/EN clicks call setLang() (persists preference) AND navigate,
  *   so route + state stay in sync.
- * - localStorage only seeds the very first render as a fallback for
- *   first-time visitors; after that the route is authoritative.
+ * - initialLang is resolved server-side (x-locale from middleware) so the SSR
+ *   HTML matches the URL language. This matters for rewritten routes: during
+ *   SSR usePathname() returns the internal target (e.g. "/") rather than the
+ *   public "/en", so the route alone would render Chinese.
+ * - After hydration the route becomes authoritative (prevRoute sync below);
+ *   localStorage only seeds the very first render as a fallback for first-time
+ *   visitors on non-/en routes.
  */
-export function I18nProvider({ children }: { children: React.ReactNode }) {
+interface I18nProviderProps {
+  /** Language resolved by the server (x-locale from middleware). */
+  initialLang: Lang;
+  children: React.ReactNode;
+}
+
+export function I18nProvider({ initialLang, children }: I18nProviderProps) {
   const pathname = usePathname();
   const routeLang = langFromRoute(pathname);
 
-  // Seed once from localStorage / browser, then the route takes over.
-  const [lang, setLangState] = useState<Lang>(routeLang);
+  // Seed from the server-injected locale so SSR output is correct; the route
+  // takes over on hydration / navigation (see prevRoute sync below).
+  const [lang, setLangState] = useState<Lang>(initialLang);
 
   // Adjust state during render when the route changes (no effect cascade).
   const [prevRoute, setPrevRoute] = useState<Lang>(routeLang);

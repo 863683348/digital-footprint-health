@@ -1541,6 +1541,263 @@ export const allPosts: BlogPost[] = [
     `,
   },
 
+  {
+    slug: 'bulk-delete-old-tweets-walkthrough',
+    title: '批量删除历史推文：完整操作流程',
+    excerpt:
+      '几千条旧推文怎么批量删？这篇给出完整操作流程：从下载归档、本地解析、按风险筛选，到批量删除和验证，每一步都有具体做法，适合第一次清理的人照做。',
+    date: '2026-08-16',
+    updatedAt: '2026-08-16',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '批量删除', '清理教程'],
+    canonical: '/blog/bulk-delete-old-tweets-walkthrough',
+    faq: [
+      {
+        q: '批量删除推文会被 X 封号吗？',
+        a: '用官方接口按正常频率删不会。真正的风险来自第三方工具频繁调用导致限流，以及删太快被系统当成异常行为。稳妥的做法是控制速率、分批进行，不用一次性删光。',
+        qEn: 'Can bulk deleting tweets get me banned on X?',
+        aEn: 'Deleting through official APIs at a normal rate will not. The real risk is rate-limiting from third-party tools calling too often, or deleting so fast the system flags it as abnormal. Control the pace, batch it, and you are fine.'
+      },
+      {
+        q: '删掉的推文还能恢复吗？',
+        a: '不能。删除是永久操作，X 不提供回收站。所以删除前一定要先下载完整归档，确认你想保留的推文都在里面，再动手。',
+        qEn: 'Can deleted tweets be restored?',
+        aEn: 'No. Deletion is permanent, X has no recycle bin. Download a full archive first and confirm everything you want to keep is in it before you start.'
+      },
+      {
+        q: '批量删除要多久？',
+        a: '看数量。几百条的话，一次会话内分批删完；几千条建议分几天，每天删一批，既安全又不影响正常使用。',
+        qEn: 'How long does bulk deletion take?',
+        aEn: 'Depends on volume. A few hundred can be done in one session in batches; a few thousand is better spread over several days, one batch per day, which is safer and does not disrupt normal use.'
+      },
+      {
+        q: '只删有风险的推文可以吗？',
+        a: '可以，而且更推荐。先用报告筛出带风险标签的推文，只删高风险的，保留普通内容。这样你的账号历史还在，暴露面却大幅缩小。',
+        qEn: 'Can I delete only risky tweets?',
+        aEn: 'Yes, and it is recommended. Use the report to filter tweets with risk labels and delete only high-risk ones. Your account history stays, your exposure shrinks.'
+      }
+    ],
+    titleEn: 'Bulk Delete Old Tweets: The Complete Walkthrough',
+    excerptEn:
+      'How to bulk delete thousands of old tweets: download your archive, parse it locally, filter by risk, delete in batches, and verify. A step-by-step walkthrough for first-time cleaners.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'bulk delete', 'cleanup tutorial'],
+    content: `
+    <p>账号十年，推文几千条，想清理却不知道从哪下手——这是大多数人第一次接触批量删除时的状态。这篇不灌鸡汤，直接给你一套能照做的流程：怎么下载归档、怎么把几万条推文变成一份可筛选的清单，最后怎么安全地批量删除。</p>
+    <p>先说核心思路：<strong>先备份，再筛选，最后删</strong>。顺序不能反。</p>
+    <h2>第一步：下载完整归档</h2>
+    <p>X 的设置里有"下载归档"入口，会打包你账号的全部数据，包括每一条推文、时间、设备来源。归档生成要几个小时到一两天，收到邮件再下载。这一步是保命用的：删除不可逆，归档是你唯一的后悔药。</p>
+    <h2>第二步：本地解析，变成可筛选清单</h2>
+    <p>归档解压后是一堆 HTML 和 JSON，直接看没法用。你需要把 tweets.js 之类的文件解析成表格：每条推文的 ID、时间、内容。解析在自己电脑上做，归档文件不出本机，这也是 bulk delete tweets 流程里隐私最稳的一环。</p>
+    <h2>第三步：按风险筛选，别一锅端</h2>
+    <p>几千条推文不是都该删。先用体检报告或规则筛出风险推文：含手机号、邮箱、住址、定位的优先；政治口嗨和情绪发言其次；纯日常碎碎念可以留着。批量删除的智慧不是删得多，是删得准。</p>
+    <h2>第四步：分批删除</h2>
+    <p>把筛选结果按时间分批，每天处理一批。控制频率，给 X 的接口留出喘息空间，避免触发限流或异常行为检测。几百条一次会话搞定，几千条分几天，别贪快。</p>
+    <h2>第五步：验证结果</h2>
+    <p>删完别急着关页面。随机抽几条已删除的推文 ID，确认返回"不存在"；再看一遍剩余推文里有没有漏网的高危项。清理完成后再跑一次报告，对比健康分变化，你会看到风险条数明显下降。</p>
+    <h2>FAQ</h2>
+    <p><strong>批量删除推文会被 X 封号吗？</strong> 用官方接口按正常频率删不会。真正的风险来自第三方工具频繁调用导致限流，以及删太快被系统当成异常行为。稳妥的做法是控制速率、分批进行，不用一次性删光。</p>
+    <p><strong>删掉的推文还能恢复吗？</strong> 不能。删除是永久操作，X 不提供回收站。所以删除前一定要先下载完整归档，确认你想保留的推文都在里面，再动手。</p>
+    <p><strong>批量删除要多久？</strong> 看数量。几百条的话，一次会话内分批删完；几千条建议分几天，每天删一批，既安全又不影响正常使用。</p>
+    <p><strong>只删有风险的推文可以吗？</strong> 可以，而且更推荐。先用报告筛出带风险标签的推文，只删高风险的，保留普通内容。这样你的账号历史还在，暴露面却大幅缩小。</p>
+    <p>想先看清自己有哪些高危推文？来 digital-footprint-health.shop 上传归档，体检报告会按风险排好优先级，删起来心里有数。</p>
+    `,
+    contentEn: `
+    <p>Ten years, a few thousand tweets, and no idea where to start cleaning — that is where most people meet bulk deletion. This walkthrough skips the motivation speech and gives you a repeatable process: how to download your archive, turn tens of thousands of tweets into a filterable list, and finally delete safely at scale.</p>
+    <p>The core sequence: <strong>back up first, then filter, then delete</strong>. Do not reorder it.</p>
+    <h2>Step 1: Download the full archive</h2>
+    <p>X settings has a "download your archive" option that packages your entire account: every tweet, timestamp, and device source. Generation takes hours to a day, and you get an email when it is ready. This step saves your life later: deletion is irreversible, and the archive is your only undo button.</p>
+    <h2>Step 2: Parse locally into a filterable list</h2>
+    <p>The archive unzips into HTML and JSON files that are useless to eyeball. You need to parse tweets.js into a table: tweet ID, time, content. Parse it on your own machine, keep the archive local, which is also the most privacy-safe part of the whole bulk delete tweets flow.</p>
+    <h2>Step 3: Filter by risk, do not nuke everything</h2>
+    <p>Not all thousands of tweets deserve deletion. Use a report or rule set to find risky ones: tweets with phone numbers, emails, addresses, and locations come first; political rants and venting second; harmless day-to-day chatter can stay. Smart bulk deletion is not about deleting a lot, it is about deleting the right ones.</p>
+    <h2>Step 4: Delete in batches</h2>
+    <p>Split the filtered list by time and process one batch per day. Control the rate, give X's API room to breathe, and avoid rate limits or abnormal-behavior flags. A few hundred in one session, a few thousand across several days. Do not rush it.</p>
+    <h2>Step 5: Verify the result</h2>
+    <p>Do not close the tab right after deleting. Sample a few deleted tweet IDs and confirm they return "not found". Scan the remaining tweets for missed high-risk items. Then run the report again and watch the risk count drop.</p>
+    <h2>FAQ</h2>
+    <p><strong>Can bulk deleting tweets get me banned on X?</strong> Deleting through official APIs at a normal rate will not. The real risk is rate-limiting from third-party tools calling too often, or deleting so fast the system flags it as abnormal. Control the pace, batch it, and you are fine.</p>
+    <p><strong>Can deleted tweets be restored?</strong> No. Deletion is permanent, X has no recycle bin. Download a full archive first and confirm everything you want to keep is in it before you start.</p>
+    <p><strong>How long does bulk deletion take?</strong> Depends on volume. A few hundred can be done in one session in batches; a few thousand is better spread over several days, one batch per day, which is safer and does not disrupt normal use.</p>
+    <p><strong>Can I delete only risky tweets?</strong> Yes, and it is recommended. Use the report to filter tweets with risk labels and delete only high-risk ones. Your account history stays, your exposure shrinks.</p>
+    <p>Want to see which of your tweets are high-risk first? Upload your archive at digital-footprint-health.shop and the report will rank priorities so you can delete with confidence.</p>
+    `,
+  },
+  {
+    slug: 'tweet-deletion-cost',
+    title: '删除要花多少钱？按条计费全透明',
+    excerpt:
+      '批量删除推文到底要花多少钱？这篇把删除服务的计费方式拆开：按条计费怎么算、订阅和一次性套餐哪个划算、免费方案能做到什么程度，避免被隐形收费坑到。',
+    date: '2026-08-16',
+    updatedAt: '2026-08-16',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '删除费用', '定价'],
+    canonical: '/blog/tweet-deletion-cost',
+    faq: [
+      {
+        q: '删除推文收费正常吗？',
+        a: '正常。X 官方不提供批量删除接口给普通用户，第三方服务需要维护接口、处理限流，按条或按订阅收费是行业惯例。重点是费用透明、没有隐藏扣费。',
+        qEn: 'Is it normal for tweet deletion to cost money?',
+        aEn: 'Yes. X does not offer a bulk deletion API to regular users, and third-party services have to maintain integrations and handle rate limits, so per-tweet or subscription pricing is standard. The key is transparency and no hidden charges.'
+      },
+      {
+        q: '按条计费和订阅哪个划算？',
+        a: '看你的量。几百条一次性清理，按条计费更划算；常年维护、定期清理，订阅更省。选之前先算总价，别只看单价。',
+        qEn: 'Which is better: per-tweet or subscription?',
+        aEn: 'Depends on volume. For a one-time cleanup of a few hundred tweets, per-tweet pricing wins. For ongoing maintenance, a subscription saves more. Total the real cost before choosing.'
+      },
+      {
+        q: '有免费删除推文的方案吗？',
+        a: '有。X 官方允许逐条手动删除，免费但很慢；少量推文可以自己写脚本调接口删，需要一点技术基础。免费的代价是时间或技术门槛，适合量小的人。',
+        qEn: 'Is there a free way to delete tweets?',
+        aEn: 'Yes. X allows manual deletion one by one, free but slow. For a small volume you can write a script against the API, which needs some technical skill. Free means paying in time or effort.'
+      },
+      {
+        q: '删除服务会不会偷跑我的数据？',
+        a: '这取决于服务商。选择的原则是：本地解析、不把归档上传到云端、删除只在你的账号授权范围内执行。服务商如果要求你上传整个归档，要格外谨慎。',
+        qEn: 'Could a deletion service misuse my data?',
+        aEn: 'Depends on the provider. The rule: it should parse locally, never upload your archive to a cloud, and only act within the account authorization you granted. Be extra careful if a provider demands your full archive upload.'
+      }
+    ],
+    titleEn: 'How Much Does Tweet Deletion Cost? Per-Tweet Pricing',
+    excerptEn:
+      'What does bulk tweet deletion actually cost? Breaking down per-tweet pricing, subscriptions vs one-time packages, and what free options can do, so you never get hit by hidden fees.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'deletion cost', 'pricing'],
+    content: `
+    <p>搜"批量删除推文"，跳出来的服务价格从"免费"到"几百美元年费"都有，新手很容易懵。这篇把 tweet deletion cost 这件事彻底算清楚：按条计费怎么算、订阅和一次性套餐哪个坑、免费方案到底能做到什么。</p>
+    <h2>为什么删除推文要花钱</h2>
+    <p>先破除一个误解：不是"删个推文还要收钱"，而是 X 官方只给普通用户逐条删除的入口，没有批量接口。第三方服务要自己对接接口、处理限流、维护应用，这些都有成本。收费本身合理，不合理的只有不透明。</p>
+    <h2>按条计费：明码标价，量少划算</h2>
+    <p>按条计费的模式很直接：删一条收一条的钱，通常单价不高，但条数多了总价会涨。适合一次性清理的场景，比如手头就几百条要删。下单前算一笔总账：单价 × 数量，再和订阅价比一比。</p>
+    <h2>订阅制：适合长期维护</h2>
+    <p>按月或按年订阅，通常不限条数或给一个大额度。适合打算养成定期清理习惯的人：每个月花一点钱，把新积累的风险推文顺手清掉。注意看订阅的隐藏条款：自动续费、额度清零规则、取消门槛，这些才是真正的坑。</p>
+    <h2>免费方案：时间换钱</h2>
+    <p>免费路径真实存在：逐条手动删，慢但零成本；或者自己写脚本调接口删，省了钱但费技术。适合量小、不着急、或想先体验流程的人。免费没有错，错的是把免费当卖点却偷偷限速或植入广告的服务。</p>
+    <h2>怎么算你的真实成本</h2>
+    <p>三笔账一起算：① 条数 × 单价（按条）；② 年费（订阅）；③ 你的时间成本（免费方案）。选总成本最低的。另外无论选哪个，先确认服务商是否要求上传归档——凡是"把整个归档发给我们"的，都要打个问号，本地解析才是隐私底线。</p>
+    <h2>FAQ</h2>
+    <p><strong>删除推文收费正常吗？</strong> 正常。X 官方不提供批量删除接口给普通用户，第三方服务需要维护接口、处理限流，按条或按订阅收费是行业惯例。重点是费用透明、没有隐藏扣费。</p>
+    <p><strong>按条计费和订阅哪个划算？</strong> 看你的量。几百条一次性清理，按条计费更划算；常年维护、定期清理，订阅更省。选之前先算总价，别只看单价。</p>
+    <p><strong>有免费删除推文的方案吗？</strong> 有。X 官方允许逐条手动删除，免费但很慢；少量推文可以自己写脚本调接口删，需要一点技术基础。免费的代价是时间或技术门槛，适合量小的人。</p>
+    <p><strong>删除服务会不会偷跑我的数据？</strong> 这取决于服务商。选择的原则是：本地解析、不把归档上传到云端、删除只在你的账号授权范围内执行。服务商如果要求你上传整个归档，要格外谨慎。</p>
+    <p>想先看看自己的清理量有多大、大概要花多少时间？来 digital-footprint-health.shop 免费上传归档生成报告，先摸底再决定用哪种方案。</p>
+    `,
+    contentEn: `
+    <p>Search "bulk delete tweets" and you will see everything from "free" to hundreds of dollars a year. Newcomers get confused fast. This post does the math on tweet deletion cost once and for all: how per-tweet pricing works, which of subscription versus one-time packages hides traps, and what free options really deliver.</p>
+    <h2>Why deleting tweets costs money</h2>
+    <p>Clear up one myth first: it is not "you pay to delete a tweet", it is that X only offers single-tweet deletion to regular users, with no bulk API. Third-party services maintain integrations, handle rate limits, and run apps, all of which costs money. Charging is fair; hiding the pricing is not.</p>
+    <h2>Per-tweet pricing: transparent, cheap at low volume</h2>
+    <p>Per-tweet models are straightforward: pay per deletion, unit price is usually low, but the total climbs with volume. They fit one-time cleanups, say a few hundred tweets. Before ordering, do the math: unit price times quantity, then compare with subscription rates.</p>
+    <h2>Subscriptions: built for ongoing maintenance</h2>
+    <p>Monthly or yearly plans usually include unlimited or a large quota of deletions. They suit people who plan to clean regularly: spend a little each month and sweep newly accumulated risky tweets. Watch the hidden terms: auto-renewal, quota resets, cancellation friction. Those are the real traps.</p>
+    <h2>Free options: trading time for money</h2>
+    <p>Free paths are real: delete manually one by one, slow but zero cost, or write your own script against the API, which saves money but costs technical skill. Good for small volumes, unhurried timelines, or trying the flow first. Free is fine; using "free" as bait while silently rate-limiting or injecting ads is not.</p>
+    <h2>How to compute your real cost</h2>
+    <p>Run three numbers: quantity times unit price (per-tweet), yearly fee (subscription), and your own time (free). Pick the lowest total. And before choosing any provider, check whether it demands your archive upload. Anything that says "send us your whole archive" deserves a hard question; local parsing is the privacy baseline.</p>
+    <h2>FAQ</h2>
+    <p><strong>Is it normal for tweet deletion to cost money?</strong> Yes. X does not offer a bulk deletion API to regular users, and third-party services have to maintain integrations and handle rate limits, so per-tweet or subscription pricing is standard. The key is transparency and no hidden charges.</p>
+    <p><strong>Which is better: per-tweet or subscription?</strong> Depends on volume. For a one-time cleanup of a few hundred tweets, per-tweet pricing wins. For ongoing maintenance, a subscription saves more. Total the real cost before choosing.</p>
+    <p><strong>Is there a free way to delete tweets?</strong> Yes. X allows manual deletion one by one, free but slow. For a small volume you can write a script against the API, which needs some technical skill. Free means paying in time or effort.</p>
+    <p><strong>Could a deletion service misuse my data?</strong> Depends on the provider. The rule: it should parse locally, never upload your archive to a cloud, and only act within the account authorization you granted. Be extra careful if a provider demands your full archive upload.</p>
+    <p>Curious how big your cleanup is and how long it will take? Upload your archive for a free report at digital-footprint-health.shop, size up the job first, then pick a plan.</p>
+    `,
+  },
+  {
+    slug: 'pause-resume-refund-deletion',
+    title: '删除可以暂停、续传、退款',
+    excerpt:
+      '删除任务进行到一半想停？删错了想退款？这篇讲清楚删除服务的暂停、续传和退款机制：什么情况下能暂停、怎么安全续传、退款规则怎么判断，让你花得放心。',
+    date: '2026-08-16',
+    updatedAt: '2026-08-16',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '删除任务', '暂停续传退款'],
+    canonical: '/blog/pause-resume-refund-deletion',
+    faq: [
+      {
+        q: '删除任务可以随时暂停吗？',
+        a: '正规服务都可以。暂停的意义在于：删除不可逆，你随时可能发现某类推文不该删，或者担心速度太快触发限流。暂停不是半途而废，是给你留一个重新判断的窗口。',
+        qEn: 'Can a deletion task be paused anytime?',
+        aEn: 'Legitimate services allow it. Pausing matters because deletion is irreversible: you may realize a category should stay, or worry the pace will trigger rate limits. Pausing is not quitting; it is a window to re-decide.'
+      },
+      {
+        q: '暂停后怎么续传？',
+        a: '续传的关键是断点记录。好的服务会记录已删的推文 ID，续传时自动跳过，不重复删。如果服务商连进度都不保存，换个服务更稳妥。',
+        qEn: 'How do I resume after pausing?',
+        aEn: 'Resuming depends on checkpoint tracking. Good services record deleted tweet IDs and skip them on resume. If a provider cannot even save progress, find a better one.'
+      },
+      {
+        q: '删错了能退款吗？',
+        a: '看退款规则，删错本身不构成退款理由，因为删除是你的授权操作。但服务故障导致任务失败、或未按约定删除，这类属于服务方责任，正规服务会退款。下单前把退款条款看清楚。',
+        qEn: 'Can I get a refund if I delete the wrong tweets?',
+        aEn: "Depends on the refund policy. Deleting wrong tweets is not a refund reason by itself, because deletion is your authorized action. But service failure or not deleting what was agreed is the provider’s fault, and legitimate services refund that. Read the terms before paying."
+      },
+      {
+        q: '删除到一半账号换了怎么办？',
+        a: '绑定的是账号授权而不是你的邮箱，换账号等于换授权，旧任务自然停止。重新在新账号上授权并开始新任务即可，之前的进度通常不迁移。',
+        qEn: 'What if I switch accounts mid-deletion?',
+        aEn: 'Authorization is tied to the account, not your email. Switching accounts ends the old task automatically. Authorize the new account and start a new task; progress usually does not carry over.'
+      }
+    ],
+    titleEn: 'Pause, Resume, Refund: Deletion That Puts You in Control',
+    excerptEn:
+      'Can you pause a deletion task halfway? Get a refund if something goes wrong? This post explains pause, resume, and refund mechanisms for tweet deletion, so you spend with confidence.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'pause resume', 'deletion refund'],
+    content: `
+    <p>买任何线上服务，我都会先翻退款条款。删除推文这种不可逆操作，更应该把"能不能停、能不能退"问清楚再付款。这篇把删除服务的暂停、续传、退款三件事拆开讲：什么情况能暂停、续传靠什么机制、退款怎么判断。</p>
+    <h2>暂停：删除不可逆，所以更要能停</h2>
+    <p>正规的删除服务都会允许随时暂停任务。这不是功能冗余，而是风险控制：删除是永久操作，你完全可能在任务进行到一半时发现"这类推文不该删"或者"删太快怕触发限流"。pause tweet deletion 不是半途而废，是给你留一个重新判断的窗口。</p>
+    <h2>续传：断点记录是关键</h2>
+    <p>暂停之后能不能安全继续，全看服务商有没有断点记录。好的服务会记录已经删除的推文 ID，续传时自动跳过，绝不重复删、不遗漏。判断标准很简单：暂停后重新开始，如果任务从头跑，说明它没存进度，换个服务。</p>
+    <h2>退款：分清责任再谈钱</h2>
+    <p>退款规则分两种情形。第一种，你删错了推文——这不构成退款理由，因为删除是你的授权操作，服务商照做了。第二种，服务故障导致任务失败、或根本没按约定删除——这是服务方责任，正规服务会退款或补偿。下单前把退款条款截图存好，出了问题有依据。</p>
+    <h2>换账号：授权跟着账号走</h2>
+    <p>删除服务绑定的是账号授权，不是你的邮箱。换账号等于换授权，旧任务自动停止，进度一般不迁移。换号前先确认旧任务的暂停或完成状态，别让一个半截任务悬着。</p>
+    <h2>怎么判断一个服务靠不靠谱</h2>
+    <ul>
+    <li>有暂停按钮，且暂停立即生效，不是"排队取消"</li>
+    <li>续传自动跳过已删推文，有进度可视化</li>
+    <li>退款条款白纸黑字，区分用户责任和服务方责任</li>
+    <li>本地解析归档，不上传云端</li>
+    </ul>
+    <p>四条全中，基本可以放心用；缺一半以上，建议再找找。</p>
+    <h2>FAQ</h2>
+    <p><strong>删除任务可以随时暂停吗？</strong> 正规服务都可以。暂停的意义在于：删除不可逆，你随时可能发现某类推文不该删，或者担心速度太快触发限流。暂停不是半途而废，是给你留一个重新判断的窗口。</p>
+    <p><strong>暂停后怎么续传？</strong> 续传的关键是断点记录。好的服务会记录已删的推文 ID，续传时自动跳过，不重复删。如果服务商连进度都不保存，换个服务更稳妥。</p>
+    <p><strong>删错了能退款吗？</strong> 看退款规则，删错本身不构成退款理由，因为删除是你的授权操作。但服务故障导致任务失败、或未按约定删除，这类属于服务方责任，正规服务会退款。下单前把退款条款看清楚。</p>
+    <p><strong>删除到一半账号换了怎么办？</strong> 绑定的是账号授权而不是你的邮箱，换账号等于换授权，旧任务自然停止。重新在新账号上授权并开始新任务即可，之前的进度通常不迁移。</p>
+    <p>删除不该是一次押上全部筹码的赌博。来 digital-footprint-health.shop 看看，删除任务怎么做成可暂停、可续传、明码标价的样子。</p>
+    `,
+    contentEn: `
+    <p>For any paid online service, I read the refund terms first. For irreversible operations like tweet deletion, asking "can I stop, can I get my money back" before paying matters even more. This post breaks down pause, resume, and refund for deletion services: when you can pause, what makes resume safe, and how refunds are judged.</p>
+    <h2>Pause: deletion is irreversible, so it must be stoppable</h2>
+    <p>Legitimate deletion services let you pause a task anytime. That is not feature bloat, it is risk control: deletion is permanent, and you may well discover halfway that "this category should stay" or that "this pace will trigger rate limits". Pausing a tweet deletion is not quitting; it is a window to re-decide.</p>
+    <h2>Resume: checkpoint tracking is everything</h2>
+    <p>Whether you can safely continue after a pause depends entirely on checkpoint records. Good services log deleted tweet IDs and skip them on resume, never deleting twice, never missing any. The test is simple: pause, restart, and if the task starts from zero, it never saved progress. Find another service.</p>
+    <h2>Refund: assign responsibility before talking money</h2>
+    <p>Refund rules split into two cases. First, you deleted the wrong tweets. That is not a refund reason, because deletion is your authorized action and the provider did what you asked. Second, a service failure broke the task or it never deleted what was agreed. That is the provider's fault, and legitimate services refund or compensate. Screenshot the refund terms before paying.</p>
+    <h2>Switching accounts: authorization follows the account</h2>
+    <p>Deletion services bind to account authorization, not your email. Switching accounts revokes the old authorization and stops the old task; progress usually does not carry over. Confirm the old task is paused or completed before switching, so no half-finished job hangs around.</p>
+    <h2>How to tell a solid service from the rest</h2>
+    <ul>
+    <li>A pause button that takes effect immediately, not "queued for cancellation"</li>
+    <li>Resume that skips already-deleted tweets, with visible progress</li>
+    <li>Refund terms in black and white, separating user fault from provider fault</li>
+    <li>Local archive parsing, no cloud upload</li>
+    </ul>
+    <p>All four, and you can trust it. Missing half or more, keep looking.</p>
+    <h2>FAQ</h2>
+    <p><strong>Can a deletion task be paused anytime?</strong> Legitimate services allow it. Pausing matters because deletion is irreversible: you may realize a category should stay, or worry the pace will trigger rate limits. Pausing is not quitting; it is a window to re-decide.</p>
+    <p><strong>How do I resume after pausing?</strong> Resuming depends on checkpoint tracking. Good services record deleted tweet IDs and skip them on resume. If a provider cannot even save progress, find a better one.</p>
+    <p><strong>Can I get a refund if I delete the wrong tweets?</strong> Depends on the refund policy. Deleting wrong tweets is not a refund reason by itself, because deletion is your authorized action. But service failure or not deleting what was agreed is the provider's fault, and legitimate services refund that. Read the terms before paying.</p>
+    <p><strong>What if I switch accounts mid-deletion?</strong> Authorization is tied to the account, not your email. Switching accounts ends the old task automatically. Authorize the new account and start a new task; progress usually does not carry over.</p>
+    <p>Deletion should not be an all-in bet. See how a deletion task can be pausable, resumable, and clearly priced at digital-footprint-health.shop.</p>
+    `,
+  },
 ];
 
 

@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { allPosts } from '@/content/posts';
 import { SITE_URL } from '@/lib/site';
+import type { Lang } from '@/lib/i18n';
 import { BlogList } from './blog-list';
 
 const PAGE_URL = `${SITE_URL}/blog`;
@@ -25,14 +27,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const h = await headers();
+  const locale: Lang = h.get('x-locale') === 'en' ? 'en' : 'zh';
   const posts = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
 
   // Structured data so search engines can treat /blog as a real index page.
+  // /en/blog arrives here via a middleware rewrite carrying x-locale: en.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: 'Blog',
+    name: locale === 'en' ? 'Blog' : '博客',
+    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
     url: PAGE_URL,
     mainEntity: {
       '@type': 'ItemList',
@@ -40,7 +46,7 @@ export default function BlogPage() {
         '@type': 'ListItem',
         position: i + 1,
         url: `${SITE_URL}/blog/${p.slug}`,
-        name: p.title,
+        name: locale === 'en' ? (p.titleEn || p.title) : p.title,
       })),
     },
   };

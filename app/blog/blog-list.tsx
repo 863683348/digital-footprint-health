@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import type { BlogPost } from '@/content/posts';
 import { useI18n } from '@/components/I18nProvider';
+import { LangLink } from '@/components/LangLink';
 
 /**
  * Client-rendered blog index. The page shell in ./page.tsx is a server
@@ -24,7 +24,7 @@ export function BlogList({ posts }: { posts: BlogPost[] }) {
           const category = lang === 'en' ? (post.categoryEn || post.category) : post.category;
           const href = `/blog/${post.slug}`;
           return (
-            <Link
+            <LangLink
               key={post.slug}
               href={href}
               className="block p-6 rounded-lg border border-border hover:border-accent transition-colors bg-card"
@@ -35,7 +35,7 @@ export function BlogList({ posts }: { posts: BlogPost[] }) {
               </div>
               <h2 className="text-xl font-semibold mb-2 hover:text-accent">{title}</h2>
               <p className="text-muted">{excerpt}</p>
-            </Link>
+            </LangLink>
           );
         })}
       </div>

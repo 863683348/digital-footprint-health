@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { allPosts, type BlogPost } from '@/content/posts';
 import { useI18n } from '@/components/I18nProvider';
+import { LangLink } from '@/components/LangLink';
 import { SITE_URL } from '@/lib/site';
 
 /**
@@ -76,7 +76,7 @@ export function BlogPostContent({ post, slug }: { post: BlogPost; slug: string }
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
         />
       ))}
-      <Link href="/blog" className="text-sm text-muted hover:text-foreground">&larr; {lang === 'en' ? 'Back to Blog' : '返回博客'}</Link>
+      <LangLink href="/blog" className="text-sm text-muted hover:text-foreground">&larr; {lang === 'en' ? 'Back to Blog' : '返回博客'}</LangLink>
       <header className="mt-6 mb-8">
         <div className="flex items-center gap-3 text-sm text-muted mb-3">
           <span className="px-2 py-1 rounded bg-accent/10 text-accent">{category}</span>
@@ -137,12 +137,12 @@ export function BlogPostContent({ post, slug }: { post: BlogPost; slug: string }
             ? 'Free on-device scan. Your archive never leaves your computer.'
             : '免费本机扫描，你的归档永不离开电脑。'}
         </p>
-        <Link
+        <LangLink
           href="/upload"
           className="mt-4 inline-flex items-center justify-center rounded-xl px-5 py-2.5 font-semibold bg-primary text-white hover:brightness-95"
         >
           {lang === 'en' ? 'Start Free Check' : '免费开始体检'}
-        </Link>
+        </LangLink>
       </section>
 
       {related.length > 0 && (
@@ -155,14 +155,14 @@ export function BlogPostContent({ post, slug }: { post: BlogPost; slug: string }
               const rTitle = lang === 'en' ? (p.titleEn || p.title) : p.title;
               const rExcerpt = lang === 'en' ? (p.excerptEn || p.excerpt) : p.excerpt;
               return (
-                <Link
+                <LangLink
                   key={p.slug}
                   href={`/blog/${p.slug}`}
                   className="block p-4 rounded-xl border border-border hover:border-accent transition-colors bg-card"
                 >
                   <h3 className="font-semibold hover:text-accent">{rTitle}</h3>
                   <p className="text-sm text-muted mt-1 line-clamp-2">{rExcerpt}</p>
-                </Link>
+                </LangLink>
               );
             })}
           </div>

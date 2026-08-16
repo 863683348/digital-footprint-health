@@ -1,8 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { Card } from '@/components/ui';
 import { useI18n } from '@/components/I18nProvider';
+import { LangLink } from '@/components/LangLink';
 import { SITE_URL } from '@/lib/site';
 import { allPosts } from '@/content/posts';
 
@@ -55,18 +55,18 @@ export default function HomePage() {
         <h1 className="t-1 max-w-[18ch]">{t('landing.hero.title')}</h1>
         <p className="t-4 text-ink-soft mt-3 max-w-[60ch]">{t('landing.hero.desc')}</p>
         <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
-          <Link
+          <LangLink
             href="/upload"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-primary text-white hover:brightness-95 transition-calm"
           >
             {t('landing.cta.start')}
-          </Link>
-          <Link
+          </LangLink>
+          <LangLink
             href="/delete/confirm"
             className="w-full sm:w-auto inline-flex items-center justify-center rounded-xl2 px-5 py-2.5 t-5 font-semibold bg-surface text-ink border border-line hover:bg-canvas transition-calm"
           >
             {t('landing.cta.delete')}
-          </Link>
+          </LangLink>
         </div>
       </section>
 
@@ -98,22 +98,22 @@ export default function HomePage() {
           <h2 className="t-3 font-semibold">
             {lang === 'en' ? 'Latest from the blog' : '最新博客'}
           </h2>
-          <Link href="/blog" className="t-6 text-primary hover:underline">
+          <LangLink href="/blog" className="t-6 text-primary hover:underline">
             {lang === 'en' ? 'All posts →' : '全部文章 →'}
-          </Link>
+          </LangLink>
         </div>
         <div className="mt-4 grid md:grid-cols-3 gap-4">
           {featured.map((post) => {
             const pTitle = lang === 'en' ? (post.titleEn || post.title) : post.title;
             const pExcerpt = lang === 'en' ? (post.excerptEn || post.excerpt) : post.excerpt;
             return (
-              <Link key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
+              <LangLink key={post.slug} href={`/blog/${post.slug}`} className="block h-full">
                 <Card className="h-full flex flex-col gap-2 hover:border-primary transition-calm">
                   <div className="t-5 font-semibold leading-snug">{pTitle}</div>
                   <p className="t-6 text-ink-soft line-clamp-3">{pExcerpt}</p>
                   <div className="t-7 text-ink-faint mt-auto">{post.date}</div>
                 </Card>
-              </Link>
+              </LangLink>
             );
           })}
         </div>

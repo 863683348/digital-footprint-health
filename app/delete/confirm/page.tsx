@@ -6,13 +6,14 @@ import { loadArchive, saveSim } from '@/lib/store';
 import { estimateDelete } from '@/lib/payment';
 import { simulateDeletion } from '@/lib/delete-sim';
 import { useI18n } from '@/components/I18nProvider';
+import { localePath } from '@/lib/locale';
 import { Button, Card, FeeEstimateCard, Callout } from '@/components/ui';
 import { Loading } from '@/components/Loading';
 import type { ArchiveData, DeleteEstimate } from '@/lib/types';
 
 function ConfirmInner() {
   const router = useRouter();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const search = useSearchParams();
   const archiveId = search.get('archiveId');
 
@@ -41,7 +42,8 @@ function ConfirmInner() {
     // Dry-run simulation is pure compute — no server, no X API, no charge.
     const result = simulateDeletion(archive.tweets, { dryRun });
     saveSim(archive.id, result);
-    router.push(`/delete/progress?archiveId=${archive.id}`);
+    // Keep the locale prefix so an EN user stays on the EN progress page.
+    router.push(localePath(`/delete/progress?archiveId=${archive.id}`, lang));
   }
 
   if (archive === undefined) return <div className="t-5 text-ink-soft">{t('delete.confirm.calc')}</div>;

@@ -63,7 +63,25 @@ function memLimit(ip: string): { success: boolean; remaining: number; reset: num
 }
 
 export async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname !== '/api/archives/upload') {
+  const { pathname, search } = req.nextUrl;
+
+  // ---- Locale routing: /en → /, /en/:path* → /:path* ----
+  // The client router keeps the /en URL in the address bar (usePathname returns
+  // /en/...), so I18nProvider renders English, while the app serves the shared
+  // route below. We forward the locale to server components via x-locale so
+  // generateMetadata / server-rendered pages (terms, blog) can switch language.
+  if (pathname.startsWith('/en') && !pathname.startsWith('/en/api')) {
+    const target = pathname === '/en' ? '/' : pathname.slice(3) || '/';
+    const targetUrl = new URL(target, req.url);
+    targetUrl.search = search; // preserve ?archiveId=... etc.
+    const requestHeaders = new Headers(req.headers);
+    requestHeaders.set('x-locale', 'en');
+    return NextResponse.rewrite(targetUrl, {
+      request: { headers: requestHeaders },
+    });
+  }
+
+  if (pathname !== '/api/archives/upload') {
     return NextResponse.next();
   }
 
@@ -102,5 +120,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/api/archives/upload'],
+  matcher: ['/api/archives/upload', '/en', '/en/:path*'],
 };

@@ -1,10 +1,10 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { loadArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
+import { LangLink } from '@/components/LangLink';
 import { ScoreGauge } from '@/components/ScoreGauge';
 import { Card, RiskFlag, Callout, Button } from '@/components/ui';
 import type { ArchiveData, ScoreDimension } from '@/lib/types';
@@ -30,9 +30,9 @@ export default function ReportPage() {
       <div className="max-w-[640px] mx-auto space-y-4">
         <h1 className="t-2 font-bold">{t('report.insufficient.title')}</h1>
         <Callout tone="warn">{t('report.insufficient.desc', { count: details.sampleSize })}</Callout>
-        <Link href="/upload" className="inline-block w-full sm:w-auto">
+        <LangLink href="/upload" className="inline-block w-full sm:w-auto">
           <Button variant="ghost" className="w-full sm:w-auto">{t('report.reupload')}</Button>
-        </Link>
+        </LangLink>
       </div>
     );
   }
@@ -48,9 +48,9 @@ export default function ReportPage() {
             {t('report.subtitle', { fileName: archive.fileName, count: archive.rowCount })}
           </p>
         </div>
-        <Link href={`/delete/confirm?archiveId=${archive.id}`} className="w-full sm:w-auto shrink-0">
+        <LangLink href={`/delete/confirm?archiveId=${archive.id}`} className="w-full sm:w-auto shrink-0">
           <Button className="w-full sm:w-auto">{t('report.goDelete')}</Button>
-        </Link>
+        </LangLink>
       </div>
 
       <div className="grid md:grid-cols-[200px_1fr] gap-6 items-start">

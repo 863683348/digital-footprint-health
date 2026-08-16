@@ -2,9 +2,9 @@
 
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
-import Link from 'next/link';
 import { loadSim } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
+import { LangLink } from '@/components/LangLink';
 import { Loading } from '@/components/Loading';
 import { Button, Card, ProgressBar, Badge } from '@/components/ui';
 import type { DeleteSimItem, DeleteSimResult } from '@/lib/types';
@@ -102,9 +102,9 @@ function ProgressInner() {
 
       {done && (
         <div className="flex justify-end">
-          <Link href="/upload" className="w-full sm:w-auto">
+          <LangLink href="/upload" className="w-full sm:w-auto">
             <Button variant="ghost" className="w-full sm:w-auto">{t('report.reupload')}</Button>
-          </Link>
+          </LangLink>
         </div>
       )}
     </div>

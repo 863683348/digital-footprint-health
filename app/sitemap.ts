@@ -26,8 +26,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/en/pricing', priority: 0.6 },
     { path: '/terms', priority: 0.3 },
     { path: '/en/terms', priority: 0.3 },
+    { path: '/faq', priority: 0.3 },
+    { path: '/en/faq', priority: 0.3 },
+    { path: '/privacy', priority: 0.3 },
+    { path: '/en/privacy', priority: 0.3 },
+    { path: '/about', priority: 0.3 },
+    { path: '/en/about', priority: 0.3 },
+    { path: '/contact', priority: 0.3 },
+    { path: '/en/contact', priority: 0.3 },
     { path: '/report', priority: 0.4 },
     { path: '/en/report', priority: 0.4 },
+    { path: '/account', priority: 0.3 },
+    { path: '/en/account', priority: 0.3 },
   ];
 
   const staticPages = staticRoutes.map(({ path, priority }) => ({

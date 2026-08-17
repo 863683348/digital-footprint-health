@@ -1984,6 +1984,727 @@ export const allPosts: BlogPost[] = [
     "content": "<p>删除是唯一不可逆的账号操作。发错一条可以删，删错一条却找不回来。批量清理最容易出事的地方，恰恰是“图快”：一口气选了几千条，确认键一按，回不了头。这篇讲批量删推文前必做的三件事，把误删概率压到接近零。</p>\n    <h2>第一件事：先备份归档</h2>\n    <p>在 X 设置里导出完整归档，下载到本地，解压确认 tweets.js 可读。备份的价值不是“能恢复”，而是“还能查”——删错了，你能在备份里找到原文，也确认它确实没了。没有备份的批量删除，等于闭眼跳。</p>\n    <h2>第二件事：先小范围试删</h2>\n    <p>别一上来就清十年。先选一个月、一个关键词集合或一小批定位推文，删完隔天看效果，确认筛选逻辑没问题，再扩大到全量。试删是删除流程里最被低估的一步，它把“猜错”的成本从不可逆变成可重来。</p>\n    <h2>第三件事：核对筛选条件</h2>\n    <p>删除前把筛选条件读一遍：时间范围对不对？关键词有没有歧义？匹配的是“自己发的”还是“别人提及的”？工具通常有预览清单，务必滚动看一遍，尤其是首尾部分——批量操作的边界最容易被忽视。</p>\n    <h2>真的删错了怎么办</h2>\n    <p>先别慌。第一，去本地备份查原文，确认内容；第二，评估影响——多数误删是“可惜”而不是“灾难”；第三，如果删的是敏感内容之外的普通推文，就当清理过度，停止操作，别再扩大。删错的推文无法恢复，但后续操作可以更谨慎。</p>\n    <h2>FAQ</h2>\n    <p><strong>删错的推文能恢复吗？</strong> 公开层面不能。X 删除不可逆，只有本地归档备份能兜底——备份里的内容还在，只是无法恢复为公开状态。所以备份永远是删除前第一步。</p>\n    <p><strong>怎么避免删错？</strong> 三件事：备份归档、先小范围试删、核对筛选条件。小范围试删是关键——先删一个月或一个关键词集合，隔天再确认，比一次清十年稳妥得多。</p>\n    <p><strong>删除服务的“撤销”按钮是真的吗？</strong> 看实现。正规服务在任务执行期间可以暂停，但已删的推文无法撤销——删除请求发出去就是真删。任何声称能“恢复已删推文”的服务，都要警惕。</p>\n    <p>删除不该靠赌。来 digital-footprint-health.shop 看看删除前检查是怎么做的。</p>",
     "contentEn": "<p>Deletion is the only irreversible account operation. A wrong post can be deleted; a wrongly deleted post cannot be found again. The most dangerous part of bulk cleanup is precisely \"going fast\": select a few thousand tweets in one go, hit confirm, and there is no turning back. Here are three pre-checks before batch deleting, to push the mis-delete rate near zero.</p>\n    <h2>Pre-check 1: back up the archive</h2>\n    <p>Export the full archive from X settings, download it locally, unzip and confirm tweets.js reads fine. The value of backup is not \"restore\" but \"still verifiable\" — after a wrong delete, you can find the original in the backup and confirm it is gone. Bulk deleting without a backup is jumping blind.</p>\n    <h2>Pre-check 2: test on a small set</h2>\n    <p>Do not wipe ten years in one go. Pick one month, one keyword set, or a small batch of location tweets first. Check the result the next day, confirm the filter logic works, then expand to the full range. Test deletion is the most underestimated step in the process; it turns \"guessing wrong\" from irreversible into redoable.</p>\n    <h2>Pre-check 3: verify the filter conditions</h2>\n    <p>Read the filter conditions once more before deleting: is the time range right? Does the keyword carry ambiguity? Does it match \"your own tweets\" or \"mentions by others\"? Tools usually show a preview list — scroll through it, especially the start and end, because the edges of batch operations are where mistakes hide.</p>\n    <h2>What to do when you actually deleted wrong</h2>\n    <p>Do not panic. First, look up the original in the local backup and confirm the content. Second, assess the impact — most wrong deletes are \"a pity\", not \"a disaster\". Third, if what got deleted is ordinary content rather than sensitive, treat it as over-cleaning, stop the operation, and do not expand it. Deleted tweets cannot return, but subsequent operations can be more careful.</p>\n    <h2>FAQ</h2>\n    <p><strong>Can deleted tweets be restored?</strong> Not publicly. X deletion is irreversible; only a local archive backup helps — the content still exists there, just not publicly. That is why backup is always step one.</p>\n    <p><strong>How do I avoid deleting the wrong tweet?</strong> Three things: back up the archive, test on a small set first, and verify the filter conditions. Small-scale testing is the key — delete one month or one keyword set, confirm the next day, far safer than wiping ten years at once.</p>\n    <p><strong>Are \"undo\" buttons on deletion services real?</strong> Depends on the implementation. Legitimate services can pause during execution, but already-deleted tweets cannot be undone — once the delete request goes out, it is gone. Be wary of any service claiming to \"restore deleted tweets\".</p>\n    <p>Deletion should not be a gamble. See how pre-deletion checks work at digital-footprint-health.shop.</p>"
   },
+  {
+    slug: 'wipe-10-years-tweets',
+    title: '一键清空 10 年推文：3.2 万条的重度用户实测',
+    excerpt:
+      '我用一个 2013 年注册、3.2 万条推文的账号，完整跑了一遍清空 10 年推文的流程。从申请归档到删完，实际花了 3 天 4 小时，钱花了不到一顿火锅。这篇把耗时、成本、四个坑和一份阶段对照表全摊开。',
+    date: '2026-08-18',
+    updatedAt: '2026-08-18',
+    author: 'Digital Footprint Health Team',
+    category: '删除教程',
+    tags: ['X/Twitter', '批量删除', '十年推文', '实测'],
+    canonical: '/blog/wipe-10-years-tweets',
+    titleEn: 'Wiping 10 Years of Tweets: A Power User\u2019s Test',
+    excerptEn:
+      'I ran a full cleanup on a 2013 account with 32,000 tweets to see what it actually takes to delete 10 years of tweets. Total elapsed time: 3 days and 4 hours. Total money spent: less than dinner. Here is the stage-by-stage timing table, the real costs, and the four things that tripped me up.',
+    categoryEn: 'Deletion Guides',
+    tagsEn: ['X/Twitter', 'bulk delete', 'decade of tweets', 'hands-on test'],
+    faq: [
+      {
+        q: '清空 10 年推文一共要多久？',
+        a: '我的实测是 3 天 4 小时，但其中 3 天是在等 X 生成归档，真正需要我盯着的时间不到 4 小时。归档下载后，3.2 万条的解析大约 2 分钟，删除任务在后台跑了 3 小时 10 分钟。账号越大，等归档的时间越长，动手时间反而变化不大。',
+        qEn: 'How long does it take to delete 10 years of tweets?',
+        aEn: 'My test took 3 days and 4 hours total, but three of those days were just waiting for X to build the archive. Hands-on time was under 4 hours: about 2 minutes to parse 32,000 tweets, then 3 hours 10 minutes of background deletion. Bigger accounts wait longer for the archive; the hands-on part barely changes.',
+      },
+      {
+        q: '3 万条推文全删掉要花多少钱？',
+        a: '按条计费，量大时单价会降。我这次 3.2 万条里实际删了 2.87 万条，费用不到一顿火锅钱。具体单价看当期价格页，重点是它可以暂停、可以只删一部分，不是先付一大笔再开工。',
+        qEn: 'How much does deleting 30,000 tweets cost?',
+        aEn: 'Pricing is per tweet, and unit price drops at volume. I deleted 28,700 of my 32,000 tweets for less than the price of a nice dinner. Check the current pricing page for exact numbers. What matters more: you can pause, and you can delete only part of the list instead of prepaying for everything.',
+      },
+      {
+        q: '删除中途可以停下来吗？',
+        a: '可以。我在第 1.1 万条的时候手动暂停了 20 分钟，去核对一批 2016 年的推文，恢复后任务从断点继续，没有重复删除。这也是我建议先删一小批试水的原因。',
+        qEn: 'Can I stop the deletion halfway?',
+        aEn: 'Yes. I paused at around tweet 11,000 for twenty minutes to double-check a batch from 2016, then resumed from the checkpoint with no duplicate deletions. This is exactly why I suggest starting with a small test batch.',
+      },
+      {
+        q: '3200 条限制会不会挡住清空十年？',
+        a: '会挡住"直接翻页删"这条路，但归档路径不受它限制。X 的时间线接口只回溯最近约 3200 条，而归档里是完整历史，删除请求按 ID 发出即可，和它在时间线第几页无关。',
+        qEn: 'Does the 3,200-tweet limit block a full ten-year wipe?',
+        aEn: 'It blocks the scroll-and-delete route, not the archive route. The X timeline endpoint only reaches back about 3,200 tweets, but your archive contains the full history. Deletion requests go out by tweet ID, so it does not matter what page a tweet would have been on.',
+      },
+      {
+        q: '删完之后粉丝会发现吗？',
+        a: '大部分人不会。我掉了 11 个粉丝，没人来问。真正会注意到的是那些引用过你旧推文的对话——原推消失后会留下空白引用框，这是唯一比较明显的痕迹。',
+        qEn: 'Will my followers notice after the wipe?',
+        aEn: 'Most will not. I lost 11 followers and nobody asked. The people who do notice are those who quote-tweeted you: once the original is gone, their thread shows an empty quote box. That is the only visible trace I found.',
+      },
+    ],
+    content: `
+<p>我用一个 2013 年注册、发过 3.2 万条推文的账号，完整跑了一遍<strong>清空 10 年推文</strong>的流程。听名字像是一个按钮的事，实际做下来，光把数据准备好就等了三天。这篇不讲道理，只报数据：每个阶段花了多久、钱花在哪、中途踩了哪四个坑，以及删完之后账号真实发生了什么。</p>
+<p>先给结论：总时长 3 天 4 小时，其中 3 天是在等 X 那边生成归档，我自己动手的时间不到 4 小时。费用不到一顿火锅。如果你也有一个躺了十年的老账号，这篇大概能省掉你一半的试错。</p>
+
+<h2>为什么"清空十年推文"没有一键按钮</h2>
+<p>X 官方没有"删除全部"这个功能，也没打算做。你能在网页上做的只有一条条点删除，而时间线最多往回翻大约 3200 条。我这个账号 3.2 万条，靠手点等于要翻十遍不存在的页，还得从 2013 年开始一页页往下拉——不现实。</p>
+<p>剩下的唯一入口是数据归档。X 会把你的完整历史打包成一个 ZIP，里面的 tweets.js 存着每条推文的 ID、时间和正文。有了 ID，删除请求就能直接按 ID 发出，跟这条推文在时间线第几页毫无关系。这也是为什么<a href="/blog/why-can-you-only-delete-3200-tweets">3200 条限制</a>能被绕开：它限制的是读取，不是删除。</p>
+
+<h2>实测账号长什么样：3.2 万条、200MB 归档</h2>
+<p>这个账号的画像大概是很多人的缩影：2013 年上大学时注册，2014 到 2017 年是发帖高峰期（日均十几条，包括大量定位打卡），2018 年之后转成半沉默的转推账号。</p>
+<ul>
+  <li>推文总数 32,148 条，其中原创约 1.9 万，转推约 1.3 万</li>
+  <li>带定位的推文 1,204 条，主要集中在 2015-2016 年的旅行和校园</li>
+  <li>归档 ZIP 大小 203MB，解压后 2.7 万多个文件（绝大多数是图片缩略图）</li>
+  <li>体检给出的健康分 41 分，标红项里手机号出现过 3 次、家庭地址 1 次</li>
+</ul>
+<p>41 分这个结果我当时挺意外的。我一直以为自己没在推特上写过手机号，结果是 2015 年为了让人加我微信，把号码分三段发在了两条推文里——文字拆开写，标签一样标红。</p>
+
+<h2>完整流程实测：从申请归档到删完</h2>
+<ol>
+  <li><strong>申请归档</strong>：X 设置 → 你的账号 → 下载数据副本，验密码 + 短信验证码，然后开始等。</li>
+  <li><strong>等待生成</strong>：官方说 24 小时内，我实际等了 68 小时。老账号数据量大，慢是常态，这段时间你什么都不用做。</li>
+  <li><strong>下载解压</strong>：203MB 下载 4 分钟，解压 1 分半，先确认 data/tweets.js 能打开再往下走。</li>
+  <li><strong>本机体检</strong>：把 ZIP 丢进体检工具，2 分 12 秒出报告，包含健康分、风险标签和一条条的清理队列。</li>
+  <li><strong>先试删一小批</strong>：我只勾了 2016 年 8 月的 214 条，删完隔天回来确认筛选逻辑没跑偏。</li>
+  <li><strong>批量删除</strong>：确认没问题后放开全量，后台跑了 3 小时 10 分，中途暂停过一次。</li>
+  <li><strong>补漏</strong>：删完再用关键词搜自己名字、手机号变体、旧公司名，又捞出 30 多条零散的。</li>
+</ol>
+<p>第 5 步是我最想强调的。试删这件事听起来多余，但它把"筛选条件写错"的代价从不可逆变成了可重来。完整操作细节可以看<a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除的完整流程</a>。</p>
+
+<h2>耗时与成本对照表</h2>
+<table>
+  <thead>
+    <tr><th>阶段</th><th>实测耗时</th><th>需要我盯着吗</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>申请归档</td><td>约 3 分钟</td><td>是</td><td>要过密码和短信验证</td></tr>
+    <tr><td>X 生成归档</td><td>68 小时</td><td>否</td><td>官方标称 24 小时，老账号普遍更久</td></tr>
+    <tr><td>下载 + 解压</td><td>5 分 30 秒</td><td>否</td><td>203MB，宽带 100Mbps</td></tr>
+    <tr><td>本机解析体检</td><td>2 分 12 秒</td><td>否</td><td>3.2 万条，不上传云端</td></tr>
+    <tr><td>人工核对清理队列</td><td>约 40 分钟</td><td>是</td><td>最花心力的一步</td></tr>
+    <tr><td>试删 214 条</td><td>3 分钟 + 隔夜确认</td><td>是</td><td>验证筛选逻辑</td></tr>
+    <tr><td>批量删除 28,700 条</td><td>3 小时 10 分</td><td>否</td><td>后台跑，可暂停续传</td></tr>
+    <tr><td>关键词补漏</td><td>约 25 分钟</td><td>是</td><td>捞出 30 多条零散内容</td></tr>
+  </tbody>
+</table>
+<p>把要盯着的时间加起来大约 1 小时 10 分，其余都在等。所以"清空十年"真正的成本不是精力，是耐心。删除费用按条计价，量大有阶梯，具体可以对照<a href="/blog/tweet-deletion-cost">按条计费的说明</a>。</p>
+
+<h2>中途踩到的四个坑</h2>
+<p><strong>坑一：以为归档很快。</strong>我第一次申请是周五晚上，周一早上才拿到。如果你打算求职前清理，请把等待时间算进计划，别指望当天搞定。</p>
+<p><strong>坑二：图片里的信息没算进去。</strong>体检扫的是文字，我有几条推文的敏感信息在截图里——学生证、快递单。这类只能靠自己按时间段翻图片，工具帮不上。</p>
+<p><strong>坑三：转推要不要删想太久。</strong>1.3 万条转推占了总量四成，我一开始纠结要不要保留，浪费了半小时。后来的判断很简单：转推基本不承载我的隐私，但会稀释账号内容，所以按年份一起清掉。</p>
+<p><strong>坑四：忘了先备份。</strong>我差点直接开删。好在归档 ZIP 本身就是快照，我把它复制到了移动硬盘。删除不可逆，删完你就只剩这个 ZIP 能查原文了，具体做法见<a href="/blog/snapshot-archive-before-clean">清理前的账号快照</a>。</p>
+
+<h2>删完之后，账号发生了什么</h2>
+<p>最直观的变化是健康分从 41 涨到 92，剩下的 8 分扣在几条我主动留下的旧推文上。粉丝掉了 11 个，没人来问我为什么。我自己搜自己名字，Google 前两页的旧推文结果在两周内陆续消失了，但缓存和第三方镜像里还留着一部分——删除能收回原文，收不回别人的截图。</p>
+<p>另外一个没预料到的细节：那些引用过我旧推文的人，他们的推文下面现在是空白引用框。这是唯一比较明显的"我清理过"的痕迹。至于抓取站和快照站为什么还能看到，我在<a href="/blog/deleted-tweets-still-visible">已删推文为什么仍然可见</a>里单独写了。</p>
+
+<h2>如果重来一次，我会这么做</h2>
+<p>第一，先申请归档，别等到想清理的那天才动手——归档躺在硬盘里不占什么地方，用不用另说。第二，先按风险删，不要按时间删；把手机号、地址、定位那几百条清掉，账号安全度就能上一大截，剩下的慢慢来。第三，别把清理当一次性工程，我现在改成每半年扫一次归档，二十分钟解决，比攒十年再大扫除舒服太多。</p>
+
+<h2>FAQ</h2>
+<p><strong>清空 10 年推文一共要多久？</strong> 我的实测是 3 天 4 小时，但其中 3 天在等 X 生成归档，真正需要我盯着的不到 4 小时。归档下载后，3.2 万条解析约 2 分钟，删除任务后台跑了 3 小时 10 分钟。</p>
+<p><strong>3 万条推文全删掉要花多少钱？</strong> 按条计费，量大时单价会降。我实际删了 2.87 万条，费用不到一顿火锅钱，而且可以暂停、可以只删一部分。</p>
+<p><strong>删除中途可以停下来吗？</strong> 可以。我在第 1.1 万条时暂停了 20 分钟，恢复后从断点继续，没有重复删除。</p>
+<p><strong>3200 条限制会不会挡住清空十年？</strong> 它挡住的是翻页删除，归档路径不受影响。删除请求按 ID 发出，和它在时间线第几页无关。</p>
+<p><strong>删完之后粉丝会发现吗？</strong> 大部分不会。我掉了 11 个粉丝，没人来问。唯一明显的痕迹是别人引用过你旧推文的地方会留下空白引用框。</p>
+<p>想知道自己那十年里到底埋了什么？<a href="/">digital-footprint-health.shop</a> 的体检是免费只读的，先看清单再决定删不删。</p>
+    `.trim(),
+    contentEn: `
+<p>I took a 2013 account with 32,148 tweets and ran the whole thing end to end, just to see what it really takes to <strong>delete 10 years of tweets</strong>. The name makes it sound like one button. In practice, getting the data ready alone took three days. So this post is mostly numbers: how long each stage ran, where the money went, the four things that tripped me up, and what actually changed on the account afterward.</p>
+<p>Headline result first. Total elapsed time was 3 days and 4 hours, and three of those days were just X building my archive. My own hands-on time came to about 1 hour 10 minutes of real attention. The bill came in under the price of a decent dinner. If you have an old account sitting on a decade of posts, this should save you half the trial and error.</p>
+
+<h2>Why there is no one-click wipe for ten years</h2>
+<p>X does not offer a delete-everything feature and shows no sign of building one. On the web you can only remove posts one at a time, and the timeline scrolls back roughly 3,200 tweets before it stops handing you more. With 32,000 tweets, manual deletion would mean paging through ten times more history than the interface will ever show me.</p>
+<p>That leaves the data archive as the only real entrance. X packages your full history into a ZIP, and inside it tweets.js stores the ID, timestamp, and text of every post. Once you have IDs, deletion requests go out by ID, which has nothing to do with what page a tweet sits on. That is precisely how the <a href="/blog/why-can-you-only-delete-3200-tweets">3,200-tweet ceiling</a> gets bypassed: it caps reading, not deleting.</p>
+
+<h2>What the test account looked like</h2>
+<p>The profile probably resembles a lot of accounts. Registered in 2013 as a college freshman, heavy posting from 2014 to 2017 at a dozen-plus tweets a day including a pile of location check-ins, then mostly quiet retweeting after 2018.</p>
+<ul>
+  <li>32,148 tweets total: roughly 19,000 original, 13,000 retweets</li>
+  <li>1,204 geotagged tweets, clustered around travel and campus life in 2015 and 2016</li>
+  <li>203MB archive ZIP, over 27,000 files once unzipped, most of them image thumbnails</li>
+  <li>Footprint health score of 41, with three phone-number hits and one home address flagged red</li>
+</ul>
+<p>That 41 surprised me. I was confident I had never posted a phone number, and technically I had not: in 2015 I split my number across two tweets in three chunks so someone could add me on WeChat. Split text, same red label.</p>
+
+<h2>The full run, stage by stage</h2>
+<ol>
+  <li><strong>Request the archive.</strong> Settings, then Your account, then Download an archive of your data. Password plus SMS code, then you wait.</li>
+  <li><strong>Wait for generation.</strong> X says up to 24 hours. Mine took 68. Old accounts hold more data and run slow; nothing for you to do here.</li>
+  <li><strong>Download and unzip.</strong> Four minutes to pull 203MB, ninety seconds to extract. Confirm data/tweets.js opens before going further.</li>
+  <li><strong>Run the on-device check.</strong> Drop the ZIP into the checker: 2 minutes 12 seconds to a full report with score, risk labels, and a per-tweet cleanup queue.</li>
+  <li><strong>Test-delete a small batch.</strong> I selected only August 2016, 214 tweets, then came back the next day to verify the filter had done what I expected.</li>
+  <li><strong>Run the bulk deletion.</strong> Once the logic checked out I released the full queue. It ran 3 hours 10 minutes in the background, with one pause in the middle.</li>
+  <li><strong>Sweep for leftovers.</strong> Afterward I searched my own name, phone-number variants, and my old employer, and dug out about thirty stragglers.</li>
+</ol>
+<p>Step five is the one I would defend hardest. Test deletion feels like a wasted step until you realize it converts a wrong filter from irreversible into repeatable. Full mechanics live in the <a href="/blog/bulk-delete-old-tweets-walkthrough">complete bulk deletion walkthrough</a>.</p>
+
+<h2>Time and cost, measured</h2>
+<table>
+  <thead>
+    <tr><th>Stage</th><th>Measured time</th><th>Needs my attention</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Request archive</td><td>~3 minutes</td><td>Yes</td><td>Password and SMS verification</td></tr>
+    <tr><td>X builds archive</td><td>68 hours</td><td>No</td><td>Stated 24h; old accounts run longer</td></tr>
+    <tr><td>Download and unzip</td><td>5 min 30 sec</td><td>No</td><td>203MB on a 100Mbps line</td></tr>
+    <tr><td>On-device parse and check</td><td>2 min 12 sec</td><td>No</td><td>32,148 tweets, nothing uploaded</td></tr>
+    <tr><td>Reviewing the cleanup queue</td><td>~40 minutes</td><td>Yes</td><td>The most mentally taxing part</td></tr>
+    <tr><td>Test delete of 214 tweets</td><td>3 min + overnight check</td><td>Yes</td><td>Validates the filter</td></tr>
+    <tr><td>Bulk delete of 28,700 tweets</td><td>3 hr 10 min</td><td>No</td><td>Background, pause and resume</td></tr>
+    <tr><td>Keyword sweep</td><td>~25 minutes</td><td>Yes</td><td>Recovered 30-odd leftovers</td></tr>
+  </tbody>
+</table>
+<p>Add up the rows that need me and it is about seventy minutes. Everything else is waiting. So the real cost of wiping a decade is patience, not effort. Deletion itself is priced per tweet with volume tiers, laid out in the <a href="/blog/tweet-deletion-cost">per-tweet pricing breakdown</a>.</p>
+
+<h2>Four things that tripped me up</h2>
+<p><strong>One: I assumed the archive would be fast.</strong> I requested it on a Friday night and got it Monday morning. If you are cleaning up before a job search, budget for the wait instead of expecting same-day results.</p>
+<p><strong>Two: image content is invisible to the scan.</strong> The checker reads text. Several of my tweets carried sensitive details inside screenshots: a student ID, a shipping label. For those you have to page through images by date yourself; no tool catches them for you.</p>
+<p><strong>Three: I spent too long deciding about retweets.</strong> Retweets were 13,000 posts, about forty percent of the account, and I burned half an hour debating them. The call ended up being simple. Retweets carry almost none of my private information, but they dilute the account, so they went out by year along with everything else.</p>
+<p><strong>Four: I nearly forgot to back up.</strong> I almost started deleting straight away. Luckily the archive ZIP is already a snapshot, so I copied it to an external drive. Deletion is one-way, and afterward that ZIP is the only place the original text still exists. Details in <a href="/blog/snapshot-archive-before-clean">taking an account snapshot before cleaning</a>.</p>
+
+<h2>What changed after the wipe</h2>
+<p>The obvious change: my health score went from 41 to 92, with the missing 8 points sitting on a handful of old tweets I deliberately kept. I lost 11 followers and nobody asked why. Searching my own name, the old tweet results dropped off the first two pages of Google over about two weeks, though caches and third-party mirrors still hold fragments. Deletion pulls back your original; it does not pull back someone else's screenshot.</p>
+<p>One detail I did not anticipate: anyone who quote-tweeted me now has an empty quote box in their thread. That is the only clearly visible sign that I cleaned house. Why scrapers and snapshot sites can still surface old content is its own topic, which I wrote up in <a href="/blog/deleted-tweets-still-visible">why deleted tweets are still visible</a>.</p>
+
+<h2>What I would do differently</h2>
+<p>First, request the archive early rather than on the day you decide to clean. It costs nothing to have a ZIP sitting on your drive, and whether you use it is a separate question. Second, delete by risk before deleting by date. Clearing the few hundred tweets with phone numbers, addresses, and geotags moves your safety needle far more than clearing 2014 in bulk. Third, stop treating cleanup as a one-time project. I now scan a fresh archive every six months, which takes about twenty minutes and beats saving up ten years of mess for one bad weekend.</p>
+
+<h2>FAQ</h2>
+<p><strong>How long does it take to delete 10 years of tweets?</strong> My run took 3 days 4 hours, but three days were waiting on X to build the archive. Hands-on time was under 4 hours: 2 minutes to parse 32,000 tweets and 3 hours 10 minutes of background deletion.</p>
+<p><strong>How much does deleting 30,000 tweets cost?</strong> Per-tweet pricing with volume tiers. I deleted 28,700 tweets for less than a nice dinner, and I could pause or delete only part of the queue.</p>
+<p><strong>Can I stop the deletion halfway?</strong> Yes. I paused at 11,000 for twenty minutes and resumed from the checkpoint with no duplicates.</p>
+<p><strong>Does the 3,200-tweet limit block a ten-year wipe?</strong> It blocks scroll-and-delete, not the archive route. Requests go out by tweet ID regardless of timeline position.</p>
+<p><strong>Will followers notice?</strong> Mostly no. I lost 11 followers and got zero questions. The one visible trace is empty quote boxes where people had quoted my old posts.</p>
+<p>Curious what a decade of your own posting is hiding? The check at <a href="/">digital-footprint-health.shop</a> is free and read-only, so you can see the list before deciding to delete anything.</p>
+    `.trim(),
+  },
+  {
+    slug: 'huge-archive-200mb',
+    title: '归档 200MB、3 万文件？大归档也能在本机处理',
+    excerpt:
+      '老账号的 X 归档动辄 200MB、几万个文件，很多在线工具直接卡死。这篇拆开大归档到底装了什么、体积从哪来、浏览器能不能扛住，以及常见的三类报错怎么解决。',
+    date: '2026-08-18',
+    updatedAt: '2026-08-18',
+    author: 'Digital Footprint Health Team',
+    category: '归档技术',
+    tags: ['X/Twitter', '数据归档', '大文件', '本机处理'],
+    canonical: '/blog/huge-archive-200mb',
+    titleEn: 'Huge Archives (200MB, 30K Files)? No Problem',
+    excerptEn:
+      'A veteran X account routinely produces a 200MB archive with tens of thousands of files, and plenty of online tools choke on it. Here is what is actually inside a large Twitter archive, where the weight comes from, whether a browser can handle it, and how to fix the three errors people hit most.',
+    categoryEn: 'Archive Tech',
+    tagsEn: ['X/Twitter', 'data archive', 'large files', 'on-device'],
+    faq: [
+      {
+        q: 'X 归档最大能有多大？',
+        a: '没有硬性上限，取决于你发过多少内容。纯文字的老账号可能只有 20-40MB，发过大量图片和视频的能到几个 GB。我见过最大的一份是 4.1GB，其中视频占了 3.7GB。',
+        qEn: 'How large can an X archive get?',
+        aEn: 'There is no fixed ceiling; it scales with what you posted. A text-heavy old account might be 20-40MB, while accounts full of photos and video can reach several gigabytes. The largest I have handled was 4.1GB, of which 3.7GB was video.',
+      },
+      {
+        q: '浏览器能处理 200MB 的归档吗？',
+        a: '能，但要看实现。归档解压后是几万个小文件，如果工具傻乎乎地一次全读进内存，标签页会崩。正确做法是只解析 data/tweets.js 这一个文件，媒体文件按需读取，这样 200MB 的归档内存占用能压在几百 MB 以内。',
+        qEn: 'Can a browser handle a 200MB archive?',
+        aEn: 'It can, but it depends on the implementation. Unzipped, an archive is tens of thousands of small files, and a tool that naively loads everything into memory will crash the tab. The right approach is to parse only data/tweets.js and read media on demand, which keeps a 200MB archive under a few hundred MB of memory.',
+      },
+      {
+        q: '为什么我的归档里文件这么多？',
+        a: '绝大多数是媒体缩略图。X 会为每张图生成多个尺寸，一条带四图的推文可能对应十几个文件。3 万文件听着吓人，实际里面真正装推文数据的只有 data 目录下的几十个 js 文件。',
+        qEn: 'Why does my archive contain so many files?',
+        aEn: 'Most of them are media thumbnails. X generates several sizes for each image, so one tweet with four photos can map to a dozen files. Thirty thousand files sounds scary, but the actual tweet data lives in a few dozen js files under the data folder.',
+      },
+      {
+        q: '大归档解析慢怎么办？',
+        a: '先确认瓶颈在解压还是解析。解压慢是磁盘问题，换到 SSD 或者先手动解压再处理。解析慢通常是工具在做正则全文扫描，3 万条正常应该在 2-3 分钟内出结果，超过十分钟大概率是实现有问题。',
+        qEn: 'What if parsing a large archive is slow?',
+        aEn: 'Work out whether the bottleneck is unzipping or parsing. Slow extraction is a disk issue: move to an SSD, or unzip manually first. Slow parsing usually means the tool is running full-text regex scans. Thirty thousand tweets should finish in two or three minutes; over ten minutes points at the implementation.',
+      },
+    ],
+    content: `
+<p>老账号导出的 X <strong>大归档</strong>动不动就 200MB、解压后 3 万个文件，扔进在线工具十次有八次转圈到崩。这不是你的账号有问题，是很多工具压根没为这个量级设计过。这篇把大归档的构成拆开讲清楚：体积从哪来、哪些文件真的有用、浏览器扛不扛得住、报错怎么修。</p>
+
+<h2>200MB 归档里到底装了什么</h2>
+<p>先看一份真实的 203MB 归档解压后的分布，账号是 3.2 万条推文、十年历史：</p>
+<table>
+  <thead>
+    <tr><th>目录/文件</th><th>体积</th><th>文件数</th><th>有没有用</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>data/tweets.js</td><td>38MB</td><td>1</td><td>核心，全部推文正文和 ID 都在这</td></tr>
+    <tr><td>data/ 其余 js</td><td>约 6MB</td><td>60 多个</td><td>关注、点赞、DM 等，体检一般不用</td></tr>
+    <tr><td>data/tweets_media/</td><td>约 150MB</td><td>2.6 万+</td><td>图片和视频缩略图，按需读取</td></tr>
+    <tr><td>assets/ + Your archive.html</td><td>约 9MB</td><td>数百</td><td>官方的本地浏览界面，纯展示</td></tr>
+  </tbody>
+</table>
+<p>看到这个分布就明白了：真正需要解析的只有 38MB 的一个文件，剩下 150MB 是图片。任何把整个 ZIP 一口气读进内存的工具，都是在给自己找麻烦。tweets.js 的具体结构我在<a href="/blog/whats-inside-x-archive-tweets-js">归档里的 tweets.js 是什么</a>里逐字段拆过。</p>
+
+<h2>体积到底从哪来</h2>
+<p>三个来源，权重差得很远。图片和视频是绝对大头，X 会为一张图生成好几个尺寸，一条四图推文对应十几个文件很常见。其次是转推和长回复，虽然是纯文本，但每条都带完整的元数据 JSON，3 万条堆起来也有几十 MB。最后是 DM 记录，如果你有多年活跃的私聊，这部分能单独占几十 MB。</p>
+<p>所以文件数和推文数不成正比。我见过 8000 条推文导出 1.2GB 的账号，因为那人常发视频；也见过 4 万条推文只有 31MB 的，纯文字冷冰冰。别用体积判断自己账号"脏不脏"。</p>
+
+<h2>浏览器能不能扛住 3 万文件</h2>
+<p>能，前提是工具知道自己在干什么。现代浏览器处理 ZIP 的能力比大部分人以为的强，卡死通常来自两个坏实现：一次性把所有文件解压到内存，或者对每个媒体文件都建 DOM 节点做预览。</p>
+<p>正确的做法很朴素——只解压 data/tweets.js，流式解析，媒体文件等你点开某条推文时再按需取。这样一份 203MB 的归档，实测内存峰值不到 400MB，解析 3.2 万条用了 2 分 12 秒。我自己的老笔记本（16G 内存）跑得动，不需要什么高配。</p>
+<p>还有个附带好处：只在本机解析意味着这 200MB 一个字节都不用上传。上传 200MB 到别人服务器，慢是小事，你把十年私聊和定位交出去了才是大事，这点我在<a href="/blog/on-device-analysis-privacy">为什么坚持本机解析</a>里说得更细。</p>
+
+<h2>大归档常见的三类报错</h2>
+<p><strong>解压失败或提示文件损坏。</strong>八成是下载没下完。X 的下载链接有有效期，断线续传经常出问题，最稳的办法是重新申请一份，用有线网络一次下完，下完先看文件大小对不对。</p>
+<p><strong>页面卡死或标签页崩溃。</strong>换个工具试试，这是实现问题不是你的问题。也可以先手动解压 ZIP，只把 data 目录喂进去，绕开媒体文件。</p>
+<p><strong>解析出来的推文数不对。</strong>先确认是不是漏读了分卷。推文特别多的账号，tweets.js 会被拆成 tweets-part1.js、tweets-part2.js，只读第一个就会少一半。这是我见过最常见的静默错误。</p>
+
+<h2>大归档处理的实操建议</h2>
+<ul>
+  <li>下载后立刻复制一份到移动硬盘，归档链接过期就得重新等三天</li>
+  <li>先只看 data 目录，媒体文件晚点再管</li>
+  <li>核对推文总数和你 profile 上显示的数量，差得多说明漏读了分卷</li>
+  <li>解压路径别放太深，Windows 的 260 字符路径限制会让某些媒体文件解不出来</li>
+  <li>处理完不要急着删 ZIP，它就是你的账号快照</li>
+</ul>
+
+<h2>FAQ</h2>
+<p><strong>X 归档最大能有多大？</strong> 没有硬性上限。纯文字老账号可能 20-40MB，图片视频多的能到几个 GB。我见过最大一份 4.1GB，视频占 3.7GB。</p>
+<p><strong>浏览器能处理 200MB 的归档吗？</strong> 能，但要看实现。只解析 data/tweets.js、媒体按需读取的话，200MB 归档内存占用能压在几百 MB 以内。</p>
+<p><strong>为什么我的归档里文件这么多？</strong> 绝大多数是媒体缩略图。X 为每张图生成多个尺寸，真正装推文数据的只有 data 目录下几十个 js 文件。</p>
+<p><strong>大归档解析慢怎么办？</strong> 先分清瓶颈在解压还是解析。3 万条正常 2-3 分钟出结果，超过十分钟大概是工具实现有问题。</p>
+<p>归档已经躺在硬盘里了？拖到 <a href="/">digital-footprint-health.shop</a> 跑一次免费体检，几分钟就知道这十年里哪些内容该清。还没导出的话，先看<a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>。</p>
+    `.trim(),
+    contentEn: `
+<p>A veteran account exports a <strong>large Twitter archive</strong> of 200MB with 30,000 files after unzipping, and eight times out of ten an online tool will spin and die on it. That is not your account being weird. Most tools were simply never designed for this size. So let me break a big archive apart: where the weight comes from, which files matter, whether a browser can cope, and how to fix the errors people actually hit.</p>
+
+<h2>What is inside a 200MB archive</h2>
+<p>Here is the real breakdown of a 203MB archive from an account with 32,148 tweets across ten years:</p>
+<table>
+  <thead>
+    <tr><th>Path</th><th>Size</th><th>Files</th><th>Useful?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>data/tweets.js</td><td>38MB</td><td>1</td><td>Core. Every tweet body and ID lives here</td></tr>
+    <tr><td>Other data/*.js</td><td>~6MB</td><td>60-odd</td><td>Follows, likes, DMs. Rarely needed for a check</td></tr>
+    <tr><td>data/tweets_media/</td><td>~150MB</td><td>26,000+</td><td>Image and video thumbnails, read on demand</td></tr>
+    <tr><td>assets/ and Your archive.html</td><td>~9MB</td><td>hundreds</td><td>The offline viewer X ships. Display only</td></tr>
+  </tbody>
+</table>
+<p>The distribution tells the whole story. Only one 38MB file needs parsing; the other 150MB is pictures. Any tool that slurps the entire ZIP into memory is creating its own problem. I walked through the field-level structure in <a href="/blog/whats-inside-x-archive-tweets-js">what is inside tweets.js</a>.</p>
+
+<h2>Where the weight comes from</h2>
+<p>Three sources, wildly different weights. Images and video dominate, since X generates several sizes per image and a four-photo tweet easily maps to a dozen files. Retweets and long replies come next: plain text, but each one carries a full metadata blob, and 30,000 of those add up to tens of megabytes. Then there are direct messages, which can occupy another few dozen megabytes if you have years of active chats.</p>
+<p>File count and tweet count are only loosely related. I have seen an 8,000-tweet account export 1.2GB because the owner posted video constantly, and a 40,000-tweet account come in at 31MB because it was all text. Size is a bad proxy for how messy your footprint is.</p>
+
+<h2>Can a browser handle 30,000 files</h2>
+<p>Yes, provided the tool knows what it is doing. Browsers handle ZIP data better than most people assume, and crashes usually trace to two bad choices: extracting every file into memory at once, or building a DOM node to preview each media file.</p>
+<p>The correct approach is unglamorous. Extract only data/tweets.js, parse it as a stream, and fetch media lazily when someone opens a specific tweet. With that design, a 203MB archive peaked under 400MB of memory in my test and parsed 32,148 tweets in 2 minutes 12 seconds. My old 16GB laptop handled it fine; no special hardware needed.</p>
+<p>There is a bonus. Parsing locally means not one byte of that 200MB gets uploaded. Slow uploads are the minor issue; handing a stranger ten years of DMs and geotags is the real one, which I argue in detail in <a href="/blog/on-device-analysis-privacy">why on-device parsing matters</a>.</p>
+
+<h2>The three errors people hit most</h2>
+<p><strong>Extraction fails or the file reports as corrupt.</strong> Usually an incomplete download. X download links expire, and resumed transfers break often. The reliable fix is requesting a fresh archive, downloading it in one shot over a wired connection, and checking the file size before doing anything else.</p>
+<p><strong>The page freezes or the tab crashes.</strong> Try another tool, because this is an implementation flaw rather than your fault. You can also unzip manually and feed in only the data folder, which sidesteps media entirely.</p>
+<p><strong>The tweet count comes out wrong.</strong> Check for split files first. On very large accounts, tweets.js gets divided into tweets-part1.js, tweets-part2.js and so on, so reading only the first file silently loses half your history. This is the most common quiet failure I see.</p>
+
+<h2>Practical tips for big archives</h2>
+<ul>
+  <li>Copy the download to an external drive immediately; once the link expires you wait days for another</li>
+  <li>Start with the data folder only and deal with media later</li>
+  <li>Compare the parsed tweet count against the number on your profile to catch missed split files</li>
+  <li>Do not extract into a deeply nested path; Windows path limits will silently drop some media files</li>
+  <li>Keep the ZIP after processing, because it doubles as your account snapshot</li>
+</ul>
+
+<h2>FAQ</h2>
+<p><strong>How large can an X archive get?</strong> No fixed ceiling. Text-only old accounts land at 20-40MB, media-heavy ones reach several gigabytes. The biggest I have handled was 4.1GB, mostly video.</p>
+<p><strong>Can a browser handle a 200MB archive?</strong> Yes, with the right implementation: parse data/tweets.js only and load media on demand to stay within a few hundred MB of memory.</p>
+<p><strong>Why does my archive contain so many files?</strong> Mostly media thumbnails at multiple sizes. Real tweet data sits in a few dozen js files under data/.</p>
+<p><strong>What if parsing is slow?</strong> Separate extraction from parsing. Thirty thousand tweets should finish in two to three minutes; over ten minutes suggests the tool is at fault.</p>
+<p>Archive already on your drive? Drop it into <a href="/">digital-footprint-health.shop</a> for a free on-device check and see which of those years need attention. If you have not exported yet, start with <a href="/blog/how-to-download-x-archive">how to download your X archive</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: 'deleted-tweets-still-visible',
+    title: '删了却还能被看到：旧推文是怎么活下来的',
+    excerpt:
+      '你删了推文，却发现别人还能看到截图、快照或第三方镜像。这篇讲清删除生效的边界在哪、旧推文靠哪四条路径活下来、哪些内容删了确实基本消失，以及删除为什么依然值得做。',
+    date: '2026-08-18',
+    updatedAt: '2026-08-18',
+    author: 'Digital Footprint Health Team',
+    category: '风险与声誉',
+    tags: ['X/Twitter', '已删推文', '抓取', '声誉风险'],
+    canonical: '/blog/deleted-tweets-still-visible',
+    titleEn: 'Deleted \u2260 Gone: Why Scrapers Still See Old Tweets',
+    excerptEn:
+      'You delete a tweet and someone still shows you a screenshot, a snapshot, or a third-party mirror. Here is where deletion actually stops working, the four routes old tweets use to survive, what genuinely disappears, and why deleting is still worth doing.',
+    categoryEn: 'Risk & Reputation',
+    tagsEn: ['X/Twitter', 'deleted tweets', 'scrapers', 'reputation risk'],
+    faq: [
+      {
+        q: '删除推文之后它真的消失了吗？',
+        a: '在 X 上是消失了——原推链接会 404，搜索结果也会陆续掉。但删除只能收回你自己那份，别人的截图、第三方镜像和已经被抓走的副本不在你控制范围内。',
+        qEn: 'Is a tweet really gone after I delete it?',
+        aEn: 'On X, yes: the original link 404s and search results drop off over time. But deletion only reclaims your copy. Screenshots other people took, third-party mirrors, and copies already scraped sit outside your control.',
+      },
+      {
+        q: '为什么 Google 上还能搜到我删掉的推文？',
+        a: '搜索引擎的索引更新有延迟，标题和摘要会在缓存里再留一段时间。原链接已经 404，所以点进去看不到内容，通常两三周内条目会自然掉。删得越早，被索引的时间就越短。',
+        qEn: 'Why can Google still find tweets I deleted?',
+        aEn: 'Search indexes lag, so titles and snippets linger in cache for a while. The original link already 404s, so clicking through shows nothing, and the entry usually drops within a couple of weeks. The earlier you delete, the less time it spent indexed.',
+      },
+      {
+        q: '第三方抓取站是怎么拿到我的推文的？',
+        a: '你的推文公开时，任何人都能抓。有些是学术数据集，有些是商业舆情监控，有些纯粹是爱好者存档。他们抓走的是当时的副本，你后来的删除动作不会回传给他们。',
+        qEn: 'How did third-party scrapers get my tweets?',
+        aEn: 'While your tweets were public, anyone could collect them. Some are academic datasets, some commercial monitoring, some hobbyist archives. They hold a copy from that moment, and your later deletion never propagates to them.',
+      },
+      {
+        q: '既然删不干净，还有必要删吗？',
+        a: '有，而且必要性比大多数人想的高。绝大多数针对个人的"考古"发生在最省力的路径上：直接搜你的账号。删掉原推等于把这条最省力的路堵住了，剩下的镜像和截图需要有人专门去找，成本高很多。',
+        qEn: 'If deletion is imperfect, is it still worth it?',
+        aEn: 'Yes, and more than most people assume. Almost all digging into an individual happens through the laziest route: searching your account directly. Deleting the original closes that route, and reaching mirrors or screenshots then takes deliberate effort, which is a much higher bar.',
+      },
+    ],
+    content: `
+<p>你把那条 2015 年的推文删了，第二天有人给你发了它的截图。<strong>已删推文仍可见</strong>这件事让很多人对清理彻底失去信心——既然删不干净，何必费劲。这个结论下得太快了。删除有它的边界，理解边界在哪，你才知道自己到底买到了什么。</p>
+
+<h2>删除到底做了什么，没做什么</h2>
+<p>你点删除，X 会把这条推文从公开时间线和自家搜索里撤下来，原链接返回 404。这部分是实打实生效的，而且不可逆。</p>
+<p>它没做的事是：把已经流出去的副本追回来。删除是一个只对 X 自己的数据库生效的动作，它不会给谁发通知说"请把你手里那份也删掉"。这就是全部的边界，剩下所有"怎么还能看到"的疑问，都是这条边界的具体表现。</p>
+
+<h2>旧推文靠这四条路活下来</h2>
+<ul>
+  <li><strong>别人的截图。</strong>最常见也最难处理。截图是静态图片，跟 X 再无关系，你删原推它一动不动。争议话题下的截图往往在你删除之前就已经传开了。</li>
+  <li><strong>网页快照站。</strong>公开页面被存档服务抓过，快照里保留着当时的页面。删除不触发快照删除，需要单独走各家的移除流程。</li>
+  <li><strong>第三方抓取和数据集。</strong>你公开的那些年里，学术研究、舆情监控、爱好者存档都可能抓走过副本。他们拿到的是那一刻的快照。</li>
+  <li><strong>引用与回复的残影。</strong>别人引用你的推文，原推删了，他们的推文下面会留一个空白引用框；有些客户端还会缓存原文摘要。</li>
+</ul>
+<p>这四条路里，只有第一条和你的行为速度强相关——推文公开的时间越长，被截图的概率越高。这也是我一直说清理要趁早的原因，具体的职业代价可以看<a href="/blog/how-old-tweets-cost-people-jobs">旧推文让人丢掉工作的真实案例</a>。</p>
+
+<h2>哪些内容删了确实基本消失</h2>
+<p>好消息是：绝大多数人的绝大多数推文，属于"删了就真没了"这一类。原因很朴素——没人存过。快照站不会抓一个只有 30 个赞的日常推文，抓取数据集抽样也有限，截图更是要有人当时觉得值得截。</p>
+<p>真正会留下副本的，通常是这三种：传播过的争议内容、公众人物的言论、明星话题下的高互动推文。如果你只是想清掉手机号、地址、定位和年少时期的碎片，那这些东西大概从来没有第二份。这也是为什么按风险排序清理比按时间清理更值——细节我写在<a href="/blog/which-tweets-to-clean-by-risk">按风险决定先删哪些推文</a>。</p>
+
+<h2>删除依然值得做的理由</h2>
+<p>换个角度想：翻你旧账的人是怎么翻的？99% 的情况是打开搜索框，输你的账号名，往下滑。HR 不会去找学术数据集，前同事不会翻快照站，路人更不会。他们走的是最省力的路。</p>
+<p>删除原推等于把最省力那条路堵掉。剩下的镜像和截图理论上还在，但需要有人专门花时间去找，而绝大多数"考古"根本没有那个动力。安全不是绝对状态，是提高别人挖到你的成本。</p>
+<p>还有个容易被忽略的收益：你自己心里干净了。知道自己账号里没埋手机号和住址，比事后补救省心得多。</p>
+
+<h2>除了删除，还能做什么</h2>
+<p>如果某条内容已经被截图传开，删除不解决问题，你需要的是另一套动作：不解释不追问、让新内容把旧内容顶下去、必要时准备一段简短的说明。这属于声誉管理而不是隐私清理，我在<a href="/blog/cancel-culture-101-old-tweets">旧推文与网络舆论 101</a>里单独展开过。</p>
+<p>而对于还没被人注意到的那几千条旧推文，删除仍然是最直接、最便宜、最有效的一步。</p>
+
+<h2>FAQ</h2>
+<p><strong>删除推文之后它真的消失了吗？</strong> 在 X 上消失了，原链接会 404。但别人的截图、第三方镜像和已抓走的副本不在你控制范围内。</p>
+<p><strong>为什么 Google 上还能搜到我删掉的推文？</strong> 索引更新有延迟，缓存里会再留一段时间，通常两三周内自然掉。删得越早，被索引的时间越短。</p>
+<p><strong>第三方抓取站是怎么拿到我的推文的？</strong> 公开期间任何人都能抓。他们拿的是当时的副本，你后来的删除不会回传给他们。</p>
+<p><strong>既然删不干净，还有必要删吗？</strong> 有。绝大多数考古都走最省力的路径——直接搜你的账号。堵掉这条路，成本就已经拉高了。</p>
+<p>先弄清自己账号里到底还留着什么，再决定删哪些。<a href="/">digital-footprint-health.shop</a> 的体检免费、只读、本机跑，不会动你一条推文。</p>
+    `.trim(),
+    contentEn: `
+<p>You delete that 2015 tweet, and the next day someone sends you a screenshot of it. Finding <strong>deleted tweets still visible</strong> is what makes most people give up on cleanup entirely: if it cannot be erased, why bother. That conclusion arrives too fast. Deletion has a boundary, and once you know where that boundary sits, you know what you actually bought.</p>
+
+<h2>What deletion does and does not do</h2>
+<p>When you hit delete, X pulls the tweet from public timelines and its own search, and the original link starts returning 404. That part genuinely works, and it is irreversible.</p>
+<p>What it does not do is retrieve copies that already left. Deletion acts on X's database only. It never sends anyone a notice asking them to drop their copy too. That is the entire boundary, and every "then how is this still visible" question is just a specific instance of it.</p>
+
+<h2>The four routes old tweets use to survive</h2>
+<ul>
+  <li><strong>Other people's screenshots.</strong> The most common and the hardest. A screenshot is a static image with no link back to X, so deleting the original changes nothing. Screenshots around contentious topics usually spread before you ever hit delete.</li>
+  <li><strong>Web snapshot services.</strong> Public pages get archived, and the snapshot keeps the page as it looked. Deletion does not trigger snapshot removal; each service has its own takedown process.</li>
+  <li><strong>Third-party scrapers and datasets.</strong> During the years your account was public, academic projects, monitoring vendors, and hobbyist archivists could all have taken copies. What they hold is a snapshot of that moment.</li>
+  <li><strong>Quote and reply residue.</strong> When someone quoted you, deleting the original leaves an empty quote box in their thread, and some clients cache a text preview.</li>
+</ul>
+<p>Only the first route scales with how fast you act: the longer a tweet stays public, the higher the odds someone captured it. That is the whole argument for cleaning early, and the career side of it shows up in <a href="/blog/how-old-tweets-cost-people-jobs">real cases where old tweets cost people jobs</a>.</p>
+
+<h2>What actually does disappear</h2>
+<p>Good news: for most people, most tweets fall into the genuinely-gone category. The reason is mundane. Nobody saved them. Snapshot services do not crawl a daily post with 30 likes, scraped datasets sample narrowly, and a screenshot requires someone to have decided at the time that it was worth capturing.</p>
+<p>Content that does leave copies behind tends to be one of three kinds: things that circulated during a controversy, statements by public figures, and high-engagement posts under trending topics. If your goal is clearing phone numbers, addresses, geotags, and teenage noise, a second copy almost certainly never existed. That is also why sorting cleanup by risk beats sorting by date, which I break down in <a href="/blog/which-tweets-to-clean-by-risk">choosing which tweets to clean by risk</a>.</p>
+
+<h2>Why deleting is still worth it</h2>
+<p>Flip the question: how do people actually dig into your past? In 99 percent of cases they open a search box, type your handle, and scroll. A recruiter is not querying an academic dataset. A former colleague is not paging through snapshot archives. They take the laziest available route.</p>
+<p>Deleting the original closes that route. Mirrors and screenshots may still exist somewhere, but reaching them takes deliberate effort, and the vast majority of casual digging has no such motivation. Safety here is not an absolute state; it is raising the cost of finding you.</p>
+<p>There is a quieter benefit too. You get to stop worrying. Knowing your account holds no phone number and no home address is a lot easier to live with than cleaning up after the fact.</p>
+
+<h2>What to do beyond deleting</h2>
+<p>If something already circulated as a screenshot, deletion does not solve it, and you need a different playbook: do not argue, let newer content push the old down, and keep one short explanation ready if it comes up. That is reputation work rather than privacy cleanup, and I cover it separately in <a href="/blog/cancel-culture-101-old-tweets">old tweets and online backlash 101</a>.</p>
+<p>For the thousands of old tweets nobody has noticed yet, deletion remains the most direct, cheapest, and most effective move available.</p>
+
+<h2>FAQ</h2>
+<p><strong>Is a tweet really gone after I delete it?</strong> On X, yes, and the link 404s. But screenshots, mirrors, and already-scraped copies are outside your control.</p>
+<p><strong>Why can Google still find deleted tweets?</strong> Index lag keeps cached titles around for a couple of weeks. The earlier you delete, the less indexed time it accumulated.</p>
+<p><strong>How did scrapers get my tweets?</strong> They collected them while your account was public. Your later deletion never reaches their copy.</p>
+<p><strong>If deletion is imperfect, is it worth it?</strong> Yes. Nearly all digging uses the laziest path, and closing it raises the cost substantially.</p>
+<p>Find out what is still sitting in your account before deciding what to remove. The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, and runs on your own machine.</p>
+    `.trim(),
+  },
+  {
+    slug: 'snapshot-archive-before-clean',
+    title: '账号快照：清理前先留一份完整归档',
+    excerpt:
+      '删除不可逆，快照是你唯一的兜底。这篇讲清什么算一份合格的账号快照、为什么删除前必须先留、怎么做一份能用十年的备份，以及快照本身的隐私风险怎么控。',
+    date: '2026-08-18',
+    updatedAt: '2026-08-18',
+    author: 'Digital Footprint Health Team',
+    category: '归档技术',
+    tags: ['X/Twitter', '备份', '账号快照', '数据归档'],
+    canonical: '/blog/snapshot-archive-before-clean',
+    titleEn: 'Snapshot First: Back Up Your Archive Before Cleaning',
+    excerptEn:
+      'Deletion is one-way, so a snapshot is your only safety net. Here is what counts as a proper account snapshot, why it has to come before deleting, how to build a backup that survives ten years, and how to handle the privacy risk of the snapshot itself.',
+    categoryEn: 'Archive Tech',
+    tagsEn: ['X/Twitter', 'backup', 'account snapshot', 'data archive'],
+    faq: [
+      {
+        q: '删除前必须备份吗？',
+        a: '必须。X 删除不可逆，删完就再也读不到原文。归档 ZIP 本身就是一份完整快照，复制一份到本地或移动硬盘，前后不超过五分钟，换来的是"删错了还能查"这个底。',
+        qEn: 'Do I have to back up before deleting?',
+        aEn: 'Yes. X deletion is irreversible and you will never read the original text again. The archive ZIP already is a complete snapshot; copying it to a local or external drive takes under five minutes and buys you the ability to look things up after a mistake.',
+      },
+      {
+        q: '归档 ZIP 算完整备份吗？',
+        a: '算，而且是目前最完整的一份。它包含推文正文、时间、ID、媒体文件、点赞和关注列表。唯一的短板是它是那一刻的静态副本，之后发的内容不会自动进来。',
+        qEn: 'Does the archive ZIP count as a full backup?',
+        aEn: 'It does, and it is the most complete copy available. It holds tweet text, timestamps, IDs, media files, likes, and follow lists. Its one weakness is being a static copy of one moment; anything you post afterward will not appear in it.',
+      },
+      {
+        q: '快照应该存在哪里？',
+        a: '至少两个地方，其中一个离线。我自己的做法是本机加密文件夹 + 一份移动硬盘。存网盘也行，但注意这份文件里有十年私聊和定位，同步到共享盘就等于泄露给所有有权限的人。',
+        qEn: 'Where should I store the snapshot?',
+        aEn: 'At least two places, one of them offline. My own setup is an encrypted local folder plus an external drive. Cloud storage works too, but remember this file contains a decade of DMs and geotags, so syncing it to a shared drive leaks it to everyone with access.',
+      },
+      {
+        q: '快照本身会不会成为新的隐私风险？',
+        a: '会，这点常被忽略。快照是你所有敏感信息最集中的一个文件，放在同事共用的电脑或公开云盘上，风险比留在 X 上更高。加密、单独存放、别随手发给别人处理，这三条守住基本没事。',
+        qEn: 'Could the snapshot itself become a privacy risk?',
+        aEn: 'It can, and this gets overlooked. The snapshot is the single most concentrated file of your sensitive data, so leaving it on a shared work computer or a public cloud folder is riskier than leaving the tweets on X. Encrypt it, store it separately, and never hand it to someone else to process.',
+      },
+    ],
+    content: `
+<p><strong>删除前备份</strong>这件事听起来像流程套话，但它是整条清理链上唯一无法后补的一步。X 的删除是真删，不进回收站、没有恢复按钮。删完之后你想确认"那条推文原文到底怎么写的"，只能靠一份快照。这篇讲怎么做这份快照，以及一个容易被忽略的问题：快照自己也是风险。</p>
+
+<h2>什么算一份合格的账号快照</h2>
+<p>官方导出的归档 ZIP 就是最完整的那一份，不用另外找工具。它装着推文正文、发布时间、推文 ID、媒体文件、点赞记录和关注列表。有 ID 这一点特别重要——将来你想确认某条推文有没有被删掉，拿 ID 去访问就知道。</p>
+<p>它的短板只有一个：静态。归档是你申请那一刻的副本，之后发的内容不会自动进去。所以快照不是"做一次就完事"，而是清理前必做、平时每半年补一份。</p>
+
+<h2>为什么快照必须在删除之前</h2>
+<p>顺序反了就没意义了。删完再导出，归档里那些推文已经不在，你拿到的是清理后的账号，等于没有底。</p>
+<p>我见过最可惜的一种情况：有人把 2014 到 2016 年全删了，事后想找当年跟朋友的一段对话，发现只剩记忆。那段对话没有隐私风险，是被"按年份清理"顺手带走的。有快照的话，这就只是一次检索。</p>
+<table>
+  <thead>
+    <tr><th>场景</th><th>有快照</th><th>没快照</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>删错了想看原文</td><td>本地检索，几秒钟</td><td>永久找不回</td></tr>
+    <tr><td>想确认某条是否已删</td><td>拿 ID 访问核对</td><td>只能靠印象</td></tr>
+    <tr><td>想留住有价值的旧内容</td><td>删除前先导出摘录</td><td>一起消失</td></tr>
+    <tr><td>需要证明发过某内容</td><td>归档里有完整记录</td><td>无据可依</td></tr>
+  </tbody>
+</table>
+
+<h2>做一份能用十年的快照</h2>
+<ol>
+  <li>在 X 设置里申请数据归档，过密码和短信验证，然后等——老账号常见要等两三天。</li>
+  <li>下载完先核对文件大小，确认没断流，再解压看一眼 data/tweets.js 能不能打开。</li>
+  <li>把 ZIP 原封不动复制到第二个位置，移动硬盘或独立的加密目录都行。别只留一份在下载文件夹里。</li>
+  <li>给文件名加日期，比如 x-archive-2026-08-18.zip。半年后你会感谢这个习惯。</li>
+  <li>如果有特别想留的内容，单独摘录成文本或截图存档，别指望以后从 27000 个文件里翻。</li>
+</ol>
+<p>整个过程真正动手的时间不到十分钟，剩下都在等。导出的详细步骤和验证方法在<a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>里有图文版。</p>
+
+<h2>快照存哪、怎么防丢</h2>
+<p>我的建议是两份起步，其中一份离线。本机放一份方便随时查，移动硬盘或另一台设备放一份防意外。只存在一个地方的备份不叫备份，磁盘坏了、笔记本丢了，你就回到没有快照的状态。</p>
+<p>网盘可以用，但要挑对目录。这份文件里有你十年的私聊和定位，同步到和同事共享的空间，比留在 X 上更危险。</p>
+
+<h2>快照自己也是风险</h2>
+<p>这是最容易被忽略的一点：整个清理流程里，敏感信息最集中的文件就是这份归档。它把散在十年里的手机号、地址、定位打包成了一个文件。所以三条底线——放加密目录、别放公用电脑、别发给别人帮你分析。</p>
+<p>顺带说一句，这也是我坚持体检要在本机跑的原因：把 200MB 归档上传到别人的服务器，等于把这个"最集中的文件"复制了一份出去。做完清理不要急着删 ZIP，但要把它放对地方。删除前的其他检查项，我列在<a href="/blog/delete-wrong-tweet-prechecks">删除前必做的三件事</a>里。</p>
+
+<h2>FAQ</h2>
+<p><strong>删除前必须备份吗？</strong> 必须。X 删除不可逆，归档 ZIP 本身就是完整快照，复制一份不超过五分钟。</p>
+<p><strong>归档 ZIP 算完整备份吗？</strong> 算，而且是最完整的一份。唯一短板是静态副本，之后发的内容不会自动进来。</p>
+<p><strong>快照应该存在哪里？</strong> 至少两个地方，其中一个离线。注意别同步到共享网盘。</p>
+<p><strong>快照本身会不会成为新的隐私风险？</strong> 会。它是你敏感信息最集中的一个文件，加密存放、别放公用电脑、别交给别人处理。</p>
+<p>快照留好了，下一步就是看清里面有什么。<a href="/">digital-footprint-health.shop</a> 全程在你自己电脑上解析，归档不上传，体检免费只读。想先了解归档结构可以看<a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 里装了什么</a>。</p>
+    `.trim(),
+    contentEn: `
+<p><strong>Backing up tweets before deleting</strong> sounds like boilerplate process advice, but it is the one step in a cleanup that cannot be added later. X deletion is real deletion: no trash bin, no restore button. Once it is done, the only way to check what an old tweet actually said is a snapshot. This post covers how to build one, plus a problem people skip: the snapshot is a risk of its own.</p>
+
+<h2>What counts as a proper snapshot</h2>
+<p>The official archive ZIP is the most complete option, and you do not need another tool. It carries tweet text, timestamps, tweet IDs, media files, likes, and follow lists. The IDs matter more than people expect, because later you can hit an ID directly to confirm whether a specific tweet is gone.</p>
+<p>It has one weakness: it is static. The archive captures the moment you requested it, and anything posted afterward never appears. So a snapshot is not a one-time chore. Take one before cleaning, then refresh it every six months.</p>
+
+<h2>Why the snapshot has to come first</h2>
+<p>Reverse the order and the whole thing loses its point. Export after deleting and those tweets are already absent, so what you get is a post-cleanup account and no safety net at all.</p>
+<p>The saddest version I have seen: someone wiped 2014 through 2016, then wanted to find a conversation with an old friend from that period and discovered only memory remained. That thread carried no privacy risk. It got swept up by a delete-by-year filter. With a snapshot, this would have been a five-second lookup.</p>
+<table>
+  <thead>
+    <tr><th>Situation</th><th>With a snapshot</th><th>Without one</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Deleted the wrong thing</td><td>Search locally in seconds</td><td>Gone permanently</td></tr>
+    <tr><td>Verify whether a tweet is gone</td><td>Check by tweet ID</td><td>Rely on memory</td></tr>
+    <tr><td>Keep worthwhile old content</td><td>Extract it before deleting</td><td>It disappears too</td></tr>
+    <tr><td>Prove you posted something</td><td>Full record in the archive</td><td>No evidence</td></tr>
+  </tbody>
+</table>
+
+<h2>Building a snapshot that lasts ten years</h2>
+<ol>
+  <li>Request the data archive in X settings, clear the password and SMS check, then wait. Old accounts often take two or three days.</li>
+  <li>Check the downloaded file size to confirm nothing truncated, then unzip and verify data/tweets.js opens.</li>
+  <li>Copy the ZIP unchanged to a second location: an external drive or a separate encrypted folder. Do not leave the only copy in Downloads.</li>
+  <li>Put the date in the filename, like x-archive-2026-08-18.zip. Six months from now you will appreciate the habit.</li>
+  <li>If specific content matters to you, extract it separately as text or screenshots rather than planning to dig through 27,000 files later.</li>
+</ol>
+<p>Actual hands-on time is under ten minutes; the rest is waiting. Step-by-step export instructions live in <a href="/blog/how-to-download-x-archive">how to download your X archive</a>.</p>
+
+<h2>Where to keep it and how not to lose it</h2>
+<p>Start with two copies and keep one offline. A local copy makes lookups easy; an external drive or second device covers accidents. A backup that exists in exactly one place is not a backup, because a dead disk or a lost laptop puts you back to having nothing.</p>
+<p>Cloud storage is fine if you pick the folder carefully. This file holds a decade of DMs and geotags, so syncing it into a space shared with coworkers is worse than leaving the tweets on X.</p>
+
+<h2>The snapshot is also a risk</h2>
+<p>Here is the part that gets skipped: within the whole cleanup process, this archive is the single most concentrated file of sensitive data you own. It bundles ten years of scattered phone numbers, addresses, and locations into one object. Three rules cover it: keep it in an encrypted folder, keep it off shared computers, and never send it to someone else for analysis.</p>
+<p>That is also my reasoning for insisting checks run locally. Uploading a 200MB archive to somebody's server copies that concentrated file straight out of your control. Do not rush to delete the ZIP after cleaning, but do put it somewhere sensible. Other pre-deletion checks are listed in <a href="/blog/delete-wrong-tweet-prechecks">three things to do before deleting</a>.</p>
+
+<h2>FAQ</h2>
+<p><strong>Do I have to back up before deleting?</strong> Yes. Deletion is irreversible, and the archive ZIP is already a full snapshot you can copy in five minutes.</p>
+<p><strong>Does the ZIP count as a full backup?</strong> It does, and it is the most complete one available. Its only limit is being static.</p>
+<p><strong>Where should I store it?</strong> Two places minimum, one offline, and not on a shared cloud folder.</p>
+<p><strong>Could the snapshot itself be a risk?</strong> Yes. Encrypt it, keep it off shared machines, and do not hand it to anyone else.</p>
+<p>Once the snapshot is safe, the next step is seeing what is inside it. <a href="/">digital-footprint-health.shop</a> parses everything on your own computer with no upload, and the check is free and read-only. For the file structure, see <a href="/blog/whats-inside-x-archive-tweets-js">what is inside tweets.js</a>.</p>
+    `.trim(),
+  },
+  {
+    slug: '10-year-cleanup-plan',
+    title: '给未来 10 年的自己定个推文清理计划',
+    excerpt:
+      '一次大扫除解决不了长期问题，三年后你又会攒出一堆需要清的推文。这篇给一个可持续的推文清理计划：四个周期分别做什么、发帖时的两条自检、以及怎么让提醒真的响起来。',
+    date: '2026-08-18',
+    updatedAt: '2026-08-18',
+    author: 'Digital Footprint Health Team',
+    category: '长期策略',
+    tags: ['X/Twitter', '定期清理', '数字足迹', '长期计划'],
+    canonical: '/blog/10-year-cleanup-plan',
+    titleEn: 'A Cleaning Plan for the Next 10 Years of You',
+    excerptEn:
+      'One deep clean does not solve a long-term problem, because three years later you will have a new pile to deal with. Here is a sustainable tweet cleaning plan: what each of four cycles covers, two checks to run as you post, and how to make the reminders actually fire.',
+    categoryEn: 'Long-Term Strategy',
+    tagsEn: ['X/Twitter', 'regular cleanup', 'digital footprint', 'long-term plan'],
+    faq: [
+      {
+        q: '推文应该多久清理一次？',
+        a: '我的节奏是每半年扫一次归档，每年做一次稍认真的复查。半年一次的间隔刚好——新增内容不多，二十分钟能过完，又不至于长到让你忘记账号里有什么。',
+        qEn: 'How often should I clean up my tweets?',
+        aEn: 'My rhythm is scanning a fresh archive every six months and doing a more careful review once a year. Six months works well: not much new content accumulates, twenty minutes covers it, and the gap is short enough that you still remember what is in the account.',
+      },
+      {
+        q: '定期清理和一次大扫除有什么区别？',
+        a: '成本差得很远。大扫除要处理十年积累，光核对清理队列就得花掉一个下午；定期清理每次只面对半年的新增，量小、判断快、心理负担轻。前者是补救，后者是维护。',
+        qEn: 'How is regular cleanup different from one deep clean?',
+        aEn: 'The cost gap is large. A deep clean means processing ten years at once, and just reviewing the queue eats an afternoon. Regular cleanup only faces six months of new posts: small volume, fast decisions, low mental load. One is remediation, the other is maintenance.',
+      },
+      {
+        q: '发帖的时候怎么避免留下风险内容？',
+        a: '两条自检就够用：这条里有没有能定位到我的信息（号码、门牌、公司名、可辨认的背景），以及十年后被截图放到我名字旁边，我会不会难受。想不清就别发，或者发完当天删。',
+        qEn: 'How do I avoid creating risky posts in the first place?',
+        aEn: 'Two checks cover most of it: does this contain anything that locates me (a number, a street address, an employer, a recognizable background), and if this were screenshotted next to my name ten years from now, would it sting. If you cannot answer, do not post it, or delete it the same day.',
+      },
+      {
+        q: '清理计划会不会太麻烦坚持不下来？',
+        a: '会，如果你把它设计得太重。所以我只保留两个固定动作：每半年申请一次归档，扫完清掉标红的。其他都是可选项。计划能不能坚持，取决于它有多轻，不是有多完整。',
+        qEn: 'Will a cleaning plan be too much hassle to keep up?',
+        aEn: 'It will, if you design it heavy. So I keep only two fixed actions: request an archive every six months and clear whatever gets flagged red. Everything else is optional. Whether a plan survives depends on how light it is, not how thorough it looks.',
+      },
+    ],
+    content: `
+<p>你花了一个周末把十年推文清干净，健康分从 40 涨到 90。三年后呢？如果没有<strong>推文清理计划</strong>，你会重新攒出一批需要清的内容，然后再来一次周末大扫除。维护比补救便宜，这是这篇的全部意思。</p>
+<p>我自己现在的节奏很轻：每半年二十分钟。下面是怎么排的。</p>
+
+<h2>一次大扫除解决不了什么</h2>
+<p>大扫除处理的是存量，处理不了流量。你还在发帖，就还在生产新的数字足迹——新工作的公司名、搬家后的新片区、旅行打卡、深夜情绪。这些内容今天看着无害，五年后就成了新一批"旧推文"。</p>
+<p>另一个现实问题是记忆衰减。清理最费劲的不是删除，是判断某条该不该删，而这个判断的准确度随时间下降得很快。半年前发的推文你还记得上下文，八年前的只能靠猜。趁记得的时候处理，效率高得多。</p>
+
+<h2>清理计划的四个周期</h2>
+<table>
+  <thead>
+    <tr><th>周期</th><th>做什么</th><th>大概耗时</th><th>必要性</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>发帖当时</td><td>两条自检，有疑虑就不发</td><td>几秒</td><td>最高，性价比无敌</td></tr>
+    <tr><td>每半年</td><td>申请归档、跑体检、清掉标红</td><td>约 20 分钟</td><td>核心动作</td></tr>
+    <tr><td>每年</td><td>复查健康分变化、翻一遍当年图片</td><td>约 1 小时</td><td>推荐</td></tr>
+    <tr><td>换工作/换城市前</td><td>按风险做一次针对性清理</td><td>1-2 小时</td><td>视情况</td></tr>
+  </tbody>
+</table>
+<p>真正要坚持的只有第二行。其他三行是加分项，做了更好，漏了不影响大局。计划设计得太满，第一个月就废了。</p>
+
+<h2>发帖时的两条自检</h2>
+<p>第一条：这条推文里有没有能定位到我的信息？手机号、门牌号、公司名、能认出地点的背景，甚至"我家楼下那家便利店"配一张照片，都算。第二条：十年后有人把它截图放在我名字旁边，我会不会难受？</p>
+<p>两个问题都能干脆回答"没有"和"不会"，就发。有一个卡住，就改写或者干脆不发。这两秒钟的判断，能省掉未来几百条推文的清理工作量。</p>
+
+<h2>半年一次都做什么</h2>
+<ol>
+  <li>申请一份新归档（提前几天申请，别当天才想起要等）</li>
+  <li>本机跑一次体检，重点看健康分和上次比是涨了还是掉了</li>
+  <li>把标红的清掉——通常也就十几条，几分钟的事</li>
+  <li>顺手把这份归档存好，覆盖或者归档到日期命名的目录</li>
+</ol>
+<p>健康分的变化比绝对值更有信息量。分掉了说明这半年你发了新的风险内容，值得回头看看是哪一类；分稳住了就什么都不用做。评分怎么算的可以看<a href="/blog/digital-footprint-health-score">0-100 健康分的计算方式</a>，标红项怎么排优先级看<a href="/blog/which-tweets-to-clean-by-risk">按风险决定先删哪些</a>。</p>
+
+<h2>怎么让提醒真的响起来</h2>
+<p>我试过三种方式，只有一种活下来了。日历重复事件容易被顺手划掉；待办清单里的年度任务会被无限推迟；真正有用的是绑定到一个已有的固定事件——我把它挂在每年报税和年中体检这两个时间点上，反正那几天本来就在处理"年度琐事"，多加二十分钟不痛。</p>
+<p>另一个小技巧是把归档 ZIP 放在你每周都会打开的目录附近。看见它，就想起来这件事。</p>
+
+<h2>十年后你会感谢的两件事</h2>
+<p>一是你手上有一串按日期命名的归档，等于给自己留了十年的可检索记录，找当年的东西不用靠回忆。二是你从来没有经历过"临时被人翻旧账"的慌乱——因为该清的早就清了，剩下的都是你确认过愿意留着的。</p>
+<p>清理这件事的门槛不在技术，在启动。你已经读到这里了，剩下的只是把半年后的那个提醒设上。删除节奏和费用控制方面，<a href="/blog/pause-resume-refund-deletion">可暂停、可续传、可退款</a>那篇讲得更细。</p>
+
+<h2>FAQ</h2>
+<p><strong>推文应该多久清理一次？</strong> 每半年扫一次归档，每年做一次稍认真的复查。半年刚好，二十分钟能过完。</p>
+<p><strong>定期清理和一次大扫除有什么区别？</strong> 大扫除处理十年积累，核对队列就得一个下午；定期清理每次只面对半年新增。前者是补救，后者是维护。</p>
+<p><strong>发帖的时候怎么避免留下风险内容？</strong> 两条自检：有没有能定位到我的信息；十年后被截图放在我名字旁边会不会难受。</p>
+<p><strong>清理计划会不会太麻烦坚持不下来？</strong> 会，如果设计得太重。只保留半年一次的归档扫描和清红，其他都是可选。</p>
+<p>把第一次扫描安排在今天？<a href="/">digital-footprint-health.shop</a> 的体检免费、只读、在你自己电脑上跑，二十分钟就能拿到你的起点分。</p>
+    `.trim(),
+    contentEn: `
+<p>You spend a weekend clearing ten years of tweets and your score jumps from 40 to 90. What about three years from now? Without a <strong>tweet cleaning plan</strong>, you will accumulate a fresh pile and repeat the whole weekend. Maintenance costs less than remediation. That is the entire argument here.</p>
+<p>My own rhythm is light: twenty minutes every six months. Here is how it is arranged.</p>
+
+<h2>What a deep clean cannot fix</h2>
+<p>A deep clean handles your existing stock, not the flow. As long as you keep posting, you keep producing new footprint: a new employer name, a new neighborhood after moving, travel check-ins, late-night venting. Harmless today, and five years from now they are simply the next batch of old tweets.</p>
+<p>There is also memory decay. The hard part of cleanup is not deleting, it is judging whether a specific post should go, and that judgment gets less accurate fast. You still remember the context behind something from six months ago. From eight years ago, you are guessing. Handling posts while you remember them is far more efficient.</p>
+
+<h2>Four cycles in the plan</h2>
+<table>
+  <thead>
+    <tr><th>Cycle</th><th>What it covers</th><th>Rough time</th><th>How necessary</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>As you post</td><td>Two quick checks; skip the post if unsure</td><td>Seconds</td><td>Highest value per minute</td></tr>
+    <tr><td>Every six months</td><td>Request archive, run the check, clear red flags</td><td>~20 minutes</td><td>The core action</td></tr>
+    <tr><td>Yearly</td><td>Review score movement, page through the year's images</td><td>~1 hour</td><td>Recommended</td></tr>
+    <tr><td>Before a job or city change</td><td>Targeted cleanup by risk</td><td>1-2 hours</td><td>Situational</td></tr>
+  </tbody>
+</table>
+<p>Only the second row genuinely needs to survive. The rest is bonus: good if you do it, harmless if you skip it. Design the plan too full and it dies in month one.</p>
+
+<h2>Two checks while posting</h2>
+<p>First: does this post contain anything that locates me? A phone number, a street address, an employer, a recognizable background, even "the convenience store below my place" attached to a photo. Second: if someone screenshotted this next to my name ten years from now, would it sting?</p>
+<p>If both answers come back cleanly as no, post it. If either one hesitates, rewrite or skip. Those two seconds of judgment save you hundreds of tweets worth of cleanup later.</p>
+
+<h2>What the six-month pass looks like</h2>
+<ol>
+  <li>Request a fresh archive, ideally a few days ahead so you are not waiting on the day</li>
+  <li>Run the check locally and compare the score against last time rather than reading it in isolation</li>
+  <li>Clear whatever came up red, usually a dozen posts and a few minutes of work</li>
+  <li>File the archive properly, either overwriting or storing it in a date-named folder</li>
+</ol>
+<p>Score movement carries more information than the absolute number. A drop means you posted new risky content in those six months and it is worth seeing which category. A flat score means you do nothing. How the number is computed is in <a href="/blog/digital-footprint-health-score">how the 0-100 health score works</a>, and prioritizing the red items is covered in <a href="/blog/which-tweets-to-clean-by-risk">deciding what to clean by risk</a>.</p>
+
+<h2>Making the reminder actually fire</h2>
+<p>I tried three approaches and only one survived. Repeating calendar events get dismissed reflexively. Annual items on a todo list get postponed forever. What works is attaching the task to an event that already happens: I hang mine on tax filing and my midyear checkup, since I am already dealing with annual admin those days and twenty more minutes does not hurt.</p>
+<p>One small trick: keep the archive ZIP near a folder you open weekly. Seeing it is the reminder.</p>
+
+<h2>Two things you will thank yourself for</h2>
+<p>First, you end up with a row of date-named archives, which is a searchable record of ten years, so finding something old does not depend on memory. Second, you never experience the scramble of someone digging up your past on short notice, because the risky material left years ago and whatever remains is content you consciously chose to keep.</p>
+<p>The barrier to cleanup is not technical, it is starting. You already read this far, so what is left is setting the reminder for six months out. On pacing the deletion itself and controlling spend, <a href="/blog/pause-resume-refund-deletion">pause, resume, and refund</a> goes deeper.</p>
+
+<h2>FAQ</h2>
+<p><strong>How often should I clean up?</strong> Scan a fresh archive every six months, with a more careful annual review. Six months takes about twenty minutes.</p>
+<p><strong>How is this different from one deep clean?</strong> A deep clean processes ten years and eats an afternoon just in review. Regular cleanup faces only six months of new posts.</p>
+<p><strong>How do I avoid risky posts up front?</strong> Two checks: anything that locates me, and whether a screenshot next to my name in ten years would sting.</p>
+<p><strong>Will the plan be too much hassle?</strong> Only if you make it heavy. Keep the six-month archive scan and clearing red flags; treat the rest as optional.</p>
+<p>Want to schedule that first scan today? The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, runs on your own machine, and gives you a starting score in about twenty minutes.</p>
+    `.trim(),
+  },
 ];
 
 

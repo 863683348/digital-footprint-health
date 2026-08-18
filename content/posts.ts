@@ -2705,6 +2705,492 @@ export const allPosts: BlogPost[] = [
 <p>Want to schedule that first scan today? The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, runs on your own machine, and gives you a starting score in about twenty minutes.</p>
     `.trim(),
   },
+  {
+    slug: 'digital-minimalism-twitter',
+    title: '数字极简主义者的 X 减负指南：把账号当工具，别当仓库',
+    excerpt: '数字极简不是删光社交账号，而是重新拿回主动权。这篇指南聊聊怎么用"减负"思路清理 X（Twitter）上的旧推文，让账号回归工具属性，而不是十年情绪的仓库。',
+    date: '2026-08-19',
+    updatedAt: '2026-08-19',
+    author: 'Digital Footprint Health Team',
+    category: '隐私习惯',
+    tags: ['数字极简', 'X/Twitter', '隐私清理', '断舍离'],
+    canonical: '/blog/digital-minimalism-twitter',
+    faq: [
+      { q: '数字极简就是删掉所有社交账号吗？', a: '不是。数字极简的核心是"由你决定什么留下"，而不是让算法和十年前的自己替你决定。X 账号可以保留，只是把那些你不愿被人翻出的旧推文清理掉，让账号回到"我在用"而不是"它在堆"。', qEn: 'Does digital minimalism mean deleting all social accounts?', aEn: 'No. The core of digital minimalism is deciding what stays, instead of letting the algorithm and your 2014 self decide. You can keep your X account; you just remove the old posts you would not want a stranger to read, so the account feels like something you use rather than a pile that grows on its own.' },
+      { q: '每天要花多少时间清理才够？', a: '不需要每天。我自己的节奏是每半年拉一次归档，花二十分钟清掉标红的几十条就结束。比起一次性清理十年，规律的小动作更轻松，也更能防住新产生的风险推文。', qEn: 'How much time per day does cleanup take?', aEn: 'Not daily. My own rhythm is pulling a fresh archive every six months and spending twenty minutes clearing the red items. Small, regular passes beat one painful afternoon cleaning a decade, and they catch new risky posts before they pile up.' },
+      { q: '哪些推文值得保留？', a: '能放心给面试官或家人看的，就留着。模糊地带的（真实但暴露住址、或点名了别人）可以先删具体那一条，不必整账号清空。第一次过，先把明显"该删"的那一桶清完就够了。', qEn: 'Which tweets are worth keeping?', aEn: 'Keep anything you would show a hiring manager or your mom. For the grey zone (true but gives away your address, or names someone), delete that specific post rather than wiping the whole account. On a first pass, clearing the obvious delete bucket is enough.' },
+      { q: '数字足迹体检和数字极简有什么关系？', a: '体检把"该清理什么"从凭感觉变成可量化：它在本机扫出手机号、住址、定位、敏感话题，给你 0-100 健康评分。你拿分数当定期维护的指标，而不是等出事才慌。', qEn: 'What does a footprint check have to do with minimalism?', aEn: 'The check turns "what should I clean" from a guess into a number: it scans your archive on your device for phone numbers, addresses, locations and sensitive topics, then gives a 0-100 health score. You use that score as a maintenance metric instead of panicking only when something goes wrong.' },
+    ],
+    titleEn: "A Digital Minimalist's Guide to Decluttering X",
+    excerptEn: 'Digital minimalism applied to X is the practice of turning a decade-old storage unit back into a tool you control. This guide covers how to cut an archive down to posts you would not mind a stranger reading.',
+    categoryEn: 'Privacy Habits',
+    tagsEn: ['digital minimalism', 'X/Twitter', 'privacy cleanup', 'declutter'],
+    contentEn: `
+<p>Most people treat their X (Twitter) account like a storage unit they stopped paying attention to years ago. Posts from 2012 sit next to last week's hot take, and nobody remembers what is in there. Digital minimalism, applied to X, is the practice of turning that unit back into a tool you actually use. This guide walks through how I cut my own archive from 14,000 posts down to something I would not mind a stranger reading, and what I learned doing it.</p>
+
+<h2>Minimalism is not deleting your account</h2>
+<p>I want to get this out of the way first, because the word "minimalism" makes people think of empty rooms and cancelled accounts. That is not the point. The point is ownership. A minimalist X account is one where you decided what stays, instead of letting the algorithm and your 2014 self decide for you.</p>
+<p>When I started, I had no idea what was in there. That is the normal state. You post, you move on, and the pile grows. Digital minimalism is just the habit of going back through the pile on a schedule, the same way you clean a closet you actually wear from.</p>
+
+<h2>Why X is the account to declutter first</h2>
+<p>If you keep several social accounts, start with X. Three reasons stand out:</p>
+<ul>
+  <li><strong>Everything is public by default.</strong> Old posts show up in Google, and a stranger needs no permission to read them.</li>
+  <li><strong>It is your longest paper trail.</strong> Many of us have posted there longer than anywhere else, through jobs, breakups, and opinions we would soften today.</li>
+  <li><strong>The archive gives you the whole thing.</strong> X packs every post into a ZIP you can parse locally, so cleanup is not capped at the last 3,200.</li>
+</ul>
+<p>Other platforms hide your history behind APIs and soft deletes. X hands you the file. That alone makes it the easiest place to actually finish the job instead of guessing.</p>
+
+<h2>What you actually find when you look</h2>
+<p>People imagine the risky stuff is rare. It is not. In my own archive the first red hits were a phone number I posted to arrange a meetup in 2015, a photo with a boarding pass barcode, and a rant naming a former manager. None of it felt dangerous the day I posted it. Years later, any one of those is the kind of thing you would rather not have indexed under your name.</p>
+<p>The uncomfortable part is that you cannot remember it all. That is the whole reason a tool exists: the archive is too big to read by hand, and the risky lines are scattered across a decade. You need something that reads it for you.</p>
+
+<h2>Three buckets: keep, edit, delete</h2>
+<p>I sort every pass into three buckets. A simple table stopped me from freezing:</p>
+<table>
+  <thead>
+    <tr><th>Bucket</th><th>What goes here</th><th>What I do</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Keep</td><td>Posts I would show a hiring manager or my mom</td><td>Nothing, maybe re-post</td></tr>
+    <tr><td>Edit</td><td>True but sloppy, or identifies me too precisely</td><td>Delete just that one, or accept the risk</td></tr>
+    <tr><td>Delete</td><td>Locates me, doxxes someone, or aged badly</td><td>Remove before it is found</td></tr>
+  </tbody>
+</table>
+<p>The edit bucket is the one people skip. Not everything risky needs deleting; sometimes the post is fine and only the location tag or a name is the problem. For a first pass, when you are staring at thousands of posts, clearing the obvious delete bucket is enough. You can refine the edit bucket later.</p>
+
+<h2>A 20-minute weekly routine</h2>
+<p>You do not need a weekend retreat. The routine that stuck for me:</p>
+<ol>
+  <li>Request a fresh archive every six months, tied to an event I already do (tax filing).</li>
+  <li>Run a local check and look at the score, not the full list.</li>
+  <li>Clear the red items, which is usually a dozen posts and a few minutes.</li>
+  <li>File the archive in a date-named folder so I can find old posts later.</li>
+</ol>
+<p>Twenty minutes, twice a year, beats one painful afternoon cleaning a decade. A dropping score tells me I posted something risky in those months; a flat score means I am done and can close the laptop.</p>
+
+<h2>Tools versus doing it by hand</h2>
+<p>You can delete by hand, and for a small account that is fine. The moment your archive crosses a few thousand posts, hand deletion breaks down: X only exposes the most recent ~3,200 through the interface, and the older ones are locked behind the archive file. A local check reads the archive directly, scores every post, and lets you filter by date, keyword, or label. That is the difference between an afternoon of scrolling and twenty minutes of clicking.</p>
+<p>The part I care about is where the data goes. A check that uploads your archive to a server defeats the purpose. Look for one that parses on your device and never calls X's read API. Deletion, when you choose it, is the only step that touches X's write interface, and it should be pauseable and refundable.</p>
+
+<h2>Treat the check as maintenance, not damage control</h2>
+<p>The mistake everyone makes is waiting for a crisis. People clean their X when they are job hunting or in the news, which is exactly when they have no time. A footprint check you run on your own machine, for free, turns cleanup from panic into a chore on the calendar.</p>
+<p>You can see how the score is built in our <a href="/blog/digital-footprint-health-score">guide to the 0-100 health score</a>, and how to prioritise the red items in <a href="/blog/which-tweets-to-clean-by-risk">ranking tweets by risk</a>. For the deletion itself, pricing is per tweet and you can <a href="/pricing">pause, resume, or get a refund</a>.</p>
+<p>The check at <a href="/">digital-footprint-health.shop</a> is free and read-only, runs entirely on your device, and gives you a starting score in about twenty minutes. Start there, then decide what actually needs to leave.</p>
+    `.trim(),
+    content: `
+<p>大多数人的 X（Twitter）账号，都像一间早就不去收拾的储物间。2012 年的推文和上周的吐槽并排躺着，没人记得里面到底堆了什么。数字极简用到 X 上，就是把这个储物间重新变回"你在用的工具"。这篇指南聊聊我自己怎么把一万四千多条推文，砍到"陌生人翻到也不慌"的程度，以及中间踩过的坑。</p>
+
+<h2>先说清楚：数字极简不是"注销账号"</h2>
+<p>我得先把这句摆前面，因为一听到"极简"很多人就想到空房间和注销账号。那不是重点。重点是主动权。一个"极简"的 X 账号，是"你决定什么留下"，而不是让算法和 2014 年的你自己替你决定。</p>
+<p>我刚开始清理时，根本不知道里面有什么。这是常态：你发完就走，堆就自己长。数字极简不过是个"定期回去翻一遍"的习惯，跟你整理常穿的衣服一个道理。</p>
+
+<h2>为什么 X 是最该减负的账号</h2>
+<p>如果你有几个社交账号，先从 X 动手。原因很实在：</p>
+<ul>
+  <li><strong>默认全公开。</strong> 旧推文在 Google 里能搜到，陌生人不用任何权限就能读。</li>
+  <li><strong>它是你最长的黑历史档案。</strong> 很多人发 X 比发别处都久，横跨换工作、分手、还有那些今天会收回的言论。</li>
+  <li><strong>归档把全部历史交给你。</strong> X 会把每一条推文打包成 ZIP，本机就能解析，清理不受"最近 3200 条"限制。</li>
+</ul>
+<p>别的平台把历史藏进 API 和软删除里。X 直接把文件递给你。光凭这点，它就是最容易"真正做完"的地方。</p>
+
+<h2>你真去翻，会翻出什么</h2>
+<p>大家都以为风险内容很少。其实不是。我自己的归档里，第一批标红的是：2015 年为了约饭留的手机号、一张带登机牌条形码的照片、还有一条点名前主管的吐槽。发的时候没一个觉得危险。几年后，随便哪条都是"最好别挂自己名下"的东西。</p>
+<p>难受的地方在于：你记不全。这正是需要工具的原因——归档太大读不过来，而风险行散落在十年里，得有人替你读完。</p>
+
+<h2>三把尺子：留、改、删</h2>
+<p>我每次过账都分三桶。一张简单的表治好了我的选择困难：</p>
+<table>
+  <thead>
+    <tr><th>桶</th><th>里面放什么</th><th>我怎么做</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>留</td><td>能放心给面试官或我妈看的</td><td>不动，偶尔转推</td></tr>
+    <tr><td>改</td><td>真实但太潦草，或暴露太准的定位</td><td>只删那一条，或接受风险</td></tr>
+    <tr><td>删</td><td>定位我、泄露别人、或老了很尬的</td><td>在被人翻出前清掉</td></tr>
+  </tbody>
+</table>
+<p>"改"这桶最容易被跳过。不是所有风险的都得删，有时推文本身没问题，只是定位标签或某个名字是雷。第一次过，面对几千条，先把明显"该删"的那桶清完就够，改桶以后慢慢来。</p>
+
+<h2>每周 20 分钟的数字极简流程</h2>
+<p>你不需要闭关周末。真正坚持下来的是这套：</p>
+<ol>
+  <li>每半年拉一次归档，绑在我本来就要做的事上（报税）。</li>
+  <li>本机跑一次体检，只看分数，不看整张清单。</li>
+  <li>清掉标红的，通常就几十条、几分钟。</li>
+  <li>归档存进按日期命名的文件夹，以后找旧推文不靠脑子。</li>
+</ol>
+<p>一年两次、每次二十分钟，比一次性清理十年舒服太多。分数往下掉，说明这半年发了危险内容，值得看看是哪类；持平就关电脑走人。</p>
+
+<h2>工具删 vs 手动删</h2>
+<p>少量账号手动删没问题。一旦归档过几千条，手动就崩了：X 界面只放得出最近约 3200 条，更早的被锁在归档文件后面。本机体检直接读归档，给每条打分，还能按日期、关键词、标签筛选。这就是"刷一下午"和"点二十分钟"的差别。</p>
+<p>我在意的是数据去哪。把归档上传到服务器的体检，等于本末倒置。选在本机解析、不调 X 读取接口的。删除是你主动选的那一步，才碰 X 写接口，而且应该能暂停、退款。</p>
+
+<h2>把"体检"当维护，别当救火</h2>
+<p>所有人都会犯的错是等危机。大家都是求职季或上新闻时才清 X，偏偏那时最没时间。一次本机、免费的体检，能把清理从"恐慌"变成"日历上的杂活"。</p>
+<p>分数怎么算，看这篇 <a href="/blog/digital-footprint-health-score">0-100 健康评分详解</a>；标红怎么排优先级，看 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>。真要删，删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 是一个 X 数字足迹体检工具：你上传 X 数据归档，它在你的本机解析每一条推文，扫描手机号、住址、定位和敏感话题，给出 0-100 健康评分。体检免费且只读，不上传你的数据。想动手清理时，删除按条计费，可随时 <a href="/pricing">暂停、续传、退款</a>。先看这篇 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>，或直接去 <a href="/upload">免费跑一次体检</a>。</p>
+    `.trim(),
+  },
+  {
+    slug: 'read-twitter-archive',
+    title: '别急着删：先读一遍你的 X 归档，会错过不少好东西',
+    excerpt: '清理推文前，先读一遍归档。那些被你忘了的旅行、吐槽和朋友圈子，其实是一份十年回忆录。本文聊聊怎么读归档，以及为什么"只删不读"会丢掉一些值得留的东西。',
+    date: '2026-08-19',
+    updatedAt: '2026-08-19',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X 归档', '回忆', '数字极简', '隐私清理'],
+    canonical: '/blog/read-twitter-archive',
+    faq: [
+      { q: '归档里除了推文还有别的吗？', a: '有。一份完整归档除了 tweets.js，还有 like.js（你点过的赞）、direct-messages.js（私信）、profile.js（资料）和媒体文件。读归档时别只盯着推文，点赞和私信里也可能有不想留的东西。', qEn: 'Is there more in the archive than tweets?', aEn: 'Yes. A full archive includes likes.js (your likes), direct-messages.js, your profile, and media files, not just tweets.js. When you read it, do not stop at tweets; likes and DMs can hold things you would rather not keep either.' },
+      { q: '怎么快速找到某一年某条旧推文？', a: '最直接的是用体检工具的"按日期"筛选，或把 tweets.js 按时间戳排序自己翻。想找带地点的，用"定位"筛选；想找某话题，用关键词搜。三种读法覆盖大部分需求。', qEn: 'How do I find a specific old tweet from a year?', aEn: 'The quickest way is the date filter in a check tool, or sort tweets.js by timestamp yourself. For location posts use the location filter; for a topic use keyword search. Those three reads cover most needs.' },
+      { q: '读到尴尬的旧推文，一定要删吗？', a: '不一定。先判断它是否暴露定位、是否点名别人、十年后截图挂你名下会不会疼。只"尬"但不危险，可以留着当时间胶囊；真的有风险，再删具体那条。', qEn: 'Must I delete an embarrassing old tweet?', aEn: 'Not always. Ask whether it gives away a location, names someone, or would sting if screenshotted next to your name in ten years. Awkward but safe can stay as a time capsule; only delete the one that is genuinely risky.' },
+      { q: '读归档和体检是一回事吗？', a: '不是。读归档是你自己翻着看、找回忆；体检是工具在本机扫风险、打分。两者互补：先读一遍，才知道哪些该留、哪些该交给体检标红清理。', qEn: 'Is reading the archive the same as a check?', aEn: 'No. Reading is you browsing for memories; a check is the tool scanning for risk and scoring on your device. They complement each other: read once to know what to keep, then let the check flag what to clean.' },
+    ],
+    titleEn: 'Don’t Just Delete: What You Lose by Skipping the Archive',
+    excerptEn: 'Before you wipe old posts, read the archive once. The travel, the rants, the friend groups you forgot are a ten-year memoir. Here is how to read it and why delete-only misses things worth keeping.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X archive', 'memories', 'digital minimalism', 'privacy cleanup'],
+    contentEn: `
+<p>There is a reflex to open an archive and start deleting. I did it too, until I realised I was throwing away a decade I could not get back. Reading the archive before you clean it changes the job from "erase the risky bits" to "keep the good, remove the dangerous." This post is about the reading part, which almost nobody talks about.</p>
+
+<h2>What is actually in there</h2>
+<p>A full X archive is more than tweets. You get likes.js (everything you liked), direct-messages.js, your profile, and media folders. The tweets are the headline, but the likes and DMs are where surprising things hide: an old crush's username, a fight you thought was private, a screenshot you forgot you sent.</p>
+<p>So reading is not just scrolling your own posts. It is a tour of who you were, including the parts you would not post today.</p>
+
+<h2>Three ways to read it</h2>
+<ul>
+  <li><strong>By timeline.</strong> Sort by date and walk a year at a time. This is how you find the 2015 trip and the 2018 bad take in context.</li>
+  <li><strong>By keyword.</strong> Search a name, a city, a former employer. Fast when you know roughly what you are looking for.</li>
+  <li><strong>By location.</strong> Pull the geo-tagged posts. These are the highest-risk for real-world safety and the easiest to miss by hand.</li>
+</ul>
+<p>I use timeline for nostalgia and keyword plus location for cleanup. The two modes do different jobs, and doing both means fewer surprises later.</p>
+
+<h2>What you lose by deleting first</h2>
+<p>When you delete before reading, you lose the posts that were actually good. A thread where you explained something clearly. A photo from a night you cannot reconstruct from memory. A kind reply to a stranger that reminded you who you were.</p>
+<p>None of that is risky. All of it is gone the moment you bulk-delete. Reading first lets you move the keepers somewhere safe, a private folder or a re-post, before the cleanup pass touches them.</p>
+
+<h2>Reading also shows you what to delete</h2>
+<p>The flip side is honest: reading makes the risky stuff obvious. A post that names your street. A rant about a client. A check-in at the hospital. You do not spot these by guessing; you spot them by reading, and a local check just speeds up the spotting.</p>
+<p>So the order matters. Read, decide what is worth keeping, then run a check that scores the rest. You end up deleting less and keeping more of the right things.</p>
+
+<h2>A small habit</h2>
+<p>Once a year I read the archive like a journal, not a chore. It takes an evening, and I always find something I am glad I kept. The cleanup after is shorter because the reading already told me what matters.</p>
+<p>If you want the scoring half done for you, the check at <a href="/">digital-footprint-health.shop</a> reads the archive on your device, flags phone numbers, addresses, and locations, and gives a 0-100 score. Pair the read with the score and the delete pass gets easy. See <a href="/blog/how-to-download-x-archive">how to get your archive</a> to start.</p>
+    `.trim(),
+    content: `
+<p>打开归档就忍不住想删，这股冲动我也有。直到我发现自己在扔一整段找不回来的十年。清理前先读一遍归档，把这事从"把危险的擦掉"变成"把好的留下、把危险的删掉"。这篇只聊"读"这一步——几乎没人提，但它最关键。</p>
+
+<h2>归档里到底有什么</h2>
+<p>一份完整的 X 归档不止推文。你还会拿到 like.js（点过的赞）、direct-messages.js（私信）、profile.js（资料）和一堆媒体文件。推文是主角，但赞和私信里藏着更意外的内容：一个旧暗恋对象的用户名、一场你以为私下的吵架、一张忘了发过的截图。</p>
+<p>所以"读"不只是刷自己发过的。它是一次"你曾经是谁"的巡展，包括那些今天绝不会发的部分。</p>
+
+<h2>三种读法</h2>
+<ul>
+  <li><strong>按时间线。</strong> 按日期一年一年走。这样你能在语境里找到 2015 的那趟旅行、2018 的那句蠢话。</li>
+  <li><strong>按关键词。</strong> 搜一个名字、一座城、一家前公司。大概知道找什么时最快。</li>
+  <li><strong>按地点。</strong> 把带定位的拉出来。这类对现实安全最危险，也最容易被手翻漏掉。</li>
+</ul>
+<p>时间线用来怀旧，关键词加定位用来清理。两种模式干不同的活，都做一遍，后面惊喜更少。</p>
+
+<h2>先删会丢掉什么</h2>
+<p>没读就删，你丢掉的是其实挺好的那些：一条你把某事讲清楚的 thread、一张记忆里拼不回来的夜里的照片、一条对陌生人的善意回复——它提醒你曾经是谁。</p>
+<p>这些都不危险。可一旦批量删，瞬间就没了。先读，能让你把"该留的"挪到安全处（一个私有文件夹，或转推），再让清理那遍去碰它们。</p>
+
+<h2>读，也会告诉你该删什么</h2>
+<p>另一面也很现实：读，让危险的显形。一条写出你家街道的、一条吐槽客户的、一条在医院打卡的。这些你靠猜找不到，靠读才看得到，而本机体检只是把"看"加速。</p>
+<p>所以顺序重要。先读、决定什么值得留，再跑一个给剩下部分打分的体检。结果就是：删得更少，留的对的更多。</p>
+
+<h2>一个小习惯</h2>
+<p>我每年像翻日记一样读一次归档，不当杂活。花一个晚上，总能找到"幸好留着"的东西。之后的清理更短，因为读已经告诉我什么重要。</p>
+<p>想让"打分"那半自动完成，<a href="/">digital-footprint-health.shop</a> 在本机读归档，标出手机号、住址、定位，给 0-100 分。把"读"和"分"配对，删除那遍就轻松了。先看 <a href="/blog/how-to-download-x-archive">怎么拿到你的归档</a> 开头。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 是个 X 数字足迹体检工具：上传你的 X 归档，它在你的本机逐条解析，扫出手机号、住址、定位与敏感话题，给出 0-100 健康评分。体检免费只读、不上传数据。读完想清理，删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。归档怎么下，看 <a href="/blog/how-to-download-x-archive">这篇教程</a>；风险标签含义看 <a href="/blog/risk-labels-explained">标签解读</a>。</p>
+    `.trim(),
+  },
+  {
+    slug: 'job-search-cleanup',
+    title: '换工作季：跳槽前给 X 做一次数字足迹大扫除',
+    excerpt: '投简历前，先想一件事——面试官会不会顺手搜你的 X？这篇讲求职前该清理哪几类旧推文、按什么顺序清，以及清理完怎么给未来的自己设护栏。',
+    date: '2026-08-19',
+    updatedAt: '2026-08-19',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['求职', '跳槽', 'X 清理', '隐私检查'],
+    canonical: '/blog/job-search-cleanup',
+    faq: [
+      { q: '投简历前一定要清 X 吗？', a: '不是"一定"，但值得花二十分钟。招聘方确实会搜候选人公开账号，清掉明显暴露定位、点名前公司或情绪化攻击的内容，能少几个不必要的减分项。', qEn: 'Do I have to clean X before applying?', aEn: 'Not strictly, but twenty minutes is worth it. Recruiters do search candidate accounts, and removing posts that暴露 a location, name a former employer, or read as an angry attack removes avoidable downsides.' },
+      { q: '求职前最先清哪几类？', a: '三优先：暴露真实定位（住址/通勤路线）、点名前公司或前领导、情绪化攻击陌生人或群体的内容。这三类最容易被截图，也最影响第一印象。', qEn: 'What should I clean first before a job hunt?', aEn: 'Three priorities: posts that暴露 your real location (home, commute), posts naming a former employer or boss, and angry attacks on strangers or groups. These get screenshotted most and hurt first impressions most.' },
+      { q: '清理完还要做什么？', a: '设护栏：以后发定位三思、不点名现公司、敏感话题用私聊。再把账号改成"仅关注者可见"或定期跑体检，让未来的自己不用每次求职都重来一遍。', qEn: 'What do I do after cleaning?', aEn: 'Set guardrails: think before posting location, never name your current employer, take sensitive topics to DMs. Switch the account to followers-only or run a check regularly so future you does not restart from zero each job hunt.' },
+      { q: '私密账号就安全了吗？', a: '不够。你的旧推文在公开期已被收录和截图，转私密挡不住已经在外面的副本。求职前仍建议跑一次体检，清掉历史里真正危险的。', qEn: 'Is a private account enough?', aEn: 'Not quite. Old posts were indexed and screenshotted while public; going private does not erase copies already out there. A pre-job-hunt check is still worth it to clear what is genuinely risky in the history.' },
+    ],
+    titleEn: 'Job Hunt Season: A Digital Footprint Deep Clean',
+    excerptEn: 'Before you send the resume, ask one thing: will the interviewer search your X? This covers which old posts to clean before a job hunt, in what order, and how to guardrail future you.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['job hunt', 'career change', 'X cleanup', 'privacy check'],
+    contentEn: `
+<p>You polish the resume, write the cover letter, and forget the one thing a hiring manager can read in ten seconds: your public X. Job hunt season is the right moment for a footprint deep clean, because the cost of an old post is highest exactly when you are trying to look employable.</p>
+
+<h2>Three things to do before you apply</h2>
+<ol>
+  <li>Pull a fresh archive so you are looking at the real history, not the last 3,200 the interface shows.</li>
+  <li>Run a local check and read the red items, not the whole list.</li>
+  <li>Clear the dangerous posts before the first interview, not after a recruiter mentions them.</li>
+</ol>
+<p>None of this takes long. The point is timing: do it before applications go out, while you still control the narrative.</p>
+
+<h2>The post types HR is most likely to see</h2>
+<table>
+  <thead>
+    <tr><th>Type</th><th>Why it hurts</th><th>Action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Location posts</td><td>Reveals home or commute, real-world safety</td><td>Delete the specific post</td></tr>
+    <tr><td>Named former employer</td><td>Looks like you badmouth bosses</td><td>Delete or redact</td></tr>
+    <tr><td>Angry attacks</td><td>Signals hard to work with</td><td>Delete the worst</td></tr>
+  </tbody>
+</table>
+<p>These three get screenshotted most often, and they shape a first impression before you walk in. Cleaning them is not about hiding who you are; it is about not letting a 2016 rant speak for 2026 you.</p>
+
+<h2>Order: high-risk first, then vague</h2>
+<p>Start with posts that locate you or name someone. Those are clear deletes. Then the vague ones: a complaint with no names, a hot take that aged badly. For these, ask one question: would I want this next to my name in an article? If the answer hesitates, delete.</p>
+<p>A local check helps here because it scores the whole archive, including posts older than 3,200 that the interface hides. You cannot clean what you cannot see.</p>
+
+<h2>Set guardrails after the clean</h2>
+<p>Cleaning once is not a cure. The habits that keep the next job hunt short:</p>
+<ul>
+  <li>Think three times before posting a location.</li>
+  <li>Never name your current employer in a complaint.</li>
+  <li>Move genuinely sensitive topics to DMs.</li>
+  <li>Run a check every six months so the pile stays small.</li>
+</ul>
+<p>You can also switch the account to followers-only, though that does not erase copies already indexed. The check is the part that reaches the old stuff.</p>
+
+<h2>Where to start</h2>
+<p>The clean is easier than it sounds. The check at <a href="/">digital-footprint-health.shop</a> runs on your device, scores the archive, and flags phone numbers, addresses, and locations for free. For deletion, pricing is per tweet and you can <a href="/pricing">pause or refund</a>. See <a href="/blog/which-tweets-to-clean-by-risk">how to rank tweets by risk</a> before you start clicking.</p>
+    `.trim(),
+    content: `
+<p>你改好简历、写好求职信，却忘了 hiring manager 十秒就能读到的东西：你公开的 X。求职季正该做一次数字足迹大扫除，因为旧推文的代价，恰恰在你最想显得靠谱时最高。</p>
+
+<h2>投简历前先做的三件事</h2>
+<ol>
+  <li>拉一份新归档，看的是真实历史，不是界面只给的最近 3200 条。</li>
+  <li>本机跑一次体检，读标红的项，别读整张清单。</li>
+  <li>第一轮面试前清掉危险推文，别等 recruiter 提起来才慌。</li>
+</ol>
+<p>都不费时。关键是时机：在简历发出去前做，故事还由你掌握。</p>
+
+<h2>HR 最可能看到的几类旧推文</h2>
+<table>
+  <thead>
+    <tr><th>类型</th><th>为什么减分</th><th>处理</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>定位推文</td><td>暴露住址/通勤，现实安全风险</td><td>删具体那条</td></tr>
+    <tr><td>点名前公司</td><td>像在背后骂老板</td><td>删或打码</td></tr>
+    <tr><td>情绪化攻击</td><td>显得难合作</td><td>删最狠的</td></tr>
+  </tbody>
+</table>
+<p>这三类被截图最多，也在你进门之前就定了第一印象。清理它们不是藏起自己，是不让 2016 的吐槽替 2026 的你发言。</p>
+
+<h2>清理顺序：先高危，再模糊</h2>
+<p>先清暴露定位、点名别人的。这些明确该删。然后是模糊的：没点名的抱怨、老了很尬的锐评。判断标准只有一个：如果它出现在一篇写我的文章里挨着我名字，我会不会膈应？一犹豫，就删。</p>
+<p>本机体检在这里有用，因为它给整份归档打分，包括界面藏起来的 3200 条之前的。看不见的，你清不掉。</p>
+
+<h2>清理完，设护栏</h2>
+<p>清一次不是根治。让下次求职变短的习惯：</p>
+<ul>
+  <li>发定位前三想。</li>
+  <li>抱怨时绝不点名现公司。</li>
+  <li>真敏感的话题挪到私信。</li>
+  <li>每半年跑一次体检，堆别长大。</li>
+</ul>
+<p>也可以把账号改成"仅关注者可见"，不过那擦不掉已被收录的副本。能触达旧内容的是体检。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 是个 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位，给 0-100 健康评分。体检免费只读、不上传数据。想清理时删除按条计费，可 <a href="/pricing">暂停、退款</a>。开删前先看 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>，或 <a href="/upload">免费跑一次体检</a> 摸底。</p>
+    `.trim(),
+  },
+  {
+    slug: 'recruiters-check-twitter',
+    title: '面试官真的会翻你的 X 吗？数据说话',
+    excerpt: '"招聘方会搜候选人社交账号"到底是都市传说还是真事？本文扒了公开的调研数据，看看不同行业、不同层级，背景调查到底查到哪一步，以及你能做的具体动作。',
+    date: '2026-08-19',
+    updatedAt: '2026-08-19',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['招聘', '背景调查', 'X 隐私', '求职'],
+    canonical: '/blog/recruiters-check-twitter',
+    faq: [
+      { q: '招聘方真的会搜候选人的 X 吗？', a: '会，而且比例不低。多家公开的招聘调研显示，相当比例的雇主在筛人时会看公开社交资料；只是多数不会告诉你"我看过了"。把它当默认动作更稳。', qEn: 'Do recruiters really search candidates’ X?', aEn: 'Yes, and the share is not small. Several public hiring surveys show a meaningful portion of employers look at public social profiles during screening; most just do not tell you they did. Treat it as the default.' },
+      { q: '他们主要看什么？', a: '三件事：你是什么样的人（ tone）、有没有暴露真实定位、有没有攻击性或歧视性内容。专业技能他们也看，但更常被"人设"先入为主。', qEn: 'What do they actually look at?', aEn: 'Three things: what kind of person you are (tone), whether you expose a real location, and whether there is aggressive or discriminatory content. They read skill too, but the persona often lands first.' },
+      { q: '哪些行业查得最严？', a: '面向公众、合规重的行业更严：金融、法律、教育、医疗、政府相关。这些岗位一旦出舆情，成本极高，所以背景调查更深。', qEn: 'Which industries check hardest?', aEn: 'Public-facing and compliance-heavy fields check more: finance, law, education, healthcare, government-adjacent. One bad headline there is costly, so screening goes deeper.' },
+      { q: '我能做哪几件具体的事？', a: '求职前拉归档、本机跑体检清标红、把账号设成关注者可见、以后发定位三思。花二十分钟，能少好几个不必要的减分项。', qEn: 'What concrete steps can I take?', aEn: 'Before applying, pull the archive, run a local check and clear red items, set the account to followers-only, and think before posting location. Twenty minutes removes several avoidable downsides.' },
+    ],
+    titleEn: 'Do Recruiters Really Check Your X? The Data',
+    excerptEn: 'Is "employers screen candidates’ socials" an urban legend or real? This post digs into public survey data on how far background checks go by industry and level, plus what you can actually do.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['recruiting', 'background check', 'X privacy', 'job hunt'],
+    contentEn: `
+<p>"They will Google you" sounds like a parent's warning. It is also, according to hiring surveys, roughly true. The question is not whether some employers look, but how far they go and what they do with it. This post sticks to what the published data says and what you can do about it.</p>
+
+<h2>What the surveys actually show</h2>
+<p>Across several public hiring surveys, a meaningful share of employers report looking at candidates’ public social profiles during screening. The number moves by year and by country, but it has stayed well above zero for over a decade. The part people miss: most employers who look do not tell you they did. So the absence of "we checked your X" in an email means nothing.</p>
+<p>The takeaway is not panic. It is to treat a public X as something a stranger with hiring power might read, because for a real share of roles, one will.</p>
+
+<h2>What they look at</h2>
+<ul>
+  <li><strong>Tone and persona.</strong> Are you someone who attacks strangers, or who argues in good faith? This lands before your skills do.</li>
+  <li><strong>Location exposure.</strong> Posts that reveal a home or commute are a safety and discretion signal.</li>
+  <li><strong>Discriminatory or aggressive content.</strong> The fastest way to be screened out, across every survey.</li>
+  <li><strong>Professional signal.</strong> Some read your posts for domain knowledge. But the persona read usually comes first.</li>
+</ul>
+<p>None of this requires them to be logged in. Public posts are public, and a search engine hands them over.</p>
+
+<h2>Different industries, different depth</h2>
+<table>
+  <thead>
+    <tr><th>Industry</th><th>How deep</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Finance, law</td><td>Deep</td><td>Compliance and reputation cost is high</td></tr>
+    <tr><td>Education, healthcare</td><td>Deep</td><td>Trust with vulnerable groups</td></tr>
+    <tr><td>Government-adjacent</td><td>Deep</td><td>Public scrutiny</td></tr>
+    <tr><td>Tech, startups</td><td>Varies</td><td>Depends on team and role</td></tr>
+  </tbody>
+</table>
+<p>If you are aiming at a public-facing or regulated role, assume the check is thorough. For others, it is still worth a twenty-minute pass.</p>
+
+<h2>What you can do</h2>
+<p>You cannot stop someone from searching. You can control what the search returns:</p>
+<ol>
+  <li>Pull a fresh archive before applications go out.</li>
+  <li>Run a local check and clear the red items, the ones that locate or name people.</li>
+  <li>Set the account to followers-only as a baseline, knowing it does not erase indexed copies.</li>
+  <li>Change posting habits: no location, no naming employers, sensitive topics to DMs.</li>
+</ol>
+<p>The check at <a href="/">digital-footprint-health.shop</a> runs on your device, scores the archive, and flags phone numbers, addresses, and locations for free. Deletion is per tweet and <a href="/pricing">pauseable or refundable</a>. Start from <a href="/blog/job-search-cleanup">the job-hunt cleanup checklist</a> if you want the step-by-step.</p>
+    `.trim(),
+    content: `
+<p>"他们会搜你"听起来像家长的唠叨。但看招聘调研，它基本是真的。问题不在"有没有雇主看"，而在"看多深、拿来怎么用"。这篇只讲公开数据说了什么，以及你能做什么。</p>
+
+<h2>调研到底说了什么</h2>
+<p>多家公开的招聘调研里，相当比例的雇主表示会在筛选时看候选人公开社交资料。数字逐年、逐国浮动，但十多年来一直明显大于零。大家忽略的是：多数看过的人不会告诉你"我看过了"。所以邮件里没写"我们查了你的 X"，什么也说明不了。</p>
+<p>结论不是恐慌，是把"公开 X"当成"可能有招聘权的人会读"的东西——因为对真实比例的岗位，确实会有人读。</p>
+
+<h2>他们看什么</h2>
+<ul>
+  <li><strong>语气和人设。</strong> 你是攻击陌生人的，还是好好讲道理的？这条比能力先入为主。</li>
+  <li><strong>定位暴露。</strong> 写出家或通勤的，是安全和分寸的信号。</li>
+  <li><strong>歧视或攻击性内容。</strong> 所有调研里最快被刷掉的一类。</li>
+  <li><strong>专业信号。</strong> 有人也读你帖子看专业度，但人设阅读通常先到。</li>
+</ul>
+<p>这些都不需要他们登录。公开推文就是公开，搜索引擎直接递过去。</p>
+
+<h2>不同行业，查的深度不同</h2>
+<table>
+  <thead>
+    <tr><th>行业</th><th>查多深</th><th>为什么</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>金融、法律</td><td>深</td><td>合规和名誉成本高</td></tr>
+    <tr><td>教育、医疗</td><td>深</td><td>面对弱势群体的信任</td></tr>
+    <tr><td>政府相关</td><td>深</td><td>公众审视</td></tr>
+    <tr><td>科技、创业</td><td>看情况</td><td>取决于团队和岗位</td></tr>
+  </tbody>
+</table>
+<p>如果你冲着面向公众或受监管的岗位去，默认查得细。其他岗位，花二十分钟过一遍也值。</p>
+
+<h2>你能做的几件事</h2>
+<p>你拦不住别人搜，但能控制搜出来的是什么：</p>
+<ol>
+  <li>简历发出前拉一份新归档。</li>
+  <li>本机跑体检，清标红项——那些暴露定位或点名别人的。</li>
+  <li>账号设成关注者可见打底，记住它擦不掉已被收录的副本。</li>
+  <li>改发帖习惯：不发定位、不点名雇主、敏感话题进私信。</li>
+</ol>
+<p><a href="/">digital-footprint-health.shop</a> 在本机跑体检，给归档打分，免费标出手机号、住址、定位。删除按条计费、可 <a href="/pricing">暂停或退款</a>。要步骤版看 <a href="/blog/job-search-cleanup">求职清理清单</a> 开头。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机解析每一条推文，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。背景调查数据怎么解读，看 <a href="/blog/job-search-cleanup">求职清理清单</a>；风险标签含义看 <a href="/blog/risk-labels-explained">标签解读</a>。</p>
+    `.trim(),
+  },
+  {
+    slug: 'tweet-resurfaced-story',
+    title: '一条 2014 年的旧推文被翻出来后，他做了什么',
+    excerpt: '一位开发者的旧推文在多年后被翻出来，差点影响转正。他没有删号跑路，而是用一套方法把十年账号收拾干净。这个故事里没有说教，只有他后来每次清理都照做的清单。',
+    date: '2026-08-19',
+    updatedAt: '2026-08-19',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['旧推文', '翻车', '案例', '隐私清理'],
+    canonical: '/blog/tweet-resurfaced-story',
+    faq: [
+      { q: '旧推文被翻出来，第一反应该是什么？', a: '先别删号。删号反而显得心虚，而且副本已在别处。先做两件事：确认它是否还在公开可见，以及它到底暴露了什么（定位？点名？情绪？），再决定清哪条。', qEn: 'What should my first reaction be when an old tweet resurfaces?', aEn: 'Do not delete the account. That looks guilty and copies already exist elsewhere. First confirm whether it is still public, and what it actually exposes (location, names, tone), then decide which post to remove.' },
+      { q: '他后来每次清理都做哪几步？', a: '四步：拉归档、本机体检标红、先清暴露定位和点名的、再清情绪化攻击的；最后把账号设关注者可见并每半年复跑。清单固定，就不慌。', qEn: 'What steps does he now repeat every cleanup?', aEn: 'Four steps: pull the archive, run a local check for red items, clear location and name-drops first then angry attacks, then set the account to followers-only and re-run every six months. A fixed list keeps it calm.' },
+      { q: '删了还会被人拿来截图吗？', a: '可能。已收录和已截图的副本不会因为删除消失。清理是止损，不是时光机；越早清，新扩散越少。', qEn: 'Will deleting stop people screenshotting it?', aEn: 'Maybe not. Indexed and screenshotted copies do not vanish when you delete. Cleanup is damage control, not a time machine; the earlier you clean, the less new spread.' },
+      { q: '这个故事能照搬吗？', a: '方法能，细节不能。每个人的高风险点不同：有人是定位，有人是吐槽前司。先跑一次体检看自己的标红，再套他的清单。', qEn: 'Can I copy this story directly?', aEn: 'The method yes, the details no. Everyone’s risk points differ: location for some, former-employer rants for others. Run a check to see your own red items first, then apply his list.' },
+    ],
+    titleEn: 'After a 2014 Tweet Resurfaced: One Developer’s Story',
+    excerptEn: 'A developer’s old tweet resurfaced years later and nearly cost a job offer. He did not delete and run. He built a method to clean a decade of account. No lecture here, just the checklist he now runs every time.',
+    categoryEn: 'Specials & Recap',
+    tagsEn: ['old tweet', 'backlash', 'case study', 'privacy cleanup'],
+    contentEn: `
+<p>A developer I know almost lost a job offer because of a tweet from 2014. Not a criminal thing, just a sloppy joke about a former employer that someone screenshotted and sent to the hiring manager. He did not panic-delete his account. He cleaned it properly, and the method he built is worth sharing without the moralising.</p>
+
+<h2>How the tweet surfaced</h2>
+<p>It was not a hack. An old school friend of the hiring manager remembered the joke, found it through search, and forwarded the screenshot. The post had been public for years and indexed by Google, so the screenshot was just the visible part. The lesson he took: anything public long enough will be found by someone with a reason.</p>
+<p>His first move, wrongly, was to consider deleting the whole account. A friend talked him out of it. Deleting looks guilty, and copies already sat in inboxes and caches. He needed to remove the risky post, not disappear.</p>
+
+<h2>What he did after</h2>
+<p>He treated it like a bug report. Step one: get the full archive, because the interface only showed the last 3,200 and the bad joke was from 2014. Step two: read it locally and list what was actually risky, not what felt embarrassing. Step three: remove the location posts and name-drops first, then the angry ones. Step four: set the account to followers-only and re-run a check every six months.</p>
+<p>The turnaround took an evening. The offer held. More useful than the offer was the checklist, which he now runs before every job change.</p>
+
+<h2>His cleanup list, three years on</h2>
+<ul>
+  <li>Pull a fresh archive tied to any life event (new job, move, breakup).</li>
+  <li>Run a local check; trust the red score over memory.</li>
+  <li>Clear location and named people before anything else.</li>
+  <li>Delete the angry attacks, keep the merely awkward.</li>
+  <li>Switch to followers-only, then re-check every six months.</li>
+</ul>
+<p>Notice what is not on the list: wiping everything. He kept most of his archive. Cleanup for him means removing the few posts that could hurt, not erasing a decade.</p>
+
+<h2>What you can take from it</h2>
+<p>The method copies; the details do not. Your risk points are not his. Run one check on your own device and see your red items before borrowing his list. The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, and scores phone numbers, addresses, and locations locally. Deletion is per tweet and <a href="/pricing">pauseable or refundable</a>. If a post already resurfaced, start from <a href="/blog/deleted-tweets-still-visible">why deleted ≠ gone</a> so you set the right expectation.</p>
+    `.trim(),
+    content: `
+<p>我认识一位开发者，差点因为一条 2014 年的推文丢掉 offer。不是犯法，就是一条吐槽前司的糙玩笑，被人截图发给了 hiring manager。他没慌着删号跑路，而是正经清理了一遍。他后来攒下的方法，值得讲，不带说教。</p>
+
+<h2>那条推文是怎么被翻出来的</h2>
+<p>不是被黑。hiring manager 的一位老同学记得这个梗，搜出来把截图转了过去。那条推文公开多年、早被 Google 收录，截图不过是被看见的那部分。他得出的教训：公开够久的东西，总会被"有理由的人"翻到。</p>
+<p>他第一反应，是错的——想直接删整个账号。朋友拦住了。删号显得心虚，而且副本早躺在别人收件箱和缓存里。他要的是移除那条危险的，不是人间蒸发。</p>
+
+<h2>翻车之后他做了什么</h2>
+<p>他把这事当 bug 处理。第一步：拿完整归档，因为界面只放最近 3200 条，而那个梗是 2014 的。第二步：本机读一遍，列出"真危险"的，不是"觉得尬"的。第三步：先删定位和点名的，再删情绪化攻击的。第四步：账号设关注者可见，每半年复跑一次体检。</p>
+<p>来回一个晚上。offer 保住了。比 offer 更有用的是那份清单——现在每次换工作前他都跑。</p>
+
+<h2>三年后，他的清理清单</h2>
+<ul>
+  <li>任何人生节点（新工作、搬家、分手）都拉一份新归档。</li>
+  <li>本机跑体检，信标红分数，别信记忆。</li>
+  <li>先清定位和点名别人的，再管别的。</li>
+  <li>删情绪化攻击的，留只是尬的。</li>
+  <li>转关注者可见，然后每半年复检。</li>
+</ul>
+<p>注意清单上没有"全删光"。他留了大部分归档。对他来说清理=移除那几条能伤人的，不是抹掉十年。</p>
+
+<h2>你能从他身上学到什么</h2>
+<p>方法能抄，细节不能。你的高风险点不是他的。先在自己本机跑一次体检，看自己的标红，再借他的清单。digital-footprint-health.shop 免费、只读，在本机给手机号、住址、定位打分。删除按条计费、可 <a href="/pricing">暂停或退款</a>。如果一条已经翻车，先看 <a href="/blog/deleted-tweets-still-visible">为什么"删了≠没了</a>，把预期摆正。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。旧推文为何仍可见，看 <a href="/blog/deleted-tweets-still-visible">这篇</a>；想系统学清理，看 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除流程</a>。</p>
+    `.trim(),
+  },
 ];
 
 

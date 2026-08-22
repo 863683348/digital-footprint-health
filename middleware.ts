@@ -81,6 +81,30 @@ export async function middleware(req: NextRequest) {
     });
   }
 
+  // ---- CDN cache for dynamic SSR pages ----
+  // Pages render dynamically (x-locale headers()), but content only changes on
+  // deploy. Cache at the edge per locale for 1h (SWR 1d) so repeated crawls and
+  // visits hit the CDN instead of re-rendering (origin FOT). API/upload paths
+  // must stay uncached.
+  const isCacheable =
+    pathname === '/' ||
+    pathname.startsWith('/blog') ||
+    pathname.startsWith('/about') ||
+    pathname.startsWith('/pricing') ||
+    pathname.startsWith('/faq') ||
+    pathname.startsWith('/contact') ||
+    pathname.startsWith('/privacy') ||
+    pathname.startsWith('/terms') ||
+    pathname.startsWith('/account') ||
+    pathname.startsWith('/en');
+
+  if (isCacheable && !pathname.startsWith('/en/api')) {
+    const res = NextResponse.next();
+    res.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+    res.headers.set('Vary', 'x-locale');
+    return res;
+  }
+
   if (pathname !== '/api/archives/upload') {
     return NextResponse.next();
   }

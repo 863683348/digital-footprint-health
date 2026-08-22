@@ -217,7 +217,7 @@ export const allPosts: BlogPost[] = [
 <h2>Method 3: Browser extensions (safer)</h2>
 <p>Chrome extensions like X Cleaner run directly in your browser, using your current login session without sending data to a remote server.</p>
 <p>Pros: safer than cloud services.</p>
-<p>Cons: still require granting the extension permission to read X's page content, and are limited by X's API limits (can only process the most recent 3,200 tweets).</p>
+<p>Cons: still require granting the extension permission to read X's page content, and are limited by X\'s API limits (can only process the most recent 3,200 tweets).</p>
 
 <h2>Method 4: X archive + local solution (most recommended)</h2>
 <p>This is the safest approach and the only one that can delete your entire tweet history. How it works:</p>
@@ -227,7 +227,7 @@ export const allPosts: BlogPost[] = [
   <li>The tool analyzes risky tweets on your device, then deletes them on demand through X's official write API.</li>
 </ol>
 <p>The key advantage of this approach is that your data never leaves your own device — no server upload, no third-party storage, no data-leak risk.</p>
-<p>This is exactly what <strong>Digital Footprint Health</strong> does. We don't call X's read API; all analysis happens locally in your browser. Only when you want to delete tweets do we execute the deletion through X's official interface, with transparent per-tweet pricing.</p>
+<p>This is exactly what <strong>Digital Footprint Health</strong> does. We don't call X\'s read API; all analysis happens locally in your browser. Only when you want to delete tweets do we execute the deletion through X\'s official interface, with transparent per-tweet pricing.</p>
 
 <h2>Method 5: Python script (for developers)</h2>
 <p>If you can code, you can write a custom deletion script using the X API v2. The upside is full control, but it takes development time and API costs (the basic API is $100/month).</p>
@@ -510,7 +510,7 @@ export const allPosts: BlogPost[] = [
 <p>After you unzip your X archive, the file that actually matters is <strong>tweets.js</strong> — structured data of every tweet you've ever posted. This post opens it up: what the format looks like, what each field means, and why a privacy check only needs this one file.</p>
 
 <h2>What tweets.js is</h2>
-<p>It's X's official export of your full tweet history as structured data. The format is a JavaScript assignment: <code>window.YTD.tweets.part0 = [ ... ]</code> — an array where each object is one tweet. A privacy-check tool parses this array.</p>
+<p>It's X\'s official export of your full tweet history as structured data. The format is a JavaScript assignment: <code>window.YTD.tweets.part0 = [ ... ]</code> — an array where each object is one tweet. A privacy-check tool parses this array.</p>
 
 <h2>What's inside each tweet</h2>
 <ul>
@@ -538,7 +538,7 @@ export const allPosts: BlogPost[] = [
 <p>You can, but a tool is better — the file can be several MB to tens of MB. Hand it to a digital footprint check and get results in minutes.</p>
 
 <h3>Does tweets.js include deleted tweets?</h3>
-<p>It includes anything that existed at export time. The archive is a snapshot — tweets deleted before export won't appear, but the old history beyond X's ~3,200-tweet delete limit is all there.</p>
+<p>It includes anything that existed at export time. The archive is a snapshot — tweets deleted before export won't appear, but the old history beyond X\'s ~3,200-tweet delete limit is all there.</p>
 
 <h3>Is uploading just tweets.js enough?</h3>
 <p>Yes. The check is text-based; tweets.js has all the text and URLs, and media files don't affect the scan.</p>
@@ -604,7 +604,7 @@ export const allPosts: BlogPost[] = [
 <p>The first time most people try to clean up their X (Twitter) account, they hit the same wall: the <strong>3,200 tweet limit</strong>. Scroll back far enough in the UI and the timeline simply stops around 3,200 tweets, as if the older ones never existed. Deletion works the same way — you can only delete the most recent 3,200, and anything older is unreachable. This post explains where the wall lives and how to get around it legitimately.</p>
 
 <h2>Where the 3,200 limit actually sits</h2>
-<p>The limit is not on your account. It lives at the API layer: X's public endpoints (including the ones the web app and mobile app use) only page through roughly the most recent 3,200 tweets, for performance and commercial reasons. When the UI says "you're caught up," it means the recent window is empty — older history still exists, it just has no entry point.</p>
+<p>The limit is not on your account. It lives at the API layer: X's public endpoints (including the ones the web app and mobile app use) only page through roughly the most recent 3,200 tweets, for performance and commercial reasons. When the UI says "you\'re caught up," it means the recent window is empty — older history still exists, it just has no entry point.</p>
 <p>One important distinction: your <strong>data archive</strong> (Settings → Your account → Download an archive) contains your full history, with no 3,200 cap. That is why a privacy check tool can scan decade-old tweets — it reads the archive, not the web timeline.</p>
 
 <h2>Why the wall is worth caring about</h2>
@@ -1042,8 +1042,8 @@ export const allPosts: BlogPost[] = [
 <p>The phrase old tweets job describes a real hiring scenario: strong resume, smooth interviews, then HR digs up a three-year-old tweet during background checks and the offer evaporates. People getting hurt by old tweets is not a meme, it is a standard part of hiring in 2026. This post covers how it happens, what HR actually searches, and the cleanup moves you can make today.</p>
 
 <h2>Why old tweets sink candidacies</h2>
-<p>Background checks grew from "call the previous employer" to "search all public social media". X's search box is the cheapest step: type a candidate's name and their tweet history appears in seconds. Most HR people are not hunting for trouble, but they check three things: extreme positions, discriminatory language, and behavior that contradicts the resume.</p>
-<p>The core problem is that tweets have a long half-life. X's public search index keeps tweets from years ago, while people's views and circumstances change. A throwaway joke from five years back gets screenshotted out of context and dropped into the interview discussion. You never get to explain. That is the typical path of an old tweet hiring incident.</p>
+<p>Background checks grew from "call the previous employer" to "search all public social media". X's search box is the cheapest step: type a candidate\'s name and their tweet history appears in seconds. Most HR people are not hunting for trouble, but they check three things: extreme positions, discriminatory language, and behavior that contradicts the resume.</p>
+<p>The core problem is that tweets have a long half-life. X's public search index keeps tweets from years ago, while people\'s views and circumstances change. A throwaway joke from five years back gets screenshotted out of context and dropped into the interview discussion. You never get to explain. That is the typical path of an old tweet hiring incident.</p>
 
 <h2>What HR actually searches for</h2>
 <ul>
@@ -1183,7 +1183,7 @@ export const allPosts: BlogPost[] = [
 <p>A footprint report is the first thing you see after running a digital footprint check on your X (Twitter) archive. It takes years of old tweets and boils them down to one privacy score plus a list of flagged posts. The catch is that most people open the report, see labels like phone, address, or sensitive topic, and have no idea which ones actually matter. This guide breaks down every section of a footprint report and decodes each risk label, so you can decide what to clean instead of guessing.</p>
 
 <h2>What a footprint report is actually made of</h2>
-<p>The report comes straight from your X data export, parsed on your own device. It does not pull anything new from X's servers. Two numbers do most of the work: a 0-100 health score where higher means safer, and a count of flagged tweets grouped by label. Underneath sits the per-tweet list, the part you'll spend real time in. None of it leaves your machine, which is the whole point of a privacy check.</p>
+<p>The report comes straight from your X data export, parsed on your own device. It does not pull anything new from X's servers. Two numbers do most of the work: a 0-100 health score where higher means safer, and a count of flagged tweets grouped by label. Underneath sits the per-tweet list, the part you\'ll spend real time in. None of it leaves your machine, which is the whole point of a privacy check.</p>
 
 <h2>Report sections explained, top to bottom</h2>
 <p>Read the report in order and you save time. The header shows the score and the total flagged count. The category breakdown groups those flags so you can see at a glance whether your risk is contact info, location, or content. The tweet list is sorted by severity, so the worst posts sit at the top. Last is a filter bar where you can narrow by label, year, or keyword. If you already know what you're hunting for, skip to the filter.</p>
@@ -1205,7 +1205,7 @@ export const allPosts: BlogPost[] = [
 <p>These labels are guesses from pattern matching, not verdicts. A phone hit on a joke like "call me at 555" is a false positive you can ignore. The address and email hits are the ones to take seriously.</p>
 
 <h2>Risk labels on Twitter and why old tweets get flagged</h2>
-<p>Most posts a footprint report flags are old. Twitter keeps your history indexed for years, and a single 2015 tweet with your old address is still reachable through Google today. That's why the report surfaces tweets you forgot you posted. The risk labels on Twitter are not about what you post now; they're about what has sat public the whole time. A hiring manager or a stranger can read it without you ever knowing.</p>
+<p>Most posts a footprint report flags are old. Twitter keeps your history indexed for years, and a single 2015 tweet with your old address is still reachable through Google today. That's why the report surfaces tweets you forgot you posted. The risk labels on Twitter are not about what you post now; they\'re about what has sat public the whole time. A hiring manager or a stranger can read it without you ever knowing.</p>
 
 <h2>What to fix first</h2>
 <p>Start with phone, email, and address labels. Those are the concrete, exploitable ones. Location comes next if you posted a regular routine. Sensitive topic posts matter most when you're job hunting or in a visible role, so weigh them against your situation instead of deleting everything in a panic. Use the filters to batch the genuinely dangerous ones, then reconsider the rest.</p>
@@ -1311,8 +1311,8 @@ export const allPosts: BlogPost[] = [
     <p>**<a href="/zh">把 X 数据归档传上来，本机生成你的风险优先级清单 →</a>**</p>
     `,
     contentEn: `
-    <p>Last week a friend sent me a screenshot of his X account's privacy checkup: seven years, 23,000 tweets, 61 red high-risk labels. He stared at the screen and asked, "I can't delete everything, can I? What tweets to delete first?"</p>
-    <p>Fair question. Nobody reads twenty thousand tweets one by one, and most of them honestly don't need to go. Cleaning your timeline shouldn't run on vibes. It should run on priority. The tiers below are what I landed on after scanning 50,000 of my own historical tweets, and you can copy the order directly.</p>
+    <p>Last week a friend sent me a screenshot of his X account's privacy checkup: seven years, 23,000 tweets, 61 red high-risk labels. He stared at the screen and asked, "I can\'t delete everything, can I? What tweets to delete first?"</p>
+    <p>Fair question. Nobody reads twenty thousand tweets one by one, and most of them honestly don't need to go. Cleaning your timeline shouldn\'t run on vibes. It should run on priority. The tiers below are what I landed on after scanning 50,000 of my own historical tweets, and you can copy the order directly.</p>
     <h2>P0: Anything that exposes who you really are, clean today</h2>
     <p>One test for this tier: **could a stranger reading this tweet point straight to the real-life you?**</p>
     <p>Typical examples:</p>
@@ -1423,16 +1423,16 @@ export const allPosts: BlogPost[] = [
     `,
     contentEn: `
     <p>The first time you open a footprint report, the wall of tags is overwhelming. phone, email, address, location, sensitive, identity, all in a mess of reds and oranges and greens. I felt the same way when I saw mine. This post breaks down every label one by one: why it shows up, how risky it is, and what you should do about it.</p>
-    <p>Here's the short version first. Labels aren't a death sentence. They're a map. Once you know what each one is telling you, you know which corner of the account to clean first.</p>
+    <p>Here's the short version first. Labels aren\'t a death sentence. They\'re a map. Once you know what each one is telling you, you know which corner of the account to clean first.</p>
     <h2>phone and email: your contact lines</h2>
     <p>These two are straightforward. The label means a tweet contains something that looks like a mobile number or an email address. The trigger is simple: a string matching an 11-digit phone format, or a standard email pattern.</p>
-    <p>The risk is high, because contact details are the shortest route a stranger has to reach you. When you see these tags, don't overthink it. Open the original tweet, confirm it's real, delete. One edge case worth knowing: if someone else posted the number and you reposted it, it still counts. Your account's association ties that number to you either way.</p>
+    <p>The risk is high, because contact details are the shortest route a stranger has to reach you. When you see these tags, don't overthink it. Open the original tweet, confirm it\'s real, delete. One edge case worth knowing: if someone else posted the number and you reposted it, it still counts. Your account\'s association ties that number to you either way.</p>
     <h2>address and location: where you are, where you live</h2>
     <p>address means home-type information: door numbers, neighborhood names, a street plus a city. location is broader. It covers check-in geotags, your office, the places you frequent.</p>
     <p>The risk levels differ. address is direct exposure of where you live, close to P0. location is pattern-based, harmless one post at a time, dangerous when fifty of them stack into a movement map. When both appear, the report ranks address above location, which is your ordering hint.</p>
     <h2>sensitive: conversations that age badly</h2>
     <p>This is the label that most needs human judgment. It catches politically sensitive remarks, jokes about regions, genders, or ethnic groups, and attack-style comments toward specific communities.</p>
-    <p>It's not saying you were wrong. It's saying this tweet, ripped out of its original context, travels really well as a screenshot. That late-night rant you aimed at a friend reads like a completely different story when it circulates on its own. Risk is medium-high, and the fix is reading the original and deciding for yourself.</p>
+    <p>It's not saying you were wrong. It\'s saying this tweet, ripped out of its original context, travels really well as a screenshot. That late-night rant you aimed at a friend reads like a completely different story when it circulates on its own. Risk is medium-high, and the fix is reading the original and deciding for yourself.</p>
     <h2>identity: the puzzle pieces</h2>
     <p>identity is the collection of personal identifiers: your real name, ID photos, birth date, employer, education history. Unlike the other labels, it doesn't trigger on a single match. It fires on combinations, like a tweet that pairs your full name with your company, or a personal email built on your real name.</p>
     <p>One data point on its own is limited. Several combined pinpoint you precisely. When this label appears, treat it like P0.</p>
@@ -1511,15 +1511,15 @@ export const allPosts: BlogPost[] = [
     <p>**<a href="/zh">上传 X 数据归档，一分钟拿到你的 0-100 健康分 →</a>**</p>
     `,
     contentEn: `
-    <p>When a report opens, everybody looks at the number first. 79. Is that good or bad? Why does my friend have 91 and I'm stuck at 79? I'm not going to recite formulas at you. I'll explain the thinking behind the score, and you'll be able to estimate your own in your head.</p>
-    <p>The most important thing first: **this score is not an exam. Higher isn't automatically better, and there's no passing line.** It's a mirror. It only reflects how exposed your account is right now.</p>
+    <p>When a report opens, everybody looks at the number first. 79. Is that good or bad? Why does my friend have 91 and I'm stuck at 79? I\'m not going to recite formulas at you. I\'ll explain the thinking behind the score, and you\'ll be able to estimate your own in your head.</p>
+    <p>The most important thing first: **this score is not an exam. Higher isn't automatically better, and there\'s no passing line.** It\'s a mirror. It only reflects how exposed your account is right now.</p>
     <h2>Four dimensions fight each other, then get weighted</h2>
     <p>The score doesn't come out of thin air. Four blocks build it, each with a different weight:</p>
     <ul>
     <li>**Share of risky tweets**: risky tweets divided by total tweets. This is the biggest variable and carries the most weight. Big account, lots of risk, this number drags everything down.</li>
     <li>**High-risk category weight**: not all risk is equal. A tweet tagged phone, email, or identity costs more points than one tagged sensitive. The more dangerous the category, the heavier the single-tweet penalty.</li>
-    <li>**Time decay**: most people don't see this coming. A phone number tweeted in 2016 is less dangerous than the same tweet from 2024, because the number has probably been deactivated. Older tweets lose fewer points, but not zero, since screenshots stick around in other people's hands.</li>
-    <li>**Quantity effect**: this isn't linear. One phone number tweet versus ten phone number tweets isn't a tenfold difference. It's the difference between "an accident" and "a habit." More posts mean higher marginal harm.</li>
+    <li>**Time decay**: most people don't see this coming. A phone number tweeted in 2016 is less dangerous than the same tweet from 2024, because the number has probably been deactivated. Older tweets lose fewer points, but not zero, since screenshots stick around in other people\'s hands.</li>
+    <li>**Quantity effect**: this isn't linear. One phone number tweet versus ten phone number tweets isn\'t a tenfold difference. It\'s the difference between "an accident" and "a habit." More posts mean higher marginal harm.</li>
     </ul>
     <p>Those four get weighted, summed, and mapped onto 0-100. That's your digital footprint score.</p>
     <h2>Roughly what the bands look like</h2>
@@ -2771,7 +2771,7 @@ export const allPosts: BlogPost[] = [
 
 <h2>Tools versus doing it by hand</h2>
 <p>You can delete by hand, and for a small account that is fine. The moment your archive crosses a few thousand posts, hand deletion breaks down: X only exposes the most recent ~3,200 through the interface, and the older ones are locked behind the archive file. A local check reads the archive directly, scores every post, and lets you filter by date, keyword, or label. That is the difference between an afternoon of scrolling and twenty minutes of clicking.</p>
-<p>The part I care about is where the data goes. A check that uploads your archive to a server defeats the purpose. Look for one that parses on your device and never calls X's read API. Deletion, when you choose it, is the only step that touches X's write interface, and it should be pauseable and refundable.</p>
+<p>The part I care about is where the data goes. A check that uploads your archive to a server defeats the purpose. Look for one that parses on your device and never calls X's read API. Deletion, when you choose it, is the only step that touches X\'s write interface, and it should be pauseable and refundable.</p>
 
 <h2>Treat the check as maintenance, not damage control</h2>
 <p>The mistake everyone makes is waiting for a crisis. People clean their X when they are job hunting or in the news, which is exactly when they have no time. A footprint check you run on your own machine, for free, turns cleanup from panic into a chore on the calendar.</p>
@@ -3191,9 +3191,6 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。旧推文为何仍可见，看 <a href="/blog/deleted-tweets-still-visible">这篇</a>；想系统学清理，看 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除流程</a>。</p>
     `.trim(),
   },
-  ,
-  { slug: 'test-post', date: '2026-08-20' },
-,
   {
     slug: 'sensitive-topic-detection',
     title: '敏感话题检测：体检标红的究竟是什么',
@@ -3281,9 +3278,9 @@ export const allPosts: BlogPost[] = [
     tags: ['未成年', 'COPPA', '旧推文', '平台规则'],
     canonical: '/blog/underage-tweets',
     faq: [
-      { q: '我在 X 上发的童年推文，现在还能看到吗？', a: '通常可以。X 不会因为你长大了就自动删除你未成年时发的推文。只要账号还在、推文没被删，它们就一直在那里。', qEn: 'Can I still see tweets I posted as a child on X?', aEn: 'Usually yes. X won't auto-delete your childhood tweets just because you're older now. As long as the account exists and the tweets weren't deleted, they remain.' },
-      { q: 'COPPA 对我的旧推文有什么影响？', a: 'COPPA（儿童在线隐私保护法）主要约束网站收集儿童信息，但不要求删除历史内容。你未成年时发的推文，法律上不属于"儿童数据"，除非涉及身份盗窃风险。', qEn: 'What does COPPA say about my old tweets?', aEn: 'COPPA (Children's Online Privacy Protection Act) mainly restricts websites from collecting children's data — it does not require deleting historical content. Tweets you posted as a minor are not "children's data" under the law, unless they pose identity theft risk.' },
-      { q: '如果我的童年推文涉及不良内容，我应该删吗？', a: '如果内容涉及违法、骚扰、或可能影响未来升学/就业，建议删除。如果是无害的童年趣事，可以保留。', qEn: 'Should I delete childhood tweets if they contain inappropriate content?', aEn: 'If the content involves illegal activity, harassment, or could affect future education/employment, delete it. If it's innocent childhood fun, you can keep it.' },
+      { q: '我在 X 上发的童年推文，现在还能看到吗？', a: '通常可以。X 不会因为你长大了就自动删除你未成年时发的推文。只要账号还在、推文没被删，它们就一直在那里。', qEn: 'Can I still see tweets I posted as a child on X?', aEn: 'Usually yes. X won\'t auto-delete your childhood tweets just because you\'re older now. As long as the account exists and the tweets weren\'t deleted, they remain.' },
+      { q: 'COPPA 对我的旧推文有什么影响？', a: 'COPPA（儿童在线隐私保护法）主要约束网站收集儿童信息，但不要求删除历史内容。你未成年时发的推文，法律上不属于"儿童数据"，除非涉及身份盗窃风险。', qEn: 'What does COPPA say about my old tweets?', aEn: 'COPPA (Children\'s Online Privacy Protection Act) mainly restricts websites from collecting children\'s data — it does not require deleting historical content. Tweets you posted as a minor are not "children\'s data" under the law, unless they pose identity theft risk.' },
+      { q: '如果我的童年推文涉及不良内容，我应该删吗？', a: '如果内容涉及违法、骚扰、或可能影响未来升学/就业，建议删除。如果是无害的童年趣事，可以保留。', qEn: 'Should I delete childhood tweets if they contain inappropriate content?', aEn: 'If the content involves illegal activity, harassment, or could affect future education/employment, delete it. If it\'s innocent childhood fun, you can keep it.' },
     ],
     titleEn: 'Tweets from Your Teens: Platform Rules and Legal Reality',
     excerptEn: 'Many people signed up for X before turning 13. Are those childhood tweets still there? What does the platform policy say? What are the legal implications? This post clarifies the reality of underage tweets.',
@@ -3291,7 +3288,7 @@ export const allPosts: BlogPost[] = [
     tagsEn: ['underage', 'COPPA', 'old tweets', 'platform policy'],
     contentEn: `<p>You probably started using X (formerly Twitter) as a teenager — or maybe even earlier. Those childhood and teen tweets are still there. Should you worry about them?</p>
 <h2>Are your old tweets still accessible?</h2>
-<p>Yes. X does not automatically delete tweets just because you've aged out of the "underage" category. If the account exists and the tweets weren't manually deleted, they remain publicly visible (unless you changed the account to private).</p>
+<p>Yes. X does not automatically delete tweets just because you've aged out of the "underage" category. If the account exists and the tweets weren\'t manually deleted, they remain publicly visible (unless you changed the account to private).</p>
 <h2>What does COPPA say?</h2>
 <p>COPPA (Children's Online Privacy Protection Act) is a US law that restricts how websites collect data from children under 13. Key points:</p>
 <ul>
@@ -3347,7 +3344,7 @@ export const allPosts: BlogPost[] = [
     faq: [
       { q: '分手后要不要清空整个账号？', a: '不建议。清空账号显得心虚，而且副本已在别处。建议按风险等级逐条清理：先删暴露定位和点名的，再删情绪化攻击的，最后处理甜蜜内容。', qEn: 'Should I delete my entire account after a breakup?', aEn: 'Not recommended. Emptying your account looks guilty, and copies already exist elsewhere. Clean by risk level: first delete location-and-name-drops, then emotional attacks, then handle sweet content last.' },
       { q: '那些甜蜜的推文会影响我新的感情吗？', a: '有可能。新伴侣可能会搜索你的社交媒体历史。建议清理公开的亲密内容，特别是带定位和照片的。', qEn: 'Will sweet tweets affect my new relationship?', aEn: 'Possibly. A new partner might search your social media history. Clear public intimate content, especially posts with locations and photos.' },
-      { q: '分手后改头像和昵称有必要吗？', a: '看情况。如果旧头像/昵称是和前任相关的，建议改掉。这不是隐私问题，是心理边界问题。', qEn: 'Should I change my profile after a breakup?', aEn: 'Depends. If your old avatar/bio was related to your ex, change it. It's not a privacy issue — it's a psychological boundary issue.' },
+      { q: '分手后改头像和昵称有必要吗？', a: '看情况。如果旧头像/昵称是和前任相关的，建议改掉。这不是隐私问题，是心理边界问题。', qEn: 'Should I change my profile after a breakup?', aEn: 'Depends. If your old avatar/bio was related to your ex, change it. It\'s not a privacy issue — it\'s a psychological boundary issue.' },
     ],
     titleEn: 'Ex-Archaeology: Tweet Cleanup After a Breakup',
     excerptEn: 'After a breakup, you scroll through old tweets and find the timeline full of your ex. Those public sweet moments, arguments, and even curses are now awkward memories. This guide shows you how to systematically clean your emotional account.',
@@ -3411,7 +3408,7 @@ export const allPosts: BlogPost[] = [
     faq: [
       { q: '我能完全"抹掉"过去的推文吗？', a: '不能。删除推文后，副本可能已存在于搜索引擎缓存、截图、第三方归档中。你能做的是"止损"——移除仍在公开可见的高风险内容。', qEn: 'Can I completely erase my old tweets?', aEn: 'No. After deletion, copies may already exist in search engine caches, screenshots, and third-party archives. What you can do is "damage control" — remove high-risk content that is still publicly visible.' },
       { q: '换工作后，新雇主会搜索我的旧推文吗？', a: '有可能，特别是大公司或敏感行业。建议在投递简历前，先跑一次数字足迹体检，清除高风险推文。', qEn: 'Will a new employer search my old tweets?', aEn: 'Possibly, especially at large companies or in regulated industries. Run a digital footprint check before submitting applications, and clear high-risk tweets.' },
-      { q: '换账号能解决问题吗？', a: '不能。新账号的数字足迹同样会被扫描。关键是清理内容，不是更换容器。', qEn: 'Will creating a new account solve the problem?', aEn: 'No. A new account's digital footprint will also be scanned. The key is cleaning content, not changing containers.' },
+      { q: '换账号能解决问题吗？', a: '不能。新账号的数字足迹同样会被扫描。关键是清理内容，不是更换容器。', qEn: 'Will creating a new account solve the problem?', aEn: 'No. A new account\'s digital footprint will also be scanned. The key is cleaning content, not changing containers.' },
     ],
     titleEn: 'Career Change? The Truth About "Erasing" Your Digital Past',
     excerptEn: 'Want to switch careers, change tracks, start fresh? You might want to "erase" your old tweets. But can digital traces really be erased? This post explains the truth and practical methods.',
@@ -3439,7 +3436,7 @@ export const allPosts: BlogPost[] = [
 <ul>
   <li><strong>Don't create a new account</strong> — A new account has its own footprint. Cleaning content is more effective than changing containers.</li>
   <li><strong>Don't panic-delete everything</strong> — Blanket deletion looks suspicious. Be strategic.</li>
-  <li><strong>Don't assume deletion = gone</strong> — Set the right expectation: you're reducing risk, not achieving digital amnesia.</li>
+  <li><strong>Don't assume deletion = gone</strong> — Set the right expectation: you\'re reducing risk, not achieving digital amnesia.</li>
 </ul>
 <h2>Bottom line</h2>
 <p>You can't erase your past, but you can control how much of it is visible. Run a check, clean strategically, and move forward with confidence.</p>`,
@@ -3483,7 +3480,7 @@ export const allPosts: BlogPost[] = [
     tags: ['敏感行业', '公务员', '教师', '推文管理'],
     canonical: '/blog/sensitive-industry-tweets',
     faq: [
-      { q: '我是公务员，需要担心推文吗？', a: '需要。公务员的公共形象受严格约束，旧推文可能被竞争对手或媒体翻出。建议定期体检，清除高风险内容。', qEn: 'I'm a civil servant — should I worry about tweets?', aEn: 'Yes. Civil servants' public image is strictly regulated; old tweets can be dug up by opponents or media. Run regular checks and clear high-risk content.' },
+      { q: '我是公务员，需要担心推文吗？', a: '需要。公务员的公共形象受严格约束，旧推文可能被竞争对手或媒体翻出。建议定期体检，清除高风险内容。', qEn: 'I\'m a civil servant — should I worry about tweets?', aEn: 'Yes. Civil servants\' public image is strictly regulated; old tweets can be dug up by opponents or media. Run regular checks and clear high-risk content.' },
       { q: '教师发推文有什么限制？', a: '教师属于公众人物，学生/家长/学校可能搜索你的社交媒体。避免发布政治极端言论、不当幽默、或与职业形象冲突的内容。', qEn: 'What are the restrictions for teachers posting tweets?', aEn: 'Teachers are public figures; students/parents/schools may search your social media. Avoid extreme political speech, inappropriate humor, or content that conflicts with your professional image.' },
       { q: '医生/律师有额外的职业伦理要求吗？', a: '有。医疗和法律服务受职业伦理约束，公开讨论病例或案件可能违反保密义务。建议谨慎发布任何与职业相关的内容。', qEn: 'Do doctors/lawyers have extra ethical requirements?', aEn: 'Yes. Medical and legal services are bound by professional ethics; discussing cases publicly may violate confidentiality. Be cautious about any profession-related content.' },
     ],
@@ -3642,17 +3639,80 @@ export const allPosts: BlogPost[] = [
     tags: ['delete all tweets', 'x features', 'why no delete all'],
     canonical: '/blog/why-x-has-no-delete-all',
     faq: [
-      { q: 'X 为什么没有批量删除功能？', a: 'X 的官方立场是用户应该自己管理内容，批量删除可能被滥用。', qEn: 'Why does X not have bulk deletion?', aEn: 'X's official position is that users should manage their own content, and bulk deletion could be misused.' },
+      { q: 'X 为什么没有批量删除功能？', a: 'X 的官方立场是用户应该自己管理内容，批量删除可能被滥用。', qEn: 'Why does X not have bulk deletion?', aEn: 'X\'s official position is that users should manage their own content, and bulk deletion could be misused.' },
       { q: '我该如何批量删除推文？', a: '使用第三方工具如 TweetDelete、X Cleaner 或 digital-footprint-health。它们提供自动化删除功能。', qEn: 'How can I delete tweets in bulk?', aEn: 'Use third-party tools like TweetDelete, X Cleaner, or digital-footprint-health. They provide automated deletion.' },
     ],
-    titleEn: 'Why X Doesn't Offer a "Delete Everything" Button',
+    titleEn: 'Why X Doesn\'t Offer a "Delete Everything" Button',
     excerptEn: 'If you have ever wanted to wipe your entire X history, you have probably noticed: there is no "Delete All" button. Why?',
     categoryEn: 'Comparison',
     tagsEn: ['delete all tweets', 'x features', 'why no delete all'],
-    contentEn: '<p>If you have ever wanted to wipe your entire X history, you have probably noticed: there is no "Delete All" button. Why?</p><h2>X's Official Stance</h2><p>X (formerly Twitter) has never offered a bulk deletion feature. Their position:</p><ul><li>Users should manage their own content</li><li>Bulk deletion could be misused (e.g., erasing evidence)</li><li>Individual deletion gives users more control</li></ul><h2>What You Can Do Instead</h2><ol><li><strong>Manual deletion:</strong> Delete tweets one by one (slow but free)</li><li><strong>Third-party tools:</strong> Use TweetDelete, X Cleaner, etc. (fast but costs money)</li><li><strong>digital-footprint-health:</strong> Delete tweets + understand your data first (balanced approach)</li></ol><h2>The Bottom Line</h2><p>X doesn't offer bulk deletion because they want users to be intentional about what they remove. But that intentionality comes at a cost: your time. If you have thousands of tweets to clean, automation is the only practical solution.</p>',
+    contentEn: '<p>If you have ever wanted to wipe your entire X history, you have probably noticed: there is no "Delete All" button. Why?</p><h2>X\'s Official Stance</h2><p>X (formerly Twitter) has never offered a bulk deletion feature. Their position:</p><ul><li>Users should manage their own content</li><li>Bulk deletion could be misused (e.g., erasing evidence)</li><li>Individual deletion gives users more control</li></ul><h2>What You Can Do Instead</h2><ol><li><strong>Manual deletion:</strong> Delete tweets one by one (slow but free)</li><li><strong>Third-party tools:</strong> Use TweetDelete, X Cleaner, etc. (fast but costs money)</li><li><strong>digital-footprint-health:</strong> Delete tweets + understand your data first (balanced approach)</li></ol><h2>The Bottom Line</h2><p>X doesn\'t offer bulk deletion because they want users to be intentional about what they remove. But that intentionality comes at a cost: your time. If you have thousands of tweets to clean, automation is the only practical solution.</p>',
     content: '<p>如果你曾经想清除整个 X 历史记录，你可能已经注意到：没有"删除全部"按钮。为什么？</p><h2>X 的官方立场</h2><p>X（前 Twitter）从未提供批量删除功能。他们的立场：</p><ul><li>用户应该自己管理内容</li><li>批量删除可能被滥用（例如销毁证据）</li><li>单独删除给用户更多控制</li></ul><h2>你可以做什么</h2><ol><li><strong>手动删除：</strong>逐条删除推文（慢但免费）</li><li><strong>第三方工具：</strong>使用 TweetDelete、X Cleaner 等（快但要付费）</li><li><strong>digital-footprint-health：</strong>删除推文 + 先了解自己的数据（平衡方案）</li></ol><h2>结论</h2><p>X 不提供批量删除，因为他们希望用户对删除的内容保持审慎。但这种审慎是有成本的：你的时间。如果成千上万条推文需要清理，自动化是唯一实用的解决方案。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
-  }
-
+  },
+  {
+    slug: '6-tweet-deletion-tools-compared',
+    title: '6 款推文删除工具诚实对比：2026 年实测',
+    excerpt: '找到合适的推文删除工具能节省数小时——或者浪费钱在不能用的软件上。本文对 2026 年 6 款流行工具进行诚实对比，按可靠性、速度和隐私排序。',
+    date: '2026-08-22',
+    updatedAt: '2026-08-22',
+    author: 'Digital Footprint Health Team',
+    category: '工具对比',
+    tags: ['tweet deletion tools', 'comparison', 'best tweet deleter'],
+    canonical: '/blog/6-tweet-deletion-tools-compared',
+    faq: [
+      { q: '哪个工具对账户最安全？', a: 'digital-footprint-health，因为你的数据留在你的设备上。', qEn: 'Which tool is safest for my account?', aEn: 'digital-footprint-health, because your data stays on your device.' },
+      { q: '这些工具能删除转推吗？', a: '大多数可以。请查看每个工具的功能列表。', qEn: 'Can these tools delete retweets too?', aEn: 'Most can. Check each tool\'s features list.' },
+      { q: '有多少推文可以删除？', a: '取决于工具。X 本身限制批量操作以防止滥用。', qEn: 'Is there a limit to how many tweets I can delete?', aEn: 'Depends on the tool. X itself limits bulk actions to prevent abuse.' },
+    ],
+    titleEn: '6 Tweet Deletion Tools, Honestly Compared',
+    excerptEn: 'Finding the right tweet deletion tool can save you hours — or waste your money on software that doesn\'t work. This comparison covers six popular options in 2026, ranked by reliability, speed, and privacy.',
+    categoryEn: 'Comparison',
+    tagsEn: ['tweet deletion tools', 'comparison', 'best tweet deleter'],
+    contentEn: '<p>Finding the right tweet deletion tool can save you hours — or waste your money on software that doesn\'t work. This comparison covers six popular options in 2026, ranked by reliability, speed, and privacy.</p><h2>1. digital-footprint-health</h2><ul><li><strong>Speed:</strong> ~0.3 seconds per tweet</li><li><strong>Privacy:</strong> On-device processing, no data upload</li><li><strong>Price:</strong> Pay-per-delete, refundable</li><li><strong>Best for:</strong> Privacy-conscious users who want transparency</li></ul><h2>2. TweetDelete</h2><ul><li><strong>Speed:</strong> ~0.5 seconds per tweet</li><li><strong>Privacy:</strong> Data uploaded to their servers</li><li><strong>Price:</strong> $5.99/month subscription</li><li><strong>Best for:</strong> Users who want set-it-and-forget-it automation</li></ul><h2>3. X Cleaner</h2><ul><li><strong>Speed:</strong> Browser extension, ~1 second per tweet</li><li><strong>Privacy:</strong> Runs locally in browser</li><li><strong>Price:</strong> Free</li><li><strong>Best for:</strong> Casual users who delete occasionally</li></ul><h2>4. TweetEraser</h2><ul><li><strong>Speed:</strong> ~0.8 seconds per tweet</li><li><strong>Privacy:</strong> Server-side processing</li><li><strong>Price:</strong> One-time $10 purchase</li><li><strong>Best for:</strong> Users who prefer one-time payment over subscription</li></ul><h2>5. SocialBee</h2><ul><li><strong>Speed:</strong> Varies, API-based</li><li><strong>Privacy:</strong> Third-party access to your account</li><li><strong>Price:</strong> $9/month</li><li><strong>Best for:</strong> Social media managers handling multiple accounts</li></ul><h2>6. Manual Deletion</h2><ul><li><strong>Speed:</strong> ~10 seconds per tweet</li><li><strong>Privacy:</strong> Maximum (you do it yourself)</li><li><strong>Price:</strong> Free (time cost)</li><li><strong>Best for:</strong> Small batches under 50 tweets</li></ul><h2>The Privacy Trade-off</h2><p>Every tool except manual deletion requires you to hand over access to your X account. This means they can see your tweets (and potentially DMs), store your credentials, and have the ability to post on your behalf.</p><p>digital-footprint-health minimizes this risk by processing your data locally. Your tweets never leave your device during analysis.</p><h2>When to Use Each Tool</h2><ul><li><strong>Under 100 tweets:</strong> Manual or X Cleaner</li><li><strong>100-1000 tweets:</strong> digital-footprint-health or TweetEraser</li><li><strong>1000+ tweets:</strong> digital-footprint-health or TweetDelete</li><li><strong>Privacy is priority:</strong> digital-footprint-health only</li></ul>',
+    content: '<p>找到合适的推文删除工具能节省数小时——或者浪费钱在不能用的软件上。本文对 2026 年 6 款流行工具进行诚实对比，按可靠性、速度和隐私排序。</p><h2>1. digital-footprint-health</h2><ul><li><strong>速度：</strong>每条约 0.3 秒</li><li><strong>隐私：</strong>本机处理，不上传数据</li><li><strong>价格：</strong>按条计费，可退款</li><li><strong>适合：</strong>注重隐私、希望透明的用户</li></ul><h2>2. TweetDelete</h2><ul><li><strong>速度：</strong>每条约 0.5 秒</li><li><strong>隐私：</strong>数据上传到他们的服务器</li><li><strong>价格：</strong>$5.99/月订阅</li><li><strong>适合：</strong>想要一键式自动化的用户</li></ul><h2>3. X Cleaner</h2><ul><li><strong>速度：</strong>浏览器插件，每条约 1 秒</li><li><strong>隐私：</strong>在浏览器本地运行</li><li><strong>价格：</strong>免费</li><li><strong>适合：</strong>偶尔删除的 casual 用户</li></ul><h2>4. TweetEraser</h2><ul><li><strong>速度：</strong>每条约 0.8 秒</li><li><strong>隐私：</strong>服务端处理</li><li><strong>价格：</strong>一次性 $10</li><li><strong>适合：</strong>喜欢一次性付费而非订阅的用户</li></ul><h2>5. SocialBee</h2><ul><li><strong>速度：</strong>视情况而定，基于 API</li><li><strong>隐私：</strong>第三方访问你的账户</li><li><strong>价格：</strong>$9/月</li><li><strong>适合：</strong>管理多个账号的社交媒体经理</li></ul><h2>6. 手动删除</h2><ul><li><strong>速度：</strong>每条约 10 秒</li><li><strong>隐私：</strong>最高（你自己操作）</li><li><strong>价格：</strong>免费（时间成本）</li><li><strong>适合：</strong>少于 50 条的小批量</li></ul><h2>隐私权衡</h2><p>除手动删除外，每个工具都需要你授予访问 X 账户的权限。这意味着他们可以查看你的推文（甚至可能是私信）、存储你的凭据，并有权代表你发帖。</p><p>digital-footprint-health 通过本机处理来降低这种风险。你的推文在分析期间永远不会离开你的设备。</p><h2>何时使用哪个工具</h2><ul><li><strong>少于 100 条：</strong>手动或 X Cleaner</li><li><strong>100-1000 条：</strong>digital-footprint-health 或 TweetEraser</li><li><strong>1000+ 条：</strong>digital-footprint-health 或 TweetDelete</li><li><strong>隐私优先：</strong>只用 digital-footprint-health</li></ul>',
+  },
+  {
+    slug: 'safe-tweet-deleter-checklist',
+    title: '别只看价格：选删除工具的安全清单',
+    excerpt: '不是所有推文删除工具都是一样的。有些是合法服务，有些是伪装的的数据收割机。这份清单帮助你在交出 X 凭据之前识别安全工具。',
+    date: '2026-08-22',
+    updatedAt: '2026-08-22',
+    author: 'Digital Footprint Health Team',
+    category: '安全指南',
+    tags: ['safe tweet deleter', 'tool security', 'privacy checklist'],
+    canonical: '/blog/safe-tweet-deleter-checklist',
+    faq: [
+      { q: '如何判断推文删除工具是否安全？', a: '检查隐私政策是否明确说明数据收集、存储和共享方式。好的工具会详细说明数据如何处理。', qEn: 'How do I know if a tweet deletion tool is safe?', aEn: 'Check if the privacy policy explicitly states how data is collected, stored, and shared. Good tools explain exactly how your data is handled.' },
+      { q: '免费工具安全吗？', a: '如果免费，他们可能通过出售数据来盈利。选择有清晰定价的工具。', qEn: 'Are free tools safe?', aEn: 'If it\'s free, they may make money by selling your data. Choose tools with clear pricing.' },
+    ],
+    titleEn: 'Beyond Price: A Safety Checklist for Deletion Tools',
+    excerptEn: 'Not all tweet deletion tools are created equal. Some are legitimate services. Others are data harvesting operations in disguise. This checklist helps you identify safe tools before handing over your X credentials.',
+    categoryEn: 'Security Guide',
+    tagsEn: ['safe tweet deleter', 'tool security', 'privacy checklist'],
+    contentEn: '<p>Not all tweet deletion tools are created equal. Some are legitimate services. Others are data harvesting operations in disguise. This checklist helps you identify safe tools before handing over your X credentials.</p><h2>Red Flags to Watch For</h2><h3>1. Vague Privacy Policy</h3><p>If the tool doesn\'t explicitly state what data they collect, how long they keep it, and who they share it with — run. A legitimate service will have a detailed privacy policy, preferably written in plain language.</p><h3>2. Unnecessary Permissions</h3><p>A tweet deletion tool should only need:<br>- Read access to your tweets<br>- Write access to delete tweets</p><p>If it requests access to your DMs, direct messages, or the ability to post on your behalf — that\'s a red flag. You don\'t need posting access to delete tweets.</p><h3>3. No Clear Pricing</h3><p>"Free forever" tools often make money by selling your data. Transparent pricing is a sign of a legitimate business. Look for clear subscription fees or per-tweet costs.</p><h3>4. No User Reviews</h3><p>Check Reddit, Trustpilot, and Twitter for real user experiences. If a tool has no independent reviews, be skeptical.</p><h2>Green Flags</h2><ul><li>Clear, detailed privacy policy</li><li>Local/on-device processing</li><li>Transparent pricing with no hidden fees</li><li>Positive reviews on independent platforms</li><li>Option to pause and resume deletions</li><li>Refund policy</li></ul><h2>The Bottom Line</h2><p>Your X account contains years of personal history. Don\'t hand over access to a tool that doesn\'t respect your privacy. digital-footprint-health processes everything on your device — your data never leaves your machine.</p>',
+    content: '<p>不是所有推文删除工具都是一样的。有些是合法服务，有些是伪装的的数据收割机。这份清单帮助你在交出 X 凭据之前识别安全工具。</p><h2>需警惕的危险信号</h2><h3>1. 模糊的隐私政策</h3><p>如果工具没有明确说明他们收集什么数据、保留多久、与谁共享——快跑。合法服务会有详细的隐私政策，最好是用通俗易懂的语言撰写。</p><h3>2. 不必要的权限</h3><p>推文删除工具只需要：<br>- 读取你的推文的权限<br>- 删除推文的写入权限</p><p>如果它请求访问你的私信或代表你发帖的权限——这是危险信号。删除推文不需要发帖权限。</p><h3>3. 无明确定价</h3><p>"永远免费"的工具通常通过出售你的数据来盈利。透明定价是合法业务的标志。寻找清晰的订阅费用或按条计费。</p><h3>4. 无用户评价</h3><p>在 Reddit、Trustpilot 和 Twitter 上查看真实用户评价。如果一个工具没有任何独立评价，要保持怀疑。</p><h2>绿色信号</h2><ul><li>清晰详细的隐私政策</li><li>本地/本机处理</li><li>透明定价，无隐藏费用</li><li>独立平台上有正面评价</li><li>可暂停和恢复删除</li><li>退款政策</li></ul><h2>结论</h2><p>你的 X 账户包含数年的个人历史。不要把访问权交给不尊重你隐私的工具。digital-footprint-health 在所有数据都在你的设备上处理——你的数据永远不会离开你的机器。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
+  },
+  {
+    slug: 'tweet-tool-privacy-policy',
+    title: '你的删除工具会读你的数据吗？',
+    excerpt: '当你使用推文删除工具时，你本质上是在给陌生人访问你个人历史的权限。了解他们能看到什么——以及他们永远不应该看到什么——对于保护你的隐私至关重要。',
+    date: '2026-08-22',
+    updatedAt: '2026-08-22',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['tweet tool privacy', 'privacy policy', 'data access'],
+    canonical: '/blog/tweet-tool-privacy-policy',
+    faq: [
+      { q: '推文删除工具能访问我的私信吗？', a: '理论上可以，如果他们请求了该权限。选择一个不需要私信访问的工具。', qEn: 'Can tweet deletion tools access my DMs?', aEn: 'Theoretically yes, if they request that permission. Choose a tool that doesn\'t need DM access.' },
+      { q: '我的推文会被存储吗？', a: '云端处理工具会。本机处理工具不会。', qEn: 'Will my tweets be stored?', aEn: 'Cloud-based tools will. On-device tools won\'t.' },
+    ],
+    titleEn: 'Does Your Deletion Tool Read Your Data?',
+    excerptEn: 'When you use a tweet deletion tool, you\'re essentially giving a stranger access to your personal history. Understanding what they can see — and what they should never see — is critical for protecting your privacy.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['tweet tool privacy', 'privacy policy', 'data access'],
+    contentEn: '<p>When you use a tweet deletion tool, you\'re essentially giving a stranger access to your personal history. Understanding what they can see — and what they should never see — is critical for protecting your privacy.</p><h2>What Tweet Tools Can Access</h2><h3>Public tweets</h3><p>All tools that connect to your X account can read your public tweets. This includes: tweet text, timestamps, engagement metrics (likes, retweets), and media attachments.</p><h3>Direct messages</h3><p>Some tools request access to DMs. This is a major privacy risk — your private conversations could be read, stored, or leaked.</p><h3>Profile information</h3><p>Your bio, location, follower count, and account creation date are all visible to connected apps.</p><h3>List memberships</h3><p>Tools may be able to see which Twitter Lists you\'re a member of.</p><h2>What They Should NEVER Access</h2><ul><li>Your password (you should never enter it in a third-party tool)</li><li>Your 2FA codes</li><li>Your email or phone number (beyond what\'s public)</li><li>Your DMs (unless absolutely necessary and you trust the tool)</li></ul><h2>How digital-footprint-health Protects You</h2><p>Our tool processes your data entirely on your device. We never upload your tweets to our servers. Your archive stays on your machine throughout the entire process.</p><p>This means:<br>- No one else can see your tweets<br>- No data is stored on our servers<br>- You maintain full control at all times</p><h2>The Bottom Line</h2><p>Before using any tweet deletion tool, ask: what data do they need? If the answer includes anything beyond reading and deleting tweets, be very careful. Your digital history is yours — protect it.</p>',
+    content: '<p>当你使用推文删除工具时，你本质上是在给陌生人访问你个人历史的权限。了解他们能看到什么——以及他们永远不应该看到什么——对于保护你的隐私至关重要。</p><h2>推文工具可以访问的内容</h2><h3>公开推文</h3><p>所有连接到你的 X 账户的工具都可以读取你的公开推文。包括：推文内容、时间戳、互动数据（点赞、转推）和媒体附件。</p><h3>私信</h3><p>有些工具请求访问私信。这是重大隐私风险——你的私人对话可能被读取、存储或泄露。</p><h3>个人资料信息</h3><p>你的个人简介、位置、关注者数量和账户创建日期对所有已连接的应用都可见。</p><h3>列表成员资格</h3><p>工具可能能够看到你加入了哪些 Twitter 列表。</p><h2>他们永远不应该访问的内容</h2><ul><li>你的密码（你绝不应在第三方工具中输入）</li><li>你的双因素认证代码</li><li>你的邮箱或手机号（超出公开信息范围）</li><li>你的私信（除非绝对必要且你信任该工具）</li></ul><h2>digital-footprint-health 如何保护你</h2><p>我们的工具完全在你的设备上处理数据。我们永远不会将你的推文上传到我们的服务器。你的归档文件在整个过程中都留在你的机器上。</p><p>这意味着：<br>- 没有人能看到你的推文<br>- 没有数据存储在我們的服务器上<br>- 你始终拥有完全控制权</p><h2>结论</h2><p>在使用任何推文删除工具之前，问自己：他们需要哪些数据？如果答案超出读取和删除推文的范围，请非常小心。你的数字历史是你的——保护它。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
+  },
 ];
 
 

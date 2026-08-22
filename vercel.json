@@ -8,56 +8,56 @@
       ]
     },
     {
-      "source": "/blog(/:path*)?",
+      "source": "/blog/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/about(/:path*)?",
+      "source": "/about/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/pricing(/:path*)?",
+      "source": "/pricing/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/faq(/:path*)?",
+      "source": "/faq/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/contact(/:path*)?",
+      "source": "/contact/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/privacy(/:path*)?",
+      "source": "/privacy/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/terms(/:path*)?",
+      "source": "/terms/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }
       ]
     },
     {
-      "source": "/en(/:path*)?",
+      "source": "/en/:path*",
       "headers": [
         { "key": "Cache-Control", "value": "public, s-maxage=3600, stale-while-revalidate=86400" },
         { "key": "Vary", "value": "x-locale" }

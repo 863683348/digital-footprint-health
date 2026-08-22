@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import type { Lang } from '@/lib/i18n';
-
-async function resolveLocale(): Promise<Lang> {
-  const h = await headers();
-  return h.get('x-locale') === 'en' ? 'en' : 'zh';
-}
 
 const CONTENT: Record<Lang, { title: string; items: { q: string; a: string }[] }> = {
   zh: {
@@ -59,7 +53,7 @@ const CONTENT: Record<Lang, { title: string; items: { q: string; a: string }[] }
       },
       {
         q: 'Can deleted tweets be recovered?',
-        a: 'No. Once a tweet is deleted via X\'s official API, it cannot be restored. We strongly recommend using the dry-run mode (free) first to validate the flow.',
+        a: 'No. Once a tweet is deleted via X\'s official API, it cannot be recovered. We strongly recommend using the dry-run mode (free) first to validate the flow.',
       },
       {
         q: 'What is dry-run mode?',
@@ -77,20 +71,28 @@ const CONTENT: Record<Lang, { title: string; items: { q: string; a: string }[] }
   },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await resolveLocale();
-  return {
-    title: `${CONTENT[locale].title} | Digital Footprint Health`,
+const METADATA: Record<Lang, Metadata> = {
+  zh: {
+    title: '常见问题 | 数字足迹体检报告',
+    description: '数字足迹体检报告常见问题 — 归档安全、删除计费、退款政策等。',
+  },
+  en: {
+    title: 'FAQ | Digital Footprint Health',
     description:
-      locale === 'en'
-        ? 'Frequently asked questions about Digital Footprint Health — archive safety, deletion pricing, refunds, and more.'
-        : '数字足迹体检报告常见问题 — 归档安全、删除计费、退款政策等。',
-  };
+      'Frequently asked questions about Digital Footprint Health — archive safety, deletion pricing, refunds, and more.',
+  },
+};
+
+/**
+ * Static bilingual page: /faq = zh, /en/faq (catch-all with lang="en") = en.
+ * No request-scoped APIs — pre-rendered at build time, served from CDN.
+ */
+export function generateMetadata(): Metadata {
+  return METADATA.zh;
 }
 
-export default async function FaqPage() {
-  const locale = await resolveLocale();
-  const content = CONTENT[locale];
+export default function FaqPage({ lang = 'zh' }: { lang?: Lang }) {
+  const content = CONTENT[lang];
 
   return (
     <div className="max-w-[720px] mx-auto space-y-6">

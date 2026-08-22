@@ -1,23 +1,22 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { headers } from 'next/headers';
 import Script from 'next/script';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
 import { I18nProvider } from '@/components/I18nProvider';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { SITE_URL } from '@/lib/site';
-import type { Lang } from '@/lib/i18n';
 
-// Resolve the active language from the request. middleware.ts rewrites /en →
-// / and forwards x-locale: en; the root layout reads it to set <html lang> and
-// to seed I18nProvider. Without this the /en homepage would SSR Chinese — after
-// a rewrite, usePathname() returns the internal target path ("/") during server
-// rendering, not the public "/en" URL.
-async function resolveLocale(): Promise<Lang> {
-  const h = await headers();
-  return h.get('x-locale') === 'en' ? 'en' : 'zh';
-}
+// Fully static shell: /en is a real route segment (app/en/...), so the client
+// I18nProvider derives the language from usePathname() — even during SSR the
+// first HTML matches the URL language. No request-scoped dynamic APIs here, so
+// the whole tree (except session-driven /account) renders at build time and is
+// served from Vercel's CDN (X-Vercel-Cache: HIT) — this is what eliminates the
+// per-visit origin FOT this project was bleeding.
+//
+// Note: <html lang> below is the static default; I18nProvider syncs
+// document.documentElement.lang on hydration. Search engines read the content
+// language, which is already correct per route.
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -65,10 +64,9 @@ export const metadata: Metadata = {
 // Set the theme class before paint to avoid a flash of the wrong theme.
 const themeScript = `(function(){try{var t=localStorage.getItem('dfh.theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`;
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const locale = await resolveLocale();
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={locale === 'en' ? 'en' : 'zh-CN'}>
+    <html lang="zh-CN">
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Script
@@ -84,7 +82,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       </head>
       <body>
         <ThemeProvider>
-          <I18nProvider initialLang={locale}>
+          <I18nProvider>
             <NavBar />
             <main className="min-h-[70vh] max-w-[1040px] mx-auto px-4 py-6 sm:py-8">{children}</main>
             <Footer />

@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { allPosts } from '@/content/posts';
 import { SITE_URL } from '@/lib/site';
 import type { Lang } from '@/lib/i18n';
@@ -7,6 +6,8 @@ import { BlogList } from './blog-list';
 
 const PAGE_URL = `${SITE_URL}/blog`;
 
+// Static bilingual blog index: /blog = zh, /en/blog (catch-all) = en.
+// No request-scoped APIs — pre-rendered at build time, served from CDN.
 export const metadata: Metadata = {
   title: 'Blog',
   description:
@@ -27,18 +28,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogPage() {
-  const h = await headers();
-  const locale: Lang = h.get('x-locale') === 'en' ? 'en' : 'zh';
+export default function BlogPage({ lang = 'zh' }: { lang?: Lang }) {
   const posts = [...allPosts].sort((a, b) => b.date.localeCompare(a.date));
 
   // Structured data so search engines can treat /blog as a real index page.
-  // /en/blog arrives here via a middleware rewrite carrying x-locale: en.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    name: locale === 'en' ? 'Blog' : '博客',
-    inLanguage: locale === 'en' ? 'en' : 'zh-CN',
+    name: lang === 'en' ? 'Blog' : '博客',
+    inLanguage: lang === 'en' ? 'en' : 'zh-CN',
     url: PAGE_URL,
     mainEntity: {
       '@type': 'ItemList',
@@ -46,7 +44,7 @@ export default async function BlogPage() {
         '@type': 'ListItem',
         position: i + 1,
         url: `${SITE_URL}/blog/${p.slug}`,
-        name: locale === 'en' ? (p.titleEn || p.title) : p.title,
+        name: lang === 'en' ? (p.titleEn || p.title) : p.title,
       })),
     },
   };

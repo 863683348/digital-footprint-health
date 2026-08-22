@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import type { Lang } from '@/lib/i18n';
-
-async function resolveLocale(): Promise<Lang> {
-  const h = await headers();
-  return h.get('x-locale') === 'en' ? 'en' : 'zh';
-}
 
 const CONTENT: Record<Lang, { title: string; paragraphs: string[]; contact: { label: string; value: string; href: string }[] }> = {
   zh: {
@@ -31,20 +25,28 @@ const CONTENT: Record<Lang, { title: string; paragraphs: string[]; contact: { la
   },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await resolveLocale();
-  return {
-    title: `${CONTENT[locale].title} | Digital Footprint Health`,
+const METADATA: Record<Lang, Metadata> = {
+  zh: {
+    title: '联系我们 | 数字足迹体检报告',
+    description: '联系我们 — 如有问题、建议或反馈，欢迎通过以下方式联系。',
+  },
+  en: {
+    title: 'Contact | Digital Footprint Health',
     description:
-      locale === 'en'
-        ? 'Contact Digital Footprint Health — reach us for support, questions, or feedback.'
-        : '联系我们 — 如有问题、建议或反馈，欢迎通过以下方式联系。',
-  };
+      'Contact Digital Footprint Health — reach us for support, questions, or feedback.',
+  },
+};
+
+/**
+ * Static bilingual page: /contact = zh, /en/contact (catch-all) = en.
+ * No request-scoped APIs — pre-rendered at build time, served from CDN.
+ */
+export function generateMetadata(): Metadata {
+  return METADATA.zh;
 }
 
-export default async function ContactPage() {
-  const locale = await resolveLocale();
-  const content = CONTENT[locale];
+export default function ContactPage({ lang = 'zh' }: { lang?: Lang }) {
+  const content = CONTENT[lang];
 
   return (
     <div className="max-w-[720px] mx-auto space-y-6">

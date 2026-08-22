@@ -1,17 +1,9 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import type { Lang } from '@/lib/i18n';
 
-// /en/terms is served through a middleware rewrite (with x-locale: en), so the
-// page resolves the language from the request header. Reading headers() makes
-// this route render dynamically per request — the correct trade-off for
-// serving a per-language legal page.
-async function resolveLocale(): Promise<Lang> {
-  const h = await headers();
-  return h.get('x-locale') === 'en' ? 'en' : 'zh';
-}
-
+// Static bilingual legal page: /terms = zh, /en/terms (catch-all) = en.
+// No request-scoped APIs — pre-rendered at build time, served from CDN.
 interface TermsSection {
   heading: string;
   paragraphs?: string[];
@@ -157,14 +149,12 @@ const METADATA: Record<Lang, Metadata> = {
   },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await resolveLocale();
-  return METADATA[locale];
+export function generateMetadata(): Metadata {
+  return METADATA.zh;
 }
 
-export default async function TermsPage() {
-  const locale = await resolveLocale();
-  const content = CONTENT[locale];
+export default function TermsPage({ lang = 'zh' }: { lang?: Lang }) {
+  const content = CONTENT[lang];
 
   return (
     <div className="max-w-[720px] mx-auto space-y-6">

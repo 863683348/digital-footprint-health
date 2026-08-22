@@ -22,17 +22,15 @@ function langFromRoute(pathname: string): Lang {
  * Language is bound to the route: /en* → en, anything else → zh.
  * - NavBar's 中/EN clicks call setLang() (persists preference) AND navigate,
  *   so route + state stay in sync.
- * - initialLang is resolved server-side (x-locale from middleware) so the SSR
- *   HTML matches the URL language. This matters for rewritten routes: during
- *   SSR usePathname() returns the internal target (e.g. "/") rather than the
- *   public "/en", so the route alone would render Chinese.
- * - After hydration the route becomes authoritative (prevRoute sync below);
- *   localStorage only seeds the very first render as a fallback for first-time
- *   visitors on non-/en routes.
+ * - /en is a real route segment (no middleware rewrite), so usePathname()
+ *   returns the public path even during SSR — the route alone is enough to
+ *   render the correct language in the first HTML response.
+ * - localStorage only seeds first-time visitors on non-/en routes as a
+ *   fallback (effect below).
  */
 interface I18nProviderProps {
-  /** Language resolved by the server (x-locale from middleware). */
-  initialLang: Lang;
+  /** Kept for compatibility; the route is authoritative. */
+  initialLang?: Lang;
   children: React.ReactNode;
 }
 
@@ -40,9 +38,9 @@ export function I18nProvider({ initialLang, children }: I18nProviderProps) {
   const pathname = usePathname();
   const routeLang = langFromRoute(pathname);
 
-  // Seed from the server-injected locale so SSR output is correct; the route
-  // takes over on hydration / navigation (see prevRoute sync below).
-  const [lang, setLangState] = useState<Lang>(initialLang);
+  // Seed directly from the route. Because /en is a real segment, the SSR
+  // HTML already matches the URL language (no server-side locale needed).
+  const [lang, setLangState] = useState<Lang>(routeLang);
 
   // Adjust state during render when the route changes (no effect cascade).
   const [prevRoute, setPrevRoute] = useState<Lang>(routeLang);

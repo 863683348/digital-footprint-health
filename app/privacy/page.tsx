@@ -1,12 +1,6 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Breadcrumb } from '@/components/Breadcrumb';
 import type { Lang } from '@/lib/i18n';
-
-async function resolveLocale(): Promise<Lang> {
-  const h = await headers();
-  return h.get('x-locale') === 'en' ? 'en' : 'zh';
-}
 
 const CONTENT: Record<Lang, { title: string; sections: { heading: string; paragraphs?: string[]; list?: string[] }[] }> = {
   zh: {
@@ -115,20 +109,28 @@ const CONTENT: Record<Lang, { title: string; sections: { heading: string; paragr
   },
 };
 
-export async function generateMetadata(): Promise<Metadata> {
-  const locale = await resolveLocale();
-  return {
-    title: `${CONTENT[locale].title} | Digital Footprint Health`,
+const METADATA: Record<Lang, Metadata> = {
+  zh: {
+    title: '隐私政策 | 数字足迹体检报告',
+    description: '数字足迹体检报告隐私政策 — 关于归档文件、订单数据和 Cookie 的处理方式。',
+  },
+  en: {
+    title: 'Privacy Policy | Digital Footprint Health',
     description:
-      locale === 'en'
-        ? 'Privacy Policy for Digital Footprint Health — how we handle your archive files, order data, and cookies.'
-        : '数字足迹体检报告隐私政策 — 关于归档文件、订单数据和 Cookie 的处理方式。',
-  };
+      'Privacy Policy for Digital Footprint Health — how we handle your archive files, order data, and cookies.',
+  },
+};
+
+/**
+ * Static bilingual page: /privacy = zh, /en/privacy (catch-all) = en.
+ * No request-scoped APIs — pre-rendered at build time, served from CDN.
+ */
+export function generateMetadata(): Metadata {
+  return METADATA.zh;
 }
 
-export default async function PrivacyPage() {
-  const locale = await resolveLocale();
-  const content = CONTENT[locale];
+export default function PrivacyPage({ lang = 'zh' }: { lang?: Lang }) {
+  const content = CONTENT[lang];
 
   return (
     <div className="max-w-[720px] mx-auto space-y-6">

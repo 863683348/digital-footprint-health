@@ -63,48 +63,24 @@ function memLimit(ip: string): { success: boolean; remaining: number; reset: num
 }
 
 export async function middleware(req: NextRequest) {
-  const { pathname, search } = req.nextUrl;
+  const { pathname } = req.nextUrl;
 
-  // ---- Locale routing: /en → /, /en/:path* → /:path* ----
-  // The client router keeps the /en URL in the address bar (usePathname returns
-  // /en/...), so I18nProvider renders English, while the app serves the shared
-  // route below. We forward the locale to server components via x-locale so
-  // generateMetadata / server-rendered pages (terms, blog) can switch language.
-  if (pathname.startsWith('/en') && !pathname.startsWith('/en/api')) {
-    const target = pathname === '/en' ? '/' : pathname.slice(3) || '/';
-    const targetUrl = new URL(target, req.url);
-    targetUrl.search = search; // preserve ?archiveId=... etc.
-    const requestHeaders = new Headers(req.headers);
-    requestHeaders.set('x-locale', 'en');
-    return NextResponse.rewrite(targetUrl, {
-      request: { headers: requestHeaders },
-    });
-  }
+  // NOTE: the /en locale rewrite is GONE. /en is now a real route segment
+  // (app/en/[[...path]]), so the client I18nProvider derives the language
+  // from usePathname() even during SSR. No x-locale header, no headers()
+  // server-side reads, no request-scoped rendering — marketing/blog pages are
+  // static and served from Vercel's CDN (this is the FOT fix).
 
-  // ---- CDN cache for dynamic SSR pages ----
-  // Pages render dynamically (x-locale headers()), but content only changes on
-  // deploy. Cache at the edge per locale for 1h (SWR 1d) so repeated crawls and
-  // visits hit the CDN instead of re-rendering (origin FOT). API/upload paths
-  // must stay uncached.
-  const isCacheable =
-    pathname === '/' ||
-    pathname.startsWith('/blog') ||
-    pathname.startsWith('/about') ||
-    pathname.startsWith('/pricing') ||
-    pathname.startsWith('/faq') ||
-    pathname.startsWith('/contact') ||
-    pathname.startsWith('/privacy') ||
-    pathname.startsWith('/terms') ||
-    pathname.startsWith('/account') ||
-    pathname.startsWith('/en');
-
-  if (isCacheable && !pathname.startsWith('/en/api')) {
+  // CDN cache for the one remaining dynamic page (/account reads the session
+  // cookie). Everything else is static. Keep it private-ish: short s-maxage so
+  // logged-in sessions aren't served stale HTML to others.
+  if (pathname === '/account' || pathname === '/en/account') {
     const res = NextResponse.next();
-    res.headers.set('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    res.headers.set('Vary', 'x-locale');
+    res.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=3600');
     return res;
   }
 
+  // Only the upload endpoint needs rate limiting.
   if (pathname !== '/api/archives/upload') {
     return NextResponse.next();
   }
@@ -144,5 +120,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/api/archives/upload', '/en', '/en/:path*'],
+  matcher: ['/api/archives/upload', '/account', '/en/account'],
 };

@@ -86,12 +86,49 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: EnPathParams): Promise<Metadata> {
   const { path = [] } = await params;
   const route = path.join('/');
+
+  // Per-post metadata for English blog articles. Without this branch every
+  // /en/blog/<slug> fell back to the bare site name, producing the broken
+  // title "Digital Footprint Health | Digital Footprint Health" plus a generic
+  // homepage description and a canonical that dropped the /en prefix — the
+  // direct cause of "impressions without clicks" in GSC.
+  if (route.startsWith('blog/')) {
+    const slug = route.slice('blog/'.length);
+    const post = allPosts.find((p) => p.slug === slug);
+    if (post) {
+      const title = post.titleEn ?? post.title;
+      const description = post.excerptEn ?? post.excerpt;
+      const url = `/en/blog/${slug}`;
+      return {
+        title,
+        description,
+        alternates: { canonical: url },
+        openGraph: {
+          type: 'article',
+          url,
+          title,
+          description,
+          publishedTime: post.date,
+          modifiedTime: post.updatedAt,
+          authors: [post.author],
+        },
+        twitter: {
+          card: 'summary_large_image',
+          title,
+          description,
+        },
+      };
+    }
+  }
+
   const title = ROUTE_TITLES[route] ?? 'Digital Footprint Health';
   return {
     title,
     description:
       'Free on-device digital footprint check for X/Twitter. Upload your archive, get a 0-100 privacy health score, and find risky tweets — then delete them in batches.',
-    alternates: { canonical: route === '' ? '/' : `/${route}` },
+    // Self-canonicalize every /en route with its real /en prefix (the old
+    // `/${route}` dropped /en and pointed EN pages at their ZH equivalents).
+    alternates: { canonical: route === '' ? '/' : `/en/${route}` },
   };
 }
 

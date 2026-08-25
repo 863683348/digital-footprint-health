@@ -171,7 +171,7 @@ export const allPosts: BlogPost[] = [
   },
   {
     slug: 'how-to-delete-old-tweets-2026',
-    title: '如何删除 X (Twitter) 上的旧推文 — 2026 完整指南',
+    title: '如何删除 X (Twitter) 上的旧推文 — 2026 完整指南（含免费工具）',
     excerpt:
       '想知道如何批量删除 X/Twitter 上那些陈年旧推文吗？本文详解 5 种方法，从手动删除到本地归档解析，帮你找到最安全高效的方案。',
     date: '2026-07-27',

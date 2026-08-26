@@ -3725,6 +3725,302 @@ export const allPosts: BlogPost[] = [
 ];
 
 
+  {
+    slug: 'gdpr-data-portability-twitter-archive',
+    title: 'GDPR 数据可携带权：如何导出你的 Twitter 数据',
+    excerpt: 'GDPR 赋予你接收个人数据副本并转移到其他服务的权利。对于 Twitter 用户，这意味着可以下载完整的推文历史、媒体和账户数据。',
+    date: '2026-08-26',
+    updatedAt: '2026-08-26',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['GDPR', '数据可携带权', 'Twitter', '归档下载'],
+    canonical: '/blog/gdpr-data-portability-twitter-archive',
+    titleEn: 'GDPR Data Portability: How to Export Your Twitter Data',
+    excerptEn: 'The GDPR gives you the legal right to receive a copy of your personal data and transfer it. For Twitter users, this means downloading your complete tweet history, media, and account data.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['GDPR', 'data portability', 'Twitter', 'archive export'],
+    content: `
+<p>GDPR 的数据可携带权（第 20 条）赋予你接收个人数据副本并转移到其他服务的法定权利。对于 Twitter 用户来说，这意味着你可以下载完整的推文历史、媒体和账户数据。</p>
+
+<h2>如何导出 Twitter 归档</h2>
+<ol>
+  <li>进入「设置和隐私」>「你的账户」>「下载你的数据归档」</li>
+  <li>请求归档（需要 24-48 小时）</li>
+  <li>完成后下载 ZIP 文件</li>
+  <li>删除前审查数据中的隐私风险</li>
+</ol>
+<p>你的归档包括：推文、私信、关注账户、关注者、媒体文件和账户设置。这是你的数据——你有权访问、下载和删除它。</p>
+
+<h2>FAQ</h2>
+<h3>Twitter 数据归档包含哪些内容？</h3>
+<p>包括所有推文、私信、关注/粉丝列表、媒体文件、账户设置和登录历史。</p>
+<h3>归档需要多长时间生成？</h3>
+<p>通常需要 24-48 小时，取决于你的数据量。</p>
+<h3>归档数据安全吗？</h3>
+<p>归档文件包含你的全部 Twitter 历史，建议在安全设备上下载和解压，避免公共电脑。</p>
+`,
+    contentEn: `
+<p>The GDPR's Data Portability right (Article 20) gives you the legal right to receive a copy of your personal data and transfer it to another service. For Twitter users, this means you can download your entire tweet history, media, and account data.</p>
+
+<h2>How to Export Your Twitter Archive</h2>
+<ol>
+  <li>Go to Settings and Privacy > Your Account > Download an archive of your data</li>
+  <li>Request your archive (takes 24-48 hours)</li>
+  <li>Download the ZIP file when ready</li>
+  <li>Review your data for privacy risks before deletion</li>
+</ol>
+<p>Your archive includes: tweets, direct messages, followed accounts, followers, media files, and account settings. This is your data — you have the right to access, download, and delete it.</p>
+
+<h2>FAQ</h2>
+<h3>What does the Twitter archive include?</h3>
+<p>Everything: all tweets, DMs, follow/follower lists, media files, account settings, and login history.</p>
+<h3>How long does it take to generate?</h3>
+<p>Usually 24-48 hours, depending on your data volume.</p>
+<h3>Is the archive secure?</h3>
+<p>The archive contains your entire Twitter history. Download and extract it on a secure device, avoid public computers.</p>
+`,
+  },
+  {
+    slug: 'ccpa-global-privacy-laws',
+    title: 'CCPA 与全球隐私法：你的权利是什么',
+    excerpt: '加州消费者隐私法（CCPA）是最全面的美隐私法律之一。它赋予加州居民对其个人数据的特定权利：知情权、删除权、选择退出权和非歧视权。',
+    date: '2026-08-26',
+    updatedAt: '2026-08-26',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['CCPA', '全球隐私法', '数据权利', 'GDPR'],
+    canonical: '/blog/ccpa-global-privacy-laws',
+    titleEn: 'CCPA & Global Privacy Laws: What Are Your Rights',
+    excerptEn: 'The California Consumer Privacy Act (CCPA) is one of the most comprehensive US privacy laws, giving California residents specific rights over their personal data.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['CCPA', 'global privacy laws', 'data rights', 'GDPR'],
+    content: `
+<p>加州消费者隐私法（CCPA）是最全面的美隐私法律之一。它赋予加州居民对其个人数据的特定权利：</p>
+
+<h2>CCPA 关键权利</h2>
+<ul>
+  <li><strong>知情权</strong>：请求公司披露收集的有关你的个人信息</li>
+  <li><strong>删除权</strong>：请求删除你的个人数据</li>
+  <li><strong>选择退出权</strong>：告知公司不要出售你的个人信息</li>
+  <li><strong>非歧视权</strong>：行使隐私权不会受到惩罚</li>
+</ul>
+
+<h2>全球隐私法规对比</h2>
+<table>
+  <tr><th>法律</th><th>地区</th><th>关键特征</th></tr>
+  <tr><td>GDPR</td><td>欧盟</td><td>最广泛保护，需要明确同意</td></tr>
+  <tr><td>CCPA</td><td>加州，美国</td><td>有权选择退出数据销售</td></tr>
+  <tr><td>LGPD</td><td>巴西</td><td>类似 GDPR，聚焦拉丁美洲</td></tr>
+  <tr><td>PIPL</td><td>中国</td><td>严格的数据本地化要求</td></tr>
+</table>
+`,
+    contentEn: `
+<p>The California Consumer Privacy Act (CCPA) is one of the most comprehensive US privacy laws. It gives California residents specific rights over their personal data.</p>
+
+<h2>Key CCPA Rights</h2>
+<ul>
+  <li><strong>Right to Know</strong>: Request what personal information companies collect about you</li>
+  <li><strong>Right to Delete</strong>: Request deletion of your personal data</li>
+  <li><strong>Right to Opt-Out</strong>: Tell companies not to sell your personal information</li>
+  <li><strong>Right to Non-Discrimination</strong>: You won't be penalized for exercising your privacy rights</li>
+</ul>
+
+<h2>Global Privacy Laws Comparison</h2>
+<table>
+  <tr><th>Law</th><th>Region</th><th>Key Feature</th></tr>
+  <tr><td>GDPR</td><td>EU</td><td>Broadest protection, explicit consent required</td></tr>
+  <tr><td>CCPA</td><td>California, US</td><td>Right to opt-out of data sales</td></tr>
+  <tr><td>LGPD</td><td>Brazil</td><td>Similar to GDPR, Latin America focus</td></tr>
+  <tr><td>PIPL</td><td>China</td><td>Strict data localization requirements</td></tr>
+</table>
+`,
+  },
+  {
+    slug: 'local-vs-cloud-processing',
+    title: '本机处理 vs 云端处理：隐私保护的关键选择',
+    excerpt: '你的数据在哪里处理决定了谁能看到它。这是本机处理和云端处理之间的根本区别。',
+    date: '2026-08-26',
+    updatedAt: '2026-08-26',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['本机处理', '云端处理', '隐私保护', '数据安全'],
+    canonical: '/blog/local-vs-cloud-processing',
+    titleEn: 'On-Device vs Cloud Processing: The Key Privacy Choice',
+    excerptEn: 'Where your data is processed determines who can see it. This is the fundamental difference between on-device and cloud processing.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['on-device processing', 'cloud processing', 'privacy', 'data security'],
+    content: `
+<p>你的数据在哪里处理决定了谁能看到它。这是本机处理和云端处理之间的根本区别。</p>
+
+<h2>本机处理（我们做的）</h2>
+<ul>
+  <li>你的数据永远不会离开你的设备</li>
+  <li>处理在你的电脑上本地完成</li>
+  <li>没有第三方可以访问你的推文或归档</li>
+  <li>小数据集更快（无需上传/下载）</li>
+  <li>设计上更私密</li>
+</ul>
+
+<h2>云端处理（其他人做的）</h2>
+<ul>
+  <li>你的数据被上传到他们的服务器</li>
+  <li>他们处理后删除（理论上）</li>
+  <li>处理过程中他们<em>可能</em>看到你的数据</li>
+  <li>需要信任他们的安全措施</li>
+  <li>大数据集更慢（上传时间）</li>
+</ul>
+
+<h2>隐私权衡</h2>
+<p>云端处理方便但产生了信任依赖。本机处理需要更多的技术知识，但消除了信任差距。如果隐私是你的首要考虑，始终选择本机处理。</p>
+`,
+    contentEn: `
+<p>Where your data is processed determines who can see it. This is the fundamental difference between on-device and cloud processing.</p>
+
+<h2>On-Device Processing (What We Do)</h2>
+<ul>
+  <li>Your data never leaves your device</li>
+  <li>Processing happens locally on your computer</li>
+  <li>No third party can access your tweets or archive</li>
+  <li>Faster for small datasets (no upload/download)</li>
+  <li>More private by design</li>
+</ul>
+
+<h2>Cloud Processing (What Others Do)</h2>
+<ul>
+  <li>Your data is uploaded to their servers</li>
+  <li>They process it and delete it (theoretically)</li>
+  <li>They <em>could</em> see your data during processing</li>
+  <li>Requires trusting their security measures</li>
+  <li>Slower for large datasets (upload time)</li>
+</ul>
+
+<h2>The Privacy Trade-off</h2>
+<p>Cloud processing is convenient but creates a trust dependency. On-device processing requires more technical knowledge but eliminates the trust gap. If privacy is your priority, always choose on-device processing.</p>
+`,
+  },
+  {
+    slug: 'local-encryption-keys',
+    title: '密钥留在本机：端到端加密的重要性',
+    excerpt: '加密的强度取决于你的密钥管理。当加密密钥存储在你的设备上而不是服务器上时，你对数据保持真正的控制。',
+    date: '2026-08-26',
+    updatedAt: '2026-08-26',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['本地加密', '端到端加密', '密钥管理', '数据安全'],
+    canonical: '/blog/local-encryption-keys',
+    titleEn: 'Keys Stay Local: The Importance of End-to-End Encryption',
+    excerptEn: 'Encryption is only as strong as your key management. When encryption keys are stored on your device rather than on a server, you maintain true control over your data.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['local encryption', 'end-to-end encryption', 'key management', 'data security'],
+    content: `
+<p>加密的强度取决于你的密钥管理。当加密密钥存储在你的设备上而不是服务器上时，你对数据保持真正的控制。</p>
+
+<h2>为什么本地密钥很重要</h2>
+<ol>
+  <li><strong>无服务器泄露</strong>：即使服务被入侵，你的数据仍然加密</li>
+  <li><strong>无密钥提取</strong>：攻击者无法在没有物理访问的情况下从你的设备提取密钥</li>
+  <li><strong>真正的所有权</strong>：你控制加密和解密，而不是第三方</li>
+  <li><strong>法律保护</strong>：执法部门无法强迫你交出你没有的密钥</li>
+</ol>
+
+<h2>digital-footprint-health 如何使用本地密钥</h2>
+<ul>
+  <li>你的加密密钥在你的设备上生成</li>
+  <li>密钥永远不会离开你的电脑</li>
+  <li>即使我们想，也无法解密你的数据</li>
+  <li>你可以验证加密是否正常工作</li>
+</ul>
+
+<h2>云存储密钥的风险</h2>
+<p>当密钥存储在云端时，你正在将"王国的钥匙"信任给服务提供商。如果他们被入侵，无论加密质量如何，你的数据都会暴露。</p>
+`,
+    contentEn: `
+<p>Encryption is only as strong as your key management. When encryption keys are stored on your device rather than on a server, you maintain true control over your data.</p>
+
+<h2>Why Local Keys Matter</h2>
+<ol>
+  <li><strong>No server compromise</strong>: Even if the service is hacked, your data stays encrypted</li>
+  <li><strong>No key extraction</strong>: Attackers can't extract keys from your device without physical access</li>
+  <li><strong>True ownership</strong>: You control encryption and decryption, not a third party</li>
+  <li><strong>Legal protection</strong>: Law enforcement can't compel you to hand over keys you don't have</li>
+</ol>
+
+<h2>How digital-footprint-health Uses Local Keys</h2>
+<ul>
+  <li>Your encryption key is generated on your device</li>
+  <li>The key never leaves your computer</li>
+  <li>We can't decrypt your data even if we wanted to</li>
+  <li>You can verify encryption is working correctly</li>
+</ul>
+
+<h2>The Risk of Cloud-Stored Keys</h2>
+<p>When keys are stored in the cloud, you're trusting the service provider with the "keys to your kingdom." If they're compromised, your data is exposed regardless of encryption quality.</p>
+`,
+  },
+  {
+    slug: 'read-vs-write-api',
+    title: '只读 vs 写入 API：为什么报告免费但删除收费',
+    excerpt: '了解 API 权限解释了为什么我们提供免费隐私报告但删除服务收费。这不是任意定价——它基于 API 访问的技术和法律现实。',
+    date: '2026-08-26',
+    updatedAt: '2026-08-26',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['Twitter API', '只读 API', '写入 API', 'API 权限'],
+    canonical: '/blog/read-vs-write-api',
+    titleEn: 'Read vs Write: Why Reports Are Free But Deletion Costs',
+    excerptEn: 'Understanding API permissions explains why we offer free privacy reports but charge for deletion services. It\'s not arbitrary pricing — it\'s based on the technical and legal realities of API access.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['Twitter API', 'read API', 'write API', 'API permissions'],
+    content: `
+<p>了解 API 权限解释了为什么我们提供免费隐私报告但删除服务收费。这不是任意定价——它基于 API 访问的技术和法律现实。</p>
+
+<h2>只读 API（免费报告）</h2>
+<ul>
+  <li>读取你的推文归档数据</li>
+  <li>不修改你的账户</li>
+  <li>对 Twitter 基础设施风险低</li>
+  <li>可以在你的设备上本地完成</li>
+  <li>免费提供因为我们没有额外成本</li>
+</ul>
+
+<h2>写入 API（付费删除）</h2>
+<ul>
+  <li>修改你的账户（删除推文）</li>
+  <li>需要身份验证和授权</li>
+  <li>受 Twitter 速率限制（每小时最多 300 次操作）</li>
+  <li>账户被标记或暂停的风险更高</li>
+  <li>我们在 API 费用和基础设施上投入成本</li>
+</ul>
+
+<h2>技术现实</h2>
+<p>Twitter 的 API 有严格的速率限制。以最大速率删除 10,000 条推文需要超过 33 小时。这就是为什么我们使用尊重速率限制的自动化工具，同时确保完全删除。</p>
+`,
+    contentEn: `
+<p>Understanding API permissions explains why we offer free privacy reports but charge for deletion services. It's not arbitrary pricing — it's based on the technical and legal realities of API access.</p>
+
+<h2>Read-Only API (Free Reports)</h2>
+<ul>
+  <li>Reads your tweet archive data</li>
+  <li>No modifications to your account</li>
+  <li>Low risk to Twitter's infrastructure</li>
+  <li>Can be done locally on your device</li>
+  <li>Free to offer because it costs us nothing extra</li>
+</ul>
+
+<h2>Write API (Paid Deletion)</h2>
+<ul>
+  <li>Modifies your account (deletes tweets)</li>
+  <li>Requires authentication and authorization</li>
+  <li>Rate-limited by Twitter (max 300 actions/hour)</li>
+  <li>Higher risk of account flags or suspension</li>
+  <li>Costs us in API fees and infrastructure</li>
+</ul>
+
+<h2>The Technical Reality</h2>
+<p>Twitter's API has strict rate limits. Deleting 10,000 tweets at the maximum rate takes over 33 hours. This is why we use automation tools that respect rate limits while ensuring complete deletion.</p>
+`,
+  },
+
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);
 }

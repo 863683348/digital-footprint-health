@@ -6,6 +6,7 @@ import { parseArchiveString } from '@/lib/parse';
 import { scoreArchive } from '@/lib/scoring';
 import { saveArchive } from '@/lib/store';
 import { useI18n } from '@/components/I18nProvider';
+import { localePath } from '@/lib/locale';
 import { Button, Card, Callout } from '@/components/ui';
 import type { ArchiveData } from '@/lib/types';
 
@@ -13,7 +14,7 @@ const MAX_BYTES = 10 * 1024 * 1024; // 10 MB hard limit (mirrors former server g
 
 export default function UploadPage() {
   const router = useRouter();
-  const { t } = useI18n();
+  const { t, lang } = useI18n();
   const [file, setFile] = useState<File | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -59,7 +60,8 @@ export default function UploadPage() {
       };
       // Hold the archive in the browser; the server keeps no database.
       saveArchive(archive);
-      router.push(`/report/${archiveId}`);
+      // Keep the locale prefix so an EN user lands on the EN report page.
+      router.push(localePath(`/report/${archiveId}`, lang));
     } catch {
       setError(t('upload.error'));
       setBusy(false);

@@ -63,7 +63,25 @@ function memLimit(ip: string): { success: boolean; remaining: number; reset: num
 }
 
 export async function middleware(req: NextRequest) {
-  if (req.nextUrl.pathname !== '/api/archives/upload') {
+  const { pathname } = req.nextUrl;
+
+  // NOTE: the /en locale rewrite is GONE. /en is now a real route segment
+  // (app/en/[[...path]]), so the client I18nProvider derives the language
+  // from usePathname() even during SSR. No x-locale header, no headers()
+  // server-side reads, no request-scoped rendering — marketing/blog pages are
+  // static and served from Vercel's CDN (this is the FOT fix).
+
+  // CDN cache for the one remaining dynamic page (/account reads the session
+  // cookie). Everything else is static. Keep it private-ish: short s-maxage so
+  // logged-in sessions aren't served stale HTML to others.
+  if (pathname === '/account' || pathname === '/en/account') {
+    const res = NextResponse.next();
+    res.headers.set('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=3600');
+    return res;
+  }
+
+  // Only the upload endpoint needs rate limiting.
+  if (pathname !== '/api/archives/upload') {
     return NextResponse.next();
   }
 
@@ -102,5 +120,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/api/archives/upload'],
+  matcher: ['/api/archives/upload', '/account', '/en/account'],
 };

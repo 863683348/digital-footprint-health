@@ -3722,7 +3722,6 @@ export const allPosts: BlogPost[] = [
   { slug: "future-tweet-rules", title: "清理后如何守住：未来推文的 5 条红线", titleEn: "After the Clean: 5 Red Lines for Future Tweets", excerpt: "清理旧推文只是战斗的一半。", excerptEn: "Cleaning up old tweets is only half the battle.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["推文", "隐私保护"], content: "不实时定位、不拍他人可识别照片、不讨论敏感工作、不透露财务信息、不情绪化发布。", contentEn: "No real-time location tagging, no identifiable photos of others, no sensitive work discussions, no financial information, no emotional impulses.", canonical: "https://digital-footprint-health.shop/blog/future-tweet-rules" },
   { slug: "forgotten-tweets", title: "隐私体检能发现\"你忘了的\"那些事", titleEn: "What the Check Finds That You Forgot", excerpt: "最令人惊讶的不是你记得发过的内容——而是你忘记的内容。", excerptEn: "The most surprising thing isn't what you remember posting — it's what you forgot.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["隐私体检", "推文"], content: "用户普遍反映，体检能发现多年前他们完全忘记存在的推文，这些推文往往包含风险信息。", contentEn: "Users consistently report being shocked by tweets from years ago they completely forgot existed.", canonical: "https://digital-footprint-health.shop/blog/forgotten-tweets" },
   { slug: "encrypted-archive", title: "加密落盘是什么？你的归档在你机器上有多安全", titleEn: "Encrypted Storage: How Safe Is Your Archive on Your Machine", excerpt: "你的档案仅在设备上解密。", excerptEn: "Your archive is decrypted only on your device.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "technical", tags: ["加密", "安全"], content: "本地加密确保服务器永远不会看到你的原始推文数据。", contentEn: "Local-only encryption ensures no server ever sees your raw tweet data.", canonical: "https://digital-footprint-health.shop/blog/encrypted-archive" },
-];
 
 
   {
@@ -4296,6 +4295,7 @@ export const allPosts: BlogPost[] = [
 <p>Digital footprints don't disappear. Every tweet and photo you clean up today reduces risk for your future self. Start your digital footprint check today with our free tool.</p>
 `,
   },
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

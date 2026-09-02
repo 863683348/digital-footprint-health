@@ -4295,6 +4295,241 @@ export const allPosts: BlogPost[] = [
 <p>Digital footprints don't disappear. Every tweet and photo you clean up today reduces risk for your future self. Start your digital footprint check today with our free tool.</p>
 `,
   },
+  {
+    "slug": "brand-mascot-accounts-cleaning",
+    "title": "品牌吉祥物账号：如何清理那些\"可爱\"的小号",
+    "excerpt": "品牌吉祥物账号是你的数字化身，也是数字足迹的一部分。三种清理策略帮你决定保留还是删除。",
+    "date": "2026-09-02",
+    "updatedAt": "2026-09-02",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": [
+      "品牌小号清理",
+      "人格化账号",
+      "数字足迹",
+      "账号清理"
+    ],
+    "content": "<p>我们都有它们。那个专门为你最喜欢的乐队设立的 Twitter 账户。那个你在一个月内转发 37 次你崇拜的明星的账户。那个纯粹为了粉丝、幽默或你在 2019 年发现并从未放弃的奇怪爱好而存在的账户。</p>\n<h2>为什么吉祥物账号清理起来很棘手</h2>\n<p>与你的专业 LinkedIn 或严肃的 Twitter 账户不同，吉祥物账号承载着情感重量。你花了数年时间建立那个人设。内部笑话、你找到的社区、创意表达——这一切都感觉很个人化。但问题是：那个账户仍然是你数字历史的一部分。未来的雇主、伴侣或任何 Google 你的人都会看到它。</p>\n<h2>吉祥物账号审计</h2>\n<p>在删除任何东西之前，做一个快速审计：</p>\n<ul>\n<li><strong>给你的最老帖子打分。</strong>这个账户活跃多久了？值得维护吗？</li>\n<li><strong>检查你的粉丝数。</strong>有人通过这个账户真正认识你吗？</li>\n<li><strong>回顾你转发最多的内容。</strong>你今天会支持这些帖子吗？</li>\n<li><strong>考虑最坏情况。</strong>如果未来雇主找到这个账户，会损害你的机会吗？</li>\n</ul>\n<h2>三种清理策略</h2>\n<p><strong>策略 1：存档并放手。</strong>下载你的数据，将账户设为私有或不活跃，然后继续。这保留了你的数字历史，而不公开暴露它。</p>\n<p><strong>策略 2：大扫除。</strong>删除最有问题的帖子，保留无害的，让账户自然消退。适合内容混杂的账户。</p>\n<p><strong>策略 3：核选项。</strong>删除一切并重新开始。最适合那些已成为负债而非资产的账户。</p>\n<h2>放手的心理学</h2>\n<p>清理吉祥物账号感觉比应该的更难，因为心理学家称之为\"禀赋效应\"——我们仅仅因为拥有它们而更高地评估事物。但数字囤积是真实的。每一条旧帖子、每条尴尬的转发都是潜在的声誉风险。</p>\n<h2>何时保留吉祥物账号</h2>\n<p>并非所有吉祥物账号都需要清理。如果你的账号是：一个真正带来快乐的创意出口；内容适合年龄且不会在专业上让你尴尬；你围绕它建立了一个有意义的社区；它与你当前的个人品牌一致——那么可以保留。</p>\n<h2>做出决定</h2>\n<p>问自己：这个账户仍然为我服务，还是为曾经的我服务？如果答案是后者，大扫除可能是你数字未来最健康的选择。</p>",
+    "canonical": "/blog/brand-mascot-accounts-cleaning",
+    "titleEn": "Brand Mascot Accounts: Cleaning the Cute Ones",
+    "excerptEn": "Brand mascot accounts are your digital alter egos — and part of your footprint. Three cleaning strategies help you decide what to keep.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": [
+      "brand account cleanup",
+      "mascot account tweets",
+      "persona accounts",
+      "digital footprint"
+    ],
+    "contentEn": "<p>We all have them. That Twitter account dedicated to your favorite band. The one where you posted 37 retweets of your celebrity crush in a single month. The account that exists purely for fandom, humor, or that weird hobby you discovered in 2019 and never abandoned.</p>\n<h2>Why Mascot Accounts Are Tricky to Clean</h2>\n<p>Unlike your professional LinkedIn or your serious Twitter account, mascot accounts carry emotional weight. You spent years building that persona. The inside jokes, the community you found, the creative expression — it all feels personal. But here's the thing: that account is still part of your digital history. Future employers, partners, or anyone who Googles you will see it.</p>\n<h2>The Mascot Account Audit</h2>\n<p>Before you delete anything, do a quick audit:</p>\n<ul>\n<li><strong>Date your oldest posts.</strong> How long has this account been active? Is it worth maintaining?</li>\n<li><strong>Check your follower count.</strong> Are there people who genuinely know you through this account?</li>\n<li><strong>Review your most-retweeted content.</strong> Would you stand by these posts today?</li>\n<li><strong>Consider the worst-case scenario.</strong> If a future employer found this account, would it hurt your chances?</li>\n</ul>\n<h2>Three Cleaning Strategies</h2>\n<p><strong>Strategy 1: The Archive-and-Let-Go.</strong> Download your data, make the account private or inactive, and move on. This preserves your digital history without exposing it publicly.</p>\n<p><strong>Strategy 2: The Purge.</strong> Delete the most problematic posts, keep the benign ones, and let the account fade naturally. Good for accounts with mixed content.</p>\n<p><strong>Strategy 3: The Nuclear Option.</strong> Delete everything and start fresh. Best for accounts that have become liabilities rather than assets.</p>\n<h2>The Psychology of Letting Go</h2>\n<p>Cleaning up mascot accounts feels harder than it should because of something psychologists call the \"endowment effect.\" We value things more highly simply because we own them. But digital hoarding is real. Every old post, every embarrassing retweet is potential reputational risk.</p>\n<h2>When to Keep a Mascot Account</h2>\n<p>Not all mascot accounts need cleaning. Keep yours if it's a genuine creative outlet that brings you joy, the content is age-appropriate, you've built a meaningful community around it, and it aligns with your current personal brand.</p>\n<h2>Making the Decision</h2>\n<p>Ask yourself: does this account still serve me, or does it serve someone I used to be? If the answer is the latter, a clean sweep might be the healthiest choice for your digital future.</p>",
+    "faq": [
+      {
+        "q": "什么是品牌吉祥物账号？",
+        "a": "指你为某个兴趣、偶像或梗专门开设的账号（如粉丝号、段子号），它们构成你数字足迹中\"非职业\"的一面。",
+        "qEn": "What is a brand mascot account?",
+        "aEn": "A social account you created purely for a fandom, hobby, or joke — a \"digital alter ego\" that is still part of your public footprint."
+      },
+      {
+        "q": "清理吉祥物账号会损害我的职业形象吗？",
+        "a": "恰恰相反。有策略地清理掉不合时宜的内容，能让未来的雇主或合作伙伴看到更一致、更成熟的你。",
+        "qEn": "Will cleaning mascot accounts hurt my professional image?",
+        "aEn": "No — intentional cleanup of out-of-character content presents a more consistent, mature version of you to employers and partners."
+      },
+      {
+        "q": "我该删除还是保留？",
+        "a": "取决于账号内容是否仍然代表你。如果它只是旧习惯和遗憾，归档或删除更健康；如果是真正的创作出口且内容得体，可以保留。",
+        "qEn": "Should I delete or keep them?",
+        "aEn": "It depends on whether the account still represents you. If it is just old habits and regret, archive or delete. If it is a genuine creative outlet with appropriate content, keep it."
+      }
+    ]
+  },
+  {
+    "slug": "creator-interview-12000-tweets",
+    "title": "数字足迹体检访谈：他删掉了 12,437 条推文",
+    "excerpt": "Marcus Chen 用三个月删除了 12,437 条推文。这不是羞愧，而是有意为之。听听他的清理逻辑。",
+    "date": "2026-09-02",
+    "updatedAt": "2026-09-02",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": [
+      "清理访谈",
+      "删除推文",
+      "数字极简",
+      "用户故事"
+    ],
+    "content": "<p>Marcus Chen 在三个月内删除了 12,437 条推文。不是因为羞愧——而是因为他是故意的。</p>\n<h2>决定</h2>\n<p>Marcus 并不是要清理他的整个 Twitter 存在。他从小处开始——删除他早期代表谁不再的推文。但潮水很快转变。\"一个删除导致另一个。在我意识到之前，我正在浏览多年的内容，做出什么保留什么去的选择。\"</p>\n<h2>过程</h2>\n<p>Marcus 使用了 TweetDelete，一个允许批量删除的工具。但他并没有对所有内容点击删除。他是战略性的：</p>\n<ul>\n<li><strong>第一阶段：明显的</strong>——争议内容的转发、与陌生人的争论、来自他\"尖刻\"阶段的帖子。</li>\n<li><strong>第二阶段：深思熟虑的</strong>——不再反映他观点的推文、失效项目的链接、没有目的的个人抱怨。</li>\n<li><strong>第三阶段：微调</strong>——旧促销内容、太长了的线程、噪音多于信号的帖子。</li>\n</ul>\n<h2>结果</h2>\n<p>\"我感到更轻松，\"Marcus 承认。\"不是因为我在隐藏什么，而是因为我不再带着 10 年的数字行李。\"</p>\n<h2>他学到的</h2>\n<p><strong>1. 数字极简主义是情感劳动。</strong>清理推文像清理衣橱，你会意识到积累了多少无意的东西。</p>\n<p><strong>2. 互联网记得，但你可以策展。</strong>你不必删除一切，但你有权利塑造你的数字叙事。</p>\n<p><strong>3. 现在开始永远不晚。</strong>\"最好的开始时间是当时，第二好的时间是现在。\"</p>\n<h2>给考虑清理的人</h2>\n<p>Marcus 建议从小处开始。选择一个类别——旧转发、争论线程、促销帖子——先清理那个。目标不是抹去历史，是确保你的数字存在反映今天的你。</p>",
+    "canonical": "/blog/creator-interview-12000-tweets",
+    "titleEn": "Creator Interview: He Deleted 12,437 Tweets",
+    "excerptEn": "Marcus Chen deleted 12,437 tweets over three months. Not out of shame — out of intention. Here is his cleanup logic.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": [
+      "cleanup interview",
+      "deleted tweets",
+      "digital minimalism",
+      "user story"
+    ],
+    "contentEn": "<p>Marcus Chen deleted 12,437 tweets over three months. Not because he was ashamed — but because he was intentional.</p>\n<h2>The Decision</h2>\n<p>Marcus didn't set out to clean his entire Twitter presence. He started small — deleting tweets from his early days that no longer represented who he was. But the tide turned quickly. \"One deletion led to another. Before I knew it, I was going through years of content, making choices about what stayed and what went.\"</p>\n<h2>The Process</h2>\n<p>Marcus used TweetDelete, a tool that allows bulk deletion. But he didn't just hit delete on everything. He was strategic:</p>\n<ul>\n<li><strong>Phase 1: The Obvious</strong> — retweets of controversial content, arguments with strangers, posts from his \"edgy\" phase.</li>\n<li><strong>Phase 2: The Thoughtful</strong> — tweets that no longer reflected his views, links to defunct projects, purposeless complaints.</li>\n<li><strong>Phase 3: The Fine-tuning</strong> — old promotional content, threads that got too long, posts that were more noise than signal.</li>\n</ul>\n<h2>The Result</h2>\n<p>\"I feel lighter,\" Marcus admits. \"Not because I'm hiding anything, but because I'm not carrying around 10 years of digital baggage.\"</p>\n<h2>What He Learned</h2>\n<p><strong>1. Digital minimalism is emotional labor.</strong> Cleaning tweets feels like cleaning your closet — you realize how much you accumulated without meaning to.</p>\n<p><strong>2. The internet remembers, but you can curate.</strong> You don't have to delete everything. But you have the right to shape your digital narrative.</p>\n<p><strong>3. It's never too late to start.</strong> \"The best time to start was then, the second best is now.\"</p>\n<h2>For Those Considering Cleanup</h2>\n<p>Marcus recommends starting small. Pick one category — old retweets, argument threads, promotional posts — and clean that first. The goal isn't to erase your history. It's to make sure your digital presence reflects who you are today.</p>",
+    "faq": [
+      {
+        "q": "批量删除推文安全吗？",
+        "a": "使用像 TweetDelete 这类成熟工具是安全的，它们只操作你授权范围内的内容。删除前先下载你的数据归档作为备份。",
+        "qEn": "Is bulk-deleting tweets safe?",
+        "aEn": "Using a mature tool like TweetDelete is safe — it only acts on content you authorize. Download your data archive as a backup first."
+      },
+      {
+        "q": "删除后还能恢复吗？",
+        "a": "通常不能。X 只能删除最近约 3,200 条推文，旧的只能通过数据归档访问；一旦删除，帖子基本不可恢复。",
+        "qEn": "Can deleted tweets be recovered?",
+        "aEn": "Usually not. X lets you delete only the most recent ~3,200 tweets; once deleted, posts are essentially unrecoverable."
+      },
+      {
+        "q": "应该从哪里开始清理？",
+        "a": "从一个具体类别开始——比如旧转发、争论线程或促销内容——先清理那一类，建立动力后再扩大范围。",
+        "qEn": "Where should I start cleaning?",
+        "aEn": "Start with one specific category — old retweets, argument threads, or promo posts — clean that first, build momentum, then expand."
+      }
+    ]
+  },
+  {
+    "slug": "data-ethics-footprint-tools",
+    "title": "数字足迹工具的 data ethics：谁来保护你的隐私？",
+    "excerpt": "数字足迹工具承诺隐私，但当它们分析你的数据时，谁来保护你的隐私？看清承诺与现实的差距。",
+    "date": "2026-09-02",
+    "updatedAt": "2026-09-02",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": [
+      "数据伦理",
+      "隐私工具",
+      "工具评测",
+      "数据安全"
+    ],
+    "content": "<p>数字足迹工具承诺隐私。但当他们分析你的数据时，谁来保护你的隐私？</p>\n<h2>承诺与现实</h2>\n<p>工具声称：处理后删除你的数据；从不存储你的信息；使用加密确保安全。但声明不是保证。没有监管，几乎没有问责制。</p>\n<h2>寻找什么</h2>\n<p><strong>透明度：</strong>工具是否清楚解释收集什么数据、如何使用？模糊的隐私政策是危险信号。</p>\n<p><strong>数据保留：</strong>处理后立即删除，还是无限期存储？寻找明确的删除政策。</p>\n<p><strong>加密：</strong>数据在传输和静态时是否加密？</p>\n<p><strong>开源：</strong>你能验证代码吗？开源工具允许独立安全审计。</p>\n<p><strong>不卖数据：</strong>工具从你的数据赚钱，还是从订阅费赚钱？商业模式揭示意图。</p>\n<h2>悖论</h2>\n<p>一些清理工具收集的数据比它们删除的更多。它们扫描你的整个历史，创建详细报告，并可能保留信息用于\"服务改进\"。这创造了一个悖论：旨在保护你隐私的工具本身成为隐私风险。</p>\n<h2>如何保持安全</h2>\n<ul>\n<li>阅读隐私政策，而不只是浏览。</li>\n<li>使用最小权限，清理后撤销访问。</li>\n<li>选择声誉良好的工具。</li>\n<li>敏感账户考虑手动删除。</li>\n<li>发邮件询问公司的数据实践。</li>\n</ul>\n<h2>伦理清理</h2>\n<p>数字清理应遵循与物理清理相同的原则：只拿走你需要的，负责任地使用，不留痕迹。</p>",
+    "canonical": "/blog/data-ethics-footprint-tools",
+    "titleEn": "The Data Ethics of Footprint Tools",
+    "excerptEn": "Digital footprint tools promise privacy. But who protects your privacy while they analyze your data? See the gap between promise and reality.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": [
+      "data ethics",
+      "privacy tools",
+      "tool review",
+      "data security"
+    ],
+    "contentEn": "<p>Digital footprint tools promise privacy. But who protects your privacy while they analyze your data?</p>\n<h2>The Promise vs. The Reality</h2>\n<p>Tools claim to: delete your data after processing; never store your information; use encryption for security. But claims aren't guarantees. Without regulation, there's little accountability.</p>\n<h2>What to Look For</h2>\n<p><strong>Transparency:</strong> Does the tool clearly explain what data they collect and how they use it? Vague privacy policies are red flags.</p>\n<p><strong>Data retention:</strong> Do they delete your data immediately after processing, or store it indefinitely? Look for clear deletion policies.</p>\n<p><strong>Encryption:</strong> Is your data encrypted in transit and at rest?</p>\n<p><strong>Open source:</strong> Can you verify the code? Open-source tools allow independent security audits.</p>\n<p><strong>No data selling:</strong> Does the tool make money from your data, or from subscription fees? The business model reveals intent.</p>\n<h2>The Paradox</h2>\n<p>Some cleanup tools collect more data than they delete. They scan your entire history, create detailed reports, and may retain that information for \"service improvement.\" This creates a paradox: the tool designed to protect your privacy becomes a privacy risk itself.</p>\n<h2>How to Stay Safe</h2>\n<ul>\n<li>Read the privacy policy, not just skim it.</li>\n<li>Use minimal permissions and revoke access after cleanup.</li>\n<li>Choose reputable tools.</li>\n<li>For sensitive accounts, consider manual deletion.</li>\n<li>Email the company and ask about their data practices.</li>\n</ul>\n<h2>The Ethical Cleanup</h2>\n<p>Digital cleanup should follow the same principles as physical cleanup: take only what you need, use it responsibly, and leave no trace behind.</p>",
+    "faq": [
+      {
+        "q": "清理工具会把我数据卖给第三方吗？",
+        "a": "不一定，但你应当查看其商业模式。靠订阅费盈利的工具通常比靠数据变现的更值得信任；直接询问公司并阅读隐私政策是关键。",
+        "qEn": "Will a cleanup tool sell my data to third parties?",
+        "aEn": "Not necessarily, but check the business model. Tools that earn from subscriptions are generally more trustworthy than those monetizing data — ask the company and read the policy."
+      },
+      {
+        "q": "怎么判断一个工具是否真的本地处理？",
+        "a": "打开浏览器 DevTools 的 Network 标签，上传或分析文件时观察是否有任何网络请求发出。真正本地处理的工具应该是零请求。",
+        "qEn": "How do I tell if a tool really processes locally?",
+        "aEn": "Open your browser DevTools Network tab and watch for any network requests while uploading or analyzing files. A truly local tool shows zero requests."
+      },
+      {
+        "q": "开源工具一定更安全吗？",
+        "a": "开源允许独立安全审计，透明度更高，但\"开源\"不等于\"无数据收集\"。仍需结合隐私政策和数据保留政策综合判断。",
+        "qEn": "Are open-source tools always safer?",
+        "aEn": "Open source enables independent audits and is more transparent, but \"open source\" is not the same as \"no data collection.\" Still review the privacy and retention policy."
+      }
+    ]
+  },
+  {
+    "slug": "2027-digital-privacy-trends",
+    "title": "2027 数字隐私趋势：6 个你必须知道的变化",
+    "excerpt": "数字隐私格局正在快速转变。从 AI 监控到数据最小化立法，以下是 2027 年你需要预期的 6 大趋势。",
+    "date": "2026-09-02",
+    "updatedAt": "2026-09-02",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": [
+      "隐私趋势",
+      "2027",
+      "AI 监控",
+      "数据最小化"
+    ],
+    "content": "<p>数字隐私格局正在快速转变。五年前可接受的事情今天越来越多受到质疑。以下是 2027 年的预期。</p>\n<h2>趋势 1：AI 监控走向主流</h2>\n<p>AI 驱动的面部识别和行为追踪正变得无处不在。从零售店到公共空间，算法正在学习识别和预测人类行为。</p>\n<h2>趋势 2：数据最小化成为法律</h2>\n<p>GDPR 的数据最小化原则正在全球传播。2027 年的新法律将要求公司只在需要时收集数据，并在完成后删除它。</p>\n<h2>趋势 3：浏览器隐私战争加剧</h2>\n<p>Mozilla、Apple 和 Google 正在竞争提供最有私密的浏览体验。第三方 cookie 消除、指纹保护将定义 2027 年。</p>\n<h2>趋势 4：数字遗产规划出现</h2>\n<p>随着数字生活扩张，规划死后发生的事情的需求也在扩大。数字遗嘱、数据继承和死后隐私控制正从利基走向主流。</p>\n<h2>趋势 5：隐私优先平台获得关注</h2>\n<p>Signal、ProtonMail 和隐私焦点搜索引擎正在看到增加采用。用户正在意识到\"免费\"服务的成本。</p>\n<h2>趋势 6：AI 数据权利出现</h2>\n<p>随着 AI 模型消费更多个人数据，围绕数据使用、同意和补偿的新权利正在出现。</p>\n<h2>保持领先</h2>\n<p>2027 年最好的隐私策略不仅仅是工具——它是关于意识。了解你分享什么数据、为什么分享以及存在什么替代方案。</p>",
+    "canonical": "/blog/2027-digital-privacy-trends",
+    "titleEn": "2027 Digital Privacy Trends: 6 Changes to Know",
+    "excerptEn": "The digital privacy landscape is shifting fast. From AI surveillance to data-minimization laws, here are 6 trends to expect in 2027.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": [
+      "privacy trends",
+      "2027",
+      "AI surveillance",
+      "data minimization"
+    ],
+    "contentEn": "<p>The digital privacy landscape is shifting fast. What was acceptable five years ago is increasingly questioned today. Here is what to expect in 2027.</p>\n<h2>Trend 1: AI Surveillance Goes Mainstream</h2>\n<p>AI-powered facial recognition and behavioral tracking are becoming ubiquitous. From retail stores to public spaces, algorithms are learning to identify and predict human behavior.</p>\n<h2>Trend 2: Data Minimization Becomes Law</h2>\n<p>The GDPR's data minimization principle is spreading globally. New 2027 laws will require companies to collect only what they need, when they need it, and delete it when done.</p>\n<h2>Trend 3: Browser Privacy Wars Intensify</h2>\n<p>Mozilla, Apple, and Google are competing to offer the most private browsing experience. Third-party cookie elimination and fingerprinting protection will define 2027.</p>\n<h2>Trend 4: Digital Legacy Planning Emerges</h2>\n<p>As digital lives expand, so does the need to plan for what happens after death. Digital wills, data inheritance, and posthumous privacy controls are moving from niche to mainstream.</p>\n<h2>Trend 5: Privacy-First Platforms Gain Traction</h2>\n<p>Signal, ProtonMail, and privacy-focused search engines are seeing increased adoption. Users are waking up to the cost of \"free\" services.</p>\n<h2>Trend 6: AI Data Rights Emerge</h2>\n<p>As AI models consume more personal data, new rights are emerging around data use, consent, and compensation.</p>\n<h2>Staying Ahead</h2>\n<p>The best privacy strategy in 2027 isn't just about tools — it's about awareness. Understand what data you share, why you share it, and what alternatives exist.</p>",
+    "faq": [
+      {
+        "q": "数据最小化法律对我有什么影响？",
+        "a": "它限制公司过度收集你的数据。对你而言，意味着更少的无谓追踪、更短的数据保留期，以及更强的\"被遗忘\"权利。",
+        "qEn": "How does data-minimization law affect me?",
+        "aEn": "It limits how much companies can collect. For you it means less needless tracking, shorter retention, and stronger erasure rights."
+      },
+      {
+        "q": "AI 监控能被阻止吗？",
+        "a": "完全阻止很难，但你可以通过隐私优先的平台、浏览器反指纹设置和本地工具减少被追踪的面。",
+        "qEn": "Can AI surveillance be stopped?",
+        "aEn": "Fully stopping it is hard, but you can shrink your tracking surface with privacy-first platforms, anti-fingerprinting browsers, and local tools."
+      },
+      {
+        "q": "我该为 2027 做哪些准备？",
+        "aEn": "What should I prepare for 2027?",
+        "a": "提升隐私意识：定期进行数字足迹体检、收紧社交媒体隐私设置、对\"免费\"服务保持警惕，并关注 AI 数据权利的新规。",
+        "qEn": "Raise your privacy awareness: run regular footprint checks, tighten social privacy settings, stay skeptical of \"free\" services, and watch new AI data-rights rules."
+      }
+    ]
+  },
+  {
+    "slug": "year-end-deletion-review",
+    "title": "年终删除复盘：2026 年大家都在删什么",
+    "excerpt": "随着 2026 年接近尾声，回顾人们从数字生活中清理的内容：社交账号、照片、邮件与 App。",
+    "date": "2026-09-02",
+    "updatedAt": "2026-09-02",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": [
+      "年终复盘",
+      "删除统计",
+      "数字清理",
+      "清理趋势"
+    ],
+    "content": "<p>随着 2026 年接近尾声，是时候回顾一下人们从数字生活中清理的内容了。趋势揭示了一些事情。</p>\n<h2>2026 年的大删除</h2>\n<p><strong>社交媒体清理。</strong>更多用户选择删除整个账号而不是管理多个平台。TikTok、Twitter/X 和 Instagram 看到最高的删除率。</p>\n<p><strong>照片档案。</strong>云存储费用推动人们审查和删除旧照片。平均每个人有 3,000+ 张存储的照片。</p>\n<p><strong>电子邮件收件箱。</strong>用户更积极地采用\"收件箱零\"理念，单次会话删除数月或数年的未读消息。</p>\n<p><strong>应用程序收藏。</strong>智能手机平均每用户 80+ 个应用程序，但大多数很少使用。删除率比 2025 年增加 40%。</p>\n<h2>删除背后的动机</h2>\n<ul>\n<li><strong>隐私担忧</strong>——数据泄露和监控推动删除。</li>\n<li><strong>数字极简主义</strong>——人们质疑每个应用是否增添价值。</li>\n<li><strong>心理健康</strong>——社交比较和通知焦虑推动更清洁的数字生活。</li>\n<li><strong>职业形象</strong>——求职者和专业人士清理可能影响职业前景的旧内容。</li>\n</ul>\n<h2>推动删除的工具</h2>\n<p>批量删除工具在 2026 年看到记录使用量。TweetDelete、Social Media Cleaner 和各种邮件清理服务报告大幅增长。</p>\n<h2>展望 2027 年</h2>\n<p>数字清理的趋势没有放缓的迹象。随着数字疲劳加剧、隐私担忧增长，它只会加速。</p>\n<h2>结论</h2>\n<p>2026 是数字清理年。问题不是\"我能删除多少？\"而是\"我真正需要什么？\"</p>",
+    "canonical": "/blog/year-end-deletion-review",
+    "titleEn": "Year-End Review: What Everyone Deleted in 2026",
+    "excerptEn": "As 2026 winds down, a look at what people cleaned from their digital lives: social accounts, photos, inboxes, and apps.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": [
+      "year-end review",
+      "deletion stats",
+      "digital cleanup",
+      "cleanup trends"
+    ],
+    "contentEn": "<p>As 2026 comes to a close, it is time to look back at what people are cleaning up from their digital lives. The trends are revealing.</p>\n<h2>The Big Deletions of 2026</h2>\n<p><strong>Social Media Purges.</strong> More users are deleting entire accounts rather than managing multiple platforms. TikTok, Twitter/X, and Instagram saw the highest deletion rates.</p>\n<p><strong>Photo Archives.</strong> Cloud storage fees are pushing people to review and delete old photos. The average person has 3,000+ stored photos.</p>\n<p><strong>Email Inboxes.</strong> Users are adopting \"inbox zero\" more aggressively, deleting months or years of unread messages in single sessions.</p>\n<p><strong>App Collections.</strong> Smartphones now average 80+ apps per user, but most are used infrequently. App deletion rates rose 40% versus 2025.</p>\n<h2>The Motivations Behind the Delete</h2>\n<ul>\n<li><strong>Privacy Concerns</strong> — breaches and surveillance drive deletion.</li>\n<li><strong>Digital Minimalism</strong> — people question whether each app adds value.</li>\n<li><strong>Mental Health</strong> — social comparison and notification anxiety push toward cleaner digital lives.</li>\n<li><strong>Professional Image</strong> — job seekers and professionals clean old content that could affect careers.</li>\n</ul>\n<h2>The Tools Driving Deletion</h2>\n<p>Bulk deletion tools saw record usage in 2026. TweetDelete, Social Media Cleaner, and various email cleanup services reported massive growth.</p>\n<h2>Looking Ahead to 2027</h2>\n<p>The trend toward digital cleanup shows no signs of slowing. As digital fatigue grows and privacy concerns rise, it will only accelerate.</p>\n<h2>The Bottom Line</h2>\n<p>2026 is the year of the digital cleanout. The question is not \"how much can I delete?\" but \"what do I actually need?\"</p>",
+    "faq": [
+      {
+        "q": "2026 年人们删得最多的是什么？",
+        "a": "依次是整个社交媒体账号、旧照片档案、邮件收件箱里的未读消息，以及长期不用的 App。隐私担忧和数字疲劳是主要驱动力。",
+        "qEn": "What did people delete most in 2026?",
+        "aEn": "In order: whole social accounts, old photo archives, unread inbox messages, and long-unused apps — driven by privacy concerns and digital fatigue."
+      },
+      {
+        "q": "年终清理有什么好处？",
+        "a": "减轻心理负担、降低隐私暴露面、提升设备性能，并让职业形象更可控。一次彻底的清理比持续囤积更健康。",
+        "qEn": "What are the benefits of a year-end cleanup?",
+        "aEn": "Less mental load, a smaller privacy surface, better device performance, and a more controllable professional image. A thorough cleanup beats endless hoarding."
+      },
+      {
+        "q": "我应该从哪里开始年终清理？",
+        "a": "从最高风险的内容入手：旧的社交媒体帖子、云端的敏感照片、订阅邮件，以及不再使用的 App。一次一类，逐步推进。",
+        "qEn": "Where should I start my year-end cleanup?",
+        "aEn": "Start with the highest-risk content: old social posts, sensitive cloud photos, subscription emails, and unused apps. One category at a time."
+      }
+    ]
+  }
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

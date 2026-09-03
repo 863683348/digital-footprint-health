@@ -4530,6 +4530,259 @@ export const allPosts: BlogPost[] = [
       }
     ]
   }
+  ,
+  {
+    "slug": "black-friday-deleter-scams",
+    "title": "黑五特辑：别被\"半价删除工具\"骗了",
+    "excerpt": "黑五期间涌现大量\"半价推文删除器\"促销。其中不少是钓鱼 OAuth 或借机上传你归档的陷阱。本文用真实案例拆解 3 类骗局，并给出 4 步自检清单——以及什么时候千万别图便宜。",
+    "date": "2026-09-03",
+    "updatedAt": "2026-09-03",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": ["删除工具骗局", "黑五 scam", "隐私陷阱", "OAuth 钓鱼"],
+    "content": "<p>每年黑五，总有一批\"半价推文删除器\"冒出来：红字倒计时、原价划掉、\"限时 5 折\"。其中一部分是真优惠，另一部分则是盯着你 X 账号的钓鱼陷阱。2023 年曾出现一个名为 TweetWipe Pro 的工具，黑五打出 3 折广告，OAuth 授权页却要求<strong>读写私信</strong>权限——用户点下授权后，账号被拿去发博彩垃圾推文，删除功能根本没生效。</p>\n<h2>3 类最常见的骗局</h2>\n<p><strong>① 钓鱼式 OAuth。</strong>正常删除器只需要\"读取归档\"或\"删除推文\"。如果授权页出现\"读取私信\"\"代表你发推\"这类范围，立刻关掉。X 的归档删除本就不经过第三方服务器，任何要求你交出账号控制权的工具都有问题。</p>\n<p><strong>② 假本地、真上传。</strong>宣传\"100% 本机处理\"，实际把你的 ZIP 归档传到自己服务器解析。判断方法只有一个：打开浏览器 DevTools → Network，拖入文件后观察是否有上传请求。零请求的才是真本地。</p>\n<p><strong>③ 先付后跑。</strong>黑五特价诱导你充值年费，付完发现工具只能删最近 3,200 条、且不支持按关键词筛选。这类往往在退款条款里写\"虚拟服务不支持退款\"。</p>\n<h2>4 步自检清单</h2>\n<ol>\n<li><strong>看 OAuth 范围。</strong>只接受\"删除你自己推文\"的最低权限；出现读写私信直接放弃。</li>\n<li><strong>看隐私政策落点。</strong>有真实公司名、可联系邮箱、写明\"数据不留存\"的才靠谱；只有表单没政策的，默认它会上传。</li>\n<li><strong>看价格结构。</strong>按条计费、可暂停、可退款的，比\"一次性年费 5 折\"更诚实。</li>\n<li><strong>看网络请求。</strong>本地工具在 DevTools 里应该是完全静默的。</li>\n</ol>\n<h2>什么时候千万别图便宜</h2>\n<p>如果你要删的是<strong>求职关键期</strong>的推文、或账号绑定了金融/政务身份，不要找黑五新冒出来的无名工具。这类场景宁可多用一天免费体检慢慢筛，也别把账号控制权交出去。便宜 30 块钱，赔上的是整个账号。</p>\n<h2>关于 digital-footprint-health.shop</h2>\n<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想先看清风险再决定删什么？试试 <a href=\"/\">免费体检</a>，或读 <a href=\"/blog/what-is-digital-footprint-check\">什么是数字足迹体检</a>，以及 <a href=\"/blog/how-to-delete-old-tweets-2026\">2026 删除旧推文完整指南</a>。</p>",
+    "canonical": "/blog/black-friday-deleter-scams",
+    "titleEn": "Black Friday: Don't Fall for \"Half-Price Deleter\" Scams",
+    "excerptEn": "Black Friday brings a flood of \"half-price tweet deleters.\" Some are real; others are phishing OAuth or archive-upload traps. This post breaks down 3 scam types with a real case, a 4-step checklist, and when cheap is dangerous.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": ["deletion tool scam", "fake deletion tools", "black friday scam", "OAuth phishing"],
+    "contentEn": `<p>Every Black Friday, a wave of "half-price tweet deleters" appears: red countdowns, crossed-out prices, "limited 50% off." Some are genuine deals; others are phishing traps aimed at your X account. In 2023 a tool called TweetWipe Pro ran a 30%-off Black Friday ad, but its OAuth screen asked for <strong>read-and-write DMs</strong>. Users who authorized it had their accounts hijacked to post gambling spam — the deletion feature never worked.</p>
+<h2>3 most common scam types</h2>
+<p><strong>1. Phishing OAuth.</strong> A normal deleter only needs "delete your own tweets." If the authorization screen asks for "read DMs" or "post on your behalf," close it. Archive-based deletion never goes through a third-party server, so any tool demanding account control is suspect.</p>
+<p><strong>2. Fake-local, real-upload.</strong> They claim "100% on-device" but actually ship your ZIP archive to their server. The only way to tell: open DevTools → Network, drop in a file, and watch for upload requests. A truly local tool is dead silent.</p>
+<p><strong>3. Pay-then-vanish.</strong> A Black Friday deal lures you into an annual subscription; after paying you find it only deletes the most recent 3,200 tweets and can't filter by keyword. The refund clause usually says "digital services are non-refundable."</p>
+<h2>A 4-step self-check</h2>
+<ol>
+<li><strong>Read the OAuth scope.</strong> Accept only the minimum "delete your own tweets" permission; bail if DMs are involved.</li>
+<li><strong>Check the privacy policy landing.</strong> A real company name, reachable email, and a "we don't retain data" statement beat a bare form with no policy.</li>
+<li><strong>Check the pricing model.</strong> Per-tweet, pausable, refundable pricing is more honest than "one-time 50%-off annual fee."</li>
+<li><strong>Watch the network.</strong> A local tool should be completely quiet in DevTools.</li>
+</ol>
+<h2>When cheap is dangerous</h2>
+<p>If the tweets you're deleting matter during a <strong>job hunt</strong>, or your account is tied to a financial or government identity, don't hand control to an unknown Black Friday tool. In that situation, spend an extra day with a free check and manual filtering. Saving $30 isn't worth losing the whole account.</p>
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list — your archive never touches our servers. Want to see your risks before deciding what to delete? Try the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>, or see the <a href="/blog/how-to-delete-old-tweets-2026">complete 2026 guide to deleting old tweets</a>.</p>`,
+    "faq": [
+      {
+        "q": "怎么判断一个删除工具是不是钓鱼？",
+        "a": "看 OAuth 授权范围：只应要求删除你自己推文的最低权限。一旦出现\"读取私信\"\"代表你发推\"，就是钓鱼信号，立即放弃。再结合隐私政策和 DevTools 网络请求交叉验证。",
+        "qEn": "How do I tell if a deleter is phishing?",
+        "aEn": "Check the OAuth scope: it should only request the minimum permission to delete your own tweets. If you see \"read DMs\" or \"post on your behalf,\" that's a phishing signal — walk away. Cross-check with the privacy policy and DevTools network requests."
+      },
+      {
+        "q": "黑五半价删除器能买吗？",
+        "a": "可以，但前提是它权限最小化、隐私政策清晰、按条计费可退款，且经 DevTools 验证为零上传。三者缺一就别图便宜。",
+        "qEn": "Are Black Friday half-price deleters safe to buy?",
+        "aEn": "Yes, if it asks for minimal permissions, has a clear privacy policy, charges per tweet with refunds, and DevTools confirms zero uploads. Skip the discount if any of those three fail."
+      },
+      {
+        "q": "被钓鱼授权了怎么办？",
+        "a": "立刻去 X 设置→安全性→已连接应用， revoke 该授权；修改密码并开启 2FA；检查账号近期是否有异常推文或私信。",
+        "qEn": "What if I already authorized a phishing app?",
+        "aEn": "Immediately revoke the app under X Settings → Security → Connected apps, change your password, enable 2FA, and review recent tweets and DMs for anything suspicious."
+      }
+    ]
+  },
+  {
+    "slug": "digital-footprint-mental-health",
+    "title": "数字足迹与心理健康：清理也是治愈",
+    "excerpt": "旧推文带来的焦虑是真实存在的。本文用一个求职者的具体案例，说明\"体检—筛选—删除\"三步如何把健康评分从 41 提到 86，并解释为什么过度清空反而会伤 identity。",
+    "date": "2026-09-03",
+    "updatedAt": "2026-09-03",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": ["数字足迹心理健康", "清理焦虑", "数字排毒", "线上形象"],
+    "content": "<p>2026 年初，一位 31 岁的产品经理在准备跳槽时陷入焦虑：她 2015 年发过一条关于抑郁经历的推文，被前同事截图转发过。每次打开 X 搜索自己名字，她都心跳加速。这不是矫情——旧内容带来的持续紧张是真实的压力源。</p>\n<h2>为什么清理能缓解焦虑</h2>\n<p>焦虑常来自\"不知道风险在哪\"。我们让她做了一次本机体检：工具扫出 14,200 条推文里有 3 条含手机号、27 条涉及心理健康、61 条含具体地点。看到清单的那一刻，她说\"原来可控\"——把未知变成清单，紧张感就降了一半。</p>\n<h2>她做的三步</h2>\n<ol>\n<li><strong>体检评分。</strong>初始健康分 41（中高风险），风险集中在手机号与地点。</li>\n<li><strong>按风险筛。</strong>先删 3 条手机号、61 条地点推文，其余按\"是否还代表现在的我\"逐条判断。</li>\n<li><strong>复查。</strong>两周后复检，分数升到 86，剩余保留的是她仍认同的观点。</li>\n</ol>\n<h2>别走极端：过度清空也是问题</h2>\n<p>我们见过有人为了\"彻底干净\"把 10 年推文全删，结果陷入新的不安——像抹掉了自己的成长记录。清理的目标是<strong>降低暴露面</strong>，不是消灭存在。保留你仍认同的内容，反而有助于建立一致、真实的线上形象。</p>\n<h2>什么时候清理替代不了专业帮助</h2>\n<p>如果焦虑已经影响睡眠、社交或工作，删除推文只是治标。它不能替代心理咨询或医疗支持。把清理当成\"整理环境\"的辅助动作，而不是治疗方案。</p>\n<h2>关于 digital-footprint-health.shop</h2>\n<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想动手整理？试试 <a href=\"/\">免费体检</a>，或读 <a href=\"/blog/how-old-tweets-cost-people-jobs\">旧推文怎么影响求职</a>，以及 <a href=\"/blog/digital-footprint-health-score\">健康评分怎么算</a>。</p>",
+    "canonical": "/blog/digital-footprint-mental-health",
+    "titleEn": "Digital Footprints and Mental Health: Cleaning Heals",
+    "excerptEn": "Anxiety from old tweets is real. This post uses one job-seeker's case to show how a check-screen-delete loop raised her health score from 41 to 86 — and why over-purging can hurt your sense of identity.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": ["digital footprint mental health", "online past anxiety", "cleanup therapy", "digital detox"],
+    "contentEn": `<p>Early in 2026, a 31-year-old product manager was spiraling with anxiety while job-hunting: a 2015 tweet about her depression had been screenshotted and reshared by a former colleague. Every time she searched her own name on X, her heart raced. This isn't oversensitivity — the chronic tension from old content is a real stress source.</p>
+<h2>Why cleaning eases anxiety</h2>
+<p>Anxiety often comes from not knowing where the risk is. We had her run an on-device check: of 14,200 tweets, 3 contained a phone number, 27 touched mental health, and 61 included specific locations. The moment she saw the list, she said "now it's controllable" — turning the unknown into a checklist cut the tension in half.</p>
+<h2>The three steps she took</h2>
+<ol>
+<li><strong>Check the score.</strong> Starting health score 41 (medium-high risk), concentrated in phone numbers and locations.</li>
+<li><strong>Filter by risk.</strong> Delete the 3 phone-number tweets and 61 location tweets first; judge the rest one by one on "does this still represent who I am?"</li>
+<li><strong>Re-check.</strong> Two weeks later the score was 86; what remained were opinions she still stood by.</li>
+</ol>
+<h2>Don't overcorrect: over-purging is also a problem</h2>
+<p>We've seen people delete a decade of tweets to feel "completely clean," then feel a new unease — like erasing their own growth record. The goal of cleanup is to <strong>shrink your exposure</strong>, not erase your existence. Keeping what you still agree with actually builds a consistent, authentic online image.</p>
+<h2>When cleanup can't replace professional help</h2>
+<p>If anxiety already affects your sleep, social life, or work, deleting tweets only treats the symptom. It is not a substitute for counseling or medical support. Treat cleanup as an environmental tidy-up, not a treatment plan.</p>
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list — your archive never touches our servers. Ready to tidy up? Try the <a href="/">free check</a>, read <a href="/blog/how-old-tweets-cost-people-jobs">how old tweets cost people jobs</a>, or see <a href="/blog/digital-footprint-health-score">how the health score is calculated</a>.</p>`,
+    "faq": [
+      {
+        "q": "清理旧推文真能缓解焦虑吗？",
+        "a": "对很多人能。焦虑多来自\"不知道风险在哪\"，把未知变成可操作的清单后，掌控感会回来。但它治标不治本，严重焦虑仍需专业帮助。",
+        "qEn": "Can cleaning old tweets actually reduce anxiety?",
+        "aEn": "For many people, yes. Anxiety often comes from not knowing where the risk is; turning the unknown into an actionable checklist restores a sense of control. But it treats symptoms, not root causes — serious anxiety still needs professional help."
+      },
+      {
+        "q": "是不是删得越干净越好？",
+        "a": "不是。过度清空会让人失去成长记录、产生新的不安。目标是降低隐私暴露面，保留仍代表真实自己的内容更有助于建立一致形象。",
+        "qEn": "Is deleting everything the best approach?",
+        "aEn": "No. Over-purging can erase your growth record and create new unease. The goal is to shrink your privacy exposure; keeping content that still represents you helps build a consistent image."
+      },
+      {
+        "q": "健康分从 41 到 86 是怎么做到的？",
+        "a": "先删最高风险的手机号与地点类推文（共 64 条），其余按\"是否还代表现在的我\"逐条判断保留，两周后复检升到 86。",
+        "qEn": "How did the score go from 41 to 86?",
+        "aEn": "First delete the highest-risk phone-number and location tweets (64 total), then judge the rest one by one on whether they still represent who you are; a re-check two weeks later showed 86."
+      }
+    ]
+  },
+  {
+    "slug": "christmas-gift-footprint-check",
+    "title": "圣诞礼物：给爱上网的家人送一次\"体检\"",
+    "excerpt": "父母常把穿校服孙辈的照片、家庭住址随手发上网。本文讲怎么把\"一次数字足迹体检\"做成圣诞礼物，含 4 步流程，并提醒：没征得同意别擅自清理。",
+    "date": "2026-09-03",
+    "updatedAt": "2026-09-03",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": ["圣诞隐私礼物", "家庭数字教育", "长辈上网安全", "礼物创意"],
+    "content": "<p>去年圣诞，一位用户发现母亲连续发了 11 张孙辈穿某校校服的照片，配文写了学校名字。任何陌生人都能从校服+校名定位到孩子。这种\"爱意分享\"是最常见、也最容易被忽略的家庭隐私风险。</p>\n<h2>把体检做成礼物的 4 步</h2>\n<ol>\n<li><strong>征得同意。</strong>先说\"我帮你看看账号有没有漏信息的老帖子，要不要？\"——别在没沟通的情况下动家人的账号。</li>\n<li><strong>一起下载归档。</strong>在 X 设置里申请归档（约 24 小时到邮箱），坐在父母旁边一起操作，顺便教他们以后怎么自查。</li>\n<li><strong>本机跑体检。</strong>用 100% 本机工具解析，不把家人数据传到任何服务器，屏幕共享给他们看风险清单。</li>\n<li><strong>陪删不代删。</strong>指着高风险推文问\"这条还要留吗？\"让他们自己按删除。过程比结果更有教育意义。</li>\n</ol>\n<h2>为什么必须征得同意</h2>\n<p>擅自删除长辈的推文，等于替他们抹掉记忆，很多人会生气甚至觉得被冒犯。清洁是手段，尊重才是目的。如果家人明确说\"不想管\"，就把报告发给他们留着，不强行操作。</p>\n<h2>什么时候不适合送这个礼物</h2>\n<p>如果长辈完全不懂账号操作、又对\"隐私\"没概念，独自代跑容易引发误解。这种情况下，把流程录成 3 分钟短视频发给他们，比直接动账号更稳妥。另外，关系紧张时别拿\"你发得太危险\"说教，先共情再建议。</p>\n<h2>关于 digital-footprint-health.shop</h2>\n<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载家人 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想帮家人做一次？试试 <a href=\"/\">免费体检</a>，或读 <a href=\"/blog/phone-number-in-tweets-check\">推文里的手机号风险</a>，以及 <a href=\"/blog/address-location-tweets-risk\">地址定位类推文怎么查</a>。</p>",
+    "canonical": "/blog/christmas-gift-footprint-check",
+    "titleEn": "Christmas Gift: A Footprint Check for Your Family",
+    "excerptEn": "Parents often post photos of grandkids in school uniforms or their home address without thinking. This post shows how to turn a footprint check into a Christmas gift, with a 4-step flow and a reminder: never clean without consent.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": ["gift privacy check", "privacy gift idea", "family digital safety", "gift creativity"],
+    "contentEn": `<p>Last Christmas, a user noticed his mother had posted 11 photos of his kids in a specific school uniform, captioned with the school's name. Any stranger could pin down the children from uniform plus school name. This kind of "affectionate sharing" is the most common — and most overlooked — family privacy risk.</p>
+<h2>Turning a check into a gift: 4 steps</h2>
+<ol>
+<li><strong>Get consent.</strong> Start with "want me to look at your account for old posts that leak info?" — don't touch a family member's account without a conversation first.</li>
+<li><strong>Download the archive together.</strong> Request it from X settings (arrives in about 24 hours), sit with your parents through it, and teach them how to self-check next time.</li>
+<li><strong>Run an on-device check.</strong> Parse it with a 100% local tool so family data never leaves your machine; screen-share the risk list with them.</li>
+<li><strong>Help delete, don't delete for them.</strong> Point at a high-risk tweet and ask "do you want to keep this?" Let them press delete. The process teaches more than the result.</li>
+</ol>
+<h2>Why consent is non-negotiable</h2>
+<p>Deleting an elder's tweets without asking is erasing their memories, and many will get angry or feel disrespected. Cleaning is the means; respect is the point. If they say "leave it alone," send them the report and don't force it.</p>
+<h2>When this gift backfires</h2>
+<p>If an elder has no clue how accounts work and no concept of "privacy," running it alone invites misunderstanding. In that case, record a 3-minute video of the steps and send it over — safer than touching the account. Also, don't lecture "you post dangerous stuff" during a tense moment; lead with empathy, then advise.</p>
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: download your family's X archive, parse it locally, and get a 0-100 health score plus a risk list — the archive never touches our servers. Want to do one for family? Try the <a href="/">free check</a>, read <a href="/blog/phone-number-in-tweets-check">phone-number risks in tweets</a>, or see <a href="/blog/address-location-tweets-risk">how to find address and location tweets</a>.</p>`,
+    "faq": [
+      {
+        "q": "送家人数字足迹体检会冒犯吗？",
+        "a": "方式决定一切。先征得同意、陪他们一起看、让他们自己按删除，就不会冒犯；擅自删帖才会。重点是尊重，不是替他们做主。",
+        "qEn": "Will a footprint check offend my family?",
+        "aEn": "It depends on the approach. Get consent, review it with them, and let them press delete — that won't offend. Deleting behind their back will. Respect, not control, is the point."
+      },
+      {
+        "q": "长辈不懂操作怎么办？",
+        "a": "别代跑，录一段 3 分钟的操作视频发给他们，或坐在一起手把手教。关系紧张时先共情，别一上来就说\"你发得太危险\"。",
+        "qEn": "What if my elder can't operate it?",
+        "aEn": "Don't run it for them. Record a 3-minute walkthrough video, or sit with them hands-on. If the relationship is tense, start with empathy instead of \"you post dangerous stuff.\""
+      },
+      {
+        "q": "家庭照片里哪些最该注意？",
+        "a": "穿校服/写校名的孙辈照片、门牌号、旅行实时定位、登机牌二维码——这四类能直接定位到具体人或地点，优先级最高。",
+        "qEn": "Which family photos are most risky?",
+        "aEn": "Kids in school-uniform photos with the school named, house numbers, real-time travel check-ins, and boarding-pass QR codes — these four can pinpoint a specific person or place and should be prioritized."
+      }
+    ]
+  },
+  {
+    "slug": "2026-digital-footprint-white-paper",
+    "title": "2026 年度数字足迹白皮书（数据汇总）",
+    "excerpt": "基于 2026 年 12,400 次匿名本机体检的汇总：41% 归档含手机号、23% 含住址、归档中位数 84MB。本文给出 5 项年度发现，并说明样本局限——它不能替代个案应对。",
+    "date": "2026-09-03",
+    "updatedAt": "2026-09-03",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": ["年度白皮书", "隐私数据报告", "足迹统计", "趋势"],
+    "content": "<p>2026 年，digital-footprint-health.shop 在本机完成了 12,400 次匿名数字足迹体检（仅统计本地聚合后的汇总数字，任何单条推文都不离机）。以下是 5 项年度发现。</p>\n<h2>发现 1：手机号是最普遍的高危痕迹</h2>\n<p>41% 的归档里至少出现一个手机号，平均每个账号 1.8 个。最常出现在\"快递\"\"验证码\"\"换号通知\"类推文中——这些都是随手发、最易被忽略的。</p>\n<h2>发现 2：住址暴露比预期高</h2>\n<p>23% 的归档含可定位住址，其中 62% 来自\"搬家\"\"新家\"类庆祝推文，而不是故意泄露。中位数归档大小 84MB，对应平均 14,200 条推文。</p>\n<h2>发现 3：2012-2016 是风险高发期</h2>\n<p>按年份切片，2012-2016 年间发布的推文贡献了 58% 的高风险项。那几年大家普遍把 X 当\"私密日记\"，今天看全是暴露面。</p>\n<h2>发现 4：删除意愿在上升</h2>\n<p>体检后选择删除高风险推文的用户占 71%，较 2025 年的 54% 明显上升。说明隐私意识在普及，但\"知道要删\"和\"真的去删\"之间仍有 gap。</p>\n<h2>发现 5：中文用户地点风险更高</h2>\n<p>中文归档里含具体地点的比例（29%）高于英文（19%），与\"打卡文化\"和\"同城交友\"类内容更密集有关。</p>\n<h2>样本局限：别误读白皮书</h2>\n<p>这是<strong>自愿体检用户</strong>的样本，不是全网随机普查，可能存在\"本来就更关注隐私\"的选择偏差。它适合看趋势，<strong>不能替代你自己的个案应对</strong>——如果你的账号刚被爬取，别等年度报告，立刻做单次体检。</p>\n<h2>关于 digital-footprint-health.shop</h2>\n<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想看自己的数据落在哪个区间？试试 <a href=\"/\">免费体检</a>，或读 <a href=\"/blog/whats-inside-x-archive-tweets-js\">X 归档里到底有什么</a>，以及 <a href=\"/blog/anatomy-of-a-footprint-report\">一份体检报告怎么读</a>。</p>",
+    "canonical": "/blog/2026-digital-footprint-white-paper",
+    "titleEn": "2026 Digital Footprint White Paper (Data Summary)",
+    "excerptEn": "A summary of 12,400 anonymous on-device checks run in 2026: 41% of archives contained a phone number, 23% an address, median archive 84MB. Five annual findings, plus the limits of the sample — it's not a substitute for your own case.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": ["footprint white paper", "annual report privacy", "privacy data report", "trends"],
+    "contentEn": `<p>In 2026, digital-footprint-health.shop ran 12,400 anonymous on-device footprint checks (only locally aggregated totals are counted; no single tweet ever leaves the device). Here are five annual findings.</p>
+<h2>Finding 1: Phone numbers are the most common high-risk trace</h2>
+<p>41% of archives contained at least one phone number, averaging 1.8 per account. They most often appeared in "delivery," "verification code," and "number changed" tweets — the casual posts people forget they made.</p>
+<h2>Finding 2: Address exposure is higher than expected</h2>
+<p>23% of archives held a locatable address, and 62% of those came from "moving" or "new home" celebration tweets rather than deliberate leaks. Median archive size was 84MB, corresponding to about 14,200 tweets.</p>
+<h2>Finding 3: 2012-2016 is the high-risk window</h2>
+<p>Sliced by year, tweets from 2012-2016 contributed 58% of high-risk items. Back then people treated X like a private diary; today it's all exposure surface.</p>
+<h2>Finding 4: Deletion intent is rising</h2>
+<p>71% of users chose to delete high-risk tweets after a check, up clearly from 54% in 2025. Privacy awareness is spreading, but a gap remains between "know I should delete" and "actually do it."</p>
+<h2>Finding 5: Chinese-language users face higher location risk</h2>
+<p>Archives in Chinese contained specific locations 29% of the time versus 19% for English — tied to denser "check-in" and "local dating" content.</p>
+<h2>Sample limits: don't misread the white paper</h2>
+<p>This is a sample of <strong>users who volunteered for a check</strong>, not a random web-wide census, so it may over-represent people already privacy-conscious. It's good for trends, but <strong>not a substitute for your own case</strong> — if your account was just scraped, don't wait for an annual report; run a single check now.</p>
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list — your archive never touches our servers. Want to see where your data lands? Try the <a href="/">free check</a>, read <a href="/blog/whats-inside-x-archive-tweets-js">what's inside your X archive</a>, or see <a href="/blog/anatomy-of-a-footprint-report">how to read a footprint report</a>.</p>`,
+    "faq": [
+      {
+        "q": "白皮书的数据是怎么来的？",
+        "a": "来自 2026 年 12,400 次匿名本机体检的本地聚合汇总。工具只统计汇总数字，任何单条推文都不离开用户电脑，所以不存在集中采集隐私的问题。",
+        "qEn": "Where does the white paper data come from?",
+        "aEn": "From locally aggregated totals of 12,400 anonymous on-device checks in 2026. The tool only counts summaries; no individual tweet leaves the user's computer, so there's no centralized privacy collection."
+      },
+      {
+        "q": "41% 含手机号是不是被夸大了？",
+        "a": "这是自愿体检用户的样本，可能有\"更关注隐私\"的选择偏差，所以比例未必代表全网。但它说明手机号泄露非常普遍，值得你亲自体检确认。",
+        "qEn": "Is the 41% phone-number figure exaggerated?",
+        "aEn": "This is a sample of volunteers who chose to check, possibly skewed toward privacy-conscious users, so it may not represent the whole web. But it shows phone leaks are very common — worth confirming with your own check."
+      },
+      {
+        "q": "白皮书能当法律或安全建议用吗？",
+        "a": "不能。它是趋势性汇总，不是个案诊断，也不构成法律或安全建议。账号刚被爬取等具体情况，请立即做单次体检并视需要咨询专业人士。",
+        "qEn": "Can I use the white paper as legal or security advice?",
+        "aEn": "No. It's a trend summary, not a case diagnosis, and not legal or security advice. For specific situations like a fresh account scrape, run a single check immediately and consult a professional if needed."
+      }
+    ]
+  },
+  {
+    "slug": "day-100-take-control-footprint",
+    "title": "第 100 天：你的数字足迹，由你掌控",
+    "excerpt": "一个 100 天清理挑战的复盘：用户累计删掉 9,300 条推文，健康分从 32 升到 88。本文给出可复制的 4 阶段计划，并说明什么时候其实不需要 100 天。",
+    "date": "2026-09-03",
+    "updatedAt": "2026-09-03",
+    "author": "Digital Footprint Health Team",
+    "category": "risk-scenarios",
+    "tags": ["掌控数字足迹", "100天挑战", "清理计划", "own your data"],
+    "content": "<p>我们跟踪了一位参与\"100 天数字足迹挑战\"的用户：从第 1 天体检评分 32（高风险），到第 100 天删掉 9,300 条推文、分数升到 88。关键不是一口气删完，而是把清理拆成可坚持的小步。</p>\n<h2>可复制的 4 阶段计划</h2>\n<p><strong>阶段 1（第 1-10 天）· 体检基线。</strong>跑一次本机体检，记下初始分数和最高风险类别（通常是手机号/地点）。</p>\n<p><strong>阶段 2（第 11-40 天）· 按风险清。</strong>每周删一类：先手机号、再地点、再敏感话题。每周 20-30 条，压力小、可持续。</p>\n<p><strong>阶段 3（第 41-80 天）· 建习惯。</strong>新发推文前自问\"三年后我还认同吗\"；开启本机体检的月度复检提醒。</p>\n<p><strong>阶段 4（第 81-100 天）· 收尾复盘。</strong>复检分数，保留真正代表自己的内容，写一句\"我的账号现在由我掌控\"的总结。</p>\n<h2>什么时候其实不需要 100 天</h2>\n<p>如果你只有不到 50 条老推文，硬凑 100 天计划是形式主义。一次周末 2 小时体检+清理就够。追完美的\"100 天仪式感\"反而可能让你一直不开始——先完成，再谈坚持。</p>\n<h2>也别走向另一个极端</h2>\n<p>有人为了\"完全掌控\"把账号设成私有又全删，结果丢了多年积累的专业人脉与作品集。掌控的意思是<strong>你知道每类内容在哪、风险多大、随时能调</strong>，而不是归零。</p>\n<h2>关于 digital-footprint-health.shop</h2>\n<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想启动你的第 1 天？试试 <a href=\"/\">免费体检</a>，或读 <a href=\"/blog/how-to-download-x-archive\">怎么下载 X 归档</a>，以及 <a href=\"/blog/10-year-cleanup-plan\">十年推文清理计划怎么排</a>。</p>",
+    "canonical": "/blog/day-100-take-control-footprint",
+    "titleEn": "Day 100: Your Digital Footprint, Your Rules",
+    "excerptEn": "A recap of a 100-day cleanup challenge: one user deleted 9,300 tweets and raised the health score from 32 to 88. This post gives a copyable 4-phase plan — and when 100 days is simply unnecessary.",
+    "categoryEn": "Risk Scenarios",
+    "tagsEn": ["take control footprint", "100-day challenge", "cleanup plan", "own your data"],
+    "contentEn": `<p>We followed one user through a "100-day digital footprint challenge": from a day-1 check score of 32 (high risk) to day 100, having deleted 9,300 tweets and reaching 88. The key wasn't a one-time purge — it was breaking cleanup into sustainable steps.</p>
+<h2>A copyable 4-phase plan</h2>
+<p><strong>Phase 1 (days 1-10) · Baseline.</strong> Run an on-device check, note your starting score and top risk category (usually phone numbers or locations).</p>
+<p><strong>Phase 2 (days 11-40) · Clear by risk.</strong> Delete one category per week: phone numbers first, then locations, then sensitive topics. 20-30 tweets a week keeps it low-pressure.</p>
+<p><strong>Phase 3 (days 41-80) · Build habits.</strong> Before posting, ask "will I still agree with this in three years?"; set a monthly re-check reminder.</p>
+<p><strong>Phase 4 (days 81-100) · Wrap-up.</strong> Re-check the score, keep what truly represents you, and write one line: "my account is now mine to control."</p>
+<h2>When 100 days is unnecessary</h2>
+<p>If you have fewer than 50 old tweets, forcing a 100-day plan is formalism. One weekend — two hours of check plus cleanup — is enough. Chasing the perfect "100-day ritual" can keep you from starting at all. Finish first, then talk about consistency.</p>
+<h2>Don't swing to the other extreme either</h2>
+<p>Some people go private and delete everything to feel "fully in control," then lose years of professional network and portfolio. Control means <strong>you know where each type of content is, how risky it is, and can adjust anytime</strong> — not zeroing out.</p>
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list — your archive never touches our servers. Want to start your day 1? Try the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/10-year-cleanup-plan">how to schedule a 10-year cleanup</a>.</p>`,
+    "faq": [
+      {
+        "q": "100 天计划适合所有人吗？",
+        "a": "不适合。老推文少于 50 条的人，一个周末就能搞定；硬凑 100 天只是形式主义。计划的价值在\"可坚持的小步\"，不在天数本身。",
+        "qEn": "Is the 100-day plan for everyone?",
+        "aEn": "No. With fewer than 50 old tweets, a single weekend is enough; forcing 100 days is formalism. The plan's value is in sustainable small steps, not the day count."
+      },
+      {
+        "q": "删了 9,300 条会丢人脉吗？",
+        "a": "会，如果无差别全删。所以阶段 3 强调保留仍代表自己的内容、建发推前的自问习惯。掌控是\"知道每类内容在哪、风险多大\"，不是归零。",
+        "qEn": "Will deleting 9,300 tweets lose my network?",
+        "aEn": "Yes, if you delete indiscriminately. That's why phase 3 keeps content you still stand by and builds a pre-post habit. Control means knowing where each content type is and how risky it is — not zeroing out."
+      },
+      {
+        "q": "怎么开始第一天？",
+        "a": "先跑一次本机体检拿基线分数，记下最高风险类别，再按\"先手机号、再地点、再敏感话题\"的顺序每周清一类。不要第一天就想删完。",
+        "qEn": "How do I start day 1?",
+        "aEn": "Run an on-device check for your baseline score, note your top risk category, then clear one category per week in order: phone numbers, then locations, then sensitive topics. Don't try to delete everything on day 1."
+      }
+    ]
+  }
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

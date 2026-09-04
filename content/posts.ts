@@ -4782,6 +4782,525 @@ export const allPosts: BlogPost[] = [
         "aEn": "Run an on-device check for your baseline score, note your top risk category, then clear one category per week in order: phone numbers, then locations, then sensitive topics. Don't try to delete everything on day 1."
       }
     ]
+  },
+  {
+    slug: 'tweetdelete-vs-manual-delete-2026',
+    title: 'TweetDelete 和手动删除，2026 年到底哪个更适合你',
+    excerpt: '很多人想清理旧推文，第一反应是装个 TweetDelete。但 2026 年的现实是：TweetDelete 只能管最近 3,200 条、按固定周期删、还要绑卡。本文用一份对照表，把它和本机体检加按需删除两种方式拆开比，帮你选对路。',
+    date: '2026-09-04',
+    updatedAt: '2026-09-04',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    tags: ['TweetDelete', '推文删除工具', '本机删除', 'X 清理对比'],
+    content: `
+<p>想清理旧推文，很多人第一反应是去装个 TweetDelete。它的广告很直接：连上账号，设个规则，旧推文自动没。听起来省心，但 2026 年的实际情况没那么简单。本文把 TweetDelete 和本机体检加按需删除两种方式摆到一起，用一份对照表说清楚各自能吃哪块、吃不了哪块。</p>
+
+<h2>TweetDelete 到底能做什么</h2>
+<p>TweetDelete 是一类定时删除服务的代表。你授权它访问账号，设定条件，比如删掉 30 天前的所有推文，它就按周期自动删。它的核心卖点是设一次、长久自动。但它有三个硬限制：</p>
+<ul>
+<li><strong>只够得着最近约 3,200 条推文。</strong>X 的 API 限制让第三方工具碰不到更早的历史，你想删 2015 年的黑历史，它无能为力。</li>
+<li><strong>按固定周期删，粒度粗。</strong>规则通常是按时间或全量，很难精准到只删含手机号的。</li>
+<li><strong>要绑卡、要给权限。</strong>付费才能用核心功能，而且它需要在云端长期持有你的账号令牌。</li>
+</ul>
+
+<h2>手动加本机体检路子怎么走</h2>
+<p>另一条路是：先下载 X 归档，也就是那个 ZIP，用 100% 本机运行的体检工具解析，扫出手机号、邮箱、地址、定位这些高危项，再按风险一条条删。它的特点是：</p>
+<ul>
+<li><strong>能触达全部历史。</strong>归档里装着你从注册那天起的所有推文，包括 3,200 条之前的。</li>
+<li><strong>按风险精准删。</strong>可以按标签，比如手机号、地址、敏感话题，也可以按年份、按关键词筛选，先清最危险的。</li>
+<li><strong>数据不出本机。</strong>解析在本地完成，归档不用上传到任何服务器。</li>
+</ul>
+
+<h2>一张表看清区别</h2>
+<table>
+<thead><tr><th>维度</th><th>TweetDelete</th><th>本机体检加按需删除</th></tr></thead>
+<tbody>
+<tr><td>能删的历史范围</td><td>最近约 3,200 条</td><td>归档里的全部历史</td></tr>
+<tr><td>删除精度</td><td>按时间或全量，较粗</td><td>按标签、年份、关键词，精准</td></tr>
+<tr><td>数据去向</td><td>云端持有账号令牌</td><td>本机解析，不上传</td></tr>
+<tr><td>费用模式</td><td>订阅付费</td><td>体检免费，删除按条计费</td></tr>
+<tr><td>适合谁</td><td>想设完就忘的日常维护</td><td>想彻底清理历史隐私痕迹</td></tr>
+</tbody>
+</table>
+
+<h2>怎么选：看你的目标</h2>
+<p>如果你只是想让账号看起来干净一点，未来发的推文自动过期，TweetDelete 那类工具能省事。但如果你担心的是多年前的手机号、住址被人挖出来，那只有走归档加本机体检这一条路，因为那些推文根本不在 TweetDelete 的触及范围内。</p>
+<p>还有一层：把账号令牌长期交给第三方，本身是个新的风险点。一旦那家服务被攻破，你的账号就跟着暴露。本机方案把解析这一步留在你自己的电脑上，等于少了一个被攻破的环节。</p>
+
+<h2>常见误区</h2>
+<ul>
+<li><strong>装了自动删就安全了。</strong>如果只删新推文，老推文里的隐私照样在，而且你很可能从没碰过它们。</li>
+<li><strong>第三方工具能删全部。</strong>受 X API 限制，第三方最多够到 3,200 条，更早的历史它看不到。</li>
+<li><strong>免费最划算。</strong>自动删服务多数是订阅制，长期算下来并不便宜；而体检本就免费、只读。</li>
+</ul>
+
+<h2>实操建议</h2>
+<ol>
+<li>先去 X 设置申请归档下载，一般 24 小时内发到邮箱。</li>
+<li>用本机体检工具解析归档，拿 0-100 健康分和按风险排好的清单。</li>
+<li>先清手机号、地址、定位这类最高危的，再按是否还代表现在的你判断其余。</li>
+<li>如果你只是想要日常自动过期，再考虑 TweetDelete 这类服务做补充，而不是替代。</li>
+</ol>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想先把历史翻一遍？试试 <a href="/">免费体检</a>，或读 <a href="/blog/how-to-download-x-archive">怎么下载 X 归档</a>，以及 <a href="/blog/whats-inside-x-archive-tweets-js">X 归档里到底有什么</a>。</p>
+`,
+    canonical: '/blog/tweetdelete-vs-manual-delete-2026',
+    titleEn: 'TweetDelete vs Manual Deletion: Which Actually Fits You in 2026',
+    excerptEn: 'Most people reach for TweetDelete the moment they want old tweets gone. But in 2026 the reality is blunt: TweetDelete only touches your most recent 3,200 tweets, deletes on a fixed schedule, and needs your card. This post puts it side by side with an on-device check-and-delete workflow so you can pick the right path.',
+    categoryEn: 'Comparisons',
+    tagsEn: ['TweetDelete', 'tweet deletion tool', 'on-device delete', 'X cleanup comparison'],
+    contentEn: `
+<p>The moment people decide to clean up old tweets, the first instinct is usually to install something like TweetDelete. The pitch is seductive: connect your account, set a rule, and your old tweets disappear on autopilot. It sounds effortless, but the reality in 2026 is more awkward. This post puts TweetDelete next to an on-device check-and-delete workflow and uses one comparison table to show exactly what each one can and cannot touch.</p>
+
+<h2>What TweetDelete actually does</h2>
+<p>TweetDelete is the poster child of scheduled deletion services. You authorize it to access your account, set a condition, for example delete everything older than 30 days, and it deletes on a loop. Its core appeal is set it once, forget it. But it carries three hard limits:</p>
+<ul>
+<li><strong>It only reaches your most recent ~3,200 tweets.</strong> X's API caps what third-party tools can touch, so that 2015 post you regret is simply out of reach.</li>
+<li><strong>It deletes on a coarse schedule.</strong> Rules are usually by age or all, and rarely precise enough for only delete the ones with a phone number.</li>
+<li><strong>It needs your card and your token.</strong> The useful features sit behind a paywall, and it has to hold your account credentials in the cloud for as long as it runs.</li>
+</ul>
+
+<h2>How the manual plus on-device route works</h2>
+<p>The other path: download your X archive, a ZIP, parse it with a 100% on-device check tool, scan for high-risk items like phone numbers, emails, addresses, and locations, then delete by risk. Its traits:</p>
+<ul>
+<li><strong>It reaches your entire history.</strong> The archive holds every tweet since you signed up, including everything before the 3,200 cutoff.</li>
+<li><strong>It deletes with precision.</strong> You can filter by label, phone, address, or sensitive topic, by year, or by keyword, and clear the most dangerous first.</li>
+<li><strong>Your data stays on your machine.</strong> Parsing happens locally; the archive is never uploaded to any server.</li>
+</ul>
+
+<h2>One table to see the difference</h2>
+<table>
+<thead><tr><th>Dimension</th><th>TweetDelete</th><th>On-device check plus delete</th></tr></thead>
+<tbody>
+<tr><td>History it can delete</td><td>Recent ~3,200 tweets</td><td>Entire archive history</td></tr>
+<tr><td>Deletion precision</td><td>By age or all, coarse</td><td>By label, year, or keyword, precise</td></tr>
+<tr><td>Where data goes</td><td>Cloud holds your token</td><td>Local parse, no upload</td></tr>
+<tr><td>Pricing</td><td>Subscription</td><td>Free check, pay per tweet to delete</td></tr>
+<tr><td>Best for</td><td>Set and forget upkeep</td><td>Thorough historical privacy cleanup</td></tr>
+</tbody>
+</table>
+
+<h2>How to choose: it depends on your goal</h2>
+<p>If all you want is for your account to look tidier with future tweets auto-expiring, a service like TweetDelete saves effort. But if what worries you is a phone number or home address from years ago being dug up, then only the archive plus on-device check route works, because those tweets are outside TweetDelete's reach entirely.</p>
+<p>There is a second layer: handing your account token to a third party long-term is itself a fresh risk. If that service gets breached, your account goes with it. The on-device approach keeps the parsing step on your own computer, removing one link from the attack chain.</p>
+
+<h2>Common misconceptions</h2>
+<ul>
+<li><strong>Auto-delete means I'm safe.</strong> If you only delete new tweets, the privacy leaks in old ones stay put, and you have likely never touched them.</li>
+<li><strong>Third-party tools delete everything.</strong> Bound by X's API, they reach at most 3,200 tweets; earlier history is invisible to them.</li>
+<li><strong>Free is cheapest.</strong> Auto-delete services are mostly subscriptions, and over time that adds up; the check itself is free and read-only.</li>
+</ul>
+
+<h2>A practical sequence</h2>
+<ol>
+<li>Request your X archive from Settings, then Your account, then Download an archive of your data; it usually lands in your email within 24 hours.</li>
+<li>Parse it with an on-device check tool to get a 0-100 health score and a risk-ranked list.</li>
+<li>Clear phone numbers, addresses, and locations first, then judge the rest by whether this still represents who I am.</li>
+<li>If you only want routine auto-expiry, consider a service like TweetDelete as a supplement, not a replacement.</li>
+</ol>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list, with your archive never touching our servers. Want to see your history first? Try the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/whats-inside-x-archive-tweets-js">what is actually inside that archive</a>.</p>
+`,
+    faq: [
+      {
+        "q": "TweetDelete 能删掉我 2015 年的推文吗？",
+        "a": "不能。受 X API 限制，TweetDelete 这类第三方工具最多只够得着最近约 3,200 条推文，更早的历史它看不到也删不了。要清早年历史，只能走归档加本机体检。",
+        "qEn": "Can TweetDelete delete my 2015 tweets?",
+        "aEn": "No. Bound by X's API, services like TweetDelete reach at most your most recent ~3,200 tweets; earlier history is invisible to them. To clear old history you need the archive plus an on-device check."
+      },
+      {
+        "q": "本机体检和 TweetDelete 哪个更隐私？",
+        "a": "本机体检更隐私。它在你电脑上解析归档，归档不上传；而 TweetDelete 要在云端长期持有你的账号令牌，等于多了一个被攻破的环节。",
+        "qEn": "Which is more private, an on-device check or TweetDelete?",
+        "aEn": "The on-device check is more private. It parses the archive on your computer and never uploads it, while TweetDelete must hold your account token in the cloud, adding a link an attacker could breach."
+      },
+      {
+        "q": "我可以两个一起用吗？",
+        "a": "可以，但分工不同。先用本机体检把历史隐私痕迹清干净，再用 TweetDelete 这类服务做未来推文自动过期的日常维护，而不是让它替代历史清理。",
+        "qEn": "Can I use both?",
+        "aEn": "Yes, but for different jobs. Use the on-device check first to clean historical privacy traces, then a service like TweetDelete for routine future tweets auto-expire upkeep, not as a replacement for history cleanup."
+      }
+    ]
+  },
+  {
+    slug: 'delete-tweets-by-keyword-2026',
+    title: '按关键词批量删除推文：2026 进阶筛选与避坑',
+    excerpt: '删推文最笨的办法是一条条翻。按关键词批量删能省 90% 时间，但删错了和没删干净是两个常见坑。本文讲怎么用关键词加日期加排除词三层筛选，并给出复盘清单。',
+    date: '2026-09-04',
+    updatedAt: '2026-09-04',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['按关键词删推文', '批量删除', 'X 删除教程', '清理旧推文'],
+    content: `
+<p>删推文最笨的办法是一条条翻时间线。按关键词批量删能把工作量砍掉九成，但有两个坑最常踩：一是删错了，把还想留的也删了；二是没删干净，同义写法漏了一大片。本文给你一套三层筛选法。</p>
+
+<h2>为什么按关键词删</h2>
+<p>大多数想删的内容都围绕几个固定词：前公司名、某个地名、一段旧感情、一个已不认同的观点。与其翻十万条，不如让工具把含这些词的推文挑出来。</p>
+
+<h2>三层筛选，避免误删和漏删</h2>
+<ol>
+<li><strong>第一层：核心关键词。</strong>输入某公司、某城市，圈出主目标。</li>
+<li><strong>第二层：加日期范围。</strong>比如只清 2018 年之前的，保留近年的。</li>
+<li><strong>第三层：排除词，也就是白名单。</strong>加 keep、保留等词，把还想留的排除出去，删前再人工过一遍。</li>
+</ol>
+
+<h2>一张速查表</h2>
+<table>
+<thead><tr><th>层</th><th>作用</th><th>常见错误</th></tr></thead>
+<tbody>
+<tr><td>核心关键词</td><td>圈定主目标</td><td>只写一个词，同义漏掉</td></tr>
+<tr><td>日期范围</td><td>控制影响面</td><td>忘了设，全量误伤</td></tr>
+<tr><td>排除词</td><td>保住想留的</td><td>没设，连带删除</td></tr>
+</tbody>
+</table>
+
+<h2>删完别忘了复盘</h2>
+<p>批量删完，建议做三件事：用另一个同义词再搜一遍看是否漏；导一份删除前的归档快照留底；隔一周复检健康分。很多人以为删完就完了，结果同义的那家公司没删到，三个月后被搜出来。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载 X 归档，在本机解析，按手机号、地址、关键词精准筛选并删除，归档绝不外传。想试按关键词清理？试试 <a href="/">免费体检</a>，或读 <a href="/blog/delete-tweets-by-date">按日期删推文</a>，以及 <a href="/blog/delete-wrong-tweet-prechecks">删前自检清单</a>。</p>
+`,
+    canonical: '/blog/delete-tweets-by-keyword-2026',
+    titleEn: 'Bulk Delete Tweets by Keyword: Advanced Filtering in 2026',
+    excerptEn: 'The dumb way to delete tweets is one by one. Filtering by keyword cuts the work by about 90%, but deleting the wrong ones and missing a batch are the two traps. This post covers a three-layer filter, keyword plus date plus exclude, and a re-check checklist.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['delete tweets by keyword', 'bulk delete', 'X deletion guide', 'clean old tweets'],
+    contentEn: `
+<p>The dumbest way to delete tweets is scrolling your timeline one post at a time. Filtering by keyword cuts the work by about 90%, but two traps bite most often: deleting the wrong ones, the ones you wanted to keep, and missing a batch, synonyms you never thought of. This post gives you a three-layer filter.</p>
+
+<h2>Why filter by keyword</h2>
+<p>Most tweets you want gone cluster around a few fixed words: a former employer, a city, an old relationship, an opinion you no longer hold. Instead of scrolling 100,000 posts, let the tool pull the ones containing those words.</p>
+
+<h2>Three layers, to avoid misfires and gaps</h2>
+<ol>
+<li><strong>Layer 1: core keyword.</strong> Type the company or city name to circle your main target.</li>
+<li><strong>Layer 2: add a date range.</strong> Clear only pre-2018, for instance, keeping recent years.</li>
+<li><strong>Layer 3: exclude words, a whitelist.</strong> Add keep or save so the posts you want survive, and review manually before deleting.</li>
+</ol>
+
+<h2>Quick-reference table</h2>
+<table>
+<thead><tr><th>Layer</th><th>Job</th><th>Common mistake</th></tr></thead>
+<tbody>
+<tr><td>Core keyword</td><td>Circle the target</td><td>One word only, misses synonyms</td></tr>
+<tr><td>Date range</td><td>Limit blast radius</td><td>Forgetting it, nuking everything</td></tr>
+<tr><td>Exclude words</td><td>Protect keepers</td><td>Unset, deletes them too</td></tr>
+</tbody>
+</table>
+
+<h2>Re-check after deleting</h2>
+<p>After a bulk delete, do three things: search again with a synonym to catch misses; export a pre-delete archive snapshot as a backup; re-check your health score after a week. Plenty of people think they are done, then a synonym like that company surfaces three months later.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: download your X archive, parse it locally, filter and delete precisely by phone, address, or keyword, with the archive never leaving your machine. Want to try keyword cleanup? Try the <a href="/">free check</a>, read <a href="/blog/delete-tweets-by-date">delete tweets by date</a>, or see <a href="/blog/delete-wrong-tweet-prechecks">the pre-delete checklist</a>.</p>
+`,
+    faq: [
+      {
+        "q": "按关键词删会误删想留的推文吗？",
+        "a": "有可能，尤其没设排除词时。建议三层筛选：核心关键词加日期范围加排除词，也就是白名单，删前人工过一遍。",
+        "qEn": "Will keyword deletion accidentally remove tweets I want to keep?",
+        "aEn": "Possibly, especially without an exclude list. Use three layers: core keyword plus date range plus exclude words, a whitelist, and review manually before deleting."
+      },
+      {
+        "q": "同义词没删到怎么办？",
+        "a": "删完用另一个同义词再搜一遍，比如删了某公司还要搜索那家公司。建议隔一周复检健康分确认。",
+        "qEn": "What if synonyms slip through?",
+        "aEn": "After deleting, search again with a synonym, for example if you cleared Company X also search that company. Re-check your health score after a week to confirm."
+      },
+      {
+        "q": "删前需要备份吗？",
+        "a": "强烈建议。导一份删除前的归档快照留底，万一删错还能对照。",
+        "qEn": "Should I back up before deleting?",
+        "aEn": "Strongly recommended. Export a pre-delete archive snapshot as a reference in case you remove something by mistake."
+      }
+    ]
+  },
+  {
+    slug: 'email-leak-in-tweets-fix',
+    title: '推文里泄露了邮箱？三步把门堵上（中文用户特别注意）',
+    excerpt: '你可能在留个邮箱我发你资料这类推文里，顺手把私人邮箱发出去了。中文用户尤其爱用 QQ 或 163 邮箱当账号，一旦泄露，垃圾邮件和撞库攻击就来了。本文给一套中文用户专属的堵漏步骤。',
+    date: '2026-09-04',
+    updatedAt: '2026-09-04',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['推文邮箱泄露', '邮箱安全', '中文用户隐私', '撞库攻击'],
+    content: `
+<p>你大概在某条留个邮箱我发你资料的推文里，顺手把私人邮箱发出去过。中文用户尤其容易中招：很多人直接用 QQ 邮箱或 163 邮箱当主账号，一旦这个邮箱出现在公开推文里，垃圾邮件、撞库攻击、甚至微信关联风险就都来了。本文给一套中文用户专属的堵漏步骤。</p>
+
+<h2>为什么中文用户更该紧张</h2>
+<p>在海外，大家常用 Gmail 当小号；但国内很多人的 QQ 或 163 邮箱就是大号，它绑着游戏、绑着微信、绑着各种平台。一个邮箱泄露，等于一串账号的钥匙少了一道锁。更麻烦的是，很多人习惯在推文里写我的邮箱是 xxx@qq.com，还配个欢迎勾搭，完全没意识到这等于把家门钥匙挂门口。</p>
+
+<h2>三步堵漏</h2>
+<ol>
+<li><strong>先找出来。</strong>下载 X 归档，用本机体检工具扫一遍，把所有含 @ 的推文列成清单，工具能识别 qq.com、163.com、gmail 等常见域名。别自己翻，十年推文你根本翻不完。</li>
+<li><strong>删掉含邮箱的推文。</strong>按风险排序，先删写明完整邮箱的，再处理只写了私信我邮箱的。删前记得导一份归档快照留底。</li>
+<li><strong>换绑加开两步验证。</strong>如果这个邮箱绑了微信或重要平台，立刻改密码、开启两步验证；能换绑手机号的尽量换，别让它继续当万能钥匙。</li>
+</ol>
+
+<h2>一张自查表</h2>
+<table>
+<thead><tr><th>检查项</th><th>中招信号</th><th>动作</th></tr></thead>
+<tbody>
+<tr><td>公开邮箱</td><td>推文里出现 @qq.com 或 @163.com</td><td>删推文加改密码</td></tr>
+<tr><td>撞库风险</td><td>该邮箱多处复用同密码</td><td>换独立密码</td></tr>
+<tr><td>微信关联</td><td>邮箱即微信登录号</td><td>开两步验证</td></tr>
+</tbody>
+</table>
+
+<h2>别踩的坑</h2>
+<p>有人删完推文就以为万事大吉，但邮箱已经在爬虫库里存了几年，光删推文清不掉历史快照。所以堵漏的第二步换绑加两步验证不能省。还有人只在 X 上删，忘了同一条邮箱也发在微博、贴吧，建议顺手一起查。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：下载你的 X 归档，在本机解析，专门识别手机号、邮箱、地址等泄露痕迹，绝不外传。想看看自己漏了几个邮箱？试试 <a href="/">免费体检</a>，或读 <a href="/blog/phone-number-in-tweets-check">推文里的手机号风险</a>，以及 <a href="/blog/address-location-tweets-risk">地址定位类推文怎么查</a>。</p>
+`,
+    canonical: '/blog/email-leak-in-tweets-fix',
+    titleEn: 'Your Email Leaked in a Tweet? Three Steps to Close the Door',
+    excerptEn: 'You may have casually dropped your personal email in a DM me your email and I will send the file tweet. Chinese users often use QQ or 163 mail as their main account, so a leak opens the door to spam and credential stuffing. This post gives a fix tailored to that reality.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['email leak tweet', 'email security', 'credential stuffing', 'privacy fix'],
+    contentEn: `
+<p>You have probably dropped your personal email into a tweet at some point, the casual DM me your email and I will send the file kind. Once that address sits in a public post, spam, phishing, and credential stuffing are only a scraper away. This post walks a fix that works whatever mailbox you use.</p>
+
+<h2>Why a leaked email matters more than it looks</h2>
+<p>An email is rarely just an email. It is the username for a dozen accounts, the recovery key for others, and the anchor for password-reset flows. When it appears in a public tweet, attackers feed it into credential-stuffing lists, guessing same password, other site. A single leaked address can quietly unlock far more than your inbox.</p>
+
+<h2>Three steps to close the door</h2>
+<ol>
+<li><strong>Find it first.</strong> Download your X archive and run an on-device check that lists every tweet containing an @ and a known domain. Do not try to scroll a decade of posts yourself.</li>
+<li><strong>Delete the exposing tweets.</strong> Sort by risk, delete the ones showing the full address first, then the email me privately hints. Export an archive snapshot before deleting, just in case.</li>
+<li><strong>Rotate and lock the account.</strong> Change the password on anything that shares it, turn on two-factor authentication, and stop reusing that address as a universal login.</li>
+</ol>
+
+<h2>Self-check table</h2>
+<table>
+<thead><tr><th>Check</th><th>Red flag</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>Public email</td><td>@domain in a tweet</td><td>Delete tweet, change password</td></tr>
+<tr><td>Stuffing risk</td><td>Same password reused</td><td>Unique password</td></tr>
+<tr><td>Recovery anchor</td><td>Email equals account login</td><td>Enable 2FA</td></tr>
+</tbody>
+</table>
+
+<h2>Pitfalls to avoid</h2>
+<p>Some people delete the tweet and call it done, but the address has been in scraper databases for years, so the tweet deletion does not erase the history. That is why step three, rotating and locking, is non-negotiable. Others only clean X and forget the same email sits on other platforms, so check those too.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: download your X archive, parse it locally, and it flags leaks like phone numbers, emails, and addresses, with nothing uploaded. Want to see how many emails you left exposed? Try the <a href="/">free check</a>, read <a href="/blog/phone-number-in-tweets-check">phone-number risks in tweets</a>, or see <a href="/blog/address-location-tweets-risk">how to find address and location tweets</a>.</p>
+`,
+    faq: [
+      {
+        "q": "推文里写了 QQ 邮箱，删掉推文就安全了吗？",
+        "a": "不完全。邮箱可能已在爬虫库里存了几年，光删推文清不掉历史快照。还要改密码、开两步验证、停止复用。",
+        "qEn": "If I posted my QQ email, is deleting the tweet enough?",
+        "aEn": "Not quite. The address may have sat in scraper databases for years, so deleting the tweet does not erase that history. Also change the password, enable 2FA, and stop reusing it."
+      },
+      {
+        "q": "中文用户的邮箱为什么更危险？",
+        "a": "很多人用 QQ 或 163 邮箱当主账号，它绑着微信、游戏和各种平台，一旦泄露等于一串账号的钥匙少了一道锁。",
+        "qEn": "Why are Chinese users' emails riskier?",
+        "aEn": "Many use QQ or 163 mail as their main account, tied to WeChat, games, and other platforms, so one leak weakens the lock on a chain of accounts."
+      },
+      {
+        "q": "只清理 X 够吗？",
+        "a": "不够。同一条邮箱可能也发在微博、贴吧等平台，建议顺手一起查，别只清一处。",
+        "qEn": "Is cleaning X enough?",
+        "aEn": "No. The same email may sit on Weibo, Tieba, and other platforms, so check those too rather than cleaning only one spot."
+      }
+    ]
+  },
+  {
+    slug: 'tweets-js-extract-phone-numbers',
+    title: '不用写代码：从 tweets.js 里把手机号挑出来',
+    excerpt: 'tweets.js 是 X 归档里最核心的文件，10 万条推文全在里面。想快速找出所有含手机号的推文，其实不用学编程。本文讲清原理，再给你两种实操方法。',
+    date: '2026-09-04',
+    updatedAt: '2026-09-04',
+    author: 'Digital Footprint Health Team',
+    category: '归档技术',
+    tags: ['tweets.js', '提取手机号', '归档解析', '本机分析'],
+    content: `
+<p>tweets.js 是 X 归档里最核心的一个文件，你这辈子发过的所有推文，无论十万还是二十万条，全挤在这个 JSON 里。想快速找出所有含手机号的推文，其实不用学编程。本文讲清原理，再给你两种实操方法。</p>
+
+<h2>tweets.js 到底是什么</h2>
+<p>解压 X 归档后，data 文件夹里有一堆文件，tweets.js 是其中最大、最全的。它每条推文存成一条记录，含正文、时间、定位等字段。手机号、邮箱这些隐私痕迹，就藏在正文，也就是 full_text 字段里。</p>
+
+<h2>方法一：本机体检工具，最省事</h2>
+<p>直接用 100% 本机运行的体检工具加载归档，它会自动正则匹配中国大陆，也就是 1 开头 11 位、美国加 1、英国等常见手机号格式，把命中的推文逐条列出来，并标好风险等级。你不用写一行代码。</p>
+
+<h2>方法二：不写代码也能搜</h2>
+<ol>
+<li>用任意支持在文件中查找的编辑器打开 tweets.js。</li>
+<li>搜 1 开头太宽，建议搜具体号段片段，比如你记得用过的 138、139，或加 1 空格。</li>
+<li>逐条核对上下文，确认是真实手机号而非 138 人参加了活动这类误报。</li>
+</ol>
+
+<h2>为什么建议本机而不是上传</h2>
+<table>
+<thead><tr><th>方式</th><th>优点</th><th>缺点</th></tr></thead>
+<tbody>
+<tr><td>本机工具</td><td>精准、不上传、自动分级</td><td>需下载归档</td></tr>
+<tr><td>上传到网页</td><td>零安装</td><td>归档含全部隐私，外传风险高</td></tr>
+<tr><td>纯手动搜</td><td>无需工具</td><td>慢、易漏、号段难全覆盖</td></tr>
+</tbody>
+</table>
+
+<h2>提取出来之后</h2>
+<p>拿到含手机号的推文清单后，别急着全删。先按是否还代表现在的你判断，再用工具的批量删除按风险清。记得删前导一份归档快照留底。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：加载你的 X 归档，在本机解析 tweets.js，自动识别手机号、邮箱、地址等痕迹并给出 0-100 健康分。想试试？试试 <a href="/">免费体检</a>，或读 <a href="/blog/whats-inside-x-archive-tweets-js">X 归档里到底有什么</a>，以及 <a href="/blog/how-to-download-x-archive">怎么下载 X 归档</a>。</p>
+`,
+    canonical: '/blog/tweets-js-extract-phone-numbers',
+    titleEn: 'No-Code: Pull Phone Numbers Out of tweets.js',
+    excerptEn: 'tweets.js is the heart of your X archive, every one of your tens of thousands of tweets lives there. To find every tweet containing a phone number, you do not need to learn to code. This post explains how, then gives two practical methods.',
+    categoryEn: 'Advanced Tech',
+    tagsEn: ['tweets.js', 'extract phone number', 'archive parse', 'on-device analysis'],
+    contentEn: `
+<p>tweets.js is the single most important file inside your X archive. Every tweet you have ever posted, whether 100,000 or 200,000 of them, lives in that one JSON. Finding every tweet that contains a phone number does not actually require learning to code. This post explains why, then gives you two ways to do it.</p>
+
+<h2>What tweets.js actually is</h2>
+<p>After you unzip your X archive, the data folder holds a pile of files, and tweets.js is the biggest and most complete. Each tweet is stored as one record with fields for text, timestamp, and location. Privacy traces like phone numbers and emails hide inside the text field.</p>
+
+<h2>Method 1: an on-device check tool, easiest</h2>
+<p>Load the archive into a 100% on-device check tool. It auto-matches common phone formats, mainland China starting 1 with 11 digits, US plus 1, UK, and others, lists every hit as a separate tweet, and tags a risk level. You write zero code.</p>
+
+<h2>Method 2: search without coding</h2>
+<ol>
+<li>Open tweets.js in any editor that supports find in file.</li>
+<li>Searching 1 prefix is too broad; instead search a number prefix you remember, like 138 or 139, or plus 1 space.</li>
+<li>Check each hit in context to confirm it is a real phone number and not 138 people attended false positives.</li>
+</ol>
+
+<h2>Why on-device beats uploading</h2>
+<table>
+<thead><tr><th>Approach</th><th>Pros</th><th>Cons</th></tr></thead>
+<tbody>
+<tr><td>On-device tool</td><td>Precise, no upload, auto-graded</td><td>Needs the archive</td></tr>
+<tr><td>Upload to a site</td><td>No install</td><td>Archive holds all privacy, risky to send out</td></tr>
+<tr><td>Pure manual search</td><td>No tool needed</td><td>Slow, leaky, hard to cover all prefixes</td></tr>
+</tbody>
+</table>
+
+<h2>After you extract them</h2>
+<p>With the list of phone-number tweets in hand, do not rush to delete all. Judge each by whether this still represents who I am, then clear by risk with the bulk delete. Export an archive snapshot before deleting, as always.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: load your X archive, parse tweets.js locally, auto-detect phone numbers, emails, and addresses, and give a 0-100 health score. Want to try? Try the <a href="/">free check</a>, read <a href="/blog/whats-inside-x-archive-tweets-js">what is inside your X archive</a>, or see <a href="/blog/how-to-download-x-archive">how to download your X archive</a>.</p>
+`,
+    faq: [
+      {
+        "q": "不懂编程能提取 tweets.js 里的手机号吗？",
+        "a": "能。用 100% 本机体检工具加载归档，它会自动正则匹配常见手机号格式并逐条列出，你不用写代码。",
+        "qEn": "Can I extract phone numbers from tweets.js without coding?",
+        "aEn": "Yes. Load the archive into an on-device check tool and it auto-matches common phone formats and lists each hit, no code required."
+      },
+      {
+        "q": "把归档上传到网页解析安全吗？",
+        "a": "不建议。归档含你全部推文和私信，上传等于外传所有隐私。优先用本机工具，数据不出电脑。",
+        "qEn": "Is it safe to upload my archive to a website for parsing?",
+        "aEn": "Not advised. The archive holds all your tweets and DMs, so uploading sends all that privacy out. Prefer an on-device tool where data never leaves your computer."
+      },
+      {
+        "q": "手动搜号段会不会漏？",
+        "a": "会，尤其只搜一个号段时。本机工具能覆盖多国格式并自动分级，比纯手动搜更全更准。",
+        "qEn": "Will manual prefix searching miss things?",
+        "aEn": "Yes, especially with one prefix. An on-device tool covers multiple country formats and auto-grades, broader and more accurate than manual search."
+      }
+    ]
+  },
+  {
+    slug: 'chinese-x-archive-guide',
+    title: '中文用户下载 X 归档的 5 个坑（别等到被搜出来才看）',
+    excerpt: '很多中文用户第一次下载 X 归档就卡住：邮箱一直没收到、等了三天、解压还报错。问题往往出在几个只有中文用户才会踩的点上。本文专为中文用户写，把申请归档到收邮件到解压到本机解析完整链路走一遍，并标出 5 个坑。',
+    date: '2026-09-04',
+    updatedAt: '2026-09-04',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['X 归档下载', '中文用户指南', '归档解压', '本机体检'],
+    content: `
+<p>很多中文用户第一次下载 X 归档就卡住：邮箱一直没收到、等了三天、解压还报错。问题往往出在几个只有中文用户才会踩的点上。本文专为中文用户写，把申请归档到收邮件到解压到本机解析完整链路走一遍，并标出 5 个坑。</p>
+
+<h2>链路总览</h2>
+<ol>
+<li><strong>申请：</strong>X 设置，你的账号，下载你的数据归档。注意要用注册邮箱，很多人换过邮箱却忘了。</li>
+<li><strong>收件：</strong>邮件发到注册邮箱，不是你常看的那个。国内邮箱，QQ 或 163，偶尔进垃圾箱，记得翻一下。</li>
+<li><strong>解压：</strong>归档是 ZIP，Windows 自带解压就行，别装来路不明的解压工具。</li>
+<li><strong>解析：</strong>用 100% 本机工具加载，数据不出电脑。</li>
+</ol>
+
+<h2>5 个中文用户专属坑</h2>
+<table>
+<thead><tr><th>坑</th><th>现象</th><th>解法</th></tr></thead>
+<tbody>
+<tr><td>邮箱不对</td><td>等三天没信</td><td>查注册邮箱，非日常邮箱</td></tr>
+<tr><td>进垃圾箱</td><td>邮件被过滤</td><td>翻 QQ 或 163 垃圾箱</td></tr>
+<tr><td>解压报错</td><td>ZIP 损坏</td><td>重新申请，别用第三方解压</td></tr>
+<tr><td>网络环境</td><td>打不开 X 设置</td><td>换可达的网络再申请</td></tr>
+<tr><td>误传云端</td><td>隐私外泄</td><td>只用本机工具，绝不发别人服务器</td></tr>
+</tbody>
+</table>
+
+<h2>一个提醒</h2>
+<p>有些在线解析归档的网站声称一键出报告，但你的归档装着你十年所有推文和私信，传上去等于把家门钥匙寄给陌生人。中文用户尤其要警惕这类免费工具，认准本机处理四个字。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：你下载 X 归档后在本机解析，输出 0-100 健康评分与风险清单，绝不把归档上传到任何服务器。想安全迈出第一步？试试 <a href="/">免费体检</a>，或读 <a href="/blog/how-to-download-x-archive">怎么下载 X 归档</a>，以及 <a href="/blog/whats-inside-x-archive-tweets-js">X 归档里到底有什么</a>。</p>
+`,
+    canonical: '/blog/chinese-x-archive-guide',
+    titleEn: 'Downloading Your X Archive as a Chinese User: 5 Pitfalls',
+    excerptEn: 'Plenty of Chinese users stall the first time they request an X archive: no email arrives, three days pass, the unzip fails. This guide walks the full chain, request, email, unzip, on-device parse, and flags five common pitfalls.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['X archive download', 'Chinese user guide', 'archive unzip', 'on-device check'],
+    contentEn: `
+<p>Requesting your X archive sounds simple until it isn't. Plenty of users stall at the first try: no email arrives, three days pass, the unzip throws an error. This guide walks the full chain, request, email, unzip, on-device parse, and flags five pitfalls that catch people out.</p>
+
+<h2>The chain at a glance</h2>
+<ol>
+<li><strong>Request:</strong> Settings, then Your account, then Download an archive of your data. Use the email tied to the account, not the one you check daily.</li>
+<li><strong>Receive:</strong> The message goes to the registered email, which may not be your main inbox, and can land in spam.</li>
+<li><strong>Unzip:</strong> The archive is a ZIP; the built-in OS unzip is enough, no sketchy unzip tool required.</li>
+<li><strong>Parse:</strong> Load it into an on-device tool so the data never leaves your computer.</li>
+</ol>
+
+<h2>Five pitfalls</h2>
+<table>
+<thead><tr><th>Pitfall</th><th>Symptom</th><th>Fix</th></tr></thead>
+<tbody>
+<tr><td>Wrong email</td><td>No message for 3 days</td><td>Check the registered, not daily, inbox</td></tr>
+<tr><td>Spam filter</td><td>Email buried</td><td>Dig through the spam folder</td></tr>
+<tr><td>Corrupt zip</td><td>Unzip error</td><td>Re-request, skip third-party unzippers</td></tr>
+<tr><td>Blocked settings</td><td>Can't open X settings</td><td>Switch network, then request</td></tr>
+<tr><td>Cloud upload</td><td>Privacy leak</td><td>On-device only, never send to a server</td></tr>
+</tbody>
+</table>
+
+<h2>One warning</h2>
+<p>Some online archive parsers promise a one-click report, but your archive holds a decade of tweets and DMs; uploading it hands a stranger the keys to your front door. Treat free parsers with suspicion and look for the words on-device.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: after you download your X archive, it parses locally and gives a 0-100 health score plus a risk list, with the archive never uploaded. Want a safe first step? Try the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/whats-inside-x-archive-tweets-js">what is inside that archive</a>.</p>
+`,
+    faq: [
+      {
+        "q": "中文用户下载归档最常卡在哪？",
+        "a": "两处：一是用错邮箱，邮件发到注册邮箱而非日常邮箱；二是邮件进了 QQ 或 163 的垃圾箱没看到。",
+        "qEn": "Where do Chinese users most often get stuck downloading the archive?",
+        "aEn": "Two spots: using the wrong email, the message goes to the registered, not daily, inbox, and the email landing in a QQ or 163 spam folder unnoticed."
+      },
+      {
+        "q": "解压报错是不是文件坏了？",
+        "a": "可能是归档 ZIP 损坏，建议重新申请一份。别用来源不明的解压工具，系统自带解压就够。",
+        "qEn": "Does an unzip error mean the file is broken?",
+        "aEn": "Possibly a corrupt ZIP, so re-request a fresh one. Skip unknown unzip tools; the built-in OS unzip is enough."
+      },
+      {
+        "q": "为什么强调本机处理？",
+        "a": "因为归档装着你十年推文和私信，传到免费在线解析网站等于把隐私交出去。认准本机处理才安全。",
+        "qEn": "Why insist on on-device processing?",
+        "aEn": "Because the archive holds a decade of tweets and DMs, uploading it to a free online parser hands your privacy over. Look for on-device to stay safe."
+      }
+    ]
   }
 ];
 

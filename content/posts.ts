@@ -5301,6 +5301,324 @@ export const allPosts: BlogPost[] = [
         "aEn": "Because the archive holds a decade of tweets and DMs, uploading it to a free online parser hands your privacy over. Look for on-device to stay safe."
       }
     ]
+  },
+  {
+    slug: 'enable-2fa-x-account',
+    title: '如何为 X 账号开启两步验证：2026 防被盗指南',
+    excerpt: '开启 X 两步验证是守住账号的第一道防线。本文讲清为什么 2FA 重要、如何在 X 上开启双重验证、验证器 App 与短信哪种更安全，以及它如何配合你的数字足迹清理。',
+    date: '2026-09-06',
+    updatedAt: '2026-09-06',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '账号安全', '两步验证', '数字足迹'],
+    canonical: '/blog/enable-2fa-x-account',
+    faq: [
+      { q: 'X 的短信两步验证够安全吗？', a: '比没有好，但怕 SIM 劫持（攻击者通过运营商社会工程转移你的号码）。如果可以，优先用验证器 App 替代短信。', qEn: 'Is SMS two-factor authentication on X safe enough?', aEn: 'Safer than none, but vulnerable to SIM-swap, where an attacker transfers your number through carrier social engineering. If you can, use an authenticator app instead of text messages.' },
+      { q: '同一个验证器 App 能给 X 和其他账号用吗？', a: '可以。Authy 或 1Password 这类 App 能集中保存多个服务的验证码，记得备份 App 自身的恢复数据即可。', qEn: 'Can I use the same authenticator app for X and other accounts?', aEn: 'Yes. Apps like Authy or 1Password hold codes for many services. Just make sure you have backed up the apps own recovery data.' },
+      { q: '开 2FA 会删掉我的推文吗？', a: '不会。两步验证只保护登录。要移除有风险的旧内容，请在锁好账号后用专门的推文删除工具。', qEn: 'Does enabling 2FA delete any tweets?', aEn: 'No. 2FA only protects sign-in. To remove risky old posts, use a separate tweet deletion tool after you have secured the account.' }
+    ],
+    titleEn: 'How to Enable Two-Factor Authentication on X (2026 Guide)',
+    excerptEn: 'Turning on two-factor authentication on X is the first line of defense for your account. This guide covers why 2FA matters, how to enable it, authenticator app vs SMS, and how it fits your digital footprint cleanup.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'account security', '2FA', 'digital footprint'],
+    contentEn: `
+<p>If you care about your privacy on X, the single highest-leverage thing you can do today is <strong>enable two-factor authentication on X</strong>. A password alone is no longer enough — credential stuffing and SIM-swap attacks have made "something you know" surprisingly weak. Adding a second factor turns a leaked password into a dead end for attackers.</p>
+
+<h2>Why 2FA belongs in your privacy routine</h2>
+<p>Most people treat two-factor as account security, separate from their "digital footprint." But the two are connected. Once someone takes over your X account, they can read years of your tweets, harvest the personal details you forgot you posted, and impersonate you. A takeover also undoes any careful cleanup you have done. So before you bulk-delete old tweets, lock the door.</p>
+<ul>
+  <li><strong>Stops password reuse attacks.</strong> If your password leaked in some unrelated breach, 2FA blocks the login.</li>
+  <li><strong>Blunts SIM-swap.</strong> With the right factor type, a stolen phone number alone will not get them in.</li>
+  <li><strong>Protects your archive.</strong> Your X data archive is the master key to your history; 2FA guards the account that owns it.</li>
+</ul>
+
+<h2>How to enable 2FA on X, step by step</h2>
+<ol>
+  <li>Open <strong>Settings and privacy → Security and account access → Security → Two-factor authentication</strong>.</li>
+  <li>Choose a method: Authenticator app, Text message, or Security key.</li>
+  <li>If you pick the app, scan the QR code with Google Authenticator, Authy, or 1Password.</li>
+  <li>Enter the 6-digit code to confirm, then save your <strong>backup codes</strong> somewhere offline.</li>
+  <li>Log out and back in once to confirm it works.</li>
+</ol>
+
+<h2>Authenticator app vs SMS: which is safer</h2>
+<p>This is the part most guides get wrong. <strong>SMS 2FA is better than nothing, but it is the weakest option</strong> because phone numbers can be ported or cloned through social engineering at a carrier. An authenticator app generates codes on your device and never touches the phone network. A hardware security key is strongest of all.</p>
+<table>
+  <thead><tr><th>Method</th><th>Convenience</th><th>Resistance to takeover</th></tr></thead>
+  <tbody>
+    <tr><td>SMS code</td><td>High</td><td>Low (SIM-swap risk)</td></tr>
+    <tr><td>Authenticator app</td><td>Medium</td><td>High</td></tr>
+    <tr><td>Security key</td><td>Lower</td><td>Very high</td></tr>
+  </tbody>
+</table>
+
+<h2>What if you lose your device</h2>
+<p>People skip 2FA because they fear being locked out. Avoid that by saving backup codes the moment you enable it, and by registering more than one method where X allows. If you do get locked out, recovery leans on your verified email and, failing that, a support ticket — which is slow, another reason to prepare in advance.</p>
+
+<h2>2FA and your digital footprint cleanup</h2>
+<p>Good hygiene is layered: turn on 2FA, then run a <a href="/blog/how-to-delete-old-tweets-2026">privacy check on your old tweets</a>, then delete what is risky. The check itself is read-only and runs entirely on your device — see <a href="/blog/on-device-analysis-privacy">why on-device analysis keeps your archive private</a>. Lock first, clean second.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is SMS two-factor authentication on X safe enough?</h3>
+<p>Safer than no 2FA, but vulnerable to SIM-swap. If you can, use an authenticator app instead of text messages.</p>
+<h3>Can I use the same authenticator app for X and other accounts?</h3>
+<p>Yes. Apps like Authy or 1Password hold codes for many services. Just make sure you have backed up the apps own recovery data.</p>
+<h3>Does enabling 2FA delete any tweets?</h3>
+<p>No. 2FA only protects sign-in. To remove risky old posts, use a separate <a href="/blog/how-to-delete-old-tweets-2026">tweet deletion tool</a> after you have secured the account.</p>
+    `.trim(),
+    content: `
+<p>如果你在意自己在 X 上的隐私，今天最值得做的一件事就是<strong>为 X 账号开启两步验证</strong>。光靠密码已经不够了——撞库攻击和 SIM 卡劫持让"你知道的那串密码"变得出奇地脆弱。加一道第二步验证，能把泄露的密码变成攻击者的死胡同。</p>
+
+<h2>为什么 2FA 该写进你的隐私日常</h2>
+<p>很多人把两步验证当成"账号安全"，跟"数字足迹"分开看。其实两者连在一起。一旦别人接管了你的 X 账号，他就能读你多年的推文、扒出你早就忘了发过的个人信息，还能冒充你。接管也会毁掉你辛苦做过的清理。所以，在批量删除旧推文之前，先把门锁上。</p>
+<ul>
+  <li><strong>阻断密码复用攻击。</strong>如果你的密码在某个无关的泄露里暴露过，2FA 能挡住这次登录。</li>
+  <li><strong>削弱 SIM 劫持。</strong>用对验证方式，光有一个被盗的手机号也进不来。</li>
+  <li><strong>保护你的归档。</strong>X 数据归档是你全部历史的钥匙，2FA 守着拥有它的那个账号。</li>
+</ul>
+
+<h2>如何开启 X 两步验证（分步）</h2>
+<ol>
+  <li>打开 <strong>设置与隐私 → 安全与账号访问 → 安全 → 两步验证</strong>。</li>
+  <li>选择方式：验证器 App、短信，或安全密钥。</li>
+  <li>若选 App，用 Google Authenticator、Authy 或 1Password 扫描二维码。</li>
+  <li>输入 6 位验证码确认，然后把<strong>备用恢复码</strong>离线保存好。</li>
+  <li>退出重登一次，确认生效。</li>
+</ol>
+
+<h2>验证器 App vs 短信：哪个更安全</h2>
+<p>这是大多数教程讲错的地方。<strong>短信 2FA 比没有好，但它是最弱的一档</strong>，因为手机号可以通过对运营商的社会工程被转移或克隆。验证器 App 在你本机生成验证码，根本不碰电话网络。硬件安全密钥（如 FIDO 密钥）则最强。</p>
+<table>
+  <thead><tr><th>方式</th><th>便利性</th><th>抗接管能力</th></tr></thead>
+  <tbody>
+    <tr><td>短信验证码</td><td>高</td><td>低（SIM 劫持风险）</td></tr>
+    <tr><td>验证器 App</td><td>中</td><td>高</td></tr>
+    <tr><td>安全密钥</td><td>较低</td><td>很高</td></tr>
+  </tbody>
+</table>
+
+<h2>设备丢了怎么办</h2>
+<p>很多人因为怕被锁死而不开 2FA。破解方法是：开启的那一刻就存好备用恢复码，并在 X 允许时登记不止一种方式。万一真被锁，找回依赖你验证过的邮箱，再不行就提交工单——那很慢，所以提前准备。</p>
+
+<h2>2FA 与你的数字足迹清理</h2>
+<p>好的习惯是分层的：先开 2FA，再跑一次<a href="/blog/how-to-delete-old-tweets-2026">旧推文隐私体检</a>，然后删掉有风险的内容。体检本身只读、且全程在你的设备完成——见<a href="/blog/on-device-analysis-privacy">为什么本机分析能保住归档隐私</a>。先上锁，再清扫。</p>
+
+<h2>常见问题</h2>
+<h3>X 的短信两步验证够安全吗？</h3>
+<p>比没有安全，但怕 SIM 劫持（攻击者通过运营商社会工程转移你的号码）。如果可以，用验证器 App 替代短信。</p>
+<h3>同一个验证器 App 能给 X 和其他账号用吗？</h3>
+<p>可以。Authy 或 1Password 这类 App 能集中保存多个服务的验证码，记得备份 App 自身的恢复数据即可。</p>
+<h3>开 2FA 会删掉我的推文吗？</h3>
+<p>不会。两步验证只保护登录。要移除有风险的旧内容，请在锁好账号后用专门的<a href="/blog/how-to-delete-old-tweets-2026">推文删除工具</a>。</p>
+    `.trim()
+  },
+  {
+    slug: 'footprint-health-score-meaning',
+    title: '数字足迹健康分 0-100 到底代表什么',
+    excerpt: '数字足迹体检给出的 0-100 健康分，到底怎么算、高分和低分各意味着什么？本文拆解评分背后的风险标签，并告诉你如何把分数提上去。',
+    date: '2026-09-06',
+    updatedAt: '2026-09-06',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '隐私评分', '体检'],
+    canonical: '/blog/footprint-health-score-meaning',
+    faq: [
+      { q: '数字足迹分数越高一定越好吗？', a: '大体上是的——它衡量的是泄露的个人信息更少。但高分不等于零风险，一定要看背后的风险标签，而不只是那个数字。', qEn: 'Is a higher digital footprint score always better?', aEn: 'Mostly, yes — it tracks less leaked personal data. But a high score does not mean zero risk; always read the underlying labels, not just the number.' },
+      { q: '删掉推文分数会立刻变高吗？', a: '会。删掉报告里权重高的项目后，重新跑一次体检就能看到提升。删除按条计费、且只有你自己能操作，所以动手前看清楚。', qEn: 'Will deleting tweets immediately raise my score?', aEn: 'Yes. After you delete the high-weight items the report flags, re-running the check shows the improvement. Deletion is per-tweet and only you can trigger it, so review carefully.' },
+      { q: '这个分数会变化吗？', a: '分数反映的是你运行体检那一刻的归档状态。你新发的推文或重新下载的归档都会改变它，所以建议定期复检。', qEn: 'Can the score change over time?', aEn: 'The score reflects your archive at the moment you run the check. New tweets you post, or a fresh archive download, will change it — so re-check periodically.' }
+    ],
+    titleEn: 'What Your Digital Footprint Health Score (0-100) Actually Means',
+    excerptEn: 'The 0-100 health score from a digital footprint check — how it is built, what a high or low score really means, and how to raise it. We break down the risk labels behind the number.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy score', 'checkup'],
+    contentEn: `
+<p>When you run a <strong>digital footprint health score</strong> on your X archive, you get a single number from 0 to 100. But that number is not a vanity metric — it is a compact summary of how much personal information your old tweets are leaking. Understanding what it means helps you decide what to clean, and in what order.</p>
+
+<h2>How the 0-100 score is built</h2>
+<p>The score starts at 100 and drops as the scan finds risk signals. Each category of leaked data carries a different weight, because not all leaks are equal. A phone number is worse than a mild opinion; a home address is worse than a checked-in coffee shop.</p>
+<table>
+  <thead><tr><th>Risk signal</th><th>Typical weight</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>Phone / email</td><td>Heavy</td><td>Direct door to scams and account takeover</td></tr>
+    <tr><td>Home / work address</td><td>Heavy</td><td>Real-world safety</td></tr>
+    <tr><td>Location check-ins</td><td>Medium</td><td>Reveals routines and whereabouts</td></tr>
+    <tr><td>Sensitive topics</td><td>Medium</td><td>Career and reputation</td></tr>
+  </tbody>
+</table>
+
+<h2>What a high score means</h2>
+<p>A score above ~80 usually means your archive is fairly clean: little or no contact info, no addresses, and few sensitive topics. That does not mean "never clean again" — review still matters — but it does mean you are not actively leaking the dangerous stuff. Treat a high score as a baseline to maintain, not a finish line.</p>
+
+<h2>What a low score means</h2>
+<p>A score under ~40 signals real exposure. You likely have multiple tweets with phone numbers, an address, or dated opinions that could resurface. The report ranks these so you can fix the worst first. Do not panic and delete everything blindly; targeted removal protects you faster and keeps the posts you would rather keep.</p>
+
+<h2>The risk labels behind the number</h2>
+<p>The score is only the headline. Behind it sit the <a href="/blog/risk-labels-explained">risk labels</a> — phone, address, location, sensitive-topic — each tied to specific tweets. Reading the labels tells you exactly which post dropped your score and why, which is far more useful than the number alone.</p>
+<ul>
+  <li><strong>Phone / Email</strong> — remove or redact before anything else.</li>
+  <li><strong>Address</strong> — highest real-world risk; prioritize.</li>
+  <li><strong>Location</strong> — check-ins reveal daily patterns.</li>
+  <li><strong>Sensitive topic</strong> — context-dependent; judge per tweet.</li>
+</ul>
+
+<h2>How to raise your score</h2>
+<p>Raising the score is just lowering the leaked surface area. Run a check, work the high-weight items first, then re-run to watch the number climb. The check is free and read-only, and the deletion step is <a href="/blog/how-to-delete-old-tweets-2026">billed per tweet and fully under your control</a>. Pair it with <a href="/blog/on-device-analysis-privacy">on-device analysis</a> so your archive never leaves your machine.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Is a higher digital footprint score always better?</h3>
+<p>Mostly, yes — it tracks less leaked personal data. But a high score does not mean zero risk; always read the underlying labels, not just the number.</p>
+<h3>Will deleting tweets immediately raise my score?</h3>
+<p>Yes. After you delete the high-weight items the report flags, re-running the check shows the improvement. Deletion is per-tweet and reversible only by re-posting, so review carefully.</p>
+<h3>Can the score change over time?</h3>
+<p>The score reflects your archive at the moment you run the check. New tweets you post, or a fresh archive download, will change it — so re-check periodically.</p>
+    `.trim(),
+    content: `
+<p>当你给自己的 X 归档跑一次<strong>数字足迹健康分</strong>，会得到一个 0 到 100 之间的数字。但这个数字不是个虚的指标——它是你旧推文到底泄露了多少个人信息的浓缩总结。搞懂它意味着什么，能帮你决定该清理什么、按什么顺序清。</p>
+
+<h2>0-100 分是怎么算出来的</h2>
+<p>分数从 100 起算，扫描到的风险信号越多、越重，扣得越多。不同类别的泄露权重不同，因为不是所有泄露都一样糟。一个手机号比一句偏激观点严重；家庭住址比一家打卡的咖啡馆严重。</p>
+<table>
+  <thead><tr><th>风险信号</th><th>典型权重</th><th>原因</th></tr></thead>
+  <tbody>
+    <tr><td>手机号 / 邮箱</td><td>重</td><td>诈骗与账号接管的直接入口</td></tr>
+    <tr><td>家庭 / 工作地址</td><td>重</td><td>现实世界的人身安全</td></tr>
+    <tr><td>定位打卡</td><td>中</td><td>暴露日常规律与行踪</td></tr>
+    <tr><td>敏感话题</td><td>中</td><td>职业与声誉</td></tr>
+  </tbody>
+</table>
+
+<h2>高分意味着什么</h2>
+<p>分数在 80 以上，通常说明你的归档相当干净：几乎没有联系方式、没有地址、也少有敏感话题。这不等于"以后不用清了"——定期复查仍然重要——但至少说明你没有在主动泄露那些危险的东西。把高分当成一个需要维持的基线，而不是终点。</p>
+
+<h2>低分意味着什么</h2>
+<p>分数低于 40，意味着真实的暴露。你很可能有多条带手机号、地址或早已过时的观点、随时可能被翻出来的推文。报告会按风险排序，让你先修最糟的。别慌到盲目全删；精准移除更安全，也能保住你想留下的内容。</p>
+
+<h2>数字背后的风险标签</h2>
+<p>分数只是标题。它背后是<a href="/blog/risk-labels-explained">风险标签</a>——手机号、地址、定位、敏感话题——每一条都对应具体的推文。读标签能告诉你究竟是哪条推文拉低了分数、为什么，这比孤零零一个数字有用得多。</p>
+<ul>
+  <li><strong>手机号 / 邮箱</strong>——最先移除或打码。</li>
+  <li><strong>地址</strong>——现实风险最高，优先处理。</li>
+  <li><strong>定位</strong>——打卡会暴露日常规律。</li>
+  <li><strong>敏感话题</strong>——看语境，逐条判断。</li>
+</ul>
+
+<h2>怎么把分数提上去</h2>
+<p>提分本质上就是缩小泄露面。跑一次体检，先处理权重高的项目，再重跑看数字往上走。体检免费且只读，删除那一步是<a href="/blog/how-to-delete-old-tweets-2026">按条计费、完全由你掌控</a>。配合<a href="/blog/on-device-analysis-privacy">本机分析</a>，你的归档数据就不会离开自己的电脑。</p>
+
+<h2>常见问题</h2>
+<h3>数字足迹分数越高一定越好吗？</h3>
+<p>大体上是的——它衡量的是泄露的个人信息更少。但高分不等于零风险，一定要看背后的风险标签，而不只是那个数字。</p>
+<h3>删掉推文分数会立刻变高吗？</h3>
+<p>会。删掉报告里权重高的项目后，重新跑一次体检就能看到提升。删除按条计费、且只有你自己能操作，所以动手前看清楚。</p>
+<h3>这个分数会变化吗？</h3>
+<p>分数反映的是你运行体检那一刻的归档状态。你新发的推文或重新下载的归档都会改变它，所以建议定期复检。</p>
+    `.trim()
+  },
+  {
+    slug: 'delete-tweets-by-year',
+    title: '按年份删除推文：把 2020 年以前的旧推文清干净',
+    excerpt: '不想一条条翻？按年份删除推文是最省心的清理方式。本文讲清为什么要按年份清、年份筛选怎么用、删除前如何备份，以及几个常见误区。',
+    date: '2026-09-06',
+    updatedAt: '2026-09-06',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '删除推文', '按年份', '数字足迹'],
+    canonical: '/blog/delete-tweets-by-year',
+    faq: [
+      { q: '我能只删某一年的推文吗，比如 2016？', a: '可以。大多数工具既支持"某年之前"，也支持"指定年份区间"，所以你想只清 2016 也行。', qEn: 'Can I delete tweets from only one year, like 2016?', aEn: 'Yes. Most tools support both "before a year" and "a specific year range," so you can target just 2016 if you want.' },
+      { q: '按年份删除会影响我的点赞或私信吗？', a: '不会。按年份删除只针对你自己发的推文。点赞和私信是另一回事，需要单独的清理步骤。', qEn: 'Will deleting by year touch my likes or DMs?', aEn: 'No. Year-based deletion targets your own tweets. Likes and DMs are separate and need their own cleanup steps.' },
+      { q: '一次性删这么多推文安全吗？', a: '只要通过你自己授权的会话、并带限速保护，就是安全的。用那种能暂停、续传、且只在本地解析归档的工具——见我们的完整删除指南。', qEn: 'Is it safe to bulk-delete that many tweets?', aEn: 'Safe when done through your own authorized session with rate limiting. Use a tool that pauses, resumes, and only processes your archive locally — see our full deletion guide.' }
+    ],
+    titleEn: 'Delete Tweets by Year: Clean Out Everything Before 2020',
+    excerptEn: 'Do not want to scroll forever? Deleting tweets by year is the most painless cleanup. This guide covers why year-based deletion works, how the filter behaves, how to back up first, and common mistakes to avoid.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['X/Twitter', 'delete tweets', 'by year', 'digital footprint'],
+    contentEn: `
+<p>The fastest way to shrink a decade of X history is to <strong>delete tweets by year</strong>. Instead of judging 12,000 posts one at a time, you pick a cutoff — say, everything before 2020 — and let a tool handle the rest. It is the cleanup equivalent of a closet purge: keep the recent, dump the ancient.</p>
+
+<h2>Why delete by year</h2>
+<p>Most risk lives in the old stuff. Tweets from 2012-2019 were posted before you thought about privacy, often with locations, handles, and hot takes you would never repeat. A year-based sweep targets exactly that era. It also gives you a clean mental model: "anything older than X is fair game."</p>
+<ul>
+  <li><strong>Speed.</strong> One filter replaces thousands of manual decisions.</li>
+  <li><strong>Focus.</strong> You keep recent, context-rich posts and shed the risky relics.</li>
+  <li><strong>Peace of mind.</strong> A fixed cutoff is easier to stick to than endless scrolling.</li>
+</ul>
+
+<h2>How the year filter works</h2>
+<p>A proper deletion tool reads your X archive, then lets you set a boundary like "delete everything posted before Jan 1, 2020." Tweets from 2019, 2015, and 2011 all qualify; anything from 2020 onward stays. You can preview the count before committing, so there are no surprises.</p>
+<table>
+  <thead><tr><th>Cutoff</th><th>What gets deleted</th><th>What stays</th></tr></thead>
+  <tbody>
+    <tr><td>Before 2018</td><td>Pre-2018 archive</td><td>2018 → now</td></tr>
+    <tr><td>Before 2020</td><td>Pre-2020 archive</td><td>2020 → now</td></tr>
+    <tr><td>Before 2022</td><td>Pre-2022 archive</td><td>2022 → now</td></tr>
+  </tbody>
+</table>
+
+<h2>Back up before you delete</h2>
+<p>This is non-negotiable. Your X archive is the only copy of much of this history. <a href="/blog/how-to-download-x-archive">Download it first</a>, store it somewhere safe, then delete. If you later want a specific old post back, the archive still has it — the live timeline just will not.</p>
+
+<h2>Common mistakes</h2>
+<ol>
+  <li><strong>Deleting without a backup.</strong> Gone means gone from X; the archive is your insurance.</li>
+  <li><strong>Cutting off too recently.</strong> Wiping 2023 can erase posts you actually want. Start conservative.</li>
+  <li><strong>Forgetting deletion is permanent on X.</strong> Preview the count, because there is no undo.</li>
+</ol>
+
+<h2>After the sweep: keep monitoring</h2>
+<p>A one-time purge is not a lifetime pass. New tweets accumulate, and old ones you kept may age badly. Running a periodic <a href="/blog/how-to-delete-old-tweets-2026">footprint check</a> — especially with <a href="/blog/on-device-analysis-privacy">on-device analysis</a> so nothing uploads — keeps the score honest. Pair year-based deletion with a yearly habit and you will never face a 12,000-tweet mountain again.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Can I delete tweets from only one year, like 2016?</h3>
+<p>Yes. Most tools support both "before a year" and "a specific year range," so you can target just 2016 if you want.</p>
+<h3>Will deleting by year touch my likes or DMs?</h3>
+<p>No. Year-based deletion targets your own tweets. Likes and DMs are separate and need their own cleanup steps.</p>
+<h3>Is it safe to bulk-delete that many tweets?</h3>
+<p>Safe when done through your own authorized session with rate limiting. Use a tool that pauses, resumes, and only processes your archive locally — see our <a href="/blog/how-to-delete-old-tweets-2026">full deletion guide</a>.</p>
+    `.trim(),
+    content: `
+<p>想要缩减十年 X 历史，最快的办法就是<strong>按年份删除推文</strong>。与其一条条审判一万两千条推文，不如划一条分界线——比如 2020 年以前的全部删掉——交给工具处理。这就像清理衣柜：留新的，扔老的。</p>
+
+<h2>为什么要按年份删</h2>
+<p>大部分风险都藏在老旧内容里。2012-2019 年的推文发布时你还没想过隐私，常常带着定位、@ 出来的账号，以及你绝不会重说的激进口号。按年份清扫正好打中那个年代。它也给你一个清晰的判断标准："比 X 老的都算可清理"。</p>
+<ul>
+  <li><strong>快。</strong>一个筛选器顶替上千次手动决定。</li>
+  <li><strong>聚焦。</strong>你留住有语境的新推文，甩掉有风险的旧 relics。</li>
+  <li><strong>安心。</strong>固定的分界线比无休止地刷好坚持。</li>
+</ul>
+
+<h2>年份筛选怎么用</h2>
+<p>合格的删除工具会先读你的 X 归档，然后让你设一条边界，比如"删除 2020 年 1 月 1 日之前发的一切"。2019、2015、2011 年的推文都符合；2020 年及以后的留下。提交前可以预览数量，不会有意外。</p>
+<table>
+  <thead><tr><th>分界线</th><th>会删掉</th><th>会留下</th></tr></thead>
+  <tbody>
+    <tr><td>2018 年之前</td><td>2018 前的归档</td><td>2018 → 现在</td></tr>
+    <tr><td>2020 年之前</td><td>2020 前的归档</td><td>2020 → 现在</td></tr>
+    <tr><td>2022 年之前</td><td>2022 前的归档</td><td>2022 → 现在</td></tr>
+  </tbody>
+</table>
+
+<h2>删之前先备份</h2>
+<p>这一步没有商量余地。你的 X 归档是许多历史的唯一副本。<a href="/blog/how-to-download-x-archive">先下载</a>一份，存到安全的地方，再删。如果以后想找回某条老推文，归档里还在——只是公开时间线没有了。</p>
+
+<h2>常见误区</h2>
+<ol>
+  <li><strong>不备份就删。</strong>在 X 上删了就是删了；归档是你的保险。</li>
+  <li><strong>分界线划得太近。</strong>把 2023 全清掉，可能顺手删了你其实想要的内容。先从保守的线开始。</li>
+  <li><strong>忘了删除在 X 上是永久的。</strong>先预览数量，因为没有撤销。</li>
+</ol>
+
+<h2>清扫之后：持续监控</h2>
+<p>一次性大扫除不是终身通行证。新推文会累积，留着的旧内容也可能慢慢变味。定期跑一次<a href="/blog/how-to-delete-old-tweets-2026">足迹体检</a>——尤其是用<a href="/blog/on-device-analysis-privacy">本机分析</a>，数据不上传——才能让分数保持诚实。把按年份删除变成年度习惯，你就再也不会面对一万两千条推文的大山。</p>
+
+<h2>常见问题</h2>
+<h3>我能只删某一年的推文吗，比如 2016？</h3>
+<p>可以。大多数工具既支持"某年之前"，也支持"指定年份区间"，所以你想只清 2016 也行。</p>
+<h3>按年份删除会影响我的点赞或私信吗？</h3>
+<p>不会。按年份删除只针对你自己发的推文。点赞和私信是另一回事，需要单独的清理步骤。</p>
+<h3>一次性删这么多推文安全吗？</h3>
+<p>只要通过你自己授权的会话、并带限速保护，就是安全的。用那种能暂停、续传、且只在本地解析归档的工具——见我们的<a href="/blog/how-to-delete-old-tweets-2026">完整删除指南</a>。</p>
+    `.trim()
   }
 ];
 

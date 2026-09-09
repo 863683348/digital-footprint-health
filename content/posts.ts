@@ -5624,11 +5624,16 @@ export const allPosts: BlogPost[] = [
   {
     slug: 'protect-digital-legacy-after-death',
     date: '2026-09-08',
-    title: 'Digital Legacy Planning: What Happens to Your Online Accounts After You Die',
-    titleZh: '数字遗产规划：你去世后在线账户会发生什么',
-    excerpt: 'A comprehensive guide to digital estate planning, including social media, cloud storage, and financial accounts.',
-    excerptZh: '数字遗产规划全面指南，包括社交媒体、云存储和金融账户的处理方案。',
-    content: `
+    updatedAt: '2026-09-08',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字遗产', '遗产规划', '隐私保护', '数字资产'],
+    canonical: '/blog/protect-digital-legacy-after-death',
+    titleEn: 'Digital Legacy Planning: What Happens to Your Online Accounts After You Die',
+    title: '数字遗产规划：你去世后在线账户会发生什么',
+    excerptEn: 'A comprehensive guide to digital estate planning, including social media, cloud storage, and financial accounts.',
+    excerpt: '数字遗产规划全面指南，包括社交媒体、云存储和金融账户的处理方案。',
+    contentEn: `
 <div class="introduction">
   <p>Your digital life extends far beyond your physical possessions. From social media accounts to cryptocurrency wallets, your online presence represents significant emotional and financial value. But what happens to all of it when you pass away?</p>
   <p>Digital legacy planning is becoming increasingly important as our lives move online. Without proper planning, your digital assets may be lost forever, or your loved ones may struggle to access important information during an already difficult time.</p>
@@ -5721,7 +5726,7 @@ export const allPosts: BlogPost[] = [
 <h2>Conclusion</h2>
 <p>Digital legacy planning is an act of care for your loved ones. By taking the time to organize your digital life and communicate your wishes, you ensure that your digital presence is handled according to your values and preferences. Start today—it's never too early to plan, and it's never too late to get organized.</p>
 `,
-    contentZh: `
+    content: `
 <div class="introduction">
   <p>你的数字生活远远超越了你的物理财产。从社交媒体账户到加密货币钱包，你的在线存在代表着重要的情感和财务价值。但当你去世后，所有这些会发生什么呢？</p>
   <p>随着我们的生活越来越在线化，数字遗产规划变得日益重要。如果没有适当的规划，你的数字资产可能会永远丢失，或者你的亲人可能会在已经艰难的时期难以访问重要信息。</p>

@@ -5620,6 +5620,202 @@ export const allPosts: BlogPost[] = [
 <p>只要通过你自己授权的会话、并带限速保护，就是安全的。用那种能暂停、续传、且只在本地解析归档的工具——见我们的<a href="/blog/how-to-delete-old-tweets-2026">完整删除指南</a>。</p>
     `.trim()
   }
+
+  {
+    slug: 'protect-digital-legacy-after-death',
+    date: '2026-09-08',
+    title: 'Digital Legacy Planning: What Happens to Your Online Accounts After You Die',
+    titleZh: '数字遗产规划：你去世后在线账户会发生什么',
+    excerpt: 'A comprehensive guide to digital estate planning, including social media, cloud storage, and financial accounts.',
+    excerptZh: '数字遗产规划全面指南，包括社交媒体、云存储和金融账户的处理方案。',
+    content: `
+<div class="introduction">
+  <p>Your digital life extends far beyond your physical possessions. From social media accounts to cryptocurrency wallets, your online presence represents significant emotional and financial value. But what happens to all of it when you pass away?</p>
+  <p>Digital legacy planning is becoming increasingly important as our lives move online. Without proper planning, your digital assets may be lost forever, or your loved ones may struggle to access important information during an already difficult time.</p>
+</div>
+
+<h2>Why Digital Legacy Planning Matters</h2>
+<p>Consider these scenarios: Your grandmother's photo album is lost because it was stored in an app with no inheritance option. Your father's cryptocurrency wallet becomes inaccessible because no one knows the password. Your social media accounts continue to post automatically, creating an unsettling presence online.</p>
+<p>These aren't hypothetical situations. According to recent studies, over 60% of Americans have died with unknown cryptocurrency holdings, and the average person has 80+ online accounts that need addressing after death.</p>
+
+<h2>Key Digital Assets to Consider</h2>
+<ul>
+  <li><strong>Social Media Accounts</strong>: Facebook, Instagram, Twitter, LinkedIn</li>
+  <li><strong>Cloud Storage</strong>: Google Drive, iCloud, Dropbox</li>
+  <li><strong>Financial Accounts</strong>: Online banking, investment platforms, cryptocurrency</li>
+  <li><strong>Email Accounts</strong>: Primary and secondary email addresses</li>
+  <li><strong>Subscriptions</strong>: Streaming services, software subscriptions</li>
+  <li><strong>Digital Photos</strong>: Online photo albums and cloud storage</li>
+  <li><strong>Domain Names</strong>: Website domains and hosting accounts</li>
+</ul>
+
+<h2>Steps to Plan Your Digital Legacy</h2>
+
+<h3>1. Create a Digital Inventory</h3>
+<p>Start by listing all your online accounts and digital assets. Include:</p>
+<ul>
+  <li>Website URLs and login information</li>
+  <li>Account types and purposes</li>
+  <li>Current value (financial or sentimental)</li>
+  <li>Access methods (password managers, 2FA devices)</li>
+</ul>
+
+<h3>2. Choose Your Legacy Contacts</h3>
+<p>Most major platforms allow you to designate a legacy contact:</p>
+<ul>
+  <li><strong>Facebook</strong>: Memorialize or delete the account</li>
+  <li><strong>Google</strong>: Inactive Account Manager can transfer data</li>
+  <li><strong>Apple</strong>: Legacy Contact can access iCloud data</li>
+  <li><strong>Twitter/X</strong>: Verify death and memorialize</li>
+</ul>
+
+<h3>3. Secure Your Passwords</h3>
+<p>Use a password manager with emergency access features. Share access with your designated legacy contact through secure channels. Never include passwords in your will—wills become public documents.</p>
+
+<h3>4. Write a Digital Will</h3>
+<p>Your digital will should include:</p>
+<ul>
+  <li>Instructions for each type of digital asset</li>
+  <li>Who should receive access to what</li>
+  <li>Specific wishes for memorialization vs. deletion</li>
+  <li>Location of physical devices and access tools</li>
+</ul>
+
+<h3>5. Review and Update Regularly</h3>
+<p>Your digital life changes constantly. Review your digital legacy plan at least annually, or whenever you create new accounts or delete old ones.</p>
+
+<h2>Platform-Specific Guidance</h2>
+
+<h3>Social Media</h3>
+<p>Facebook and Instagram offer memorialization options. LinkedIn allows account closure or memorialization. Twitter/X can be memorialized upon verification of death. Consider whether you want your accounts to remain active as a memory or be memorialized.</p>
+
+<h3>Financial Accounts</h3>
+<p>Contact your financial institutions about their death notification procedures. Set up payable-on-death designations where possible. For cryptocurrency, consider hardware wallets with multi-signature access or seed phrase storage in secure locations.</p>
+
+<h3>Cloud Storage</h3>
+<p>Google's Inactive Account Manager can automatically share data with contacts after a specified period of inactivity. Apple's Legacy Contact feature allows designated people to access your iCloud data. Consider what's most important to preserve versus what can be deleted.</p>
+
+<h2>Common Mistakes to Avoid</h2>
+<ul>
+  <li><strong>Forgetting to update access methods</strong>: If you change your password manager, your legacy contact needs to know</li>
+  <li><strong>Leaving sensitive information accessible</strong>: Not all your digital life should be shared</li>
+  <li><strong>Ignoring subscriptions</strong>: Forgotten subscriptions can continue charging after death</li>
+  <li><strong>Neglecting domain names</strong>: Expired domains can be taken by others</li>
+  <li><strong>Not discussing with family</strong>: Your family should know where to find this information</li>
+</ul>
+
+<h2>Frequently Asked Questions</h2>
+
+<h3>Can I change my digital legacy choices after creating them?</h3>
+<p>Yes. Most platforms allow you to update your legacy contact or memorialization preferences at any time. Regular review ensures your wishes stay current.</p>
+
+<h3>What if I don't have a smartphone or computer?</h3>
+<p>Even without personal devices, you likely have social media accounts, email, or other digital footprints. Start with the accounts you use most frequently.</p>
+
+<h3>How do I handle shared accounts with a spouse or partner?</h3>
+<p>Discuss shared accounts openly. Decide together which accounts should be memorialized, deleted, or transferred. Consider whether joint accounts should continue for practical reasons (like shared subscriptions).</p>
+
+<h3>What about digital photos and memories?</h3>
+<p>Prioritize preserving photos and videos that have sentimental value. Consider creating a dedicated folder or cloud album specifically for heirs, with clear organization and labeling.</p>
+
+<h2>Conclusion</h2>
+<p>Digital legacy planning is an act of care for your loved ones. By taking the time to organize your digital life and communicate your wishes, you ensure that your digital presence is handled according to your values and preferences. Start today—it's never too early to plan, and it's never too late to get organized.</p>
+`,
+    contentZh: `
+<div class="introduction">
+  <p>你的数字生活远远超越了你的物理财产。从社交媒体账户到加密货币钱包，你的在线存在代表着重要的情感和财务价值。但当你去世后，所有这些会发生什么呢？</p>
+  <p>随着我们的生活越来越在线化，数字遗产规划变得日益重要。如果没有适当的规划，你的数字资产可能会永远丢失，或者你的亲人可能会在已经艰难的时期难以访问重要信息。</p>
+</div>
+
+<h2>为什么数字遗产规划很重要</h2>
+<p>考虑这些情况：你祖母的照片 album 丢失了，因为它是存储在没有继承选项的应用程序中。你父亲的加密货币钱包变得无法访问，因为没有人知道密码。你的社交媒体账户继续自动发帖，在线造成令人不安的存在。</p>
+<p>这些都不是假设情况。根据最近的研究，超过 60% 的美国人带着未知的加密货币持有量去世，平均每人有 80+ 个在线账户需要在死后处理。</p>
+
+<h2>需要考虑的关键数字资产</h2>
+<ul>
+  <li><strong>社交媒体账户</strong>：Facebook、Instagram、Twitter、LinkedIn</li>
+  <li><strong>云存储</strong>：Google Drive、iCloud、Dropbox</li>
+  <li><strong>金融账户</strong>：网上银行、投资平台、加密货币</li>
+  <li><strong>电子邮件账户</strong>：主要和次要电子邮件地址</li>
+  <li><strong>订阅</strong>：流媒体服务、软件订阅</li>
+  <li><strong>数字照片</strong>：在线照片 album 和云存储</li>
+  <li><strong>域名</strong>：网站域名和托管账户</li>
+</ul>
+
+<h2>规划数字遗产的步骤</h2>
+
+<h3>1. 创建数字清单</h3>
+<p>首先列出所有你的在线账户和数字资产。包括：</p>
+<ul>
+  <li>网站 URL 和登录信息</li>
+  <li>账户类型和用途</li>
+  <li>当前价值（财务或情感）</li>
+  <li>访问方法（密码管理器、2FA 设备）</li>
+</ul>
+
+<h3>2. 选择你的遗产联系人</h3>
+<p>大多数主要平台允许你指定遗产联系人：</p>
+<ul>
+  <li><strong>Facebook</strong>：纪念或删除账户</li>
+  <li><strong>Google</strong>：不活跃账户管理器可以转移数据</li>
+  <li><strong>Apple</strong>：遗产联系人可以访问 iCloud 数据</li>
+  <li><strong>Twitter/X</strong>：验证死亡后纪念</li>
+</ul>
+
+<h3>3. 保护你的密码</h3>
+<p>使用具有紧急访问功能的密码管理器。通过安全渠道与指定的遗产联系人共享访问权限。切勿在遗嘱中包含密码——遗嘱将成为公开文件。</p>
+
+<h3>4. 撰写数字遗嘱</h3>
+<p>你的数字遗嘱应包括：</p>
+<ul>
+  <li>每种数字资产的指示</li>
+  <li>谁应该获得什么访问权限</li>
+  <li>对纪念或删除的具体意愿</li>
+  <li>物理设备和访问工具的位置</li>
+</ul>
+
+<h3>5. 定期审查和更新</h3>
+<p>你的数字生活不断变化。至少每年审查一次数字遗产规划，或在你创建新账户或删除旧账户时进行。</p>
+
+<h2>平台特定指南</h2>
+
+<h3>社交媒体</h3>
+<p>Facebook 和 Instagram 提供纪念选项。LinkedIn 允许账户关闭或纪念。Twitter/X 在验证死亡后可以纪念。考虑你是否希望你的账户作为记忆保持活跃还是被纪念。</p>
+
+<h3>金融账户</h3>
+<p>联系你的金融机构了解他们的死亡通知程序。尽可能设置死亡时付款指定。对于加密货币，考虑使用多签名访问的硬件钱包，或将种子短语存储在安全位置。</p>
+
+<h3>云存储</h3>
+<p>Google 的不活跃账户管理器可以在指定时间后自动与联系人共享数据。Apple 的遗产联系人功能允许指定人员访问你的 iCloud 数据。考虑什么值得保留，什么可以删除。</p>
+
+<h2>常见错误</h2>
+<ul>
+  <li><strong>忘记更新访问方法</strong>：如果你更换密码管理器，你的遗产联系人需要知道</li>
+  <li><strong>留下敏感信息可访问</strong>：并非你的所有数字生活都应该分享</li>
+  <li><strong>忽略订阅</strong>：遗忘的订阅可能在死后继续收费</li>
+  <li><strong>忽视域名</strong>：过期的域名可能被他人获取</li>
+  <li><strong>不与家人讨论</strong>：你的家人应该知道在哪里找到这些信息</li>
+</ul>
+
+<h2>常见问题</h2>
+
+<h3>创建数字遗产选择后能更改吗？</h3>
+<p>可以。大多数平台允许你随时更新遗产联系人或纪念偏好。定期审查确保你的意愿保持最新。</p>
+
+<h3>如果我没有智能手机或电脑怎么办？</h3>
+<p>即使没有个人设备，你可能仍有社交媒体账户、电子邮件或其他数字足迹。从你最常用的账户开始。</p>
+
+<h3>如何处理与配偶或伴侣的共享账户？</h3>
+<p>公开讨论共享账户。共同决定哪些账户应该纪念、删除或转移。考虑共享账户是否应出于实际原因继续（如共享订阅）。</p>
+
+<h3>数字照片和记忆怎么办？</h3>
+<p>优先保留具有情感价值的照片和视频。考虑创建一个专门给继承人的文件夹或云 album，带有清晰的组织和标签。</p>
+
+<h2>结论</h2>
+<p>数字遗产规划是对你爱的人的一种关爱行为。通过花时间组织你的数字生活并传达你的意愿，你确保你的数字存在按照你的价值观和偏好处理。从今天开始——规划永远不嫌早，整理也永远不嫌晚。</p>
+`,
+  }
+
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

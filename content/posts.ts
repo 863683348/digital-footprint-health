@@ -5619,7 +5619,7 @@ export const allPosts: BlogPost[] = [
 <h3>一次性删这么多推文安全吗？</h3>
 <p>只要通过你自己授权的会话、并带限速保护，就是安全的。用那种能暂停、续传、且只在本地解析归档的工具——见我们的<a href="/blog/how-to-delete-old-tweets-2026">完整删除指南</a>。</p>
     `.trim()
-  }
+  },
 
   {
     slug: 'protect-digital-legacy-after-death',

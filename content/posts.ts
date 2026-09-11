@@ -5819,8 +5819,1006 @@ export const allPosts: BlogPost[] = [
 <h2>结论</h2>
 <p>数字遗产规划是对你爱的人的一种关爱行为。通过花时间组织你的数字生活并传达你的意愿，你确保你的数字存在按照你的价值观和偏好处理。从今天开始——规划永远不嫌早，整理也永远不嫌晚。</p>
 `,
-  }
+  },
+  {
+    slug: 'digital-footprint-audit-checklist-2026',
+    date: '2026-09-11',
+    updatedAt: '2026-09-11',
+    author: 'Digital Footprint Health Team',
+    category: '体检评分',
+    categoryEn: 'Footprint Score',
+    tags: ['数字足迹', '审计清单', '隐私自查', '2026'],
+    tagsEn: ['digital footprint', 'audit checklist', 'privacy self-check', '2026'],
+    canonical: '/blog/digital-footprint-audit-checklist-2026',
+    title: '2026 数字足迹审计清单：30 分钟完成 12 项自查',
+    titleEn: "The 2026 Digital Footprint Audit Checklist: 12 Checks in 30 Minutes",
+    excerpt: '一份可直接照做的数字足迹审计清单：12 项检查、30 分钟、全部在本地完成，覆盖公开推文、位置信息、账号安全与第三方授权。',
+    excerptEn: "A do-it-now digital footprint audit: 12 checks, 30 minutes, all done locally — covering public tweets, location traces, account security and third-party access.",
+    contentEn: `
+<div class="introduction">
+  <p>Most people only think about their digital footprint after something goes wrong — a recruiter screenshots an old post, a stranger finds their phone number, an old account gets breached. An audit flips that order. Thirty minutes of structured checking is enough to find the things that would actually embarrass you or expose you, before anyone else finds them.</p>
+  <p>This checklist is built to run entirely on your own machine. Nothing here requires handing your data to a third party.</p>
+</div>
 
+<h2>Before You Start</h2>
+<p>Block half an hour, open two tabs (your profile and your settings), and have your archive handy. Download it once from Settings &rarr; Your Account &rarr; Download an archive of your data, then run the checks below against that file. Working from the archive is faster and safer than scrolling your timeline.</p>
+
+<h2>The 12 Checks</h2>
+
+<h3>1. Public profile exposure</h3>
+<p>Log out, then search your own name. What you see logged out is what a stranger sees. Anything you would not put on a business card is a finding.</p>
+
+<h3>2. Phone number and email in posts</h3>
+<p>Search your archive for your own phone number and email address. People paste them into complaint tweets and customer-service replies constantly. See the <a href="/blog/phone-number-in-tweets-check">phone number check guide</a>.</p>
+
+<h3>3. Geolocation residue</h3>
+<p>Look for tweets with location tags, check-ins, and photo EXIF data. A single "moving in today!" post plus a tagged location is a complete address disclosure.</p>
+
+<h3>4. Old hot takes</h3>
+<p>Sort by oldest first and read the first two years. This is where job-ending tweets live. The <a href="/blog/which-tweets-to-clean-by-risk">risk-based cleanup guide</a> explains how to rank them.</p>
+
+<h3>5. Third-party app access</h3>
+<p>Settings &rarr; Security &rarr; Apps and sessions. Revoke anything you do not recognise. Every connected app is another place your data can leak from.</p>
+
+<h3>6. Two-factor coverage</h3>
+<p>If 2FA is off on your primary email, everything else on this list is moot. Email is the reset key for every other account.</p>
+
+<h3>7. Reused passwords</h3>
+<p>Cross-check your password manager for duplicates. Breach dumps are credential-stuffing fuel; a reused password turns one leak into five.</p>
+
+<h3>8. Dormant accounts</h3>
+<p>Every abandoned forum and defunct shop account is a database you no longer control. Delete what you do not use.</p>
+
+<h3>9. Aggregator listings</h3>
+<p>People-search sites stitch your footprint together from public records. Check the major ones for your address and opt out.</p>
+
+<h3>10. Public photos with metadata</h3>
+<p>Strip EXIF before posting. Location and device data in an image is invisible in the browser but trivially readable.</p>
+
+<h3>11. Cross-platform handle reuse</h3>
+<p>The same handle everywhere makes it trivial to assemble a complete profile. Vary handles or accept the linkage consciously.</p>
+
+<h3>12. Your archive itself</h3>
+<p>The archive file contains every deleted tweet you ever posted and may still contain your DMs. Store it encrypted, not in your Downloads folder.</p>
+
+<h2>Scoring Your Results</h2>
+<table>
+  <thead><tr><th>Findings</th><th>Reading</th><th>Next step</th></tr></thead>
+  <tbody>
+    <tr><td>0-2</td><td>Clean</td><td>Re-audit quarterly</td></tr>
+    <tr><td>3-5</td><td>Typical</td><td>Fix the top two this week</td></tr>
+    <tr><td>6-8</td><td>Exposed</td><td>Run a full cleanup pass</td></tr>
+    <tr><td>9-12</td><td>High risk</td><td>Start with 2FA and phone/email exposure</td></tr>
+  </tbody>
+</table>
+
+<h2>常见问题</h2>
+<h3>How often should I run this audit?</h3>
+<p>Quarterly, plus any time you change jobs, move, or start dating someone new online. Those are the moments when an old footprint does the most damage.</p>
+<h3>Do I need a paid tool?</h3>
+<p>No. The archive download is free, and the phone, email and location checks are searches inside it. Paid tools help with bulk deletion, not with finding problems.</p>
+<h3>What is the single highest-value fix?</h3>
+<p>Turn on 2FA for your primary email. It prevents the scenario — account takeover — that makes every other finding worse.</p>
+
+<h2>结论</h2>
+<p>An audit is not about deleting your personality. It is about knowing what is visible and deciding on purpose, rather than discovering it at the worst possible moment. Thirty minutes today removes a class of problems you cannot fix after the fact.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>大多数人只有在出事之后才会想起自己的数字足迹——招聘方截图了旧帖、陌生人翻出了手机号、废弃账号被撞库。审计把这个顺序反过来：30 分钟的结构化自查，足够在别人发现之前找到那些真正会让你尴尬或暴露的东西。</p>
+  <p>本清单设计为完全在本机运行，任何一步都不需要把数据交给第三方。</p>
+</div>
+
+<h2>开始之前</h2>
+<p>留出半小时，打开两个标签页（个人主页与设置），准备好你的归档。先在 设置 → 你的账号 → 下载数据归档 里下载一次，然后针对该文件执行下列检查。基于归档操作比翻时间线更快也更安全。</p>
+
+<h2>12 项检查</h2>
+
+<h3>1. 公开主页暴露面</h3>
+<p>退出登录后搜索自己的名字。未登录看到的就是陌生人看到的。凡是不会写在名片上的内容，都算一项发现。</p>
+
+<h3>2. 帖文中的手机号与邮箱</h3>
+<p>在归档里搜索自己的手机号和邮箱。人们会把它们贴进投诉推文和客服回复里。参见<a href="/blog/phone-number-in-tweets-check">手机号检查指南</a>。</p>
+
+<h3>3. 位置信息残留</h3>
+<p>查找带位置标签的推文、签到以及照片 EXIF。一条「今天搬家啦」加上定位，就是一次完整住址泄露。</p>
+
+<h3>4. 早年争议言论</h3>
+<p>按时间正序排列，读最前面两年。真正会丢工作的推文都在这里。<a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>说明了如何分级。</p>
+
+<h3>5. 第三方应用授权</h3>
+<p>设置 → 安全 → 应用与会话。撤销一切你不认识的授权。每个连接的应用都是一个新的数据泄露入口。</p>
+
+<h3>6. 双重验证覆盖</h3>
+<p>如果主邮箱没开 2FA，清单上其余一切都不重要。邮箱是所有账号的重置钥匙。</p>
+
+<h3>7. 密码重复使用</h3>
+<p>在密码管理器里交叉核对重复项。撞库数据是撞库攻击的燃料，一个重复密码会把一次泄露放大成五次。</p>
+
+<h3>8. 沉睡账号</h3>
+<p>每个废弃的论坛与关停的店铺账号，都是一个你已无法控制的数据库。不用的就删除。</p>
+
+<h3>9. 聚合站收录</h3>
+<p>人肉搜索站会把公开记录拼成你的完整档案。核对主要站点上的住址信息并申请移除。</p>
+
+<h3>10. 带元数据的公开照片</h3>
+<p>发布前先清除 EXIF。图片里的位置与设备信息在浏览器里看不见，但读取起来极其容易。</p>
+
+<h3>11. 跨平台同名 ID</h3>
+<p>处处同一个 ID 会让拼装完整档案变得轻而易举。要么更换 ID，要么有意识地接受这种关联。</p>
+
+<h3>12. 归档文件本身</h3>
+<p>归档里包含你所有已删除的推文，可能还包含私信。加密保存，不要放在下载文件夹。</p>
+
+<h2>结果评分</h2>
+<table>
+  <thead><tr><th>发现项</th><th>解读</th><th>下一步</th></tr></thead>
+  <tbody>
+    <tr><td>0-2</td><td>干净</td><td>每季度复审</td></tr>
+    <tr><td>3-5</td><td>常见</td><td>本周先修前两项</td></tr>
+    <tr><td>6-8</td><td>已暴露</td><td>做一次完整清理</td></tr>
+    <tr><td>9-12</td><td>高风险</td><td>从 2FA 与手机号/邮箱暴露开始</td></tr>
+  </tbody>
+</table>
+
+<h2>常见问题</h2>
+<h3>应该多久做一次审计？</h3>
+<p>每季度一次，另外在换工作、搬家、或开始一段线上新关系时加做一次。这些时刻旧足迹造成的伤害最大。</p>
+<h3>需要付费工具吗？</h3>
+<p>不需要。归档下载免费，手机号、邮箱与位置检查都是归档内的搜索。付费工具有助于批量删除，而不是发现问题。</p>
+<h3>最有价值的一项修复是什么？</h3>
+<p>给主邮箱开启 2FA。它能防住「账号被接管」这一情形——而这一情形会让其余所有发现都变得更糟。</p>
+
+<h2>结论</h2>
+<p>审计不是要删掉你的人格，而是让你知道自己有多少内容可见，并有意识地做决定，而不是在最糟的时刻被动发现。今天花 30 分钟，就能消除一类事后无法弥补的问题。</p>
+    `,
+  },
+  {
+    slug: 'why-old-tweets-wont-delete',
+    date: '2026-09-11',
+    updatedAt: '2026-09-11',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion Guide',
+    tags: ['删除失败', '推文清理', '排障', 'X'],
+    tagsEn: ['deletion failed', 'tweet cleanup', 'troubleshooting', 'x'],
+    canonical: '/blog/why-old-tweets-wont-delete',
+    title: '为什么有些旧推文删不掉？6 个常见原因与解决办法',
+    titleEn: "Why Some Old Tweets Won't Delete: 6 Common Causes and Fixes",
+    excerpt: '删除工具跑了三遍，帖子还在？六种最常见的原因——从限速触发到已删除内容的缓存残留——以及各自的解决办法。',
+    excerptEn: "Ran the deletion tool three times and the post is still there? Six causes — from rate limiting to cached residue — and the fix for each.",
+    contentEn: `
+<div class="introduction">
+  <p>You run the cleanup, the progress bar completes, and the tweet is still there. This is one of the most common support questions in the whole deletion space, and almost every instance falls into one of six buckets.</p>
+</div>
+
+<h2>1. You hit the rate limit without noticing</h2>
+<p>X caps how many delete requests one account can make in a window. A tool that does not back off will silently fail partway through and still report "complete". Check the deletion log for 429 responses — the fix is to lower concurrency and let the tool pause and resume.</p>
+
+<h2>2. The post was never yours to delete</h2>
+<p>Retweets of other people's content that you cannot remove, quote-tweets whose parent is gone, and replies where the original author blocked you all behave differently. A quote-tweet is your post and deletes normally; an old-style retweet does not exist as a separate object at all.</p>
+
+<h2>3. It is deleted but still cached</h2>
+<p>Search engines and archive services can hold a copy for days to weeks. The post is gone from X; what you are seeing is a cache. Request removal from the cache rather than re-running the deletion.</p>
+
+<h2>4. Third-party reposts</h2>
+<p>Someone screenshotted or mirrored your post. Deleting the original does not reach their copy. This is why the <a href="/blog/which-tweets-to-clean-by-risk">risk-first cleanup order</a> matters — high-risk posts should be deleted before they get mirrored, not after.</p>
+
+<h2>5. Session or permission problems</h2>
+<p>An expired session, a password change mid-run, or 2FA re-prompting will kill the batch at whatever point it happened. Re-authenticate and resume; do not restart from scratch.</p>
+
+<h2>6. Massive archives need staging</h2>
+<p>A ten-year archive is tens of thousands of objects. Tools that work fine on 2,000 posts time out on 40,000. Stage the job by date range — see the <a href="/blog/how-to-delete-old-tweets-2026">full deletion walkthrough</a>.</p>
+
+<h2>Quick Diagnosis</h2>
+<table>
+  <thead><tr><th>Symptom</th><th>Probable cause</th></tr></thead>
+  <tbody>
+    <tr><td>Stops partway, no error</td><td>Rate limit</td></tr>
+    <tr><td>Specific post never goes</td><td>Not your object / repost</td></tr>
+    <tr><td>Gone on X, visible in Google</td><td>Cache</td></tr>
+    <tr><td>Everything fails after login</td><td>Session expired</td></tr>
+    <tr><td>Times out on big jobs</td><td>Needs staging</td></tr>
+  </tbody>
+</table>
+
+<h2>常见问题</h2>
+<h3>Re-running the deletion is safe?</h3>
+<p>Yes, but wasteful. Diagnose first — re-running a rate-limited job just hits the limit again.</p>
+<h3>How long does a cache take to clear?</h3>
+<p>Commonly days, sometimes weeks. Submit a removal request rather than waiting passively.</p>
+<h3>Should I delete the account instead?</h3>
+<p>Only if you want everything gone. For targeted cleanup, deletion is a blunt instrument — see the <a href="/blog/delete-twitter-account-permanently">account deletion guide</a> for the trade-offs.</p>
+
+<h2>结论</h2>
+<p>Failed deletions are almost never a mystery. Read the log, match the symptom to the table, and fix the specific cause instead of running the job a fourth time.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>你跑了清理，进度条走完了，帖子还在。这是整个删除领域最常见的求助问题之一，而几乎每一次都能归入下面六类。</p>
+</div>
+
+<h2>1. 你不知不觉撞上了限速</h2>
+<p>X 对单个账号在时间窗口内的删除请求数有限制。不做退避的工具会中途静默失败，却仍报告「完成」。检查删除日志里的 429 响应——解决办法是降低并发，并让工具支持暂停与续传。</p>
+
+<h2>2. 那条内容本来就不属于你</h2>
+<p>他人的转发你无法删除；引用的原帖已消失、回复的原作者拉黑了你，行为都不同。引用推文属于你自己的帖子，可正常删除；旧式转推根本不是独立对象。</p>
+
+<h2>3. 已删除但有缓存</h2>
+<p>搜索引擎与存档服务可能保留副本数天到数周。X 上已经没了，你看到的是缓存。应当申请移除缓存，而不是再跑一次删除。</p>
+
+<h2>4. 第三方转载</h2>
+<p>有人截图或镜像了你的帖子。删除原帖触达不到他们的副本。这正是<a href="/blog/which-tweets-to-clean-by-risk">按风险排序清理</a>重要的原因——高风险内容要在被转载之前删除，而不是之后。</p>
+
+<h2>5. 会话或权限问题</h2>
+<p>会话过期、运行中改密码、或 2FA 重新验证，都会让批次在发生点戛然而止。重新认证后续传，不要从头再来。</p>
+
+<h2>6. 超大归档需要分段</h2>
+<p>十年归档是数万个对象。在 2000 条上正常的工具，到了 4 万条就会超时。按日期范围分段——参见<a href="/blog/how-to-delete-old-tweets-2026">完整删除指南</a>。</p>
+
+<h2>快速诊断</h2>
+<table>
+  <thead><tr><th>症状</th><th>可能原因</th></tr></thead>
+  <tbody>
+    <tr><td>中途停止且无报错</td><td>限速</td></tr>
+    <tr><td>某条始终删不掉</td><td>非你的对象 / 被转载</td></tr>
+    <tr><td>X 上没了，Google 还看得见</td><td>缓存</td></tr>
+    <tr><td>登录后全部失败</td><td>会话过期</td></tr>
+    <tr><td>大任务超时</td><td>需要分段</td></tr>
+  </tbody>
+</table>
+
+<h2>常见问题</h2>
+<h3>重新跑一次删除安全吗？</h3>
+<p>安全，但浪费。先诊断——重跑一个被限速的任务只会再次撞上限制。</p>
+<h3>缓存多久清掉？</h3>
+<p>通常数天，有时数周。主动提交移除请求，别被动干等。</p>
+<h3>要不要直接删号？</h3>
+<p>只有当你希望对全部内容清零时才这么做。定向清理场景下，删号是过重的钝器——权衡见<a href="/blog/delete-twitter-account-permanently">账号删除指南</a>。</p>
+
+<h2>结论</h2>
+<p>删除失败几乎都不是谜题。读日志、把症状对到表格、修掉那个具体原因，而不是第四次跑同一个任务。</p>
+    `,
+  },
+  {
+    slug: 'old-tweets-used-in-online-harassment',
+    date: '2026-09-11',
+    updatedAt: '2026-09-11',
+    author: 'Digital Footprint Health Team',
+    category: '特辑复盘',
+    categoryEn: 'Case Review',
+    tags: ['网暴应对', '旧推文', '取证', '危机处理'],
+    tagsEn: ['online harassment', 'old tweets', 'evidence', 'crisis response'],
+    canonical: '/blog/old-tweets-used-in-online-harassment',
+    title: '旧推文被翻出用于网暴时，48 小时内该做什么',
+    titleEn: "When Old Tweets Are Used Against You: A 48-Hour Response Plan",
+    excerpt: '有人翻出你的旧帖并组织围攻时，慌乱删帖往往让情况更糟。这是一份按小时走的应对顺序：固定证据、评估风险、再决定删什么。',
+    excerptEn: "When someone digs up your old posts and rallies a crowd, panicked deletion usually makes it worse. Here is an hour-by-hour order: preserve evidence, assess risk, then decide what to delete.",
+    contentEn: `
+<div class="introduction">
+  <p>Being on the receiving end of an organised pile-on is disorienting, and the instinct to delete everything immediately is understandable. It is also usually the wrong first move. This plan separates the two goals that get tangled together in the moment: protecting yourself, and preserving what you need if the situation escalates.</p>
+</div>
+
+<h2>Hours 0-2: Do not delete yet</h2>
+<p>Take screenshots of the posts being cited, who is citing them, and the timestamps. If the posts are fabricated or edited, you need the original text to prove it — and once you delete, recovering it means pulling your archive. Preserve first. The <a href="/blog/how-to-download-x-archive">archive download guide</a> is the fallback if you have already deleted.</p>
+
+<h2>Hours 2-6: Separate the three cases</h2>
+<p>Not every incident is the same, and they need opposite responses:</p>
+<ul>
+  <li><strong>You actually said it.</strong> Own it plainly and stop. A short, non-defensive statement ends most of these.</li>
+  <li><strong>It is out of context.</strong> Post the surrounding text. Do not argue with individuals; publish the correction once.</li>
+  <li><strong>It is fabricated or doctored.</strong> Say so and post the original. Do not delete anything — deletion looks like an admission here.</li>
+</ul>
+
+<h2>Hours 6-24: Lock down exposure</h2>
+<p>Turn on 2FA, change your password if there is any chance it leaked, and check your logged-in sessions. Pile-ons frequently come with credential-stuffing attempts. Trim what is still findable — phone numbers, addresses, family names — using the <a href="/blog/digital-footprint-audit-checklist-2026">audit checklist</a>.</p>
+
+<h2>Day 2: Decide on deletion</h2>
+<p>Now delete on merit, not on adrenaline. Posts that are genuinely damaging, unrelated to the current argument, and nobody is quoting should go. Posts at the centre of the dispute should usually stay until the moment has passed, because removing them mid-incident resets the news cycle against you.</p>
+
+<h2>What Not To Do</h2>
+<ul>
+  <li>Do not mass-delete everything in the first hour.</li>
+  <li>Do not engage each account individually — that is the game.</li>
+  <li>Do not post your emotional reaction publicly; write it privately first.</li>
+  <li>Do not assume it will blow over if the cited posts contain doxxing material.</li>
+</ul>
+
+<h2>常见问题</h2>
+<h3>Should I deactivate my account temporarily?</h3>
+<p>It is a legitimate circuit-breaker if you are being doxxed, but it removes your ability to post the correction. Decide based on whether you still need to publish something.</p>
+<h3>Should I involve platform support?</h3>
+<p>Yes, for doxxing, threats and impersonation — those violate policy and get actioned. For opinions, no.</p>
+<h3>How long does a pile-on last?</h3>
+<p>Usually 48 to 72 hours. Most of the harm comes from what you do during that window, not from the incident itself.</p>
+
+<h2>结论</h2>
+<p>The order matters: preserve, classify, lock down, then delete. Doing it in that order keeps your options open and stops a bad week from turning into a permanent record.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>成为有组织围攻的目标会让人手足无措，第一反应是立刻删光一切——这可以理解，但通常也是错误的第一手。本方案把当下被搅在一起的两个目标分开：保护你自己，以及保住万一升级时你需要的证据。</p>
+</div>
+
+<h2>第 0-2 小时：先别删</h2>
+<p>截图被引用的帖子、引用者、以及时间戳。如果帖子是伪造或被剪裁过的，你需要原文来证明——而一旦删除，找回只能靠归档。先保全证据。若已经删了，<a href="/blog/how-to-download-x-archive">归档下载指南</a>是兜底。</p>
+
+<h2>第 2-6 小时：区分三种情况</h2>
+<p>不是每次事件都一样，而且需要相反的处理：</p>
+<ul>
+  <li><strong>你确实说过。</strong>坦然承认并到此为止。一段简短、不防御的声明能了结大多数此类事件。</li>
+  <li><strong>断章取义。</strong>贴出上下文原文。不要和个体逐条争论；一次性公布更正即可。</li>
+  <li><strong>伪造或经过篡改。</strong>直接说明并贴出原文。此时什么也别删——在这个情形里删除看起来像认罪。</li>
+</ul>
+
+<h2>第 6-24 小时：收拢暴露面</h2>
+<p>开启 2FA，只要有一丝泄露可能就改密码，并检查登录会话。围攻常伴随撞库尝试。把仍可被搜到的手机号、住址、家人姓名等清理掉，方法见<a href="/blog/digital-footprint-audit-checklist-2026">审计清单</a>。</p>
+
+<h2>第 2 天：决定删什么</h2>
+<p>此时按价值判断，而不是按肾上腺素。确实有害、与当前争论无关、且没人在引用的帖子，可以删。处于争议中心的帖子通常应保留到风波过去——事件中途删除会把舆论周期重置到对你不利的方向。</p>
+
+<h2>不要做的事</h2>
+<ul>
+  <li>不要在第一小时内批量删光一切。</li>
+  <li>不要逐个账号回应——那正是对方想要的。</li>
+  <li>不要公开贴出情绪化反应；先私下写下来。</li>
+  <li>若被引用的帖含人肉信息，不要指望它自己过去。</li>
+</ul>
+
+<h2>常见问题</h2>
+<h3>要不要临时停用账号？</h3>
+<p>若正被人肉，这是合理的断路措施；但它会剥夺你发布更正的能力。根据你是否还需要公开发声来决定。</p>
+<h3>要不要找平台支持？</h3>
+<p>要——针对人肉、威胁与冒充，这些违反政策且会被处理。针对观点分歧，不必。</p>
+<h3>围攻一般持续多久？</h3>
+<p>通常 48 到 72 小时。大部分伤害来自这段时间里你做了什么，而不是事件本身。</p>
+
+<h2>结论</h2>
+<p>顺序很关键：保全、分类、收拢、最后才删。按这个顺序做，你的选择余地会保留下来，也能让难熬的一周不至于变成永久的记录。</p>
+    `,
+  },
+  {
+    slug: 'social-media-background-check-2026',
+    date: '2026-09-11',
+    updatedAt: '2026-09-11',
+    author: 'Digital Footprint Health Team',
+    category: '行业生态',
+    categoryEn: 'Industry',
+    tags: ['背景调查', '招聘', '求职', '社交媒体'],
+    tagsEn: ['background check', 'hiring', 'job search', 'social media'],
+    canonical: '/blog/social-media-background-check-2026',
+    title: '2026 招聘方到底怎么看你的社交媒体？',
+    titleEn: "What Employers Actually See on Your Social Media in 2026",
+    excerpt: '招聘方不会逐条翻阅你十年的推文，但他们会看特定的几个信号。了解实际的筛查流程，比盲目删帖更有用。',
+    excerptEn: "Recruiters are not scrolling through ten years of your tweets — but they do look for specific signals. Knowing the real screening process beats deleting blindly.",
+    contentEn: `
+<div class="introduction">
+  <p>Advice about social media and job hunting is usually either paranoid or dismissive. The reality is narrower: employers run a shallow, pattern-matching check, and knowing what patterns they look for lets you focus your cleanup on the things that actually matter.</p>
+</div>
+
+<h2>What the process actually looks like</h2>
+<p>For most roles, screening is not a formal investigation. It is a recruiter searching your name, opening the first page of results, and forming an impression in under a minute. Only for senior, trust-sensitive, or public-facing roles does it go deeper — sometimes into a paid check that looks at public posts specifically.</p>
+
+<h2>The signals they look for</h2>
+<ul>
+  <li><strong>Discriminatory or harassing content</strong> — the one category that reliably ends candidacies.</li>
+  <li><strong>Confidential information</strong> from a current or former employer.</li>
+  <li><strong>Public negativity</strong> about past employers or colleagues.</li>
+  <li><strong>Illegal activity</strong> referenced casually.</li>
+  <li><strong>Inconsistency</strong> between your CV and your public profile.</li>
+</ul>
+<p>Notably absent from that list: strong opinions, politics, and old slang. Those are common reasons people over-delete.</p>
+
+<h2>What is probably fine</h2>
+<p>Personal photos, hobby posts, strong but civil opinions, and anything that reads as "a person with a life." Employers increasingly treat a completely scrubbed profile as its own mild red flag, because it makes verification harder. You want a profile that is clearly yours and clearly unremarkable.</p>
+
+<h2>A targeted pre-application pass</h2>
+<ol>
+  <li>Log out and search your name on Google and Bing — fix what shows on page one.</li>
+  <li>Check your public profile bio for anything you would not say in an interview.</li>
+  <li>Search your archive for your employer's name and remove confidential references.</li>
+  <li>Search for the five signals above, not for "anything embarrassing".</li>
+  <li>Verify your CV dates match your public profile.</li>
+</ol>
+<p>Depending on the role, a paid background-check service may pull more. The <a href="/blog/recruiters-check-twitter">recruiter screening guide</a> covers what shows up in those reports.</p>
+
+<h2>常见问题</h2>
+<h3>Will they see deleted tweets?</h3>
+<p>Archive services and screenshots can outlive a deletion. Current screening tools generally do not surface deleted posts, but assume anything that was public may resurface.</p>
+<h3>Should I delete my whole account?</h3>
+<p>No. An empty account raises more questions than a normal one for most roles.</p>
+<h3>Does a private account help?</h3>
+<p>Partially — it blocks casual browsing but not the aggregate picture Google already indexed. The <a href="/blog/digital-footprint-audit-checklist-2026">audit checklist</a> covers that layer.</p>
+
+<h2>结论</h2>
+<p>Employers are looking for a handful of specific disqualifiers, not for reasons to reject you. Fix those, leave the rest alone, and stop paying the anxiety tax of an unread timeline.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>关于社交媒体与求职的建议通常不是过度恐慌，就是完全不当回事。现实更窄：雇主执行的是浅层、模式匹配式的检查；知道他们在匹配什么模式，就能把清理精力集中在真正重要的事情上。</p>
+</div>
+
+<h2>实际流程长什么样</h2>
+<p>对多数岗位，筛查不是正式调查，而是招聘方搜你的名字、打开首页结果、在一分钟内形成印象。只有高级岗、涉密岗或对外岗位才会更深——有时会用付费服务专门检索公开帖文。</p>
+
+<h2>他们会看的信号</h2>
+<ul>
+  <li><strong>歧视性或骚扰性内容</strong>——唯一一类几乎必然终结候选人资格的内容。</li>
+  <li><strong>泄露雇主机密信息</strong>。</li>
+  <li><strong>公开的负面情绪</strong>，针对前雇主或同事。</li>
+  <li><strong>随口提及的违法行为</strong>。</li>
+  <li><strong>简历与公开资料不一致</strong>。</li>
+</ul>
+<p>值得注意的是不在其中的：强烈观点、政治立场、过时流行语。这些恰恰是人们过度删除的常见原因。</p>
+
+<h2>通常没问题的内容</h2>
+<p>个人照片、兴趣帖、强烈但文明的表达，以及任何读起来像「一个有生活的人」的内容。雇主越来越把完全清空的资料本身视作轻微红旗，因为它让核实变难。你要的是一个明确属于你、又确实平平无奇的资料。</p>
+
+<h2>投递前的定向检查</h2>
+<ol>
+  <li>退出登录后在 Google 和 Bing 搜自己的名字——修掉首页显示的内容。</li>
+  <li>检查公开资料简介里有没有你不会在面试中说出口的话。</li>
+  <li>在归档里搜索雇主的名字，删掉机密引用。</li>
+  <li>按上面五个信号去搜，而不是搜「任何尴尬的东西」。</li>
+  <li>确认简历日期与公开资料一致。</li>
+</ol>
+<p>视岗位而定，付费背景调查可能调取更多内容。<a href="/blog/recruiters-check-twitter">招聘方筛查指南</a>说明了这些报告里会出现什么。</p>
+
+<h2>常见问题</h2>
+<h3>他们会看到已删除的推文吗？</h3>
+<p>存档服务与截图可能比删除活得更久。目前主流的筛查工具一般不会呈现已删除帖，但要假设任何曾经公开的内容都可能重新出现。</p>
+<h3>要不要直接删掉整个账号？</h3>
+<p>不要。对多数岗位而言，一个空账号比一个正常账号带来更多疑问。</p>
+<h3>设为私密账号有用吗？</h3>
+<p>部分有用——它挡住随意浏览，但挡不住 Google 已经收录的整体画像。<a href="/blog/digital-footprint-audit-checklist-2026">审计清单</a>覆盖了这一层。</p>
+
+<h2>结论</h2>
+<p>雇主找的是一小撮特定的淘汰项，而不是拒绝你的理由。把这些修好，其余的别动，也就不用再为一个没人细看的时间线缴焦虑税。</p>
+    `,
+  },
+  {
+    slug: 'ai-training-on-your-old-posts',
+    date: '2026-09-11',
+    updatedAt: '2026-09-11',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    categoryEn: 'Risk Scenario',
+    tags: ['AI 训练', '数据抓取', '内容授权', '隐私'],
+    tagsEn: ['ai training', 'data scraping', 'content licensing', 'privacy'],
+    canonical: '/blog/ai-training-on-your-old-posts',
+    title: 'AI 正在用你的旧帖训练：你能做的和做不到的',
+    titleEn: "AI Is Training on Your Old Posts: What You Can and Cannot Do",
+    excerpt: '你的公开推文很可能已经进入某个训练语料。这是关于抓取、退选与「被引用」的真实边界——以及为什么删除不像看起来那么有效。',
+    excerptEn: "Your public posts are very likely already inside a training corpus. Here is the honest boundary on scraping, opt-outs and being quoted — and why deletion is less effective than it looks.",
+    contentEn: `
+<div class="introduction">
+  <p>If you have posted publicly for years, assume your text has been collected. Large-scale crawls of public web and social content have been standard practice, and the collected data is generally not re-crawled to remove content that later disappears. That does not mean nothing can be done — it means the useful actions are narrower than most advice suggests.</p>
+</div>
+
+<h2>What "training on your posts" actually means</h2>
+<p>Two separate things get conflated:</p>
+<ul>
+  <li><strong>Collection</strong> — a crawler copies your public text into a dataset. This already happened.</li>
+  <li><strong>Influence</strong> — the model's weights are affected by that text. This is diffuse; no one can point at your tweet inside a model.</li>
+</ul>
+<p>Because the influence is diffuse, individual opt-out requests cannot surgically remove your contribution. But collection is the part that keeps happening, and that you can affect going forward.</p>
+
+<h2>What you can actually do</h2>
+<h3>1. Control future crawling</h3>
+<p>If you own a site, a <code>robots.txt</code> disallow for AI crawlers is respected by the major ones that publish their user agents. For social posts you do not control this — the platform decides.</p>
+<h3>2. Reduce the public surface</h3>
+<p>The less of your text that stays public, the less there is to collect next quarter. This is the part the <a href="/blog/digital-footprint-audit-checklist-2026">audit checklist</a> is for. It is preventative, not corrective.</p>
+<h3>3. Submit opt-out forms where they exist</h3>
+<p>Several major labs publish opt-out mechanisms for personal data. They are worth submitting, with realistic expectations: they affect future collection and sometimes future model generations, not the already-shipped ones.</p>
+<h3>4. Request removal of identifiable output</h3>
+<p>If a model directly outputs your phone number, address or private content, that is a different and much stronger claim than "my opinion was in the training set". Use the provider's removal process for that specific case.</p>
+
+<h2>What does not work</h2>
+<ul>
+  <li>Deleting posts to "remove them from the model" — the copy is already made.</li>
+  <li>Adding a copyright notice to your bio — it is not a technical control.</li>
+  <li>Assuming a private account retroactively hides old public posts from existing datasets.</li>
+</ul>
+
+<h2>The realistic frame</h2>
+<p>Treat public posting the way you treat speaking at a conference: it is on the record, and you cannot un-say it. The goal is not to remove what is already out there, but to make sure the next ten years of your public writing is something you would be comfortable having quoted.</p>
+
+<h2>常见问题</h2>
+<h3>Can I get my data removed from a trained model?</h3>
+<p>Not in any reliable way. Machine unlearning is an active research problem, not a service you can request today.</p>
+<h3>Does deleting my account help?</h3>
+<p>It stops future collection from that account. It does not undo past crawls.</p>
+<h3>Is this a reason to stop posting?</h3>
+<p>No — it is a reason to post with the same judgement you would apply to any permanent, public medium.</p>
+
+<h2>结论</h2>
+<p>Collection is already done; influence is diffuse; future crawling is the part you can still steer. Spend your effort there instead of chasing the impossible reversal.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>如果你多年来一直公开发帖，就假设自己的文字已经被收集过。对公开网页与社交内容的大规模抓取早已是常规做法，而收集到的数据通常不会因为内容后来消失而被重新抓取并剔除。这不代表无事可做——而是说真正有效的动作比多数建议所暗示的要窄。</p>
+</div>
+
+<h2>「用你的帖子训练」到底指什么</h2>
+<p>两件被混为一谈的事：</p>
+<ul>
+  <li><strong>收集</strong>——爬虫把你的公开文字复制进数据集。这已经发生了。</li>
+  <li><strong>影响</strong>——模型的权重受到这些文字影响。这是弥散的；没人能在模型里指出你的那条推文。</li>
+</ul>
+<p>正因为影响是弥散的，个体的退选请求无法精准移除你的贡献。但「收集」是仍在持续、且你今后还能影响的那一部分。</p>
+
+<h2>你实际能做的</h2>
+<h3>1. 控制未来的抓取</h3>
+<p>如果你拥有网站，用 <code>robots.txt</code> 禁止公开了 user agent 的主流 AI 爬虫是有效的。社交平台上的帖子你不掌控这一层——由平台决定。</p>
+<h3>2. 缩小公开面</h3>
+<p>保持公开的文字越少，下一季度可被抓取的内容就越少。这正是<a href="/blog/digital-footprint-audit-checklist-2026">审计清单</a>的用途。它是预防性的，不是补救性的。</p>
+<h3>3. 提交已有的退选表单</h3>
+<p>几家主要实验室都发布了个人数据的退选机制。值得提交，但要有合理预期：它们影响未来收集、有时影响未来模型版本，而不是已经发布的那些。</p>
+<h3>4. 对可识别输出申请移除</h3>
+<p>如果模型直接输出了你的手机号、住址或私密内容，那是与「我的观点在训练集里」完全不同、也强得多的主张。针对这种具体情形走服务商的移除流程。</p>
+
+<h2>不起作用的做法</h2>
+<ul>
+  <li>为了「从模型里移除」而删帖——副本早已制作完成。</li>
+  <li>在简介里加版权声明——它不是技术控制手段。</li>
+  <li>以为改为私密账号能让既有数据集回溯性隐藏旧公开帖。</li>
+</ul>
+
+<h2>务实的框架</h2>
+<p>把公开发帖当成在会议上发言：它会被记录，而且无法收回。目标不是移除已经在外面的内容，而是确保你未来十年的公开写作，是你乐意被引用的内容。</p>
+
+<h2>常见问题</h2>
+<h3>能把自己的数据从已训练模型里移除吗？</h3>
+<p>没有可靠方式。机器遗忘仍是活跃的研究问题，不是今天能申请的服务。</p>
+<h3>删掉账号有用吗？</h3>
+<p>它能阻止该账号未来被收集，但无法撤销过去的抓取。</p>
+<h3>这构成不发帖的理由吗？</h3>
+<p>不构成——它构成的是：以你对待任何永久公开媒介的同样判断力去发帖。</p>
+
+<h2>结论</h2>
+<p>收集已经完成，影响是弥散的，而未来抓取才是你还能左右的部分。把力气花在那里，而不是追逐不可能的反转。</p>
+    `,
+  },
+  {
+    slug: 'delete-twitter-account-permanently',
+    date: '2026-09-10',
+    updatedAt: '2026-09-10',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion Guide',
+    tags: ['删号', '账号注销', 'X', '数据留存'],
+    tagsEn: ['delete account', 'deactivation', 'x', 'data retention'],
+    canonical: '/blog/delete-twitter-account-permanently',
+    title: '如何永久删除 X（Twitter）账号：停用与删除的区别',
+    titleEn: "How to Delete Your X (Twitter) Account Permanently",
+    excerpt: 'X 的「停用」与「删除」是同一动作的两个阶段。这是完整流程、30 天宽限期里会发生什么、以及什么内容不会随账号一起消失。',
+    excerptEn: "X's deactivate and delete are two stages of one action. Here is the full process, what happens during the 30-day window, and what does not disappear with the account.",
+    contentEn: `
+<div class="introduction">
+  <p>Deleting an X account looks like a single button, but it is really a two-stage process with a 30-day cool-off in the middle. Understanding the stages matters, because most "I deleted my account and it came back" confusion happens in that window.</p>
+</div>
+
+<h2>Deactivate vs Delete</h2>
+<ul>
+  <li><strong>Deactivate</strong> — the account disappears from public view immediately, but X holds it for 30 days. Logging in during that period restores everything.</li>
+  <li><strong>Delete</strong> — the same action, completed. After 30 days without logging in, the account and its data are permanently removed.</li>
+</ul>
+<p>There is no separate "delete now" button. Deactivation is the mechanism; the 30-day wait is what makes it permanent.</p>
+
+<h2>Steps</h2>
+<ol>
+  <li>Back up anything you want to keep first — download your archive.</li>
+  <li>Settings &rarr; Your Account &rarr; Deactivate your account.</li>
+  <li>Confirm with your password.</li>
+  <li>Do not log in for 30 days.</li>
+</ol>
+<p>That last step is the one people fail. Opening the app to check "whether it worked" reactivates the account and restarts the clock.</p>
+
+<h2>What gets deleted</h2>
+<ul>
+  <li>Your tweets and retweets</li>
+  <li>Likes, follows and followers</li>
+  <li>Your profile and display name</li>
+  <li>Direct messages</li>
+</ul>
+
+<h2>What does not disappear</h2>
+<ul>
+  <li><strong>Other people's posts that mention you</strong> — those are their objects.</li>
+  <li><strong>Screenshots and reposts</strong> — outside X's reach entirely.</li>
+  <li><strong>Search engine caches</strong> — a lag of days to weeks.</li>
+  <li><strong>Archive services</strong> — may retain copies indefinitely.</li>
+</ul>
+<p>If your goal is a targeted cleanup rather than a full exit, deleting the account is the wrong tool. Read the <a href="/blog/why-old-tweets-wont-delete">deletion troubleshooting guide</a> instead.</p>
+
+<h2>Before You Go</h2>
+<p>Sign in to every site that used "Log in with X" and set a real password, or you will lose access to those accounts too. This is the most commonly missed step and the most annoying to recover from.</p>
+
+<h2>常见问题</h2>
+<h3>Can I get my archive after deleting?</h3>
+<p>Only if you downloaded it before. Request it and wait for delivery, then delete.</p>
+<h3>Can I reuse the same handle?</h3>
+<p>Usually after the 30-day window, subject to availability. It is not reserved for you.</p>
+<h3>Is deleted data really gone?</h3>
+<p>From X's live systems, yes. From third-party copies, no.</p>
+
+<h2>结论</h2>
+<p>Account deletion is a clean exit if you want one — just download your archive first, detach every "Log in with X", and then leave it alone for 30 days.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>删除 X 账号看起来只是一个按钮，实际上是中间夹着 30 天冷静期的两阶段流程。理解这两个阶段很重要，因为大多数「我删了号它又回来了」的困惑都发生在那个窗口里。</p>
+</div>
+
+<h2>停用与删除的区别</h2>
+<ul>
+  <li><strong>停用</strong>——账号立即从公开视野消失，但 X 会保留 30 天。期间只要登录，一切都会恢复。</li>
+  <li><strong>删除</strong>——同一动作的完成态。30 天不登录后，账号及其数据被永久移除。</li>
+</ul>
+<p>不存在单独的「立即删除」按钮。停用是机制，30 天的等待才让它变成永久。</p>
+
+<h2>操作步骤</h2>
+<ol>
+  <li>先备份想保留的内容——下载数据归档。</li>
+  <li>设置 → 你的账号 → 停用账号。</li>
+  <li>用密码确认。</li>
+  <li>30 天内不要登录。</li>
+</ol>
+<p>最后一步是多数人栽的地方。打开 App 看看「到底成没成」会重新激活账号并重置计时。</p>
+
+<h2>会被删除的内容</h2>
+<ul>
+  <li>你的推文与转推</li>
+  <li>点赞、关注与被关注</li>
+  <li>你的资料页与显示名</li>
+  <li>私信</li>
+</ul>
+
+<h2>不会消失的内容</h2>
+<ul>
+  <li><strong>他人提到你的帖子</strong>——那是他们发布的对象。</li>
+  <li><strong>截图与转载</strong>——完全在 X 的触及范围之外。</li>
+  <li><strong>搜索引擎缓存</strong>——有数天到数周的滞后。</li>
+  <li><strong>存档服务</strong>——可能长期保留副本。</li>
+</ul>
+<p>如果你的目标是定向清理而非彻底退出，删号是错的工具。请改读<a href="/blog/why-old-tweets-wont-delete">删除排障指南</a>。</p>
+
+<h2>离开之前</h2>
+<p>登录所有使用「用 X 登录」的站点并设置真实密码，否则你也会失去那些账号的访问权。这是最常被遗漏、也最难恢复的一步。</p>
+
+<h2>常见问题</h2>
+<h3>删号后还能拿到归档吗？</h3>
+<p>只有事先下载过才行。先申请并等它送达，再删除。</p>
+<h3>能重复使用同一个 ID 吗？</h3>
+<p>通常在 30 天窗口之后、且未被占用时可以。它不会为你保留。</p>
+<h3>已删除的数据真的没了吗？</h3>
+<p>在 X 的实时系统里是的；在第三方副本里不是。</p>
+
+<h2>结论</h2>
+<p>如果你想要一次干净的退出，删号是合适的——只要先下载归档、解除所有「用 X 登录」、然后 30 天别去碰它。</p>
+    `,
+  },
+  {
+    slug: 'ethics-deleting-someone-else-tweets',
+    date: '2026-09-10',
+    updatedAt: '2026-09-10',
+    author: 'Digital Footprint Health Team',
+    category: '特辑复盘',
+    categoryEn: 'Case Review',
+    tags: ['代为删除', '数字遗产', '授权', '伦理'],
+    tagsEn: ['delegated deletion', 'digital legacy', 'consent', 'ethics'],
+    canonical: '/blog/ethics-deleting-someone-else-tweets',
+    title: '替别人删除推文：什么时候可以，什么时候不可以',
+    titleEn: "Deleting Someone Else's Tweets: When It Is Legitimate and When It Is Not",
+    excerpt: '亲人去世、伴侣共号、员工离职——代为清理他人社交媒体有三种完全不同的道德处境，处理错了会同时造成法律与情感伤害。',
+    excerptEn: "A relative has died, a partner shares your handle, an employee has left. Cleaning someone else's social media covers three very different situations, and getting them wrong causes legal and personal harm at once.",
+    contentEn: `
+<div class="introduction">
+  <p>People rarely set out to delete someone else's posts maliciously. It usually starts with good intentions — protecting a grieving family, tidying a shared brand account, scrubbing a departing employee's access. The problem is that "I meant well" and "I had the right to do this" are different questions, and the second one has a clear answer in each case.</p>
+</div>
+
+<h2>Case 1: After a death</h2>
+<p>This is the most defensible case, and still not unrestricted. Accessing a deceased person's account is governed by the platform's legacy policy and, depending on your jurisdiction, by who holds the estate.</p>
+<ul>
+  <li><strong>Legitimate:</strong> contacting the platform to memorialise or close the account as the designated legacy contact or estate representative.</li>
+  <li><strong>Not legitimate:</strong> logging in with a password you guessed or found, and deleting posts the family disagrees about.</li>
+</ul>
+<p>The correct route is the platform's own process — see the <a href="/blog/protect-digital-legacy-after-death">digital legacy guide</a>. It is slower, but it is the only one that does not risk a legal problem during an already terrible week.</p>
+
+<h2>Case 2: Shared or co-brand accounts</h2>
+<p>If an account is genuinely co-owned, deletion is a decision that requires both parties. The grey area is the account that is technically in one person's name but represents a shared project.</p>
+<p>Practical rule: whoever holds the credentials holds the power, but not the right. If deleting posts would destroy the other person's work, the ethical move is to export first and negotiate, not to delete and explain.</p>
+
+<h2>Case 3: Employees and departing staff</h2>
+<p>Work accounts are the clearest case of all. The account belongs to the organisation, and offboarding should include:</p>
+<ol>
+  <li>Transferring account ownership and credentials.</li>
+  <li>Revoking the person's access — not deleting the account.</li>
+  <li>Archiving handover material before any removal.</li>
+</ol>
+<p>Deleting a departing employee's posts out of spite is both an HR problem and, more often than people expect, a data-loss problem for the company.</p>
+
+<h2>The three questions to ask first</h2>
+<ol>
+  <li>Do I hold credentials legitimately, or only by convenience?</li>
+  <li>Would the account holder, if reachable, agree to this specific action?</li>
+  <li>Have I exported what I am about to destroy?</li>
+</ol>
+<p>If any answer is "no" or "not sure", stop and use the platform's formal process instead.</p>
+
+<h2>常见问题</h2>
+<h3>Can I delete a dead relative's account?</h3>
+<p>Through the platform's legacy process, usually yes if you are the designated contact or estate representative. Not by logging in with their password.</p>
+<h3>What if my ex-partner's posts include me?</h3>
+<p>You can ask the platform to remove content that exposes you personally, but you generally cannot delete their account or their posts about you.</p>
+<h3>Should I tell the family afterwards?</h3>
+<p>Yes, always. The deletion itself is often less damaging than discovering it without explanation.</p>
+
+<h2>结论</h2>
+<p>Deleting for someone else is sometimes the kind thing to do and never a casual thing to do. Check your authority first, export before you destroy, and prefer the platform's process to a password you should not have.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>人们很少是出于恶意去删别人的帖子。它通常从好意开始——保护悲痛的家属、整理共享的品牌账号、清理离职员工的权限。问题在于「我是好心」和「我有权这么做」是两个不同的问题，而后者的答案在每种情形里都很明确。</p>
+</div>
+
+<h2>情形一：身故之后</h2>
+<p>这是最有正当性的一种情形，但仍非不受限制。访问逝者账号受平台遗产政策约束，并按你所在司法辖区的规定取决于谁代表遗产。</p>
+<ul>
+  <li><strong>正当：</strong>以指定遗产联系人或遗产代表身份联系平台，将账号纪念化或关闭。</li>
+  <li><strong>不正当：</strong>用猜出或找到的密码登录，并删除家属尚有分歧的帖子。</li>
+</ul>
+<p>正确路径是平台自有的流程——见<a href="/blog/protect-digital-legacy-after-death">数字遗产指南</a>。它更慢，但也是唯一不会在本就难熬的一周里再添法律风险的方式。</p>
+
+<h2>情形二：共享或联名账号</h2>
+<p>如果一个账号确实是共有的，删除就是需要双方共同决定的事项。灰色地带在于：账号技术上属于某人，但代表一个共同项目。</p>
+<p>实用准则：谁掌握凭据谁掌握权力，但不等于掌握权利。若删除会毁掉另一方的成果，合乎伦理的做法是先导出再协商，而不是先删再解释。</p>
+
+<h2>情形三：员工与离职人员</h2>
+<p>工作账号是最清晰的一种。账号属于组织，离职流程应当包括：</p>
+<ol>
+  <li>转移账号所有权与凭据。</li>
+  <li>撤销该人的访问权限——而不是删除账号。</li>
+  <li>在任何移除之前归档交接材料。</li>
+</ol>
+<p>出于赌气删除离职员工的帖子，既是 HR 问题，也常常是公司自己的数据丢失问题——比人们预想的更常见。</p>
+
+<h2>先问三个问题</h2>
+<ol>
+  <li>我是合法持有凭据，还是仅仅方便拿到？</li>
+  <li>如果账号持有人可联系，他会同意这个具体动作吗？</li>
+  <li>我是否已经导出了即将销毁的内容？</li>
+</ol>
+<p>任一答案是「否」或「不确定」，就停下来，改用平台的正式流程。</p>
+
+<h2>常见问题</h2>
+<h3>能删除已故亲人的账号吗？</h3>
+<p>通过平台的遗产流程，若你是指定联系人或遗产代表，通常可以。不是用他们的密码登录。</p>
+<h3>如果前任的帖子里有我怎么办？</h3>
+<p>你可以请平台移除暴露你个人信息的內容，但一般无权删除其账号或关于你的帖子。</p>
+<h3>事后要告诉家属吗？</h3>
+<p>一定要。删除本身造成的伤害往往小于「发现得毫无解释」。</p>
+
+<h2>结论</h2>
+<p>替别人删除，有时是善举，从不是随便之举。先确认你的权限，销毁前先导出，并且优先走平台流程，而不是那个你本不该拥有的密码。</p>
+    `,
+  },
+  {
+    slug: 'use-x-native-deletion-tools',
+    date: '2026-09-10',
+    updatedAt: '2026-09-10',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion Guide',
+    tags: ['原生工具', '批量删除', '对比', 'X'],
+    tagsEn: ['native tools', 'bulk delete', 'comparison', 'x'],
+    canonical: '/blog/use-x-native-deletion-tools',
+    title: 'X 自带的删除功能够用吗？原生工具 vs 第三方工具',
+    titleEn: "Are X's Native Deletion Tools Enough? Native vs Third-Party Cleanup",
+    excerpt: 'X 自带删除、归档与静音功能，全部免费。它们在什么规模下够用，又从哪一刻开始必须上第三方工具——这是清晰的分界线。',
+    excerptEn: "X ships with deletion, archiving and mute tools, all free. Here is the volume at which they stop being enough, and the clear line where third-party tools become necessary.",
+    contentEn: `
+<div class="introduction">
+  <p>Every cleanup decision starts with the same question: do I actually need a paid tool, or can I just use what X already gives me? For a lot of people the honest answer is that the native tools are enough. The trick is knowing where the line is.</p>
+</div>
+
+<h2>What X gives you natively</h2>
+<ul>
+  <li><strong>Per-post deletion</strong> — the delete button on any post you own.</li>
+  <li><strong>Archive download</strong> — a complete export of your posts, likes and DMs.</li>
+  <li><strong>Mute and block</strong> — hide rather than delete.</li>
+  <li><strong>Protected account</strong> — make future posts non-public.</li>
+  <li><strong>Account deactivation</strong> — the nuclear option.</li>
+</ul>
+<p>That set is powerful. Notably, the archive download is the single most useful tool in the entire process, and it is free.</p>
+
+<h2>Where native tools break down</h2>
+<p>The delete button is per-post. There is no bulk selection, no date-range delete, and no filter by keyword. At ten posts, that is fine. At ten thousand, it is not a plan.</p>
+<table>
+  <thead><tr><th>Task</th><th>Native</th><th>Third-party</th></tr></thead>
+  <tbody>
+    <tr><td>Delete a handful of posts</td><td>Yes</td><td>Overkill</td></tr>
+    <tr><td>Delete by date range</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Delete by keyword</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Find phone/email in posts</td><td>No</td><td>Yes</td></tr>
+    <tr><td>Bulk 10k+ posts</td><td>No</td><td>Yes</td></tr>
+  </tbody>
+</table>
+
+<h2>The decision line</h2>
+<p>A practical threshold: if your cleanup involves more than about 200 posts, or any criterion other than "I can see it on screen", you want a tool. Below that, the native delete button plus the archive is genuinely sufficient — and it avoids handing your data to a third party at all.</p>
+
+<h2>If you do use a third-party tool</h2>
+<ol>
+  <li>Prefer local processing — your archive should not need to be uploaded.</li>
+  <li>Check that it backs off on rate limits rather than failing silently.</li>
+  <li>Make sure it can pause and resume.</li>
+  <li>Read the <a href="/blog/why-old-tweets-wont-delete">troubleshooting guide</a> before you blame the tool.</li>
+</ol>
+
+<h2>常见问题</h2>
+<h3>Is the archive download really enough to find problems?</h3>
+<p>Yes — the archive contains every post you ever published, searchable locally. It is the best free audit tool available.</p>
+<h3>Does muting count as cleaning?</h3>
+<p>No. Muting hides content from your view; it stays public and stays in the index.</p>
+<h3>Can I bulk-delete with the archive?</h3>
+<p>No. The archive is read-only; it tells you what to delete but cannot delete it.</p>
+
+<h2>结论</h2>
+<p>Start native. Download the archive, search it, delete the handful of things that matter by hand. Only reach for a third-party tool when the volume or the criteria make that impossible — and when you do, choose one that processes locally.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>每次清理决策都始于同一个问题：我到底需不需要付费工具，还是用 X 自带的功能就够？对很多人来说，诚实的答案就是原生工具已经足够。诀窍在于知道那条分界线在哪。</p>
+</div>
+
+<h2>X 原生提供了什么</h2>
+<ul>
+  <li><strong>逐条删除</strong>——自己任何帖子上的删除按钮。</li>
+  <li><strong>归档下载</strong>——推文、点赞与私信的完整导出。</li>
+  <li><strong>静音与屏蔽</strong>——隐藏而非删除。</li>
+  <li><strong>受保护账号</strong>——让未来的帖子不再公开。</li>
+  <li><strong>账号停用</strong>——核选项。</li>
+</ul>
+<p>这套工具很强。尤其是归档下载，它是整个流程中最有用的单一工具，而且免费。</p>
+
+<h2>原生工具的失效点</h2>
+<p>删除按钮是逐条的。没有批量选择、没有按日期区间删除、也没有按关键词筛选。十条帖子没问题；一万条就不是方案了。</p>
+<table>
+  <thead><tr><th>任务</th><th>原生</th><th>第三方</th></tr></thead>
+  <tbody>
+    <tr><td>删除少量帖子</td><td>可以</td><td>过度</td></tr>
+    <tr><td>按日期区间删除</td><td>不行</td><td>可以</td></tr>
+    <tr><td>按关键词删除</td><td>不行</td><td>可以</td></tr>
+    <tr><td>查找帖中的手机号/邮箱</td><td>不行</td><td>可以</td></tr>
+    <tr><td>批量 1 万条以上</td><td>不行</td><td>可以</td></tr>
+  </tbody>
+</table>
+
+<h2>决策分界线</h2>
+<p>一个实用阈值：若你的清理涉及超过约 200 条帖子，或涉及任何「肉眼可见」以外的判据，你就需要一个工具。低于这个量，原生删除按钮加归档确实够用——而且完全不必把数据交给第三方。</p>
+
+<h2>如果确实要用第三方工具</h2>
+<ol>
+  <li>优先本地处理——你的归档不应该需要上传。</li>
+  <li>确认它遇到限速会退避，而不是静默失败。</li>
+  <li>确保它能暂停与续传。</li>
+  <li>在怪工具之前先读<a href="/blog/why-old-tweets-wont-delete">排障指南</a>。</li>
+</ol>
+
+<h2>常见问题</h2>
+<h3>归档下载真的够用来发现问题吗？</h3>
+<p>够——归档包含你发布过的每一条帖子，可在本地搜索。它是目前最好的免费审计工具。</p>
+<h3>静音算清理吗？</h3>
+<p>不算。静音只是让你自己看不见；内容仍然公开、仍在索引里。</p>
+<h3>能用归档批量删除吗？</h3>
+<p>不能。归档是只读的；它告诉你要删什么，但无法执行删除。</p>
+
+<h2>结论</h2>
+<p>先用手上的原生工具。下载归档、在其中搜索、手动删掉少数真正重要的。只有当规模或判据让它不可能时，才动用第三方工具——而那时，选择本地处理的那一个。</p>
+    `,
+  },
+  {
+    slug: 'digital-minimalism-peace',
+    date: '2026-09-10',
+    updatedAt: '2026-09-10',
+    author: 'Digital Footprint Health Team',
+    category: '心理习惯',
+    categoryEn: 'Mindset',
+    tags: ['数字极简', '心理', '专注力', '长期习惯'],
+    tagsEn: ['digital minimalism', 'mindset', 'focus', 'habits'],
+    canonical: '/blog/digital-minimalism-peace',
+    title: '数字极简带来的平静：清理之后如何维持',
+    titleEn: "The Peace of Digital Minimalism: How to Keep It After the Cleanup",
+    excerpt: '清理一次不难，难的是不再重新堆起来。这是把一次性大扫除变成长期习惯的四个机制，以及为什么它们比自控力更可靠。',
+    excerptEn: "Cleaning up once is easy; not rebuilding the pile is the hard part. Four mechanisms that turn a one-off purge into a durable habit — and why they beat willpower.",
+    contentEn: `
+<div class="introduction">
+  <p>The strange part of a digital cleanup is how quickly the calm fades. You delete ten thousand posts, feel genuinely lighter for a week, and then slowly drift back. Not because you are weak, but because nothing in your setup changed — you removed the symptom and left the mechanism intact.</p>
+</div>
+
+<h2>Why the calm fades</h2>
+<p>Cleanup is an event. Habits are a system. An event changes the state of your archive; a system changes what your archive does next. Without the second one, the first one has a shelf life of about a month.</p>
+
+<h2>Four mechanisms that actually hold</h2>
+
+<h3>1. A recurring audit, not a heroic purge</h3>
+<p>Thirty minutes a quarter beats eight hours once. Put the <a href="/blog/digital-footprint-audit-checklist-2026">audit checklist</a> in your calendar as a repeating event and treat it like a dental appointment — boring, quick, non-negotiable.</p>
+
+<h3>2. A posting rule you can actually apply</h3>
+<p>Not "post less", which is unmeasurable, but something concrete: no live location, no full names, no work details. A rule you can check in two seconds gets followed; a vague intention does not.</p>
+
+<h3>3. Separate identities by purpose</h3>
+<p>One handle for professional life, another for personal. This is not about hiding — it is about giving each context a boundary so an offhand post cannot leak across.</p>
+
+<h3>4. A periodic deletion interval</h3>
+<p>Many people find a rolling window works better than indefinite retention: posts older than two years get reviewed and mostly removed. It keeps the archive from becoming an accumulated liability you never revisit.</p>
+
+<h2>The psychological payoff</h2>
+<p>What people describe after a sustained version of this is not an empty timeline. It is the absence of a low background hum — the feeling that something old might surface. That hum is what most people are actually trying to get rid of, and removing a few thousand posts is what silences it.</p>
+
+<h2>What to ignore</h2>
+<ul>
+  <li>The urge to delete everything at once — the rebound is real.</li>
+  <li>Comparison with people who appear to have no footprint; you cannot see their archive.</li>
+  <li>Perfection. A footprint with a few loose ends is a normal, healthy footprint.</li>
+</ul>
+
+<h2>常见问题</h2>
+<h3>How long until the habit sticks?</h3>
+<p>Two full audit cycles — about six months. After the second one, most people find they have started checking things unprompted.</p>
+<h3>Should I delete everything and start fresh?</h3>
+<p>Rarely. A clean slate is tempting, but you lose the history that makes your profile credible. Targeted cleanup usually serves people better.</p>
+<h3>What if I stop posting entirely?</h3>
+<p>That is a valid choice, but it is a different goal from privacy. Reducing exposure and disappearing are not the same project.</p>
+
+<h2>结论</h2>
+<p>The goal of digital minimalism is not an empty profile — it is not having to think about your profile at all. Get the mechanisms in place once, and the calm becomes the default rather than the afterglow of a purge.</p>
+    `,
+    content: `
+<div class="introduction">
+  <p>数字清理最奇怪的地方是那份平静消退得多快。你删掉一万条帖子，轻松了整整一周，然后慢慢又漂回原样。不是因为你意志薄弱，而是因为你的机制没有任何改变——你移除了症状，却把成因留在原地。</p>
+</div>
+
+<h2>平静为何会消退</h2>
+<p>清理是一次事件，习惯是一套系统。事件改变归档的状态；系统改变归档接下来会做什么。没有后者，前者的保质期大约只有一个月。</p>
+
+<h2>真正能维持的四个机制</h2>
+
+<h3>1. 定期审计，而不是英雄式大扫除</h3>
+<p>每季度 30 分钟胜过三年一次 8 小时。把<a href="/blog/digital-footprint-audit-checklist-2026">审计清单</a>作为重复日程放进日历，当成看牙——无聊、快速、不可协商。</p>
+
+<h3>2. 一条你真正执行得了的发布规则</h3>
+<p>不是「少发」，那无法度量；而是具体的东西：不定位、不写全名、不提工作细节。两秒钟就能核对的规则会被执行；模糊的意愿不会。</p>
+
+<h3>3. 按用途分离身份</h3>
+<p>职业生活一个 ID，个人生活一个 ID。这不是为了隐藏，而是给每个语境划出边界，让随手一发不会跨语境泄露。</p>
+
+<h3>4. 设定周期性删除间隔</h3>
+<p>许多人发现滚动窗口比无限保留更好用：超过两年的帖子接受复审，且多数会被移除。这能避免归档变成一个你从不回看、却不断累积的负债。</p>
+
+<h2>心理层面的回报</h2>
+<p>长期坚持这套做法的人描述的并不是一个空时间线，而是那种低频背景嗡鸣的消失——「说不定哪天旧东西会被翻出来」的感觉。大多数人真正想摆脱的就是那阵嗡鸣，而删掉几千条帖子正是让它安静下来的方式。</p>
+
+<h2>可以忽略的</h2>
+<ul>
+  <li>一次性删光一切的冲动——反弹是真实存在的。</li>
+  <li>和看上去毫无足迹的人比较；你看不到他们的归档。</li>
+  <li>追求完美。留有几个小尾巴的足迹，才是正常、健康的足迹。</li>
+</ul>
+
+<h2>常见问题</h2>
+<h3>习惯要多久才稳固？</h3>
+<p>两个完整审计周期，约六个月。第二次之后，多数人发现自己会不自觉地开始检查。</p>
+<h3>该不该删光重来？</h3>
+<p>很少需要。白纸很诱人，但你会失去让资料可信的历史。定向清理通常更合适。</p>
+<h3>如果彻底不发帖呢？</h3>
+<p>这是合理的选择，但它与隐私是不同目标。减少暴露和彻底消失不是同一个项目。</p>
+
+<h2>结论</h2>
+<p>数字极简的目标不是空资料页，而是根本无需去想你的资料页。把机制装好一次，平静就会成为默认状态，而不是一次大扫除后的余温。</p>
+    `,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

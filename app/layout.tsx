@@ -36,9 +36,12 @@ export const metadata: Metadata = {
     'clean digital footprint',
     'online reputation cleanup',
   ],
-  alternates: {
-    canonical: '/',
-  },
+  // 刻意不在此声明 alternates.canonical：
+  // Next.js 的 metadata 合并语义是「子页面未声明 alternates 就整块继承父级」，
+  // 于是在 layout 写 canonical: '/' 会让所有没自设 canonical 的页面
+  // （/pricing、/upload、/delete/confirm、/faq、/about、/privacy、/contact 等 11 个）
+  // 全部把 canonical 指向首页 → 被 Google 判为重复内容而不索引。
+  // 规范：canonical 由各页面自己声明；未声明时 Google 视为自指，不会出错。
   openGraph: {
     type: 'website',
     url: SITE_URL,

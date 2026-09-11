@@ -6819,6 +6819,449 @@ export const allPosts: BlogPost[] = [
 <p>数字极简的目标不是空资料页，而是根本无需去想你的资料页。把机制装好一次，平静就会成为默认状态，而不是一次大扫除后的余温。</p>
     `,
   },
+  {
+    slug: 'right-to-be-forgotten-twitter',
+    date: '2026-09-12',
+    updatedAt: '2026-09-12',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    categoryEn: 'Compliance & Law',
+    tags: ['被遗忘权', 'GDPR', '去索引', '搜索结果移除'],
+    tagsEn: ['right to be forgotten', 'GDPR', 'delisting', 'search removal'],
+    canonical: '/blog/right-to-be-forgotten-twitter',
+    title: '被遗忘权实操：让 Google 把你的旧推文从搜索结果里拿掉',
+    titleEn: 'The Right to Be Forgotten: Getting Search Engines to Delist Your Old Tweets',
+    excerpt: '被遗忘权不是「一键清空全网」。它管的是搜索结果，不是原页面。这篇把三层结构拆开：源页面删除、去索引申请、副本清理，各自对应什么手段、什么周期、什么情况下会失败。',
+    excerptEn: 'The right to be forgotten is not a delete-everything button. It governs search results, not the underlying page. Here is the three-layer model: kill the source, request delisting, chase the copies.',
+    contentEn: `<div class="introduction">
+  <p>Search delisting is the part of "delete my old tweets" that most guides skip. Deleting a tweet removes it from X, but the search result, the archive snapshot, and the scraper copy can all survive. In the EU and UK, the right to be forgotten is the legal lever that reaches those copies. Outside those regions it is mostly a policy request with no obligation attached, which changes the tactics completely.</p>
+  <p>This guide separates the three layers of a footprint and shows which lever moves each one.</p>
+</div>
+
+<h2>What the right actually covers</h2>
+<p>The right to erasure sits in Article 17 of the GDPR. It binds data controllers processing your personal data in the EU, and the same right exists in the UK under the UK GDPR. Two limits matter in practice.</p>
+<ul>
+  <li>It binds <strong>controllers</strong>, not the whole internet. Google is a controller for search results about you.</li>
+  <li>It carries carve-outs: freedom of expression, journalistic purposes, public interest, legal claims.</li>
+</ul>
+<p>That is why the Court of Justice in <em>Google Spain</em> (2014) built a delisting remedy rather than a take-down remedy. Google does not have to erase the underlying page from the publisher's site. It has to stop surfacing that page for searches built on your name. Getting this backwards is the most common way people waste a month on forms.</p>
+
+<h2>The three layers of a footprint</h2>
+<table>
+  <thead><tr><th>Layer</th><th>What lives there</th><th>Lever that works</th><th>Typical time</th></tr></thead>
+  <tbody>
+    <tr><td>1. Source</td><td>The live tweet or profile</td><td>Delete on X, or account deletion</td><td>Minutes to 30 days</td></tr>
+    <tr><td>2. Index</td><td>Search results for your name</td><td>Delisting request (GDPR Art. 17 / Google form)</td><td>2 weeks to 3 months</td></tr>
+    <tr><td>3. Copies</td><td>Web archive, scraper sets, people-search sites</td><td>Data-subject requests and opt-out forms</td><td>Days to months</td></tr>
+  </tbody>
+</table>
+<p>Most people start at layer 3, because that layer looks like the real problem. Start at layer 1 instead. Dead source pages make every later request easier, and a delisted URL that still resolves to a live page tends to creep back into results.</p>
+
+<h2>Layer 1: kill the source first</h2>
+<p>If the tweet is still live, delete it before anything else. Deletions on X propagate within minutes, though search engines may hold a cached copy for several days.</p>
+<p>Then keep records: the URL, the date you deleted it, and a screenshot of the confirmation. Delisting requests ask you to show harm, and "I already removed it, here is the receipt" is the strongest form of that.</p>
+<p>If someone else posted the content and only mentioned you, layer 1 does not apply to you. Skip straight to layer 2 for the search side, and use the platform's report flow for the content itself.</p>
+
+<h2>Layer 2: how to write the delisting request</h2>
+<p>Google runs a dedicated form for EU and UK residents. A few specifics decide whether it works.</p>
+<ol>
+  <li>One URL per request. Bundling ten links into a single submission makes a partial grant impossible to track.</li>
+  <li>Give your name exactly as it appears in the search, plus every variant you want covered. For Chinese names, include both the characters and the pinyin spelling.</li>
+  <li>State the specific harm. "This is old" is weak. "This page lists my home address and my employer" is strong.</li>
+  <li>Supply identity proof, usually a photo ID. It is used for verification only.</li>
+  <li>Name the jurisdiction you are claiming under. The EU and UK routes differ in processing and in how appeals work.</li>
+</ol>
+<p>Decisions are made case by case, and outcomes cluster into four buckets.</p>
+<table>
+  <thead><tr><th>Outcome</th><th>What it means</th><th>Your next move</th></tr></thead>
+  <tbody>
+    <tr><td>Delisted in EU/UK only</td><td>Index removed for those regions</td><td>Ask for global delisting. This is the most common result.</td></tr>
+    <tr><td>Partially granted</td><td>Some URLs removed, some kept</td><td>Re-request each refused URL with sharper harm detail</td></tr>
+    <tr><td>Refused on public interest</td><td>Kept for journalism or because you are a public figure</td><td>Go back to layer 1 if you control the page</td></tr>
+    <tr><td>Not processed</td><td>Usually an identity or jurisdiction gap</td><td>Resubmit with complete documents</td></tr>
+  </tbody>
+</table>
+<p>Budget two to eight weeks. Refusals are worth appealing, because the same URL gets re-reviewed by a different assessor and added context often flips the call.</p>
+
+<h2>Layer 3: the copies nobody mentions</h2>
+<p>Two sources of copies matter most. The Internet Archive is a nonprofit with its own exclusion process, and it generally honours requests. People-search aggregators are commercial, and most run opt-out forms because the opt-out is part of their compliance story. Do both once layers 1 and 2 are moving.</p>
+<p>Scrapers that resell raw tweet dumps are harder. Most have no form at all. E-mail a data-subject request to whatever contact address exists, and file a complaint with your local data protection authority if nothing comes back. The authority route is slow, but unlike an e-mail it creates an official record.</p>
+
+<h2>Which layer fixes which symptom</h2>
+<table>
+  <thead><tr><th>Symptom</th><th>Right layer</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td>Your name still returns the tweet in search</td><td>Layer 2</td><td>Deleting on X does not clear the cached result</td></tr>
+    <tr><td>A recruiter found the tweet on X itself</td><td>Layer 1</td><td>No index is involved</td></tr>
+    <tr><td>A "who is this person" site lists your data</td><td>Layer 3</td><td>It assembles records independently of X</td></tr>
+    <tr><td>An old snapshot is still shareable</td><td>Layer 3</td><td>That is an archive request, not a search request</td></tr>
+  </tbody>
+</table>
+
+<h2>Where this fails</h2>
+<p>If you live outside the EU and UK, Google is not obliged to delist results based on your location. One exception is worth knowing: you can request removal under Google's own policies for content that exposes personal data, such as ID numbers, bank details, or doxxing material. That is a policy removal rather than a legal one, and its scope is narrower than a delisting, but it beats having no route at all.</p>
+<p>The other failure mode is chasing the index before the source. Plenty of people spend a month on forms while the original post stays live. Fix the ordering before you spend the effort.</p>
+
+<h2>Writing the harm statement</h2>
+<p>The harm paragraph is the only part of the form you write yourself, so it carries the decision. Three things make it land.</p>
+<ol>
+  <li>Tie the page to a concrete identifier. Not "this is my old account" but "this page shows my full name, my employer, and the city I live in".</li>
+  <li>Say what changed. If you posted it at nineteen, say so, and say what the page means now that people search your name before an interview.</li>
+  <li>Keep it under 200 words. Long submissions get skimmed. Specific ones get read.</li>
+</ol>
+<p>A usable version reads like this: "This URL is an archived profile from 2013 listing my full name, my employer at the time, and the neighbourhood I lived in. I no longer live there. The page is the first result when a recruiter searches my name, and it exposes my former address to anyone who looks." Four sentences, and every one gives the assessor something to act on.</p>
+<p>Write it in the language of the jurisdiction: English for the UK form, and either the local language or English for EU submissions. Do not run your legal reasoning through a machine translator. If you are not confident in the wording, get the harm statement checked before you send it.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: you load your X archive, it parses locally, and it returns a 0-100 health score plus a list of the phone numbers, emails and addresses sitting in your old tweets. It is the fastest way to work out which URLs are even worth a delisting request. Start with the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/phone-number-in-tweets-check">the phone number check</a>.</p>`,
+    content: `<div class="introduction">
+  <p>「被遗忘权」被用得太随意了。它不是一键把全网关于你的内容清空，而是一条针对搜索结果的申诉通道：Google 可以不再用你的名字把某个页面排出来，但那个页面本身还在原处。很多人第一次申请就预期错了，以为交完表单帖子会消失。</p>
+  <p>真正要处理的是三层不同的东西。原始页面、搜索引擎索引、别处的副本，各自对应完全不同的手段和完全不同的时间表。层次搞混，力气就白花。</p>
+</div>
+
+<h2>被遗忘权到底管什么</h2>
+<p>法律依据是 GDPR 第 17 条（欧盟）与 UK GDPR（英国）。它约束的对象是「数据控制者」，不是整个互联网。就搜索这件事而言，Google 对「关于你的搜索结果」是控制者，所以它才是你的对手方；发布帖子的那个人通常不是，除非发布者本身在欧盟境内处理你的数据。</p>
+<ul>
+  <li>它约束控制者，不约束所有网站。</li>
+  <li>它带例外：言论自由、新闻用途、公共利益、法律主张。</li>
+</ul>
+<p>2014 年欧盟法院在 Google Spain 案里给出的救济是「去索引」，不是「下架」。Google 不需要让原始页面从发布者网站上消失，它只需要在你以本名检索时不再把那个页面推出来。这个区别决定了你应该先做什么、后做什么。</p>
+
+<h2>三层结构，三种手段</h2>
+<table>
+  <thead><tr><th>层次</th><th>里面是什么</th><th>有效手段</th><th>大致周期</th></tr></thead>
+  <tbody>
+    <tr><td>第一层 源页面</td><td>还在线的推文、个人资料页</td><td>在 X 上删除，或注销账号</td><td>几分钟到 30 天</td></tr>
+    <tr><td>第二层 索引</td><td>用你名字搜出来的结果</td><td>去索引申请（GDPR 第 17 条 / Google 表单）</td><td>2 周到 3 个月</td></tr>
+    <tr><td>第三层 副本</td><td>网页存档、爬虫库、人肉搜索站</td><td>数据主体请求、退订表单</td><td>数天到数月</td></tr>
+  </tbody>
+</table>
+<p>多数人从第三层开始，因为那一层看起来最像「问题本身」。顺序应该反过来。源页面死掉之后，后面每一份申请都更好过；而源页面还活着的 URL，即使暂时被去索引，也容易重新冒出来。</p>
+
+<h2>第一层：先把源头删掉</h2>
+<p>推文还在线的话，先删它。X 上的删除几分钟内生效，但搜索引擎清缓存要几天。</p>
+<p>删完留证据：URL、删除日期、确认页截图。去索引申请会要你举证，「我已经删了，这是回执」是最有说服力的一种举证方式。</p>
+<p>如果内容是别人发的、只是提到了你，第一层对你不成立，直接跳到第二层处理索引，同时用平台举报流程处理内容本身。</p>
+
+<h2>第二层：去索引申请怎么写</h2>
+<p>Google 为欧盟和英国居民提供专门的申请表单。几个执行细节决定成败。</p>
+<ol>
+  <li>一个 URL 一条申请。把十个链接塞进一份申请，部分批准的结果会变得难以追踪。</li>
+  <li>写清你的姓名，以及要覆盖的所有变体写法。中文名建议中文和拼音都写上。</li>
+  <li>说明具体损害。「这条太旧了」是弱理由。「这个页面写着我家地址和我任职的公司」是强理由。</li>
+  <li>提供身份证明，通常是身份证件。它只用于核验身份。</li>
+  <li>写明依据哪个司法辖区提出。欧盟路径和英国路径的处理与上诉流程不同。</li>
+</ol>
+<p>Google 逐条判断，结果大致落在四种情况里。</p>
+<table>
+  <thead><tr><th>结果</th><th>含义</th><th>下一步</th></tr></thead>
+  <tbody>
+    <tr><td>仅欧盟/英国去索引</td><td>该区域搜索结果移除</td><td>申请全球去索引。这是最常见的结果。</td></tr>
+    <tr><td>部分批准</td><td>部分 URL 移除，部分保留</td><td>对未通过的 URL 单独重提，补更具体的损害说明</td></tr>
+    <tr><td>以公共利益为由拒绝</td><td>涉新闻或公众角色而保留</td><td>若能控制源页面，回到第一层处理</td></tr>
+    <tr><td>未受理</td><td>通常缺身份材料或辖区不符</td><td>补全材料后重新提交</td></tr>
+  </tbody>
+</table>
+<p>周期按两到八周估。被拒值得上诉：同一个 URL 会换一位评估员复核，补上更多上下文之后，决定经常被翻过来。</p>
+
+<h2>第三层：那些没人告诉你的副本</h2>
+<p>副本主要来自两处。Internet Archive 是公益机构，它有独立的排除流程，收到请求一般会执行。人肉搜索类聚合站是商业公司，多数都备有退订表单，因为退订流程本身就是它们合规叙事的一部分。这两类在第一层和第二层动起来之后顺手做掉。</p>
+<p>转卖原始推文数据的爬虫库更难办，大部分连表单都没有。找得到联系方式就发数据主体请求邮件；没有任何回应，就向你所在地的数据保护机构投诉。投诉这条路慢，但它和邮件不一样，会留下正式记录。</p>
+
+<h2>哪种症状对应哪一层</h2>
+<table>
+  <thead><tr><th>症状</th><th>该动的层</th><th>原因</th></tr></thead>
+  <tbody>
+    <tr><td>搜你名字，那条推文还在结果里</td><td>第二层</td><td>只在 X 上删掉并不清缓存结果</td></tr>
+    <tr><td>招聘方直接在 X 上翻到了</td><td>第一层</td><td>这里根本没有索引参与</td></tr>
+    <tr><td>某个「查人」网站列着你的信息</td><td>第三层</td><td>它自己拼数据，和 X 无关</td></tr>
+    <tr><td>旧快照还能被转发</td><td>第三层</td><td>走存档排除，不走搜索申请</td></tr>
+  </tbody>
+</table>
+
+<h2>什么情况下这套不管用</h2>
+<p>你不住在欧盟或英国的话，Google 没有义务按你的位置去做去索引。有一个例外值得知道：你可以按 Google 自己的政策要求移除暴露个人数据的内容，比如证件号码、银行信息、人肉骚扰材料。这是政策移除，不是法律移除，范围比去索引窄得多，但比完全没有通道强。</p>
+<p>另一个常见的失败模式是先追索引、后管源头。不少人花一个月填表单，原始帖子还挂在原处。先修顺序，再花力气。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：加载你的 X 归档，在本机解析，输出 0-100 健康评分，以及散落在旧推文里的手机号、邮箱、地址清单。它是最快查出「哪些 URL 值得去申请」的办法。先从 <a href="/">免费体检</a>开始，配一篇 <a href="/blog/how-to-download-x-archive">怎么下载 X 归档</a>，或者看 <a href="/blog/phone-number-in-tweets-check">推文里的手机号风险</a>。</p>`,
+    faq: [
+      {
+        q: '被遗忘权只对欧盟居民有效吗？',
+        a: '法律意义上的去索引权利主要适用于欧盟与英国居民。其他地区仍可走 Google 的政策移除通道（证件号、银行信息、人肉材料），但那是政策，不是法律义务，覆盖面更窄。',
+        qEn: 'Does the right to be forgotten only apply to EU residents?',
+        aEn: 'The legal delisting right applies mainly to EU and UK residents. Everyone else can still use Google policy removals for things like ID numbers, bank details and doxxing material, but that is a policy route rather than an obligation, and it covers less.',
+      },
+      {
+        q: '申请去索引之后，推文会从 X 上消失吗？',
+        a: '不会。去索引只作用于搜索结果。原始帖子必须单独在 X 上删除，这两件事互不替代。',
+        qEn: 'Does delisting remove the tweet from X?',
+        aEn: 'No. Delisting only affects search results. The original post has to be deleted on X separately. One does not substitute for the other.',
+      },
+      {
+        q: '申请要多久？被拒了还能再申请吗？',
+        a: '按两到八周估。被拒可以上诉或重新提交，同一个 URL 会换评估员复核，补上更具体的损害说明后决定经常改变。',
+        qEn: 'How long does a request take, and can I reapply if refused?',
+        aEn: 'Budget two to eight weeks. Refusals can be appealed or resubmitted, and since each URL is re-reviewed by a different assessor, adding specific harm detail often changes the outcome.',
+      },
+      {
+        q: '删掉的推文为什么还能在别的地方搜到？',
+        a: '因为副本先于删除存在：网页存档、爬虫数据集、人肉搜索站都在删除之前抓过一份。这些要单独发请求处理，属于第三层。',
+        qEn: 'Why can deleted tweets still be found elsewhere?',
+        aEn: 'Because the copies predate your deletion. Web archives, scraper datasets and people-search sites captured a version before you removed it. Those need separate requests, which is layer three.',
+      },
+    ],
+  },
+  {
+    slug: 'data-brokers-selling-your-tweets',
+    date: '2026-09-12',
+    updatedAt: '2026-09-12',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    categoryEn: 'Industry & Ecosystem',
+    tags: ['数据经纪商', '人肉搜索站', '退订', '隐私'],
+    tagsEn: ['data brokers', 'people search', 'opt out', 'privacy'],
+    canonical: '/blog/data-brokers-selling-your-tweets',
+    title: '数据经纪商在转卖你的旧推文：查证与退订实操',
+    titleEn: 'Data Brokers Are Selling Your Old Tweets: How to Check and Opt Out',
+    excerpt: '删掉推文不等于退出市场。另一条产业链在收购、抓取、转卖社交数据，再拼成个人档案卖给招聘方和任何人。这是数字足迹里最少被检查的一层，也是退订流程最绕的一层。',
+    excerptEn: 'Deleting a tweet does not remove you from the market. A separate industry buys, scrapes and resells social data, then stitches profiles sold to recruiters and anyone with a card on file. It is the least-checked layer of a footprint.',
+    contentEn: `<div class="introduction">
+  <p>The tweets you deleted on X are not necessarily gone from the market. A separate industry buys, scrapes and resells social data, then stitches it into profiles sold to recruiters, insurers and anyone with a card on file. This is the least obvious layer of a digital footprint, and almost nobody checks it.</p>
+  <p>Here is how the pipeline works, how to find out whether you are in it, and the opt-out loop that actually clears listings.</p>
+</div>
+
+<h2>Where broker data comes from</h2>
+<p>Three sources feed the profiles.</p>
+<ul>
+  <li><strong>Licensed feeds.</strong> Historical firehose access was sold by data vendors for years, and large parts of those dumps are still sitting on disk.</li>
+  <li><strong>Scraping.</strong> Public profiles get harvested continuously. This is why a deleted post can still sit inside a dataset that was copied months earlier.</li>
+  <li><strong>Record stitching.</strong> Public records, voter files and breach dumps get matched against a handle. The match is the product. Anyone can read a tweet; linking it to your legal name, address and employer is what brokers charge for.</li>
+</ul>
+
+<h2>What actually shows up in a profile</h2>
+<p>Profiles vary, but the same fields keep appearing:</p>
+<ul>
+  <li>Handle mapped to a legal name, plus every name variation found in public records</li>
+  <li>Former and current cities, inferred from geotagged posts and check-ins</li>
+  <li>Employer, scraped from job announcements and LinkedIn cross-references</li>
+  <li>Phone numbers and email addresses recovered from old contact posts</li>
+  <li>Relatives and associates, assembled from shared addresses</li>
+</ul>
+<p>Address and employer are the two fields that cause the most trouble, because they turn an online argument into a physical-security problem.</p>
+
+<h2>How to check whether you are listed</h2>
+<p>A short routine covers most of it.</p>
+<ol>
+  <li>Search your handle in quotes. Then search your legal name plus your city.</li>
+  <li>Run your oldest email address, the one you used to sign up for everything in 2012. That address links profiles across sites.</li>
+  <li>Run your phone number in quotes. Aggregators index it even when you never posted it.</li>
+  <li>Check the three or four largest people-search sites by hand. They cross-list each other, so clearing the biggest ones removes most of the surface.</li>
+</ol>
+<p>Do this logged out of every account. Logged-in results are personalised and hide exactly the listings you are looking for.</p>
+
+<h2>The four broker types and their routes</h2>
+<table>
+  <thead><tr><th>Type</th><th>What it holds</th><th>Route to removal</th><th>Realistic time</th></tr></thead>
+  <tbody>
+    <tr><td>People-search sites</td><td>Name, address, phone, relatives</td><td>Per-site opt-out form, often per-profile</td><td>24 hours to 2 weeks</td></tr>
+    <tr><td>Marketing data vendors</td><td>Inferred interests and segments</td><td>Data-subject request under GDPR/CCPA</td><td>30 to 45 days</td></tr>
+    <tr><td>Social data resellers</td><td>Raw post archives</td><td>E-mail request; no standard form</td><td>Often no response</td></tr>
+    <tr><td>Background check firms</td><td>Employment and address history</td><td>Consumer reporting dispute process</td><td>30 days by statute</td></tr>
+  </tbody>
+</table>
+<p>The background check category is the one people overlook. Those firms are regulated as consumer reporting agencies in the US, which means you have a statutory dispute right and a deadline they have to respect. That is a much stronger position than asking a marketing vendor nicely.</p>
+
+<h2>The opt-out loop that works</h2>
+<p>Removing a listing is not a one-time action. Treat it as a loop.</p>
+<ol>
+  <li>Submit the opt-out for every profile that matches you. Take a screenshot of the confirmation.</li>
+  <li>Wait the stated period, then search again. A meaningful share of removals fail silently the first time.</li>
+  <li>Recheck quarterly. Brokers re-acquire from the same feeds, so listings reappear, especially after a move or a job change.</li>
+  <li>If a site has no opt-out and no address, file with your state attorney general or data protection authority. A regulator letter gets answered when an email does not.</li>
+</ol>
+
+<h2>What this does not fix</h2>
+<p>Opting out of brokers does not remove the underlying post, and it does not stop future scraping. It shrinks the assembled profile, which is the part that hurts. Pair it with source deletion and you remove both the raw material and the index that points at it.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check: load your X archive, and it parses locally to produce a 0-100 health score plus a list of the phone numbers, emails and addresses in your old posts. Knowing exactly which details leaked tells you what to search for on broker sites. Start with the <a href="/">free check</a>, read <a href="/blog/which-tweets-to-clean-by-risk">which tweets to clean first</a>, or see <a href="/blog/phone-number-in-tweets-check">the phone number check</a>.</p>`,
+    content: `<div class="introduction">
+  <p>在 X 上删掉的推文，不一定从市场上消失了。另外一条产业链在收购、抓取、转卖社交数据，再拼成个人档案，卖给招聘方、保险公司，以及任何愿意付钱的人。这是数字足迹里最不显眼的一层，也是几乎没人检查的一层。</p>
+  <p>下面讲这条管道怎么运转、怎么查自己在不在里面，以及真正能清掉条目的退订循环。</p>
+</div>
+
+<h2>数据从哪来</h2>
+<p>档案的原料有三个来源。</p>
+<ul>
+  <li><strong>授权数据流。</strong> 历史全量接口被数据商卖了多年，那些转储的很大一部分至今还躺在磁盘上。</li>
+  <li><strong>抓取。</strong> 公开资料页被持续采集，所以你删掉的帖子可能仍留在一份几个月前拷走的副本里。</li>
+  <li><strong>记录拼接。</strong> 公开记录、选民名册、泄露数据被拿来和账号比对。比中的那一环才是商品。谁都能读到一条推文，把它和你的真实姓名、地址、雇主连起来，才是经纪商收费的地方。</li>
+</ul>
+
+<h2>档案里实际有什么</h2>
+<p>各家字段不同，但反复出现的是这几项：</p>
+<ul>
+  <li>账号对应到真实姓名，以及公开记录里找到的所有拼写变体</li>
+  <li>现在和过去居住的城市，从带定位的帖子和打卡推断出来</li>
+  <li>雇主，从入职公告和跨站比对抓取</li>
+  <li>从旧的联系方式帖里恢复的手机号和邮箱</li>
+  <li>亲属和关联人，从共同居住地址拼出来</li>
+</ul>
+<p>地址和雇主这两项最容易出事，因为它们会把一场网络争论变成现实中的安全问题。</p>
+
+<h2>怎么查自己在不在名单里</h2>
+<p>一套短流程能覆盖绝大部分情况。</p>
+<ol>
+  <li>用引号搜你的账号名。再用真实姓名加所在城市搜一次。</li>
+  <li>搜你最早的那个邮箱，就是 2012 年前后什么都拿它注册的那个。它会把不同网站的档案串起来。</li>
+  <li>用引号搜你的手机号。即使你从没公开发过，聚合站也会收录。</li>
+  <li>手动查最大的三四个「查人」站。它们之间互相转引，清掉大的几家就消掉大部分表面。</li>
+</ol>
+<p>全部退出登录再查。登录状态下的结果是个人化的，恰好会把你正在找的那些条目藏起来。</p>
+
+<h2>四类经纪商与各自的通道</h2>
+<table>
+  <thead><tr><th>类型</th><th>持有什么</th><th>移除通道</th><th>现实周期</th></tr></thead>
+  <tbody>
+    <tr><td>查人网站</td><td>姓名、地址、电话、亲属</td><td>逐站退订表单，常常要逐条提交</td><td>24 小时到 2 周</td></tr>
+    <tr><td>营销数据商</td><td>推断出的兴趣与人群标签</td><td>GDPR / CCPA 数据主体请求</td><td>30 到 45 天</td></tr>
+    <tr><td>社交数据转卖方</td><td>原始帖子存档</td><td>只能发邮件，没有标准表单</td><td>常常没有回应</td></tr>
+    <tr><td>背景调查公司</td><td>任职与地址履历</td><td>消费者报告争议流程</td><td>法定 30 天</td></tr>
+  </tbody>
+</table>
+<p>背景调查这一类最容易被忽略。它们在美国被当作消费者报告机构监管，意味着你有法定的争议权，对方有必须遵守的期限。这个位置比向营销数据商说好话强得多。</p>
+
+<h2>真正有效的退订循环</h2>
+<p>移除条目不是一次性动作，把它当循环来做。</p>
+<ol>
+  <li>对所有匹配到你的档案提交退订，把确认页截图存下来。</li>
+  <li>等过标注的周期再搜一次。相当比例的移除会在第一次静默失败。</li>
+  <li>按季度复查。经纪商从同一批数据源重新进货，条目会重新出现，搬家或换工作之后尤其明显。</li>
+  <li>如果某个站既没有退订入口也没有联系方式，向你所在地的监管机构投诉。邮件没人回的时候，监管函会有人回。</li>
+</ol>
+
+<h2>这解决不了什么</h2>
+<p>从经纪商退订并不会删掉原始帖子，也拦不住未来的抓取。它缩小的是那份拼装出来的档案，而伤人的正是那份档案。配合源头删除一起做，才算同时拿掉了原材料和指向它的索引。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机处理的数字足迹体检：加载你的 X 归档，在本机解析出 0-100 健康评分，以及旧帖里出现的手机号、邮箱、地址清单。知道到底漏了哪些信息，才知道该去经纪商网站搜什么。先从 <a href="/">免费体检</a>开始，看看 <a href="/blog/which-tweets-to-clean-by-risk">哪些推文该优先清理</a>，或者读 <a href="/blog/phone-number-in-tweets-check">推文里的手机号风险</a>。</p>`,
+    faq: [
+      {
+        q: '我没公开发过手机号，为什么查人网站上有？',
+        a: '聚合站不依赖你主动发帖。它们从公开记录、泄露数据和别处的转引里拼出手机号，所以「我没发过」并不能让你不出现在名单上。',
+        qEn: 'I never posted my phone number, so why is it on a people-search site?',
+        aEn: 'Aggregators do not rely on you posting anything. They assemble phone numbers from public records, breach data and cross-site listings, so "I never posted it" does not keep you off the list.',
+      },
+      {
+        q: '退订之后就永久生效了吗？',
+        a: '不一定。经纪商会从同一批数据源重新进货，搬家或换工作之后条目常会重新出现。按季度复查是必须的。',
+        qEn: 'Is an opt-out permanent?',
+        aEn: 'Not reliably. Brokers re-acquire from the same feeds, and listings often reappear after a move or a job change. A quarterly recheck is part of the process.',
+      },
+      {
+        q: 'CCPA 和 GDPR 的请求有什么区别？',
+        a: 'GDPR 适用于欧盟境内处理你数据的主体，CCPA 适用于加州居民。两者都要求企业在限定周期内回应，但适用范围和救济路径不同，提交时要写清依据哪个。',
+        qEn: 'How do CCPA and GDPR requests differ?',
+        aEn: 'GDPR covers controllers processing your data in the EU, while CCPA covers California residents. Both require a response within a set period, but the scope and remedies differ, so name the one you are relying on.',
+      },
+    ],
+  },
+  {
+    slug: 'deletion-failed-retry-faq',
+    date: '2026-09-12',
+    updatedAt: '2026-09-12',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion Guide',
+    tags: ['删除失败', '限流', '重试', '退款'],
+    tagsEn: ['deletion failed', 'rate limit', 'retry', 'refund'],
+    canonical: '/blog/deletion-failed-retry-faq',
+    title: '删除失败怎么办：限流、重试、退款 5 问速答',
+    titleEn: 'Deletion Failed? Rate Limits, Retries and Refunds, Answered',
+    excerpt: '删除跑到一半停了、进度条反复回退、扣了钱帖子还在。五个高频问题的短答案，以及每一步该先看哪个指标。',
+    excerptEn: 'The run stopped halfway, the progress bar keeps resetting, you were charged and the posts are still there. Five quick answers, plus which signal to check first.',
+    contentEn: `<div class="introduction">
+  <p>Deletion runs fail in a small number of ways, and the fix depends on which one you hit. Here are the five questions that come up most, with the signal to check first in each case.</p>
+</div>
+
+<h2>Start with the failure log, not the retry button</h2>
+<p>Almost every deletion tool writes a per-item result somewhere. Before running the batch again, read it. The pattern tells you which of the five cases below you are in: a wall of identical failures is a rate limit, scattered failures are usually permission or ownership problems, and a clean log with surviving posts is a caching issue.</p>
+
+<h2>1. It stopped partway and the count froze</h2>
+<p>That is a rate limit, not a bug. X caps delete requests per account per window, and the ceiling is well below what a bulk job wants. The correct response is to stop, wait out the window, and resume from where the run left off. Re-running from the start immediately just burns another window.</p>
+
+<h2>2. Retrying immediately fails again</h2>
+<p>Because the limit did not reset. Backoff schedules on real tools start around fifteen minutes and grow; manual retries in a tight loop can hold you locked out for hours. If a run has failed twice in a row, wait at least an hour before the third attempt.</p>
+
+<h2>3. Some posts delete, some refuse</h2>
+<p>Four ownership cases cover most of it: retweets you do not control, quote-tweets whose parent post is gone, replies where the original author deleted their account, and posts made from a different account you no longer have access to. None of these are rate limits, and retrying will not move them. Confirm ownership first, then delete what you actually own.</p>
+
+<h2>4. The tool says done, but the post is still visible to you</h2>
+<p>Check it logged out, in a private window. Deletion is often correct while your own view is served from cache, especially on mobile. If it is visible logged out after a day, the deletion genuinely did not go through, and you are back at case 1 or 3.</p>
+
+<h2>5. You were charged and nothing was deleted</h2>
+<p>Per-item pricing means the charge should match the items processed, not the items you selected. Pull the invoice, compare the line item to the run log, and dispute the gap rather than the whole invoice. A tool that charges for attempted items instead of completed ones has a pricing problem worth reporting.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs a 100% on-device footprint check before you spend anything on deletion: load your X archive, parse it locally, and get a 0-100 health score plus the phone numbers, emails and addresses hiding in old posts. Pricing is per completed deletion, not per attempt. Start with the <a href="/">free check</a>, read <a href="/blog/how-to-delete-old-tweets-2026">the deletion walkthrough</a>, or see <a href="/blog/delete-wrong-tweet-prechecks">the pre-deletion checks</a>.</p>`,
+    content: `<div class="introduction">
+  <p>删除跑失败的情况就那么几种，处理方式取决于你撞上的是哪一种。下面是出现频率最高的五个问题，以及每种情况下先看哪个信号。</p>
+</div>
+
+<h2>先看失败日志，别急着按重试</h2>
+<p>几乎所有删除工具都会在某处写出逐条结果。重跑之前先读它。失败模式直接告诉你属于下面哪一种：整片一模一样的失败是限流，零散失败通常是权限或归属问题，日志干净但帖子还在则是缓存。</p>
+
+<h2>1. 跑到一半停了，数字不动了</h2>
+<p>这是限流，不是 bug。X 对单个账号在一个时间窗内的删除请求有上限，这个上限远低于批量任务想要的量。正确反应是停下、等窗口过去、从断点续跑。立刻从头重跑只会把下一个窗口也烧掉。</p>
+
+<h2>2. 马上重试，又失败</h2>
+<p>因为限额根本没恢复。正经工具的重试退避从十五分钟左右起步并逐步拉长；手动密集重试可能让你被锁好几个小时。连挂两次的话，第三次至少等一小时。</p>
+
+<h2>3. 有的删掉了，有的死活不肯</h2>
+<p>四种归属情况能解释大部分：你控制不了的转推、父帖已消失的引用推文、原作者注销账号的回复，以及用另一个你已经登不上的账号发的帖子。这些都不是限流，重试也不会动。先确认归属，再删真正属于你的部分。</p>
+
+<h2>4. 工具说完成了，你自己还能看到那条帖子</h2>
+<p>退出登录，用无痕窗口再看一次。删除往往已经生效，只是你自己这边走的是缓存，移动端尤其明显。如果无痕状态下过了一天还能看到，那才是真没删掉，回到第 1 或第 3 种情况。</p>
+
+<h2>5. 扣了钱，什么都没删掉</h2>
+<p>按条计费的含义是费用应对应处理完成的条目，而不是你勾选的条目。拉出发票，把条目金额和运行日志对一遍，争议差额而不是整张发票。对于按「尝试数」而不是「完成数」计费的工具，这本身就是值得反馈的定价问题。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 在你为删除花钱之前先做 100% 本机处理的数字足迹体检：加载 X 归档，在本机解析，拿到 0-100 健康评分，以及旧帖里藏着的手机号、邮箱、地址。计费按完成的删除条数，不按尝试次数。先从 <a href="/">免费体检</a>开始，读 <a href="/blog/how-to-delete-old-tweets-2026">删除完整流程</a>，或者看 <a href="/blog/delete-wrong-tweet-prechecks">删除前必做的检查</a>。</p>`,
+    faq: [
+      {
+        q: '删除跑到一半停了是 bug 吗？',
+        a: '多数情况是限流。X 对单位时间内的删除请求有硬上限，批量任务一定会撞到。停下等窗口恢复，从断点续跑即可。',
+        qEn: 'Is a run that stops halfway a bug?',
+        aEn: 'Usually it is a rate limit. X enforces a hard ceiling on delete requests per window, and any bulk job will hit it. Stop, wait for the window to reset, and resume from the breakpoint.',
+      },
+      {
+        q: '重试多少次算太多？',
+        a: '连续两次失败之后，第三次至少间隔一小时。密集重试会让窗口不断重置，反而把你锁得更久。',
+        qEn: 'How many retries is too many?',
+        aEn: 'After two failures in a row, wait at least an hour before the third attempt. Tight retry loops keep resetting the window and lock you out longer.',
+      },
+      {
+        q: '为什么有些帖子删不掉？',
+        a: '常见于转推、父帖已消失的引用推文、原作者注销的回复，以及来自你已无法登录的账号的帖子。这类不是限流，重试无效。',
+        qEn: 'Why do some posts refuse to delete?',
+        aEn: 'Typical cases are retweets, quote-tweets whose parent is gone, replies to deleted accounts, and posts made from an account you can no longer sign into. These are not rate limits, and retrying will not help.',
+      },
+      {
+        q: '工具显示完成但我还能看到，怎么判断真假？',
+        a: '退出登录用无痕窗口再查。如果无痕状态下一天后仍在，说明确实没删掉。',
+        qEn: 'The tool says done but I can still see the post. How do I tell?',
+        aEn: 'Check logged out in a private window. If it is still visible that way a day later, the deletion genuinely failed.',
+      },
+      {
+        q: '扣了费但帖子还在，能退吗？',
+        a: '按条计费应对应已完成的删除。拉发票和运行日志对比，就差额部分申请退款或争议。',
+        qEn: 'I was charged but the posts remain. Can I get a refund?',
+        aEn: 'Per-item pricing should match completed deletions. Compare the invoice against the run log and dispute the difference rather than the full amount.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

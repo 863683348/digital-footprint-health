@@ -7262,6 +7262,397 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'chinese-tweets-cleanup-keywords',
+    title: '中文推文清理指南：长尾词怎么挖，中文用户多踩了哪三个坑',
+    titleEn: 'Cleaning Chinese-Language Tweets: Mining Long-Tail Queries and Three Traps English Guides Skip',
+    excerpt: '搜「删推文」的人和搜 "delete old tweets" 的人，卡点并不一样。中文推文在 X 归档里的解析形态不同，中文长尾词几乎无人布局，而账号与真实身份的绑定更紧。这篇从中文场景出发，讲清归档形态、四个挖词入口和三个特有陷阱。',
+    excerptEn: 'People searching for the Chinese equivalents of "delete old tweets" are stuck on different problems: Chinese posts parse badly out of an export, Chinese long-tail queries sit uncovered, and the account-to-identity link is tighter. Here is the Chinese-language case, start to finish.',
+    date: '2026-09-13',
+    updatedAt: '2026-09-13',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    categoryEn: 'Bilingual Market',
+    tags: ['中文SEO', '中文长尾词', '推文清理', '双语内容'],
+    tagsEn: ['Chinese SEO', 'Chinese long-tail', 'tweet cleanup', 'bilingual content'],
+    canonical: '/blog/chinese-tweets-cleanup-keywords',
+    content: `<div class="introduction">
+  <p>搜「删推文」「X 归档」的人和搜 "delete old tweets" 的人，卡点不在同一个地方。英文世界反复讨论的批量删除限流、接口配额、权限范围，中文用户当然也会撞上，但真正难处理的往往是另外几件事：归档里的中文内容容易解析错位，中文长尾词几乎无人布局，而中文账号和真实身份的绑定程度通常更高，旧帖的风险量级和英文账号不是一回事。</p>
+  <p>这篇按中文场景拆开讲：先看中文推文在 X 归档里的真实形态，再讲中文长尾词怎么挖，最后列三个英文指南通常不会提的坑。</p>
+</div>
+
+<h2>中文推文在 X 归档里是什么形态</h2>
+<p>X 导出的 ZIP 里，主数据是 <code>data/tweets.js</code>。文件头有一行 <code>window.YTD.tweets.part0 = </code>，后面跟一个 JSON 数组。中文内容在里面的形态和英文有明显差别，这些差别直接决定扫描工具准不准。</p>
+<table>
+  <thead><tr><th>观察点</th><th>英文推文</th><th>中文推文</th></tr></thead>
+  <tbody>
+    <tr><td>主体字符</td><td>ASCII，按空格分词</td><td>无空格分词，一个词由多个汉字组成</td></tr>
+    <tr><td>正则边界</td><td>手机号、邮箱边界清楚</td><td>数字常与汉字直接粘连，边界失效</td></tr>
+    <tr><td>编码情况</td><td>基本无坑</td><td>emoji 与全角标点混排，易截断</td></tr>
+    <tr><td>风险类型</td><td>观点类为主</td><td>观点之外，身份与地域信息更高频</td></tr>
+  </tbody>
+</table>
+<p>最后一行是关键。英文账号的风险热点是「当年说过的话现在不合时宜」，中文账号更常见的是帖子里夹带真实单位、城市、学校、家人称呼，甚至贴过工牌或证件照片。这类内容不会触发任何内容审核，它只是安静地待在那里，直到有人去搜。</p>
+
+<h2>为什么中文长尾词基本没人做</h2>
+<p>做过中文 SEO 的人都有体感：中文长尾词的竞争强度比英文低一个量级。原因是同一个需求被拆成了太多口语变体——有人搜「怎么删 X 上的推文」，有人搜「推特删帖教程」，有人搜「X 归档怎么清理」，还有一批人直接搜「注销推特账号 数据删除」。英文工具站覆盖了其中第一种，中文场景基本是空白页。</p>
+<p>判断空位有个很实际的办法：打开 Google，把主词分别加上「教程」「怎么」「怎么办」三种后缀各搜一遍，看前两页有没有专门讲中文场景的页面。如果满屏都是英文页或明显机翻的页面，那就是可以进的位置。</p>
+
+<h2>中文长尾词挖掘的四个入口</h2>
+<ol>
+  <li><strong>平台内搜索下拉。</strong>在 X 和小红书里输入「推文 删」，看补全给出什么词。补全词是真实用户在打的字，比关键词工具的估算更贴口语。</li>
+  <li><strong>问答站的提问原文。</strong>知乎、贴吧里关于「删推文」「数据归档」的提问标题，稍作润色就能当标题用，因为它们本来就是用户的语言。</li>
+  <li><strong>简繁分流。</strong>中国台湾、中国香港、中国澳门的用户搜的词形和大陆不一样，同一主题做简繁两版，吃到的是两批查询。</li>
+  <li><strong>中英混搜。</strong>大量中文用户习惯「X 归档 删除」这种中英混排输入，这类查询在英文工具站里没有对应页面。</li>
+</ol>
+<p>挖出来的词不必都写成独立文章。同义变体合并成一节 H2 更划算，把搜索量稳定、意图明确的三五个做成单独页面即可。</p>
+
+<h2>中文内容特有的三个坑</h2>
+<h3>坑一：把中文正文直译过去当英文内容</h3>
+<p>反向也一样成立，但中文站更该警惕的是「英文内容机翻成中文」。中文读者对翻译腔的容忍度很低，一段以「值得注意的是」这类套话开头的内容，基本撑不过两屏。中文版应该按中文的检索习惯重排结构，标题也不要求和英文版一一对应。</p>
+<h3>坑二：忽略无空格分词对扫描的影响</h3>
+<p>本机扫描工具用正则找手机号和邮箱时，依赖的单词边界在中文里会失效。像「联系电话13800000000」这种写法，数字和汉字直接相邻，按 <code>\\b</code> 判断边界的正则会整段漏掉。反过来也一样：为中文写的宽松规则遇到英文内容会过度匹配。做中文内容的工具必须单独跑一遍中文样本，别拿英文语料测完就上线。</p>
+<h3>坑三：以为删完就没人看得到</h3>
+<p>中文平台之间的搬运密度比英文更高，一条旧帖可能在被删掉之前就已经被截图转到别处。删除只能解决原站，截图和搬运得走另外的投诉路径。所以顺序应该是先体检确认哪些帖真的暴露了身份信息，再定删除优先级，比无差别清空省力得多。</p>
+
+<h2>一周可以落地的中文内容排期</h2>
+<ul>
+  <li>周一：主词页一篇，讲清「X 归档是什么、里面有什么」。</li>
+  <li>周二到周三：两篇长尾，每篇只解决一个具体操作问题。</li>
+  <li>周四：一篇对比，中文场景下的工具选型。</li>
+  <li>周五：一篇 FAQ，收常见追问与「大家还在问」。</li>
+</ul>
+<p>节奏不用快。中文内容池小，三四十篇高质量页面就能吃掉一个细分词的全部位置，堆量的边际收益反而低。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的体检不区分语种：把 X 归档 ZIP 拖进来，解析全部在本机完成，中文推文里的手机号、邮箱、地址、定位一样会被扫出来，输出 0-100 健康评分和按风险排序的清单。体检免费，删除按完成的条数计费。可以先从<a href="/">免费体检</a>开始，读一读<a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>，中文场景的操作细节写在<a href="/blog/chinese-x-archive-guide">X 归档中文使用指南</a>里。</p>`,
+    contentEn: `<div class="introduction">
+  <p>People searching for "delete old tweets" and people searching for its Chinese equivalents are stuck on different problems. The rate limits, API quotas and bulk-deletion math that dominate English-language guides show up for Chinese-speaking users too, but they are rarely what blocks the job. What blocks it is that Chinese-language posts parse badly out of an export, that Chinese long-tail queries are almost entirely uncovered, and that Chinese accounts tend to be tied much more tightly to a real identity.</p>
+  <p>This guide works through the Chinese-language case: what Chinese tweets actually look like inside an X archive, how to mine Chinese long-tail queries, and three traps that English guides never mention.</p>
+</div>
+
+<h2>What Chinese tweets look like inside an X archive</h2>
+<p>The main data file in an X export is <code>data/tweets.js</code>. It opens with a line reading <code>window.YTD.tweets.part0 = </code> followed by a JSON array. Chinese content behaves differently from English inside that array, and the differences decide whether a scanner works or quietly lies to you.</p>
+<table>
+  <thead><tr><th>Observation</th><th>English tweets</th><th>Chinese tweets</th></tr></thead>
+  <tbody>
+    <tr><td>Character set</td><td>ASCII, whitespace-separated words</td><td>No spaces; a word is several characters</td></tr>
+    <tr><td>Regex boundaries</td><td>Phone and email edges are clean</td><td>Digits sit flush against characters; boundaries fail</td></tr>
+    <tr><td>Encoding</td><td>Rarely an issue</td><td>Emoji mixed with full-width punctuation; truncation risk</td></tr>
+    <tr><td>Risk type</td><td>Mostly opinions</td><td>Opinions plus far more identity and location detail</td></tr>
+  </tbody>
+</table>
+<p>That last row matters most. The headline risk for an English account is a decade-old opinion that no longer reads well. For a Chinese account the more common pattern is a post carrying a real employer, city, school, or family reference, sometimes a photo of a work badge or an ID. Nothing there trips a content classifier. It just sits until somebody searches for it.</p>
+
+<h2>Why Chinese long-tail queries sit uncovered</h2>
+<p>Anyone who has done Chinese SEO knows the shape of it: competition on long-tail Chinese queries is roughly an order of magnitude lighter than on the English equivalents. The reason is fragmentation. One need gets split across dozens of spoken variants. Some people query "how to delete tweets on X", some use the older platform name, some search for the export file itself, and a large group types the account-closure phrase instead. English-language tool sites cover the first variant. The rest is empty.</p>
+<p>The gap is not a temporary artefact of the language being underserved. It has held for years, and the cause is structural: one need fragments into more phrasings in Chinese than English produces, so no single query accumulates enough volume to look attractive on a keyword dashboard.</p>
+<p>There is a practical way to spot the gap. Open Google and run the head term three times, once with each of the Chinese suffixes for guide, how-to and what-to-do. If the first two pages are English pages or obvious machine translations, that is an opening.</p>
+
+<h2>Four places to mine Chinese long-tail queries</h2>
+<ol>
+  <li><strong>In-platform autocomplete.</strong> Type the head term into X and into a Chinese social search box and read the suggestions. Autocomplete reflects what real users type, which beats keyword-tool estimates for colloquial phrasing.</li>
+  <li><strong>Question titles on Q&amp;A sites.</strong> On Chinese Q&amp;A and forum sites, the titles people write when asking about tweet deletion are already in user language. Light editing turns them into headlines.</li>
+  <li><strong>Traditional versus simplified split.</strong> Users in Taiwan, Hong Kong and Macao, China search different character forms than mainland users. Two versions of the same article reach two separate query sets.</li>
+  <li><strong>Mixed-script searches.</strong> Plenty of Chinese-speaking users type the product name in Latin letters and the verb in Chinese. English tool sites have no page for that pattern at all.</li>
+</ol>
+<p>You do not need a page per variant. Merge synonyms into one H2 section and reserve standalone articles for the three to five phrases with steady volume and clear intent.</p>
+
+<h2>Three traps specific to Chinese-language content</h2>
+<h3>Trap one: translating Chinese copy into English and calling it localization</h3>
+<p>The reverse is worse. Chinese readers have very little tolerance for translationese, and a paragraph that opens with a stock filler phrase about the modern digital age loses the reader in two screens. The Chinese version should be restructured around Chinese search habits, and its headline does not need to mirror the English one.</p>
+<h3>Trap two: ignoring how missing word separators break scanning</h3>
+<p>A scanner hunting phone numbers and emails with regular expressions leans on word boundaries. Chinese has no spaces, so a number written flush against characters, like a phone label followed immediately by eleven digits, defeats a boundary-anchored pattern and the whole match is skipped. Any tool claiming Chinese support has to run a Chinese test corpus, not an English one with a few characters swapped in. The failure runs the other way too: loose patterns written for Chinese over-match when they meet Latin text. Run both corpora and compare the hit counts against a manual sample of a hundred records before trusting the output.</p>
+
+<h2>Choosing a tool that actually handles Chinese</h2>
+<p>Most product pages claim multilingual support and mean the interface has a language switcher. That is not the same thing. Three questions separate the two.</p>
+<ul>
+  <li><strong>Does it tokenise Chinese, or match bytes?</strong> A scanner that splits on spaces treats a whole Chinese sentence as one token and falls back to substring matching, which produces misses and false positives at the same time.</li>
+  <li><strong>How does it handle full-width digits?</strong> Phone numbers typed with full-width characters are common in copy-pasted Chinese content. A pattern that only accepts ASCII digits walks straight past them.</li>
+  <li><strong>Where does parsing happen?</strong> A footprint archive holds the entire history of an account. Server-side parsing means uploading all of it. On-device parsing is the only version of this that can honestly be called private.</li>
+</ul>
+<p>None of that is exotic engineering. It is the difference between a tool built for English and one tested against a Chinese corpus, and it becomes obvious the first time you feed it a real archive.</p>
+<h3>Trap three: assuming deletion ends the exposure</h3>
+<p>Content gets copied between Chinese platforms faster than between English ones. A post can be screenshotted and reposted elsewhere before you delete it. Deletion solves the origin only; screenshots and reposts need a separate complaint route. That is an argument for checking first and deleting second, since a scan tells you which posts actually expose your identity instead of clearing everything at equal cost.</p>
+
+<h2>A one-week Chinese content schedule</h2>
+<ul>
+  <li>Monday: the head-term page, explaining what an X archive is and what is inside it.</li>
+  <li>Tuesday and Wednesday: two long-tail pieces, each solving one concrete task.</li>
+  <li>Thursday: a comparison, covering tool selection for the Chinese-language case.</li>
+  <li>Friday: an FAQ collecting follow-up questions and people-also-ask entries.</li>
+</ul>
+<p>There is no reason to rush. The Chinese content pool is small, and thirty to forty solid pages can hold an entire niche, so volume adds very little after that point.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The check at digital-footprint-health.shop does not care what language your posts are in. Drop in your X archive ZIP and everything is parsed on your own machine, pulling phone numbers, emails, addresses and location hints out of Chinese posts just as it does out of English ones, then returning a 0-100 health score and a risk-ranked list. The check is free and deletion is billed per completed item. Start with the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>, and find the Chinese-specific walkthrough in <a href="/blog/chinese-x-archive-guide">the X archive guide</a>.</p>`,
+    faq: [
+      {
+        q: '中文推文的清理难度和英文推文不一样吗？',
+        a: '主要差在三处：中文没有空格分词，按单词边界写的正则容易漏掉粘连的数字；全角标点和 emoji 混排更容易截断；中文帖里带真实单位、城市、家人称呼的比例更高。清理逻辑相同，扫描环节要单独验证。',
+        qEn: 'Is cleaning Chinese tweets any different from cleaning English ones?',
+        aEn: 'Three differences matter. Chinese has no word separators, so boundary-anchored patterns miss digits glued to characters. Full-width punctuation and emoji raise truncation risk. And location or employer details appear in Chinese posts far more often. The cleanup logic is the same; the scanning step needs its own test corpus.',
+      },
+      {
+        q: '中文长尾词没人做，是不是意味着没必要做？',
+        a: '正好相反。没人做意味着容易排上去。判断方法是把主词分别加「教程」「怎么」「怎么办」搜一遍，前两页如果全是英文页或机翻页，就是可以进的位置。',
+        qEn: 'If nobody covers Chinese long-tail queries, does that mean they are not worth covering?',
+        aEn: 'The opposite. An empty result set is a ranking opportunity. Run the head term with the Chinese suffixes for guide, how-to and what-to-do; if the first two pages are English or machine-translated, you have an opening.',
+      },
+      {
+        q: '删掉原帖之后，中文平台的搬运内容怎么办？',
+        a: '删除只解决原站。截图和搬运要另外走平台的侵权或隐私投诉路径，通常需要提供身份证明和原始发布链接。所以先体检确认哪些帖真的暴露了身份信息，再定删除顺序更划算。',
+        qEn: 'What about reposts on other Chinese platforms after I delete the original?',
+        aEn: 'Deletion only addresses the origin. Screenshots and reposts need a separate privacy or infringement complaint on each platform, usually with proof of identity and a link to the original. That is why checking first and deleting second is the cheaper order.',
+      },
+      {
+        q: '中文内容要不要和英文版一一对应？',
+        a: '不必，甚至不该。中文读者的检索习惯和阅读预期不同，把英文结构直译过来会带上明显的翻译腔。标题、章节顺序和例子都可以按中文场景重写，只要覆盖同一个主题即可。',
+        qEn: 'Should the Chinese version mirror the English article structure?',
+        aEn: 'No, and it should not try. Chinese readers search and read differently, and a translated structure carries obvious translationese. Headline, section order and examples can all be rebuilt for the Chinese case as long as the topic is covered.',
+      },
+    ],
+  },
+  {
+    slug: 'back-to-school-footprint-check-2026',
+    title: '开学季前的数字足迹检查：学生账号最该先清的 5 类帖子（2026）',
+    titleEn: 'Back-to-School Footprint Check 2026: Five Post Types Students Should Clear First',
+    excerpt: '九月是学生账号被翻旧账最集中的月份。社团招新、实习投递、研究生申请和秋招挤在同一段时间，审查的人会集中去搜你的名字。这是一份今晚就能做完的清单：五类优先清理的帖子、三十分钟自查流程，以及为什么改用户名是最差的解法。',
+    excerptEn: 'September concentrates the risk for student accounts. Club recruitment, internship applications, graduate submissions and fall hiring all land at once, and reviewers search names in the same few weeks. Five post types to clear first, a thirty-minute audit, and why renaming the account is the worst fix.',
+    date: '2026-09-13',
+    updatedAt: '2026-09-13',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    categoryEn: 'Risk Scenarios',
+    tags: ['开学季', '学生账号', '旧推文', '背景调查'],
+    tagsEn: ['back to school', 'student accounts', 'old tweets', 'background check'],
+    canonical: '/blog/back-to-school-footprint-check-2026',
+    content: `<div class="introduction">
+  <p>九月是学生账号被翻旧账最集中的一个月份。社团招新、实习投递、研究生申请、秋招网申，四件事挤在同一个窗口里，其中至少两件会让陌生人在搜索框里敲下你的名字。真正的问题往往不是你在 X 上说过什么，而是高中时期那个账号里还挂着什么。</p>
+  <p>下面是一份今晚就能做完的清单：五类该优先处理的帖子、一个三十分钟的自查流程，以及为什么改用户名是最差的一种解法。</p>
+</div>
+
+<h2>为什么风险会在开学季集中暴露</h2>
+<p>搜索行为跟着日程走。学期开始前后，负责审材料的人会集中做同一件事：把申请人名字、学校和社团名丢进搜索引擎。这个动作在一年里的其他月份也会发生，只是密度低得多。</p>
+<table>
+  <thead><tr><th>时间</th><th>触发事件</th><th>谁在查</th><th>最容易被翻出什么</th></tr></thead>
+  <tbody>
+    <tr><td>8 月下旬</td><td>社团与学生会招新</td><td>学长学姐、社团负责人</td><td>吐槽帖、站队帖、私聊截图</td></tr>
+    <tr><td>9 月上旬</td><td>秋招网申与实习投递</td><td>HR、招聘专员</td><td>带负面情绪的行业评论</td></tr>
+    <tr><td>9 月中下旬</td><td>研究生申请与导师套磁</td><td>导师、实验室助理</td><td>学术诚信相关言论</td></tr>
+    <tr><td>10 月起</td><td>校园项目与奖学金评审</td><td>评审老师、合作方</td><td>身份信息、生活轨迹</td></tr>
+  </tbody>
+</table>
+<p>这张表的用法不是恐吓，而是排序。哪一类事件离你最近，就先处理对应的那一行。</p>
+
+<h2>优先清理的五类帖子</h2>
+<ol>
+  <li><strong>带学校、班级、宿舍的定位帖。</strong>定位信息本身不敏感，但它把账号和真实身份缝在了一起。别人搜学校名加你的昵称，第一条可能就是这条。</li>
+  <li><strong>证件、工牌、录取通知书的照片。</strong>哪怕打了马赛克，边角的编号、头像和二维码也常常还在。这类图片删掉要顺手把动态和转发一起处理。</li>
+  <li><strong>校园纠纷、点名吐槽同学或老师的帖。</strong>情绪类内容在多年后读起来最刺眼，也最容易被截图当作「性格证据」。</li>
+  <li><strong>带手机号或社交账号的招新、二手交易帖。</strong>发帖时为了方便，事后变成长期可被爬取的公开联系方式。</li>
+  <li><strong>转发过的违规内容。</strong>转发会显示在你的时间线上，很多人只清理原创帖，忽略了转发带来的同等暴露。</li>
+</ol>
+<p>五类里如果只能做一件事，先做第三类。它对判断的影响最直接，清理成本也最低。</p>
+
+<h2>三十分钟自查流程</h2>
+<ol>
+  <li>在 X 设置里申请数据归档，等邮件到达（通常几小时到一天）。拿到 ZIP 先别解压。</li>
+  <li>把 ZIP 直接丢进本机体检工具。这一步只读，不会改动账号。</li>
+  <li>看输出的风险清单是按什么排的。按「暴露身份信息」而不是按「发帖时间」排序的清单才有用。</li>
+  <li>从清单前三类开始删，删完不要在同一批里继续扩张，留一批给明天。</li>
+  <li>退出登录，用无痕窗口搜一次自己的昵称、学校名和常用小号，确认没有残留页面。</li>
+</ol>
+<p>整个流程的瓶颈在等归档邮件，不在操作本身。所以最好的启动时间是今晚，而不是八月三十一号。</p>
+
+<h2>为什么改用户名是最差的一种解法</h2>
+<p>改用户名看起来最省事，实际效果最差。原因有三层：已经被搜索引擎收录的旧链接仍然指向同样的页面；转发和引用里保留的是旧昵称原文；截图早就脱离平台了。你能改的是账号标签，改不了已经流出去的内容。它适合当作一个附加动作，不能替代删除。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>如果你不想逐页翻自己的时间线，digital-footprint-health.shop 提供的是另一种顺序：先把 X 归档在本机解析一遍，拿到 0-100 健康评分和按风险排序的清单，再决定删什么。全程本机处理，归档不上传，体检免费。可以从<a href="/">免费体检</a>开始，先看<a href="/blog/what-is-digital-footprint-check">体检是怎么算分的</a>，具体的删除流程在<a href="/blog/how-to-delete-old-tweets-2026">旧推文删除实操</a>里。</p>`,
+    contentEn: `<div class="introduction">
+  <p>September is the month student accounts get audited hardest. Club recruitment, internship applications, graduate school submissions and fall hiring all land in the same few weeks, and at least two of them put your name into a stranger's search box. The problem is rarely what you said on X. It is what is still sitting in the account you made in high school.</p>
+  <p>Here is a list you can finish tonight: five post types to handle first, a thirty-minute self-audit, and why renaming the account is the worst option on the table.</p>
+</div>
+
+<h2>Why exposure spikes at the start of term</h2>
+<p>Search behaviour follows the calendar. Around the start of a semester, the people reviewing applications all do the same thing in the same week: they put a name, a school and a club into a search engine. The same action happens in other months, just far less often.</p>
+<table>
+  <thead><tr><th>Window</th><th>Trigger</th><th>Who is looking</th><th>What gets found first</th></tr></thead>
+  <tbody>
+    <tr><td>Late August</td><td>Club and student council recruitment</td><td>Senior students, club leads</td><td>Complaint posts, pile-ons, chat screenshots</td></tr>
+    <tr><td>Early September</td><td>Fall hiring and internship applications</td><td>Recruiters, hiring managers</td><td>Negative industry commentary</td></tr>
+    <tr><td>Mid September</td><td>Graduate applications and supervisor outreach</td><td>Faculty, lab assistants</td><td>Comments touching academic integrity</td></tr>
+    <tr><td>October onward</td><td>Programmes and scholarship review</td><td>Reviewers, partner organisations</td><td>Identity details, daily-movement patterns</td></tr>
+  </tbody>
+</table>
+<p>Read that table as a priority queue, not a scare list. Whichever window is closest to you decides which row to work on first.</p>
+
+<h2>Five post types to clear first</h2>
+<ol>
+  <li><strong>Location posts naming a school, class or dorm.</strong> The location itself is harmless. Its value is that it stitches the account to a real identity, so searching a school plus your handle surfaces it immediately.</li>
+  <li><strong>Photos of IDs, badges and admission letters.</strong> Blurring usually misses the corners, where serial numbers, portraits and QR codes live. Delete the post and the reposts together, not just the original.</li>
+  <li><strong>Campus disputes and posts naming classmates or teachers.</strong> Emotional posts age worst and get screenshotted as character evidence faster than anything else you wrote.</li>
+  <li><strong>Recruitment and resale posts carrying a phone number or chat handle.</strong> You posted it for convenience. It then became a permanently scrapeable contact record.</li>
+  <li><strong>Anything you retweeted that breaks the rules.</strong> Retweets appear on your timeline. Most people clean originals and leave the retweets exposing them just as much.</li>
+</ol>
+<p>If you only do one of the five, do the third. It affects judgement most directly and costs the least to fix.</p>
+
+<h2>A thirty-minute self-audit</h2>
+<ol>
+  <li>Request your X data archive and wait for the mail. It usually takes hours, sometimes a day. Do not unzip it.</li>
+  <li>Feed the ZIP to an on-device checker. This step is read-only and does not touch the account.</li>
+  <li>Look at how the risk list is ordered. A list sorted by identity exposure is useful; one sorted by posting date is not.</li>
+  <li>Delete from the top three categories, then stop for the day. Spreading it over batches beats one long session that hits rate limits.</li>
+  <li>Log out and search your handle, your school and any alt accounts in a private window to confirm nothing lingers.</li>
+</ol>
+<p>The bottleneck is the archive email, not the work. That is the argument for starting tonight rather than on the last day of the month.</p>
+
+<h2>Why renaming the account is the worst fix</h2>
+<p>Renaming looks cheap and performs worst, for three reasons. Indexed pages keep pointing at the same content regardless of the display name. Retweets and quotes preserve the old handle as plain text. And screenshots left the platform long ago. You can change the label on the account; you cannot change what already escaped it. Treat renaming as an addition to deletion, never a substitute.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>If scrolling your own timeline page by page is not appealing, digital-footprint-health.shop offers a different order of operations: parse the X archive on your own machine first, get a 0-100 health score and a risk-ranked list, then decide what to delete. Everything runs locally, the archive is never uploaded, and the check is free. Start with the <a href="/">free check</a>, see <a href="/blog/what-is-digital-footprint-check">how the score is calculated</a>, and follow the <a href="/blog/how-to-delete-old-tweets-2026">deletion walkthrough</a> when you are ready.</p>`,
+    faq: [
+      {
+        q: '为什么开学季的风险比平时高？',
+        a: '因为搜索行为跟着日程走。招新、网申、申请材料审核集中在八月末到九月中，审查方会在同一段时间里集中检索申请人姓名与学校。',
+        qEn: 'Why is the start of term riskier than the rest of the year?',
+        aEn: 'Search behaviour follows the calendar. Recruitment, applications and document review cluster between late August and mid September, so reviewers run the same name and school searches in the same few weeks.',
+      },
+      {
+        q: '学生账号里最该先删哪一类？',
+        a: '点名吐槽同学或老师的帖子。这类内容最容易被截图当作性格证据，且对判断的影响最直接，清理成本也最低。',
+        qEn: 'Which posts should a student clear first?',
+        aEn: 'Posts naming classmates or teachers. They get screenshotted as character evidence more than anything else, they affect judgement most directly, and they cost the least to remove.',
+      },
+      {
+        q: '把用户名改掉能解决问题吗？',
+        a: '不能。已收录的旧链接仍指向同一页面，转发与引用里保留的是旧昵称原文，截图更是早就离开了平台。改用户名只能当补充动作。',
+        qEn: 'Does renaming the account solve it?',
+        aEn: 'No. Indexed links still resolve to the same page, retweets and quotes keep the old handle as text, and screenshots left the platform long ago. Renaming is an addition to deletion, not a substitute.',
+      },
+      {
+        q: '自查需要把所有推文都看一遍吗？',
+        a: '不需要。申请数据归档后在本机跑一次扫描，按暴露身份信息的程度排序，只看清单前几类即可。瓶颈在等归档邮件，不在人工翻页。',
+        qEn: 'Do I have to read every tweet myself?',
+        aEn: 'No. Request the archive, run one local scan, and sort by identity exposure rather than by date. The bottleneck is waiting for the archive email, not scrolling.',
+      },
+    ],
+  },
+  {
+    slug: 'login-device-audit-x-account',
+    title: 'X 账号的旧设备会话与被遗忘的第三方授权：一次清干净',
+    titleEn: 'Old Sessions and Forgotten App Grants on X: A Complete Audit',
+    excerpt: '账号被接管的入口往往不是密码，而是三年前点过「同意」的第三方授权，或者一台早就卖掉的设备上仍然挂着的登录会话。这两样在你改完密码之后依然有效。一次会话审计的完整顺序，以及它为什么必须在删除作业之前做完。',
+    excerptEn: 'Accounts rarely get taken over through the password. The usual entry points are an app grant approved three years ago and a session still attached to a device you sold. Both survive a password change. Here is the audit order, and why it belongs before any deletion run.',
+    date: '2026-09-13',
+    updatedAt: '2026-09-13',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    categoryEn: 'Account Security',
+    tags: ['账号安全', '第三方授权', '登录会话', '双因素认证'],
+    tagsEn: ['account security', 'app permissions', 'login sessions', 'two-factor'],
+    canonical: '/blog/login-device-audit-x-account',
+    content: `<div class="introduction">
+  <p>账号被接管的入口，比多数人想的无聊得多。不是撞库，也不是 SIM 卡克隆，而是三年前随手点过一次「同意」的第三方授权，或者一台早就卖掉或重装过的旧设备上仍然挂着的登录会话。这两样东西在你改完密码之后依然有效。</p>
+  <p>下面是一次完整的会话审计：先分清哪些地方在授权，再决定撤销哪一批，最后说清审计和删除作业的先后顺序。</p>
+</div>
+
+<h2>先分清两类「登录痕迹」</h2>
+<table>
+  <thead><tr><th>类型</th><th>在哪里看</th><th>撤销后会发生什么</th></tr></thead>
+  <tbody>
+    <tr><td>已连接的第三方应用</td><td>设置里的应用授权列表</td><td>依赖该授权的自动发布、分析、签到类工具立即失效</td></tr>
+    <tr><td>活跃会话与登录历史</td><td>安全设置里的设备与会话列表</td><td>对应设备需要重新登录，其他设备不受影响</td></tr>
+  </tbody>
+</table>
+<p>两者常被混在一起说，处理方式完全不同。授权是「别人能代表你做什么」，会话是「谁还坐在你的账号里」。</p>
+
+<h2>审计第一步：把已连接的应用清一遍</h2>
+<p>这个列表通常比你以为的长。它会积累下早年试过的自动发帖工具、数据统计服务、抽奖脚本，还有一些你已经想不起是什么的服务。逐个看三件事：这个服务还需要吗、它的权限范围里有没有「发帖」和「读取私信」、以及它的账号主体还在不在。</p>
+<p>最后一条容易被忽略。一个已经停止运营的服务，你可能连它的站都打不开了，但它的授权还挂在那里。这类优先撤销，没有任何理由保留。</p>
+
+<h2>审计第二步：看设备与登录历史</h2>
+<p>设备列表里出现不认识的条目，先别急着全部登出。多数情况是旧的手机、平板或浏览器，只是名称显示得不明所以。判断方法是看登录时间与位置，和你的行程对一遍。</p>
+<ul>
+  <li>对得上 → 正常，但旧设备可以顺手登出。</li>
+  <li>对不上且位置陌生 → 立即改密码并撤销该会话，然后检查邮箱里有没有异常登录通知。</li>
+  <li>位置接近但时间完全不对 → 通常是代理或 VPN 的出口 IP，不必紧张，确认设备本身是你自己的即可。</li>
+</ul>
+
+<h2>审计第三步：给密码之外加一道门</h2>
+<p>审计解决的是历史遗留，双因素认证解决的是下一轮尝试。两者不互相替代。开了双因素之后，即使密码泄漏，攻击者也拿不到会话。优先选应用生成的验证码，而不是短信验证码：短信通道存在 SIM 卡补卡攻击的风险。</p>
+
+<h2>顺序问题：先审计再删除</h2>
+<p>这个顺序很多人会搞反。删除作业需要账号保持登录状态，并且会在较长时间内反复调用接口。如果账号里还有来历不明的会话，等于你一边在清理内容，一边把新产生的操作暴露给一个未知入口。正确顺序是：先撤授权、再清会话、然后开双因素，最后才开始删除。</p>
+<p>另外，删除期间不要更换主要设备或退出全部会话。批量任务跑到一半掉登录，断点续跑会变麻烦。</p>
+
+<h2>一周后回头再查一遍</h2>
+<p>撤销授权和登出会话都不会发通知，所以「没动静」不等于确认完成。一周后把两个列表再打开一次：如果某个服务又出现了，说明你还在用的某个工具正在替你重新授权，这在你以为账号已经封好之前值得先搞清楚。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 把体检和清理分开：先用你的 X 归档在本机跑一次数字足迹体检，拿到 0-100 健康评分和风险清单；确认账号安全之后再动手删除。归档不上传，体检免费。可以从<a href="/">免费体检</a>开始，账号侧的设置细节看<a href="/blog/enable-2fa-x-account">双因素认证怎么开</a>，清理流程看<a href="/blog/how-to-delete-old-tweets-2026">旧推文删除实操</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The way accounts actually get taken over is duller than most people imagine. It is not credential stuffing, and it is not SIM cloning. It is an app you approved once three years ago, or a session still attached to a device you sold or reinstalled long ago. Both survive a password change.</p>
+  <p>Here is a full session audit: what is authorising what, which grants to revoke, and where the audit belongs relative to a deletion run.</p>
+</div>
+
+<h2>Two different kinds of login residue</h2>
+<table>
+  <thead><tr><th>Kind</th><th>Where to look</th><th>What revoking does</th></tr></thead>
+  <tbody>
+    <tr><td>Connected third-party apps</td><td>App permission list in settings</td><td>Schedulers, analytics and check-in tools that rely on the grant stop working immediately</td></tr>
+    <tr><td>Active sessions and login history</td><td>Device and session list in security settings</td><td>That device must sign in again; others are unaffected</td></tr>
+  </tbody>
+</table>
+<p>People lump these together, but they answer different questions. A grant is what someone else can do on your behalf. A session is who is still sitting inside your account.</p>
+
+<h2>Step one: clear the connected apps</h2>
+<p>That list is usually longer than expected. Years of scheduling tools, stats dashboards, giveaway scripts and services you no longer recognise accumulate in it. For each entry, check three things: do you still need it, does its scope include posting or reading direct messages, and does the company still exist.</p>
+<p>The last one gets missed. When a service shuts down, you may not even be able to open its site anymore, yet the grant stays attached to your account. Revoke those first. There is never a reason to keep one.</p>
+
+<h2>Step two: read the device and session list</h2>
+<p>Do not sign everything out the moment you see an unfamiliar entry. Most of them are old phones, tablets or browsers showing up under an unhelpful device name. Compare login times and locations against your own schedule instead.</p>
+<ul>
+  <li>It lines up: fine, but an old device can still be signed out as a housekeeping step.</li>
+  <li>It does not line up and the location is unfamiliar: change the password, revoke that session, then check your inbox for unexpected sign-in notices.</li>
+  <li>Location is plausible but the time is wrong: usually a proxy or VPN exit address. Confirm the device itself is yours and move on.</li>
+</ul>
+
+<h2>Step three: add a second factor</h2>
+<p>The audit cleans up history. Two-factor authentication handles the next attempt. One does not replace the other. With a second factor enabled, a leaked password alone no longer produces a session. Prefer app-generated codes over SMS, since the SMS channel carries SIM-swap risk.</p>
+
+<h2>Sequence matters: audit before you delete</h2>
+<p>This is the part people get backwards. A deletion run needs the account to stay signed in and will call the API repeatedly over a long stretch. If an unknown session is still alive, you are cleaning content while exposing a new set of operations through an entry point you do not control. The order is: revoke grants, clear sessions, enable the second factor, then start deleting.</p>
+<p>Also avoid swapping your main device or signing out everywhere mid-run. Losing the login halfway through makes resuming from a breakpoint far messier than it needs to be.</p>
+
+<h2>Recheck a week later</h2>
+<p>Revoking a grant or ending a session produces no notification, so silence is not confirmation. Open both lists again a week later. If a service has reappeared, something you still use is re-authorising it on your behalf, and that is worth knowing before you assume the account is buttoned up.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop keeps checking and cleaning as separate steps. Run a footprint check on your X archive locally first and you get a 0-100 health score plus a risk list; once the account side is settled, start deleting. The archive is never uploaded and the check is free. Begin with the <a href="/">free check</a>, follow <a href="/blog/enable-2fa-x-account">the two-factor setup guide</a> for the account side, and use <a href="/blog/how-to-delete-old-tweets-2026">the deletion walkthrough</a> when you are ready.</p>`,
+    faq: [
+      {
+        q: '第三方授权和登录会话有什么区别？',
+        a: '授权回答的是「别人能代表你做什么」，比如自动发帖或读取私信；会话回答的是「谁还坐在你的账号里」。撤销授权会让对应工具立刻失效，登出会话只影响那台设备。',
+        qEn: 'What is the difference between an app grant and a session?',
+        aEn: 'A grant answers what someone else can do on your behalf, like posting or reading messages. A session answers who is still signed in. Revoking a grant breaks the tool immediately; signing out a session affects only that device.',
+      },
+      {
+        q: '设备列表里出现不认识的条目，要全部登出吗？',
+        a: '先别急。多数是旧手机或浏览器，只是设备名显示得不明所以。把登录时间与位置和你的行程对一遍：对得上就顺手登出，对不上且位置陌生才需要改密码并撤销。',
+        qEn: 'I see an unfamiliar device. Should I sign everything out?',
+        aEn: 'Not immediately. Most are old phones or browsers with unhelpful names. Compare timestamps and locations against your own schedule. Matching ones can be signed out as housekeeping; a mismatch with an unfamiliar location calls for a password change and revocation.',
+      },
+      {
+        q: '为什么审计要排在删除之前？',
+        a: '删除作业需要账号保持登录并长时间反复调用接口。如果还有来历不明的会话，你一边清内容一边把新操作暴露给未知入口。顺序是撤授权、清会话、开双因素，最后再删。',
+        qEn: 'Why does the audit go before deletion?',
+        aEn: 'A deletion run keeps the account signed in and calls the API repeatedly over a long stretch. If an unknown session is still alive, you clean content while exposing new operations through an entry point you do not control. Revoke, clear sessions, enable the second factor, then delete.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

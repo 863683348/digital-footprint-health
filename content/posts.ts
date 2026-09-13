@@ -7653,6 +7653,754 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'tweet-deletion-tools-comparison-2026',
+    title: '旧推文清理工具横评：云端服务、官方功能与本机解析该怎么选',
+    titleEn: 'Old Tweet Cleanup Tools Compared: Cloud Services, Native Tools and Local Parsing',
+    excerpt:
+      '想清掉几年前的推文，能选的方案其实只有四类：云端删除服务、X 自带功能、浏览器脚本、本机归档解析。它们在授权范围、删除速度、筛选能力和计费方式上差别很大，而功能列表里通常看不到最要紧的那几栏。这篇按同一套口径把四类跑一遍，并给出一个从测量开始的选择顺序。',
+    excerptEn:
+      'There are really only four ways to clear old tweets: cloud deletion services, native X tools, browser scripts, and tools that parse your archive locally. They differ sharply on permissions, speed, filtering and billing, and the columns that matter most are rarely in the feature list. This comparison runs all four through the same grid and ends with a decision order that starts with measurement.',
+    date: '2026-09-14',
+    updatedAt: '2026-09-14',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    categoryEn: 'Comparison',
+    tags: ['工具对比', '批量删除', '隐私工具', 'TweetDelete'],
+    tagsEn: ['tool comparison', 'bulk delete', 'privacy tools', 'TweetDelete'],
+    canonical: '/blog/tweet-deletion-tools-comparison-2026',
+    content: `<div class="introduction">
+  <p>要清掉几年前的推文，市面上的方案其实只有四类。分清类型比记住品牌更有用：同一类的工具在机制上几乎一样，差别只在界面和计费。下面按同一套口径把这四类跑一遍，看的是授权范围、删除速度、筛选能力、失败恢复和计费方式，而这五项恰好都是产品页上写得最含糊的几栏。</p>
+  <p>文中提到的产品名称只用来指代机制类别，具体功能与价格请以各官网当期说明为准。</p>
+</div>
+
+<h2>先把四类方案定义清楚</h2>
+<table>
+  <thead><tr><th>类别</th><th>典型形态</th><th>数据经过谁</th><th>主要限制</th></tr></thead>
+  <tbody>
+    <tr><td>云端删除服务</td><td>授权账号后由服务端逐条调用接口删除</td><td>你的写权限令牌存放在第三方服务器</td><td>必须交出写权限；速度受服务端配额与排队影响</td></tr>
+    <tr><td>X 自带功能</td><td>设置里的帖子管理页</td><td>只有 X 自己</td><td>没有批量，没有筛选，只能逐条点</td></tr>
+    <tr><td>浏览器脚本</td><td>在本机浏览器里模拟滚动与点击</td><td>本机加你的浏览器会话</td><td>页面改版即失效；长时间运行容易撞限流</td></tr>
+    <tr><td>本机归档解析</td><td>下载数据归档 ZIP 后在本机扫描</td><td>只有你的电脑</td><td>只产出分析与清单，删除动作仍需执行</td></tr>
+  </tbody>
+</table>
+<p>四类里只有前三类会真的替你执行删除。第四类的定位不一样，它解决的是「我根本不知道要删什么」这个问题，而这个问题的成本通常比删除动作本身高得多。</p>
+
+<h2>授权范围：最容易被跳过的一栏</h2>
+<p>删除和读取是两种完全不同的权限。凡是能替你删帖的服务，都必须拿到写权限；而写权限不止能删帖，还能发帖、改资料、动关注列表。你在授权页面上看到的那一行字很短，实际含义很长。</p>
+<p>由此可以推出一条简单的判断：如果你只需要知道「我的账号暴露了什么」，就不要给写权限。先做只读的分析，把清单拿到手，再决定要不要把写权限交给第三方。顺序反过来的人，往往在还没弄清工作量之前就已经把权限交出去了。</p>
+<p>另外要注意撤销机制。授权容易，撤销常被藏在设置深处。清理完成之后不回撤授权，等于长期留了一把备用钥匙。</p>
+
+<h2>速度：快不是优点，可控才是</h2>
+<p>删除速度取决于平台侧的写操作配额，不取决于工具有多聪明。任何宣称「几分钟清空十年推文」的说法都要打个问号，因为真正的瓶颈通常在接口的调用频率上限上，而不是在工具的实现上。</p>
+<p>所以看速度时应该问三个问题：跑的时候会不会被平台临时限制？被限制之后是停下来等，还是继续重试直到报错？一轮跑完之后账号会不会出现异常登录提示？</p>
+<p>更稳的做法是分批。把一次删除拆成几段，中间留出间隔，每段结束看一眼进度。慢一点换来的是可见的进度和可中断的节奏，出了问题不用从头再来。</p>
+<table>
+  <thead><tr><th>表现</th><th>通常说明什么</th><th>该怎么做</th></tr></thead>
+  <tbody>
+    <tr><td>进度稳定推进</td><td>调用频率在配额以内</td><td>不要中途加速，按原节奏跑完</td></tr>
+    <tr><td>进度停滞但账号正常</td><td>触发了软限制，正在等待</td><td>暂停一段再续，别连续重试</td></tr>
+    <tr><td>大量失败并伴随验证提示</td><td>频率过高，被要求人工确认</td><td>停止作业，先人工确认身份再继续</td></tr>
+  </tbody>
+</table>
+
+<h2>筛选能力决定你要不要重复劳动</h2>
+<p>很多人第一次清推文时会全删。全删最省事，代价是把有价值的内容一起清掉。真正省时间的做法是先筛，只删需要删的那部分。</p>
+<table>
+  <thead><tr><th>要删的目标</th><th>云端服务</th><th>官方功能</th><th>本机归档解析</th></tr></thead>
+  <tbody>
+    <tr><td>按日期区间</td><td>多数支持</td><td>不支持</td><td>支持，先出清单</td></tr>
+    <tr><td>按关键词</td><td>部分支持，走云端匹配</td><td>不支持</td><td>支持，本机匹配</td></tr>
+    <tr><td>按风险类型（手机号、邮箱、定位）</td><td>少见</td><td>不支持</td><td>支持</td></tr>
+    <tr><td>按转发与被引用内容</td><td>常见支持</td><td>只能手动</td><td>支持识别</td></tr>
+    <tr><td>删除前的预演</td><td>一般没有</td><td>没有</td><td>这一步本身就是预演</td></tr>
+  </tbody>
+</table>
+<p>这张表里最值钱的一行是最后一行。先看清楚要删多少条，再决定用哪个工具，比先选工具再猜工作量合理得多。</p>
+
+<h2>计费模型：三种结构，各自适合谁</h2>
+<p>市面上大致是三种计费结构，选错结构比选错工具更浪费钱。</p>
+<ul>
+  <li><strong>按次一次性。</strong>适合「我只清这一次」。缺点是第二年想再清一遍要重新付一次。</li>
+  <li><strong>订阅制。</strong>适合「我打算长期反复清」。缺点是你实际用到的次数可能远低于付费周期。</li>
+  <li><strong>免费层加付费解锁。</strong>适合先测量工作量。要注意免费层的上限通常按条数而不是按功能切分，容易在你删到一半时卡住。</li>
+</ul>
+<p>如果还没确定要删多少条，先去把数量弄清楚。数量在几百条以内，官方功能配合一个周末就够了；上千条再考虑工具，这笔钱才花得值。</p>
+
+<h2>失败恢复：真正拉开差距的地方</h2>
+<p>删除跑到一半断掉的情形比想象中常见：限流、断网、浏览器被关、电脑休眠。断掉之后能不能接着删、会不会把删过的重复算一遍、有没有日志可以对照，这一栏几乎从不出现在产品对比里，却最影响你的实际体验。</p>
+<p>判断标准很直接：工具是否区分「已删除」和「待删除」两个状态，以及是否在本地留一份进度记录。没有这两个东西，中断一次就要重头核对一遍清单。</p>
+
+<h2>一个从测量开始的选择顺序</h2>
+<ol>
+  <li>先下载数据归档，在本机跑一次扫描，拿到要删的条数和分类清单。</li>
+  <li>如果总量在几百条以内，且集中在少数几个日期区间，直接用官方功能分批手动删，不要引入第三方。</li>
+  <li>如果需要按关键词或风险类型筛，选支持本地匹配的方案，避免把全部内容交给云端处理。</li>
+  <li>只有在「反复清、长期清」的前提下才选订阅制，一次性需求优先按次付费。</li>
+  <li>开跑之前回看一眼授权范围那一页，跑完记得撤销授权。</li>
+</ol>
+<p>这个顺序的核心是：先测量，再选型。反过来做的人，多半会在删到一半时才发现工具不支持自己要筛的那个维度。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 走的是上面第五种路径：先把 X 数据归档在本机解析一遍，拿到 0-100 健康评分和按风险排序的清单，再决定用什么方式删。全程本机处理，归档不上传，体检免费。可以从<a href="/">免费体检</a>开始，先读<a href="/blog/what-is-digital-footprint-check">体检的评分口径</a>，再对照<a href="/blog/tweetdelete-vs-manual-delete-2026">云端服务与手动删除的差别</a>做选择。</p>`,
+    contentEn: `<div class="introduction">
+  <p>There are really only four ways to clear old tweets, and knowing which category a tool belongs to matters more than remembering its brand. Within a category the mechanics are nearly identical; only the interface and the billing differ. This comparison runs all four through the same grid: permission scope, deletion speed, filtering, failure recovery and billing model. Those are also the columns product pages describe least clearly.</p>
+  <p>Product names below identify a mechanism category. Check each vendor site for current features and pricing.</p>
+</div>
+
+<h2>Defining the four categories</h2>
+<table>
+  <thead><tr><th>Category</th><th>Typical shape</th><th>Whose servers see your data</th><th>Main constraint</th></tr></thead>
+  <tbody>
+    <tr><td>Cloud deletion service</td><td>You authorise the account; the service calls the API post by post</td><td>A third-party server holds your write token</td><td>You hand over write access; speed depends on their quota and queue</td></tr>
+    <tr><td>Native X tools</td><td>The posts page in settings</td><td>Only X</td><td>No bulk action, no filters, one post at a time</td></tr>
+    <tr><td>Browser script</td><td>Scripted scrolling and clicking in your own browser</td><td>Your machine plus your browser session</td><td>Breaks when the page changes; long runs hit rate limits</td></tr>
+    <tr><td>Local archive parsing</td><td>Download the archive ZIP and scan it on your own device</td><td>Only your computer</td><td>Produces an analysis and a list; deletion still has to happen</td></tr>
+  </tbody>
+</table>
+<p>Only the first three actually delete anything for you. The fourth solves a different problem: not knowing what needs deleting. That problem usually costs more time than the deletion itself.</p>
+
+<h2>Permission scope: the row everyone skips</h2>
+<p>Reading and deleting are separate permissions. Any service that removes posts on your behalf needs write access, and write access does more than delete. It can post, edit your profile and change who you follow. The line on the authorisation screen is short. What it grants is not.</p>
+<p>That leads to one simple rule. If all you need is to know what your account exposes, do not grant write access. Run a read-only analysis first, get the list, and only then decide whether to hand write permissions to a third party. People who reverse that order usually give up access before they understand the workload.</p>
+<p>Revocation matters too. Granting is easy; withdrawing is buried in settings. Finishing a cleanup without revoking leaves a spare key in circulation.</p>
+
+<h2>Speed: controllable beats fast</h2>
+<p>Deletion speed is set by the platform's write quota, not by how clever the tool is. Treat any claim of emptying ten years of posts in minutes with suspicion. The bottleneck sits at the call frequency ceiling, not in the implementation.</p>
+<p>So ask three questions instead of one. Will the run trigger a temporary restriction? When it does, does the tool wait or keep retrying until it errors out? Afterwards, does the account show unfamiliar login prompts?</p>
+<p>Batching is the more stable approach. Split one deletion into segments with gaps between them, and check progress at each boundary. You trade speed for visibility and an interruptible rhythm, which means a problem never forces you to start over.</p>
+<table>
+  <thead><tr><th>What you see</th><th>What it usually means</th><th>What to do</th></tr></thead>
+  <tbody>
+    <tr><td>Steady progress</td><td>Calls are within quota</td><td>Do not speed up mid-run; let it finish</td></tr>
+    <tr><td>Progress stalls, account is fine</td><td>A soft limit is being enforced</td><td>Pause and resume rather than retrying</td></tr>
+    <tr><td>Many failures plus verification prompts</td><td>Frequency too high</td><td>Stop, confirm identity manually, then continue</td></tr>
+  </tbody>
+</table>
+<p>One further note on what the table cannot show you. A run that finishes without an error is not automatically a run that finished. Tools that keep no log will report success while leaving a tail of failed requests behind, and you only discover it the next time you search your own timeline. Ask for a count before and after. If the tool cannot tell you how many posts it removed, treat its completion message as a claim rather than a fact.</p>
+
+<h2>Filtering decides whether you do the work twice</h2>
+<p>Most people delete everything on their first pass. That is the easiest option and the most expensive one, because you remove things worth keeping. Filtering first is faster in total effort.</p>
+<table>
+  <thead><tr><th>Target</th><th>Cloud services</th><th>Native tools</th><th>Local archive parsing</th></tr></thead>
+  <tbody>
+    <tr><td>Date range</td><td>Usually supported</td><td>Not supported</td><td>Supported, list first</td></tr>
+    <tr><td>Keyword</td><td>Partial, matched in the cloud</td><td>Not supported</td><td>Supported, matched locally</td></tr>
+    <tr><td>Risk type (phone, email, location)</td><td>Rare</td><td>Not supported</td><td>Supported</td></tr>
+    <tr><td>Reposts and quoted content</td><td>Often supported</td><td>Manual only</td><td>Detected</td></tr>
+    <tr><td>Dry run before deleting</td><td>Generally none</td><td>None</td><td>The scan is the dry run</td></tr>
+  </tbody>
+</table>
+<p>The last row is the most valuable. Knowing the count before choosing a tool beats choosing a tool and then guessing the workload.</p>
+
+<h2>Billing: three shapes, three different users</h2>
+<p>Three billing structures dominate, and picking the wrong structure costs more than picking the wrong tool.</p>
+<ul>
+  <li><strong>One-off charge.</strong> Right for a single cleanup. Wrong if you intend to repeat it next year.</li>
+  <li><strong>Subscription.</strong> Right if you clean continuously. Wrong if your actual usage is one long weekend.</li>
+  <li><strong>Free tier plus paid unlock.</strong> Right for measuring first. The free ceiling is usually counted in posts rather than features, so it can stop you halfway.</li>
+</ul>
+<p>If you do not yet know your count, find that out first. Under a few hundred posts, native tools plus a weekend are enough. Past a thousand, a paid tool starts to earn its price.</p>
+
+<h2>Failure recovery is where tools actually diverge</h2>
+<p>Runs break for ordinary reasons: rate limits, dropped connections, a closed browser, a sleeping laptop. After a break, what matters is whether the tool can resume, whether it re-counts finished work, and whether it keeps a log. This column almost never appears in comparison tables and affects day-to-day experience most.</p>
+<p>The test is concrete. Does the tool distinguish finished from pending, and does it keep a local progress record? Without both, one interruption means re-checking the whole list by hand.</p>
+
+<h2>What a dry run actually protects you from</h2>
+<p>A dry run is the least glamorous feature in this comparison and the one that saves the most time. Its job is to answer three questions before anything is irreversible: how many posts match your filter, which categories they fall into, and what the sample looks like when you read it as a stranger would.</p>
+<p>Without that step, every filter mistake is paid for in deleted content. A keyword that is too broad removes posts you wanted to keep; a keyword that is too narrow leaves the ones that mattered. Neither error is visible until after the write calls are spent, and neither is reversible.</p>
+<p>There is a second benefit that rarely gets mentioned. Reading a sample of your own old posts as an outsider is the step that tells you whether your filter is answering the right question at all. People often start out intending to delete anything embarrassing, then discover on reading that the real exposure sits in mundane posts carrying a phone number, a neighbourhood name or a work schedule. A dry run surfaces that before you act, not after.</p>
+<p>Tools that skip straight to deletion are optimising for the wrong metric. Speed of removal is worth nothing if you removed the wrong things, and the cost of re-doing it is not the second run but the content that no longer exists.</p>
+
+<h2>A decision order that starts with measurement</h2>
+<ol>
+  <li>Download your data archive and run one local scan to get a count and a category breakdown.</li>
+  <li>Under a few hundred posts confined to a few date ranges, use native tools in batches and skip third parties entirely.</li>
+  <li>If you need keyword or risk-type filters, choose a locally matched option rather than sending everything to a server.</li>
+  <li>Choose a subscription only if you will clean repeatedly; one-off jobs belong on pay-per-run pricing.</li>
+  <li>Re-read the permission screen before starting, and revoke the grant when you finish.</li>
+</ol>
+<p>The order matters because it inverts the usual sequence. Measure, then choose. Doing it the other way is how people discover halfway through that their tool cannot filter the dimension they cared about.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop takes the fifth path described above. It parses your X archive on your own machine first, then gives you a 0-100 health score and a risk-ranked list, so you can decide how to delete. Everything runs locally, the archive is never uploaded, and the check is free. Start with the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">how the score is calculated</a>, then weigh <a href="/blog/tweetdelete-vs-manual-delete-2026">cloud services against manual deletion</a>.</p>`,
+    faq: [
+      {
+        q: '云端删除服务和本机工具最本质的区别是什么？',
+        a: '是谁握着你的写权限。云端服务需要你把账号的写权限交给它的服务器，删除动作在它的机器上发起；本机工具只做本地解析和清单，删除仍由你在自己的会话里完成，权限不外流。',
+        qEn: 'What is the real difference between a cloud service and a local tool?',
+        aEn: 'Who holds your write permission. A cloud service needs write access on its own servers and issues the deletions from there. A local tool only analyses and lists, and deletion happens inside your own session, so the permission never leaves your machine.',
+      },
+      {
+        q: '免费工具能完成整批删除吗？',
+        a: '要看免费层的上限是按功能切还是按条数切。按条数切的免费层更容易在删到一半时停住，剩下部分要么手动补，要么临时付费。先确认上限口径再开始。',
+        qEn: 'Can a free tool finish the whole job?',
+        aEn: 'It depends on whether the free ceiling is counted in features or in posts. A per-post ceiling is likelier to stop you halfway, leaving the rest to be finished by hand or by paying. Confirm the ceiling before you start.',
+      },
+      {
+        q: '把账号授权给第三方删除服务有风险吗？',
+        a: '有，风险来自写权限本身而不是服务好坏。写权限可以发帖、改资料、动关注列表。做法是清理完立刻撤销授权，并把这一步写进流程里，别靠记忆。',
+        qEn: 'Is authorising a third-party deletion service risky?',
+        aEn: 'Yes, and the risk comes from write access itself rather than from any particular vendor. Write access can post, edit your profile and change follows. Revoke the grant immediately after the cleanup and make that step part of the routine rather than something you remember to do.',
+      },
+      {
+        q: '删得越快越好吗？',
+        a: '不是。上限由平台的写操作配额决定，超过之后会触发临时限制甚至要求人工确认。分批跑、每批之间留间隔，比一次冲到底更省事，出问题也不用重头来。',
+        qEn: 'Is faster always better?',
+        aEn: 'No. The ceiling comes from the platform write quota, and passing it triggers temporary restrictions or a manual verification prompt. Batching with gaps is less trouble than one long push, and a failure never forces a restart.',
+      },
+      {
+        q: '我还不知道要删多少条，应该先做什么？',
+        a: '先测量。下载数据归档，在本机跑一次扫描，拿到总条数和按风险分出的类别，再决定用官方功能、云端服务还是本机工具。顺序反过来，多半会选到不匹配的工具。',
+        qEn: 'I do not know how many posts I need to remove. What first?',
+        aEn: 'Measure. Download the archive, run one local scan, and get both a total count and a risk-sorted breakdown before choosing between native tools, a cloud service and a local tool. Reversing the order usually leads to a mismatched tool.',
+      },
+    ],
+  },
+  {
+    slug: 'x-api-rate-limits-deletion',
+    title: 'X 接口限流为什么让批量删除变慢：配额机制与排队策略',
+    titleEn: 'Why X Rate Limits Slow Down Bulk Deletion: Quotas and Queueing',
+    excerpt:
+      '批量删帖慢，慢的不是网络也不是工具，而是写操作配额的窗口计算方式。理解窗口长度、端点配额和 429 的含义之后，就能把删除从「一次性猛冲」改成「可控排队」，中断也不用从头再来。',
+    excerptEn:
+      'Bulk deletion is slow for one reason: how write quotas are counted inside a time window, not network speed or tool quality. Once you understand window length, per-endpoint quotas and what a 429 actually means, deletion becomes a controllable queue instead of one long sprint that restarts from zero.',
+    date: '2026-09-14',
+    updatedAt: '2026-09-14',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    categoryEn: 'Advanced Tech',
+    tags: ['接口限流', '批量删除', '退避策略', '断点续传'],
+    tagsEn: ['rate limits', 'bulk deletion', 'backoff', 'resumable runs'],
+    canonical: '/blog/x-api-rate-limits-deletion',
+    content: `<div class="introduction">
+  <p>批量删帖慢下来的时候，多数人会先怀疑网络，再怀疑工具。真正的原因通常在配额的计算方式上：平台按时间窗口统计写操作的次数，窗口一旦打满，剩下的请求会被直接挡回来。理解这套计数逻辑，删除节奏就可以自己掌握。</p>
+  <p>下面讲三件事：配额是怎么算的、删除为什么比读取更容易撞墙、以及撞墙之后该怎么退。</p>
+</div>
+
+<h2>配额是按窗口算的，不是按天算的</h2>
+<p>常见的误解是「一天能删多少条」。实际规则更细：每个时间窗口内允许的请求数有限，窗口滑动着往前推进，配额不断被补充和消耗。这意味着你不需要等一整天，只需要在窗口打满时停一会儿。</p>
+<table>
+  <thead><tr><th>概念</th><th>含义</th><th>对你的实际影响</th></tr></thead>
+  <tbody>
+    <tr><td>时间窗口</td><td>统计请求数的滑动区间</td><td>窗口打满后暂停一小段即可恢复，不必等一天</td></tr>
+    <tr><td>端点配额</td><td>读操作与写操作分开计数</td><td>读配额充裕不代表写操作还有余量</td></tr>
+    <tr><td>返回码 429</td><td>频率超出限制</td><td>继续硬试只会延长被限制的时间</td></tr>
+  </tbody>
+</table>
+
+<h2>删除是写操作，配额通常小得多</h2>
+<p>读取推文列表的配额往往很宽松，因为它不改动任何状态。删除属于写操作，平台会把这类请求的额度设得保守得多。于是会出现一种很常见的错觉：既然能飞快地翻完整个时间线，删除也应该一样快。这两件事走的是不同的计费通道。</p>
+<p>动手之前的顺序建议是：先用读取通道把目标范围摸清楚，再让写通道只负责执行。反过来做，写配额很快被浪费在试探上。</p>
+
+<h2>三种节奏的对比</h2>
+<table>
+  <thead><tr><th>节奏</th><th>表现</th><th>中断后的代价</th></tr></thead>
+  <tbody>
+    <tr><td>一次性猛冲</td><td>前几分钟很快，随后大面积失败</td><td>高，进度停在半路且不知删到哪</td></tr>
+    <tr><td>固定间隔分片</td><td>速度平稳，可预测</td><td>低，按分片续跑即可</td></tr>
+    <tr><td>本机排队加本地日志</td><td>速度略慢，进度完全可见</td><td>最低，重启后能精确接着走</td></tr>
+  </tbody>
+</table>
+<p>中间那一种性价比最高：不需要额外工具，把总量按分片切开，每片之间留出间隔，跑完一片记一行日志。最后一种更适合上千条的场景，因为靠人工记进度已经不现实。</p>
+
+<h2>撞上 429 之后怎么退</h2>
+<p>收到限流响应时，正确的动作是停，而不是缩短重试间隔。常见的错误做法是失败就立刻重试，这会让平台判定为持续高频，把限制窗口越拉越长。</p>
+<ol>
+  <li>先停下来，把已经确认删除的条数记下来。</li>
+  <li>等待一段明显长于上一次退避的时间，再发一个请求试探。</li>
+  <li>试探成功再恢复批量，失败就把等待时间翻倍。</li>
+  <li>连续两轮失败就结束本轮，把剩下的留给下一批。</li>
+</ol>
+<p>这套做法有个额外好处：账号不会在短时间内积累大量异常请求，减少被要求人工验证的概率。</p>
+
+<h2>先在本机算清工作量再动手</h2>
+<p>最省配额的一步其实是免费的：把 X 数据归档下载到本机，在本机解析一遍，得出总条数和按风险分的类别。这一步不消耗任何接口配额，却能让后面的写操作量减少一大截，因为你可以只删该删的，而不是清空时间线。</p>
+<p>对上千条的账号来说，先测量再删除通常能把实际操作量压到原来的三分之一以内。省下的配额就是省下的时间。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供的正是那个免费的测量步骤：把 X 数据归档在本机解析，输出 0-100 健康评分和按风险排序的清单，全程不上传、不调用任何写接口。可以从<a href="/">免费体检</a>开始，先看<a href="/blog/what-is-digital-footprint-check">评分是怎么算出来的</a>，再按<a href="/blog/how-to-delete-old-tweets-2026">删除实操流程</a>分批执行。</p>`,
+    contentEn: `<div class="introduction">
+  <p>When bulk deletion slows to a crawl, most people blame the network first and the tool second. The real cause is usually how quotas are counted: the platform counts write calls inside a rolling time window, and once the window is full the remaining requests are refused outright. Understand that counting rule and you control the pace yourself.</p>
+  <p>Three things follow: how quotas are counted, why deletion hits the wall far sooner than reading, and how to back off when it does.</p>
+</div>
+
+<h2>Quotas are counted per window, not per day</h2>
+<p>The common mental model is a daily allowance. The actual rule is finer: a limited number of calls per time window, with the window sliding forward so allowance is continuously consumed and refilled. You rarely need to wait a whole day. You need to pause when the window fills.</p>
+<table>
+  <thead><tr><th>Concept</th><th>Meaning</th><th>Practical effect</th></tr></thead>
+  <tbody>
+    <tr><td>Time window</td><td>A rolling interval for counting calls</td><td>A pause restores capacity; a full day of waiting is unnecessary</td></tr>
+    <tr><td>Endpoint quota</td><td>Reads and writes counted separately</td><td>Plenty of read allowance says nothing about write allowance</td></tr>
+    <tr><td>Status 429</td><td>Frequency exceeded</td><td>Hammering it only extends the restriction</td></tr>
+  </tbody>
+</table>
+
+<h2>Deletion is a write, and writes are rationed tightly</h2>
+<p>Reading your timeline is usually generous because it changes nothing. Deletion changes state, so the allowance is set far more conservatively. That produces a familiar illusion: if the timeline scrolls instantly, deletion should too. The two operations spend from different accounts.</p>
+<p>The sensible order is to survey with the read channel and let the write channel only execute. Do it the other way and your write allowance gets burned on probing.</p>
+
+<h2>Three pacing strategies compared</h2>
+<table>
+  <thead><tr><th>Pacing</th><th>What it looks like</th><th>Cost of an interruption</th></tr></thead>
+  <tbody>
+    <tr><td>One long sprint</td><td>Fast for minutes, then widespread failures</td><td>High: progress halts with no record of what is left</td></tr>
+    <tr><td>Fixed-interval segments</td><td>Steady and predictable</td><td>Low: resume at the next segment</td></tr>
+    <tr><td>Local queue with a log</td><td>Slightly slower, fully visible</td><td>Lowest: restart picks up exactly where it stopped</td></tr>
+  </tbody>
+</table>
+<p>The middle option has the best cost-to-benefit ratio. It needs no extra tooling: split the total into segments, leave gaps, and write one log line per segment. The last option earns its complexity past a thousand posts, where tracking progress by hand stops working.</p>
+
+<h2>What to do when you hit a 429</h2>
+<p>Stop rather than retry faster. The common mistake is immediate retry, which the platform reads as sustained high frequency and answers with a longer restriction window.</p>
+<ol>
+  <li>Stop and record how many deletions you have confirmed.</li>
+  <li>Wait noticeably longer than the previous backoff, then send a single probe request.</li>
+  <li>If the probe succeeds, resume batch mode. If it fails, double the wait.</li>
+  <li>After two consecutive failures, end the round and leave the rest for the next batch.</li>
+</ol>
+<p>There is a side benefit: the account stops accumulating bursts of anomalous requests, which lowers the chance of being asked to verify manually.</p>
+<p>Worth stating plainly, because it is counter-intuitive: a tool that retries aggressively on your behalf is not more capable than one that waits. Automatic retries compress the same volume into a shorter interval, which is exactly the pattern that triggers restrictions. If a tool has no visible pause behaviour, its speed advantage in the first few minutes is usually paid back in the restriction window that follows.</p>
+
+<h2>Measure locally before spending any quota</h2>
+<p>The cheapest step is also free. Download your X data archive and parse it on your own machine to get a total count and a risk-sorted breakdown. That costs no API allowance at all, and it can cut the write volume substantially, because you delete what needs deleting instead of emptying the timeline.</p>
+<p>For accounts past a thousand posts, measuring first typically reduces the actual operation to less than a third of the original volume. Saved quota is saved time.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop is that free measuring step. It parses your X archive on your own machine and returns a 0-100 health score with a risk-ranked list, without uploading anything or touching a single write endpoint. Start with the <a href="/">free check</a>, see <a href="/blog/what-is-digital-footprint-check">how the score is computed</a>, then run <a href="/blog/how-to-delete-old-tweets-2026">the deletion walkthrough</a> in batches.</p>`,
+    faq: [
+      {
+        q: '为什么读取很快，删除却这么慢？',
+        a: '两种操作走不同的配额通道。读取不改动状态，额度宽松；删除属于写操作，平台会把额度设得保守得多。所以能秒开的时间线，不代表能秒删。',
+        qEn: 'Why is reading fast while deleting drags?',
+        aEn: 'They spend from different quota channels. Reads change no state and get a generous allowance; writes are rationed conservatively. A timeline that loads instantly says nothing about deletion speed.',
+      },
+      {
+        q: '触发限流之后要等多久？',
+        a: '不必等一整天。配额按滑动窗口补充，通常暂停一小段再发一个试探请求就能判断是否可以恢复。试探失败就把等待时间翻倍，连续两轮失败就收工。',
+        qEn: 'How long should I wait after being rate limited?',
+        aEn: 'Not a whole day. Allowance refills on a sliding window, so a short pause plus one probe request usually tells you whether to resume. If the probe fails, double the wait; after two rounds of failure, stop for the day.',
+      },
+      {
+        q: '一次删几百条会不会导致账号异常？',
+        a: '风险不来自条数，而来自频率。分成几个片段、片间留间隔，账号表现基本与手动操作类似；把几百条压在一分钟内发完，才会触发验证和临时限制。',
+        qEn: 'Will deleting a few hundred posts flag my account?',
+        aEn: 'The risk comes from frequency, not volume. Segments with gaps look much like ordinary manual use; compressing hundreds of calls into a minute is what triggers verification and temporary restrictions.',
+      },
+    ],
+  },
+  {
+    slug: 'chinese-social-footprint-x-guide',
+    title: '中文用户清理 X 旧推文的三个特殊之处：昵称复用、中文关键词与转发链',
+    titleEn: 'Cleaning Up an X Account as a Chinese-Speaking User: Handles, Keywords and Repost Chains',
+    excerpt:
+      '中文用户清理 X 账号时，暴露面往往不在单条推文里，而在三处结构性位置：跨平台复用的昵称把不同账号缝成一个人；中文关键词的写法散落在括号、缩写和数字之间；转发链让内容在你删掉原帖之后继续存在。这三处都需要单独处理。',
+    excerptEn:
+      'For Chinese-speaking users, exposure rarely sits in a single post. It sits in three structural places: a handle reused across platforms that stitches several accounts into one person, Chinese keywords scattered across brackets, abbreviations and digits, and repost chains that keep content alive after you delete the original.',
+    date: '2026-09-14',
+    updatedAt: '2026-09-14',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    categoryEn: 'Bilingual Market',
+    tags: ['中文用户', '关键词筛选', '昵称复用', '数字足迹'],
+    tagsEn: ['chinese users', 'keyword filtering', 'handle reuse', 'digital footprint'],
+    canonical: '/blog/chinese-social-footprint-x-guide',
+    content: `<div class="introduction">
+  <p>中文用户清理 X 账号时，最容易被低估的不是单条推文说了什么，而是三处结构性位置：跨平台复用的昵称、中文关键词的散装写法、以及转发链。前两处决定了「别人能不能搜到你」，第三处决定了「你删了之后还剩什么」。</p>
+  <p>这三处的处理方式和英文场景差别不小，英文工具的默认思路常常覆盖不到。</p>
+</div>
+
+<h2>一、昵称复用：一句话把几个账号缝成一个人</h2>
+<p>英文用户里，同一个昵称出现在多个平台的情况相对少见。中文用户的习惯正好相反：很多人希望朋友在各个平台都能找到自己，于是把同一个昵称、同一个头像、同一段简介复制到所有地方。这样做的好处是熟人容易找到你，代价是陌生人也能。</p>
+<p>具体的暴露路径是这样的：一条旧推文里出现过你的昵称，搜索这个昵称会带出你在其他平台的账号，其他账号的简介里可能写着城市、学校或公司，于是推文里的随口一句话就有了身份。</p>
+<table>
+  <thead><tr><th>复用层</th><th>带来的信息</th><th>处理方式</th></tr></thead>
+  <tbody>
+    <tr><td>昵称重复</td><td>把多个平台账号指向同一个人</td><td>至少让其中一个平台使用不同写法</td></tr>
+    <tr><td>头像重复</td><td>图片反查同样能完成拼接</td><td>社交账号与生活账号分开用图</td></tr>
+    <tr><td>简介内容重复</td><td>城市、学校、公司直接暴露</td><td>把身份信息从简介里移走</td></tr>
+  </tbody>
+</table>
+<p>处理原则很简单：不要在所有地方使用完全相同的组合。改昵称的收益有限，因为旧内容里已经写下的名字改不掉；真正有效的是让「昵称到身份」这条路断掉一处。</p>
+
+<h2>二、中文关键词的写法比英文散得多</h2>
+<p>英文里找手机号有相对固定的模式。中文场景的判断范围要大得多，因为同一个信息有很多种写法。</p>
+<ul>
+  <li><strong>号码的写法。</strong>同样一串手机号可能出现中间带空格、带短横线、带括号、写成全角数字，甚至只写后八位。</li>
+  <li><strong>联系方式的别名。</strong>除了手机号，还有微信号、即时通讯号，以及「私」「加我」「联系」这类口语化引导词。</li>
+  <li><strong>地点信息。</strong>中文推文里出现具体地点的频率更高，小区名、商圈名、地铁站名都可能直接暴露活动范围。</li>
+  <li><strong>短词与缩写。</strong>两三个字的关键词在中文里指向很宽，容易漏筛也容易误伤。</li>
+</ul>
+<p>筛的时候建议按「模式加语境」两层走：先用数字与符号组合把候选捞出来，再人工看一遍上下文，确认是真号码还是被举例的数字。纯关键词匹配在中文里的误报率明显高于英文。</p>
+
+<h2>三、转发链：删掉原帖不等于删掉内容</h2>
+<p>转发和引用会把内容复制一份到别人的时间线上。你删掉原帖之后，这些副本不受影响。中文用户的转发行为里还有一层额外情况：截图转发很常见，而截图完全脱离平台，谁也删不掉。</p>
+<table>
+  <thead><tr><th>内容形态</th><th>删除原帖后</th><th>能做的补救</th></tr></thead>
+  <tbody>
+    <tr><td>自己的原创帖</td><td>消失</td><td>无需额外动作</td></tr>
+    <tr><td>被别人转发</td><td>副本仍在对方时间线</td><td>原帖删除后转发通常显示为不可用</td></tr>
+    <tr><td>被引用评论</td><td>引用里保留原文片段</td><td>无法直接删除，只能减少后续传播</td></tr>
+    <tr><td>被截图</td><td>完全脱离平台</td><td>平台内无解，靠时间与账号区分来降低影响</td></tr>
+  </tbody>
+</table>
+<p>所以清理顺序应该是先处理自己账号内的原创与转发，再回头看引用链里还有哪些旧内容值得处理。最后一行没有技术解，唯一的缓解方式是把账号与现实身份的关联做得更松。</p>
+
+<h2>一份给中文用户的检查清单</h2>
+<ol>
+  <li>搜一次自己的昵称，看会带出哪些平台的账号，把信息最重的那一个改掉。</li>
+  <li>按数字模式加口语词两层筛一遍原创帖，重点看带联系方式的条目。</li>
+  <li>把带小区名、商圈名的推文单独列出来，这些比照片更容易定位。</li>
+  <li>检查转发和引用，把仍在流通的旧内容标记出来。</li>
+  <li>处理完把结论记一行，半年后复查时不用重新判断一遍。</li>
+</ol>
+<p>整份清单的重点是第二和第三步：中文场景下，这两步比翻遍时间线更有效率。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 在本机解析 X 数据归档，扫描范围包括中文写法的号码、地点词与联系方式别名，输出 0-100 健康评分与按风险排序的清单。归档不上传，体检免费。可以从<a href="/">免费体检</a>开始，先读<a href="/blog/chinese-tweets-cleanup-keywords">中文关键词清理方法</a>，再看<a href="/blog/what-is-digital-footprint-check">评分口径说明</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The part of an X cleanup that gets underestimated is rarely what a single post says. It is three structural places: a handle reused across platforms, Chinese keywords written in scattered forms, and repost chains. The first two decide whether people can find you at all. The third decides what survives after you delete.</p>
+  <p>Handling those three differs enough from the English-language case that default assumptions in most tools miss them.</p>
+</div>
+
+<h2>One: handle reuse stitches accounts into one person</h2>
+<p>In English-language usage, the same handle appearing across many platforms is relatively uncommon. Chinese-speaking users often do the opposite on purpose, so friends can find them everywhere, copying the same handle, avatar and bio to every service. The benefit is discoverability among people you know. The cost is the same discoverability for people you do not.</p>
+<p>The exposure path is concrete. An old post mentions your handle. Searching that handle surfaces your accounts elsewhere. Those bios name a city, a school or an employer. A throwaway line in a post now has an identity attached.</p>
+<table>
+  <thead><tr><th>Layer of reuse</th><th>What it leaks</th><th>What to change</th></tr></thead>
+  <tbody>
+    <tr><td>Same handle</td><td>Points several accounts at one person</td><td>Use a different form on at least one platform</td></tr>
+    <tr><td>Same avatar</td><td>Reverse image search completes the same link</td><td>Keep different images for social and personal accounts</td></tr>
+    <tr><td>Same bio text</td><td>City, school and employer stated outright</td><td>Move identity details out of the bio</td></tr>
+  </tbody>
+</table>
+<p>The principle is narrow. Do not use an identical combination everywhere. Renaming helps only so much, because a name already written into old posts cannot be edited. What works is breaking one link in the chain from handle to identity.</p>
+
+<h2>Two: Chinese keywords are written in far looser forms</h2>
+<p>English phone-number patterns are comparatively fixed. Chinese-language detection has a wider search space, because one piece of information has many spellings.</p>
+<ul>
+  <li><strong>Number formats.</strong> The same mobile number may appear with spaces, hyphens, brackets, full-width digits, or only its last eight digits.</li>
+  <li><strong>Contact aliases.</strong> Beyond phone numbers there are messaging IDs, plus conversational lead-ins that invite a private message.</li>
+  <li><strong>Location terms.</strong> Chinese posts name specific places more often. Residential compound names, shopping districts and subway stations all narrow down a daily routine.</li>
+  <li><strong>Short words.</strong> Two-character keywords cover very broad ground, so they both miss real hits and produce false ones.</li>
+</ul>
+<p>Filter in two passes: first pull candidates by digit and symbol patterns, then review context by hand to separate real numbers from examples. Pure keyword matching produces noticeably more false positives in Chinese than in English.</p>
+
+<h2>Three: repost chains keep content alive after deletion</h2>
+<p>Reposts and quotes copy content onto other people's timelines. Deleting your original does not touch those copies. Chinese-language usage adds a layer on top: screenshot reposting is common, and screenshots leave the platform entirely.</p>
+<table>
+  <thead><tr><th>Form</th><th>After the original is deleted</th><th>What can still be done</th></tr></thead>
+  <tbody>
+    <tr><td>Your own original post</td><td>Gone</td><td>Nothing further needed</td></tr>
+    <tr><td>Reposted by others</td><td>Copy remains on their timeline</td><td>Reposts usually show as unavailable once the original is gone</td></tr>
+    <tr><td>Quoted with commentary</td><td>The quote keeps a fragment of the text</td><td>Cannot be deleted directly; only onward spread can be reduced</td></tr>
+    <tr><td>Screenshotted</td><td>Fully off-platform</td><td>No in-platform fix; loosen the link to your real identity instead</td></tr>
+  </tbody>
+</table>
+<p>So the order is: clear originals and your own reposts first, then review quote chains for anything still worth handling. The last row has no technical solution. The only mitigation is making the account harder to tie to a real person.</p>
+
+<h2>A checklist for Chinese-speaking users</h2>
+<ol>
+  <li>Search your handle and note which platforms surface. Rename the one carrying the most identity detail.</li>
+  <li>Filter originals twice, by digit patterns and by conversational words, and read every post carrying contact details.</li>
+  <li>List posts naming residential compounds or shopping districts. They locate you more precisely than photos.</li>
+  <li>Audit reposts and quotes, and flag old content still circulating.</li>
+  <li>Write one line of conclusions when you finish, so a review six months later does not restart the analysis.</li>
+</ol>
+<p>Steps two and three carry the weight. In Chinese-language accounts they beat reading the whole timeline.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop parses your X archive on your own machine, scanning for numbers, place names and contact aliases written in Chinese forms, then returns a 0-100 health score and a risk-ranked list. The archive is never uploaded and the check is free. Start with the <a href="/">free check</a>, read the <a href="/blog/chinese-tweets-cleanup-keywords">keyword cleanup method</a>, then see <a href="/blog/what-is-digital-footprint-check">how the score is defined</a>.</p>`,
+    faq: [
+      {
+        q: '为什么中文用户要单独处理昵称复用问题？',
+        a: '因为很多中文用户会在各平台使用完全相同的昵称、头像和简介，方便熟人找到。这条便利同时也让别人能用一次搜索，把你几个平台的账号拼成同一个人。至少让其中一个平台换一种写法就能断开这条路。',
+        qEn: 'Why does handle reuse deserve separate attention?',
+        aEn: 'Because many Chinese-speaking users keep an identical handle, avatar and bio everywhere so friends can find them. The same convenience lets a stranger join your accounts into one person with a single search. Changing the form on one platform breaks that path.',
+      },
+      {
+        q: '中文关键词筛选为什么比英文更容易漏？',
+        a: '同一个号码或地点在中文里有多种写法：带空格、带短横线、全角数字、只写后八位，或者用口语词引导私聊。模式不统一，纯关键词匹配的漏报和误报都更多，需要模式加语境两层筛。',
+        qEn: 'Why is Chinese keyword filtering more error-prone?',
+        aEn: 'One number or place can be written several ways: spaced, hyphenated, full-width digits, only the final eight digits, or introduced by a conversational phrase. No single pattern covers them, so both misses and false positives rise and a two-pass filter is needed.',
+      },
+      {
+        q: '删掉原帖之后，被转发和被截图的内容怎么办？',
+        a: '转发副本会随原帖消失而显示为不可用，引用里保留的文字片段删不掉，截图则完全脱离平台。前两类按顺序处理即可，第三类只能靠把账号与现实身份的关联放松来降低影响。',
+        qEn: 'What happens to reposted and screenshotted content after deletion?',
+        aEn: 'Repost copies become unavailable once the original is gone, quote fragments cannot be deleted, and screenshots are off-platform entirely. Handle the first two in order; for the third, the only mitigation is loosening the tie between the account and your real identity.',
+      },
+      {
+        q: '改昵称有用吗？',
+        a: '作用有限但值得做。旧推文里已经写下的名字改不掉，但改掉昵称能阻断「搜索昵称找到其他平台账号」这条路径。它应该作为补充动作，不能替代删除。',
+        qEn: 'Does renaming the handle help?',
+        aEn: 'Partially, and it is still worth doing. A name already written into old posts cannot be edited, but renaming breaks the path from handle search to your other accounts. Treat it as a supplement to deletion, not a replacement.',
+      },
+    ],
+  },
+  {
+    slug: 'privacy-calendar-september-old-content',
+    title: '九月的隐私日历：为什么这个月适合处理旧内容与数据请求',
+    titleEn: 'A September Privacy Calendar: Why This Month Suits Old Content and Data Requests',
+    excerpt:
+      '隐私清理一直没做，是因为它没有截止日期。九月正好是一个可以排进日历的窗口：秋季招聘与申请季同时开始，第三季度收尾需要留下记录，而数据请求的响应窗口从提交日算起，九月初提交才能在年内拿到结果。这份日历给出三件事、各自耗时与执行顺序。',
+    excerptEn:
+      'Privacy cleanup never happens because it has no deadline. September is a window that can be scheduled: fall hiring and applications start together, the Q3 close calls for documentation, and request response clocks start at filing, so an early September filing returns an answer this year. Three tasks, their durations, and the order to run them.',
+    date: '2026-09-14',
+    updatedAt: '2026-09-14',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    categoryEn: 'Industry & Ecosystem',
+    tags: ['隐私日历', '数据请求', '季度复盘', '合规节奏'],
+    tagsEn: ['privacy calendar', 'data requests', 'quarterly review', 'compliance timing'],
+    canonical: '/blog/privacy-calendar-september-old-content',
+    content: `<div class="introduction">
+  <p>隐私清理这类事情，很多人打算做但一直没做，原因是它没有截止日期。解决办法是给它一个日历位置：九月正好是一个合适的窗口，原因是三件事同时发生——第三季度进入收尾、秋季求职与申请季开始、以及数据请求的响应窗口在下半年更容易被排上手。</p>
+  <p>这篇给出一个可以照做的九月清单：什么该在这个月做，每件事大概花多久，以及顺序为什么是这样。</p>
+</div>
+
+<h2>为什么是九月</h2>
+<p>清理旧内容最好的时机不是「有空的时候」，而是「外部有人要看的时候」。九月的特殊性在于，几类外部审视恰好集中在同一段时间。</p>
+<table>
+  <thead><tr><th>时间点</th><th>发生什么</th><th>和你的旧内容有什么关系</th></tr></thead>
+  <tbody>
+    <tr><td>九月上旬至中旬</td><td>秋季招聘与实习申请集中投递</td><td>招聘方在短时间内密集检索候选人姓名</td></tr>
+    <tr><td>九月中下旬</td><td>研究生与项目申请材料提交</td><td>评审方会看公开言论与学术相关表述</td></tr>
+    <tr><td>九月末</td><td>第三季度收尾与年度审查启动</td><td>团队与企业账号需要交一份可查的清理记录</td></tr>
+    <tr><td>十月起</td><td>新预算周期开始</td><td>想买工具或做正式审计，此时预算更容易批</td></tr>
+  </tbody>
+</table>
+<p>表里最有价值的一行是第三行。个人清理不需要留下记录，但如果你代表团队或企业账号，一份带日期的清理记录本身就是交代材料。</p>
+
+<h2>数据请求的时间账要提前算</h2>
+<p>向平台或数据持有方提出访问、删除或更正请求，通常有一个法律规定的响应窗口，常见的是四十五天左右。这个数字有两层含义。</p>
+<ul>
+  <li><strong>它计时从你提交开始。</strong>九月初提交，十月中旬前后才会拿到答复。如果你想在某个具体日期前完成，反推时间就知道该什么时候动手。</li>
+  <li><strong>它可以延长。</strong>请求复杂或数量较多时，被允许在合理范围内延期。所以不要按最短窗口安排计划。</li>
+</ul>
+<p>换算成行动：如果你希望在年末之前手上有一份完整的暴露清单，九月上旬就是提交请求的最后合适窗口。</p>
+
+<h2>九月要做的三件事</h2>
+<ol>
+  <li><strong>下载并本机解析数据归档。</strong>这是唯一不消耗任何外部配额、也不依赖别人配合的一步，随时可以做，做完就有清单。</li>
+  <li><strong>提交需要对方配合的请求。</strong>只有那些你无法自己处理的部分才需要走这一步，比如第三方持有的副本或已不在你控制下的账号数据。</li>
+  <li><strong>处理清单里最靠前的三类内容。</strong>不追求一次清完，按风险顺序做一批，留下批次的记录。</li>
+</ol>
+<p>这三步的耗时差别很大：第一步一个晚上，第二步取决于对方，第三步视清单长度分批进行。把第一步放在前一周、第二步放在第二周、第三步持续到月底，节奏最从容。</p>
+
+<h2>顺手做的两件小事</h2>
+<p>九月还有两件成本很低、效益不错的事。</p>
+<p>一是撤销不再使用的第三方授权。授权列表通常很长，逐个看一遍就能删掉一批早就不用的应用。这件事与旧内容无关，但它减少的是同一类风险：你不知道还在生效的入口。</p>
+<p>二是把清理结论写成一小段话。写下日期、处理了什么、还剩什么。半年后复查时，你不用重新判断一遍当时的取舍。</p>
+
+<h2>不适合在九月做的事</h2>
+<p>有一点需要说清楚：九月不是大规模改动的月份。换账号、换用户名、批量删除全部内容这类动作，风险在于会把长期积累的链接和索引一起打散，而且如果正好有人在这段时间检索你，大动作本身反而会引起注意。</p>
+<p>更稳的策略是做减法而不是做替换：删掉该删的，保留仍在产生价值的，把需要长期维护的部分挪到十月的新周期里再处理。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 帮你在一个晚上完成上面第一步：把 X 数据归档在本机解析，输出 0-100 健康评分和按风险排序的清单，全程本机处理、归档不上传、体检免费。可以从<a href="/">免费体检</a>开始，先看<a href="/blog/digital-footprint-audit-checklist-2026">体检清单怎么用</a>，再参考<a href="/blog/data-brokers-selling-your-tweets">第三方持有副本的处理方式</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Privacy cleanup is the kind of task people intend to do and never schedule, because it has no deadline. The fix is to give it a calendar slot, and September is a good one: three things happen at once. The third quarter closes, application and hiring season opens, and data requests filed now are easier to fit into the second half of the year.</p>
+  <p>What follows is a September checklist: what belongs in this month, roughly how long each step takes, and why the order is what it is.</p>
+</div>
+
+<h2>Why September</h2>
+<p>The best time to clean old content is not when you are free. It is when somebody else is looking. September is unusual because several kinds of external scrutiny land in the same few weeks.</p>
+<table>
+  <thead><tr><th>When</th><th>What happens</th><th>How it touches your old content</th></tr></thead>
+  <tbody>
+    <tr><td>Early to mid September</td><td>Fall hiring and internship applications cluster</td><td>Reviewers search candidate names in a narrow window</td></tr>
+    <tr><td>Mid to late September</td><td>Graduate and programme applications are submitted</td><td>Reviewers read public commentary and anything touching academic integrity</td></tr>
+    <tr><td>End of September</td><td>Q3 close, annual review begins</td><td>Team and company accounts need an auditable cleanup record</td></tr>
+    <tr><td>From October</td><td>A new budget cycle starts</td><td>Tools or a formal audit are easier to fund now than in December</td></tr>
+  </tbody>
+</table>
+<p>The third row carries the most weight. Personal cleanups need no paperwork, but if you speak for a team or company account, a dated record is itself part of the answer.</p>
+
+<h2>Do the arithmetic on request windows first</h2>
+<p>Requests to a platform or data holder for access, deletion or correction run against a statutory response window, commonly around forty-five days. That number has two consequences.</p>
+<ul>
+  <li><strong>The clock starts when you file.</strong> File in early September and an answer lands around mid October. Work backwards from any fixed date you care about and you will know when to start.</li>
+  <li><strong>It can be extended.</strong> Complex or numerous requests are permitted a reasonable extension, so do not plan against the shortest possible window.</li>
+</ul>
+<p>In practice: if you want a complete exposure inventory in hand before the end of the year, early September is the last comfortable filing window.</p>
+
+<h2>Three things to do in September</h2>
+<ol>
+  <li><strong>Download and parse your data archive locally.</strong> This is the only step that consumes no external quota and depends on nobody else's cooperation. Do it any time and you have your list.</li>
+  <li><strong>File the requests that need someone else.</strong> Only the parts you cannot handle yourself belong here, such as copies held by third parties or data in accounts you no longer control.</li>
+  <li><strong>Work the top three categories on the list.</strong> Do not aim to finish. Take one batch in risk order and keep a record of it.</li>
+</ol>
+<p>The three steps differ wildly in duration: one evening for the first, an open-ended wait for the second, and a batched effort for the third. Put step one in week one, step two in week two, and let step three run to the end of the month.</p>
+
+<h2>Two cheap extras</h2>
+<p>Two low-cost items are worth adding while you are here.</p>
+<p>First, revoke third-party grants you no longer use. The list is usually long, and a single pass removes a batch of dormant apps. This is unrelated to old posts, but it reduces the same class of risk: entry points still live that you have forgotten about.</p>
+<p>Second, write one short paragraph of conclusions. Date it, note what you handled and what remains. Six months later you will not have to re-litigate the same trade-offs.</p>
+
+<h2>What not to do in September</h2>
+<p>One caution. September is a poor month for large structural changes. Swapping accounts, renaming a handle, or deleting everything at once scatters years of accumulated links and index entries, and a large visible change can draw attention precisely when someone may be searching for you.</p>
+<p>The steadier strategy is subtraction rather than replacement: remove what should go, keep what still earns its place, and move anything requiring long-term maintenance into the new cycle in October.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop completes the first step above in one evening. It parses your X archive on your own machine and returns a 0-100 health score with a risk-ranked list. Everything runs locally, nothing is uploaded, and the check is free. Start with the <a href="/">free check</a>, read <a href="/blog/digital-footprint-audit-checklist-2026">how to use the audit checklist</a>, then see <a href="/blog/data-brokers-selling-your-tweets">how third-party copies are handled</a>.</p>`,
+    faq: [
+      {
+        q: '为什么说九月是处理旧内容的合适窗口？',
+        a: '因为外部审视集中在这个月：秋季招聘与申请季同时开始，第三季度收尾需要交代材料，而数据请求的响应窗口从提交日算起，九月初提交才能在年末前拿到结果。',
+        qEn: 'Why is September a good window for old content?',
+        aEn: 'Because external scrutiny clusters in this month: fall hiring and applications start together, the Q3 close calls for documentation, and request response clocks start at filing, so an early September filing is what returns an answer before year end.',
+      },
+      {
+        q: '数据请求一般多久有答复？',
+        a: '常见规定是四十五天左右的响应窗口，复杂或数量较多的请求还允许合理延长。所以计划时不要按最短窗口倒排，九月初提交是比较稳的时间点。',
+        qEn: 'How long do data requests take?',
+        aEn: 'A common window is around forty-five days, and complex or numerous requests are permitted a reasonable extension. Do not plan against the shortest window; filing in early September is the comfortable option.',
+      },
+      {
+        q: '九月适合做大规模账号调整吗？',
+        a: '不太适合。换账号、改用户名、清空全部内容这类动作会打散长期积累的链接与索引，而且改动本身容易引起注意。这个月更适合做减法：删该删的，保留仍有价值的。',
+        qEn: 'Is September a good month for big account changes?',
+        aEn: 'Not really. Swapping accounts, renaming a handle or deleting everything scatters accumulated links and indexing, and the change itself draws attention. Subtraction suits the month better: remove what should go and keep what still earns its place.',
+      },
+      {
+        q: '哪些事情必须有外部配合才能做？',
+        a: '第三方持有的副本、已不在你控制下的账号数据、以及被别人上传到别处的内容。其余部分，比如自己的时间线，下载归档后在本机解析就能自己处理完。',
+        qEn: 'Which tasks genuinely require someone else?',
+        aEn: 'Copies held by third parties, data in accounts you no longer control, and content others have republished elsewhere. Everything else, including your own timeline, can be handled locally once the archive is downloaded.',
+      },
+    ],
+  },
+  {
+    slug: 'bulk-delete-tweets-faq-2026',
+    title: '批量删除旧推文的高频五问：上限、耗时、搜索残留与误删',
+    titleEn: 'Bulk Deleting Old Tweets: Five Questions People Ask Most',
+    excerpt:
+      '批量删帖前最常被问到的五个问题：一次能删多少条、要花多长时间、删完之后还能不能被搜到、误删了能不能恢复、以及会不会影响账号本身的推荐。逐条给短答，附上容易踩的具体坑。',
+    excerptEn:
+      'The five questions that come up before any bulk deletion: how many posts you can clear at once, how long it takes, whether deleted posts still surface in search, whether a mistake can be undone, and whether deletion affects how the account is recommended. Short answers, plus the specific traps behind each.',
+    date: '2026-09-14',
+    updatedAt: '2026-09-14',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion Guide',
+    tags: ['批量删除', '常见问题', '删除上限', '误删恢复'],
+    tagsEn: ['bulk delete', 'FAQ', 'deletion limits', 'undo deletion'],
+    canonical: '/blog/bulk-delete-tweets-faq-2026',
+    content: `<div class="introduction">
+  <p>批量删帖之前，真正会拦住人的不是操作步骤，而是五个反复出现的问题。下面逐条给短答，每条后面附上最常见的踩坑方式。</p>
+</div>
+
+<h2>一、一次能删多少条？有没有硬上限</h2>
+<p>没有「总共只能删多少条」这种上限，限制出现在频率上：单位时间内的写操作次数有配额。总量上千条是可以完成的，只是需要分批。</p>
+<p>常见的坑是以为失败等于不能删，于是换工具重试，反而把频率堆得更高。正确反应是停下来等一会儿，再继续。</p>
+
+<h2>二、要花多长时间？</h2>
+<table>
+  <thead><tr><th>总量</th><th>大致节奏</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>几百条</td><td>一个晚上到两天</td><td>可以配合官方功能手动分批</td></tr>
+    <tr><td>一到三千条</td><td>数天，每天跑几批</td><td>建议用带进度记录的工具</td></tr>
+    <tr><td>三千条以上</td><td>一到两周</td><td>必须先出清单再筛，避免全删</td></tr>
+  </tbody>
+</table>
+<p>等待归档邮件的时间通常也要算进去，它可能占掉一整天。所以最好的启动时间是今晚。</p>
+
+<h2>三、删完之后还能被搜到吗？</h2>
+<p>分三种情况。平台内搜索：删除后不再出现。搜索引擎已收录的快照：要等一段时间重新抓取才会消失，可以通过站点工具请求重新抓取加速。被别人保存或截图的副本：不受影响。</p>
+<p>这也是为什么不能只依赖删除：删除解决的是「原始出处」，解决不了「已经流出去的内容」。</p>
+
+<h2>四、误删了能恢复吗？</h2>
+<p>通常不能。删除是单向操作，平台不提供回收站。所以删之前一定要有清单：先本机解析归档，明确要删的范围，再执行。</p>
+<p>另外一条实用经验是分批而不是一次到底。分三批删的人，即使第一批判断出错，也还有机会在第二批之前修正筛选条件。一次删完的人没有这个余地。</p>
+
+<h2>五、删除会影响账号吗？</h2>
+<p>影响的是内容，不是账号本身的存在。粉丝数、关注关系、账号状态都不因删帖改变，前提是删除过程没有触发异常行为判定。</p>
+<p>真正需要注意的是频率，不是数量。另外，如果你删掉的是曾经表现很好的内容，账号的历史数据会跟着变化，这一点和「被平台处罚」是两回事。</p>
+
+<h2>开始之前的三步检查</h2>
+<ol>
+  <li>下载数据归档，在本机解析一遍，拿到清单和分类。</li>
+  <li>确认删除范围：是按日期、按关键词，还是按风险类型。范围越具体，返工越少。</li>
+  <li>留一批不做。把没把握的条目放在最后，等前几批跑完再决定。</li>
+</ol>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>上面三步里的第一步，正是 digital-footprint-health.shop 做的事情：把 X 数据归档在本机解析，输出 0-100 健康评分与按风险排序的清单，归档不上传，体检免费。可以从<a href="/">免费体检</a>开始，先看<a href="/blog/what-is-digital-footprint-check">评分口径</a>，再跟<a href="/blog/how-to-delete-old-tweets-2026">删除实操</a>分批执行。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Before a bulk deletion, what actually stops people is not the procedure. It is five recurring questions. Short answers below, each with the trap that usually sits behind it.</p>
+</div>
+
+<h2>One: how many posts can I delete at once?</h2>
+<p>There is no lifetime ceiling on how many posts you can remove. The limit sits in frequency: a quota on write calls per unit of time. Clearing thousands of posts is achievable, just not in one push.</p>
+<p>The common trap is reading a failure as a refusal. People switch tools and retry, which piles on more frequency. The correct response is to pause, then continue.</p>
+
+<h2>Two: how long does it take?</h2>
+<table>
+  <thead><tr><th>Volume</th><th>Rough pace</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>A few hundred</td><td>One evening to two days</td><td>Native tools in manual batches are enough</td></tr>
+    <tr><td>One to three thousand</td><td>Several days of short runs</td><td>Use a tool that records progress</td></tr>
+    <tr><td>Over three thousand</td><td>One to two weeks</td><td>Build the list and filter first; never delete everything</td></tr>
+  </tbody>
+</table>
+<p>Waiting for the archive email counts too and can eat a full day. That is the argument for starting tonight.</p>
+
+<h2>Three: can deleted posts still be found?</h2>
+<p>Three separate cases. In-platform search: gone once deleted. Search engine caches of indexed pages: they clear after the next crawl, which a re-crawl request can speed up. Copies saved, reposted or screenshotted by others: unaffected.</p>
+<p>That is why deletion cannot be the only measure. It removes the original source, not what already left it.</p>
+<p>Practically, this means two reviews rather than one. Check your own account first, because that part is fully under your control. Then look outward at what others hold, and accept that this second pass is about reducing visibility rather than achieving zero.</p>
+
+<h2>Four: can I undo a deletion?</h2>
+<p>Usually not. Deletion is one-way and platforms provide no recycle bin. Which is why the list has to exist before anything is removed: parse the archive locally, decide the scope, then execute.</p>
+<p>A practical habit is batching instead of one pass. Someone deleting in three batches can still correct their filter after batch one. Someone who deletes everything at once has no such opening.</p>
+
+<h2>Five: does deletion affect my account?</h2>
+<p>It affects the content, not the existence of the account. Follower counts, follows and account status are unchanged by deleting posts, provided the run does not trip an anomaly check.</p>
+<p>Frequency is the real variable, not volume. One more note: removing posts that performed well changes your historical numbers, which is a different thing from being penalised.</p>
+
+<h2>Three checks before you start</h2>
+<ol>
+  <li>Download the archive and parse it locally to get the list and its categories.</li>
+  <li>Fix the scope: by date, by keyword, or by risk type. The more specific the scope, the less rework.</li>
+  <li>Leave one batch undone. Park the uncertain items at the end and decide after the earlier batches.</li>
+</ol>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Step one above is what digital-footprint-health.shop does. It parses your X archive on your own machine and returns a 0-100 health score with a risk-ranked list. Nothing is uploaded and the check is free. Start with the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">how the score is defined</a>, then follow <a href="/blog/how-to-delete-old-tweets-2026">the deletion walkthrough</a> in batches.</p>`,
+    faq: [
+      {
+        q: '删除旧推文有总量上限吗？',
+        a: '没有总量上限，限制在频率上：单位时间内的写操作次数有配额。上千条可以删完，只是要分几批跑。失败通常是频率撞线，不是工具做不到。',
+        qEn: 'Is there a total limit on deletions?',
+        aEn: 'No lifetime cap. The limit is frequency: a quota on write calls per unit of time. Thousands of posts can be cleared, just across several batches. Failures usually mean the frequency line, not an impossible task.',
+      },
+      {
+        q: '删完的推文还能被搜到吗？',
+        a: '平台内搜索不会再有。搜索引擎快照要等重新抓取才消失，可以主动请求重新抓取。被别人保存、转发或截图的部分不受删除影响，所以删帖只能解决原始出处的暴露。',
+        qEn: 'Can deleted posts still be found?',
+        aEn: 'In-platform search, no. Search engine caches clear on the next crawl, which you can request. Copies others saved, reposted or screenshotted are untouched, so deletion addresses the original source only.',
+      },
+      {
+        q: '误删之后能恢复吗？',
+        a: '一般不能，平台没有回收站。所以顺序必须是先出清单再删。分批执行还能留一次纠错机会：第一批跑完发现筛得过宽，第二批之前调整还来得及。',
+        qEn: 'Can a deletion be undone?',
+        aEn: 'Generally not; there is no recycle bin. That is why the list comes first. Batching also preserves one correction: if batch one proves the filter too broad, you can tighten it before batch two.',
+      },
+      {
+        q: '删除会掉粉或被限流吗？',
+        a: '不会因为「删帖」这个动作本身掉粉，关注关系与账号状态不受影响。要注意的是频率，短时间内堆大量请求才可能触发验证。另外删掉高表现的旧内容会改变历史数据，这不等于被处罚。',
+        qEn: 'Will deletion cost followers or trigger throttling?',
+        aEn: 'Not from the act of deleting. Follower relationships and account status are unaffected. Frequency is what matters, since a burst of requests can trigger verification. Removing high-performing posts changes your historical numbers, which is not the same as a penalty.',
+      },
+      {
+        q: '怎么知道有没有删干净？',
+        a: '用无痕窗口搜自己的昵称和常用关键词，看是否还有残留页面；同时对照删除前的清单核一遍未完成项。搜索引擎侧要留出重新抓取的时间，不要当天就下结论。',
+        qEn: 'How do I know the cleanup is complete?',
+        aEn: 'Search your handle and frequent keywords in a private window and check for leftover pages, then reconcile against the pre-deletion list. Allow time for re-crawling before judging search results; same-day checks prove nothing.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

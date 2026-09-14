@@ -8401,6 +8401,688 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'how-often-check-digital-footprint',
+    title: '数字足迹多久体检一次？按账号活跃度分层的频率指南',
+    titleEn: 'How Often Should You Run a Digital Footprint Check?',
+    excerpt:
+      '「多久体检一次」的答案不在日历上，而在你的内容池每月增加多少条。这篇按账号活跃度给出三档复查间隔、五个必须临时插一次体检的触发信号，并解释为什么体检和删除不该排在同一个计划里。',
+    excerptEn:
+      'The right interval for a digital footprint check is not on a calendar. It follows how fast your content pool grows. This guide gives three tiers by account activity, the five triggers that mean check now, and why checking and deleting belong on separate schedules.',
+    date: '2026-09-15',
+    updatedAt: '2026-09-15',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    categoryEn: 'Privacy Guide',
+    tags: ['数字足迹', '体检频率', '隐私审计', '自查节奏'],
+    tagsEn: ['digital footprint', 'check frequency', 'privacy audit', 'routine'],
+    canonical: '/blog/how-often-check-digital-footprint',
+    content: `<div class="introduction">
+  <p>「多久体检一次」这个问题，问的人和答的人通常都在看日历。但真正决定间隔的不是星期几，而是你的账号变化有多快。一个每周发四十条推、顺手带定位的人，和一个三年没登录的人，需要的复查节奏差好几倍。</p>
+  <p>下面是按活跃度分层的三档频率、五个必须临时插一次体检的触发信号，以及为什么体检和删除不该排进同一个计划。</p>
+</div>
+
+<h2>决定频率的是变化速度，不是日历</h2>
+<p>数字足迹体检本质是一次快照。它读取你的 X 数据归档，扫描手机号、邮箱、地址、定位和敏感话题，输出 0-100 健康评分和按风险排序的清单。快照会过期，而过期的速度和你的发帖速度成正比。</p>
+<p>算一下就清楚了。如果你平均每天发两条带生活细节的推文，一个月新增六十条素材。三个月不复查，新增的量已经超过多数人的首次清理规模。反过来，如果这一年你只是偶尔转推，复查一次也漏不掉什么。</p>
+<p>所以把问题换成「我的内容池每个月增加多少条」，答案基本会自己浮出来。这也是为什么照抄别人的「每周一次」没有意义：你们的内容池增速根本不是一个量级。</p>
+
+<h2>三档频率：按账号活跃度分</h2>
+<table>
+  <thead><tr><th>账号类型</th><th>月新增内容</th><th>建议体检间隔</th><th>主要风险点</th></tr></thead>
+  <tbody>
+    <tr><td>高频：日更、发带图日常、习惯性带定位</td><td>60 条以上</td><td>每月一次</td><td>新泄露的手机号、住址周边、出行行程</td></tr>
+    <tr><td>中频：每周几条，工作与生活混发</td><td>10 至 60 条</td><td>每季度一次</td><td>职业相关表述被旧语境误读</td></tr>
+    <tr><td>低频：偶尔转推或已停更</td><td>10 条以下</td><td>半年到一年一次</td><td>早年内容被重新翻出来</td></tr>
+    <tr><td>事件驱动型，与发帖量无关</td><td>不限</td><td>事件发生前两周补一次</td><td>搜索结果页的前几屏</td></tr>
+  </tbody>
+</table>
+<p>最后一行是例外项。有些节点和你的发帖量完全无关，但只要发生，就值得临时插一次体检，因为它改变的是别人检索你的方式，而不是你新增了多少内容。</p>
+
+<h2>五个该立刻体检的触发信号</h2>
+<p>周期表解决的是常规节奏，触发条件解决的是突发事件。以下五件事发生任何一件，都不必等到下一个周期：</p>
+<ol>
+  <li>你换了手机号、住址或者邮箱。旧号码出现在历史推文里的概率不低，而新号码一旦被关联，暴露面会翻倍。</li>
+  <li>你开始求职、接受背调，或者要上一个公开露面的场合。招聘方看的是搜索结果的前两屏，不是你的时间线。</li>
+  <li>你的账号被陌生人主动加好友或收到莫名其妙的私信。这通常意味着有人拿到了你的联系方式。</li>
+  <li>你被卷入一次争论或被大规模转发。旧内容被翻出来是这类事件的固定后续。</li>
+  <li>平台改了数据导出格式或隐私设置。归档结构变了，之前还没跑完的清单可能需要重跑一次。</li>
+</ol>
+<p>这五条的共同点是：它们都改变了「谁会看到你的历史内容」，而不是改变了内容本身。体检要跟的是可见性，不是发布量。</p>
+
+<h2>体检和删除是两件事，别排进同一张表</h2>
+<p>把体检和删除塞进同一个日历会带来一个实际麻烦：删除的节奏受接口配额约束，而体检不受。体检是纯本机读取，跑多少次都不消耗任何平台配额；删除要调用写操作，短时间堆量会撞限流。</p>
+<p>两者节奏不同，就不该用同一个周期去管。更合理的分工是：体检按活跃度定期跑，删除按清单分批执行。体检负责告诉你「现在有多少该处理的」，删除负责把那批处理掉。中间隔一段时间再体检，正好验证上一轮有没有删干净。</p>
+<p>顺序反过来会怎样？先删再体检，你会在没有清单的情况下凭印象操作，最后既不知道删了多少，也不知道还剩多少。这不是效率问题，是可验证性问题。</p>
+
+<h2>高频体检的三个误区</h2>
+<p>说完了该多久一次，也要说一下多查并不总是更好。</p>
+<p>第一个误区是「越勤越好」。体检输出的是同一批历史内容的反复评分，内容没变时结果基本不变。每天跑一次只会让你对同一组数字脱敏，反而降低了对真实变化的敏感度。</p>
+<p>第二个误区是拿体检代替具体动作。体检只是一张地图，地图不会替你走路。有人连续几个月每周看报告，风险清单一条没动，这种情况下的高频体检是在制造安全感。</p>
+<p>第三个误区是只看总分。0-100 的分数适合快速判断趋势，但处理决策要看的是分类清单。分数从 62 涨到 65 不说明问题解决了，要看新增的那几条高风险项是什么。</p>
+
+<h2>把体检排进日历的三个做法</h2>
+<p>既然频率定了，剩下的就是让它真的发生。</p>
+<p>做法一是绑定既有动作。别新开一个提醒，挂在已经在做的事后面：季度报税的时候体检一次，换季整理衣柜的时候体检一次。挂靠比新建更容易坚持。</p>
+<p>做法二是用「内容池增量」当开关。粗略估一下这个月发了多少条，超过你那一档的阈值就安排一次，不用记上次是哪天。</p>
+<p>做法三是留一次年度全身检查。不管前面哪一档，每年至少完整跑一次，把整份清单从头到尾过一遍，包括那些你之前判断为「先放着」的条目。风险会随时间变价，去年不急的东西今年可能已经很急。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的体检环节不消耗任何平台配额，也不上传数据，所以可以按你的节奏反复跑。登录后从<a href="/">免费体检</a>开始，先看<a href="/blog/what-is-digital-footprint-check">评分是怎么算出来的</a>，再参考<a href="/blog/footprint-health-score-meaning">分数区间的解读方式</a>判断这次结果值不值得动手。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Ask how often you should check your digital footprint and most answers reach for a calendar. The real driver is not the day of the week. It is how fast your account changes. Someone posting forty times a week with location tags on by habit needs a very different interval from someone who has not logged in since 2023.</p>
+  <p>What follows is a three-tier frequency table by activity level, five triggers that mean check now rather than at the next cycle, and the reason checking and deleting should not share a schedule.</p>
+</div>
+
+<h2>Frequency follows change, not the calendar</h2>
+<p>A digital footprint check is a snapshot. It reads your X data archive, scans for phone numbers, emails, addresses, locations and sensitive topics, and returns a 0-100 health score with a risk-ranked list. Snapshots expire, and they expire at roughly the rate you publish.</p>
+<p>Do the arithmetic. Two posts a day with ordinary life detail is sixty pieces of new material a month. Skip a quarter and the addition alone can exceed most people's first cleanup. If instead you barely reposted this year, one check will miss almost nothing.</p>
+<p>So reframe the question as "how many items does my pool gain per month" and the answer usually surfaces on its own. This is also why copying someone else's weekly routine fails. Your pools are not growing at the same speed.</p>
+
+<h2>Three tiers by account activity</h2>
+<table>
+  <thead><tr><th>Account type</th><th>New items per month</th><th>Suggested interval</th><th>Main exposure</th></tr></thead>
+  <tbody>
+    <tr><td>High: daily posting, photos, habitual location tags</td><td>60+</td><td>Monthly</td><td>New phone numbers, neighbourhood detail, travel plans</td></tr>
+    <tr><td>Medium: a few posts a week, work and life mixed</td><td>10 to 60</td><td>Quarterly</td><td>Career statements read out of their original context</td></tr>
+    <tr><td>Low: occasional reposts or dormant</td><td>Under 10</td><td>Every 6 to 12 months</td><td>Old material resurfacing</td></tr>
+    <tr><td>Event-driven, unrelated to volume</td><td>Any</td><td>Two weeks before the event</td><td>The first two screens of search results</td></tr>
+  </tbody>
+</table>
+<p>That last row is the exception. Some moments have nothing to do with how much you posted, but they change how other people search for you, which is a different variable entirely.</p>
+
+<h2>Five triggers that mean run it now</h2>
+<p>A periodic table covers routine rhythm. Triggers cover events. Any one of these five justifies a check outside your normal cycle:</p>
+<ol>
+  <li>You changed your phone number, address or email. Old digits appear in historical posts more often than people expect, and once a new number is associated the exposure roughly doubles.</li>
+  <li>You are job hunting, facing a background check, or about to appear publicly. Recruiters read the first two screens of search results, not your timeline.</li>
+  <li>Strangers started sending friend requests or odd direct messages. That usually means your contact details are circulating.</li>
+  <li>You were pulled into an argument or a post of yours travelled further than usual. Old material resurfacing is the standard second act.</li>
+  <li>The platform changed its export format or privacy settings. When the archive structure shifts, an unfinished list may need to be rebuilt.</li>
+</ol>
+<p>All five change who can see your history rather than changing the history itself. Checks should track visibility, not posting volume.</p>
+
+<h2>Checking and deleting are separate schedules</h2>
+<p>Putting both on one calendar creates a practical problem. Deletion is bound by platform rate limits. Checking is not. A check is a local read that costs no API quota at all, so you can run it as often as you like. Deletion spends write calls, and bursts get throttled.</p>
+<p>Different constraints, different schedules. Run checks on your activity tier and run deletions in batches off the list. The check tells you how much is queued. The deletion clears part of that queue. Then the next check verifies whether the previous batch actually finished.</p>
+<p>Reverse the order and you delete from memory instead of from a list. You will not know what you removed or what is left, which is a verifiability problem rather than an efficiency one.</p>
+
+<h2>Three myths about checking often</h2>
+<p>More is not automatically better.</p>
+<p>The first myth is that frequency equals safety. A check re-scores the same historical content, so if nothing was added the output barely moves. Running it daily mostly dulls your reaction to the number.</p>
+<p>The second is using the check as a substitute for action. A report is a map. Maps do not walk. People who review the same score every week while leaving the flagged items untouched are buying reassurance, not reducing exposure.</p>
+<p>The third is reading only the total. The 0-100 score is useful for trend, but decisions come from the category list. A move from 62 to 65 tells you nothing until you know what the newly added high-risk items are.</p>
+
+<h2>How to actually keep the schedule</h2>
+<p>Three approaches that survive contact with a real week.</p>
+<p>Attach the check to something you already do. Do not create a new reminder. Put it after filing quarterly taxes or when you rotate seasonal clothes. Piggybacking beats new habits.</p>
+<p>Use pool growth as the switch. Estimate how much you posted this month; if it crosses your tier's threshold, schedule a check. No need to remember the last date.</p>
+<p>Keep one annual full pass. Whatever your tier, run the whole list end to end once a year, including the items you previously decided to leave alone. Risk changes price over time, and last year's low priority is sometimes this year's urgent one.</p>
+
+<h2>What a check tells you, and what it cannot</h2>
+<p>Worth being precise about the boundaries, because people either over-trust or under-use the output.</p>
+<p>A check reads what is inside your archive. It scans every post you retained, flags phone numbers, emails, addresses, locations and sensitive topics, and ranks them. That is a solid picture of what you published and never removed.</p>
+<p>It does not see four things. Content you already deleted before exporting the archive lives on in search caches and in other people's saved copies, and the export never contained it. Reposts and quotes sit in other accounts. Data brokers hold records assembled elsewhere. Content on your other platforms is a separate pool entirely, with its own export and its own timeline.</p>
+<p>So treat the score as a floor rather than a ceiling. A clean report means your own archive is clean. It does not mean search results are clean, and it certainly does not mean the wider web is.</p>
+<p>There is a practical consequence here. If your exposure concern is about search results, the check is the first step rather than the last. Get the original posts handled, then allow re-crawl time before judging what surfaces.</p>
+
+<h2>How the interval shifts with your life, not your habits</h2>
+<p>The activity-tier table covers steady states. Life events reset the interval, and they usually do it without anyone noticing.</p>
+<p>Moving cities is the clearest case. Old posts full of the previous neighbourhood stay readable, and a new city introduces new place names you will start posting about. Both directions add exposure at once.</p>
+<p>Changing jobs does something similar with a different mechanism. Your old employer's name in a post from years ago reads differently once you are associated with a new one, and recruiters look at the whole record rather than the recent portion.</p>
+<p>Starting a business, appearing on camera, taking a management role or becoming a parent each raise the number of people who have a reason to search for you. None of these change how much you post. All of them change how much attention your history receives.</p>
+<p>A reasonable approach is to note the date of any such event and schedule a check two weeks ahead of it, then another one two months after. The first pass handles what is already there, and the second catches anything the change itself generated.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop runs the analysis step locally, so repeated checks spend no platform quota and nothing is uploaded. Start with the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">how the score is calculated</a>, then use <a href="/blog/footprint-health-score-meaning">what the score ranges mean</a> to decide whether this round is worth acting on.</p>`,
+    faq: [
+      {
+        q: '数字足迹体检多久做一次最合适？',
+        a: '看内容池增速，不看日历。高频日更、习惯带定位的账号每月一次；每周几条的中频账号每季度一次；偶尔转推或已停更的半年到一年一次。另外有五个触发信号（换手机号、求职背调、陌生人私信、被大规模转发、平台改导出格式）出现时，临时补一次。',
+        qEn: 'How often should I check my digital footprint?',
+        aEn: 'Follow how fast your pool grows, not the calendar. Daily posters who tag locations should check monthly; medium-frequency accounts quarterly; occasional reposters every six to twelve months. Separately, run an extra check whenever one of five triggers fires: a new phone number, a job search or background check, unexpected direct messages, an unusually wide reshare, or a platform export change.',
+      },
+      {
+        q: '体检跑得越勤越好吗？',
+        a: '不是。体检只是对同一批历史内容重新评分，内容没变结果基本不变，每天跑只会让你对数字脱敏。真正该提高频率的是处理动作，不是查看动作；有清单不处理的话，高频体检只是在制造安全感。',
+        qEn: 'Is checking more often always better?',
+        aEn: 'No. A check re-scores the same historical content, so the output hardly moves when nothing was added. Running it daily mostly desensitises you to the number. What should increase is the rate of action, not of viewing. Reviewing a list you never work through buys reassurance, not reduced exposure.',
+      },
+      {
+        q: '体检和删除可以排在同一个节奏里吗？',
+        a: '不建议。体检是纯本机读取，不消耗平台配额；删除要调用写操作，短时间堆量会撞限流。把体检按活跃度定期跑、删除按清单分批执行，再在下一轮体检时验证上一批是否真的处理干净，链条才闭合。',
+        qEn: 'Can checking and deleting share one schedule?',
+        aEn: 'Better not to. A check is a local read and costs no platform quota; deletion spends write calls and bursts get throttled. Run checks on your activity tier, batch deletions off the list, then let the next check verify whether the previous batch finished.',
+      },
+      {
+        q: '只看总分够用吗？',
+        a: '不够。0-100 分适合判断趋势，处理决策要看分类清单。分数小幅上升不说明问题解决了，关键在新增的高风险条目是什么。建议每次体检后只挑清单里排最前的那几条动手，比盯着总分更有用。',
+        qEn: 'Is the total score enough to act on?',
+        aEn: 'Not on its own. The 0-100 score is good for trend, while decisions come from the category list. A small rise does not mean anything was resolved; what matters is which high-risk items were newly added. Pick the top few entries on the list rather than watching the total.',
+      },
+    ],
+  },
+  {
+    slug: 'q3-2026-footprint-review',
+    title: '2026 第三季度数字足迹复盘：平台改了什么，你该改什么',
+    titleEn: 'Q3 2026 Digital Footprint Review: What Changed on the Platform and What to Fix',
+    excerpt:
+      '第三季度有三件事值得记下来：X 的归档导出结构有小幅调整，删除接口的配额计费口径收紧，搜索侧的移除申请流程基本没变。这篇按「变了什么、对谁有影响、要做什么」的格式过一遍，附一张季度自检对照表。',
+    excerptEn:
+      'Three things from Q3 are worth writing down: minor changes to the X archive export structure, tighter counting on deletion rate limits, and a search-removal process that barely moved. This review runs each through what changed, who is affected, and what to do, with a quarterly self-audit table.',
+    date: '2026-09-15',
+    updatedAt: '2026-09-15',
+    author: 'Digital Footprint Health Team',
+    category: '季度复盘',
+    categoryEn: 'Quarterly Review',
+    tags: ['季度复盘', '平台政策', '删除配额', '搜索结果移除'],
+    tagsEn: ['quarterly review', 'platform policy', 'deletion limits', 'search removal'],
+    canonical: '/blog/q3-2026-footprint-review',
+    content: `<div class="introduction">
+  <p>季度复盘的价值不在于汇总新闻，而在于分清哪些变化真的会改变你手上的动作。第三季度有不少热闹的讨论，但落到「你要不要为此改流程」这一层，答案只有三项是肯定的。</p>
+  <p>下面按「变了什么、对谁有影响、要做什么」的格式过一遍，最后给一张可以直接照着跑的自检表。</p>
+</div>
+
+<h2>变了什么：归档导出结构的微调</h2>
+<p>X 的数据归档这几季一直在小步调整，第三季度的变化集中在文件命名和分片方式上。对普通用户几乎无感，但对依赖归档做批量分析的人来说有个实际影响：旧脚本里写死的文件名匹配会失灵。</p>
+<p>如果你用的是图形化工具，这一项可以跳过。如果你自己写过解析脚本，建议把文件名匹配改成按内容特征识别，而不是按固定文件名。判断依据可以看文件里是否存在 tweets 数组这一级结构，而不是看文件叫什么。</p>
+
+<h2>变了什么：删除配额口径收紧</h2>
+<p>删除接口的调用频率上限一直在，但第三季度的执行明显更严格：同一时间窗口内累积的写请求更容易触发临时限制，限制解除的时间也比之前长一些。</p>
+<p>对谁有影响？清理量在几百条以内的账号基本感觉不到。清理量上千的账号会明显感到一轮跑不完，需要拆成多段执行，段与段之间留出间隔。</p>
+<p>要做什么？把「跑一轮看运气」改成「排好批次按节奏走」。具体做法是先拿到完整清单，再按风险从高到低分段，每段结束后记录进度，而不是一口气全推。</p>
+<table>
+  <thead><tr><th>清理规模</th><th>配额影响</th><th>建议批次</th><th>预期节奏</th></tr></thead>
+  <tbody>
+    <tr><td>100 条以内</td><td>基本无感</td><td>一到两段</td><td>当天可完成</td></tr>
+    <tr><td>100 至 500 条</td><td>晚段开始变慢</td><td>三到五段</td><td>两到三天</td></tr>
+    <tr><td>500 至 2000 条</td><td>容易触发临时限制</td><td>按天分段</td><td>一周左右</td></tr>
+    <tr><td>2000 条以上</td><td>必须主动控速</td><td>按周分段</td><td>按月规划</td></tr>
+  </tbody>
+</table>
+<p>这张表给的是量级感，具体数字会随平台策略浮动，不必当成硬指标。</p>
+
+<h2>变了什么：搜索结果移除流程基本没动</h2>
+<p>这一项恰好相反，第三季度没有实质变化。移除申请仍然按旧内容、过时内容、敏感信息这几类分开走，处理周期依旧偏长，通过率依旧取决于你能证明的具体危害，而不是情绪上的不适。</p>
+<p>要做什么？把期望值放对。删除是你能控制的动作，搜索结果移除是你只能申请的流程。正确的顺序是先把原始帖删掉，再考虑要不要逐条申请移除，而不是反过来。原始来源还在，申请基本没有意义。</p>
+<p>另外提醒一点：平台内删除和搜索引擎侧消失之间有天然的时间差。重新抓取需要时间，当天就去看结果并下结论，只会得到错误判断。给自己留出至少两周的观察窗口。</p>
+
+<h2>对谁影响最大：三类账号</h2>
+<p>把上面的变化交叉起来看，受影响最明显的是三类账号。</p>
+<p>自己写脚本做批量分析的人，要改的是文件名匹配逻辑。这一项是技术债，越早还越省事。</p>
+<p>历史内容上千条、打算一次性清完的人，要改的是执行节奏。把一次性大工程拆成按周推进的小批次，反而更可能走完。</p>
+<p>正在求职或者即将公开露面的人，要改的是优先级。你的时间窗口很短，先把搜索结果第一屏相关的内容处理掉，其余排在后面。</p>
+
+<h2>季度自检对照表</h2>
+<p>每季花二十分钟跑一遍下面五项，比收藏十篇文章有用。</p>
+<ol>
+  <li>重新导出一次数据归档，确认导出流程本身没卡在某个步骤上。</li>
+  <li>跑一次完整体检，把这次的分类清单和上一季度的对照，看新增项集中在哪一类。</li>
+  <li>核对上一批删除的清单，确认没有中途停下、留下半成品。</li>
+  <li>检查授权列表，把清理期间给出去的写权限收回或确认仍在使用。</li>
+  <li>更新一次关键词清单，把新出现的地址、号码、工作信息加进去。</li>
+</ol>
+<p>这五项里最容易漏掉的是第四项。授权是清理过程里的临时动作，清理结束不回撤，等于长期留着一把备用钥匙。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 适合季度复盘这种场景：导入归档后本机解析，输出 0-100 评分和按风险排序的清单，方便和上一季度的结果做对照。可以从<a href="/">免费体检</a>开始，先了解<a href="/blog/footprint-health-score-meaning">分数区间的含义</a>，清理节奏可参考<a href="/blog/how-to-delete-old-tweets-2026">分批删除的实操流程</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>A quarterly review is worth doing when it separates news from changes that alter what you actually do. Q3 produced plenty of discussion. At the level of "should I change my process", only three items earn a yes.</p>
+  <p>Each one below is covered as what changed, who it affects, and what to do, followed by a self-audit list you can run directly.</p>
+</div>
+
+<h2>What changed: minor shifts in the archive export</h2>
+<p>X has been adjusting its data export in small steps all year. Q3's changes centred on file naming and how content is split across files. Most users will not notice. Anyone running batch analysis will, because hard-coded filename matching breaks.</p>
+<p>If you use a graphical tool, skip this section. If you wrote your own parser, match on content shape instead of filename. Check for the presence of the tweets array level rather than looking for a specific file name.</p>
+
+<h2>What changed: deletion rate limits tightened</h2>
+<p>The write frequency ceiling for deletion has always existed, but Q3 enforced it more firmly. Accumulated write calls within a window trip temporary limits sooner, and the cooldown runs longer than before.</p>
+<p>Who feels it? Accounts deleting a few hundred items barely notice. Accounts deleting thousands will find a single run cannot finish, so work has to be split into segments with pauses between them.</p>
+<p>What to do? Replace "run it and hope" with planned batches. Build the full list first, order it by risk, then execute in segments and record progress after each one instead of pushing everything at once.</p>
+<table>
+  <thead><tr><th>Cleanup size</th><th>Rate-limit impact</th><th>Suggested batching</th><th>Expected pace</th></tr></thead>
+  <tbody>
+    <tr><td>Under 100</td><td>Negligible</td><td>One or two segments</td><td>Same day</td></tr>
+    <tr><td>100 to 500</td><td>Later segments slow down</td><td>Three to five segments</td><td>Two to three days</td></tr>
+    <tr><td>500 to 2,000</td><td>Temporary limits likely</td><td>Segment by day</td><td>About a week</td></tr>
+    <tr><td>Over 2,000</td><td>Pacing is mandatory</td><td>Segment by week</td><td>Plan in months</td></tr>
+  </tbody>
+</table>
+<p>Treat these as magnitudes, not fixed numbers. Platform policy moves and the exact thresholds move with it.</p>
+
+<h2>What changed: search removal barely moved</h2>
+<p>This one went the other way, with no material change in Q3. Removal requests still split into old content, outdated content and sensitive information. Processing still takes a while, and approval still depends on the specific harm you can demonstrate rather than how uncomfortable the page makes you feel.</p>
+<p>Calibrate expectations. Deletion is an action you control. Search removal is a process you can only request. Delete the original post first, then consider requesting removal, not the reverse. An application is meaningless while the source page is still live.</p>
+<p>One more timing note. In-platform deletion and disappearance from search engines are separated by a natural lag. Re-crawling takes time, so checking the same day and drawing conclusions only produces a wrong answer. Allow at least two weeks before you judge.</p>
+
+<h2>Who is affected most</h2>
+<p>Cross the three changes and three groups stand out.</p>
+<p>People running their own scripts need to fix filename matching. It is technical debt and cheaper to pay early.</p>
+<p>People with thousands of historical items who planned a single sweep need to change the pace. Splitting a large project into weekly batches is what actually gets finished.</p>
+<p>People job hunting or about to appear publicly need to change priority. The window is short, so handle the content surfacing on the first page of results and queue the rest.</p>
+
+<h2>Quarterly self-audit</h2>
+<p>Twenty minutes on these five items beats bookmarking ten articles.</p>
+<ol>
+  <li>Export the archive again to confirm the export flow itself is not stuck on a step.</li>
+  <li>Run a full check and compare the category list with last quarter's, noting where additions concentrate.</li>
+  <li>Reconcile the previous deletion batch, confirming nothing stopped halfway.</li>
+  <li>Review connected app permissions and revoke write grants you handed out during cleanup.</li>
+  <li>Refresh your keyword list with new addresses, numbers and employer details.</li>
+</ol>
+<p>Item four is the one people skip. Permissions are handed out as a temporary step, and leaving them in place is a spare key you forgot about.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop fits this review rhythm: import the archive, run the analysis locally, and compare a 0-100 score and risk-ranked list against last quarter. Start with the <a href="/">free check</a>, read <a href="/blog/footprint-health-score-meaning">what the score ranges mean</a>, and pace the work with <a href="/blog/how-to-delete-old-tweets-2026">the batched deletion walkthrough</a>.</p>`,
+    faq: [
+      {
+        q: '季度复盘和每周的日常检查有什么区别？',
+        a: '日常检查看的是有没有新增暴露，季度复盘看的是流程本身还成不成立。复盘要核对的五项是：导出流程是否顺畅、分类清单与上季的差异、上一批删除是否真的跑完、授权是否已收回、关键词清单是否更新。前者是执行，后者是校准。',
+        qEn: 'How is a quarterly review different from a routine check?',
+        aEn: 'A routine check asks whether new exposure appeared. A quarterly review asks whether the workflow still holds. The review reconciles five things: whether export works, how the category list differs from last quarter, whether the previous deletion batch actually finished, whether permissions were revoked, and whether the keyword list is current. One is execution, the other is calibration.',
+      },
+      {
+        q: '第三季度删除接口的配额为什么更容易触发？',
+        a: '写操作频率上限本身一直存在，第三季度的执行更严格：同一时间窗口内累积的写请求更容易触发临时限制，且解除时间更长。对清理量在几百条以内的账号影响很小，上千条的账号需要按天或按周拆段，段间留间隔。',
+        qEn: 'Why does the deletion rate limit trigger more easily this quarter?',
+        aEn: 'The write frequency ceiling always existed. Q3 enforced it more strictly, so accumulated write calls trip temporary limits sooner and the cooldown lasts longer. Accounts deleting under a few hundred items barely notice; accounts into the thousands need segmentation by day or week with pauses in between.',
+      },
+      {
+        q: '平台内删掉之后，搜索结果多久会消失？',
+        a: '没有固定天数，取决于搜索引擎重新抓取该页面的节奏。正确做法是把原始帖先删掉，再给搜索结果留出至少两周的观察期，必要时主动提交重新抓取。当天就去搜索并下结论，只会得到错误判断。',
+        qEn: 'After deleting on the platform, how long until search results clear?',
+        aEn: 'There is no fixed number; it depends on when the search engine re-crawls the page. Delete the original first, allow at least two weeks before judging, and request a re-crawl if needed. Checking the same day produces a wrong conclusion.',
+      },
+    ],
+  },
+  {
+    slug: 'store-x-archive-safely',
+    title: 'X 数据归档怎么存才安全？ZIP 落地后的六条规矩',
+    titleEn: 'How to Store Your X Data Archive Safely: Six Rules After the ZIP Lands',
+    excerpt:
+      '数据归档是一份完整的历史记录，里面常常包含你早就不记得的手机号、地址和定位。它躺在下载文件夹里就是一份未加密的个人档案。这篇给出 ZIP 落地后立刻要做的六件事，以及什么情况下该删掉归档本身。',
+    excerptEn:
+      'A data archive is a complete historical record, and it often contains phone numbers, addresses and location data you have long forgotten. Sitting in your Downloads folder, it is an unencrypted personal dossier. Here are six things to do the moment the ZIP lands, plus when to delete the archive itself.',
+    date: '2026-09-15',
+    updatedAt: '2026-09-15',
+    author: 'Digital Footprint Health Team',
+    category: '归档指南',
+    categoryEn: 'Archive Guide',
+    tags: ['数据归档', '本地存储', '加密', '隐私保护'],
+    tagsEn: ['data archive', 'local storage', 'encryption', 'privacy'],
+    canonical: '/blog/store-x-archive-safely',
+    content: `<div class="introduction">
+  <p>你申请数据归档的时候想的是「查一下自己发过什么」。但归档是一份完整的历史记录：每一条推文、每一次私信、每一个被你的内容带出来的手机号和地址。它落在下载文件夹里，就变成了一份没有加密的个人档案。</p>
+  <p>下面六条是 ZIP 落地之后立刻该做的事，顺序按风险从高到低。</p>
+</div>
+
+<h2>第一条：先确认文件完整，再考虑移动</h2>
+<p>归档通常是 ZIP 或压缩后的文件夹，可能用邮件附件形式送达。在动它之前先解压验证一次，确认能正常打开、能看到 tweets 数组这一级结构。</p>
+<p>这么做有两个原因。一是压缩文件在传输中损坏并不罕见，等到三个月后才发现打不开，只能重新申请，又要等一轮。二是解压出来的文件夹大小会让你对「这里面有多少东西」有个直观认识，而这个认识会影响后面几步怎么做。</p>
+
+<h2>第二条：不要留在下载文件夹</h2>
+<p>下载文件夹是全盘最容易被其他程序碰到的地方。浏览器同步、网盘客户端自动备份、清理软件扫描，都可能把它顺手带走。很多人把归档放进去，等于在不知情的情况下把它同步到了云上。</p>
+<p>可以移动到一个专门的位置，比如文档目录下单独建一个文件夹，然后检查这个位置是否在被同步的范围内。判断方法很直接：看这个目录有没有被网盘或备份工具标记。</p>
+
+<h2>第三条：加密，然后再谈存储</h2>
+<p>归档是明文。任何人拿到这个文件夹，就能读到你的完整历史。如果设备会离开你的控制（送修、转卖、丢失），加密是唯一的保护。</p>
+<p>三种可行做法，按强度排列：</p>
+<ul>
+  <li>全盘加密：最省事，覆盖所有文件，代价是设备性能略降。适合绝大多数人。</li>
+  <li>单文件加密压缩包：只保护归档本身，适合需要单独转移的场景。</li>
+  <li>密文容器：把归档放进一个加密卷，挂载后才可见。安全性最好，操作最重。</li>
+</ul>
+<p>密码要单独记在密码管理器里，不要和归档放在同一个位置。加密了但密码写在旁边的纸条上，等于没加密。</p>
+
+<h2>第四条：想清楚要不要备份</h2>
+<p>备份和隐私在这里是相互拉扯的。备份能防止误删和设备故障，但每一次多一份拷贝，就多一个可能泄露的地方。</p>
+<table>
+  <thead><tr><th>存储方式</th><th>防丢失</th><th>隐私风险</th><th>适合谁</th></tr></thead>
+  <tbody>
+    <tr><td>单设备本地，已加密</td><td>低</td><td>最低</td><td>清理完就打算删掉归档的人</td></tr>
+    <tr><td>本地加密 + 离线移动硬盘</td><td>中</td><td>低</td><td>需要留档但又不想上云的人</td></tr>
+    <tr><td>加密后上传网盘</td><td>高</td><td>中，取决于加密是否可靠</td><td>需要跨设备访问的人</td></tr>
+    <tr><td>未加密上传网盘</td><td>高</td><td>高</td><td>不建议</td></tr>
+  </tbody>
+</table>
+<p>如果只是做一次清理，最省心的选择其实是「清完就删」：本地加密保存，处理完总清单后连归档一起删掉。这样你既拿到了需要的信息，又没有留下长期资产。</p>
+
+<h2>第五条：注意归档里的时间戳和元数据</h2>
+<p>很多人以为归档只是正文的集合，其实它还包含时间戳、设备信息和互动记录。这些东西拼起来能还原出相当精确的生活轨迹，比单条推文本身敏感得多。</p>
+<p>所以分享或求助的时候要格外小心。把归档片段截图发到公开论坛问问题，等于把旅行时间表一起发出去。需要他人帮忙分析时，只截取必要的字段，把时间戳和设备信息裁掉。</p>
+
+<h2>第六条：设定一个清理日期</h2>
+<p>归档是有保质期的。放两年之后，里面的内容已经不能代表你现在的状态，留着它的收益在下降，而风险不变。</p>
+<p>建议在存下来的当天就给自己设一个期限，比如六个月后重新评估一次。到那时问三个问题：我还需要这份归档吗？它是加密的吗？如果现在丢掉，会损失什么？三个问题里有两个答不上来，就删掉。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 把归档的解析放在本机完成，文件不会离开你的设备，也不需要先上传。可以从<a href="/">免费体检</a>开始，先明白<a href="/blog/what-is-digital-footprint-check">体检到底扫描哪些内容</a>，导出与归档格式的差异可参考<a href="/blog/read-twitter-archive">归档内容怎么读</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>You requested your data archive to find out what you posted. What arrives is a complete historical record: every post, every direct message, and every phone number and address that your content carried along with it. Sitting in a Downloads folder, it is an unencrypted personal dossier.</p>
+  <p>Six things to do the moment the ZIP lands, ordered from highest risk to lowest.</p>
+</div>
+
+<h2>One: verify it opens before you move it</h2>
+<p>The archive usually arrives as a ZIP or compressed folder, sometimes as an email attachment. Extract and open it once before doing anything else, confirming you can see the structure down to the tweets array level.</p>
+<p>Two reasons. Compressed files get damaged in transit more often than people assume, and discovering that three months later means re-requesting and waiting another cycle. Second, the extracted size gives you a concrete sense of how much material is in there, which shapes how you handle the next steps.</p>
+
+<h2>Two: get it out of Downloads</h2>
+<p>Downloads is the folder most likely to be touched by something else. Browser sync, cloud backup clients and cleanup utilities all reach into it. People leave an archive there and unknowingly sync it to the cloud.</p>
+<p>Move it somewhere deliberate, such as a dedicated folder under Documents, then check whether that location falls inside any sync scope. The test is simple: look for a cloud or backup tool marker on the directory.</p>
+
+<h2>Three: encrypt before you talk about storage</h2>
+<p>The archive is plaintext. Anyone who obtains the folder reads your entire history. If the device ever leaves your control, whether for repair, resale or loss, encryption is the only protection.</p>
+<p>Three workable options, ordered by strength:</p>
+<ul>
+  <li>Full-disk encryption. Least effort, covers everything, costs a little performance. Right answer for most people.</li>
+  <li>Encrypted archive file. Protects just the archive, useful when it has to be transferred separately.</li>
+  <li>Encrypted container. Mount it to see the contents. Strongest protection, heaviest workflow.</li>
+</ul>
+<p>Store the passphrase in a password manager rather than beside the archive. Encryption with the password on a sticky note nearby is not encryption.</p>
+
+<h2>Four: decide whether to back it up</h2>
+<p>Backup and privacy pull against each other here. Backup protects against accidental deletion and hardware failure. Every additional copy is another place it can leak.</p>
+<table>
+  <thead><tr><th>Storage choice</th><th>Failure protection</th><th>Privacy risk</th><th>Fits whom</th></tr></thead>
+  <tbody>
+    <tr><td>Single device, encrypted</td><td>Low</td><td>Lowest</td><td>People who plan to delete the archive after cleanup</td></tr>
+    <tr><td>Local encrypted plus offline drive</td><td>Medium</td><td>Low</td><td>People who want a copy but not in the cloud</td></tr>
+    <tr><td>Encrypted upload to cloud storage</td><td>High</td><td>Medium, depends on the encryption</td><td>People needing cross-device access</td></tr>
+    <tr><td>Unencrypted upload to cloud storage</td><td>High</td><td>High</td><td>Not recommended</td></tr>
+  </tbody>
+</table>
+<p>If this is a one-time cleanup, the calmest option is delete when done: keep it encrypted locally, work through the full list, then remove the archive along with it. You got the information you needed without creating a long-term asset.</p>
+
+<h2>Five: watch the timestamps and metadata</h2>
+<p>People assume an archive is just a pile of post text. It also carries timestamps, device information and interaction records. Combined, those reconstruct a fairly precise life pattern, which is more sensitive than any single post.</p>
+<p>Be careful when sharing. Screenshotting archive fragments into a public forum to ask a question publishes your travel schedule along with it. When you need help analysing it, crop to the fields that matter and cut the timestamps and device details.</p>
+
+<h2>Six: set an expiry date</h2>
+<p>Archives have a shelf life. Two years on, the contents no longer represent you, so the value of keeping it declines while the risk stays flat.</p>
+<p>Set a review date the day you save it, say six months out. Then ask three questions: do I still need this, is it encrypted, and what would I lose by deleting it today? If two of the three have no clear answer, delete it.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop parses the archive on your own machine, so the file never leaves your device and there is nothing to upload first. Start with the <a href="/">free check</a>, see <a href="/blog/what-is-digital-footprint-check">what the check actually scans</a>, and read <a href="/blog/read-twitter-archive">how to read what is inside the archive</a>.</p>`,
+    faq: [
+      {
+        q: 'X 数据归档可以放在下载文件夹里吗？',
+        a: '不建议。下载文件夹是全盘最容易被其他程序碰到的地方，浏览器同步、网盘客户端自动备份、清理软件扫描都可能把它带走。很多人放在那里，等于在不知情的情况下把归档同步到了云端。建议移到文档目录下单独建的位置，并确认该位置不在任何同步范围内。',
+        qEn: 'Can I just leave the X archive in Downloads?',
+        aEn: 'Better not. Downloads is the folder most likely to be touched by other software: browser sync, cloud backup clients and cleanup tools all reach into it. Leaving it there often syncs the archive to the cloud without you knowing. Move it to a dedicated folder under Documents and confirm that location is outside any sync scope.',
+      },
+      {
+        q: '归档要不要加密？',
+        a: '要。归档是明文，拿到文件夹的人能读到你的完整历史，包括时间戳和设备信息。最省事的是全盘加密，覆盖所有文件；需要单独转移时用加密压缩包；安全性最高的是密文容器。密码务必存在密码管理器里，不要和归档放一起。',
+        qEn: 'Should the archive be encrypted?',
+        aEn: 'Yes. The archive is plaintext, and anyone who gets the folder reads your full history including timestamps and device details. Full-disk encryption is the least effort and covers everything. Use an encrypted archive file when it has to travel separately, or an encrypted container for the strongest protection. Keep the passphrase in a password manager, not next to the archive.',
+      },
+      {
+        q: '归档放在网盘上安全吗？',
+        a: '取决于是否加密。加密后上传可以防设备故障和误删，隐私风险取决于加密是否可靠；未加密上传风险很高，相当于把完整个人档案交给第三方托管。如果只是做一次清理，更省心的选择是本地加密保存、处理完清单后连归档一起删掉。',
+        qEn: 'Is cloud storage safe for the archive?',
+        aEn: 'It depends entirely on encryption. Encrypted uploads protect against device failure and accidental deletion, with residual risk tied to the strength of the encryption. Unencrypted uploads are high risk, effectively handing a full personal dossier to a third party. For a one-time cleanup, keeping it encrypted locally and deleting it after you finish the list is the calmer path.',
+      },
+    ],
+  },
+  {
+    slug: 'chinese-pinyin-name-tweet-cleanup',
+    title: '中文名、拼音和手机号：中文用户删推文最容易漏掉的三类检索',
+    titleEn: 'Chinese Names, Pinyin and Phone Numbers: Three Search Gaps Chinese Users Keep Missing',
+    excerpt:
+      '中文用户清理推文时，用英文关键词搜一遍往往觉得已经干净了。但中文姓名在推文里可能以汉字、全拼、首字母缩写三种形态出现，手机号会被拆成区号和号码两段写，真正漏掉的内容几乎都在这三类检索的缝隙里。',
+    excerptEn:
+      'Chinese-speaking users often finish an English keyword sweep and assume the cleanup is done. But a Chinese name can appear as characters, full pinyin or initials, and phone numbers get split across a country code and a number. What survives a cleanup lives almost entirely in those gaps.',
+    date: '2026-09-15',
+    updatedAt: '2026-09-15',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    categoryEn: 'Chinese Market',
+    tags: ['中文检索', '拼音', '手机号泄露', '长尾词'],
+    tagsEn: ['Chinese search', 'pinyin', 'phone number exposure', 'long-tail'],
+    canonical: '/blog/chinese-pinyin-name-tweet-cleanup',
+    content: `<div class="introduction">
+  <p>很多中文用户第一次清理推文，用的是英文关键词：自己的英文名、常用邮箱、@ 昵称。搜完觉得差不多了，就认定清理完成。这个判断的问题在于，中文姓名在推文里从来不只有一种写法。</p>
+  <p>真正被漏掉的内容，几乎都集中在三类检索的缝隙里：姓名的多种形态、被拆开写的手机号、以及用中文表述但用了英文词才能搜到的话题。下面逐个说。</p>
+</div>
+
+<h2>第一类：中文姓名的三种形态</h2>
+<p>同一个名字，在推文里至少会以三种样子出现，而每一种都需要单独搜一遍：</p>
+<ul>
+  <li><b>汉字形态</b>：最直观，但如果你的名字是多音字或者生僻字，别人写的时候可能用别的字替代。</li>
+  <li><b>全拼形态</b>：Zhang Wei、Li Na 这类。问题在于写法极不统一：有人用空格分隔，有人连写，有人首字母大写，有人全小写。</li>
+  <li><b>首字母缩写</b>：ZW、LN 这类两三个字母的组合。搜这类词噪音极大，但不搜就一定会漏。</li>
+</ul>
+<p>实际操作上，先把你名字的变体列全（全拼的各种大小写与分写方式、缩写、常见错写），再逐个搜。缩写那一条建议配合上下文词一起搜，比如缩写加上城市名或公司名，否则结果里全是无关内容。</p>
+
+<h2>第二类：被拆开写的手机号</h2>
+<p>手机号在推文里很少完整出现，更多时候是下面几种形式，而它们都躲得过标准规则：</p>
+<table>
+  <thead><tr><th>写法</th><th>例子形式</th><th>为什么标准搜索抓不到</th></tr></thead>
+  <tbody>
+    <tr><td>国家码与号码分开</td><td>86 加号码，中间有空格或无空格</td><td>按连续数字匹配的规则会在空格处断掉</td></tr>
+    <tr><td>分段书写</td><td>前三位与后八位之间插入短横或空格</td><td>整体串不连续，整串匹配失败</td></tr>
+    <tr><td>只写后八位</td><td>省略国家码与前导零</td><td>前缀缺失，前缀匹配规则命中不到</td></tr>
+    <tr><td>数字与文字混排</td><td>号码中夹入汉字或间隔符</td><td>字符集不连续，纯数字正则失效</td></tr>
+  </tbody>
+</table>
+<p>所以手机号检索引擎需要做归一化处理：把非数字字符去掉后再匹配。这一点在体检工具里体现为「先清洗再比对」，而不是拿原始文本直接跑正则。自己手工搜的时候，可以把号码拆成几段分别搜，比搜整串更容易命中。</p>
+
+<h2>第三类：中文表达、英文关键词搜不到的话题</h2>
+<p>这一类最隐蔽。有些内容是用中文写的，但你想起来要搜的时候，脑子里出现的是英文关键词。结果就是搜不到，然后误以为不存在。</p>
+<p>常见的错配场景包括：</p>
+<p>用英文搜「address」但推文里写的是「住址」或具体的小区名；用英文搜「boss」但推文里写的是公司全称或行业简称；用英文搜「married」但推文里用的是「领证」「结婚纪念日」这类说法。</p>
+<p>处理办法是准备一份双语对照的关键词清单，中文一侧按自己真实的说话习惯写，不要写书面语。你平时怎么称呼自己的城市、公司、家人，就用那些词去搜。</p>
+
+<h2>把三类检索串成一个可执行的顺序</h2>
+<p>三条线的优先级不一样，先做暴露面最大、成本最低的那一条。</p>
+<ol>
+  <li>先搜手机号。它一旦泄露后果最直接，而且归一化匹配能一次覆盖所有变体，效率最高。</li>
+  <li>再搜姓名变体。汉字、全拼各种写法、缩写加上下文词，这一轮会翻出不少旧内容。</li>
+  <li>最后补中文话题词。这一轮的收获通常集中在早年的个人生活内容，风险等级未必最高，但漏掉会一直留着。</li>
+</ol>
+<p>顺序反过来也能做完，只是前面的结果会影响你对后面范围的判断。先解决能明确定性的问题，剩下的才好分类。</p>
+
+<h2>一个容易忽略的细节：转推与引用</h2>
+<p>你删掉自己的原帖之后，别人转推或引用过的那部分内容，可能仍然留在他们的时间线上。这类残留不在你的账号里，删除动作也覆盖不到。</p>
+<p>处理方式取决于内容性质。涉及手机号、住址这类硬隐私的，值得单独联系对方或走平台举报流程；只是普通旧内容，通常不必追。把这一项列进清单里，比事后才发现要主动得多。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的手机号与姓名扫描做了归一化处理：先把号码里的空格、短横等间隔符清洗掉再比对，中文姓名则按汉字、全拼与缩写多形态匹配，避免出现「用英文关键词搜一遍就以为干净了」这种情况。可以从<a href="/">免费体检</a>开始，先看<a href="/blog/what-is-digital-footprint-check">扫描范围包含哪些项</a>，中文归档的读取方式见<a href="/blog/chinese-x-archive-guide">中文用户归档指南</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Ask most Chinese-speaking users how they cleaned up their posts and the answer starts with an English keyword sweep: their English name, their email, their handle. When that returns little, they conclude the job is done. The flaw is that a Chinese name never appears in only one form.</p>
+  <p>What survives a cleanup sits almost entirely in three gaps: the multiple written forms of a name, phone numbers split across characters, and topics written in Chinese that your English keywords never reach. Each gets its own section below.</p>
+</div>
+
+<h2>Gap one: a Chinese name has at least three forms</h2>
+<p>The same name shows up in at least three shapes, and each needs its own search:</p>
+<ul>
+  <li><b>Characters.</b> The obvious form, though people may substitute a homophone or a simpler character when the original is rare or has multiple readings.</li>
+  <li><b>Full pinyin.</b> As in Zhang Wei or Li Na. The problem is that spacing and capitalisation are wildly inconsistent. Some people add a space, some run it together, some capitalise both parts, some use all lowercase.</li>
+  <li><b>Initials.</b> Two or three letters like ZW or LN. Searching these produces heavy noise, but skipping them guarantees a miss.</li>
+</ul>
+<p>Write the full variant list first, including every spacing and capitalisation of the pinyin, the initials and common misspellings, then search each one. For initials, pair them with a context word such as a city or employer, otherwise the results are almost entirely irrelevant.</p>
+
+<h2>Gap two: phone numbers written in pieces</h2>
+<p>A phone number rarely appears whole in a post. The usual shapes are below, and every one of them defeats a standard pattern match:</p>
+<table>
+  <thead><tr><th>How it is written</th><th>Typical shape</th><th>Why plain search misses it</th></tr></thead>
+  <tbody>
+    <tr><td>Country code separated</td><td>86 plus the number, with or without a space</td><td>Digit-matching rules break at the space</td></tr>
+    <tr><td>Segmented</td><td>A hyphen or space between the first three digits and the rest</td><td>The string is no longer contiguous, so whole-string matching fails</td></tr>
+    <tr><td>Truncated</td><td>Only the last eight digits, no country code or leading zero</td><td>The prefix is gone, so prefix matching finds nothing</td></tr>
+    <tr><td>Digits and text mixed</td><td>Characters or separators inserted inside the number</td><td>The character set is no longer numeric, so a digits-only regex fails</td></tr>
+  </tbody>
+</table>
+<p>Phone detection therefore has to normalise: strip non-digit characters first, then compare. In a checking tool that shows up as clean-then-match rather than running a regex over raw text. Searching by hand, split the number into segments and search each, which hits far more often than searching the whole string.</p>
+
+<h2>Gap three: written in Chinese, unsearchable in English</h2>
+<p>This one is the quietest. Some content is written in Chinese, but when you sit down to search for it, the keyword that comes to mind is English. You find nothing and assume nothing is there.</p>
+<p>Common mismatches: searching "address" when the post says the district or a specific housing block; searching "boss" when the post names the employer or the industry shorthand; searching "married" when the post uses the local expressions for registering a marriage or an anniversary.</p>
+<p>The fix is a bilingual keyword list where the Chinese side uses how you actually talk, not written register. Whatever you call your city, employer or family members day to day is what you should search.</p>
+
+<h2>Running the three gaps as one sequence</h2>
+<p>The three lines do not carry equal priority. Start where exposure is highest and cost is lowest.</p>
+<ol>
+  <li>Search phone numbers first. A leak here has the most direct consequences, and normalised matching covers all variants in one pass.</li>
+  <li>Then search name variants: characters, pinyin spellings, initials plus a context word. This round usually surfaces older material.</li>
+  <li>Finish with the Chinese topic words. These tend to be early personal posts, not always the highest risk, but a miss here stays missed.</li>
+</ol>
+<p>Working in the opposite order also finishes, but earlier results shape how you scope the later rounds. Resolve what can be classified unambiguously first, and the rest becomes easier to sort.</p>
+
+<h2>One detail people forget: reposts and quotes</h2>
+<p>Delete your own post and the copies other people reposted or quoted may still sit on their timelines. Those copies are not in your account, so no deletion action reaches them.</p>
+<p>What to do depends on the content. Hard identifiers like phone numbers and addresses are worth a direct message or a platform report. Ordinary old posts usually do not justify the chase. Putting this item on the list up front is far better than discovering it afterwards.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop normalises before it compares: separators inside phone numbers are stripped ahead of matching, and Chinese names are matched across characters, pinyin and initials, so an English keyword sweep does not create the illusion of being clean. Start with the <a href="/">free check</a>, see <a href="/blog/what-is-digital-footprint-check">what the scan covers</a>, and read <a href="/blog/chinese-x-archive-guide">the archive guide for Chinese-language accounts</a>.</p>`,
+    faq: [
+      {
+        q: '为什么用英文关键词搜完还是漏内容？',
+        a: '因为中文姓名至少以三种形态出现：汉字、全拼（且有多种大小写与分写写法）、首字母缩写。英文关键词只能命中其中一部分。正确做法是先把姓名变体列全，再逐类搜，缩写类需要搭配城市名或公司名等上下文词才能降低噪音。',
+        qEn: 'Why do I still miss content after an English keyword sweep?',
+        aEn: 'Because a Chinese name appears in at least three forms: characters, full pinyin with inconsistent spacing and capitalisation, and initials. English keywords only reach part of that. List every variant first, then search each type. For initials, pair them with context such as a city or employer to cut the noise.',
+      },
+      {
+        q: '手机号被拆开写就搜不到了吗？',
+        a: '用整串搜确实会漏。常见写法有国家码与号码分开、分段加短横或空格、只写后八位、数字中夹入汉字。解决办法是先归一化再匹配：把非数字字符去掉后比对。手工搜的时候把号码拆成几段分别搜，比搜整串命中率高得多。',
+        qEn: 'Does a split phone number become unsearchable?',
+        aEn: 'Searching the whole string does miss it. Common shapes are a separated country code, a hyphen or space between segments, a truncated form with only the last eight digits, and digits with characters mixed in. The fix is normalising before matching: strip non-digit characters, then compare. By hand, search the number in segments rather than as one string.',
+      },
+      {
+        q: '中文话题词该怎么整理？',
+        a: '按自己真实的说话习惯写，不要写书面语。你平时怎么称呼自己的城市、公司、家人就用那些词。另外准备一份中英对照，避免出现「用英文词搜中文内容」的错配，比如用 address 搜而推文里写的是小区名，用 boss 搜而推文里写的是公司全称。',
+        qEn: 'How should I build the Chinese topic keyword list?',
+        aEn: 'Write it the way you actually speak, not in written register. Use whatever you call your city, employer and family day to day. Keep a bilingual mapping alongside it to avoid the mismatch of searching English words against Chinese content: querying "address" while the post names a housing block, or "boss" while the post names the employer outright.',
+      },
+      {
+        q: '删掉原帖之后，别人的转推还在怎么办？',
+        a: '转推和引用属于他人的内容，你的删除动作覆盖不到。处理分两种：涉及手机号、住址这类硬隐私的，值得单独联系对方或走平台举报；普通旧内容一般不必追。把这一项提前列进清单，比事后才发现主动得多。',
+        qEn: 'What about other people reposting the post I deleted?',
+        aEn: 'Reposts and quotes belong to other accounts and no deletion action of yours reaches them. Split the response: hard identifiers such as phone numbers and addresses justify a direct message or platform report, while ordinary old posts rarely warrant the effort. Listing this up front beats discovering it afterwards.',
+      },
+    ],
+  },
+  {
+    slug: '30-day-footprint-habit-plan',
+    title: '30 天数字足迹习惯计划：把清理拆成每天十分钟',
+    titleEn: 'A 30-Day Digital Footprint Habit Plan: Ten Minutes a Day',
+    excerpt:
+      '大多数清理计划失败不是因为难，而是因为一开始就想一次做完。这份 30 天计划把动作拆到每天十分钟，前十天只做测量和分类，中间十天跑删除，最后十天建立复查和防护习惯。',
+    excerptEn:
+      'Most cleanup plans fail not because the work is hard but because the first session tries to finish everything. This 30-day plan splits the work into ten minutes a day: the first ten days measure and classify, the middle ten run deletions, the final ten build a routine and a guard against recurrence.',
+    date: '2026-09-15',
+    updatedAt: '2026-09-15',
+    author: 'Digital Footprint Health Team',
+    category: '数字习惯',
+    categoryEn: 'Digital Habits',
+    tags: ['习惯养成', '清理计划', '数字极简', '隐私防护'],
+    tagsEn: ['habit building', 'cleanup plan', 'digital minimalism', 'privacy hygiene'],
+    canonical: '/blog/30-day-footprint-habit-plan',
+    content: `<div class="introduction">
+  <p>多数清理计划死在第三步，不是因为难，而是因为第一步就想把全部做完。一个周末连删几百条，撞上接口限制，进度条卡在半路，之后就再也没打开过。</p>
+  <p>换个拆法会容易很多：每天十分钟，按三十天推进。前十天只做测量和分类，完全不删任何东西；中间十天跑删除；最后十天用来建立复查节奏和防护习惯。下面按周说。</p>
+</div>
+
+<h2>第 1 到 10 天：只测量，不动手</h2>
+<p>这十天的目标只有一个：把「我要删什么」变成一份清单。这一阶段不需要任何写权限，也不消耗平台配额，所以可以放心反复跑。</p>
+<p>具体安排上，第一到三天用来导出并读取数据归档，先弄清楚里面有多少条内容、分布在哪些年份。第四到七天跑一次完整体检，把风险分类结果整理成表：手机号、邮箱、地址、定位、敏感话题各有多少条。第八到十天把清单按风险从高到低排序，并且标注哪些是「必须处理」、哪些是「可处理可不处理」。</p>
+<p>这十天里最常见的冲动是「既然都看到了，顺手删几条」。建议忍住。分类没做完就动手，会让后面的清单失去参照，你不知道剩下的是原计划内的还是新发现的。</p>
+
+<h2>第 11 到 20 天：分批复删</h2>
+<p>拿到排序好的清单之后，删除就变成了执行问题。这一阶段的重点是控制节奏，而不是追求速度。</p>
+<table>
+  <thead><tr><th>天数</th><th>每天动作</th><th>时间</th><th>注意</th></tr></thead>
+  <tbody>
+    <tr><td>第 11 天</td><td>先删 20 条做试点，确认筛选条件没错</td><td>10 分钟</td><td>发现筛得过宽，此时改还来得及</td></tr>
+    <tr><td>第 12-15 天</td><td>每天处理高风险清单的固定份额</td><td>10 分钟</td><td>按风险不按年份</td></tr>
+    <tr><td>第 16-18 天</td><td>处理中风险条目</td><td>10 分钟</td><td>可以放宽筛选，一次多删</td></tr>
+    <tr><td>第 19-20 天</td><td>核对剩余条目，补漏</td><td>10 分钟</td><td>对照清单逐项确认</td></tr>
+  </tbody>
+</table>
+<p>第 11 天的试点很关键。清单再仔细也难免筛得过宽，先跑二十条的成本很低，但能避免一次性误删一大片。这个纠错窗口只在前几天存在。</p>
+<p>另外提醒一句：中途如果遇到平台提示或临时限制，停下来就好，第二天继续。这类限制是暂时的，硬推只会让账号出现异常提示。</p>
+
+<h2>第 21 到 30 天：把动作变成习惯</h2>
+<p>删除跑完之后最容易发生的反弹是「松一口气，然后什么都不管」。后十天要解决的就是这个。</p>
+<p>第 21 到 23 天做复查。用无痕窗口搜自己的昵称和常用关键词，看有没有残留页面。注意搜索结果需要重新抓取时间，别当天就下结论，这个阶段主要确认原始帖已经删掉。</p>
+<p>第 24 到 26 天做防护加固。检查账号的两步验证状态、登录设备列表、已授权的第三方应用。清理期间给出去的写权限应该在这一步收回。</p>
+<p>第 27 到 30 天建立日常习惯，每天只做一件事：发帖之前想一秒这条内容里有没有不该长期存在的信息。这个动作比事后清理便宜得多，也是整份计划里真正的收益所在。</p>
+
+<h2>为什么这个节奏比周末突击更容易成功</h2>
+<p>三个原因。</p>
+<p>一是单次投入低，撞上限制的概率小。删除的瓶颈在接口配额，分散到十天之后，每天的量远低于触发阈值。</p>
+<p>二是每十天有一个明确的阶段目标，进度可见。周末突击的问题是中途没有反馈点，一卡住就失去参照。</p>
+<p>三是动作被绑到了既有日常里，不依赖额外的意志力。十分钟可以塞进任何一天的空档，不需要专门腾出时间。</p>
+
+<h2>如果三十天没走完怎么办</h2>
+<p>这是正常情况，不用重开。判断标准很简单：清单还在，就接着从断点往下走；清单丢了，就回到第 4 天重新跑一次体检。</p>
+<p>真正该警惕的不是拖延，而是把清理当成一次性项目。数字足迹是持续变化的，任何一个「一次搞定」的期待都会在下一批新内容出现时失效。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 对应的是这个计划的前十天：导入归档后本机解析，输出 0-100 评分和按风险排序的清单，全程不上传、不调用写接口，所以这十天可以放心反复跑。可以从<a href="/">免费体检</a>开始，先理解<a href="/">评分与风险分类的含义</a>，删除节奏可参考<a href="/blog/how-to-delete-old-tweets-2026">分批执行流程</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Most cleanup plans die at step three, and not because the work is hard. It is because step one tries to finish everything. One long weekend, a few hundred deletions, a rate limit, a progress bar frozen halfway, and the file never gets opened again.</p>
+  <p>A different split works better: ten minutes a day across thirty days. The first ten days only measure and classify. The middle ten run deletions. The last ten build a review rhythm and a guard against recurrence.</p>
+</div>
+
+<h2>Days 1 to 10: measure only, change nothing</h2>
+<p>One goal for this stretch: turn "what should I delete" into a list. No write permissions are needed and no platform quota is spent, so you can run this phase repeatedly without cost.</p>
+<p>Days 1 to 3 go to exporting and reading the archive, establishing how many items exist and which years they cluster in. Days 4 to 7 run a full check and tabulate the risk categories: phone numbers, emails, addresses, locations, sensitive topics. Days 8 to 10 sort the list by risk and mark items as must-handle or optional.</p>
+<p>The urge you will feel during these ten days is to delete a few things while you are looking at them. Resist it. Acting before classification finishes strips the list of its reference point, and you lose track of what was planned versus what just turned up.</p>
+
+<h2>Days 11 to 20: delete in batches</h2>
+<p>With a ranked list in hand, deletion becomes an execution problem. The focus here is pacing, not speed.</p>
+<table>
+  <thead><tr><th>Days</th><th>Daily action</th><th>Time</th><th>Watch for</th></tr></thead>
+  <tbody>
+    <tr><td>Day 11</td><td>Delete 20 items as a pilot to confirm the filter is right</td><td>10 min</td><td>A too-broad filter is still fixable at this point</td></tr>
+    <tr><td>Days 12-15</td><td>A fixed share of the high-risk list each day</td><td>10 min</td><td>Work by risk, not by year</td></tr>
+    <tr><td>Days 16-18</td><td>Move to medium-risk items</td><td>10 min</td><td>Filters can loosen; larger batches are fine</td></tr>
+    <tr><td>Days 19-20</td><td>Reconcile what remains and fill gaps</td><td>10 min</td><td>Check item by item against the list</td></tr>
+  </tbody>
+</table>
+<p>Day 11 matters most. No list is perfect, and twenty deletions cost little while preventing a wide accidental sweep. That correction window only exists in the first few days.</p>
+<p>If a platform prompt or temporary limit appears, stop and resume the next day. The limits are temporary, and pushing through only produces account warnings.</p>
+
+<h2>Days 21 to 30: turn it into a habit</h2>
+<p>The most common relapse after the deletions finish is relief followed by neglect. The last ten days address exactly that.</p>
+<p>Days 21 to 23 are for verification. Search your handle and usual keywords in a private window and look for leftover pages. Search results need re-crawling time, so do not judge them the same day; what you are confirming here is that the original posts are gone.</p>
+<p>Days 24 to 26 harden the account. Check two-factor status, the signed-in device list, and connected third-party apps. Write permissions handed out during cleanup should be revoked at this step.</p>
+<p>Days 27 to 30 install the daily habit, one action only: before posting, spend a second checking whether this content contains anything that should not persist. That check is far cheaper than a later cleanup, and it is where the real return on the whole plan lives.</p>
+
+<h2>Why this pace beats a weekend blitz</h2>
+<p>Three reasons.</p>
+<p>Low per-session volume means a much smaller chance of hitting a limit. Deletion is bottlenecked by API quota, and spread across ten days the daily volume stays well under the threshold.</p>
+<p>Each ten-day block has a clear goal, so progress is visible. A weekend blitz offers no feedback points, and when it stalls there is nothing to measure against.</p>
+<p>The work is attached to existing routines instead of requiring extra willpower. Ten minutes fits into any day; it does not need a dedicated block.</p>
+
+<h2>What if thirty days is not enough</h2>
+<p>That is normal and does not mean starting over. The test is simple: if the list survives, resume from where you stopped. If the list is gone, go back to day 4 and run the check again.</p>
+<p>The thing to worry about is not delay. It is treating cleanup as a one-time project. A digital footprint keeps changing, and any expectation of "handled once and done" expires the moment the next batch of content appears.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop covers the first ten days of this plan: import the archive, run the analysis locally, and get a 0-100 score with a risk-ranked list. Nothing is uploaded and no write calls are made, so the phase can be repeated freely. Start with the <a href="/">free check</a>, read <a href="/blog/what-is-digital-footprint-check">how scoring and risk categories work</a>, then pace the work with <a href="/blog/how-to-delete-old-tweets-2026">the batched deletion flow</a>.</p>`,
+    faq: [
+      {
+        q: '为什么前十天一条都不删？',
+        a: '因为分类没做完就动手，后面的清单会失去参照，你分不清剩下的是原计划内的还是新发现的。而且删除要消耗接口配额，测量不消耗。先花十天把清单和优先级定下来，后面执行时才不会卡在半路。',
+        qEn: 'Why does the first ten days delete nothing?',
+        aEn: 'Because acting before classification finishes costs you the reference point: you can no longer tell planned items from newly discovered ones. Deletion also spends API quota while measurement spends none. Ten days establishing the list and its priority is what keeps execution from stalling later.',
+      },
+      {
+        q: '第 11 天的试点为什么重要？',
+        a: '清单再仔细也难免筛得过宽，先跑二十条的成本很低，但能避免一次性误删一大片。这个纠错窗口只在前几天存在，等删了几百条再发现条件错了，就没有便宜的补救办法了。',
+        qEn: 'Why does the day 11 pilot matter?',
+        aEn: 'No list is perfect. Twenty deletions cost almost nothing and prevent a wide accidental sweep. The correction window only exists in the first few days; discovering a bad filter after several hundred deletions leaves no cheap remedy.',
+      },
+      {
+        q: '三十天没走完算失败吗？',
+        a: '不算。判断标准是清单还在不在：清单在就接着往下走，清单丢了就回到第 4 天重跑一次体检。真正该警惕的是把清理当成一次性项目，数字足迹持续变化，任何「一次搞定」的期待都会在下一批新内容出现时失效。',
+        qEn: 'Is missing the thirty days a failure?',
+        aEn: 'No. The test is whether the list survived. If it did, resume from where you stopped; if not, go back to day 4 and re-run the check. What deserves attention is treating cleanup as a one-time project. A footprint keeps changing, and "done once" expires as soon as new content appears.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

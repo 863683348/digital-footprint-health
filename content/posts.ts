@@ -9083,6 +9083,751 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'delete-tweets-without-breaking-threads',
+    title: '删推文会连带删掉什么？线程、引用推文和回复的连锁反应',
+    titleEn: 'What Happens When You Delete a Tweet: Threads, Quotes and Replies',
+    excerpt:
+      '删除推文不是孤立动作。一条推文被删之后，同一条线程会断在半路，别人的引用会变成灰底空框，回复区会失去上下文。这份指南拆开讲连锁关系，附六种情况的实际结果对照表和一套按目标排列的删除顺序。',
+    excerptEn:
+      'Deleting a tweet is never an isolated action. The thread it belongs to breaks mid-way, quote tweets collapse into a grey placeholder, and replies lose their context. Here is what actually happens in each case, with a six-row comparison table and a deletion order that matches your goal.',
+    date: '2026-09-16',
+    updatedAt: '2026-09-16',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion How-to',
+    tags: ['删除推文', '线程断裂', '引用推文', '回复上下文', '删除副作用'],
+    tagsEn: ['tweet deletion', 'thread breakage', 'quote tweets', 'reply context', 'deletion side effects'],
+    canonical: '/blog/delete-tweets-without-breaking-threads',
+    content: `<div class="introduction">
+  <p>删除推文这个词容易让人以为动作是孤立的：点一下，少一条。实际不是。X 上的内容是一张互相引用的网，一条推文被删掉之后，它的上下文会跟着变化。</p>
+  <p>最常见的三种意外是：线程断在半路、引用推文变成灰底空框、回复区出现指向不存在内容的链接。这三种都不危险，但都不好看，而且线程断裂之后很难恢复原状，因为推文 ID 不会重现。</p>
+  <p>下面按连锁关系拆开讲，最后给一张对照表和一套按目标排列的删除顺序。</p>
+</div>
+
+<h2>删除的边界：真正消失的是什么</h2>
+<p>先明确一点：你在 X 上执行的删除，删掉的是这条推文本身，以及它作为独立页面的可访问性。它不会连带删除别人对这条推文的回复、引用或转发。</p>
+<p>别人的内容属于别人。这是平台设计的硬边界，任何第三方工具都跨不过去。所以「一键清除所有关于我的内容」在技术上做不到，能做到的只是把自己发出的那部分收回来。</p>
+<p>还有两个性质需要记住。删除是一次性动作，没有回收站，X 不提供撤销。删除后的推文 ID 也不会被复用，所以无法通过重新发布来补回原来的位置。少数情况下搜索结果会残留一段时间，那属于缓存没刷新，不是内容还在。</p>
+<p>顺带说一句，删除权限本身也是有限制的，历史内容超过一定数量就不能再按时间线批量处理，原因见<a href="/blog/why-can-you-only-delete-3200-tweets">为什么只能删最近 3200 条</a>。这条限制直接决定了你要先删什么。</p>
+
+<h2>线程中间那条被删之后</h2>
+<p>线程是删除副作用最明显的地方。一条五段的线程删掉第三段，结果是：</p>
+<ul>
+  <li>第一、二段仍然在线，读者读到这里就没了下文。</li>
+  <li>第四、五段也仍然在线，但失去了铺垫，读起来像突然开始。</li>
+  <li>线程阅读视图里会出现一个缺口，剩下四段不会被自动拼接起来。</li>
+</ul>
+<p>也就是说，删中间那条把一条完整叙述切成了两个残段，同时保留了断口。如果这条线程本身就是你想清掉的内容，删中间那段反而制造了更多半成品页面。</p>
+<p>更合理的做法是按线程整组处理：要么保留整条，要么从下往上依次删。整组删除不会留下断口，因为每一段都是单独消失的，不存在中间没了、两头还在的状态。</p>
+<p>还有一个容易被忽略的点。线程里如果包含你的手机号或地址，只删含有敏感信息的那一段是不够的。相邻段落里往往有能定位到你身份的背景，比如公司名、城市、时间线。这种时候建议整组处理，具体识别方法可参考<a href="/blog/phone-number-in-tweets-check">手机号与身份信息扫描</a>。</p>
+
+<h2>引用推文：别人的帖子里会留下什么</h2>
+<p>引用推文是别人把你这张贴出来再加一段评论。你删掉原帖之后，对方那条推文还在，但内嵌的原帖会显示成不可用状态，通常是一句提示加一个灰色框。几个实际影响：</p>
+<ul>
+  <li>对方的文字评论完整保留，所以批评性的引用不会因为你的删除而消失，反而可能显得没头没尾。</li>
+  <li>如果对方引用时写了一些你不想被挂出来的话，删除原帖解决不了，需要走平台举报流程。</li>
+  <li>灰底框会长期存在，等于给这条旧话题留了一个可见的指针。</li>
+</ul>
+<p>所以遇到被引用的情况，先判断你更在意哪一头。想减少自己的曝光，删除有效。想减少话题本身的留存，删除的作用很有限，因为对方的文字还在。这类话题型内容的处理思路与<a href="/blog/cancel-culture-101-old-tweets">旧推文被翻出来的应对方式</a>是同一套逻辑。</p>
+
+<h2>回复、转发和点赞的连锁反应</h2>
+<p>这一层最容易被高估。具体结果如下：</p>
+<ul>
+  <li>回复：别人回复你的推文，你删了原帖，回复本身不被删除，但会失去上下文。它们仍然留在回复者的账号下，随时可以被翻出来。</li>
+  <li>转发：别人转发你的推文，你删原帖，转发会从时间线上消失。这是少数会连带影响他人可见性的情况，因为转发本质上是原帖的引用。</li>
+  <li>点赞：点赞记录随原帖一起失效，属于纯后台数据，没有可见后果。</li>
+</ul>
+<p>转发会被连带这一点值得提前知道。如果你的一条旧帖被大量转发，删除它等于同时从这些人的时间线上撤下内容。多数情况下这是好事，但如果你之前正参与某个讨论，可能会被理解成在掩盖。</p>
+
+<h2>六种情况的实际结果对照表</h2>
+<table>
+  <thead><tr><th>你的操作</th><th>立即结果</th><th>对方的可见性</th><th>可恢复</th></tr></thead>
+  <tbody>
+    <tr><td>删除独立单条</td><td>内容与页面消失</td><td>不受影响</td><td>否</td></tr>
+    <tr><td>删除线程中间段</td><td>线程出现断口</td><td>不受影响</td><td>否</td></tr>
+    <tr><td>整组删除线程</td><td>整体消失，无断口</td><td>不受影响</td><td>否</td></tr>
+    <tr><td>删除被引用的原帖</td><td>原帖消失，引用框留灰底</td><td>对方评论保留</td><td>否</td></tr>
+    <tr><td>删除被转发的原帖</td><td>原帖消失，转发同步消失</td><td>转发者内容被撤下</td><td>否</td></tr>
+    <tr><td>删除被回复的原帖</td><td>原帖消失</td><td>回复保留但失去上下文</td><td>否</td></tr>
+  </tbody>
+</table>
+<p>表格里可恢复一列全是「否」，不是危言耸听。X 没有撤销机制，所有删除都应当按不可逆来规划。这也解释了为什么试跑比事后补救便宜得多，流程可参考<a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除操作流程</a>。</p>
+
+<h2>按目标选删除顺序</h2>
+<p>先把目标写清楚，顺序自然就出来了。三种常见目标的处理方式：</p>
+<ol>
+  <li>目标是降低隐私暴露：先处理含手机号、邮箱、地址、定位的条目，不看年份。这些条目通常分散在各处，先做风险分级再动手，做法见<a href="/blog/which-tweets-to-clean-by-risk">按风险分级清理</a>。</li>
+  <li>目标是清理某个时间段：按年份或日期区间整段处理，比逐条挑更省事，批量筛选方法见<a href="/blog/delete-tweets-by-year">按年份删除</a>。</li>
+  <li>目标是让某个话题消失：把相关线程整组标记，一次处理完，避免留下断口。</li>
+</ol>
+<p>动手之前有三步检查值得固定下来。一是把归档存好并确认里面有原始数据，见<a href="/blog/snapshot-archive-before-clean">清理前先存档</a>。二是范围试跑，先删一小批确认筛选条件没有过宽。三是把要保留的内容标出来，尤其是工作相关或有引用价值的帖子。</p>
+  <p>范围过宽是这类操作里代价最高的一种错误。删掉不该删的内容之后没有回头路，而多跑一次试跑的成本只有几分钟。</p>
+
+<h2>单条推文的六十秒判断路径</h2>
+<p>多数判断不需要框架，按顺序过五个问题就够。</p>
+<ol>
+  <li>这条推文属于某个线程吗？属于就整组处理或整组保留，不要动中间那条。</li>
+  <li>有人引用过它吗？有就先分清你更在意自己的曝光，还是话题的存续时间，这两者的处理方向是相反的。</li>
+  <li>它或者相邻推文里有没有仍在使用的信息，比如当前手机号、当前住址？有就优先处理，不要按年份排序。</li>
+  <li>它是否用在对你有利的地方，比如作品集链接、工作相关讨论、置顶参考？是就明确标为保留，避免试跑时被筛进去。</li>
+  <li>以上都不成立，就是可以放心删的条目。把这类集中起来放在最后跑，那时你更清楚还剩多少配额。</li>
+</ol>
+<p>前几十条过一遍会觉得慢，到第二十条时每个判断只要几秒。真正值钱的是第三个问题，它能抓住低风险帖子紧邻高风险帖子的情况，而这种相邻关系只看单条是看不出来的。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 在这件事上提供的是删除之前的判断依据：导入 X 数据归档后在本机解析，按风险类别标出每条推文，并把同一条线程、同一个话题的条目归到一组，便于整组处理而不是零散地删出断口。分析过程只读，不需要任何写权限。可以从<a href="/">免费体检</a>开始，删除节奏参考<a href="/blog/how-to-delete-old-tweets-2026">分批执行流程</a>，费用口径见<a href="/blog/tweet-deletion-cost">按条计费说明</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Delete a tweet sounds like an isolated action: one click, one fewer post. It is not. Content on X is a web of references, and removing one item changes the context around it.</p>
+  <p>The three surprises people hit most often are a thread that breaks mid-way, a quote tweet that collapses into a grey placeholder, and a reply thread that suddenly reads like it started in the middle of a sentence. None of them are dangerous. All of them are hard to undo, because tweet IDs are never reused.</p>
+  <p>What follows walks through each chain reaction, then gives a six-row comparison table and a deletion order that follows from your goal.</p>
+</div>
+
+<h2>The boundary of a deletion: what actually disappears</h2>
+<p>Start with the limit. Deleting a tweet removes that tweet and its availability as a standalone page. It does not remove other people's replies, quote tweets or retweets of it.</p>
+<p>Other people's content belongs to other people. That is a hard platform boundary and no third-party tool crosses it. A one-click purge of everything anyone ever said about you is not technically possible. What you can do is reclaim the part you published.</p>
+<p>Two more properties matter. Deletion is final. There is no recycle bin and no undo. Tweet IDs are not recycled either, so you cannot republish into the original position. Search results occasionally linger for a while after deletion, which is a caching delay rather than surviving content.</p>
+<p>Your own deletion permissions are also capped. Very old history cannot be processed in bulk from the timeline view, which is explained in <a href="/blog/why-can-you-only-delete-3200-tweets">why only the most recent 3,200 tweets can be deleted</a>. That cap determines what you clean first.</p>
+
+<h2>Deleting the middle post of a thread</h2>
+<p>Threads show deletion side effects most clearly. Remove post three of a five-post thread and here is what you get:</p>
+<ul>
+  <li>Posts one and two stay online, reading as though they trail off.</li>
+  <li>Posts four and five stay online too, but with no setup, so they read like they begin abruptly.</li>
+  <li>The thread reader view shows a gap. The remaining four posts are not stitched together automatically.</li>
+</ul>
+<p>Removing a middle post cuts one continuous narrative into two fragments while leaving the seam visible. If the thread as a whole is what you wanted gone, deleting only the middle makes things worse by creating more half-finished pages.</p>
+<p>Treat a thread as one unit instead: keep the whole thing or delete it from the bottom up. A grouped deletion leaves no seam, because every post disappears independently rather than leaving a hole between survivors.</p>
+<p>One case that catches people out: if a thread contains your phone number or address, deleting only the post with the number is not sufficient. Neighbouring posts usually carry identifying context such as an employer, a city or a timeline. Scan the whole thread, and see <a href="/blog/phone-number-in-tweets-check">phone number and identity scanning</a> for how to spot the surrounding clues.</p>
+
+<h2>Quote tweets: what stays in someone else's post</h2>
+<p>A quote tweet is someone else displaying your post with a comment of their own. Delete the original and their post survives, with the embedded original shown as unavailable, usually a short notice inside a grey box. The practical effects:</p>
+<ul>
+  <li>Their written comment is fully preserved, so a critical quote does not disappear when you delete. It can end up looking unfinished instead.</li>
+  <li>If their comment is the part you object to, deleting your post does nothing. That path runs through the platform's reporting flow.</li>
+  <li>The grey box persists indefinitely, which is a visible pointer to the old topic.</li>
+</ul>
+<p>So when a post of yours has been quoted, decide which side you care about. To reduce your own exposure, deletion works. To reduce how long the topic survives, deletion does very little, because their text remains. The reasoning overlaps heavily with <a href="/blog/cancel-culture-101-old-tweets">handling old tweets that get resurfaced</a>.</p>
+
+<h2>Replies, retweets and likes</h2>
+<p>This layer gets overestimated more than any other. The actual outcomes:</p>
+<ul>
+  <li>Replies: when you delete a post people replied to, the replies are not deleted. They lose their context but remain on the repliers' accounts, where anyone can still find them.</li>
+  <li>Retweets: when you delete a post that was retweeted, the retweets vanish from timelines. This is one of the few cases where your action changes what other people see, because a retweet is a reference to the original.</li>
+  <li>Likes: the like records expire with the post. Pure backend data, no visible consequence.</li>
+</ul>
+<p>The retweet case is worth knowing in advance. If an old post of yours was retweeted widely, deleting it removes content from those timelines at the same moment. Usually that is welcome. If you were in the middle of a discussion, it can read as burying something.</p>
+
+<h2>Six situations, six outcomes</h2>
+<table>
+  <thead><tr><th>Your action</th><th>Immediate result</th><th>Other people's visibility</th><th>Reversible</th></tr></thead>
+  <tbody>
+    <tr><td>Delete a standalone post</td><td>Content and page gone</td><td>Unaffected</td><td>No</td></tr>
+    <tr><td>Delete a middle thread post</td><td>Thread shows a seam</td><td>Unaffected</td><td>No</td></tr>
+    <tr><td>Delete a whole thread</td><td>Gone, no seam</td><td>Unaffected</td><td>No</td></tr>
+    <tr><td>Delete a quoted original</td><td>Original gone, grey box remains</td><td>Their comment stays</td><td>No</td></tr>
+    <tr><td>Delete a retweeted original</td><td>Original and retweets gone</td><td>Retweeter's copy removed</td><td>No</td></tr>
+    <tr><td>Delete a replied-to original</td><td>Original gone</td><td>Replies stay, context lost</td><td>No</td></tr>
+  </tbody>
+</table>
+<p>Every cell in the reversible column says no, and that is not alarmism. X has no undo, so plan every deletion as permanent. It is also why a small pilot run beats cleanup afterwards, as covered in <a href="/blog/bulk-delete-old-tweets-walkthrough">the bulk deletion walkthrough</a>.</p>
+
+<h2>Choosing a deletion order from your goal</h2>
+<p>Write the goal down first and the order falls out of it. Three common goals:</p>
+<ol>
+  <li>Reducing privacy exposure: handle phone numbers, emails, addresses and locations first, ignoring the year. These items are scattered, so rank by risk before acting, as described in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk tier</a>.</li>
+  <li>Clearing a time range: process a year or a date range as a block, which is faster than picking items one by one. Bulk filtering is covered in <a href="/blog/delete-tweets-by-year">deleting by year</a>.</li>
+  <li>Making a topic disappear: tag every related thread and process them together, so no seams are left behind.</li>
+</ol>
+<p>Three checks are worth making routine before you start. Save the archive and confirm it holds the original data, as in <a href="/blog/snapshot-archive-before-clean">archiving before cleanup</a>. Run a small pilot batch to confirm the filter is not too broad. Mark what you intend to keep, especially work-related posts and anything others have cited.</p>
+  <p>A too-broad filter is the most expensive mistake available here. There is no way back once the wrong posts are gone, and a pilot run costs a few minutes.</p>
+
+<h2>A 60-second decision path for a single post</h2>
+<p>Most calls do not need a framework. Run this sequence and you will land in the right place almost every time.</p>
+<ol>
+  <li>Is this post part of a thread? If so, close the whole thread or leave it entirely alone. Do not operate on the middle.</li>
+  <li>Has anyone quoted it? If so, decide whether you care more about your own exposure or the topic's lifespan. Those two pull in opposite directions.</li>
+  <li>Does the post, or a neighbour, contain data still in use, such as a current phone number or address? If so, handle it now rather than by year.</li>
+  <li>Is it cited somewhere that works in your favour, a portfolio link, a work discussion, a pinned reference? If so, mark it as protected before you start.</li>
+  <li>If none of the above applies, it is a free deletion. Collect these and run them last, when you know how much quota remains.</li>
+</ol>
+<p>Working through the first few dozen feels slow, and by the twentieth each call takes seconds. The value sits in question three, which catches the cases where a low-risk post sits directly beside a high-risk one, a relationship that is invisible when you look at single posts in isolation.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop provides the diagnosis that should come before any deletion. Import your X data archive and it parses locally, labels each tweet by risk category, and groups posts that belong to the same thread or topic so you can handle them as a unit instead of leaving seams behind. The analysis is read-only and needs no write permissions. Start with a <a href="/">free footprint check</a>, follow <a href="/blog/how-to-delete-old-tweets-2026">the batched deletion walkthrough</a> for pacing, and check <a href="/blog/tweet-deletion-cost">per-tweet pricing</a> for the cost model.</p>`,
+    faq: [
+      {
+        q: '删推文会连别人的回复一起删掉吗？',
+        a: '不会。删除只作用于你自己发出的那条推文，别人的回复仍然保留在对方账号下，只是失去了原帖这个上下文。转发是例外：转发本质上是原帖的引用，原帖删除后转发会从时间线上消失。',
+        qEn: "Does deleting a tweet remove other people's replies?",
+        aEn: "No. Deletion only affects the post you published. Replies remain on their authors' accounts and simply lose the original as context. Retweets are the exception: a retweet references the original, so it disappears from timelines when the original goes.",
+      },
+      {
+        q: '删掉线程中间的一条会怎样？',
+        a: '线程会出现一个缺口，前后的推文仍然在线但读起来不连贯。建议按线程整组处理，要么全留要么全删，避免留下半成品页面。',
+        qEn: 'What happens if I delete the middle post of a thread?',
+        aEn: 'The thread shows a gap. The posts before and after stay online but no longer read as one piece. Treat a thread as a unit instead: keep it whole or delete it entirely.',
+      },
+      {
+        q: '删除被引用的推文能消除对方那条引用吗？',
+        a: '不能。对方的文字评论完整保留，只有内嵌的原帖会变成一个灰底不可用提示。要处理对方的文字内容，需要走平台举报流程。',
+        qEn: 'If I delete a quoted tweet, does the quote tweet disappear?',
+        aEn: 'No. Their written comment stays intact and only the embedded original turns into a grey unavailable notice. If the comment itself is the problem, that goes through platform reporting.',
+      },
+      {
+        q: '删除之后能恢复吗？',
+        a: '不能。X 没有回收站或撤销功能，删除是即时且不可逆的。推文 ID 也不会被复用，所以重新发布无法补回原来的位置。操作前建议先跑一小批试删确认筛选条件。',
+        qEn: 'Can a deleted tweet be restored?',
+        aEn: 'No. X has no recycle bin and no undo; deletion is immediate and permanent. Tweet IDs are not reused either, so republishing cannot restore the original position. Run a small pilot batch first to confirm your filter.',
+      },
+      {
+        q: '线程里有敏感信息，只删那一条够吗？',
+        a: '通常不够。相邻推文往往带有公司名、城市或时间线等可用于定位身份的背景信息。建议把整条线程一起处理，并用扫描结果确认周边段落是否也含风险内容。',
+        qEn: 'If a thread contains sensitive data, is deleting that one post enough?',
+        aEn: 'Usually not. Neighbouring posts tend to carry identifying context such as an employer, a city or a timeline. Handle the whole thread and use a scan to check whether the surrounding posts contain risk content too.',
+      },
+    ],
+  },
+  {
+    slug: 'tweet-deletion-speed-factors',
+    title: '删推文的速度到底受什么限制？四个变量和实际节奏',
+    titleEn: 'What Actually Limits How Fast You Can Delete Tweets',
+    excerpt:
+      '删除速度的瓶颈不在你的网络，也不在电脑性能，而在平台侧的四个变量：单次批量上限、时间窗口配额、写入接口限流和账号状态。弄清这四个变量之后，才能算出一次大规模清理需要几天。',
+    excerptEn:
+      'The bottleneck on deletion speed is not your connection or your machine. It comes from four variables on the platform side: per-batch caps, rolling quotas, write-endpoint rate limits, and account state. Understand those four and you can estimate how many days a large cleanup will take.',
+    date: '2026-09-16',
+    updatedAt: '2026-09-16',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    categoryEn: 'Deletion How-to',
+    tags: ['删除速度', '批量删除', '接口限流', '删除配额'],
+    tagsEn: ['deletion speed', 'bulk deletion', 'rate limits', 'deletion quota'],
+    canonical: '/blog/tweet-deletion-speed-factors',
+    content: `<div class="introduction">
+  <p>很多人第一次跑大规模清理时会误判瓶颈。以为网速慢，换到更快的网络；以为电脑弱，换一台机器。结果速率一点没变，因为限制根本不在本地。</p>
+  <p>删除速度由平台侧的四个变量决定。把这四个变量看清楚，你就能在动手之前算出一个大致工期，而不是删到一半才发现要分好几天。</p>
+</div>
+
+<h2>变量一：单次批量的上限</h2>
+<p>任何删除操作都是按批提交的。一批能带多少条，取决于客户端实现和平台接受的请求体大小。批越小，请求数越多，撞上限流的概率越高；批越大，单次失败的代价越大，出错时要重来的条目也越多。</p>
+<p>实践中的平衡点是先跑小批确认筛选条件正确，再逐步放大到稳定值。这个值在不同账号、不同时间可能不一样，所以固定一个数字写死在流程里并不合适。</p>
+
+<h2>变量二：时间窗口内的配额</h2>
+<p>平台对写入类操作按时间窗口计数，超出窗口就拒绝。这一点和浏览器里手动点击删除是同一套规则，第三方工具没有任何豁免。</p>
+<p>窗口配额带来的实际后果是：一天之内能删的总量有上限，超过之后无论怎么重试都不会通过。这也解释了为什么一次清理一千条往往要跨天完成，而不是一个下午解决。</p>
+<p>还有一个容易混淆的地方。以前的时间线批量删除与现在的接口删除适用不同的限制，历史条目的处理方式可参考<a href="/blog/why-can-you-only-delete-3200-tweets">为什么只能删最近 3200 条</a>。</p>
+
+<h2>变量三：写入接口的限流表现</h2>
+<p>限流不一定表现为明确的报错。常见的三种信号是：</p>
+<ul>
+  <li>直接返回限流错误，这种情况最好处理，客户端一般会退避重试。</li>
+  <li>请求看似成功但条数没有减少，属于被静默丢弃，需要靠删除后的核对发现。</li>
+  <li>连续几次成功后速率骤降，说明你正好走完了窗口配额，剩下的时间只能等。</li>
+</ul>
+<p>第三种最容易被误解成账号异常。判断方法是隔一段时间再跑一小批，如果恢复正常，那就是配额问题而不是账号问题。技术细节可参考<a href="/blog/x-api-rate-limits-deletion">删除与接口限流的关系</a>。</p>
+
+<h2>变量四：账号状态与内容特征</h2>
+<p>同样的操作在不同账号上速度可能不同。影响因素包括账号的历史状态、此前是否有过违规记录、以及内容本身是否被其他用户大量引用。</p>
+<p>被大量转发的旧帖在删除时会顺带影响转发链路，处理时间通常更长。含媒体文件的条目也比纯文本条目更慢，因为要连带清理附件。</p>
+
+<h2>算一次实际的工期</h2>
+<table>
+  <thead><tr><th>目标规模</th><th>建议每日量</th><th>预计天数</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>50 条以内</td><td>一次跑完</td><td>当天</td><td>先跑试删确认条件</td></tr>
+    <tr><td>50 到 300 条</td><td>100 到 150 条</td><td>2 到 3 天</td><td>按风险排序，先高后低</td></tr>
+    <tr><td>300 到 1000 条</td><td>150 到 250 条</td><td>4 到 7 天</td><td>每天固定时段跑，避开高峰</td></tr>
+    <tr><td>1000 条以上</td><td>200 条左右</td><td>一周以上</td><td>优先处理含隐私信息的条目</td></tr>
+  </tbody>
+</table>
+<p>表格里的数字是节奏建议，不是保证值。真正的把握来自每天的核对：跑完之后对比前一天的剩余数量，如果减少量低于预期，说明当天撞上了配额，第二天把量调低。</p>
+
+<h2>中途中断了怎么办</h2>
+<p>中断是常态，不是失败。处理方式取决于你是按清单跑还是按条件跑。</p>
+<p>按清单跑的情况下，把已完成的条目打勾，第二天从断点继续。按条件跑的情况下，用已完成的范围收窄条件，例如把日期区间从起点往后推。两种方式都不需要重新分析一遍数据，前提是你保留了完整的风险清单，这也是<a href="/blog/snapshot-archive-before-clean">先存档再清理</a>的价值所在。</p>
+<p>需要避免的做法是中断后换一套筛选条件重开。这样会产生重叠和遗漏，两次的清单都对不上，很难判断到底删了什么。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的作用是把工期估算变成可执行的分批清单：本机解析 X 数据归档之后，按风险等级把条目排序并分组，你按组推进，每组完成就打勾，中断后从断点继续，不需要重新分析。分析只读，删除按条计费且支持暂停与恢复。可以从<a href="/">免费体检</a>开始，暂停与恢复机制见<a href="/blog/pause-resume-refund-deletion">中断续跑说明</a>，计价方式见<a href="/blog/tweet-deletion-cost">按条计费</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Most people misdiagnose the bottleneck the first time they run a large cleanup. Slow network, so they switch connections. Weak machine, so they switch computers. Throughput does not move, because the limit was never on their side.</p>
+  <p>Deletion speed comes down to four variables on the platform side. Read them once and you can estimate the schedule before you start, instead of discovering halfway through that the job will take a week.</p>
+</div>
+
+<h2>Variable one: the per-batch cap</h2>
+<p>Every deletion runs in batches. How many items a batch can carry depends on the client implementation and the request size the platform accepts. Smaller batches mean more requests and more chances to hit a limit. Larger batches mean a single failure costs more, and more items have to be redone when something goes wrong.</p>
+<p>The practical balance is a small pilot batch to confirm the filter, then a gradual increase to a stable size. That size differs between accounts and over time, so hard-coding one number into your routine is a mistake.</p>
+
+<h2>Variable two: the rolling quota</h2>
+<p>Write operations are counted against a rolling window, and requests past the window are refused. The same rule applies to clicking delete in the browser. No third-party tool is exempt.</p>
+<p>The consequence is a ceiling on how much you can remove in a day. Once you pass it, retrying achieves nothing. That is why a thousand-item cleanup usually spans several days rather than one afternoon.</p>
+<p>One thing to keep separate: legacy timeline bulk deletion and current API deletion answer to different limits. The treatment of very old items is covered in <a href="/blog/why-can-you-only-delete-3200-tweets">why only the most recent 3,200 tweets can be deleted</a>.</p>
+
+<h2>Variable three: how rate limits actually show up</h2>
+<p>A rate limit does not always announce itself. Three common signals:</p>
+<ul>
+  <li>An explicit throttle error. The easiest case, since most clients back off and retry.</li>
+  <li>Requests that appear to succeed while the count does not drop. These were silently dropped, and only a post-run comparison finds them.</li>
+  <li>A sharp drop in throughput after several good batches, which means you just exhausted the window. The rest of the window is waiting time.</li>
+</ul>
+<p>The third is most often mistaken for an account problem. Test by running a small batch later. If throughput recovers, it was the quota and not your account. Mechanics are covered in <a href="/blog/x-api-rate-limits-deletion">deletion and API rate limits</a>.</p>
+
+<h2>Variable four: account state and content shape</h2>
+<p>The same job runs at different speeds on different accounts. Account history, prior enforcement records, and whether your posts have been widely referenced all play a part.</p>
+<p>Heavily retweeted posts take longer because deleting them unwinds the retweet chain at the same time. Posts with media are slower than plain text as well, since attachments are cleaned up along with them.</p>
+
+<h2>Estimating a real schedule</h2>
+<table>
+  <thead><tr><th>Target size</th><th>Daily volume</th><th>Expected days</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Under 50</td><td>One run</td><td>Same day</td><td>Pilot first to confirm the filter</td></tr>
+    <tr><td>50 to 300</td><td>100 to 150</td><td>2 to 3</td><td>Work by risk, highest first</td></tr>
+    <tr><td>300 to 1,000</td><td>150 to 250</td><td>4 to 7</td><td>Fixed daily slot, avoid peak hours</td></tr>
+    <tr><td>Over 1,000</td><td>Around 200</td><td>A week or more</td><td>Prioritise items with private data</td></tr>
+  </tbody>
+</table>
+<p>Those numbers are pacing suggestions, not guarantees. The real signal comes from daily comparison: if the remaining count drops less than expected, you hit the quota that day, so lower the volume tomorrow.</p>
+
+<h2>When the run gets interrupted</h2>
+<p>Interruption is normal rather than a failure. What you do next depends on whether you were working from a list or from a filter.</p>
+<p>Working from a list, tick off what finished and resume at the break point the next day. Working from a filter, narrow the range instead, for example by pushing the start date forward past what already completed. Neither approach requires re-analysing the archive, provided you kept the full risk list. That is the payoff of <a href="/blog/snapshot-archive-before-clean">archiving before cleanup</a>.</p>
+<p>Avoid restarting with a different filter after an interruption. Filters that do not line up produce overlaps and gaps, and you lose the ability to say what was actually deleted.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop turns a schedule estimate into an executable list of batches. It parses your X data archive locally, ranks and groups items by risk tier, and you work through one group at a time, ticking each off and resuming at the break point after an interruption without re-parsing anything. Analysis is read-only, deletion is billed per tweet, and runs can be paused and resumed. Begin with a <a href="/">free footprint check</a>, read <a href="/blog/pause-resume-refund-deletion">how pause and resume work</a>, and see <a href="/blog/tweet-deletion-cost">per-tweet pricing</a>.</p>`,
+    faq: [
+      {
+        q: '为什么删了几百条之后就删不动了？',
+        a: '大概率是撞上了时间窗口配额。写入类操作在窗口内计数，超出后会被拒绝，重试也不会通过。等窗口过去再跑通常就恢复了。',
+        qEn: 'Why does deletion stall after a few hundred tweets?',
+        aEn: 'Most likely you hit the rolling window quota. Write operations are counted per window and refused beyond it, so retrying does not help. Waiting for the window to roll over usually restores throughput.',
+      },
+      {
+        q: '换更快的网络或更好的电脑能加快删除吗？',
+        a: '基本不能。瓶颈在平台侧的批量上限、窗口配额和接口限流，本地带宽与算力不构成限制。',
+        qEn: 'Will a faster connection or a better computer speed up deletion?',
+        aEn: 'Barely. The constraints are the per-batch cap, the rolling quota and the write rate limit. Local bandwidth and CPU are not the limiting factor.',
+      },
+      {
+        q: '一次清理一千条大概需要多久？',
+        a: '按经验通常需要 4 到 7 天，每天 150 到 250 条比较稳妥。优先处理含手机号、地址等隐私信息的条目，其余按风险降序推进。',
+        qEn: 'How long does a 1,000-tweet cleanup take?',
+        aEn: 'In practice, four to seven days at 150 to 250 per day. Handle items with phone numbers, addresses and similar private data first, then work down by risk.',
+      },
+      {
+        q: '删除中途断了，需要重新分析一遍吗？',
+        a: '不需要。保留完整风险清单的前提下，按清单续跑或把日期区间往后推即可。避免中断后换一套筛选条件重开，否则会产生重叠与遗漏。',
+        qEn: 'If a run is interrupted, do I have to re-analyse everything?',
+        aEn: 'No. With the risk list saved, resume from the break point or move the date range forward. Avoid restarting with a different filter, which creates overlaps and gaps.',
+      },
+    ],
+  },
+  {
+    slug: 'footprint-report-false-positives',
+    title: '体检报告误报了怎么办？五类假阳性和判断方法',
+    titleEn: 'When Your Footprint Report Flags Something Innocent',
+    excerpt:
+      '体检报告标出风险条目，不代表每一条都真的泄露了隐私。数字串可能是订单号，定位可能来自转发的新闻，邮箱可能是公开的工作邮箱。认清五类常见假阳性，能避免删掉本来不该删的内容。',
+    excerptEn:
+      'A flagged item in your footprint report is not proof that private data leaked. That digit string may be an order number, that location may come from a news post you retweeted, that email may be a public work address. Knowing the five common false positives keeps you from deleting things that should stay.',
+    date: '2026-09-16',
+    updatedAt: '2026-09-16',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    categoryEn: 'Check and Score',
+    tags: ['体检报告', '假阳性', '风险判断', '误报处理'],
+    tagsEn: ['footprint report', 'false positives', 'risk triage', 'flag review'],
+    canonical: '/blog/footprint-report-false-positives',
+    content: `<div class="introduction">
+  <p>第一次看到体检报告的人通常有两个反应：被标出的条目数量吓一跳，然后把标出的都当成必须删除的内容。</p>
+  <p>第二个反应值得停一下。扫描是按模式匹配的，它识别的是形状，不是意图。一串符合手机号格式的数字可能是订单号，一个地名可能出现在你转发的新闻里，一个邮箱可能是你故意公开的工作联系方式。</p>
+  <p>误报不会造成损失，但会带来两种成本：删掉不该删的内容，以及被大量无关条目拖慢真正的清理。下面把常见的五类假阳性过一遍。</p>
+</div>
+
+<h2>为什么体检会标出并非风险的内容</h2>
+<p>风险扫描的基本原理是规则匹配加权重打分。它回答的问题是这条内容像不像敏感信息，而不是这条内容是否真的造成了暴露。</p>
+<p>这个设计是刻意的。漏报比误报危险得多，一条真的泄露了住址的推文没被标出来，用户不会知道。所以扫描阈值设得偏宽松，把可疑的都收进来，由你来做最后的判断。</p>
+<p>理解这一点之后，报告的正确用法就清楚了：它是一份待核对的清单，不是一份执行指令。完整的评分构成见<a href="/blog/footprint-health-score-meaning">健康分数的计算口径</a>。</p>
+
+<h2>五类常见的假阳性</h2>
+<p>按出现频率排列，这五类占了绝大多数误报：</p>
+<ol>
+  <li>订单号、快递单号、活动编号。这类数字串长度和格式都接近手机号，尤其是十一位的编号。区别在于它通常紧跟在订单、包裹之类的语境词后面。</li>
+  <li>转发的新闻或他人内容。地名、机构名、他人姓名出现在转发里，扫描无法区分这是你的信息还是你转发的内容。</li>
+  <li>公开的商务联系方式。工作邮箱、公司地址、客服电话如果本来就是对外公开的，标出来不算问题，删掉反而影响业务联系。</li>
+  <li>引用与被引用的他人信息。你回复别人时带上的地址，或者别人在你帖子下的留言里出现的信息，归属并不是你。</li>
+  <li>泛指的地理词汇。某某路、某某区、某某大厦这类表述经常出现在比喻或玩笑里，没有定位价值。</li>
+</ol>
+
+<h2>怎么快速判断一条是不是误报</h2>
+<p>三条判断依据，按顺序看：</p>
+<table>
+  <thead><tr><th>判断依据</th><th>是误报的特征</th><th>是真风险的特征</th></tr></thead>
+  <tbody>
+    <tr><td>语境</td><td>紧邻订单、物流、活动等词</td><td>紧邻地址、配送、联系我等词</td></tr>
+    <tr><td>归属</td><td>出现在转发或他人回复中</td><td>由你本人主动发出</td></tr>
+    <tr><td>时效</td><td>指向已失效的旧信息</td><td>指向当前仍在使用的信息</td></tr>
+  </tbody>
+</table>
+<p>三条都指向误报，就可以放心跳过。有一条指向真风险，就按风险条目处理，不必纠结另外两条。判断的目的是防止漏掉真问题，而不是追求判定准确率。</p>
+
+<h2>误报会不会拉低我的健康分数</h2>
+<p>会有一点影响，但不构成问题。评分是按类别加权汇总的，个别误报会使分数略低于实际水平，通常在一到三分之间。</p>
+<p>更重要的是看结构而不是看总分。如果报告显示你的主要扣分集中在邮箱一类，而这个类别里大部分是公开的商务邮箱，那说明真实风险其实很低，分数偏低只是口径问题。类别分布可以在报告里逐项展开核对。</p>
+<p>反过来说，分数看起来不错也不代表安全。数量少但指向当前住址的两条记录，风险高于分散在别处的二十条历史订单号。分数是入口，判断在条目层。</p>
+
+<h2>怎么减少误报带来的工作量</h2>
+<p>三个做法能明显缩短核对时间。</p>
+<p>一是先按类别批量处理。同一类别里的误报通常有共同特征，例如订单号集中的年份、转发来源集中的话题。找出特征之后可以整批跳过。</p>
+<p>二是先处理高风险类别。含当前联系方式、住址、证件的条目优先，其余按类别推进。这样即使后面没做完，最要紧的部分已经处理了，排序思路见<a href="/blog/which-tweets-to-clean-by-risk">按风险分级清理</a>。</p>
+<p>三是保留判断记录。在清单上标注哪些判为误报、理由是什么。清理跨天进行时，第二天不需要重新判断一遍。这也是<a href="/blog/digital-footprint-audit-checklist-2026">体检清单的使用方式</a>里最省时的一步。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的体检报告按类别列出条目并提供上下文片段，就是为了让误报能被快速识别：每条标出所在的完整句式、发布时间和风险类别，你可以按类别成批核对而不是逐条重读原帖。解析全程在本机完成，不上传内容。可以从<a href="/">免费体检</a>开始，评分口径见<a href="/blog/digital-footprint-health-score">健康评分说明</a>，风险标签含义见<a href="/blog/risk-labels-explained">标签对照</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Two reactions are almost universal on a first footprint report. Alarm at the number of flagged items, then the assumption that everything flagged has to go.</p>
+  <p>The second reaction deserves a pause. Scanning works by pattern matching. It recognises shapes, not intent. A string that looks like a phone number may be an order reference, a place name may sit inside a news post you reshared, an email address may be the work contact you publish on purpose.</p>
+  <p>A false positive costs you nothing directly, but it carries two costs: deleting things that should stay, and slowing the real cleanup behind a pile of noise. Here are the five kinds you will see most.</p>
+</div>
+
+<h2>Why a check flags content that is not a risk</h2>
+<p>Risk scanning is rule matching plus weighted scoring. The question it answers is whether a piece of content resembles sensitive information, not whether it actually caused exposure.</p>
+<p>That design is deliberate. A miss is far more dangerous than a false alarm. If a post containing your home address is not flagged, you never learn about it. So the threshold leans permissive and collects anything suspicious, leaving the final call to you.</p>
+<p>That reframes what the report is for. It is a list to review, not a list of instructions. The scoring side is described in <a href="/blog/footprint-health-score-meaning">how the health score is calculated</a>.</p>
+
+<h2>The five kinds of false positive</h2>
+<p>Ordered by how often they appear, these five account for the large majority:</p>
+<ol>
+  <li>Order references, tracking numbers and event codes. These digit strings are close to phone numbers in length and format, particularly eleven-digit ones. The giveaway is the context word in front, usually order, parcel or booking.</li>
+  <li>Reshared news and other people's content. Place names, organisations and personal names inside a retweet are not yours. The scan cannot tell whose information it is reading.</li>
+  <li>Public business contact details. A work email, office address or support line that is meant to be public is not a leak. Deleting it can break the contact route you rely on.</li>
+  <li>Someone else's details inside a conversation. An address you included while replying to another person, or something a commenter left under your post, does not belong to you.</li>
+  <li>Generic geographic phrasing. Street names, districts and building names turn up in figures of speech and jokes with no locating value at all.</li>
+</ol>
+
+<h2>How to triage a single flag quickly</h2>
+<p>Three tests, applied in order:</p>
+<table>
+  <thead><tr><th>Test</th><th>Signs of a false positive</th><th>Signs of a real risk</th></tr></thead>
+  <tbody>
+    <tr><td>Context</td><td>Sits next to order, shipping, event words</td><td>Sits next to address, delivery, contact me</td></tr>
+    <tr><td>Ownership</td><td>Inside a retweet or someone's reply</td><td>Published by you directly</td></tr>
+    <tr><td>Currency</td><td>Points to information no longer valid</td><td>Points to information still in use</td></tr>
+  </tbody>
+</table>
+<p>If all three point to a false positive, skip it. If one points to a real risk, treat the item as a risk and stop deliberating. The goal is not triage accuracy for its own sake, it is not letting a real problem slip through.</p>
+
+<h2>Do false positives drag my score down</h2>
+<p>Slightly, and it does not matter much. Scoring weights categories and totals them, so a handful of false positives put the number a point or three below reality.</p>
+<p>Structure matters more than the total. If most of your deductions sit in the email category and most of those emails are public work addresses, your real exposure is low and the score is simply being read through a strict lens. The category breakdown can be expanded item by item in the report.</p>
+<p>The reverse also holds. A comfortable-looking score is not safety. Two records pointing at the address you live at now carry more risk than twenty historical order numbers scattered across old years. The score is the entrance, the item level is where the judgement happens.</p>
+
+<h2>Cutting the review workload</h2>
+<p>Three habits shorten triage noticeably.</p>
+<p>Work by category first. False positives in one category usually share a signature, such as a cluster of order numbers from the same year or reshared from the same topic. Spot the signature and skip the category in bulk.</p>
+<p>Handle high-risk categories first. Items with current contact details, addresses or identity documents come before everything else. If you do not finish, the important part is already done. The ordering logic is in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk tier</a>.</p>
+<p>Record your calls. Mark which items you judged harmless and why. On a cleanup that spans days, that note saves you from re-deciding the same items, and it is the step that saves the most time in <a href="/blog/digital-footprint-audit-checklist-2026">using an audit checklist</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop lists findings by category with surrounding context, precisely so false positives can be spotted quickly. Each item shows the full sentence it came from, its publication date and its risk category, which lets you clear whole categories at once instead of reopening posts one by one. Parsing runs entirely on your own device and nothing is uploaded. Start with a <a href="/">free footprint check</a>, read <a href="/blog/digital-footprint-health-score">how the health score works</a>, and check <a href="/blog/risk-labels-explained">what each risk label means</a>.</p>`,
+    faq: [
+      {
+        q: '体检报告标出的条目都必须删掉吗？',
+        a: '不需要。扫描按模式匹配，标出的是疑似敏感内容，需要你核对语境后判断。订单号、转发的他人信息、公开的商务邮箱都属于常见误报。',
+        qEn: 'Do I have to delete everything the report flags?',
+        aEn: 'No. The scan matches patterns and flags anything that resembles sensitive content, leaving the judgement to you. Order numbers, reshared third-party details and public business emails are all common false positives.',
+      },
+      {
+        q: '怎么最快判断一条是不是误报？',
+        a: '看三点：紧邻的语境词（订单还是地址）、归属（你本人发出还是转发/他人回复）、时效（指向旧信息还是当前仍在使用的信息）。三条都指向误报即可跳过。',
+        qEn: 'What is the fastest way to tell a false positive?',
+        aEn: 'Check three things: the adjacent context word (order or address), ownership (published by you or reshared), and currency (dead information or something still in use). If all three say harmless, skip it.',
+      },
+      {
+        q: '误报会让我的健康分数变低吗？',
+        a: '会略有影响，通常在 1 到 3 分之间。建议看类别分布而不是只看总分：如果扣分集中在公开商务邮箱一类，真实风险其实很低。',
+        qEn: 'Do false positives lower my health score?',
+        aEn: 'Slightly, usually by one to three points. Read the category breakdown rather than the total. If deductions cluster in public work emails, your real exposure is low.',
+      },
+      {
+        q: '分数高是不是就说明没问题？',
+        a: '不一定。分数不反映信息的时效性，两条指向当前住址的记录，风险高于二十条历史订单号。判断要落到条目层。',
+        qEn: 'Does a high score mean I am safe?',
+        aEn: 'Not necessarily. The score does not weigh how current the information is. Two records pointing at your present address carry more risk than twenty historical order numbers. Judgement belongs at the item level.',
+      },
+    ],
+  },
+  {
+    slug: 'digital-footprint-score-benchmarks',
+    title: '数字足迹分数多少算正常？按账号类型的参照区间',
+    titleEn: 'What Counts as a Normal Digital Footprint Score?',
+    excerpt:
+      '体检分数没有统一及格线。一个从不上传照片、只做技术讨论的账号，和一个每天发生活记录的账号，拿同一个分数并不能说明同一件事。这份对照表给出常见账号类型的参照区间，以及三个比分数更有用的指标。',
+    excerptEn:
+      'There is no universal pass mark for a footprint score. An account that posts only technical discussion and one that documents daily life every day can land on the same number while meaning completely different things. Here are reference ranges by account type, plus three metrics that beat the headline score.',
+    date: '2026-09-16',
+    updatedAt: '2026-09-16',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    categoryEn: 'Check and Score',
+    tags: ['健康评分', '分数对照', '账号类型', '评分解读'],
+    tagsEn: ['health score', 'score benchmarks', 'account types', 'score interpretation'],
+    canonical: '/blog/digital-footprint-score-benchmarks',
+    content: `<div class="introduction">
+  <p>拿到体检分数的人几乎都会问同一个问题：这个分数算好还是差。这个问题没有单一答案，因为分数的意义取决于你这个账号是干什么用的。</p>
+  <p>一个只做技术讨论、从不上传照片的账号拿到 72 分，和一个每天记录生活、有大量定位内容的账号拿到 72 分，指向的结论完全不同。前者可能偏高，因为技术账号的历史内容本来就少；后者可能偏低，因为 72 分对一个高频生活账号来说已经算克制。</p>
+  <p>所以先对号入座，再看下面的参照区间。</p>
+</div>
+
+<h2>分数没有统一及格线</h2>
+<p>评分模型的输入是你归档里的内容，输出是一个加权汇总值。它衡量的是暴露面的大小和集中度，不是你的安全意识。</p>
+<p>两个结构性因素会直接改变分数基准。一是发文总量，内容越多，出现敏感信息的概率越高。二是内容类型，含定位、图片、联系方式的帖子天然带更多风险特征。</p>
+<p>这意味着跨账号比较分数的意义有限，而纵向比较同一个账号在不同时间点的分数很有意义。算法构成见<a href="/blog/footprint-health-score-meaning">健康分数的计算口径</a>，这里只看怎么解读。</p>
+
+<h2>按账号类型的参照区间</h2>
+<table>
+  <thead><tr><th>账号类型</th><th>发文特征</th><th>常见区间</th><th>需要关注</th></tr></thead>
+  <tbody>
+    <tr><td>纯技术/行业讨论</td><td>长期只发观点，无图片定位</td><td>75 到 95</td><td>低于 70 通常意味着早期发过个人内容</td></tr>
+    <tr><td>半专业账号</td><td>工作内容为主，偶发生活分享</td><td>65 到 85</td><td>关注联系方式类条目的时效</td></tr>
+    <tr><td>个人生活账号</td><td>高频发帖，含照片与定位</td><td>50 到 75</td><td>住址与当前联系方式优先处理</td></tr>
+    <tr><td>早期重度使用</td><td>多年高频，内容跨度大</td><td>35 到 65</td><td>先按风险分级，不必追求全清</td></tr>
+    <tr><td>商业/品牌账号</td><td>对外公开联系方式与地址</td><td>60 到 80</td><td>公开信息不计入问题，看私人信息</td></tr>
+  </tbody>
+</table>
+<p>用这张表的方式是先定位自己的类型，再看分数偏离区间多远。落在区间内说明结构正常，偏离下沿才需要动作。</p>
+<p>有一点需要注意：商业账号的公开地址和客服电话本来就是对外信息，这类条目会被计入但不应视为问题。判断方式见<a href="/blog/footprint-report-false-positives">假阳性的判断方法</a>。</p>
+
+<h2>三个比分数更有用的指标</h2>
+<p>如果只看一个数字，很容易误判。下面三个指标解释性更强。</p>
+<ol>
+  <li>高风险条目的绝对数量。数量比分数直观，也直接决定工作量。三条含当前住址的记录，比总分低十分更值得马上处理。</li>
+  <li>类别集中度。风险集中在单一类别，比如全部是定位，通常有明确成因，处理起来更快。分散在五六个类别里，说明发文习惯需要整体调整。</li>
+  <li>信息时效。指向仍然有效的信息，风险高于同数量的历史信息。旧订单号过期之后几乎无风险，当前手机号一直有效。</li>
+</ol>
+<p>这三个指标合起来，就是一份可执行的优先级，而分数本身只提供入口。</p>
+
+<h2>分数低但风险低的典型情况</h2>
+<p>有几种情况分数难看但不需要紧张，认清它们可以避免过度清理。</p>
+<p>第一种是账号很老、内容很多。发文量本身会推高风险命中数，即使每条的风险都很低。这类账号的分数天然偏低，处理方式是只清高风险类别。</p>
+<p>第二种是内容以转发为主。转发带来大量他人信息，会拉低分数，但那些信息不属于你，删掉转发对减少自身暴露几乎没有帮助。</p>
+<p>第三种是历史内容已经被平台清理。旧帖可能已经不可访问，但归档里仍然保留记录，扫描时会被计入，分数因此低于实际暴露面。</p>
+<p>反过来，分数好看但风险不低的情况同样存在，通常是有少量高度具体的当前信息。这类情况靠总数看不出来，必须落到条目层核对，参照<a href="/blog/which-tweets-to-clean-by-risk">按风险分级清理</a>的做法。</p>
+
+<h2>分数该怎么用才有意义</h2>
+<p>合理的用法是把分数当体温计而不是诊断书。它告诉你是否需要进一步看，不告诉你问题在哪。</p>
+<p>具体做法是固定一个体检频率，比如每季度一次，记录每次的总分和高风险条目数量，看趋势。趋势比单次数值更能说明习惯是否在改善。频率设置可参考<a href="/blog/how-often-check-digital-footprint">多久做一次体检</a>。分数在两次之间小幅波动属正常，出现持续下滑才说明有新内容在持续暴露信息。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的报告同时给出总分和它的组成部分：按类别展开的条目数、每条的风险标签与发布时间，所以你可以按上面的三个指标自行解读，而不是只盯着一个数字。全部解析在本机完成，分析只读。可以从<a href="/">免费体检</a>开始，报告结构见<a href="/blog/anatomy-of-a-footprint-report">体检报告包含什么</a>，风险标签见<a href="/blog/risk-labels-explained">标签对照表</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Almost everyone who sees a footprint score asks the same question: is that good or bad. There is no single answer, because the number only means something once you know what the account is for.</p>
+  <p>An account used purely for technical discussion, never posting photos, landing on 72 means something different from a daily-life account full of location content landing on 72. For the first, 72 may be high, since there was little personal history to begin with. For the second, 72 may actually be disciplined given how much gets posted.</p>
+  <p>Find your row first, then read the range.</p>
+</div>
+
+<h2>There is no universal pass mark</h2>
+<p>The model takes the contents of your archive and produces a weighted total. It measures the size and concentration of your exposure, not how careful you are.</p>
+<p>Two structural factors move the baseline directly. Total posting volume, because more content raises the odds of sensitive material appearing. And content type, because posts with locations, images and contact details carry more risk signatures by nature.</p>
+<p>Comparing scores across accounts therefore tells you little. Comparing the same account over time tells you a lot. The mechanics are in <a href="/blog/footprint-health-score-meaning">how the health score is calculated</a>; here the question is reading it.</p>
+
+<h2>Reference ranges by account type</h2>
+<table>
+  <thead><tr><th>Account type</th><th>Posting shape</th><th>Typical range</th><th>What to watch</th></tr></thead>
+  <tbody>
+    <tr><td>Technical or industry only</td><td>Opinions long-term, no photos or locations</td><td>75 to 95</td><td>Below 70 usually means early personal posts</td></tr>
+    <tr><td>Semi-professional</td><td>Mostly work, occasional personal posts</td><td>65 to 85</td><td>Check whether contact details are current</td></tr>
+    <tr><td>Personal life account</td><td>High volume, photos and locations</td><td>50 to 75</td><td>Address and current contacts first</td></tr>
+    <tr><td>Early heavy user</td><td>Years of high volume, wide range</td><td>35 to 65</td><td>Rank by risk, do not aim for a full purge</td></tr>
+    <tr><td>Business or brand</td><td>Public contact details by design</td><td>60 to 80</td><td>Ignore the public entries, read the private ones</td></tr>
+  </tbody>
+</table>
+<p>Use the table by locating your type, then seeing how far the score sits from the range. Inside the range, the structure is normal. Only a score below the lower edge calls for action.</p>
+<p>One caveat: a business account's public address and support line are meant to be public. They get counted but should not be treated as problems. Triage is covered in <a href="/blog/footprint-report-false-positives">spotting false positives</a>.</p>
+
+<h2>Three metrics that beat the headline score</h2>
+<p>A single number misleads easily. These three explain more.</p>
+<ol>
+  <li>The absolute count of high-risk items. Counts are concrete and they determine your workload. Three records pointing at your current address deserve attention more than a score ten points lower.</li>
+  <li>Category concentration. Risk clustered in one category, say locations, usually has one identifiable cause and clears quickly. Risk spread across five or six categories points to a posting habit rather than a few stray posts.</li>
+  <li>Currency of the information. Records pointing at information still in use carry more risk than the same number of historical records. An old order number is nearly harmless once expired; a current phone number is not.</li>
+</ol>
+<p>Together those three produce an actionable priority list. The score on its own is only the doorway.</p>
+
+<h2>Low scores that are not actually risky</h2>
+<p>A few situations produce an ugly number with nothing to worry about. Recognising them prevents over-cleaning.</p>
+<p>The first is an old account with a lot of content. Volume alone pushes up the hit count even when every individual item is mild. These accounts score low by construction, and the fix is clearing high-risk categories only.</p>
+<p>The second is an account dominated by resharing. Reshared posts bring in a lot of third-party information, which drags the number down, but that information is not yours and deleting the retweets barely reduces your own exposure.</p>
+<p>The third is history already removed by the platform. Old posts may be unreachable while the archive still holds a record of them, so they are counted and the score reads lower than live exposure.</p>
+<p>The reverse case exists too: a presentable score hiding real risk, usually from a small number of highly specific current details. Counts will not reveal it. Only item-level review will, and the method is in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk tier</a>.</p>
+
+<h2>Making the score useful</h2>
+<p>The sensible use is a thermometer rather than a diagnosis. It tells you whether to look closer, not where the problem is.</p>
+<p>Pick a fixed cadence, once a quarter for instance, and record both the total and the count of high-risk items each time. Trends say more than any single reading about whether habits are improving. Cadence guidance is in <a href="/blog/how-often-check-digital-footprint">how often to run a check</a>. Small swings between runs are normal; a sustained slide means new content keeps exposing information.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop reports the total alongside its parts: item counts expanded by category, each with a risk label and publication date. That lets you apply the three metrics above instead of staring at one number. Parsing happens entirely on your device and the analysis is read-only. Start with a <a href="/">free footprint check</a>, see <a href="/blog/anatomy-of-a-footprint-report">what a footprint report contains</a>, and read <a href="/blog/risk-labels-explained">the risk label reference</a>.</p>`,
+    faq: [
+      {
+        q: '数字足迹分数多少算及格？',
+        a: '没有统一及格线。纯技术账号常见 75 到 95，个人生活账号常见 50 到 75，账号越老、发文越多，基准越低。应看分数是否偏离所属类型的区间，而不是比绝对值。',
+        qEn: 'What score counts as passing?',
+        aEn: 'There is no universal pass mark. Technical-only accounts commonly sit at 75 to 95, personal accounts at 50 to 75, and older high-volume accounts run lower still. Compare against the range for your account type rather than an absolute number.',
+      },
+      {
+        q: '不同账号的分数可以直接比较吗？',
+        a: '意义有限。总分受发文总量与内容类型影响，跨账号比较会混入结构差异。纵向比较同一账号的历史分数更有参考价值。',
+        qEn: "Can I compare my score with someone else's?",
+        aEn: 'Only loosely. The total depends on posting volume and content type, so cross-account comparison mixes in structural differences. Tracking one account over time is far more informative.',
+      },
+      {
+        q: '除了总分还应该看什么？',
+        a: '看三个指标：高风险条目的绝对数量、风险的类别集中度、信息时效。三项合起来直接给出优先级，总分只提供入口。',
+        qEn: 'What should I look at besides the total?',
+        aEn: 'Three things: the absolute count of high-risk items, how concentrated the risk is by category, and how current the information is. Together they give you a priority order; the total is just the entry point.',
+      },
+      {
+        q: '分数低但我觉得没什么问题，需要清理吗？',
+        a: '先确认原因。老账号和转发为主的账号天然分数偏低，处理高风险类别即可，不必全清。如果低分源于少量高度具体的当前信息，则需要优先处理。',
+        qEn: 'My score is low but I think nothing is wrong. Do I still need to clean up?',
+        aEn: 'Identify the cause first. Old accounts and reshare-heavy accounts score low by nature, so clearing high-risk categories is enough. If the low score instead comes from a few highly specific current details, those deserve priority.',
+      },
+    ],
+  },
+  {
+    slug: 'download-x-archive-on-phone',
+    title: '手机上能导出 X 数据归档吗？可行路径和绕不过的限制',
+    titleEn: 'Can You Download Your X Archive on a Phone?',
+    excerpt:
+      '手机可以申请导出 X 数据归档，也能接收下载链接，但解压和分析放在手机上会遇到真实限制：文件体积、存储空间、解压工具和内存都会卡住。三种做法各有权衡，需要传输时也有需要避开的坑。',
+    excerptEn:
+      'You can request your X data archive and receive the download link on a phone, but unzipping and analysing it there runs into real limits: file size, storage, the tools available, and memory. Three approaches each carry trade-offs, and there are specific traps to avoid when moving the file.',
+    date: '2026-09-16',
+    updatedAt: '2026-09-16',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    categoryEn: 'Archive Basics',
+    tags: ['数据归档', '手机导出', '归档下载', '归档解压'],
+    tagsEn: ['data archive', 'phone export', 'archive download', 'archive extraction'],
+    canonical: '/blog/download-x-archive-on-phone',
+    content: `<div class="introduction">
+  <p>手机上能不能导出 X 数据归档，答案要分成两段看。申请和接收链接这一段完全没问题，手机上操作反而更方便。解压和分析这一段会遇到真实限制，文件体积和工具都容易卡住。</p>
+  <p>把这两段分开之后，做法就清楚了：在手机上发起和接收，在更合适的设备上处理。下面给出三条可行路径和几个需要避开的坑。</p>
+</div>
+
+<h2>官方路径在手机上卡在哪一步</h2>
+<p>官方导出流程分三步：在设置里提交申请，等平台准备好，收到下载链接。前两步在浏览器和 App 里都能完成，第三步也只需要点开链接。</p>
+<p>真正的问题在点击之后。归档是压缩包，手机浏览器通常直接保存而不解压。等你去打开它时会发现三件事：</p>
+<ul>
+  <li>文件体积可能到几百兆，在手机上的存储占位不容忽视。</li>
+  <li>系统自带的解压工具对大文件不稳定，部分机型会中途失败。</li>
+  <li>解压出来的目录结构层级较深，手机端的文件管理器浏览起来很费劲。</li>
+</ul>
+<p>所以手机上能做的是拿到文件，不是用好文件。归档里具体有什么内容，见<a href="/blog/whats-inside-x-archive-tweets-js">归档文件的构成</a>。</p>
+
+<h2>三条实际可行的做法</h2>
+<table>
+  <thead><tr><th>做法</th><th>适用情况</th><th>优点</th><th>代价</th></tr></thead>
+  <tbody>
+    <tr><td>手机发起，电脑下载分析</td><td>手边能接触到电脑</td><td>稳定，工具齐全</td><td>需要一次文件传输</td></tr>
+    <tr><td>手机完成全流程</td><td>临时没有电脑，内容量小</td><td>不依赖其他设备</td><td>解压失败率高，分析受限</td></tr>
+    <tr><td>只用手机做体检</td><td>只想看风险清单</td><td>不需要本地处理大文件</td><td>仍需把归档交给处理端</td></tr>
+  </tbody>
+</table>
+<p>第一条是推荐路径，成本只是一次传输。第二条只在内容量小的时候可行，比如账号创建不久、归档只有几十兆。第三条适合只想快速看结论的人。</p>
+
+<h2>把文件从手机传到电脑</h2>
+<p>传输方式按可操作性排序，云盘中转最省事，数据线最可靠。</p>
+<p>云盘的问题是免费额度可能不够放下几百兆的归档，而付费又不值得为一次操作开。数据线的优势是不受体积和网络限制，缺点是需要一台能连线的电脑。</p>
+<p>有一个坑要避开：不要用聊天软件传归档给自己。多数聊天工具会压缩或限制文件类型，传过去的包可能已经损坏，打开时报错。归档损坏之后处理流程就走不下去了，只能重新申请一次，而重新导出通常需要等一段时间。</p>
+<p>另一个坑是传输过程中改文件名。归档包里的文件和目录是相互引用的，改名不影响解压，但会影响后续按文件名判断内容类型。保持原样最省事。</p>
+
+<h2>解压时的两个限制</h2>
+<p>如果坚持在手机上处理，这两点决定了可行性。</p>
+<p>第一是解压目标位置。默认解压到内部存储的临时目录，空间不足时会静默失败，表现为解压完成但目录为空。先把目标位置改到剩余空间充足的分区。</p>
+<p>第二是工具选择。第三方解压应用对大包的处理差别很大，选择时看两点：是否支持分段解压，以及能否在失败时保留已解出的部分。不支持分段的工具，一次失败就要从头来过。</p>
+<p>顺带提醒，归档里最大的通常是推文数据文件。这个文件的结构见<a href="/blog/tweets-js-anatomy">tweets.js 文件解析</a>，手动打开它不是一件轻松的事。</p>
+
+<h2>下载之后先做什么</h2>
+<p>拿到归档之后不要急着动手删。正确的顺序是先读一遍，让风险可见。</p>
+<p>第一步确认归档完整。检查文件数量与时间跨度，确认覆盖了你预期的年份。第二步做一次完整体检，把风险条目按类别列出来。第三步按风险排序，标出必须处理的部分。这一步之后再考虑删除，可参考<a href="/blog/how-to-delete-old-tweets-2026">分批删除流程</a>。</p>
+<p>顺序反过来的代价很高。没有清单就动手，很容易删掉本来该留的内容，而且删除不可逆，详见<a href="/blog/delete-tweets-without-breaking-threads">删除的连带影响</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的处理方式绕开了手机端的两个难点：导入归档后在本机解析，你只需要提供文件，不需要自己装解压工具，也不需要手动翻看归档目录结构。解析出来的结果是按风险分类的条目清单，可以直接执行。全程在本机完成，不上传内容。可以从<a href="/">免费体检</a>开始，归档下载步骤见<a href="/blog/how-to-download-x-archive">导出归档流程</a>，归档安全存放见<a href="/blog/store-x-archive-safely">本地存放建议</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Whether you can export your X data archive on a phone answers differently depending on which half of the job you mean. Requesting it and receiving the link work fine, and a phone is arguably more convenient for that part. Unzipping and analysing it runs into real limits, where file size and available tools get in the way.</p>
+  <p>Split the two halves and the approach becomes obvious: start and receive on the phone, process somewhere better suited. Below are three viable routes and the traps to avoid.</p>
+</div>
+
+<h2>Where the official flow stalls on a phone</h2>
+<p>The official export has three steps: submit the request in settings, wait for the platform to prepare it, then receive a download link. The first two work in a browser or the app, and the third only needs a tap.</p>
+<p>The trouble starts after that tap. The archive is a compressed file, and phone browsers typically save it without extracting. When you try to open it, three things surface:</p>
+<ul>
+  <li>The file can run to several hundred megabytes, a serious bite out of phone storage.</li>
+  <li>Built-in extraction tools are unreliable on large files, and some devices fail partway through.</li>
+  <li>The extracted folder structure is deeply nested, which makes browsing it in a phone file manager painful.</li>
+</ul>
+<p>So a phone gets you the file, not a usable file. What is inside it is covered in <a href="/blog/whats-inside-x-archive-tweets-js">what the archive contains</a>.</p>
+
+<h2>Three routes that work</h2>
+<table>
+  <thead><tr><th>Route</th><th>When it fits</th><th>Upside</th><th>Cost</th></tr></thead>
+  <tbody>
+    <tr><td>Request on phone, download on desktop</td><td>Any desktop is reachable</td><td>Stable, full toolset</td><td>One file transfer</td></tr>
+    <tr><td>Everything on the phone</td><td>No desktop available, small archive</td><td>No other device needed</td><td>Higher extraction failure rate</td></tr>
+    <tr><td>Phone for the check only</td><td>You just want the risk list</td><td>No local handling of big files</td><td>Archive still goes to a processing step</td></tr>
+  </tbody>
+</table>
+<p>The first is the recommended path and the only extra cost is a transfer. The second works when the archive is small, say a young account at a few dozen megabytes. The third suits anyone who only wants the conclusion quickly.</p>
+
+<h2>Moving the file from phone to computer</h2>
+<p>Ordered by practicality, cloud storage is the least effort and a cable is the most reliable.</p>
+<p>Cloud storage has one snag: the free tier may not hold a few hundred megabytes, and paying for a single transfer is not worth it. A cable has no size or bandwidth ceiling and only needs a computer you can plug into.</p>
+<p>One trap to avoid: do not send the archive to yourself through a chat app. Most messaging tools compress attachments or restrict file types, and the copy that arrives may already be corrupt, failing on open. A corrupt archive ends the process and forces a fresh export request, which means another wait.</p>
+<p>Another trap is renaming files during the transfer. Files and folders inside the archive reference each other, so renaming does not break extraction, but it does break the ability to identify content types by filename later. Leaving names untouched is the cheapest option.</p>
+
+<h2>Two extraction limits</h2>
+<p>If you insist on processing on the phone, these two decide whether it works.</p>
+<p>The first is the extraction destination. The default goes to an internal temporary directory, and insufficient space fails silently, showing up as a finished extraction with an empty folder. Point it at a partition with plenty of free space first.</p>
+<p>The second is tool choice. Third-party extraction apps differ enormously on large archives. Two features matter: whether they support partial extraction, and whether they keep what was already extracted when they fail. Without partial support, one failure means starting over.</p>
+<p>A note in passing: the largest component is usually the tweet data file. Its structure is described in <a href="/blog/tweets-js-anatomy">parsing tweets.js</a>, and opening it by hand is not a pleasant afternoon.</p>
+
+<h2>What to do once you have the file</h2>
+<p>Resist deleting anything the moment the archive lands. Read first and make the risk visible.</p>
+<p>Confirm the archive is complete, checking file counts and the date span to verify it covers the years you expect. Run a full check and list risk items by category. Rank by risk and mark what must be handled. Only then consider deletion, following <a href="/blog/how-to-delete-old-tweets-2026">the batched deletion walkthrough</a>.</p>
+<p>Doing it in the reverse order is expensive. Acting without a list makes it easy to delete something you meant to keep, and deletion is irreversible. See <a href="/blog/delete-tweets-without-breaking-threads">what deletion takes with it</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop sidesteps both phone-side obstacles. Import the archive and it parses locally, so you supply the file without installing an extraction tool or browsing the archive's folder tree by hand. The output is a categorised item list you can act on directly. Everything runs on your own device and nothing is uploaded. Start with a <a href="/">free footprint check</a>, see <a href="/blog/how-to-download-x-archive">how to export the archive</a>, and read <a href="/blog/store-x-archive-safely">where to keep it safely</a>.</p>`,
+    faq: [
+      {
+        q: '手机上能直接申请导出 X 数据归档吗？',
+        a: '可以。提交申请和接收下载链接在手机浏览器或 App 里都能完成。限制出现在下载之后：归档是压缩包，体积可能几百兆，手机端解压工具对大文件不稳定。',
+        qEn: 'Can I request the archive export from a phone?',
+        aEn: 'Yes. Submitting the request and receiving the link both work in a mobile browser or the app. The limits appear after download: the archive is compressed, can reach several hundred megabytes, and phone extraction tools are unreliable at that size.',
+      },
+      {
+        q: '为什么手机解压后目录是空的？',
+        a: '通常是目标位置空间不足导致静默失败。默认解压目录位于内部存储临时区，先把目标改成剩余空间充足的位置再重试。',
+        qEn: 'Why is the extracted folder empty on my phone?',
+        aEn: 'Usually insufficient space at the destination causing a silent failure. The default target sits in an internal temporary area, so point it at a location with room and retry.',
+      },
+      {
+        q: '能用聊天软件把归档传给自己吗？',
+        a: '不建议。多数聊天工具会压缩附件或限制文件类型，传输后可能已损坏，打开时报错。损坏后只能重新申请导出，需要再等一段时间。',
+        qEn: 'Can I send the archive to myself through a chat app?',
+        aEn: 'Better not. Most messaging tools compress attachments or restrict file types, so the arriving copy may already be corrupt. A corrupt archive means requesting a fresh export and waiting again.',
+      },
+      {
+        q: '拿到归档之后第一步做什么？',
+        a: '先读，不要先删。确认归档完整并覆盖预期年份，然后跑一次完整体检，把风险条目按类别列出并排序，最后才按清单分批删除。',
+        qEn: 'What is the first step after getting the archive?',
+        aEn: 'Read before deleting. Confirm the archive is complete and covers the years you expect, run a full check, list and rank risk items by category, and only then work through deletion in batches.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

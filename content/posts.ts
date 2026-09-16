@@ -9828,6 +9828,823 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'company-x-account-employee-tweets',
+    title: '企业 X 账号的员工推文风险：品牌号、个人号和代理商的边界',
+    titleEn: 'Employee Tweets and Company X Accounts: Where the Risk Actually Sits',
+    excerpt:
+      '企业账号的风险归属和个人号完全不同。品牌官方号、员工个人号、代理商代管号三类主体，删除难度、权限回收和保留义务各不一样。这份指南拆开三类账号的责任边界，附季度核查清单和一份「哪些内容不能删」的判断标准。',
+    excerptEn:
+      'Risk on a corporate X account does not sit where people assume. Brand accounts, employee personal accounts and agency-managed accounts carry different deletion costs, different access-revocation problems and different retention duties. Here is how to separate the three, with a quarterly checklist and a clear test for content you must not delete.',
+    date: '2026-09-17',
+    updatedAt: '2026-09-17',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    categoryEn: 'Risk Scenarios',
+    tags: ['企业账号', '员工推文', '代理商权限', '记录保留', '品牌声誉'],
+    tagsEn: ['company account', 'employee tweets', 'agency access', 'record retention', 'brand reputation'],
+    canonical: '/blog/company-x-account-employee-tweets',
+    content: `<div class="introduction">
+  <p>企业账号的风险和个人账号不是一个量级。个人号出了问题只影响自己，企业号上每一条推文背后可能同时站着市场团队、客服、公关、外包代理商和已经离职的人。内容一旦需要处理，责任归属常常没人说得清。</p>
+  <p>更麻烦的是删除本身。企业内容的传播面大，转发、引用和截图多，很多内容删不干净；同时企业又受记录保留和监管要求约束，有些内容恰恰不能删。</p>
+  <p>下面先把三类账号分开，再讲权限回收和保留义务，最后给一套可以按季度执行的核查清单。</p>
+</div>
+
+<h2>三类账号，三种风险归属</h2>
+<p>处理之前先分清你面对的是哪一类，三类账号的处置方式差别很大。</p>
+<table>
+  <thead><tr><th>账号类型</th><th>谁在发内容</th><th>责任归属</th><th>主要风险</th></tr></thead>
+  <tbody>
+    <tr><td>品牌官方号</td><td>内部团队或外包团队</td><td>公司</td><td>历史内容被翻出，删除影响面大</td></tr>
+    <tr><td>员工个人号</td><td>员工本人</td><td>个人</td><td>简介写明公司，容易被当成公司立场</td></tr>
+    <tr><td>代理商代管号</td><td>外部团队持有权限</td><td>由合同界定</td><td>交接不清，权限长期不回收</td></tr>
+  </tbody>
+</table>
+<p>第三类最容易被忽略。代理商交接时通常只交账号和密码，不交历史内容清单，也不说明哪些内容是发给特定受众看的。等到需要清理时，没人能说清当时的发布意图。</p>
+
+<h2>品牌号删除为什么比个人号复杂</h2>
+<p>个人号删一条推文，最坏结果是有人截图。品牌号的传播路径更长，删除之后要解释的对象也更多。</p>
+<p>实际会遇到三类复杂性：</p>
+<ul>
+  <li>被媒体或大号引用过的内容，删除之后引用方的文章仍然在线，形成一处指向空白的引用。</li>
+  <li>已经被搜索引擎和网页存档服务收录的页面，删除后一段时间内仍会出现在结果里，走的是缓存而不是原件。</li>
+  <li>已经进入内部流程的内容，比如参与过对外声明或财报沟通，删除会和其他记录冲突。</li>
+</ul>
+<p>所以品牌号要做的第一件事是盘点，删除放在后面。把内容按「必须保留」「可以删除」「需要确认」三档分开，分档方式和<a href="/blog/digital-footprint-audit-checklist-2026">数字足迹核查清单</a>里的做法一致。分档完成之后，删除才是一个有依据的动作。</p>
+
+<h2>员工个人号与品牌号的搜索重叠</h2>
+<p>很多人在简介里写着公司名和职位。这带来一个副作用：搜公司名的时候，员工个人号里比较激烈的内容也可能被一起带出来。</p>
+<p>公司没有立场要求员工处理自己的账号，但搜索结果页的实际表现会影响品牌。常见情况包括候选人因为个人号旧帖被拒，也包括在职员工的旧言论被当成公司立场二次传播，招聘侧的判断逻辑可以参考<a href="/blog/social-media-background-check-2026">背景调查是怎么看社交账号的</a>。</p>
+<p>可行的做法是把边界写进员工手册：个人号可以标注观点仅代表个人，公司不代管也不强制清理，但出事时的沟通流程要提前约定，包括谁对外回应、多长时间内回应、是否需要法务介入。受监管行业的岗位边界更紧，可以参考<a href="/blog/sensitive-industry-tweets">敏感行业从业者的推文风险</a>。</p>
+
+<h2>代理商权限的回收</h2>
+<p>权限回收是交接环节里最常漏的一项。常见疏漏有三种：只改了主密码，没有撤销第三方应用授权；只撤销了部分账号，遗漏了绑定过的工作邮箱；把权限记在某个人手里，而这个人自己先离职了。</p>
+<p>建议维护一份权限台账，每一项授权记录持有方、用途、上次复核时间和到期时间。台账不直接降低风险，但它让疏漏变得可见，也让离职交接有了检查依据。</p>
+<p>台账里最容易漏的两类条目是长期不用的第三方应用授权和测试期间留下的临时账号。这两类通常没有明确负责人，只有台账能覆盖到。</p>
+
+<h2>共享登录与两步验证</h2>
+<p>品牌号常常多人共用。共享登录会削弱两步验证的价值，因为验证码只会发到某一个人的手机上，那个人休假时整个团队就卡住了。</p>
+<p>可行的做法是优先使用平台提供的团队协作入口，而不是共享密码。确实需要共享时，把验证方式绑定到一个不随人员变动失效的位置，并纳入离职流程一起轮换。配置方式见<a href="/blog/enable-2fa-x-account">开启两步验证</a>，登录设备的定期检查见<a href="/blog/login-device-audit-x-account">登录设备审计</a>。</p>
+<p>还有一个细节：共享账号的登录设备审计经常显示出一批陌生设备，其中多数是团队成员的个人电脑。这属于预期内的情况，但如果没有台账对应，审计结果就无法判断，等于白做。</p>
+
+<h2>哪些内容不能删</h2>
+<p>企业内容的保留义务是个人号没有的。已经出现诉讼、调查或监管问询预期时，相关内容的删除可能被认定为不当处置，正常顺序是先做保留声明，再讨论清理范围。</p>
+<p>受监管行业的对外沟通记录通常有固定的保存年限；上市公司涉及重大信息的沟通记录保存时间更长。动手之前先确认三件事：是否仍在保留期内、是否涉及已经发生的争议、是否有合同或平台条款要求留存。这三条里任何一条为「是」，先找内部法务，不要先动手删。</p>
+<p>反过来，员工个人号上的内容不受企业保留策略约束，除非内容本身就是职务行为产物且合同另有约定。这个区别经常被混淆，导致企业把不该管的管起来，又把该管的漏掉。</p>
+
+<h2>季度核查清单</h2>
+<table>
+  <thead><tr><th>频率</th><th>动作</th><th>产出</th></tr></thead>
+  <tbody>
+    <tr><td>每季度</td><td>导出品牌号历史内容并做一次风险扫描</td><td>三档分档清单</td></tr>
+    <tr><td>每季度</td><td>核对权限台账，撤销不再需要的授权</td><td>更新后的台账</td></tr>
+    <tr><td>每次交接</td><td>离职或更换代理商时轮换凭据并复核验证方式</td><td>交接记录</td></tr>
+    <tr><td>每年</td><td>复核保留策略与实际监管要求的偏差</td><td>策略修订记录</td></tr>
+  </tbody>
+</table>
+<p>清单的价值在于固定节奏。风险不是一次清理就能解决的，人员会变动，权限会重新累积，内容会继续产出。按季度跑一遍，问题就不会积累到需要一次性处理的程度。</p>
+<p>导出环节通常是最耗时的一步。品牌号历史内容量大，建议先导出再逐轮筛选，而不是边看边删。导出后本机解析的流程可以参考<a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 处理的是这套流程里最耗时的中间步骤：把导出的归档在本机解析成可读的风险清单，按等级排序并分组，团队按组推进，每一组完成就打勾，中断后从断点继续。整个分析过程只读，不上传服务器；删除按条计费，支持暂停与恢复。可以先从<a href="/">免费体检</a>开始，计价方式见<a href="/blog/tweet-deletion-cost">按条计费说明</a>，暂停与恢复机制见<a href="/blog/pause-resume-refund-deletion">中断续跑</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Risk on a corporate X account is not the same order of magnitude as risk on a personal one. A personal account that goes wrong affects one person. A corporate account carries posts written by marketing, support, communications, an outside agency and people who have already left the company. When something needs handling, nobody can reliably say who owned it.</p>
+  <p>Deletion is harder for a second reason. Corporate content travels further, so replies, quotes and screenshots survive the original. At the same time the company is bound by retention duties that a personal account never faces, which means some of that content is exactly what you must not remove.</p>
+  <p>Start by separating the three kinds of account. Then look at access revocation and retention duties, and finish with a checklist you can run every quarter.</p>
+</div>
+
+<h2>Three account types, three owners of the risk</h2>
+<p>Work out which type you are dealing with first. The handling differs far more than people expect.</p>
+<table>
+  <thead><tr><th>Account type</th><th>Who posts</th><th>Owner</th><th>Main risk</th></tr></thead>
+  <tbody>
+    <tr><td>Official brand account</td><td>Internal or outsourced team</td><td>The company</td><td>Old posts resurface and the blast radius is large</td></tr>
+    <tr><td>Employee personal account</td><td>The employee</td><td>The individual</td><td>The bio names the employer, so posts read as company positions</td></tr>
+    <tr><td>Agency-managed account</td><td>An outside team holds access</td><td>Defined by contract</td><td>Handovers are vague and access is never fully revoked</td></tr>
+  </tbody>
+</table>
+<p>The third type is the one that gets ignored. A handover usually transfers the password and nothing else. No content inventory, no note about which posts were aimed at which audience. By the time a cleanup is needed, nobody can reconstruct the intent behind the posts.</p>
+
+<h2>Why brand account deletion is harder than personal deletion</h2>
+<p>Deleting one post from a personal account has a worst case: someone took a screenshot. A brand account travels along longer paths, and removal creates more people to explain it to.</p>
+<p>Three complications show up repeatedly:</p>
+<ul>
+  <li>Posts quoted by media outlets or large accounts. You delete the original, the article quoting it stays online, and now it points at nothing.</li>
+  <li>Pages already picked up by search engines and web archives. For a while after deletion the page still appears in results, served from a cache rather than the original.</li>
+  <li>Posts that fed into internal processes, such as a public statement or an earnings conversation. Removing them conflicts with other records.</li>
+</ul>
+<p>Which is why the first thing a brand account needs is an inventory, with deletion placed after it. Sort the content into three buckets: keep, remove, and needs confirmation. The bucketing approach matches the one in the <a href="/blog/digital-footprint-audit-checklist-2026">digital footprint audit checklist</a>. Only once that exists does deletion become a decision instead of a reflex.</p>
+
+<h2>Where employee accounts and brand search results overlap</h2>
+<p>Plenty of people name their employer and job title in their bio. That has a side effect: searching for the company name can surface the more combative posts from its employees' personal accounts.</p>
+<p>A company has no standing to demand that employees clean their own accounts, yet the search results page still shapes the brand. Documented cases include candidates rejected over old personal posts and in-service employees whose old comments were reshared as if they were company positions. The hiring side of that dynamic is covered in <a href="/blog/social-media-background-check-2026">how background checks read social accounts</a>.</p>
+<p>A workable approach is to write the boundary into the employee handbook. Personal accounts may carry a note that views are the individual's own, the company does not manage or force cleanup, but the communication flow when something blows up gets agreed in advance: who speaks publicly, how fast, and whether legal gets pulled in. Regulated roles need a tighter line, covered in <a href="/blog/sensitive-industry-tweets">risk for people in sensitive industries</a>.</p>
+
+<h2>Revoking agency access</h2>
+<p>Access revocation is the most commonly skipped step in a handover. Three patterns account for most of it: the main password changes but third-party app authorizations stay live; some accounts are revoked and others are missed, usually ones tied to a work email address; and access lives in one person's head, and that person leaves first.</p>
+<p>Keep an access ledger. Every grant gets an entry for who holds it, what it is for, when it was last reviewed and when it expires. The ledger does not reduce risk on its own, but it makes gaps visible and gives a handover something to check against.</p>
+<p>Two entries are missing from most ledgers: long-unused third-party app authorizations, and temporary accounts left over from a test phase. Neither has an obvious owner, which is exactly why only a ledger catches them.</p>
+
+<h2>Shared logins and two-factor authentication</h2>
+<p>Brand accounts are often shared across a team. Sharing a login weakens two-factor authentication, because the code goes to one person's phone, and when that person is on leave the team is locked out.</p>
+<p>Where the platform offers a team collaboration entry point, use it instead of sharing a password. When sharing is unavoidable, bind the verification method to something that does not expire when a person does, and fold the rotation into the offboarding process. Setup is covered in <a href="/blog/enable-2fa-x-account">turning on two-factor authentication</a> and periodic checks in <a href="/blog/login-device-audit-x-account">auditing login devices</a>.</p>
+<p>One detail worth expecting: a login device audit on a shared account usually lists several unfamiliar devices, most of which are team members' personal laptops. That is normal, but without a ledger to match against, the audit result cannot be interpreted, and the exercise accomplishes nothing.</p>
+
+<h2>What you must not delete</h2>
+<p>Retention duties on corporate content have no personal equivalent. Once litigation, an investigation or a regulatory inquiry is reasonably anticipated, deleting related content can be treated as improper disposal. The normal order is a hold notice first, then a discussion about scope.</p>
+<p>Regulated industries generally have fixed retention periods for external communications. Listed companies keep records of communications touching material information for longer. Before touching anything, answer three questions: is the content still inside its retention period, is it connected to a dispute that has already started, and does a contract or platform term require you to keep it? If any answer is yes, talk to legal before deleting.</p>
+<p>The reverse case matters just as much. Content on an employee's personal account is not covered by corporate retention policy, unless the content is itself work product and a contract says otherwise. That distinction is frequently muddled, which is how companies end up policing accounts they have no claim over while missing the content they are actually obliged to keep.</p>
+
+<h2>A quarterly checklist</h2>
+<table>
+  <thead><tr><th>Cadence</th><th>Action</th><th>Output</th></tr></thead>
+  <tbody>
+    <tr><td>Quarterly</td><td>Export brand account history and run a risk scan</td><td>Three-bucket inventory</td></tr>
+    <tr><td>Quarterly</td><td>Reconcile the access ledger, revoke grants no longer needed</td><td>Updated ledger</td></tr>
+    <tr><td>Every handover</td><td>Rotate credentials and re-check verification methods</td><td>Handover record</td></tr>
+    <tr><td>Annually</td><td>Compare retention policy against current obligations</td><td>Policy revision record</td></tr>
+  </tbody>
+</table>
+<p>The value of a checklist is the fixed cadence. Risk does not get solved by one cleanup. People move, access re-accumulates, content keeps being produced. Run the loop quarterly and the backlog never grows into a single overwhelming job.</p>
+<p>Export is usually the slowest part. Brand accounts produce a lot of history, so export first and filter in passes rather than reviewing while deleting. The on-device parsing step after export is described in <a href="/blog/how-to-download-x-archive">downloading your X archive</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop covers the slowest middle step in this workflow: parsing the exported archive on your own machine into a readable risk list, ranked and grouped so a team can work through it group by group, checking off as they go and resuming from the last checkpoint after an interruption. Analysis is read-only and nothing is uploaded. Deletion is billed per tweet and can be paused or resumed. Start with the <a href="/">free check</a>, see per-tweet pricing in <a href="/blog/tweet-deletion-cost">how charging works</a>, and the pause and resume mechanics in <a href="/blog/pause-resume-refund-deletion">interruptions and restarts</a>.</p>`,
+    faq: [
+      {
+        q: '品牌官方号删旧推文，需要通知法务吗？',
+        a: '如果内容涉及已经发生的争议、正在进行的调查或处于保留期内，需要先咨询法务。做法是先发保留声明锁定范围，再讨论哪些可以清理。没有争议、不在保留期内、也不涉及监管记录的常规营销内容，通常可以直接按团队流程处理。',
+        qEn: 'Does deleting old brand account posts require legal sign-off?',
+        aEn: 'Yes when the content touches an existing dispute, a live investigation or a retention window. In that case issue a hold notice first to freeze the scope, then discuss what can be cleaned. Routine marketing content with no dispute, no retention period and no regulatory angle can usually go through the normal team process.',
+      },
+      {
+        q: '员工个人号上的旧帖，公司有权要求删除吗？',
+        a: '通常没有。个人号内容属于员工本人，除非是职务行为产物且合同另有约定。公司能做的两件事是：在员工手册里写明观点归属的边界，以及约定出事后的对外沟通流程。强制清理反而可能带来劳动争议。',
+        qEn: 'Can a company require an employee to delete old posts from a personal account?',
+        aEn: 'Usually not. The content belongs to the employee, unless it is work product and a contract says otherwise. What a company can do is state the boundary on attributed views in the handbook and agree the external communication flow in advance. Forcing a cleanup can create a labour dispute instead.',
+      },
+      {
+        q: '代理商交接只改了密码，还会有风险吗？',
+        a: '会有。改密码不会撤销第三方应用的授权，这些授权往往长期有效。交接时需要同步检查三处：已授权的第三方应用、绑定的工作邮箱和通过该邮箱创建的其他账号，以及是否存在由个人持有的临时账号。',
+        qEn: 'If a handover only changed the password, is there still risk?',
+        aEn: 'Yes. Changing a password does not revoke third-party app authorizations, which often stay valid for a long time. Check three things at handover: authorized third-party apps, the bound work email and anything created through it, and any temporary accounts held by individuals.',
+      },
+      {
+        q: '品牌号被删的内容还会出现在搜索结果里吗？',
+        a: '可能，但通常来自缓存或网页存档，而不是原件。搜索引擎需要时间重新抓取和更新索引，存档服务则可能长期保留快照。判断方法是直接打开页面地址确认是否真的可访问，而不是只看搜索结果里的摘要文字。',
+        qEn: 'Will deleted brand content still show up in search results?',
+        aEn: 'Possibly, but usually from a cache or web archive rather than the original. Search engines need time to recrawl and update their index, and archive services may keep snapshots indefinitely. Check by opening the page URL directly to confirm whether it is actually reachable, rather than trusting the snippet in the results.',
+      },
+      {
+        q: '共享品牌号怎么做两步验证才合理？',
+        a: '优先使用平台提供的团队协作入口，避免共享密码。确实需要共享时，把验证方式绑定到不随人员变动失效的位置，并纳入离职流程一起轮换。否则验证码会固定落在某一个人手上，那个人休假时团队就登不进去了。',
+        qEn: 'What is a sensible way to run two-factor authentication on a shared brand account?',
+        aEn: 'Prefer the platform team collaboration entry point over a shared password. When sharing is unavoidable, bind verification to something that does not expire with a person and rotate it as part of offboarding. Otherwise the codes land with one individual, and the team is locked out whenever that person is away.',
+      },
+    ],
+  },
+  {
+    slug: 'family-account-old-tweets-risk',
+    title: '家人共用账号和旧手机：被忽略的家庭数字足迹缺口',
+    titleEn: 'Family Accounts and Handed-Down Phones: The Footprint Gap Nobody Checks',
+    excerpt:
+      '家庭里的数字足迹漏洞通常不在本人的账号上，而在共用设备、家人代登录和转手的旧手机里。这几种情况下产生的推文，发布者是你，内容却不是你写的。本文梳理四类家庭共享场景、对应的清理顺序，以及未成年相关内容的特殊处理。',
+    excerptEn:
+      'The digital footprint gaps inside a household usually are not on your own account. They sit in shared devices, logins borrowed by family members and phones handed down to someone else. In all three cases the posts are published under your name even though you did not write them. Here are the four shared-access patterns, the cleanup order that works, and how to handle content involving minors.',
+    date: '2026-09-17',
+    updatedAt: '2026-09-17',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    categoryEn: 'Risk Scenarios',
+    tags: ['家庭账号', '共用设备', '旧手机', '未成年人', '数字足迹'],
+    tagsEn: ['family accounts', 'shared devices', 'handed-down phones', 'minors', 'digital footprint'],
+    canonical: '/blog/family-account-old-tweets-risk',
+    content: `<div class="introduction">
+  <p>大多数人做数字足迹检查时只看自己的账号。家庭的实际情况往往更复杂：平板是共用的，孩子拿家长的账号刷过，旧手机转给了亲戚或者卖掉了，客厅那台电脑上登着三四个账号。</p>
+  <p>这些场景有一个共同点：内容的发布者是你，写内容的人不是你。清理时如果只盯着自己的记忆，这一整块会被漏掉。</p>
+  <p>下面按四类共享场景拆开讲，再给一套清理顺序和未成年相关内容的处理原则。</p>
+</div>
+
+<h2>四类家庭共享场景</h2>
+<table>
+  <thead><tr><th>场景</th><th>典型痕迹</th><th>风险</th><th>处理入口</th></tr></thead>
+  <tbody>
+    <tr><td>共用平板或家庭电脑</td><td>账号未退出，他人代发内容</td><td>内容与本人形象不符</td><td>登录设备审计</td></tr>
+    <tr><td>孩子使用家长账号</td><td>未成年期间发布的推文</td><td>涉及未成年人内容</td><td>单独审查，优先级最高</td></tr>
+    <tr><td>旧手机转手或回收</td><td>本地缓存、已登录会话</td><td>设备内残留数据</td><td>先远程退出再处理设备</td></tr>
+    <tr><td>家人共用一个邮箱注册</td><td>多账号绑定同一邮箱</td><td>找回入口混乱</td><td>先整理邮箱绑定关系</td></tr>
+  </tbody>
+</table>
+<p>四类里影响最大的是第二类。未成年人在自己或家长账号上留下的内容，处理逻辑和成人内容不同，后文单独说明。</p>
+
+<h2>共用设备留下的账号会话</h2>
+<p>在共用设备上登录过一次，会话可能保留很久。别人拿到设备，不需要密码就能直接发布内容。</p>
+<p>排查方法是从账号侧而不是设备侧入手：看登录设备列表，把不再使用、无法识别的设备全部退出，然后检查退出前后是否有自己不知道的发布记录。设备审计的具体做法见<a href="/blog/login-device-audit-x-account">登录设备审计</a>。</p>
+<p>发现不明内容时不要急着删。先截图留存，再判断来源。属于家庭成员的误操作和属于外部入侵的处理方式完全不同，前者是清理问题，后者需要先改密码和验证方式。</p>
+
+<h2>旧手机和转手的设备</h2>
+<p>旧手机在卖掉或送人之前，容易被忽略的一步是登录会话。恢复出厂设置能清掉本地数据，但不一定能让服务端把那个设备从已登录列表里移除。</p>
+<p>正确顺序是先在账号侧退出该设备，再处理设备本身。这个顺序反过来的话，你就失去了从列表里识别并手动退出的机会。</p>
+<p>如果设备已经转手，剩下的动作是从登录列表里移除会话，并检查该设备在线期间是否有不熟悉的发布记录。归档下载的完整流程见<a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>，手机上的操作见<a href="/blog/download-x-archive-on-phone">在手机上处理归档</a>。</p>
+
+<h2>未成年相关内容的处理原则</h2>
+<p>涉及未成年人的内容需要单独对待，通常是清理优先级里最靠前的一类。</p>
+<p>判断标准看的是内容发布时的年龄，而不是现在的年龄。发布时未成年的内容，即便发布者现在已经成年，处理时也应当更保守：先确认内容是否包含可识别信息（学校、住址、日常路线、作息），再确认是否包含第三方未成年人。</p>
+<p>第二条更容易被忽略。家庭合照、同学合影、生日视频这类内容往往同时涉及多个未成年人，删除前需要考虑到其他孩子的监护人意愿。相关内容的历史背景见<a href="/blog/underage-tweets">未成年时期发布的推文</a>。</p>
+
+<h2>清理顺序</h2>
+<p>顺序比速度重要。建议按下面的次序推进：</p>
+<ul>
+  <li>先处理账号安全，退出无法识别的设备、轮换凭据。安全没理清之前清理内容，等于在漏水的桶里舀水。</li>
+  <li>再处理未成年相关内容，这一类的容忍度最低。</li>
+  <li>然后是共用设备上产生的、与你本人形象不符的内容。</li>
+  <li>最后才是自己发布的内容按风险等级清理。</li>
+</ul>
+<p>这个顺序和<a href="/blog/bulk-delete-old-tweets-walkthrough">批量清理流程</a>里给出的默认顺序一致，区别在于家庭场景多了一步账号安全的前置检查。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的作用是把共用设备产生的历史内容和你自己发布的内容分开呈现：本机解析归档之后，按时间段和内容类型分组，帮你识别哪些内容与本人的发布习惯不符，哪些涉及未成年时期。分析只读，不上传数据；清理按条计费，支持暂停与恢复。可以从<a href="/">免费体检</a>开始，账号侧的安全检查见<a href="/blog/login-device-audit-x-account">登录设备审计</a>，计价方式见<a href="/blog/tweet-deletion-cost">按条计费</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Most people checking their digital footprint look only at their own account. A household is usually messier than that: a shared tablet, a child who used a parent's login, an old phone passed to a relative or sold on, a living room computer with three or four accounts still signed in.</p>
+  <p>Those situations share one property. The posts are published under your name, but you did not write them. A cleanup based on your own memory will miss the whole category.</p>
+  <p>Here are the four shared-access patterns, the order that works for cleanup, and how to treat content involving minors.</p>
+</div>
+
+<h2>Four patterns of shared access</h2>
+<table>
+  <thead><tr><th>Pattern</th><th>Typical trace</th><th>Risk</th><th>Where to start</th></tr></thead>
+  <tbody>
+    <tr><td>Shared tablet or family computer</td><td>Session left signed in, someone else posts</td><td>Content that does not match your public identity</td><td>Login device audit</td></tr>
+    <tr><td>Child using a parent's account</td><td>Posts made while underage</td><td>Content involving a minor</td><td>Review separately, highest priority</td></tr>
+    <tr><td>Old phone passed on or recycled</td><td>Local cache, live session</td><td>Data left inside the device</td><td>Sign out remotely first</td></tr>
+    <tr><td>Household sharing one email</td><td>Several accounts bound to the same address</td><td>Confusing recovery path</td><td>Map the email bindings first</td></tr>
+  </tbody>
+</table>
+<p>The second pattern carries the most weight. Content left by a minor follows a different logic from adult content, and it gets its own section below.</p>
+
+<h2>Sessions left on shared devices</h2>
+<p>Sign in once on a shared device and the session can persist for a long time. Anyone with physical access can post without needing a password.</p>
+<p>Work from the account side rather than the device side. Open the login device list, sign out everything you cannot identify or no longer use, then check whether any posting happened that you do not recognise, before or after. The mechanics are in <a href="/blog/login-device-audit-x-account">auditing login devices</a>.</p>
+<p>Do not delete unfamiliar content immediately. Capture a screenshot first, then work out the origin. A family member posting by mistake and an outside party accessing the account need completely different responses: the first is a cleanup problem, the second means changing the password and verification method first.</p>
+
+<h2>Old phones and devices that changed hands</h2>
+<p>Before selling or gifting an old phone, the step people skip is the session. A factory reset clears local data, but it does not necessarily remove that device from the account's signed-in list on the server side.</p>
+<p>The right order is to sign the device out from the account side first, then deal with the device itself. Do it the other way around and you lose the chance to spot the device in the list and remove it deliberately.</p>
+<p>If the device is already gone, what remains is removing the session from the list and checking whether anything unfamiliar was posted while it was active. The full archive download flow is in <a href="/blog/how-to-download-x-archive">downloading your X archive</a>, and the phone-only path in <a href="/blog/download-x-archive-on-phone">handling the archive on a phone</a>.</p>
+
+<h2>Handling content that involves minors</h2>
+<p>Content involving minors gets separate treatment and usually ranks at the top of any cleanup priority list.</p>
+<p>What the test looks at is the age at posting rather than the age today. Content posted while underage deserves more caution even if the poster is an adult now. First check whether it contains identifying detail such as a school, an address, a daily route or a schedule. Then check whether it involves a third-party minor.</p>
+<p>The second check is the one people forget. Family photos, class group shots and birthday videos often involve several children at once, so removing them raises the question of what the other parents want. Background on this category is in <a href="/blog/underage-tweets">posts published while underage</a>.</p>
+
+<h2>The cleanup order</h2>
+<p>Order matters more than speed. Work through it like this:</p>
+<ul>
+  <li>Account security first. Sign out unrecognised devices and rotate credentials. Cleaning content while security is still leaking is bailing out a boat with a hole in it.</li>
+  <li>Then content involving minors. Tolerance there is the lowest.</li>
+  <li>Then content produced on shared devices that does not match your own public identity.</li>
+  <li>Your own posts, by risk level, last.</li>
+</ul>
+<p>This matches the default order in the <a href="/blog/bulk-delete-old-tweets-walkthrough">bulk cleanup walkthrough</a>, with one addition: the household case adds a security pass at the front.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop separates the history produced on shared devices from the posts you wrote yourself. It parses the archive on your own machine, groups it by period and content type, and helps you spot posts that do not match your usual posting pattern as well as anything from an underage period. Analysis is read-only and no data leaves the device. Deletion is billed per tweet and can be paused and resumed. Start with the <a href="/">free check</a>, the account-side pass is covered in <a href="/blog/login-device-audit-x-account">auditing login devices</a>, and pricing in <a href="/blog/tweet-deletion-cost">per-tweet billing</a>.</p>`,
+    faq: [
+      {
+        q: '怎么知道共用设备上有没有别人发过内容？',
+        a: '两个入口。一是登录设备列表，看有没有无法识别的设备或异常登录时间；二是导出归档后按发布时间排查，找自己不可能发布的时段。两者结合判断更准确，单看设备列表会漏掉家人用你已登录设备发布的情况。',
+        qEn: 'How do I find out whether someone else posted from a shared device?',
+        aEn: 'Two entries. Check the login device list for unrecognised devices or odd login times, and export the archive to scan by posting time for windows when you could not have posted. Combining both is more reliable, because the device list alone misses a family member posting from a device you were already signed in on.',
+      },
+      {
+        q: '孩子用我的账号发过内容，应该先删还是先留证？',
+        a: '先留证。截图或导出归档留存记录，确认内容是否包含可识别信息（学校、住址、日常路线）以及是否涉及其他未成年人。证据留存之后再删除，避免删除后发现需要向学校或对方家长说明情况时拿不出记录。',
+        qEn: 'My child posted from my account. Delete first or preserve evidence first?',
+        aEn: 'Preserve first. Screenshot or export a record, then check whether the content contains identifying detail such as a school, an address or a daily route, and whether other minors appear in it. Delete only after that, so you still have something to show a school or another parent if the question comes up.',
+      },
+      {
+        q: '手机卖掉之后才发现没退出登录，还来得及吗？',
+        a: '来得及，但顺序要对。先在账号侧把该设备从登录列表移除，再检查设备在线期间是否有异常发布记录。恢复出厂设置清的是本地数据，不会自动把设备从服务端的已登录列表里去掉。',
+        qEn: 'I sold my phone and only later realised I never signed out. Is it too late?',
+        aEn: 'Not too late, but order matters. Remove the device from the login list from the account side first, then check whether anything unusual was posted while it was active. A factory reset clears local data and does not remove the device from the server-side signed-in list.',
+      },
+      {
+        q: '成人之后需要清理未成年时期发的内容吗？',
+        a: '建议清理，优先级高于普通旧帖。判断标准是发布时的年龄而不是现在的年龄。发布时未成年的内容一旦包含学校、住址或作息信息，随着时间推移可识别性反而会上升，因为其他公开信息也在累积。',
+        qEn: 'Should I clean up content I posted while underage?',
+        aEn: 'Yes, and it should rank above ordinary old posts. The test is the age at posting, not the age now. Once underage content contains a school, an address or a schedule, its identifiability tends to rise over time as other public information accumulates around it.',
+      },
+    ],
+  },
+  {
+    slug: 'tweet-deletion-tool-pricing-compared-2026',
+    title: '删推文工具怎么定价：按条、包月、买断三种模型的实际成本',
+    titleEn: 'How Tweet Deletion Tools Price Themselves: Per-Tweet, Subscription or One-Off',
+    excerpt:
+      '删推文工具的价格看起来差很多，但真正的差别在计费模型上。按条、包月、买断三种模型在清理规模不同的情况下，实际有效单价能差出好几倍。本文给一张模型对照表、一个有效单价公式，以及付款前必须确认的六件事。',
+    excerptEn:
+      'Tweet deletion tools look wildly different in price, but the real difference is the billing model. Per-tweet, subscription and one-off pricing produce effective unit costs that diverge sharply depending on how much you are cleaning. Here is a model comparison table, a formula for effective unit cost, and six things to confirm before you pay.',
+    date: '2026-09-17',
+    updatedAt: '2026-09-17',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    categoryEn: 'Tool Comparison',
+    tags: ['删除工具', '定价模型', '按条计费', '订阅制', '成本计算'],
+    tagsEn: ['deletion tools', 'pricing models', 'per-tweet billing', 'subscriptions', 'cost calculation'],
+    canonical: '/blog/tweet-deletion-tool-pricing-compared-2026',
+    content: `<div class="introduction">
+  <p>比较删推文工具时，最容易犯的错误是比较标价。标价高的不一定贵，标价低的也不一定划算，因为三种主流计费模型的成本曲线形状完全不同。</p>
+  <p>按条计费的钱随数量线性增长，包月计费的钱随时间线性增长，买断的钱一次性付出但通常绑定额度上限。用错模型，实际成本能差出几倍。</p>
+  <p>下面把三种模型摊开，给一个有效单价的算法，再列付款前需要确认的事项。</p>
+</div>
+
+<h2>三种计费模型的实际形态</h2>
+<table>
+  <thead><tr><th>模型</th><th>计费单位</th><th>成本随什么增长</th><th>适合的清理规模</th><th>主要坑</th></tr></thead>
+  <tbody>
+    <tr><td>按条计费</td><td>每条推文</td><td>实际删除量</td><td>几百条以内，或只想删高风险部分</td><td>失败条目是否计费要说清</td></tr>
+    <tr><td>包月订阅</td><td>时间</td><td>你用了多久</td><td>持续半年以上的清理或定期维护</td><td>删得少也在扣费</td></tr>
+    <tr><td>一次性买断</td><td>额度包</td><td>固定，与用时无关</td><td>一次性大清理，量大且目标明确</td><td>额度用不完不退</td></tr>
+  </tbody>
+</table>
+<p>三类之外还有一些混合形态，比如订阅含一定额度、超出部分按条计费。混合模型的价格表通常更长，需要单独算。</p>
+
+<h2>有效单价的算法</h2>
+<p>比较价格时应该比较有效单价，而不是标价。算法很简单：</p>
+<p>有效单价 = 实际总支出 ÷ 实际成功删除的条数</p>
+<p>这个公式能自动把三种模型的差异拉到同一个尺度上。分母必须是成功删除的条数，不是提交数量；分子必须是总支出，包括那些「没用完但已经付了」的部分。</p>
+<p>举例说明（数值为便于计算的示例，不代表任何厂商的实际报价）：</p>
+<table>
+  <thead><tr><th>情景</th><th>总支出</th><th>成功删除</th><th>有效单价</th></tr></thead>
+  <tbody>
+    <tr><td>按条计费，只删高风险 200 条</td><td>200 条的费用</td><td>200 条</td><td>等于标价单价</td></tr>
+    <tr><td>包月订阅用 1 个月，实际删了 80 条</td><td>1 个月月费</td><td>80 条</td><td>月费 ÷ 80</td></tr>
+    <tr><td>包月订阅用 4 个月，删了 900 条</td><td>4 个月月费</td><td>900 条</td><td>4 个月月费 ÷ 900</td></tr>
+    <tr><td>买断 1000 条额度，只用了 350 条</td><td>整包费用</td><td>350 条</td><td>整包费用 ÷ 350</td></tr>
+  </tbody>
+</table>
+<p>表格最后两行是常见的亏法。订阅做一次大清理之后忘了退订，或者买了大额度包但清理目标没有那么大的量。</p>
+
+<h2>付款前必须确认的六件事</h2>
+<ul>
+  <li>失败条目是否计费。平台限流导致的失败很常见，如果失败也收费，实际成本会高于预期。</li>
+  <li>是否支持暂停。清理跨天几乎是必然的，不支持暂停意味着你必须一次跑完，否则前面的进度和后面的清单会对不上。</li>
+  <li>退款条件。写清楚退款窗口和触发条件，尤其是「部分完成」情况下怎么算。</li>
+  <li>订阅的退订方式。能不能在界面里自助退订，还是必须发邮件。</li>
+  <li>额度包的有效期。买断类产品的额度通常有有效期，过期作废。</li>
+  <li>是否强制把归档上传到服务器。这一条不是价格问题但会影响选择，本机解析的处理方式见<a href="/blog/local-vs-cloud-processing">本机与云端处理的区别</a>。</li>
+</ul>
+
+<h2>不同规模下的选择倾向</h2>
+<p>规模决定了哪种模型更划算，可以按下面的区间判断：</p>
+<ul>
+  <li>几十条以内：三种模型的差距很小，优先选不需要注册账号、不需要交出权限的方式。</li>
+  <li>几百条：按条计费通常最可控，因为只为你真正需要删除的部分付钱。</li>
+  <li>上千条且集中在一次：买断额度包的总价通常更低，但要确认额度不会大量浪费。</li>
+  <li>长期分散清理：订阅模型更顺手，前提是你确实会持续使用，而不是清理完就闲置。</li>
+</ul>
+<p>如果清理目标主要是高风险条目而不是全部历史内容，按条计费的优势会更明显。筛选高风险条目的做法见<a href="/blog/which-tweets-to-clean-by-risk">按风险等级挑选清理目标</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 采用按条计费：体检阶段完全免费且只读，只有当你确认要删除某一部分内容时才产生费用，删除量由你决定，失败条目不计费，过程中可以暂停和恢复。可以先从<a href="/">免费体检</a>看到自己的风险分布，再决定规模。计价细节见<a href="/blog/tweet-deletion-cost">按条计费说明</a>，暂停与恢复见<a href="/blog/pause-resume-refund-deletion">中断续跑</a>，退款规则见站内<a href="/pricing">定价页</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The most common mistake when comparing tweet deletion tools is comparing list prices. An expensive sticker does not make a tool costly, and a cheap one is not automatically good value, because the three mainstream billing models produce completely different cost curves.</p>
+  <p>Per-tweet billing grows with volume. Subscriptions grow with time. One-off credit packs are paid once but usually carry a cap. Pick the wrong model for your shape of job and the real cost can differ by a multiple.</p>
+  <p>Here is how each model behaves, a way to compute effective unit cost, and the items worth confirming before you pay.</p>
+</div>
+
+<h2>What the three billing models actually look like</h2>
+<table>
+  <thead><tr><th>Model</th><th>Billed per</th><th>Cost grows with</th><th>Fits this scale</th><th>Main trap</th></tr></thead>
+  <tbody>
+    <tr><td>Per tweet</td><td>Each tweet removed</td><td>Actual deletion volume</td><td>A few hundred items, or high-risk items only</td><td>Whether failed items are charged</td></tr>
+    <tr><td>Monthly subscription</td><td>Time</td><td>How long you stay subscribed</td><td>Cleanups spanning six months or ongoing upkeep</td><td>You keep paying for quiet months</td></tr>
+    <tr><td>One-off credit pack</td><td>A block of credits</td><td>Fixed, independent of time</td><td>A single large cleanup with a known target</td><td>Unused credits do not come back</td></tr>
+  </tbody>
+</table>
+<p>Hybrids exist too, such as a subscription that includes an allowance with per-tweet billing beyond it. Those price sheets are longer and need their own calculation.</p>
+
+<h2>How to compute effective unit cost</h2>
+<p>Compare effective unit cost rather than list price. The formula is short:</p>
+<p>Effective unit cost = total spent ÷ items actually removed</p>
+<p>That formula pulls all three models onto the same scale automatically. The denominator is items successfully removed, not items submitted, and the numerator is everything you paid, including the parts you paid for and did not use.</p>
+<p>Illustrative cases (round numbers chosen for arithmetic, not any vendor's actual rates):</p>
+<table>
+  <thead><tr><th>Scenario</th><th>Total spent</th><th>Removed</th><th>Effective unit cost</th></tr></thead>
+  <tbody>
+    <tr><td>Per tweet, high-risk 200 items only</td><td>Cost of 200 items</td><td>200</td><td>Equals the listed rate</td></tr>
+    <tr><td>One month of subscription, 80 items removed</td><td>One monthly fee</td><td>80</td><td>Monthly fee ÷ 80</td></tr>
+    <tr><td>Four months of subscription, 900 items removed</td><td>Four monthly fees</td><td>900</td><td>Four fees ÷ 900</td></tr>
+    <tr><td>1,000-credit pack, only 350 used</td><td>Full pack price</td><td>350</td><td>Pack price ÷ 350</td></tr>
+  </tbody>
+</table>
+<p>The last two rows are where people lose money: a subscription left running after one big cleanup finished, or a large credit pack bought for a job that turned out smaller than expected.</p>
+
+<h2>Six things to confirm before paying</h2>
+<ul>
+  <li>Whether failed items are billed. Platform rate limits cause failures routinely, and if failures are charged, real cost lands above the estimate.</li>
+  <li>Whether pausing is supported. Multi-day cleanups are the norm, and without pause you either finish in one sitting or lose the thread between the progress and the remaining list.</li>
+  <li>Refund terms. Look for the refund window and the trigger conditions, especially how a partially completed job is treated.</li>
+  <li>How to cancel a subscription. Self-service in the interface, or an email request.</li>
+  <li>Expiry on credit packs. Package credits usually expire.</li>
+  <li>Whether uploading the archive to a server is mandatory. Not a pricing question, but it changes the decision. The difference between the two approaches is in <a href="/blog/local-vs-cloud-processing">on-device versus cloud processing</a>.</li>
+</ul>
+
+<h2>Which model tends to win at each scale</h2>
+<p>Scale decides the answer more than anything else in the price sheet:</p>
+<ul>
+  <li>Under a few dozen items: the three models differ very little. Favour the option that needs no account and no handing over of access.</li>
+  <li>A few hundred items: per-tweet billing is usually the most controllable, because you pay only for what you actually need removed.</li>
+  <li>A thousand or more in one pass: a credit pack often has the lower total, provided the credits will not go largely unused.</li>
+  <li>Ongoing dispersed cleanup: a subscription is smoother, as long as you will genuinely keep using it rather than letting it sit idle after one job.</li>
+</ul>
+<p>If your target is high-risk items rather than all history, per-tweet billing pulls further ahead. The filtering approach is in <a href="/blog/which-tweets-to-clean-by-risk">picking cleanup targets by risk level</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop bills per tweet. The check stage is free and read-only, you pay only when you decide to remove a specific set of items, the volume is yours to choose, failed items are not charged, and a run can be paused and resumed. Start from the <a href="/">free check</a> to see your own risk distribution before committing to a scale. Billing detail is in <a href="/blog/tweet-deletion-cost">how per-tweet pricing works</a>, pause and resume in <a href="/blog/pause-resume-refund-deletion">interruptions and restarts</a>, and refund terms on the <a href="/pricing">pricing page</a>.</p>`,
+    faq: [
+      {
+        q: '按条计费和包月订阅哪个更划算？',
+        a: '取决于清理规模和持续时间。几百条以内、只删高风险部分，按条计费通常更可控，因为只为真正需要的部分付钱。清理跨度半年以上或者需要定期维护，订阅更顺手。判断方法是算有效单价：总支出除以实际成功删除的条数。',
+        qEn: 'Is per-tweet billing or a subscription better value?',
+        aEn: 'It depends on volume and duration. Under a few hundred items, or when only high-risk posts need removing, per-tweet billing is usually more controllable because you pay for what you actually need. Cleanups spanning six months or ongoing upkeep suit a subscription better. Work it out by computing effective unit cost: total spent divided by items actually removed.',
+      },
+      {
+        q: '删除失败也会收费吗？',
+        a: '各厂商规则不同，这一条必须在付款前确认。平台限流导致的失败在大规模清理里很常见，如果失败条目也计费，实际成本会明显高于按成功条数估算的结果。选择时可以优先考虑明确说明失败不计费的方案。',
+        qEn: 'Are failed deletions still charged?',
+        aEn: 'Vendors differ, so confirm this before paying. Failures caused by platform rate limits are routine in large cleanups, and if they are billed, real cost ends up well above an estimate based on successful removals. Favour providers that state plainly that failures are not charged.',
+      },
+      {
+        q: '买断额度包用不完可以退吗？',
+        a: '多数产品的未使用额度不退，且额度通常有有效期。购买前需要确认三件事：额度有效期、用不完的处理方式、以及额度是否区分删除类型（例如纯文本与含媒体条目是否同价）。如果清理目标数量不确定，先用按条计费跑一轮会更容易估准。',
+        qEn: 'Can unused credits from a one-off pack be refunded?',
+        aEn: 'Most products do not refund unused credits, and credits usually expire. Confirm three things before buying: the expiry date, what happens to the remainder, and whether credits treat deletion types equally, for example plain text versus items with media. If your target volume is uncertain, run one pass on per-tweet billing first to estimate it properly.',
+      },
+      {
+        q: '比较价格时最容易漏掉什么成本？',
+        a: '最容易漏的是「付了但没用上」的部分，比如清理完成后忘了退订的月度订阅，或者购买了远超实际需要的大额度包。所以有效单价的分母必须是实际成功删除的条数，而不是提交数量或者可用额度。',
+        qEn: 'What cost do people most often leave out when comparing prices?',
+        aEn: 'The part they paid for and did not use: a monthly subscription left running after the cleanup finished, or a large credit pack bought far beyond actual need. That is why effective unit cost must be computed over items actually removed, not over items submitted or credits purchased.',
+      },
+    ],
+  },
+  {
+    slug: 'circlos-tweet-deletion-review',
+    title: '托管型删推服务（如 Circlos）评测：交出账号权限前要问清的九件事',
+    titleEn: 'Hosted Deletion Services Like Circlos: Nine Questions Before You Hand Over Access',
+    excerpt:
+      '托管型删除服务和本机处理的工具是两条路线。前者的代价是要把账号访问权交给第三方。这份评测框架给出九项核对标准，帮你判断某家服务是否值得授权，以及什么情况下应该改用不需要交出权限的方案。',
+    excerptEn:
+      'Hosted deletion services and on-device tools are two different routes. The hosted route costs you account access handed to a third party. Here is a nine-point framework for judging whether a given service earns that access, and when you should choose a route that never asks for it.',
+    date: '2026-09-17',
+    updatedAt: '2026-09-17',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    categoryEn: 'Tool Comparison',
+    tags: ['托管删除服务', '账号权限', '第三方授权', '服务评测', '隐私架构'],
+    tagsEn: ['hosted deletion service', 'account access', 'third-party authorization', 'service review', 'privacy architecture'],
+    canonical: '/blog/circlos-tweet-deletion-review',
+    content: `<div class="introduction">
+  <p>删推文工具分成两条路线。一条是把归档下载到本机处理，工具本身拿不到你的账号。另一条是把账号权限交给一个托管服务，由服务方代替你执行删除。第二条路线更省事，但代价是把访问权交出去。</p>
+  <p>Circlos 属于后一类。评价这类服务不能用「好不好用」一个维度，因为真正的差别在授权范围、数据处理方式和失败时的行为上。</p>
+  <p>下面给一份九项核对清单，用来判断某家托管服务是否值得授权。服务方的条款和价格会变，具体数字请以对方官网当前公布的信息为准。</p>
+</div>
+
+<h2>两条路线的结构性差异</h2>
+<table>
+  <thead><tr><th>维度</th><th>本机处理</th><th>托管服务</th></tr></thead>
+  <tbody>
+    <tr><td>是否需要交出账号</td><td>不需要，只上传归档文件</td><td>需要授权或提供凭据</td></tr>
+    <tr><td>数据在谁手里</td><td>只在你自己的设备上</td><td>经过服务方服务器</td></tr>
+    <tr><td>使用门槛</td><td>需要自己下载归档</td><td>注册后即可开始</td></tr>
+    <tr><td>失败时的排查</td><td>自己看日志</td><td>依赖服务方说明</td></tr>
+    <tr><td>停止使用后的影响</td><td>无残留</td><td>需要主动撤销授权</td></tr>
+  </tbody>
+</table>
+<p>两条路线没有绝对优劣。区别在于你更愿意付出哪种成本：自己动手的时间，还是账号权限的风险敞口。</p>
+
+<h2>九项核对清单</h2>
+<p>如果决定走托管路线，下面九项建议逐条确认。前四项是硬条件，任何一项答不上来就不建议授权。</p>
+<ul>
+  <li>授权范围。是只读权限还是包含发布和删除的写权限？只读授权拿不到删除能力，但风险敞口也小得多。要确认服务具体请求了哪些权限项。</li>
+  <li>凭据的处理方式。服务是保存密码，还是使用平台提供的授权机制？保存密码意味着它长期持有可直接登录的凭据。</li>
+  <li>是否支持随时撤销。撤销入口在平台侧还是服务侧，撤销后服务方是否还能继续访问已下载的数据。</li>
+  <li>数据留存期限。上传的归档和解析结果保留多久，停止使用后多久删除。</li>
+  <li>删除范围的控制粒度。能否按日期、关键词或风险等级分批，而不是只能全量。</li>
+  <li>中断后的处理。跨天清理几乎必然发生，服务是否支持暂停、恢复，以及进度是否可查。</li>
+  <li>失败条目的计费规则。限流失败是否计费，这一条直接影响实际成本。</li>
+  <li>结果的可验证性。能不能导出一份删除清单，用于事后核对哪些内容确实被处理过。</li>
+  <li>条款变更通知机制。服务条款和隐私政策变更时是否通知，以及变更后旧授权如何处理。</li>
+</ul>
+
+<h2>授权范围是第一位的问题</h2>
+<p>九项里最重要的是第一项。同是「连接你的账号」，请求读取权限和请求写入权限的风险完全不在一个量级。</p>
+<p>写入权限意味着服务方在理论上可以代替你发布内容，而不只是删除。即便服务方没有这个意图，权限本身的存在就是风险敞口：一旦服务方被入侵，攻击者拿到的是可直接使用的写入权限。</p>
+<p>判断方法是查看授权页面列出的具体权限描述，而不是看服务方官网的概括说法。授权页面由平台生成，不会美化请求范围。</p>
+
+<h2>什么时候托管路线不合适</h2>
+<p>有几种情况建议直接排除托管方案：</p>
+<ul>
+  <li>账号是品牌官方号或企业号，涉及多人协作和记录保留义务。这类账号的授权通常需要走内部审批，且删除范围需要按保留策略界定，托管服务很难覆盖这些约束。</li>
+  <li>账号涉及受监管行业的对外沟通。删除操作本身可能需要留痕和审批。</li>
+  <li>只需要删除少量高风险内容。这种情况下自己下载归档再筛选的工作量并不大，不值得为省这一步交出权限。</li>
+  <li>账号已经开启了两步验证且验证方式绑定在个人设备上。共享给服务方会让验证环节变得脆弱。</li>
+</ul>
+<p>对应的替代做法是走本机处理路线，相关区别见<a href="/blog/local-vs-cloud-processing">本机与云端处理</a>，权限相关的基础配置见<a href="/blog/enable-2fa-x-account">两步验证配置</a>。</p>
+
+<h2>选择前后应该做的三件事</h2>
+<p>无论最后选哪家，建议固定做三件事：</p>
+<ul>
+  <li>授权之前先下载一份完整归档并本地保存。这样即便服务出问题，你自己的数据仍然完整。</li>
+  <li>授权之后立刻检查账号的已授权应用列表，记住授权项名称。将来撤销时要能准确找到它。</li>
+  <li>清理完成或决定停止使用时，主动撤销授权，不要只停止付款。停止付款不会让权限失效。</li>
+</ul>
+<p>第三件事最容易被忘。授权关系留在平台侧，与账单状态无关。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 走的是本机处理路线：你在平台侧导出归档，工具在你自己的设备上完成解析和排序，账号权限自始至终不需要交出，数据也不上传。需要删除时按条计费，支持暂停与恢复。可以先从<a href="/">免费体检</a>开始，处理架构见<a href="/blog/on-device-analysis-privacy">本机分析</a>，删除计价见<a href="/blog/tweet-deletion-cost">按条计费</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Deletion tools split into two routes. One downloads your archive and processes it locally, so the tool never touches your account. The other hands account access to a hosted service that performs deletions on your behalf. The hosted route is less work, and the price is handing over access.</p>
+  <p>Circlos sits in the second category. Judging services in that category on usability alone misses the point, because the real differences are in authorization scope, data handling, and behaviour when something fails.</p>
+  <p>What follows is a nine-point checklist for deciding whether a hosted service has earned that access. Vendor terms and prices change, so check current figures on the provider's own site.</p>
+</div>
+
+<h2>The structural split between the two routes</h2>
+<table>
+  <thead><tr><th>Dimension</th><th>Local processing</th><th>Hosted service</th></tr></thead>
+  <tbody>
+    <tr><td>Account access</td><td>Not needed, you upload an archive file</td><td>Requires authorization or credentials</td></tr>
+    <tr><td>Where the data lives</td><td>Only on your device</td><td>Passes through the provider's servers</td></tr>
+    <tr><td>Friction to start</td><td>You export the archive yourself</td><td>Sign up and begin</td></tr>
+    <tr><td>Diagnosing failures</td><td>You read the log</td><td>You depend on the provider's explanation</td></tr>
+    <tr><td>After you stop</td><td>Nothing left behind</td><td>You must revoke the grant yourself</td></tr>
+  </tbody>
+</table>
+<p>Neither route is strictly better. The choice comes down to which cost you would rather pay: your own time, or exposure of account access.</p>
+
+<h2>The nine-point checklist</h2>
+<p>If you go the hosted route, confirm each of these. The first four are hard requirements; if any one cannot be answered, do not grant access.</p>
+<ul>
+  <li>Authorization scope. Read-only, or write access that covers posting and deleting? A read-only grant cannot delete anything, and it also carries a far smaller exposure. Check the specific scopes the service requests.</li>
+  <li>Credential handling. Does it store your password, or use the platform's authorization mechanism? A stored password means a long-lived credential that can be used to sign in directly.</li>
+  <li>Revocability. Where is the revoke control, on the platform side or the provider side, and can the provider still reach data it already downloaded after you revoke?</li>
+  <li>Retention period. How long are uploaded archives and parsed results kept, and how long after you stop using the service?</li>
+  <li>Granularity of deletion scope. Can you run it by date, keyword or risk level, or only across everything at once?</li>
+  <li>Handling of interruptions. Multi-day cleanups are near certain. Does the service pause, resume, and expose progress?</li>
+  <li>Billing on failed items. Whether rate-limited failures are charged directly shapes the real cost.</li>
+  <li>Verifiability of results. Can you export a deletion list to reconcile afterwards what was actually processed?</li>
+  <li>Notice of term changes. Are you told when terms or the privacy policy change, and what happens to existing grants afterwards?</li>
+</ul>
+
+<h2>Authorization scope comes first</h2>
+<p>Of the nine, the first matters most. Connecting your account for read access and connecting it for write access carry risk on entirely different scales.</p>
+<p>Write access means the provider can, in principle, post as you rather than only delete. Even if the provider has no such intention, the existence of the permission is the exposure: if the provider is breached, the attacker inherits a working write grant.</p>
+<p>Check the scope descriptions on the platform's own authorization screen rather than the provider's summary wording. That screen is generated by the platform and does not soften the request.</p>
+
+<h2>When the hosted route is the wrong choice</h2>
+<p>Several situations rule it out:</p>
+<ul>
+  <li>The account is a brand or corporate one, with shared access and retention duties. Authorization usually needs internal approval, and deletion scope has to respect a retention policy that a hosted service cannot model.</li>
+  <li>The account handles regulated industry communications, where deletions may need an audit trail and sign-off.</li>
+  <li>You only need a small number of high-risk items removed. Downloading the archive and filtering yourself is not much work, and it is not worth handing over access to skip it.</li>
+  <li>Two-factor authentication is already on with verification bound to a personal device. Sharing that with a provider makes the verification step fragile.</li>
+</ul>
+<p>The alternative in those cases is local processing. The difference is set out in <a href="/blog/local-vs-cloud-processing">on-device versus cloud processing</a>, and the underlying access configuration in <a href="/blog/enable-2fa-x-account">setting up two-factor authentication</a>.</p>
+
+<h2>Three things to do either side of the decision</h2>
+<p>Whichever provider you pick, do these three consistently:</p>
+<ul>
+  <li>Before authorizing anything, download a full archive and keep it locally. Whatever happens to the service, your data stays complete.</li>
+  <li>Right after authorizing, open the account's connected apps list and note the entry's exact name, so you can find it later when revoking.</li>
+  <li>When the cleanup is done or you decide to stop, revoke the grant. Stopping payment does not revoke anything.</li>
+</ul>
+<p>The third is the one people skip. The grant lives on the platform side, independent of billing status.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop takes the local route. You export the archive from the platform, and the parsing and ranking happen on your own device. Account access is never handed over and no data is uploaded. Deletion is billed per tweet, pausable and resumable. Start with the <a href="/">free check</a>, see the processing model in <a href="/blog/on-device-analysis-privacy">on-device analysis</a>, and per-tweet pricing in <a href="/blog/tweet-deletion-cost">how charging works</a>.</p>`,
+    faq: [
+      {
+        q: '托管型删除服务一定要交出账号密码吗？',
+        a: '不一定，取决于服务实现方式。规范的做法是走平台提供的授权机制，你不需要提供密码；实现较差的服务会要求直接输入密码，这意味着对方长期持有一份可直接登录的凭据。选择时应优先考虑前者，并确认授权范围只读还是可写。',
+        qEn: 'Do hosted deletion services require my account password?',
+        aEn: 'Not always, it depends on the implementation. The proper approach uses the platform authorization mechanism, so you never provide a password. Weaker implementations ask for the password directly, which means they hold a long-lived credential that can sign in as you. Favour the former, and check whether the scope is read-only or write.',
+      },
+      {
+        q: '停止付费之后授权会自动失效吗？',
+        a: '通常不会。授权关系保存在平台侧，与账单状态无关。停止付款只是中止服务，第三方应用仍可能保留访问权限。正确做法是主动到账号的已授权应用列表里找到对应条目并手动撤销。',
+        qEn: 'Does the authorization expire automatically when I stop paying?',
+        aEn: 'Usually not. The grant lives on the platform side and is unrelated to billing status. Stopping payment ends the service, not the permission. Go to the connected apps list on the account and revoke the entry manually.',
+      },
+      {
+        q: '什么情况下不适合用托管删除服务？',
+        a: '四种情况建议直接排除：品牌号或企业号（涉及多人协作和记录保留义务）；受监管行业的对外沟通账号（删除需要留痕和审批）；只需要删除少量高风险内容（自己筛选的工作量不大）；以及账号已开启两步验证且验证方式绑定在个人设备上。',
+        qEn: 'When is a hosted deletion service the wrong fit?',
+        aEn: 'Four cases rule it out: a brand or corporate account with shared access and retention duties; an account handling regulated industry communications where deletions need an audit trail; a job covering only a few high-risk items where filtering yourself is little work; and an account with two-factor authentication already bound to a personal device.',
+      },
+    ],
+  },
+  {
+    slug: 'gdpr-erasure-request-twitter',
+    title: 'GDPR 删除请求权怎么行使：向 X 提交正式请求的步骤与模板',
+    titleEn: 'Using the GDPR Right to Erasure on X: Steps and a Request Template',
+    excerpt:
+      '平台自带的删除按钮和 GDPR 第 17 条的删除请求权不是一回事。前者你删自己的内容，后者可以要求平台处理与个人数据相关的更多范围，也带来明确的答复时限。本文讲清适用条件、五步提交流程和一份可直接改用的中英文请求模板。',
+    excerptEn:
+      'The delete button on a platform and the right to erasure under Article 17 of the GDPR are not the same instrument. The first removes your own content. The second can require the platform to address a wider set of personal data, and it comes with a statutory response deadline. Here are the conditions, a five-step submission flow, and a template you can adapt.',
+    date: '2026-09-17',
+    updatedAt: '2026-09-17',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    categoryEn: 'Compliance and Law',
+    tags: ['GDPR', '删除请求权', '第17条', '数据主体请求', '合规流程'],
+    tagsEn: ['GDPR', 'right to erasure', 'Article 17', 'data subject request', 'compliance process'],
+    canonical: '/blog/gdpr-erasure-request-twitter',
+    content: `<div class="introduction">
+  <p>很多人把平台上的删除按钮当成法律意义上的删除权。两者有交集但不等价：点按钮是你处理自己的内容，提交请求是要求平台就其持有的个人数据作出处理，并且带有时限约束。</p>
+  <p>这个区别在两种情况下变得重要。一种是你想让平台处理你无法通过界面删除的内容，另一种是你需要一份有据可查的书面答复。</p>
+  <p>下面讲清适用条件、提交流程和模板。内容为一般性说明，不构成法律意见，具体个案请咨询专业人士。</p>
+</div>
+
+<h2>两种情况先分清</h2>
+<table>
+  <thead><tr><th>维度</th><th>平台自带删除功能</th><th>GDPR 删除请求权</th></tr></thead>
+  <tbody>
+    <tr><td>谁执行</td><td>你自己操作</td><td>平台按其流程处理</td></tr>
+    <tr><td>覆盖范围</td><td>你发布的内容</td><td>平台持有的与你相关的个人数据</td></tr>
+    <tr><td>答复时限</td><td>即时生效</td><td>有明确时限（通常一个月）</td></tr>
+    <tr><td>是否留痕</td><td>无书面答复</td><td>有可保存的书面答复</td></tr>
+    <tr><td>适用前提</td><td>有账号即可</td><td>受相应法域保护</td></tr>
+  </tbody>
+</table>
+<p>第三条是很多人忽略的关键差异。删除按钮按下就生效，但没有答复记录；请求提交后可能被拒绝，但拒绝本身也是一份可以继续推进的书面材料。</p>
+
+<h2>谁可以提交</h2>
+<p>欧盟和欧洲经济区居民受 GDPR 保护，英国居民受英国版本对应条款保护。其他法域也有类似机制但细节不同，全球范围的对照见<a href="/blog/ccpa-global-privacy-laws">各地隐私法规概览</a>。</p>
+<p>请求针对的是「与你相关的个人数据」，不限于你本人发布的帖子。别人转发了含你手机号的内容、平台侧保存的登录记录、关联的邮箱或设备信息，理论上都属于讨论范围。</p>
+<p>有几种常见例外需要知道：为履行法律义务必须保留的数据、为提起或抗辩法律主张需要的数据、以及行使言论自由所必需的信息。平台通常会在答复中援引这些例外，这也正是要保留书面答复的原因。</p>
+
+<h2>五步提交流程</h2>
+<p>按下面的顺序走，能减少来回沟通的次数：</p>
+<ul>
+  <li>整理请求范围。列出账号标识、涉及的具体内容地址或编号，以及你希望处理的事项。范围写得越具体，答复越可能落到可执行的层面。</li>
+  <li>确认身份。平台会要求验证你是数据主体本人。通常提供账号访问能力即可，不必主动发送身份证件扫描件，除非对方明确要求且你确认对方的合法身份。</li>
+  <li>从平台指定的入口提交。各平台都有隐私请求专用入口，走专用入口比走客服工单更有效，也更容易被登记为正式请求。</li>
+  <li>保留提交时间点。时限从收到请求起算，记下提交时间才能判断是否超期。</li>
+  <li>保存答复。无论通过还是拒绝，都要保存。被拒绝时答复里通常会写明援引的例外条款，这是下一步向上级监管机构申诉的依据。</li>
+</ul>
+
+<h2>答复时限怎么算</h2>
+<p>GDPR 框架下，控制者应当在收到请求后一个月内答复。案情复杂、请求数量较多时可以延长，延长通常不超过两个月，且需要告知延长的理由。</p>
+<p>时限的起点是「收到」，不是「你提交」。所以提交渠道是否被登记为正式请求很关键。如果只是发了一条客服咨询，可能不触发时限。这也是建议走隐私专用入口的原因。</p>
+<p>超出时限而没有答复时，可以向所在国的数据保护监管机构投诉。投诉本身也需要材料，前一步保存的提交记录和答复就是材料。</p>
+
+<h2>请求模板</h2>
+<p>下面是可改用的模板，中英各一份。使用前把方括号里的内容替换成你自己的信息。</p>
+<p>中文版本：</p>
+<div class="template">
+<p>主题：个人数据删除请求（GDPR 第 17 条）</p>
+<p>致相关数据保护负责人：</p>
+<p>我依据《通用数据保护条例》第 17 条，请求删除与我相关的个人数据。</p>
+<p>账号标识：[账号名或用户编号]</p>
+<p>涉及范围：[具体内容地址或编号；如需处理全部相关内容，请写明]</p>
+<p>请求事项：[删除相关内容；如涉及索引或缓存，请一并说明处理方式]</p>
+<p>请通过以下方式与我联系：[邮箱]</p>
+<p>请在法定期限内予以答复。</p>
+<p>[姓名]，[日期]</p>
+</div>
+<p>英文版本：</p>
+<div class="template">
+<p>Subject: Request for erasure of personal data (Article 17 GDPR)</p>
+<p>To the relevant data protection officer,</p>
+<p>I am requesting the erasure of personal data relating to me under Article 17 of the General Data Protection Regulation.</p>
+<p>Account identifier: [handle or user ID]</p>
+<p>Scope: [specific content URLs or IDs, or state that you mean all related content]</p>
+<p>Requested action: [erasure of the content; where indexing or caching is involved, please state how it will be handled]</p>
+<p>Please contact me at: [email]</p>
+<p>I would appreciate a response within the statutory period.</p>
+<p>[Name], [Date]</p>
+</div>
+<p>模板刻意写得简短。把范围写清楚比写得客气更重要，因为答复的可执行程度取决于请求的具体程度。</p>
+
+<h2>请求之外的配套动作</h2>
+<p>提交请求不是全部。数据在多个环节留存，平台侧只是其中一个：</p>
+<ul>
+  <li>自己的归档。请求处理不影响你本地保存的归档文件，需要单独处理，见<a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>。</li>
+  <li>网页存档服务。第三方快照不属平台控制范围，需要单独向其提交，平台答复中一般也会说明这一点。</li>
+  <li>转载和引用。别人发布的内容属于别人的数据处理活动，需要单独主张，参见<a href="/blog/right-to-be-forgotten-twitter">被遗忘权在搜索引擎侧的适用</a>。</li>
+  <li>数据经纪商。从公开来源汇集的数据往往独立于平台，处理方式见<a href="/blog/data-brokers-selling-your-tweets">数据经纪商</a>。</li>
+</ul>
+<p>把这些环节分开处理，比指望一份请求解决全部问题更实际。请求的目标是平台控制的数据，边界之外的部分要走各自的渠道。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 处理的是请求之前那一步：在你提交请求或执行删除之前，先把账号里的个人数据分布摸清楚。工具在本机解析归档，列出手机号、邮箱、地址等敏感信息的分布与年份，也支持导出自己的数据副本留档。分析只读，数据不上传；需要清理时按条计费并支持暂停恢复。可以从<a href="/">免费体检</a>开始，数据可携权相关背景见<a href="/blog/gdpr-data-portability-twitter-archive">归档与数据可携权</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Plenty of people treat a platform's delete button as if it were a legal right of erasure. The two overlap but are not equivalent. Pressing the button handles your own content. Filing a request asks the platform to act on personal data it holds, and it comes with a deadline.</p>
+  <p>The distinction starts to matter in two situations. One is when you want the platform to deal with content you cannot remove through the interface. The other is when you need a written response you can keep on file.</p>
+  <p>What follows covers the conditions, the submission flow and a template. It is general information, not legal advice, and individual cases belong with a professional.</p>
+</div>
+
+<h2>Two instruments, kept separate</h2>
+<table>
+  <thead><tr><th>Dimension</th><th>Built-in delete</th><th>GDPR right to erasure</th></tr></thead>
+  <tbody>
+    <tr><td>Who acts</td><td>You operate it</td><td>The platform processes it</td></tr>
+    <tr><td>Coverage</td><td>Content you posted</td><td>Personal data the platform holds about you</td></tr>
+    <tr><td>Response deadline</td><td>Effective immediately</td><td>A defined deadline, typically one month</td></tr>
+    <tr><td>Paper trail</td><td>No written reply</td><td>A written reply you can keep</td></tr>
+    <tr><td>Precondition</td><td>An account</td><td>Protection under the relevant jurisdiction</td></tr>
+  </tbody>
+</table>
+<p>The third row is the difference most people miss. The button takes effect immediately but generates no record. A request may be refused, and the refusal is itself written material you can escalate with.</p>
+
+<h2>Who can file</h2>
+<p>Residents of the EU and the European Economic Area are covered by the GDPR; UK residents by the corresponding provisions in UK law. Other jurisdictions have similar mechanisms with different detail, compared in <a href="/blog/ccpa-global-privacy-laws">an overview of privacy laws by region</a>.</p>
+<p>What a request targets is personal data relating to you, not only posts you wrote yourself. Someone else's repost of content containing your phone number, login records held on the platform side, and linked email or device information all fall inside the conversation in principle.</p>
+<p>Several common exceptions are worth knowing upfront: data that must be retained to comply with a legal obligation, data needed to establish or defend legal claims, and information necessary for exercising freedom of expression. Platforms routinely cite these in their replies, which is exactly why keeping the written response matters.</p>
+
+<h2>The five-step submission flow</h2>
+<p>Follow this order and you cut down the back and forth:</p>
+<ul>
+  <li>Define the scope. List the account identifier, the specific content URLs or IDs, and what you want done. The more specific the scope, the more likely the reply lands on something actionable.</li>
+  <li>Confirm identity. The platform will verify that you are the data subject. Account access is usually sufficient; do not volunteer scans of identity documents unless the request is explicit and you have confirmed who is asking.</li>
+  <li>Submit through the platform's designated privacy channel. Every major platform has one. It works better than a general support ticket and is far more likely to be logged as a formal request.</li>
+  <li>Record the submission time. The clock starts on receipt, so without a timestamp you cannot tell whether the deadline was missed.</li>
+  <li>Keep the reply. Granted or refused, keep it. A refusal normally states the exception relied on, which is what you build an escalation on.</li>
+</ul>
+
+<h2>How the deadline works</h2>
+<p>Under the GDPR framework, a controller should respond within one month of receiving the request. Complex or numerous requests can extend that, typically by up to two further months, with the reason communicated.</p>
+<p>The clock starts at receipt, not submission. That makes the channel decisive. A message that lands as a general enquiry may not start the clock at all, which is the argument for using the dedicated privacy channel.</p>
+<p>If the deadline passes with no reply, you can complain to the data protection authority in your country. A complaint needs evidence, and the submission record plus the reply from the previous step is that evidence.</p>
+
+<h2>A request template</h2>
+<p>Both language versions are below. Replace the bracketed fields with your own details.</p>
+<p>Chinese version:</p>
+<div class="template">
+<p>主题：个人数据删除请求（GDPR 第 17 条）</p>
+<p>致相关数据保护负责人：</p>
+<p>我依据《通用数据保护条例》第 17 条，请求删除与我相关的个人数据。</p>
+<p>账号标识：[账号名或用户编号]</p>
+<p>涉及范围：[具体内容地址或编号；如需处理全部相关内容，请写明]</p>
+<p>请求事项：[删除相关内容；如涉及索引或缓存，请一并说明处理方式]</p>
+<p>请通过以下方式与我联系：[邮箱]</p>
+<p>请在法定期限内予以答复。</p>
+<p>[姓名]，[日期]</p>
+</div>
+<p>English version:</p>
+<div class="template">
+<p>Subject: Request for erasure of personal data (Article 17 GDPR)</p>
+<p>To the relevant data protection officer,</p>
+<p>I am requesting the erasure of personal data relating to me under Article 17 of the General Data Protection Regulation.</p>
+<p>Account identifier: [handle or user ID]</p>
+<p>Scope: [specific content URLs or IDs, or state that you mean all related content]</p>
+<p>Requested action: [erasure of the content; where indexing or caching is involved, please state how it will be handled]</p>
+<p>Please contact me at: [email]</p>
+<p>I would appreciate a response within the statutory period.</p>
+<p>[Name], [Date]</p>
+</div>
+<p>The template is deliberately short. Scope clarity matters more than politeness, because how actionable the reply is depends on how specific the request was.</p>
+
+<h2>The work that sits outside the request</h2>
+<p>Filing is not the whole job. Personal data persists in several places, and the platform is only one of them:</p>
+<ul>
+  <li>Your own archive. A request does not touch the copy on your disk, which needs handling separately. See <a href="/blog/how-to-download-x-archive">downloading your X archive</a>.</li>
+  <li>Web archive services. Third-party snapshots are outside the platform's control, so they need their own approach, and platform replies usually say as much.</li>
+  <li>Reposts and quotations. Content published by someone else is their processing activity, which you have to raise separately. See <a href="/blog/right-to-be-forgotten-twitter">how the right to be forgotten works on the search side</a>.</li>
+  <li>Data brokers. Records assembled from public sources usually sit outside the platform entirely. See <a href="/blog/data-brokers-selling-your-tweets">data brokers</a>.</li>
+</ul>
+<p>Treating those as separate tracks is more realistic than expecting one request to resolve everything. A request covers data the platform controls; anything beyond that boundary has its own route.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop covers the step before the request: understanding how your personal data is distributed across an account, before you file anything or delete anything. The tool parses the archive on your own device, shows where phone numbers, emails and addresses appear and in which years, and lets you export your own copy for the record. Analysis is read-only and nothing is uploaded; deletion is billed per tweet and can be paused. Start with the <a href="/">free check</a>, and the portability angle is covered in <a href="/blog/gdpr-data-portability-twitter-archive">archives and data portability</a>.</p>`,
+    faq: [
+      {
+        q: 'GDPR 删除请求和平台自带的删除按钮有什么区别？',
+        a: '删除按钮处理的是你自己发布的内容，按下即时生效，但没有书面答复。删除请求权可以要求平台就其持有的、与你相关的个人数据处理，范围可能超出你自己发布的帖子，并且平台需要在法定期限内书面答复。',
+        qEn: 'How is a GDPR erasure request different from the platform delete button?',
+        aEn: 'The button acts on content you posted, takes effect immediately, and produces no written reply. A request can require the platform to process personal data it holds relating to you, potentially beyond your own posts, and the platform must reply in writing within the statutory period.',
+      },
+      {
+        q: '提交请求时必须提供身份证件吗？',
+        a: '通常不需要，也不建议主动提供。平台验证数据主体身份时，能访问账号本身往往就够了。只有在对方明确要求、且你已确认请求来源合法的情况下，才考虑提供，并且建议在文件上加水印注明用途和提供对象。',
+        qEn: 'Do I have to send identity documents with the request?',
+        aEn: 'Usually not, and volunteering them is a bad idea. Access to the account itself is generally sufficient for the platform to verify you are the data subject. Only consider providing documents if the request is explicit and you have confirmed the source is legitimate, and add a watermark stating the purpose and recipient.',
+      },
+      {
+        q: '平台一个月没有答复怎么办？',
+        a: '可以向所在国的数据保护监管机构投诉。投诉需要材料，因此提交时的记录尤其重要：保存提交时间、渠道截图和任何自动回复，用来说明请求已被正式登记。如果平台答复了但援引例外条款拒绝，答复本身也是申诉依据。',
+        qEn: 'What if the platform does not respond within a month?',
+        aEn: 'You can complain to the data protection authority in your country. A complaint needs evidence, which is why the submission record matters: keep the timestamp, a screenshot of the channel, and any automatic acknowledgement showing the request was formally logged. If the platform replied but relied on an exception, that reply is the basis for the escalation.',
+      },
+      {
+        q: '请求删除后，搜索引擎里的旧内容会消失吗？',
+        a: '不一定。平台处理和搜索引擎索引是两条链路，删除内容不会自动让搜索结果消失，索引需要时间重新抓取。此前的搜索结果、第三方转载和网页存档快照都需要单独处理。',
+        qEn: 'Will old content disappear from search engines after a deletion request?',
+        aEn: 'Not necessarily. Platform processing and search indexing are separate pipelines. Removing content does not remove it from results automatically, and the index needs time to recrawl. Existing results, third-party reposts and web archive snapshots each need their own approach.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

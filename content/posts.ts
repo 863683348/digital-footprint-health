@@ -10893,7 +10893,7 @@ export const allPosts: BlogPost[] = [
     excerpt:
       '不装 Node、不把归档传上服务器，只靠浏览器能不能解析一份 200MB 的 X 归档？可以，但要绕开三个硬限制：主线程阻塞、内存峰值和文件读取方式。本文讲清每个限制的成因和对应的工程做法。',
     excerptEn:
-      'No Node install, no upload, just the browser: can it parse a 200MB X archive? Yes, provided you work around three hard limits — main-thread blocking, peak memory, and how the file gets read. Here is what causes each one and how to engineer around it.',
+      'No Node install, no upload, just the browser: can it parse a 200MB X archive? Yes, provided you work around three hard limits: main-thread blocking, peak memory, and how the file gets read. Here is what causes each one and how to engineer around it.',
     date: '2026-09-18',
     updatedAt: '2026-09-18',
     author: 'Digital Footprint Health Team',

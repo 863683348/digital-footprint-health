@@ -10645,6 +10645,917 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'build-local-tweet-deletion-script',
+    title: '自己写一个本机推文删除脚本：从归档解析到可续跑批处理',
+    titleEn: 'Build a Local Tweet-Deletion Script: From Archive Parsing to a Resumable Batch Runner',
+    excerpt:
+      '托管删除服务要交出账号权限，官方界面又处理不了几万条。自己写一个本机脚本是第三条路：归档解析、权限范围、批次限流、状态文件四块拼起来，删到一半掉线也能接着跑。附完整的模块划分与失败处理清单。',
+    excerptEn:
+      'Hosted deletion services want account access, and the official interface is hopeless past a few thousand tweets. A local script is the third option. Four pieces, an archive parser, a scoped credential, a rate-aware batch runner and a state file, and an interrupted run can resume where it stopped.',
+    date: '2026-09-18',
+    updatedAt: '2026-09-18',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    categoryEn: 'Technical Deep Dive',
+    tags: ['本地脚本', '删除批次', '断点续传', 'API 限流', '归档解析'],
+    tagsEn: ['local script', 'deletion batch', 'resumable runs', 'API rate limits', 'archive parsing'],
+    canonical: '/blog/build-local-tweet-deletion-script',
+    content: `<div class="introduction">
+  <p>删推文这件事有两个现成选项，但都不太顺手。托管服务要你把账号权限交出去，官方界面则基本处理不了几万条的量级。</p>
+  <p>第三条路是自己写脚本，在本地跑。听起来门槛高，拆开看其实只有四块东西：把归档解析成清单、拿到范围合适的凭据、按批次调用删除接口、把进度落到文件里。四块拼起来，一个能断点续跑的删除器就成型了。</p>
+  <p>下面按这个顺序讲，每块给出需要决定的点，以及在 <a href="/blog/x-api-rate-limits-deletion">接口限流</a> 和失败重试上容易踩空的地方。</p>
+</div>
+
+<h2>什么时候值得自己写</h2>
+<p>先排除掉不需要写的情况。待删数量在几百条以内，官方界面手动点完也就一两个小时，写脚本的时间成本比手动更高。只需要删几条高风险内容，同样手动更快。</p>
+<p>真正值得写脚本的是这三种：待删数量过万，手动不现实；对权限极度敏感，不希望任何第三方持有的凭据能登录账号；或者需要在同样的逻辑上反复跑（比如每季度清一次），写一次省很多次。</p>
+<table>
+  <thead><tr><th>方案</th><th>权限留在哪</th><th>适合的量级</th><th>失败后可续</th></tr></thead>
+  <tbody>
+    <tr><td>官方界面手动</td><td>不涉及</td><td>几百条以内</td><td>靠自己记</td></tr>
+    <tr><td>托管删除服务</td><td>第三方持有凭据</td><td>几千到几万条</td><td>服务侧支持</td></tr>
+    <tr><td>本机脚本</td><td>只在你自己的机器上</td><td>几万条以上</td><td>要自己实现</td></tr>
+  </tbody>
+</table>
+<p>第三行最后那格是全部工作量所在。托管服务帮你兜住了断点续传和错误重试，自己写就得把这两件事显式做出来，否则删到一半断网，下一次运行要么重复调用、要么漏掉一批。</p>
+
+<h2>数据从哪来</h2>
+<p>清单来源应该是你自己下载的账号归档，不要去爬取公开时间线。两个原因。爬取拿不到完整的发帖记录，被删过、被保护过的内容经常漏；而且爬取行为本身在你的账号上留下一串异常请求，跟清理隐私的目标正好相反。</p>
+<p>归档里有几个文件值得先认清。<code>tweets.js</code> 存的是你自己的推文，每条带 id、时间戳和正文；<code>like.js</code> 是你点过的赞；<code>direct-messages.js</code> 是私信。删除脚本通常只处理第一种，另两种的处理方式见 <a href="/blog/whats-inside-x-archive-tweets-js">归档文件结构说明</a>。</p>
+<p>归档里的 id 是字符串，长度超过 JavaScript 安全整数范围，解析时不要顺手 <code>Number()</code> 一下。这个坑在删除阶段表现得特别隐蔽：id 被截断后接口返回成功，删掉的却是另一条推文。</p>
+
+<h2>脚本的四个组成部分</h2>
+<table>
+  <thead><tr><th>模块</th><th>职责</th><th>关键决定</th></tr></thead>
+  <tbody>
+    <tr><td>解析器</td><td>归档 → 待删清单</td><td>按什么条件过滤；id 保持字符串</td></tr>
+    <tr><td>凭据</td><td>取得调用权限</td><td>用哪种授权、要哪个范围</td></tr>
+    <tr><td>批次执行器</td><td>逐条调用删除</td><td>批次大小、节流、超时</td></tr>
+    <tr><td>状态文件</td><td>记录已处理项</td><td>写入时机与幂等键</td></tr>
+  </tbody>
+</table>
+<p>四块里最容易写少的是第四块。前三个模块跑通不难，第四块决定了脚本能不能在真实网络环境下跑完。</p>
+
+<h2>第一步：归档解析成清单</h2>
+<p>解析这一步的目标不是把全部内容读进来，而是产出一份稳定的删除清单并落盘。清单一旦生成就不再变动，后面任何一次运行都以这份清单为准，这样中途改了过滤条件也不会导致状态混乱。</p>
+<ul>
+  <li>读取 <code>tweets.js</code>，去掉文件开头那段赋值语句，剩下的才是合法 JSON。</li>
+  <li>提取每条推文的 id、创建时间、正文。正文留一份用于人工抽查。</li>
+  <li>按你的条件过滤：早于某年份、命中某关键词、或来自某个时间区间。过滤逻辑写清楚并保留成参数。</li>
+  <li>输出成一份 JSON 或 CSV，id 一律按字符串处理。</li>
+</ul>
+<p>清单生成后先抽样核对二三十条，确认过滤条件符合预期。这一步花五分钟，能避免后面删错东西。</p>
+
+<h2>第二步：凭据与权限范围</h2>
+<p>调用删除接口需要授权，而授权的范围决定了脚本的能力上限。这里有个原则值得坚持：只申请真正需要的范围。读权限和写权限在接口层面是分开的，范围对照见 <a href="/blog/read-vs-write-api">读写权限的区别</a>。</p>
+<p>凭据的两个常见处理方式都不理想。一是把长期有效的密钥硬编码进脚本，脚本一旦被同步到网盘或仓库就等于泄露。二是每次运行手动粘贴，跑批量任务时不现实。</p>
+<p>相对稳妥的做法是把凭据放在本机的环境变量或系统凭据存储里，脚本只读取不写入，并且给凭据设置到期时间。个人项目里也建议把密钥单独放一个文件、加上忽略规则，具体做法见 <a href="/blog/local-encryption-keys">本地密钥管理</a>。</p>
+
+<h2>第三步：批次执行与限流</h2>
+<p>删除接口有频率限制，超了会直接被拒。所以批次执行器要处理三件事：批次大小、请求间隔、以及被拒之后的退避。</p>
+<p>批次大小不要一次拉满。按接口的窗口限制留出余量，把每分钟的请求数控制在限制的六到七成，剩下的空间留给重试。间隔固定在某个值也行，但更好的做法是读响应头里的剩余额度动态调整，具体字段见 <a href="/blog/x-api-rate-limits-deletion">限流与删除的关系</a>。</p>
+<p>单条请求要有超时。没有超时的话，一次卡住的连接会让整个批次挂在那里，看不出进展。超时时间设短一些，失败了交给重试逻辑处理，比让批次整体僵住划算。</p>
+<p>并发要不要开？小批量可以，大批量建议先串行跑通，再考虑开两到三个并发。并发一上去，限流窗口的剩余额度会消耗得很快，重试逻辑也变得更难推理。</p>
+
+<h2>第四步：状态文件与断点续传</h2>
+<p>状态文件是让脚本可以随时中断、随时继续的关键。每条推文处理完就落盘，而不是等整批结束再写。落盘的内容至少包含四项：</p>
+<table>
+  <thead><tr><th>字段</th><th>作用</th></tr></thead>
+  <tbody>
+    <tr><td>推文 id</td><td>唯一标识，用作幂等键</td></tr>
+    <tr><td>处理结果</td><td>成功、已不存在、失败并附原因</td></tr>
+    <tr><td>时间戳</td><td>判断是否是过期状态、排查异常</td></tr>
+    <tr><td>尝试次数</td><td>限制重试上限，避免死循环</td></tr>
+  </tbody>
+</table>
+<p>启动时的逻辑是：读清单，读状态文件，两者的差集就是本次要处理的部分。这样脚本天然可续跑，重复运行不会重复删除，也不会漏掉未处理的条目。</p>
+<p>写入时机值得强调一下。按批写入（比如每 50 条写一次）会丢掉批内进度，中断后重复处理几十条。逐条写入慢一些，但对批量任务来说，写入开销远小于接口调用开销，多出来的那点时间可以忽略。</p>
+<p>顺带一个实践细节：状态文件用追加写而不是整体覆盖。追加写在断电时最多丢最后一行，整体覆盖则可能把文件写成半截，导致整个状态不可读。</p>
+
+<h2>失败处理：哪些该重试</h2>
+<p>把错误分成三类，处理方式不同：</p>
+<ul>
+  <li><strong>可重试</strong>：限流返回、超时、连接重置。加入退避队列，等待后重试，并累加尝试次数。</li>
+  <li><strong>视为已完成</strong>：推文已不存在、无权限删除。这类不是失败，标记为终态即可，重试没有意义。</li>
+  <li><strong>需要人工判断</strong>：认证失败、范围不足。继续跑只会一直失败，应该立即停下来检查凭据。</li>
+</ul>
+<p>区分第二类和第三类最关键。把认证失败当成可重试错误，脚本会在额度耗尽前一直空转；把已不存在的推文当成失败，脚本则会在同一批条目上反复重试。更细的错误分类见 <a href="/blog/deletion-failed-retry-faq">删除失败重试常见问题</a>。</p>
+
+<h2>本机运行的安全边界</h2>
+<p>自己写脚本的收益，很大一部分来自数据不出本机。这个收益有条件：归档文件、生成的清单、状态文件、以及任何日志，都会落在磁盘上。</p>
+<ul>
+  <li>删除日志里不要写完整正文，写 id 和结果就够。日志经常被随手同步到云盘，正文跟着一起走了。</li>
+  <li>归档和清单放在同一个加密卷里，或者干脆跑完手动清掉，参考 <a href="/blog/encrypted-archive">加密保存归档</a>。</li>
+  <li>凭据文件加忽略规则，别跟着项目目录一起进版本库。</li>
+  <li>脚本里不要加任何上报或统计的代码。本机脚本的价值就在于没有出网路径，例外只有删除接口本身。</li>
+</ul>
+
+<h2>什么时候该放弃自己写</h2>
+<p>脚本写到能稳定跑完，通常要花掉一个周末。以下情况建议直接用现成方案：待删数量不大；你不打算以后再跑；账号是多人共用的品牌号或企业号，删除操作需要留痕和审批；或者待删内容里有大量需要逐条判断的边界情况，自动化的收益会被人工复核吃掉。</p>
+<p>托管方案与官方工具的对照见 <a href="/blog/tweet-deletion-tools-comparison-2026">2026 年工具横评</a>。如果你只是想知道自己账号里到底有多少敏感内容、值不值得清，那其实不需要写脚本，先做一次体检就能拿到答案。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 做的是脚本之前那一步：在写代码或删任何东西之前，先把归档里的个人数据分布摸清楚。工具在本机解析 X 归档，标出手机号、邮箱、地址等敏感内容的位置与年份，输出 0-100 健康评分和待处理清单，分析全程只读、数据不上传。清单确认之后，删除环节可以按条计费执行并支持暂停恢复，也可以照上面这套思路自己写。从 <a href="/">免费体检</a> 开始，导入方式见 <a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>There are two off-the-shelf ways to delete tweets and neither fits well. Hosted services want your account access. The official interface falls over somewhere in the low thousands.</p>
+  <p>The third option is a script you run yourself. It sounds like a project, but it breaks into four pieces: turn the archive into a list, obtain a credential with the right scope, call the deletion endpoint in batches, and persist progress to a file. Assemble those and you have a resumable deleter.</p>
+  <p>What follows walks through the four pieces in order, flags the decisions inside each, and points at the places where rate limits and retries tend to go wrong.</p>
+</div>
+
+<h2>When writing one is worth it</h2>
+<p>Rule out the cases that do not need code first. A few hundred tweets are an hour or two of clicking, and writing a script costs more than that. A handful of high-risk items is also faster by hand.</p>
+<p>Three situations justify the effort: the backlog runs into five figures and manual work is out of the question; the credential question is serious enough that you refuse to let a third party hold anything that can sign in as you; or you plan to run the same logic repeatedly, say once a quarter, and the one-time cost amortises.</p>
+<table>
+  <thead><tr><th>Approach</th><th>Where the credential lives</th><th>Volume it suits</th><th>Resumable</th></tr></thead>
+  <tbody>
+    <tr><td>Official interface, by hand</td><td>Not involved</td><td>Up to a few hundred</td><td>You keep track yourself</td></tr>
+    <tr><td>Hosted deletion service</td><td>Third party holds it</td><td>Thousands to tens of thousands</td><td>Handled by the vendor</td></tr>
+    <tr><td>Local script</td><td>Only on your machine</td><td>Tens of thousands and up</td><td>You build it</td></tr>
+  </tbody>
+</table>
+<p>That last cell in the bottom row is where all the work is. A hosted service absorbs resumability and error handling for you. Writing your own means implementing both explicitly, otherwise a dropped connection halfway through leaves you either re-issuing calls or skipping a chunk.</p>
+
+<h2>Where the list comes from</h2>
+<p>Generate the list from an archive you downloaded yourself. Do not scrape the public timeline. Two reasons: scraping misses a lot, because deleted and previously protected posts do not show up, and the scraping itself leaves a trail of unusual requests on your account, which is the opposite of what you are trying to accomplish.</p>
+<p>A few files in the archive matter here. <code>tweets.js</code> holds your own posts, each with an id, a timestamp and the body. <code>like.js</code> holds likes. <code>direct-messages.js</code> holds private messages. A deletion script usually touches only the first, and the others behave differently, as covered in the <a href="/blog/whats-inside-x-archive-tweets-js">archive file breakdown</a>.</p>
+<p>The ids in the archive are strings and they exceed the safe integer range for JavaScript. Do not casually wrap them in <code>Number()</code>. The failure this produces is nasty because it hides: a truncated id still returns a success from the endpoint, and you have deleted a different post.</p>
+
+<h2>The four pieces</h2>
+<table>
+  <thead><tr><th>Module</th><th>Job</th><th>The decision inside</th></tr></thead>
+  <tbody>
+    <tr><td>Parser</td><td>Archive to deletion list</td><td>Which filter to apply; keep ids as strings</td></tr>
+    <tr><td>Credential</td><td>Obtain call permission</td><td>Which grant, and which scope</td></tr>
+    <tr><td>Batch runner</td><td>Call the endpoint per item</td><td>Batch size, throttling, timeouts</td></tr>
+    <tr><td>State file</td><td>Record what is done</td><td>When to write, what the idempotency key is</td></tr>
+  </tbody>
+</table>
+<p>The fourth piece is the one people skip. Getting the first three working is not hard. The fourth decides whether the thing survives a real network.</p>
+
+<h2>Step one: parse the archive into a list</h2>
+<p>The parser's goal is not to load everything into memory. It is to produce a stable deletion list and write it to disk. Once written, that list is the source of truth for every later run, so changing your filter mid-project cannot scramble the state.</p>
+<ul>
+  <li>Read <code>tweets.js</code> and strip the assignment statement at the top. What remains is valid JSON.</li>
+  <li>Pull the id, creation time and body for each post. Keep the body around so you can spot-check.</li>
+  <li>Apply your filter: earlier than a given year, containing a keyword, or falling inside a date range. Keep the filter as a parameter, not a hardcoded constant.</li>
+  <li>Write the result to JSON or CSV, with ids treated as strings throughout.</li>
+</ul>
+<p>After generating the list, sample twenty or thirty entries against your filter. Five minutes here prevents deleting the wrong things later.</p>
+
+<h2>Step two: the credential and its scope</h2>
+<p>Deletion calls need an authorization, and the scope of that authorization caps what the script can do. Hold to one principle: request only the scope you actually use. Read and write permissions are separate at the endpoint level, and the distinction is laid out in <a href="/blog/read-vs-write-api">read versus write access</a>.</p>
+<p>The two common ways of handling the credential are both poor. Hardcoding a long-lived key into the script means one sync to a cloud folder or a repository and it has leaked. Pasting it in by hand each run does not survive a batch job.</p>
+<p>The workable middle ground: keep the credential in a local environment variable or the system credential store, have the script read it and never write it, and give it an expiry. Even for a personal project, keep the key in its own file with an ignore rule. Details in <a href="/blog/local-encryption-keys">local key management</a>.</p>
+
+<h2>Step three: batching under a rate limit</h2>
+<p>The deletion endpoint is rate limited and will reject you past the ceiling. So the batch runner needs three things: a batch size, a request interval, and backoff once you get rejected.</p>
+<p>Do not run the batch size up to the maximum. Leave headroom. Target sixty to seventy percent of the window allowance and keep the rest for retries. A fixed interval works, but reading the remaining quota from the response headers and adjusting is better. The relevant fields are described in <a href="/blog/x-api-rate-limits-deletion">rate limits and deletion</a>.</p>
+<p>Every request needs a timeout. Without one, a single stuck connection parks the whole batch with no visible progress. Set the timeout short and let the retry path handle it, which beats freezing the run.</p>
+<p>Should you run concurrently? For a small batch, fine. For a large one, get it working serially first, then consider two or three workers. Concurrency burns the window allowance fast and makes the retry logic considerably harder to reason about.</p>
+
+<h2>Step four: state and resumability</h2>
+<p>The state file is what lets the script be interrupted and resumed at any point. Write after each item, not at the end of a batch. At minimum, record four fields:</p>
+<table>
+  <thead><tr><th>Field</th><th>Purpose</th></tr></thead>
+  <tbody>
+    <tr><td>Post id</td><td>The identifier, used as the idempotency key</td></tr>
+    <tr><td>Outcome</td><td>Succeeded, no longer exists, or failed with a reason</td></tr>
+    <tr><td>Timestamp</td><td>Detects stale state, helps with debugging</td></tr>
+    <tr><td>Attempt count</td><td>Caps retries so nothing loops forever</td></tr>
+  </tbody>
+</table>
+<p>On startup, read the list and read the state file. The difference between them is the work for this run. The script becomes resumable by construction: rerunning repeats nothing and skips nothing.</p>
+<p>The write timing deserves emphasis. Writing per batch, say every fifty items, loses the progress inside the batch, so an interruption re-processes a few dozen. Writing per item is slower, but for a batch job the write cost is trivial next to the network cost.</p>
+<p>One practical detail: append to the state file rather than rewriting it. On a hard stop, an append loses at most the final line. A rewrite can leave a half-written file, and then the whole state is unreadable.</p>
+
+<h2>Failures: which ones to retry</h2>
+<p>Sort errors into three buckets and treat them differently:</p>
+<ul>
+  <li><strong>Retryable</strong>: rate limit responses, timeouts, connection resets. Queue with backoff, retry, increment the attempt count.</li>
+  <li><strong>Effectively done</strong>: the post no longer exists, or you lack permission to delete it. Not a failure. Mark it terminal, because retrying achieves nothing.</li>
+  <li><strong>Needs a human</strong>: authentication failure, insufficient scope. Continuing only produces more failures. Stop and check the credential.</li>
+</ul>
+<p>Separating the second bucket from the third matters most. Treating an auth failure as retryable keeps the script spinning until the quota runs out. Treating an already-gone post as a failure makes it retry the same items forever. Fuller error taxonomy in <a href="/blog/deletion-failed-retry-faq">deletion failure FAQ</a>.</p>
+
+<h2>The security boundary of a local run</h2>
+<p>A large part of the benefit of writing your own script is that data never leaves the machine. That benefit is conditional, because the archive, the generated list, the state file and any logs all land on disk.</p>
+<ul>
+  <li>Keep full post bodies out of the deletion log. Ids and outcomes are enough. Logs get synced to cloud folders without anyone deciding to.</li>
+  <li>Put the archive and the list on the same encrypted volume, or clear them when the run finishes. See <a href="/blog/encrypted-archive">storing an archive encrypted</a>.</li>
+  <li>Add an ignore rule for the credential file so it does not travel with the project directory.</li>
+  <li>Put no telemetry in the script. The value of a local tool is that it has no outbound path, with the deletion endpoint as the sole exception.</li>
+</ul>
+
+<h2>When to stop writing your own</h2>
+<p>Reaching a script that reliably completes a run usually costs a weekend. In these cases, use something off the shelf: the backlog is small; you do not intend to run this again; the account is a shared brand or corporate one where deletions need an audit trail; or the backlog is full of edge cases that demand individual judgement, so automation gains get eaten by review time.</p>
+<p>A comparison of hosted and native options is in the <a href="/blog/tweet-deletion-tools-comparison-2026">2026 tool roundup</a>. If what you actually want is to know how much sensitive material is sitting in the account and whether it is worth cleaning, you do not need a script at all. One audit answers that.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop covers the step before the script: mapping where personal data sits in the account before you write code or delete anything. The tool parses your X archive on your own device, flags phone numbers, emails and addresses with the years they appear, and produces a 0-100 health score plus a work list. The analysis is read-only and nothing is uploaded. Once the list is confirmed, deletion can run per tweet with pause and resume, or you can build it yourself along the lines above. Start with the <a href="/">free audit</a>, and see <a href="/blog/how-to-download-x-archive">downloading your X archive</a> for the import step.</p>`,
+    faq: [
+      {
+        q: '自己写脚本和用托管服务，删一条的成本差多少？',
+        a: '脚本本身的成本是时间，不按条计费，所以条数越多单条摊得越薄。托管服务按条计价，省下的是开发和维护投入。分界点大致在几千条：低于这个量级，服务更划算；过万条且打算以后再跑，脚本更省。',
+        qEn: 'How does the per-tweet cost compare between a script and a hosted service?',
+        aEn: 'A script costs time, not money per tweet, so the per-item cost falls as the backlog grows. Hosted services charge per tweet and save you the development and maintenance work. The rough crossover sits in the low thousands. Below that, a service wins. Past ten thousand, with repeat runs expected, the script does.',
+      },
+      {
+        q: '脚本跑一半断网了会怎样？',
+        a: '取决于状态文件的写入时机。每条处理完就落盘的话，重新运行会从断点继续，既不重复也不遗漏。按批写入则会重跑批内剩下的条目，重复的项目通常会返回已不存在，被归为已完成，不会造成实际破坏。',
+        qEn: 'What happens if the network drops mid-run?',
+        aEn: 'It depends on when the state file is written. If you write after each item, rerunning picks up at the break point with no repeats and no gaps. If you write per batch, the remainder of that batch gets reprocessed; the repeats usually come back as already deleted and land in the done bucket, so nothing actually breaks.',
+      },
+      {
+        q: '并发跑是不是能快很多？',
+        a: '收益比想象中小。删除接口的窗口额度是共享的，并发把额度消耗得更快，退避和重试的时序也变得更难推理。大批量任务建议先串行跑通、确保状态写入可靠，再考虑两到三个并发，并且把批次大小相应调小。',
+        qEn: 'Does concurrency make it much faster?',
+        aEn: 'Less than you would expect. The window allowance is shared, so concurrency drains it faster, and the timing of backoff and retries becomes harder to reason about. For a large backlog, get the serial version working with reliable state writes first, then try two or three workers with a correspondingly smaller batch size.',
+      },
+      {
+        q: '归档里的推文 id 为什么要当字符串处理？',
+        a: '推文 id 的数值超过了 JavaScript 能精确表示整数的范围。转成数字后末几位会被抹掉，变成另一个合法的 id。更麻烦的是接口不会报错，它会开心地删掉另一条推文，你在结果里看到的是成功。全程按字符串传递可以完全避开这个问题。',
+        qEn: 'Why keep archive post ids as strings?',
+        aEn: 'Post ids exceed the range JavaScript can represent exactly as integers. Converting to a number drops the trailing digits and yields a different but still valid id. Worse, the endpoint does not error; it happily deletes a different post and reports success. Passing ids as strings end to end sidesteps the whole problem.',
+      },
+      {
+        q: '脚本需要申请写权限吗，还是读权限就够？',
+        a: '删除属于写操作，读权限不够。但除了删除，其它环节都不需要写权限。解析归档完全在本地，不碰接口；核对结果也用不到写权限。所以把凭据限制在删除必需的范围，不要因为方便就申请更宽的权限集合。',
+        qEn: 'Does the script need write scope, or is read enough?',
+        aEn: 'Deletion is a write operation, so read scope will not cover it. But nothing else in the pipeline needs write access. Parsing the archive is local and touches no endpoint, and verifying results does not either. Keep the credential narrowed to what deletion requires rather than requesting a broader set for convenience.',
+      },
+    ],
+  },
+  {
+    slug: 'browser-side-archive-parsing',
+    title: '在浏览器里解析 200MB 的 X 归档：流式读取、内存与线程安排',
+    titleEn: 'Parsing a 200MB X Archive in the Browser: Streaming, Memory and Threads',
+    excerpt:
+      '不装 Node、不把归档传上服务器，只靠浏览器能不能解析一份 200MB 的 X 归档？可以，但要绕开三个硬限制：主线程阻塞、内存峰值和文件读取方式。本文讲清每个限制的成因和对应的工程做法。',
+    excerptEn:
+      'No Node install, no upload, just the browser: can it parse a 200MB X archive? Yes, provided you work around three hard limits — main-thread blocking, peak memory, and how the file gets read. Here is what causes each one and how to engineer around it.',
+    date: '2026-09-18',
+    updatedAt: '2026-09-18',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    categoryEn: 'Technical Deep Dive',
+    tags: ['浏览器解析', '流式读取', 'Web Worker', '内存优化', '本机处理'],
+    tagsEn: ['browser parsing', 'streaming', 'Web Worker', 'memory', 'on-device processing'],
+    canonical: '/blog/browser-side-archive-parsing',
+    content: `<div class="introduction">
+  <p>很多人第一次接触本机处理的工具时，会默认它背后跑着一个服务端。如果数据不出本机是硬要求，服务端这条路就断了，只剩浏览器这一个运行环境。</p>
+  <p>浏览器能解析 200MB 的归档文件，但方式和在服务端写正则有明显差别。三个限制绕不开：主线程不能阻塞、内存峰值不能失控、文件读取方式决定了解析器的写法。</p>
+  <p>下面逐个拆开，每段给出成因和对应的做法，最后给一个能跑通的整体顺序。</p>
+</div>
+
+<h2>限制一：主线程不能阻塞</h2>
+<p>解析几万条记录加上正则扫描，在服务端是几百毫秒的事，放在浏览器主线程上就会让页面完全卡住。用户看到的是标签页无响应，甚至被浏览器提示页面已卡死。这个限制不是性能问题，是架构问题：只要解析在主线程上，无论怎么优化算法都躲不过。</p>
+<p>做法是把解析放进 Web Worker。Worker 在独立线程上运行，主线程只负责传递文件引用和接收进度消息。界面在这期间保持可交互，进度条能正常刷新，用户随时可以取消。</p>
+<p>实现上有两个细节容易踩空。文件对象本身可以结构化克隆传给 Worker，不需要先把内容读进内存；但解析结果往往很大，从 Worker 往回传之前先做裁剪，只传需要的字段，避免一次克隆出几十兆的数据。</p>
+
+<h2>限制二：内存峰值</h2>
+<p>把整个文件读成一个字符串，再 <code>JSON.parse</code>，是最直观的写法，也是最先撞墙的写法。一份 200MB 的归档读成字符串后占用约 400MB（UTF-16 每字符两字节），解析成对象后还会再膨胀一次，峰值很容易超过 1GB。浏览器标签页的内存上限比这个数字低。</p>
+<p>要压住峰值，思路是不要一次持有全部数据：</p>
+<ul>
+  <li>分块读取文件，每次只处理一个块，处理完就释放引用。</li>
+  <li>解析出的记录边处理边丢弃，只保留命中的条目和计数。</li>
+  <li>避免在循环里做字符串拼接。大字符串拼接会反复分配，用数组收集最后合并。</li>
+  <li>如果要保留中间结果，考虑存到 IndexedDB 而不是常驻内存。</li>
+</ul>
+<p>这里有个反直觉的点：为了省内存改成流式处理后，代码复杂度上去了，但速度快不快并不确定。流式解析省的是内存，不是时间。如果你的归档只有几兆，直接整体解析反而更快也更简单。</p>
+
+<h2>限制三：怎么读文件</h2>
+<table>
+  <thead><tr><th>方式</th><th>内存占用</th><th>适用场景</th></tr></thead>
+  <tbody>
+    <tr><td>整体读成文本</td><td>高（约两倍文件大小）</td><td>小文件，几十兆以内</td></tr>
+    <tr><td>分块读取</td><td>低，取决于块大小</td><td>大文件，需要自定义解析边界</td></tr>
+    <tr><td>边读边解压</td><td>低到中</td><td>归档是压缩包时</td></tr>
+  </tbody>
+</table>
+<p>归档通常以压缩包形式提供，所以还多一层解压。浏览器侧的流式解压库可以在数据到达时逐块展开，避免先解压出一整个大文件。这一步的顺序很关键：先解压再分块，内存峰值等于完整解压后的体积；边读边解压，峰值只取决于块大小。</p>
+<p>分块处理会遇到一个边界问题：块切在哪里。JSON 结构不能从任意位置切断，需要维护一个跨块的缓冲，把上一块的尾部留着和下一块拼起来。这是流式解析器里最容易写错的部分，也是最容易写出死循环的地方。</p>
+
+<h2>解析 tweets.js 的实际困难</h2>
+<p>归档里的 <code>tweets.js</code> 不是标准 JSON 文件，开头有一行赋值语句，整体也不保证能被整体解析。常见的处理是先定位第一个左方括号，从那里开始按数组元素逐个解析，而不是把整个文件交给 JSON 解析器。</p>
+<p>这样做还有个附带好处：可以边解析边统计，不需要等全部解析完才显示第一条结果。对 200MB 的文件来说，用户能在几秒内看到"已处理多少条"，这和等两分钟看到一片空白是完全不同的体验。</p>
+<p>文件内部结构见 <a href="/blog/tweets-js-anatomy">tweets.js 结构拆解</a>，字段含义见 <a href="/blog/whats-inside-x-archive-tweets-js">归档内文件说明</a>。</p>
+
+<h2>正则扫描怎么才不拖慢整体</h2>
+<p>敏感信息扫描通常靠正则。这里性能陷阱很多，几条经验：</p>
+<ul>
+  <li>把正则编译一次复用，不要在循环里反复构造。</li>
+  <li>先用最便宜的条件做预筛（比如先判断是否含特定字符），再做完整匹配。</li>
+  <li>避免嵌套量词，回溯会把一条长文本的处理时间放大几倍。</li>
+  <li>把扫描放在 Worker 里，让界面不受影响。</li>
+</ul>
+<p>手机号、邮箱这类模式的匹配要考虑国际格式。只写一种地区的号码格式，会漏掉大量非本地的写法，也会产生误报。误报的处理方式见 <a href="/blog/footprint-report-false-positives">体检报告误报处理</a>。</p>
+
+<h2>进度与取消</h2>
+<p>长任务必须能取消，否则用户关掉标签页就成了唯一的退出方式。实现上，主线程往 Worker 发一条消息设置标志位，Worker 在处理每个块之前检查一次，命中就停止并回传已处理数量。</p>
+<p>进度回传要限频。每处理一条就发一条消息，消息本身的开销会变成瓶颈。按块或按时间间隔回传（比如每 200 毫秒一次），界面看起来依然是连续的。</p>
+<p>取消之后，已经完成的部分不应该丢掉。允许用户带着已处理的结果继续，或者选择重新开始，这比强制重跑全部内容友好得多。</p>
+
+<h2>这条路线换来什么</h2>
+<p>服务端解析在工程上简单很多：环境固定、内存充裕、没有线程限制。浏览器侧解析要额外处理线程、内存和读取方式，成本实实在在。</p>
+<p>换来的是另一件事：归档文件从未离开用户的设备。没有上传步骤，没有临时存储，也没有"删除服务器上的数据"这个需要相信对方的环节。对隐私类工具来说，这个性质本身就是产品的一部分，不是实现细节。</p>
+<p>另外有个实际收益：没有服务端就没有带宽成本，处理几万条记录不产生费用。这也是这类工具能对体检环节免费的算术基础，相关对比见 <a href="/blog/local-vs-cloud-processing">本机处理与云端处理</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 就是这么做的：X 归档在你的浏览器里被解析，不经过任何服务器。扫描结果、评分和风险清单都在本机生成，关掉标签页即结束，没有留存的服务端副本。想先看看自己账号里有什么，可以从 <a href="/">免费体检</a> 开始，需要清理时再按条执行删除，详情见 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除流程</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>People meeting an on-device tool for the first time often assume a server is doing the work behind it. When keeping data off the network is a hard requirement, that option is gone and the browser is the only runtime left.</p>
+  <p>A browser can parse a 200MB archive, but not the way you would write it on a server. Three limits get in the way: the main thread cannot block, peak memory cannot run away, and how the file is read decides what the parser looks like.</p>
+  <p>Each of those is unpacked below, with the cause and the engineering response, followed by an end-to-end order that works.</p>
+</div>
+
+<h2>Limit one: the main thread cannot block</h2>
+<p>Parsing tens of thousands of records and running regex scans over them takes a few hundred milliseconds on a server. On the browser main thread it freezes the page completely. The user sees an unresponsive tab, and the browser may step in with a page-unresponsive prompt. This is not a performance problem to tune but an architectural one: as long as parsing happens on the main thread, no amount of algorithm work avoids it.</p>
+<p>The response is to move parsing into a Web Worker. It runs on its own thread while the main thread only passes a file reference across and receives progress messages. The interface stays interactive, the progress bar keeps moving, and the user can cancel at any point.</p>
+<p>Two implementation details matter. A file object can be structured-cloned into the worker, so there is no need to read the contents into memory first. Results, on the other hand, are often large, so trim inside the worker and pass back only the fields you need rather than cloning tens of megabytes in one message.</p>
+
+<h2>Limit two: peak memory</h2>
+<p>Read the whole file as a string and run <code>JSON.parse</code> on it: the most obvious approach, and the first one to fail. A 200MB archive becomes roughly 400MB as a string (two bytes per character in UTF-16), then inflates again when parsed into objects, so the peak easily exceeds a gigabyte. A browser tab's memory ceiling is lower than that.</p>
+<p>Keeping the peak down means never holding the whole dataset at once:</p>
+<ul>
+  <li>Read the file in chunks, process one at a time, and release the reference when done.</li>
+  <li>Discard parsed records as you go, keeping only matched items and counters.</li>
+  <li>Avoid string concatenation inside loops. Building large strings repeatedly reallocates; collect into an array and join at the end.</li>
+  <li>If intermediate results must persist, put them in IndexedDB rather than resident memory.</li>
+</ul>
+<p>One counterintuitive point: converting to a streaming approach to save memory raises complexity without necessarily making anything faster. Streaming saves memory, not time. For an archive of a few megabytes, parsing the whole thing at once is both faster and simpler.</p>
+
+<h2>Limit three: how the file gets read</h2>
+<table>
+  <thead><tr><th>Approach</th><th>Memory</th><th>Where it fits</th></tr></thead>
+  <tbody>
+    <tr><td>Read the whole thing as text</td><td>High, roughly twice the file size</td><td>Small files, under a few tens of megabytes</td></tr>
+    <tr><td>Chunked reads</td><td>Low, set by chunk size</td><td>Large files, with a custom parse boundary</td></tr>
+    <tr><td>Decompress while reading</td><td>Low to moderate</td><td>When the archive is a compressed container</td></tr>
+  </tbody>
+</table>
+<p>Archives usually arrive as a compressed container, which adds a decompression layer. Streaming decompression libraries on the browser side expand data block by block as it arrives instead of producing one large file first. Order matters here: decompress fully then chunk means the peak equals the fully expanded size, while decompressing as you read caps the peak at the chunk size.</p>
+<p>Chunking raises a boundary problem: where the cut lands. JSON structure cannot be split at an arbitrary offset, so you maintain a carry-over buffer that keeps the tail of one chunk to prepend to the next. This is the easiest part of a streaming parser to get wrong, and the easiest place to write an infinite loop.</p>
+
+<h2>What makes tweets.js awkward</h2>
+<p>The <code>tweets.js</code> file inside an archive is not plain JSON. It opens with an assignment statement, and the whole thing is not guaranteed to parse as one document. The usual approach is to locate the first opening bracket and parse array elements from there rather than handing the file to a JSON parser.</p>
+<p>That has a side benefit: you can report as you parse instead of waiting for the full pass before showing anything. On a 200MB file, seeing a running count within seconds is a very different experience from staring at a blank panel for two minutes.</p>
+<p>The internal layout is broken down in <a href="/blog/tweets-js-anatomy">the tweets.js anatomy</a>, and field meanings are in the <a href="/blog/whats-inside-x-archive-tweets-js">archive file reference</a>.</p>
+
+<h2>Keeping regex scans from dominating</h2>
+<p>Sensitive-data scanning leans on regular expressions, and there are many performance traps. A few rules of thumb:</p>
+<ul>
+  <li>Compile the pattern once and reuse it instead of rebuilding it inside the loop.</li>
+  <li>Pre-filter with the cheapest possible test, such as a character check, before running the full match.</li>
+  <li>Avoid nested quantifiers. Backtracking multiplies the cost of a single long string by several times.</li>
+  <li>Run the scan inside the worker so the interface stays responsive.</li>
+</ul>
+<p>Patterns for phone numbers and emails need international coverage. Writing only one region's format misses a large share of real-world entries and produces false positives at the same time. Handling those is covered in <a href="/blog/footprint-report-false-positives">false positives in audit reports</a>.</p>
+
+<h2>Progress and cancellation</h2>
+<p>A long task has to be cancellable, or closing the tab becomes the only exit. In practice, the main thread posts a flag to the worker, the worker checks it before each chunk, and on a hit it stops and reports how much it processed.</p>
+<p>Throttle progress messages. Posting one per record makes messaging itself the bottleneck. Reporting per chunk or on a timer, say every 200 milliseconds, still looks continuous in the interface.</p>
+<p>When the user cancels, completed work should not evaporate. Letting them continue with partial results, or explicitly restart, beats forcing a full rerun.</p>
+
+<h2>What this buys you</h2>
+<p>Server-side parsing is far simpler to engineer: a fixed environment, ample memory, no threading constraints. Browser-side parsing pays a real cost in threads, memory and read strategy.</p>
+<p>What it buys is that the archive never leaves the device. No upload step, no temporary storage, and no "we delete it from our servers" step that requires trusting someone else. For a privacy tool, that property is part of the product rather than an implementation detail.</p>
+<p>There is a practical gain too: no server means no bandwidth bill, so processing tens of thousands of records costs nothing. That arithmetic is what lets a tool keep the audit step free. Further comparison in <a href="/blog/local-vs-cloud-processing">local versus cloud processing</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>That is the model digital-footprint-health.shop runs on: your X archive is parsed in the browser and never passes through a server. Findings, score and risk list are generated on the device, and closing the tab ends it with no server-side copy. To see what is sitting in your account, start with the <a href="/">free audit</a>; when you want to act on it, deletion runs per tweet, described in <a href="/blog/bulk-delete-old-tweets-walkthrough">the bulk deletion walkthrough</a>.</p>`,
+    faq: [
+      {
+        q: '浏览器解析大文件一定会卡吗？',
+        a: '只在主线程上解析才会卡。放进 Web Worker 之后，解析过程对界面没有影响，进度条和取消按钮都能正常响应。文件大小本身不决定卡不卡，运行在哪个线程才决定。',
+        qEn: 'Will a browser always freeze on a large file?',
+        aEn: 'Only if parsing runs on the main thread. Inside a Web Worker the parse does not touch the interface, so progress and cancellation stay responsive. File size is not what decides this. Which thread it runs on is.',
+      },
+      {
+        q: '流式解析是不是一定比整体解析快？',
+        a: '不一定。流式解析省的是内存峰值，时间上通常略慢，因为分块和拼接有额外开销。文件只有几十兆时，整体解析更快也更好写。只有在内存成为瓶颈时才值得换成流式。',
+        qEn: 'Is streaming always faster than parsing the whole file?',
+        aEn: 'No. Streaming reduces peak memory and is usually slightly slower, since chunking and reassembly cost something. For a few tens of megabytes, parsing in one pass is faster and easier to write. Reach for streaming when memory is the constraint.',
+      },
+      {
+        q: '本机解析出来的结果存在哪里？',
+        a: '存在内存里，关掉标签页就消失。需要保留时通常写入浏览器的本地数据库，仍然不离开设备。所以"本机处理"和"结果自动保存"是两件事，前者不保证后者，工具一般会让你选择是否保留。',
+        qEn: 'Where do on-device results get stored?',
+        aEn: 'In memory, and they disappear when the tab closes. If they need to persist, they usually go into the browser local database, still without leaving the device. So on-device processing and automatic saving are separate properties, and tools normally let you choose whether to keep anything.',
+      },
+      {
+        q: '手机上能跑同样的流程吗？',
+        a: '数学上可以，实践上受内存限制明显。移动端浏览器标签页的内存上限比桌面低不少，200MB 的归档在手机上容易触发页面重载。分块大小调小、减少中间结果可以缓解，但先看结果再决定是否清理这类轻量流程更适合移动端。',
+        qEn: 'Does the same flow run on a phone?',
+        aEn: 'In principle yes, in practice memory is the binding constraint. Mobile browser tabs have a much lower ceiling than desktop, so a 200MB archive often triggers a page reload. Smaller chunks and fewer intermediate results help, but lighter flows, such as reviewing findings before deciding whether to clean up, suit mobile better.',
+      },
+    ],
+  },
+  {
+    slug: 'twitter-account-takeover-recovery',
+    title: 'X 账号被接管之后：拿回控制权、评估暴露面、按顺序加固',
+    titleEn: 'After a Twitter Account Takeover: Regaining Control and Assessing Exposure',
+    excerpt:
+      '账号被接管最麻烦的不是丢号，是拿回来之后不知道对方动过什么。删了推文、改了资料、加了授权应用、留了私信，这些痕迹会一直挂着。本文给出一套按顺序执行的恢复清单。',
+    excerptEn:
+      'The hard part of an account takeover is not losing the account. It is not knowing what the other party did while they had it. Deleted posts, edited profile details, added connected apps and lingering messages stay behind. Here is an ordered recovery checklist.',
+    date: '2026-09-18',
+    updatedAt: '2026-09-18',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    categoryEn: 'Account Security',
+    tags: ['账号接管', '账号恢复', '授权撤销', '登录设备', '安全加固'],
+    tagsEn: ['account takeover', 'account recovery', 'revoking access', 'login sessions', 'security hardening'],
+    canonical: '/blog/twitter-account-takeover-recovery',
+    content: `<div class="introduction">
+  <p>账号被接管时，紧急感都集中在"怎么把号拿回来"。拿回来之后往往松一口气，然后就没有然后了。</p>
+  <p>麻烦出在这里：对方占着账号的那段时间做过什么，你并不知情。改过的资料、删掉的推文、加过的授权应用、发出去的私信，都不会在取回账号时自动复原或提示你。</p>
+  <p>下面这份清单按顺序排了六步，从夺回控制权到收尾核查。每一步都写清楚要确认什么，以及漏掉会留下什么后果。</p>
+</div>
+
+<h2>第一步：先切断对方的会话</h2>
+<p>改密码这一步很多人会做，但单独改密码并不足够。已经建立的登录会话往往不会因为改密码而立即失效，对方手里如果握着有效的会话令牌，改完密码他还能继续操作。</p>
+<p>正确顺序是先撤销所有已登录设备，再改密码。撤销动作会把所有现存的会话踢掉，包括你自己的，改密码则阻止对方用旧凭据重新登录。两步都做完，控制权才真正回到你手里。</p>
+<p>设备列表的检查方法见 <a href="/blog/login-device-audit-x-account">登录设备审计</a>。有个细节值得留意：检查时不要只看设备名称，位置信息和最近活动时间更能暴露异常，因为设备名称是可以被伪造或留空的。</p>
+
+<h2>第二步：清掉对方的持久入口</h2>
+<p>密码是最显眼的入口，但不是唯一的。授权过的第三方应用、绑定的邮箱和手机号、备用验证方式，每一样都是绕过密码直接进门的通道。</p>
+<table>
+  <thead><tr><th>入口</th><th>风险</th><th>处理</th></tr></thead>
+  <tbody>
+    <tr><td>已授权应用</td><td>可能持有长期有效的访问权</td><td>全部撤销，需要时重新授权</td></tr>
+    <tr><td>绑定邮箱</td><td>可用于重置密码</td><td>确认仍属于你，检查转发规则</td></tr>
+    <tr><td>绑定手机号</td><td>可用于接收验证码</td><td>确认号码未变更</td></tr>
+    <tr><td>备用验证方式</td><td>可能被指向陌生地址</td><td>逐个核对并替换</td></tr>
+  </tbody>
+</table>
+<p>绑定邮箱那一行经常被忽略。如果对方在邮箱里加了自动转发规则，即使账号本身已经干净，后续与账号相关的通知仍会流向对方。邮箱也要一并检查。</p>
+
+<h2>第三步：确认对方动过什么</h2>
+<p>这一步是最费时间、也最容易被跳过的。需要区分的动作有四类：</p>
+<ul>
+  <li>发出去的推文。可能用于诈骗你的关注者，也可能给账号留下违规记录。</li>
+  <li>删掉的推文。你自己的判断是内容被清理了，但删除记录本身可能触发对方的节奏。</li>
+  <li>修改的资料。头像、简介、链接是最常被改的，改回来之前访客看到的是对方的版本。</li>
+  <li>发出的私信。这类影响最持久，因为收件人那边已经收到了，你无法撤回。</li>
+</ul>
+<p>时间线的交叉核对很关键。对方活跃的窗口通常有限，集中在那个区间内的异常动作密度最高，优先核对这一段。</p>
+<p>如果账号本身有归档，事情会简单很多。归档里保留了历史发帖记录，可以拿来和现状对比，找出被删除的条目。归档的获取方式见 <a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>。这一招在对方大量删帖的情况下特别有用，因为那些内容在账号里已经看不到了。</p>
+
+<h2>第四步：评估暴露面变化</h2>
+<p>接管事件本身会造成一次信息暴露，这一点经常被低估。对方在占用期间能看到账号里的全部内容，包括那些你自己都忘了的旧推文、私信历史和账号关联信息。</p>
+<p>所以这一步要问的问题不是"账号现在安全吗"，而是"对方那段时候看到了什么"。重点检查：</p>
+<ul>
+  <li>旧推文里是否含有手机号、邮箱、住址、定位等可以直接联系到你的信息。</li>
+  <li>私信里是否包含敏感内容，对方是否可能保存或转发。</li>
+  <li>账号资料里是否有指向其他平台的链接，形成关联暴露。</li>
+</ul>
+<p>这类信息的排查靠手翻效率很低，尤其账号有十年历史的时候。逐条扫描的方式见 <a href="/blog/phone-number-in-tweets-check">推文里的手机号排查</a>，整体清单见 <a href="/blog/digital-footprint-audit-checklist-2026">数字足迹审计清单</a>。</p>
+
+<h2>第五步：加固</h2>
+<p>往回补的加固措施，按性价比排是这四样：</p>
+<ul>
+  <li>开启两步验证，并且用验证器应用而不是短信。短信验证可以被号码转移攻击绕过。</li>
+  <li>密码换成独立的一份，不要和其它平台共用。共用密码是把一次泄露变成多次泄露的最快方式。</li>
+  <li>检查邮箱的转发规则和恢复选项，入口不止一个。</li>
+  <li>把账号关联的邮箱换成使用频率低、专用于账号的地址，减少被撞库命中面。</li>
+</ul>
+<p>两步验证的设置步骤见 <a href="/blog/enable-2fa-x-account">开启两步验证</a>。做这四件事花不了半小时，但它们决定了同类事件会不会再发生一次。</p>
+
+<h2>第六步：收尾与后续监测</h2>
+<p>恢复完成后还有两件事：</p>
+<p>一是通知。如果对方用你的账号发过内容，关注者里可能有人已经上钩。公开说明一次比逐个解释省事，也能减少后续以你名义行骗的成功率。</p>
+<p>二是监测。接管事件后的一段时间，账号可能会收到异常登录提醒、陌生私信或关注请求，这些是对方或其同伙仍在尝试的信号。把提醒开着，别急着关掉。</p>
+<p>顺带说明一点：接管和泄露是两件不同的事。账号本身没被拿走，但数据出现在别处的情况更常见，处理思路不同，见 <a href="/blog/data-brokers-selling-your-tweets">数据经纪商与内容扩散</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>第三步和第四步是 digital-footprint-health.shop 主要处理的部分。接管事件之后，工具可以在本机解析你的 X 归档，把手机号、邮箱、地址等敏感信息的分布和年份列出来，并给出 0-100 健康评分，让你知道对方那段时间可能看到了什么。分析只读、数据不上传。需要清理时按条执行并支持暂停恢复，从 <a href="/">免费体检</a> 开始，删除流程见 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除操作说明</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>When an account gets taken over, all the urgency goes into getting it back. Once it is back, there is a wave of relief, and then nothing much follows.</p>
+  <p>That is where the trouble sits. You do not know what happened while someone else held the account. Edited profile details, deleted posts, added authorizations and sent messages are not restored or reported when you regain access.</p>
+  <p>The checklist below runs through six steps, from reclaiming control to the final sweep. Each one names what to confirm and what gets left behind if you skip it.</p>
+</div>
+
+<h2>Step one: end the other party's sessions first</h2>
+<p>Changing the password is the step most people take, and on its own it is not enough. Established sessions often survive a password change. If the other party holds a live session token, they keep operating after you change it.</p>
+<p>The correct order is to revoke all logged-in devices, then change the password. Revoking kills every existing session, including yours, and the password change stops them signing in again with the old credential. Only with both done is control actually back.</p>
+<p>How to inspect the device list is covered in <a href="/blog/login-device-audit-x-account">the login device audit</a>. One detail worth watching: do not rely on device names. Location and last-activity time expose anomalies better, because names can be blank or fabricated.</p>
+
+<h2>Step two: remove their standing entry points</h2>
+<p>A password is the most visible entry point but not the only one. Connected third-party apps, linked email addresses and phone numbers, and backup verification methods are each a way in that bypasses the password entirely.</p>
+<table>
+  <thead><tr><th>Entry point</th><th>Risk</th><th>Action</th></tr></thead>
+  <tbody>
+    <tr><td>Connected apps</td><td>May hold long-lived access</td><td>Revoke all, re-authorize as needed</td></tr>
+    <tr><td>Linked email</td><td>Can be used to reset the password</td><td>Confirm it is still yours, check forwarding rules</td></tr>
+    <tr><td>Linked phone number</td><td>Can receive verification codes</td><td>Confirm the number was not changed</td></tr>
+    <tr><td>Backup verification</td><td>May point at an unfamiliar address</td><td>Review each one and replace</td></tr>
+  </tbody>
+</table>
+<p>The email row gets overlooked. If a forwarding rule was added inside the mailbox, account notifications keep flowing to the other party even after the social account itself is clean. Check the mailbox too.</p>
+
+<h2>Step three: work out what was done</h2>
+<p>This is the slowest step and the one most often skipped. Four categories of action need separating:</p>
+<ul>
+  <li>Posts that were published. Possibly used to defraud your followers, and they may leave a policy violation on the account.</li>
+  <li>Posts that were deleted. You may consider that cleanup, but the deletions themselves may have been part of a pattern.</li>
+  <li>Profile details that were edited. Avatar, bio and link are the usual targets; until reverted, visitors see the other party's version.</li>
+  <li>Messages that were sent. These have the longest tail, because recipients already have them and you cannot recall them.</li>
+</ul>
+<p>Cross-referencing the timeline matters. The window of activity is usually limited, and anomalies cluster inside it, so check that period first.</p>
+<p>An archive makes this considerably easier. It preserves the posting history, so you can diff it against the current state and find what was removed, which is especially useful if a large batch was deleted and no longer appears anywhere in the account. See <a href="/blog/how-to-download-x-archive">downloading your X archive</a>. </p>
+
+<h2>Step four: assess the change in exposure</h2>
+<p>The takeover itself created an exposure event, and this is routinely underestimated. During the period, the other party could read everything in the account, including old posts you had forgotten and message history and account associations.</p>
+<p>So the question is not "is the account secure now" but "what did they see." Focus on:</p>
+<ul>
+  <li>Whether old posts contain phone numbers, emails, addresses or locations that lead directly back to you.</li>
+  <li>Whether messages contained sensitive material the other party could have kept or forwarded.</li>
+  <li>Whether profile links point at other platforms, creating a linked exposure.</li>
+</ul>
+<p>Checking this by hand is inefficient, particularly on a ten-year-old account. The per-item scan is described in <a href="/blog/phone-number-in-tweets-check">finding phone numbers in posts</a>, and the wider list is in the <a href="/blog/digital-footprint-audit-checklist-2026">digital footprint audit checklist</a>.</p>
+
+<h2>Step five: harden</h2>
+<p>Ranked by return on effort, four measures are worth doing:</p>
+<ul>
+  <li>Turn on two-factor authentication and use an authenticator app rather than SMS. SMS verification can be bypassed through number transfer attacks.</li>
+  <li>Give the account a unique password that is not reused anywhere. Reuse is the fastest way to turn one breach into several.</li>
+  <li>Check the mailbox forwarding rules and recovery options. There is more than one door.</li>
+  <li>Move the linked email to an address that is used rarely and reserved for the account, shrinking the credential-stuffing surface.</li>
+</ul>
+<p>Setup steps are in <a href="/blog/enable-2fa-x-account">enabling two-factor authentication</a>. None of this takes half an hour, and it decides whether the same thing happens again.</p>
+
+<h2>Step six: wrap up and monitor</h2>
+<p>Two things remain after recovery.</p>
+<p>First, notify people. If posts went out under your name, some followers may already have acted on them. Stating it publicly once is easier than answering individually, and it lowers the success rate of any follow-up approach made in your name.</p>
+<p>Second, monitor. For a while after an incident, the account tends to attract unusual sign-in alerts, messages and follow requests, which are signals of continued attempts. Leave the notifications on rather than silencing them.</p>
+<p>One clarification: a takeover and a leak are different events. An account that was never taken over can still have its data surface elsewhere, and that calls for a different response. See <a href="/blog/data-brokers-selling-your-tweets">data brokers and content spread</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Steps three and four are the part digital-footprint-health.shop covers. After an incident, the tool parses your X archive on your own device, lists where phone numbers, emails and addresses appear and in which years, and returns a 0-100 health score, so you can see what was visible during that window. The analysis is read-only and nothing is uploaded. When you want to act, deletion runs per tweet with pause and resume. Start with the <a href="/">free audit</a>, and see <a href="/blog/bulk-delete-old-tweets-walkthrough">the bulk deletion walkthrough</a> for the cleanup flow.</p>`,
+    faq: [
+      {
+        q: '只改密码不撤销登录设备，安全吗？',
+        a: '不安全。已有的登录会话通常不会因为改密码而立即失效，对方手里的会话令牌仍然可用。正确顺序是先撤销全部设备再改密码，两步都做完才算真正切断对方的访问。',
+        qEn: 'Is changing the password alone enough, without revoking devices?',
+        aEn: 'No. Existing sessions usually do not expire just because the password changed, so a live token in their hands still works. Revoke all devices first, then change the password. Both steps are needed to actually cut off access.',
+      },
+      {
+        q: '被删掉的推文还能找回来吗？',
+        a: '在账号里找不回来，但如果手里有发生事件之前的归档，那些内容会保留在归档文件里。归档是本地文件，不受账号侧操作影响。这也是建议定期留一份归档的原因之一。',
+        qEn: 'Can deleted posts be recovered?',
+        aEn: 'Not from the account itself, but if you have an archive taken before the incident, the content is preserved inside it. The archive is a local file and is unaffected by changes on the account side. That is one reason to keep a periodic archive.',
+      },
+      {
+        q: '为什么还要检查邮箱？',
+        a: '因为邮箱是重置密码的通道。如果对方在邮箱里设置了自动转发，账号相关的通知会持续流向对方，即使社交账号本身已经清理干净，这条通道依然存在。所以恢复流程里邮箱是和账号同等重要的检查对象。',
+        qEn: 'Why check the mailbox as well?',
+        aEn: 'Because the mailbox is the path to a password reset. If a forwarding rule was added there, account notifications keep flowing to the other party even after the social account is clean, and the channel stays open. In a recovery flow the mailbox deserves the same attention as the account.',
+      },
+      {
+        q: '接管事件之后多久能放心？',
+        a: '没有固定期限，取决于加固是否到位。设备撤销、授权清空、两步验证开启这三件事做完，重复入侵的门槛会明显提高。之后保留登录提醒一到两个月，观察是否有异常尝试，是更实际的做法。',
+        qEn: 'How long until it is safe to relax?',
+        aEn: 'There is no fixed period; it depends on whether hardening was completed. Once sessions are revoked, authorizations cleared and two-factor enabled, the bar for a repeat attempt rises sharply. Keeping sign-in alerts on for a month or two to watch for anomalies is the more practical approach.',
+      },
+    ],
+  },
+  {
+    slug: 'x-connected-apps-permission-audit',
+    title: 'X 已授权应用体检：找出长期访问权并安全撤销',
+    titleEn: 'Auditing Connected Apps on X: Finding Standing Access and Revoking It Safely',
+    excerpt:
+      '几年前为了发一条自动推文点过的授权，可能今天仍然有效。这类长期访问权不在密码体系里，改密码也拦不住。本文给出一份授权应用体检清单：怎么找、怎么判断该撤销哪些、撤销后会断掉什么。',
+    excerptEn:
+      'An authorization granted years ago for a single scheduled post may still be live today. Standing access like this sits outside the password system, so changing the password does not touch it. Here is a checklist for finding, judging and revoking it.',
+    date: '2026-09-18',
+    updatedAt: '2026-09-18',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    categoryEn: 'Account Security',
+    tags: ['授权应用', '权限审计', '撤销授权', '访问范围', '账号安全'],
+    tagsEn: ['connected apps', 'permission audit', 'revoking access', 'access scope', 'account security'],
+    canonical: '/blog/x-connected-apps-permission-audit',
+    content: `<div class="introduction">
+  <p>账号安全通常围绕密码和登录设备展开，这两样之外的第三条通道容易被忘掉：你主动授权过的第三方应用。</p>
+  <p>这类授权有几个特点。它不受密码变更影响，很多也不受两步验证约束，因为授权关系在平台侧长期保存。时间一长，你甚至不记得授权过什么。</p>
+  <p>下面是一份体检清单，按"先找出来、再判断、最后动手"的顺序走。</p>
+</div>
+
+<h2>为什么这批授权容易被漏掉</h2>
+<p>密码是你记得的东西，登录设备是你能看到的东西。授权应用不同，它在你点击"允许"的那一刻之后就基本从视野里消失了。</p>
+<p>更麻烦的是时间因素。授权通常不会自动过期，也不会因为你不再使用那个应用而失效。一次为了试用某个排程工具点下的授权，可能三五年后依然有权读写你的账号。</p>
+<p>改密码拦不住它，因为授权用的是平台颁发的令牌，与密码无关。这也是为什么安全事件复盘时，授权列表是要单独检查的一项。</p>
+
+<h2>第一步：把清单拉出来</h2>
+<p>平台的已授权应用列表会列出每个应用名称、授权时间和可访问范围。拉清单时有四点要记下来：</p>
+<ul>
+  <li>应用名称与你是否记得。记不得的来源需要重点核对。</li>
+  <li>授权时间。时间越久，越可能是被遗忘的试用项目。</li>
+  <li>权限范围。是否包含写操作，这是判断风险等级的关键。</li>
+  <li>应用是否还在运营。已经停止服务的应用尤其值得清掉。</li>
+</ul>
+<p>先只记录，不要急着撤销。撤销动作是即时生效的，如果列表里还有你在用的服务，边看边撤容易误伤。</p>
+
+<h2>第二步：给每个应用分级</h2>
+<table>
+  <thead><tr><th>级别</th><th>特征</th><th>处理建议</th></tr></thead>
+  <tbody>
+    <tr><td>高风险</td><td>含写权限、来源不明、已停止运营</td><td>立即撤销</td></tr>
+    <tr><td>中风险</td><td>含写权限但在用；或只读但来源不明</td><td>核对后决定，短期项目改为用完即撤</td></tr>
+    <tr><td>低风险</td><td>只读、来源明确、仍在正常使用</td><td>保留，记入下次复查时间</td></tr>
+  </tbody>
+</table>
+<p>判断的核心是写权限。只读授权最坏情况是内容被读取，写权限则意味着可以代替你发帖、删帖或改动账号内容。范围的区别见 <a href="/blog/read-vs-write-api">读权限与写权限</a>。</p>
+<p>还有一个常被忽略的维度：这个应用是否掌握你自己的凭据。正规做法走平台授权，你从不提供密码；如果某个服务要求直接输入密码，那它持有的是一份能直接登录的长效凭据，风险等级要单独提高。相关讨论见 <a href="/blog/tweet-tool-privacy-policy">工具隐私政策怎么看</a>。</p>
+
+<h2>第三步：撤销的时机与方式</h2>
+<p>撤销授权是解绑，不是删除应用里的数据。这一点需要提前知道：撤销之后，那个服务侧可能仍然保留着此前同步过去的内容。想彻底处理，需要按各服务的隐私政策单独申请，方式见 <a href="/blog/gdpr-erasure-request-twitter">删除请求权的行使</a>。</p>
+<p>撤销的时机建议按用途分：</p>
+<ul>
+  <li>一次性项目：任务结束后立刻撤销，不要等"以后可能还用"。</li>
+  <li>持续使用的服务：保留，但每年核对一次它的权限范围是否有扩大。</li>
+  <li>已经不用但忘了撤：直接撤，没有保留的理由。</li>
+  <li>来源存疑：先撤，再评估是否需要重新授权。</li>
+</ul>
+
+<h2>撤销会断掉什么</h2>
+<p>撤销是即时且不可逆的，重新使用需要重新走一次授权。实际影响主要体现在三类功能上：</p>
+<table>
+  <thead><tr><th>撤销对象</th><th>会立即失效的功能</th></tr></thead>
+  <tbody>
+    <tr><td>排程发布工具</td><td>已排队但未发出的内容，以及后续自动发布</td></tr>
+    <tr><td>数据分析工具</td><td>历史数据的增量同步，已同步的历史通常保留</td></tr>
+    <tr><td>清理类工具</td><td>正在进行中的任务，通常无法继续</td></tr>
+  </tbody>
+</table>
+<p>第二行是容易误解的地方：撤销影响的是未来同步，已经拿到手的数据不会因此消失。如果那次同步带走了敏感内容，撤销授权解决不了这部分，需要单独向对方主张。</p>
+
+<h2>第四步：把复查变成习惯</h2>
+<p>授权列表的特点是只增不减，所以定期复查比一次性清理更有效。习惯层面可以参考 <a href="/blog/30-day-footprint-habit-plan">30 天数字足迹习惯计划</a>，把复查安排进固定节奏。</p>
+<p>复查频率按账号用途分：个人账号一年一次足够；如果是品牌号或企业号，涉及多人协作、授权项多、人员变动频繁，建议每季度一次，并在有人离职时立即复查。企业账号的特殊情况见 <a href="/blog/company-x-account-employee-tweets">公司账号与员工推文</a>。</p>
+<p>复查时有个简单判据：一个应用如果半年没有被主动使用过，它就没有保留理由。按这条规则砍掉大部分授权，剩下的再逐个评估，效率比每次都全量分析高得多。</p>
+
+<h2>配合其它两项一起做</h2>
+<p>授权复查不建议单独进行。它和另外两项检查组合起来，覆盖了账号的主要入口：</p>
+<ul>
+  <li>登录设备与两步验证，见 <a href="/blog/login-device-audit-x-account">登录设备审计</a> 与 <a href="/blog/enable-2fa-x-account">开启两步验证</a>。</li>
+  <li>账号内内容的敏感信息分布，属于内容层面的暴露面。</li>
+  <li>发生接管事件时，授权列表的清理顺序见 <a href="/blog/twitter-account-takeover-recovery">账号接管恢复清单</a>。</li>
+</ul>
+<p>三项都过一遍，通常半小时以内可以完成，之后设一个日历提醒即可。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>授权复查管的是账号的入口，digital-footprint-health.shop 管的是入口之内的内容。工具在本机解析你的 X 归档，列出手机号、邮箱、地址等敏感信息的分布与年份，给出 0-100 健康评分和优先处理清单。全程只读、数据不上传，不需要提供任何凭据就能先看到结果。从 <a href="/">免费体检</a> 开始，导入方式见 <a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>，需要清理时按条执行，见 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除说明</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Account security usually revolves around passwords and logged-in devices. The third channel outside both of them is the set of third-party apps you authorized yourself.</p>
+  <p>These grants behave in ways that work against you. A password change does not affect them, and many are not covered by two-factor authentication either, because the grant is stored on the platform side indefinitely. Given enough time, you stop remembering what you authorized.</p>
+  <p>What follows is an audit checklist in three movements: find them, judge them, then act.</p>
+</div>
+
+<h2>Why this set gets overlooked</h2>
+<p>A password is something you remember. Logged-in devices are something you can look at. Connected apps are different: the moment you clicked allow, they largely vanished from view.</p>
+<p>Time makes it worse. Grants typically do not expire, and they do not lapse just because you stopped using the application. An authorization clicked while trialling a scheduling tool can still hold read and write access to your account three to five years later.</p>
+<p>Changing the password does not block it, because the grant runs on a platform-issued token unrelated to the password. That is why the authorization list deserves its own check during any security review.</p>
+
+<h2>Step one: pull the list</h2>
+<p>The connected apps list shows each application's name, when it was authorized, and what it can reach. Note four things while going through it:</p>
+<ul>
+  <li>The name, and whether you remember it. Sources you cannot place deserve the closest look.</li>
+  <li>The authorization date. Older entries are more likely to be forgotten trials.</li>
+  <li>The scope. Whether write access is included is the key signal.</li>
+  <li>Whether the service still operates. Defunct applications are obvious removals.</li>
+</ul>
+<p>Record only at this stage; do not revoke yet. Revocation is immediate, and if the list includes something you still use, revoking while reading is an easy way to break your own setup.</p>
+
+<h2>Step two: sort them into tiers</h2>
+<table>
+  <thead><tr><th>Tier</th><th>Signals</th><th>Suggested action</th></tr></thead>
+  <tbody>
+    <tr><td>High</td><td>Write scope, unclear origin, or defunct</td><td>Revoke now</td></tr>
+    <tr><td>Medium</td><td>Write scope but in active use; or read-only from an unclear origin</td><td>Review, then revoke after short projects finish</td></tr>
+    <tr><td>Low</td><td>Read-only, known origin, still in use</td><td>Keep, and note a review date</td></tr>
+  </tbody>
+</table>
+<p>Write scope is the deciding factor. A read-only grant can at worst read content. Write scope means posting, deleting or editing account content on your behalf. The distinction is set out in <a href="/blog/read-vs-write-api">read versus write access</a>.</p>
+<p>There is another dimension people miss: whether the application holds your own credential. Proper implementations use platform authorization and you never supply a password. If a service asks you to type your password in, it holds a long-lived credential that can sign in directly, and that raises its tier on its own. More on this in <a href="/blog/tweet-tool-privacy-policy">reading a tool's privacy policy</a>.</p>
+
+<h2>Step three: when and how to revoke</h2>
+<p>Revoking is unbinding, not deleting data inside that service. Worth knowing in advance: after revocation, the service may still hold whatever it synced earlier. Handling that properly means filing separately under each service's privacy policy, covered in <a href="/blog/gdpr-erasure-request-twitter">exercising the right to erasure</a>.</p>
+<p>Timing depends on the use case:</p>
+<ul>
+  <li>One-off projects: revoke as soon as the work finishes rather than keeping it in case you need it later.</li>
+  <li>Ongoing services: keep, but check annually whether the scope has widened.</li>
+  <li>Unused but never revoked: revoke. There is no case for keeping it.</li>
+  <li>Unclear origin: revoke first, then decide whether to re-authorize.</li>
+</ul>
+
+<h2>What revocation breaks</h2>
+<p>Revocation is immediate and not reversible, and continuing to use the service means going through authorization again. In practice three kinds of functionality are affected:</p>
+<table>
+  <thead><tr><th>What you revoke</th><th>What stops working</th></tr></thead>
+  <tbody>
+    <tr><td>A scheduling tool</td><td>Queued but unpublished items, and future automatic posting</td></tr>
+    <tr><td>An analytics tool</td><td>Incremental syncing; previously synced history usually stays</td></tr>
+    <tr><td>A cleanup tool</td><td>Any task currently in progress, which typically cannot continue</td></tr>
+  </tbody>
+</table>
+<p>The second row matters. Revocation affects future syncing, not data already transferred. If that earlier sync carried sensitive content away, revoking does not undo it, and you would have to pursue the service separately.</p>
+
+<h2>Step four: make the review a habit</h2>
+<p>Authorization lists only grow, so a recurring review beats a one-time purge. For the habit side, see the <a href="/blog/30-day-footprint-habit-plan">30-day footprint habit plan</a> for folding this into a fixed rhythm.</p>
+<p>Frequency depends on the account. Once a year is enough for a personal account. For a brand or corporate account with shared access, many integrations and staff turnover, quarterly is better, plus an immediate review whenever someone leaves. The corporate case is covered in <a href="/blog/company-x-account-employee-tweets">company accounts and employee posts</a>.</p>
+<p>A simple test while reviewing: an application nobody has actively used in six months has no case for keeping its access. Applying that rule clears most of the list, and only the remainder needs individual judgement, which is far faster than a full analysis every time.</p>
+
+<h2>Do it alongside two other checks</h2>
+<p>This review works best alongside two others that together cover the account's main entry points:</p>
+<ul>
+  <li>Logged-in devices and two-factor, in <a href="/blog/login-device-audit-x-account">the login device audit</a> and <a href="/blog/enable-2fa-x-account">enabling two-factor</a>.</li>
+  <li>The distribution of sensitive information inside the account, which is the content-side exposure.</li>
+  <li>After a takeover, the cleanup order is laid out in <a href="/blog/twitter-account-takeover-recovery">the account takeover recovery checklist</a>.</li>
+</ul>
+<p>All three take under half an hour together, after which a calendar reminder keeps them on schedule.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>An authorization review covers the account's entry points. digital-footprint-health.shop covers what sits behind them. The tool parses your X archive on your own device, lists where phone numbers, emails and addresses appear and in which years, and returns a 0-100 health score with a prioritised work list. It is read-only, uploads nothing, and needs no credential to show you results. Start with the <a href="/">free audit</a> and see <a href="/blog/how-to-download-x-archive">downloading your X archive</a> for the import step. When you want to act, deletion runs per tweet, described in <a href="/blog/bulk-delete-old-tweets-walkthrough">the bulk deletion walkthrough</a>.</p>`,
+    faq: [
+      {
+        q: '改密码能撤销已授权应用吗？',
+        a: '不能。授权用的是平台颁发的令牌，与密码是两套机制，改密码不会让已存在的授权失效。这也是安全复盘时授权列表必须单独检查的原因，它不在密码体系覆盖范围内。',
+        qEn: 'Does changing the password revoke connected apps?',
+        aEn: 'No. Grants run on platform-issued tokens, which are a separate mechanism from the password, and a password change does not invalidate them. That is exactly why the authorization list needs its own check during a security review: it sits outside the password system.',
+      },
+      {
+        q: '撤销授权之后，对方那边的数据会删掉吗？',
+        a: '不会。撤销是解绑，停止的是未来的访问，此前同步过去的内容仍然在对方的系统里。想处理这一部分，需要按该服务的隐私政策单独提交请求，属于另一个流程。',
+        qEn: 'Does revoking delete the data the service already has?',
+        aEn: 'No. Revocation unbinds: it ends future access, while content already synced stays in their systems. Dealing with that part means filing a separate request under the service privacy policy, which is a different process.',
+      },
+      {
+        q: '怎么判断一个应用的权限是不是过大？',
+        a: '看它是否包含写权限。只读的分析类工具完全不需要写权限，如果它不仅要求写，还要求关注、私信或资料修改这类范围，就超出了它的功能需要。判断标准很简单：这个应用的功能，是否真的要用到每一项权限。',
+        qEn: 'How do I tell whether an app has excessive scope?',
+        aEn: 'Check whether write access is included. A read-only analytics tool has no need for it. An app that also wants ranges like following, messaging or profile edits has gone past what its function requires. The test is simple: does the feature actually need each permission it holds?',
+      },
+      {
+        q: '多久复查一次比较合适？',
+        a: '个人账号一年一次；品牌号或企业号建议每季度一次，并在人员变动时立即复查。更实用的判据是按使用情况：半年内没有主动使用过的应用直接撤销，不必逐个分析。',
+        qEn: 'How often should the list be reviewed?',
+        aEn: 'Annually for a personal account. Quarterly for a brand or corporate account, plus an immediate pass whenever staffing changes. A more practical rule is usage-based: revoke anything not actively used in six months rather than analysing each entry.',
+      },
+    ],
+  },
+  {
+    slug: 'old-tweets-anxiety-cleanup',
+    title: '翻旧推文翻出的焦虑：先止损，再清理，最后收手',
+    titleEn: 'Anxiety From Old Tweets: Contain It, Clean It Up, Then Stop',
+    excerpt:
+      '被旧推文困扰的人往往卡在一个死循环里：越焦虑越想翻，越翻越焦虑，却迟迟没开始处理。这篇讲的是一套三步法，先缩小不确定范围，再按风险清理，最后给这件事设个终点。',
+    excerptEn:
+      'People troubled by old posts often sit in a loop: the more anxious they feel, the more they dig, and the more they dig, the worse it gets, while nothing actually gets handled. Here is a three-step approach: narrow the uncertainty, clean by risk, then give the whole thing an end point.',
+    date: '2026-09-18',
+    updatedAt: '2026-09-18',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    categoryEn: 'Mindset and Habits',
+    tags: ['焦虑缓解', '旧推文', '清理计划', '心理负担', '止损'],
+    tagsEn: ['anxiety', 'old posts', 'cleanup plan', 'mental load', 'containment'],
+    canonical: '/blog/old-tweets-anxiety-cleanup',
+    content: `<div class="introduction">
+  <p>旧推文带来的困扰有个特殊之处：它不是一次性的事件，而是一个可以无限重复的动作。只要你想，随时可以回去翻，而每次翻都可能翻出新的东西。</p>
+  <p>这件事的消耗方式也很特别。真正让人疲惫的往往不是某一条内容，而是"不知道还有多少条"这种持续的不确定感。不确定性没有边界，注意力就无处安放。</p>
+  <p>下面按三步走：先把不确定的范围缩小，再按风险清理，最后给这件事设一个终点。顺序不能换，跳过第一步直接清理，通常会在清理过程中不断发现新内容，焦虑反而加重。</p>
+</div>
+
+<h2>为什么越翻越焦虑</h2>
+<p>翻旧内容时，注意力集中在找问题上，找到一条就确认一次风险存在。这个过程天然是负向累积的：每翻一页，要么发现新问题，要么什么都没发现，而什么都没发现并不能让你安心，只会让你想再翻一页确认。</p>
+<p>这和大海捞针不一样。捞针有明确的成功条件，翻推文没有。你很难确定"已经没有问题了"，因为不能证明不存在。</p>
+<p>有个反直觉的结论值得先接受：让焦虑下降的，通常不是"确认全部安全"，而是"知道还剩下多少"。范围一旦确定，即便范围里有问题，不确定感也会明显缓解。这是第一步要解决的事。</p>
+
+<h2>第一步：把不确定变成清单</h2>
+<p>目标是产出一份具体的东西：多少条内容涉及敏感信息、分布在哪些年份、风险等级如何。有了这三个数字，模糊的担心就变成了可以处理的任务。</p>
+<p>手工做这件事效率很低。逐条翻几万条推文，本身就是焦虑的主要来源之一。更省力的方式是先做一次整体扫描，把范围一次性框定。扫描的逻辑在本机完成，不需要把内容交给任何服务，做法见 <a href="/blog/on-device-analysis-privacy">本机处理与隐私</a>。</p>
+<p>扫描之后你会拿到一份清单，上面写着敏感内容的分布。这时候有一件事要刻意做：先看汇总数字，不要立刻逐条展开。汇总数字给你范围，逐条展开给你情绪。先把范围拿到手，情绪的部分之后处理。</p>
+
+<h2>第二步：按风险排序，而不是按时间</h2>
+<p>清理最容易走偏的地方是按时间顺序从头删。这样做的效率很低，因为你会在低风险内容上耗费大量时间，而高风险内容还挂在那里。</p>
+<table>
+  <thead><tr><th>优先级</th><th>内容类型</th><th>为什么排前面</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>可直接联系到你的信息：手机号、邮箱、住址、定位</td><td>暴露后果具体且即时</td></tr>
+    <tr><td>2</td><td>被引用、被转发过的内容</td><td>已经从你的账号扩散出去</td></tr>
+    <tr><td>3</td><td>涉及第三方的内容</td><td>影响别人，处理有时限压力</td></tr>
+    <tr><td>4</td><td>单纯的表达尴尬</td><td>风险低，可放最后或保留</td></tr>
+  </tbody>
+</table>
+<p>第四行需要单独说一句。很多人真正焦虑的其实是这一类内容，但它们几乎没有实际风险。把它们放进清单是有价值的，因为它们能从"未知"变成"已确认，决定保留"，而不确定感正是从这里消失的。</p>
+<p>关于哪些内容值得清、哪些可以留，判断依据见 <a href="/blog/which-tweets-to-clean-by-risk">按风险分级清理</a>。</p>
+
+<h2>第三步：给这件事设终点</h2>
+<p>清理如果没有终点，就会从一件事变成一个习惯性动作，而习惯性动作会持续消耗注意力。所以开始之前先定三个条件：</p>
+<ul>
+  <li>范围终点：只处理第一、第二优先级的内容，其余明确决定保留。</li>
+  <li>时间终点：给定一个截止日期，到期就停止，不再扩大范围。</li>
+  <li>复查终点：之后每季度或每半年复查一次，而不是随时想翻就翻。</li>
+</ul>
+<p>三个条件里，第二个最容易被破坏。清理过程中发现新内容是常态，如果每次都顺势扩大范围，截止日期就永远不会到来。</p>
+<p>把复查变成固定的动作，是防止回到随时翻的关键。节奏可以参考 <a href="/blog/how-often-check-digital-footprint">体检频率怎么定</a> 与 <a href="/blog/30-day-footprint-habit-plan">30 天习惯计划</a>。</p>
+
+<h2>清理过程中常见的几种情绪</h2>
+<p>这几种反应在清理旧内容时很常见，提前知道会好处理一些：</p>
+<ul>
+  <li><strong>想全部删掉。</strong> 一次清空的冲动很强，但把所有内容删干净通常不是最优解。它耗时、不可逆，而且会顺手删掉你还想保留的记录。</li>
+  <li><strong>删完还是不安。</strong> 因为不确定感不完全来自账号本身，还来自网页存档、搜索缓存和别人转发过的副本。这些不在账号控制范围内，需要分开对待，见 <a href="/blog/deleted-tweets-still-visible">删除后仍可见的情况</a>。</li>
+  <li><strong>完成后反复回去检查。</strong> 这是最消耗的一种。解决方式不是靠意志力忍住，而是把检查固定到某个时间点，其他时间明确告诉自己这件事已经安排过了。</li>
+</ul>
+<p>第三种情况值得多说一句：反复检查之所以停不下来，是因为它提供短暂的确定感，随后不确定感又回来。固定的复查节奏切断了这个循环，代价是接受"在下次复查之前不看"，而这通常是可以做到的。</p>
+
+<h2>什么时候该找专业帮助</h2>
+<p>如果这件事已经影响到睡眠、工作状态，或者反复出现难以控制的检查行为，那它就不再是内容清理问题了。账号层面的操作可以缓一缓，先把状态处理好更重要。技术手段能解决的是内容，解决不了持续的不安。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>第一步里那份清单，digital-footprint-health.shop 可以帮你生成。工具在本机解析你的 X 归档，列出手机号、邮箱、地址等敏感内容的位置与年份，输出 0-100 健康评分和按优先级排好的处理清单，全程只读、数据不上传，也不会删除任何东西。先看到范围再决定做什么，本身就比反复翻看省力。从 <a href="/">免费体检</a> 开始，导入方式见 <a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Trouble from old posts has a peculiar shape: it is not a one-off event but an action you can repeat indefinitely. Any time you like, you can go back and look, and every look can turn up something new.</p>
+  <p>The way it drains you is peculiar too. What exhausts people is rarely a specific post. It is not knowing how many are left, an uncertainty with no boundary, which leaves attention with nowhere to settle.</p>
+  <p>Three steps follow: narrow the uncertainty, clean by risk, then give the whole exercise an end point. The order matters. Skipping straight to cleanup usually means discovering new items throughout, which makes the anxiety worse rather than better.</p>
+</div>
+
+<h2>Why digging makes it worse</h2>
+<p>Looking through old content directs attention at finding problems, and every find confirms that risk exists. The process accumulates negatively by design. Each page either surfaces a new problem or surfaces nothing, and finding nothing does not settle anything, it just prompts another page.</p>
+<p>This differs from searching for a needle in a haystack. A haystack search has a defined success condition. Old posts do not. You can rarely establish that nothing is wrong, because absence cannot be proven.</p>
+<p>One counterintuitive conclusion is worth accepting early: what lowers the anxiety is usually not confirming that everything is safe, but knowing how much remains. Once the scope is fixed, the uncertainty eases even if the scope contains problems. That is what the first step is for.</p>
+
+<h2>Step one: turn uncertainty into a list</h2>
+<p>The goal is something concrete: how many items involve sensitive information, which years they fall in, and how they rank by risk. With those three numbers, a vague worry becomes a task you can work through.</p>
+<p>Doing this by hand is slow. Reading tens of thousands of posts one by one is itself a major source of the anxiety. A single pass that fixes the scope is far cheaper, and it can run on the device, with no content handed to a service. The reasoning is in <a href="/blog/on-device-analysis-privacy">on-device processing and privacy</a>.</p>
+<p>What comes back is a list showing where the sensitive material sits. At this point, do one thing deliberately: read the summary numbers first, and resist expanding into individual items. Summary numbers give you scope; individual items give you feelings. Take the scope first and handle the rest afterwards.</p>
+
+<h2>Step two: sort by risk, not by date</h2>
+<p>The most common way cleanup goes wrong is deleting chronologically from the start. That is inefficient: you spend the most time on low-risk material while the high-risk items are still sitting there.</p>
+<table>
+  <thead><tr><th>Priority</th><th>Content type</th><th>Why it comes first</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Anything that reaches you directly: phone number, email, address, location</td><td>The consequence is concrete and immediate</td></tr>
+    <tr><td>2</td><td>Content that was quoted or reposted</td><td>It has already travelled beyond your account</td></tr>
+    <tr><td>3</td><td>Content involving other people</td><td>It affects them, which adds time pressure</td></tr>
+    <tr><td>4</td><td>Posts that are merely embarrassing</td><td>Low risk; can wait or stay</td></tr>
+  </tbody>
+</table>
+<p>The fourth row deserves a note. This category is often what people are actually anxious about, yet it carries almost no real risk. Listing it still helps, because those items move from unknown to confirmed-and-kept, and the uncertainty is what disappears.</p>
+<p>For judging what is worth cleaning versus keeping, see <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk tier</a>.</p>
+
+<h2>Step three: give it an end point</h2>
+<p>Without an end point, cleanup stops being a task and becomes a compulsive action that keeps drawing attention. Set three conditions before starting:</p>
+<ul>
+  <li>A scope end point: handle priorities one and two only, and make an explicit decision to keep the rest.</li>
+  <li>A time end point: pick a deadline, stop there, and do not widen the scope again.</li>
+  <li>A review end point: check quarterly or half-yearly afterwards, rather than whenever the urge arrives.</li>
+</ul>
+<p>The second is the one that breaks. Finding new items mid-cleanup is normal, and if each find widens the scope, the deadline never arrives.</p>
+<p>Turning the review into a scheduled action is what stops the drift back to open-ended digging. For rhythm, see <a href="/blog/how-often-check-digital-footprint">how often to run an audit</a> and the <a href="/blog/30-day-footprint-habit-plan">30-day habit plan</a>.</p>
+
+<h2>Feelings that tend to come up</h2>
+<p>A few reactions are common during this work, and knowing about them in advance helps:</p>
+<ul>
+  <li><strong>Wanting to delete everything.</strong> The urge to clear it all at once is strong, but wiping everything is usually not the best answer. It takes a long time, it is irreversible, and it takes out records you wanted to keep.</li>
+  <li><strong>Still uneasy after deleting.</strong> Because the uncertainty does not come only from the account. Web archives, search caches and copies other people reposted are outside its reach and need separate handling, as described in <a href="/blog/deleted-tweets-still-visible">content that stays visible after deletion</a>.</li>
+  <li><strong>Going back to check repeatedly.</strong> The most draining pattern. The fix is not willpower but scheduling: pin the check to a specific time and treat it as handled at all other times.</li>
+</ul>
+<p>The third pattern is worth a sentence more. Repeated checking persists because it delivers a brief sense of certainty, after which the uncertainty returns. A fixed review rhythm breaks the loop, at the cost of accepting that you will not look again until then, which is usually manageable.</p>
+
+<h2>When to bring in professional help</h2>
+<p>If this is affecting sleep or work, or producing checking behaviour you cannot control, it has stopped being a content problem. Account-level work can wait; dealing with your state matters more first. Technical tools handle content. They do not handle persistent unease.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The list in step one is what digital-footprint-health.shop produces. The tool parses your X archive on your own device, shows where phone numbers, emails and addresses appear and in which years, and returns a 0-100 health score with a prioritised work list. It is read-only, uploads nothing, and deletes nothing. Seeing the scope before deciding what to do is itself less tiring than going through it repeatedly. Start with the <a href="/">free audit</a> and see <a href="/blog/how-to-download-x-archive">downloading your X archive</a> for the import step.</p>`,
+    faq: [
+      {
+        q: '为什么知道范围之后焦虑反而会轻一些？',
+        a: '因为焦虑的主要来源是不确定，而不是风险本身。范围一旦确定，大脑就不用再持续扫描"还有多少未知"，注意力可以转到具体动作上。即便清单上确实有问题，知道有几条、分布在哪几年，也比完全未知更容易处理。',
+        qEn: 'Why does anxiety ease once the scope is known?',
+        aEn: 'Because the main source is uncertainty rather than the risk itself. Once the scope is fixed, there is no need to keep scanning for unknowns, and attention can move to concrete actions. Even with real items on the list, knowing how many and which years beats not knowing at all.',
+      },
+      {
+        q: '是不是把所有旧内容都删掉最省心？',
+        a: '通常不是。全部删除耗时长、不可逆，还会连你想保留的记录一起清掉。而且删完不确定感未必消失，因为网页存档、搜索缓存和别人转发过的副本都不受账号控制。按风险优先级处理，保留决定明确做出来，效果通常更稳定。',
+        qEn: 'Is deleting everything the simplest way to be safe?',
+        aEn: 'Usually not. Deleting everything takes a long time, cannot be undone, and takes out records you wanted to keep. The uncertainty may not lift either, since web archives, search caches and reposts sit outside the account. Working by risk priority, with keep decisions made explicitly, tends to hold up better.',
+      },
+      {
+        q: '清理完之后总想再回去检查，怎么办？',
+        a: '把检查固定到具体时间点，而不是随时进行。反复检查之所以停不下来，是因为它带来短暂的确定感，随后不确定感又回来。设定固定的复查节奏后，其余时间可以明确认定这件事已经安排过了，不需要靠意志力压制冲动。',
+        qEn: 'What if I keep wanting to go back and check?',
+        aEn: 'Pin the check to a specific time instead of doing it whenever the urge appears. Repeated checking persists because it provides brief certainty that then fades. With a fixed rhythm in place, the remaining time can be treated as already handled, so no willpower is needed to suppress the impulse.',
+      },
+      {
+        q: '清单上第四类内容需要处理吗？',
+        a: '不需要删除，但值得明确标注为"已确认，决定保留"。这一步的价值在于把未知变成已知。真正持续消耗注意力的是不知道还有多少，而不是某条内容本身。做出保留的决定之后，这一条就不会在下次翻看时再消耗你一次。',
+        qEn: 'Does the fourth category on the list need action?',
+        aEn: 'No deletion needed, but mark it explicitly as reviewed and kept. The value of that step is converting unknown into known. What keeps draining attention is not knowing how many remain rather than any single item. Once the keep decision is made, that item will not cost you again next time you look.',
+      },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

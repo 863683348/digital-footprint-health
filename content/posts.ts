@@ -11556,6 +11556,495 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "sim-swap-attack-x-account-lockout",
+    title: "SIM 卡交换攻击盯上你的 X 账号：手机号是怎么变成入口的",
+    titleEn: "How a SIM Swap Turns Your Phone Number Into an X Account Backdoor",
+    excerpt:
+      "短信验证码看起来像一道保护，实际把账号安全绑在了一个能被转移到别人卡上的号码上。这篇拆解 SIM 卡交换攻击的四个步骤、号码被转移后半小时内会发生什么，以及怎么把手机号从登录凭据降级成普通联系方式。",
+    excerptEn:
+      "SMS codes feel like protection, but they tie your account to a number that can be moved onto someone else's SIM. This walks through how a swap unfolds, what the first thirty minutes look like, and how to demote your phone number from login factor to plain contact detail.",
+    date: "2026-09-19",
+    updatedAt: "2026-09-19",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    categoryEn: "Account Security",
+    tags: ["SIM 卡交换", "账号安全", "双因素认证", "手机号", "账号恢复"],
+    tagsEn: ["SIM swap", "account security", "two-factor authentication", "phone number", "account recovery"],
+    canonical: "/blog/sim-swap-attack-x-account-lockout",
+    content: `<div class="introduction">
+  <p>很多人把短信验证码当成账号安全的最后一道门。这道门的钥匙不在你手里，它挂在运营商那边，而运营商侧的身份核验可以被伪造。</p>
+  <p>SIM 卡交换（SIM swap）就是这条缝隙被利用的方式：对方让你的手机号在运营商系统里搬到一张不属于你的卡上，所有发往你的短信跟着过去。X 账号的密码重置、二次验证、部分恢复流程也会一起落到对方手上。</p>
+  <p>下面按顺序讲清楚四件事：攻击怎么发生、号码被转移后账号会经历什么、运营商侧能提前加什么锁、已经中招时先做哪一步。</p>
+</div>
+
+<h2>为什么手机号是被优先攻击的一环</h2>
+<p>因为它同时承担了两个角色，而这两个角色本来不该由同一个东西承担。</p>
+<p>第一个角色是恢复通道。忘记密码时，平台需要一种方式确认你是本人，短信是默认选项。第二个角色是第二因子，登录时再要一次验证码。两者共用同一个号码，意味着号码一旦被控制，验证和恢复会同时失效。</p>
+<p>更基础的弱点是号码可以被转移。手机、SIM 卡、密码都在你手上，但号码的归属由运营商系统里的一条记录决定。当核验强度不足时，这条记录可以被改写。</p>
+<p>公开信息让冒充成本更低。生日、住址、亲属关系这些内容在旧推文和社交资料里往往能找到，而它们正是客服核验时最常问的字段。你在 X 上留下的生活痕迹，会变成别人冒充你的素材。这类内容的风险细节见<a href="/blog/address-location-tweets-risk">住址与定位类推文的风险</a>。</p>
+
+<h2>一次 SIM 卡交换的四个步骤</h2>
+<table>
+  <thead><tr><th>步骤</th><th>对方在做什么</th><th>你这一侧看到的现象</th></tr></thead>
+  <tbody>
+    <tr><td>1 收集身份信息</td><td>从公开内容、泄露库、旧推文里拼出姓名、生日、住址、部分证件信息</td><td>无感，这一步不产生任何通知</td></tr>
+    <tr><td>2 联系运营商</td><td>冒充本人报失，要求补卡或办理携号转网</td><td>无感，或收到一条没细看的运营商短信</td></tr>
+    <tr><td>3 号码转移完成</td><td>新卡激活，你的实体卡被停机</td><td>手机突然显示无服务，重启无效</td></tr>
+    <tr><td>4 接管账号</td><td>用短信验证码重置密码、通过二次验证、改绑邮箱与手机号</td><td>账号被登出，收到改密邮件但已经登不进去</td></tr>
+  </tbody>
+</table>
+<p>整条链路里，第二步是唯一需要真人接触的环节，也是最常被简化核验的一环。部分运营商支持线上或电话补卡，核验字段就是上面那几项。所以「我的信息没人知道」这个假设通常站不住。</p>
+
+<h2>号码被转移后的半小时</h2>
+<p>这段时间节奏很快，而且你处于信息劣势：手机没信号，邮件还能收。典型动作顺序是密码重置、二次验证方式替换、恢复邮箱替换，最后把原设备踢下线。</p>
+<p>需要提前知道的是，改绑邮箱和手机号这类操作通常会给你发通知邮件。这些邮件长得像普通的账号提醒，很容易被当成噪音忽略。如果你发现手机无服务的同时收到账号改动邮件，把它当成确认信号。</p>
+<p>另一个容易忽视的点是，接管账号后对方不一定要马上改密码。悄悄加一个恢复邮箱、保留已有登录状态，反而更难被发现。这种形态的处理方式见<a href="/blog/twitter-account-takeover-recovery">账号被接管后的恢复路径</a>。</p>
+
+<h2>短信验证码与其他第二因子的实际差距</h2>
+<table>
+  <thead><tr><th>第二因子</th><th>被 SIM 卡交换破解</th><th>被钓鱼页面骗走</th><th>丢失设备后</th><th>建议</th></tr></thead>
+  <tbody>
+    <tr><td>短信验证码</td><td>会</td><td>会</td><td>补卡即可恢复</td><td>不要作为唯一因子</td></tr>
+    <tr><td>验证器应用（TOTP）</td><td>不会</td><td>会，一次性码可被实时转发</td><td>需要备份码或换机迁移</td><td>普遍的升级方案</td></tr>
+    <tr><td>硬件安全密钥</td><td>不会</td><td>基本不会，密钥与来源域名绑定</td><td>需要备用密钥</td><td>强度最高，成本也最高</td></tr>
+    <tr><td>应用内推送确认</td><td>不会</td><td>会，靠疲劳式弹窗骗取确认</td><td>换机重新登录</td><td>方便，但别忽视异常弹窗</td></tr>
+  </tbody>
+</table>
+<p>这里有个常见误解：换成验证器应用就彻底安全了。它挡住了号码转移，但挡不住钓鱼站点实时转发你输入的一次性验证码。所以第二因子要升级，密码本身也不能复用。设置步骤见<a href="/blog/enable-2fa-x-account">开启双重验证的完整流程</a>。</p>
+
+<h2>运营商侧能提前加的三道锁</h2>
+<ul>
+  <li><strong>SIM 锁或号码锁。</strong> 让补卡和携号转网必须先通过一个你自己设的口令。多数运营商提供这项服务，一般需要本人到营业厅或通过客服设置。</li>
+  <li><strong>携号转网 PIN。</strong> 转网需要单独的口令，不要与 SIM 锁口令相同，也不要用生日或手机号后六位。</li>
+  <li><strong>变更通知。</strong> 打开所有关于套餐、补卡、转网的短信与邮件通知，并且不要把它们静音。它们是上面那半小时里唯一能提前报警的信号。</li>
+</ul>
+<p>这三项的实际效果因运营商而异，有些默认关闭，有些需要单独申请。值得花一次电话的时间问清楚：补卡需要哪些核验字段，能不能加口令。</p>
+
+<h2>已经中招：按这个顺序处理</h2>
+<ol>
+  <li><strong>先联系运营商冻结号码。</strong> 账号恢复依赖号码，号码不在你手上，后面几步都会失败。</li>
+  <li><strong>用还能登录的设备或恢复邮箱夺回 X 账号。</strong> 如果密码已被改，走账号恢复流程，准备好原始注册邮箱。</li>
+  <li><strong>检查改绑记录。</strong> 逐项确认邮箱、手机号、恢复方式是不是你自己的，把多出来的全部移除。</li>
+  <li><strong>踢掉所有已登录会话和第三方应用授权。</strong> 会话列表与授权应用清单都要过一遍，方法见<a href="/blog/x-connected-apps-permission-audit">第三方应用授权审计</a>。</li>
+  <li><strong>改密码，并且改掉复用同一个密码的其他站点。</strong> 这一步最容易被跳过，但密码复用会让一次接管扩散成好几处失守。</li>
+</ol>
+<p>如果你怀疑更早之前就已经有异常登录，建议同时做一次设备核对，判断标准见<a href="/blog/login-device-audit-x-account">登录设备审计</a>。</p>
+
+<h2>把手机号降级为普通联系方式</h2>
+<p>这里要做的是让号码不再承担身份验证的功能，号码本身保留不动。可以这样安排：</p>
+<ul>
+  <li>第二因子改用验证器应用或硬件密钥，短信只作为兜底选项保留。</li>
+  <li>恢复邮箱独立，不复用日常邮箱，也不要和 X 账号共用同一台设备的自动登录。</li>
+  <li>保留一组一次性备份码，离线存放，不要放进云端笔记。</li>
+  <li>把公开内容里的手机号清掉。号码本身不算秘密，但它和姓名的组合会显著降低冒充成本，排查方式见<a href="/blog/phone-number-in-tweets-check">手机号泄露自查</a>与<a href="/blog/email-leak-in-tweets-fix">邮箱泄露处理</a>。</li>
+</ul>
+<p>完成这一层之后，手机号即使被转移，也只是一条联系方式失效，而不是账号失守。</p>
+
+<h2>一个容易忽略的复查习惯</h2>
+<p>安全设置会随平台改版而变化。X 会在版本更新里调整验证方式、会话管理位置和授权应用列表的入口。建议每季度花十分钟过一遍这几项：第二因子是什么、恢复邮箱是哪一个、有多少活跃会话、授权了哪些应用。</p>
+<p>把这一步放进固定的复查节奏，比出事后临时回忆省力得多。通用复查清单见<a href="/blog/digital-footprint-audit-checklist-2026">数字足迹审计清单</a>，频率建议见<a href="/blog/how-often-check-digital-footprint">多久做一次体检</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）是一个只在本机运行的 X 数据归档体检工具。上传 X 归档 ZIP 后，它会在你的电脑上扫描手机号、邮箱、住址、定位和敏感话题，输出 0-100 健康评分与按风险排序的清单，内容不上传。想先看自己有多少条推文暴露了能直接联系到你的信息，可以从<a href="/">首页</a>做一次免费体检，清理方式与定价见<a href="/pricing">定价页</a>，更多方法收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Plenty of people treat an SMS code as the last locked door on their account. The key to that door is not in your pocket. It sits with your carrier, and carrier-side identity checks can be forged.</p>
+  <p>A SIM swap is how that gap gets used: someone convinces your carrier to move your number onto a SIM card you have never touched, and every text meant for you lands with them instead. Password resets, two-factor prompts, and parts of the account recovery flow follow the same route.</p>
+  <p>Below: how the attack actually happens, what the account goes through afterwards, what you can lock down on the carrier side in advance, and what to do first if it has already happened.</p>
+</div>
+
+<h2>Why the phone number is the target</h2>
+<p>Because it holds two jobs at once, and those two jobs should never share one asset.</p>
+<p>The first job is account recovery. When you lose a password, platforms need some way to confirm you are you, and SMS is the default. The second job is second-factor authentication, where you prove it again at login. One number serving both means that if the number falls, verification and recovery fall together.</p>
+<p>The deeper weakness is that a number is transferable property. The handset, the SIM, and the password are all in your possession, but ownership of the number lives as a record in a carrier system. When the check in front of that record is weak, the record can be rewritten.</p>
+<p>Public information makes impersonation cheap. Birthdays, addresses, and family relationships often sit in old posts and profile pages, and those are the exact fields a support agent asks for. Traces you left on X become the script someone else uses to claim your identity. For scoring this kind of exposure, see <a href="/blog/address-location-tweets-risk">the risk profile of address and location posts</a>.</p>
+
+<h2>The four steps of a SIM swap</h2>
+<table>
+  <thead><tr><th>Step</th><th>What the attacker does</th><th>What you notice</th></tr></thead>
+  <tbody>
+    <tr><td>1 Gather identity data</td><td>Assembles your name, birthday, address, and partial ID details from public posts, breach dumps, and old tweets</td><td>Nothing. This stage sends no signal</td></tr>
+    <tr><td>2 Contact the carrier</td><td>Reports the phone as lost and asks for a replacement SIM or a port-out</td><td>Nothing, or a carrier text you skim past</td></tr>
+    <tr><td>3 Port completes</td><td>The new SIM activates and your physical card goes dead</td><td>No service, and a reboot does not help</td></tr>
+    <tr><td>4 Take the account</td><td>Resets the X password with an SMS code, clears two-factor, swaps the recovery email and number</td><td>You are logged out and the reset email arrives too late</td></tr>
+  </tbody>
+</table>
+<p>Step two is the only part that needs a human being on the other end, and it is the part most often checked loosely. Some carriers let you replace a SIM online or over the phone using those same identity fields. The assumption that nobody knows your details rarely survives contact with your own posting history.</p>
+
+<h2>The first thirty minutes after the number moves</h2>
+<p>Things move fast, and you are at an information disadvantage: no mobile signal, but email still arrives. The usual sequence is a password reset, then a swap of the two-factor method, then a swap of the recovery email, and finally a remote sign-out of your other devices.</p>
+<p>One thing worth knowing in advance: changing a bound email or phone usually triggers a notification email. Those messages look like routine account chatter and get filed as noise. If your phone loses service at the same moment an account-change email lands, treat it as confirmation rather than coincidence.</p>
+<p>Another detail people miss is that a takeover does not require an immediate password change. Quietly adding a recovery email and keeping existing sessions alive is harder to spot. That variant is covered in <a href="/blog/twitter-account-takeover-recovery">the recovery path after an account takeover</a>.</p>
+
+<h2>How SMS codes compare with other second factors</h2>
+<table>
+  <thead><tr><th>Second factor</th><th>Beaten by SIM swap</th><th>Beaten by phishing</th><th>If you lose the device</th><th>Verdict</th></tr></thead>
+  <tbody>
+    <tr><td>SMS code</td><td>Yes</td><td>Yes</td><td>Replace the SIM</td><td>Should never stand alone</td></tr>
+    <tr><td>Authenticator app (TOTP)</td><td>No</td><td>Yes, codes can be relayed live</td><td>Needs backup codes or a device transfer</td><td>The practical upgrade</td></tr>
+    <tr><td>Hardware security key</td><td>No</td><td>Rarely, since keys are bound to the origin</td><td>Needs a spare key</td><td>Strongest, and the most expensive</td></tr>
+    <tr><td>In-app push approval</td><td>No</td><td>Yes, via approval fatigue</td><td>Sign in again on the new device</td><td>Convenient, but do not rubber-stamp it</td></tr>
+  </tbody>
+</table>
+<p>There is a common overcorrection here. Moving to an authenticator app does not make you safe, it removes the number from the equation while leaving you exposed to a phishing page relaying your one-time code in real time. Upgrade the second factor, and stop reusing passwords while you are at it. Setup steps are in <a href="/blog/enable-2fa-x-account">the full two-factor setup walkthrough</a>.</p>
+
+<h2>Three locks you can add on the carrier side</h2>
+<ul>
+  <li><strong>SIM lock or number lock.</strong> Requires a passphrase you set before a replacement SIM or a port-out goes through. Most carriers offer it, usually after an in-store or phone verification.</li>
+  <li><strong>Port-out PIN.</strong> A separate code for number transfers. Do not reuse the SIM lock phrase, and do not use a birthday or the last six digits of the number.</li>
+  <li><strong>Change notifications.</strong> Turn on every text and email notice for plan changes, SIM replacements, and port requests, then leave them unmuted. During those thirty minutes, they are the only early alarm you get.</li>
+</ul>
+<p>Availability varies by carrier. Some options are off by default and others need a separate request. One call is enough to settle two questions: what fields are required for a SIM replacement, and can a passphrase be attached.</p>
+
+<h2>If it already happened, work in this order</h2>
+<ol>
+  <li><strong>Get the carrier to freeze the number first.</strong> Account recovery depends on the number. If it is not yours, the later steps keep failing.</li>
+  <li><strong>Reclaim the X account through a device still logged in or the recovery email.</strong> If the password is gone, run account recovery and have the original registration email ready.</li>
+  <li><strong>Audit the bound details.</strong> Confirm the email, phone number, and recovery methods are all yours, and strip anything extra.</li>
+  <li><strong>Kill every active session and third-party app grant.</strong> Walk both lists, as described in <a href="/blog/x-connected-apps-permission-audit">the connected-app permission audit</a>.</li>
+  <li><strong>Change the password, then change it everywhere it was reused.</strong> This is the step people skip, and password reuse is what turns one takeover into several.</li>
+</ol>
+<p>If you suspect earlier unauthorized logins, run a device review as well. The criteria are in <a href="/blog/login-device-audit-x-account">the login device audit</a>.</p>
+
+<h2>Demote the phone number to a plain contact detail</h2>
+<p>The goal is not to delete the number, it is to strip it of authentication duty. A workable arrangement:</p>
+<ul>
+  <li>Move the second factor to an authenticator app or a hardware key, and keep SMS only as a fallback.</li>
+  <li>Run a separate recovery mailbox that you do not use day to day, and do not leave it auto-signed-in on the same machine as X.</li>
+  <li>Store one set of backup codes offline, not in a cloud note.</li>
+  <li>Clean the number out of public posts. The digits are not the secret; the pairing of digits with a name is what lowers the cost of impersonation. See <a href="/blog/phone-number-in-tweets-check">the phone number self-check</a> and <a href="/blog/email-leak-in-tweets-fix">handling an exposed email address</a>.</li>
+</ul>
+<p>Once that is in place, a swapped number costs you one contact channel instead of the account.</p>
+
+<h2>A review habit that pays off later</h2>
+<p>Security settings drift as platforms redesign. X moves verification options, session management, and the connected-app list around between releases. Ten minutes per quarter is enough to confirm four things: which second factor is active, which mailbox is on recovery duty, how many sessions are live, and what is still authorized.</p>
+<p>Folding that into a fixed rhythm beats reconstructing it from memory during an incident. For the broader list, see <a href="/blog/digital-footprint-audit-checklist-2026">the digital footprint audit checklist</a>, and for cadence, <a href="/blog/how-often-check-digital-footprint">how often to run a check</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) is an X archive checker that runs entirely on your own machine. Upload your X archive ZIP and it scans for phone numbers, emails, addresses, locations, and sensitive topics locally, then returns a 0-100 health score with a risk-ranked list. Nothing is uploaded. To see how many of your posts expose details that lead straight back to you, start a free check from <a href="/">the homepage</a>, compare cleanup options on <a href="/pricing">the pricing page</a>, and browse the rest of the guides on <a href="/blog">the blog</a>.</p>`,
+    faq: [
+      { q: "SIM 卡交换攻击会不会在事后留下记录？", a: "运营商会留下补卡或转网的办理记录，账号侧则会留下改绑邮箱、改手机号、新设备登录的痕迹。这两边的记录是恢复账号时最重要的证据，建议在冻结号码后立刻向运营商索要办理时间点，并对照 X 的账号改动邮件时间。", qEn: "Does a SIM swap leave any record behind?", aEn: "The carrier keeps a record of the SIM replacement or port request, and the account keeps traces of email changes, phone changes, and new device logins. Those two sets are the strongest evidence you have during recovery, so ask the carrier for the exact timestamp once the number is frozen and line it up against the account-change emails from X." },
+      { q: "把第二因子换成验证器应用，还需要在意手机号吗？", a: "需要，但优先级变了。号码不再能直接拿来做登录验证，可它通常还挂在恢复流程里。要做的是把恢复邮箱独立出来，并保留一组离线备份码，避免号码被转移时恢复通道一起失效。", qEn: "If I switch to an authenticator app, do I still need to worry about my phone number?", aEn: "Yes, but the priority shifts. The number can no longer be used to clear a login prompt, yet it usually still sits in the recovery flow. Separate the recovery mailbox and keep a set of offline backup codes so a swapped number does not take the recovery path down with it." },
+      { q: "手机号已经被公开在旧推文里，是不是必须删掉那些推文？", a: "不必全部删除，但优先处理可以直接联系到你本人的那些，比如带号码、带地址、带定位的内容。剩下的可以按风险分级处理，判断依据见站内的推文风险分级方法。", qEn: "My number is already in old posts. Do I have to delete all of them?", aEn: "Not all of them, but prioritize the ones that lead straight to you, meaning posts with a number, a home address, or a live location. The rest can be triaged by risk, and the scoring method is covered in the on-site guide to ranking posts by risk." },
+      { q: "为什么对方不改密码也能控制账号？", a: "改密码并不是接管的前提。添加一个恢复邮箱、保留一个已登录设备，同样可以在不触发你警觉的情况下持续访问账号。所以恢复流程检查要覆盖恢复邮箱、恢复电话和活跃会话三处，只改密码是不够的。", qEn: "How can someone control an account without changing the password?", aEn: "Changing the password is not a prerequisite for control. Adding a recovery email or keeping one signed-in device alive gives ongoing access without setting off alarms. That is why a recovery review has to cover the recovery email, the recovery phone, and active sessions, not just the password." },
+    ],
+  },
+  {
+    slug: "google-remove-old-tweets-from-search",
+    title: "推文删了还能搜到：把旧推文从搜索结果里移除的完整路径",
+    titleEn: "Deleted Tweets Still in Google: How to Get Them Out of Search Results",
+    excerpt:
+      "删掉推文只是从 X 上撤掉了内容，搜索结果、缓存副本和镜像站是另外三层。这篇讲清楚搜索结果的三个来源、逐层申请移除的具体入口、各阶段的等待时间，以及搜索移除做不到什么。",
+    excerptEn:
+      "Deleting a post removes it from X, not from the web. Search indexes, cached copies, and scraper mirrors are three separate layers. Here is where each one comes from, which removal channel applies to it, how long each stage takes, and what search removal cannot do.",
+    date: "2026-09-19",
+    updatedAt: "2026-09-19",
+    author: "Digital Footprint Health Team",
+    category: "行业与生态",
+    categoryEn: "Industry and Ecosystem",
+    tags: ["搜索结果移除", "旧推文", "隐私请求", "缓存副本", "镜像站"],
+    tagsEn: ["search removal", "old tweets", "privacy request", "cached copies", "mirror sites"],
+    canonical: "/blog/google-remove-old-tweets-from-search",
+    content: `<div class="introduction">
+  <p>在 X 上删除一条推文，只解决了四个位置里的一个。剩下的三个分别是搜索索引、缓存副本和被批量转载的镜像站。</p>
+  <p>很多人删完之后去搜一次，发现还在，于是判断删除没生效。实际情况通常相反：删除生效了，你看到的是另一个位置的版本。</p>
+  <p>下面按位置拆开讲，每一层的来源、移除入口和大致等待时间，以及哪一类内容根本走不通这条路径。</p>
+</div>
+
+<h2>为什么删了还在：四个位置</h2>
+<table>
+  <thead><tr><th>位置</th><th>内容从哪来</th><th>能不能移除</th><th>大致周期</th></tr></thead>
+  <tbody>
+    <tr><td>X 账号本身</td><td>你发布的内容</td><td>删除后立即生效</td><td>即时</td></tr>
+    <tr><td>搜索索引</td><td>爬虫抓取过的页面记录</td><td>可申请移除，或等重新抓取</td><td>几天到数周</td></tr>
+    <tr><td>缓存与快照</td><td>搜索引擎保存的页面副本</td><td>随索引移除一起失效</td><td>与索引同步</td></tr>
+    <tr><td>第三方镜像与聚合站</td><td>抓取过推文并自己建库的站点</td><td>不在搜索平台的控制范围内</td><td>取决于每个站点</td></tr>
+  </tbody>
+</table>
+<p>第三行是关键，也是最容易被误解的一行。搜索结果只是指向别处的路标。路标可以拿走，被指向的那份内容依然在别人服务器上。理解这一点，后面的操作顺序就顺了。</p>
+
+<h2>第一步：先确认内容到底还在不在 X 上</h2>
+<p>申请移除之前，先确认源页面已经不存在。如果推文还在 X 账号里，搜索平台通常会把请求退回，理由是内容仍然有效。</p>
+<p>做法很简单：用无痕窗口打开那条推文的链接。如果返回的是内容不可见，说明 X 侧已经清掉。如果还能看到，先回去删除，再谈搜索移除。</p>
+<p>需要提醒一点：大批量删除容易漏掉引用转发的残留。你的原帖删了，别人的引用帖如果仍带着你的文字或截图，那条引用帖依然可能被索引。清理顺序与批量操作方式见<a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除旧推文的完整流程</a>。</p>
+
+<h2>第二步：走搜索平台的个人信息移除通道</h2>
+<p>主流搜索平台都提供了针对个人信息的移除入口，覆盖的典型类别包括身份证件号码、银行信息、联系方式和住址，部分平台还覆盖登录凭据。提交流程通常是这几项：</p>
+<ol>
+  <li>找到隐私类的移除申请表单，选择与内容匹配的类别。</li>
+  <li>逐条填写需要移除的页面地址。一次只填一条，不要指望填一个首页就覆盖全部。</li>
+  <li>说明这条内容为什么属于可移除的个人信息。描述要具体，比如指出页面里出现了完整手机号。</li>
+  <li>提交后保留确认邮件里的编号，后续查询进度要用。</li>
+</ol>
+<p>处理速度与类别有关，涉及账号安全类信息的申请通常优先级更高。等待期间不要重复提交同一条，重复申请会延长处理时间。</p>
+
+<h2>第三步：过期内容移除工具</h2>
+<p>如果搜索结果里的摘要或标题还是旧版本，而 X 侧页面已经更新或删除，可以走另一个通道：报告过时内容。这个工具的适用条件比较窄，只处理页面本身已变更的情况。</p>
+<table>
+  <thead><tr><th>你看到的现象</th><th>该走哪个通道</th></tr></thead>
+  <tbody>
+    <tr><td>页面里仍有手机号、住址等个人联系方式</td><td>个人信息移除申请</td></tr>
+    <tr><td>页面已删除，但搜索结果还显示旧标题或旧摘要</td><td>过时内容移除，或等待重新抓取</td></tr>
+    <tr><td>页面属于第三方转载站，与你无关</td><td>先联系该站，再视情况申请从搜索中移除</td></tr>
+    <tr><td>页面内容是公开信息，不含个人可识别字段</td><td>通常不满足移除条件，只能联系原站</td></tr>
+  </tbody>
+</table>
+<p>第四行常被忽略。一条措辞尴尬但不含任何个人信息的推文，一般不符合搜索平台的移除标准。这类内容要么联系转载方，要么接受它会继续存在。</p>
+
+<h2>第四步：处理镜像站与聚合站</h2>
+<p>这类站点是自己抓取并保存推文内容的第三方服务，常见形态有推文存档站、趋势聚合站和数据集市场。它们不在搜索平台的控制范围内，所以要分开处理。</p>
+<ul>
+  <li>先在该站找联系方式或隐私请求入口，说明你是内容原作者并附上 X 侧的删除证明。</li>
+  <li>如果没有响应，再向搜索平台提交移除申请，理由是页面包含个人可识别信息。</li>
+  <li>把已确认的镜像站地址记成清单，下次复查时直接回访，不要每次重新检索。</li>
+</ul>
+<p>有一类站点值得单独警惕：以「查推文历史」为名提供搜索服务的站点，往往在你不察觉的情况下建了完整索引。判断自己的内容是否被收录，可以按<a href="/blog/data-brokers-selling-your-tweets">数据经纪商与推文倒卖</a>里的方法逐项核对。</p>
+
+<h2>等待期间能同时做的两件事</h2>
+<p>移除申请的处理周期通常以周计，这段时间不必干等。有两件事可以并行推进。</p>
+<p>一是继续减少可索引的表面。账号里的旧内容越少，后续被重新收录的机会越小。清理优先级可以按<a href="/blog/which-tweets-to-clean-by-risk">风险分级清理</a>来排，先处理含联系方式与定位的内容。</p>
+<p>二是把复查排进固定节奏。搜索收录状态是会变的，新镜像站也会持续出现。把复查周期设成季度或半年一次，比每次想起来才搜一次有效，节奏参考<a href="/blog/how-often-check-digital-footprint">体检频率怎么定</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）提供本机运行的 X 归档体检：上传归档 ZIP 后在你的电脑上扫描手机号、邮箱、住址、定位与敏感话题，输出 0-100 健康评分和按风险排序的清单，内容不出本机。清理之前先摸清暴露面，处理顺序会清楚很多。可以到<a href="/">首页</a>做一次免费体检，清理方案见<a href="/pricing">定价页</a>，其他指南收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Deleting a post on X solves one of four locations. The other three are the search index, the cached copy, and the scraper sites that built their own databases.</p>
+  <p>A lot of people delete something, search for it, see it still listed, and conclude the deletion failed. Usually the opposite is true: the deletion worked and you are looking at a different layer.</p>
+  <p>Here is each layer in turn, where it comes from, which channel removes it, roughly how long that takes, and what this route cannot do at all.</p>
+</div>
+
+<h2>Four places a post can live</h2>
+<table>
+  <thead><tr><th>Location</th><th>Where the content comes from</th><th>Can it be removed</th><th>Typical timeline</th></tr></thead>
+  <tbody>
+    <tr><td>Your X account</td><td>What you published</td><td>Immediate on deletion</td><td>Instant</td></tr>
+    <tr><td>Search index</td><td>The crawler's record of the page</td><td>Request removal, or wait for a recrawl</td><td>Days to weeks</td></tr>
+    <tr><td>Cache and snapshots</td><td>Copies stored by the search engine</td><td>Clears with the index entry</td><td>Same as the index</td></tr>
+    <tr><td>Third-party mirrors</td><td>Sites that scraped posts into their own database</td><td>Outside the search platform's control</td><td>Varies per site</td></tr>
+  </tbody>
+</table>
+<p>The last row matters most and is the one people misread. Search results are signposts pointing somewhere else. You can pull the signpost and the destination still stands on someone else's server. Once that clicks, the order of operations makes sense.</p>
+
+<h2>Step one: confirm the source page is actually gone</h2>
+<p>Before filing anything, check that the original page no longer exists. If the post is still live in your account, the request usually comes back rejected on the grounds that the content is still available.</p>
+<p>Open the post URL in a private window. A not-available message means the X side is clear. If you can still read it, delete it first and revisit the search question afterwards.</p>
+<p>One caveat: bulk deletion tends to leave quote posts behind. Your original is gone, but someone else's quote carrying your words or a screenshot of them can stay indexed. Sequencing and batch handling are covered in <a href="/blog/bulk-delete-old-tweets-walkthrough">the bulk deletion walkthrough</a>.</p>
+
+<h2>Step two: use the personal information removal channel</h2>
+<p>Major search platforms run a removal request form for personal information. Covered categories typically include government ID numbers, banking details, contact information, and home addresses, with some platforms also covering login credentials. The flow looks like this:</p>
+<ol>
+  <li>Find the privacy removal form and pick the category that matches the content.</li>
+  <li>Enter one URL per submission. Submitting a domain homepage does not cover the pages under it.</li>
+  <li>Explain why the page qualifies, and be specific. Point out that a full phone number appears on the page.</li>
+  <li>Keep the case number from the confirmation email, since you will need it to check progress.</li>
+</ol>
+<p>Turnaround depends on the category, and requests tied to account security tend to be prioritized. Do not file the same URL twice while waiting; duplicate submissions slow the queue down rather than speeding it up.</p>
+
+<h2>Step three: the outdated content tool</h2>
+<p>If the search result still shows an old title or snippet while the underlying page has changed or been removed, that is a separate channel: reporting outdated content. Its scope is narrow and it only applies when the page itself has changed.</p>
+<table>
+  <thead><tr><th>What you are seeing</th><th>Which channel applies</th></tr></thead>
+  <tbody>
+    <tr><td>The page still contains a phone number or address</td><td>Personal information removal request</td></tr>
+    <tr><td>The page is gone but the result shows the old title or snippet</td><td>Outdated content report, or wait for a recrawl</td></tr>
+    <tr><td>A third-party mirror hosts it, unrelated to you</td><td>Contact the site first, then consider a search removal</td></tr>
+    <tr><td>The content is public and contains no identifiable fields</td><td>Usually does not qualify, contact the host instead</td></tr>
+  </tbody>
+</table>
+<p>That last row is overlooked constantly. An awkward old post with no personal data generally does not meet a search platform's removal criteria. Either reach the reposting site or accept that it stays online.</p>
+
+<h2>Step four: handle the mirrors and aggregators</h2>
+<p>These are third-party services that scraped and stored your posts themselves. Common shapes include tweet archives, trend aggregators, and dataset marketplaces. Search platforms do not control them, so treat this as a separate track.</p>
+<ul>
+  <li>Find the site's contact address or privacy request route, state that you are the original author, and attach proof of the X-side deletion.</li>
+  <li>If there is no response, file a search removal request on the grounds that the page exposes personally identifiable information.</li>
+  <li>Keep a list of confirmed mirror URLs so the next review starts from that list instead of a fresh search.</li>
+</ul>
+<p>One category deserves extra attention: services that advertise tweet history search. They often index far more than you expect, silently. To check whether your content is in one of them, work through the method in <a href="/blog/data-brokers-selling-your-tweets">data brokers and resold posts</a>.</p>
+
+<h2>Two things to do while you wait</h2>
+<p>Removal requests run on a scale of weeks, and there is no reason to sit idle. Two tasks can run in parallel.</p>
+<p>First, keep shrinking the indexable surface. The less old content remains in the account, the fewer chances a recrawl has to pick something up. Prioritize by <a href="/blog/which-tweets-to-clean-by-risk">risk tiering</a>, starting with posts containing contact details or locations.</p>
+<p>Second, put the review on a schedule. Index status changes and new mirrors keep appearing. A quarterly pass beats searching only when something reminds you. For cadence, see <a href="/blog/how-often-check-digital-footprint">how often to run a check</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) runs an X archive check locally on your machine. Upload your archive ZIP and it scans for phone numbers, emails, addresses, locations, and sensitive topics without sending anything off your computer, returning a 0-100 health score and a risk-ranked list. Knowing your exposure before you start removing things makes the order of work far clearer. Run a free check from <a href="/">the homepage</a>, see cleanup options on <a href="/pricing">the pricing page</a>, and read the other guides on <a href="/blog">the blog</a>.</p>`,
+    faq: [
+      { q: "申请搜索移除需要提供身份证明吗？", a: "多数情况下不需要。个人信息移除通道通常只要求填写页面地址和说明理由。少数涉及敏感类别的申请可能要求补充材料，按表单提示提交即可。不要在申请里附上身份证照片，那会增加一次新的暴露。", qEn: "Do I need to submit identity documents with a search removal request?", aEn: "Usually not. The personal information removal form generally asks for the URL and a reason. A small number of sensitive categories may request supporting material, and the form will say so. Never attach a photo of an identity document, since that creates a fresh exposure of its own." },
+      { q: "搜索移除成功后，镜像站上的内容会一起消失吗？", a: "不会。搜索移除只影响搜索结果这一层，镜像站自己保存的副本需要单独联系对方处理。两件事要分别推进，处理顺序是先联系镜像站，再视情况申请从搜索中移除。", qEn: "Once a search removal goes through, does the copy on a mirror site disappear too?", aEn: "No. A search removal affects the search layer only. A copy stored on a mirror is a separate conversation with that site. Run both tracks, contacting the mirror first and filing the search removal as a follow-up where it applies." },
+      { q: "删除推文之后多久搜索索引会更新？", a: "取决于重新抓取的频率，常见范围是几天到数周。如果不想等，可以主动提交移除申请。注意不要在等待期内反复提交同一条申请，重复提交会让处理变慢。", qEn: "How long before the search index drops a deleted post?", aEn: "It depends on how often the page gets recrawled, and a few days to a few weeks is typical. If you would rather not wait, file a removal request. Avoid resubmitting the same URL while it is pending, since duplicates slow the queue." },
+      { q: "引用转发的内容该怎么处理？", a: "原帖删除不会带走引用帖。如果对方的引用帖里仍然包含你的原文或含个人信息的截图，需要单独处理：先请对方删除，沟通无效再考虑向搜索平台提交移除申请。", qEn: "What about quote posts that copied my content?", aEn: "Deleting the original does not remove a quote post. If someone else's quote still carries your text or a screenshot with personal details, handle it separately: ask them to delete it first, and only then consider a search removal request if that goes nowhere." },
+    ],
+  },
+  {
+    slug: "x-archive-download-failed-fix",
+    title: "X 归档下载失败：卡在准备中、收不到邮件、ZIP 打不开的排查顺序",
+    titleEn: "X Archive Download Failed: Stuck Requests, Missing Emails, Broken ZIPs",
+    excerpt:
+      "归档下载失败通常落在四个断点中的一个：请求没进队列、邮件没送达、文件被截断、或者打开后拿不到推文数据。这篇给出按顺序排查的方法，以及重复申请为什么会让等待时间变长。",
+    excerptEn:
+      "An archive download usually breaks at one of four points: the request never queued, the email never arrived, the file is truncated, or the ZIP opens without tweet data. Here is the order to check them in, plus why stacking new requests makes the wait longer rather than shorter.",
+    date: "2026-09-19",
+    updatedAt: "2026-09-19",
+    author: "Digital Footprint Health Team",
+    category: "归档入门",
+    categoryEn: "Archive Basics",
+    tags: ["X 归档", "下载失败", "数据导出", "ZIP 损坏", "排查步骤"],
+    tagsEn: ["X archive", "download failure", "data export", "corrupt ZIP", "troubleshooting"],
+    canonical: "/blog/x-archive-download-failed-fix",
+    content: `<div class="introduction">
+  <p>归档下载失败的表现有七八种，但真正的断点只有四个：请求没进队列、邮件没送达、文件传输被截断、ZIP 打开后拿不到推文数据。</p>
+  <p>分不清断点在哪，就会出现最常见的错误动作：反复重新申请。而重新申请会把前一次的结果作废，等待时间反而变长。</p>
+  <p>下面按四个断点逐个排查，每一步都给出可以直接观察到的现象。</p>
+</div>
+
+<h2>先弄明白一件事：重复申请会互相作废</h2>
+<p>归档请求通常是单实例的。新申请提交时，排队中的旧请求会被取代，你等的那一份就作废了，倒计时重新开始。</p>
+<p>所以看到「准备中」迟迟不动时，第一反应不该是再点一次申请，而是先确认请求是否真的还在队列里。判定方法见下节。</p>
+<p>另外，处理队列本身有波动。同一账号在不同时间提交，等待时长可能差出一倍以上，这一点在归档体积较大时更明显，大体积归档的处理方式见<a href="/blog/huge-archive-200mb">超大归档的处理经验</a>。</p>
+
+<h2>断点一：请求根本没进队列</h2>
+<p>典型现象是提交后页面没有任何变化，或者刷新后回到空的申请页，既没有等待提示也没有失败提示。</p>
+<table>
+  <thead><tr><th>现象</th><th>可能原因</th><th>处理方式</th></tr></thead>
+  <tbody>
+    <tr><td>提交后页面无反馈</td><td>请求未送达，通常是页面状态过期</td><td>重新登录账号后再提交一次</td></tr>
+    <tr><td>只有「下载归档」按钮，没有等待提示</td><td>确实还没有活跃请求</td><td>正常提交，此时不存在作废问题</td></tr>
+    <tr><td>页面提示已有请求处理中</td><td>旧请求仍有效</td><td>不要重新提交，先等，或按提示取消后再来</td></tr>
+    <tr><td>请求状态反复回到初始</td><td>账号邮箱未验证或存在风控标记</td><td>先补齐邮箱验证，再重试</td></tr>
+  </tbody>
+</table>
+<p>最后一行容易被忽略。部分账号因为长期未使用或安全策略，功能入口会被暂时限制，表现就是归档请求无法稳定进入队列。</p>
+
+<h2>断点二：邮件收不到</h2>
+<p>归档准备好之后会发一封带下载链接的邮件。这封邮件没收到，是最常见的「下载失败」。</p>
+<ul>
+  <li><strong>先查垃圾邮件与推广标签。</strong> 通知类邮件的自动分类命中率不稳定，尤其是出自平台通知地址的邮件。</li>
+  <li><strong>确认收件地址是当前账号绑定邮箱。</strong> 换过绑定邮箱的账号，历史邮件仍可能发往旧地址。</li>
+  <li><strong>确认邮箱没有被停用。</strong> 长期未登录的免费邮箱会被回收，回收后通知类邮件直接丢失。</li>
+  <li><strong>检查收件规则。</strong> 有些自动归档规则会把通知邮件直接移出收件箱，搜索时用平台通知域名的关键词而非标题关键词。</li>
+</ul>
+<p>链接本身通常有有效期。过期后不一定要重新走完整流程，部分情况下可以在同一页面上重新生成下载链接，先试这一步再去重提申请。</p>
+
+<h2>断点三：文件被截断</h2>
+<p>文件的完整性可以自己判断，不必猜。主流压缩工具都提供测试功能，用它检查一遍比反复解压快得多。</p>
+<table>
+  <thead><tr><th>现象</th><th>说明</th><th>处理方式</th></tr></thead>
+  <tbody>
+    <tr><td>文件大小明显偏小，或与归档提示的体积不符</td><td>传输中断，只下到一部分</td><td>重新下载，尽量不用手机流量或浏览器后台限制</td></tr>
+    <tr><td>解压到某个文件报错停止</td><td>压缩包尾部不完整</td><td>重新下载，下载完成后先做一次完整性测试</td></tr>
+    <tr><td>文件名带括号后缀，例如带 (1) 或 .crdownload</td><td>浏览器下载未完成或重复下载</td><td>删掉残缺文件，只保留一个完整副本</td></tr>
+    <tr><td>压缩包能解压，但目录里文件数量很少</td><td>归档本身生成不完整</td><td>重新申请一次归档</td></tr>
+  </tbody>
+</table>
+<p>最后一行与前三行性质不同。前三行是传输问题，重新下载就能解决；最后一行说明服务端生成时就少了内容，必须重新申请。区分方法很简单：看压缩包内部目录结构是否完整，结构在但内容少，就是生成问题。</p>
+
+<h2>断点四：ZIP 打开了，但拿不到推文数据</h2>
+<p>归档解压后通常包含多个数据文件，推文数据、点赞数据、关注列表分属不同文件。打开后找不到推文，多数是看错了文件，或者归档范围本身受限。</p>
+<ul>
+  <li>推文数据在独立的数据文件里，不在网页版的可视页面里。文件结构说明见<a href="/blog/whats-inside-x-archive-tweets-js">归档目录结构解析</a>。</li>
+  <li>数据文件是结构化文本，直接用文本工具打开可读性很差。想先看内容，按<a href="/blog/read-twitter-archive">怎么读归档</a>里的方式处理。</li>
+  <li>文件体积很大时，普通编辑器会卡死或截断显示。这种情况建议直接交给解析工具处理，不必手工打开。</li>
+  <li>如果归档里只有账号资料与关注列表，没有推文数据，说明归档范围选择受限，需要重新申请并确认范围。</li>
+</ul>
+<p>还有一种情况值得单独说：用手机解压并把文件转存到其他应用，部分应用会改写文件名或截断大文件。归档在手机上处理时的注意事项见<a href="/blog/download-x-archive-on-phone">在手机上下载与打开归档</a>。</p>
+
+<h2>一条可复用的排查顺序</h2>
+<ol>
+  <li>确认有没有活跃请求。有就不要动，等它跑完。</li>
+  <li>到期没邮件，先查垃圾邮件与通知规则，再核对绑定邮箱。</li>
+  <li>下载完成先做完整性测试，不要直接解压。</li>
+  <li>解压正常但内容不对，回头确认归档范围，而不是重复下载。</li>
+  <li>以上都排除后，再重新申请一次，并且这段时间不要再提交新请求。</li>
+</ol>
+<p>这个顺序的价值在于避免无效重试。四类断点里只有最后一类需要重新申请，前面三类重新申请都不会有帮助，只会让队列重新排队。</p>
+
+<h2>归档终于下好之后</h2>
+<p>拿到完整归档是后续所有工作的前提。建议先做两件事：留一份未修改的原始副本，再做一次整体扫描确认暴露面。</p>
+<p>原始副本的作用是留底。清理过程中如果发现误删，可以从副本里找回内容，备份方式见<a href="/blog/snapshot-archive-before-clean">清理前的归档快照</a>。扫描则用来把不确定变成清单，把注意力放在真正需要处理的内容上，判断依据见<a href="/blog/which-tweets-to-clean-by-risk">按风险分级清理</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把归档解析这一步做成本机操作：上传 X 归档 ZIP 后，扫描在你自己电脑上完成，输出 0-100 健康评分和按风险排序的清单，文件不上传。归档下载卡住时先按上面的顺序排查，拿到完整文件后再做体检，顺序会更顺。免费体检入口在<a href="/">首页</a>，清理方案见<a href="/pricing">定价页</a>，相关指南收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Archive downloads fail in about eight visible ways, but there are only four real break points: the request never queued, the email never arrived, the transfer got truncated, or the ZIP opens without tweet data.</p>
+  <p>If you cannot tell which break point you hit, you do the one thing that makes it worse, which is requesting the archive again. A new request supersedes the pending one, so your original wait is thrown away and the clock restarts.</p>
+  <p>Below are the four break points in order, each with a symptom you can observe directly.</p>
+</div>
+
+<h2>First, a rule that saves time: duplicate requests cancel each other</h2>
+<p>Archive requests are single-instance. When a new one goes in, the queued request is replaced, the file you were waiting for is discarded, and the countdown starts over.</p>
+<p>So when the status sits on preparing with no movement, the first move is not to request again. Confirm the request is actually still queued, using the checks in the next section.</p>
+<p>Queue behaviour also varies. The same account can see wildly different wait times on different days, and the spread widens with archive size. For large archives, see <a href="/blog/huge-archive-200mb">handling a very large archive</a>.</p>
+
+<h2>Break point one: the request never queued</h2>
+<p>The tell is a submit that produces no visible change, or a refresh that drops you back on an empty request screen with no pending notice and no error.</p>
+<table>
+  <thead><tr><th>Symptom</th><th>Likely cause</th><th>What to do</th></tr></thead>
+  <tbody>
+    <tr><td>Submit produces no response</td><td>Request never left the page, usually a stale session</td><td>Sign in again and submit once more</td></tr>
+    <tr><td>The download button is there with no pending notice</td><td>No active request in the queue</td><td>Submit normally, nothing gets cancelled</td></tr>
+    <tr><td>A notice says a request is already processing</td><td>The older request is still valid</td><td>Do not resubmit; wait, or cancel it first if the UI allows</td></tr>
+    <tr><td>Status keeps resetting to the start</td><td>Unverified account email or an account flag</td><td>Finish email verification, then retry</td></tr>
+  </tbody>
+</table>
+<p>That last row gets missed. Accounts that have been dormant, or that carry a security flag, can have the feature throttled, and the symptom looks like a request that refuses to stay in the queue.</p>
+
+<h2>Break point two: the email never arrives</h2>
+<p>Once the archive is built, a download link goes out by email. That message failing to arrive is the single most common form of a failed download.</p>
+<ul>
+  <li><strong>Check spam and promotions first.</strong> Notification mail from platform addresses gets misclassified more often than mail from real people.</li>
+  <li><strong>Confirm the address on the account.</strong> An account that switched its bound email may still send to the old one.</li>
+  <li><strong>Confirm the mailbox still exists.</strong> Free mailboxes get reclaimed after long inactivity, and notifications to a reclaimed address vanish.</li>
+  <li><strong>Check inbox rules.</strong> Auto-filing rules move notices straight out of the inbox, so search by the notification domain rather than the subject line.</li>
+</ul>
+<p>Download links usually expire. That does not always mean rerunning the whole process. In some cases the link can be regenerated from the same page, so try that before filing a fresh request.</p>
+
+<h2>Break point three: the transfer got truncated</h2>
+<p>File integrity is measurable, so there is no need to guess. Every mainstream archive tool ships a test function, which is much faster than unpacking repeatedly.</p>
+<table>
+  <thead><tr><th>Symptom</th><th>Meaning</th><th>What to do</th></tr></thead>
+  <tbody>
+    <tr><td>File is much smaller than the size shown in the archive notice</td><td>Transfer stopped partway</td><td>Download again, and avoid mobile data plus browser background throttling</td></tr>
+    <tr><td>Extraction errors out partway with a specific file</td><td>The tail of the archive is incomplete</td><td>Download again and run an integrity test before extracting</td></tr>
+    <tr><td>Filename carries a duplicate suffix such as (1), or ends in a partial-download extension</td><td>An earlier download never finished</td><td>Delete the partial file and keep exactly one complete copy</td></tr>
+    <tr><td>The ZIP extracts fine but holds only a handful of files</td><td>The archive itself was built incomplete</td><td>Request a new archive</td></tr>
+  </tbody>
+</table>
+<p>That last row is a different animal. The first three are transfer problems and a clean re-download fixes them. The fourth means the server produced an incomplete build, and only a fresh request helps. The distinction is easy to make: look at whether the internal folder structure is complete. Structure present, content missing means the build failed.</p>
+
+<h2>Break point four: the ZIP opens but there is no tweet data</h2>
+<p>An extracted archive holds several data files, with posts, likes, and the following list living in separate ones. Not finding tweets is usually a matter of opening the wrong file, though occasionally the archive scope itself is limited.</p>
+<ul>
+  <li>Tweet data lives in its own data file, not in a human-readable page. The layout is explained in <a href="/blog/whats-inside-x-archive-tweets-js">the archive folder structure breakdown</a>.</li>
+  <li>The data files are structured text, and reading them raw in a text editor is rough. To browse the contents first, use the approach in <a href="/blog/read-twitter-archive">how to read your archive</a>.</li>
+  <li>Very large files freeze or truncate in ordinary editors. Hand those straight to a parser instead of opening them by hand.</li>
+  <li>If the archive contains your profile and following list but no posts, the scope was limited, so request again and check the scope selection.</li>
+</ul>
+<p>One case deserves its own mention: extracting on a phone and passing files between apps can rewrite filenames or cut large files short. Phone-specific notes are in <a href="/blog/download-x-archive-on-phone">downloading and opening an archive on a phone</a>.</p>
+
+<h2>A reusable troubleshooting order</h2>
+<ol>
+  <li>Check whether a request is active. If it is, leave it alone and let it finish.</li>
+  <li>If the email is late, check spam and inbox rules, then verify the bound address.</li>
+  <li>When the download finishes, run an integrity test before extracting anything.</li>
+  <li>If it extracts cleanly but the contents are wrong, revisit the archive scope rather than re-downloading.</li>
+  <li>Only after all of the above, file one new request, and stop submitting while it runs.</li>
+</ol>
+<p>The value of this order is that it prevents pointless retries. Only the fourth break point calls for a new request. Re-requesting while you are stuck on the first three accomplishes nothing except sending you to the back of the queue.</p>
+
+<h2>Once the archive is finally in hand</h2>
+<p>A complete archive is the precondition for everything downstream. Two things are worth doing right away: keep an untouched original copy, then run a full scan to establish exposure.</p>
+<p>The untouched copy is your fallback. If cleanup turns out to have removed something you wanted, the copy brings it back, and the practice is described in <a href="/blog/snapshot-archive-before-clean">snapshotting an archive before cleanup</a>. The scan converts uncertainty into a list, which lets you spend effort on the posts that actually matter. Prioritization is covered in <a href="/blog/which-tweets-to-clean-by-risk">cleaning posts by risk tier</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) keeps archive parsing on your own machine. Upload your X archive ZIP and the scan runs locally, returning a 0-100 health score and a risk-ranked list, with nothing sent to a server. If a download is stuck, work through the order above first, then run the check on a complete file. Start a free check from <a href="/">the homepage</a>, see cleanup options on <a href="/pricing">the pricing page</a>, and browse the guides on <a href="/blog">the blog</a>.</p>`,
+    faq: [
+      { q: "重新申请归档会让之前的等待白费吗？", a: "会。归档请求通常是单实例的，新申请提交后排队中的旧请求会被取代，等待时间从头计算。所以确认没有活跃请求之前，不要重复提交。", qEn: "Does requesting the archive again waste the earlier wait?", aEn: "Yes. Archive requests are single-instance, so a new submission replaces the pending one and the countdown restarts. Do not resubmit until you have confirmed there is no active request." },
+      { q: "下载链接过期了怎么办？", a: "先看同一页面能否重新生成下载链接，能生成就不必重新申请。如果只能重新申请，提交之后不要再点第二次，避免新请求把当前请求作废。", qEn: "What should I do when the download link expires?", aEn: "First check whether the same page can regenerate the link. If it can, there is no need for a new request. If a fresh request is the only route, submit it once and stop there, or the next submission will cancel the one in flight." },
+      { q: "ZIP 能解压，但里面文件很少，是下载出问题了吗？", a: "大概率不是。文件少而目录结构完整，说明是服务端生成时就缺内容，属于归档范围或生成失败，重新下载不会有改善，需要重新申请一次归档。", qEn: "The ZIP extracts fine but holds few files. Is that a download problem?", aEn: "Probably not. Few files with a complete folder structure points to an incomplete build on the server side, which is a scope or generation issue. Re-downloading will not help; request a new archive instead." },
+      { q: "归档里的推文数据文件特别大，用什么打开比较合适？", a: "不要用普通文本编辑器打开，体积大时编辑器会卡死或截断显示。比较稳妥的做法是交给解析工具处理，需要先看看里面有什么内容的话，按站内的归档阅读方法操作。", qEn: "The tweet data file in my archive is huge. What should I open it with?", aEn: "Not a plain text editor, which will freeze or truncate on large files. Hand it to a parser instead. If you want a preview of what is inside first, follow the archive reading method described on the site." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -12464,6 +12464,589 @@ export const allPosts: BlogPost[] = [
       { q: "外包和自己做，成本差多少？", a: "差别不在工作时长，而在通道。自己做批量删除的一次性成本通常只有工具的十几到几十美元，而全案声誉管理多为每月数千到数万美元。差价主要买的是站外副本删除、数据经纪商退出和长期搜索结果压制这三类你看不到入口的能力。", qEn: "How much more expensive is outsourcing than doing it myself?", aEn: "The difference is not hours of work but access. Self-serve bulk deletion usually costs the low tens of dollars as a one-off tool fee, while a full-service retainer runs into thousands or tens of thousands per month. The gap buys three capabilities whose entry points you cannot easily reach: off-site takedowns, broker opt-outs and long-run search suppression." },
     ],
   },
+  {
+    slug: "x-account-annual-audit-review",
+    title: "X 账号年度体检复盘：一年一次要检查的 12 个项目",
+    titleEn: "The Annual X Account Audit: 12 Checks to Run Once a Year",
+    excerpt:
+      "日常清理解决的是新产生的内容，年度复盘解决的是你自己已经忘掉的那部分。这份清单按归档、风险、权限、索引、留存五组拆成 12 个检查项，附耗时估算与判定标准，一次体检大约两小时。",
+    excerptEn:
+      "Routine cleanup handles what you posted lately. An annual audit handles what you have already forgotten. This checklist breaks the work into five groups and 12 checks, with time estimates and pass criteria for a single two-hour session.",
+    date: "2026-09-21",
+    updatedAt: "2026-09-21",
+    author: "Digital Footprint Health Team",
+    category: "特辑与复盘",
+    categoryEn: "Specials & Recap",
+    tags: ["年度复盘","账号体检","隐私审计","检查清单","数字足迹"],
+    tagsEn: ["annual audit","account review","privacy audit","checklist","digital footprint"],
+    canonical: "/blog/x-account-annual-audit-review",
+    content: `<div class="introduction">
+  <p>日常清理跟上的是你刚刚发出去的内容。真正容易被漏掉的，是三五年前留下的那批推文：那时候的隐私习惯、当时的住址、那次随手贴出的登机牌。等到背景调查或搜索结果把它翻出来，处理成本已经比当时高出很多。</p>
+  <p>年度复盘的价值就在这里：用一次集中检查，把"我以为早就清干净了"和"实际还留着什么"这两件事对齐。下面是 12 个检查项，按五组排列，正常情况下一到两小时可以走完。</p>
+</div>
+
+<h2>为什么年度节奏比季度节奏更合适</h2>
+<p>清理这件事有两种驱动。一种是事件驱动，遇到换工作、被搜索、被转发才动手，时间紧张并且容易做过头。另一种是周期驱动，按固定节奏过一遍已知项，把问题处理在它变严重之前。</p>
+<p>周期定在一年，是因为账号层面的关键状态变化通常以年为尺度：归档体积、历史推文的索引情况、你授权过的第三方应用、平台条款的调整。这些项目按周检查不会有变化，按年检查又刚好能看到完整的一轮。</p>
+<p>一次完整的体检确实需要两小时上下，拆成四个半小时的片段更容易坚持。具体的拆法见<a href="/blog/30-day-footprint-habit-plan">三十天习惯计划</a>，以及<a href="/blog/how-often-check-digital-footprint">体检频率该怎么定</a>。</p>
+
+<h2>第一组：归档与留存（3 项）</h2>
+<table>
+  <thead><tr><th>检查项</th><th>判定标准</th><th>耗时</th></tr></thead>
+  <tbody>
+    <tr><td>下载最新完整归档</td><td>拿到当年的 ZIP，日期覆盖到最近一个月</td><td>下载数小时（后台）</td></tr>
+    <tr><td>核对归档体积变化</td><td>与上一年对比，增长幅度与你当年的活跃度相符</td><td>5 分钟</td></tr>
+    <tr><td>归档离线留存</td><td>至少两份副本，其中一份不联网保存</td><td>15 分钟</td></tr>
+  </tbody>
+</table>
+<p>归档是后面所有检查的底座。没有归档，风险扫描只能靠翻你自己的时间线，那样必然会漏。下载方式见<a href="/blog/how-to-download-x-archive">下载 X 数据归档</a>，如果卡在下载环节，处理办法见<a href="/blog/x-archive-download-failed-fix">归档下载失败排查</a>。</p>
+<p>第二项容易被跳过。归档体积的增长曲线是有信息量的：某一年突然多了几百 MB，通常对应那段时间你发图多、或者加了大量点赞记录。点赞记录同样会进归档，也同样是隐私面。体积与内容的对应关系见<a href="/blog/huge-archive-200mb">归档为什么会有 200MB</a>。</p>
+
+<h2>第二组：风险内容（3 项）</h2>
+<table>
+  <thead><tr><th>检查项</th><th>判定标准</th><th>耗时</th></tr></thead>
+  <tbody>
+    <tr><td>手机号与邮箱扫描</td><td>零命中，或被处理过的历史命中不再显示</td><td>10 分钟</td></tr>
+    <tr><td>住址与定位扫描</td><td>不再出现可定位到具体门牌或工作地点的内容</td><td>10 分钟</td></tr>
+    <tr><td>敏感话题复检</td><td>对前雇主、行业、客户的情绪化表达已不在公开范围</td><td>20 分钟</td></tr>
+  </tbody>
+</table>
+<p>这三项是体检报告的核心输出，工具会自动做完前两类的初筛。第三类需要人判断：什么算敏感，取决于你现在的行业和下一次求职的方向。同一句话对技术岗和合规岗的风险等级完全不同。</p>
+<p>判定标准要写具体，否则每年都会得出"看起来还行"的结论。比如手机号一项，合格的定义是搜索你的账号时无法通过公开内容拼出完整号码，而不是"我印象里没发过"。检测方法见<a href="/blog/phone-number-in-tweets-check">手机号泄露自查</a>。</p>
+
+<h2>第三组：权限与会话（2 项）</h2>
+<table>
+  <thead><tr><th>检查项</th><th>判定标准</th><th>耗时</th></tr></thead>
+  <tbody>
+    <tr><td>第三方应用授权</td><td>只保留这一年实际用过的应用，其余撤销</td><td>10 分钟</td></tr>
+    <tr><td>登录设备与活跃会话</td><td>无陌生设备，退出所有不认识的会话</td><td>10 分钟</td></tr>
+  </tbody>
+</table>
+<p>授权列表是最容易膨胀的地方。每一次"用 X 账号登录"都会留下一条长期有效的授权记录，其中一部分带写入权限。清理方法见<a href="/blog/x-connected-apps-permission-audit">第三方应用授权审计</a>，设备侧的检查见<a href="/blog/login-device-audit-x-account">登录设备排查</a>。</p>
+<p>这两项和内容清理是两条独立的线。很多人把内容删得很干净，却留着三年前某款工具的账号写入权限，那样清理的意义会被大幅削弱。</p>
+
+<h2>第四组：索引与外部留存（2 项）</h2>
+<table>
+  <thead><tr><th>检查项</th><th>判定标准</th><th>耗时</th></tr></thead>
+  <tbody>
+    <tr><td>搜索结果复检</td><td>用姓名加账号名组合搜索，首屏无旧推文残留</td><td>15 分钟</td></tr>
+    <tr><td>第三方副本排查</td><td>抽查两三条历史高危推文，确认无转载页或缓存站</td><td>15 分钟</td></tr>
+  </tbody>
+</table>
+<p>删除之后搜索引擎里的结果不会立刻消失，这是正常现象，处理路径见<a href="/blog/google-remove-old-tweets-from-search">让 Google 移除旧推文</a>。第四组要专门看的是"删除动作完成之后"的状态，这一步常常被误以为已经结束。</p>
+
+<h2>第五组：规则与节奏（2 项）</h2>
+<table>
+  <thead><tr><th>检查项</th><th>判定标准</th><th>耗时</th></tr></thead>
+  <tbody>
+    <tr><td>发布规则回顾</td><td>写下一到两条今年新增的自我约束，例如不发现场定位</td><td>10 分钟</td></tr>
+    <tr><td>下一年检查日期</td><td>日历上落一个具体日期，不是"明年再说"</td><td>2 分钟</td></tr>
+  </tbody>
+</table>
+<p>最后一项听上去琐碎，却是整份清单里决定明年还会不会做的一次动作。规则层面的做法见<a href="/blog/future-tweet-rules">给自己定几条发布时间规则</a>。</p>
+
+<h2>一个两小时的执行顺序</h2>
+<ol>
+  <li><strong>先做归档。</strong> 下载放后台跑，同时做第二到第五组里不依赖归档的项目。</li>
+  <li><strong>再做风险扫描。</strong> 归档到位后跑一次全量体检，导出风险清单。</li>
+  <li><strong>然后处理权限。</strong> 这一组和内容无关，可以在等下载的空档里完成。</li>
+  <li><strong>最后看索引。</strong> 处理完删除动作再回头查搜索结果，中间留几天让索引更新。</li>
+</ol>
+<p>顺序上唯一不能颠倒的是归档要在风险扫描之前。归档是只读的快照，先拿到它，后面的所有操作都有回退依据。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把这份清单里最费时的第二组做成了自动化流程：本机解析你的 X 数据归档，标出含手机号、邮箱、住址、定位和敏感话题的推文，给出 0 到 100 的健康评分，处理过程不联网上传。从<a href="/">首页</a>做一次免费体检即可拿到当年的风险清单；删除范围与价格见<a href="/pricing">定价页</a>，其余检查项的详细做法收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Routine cleanup keeps up with what you posted recently. What gets missed is the material from three to five years ago: the privacy habits you had then, the address you lived at, the boarding pass you snapped without thinking. By the time a background check or a search result surfaces it, the cost of dealing with it has gone up.</p>
+  <p>That is what an annual audit is for. It puts "I thought I cleaned this up" and "here is what is actually still there" on the same page. The 12 checks below are grouped into five sets and take one to two hours when nothing is badly out of shape.</p>
+</div>
+
+<h2>Why a yearly cadence beats a quarterly one</h2>
+<p>Cleanup gets driven two ways. One is event-driven: a job change, a search result, an unexpected retweet forces your hand, and you work under time pressure, usually over-correcting. The other is cadence-driven: you walk a known list on a fixed schedule and deal with problems before they grow.</p>
+<p>A year is the right interval because the state that matters changes on that scale. Archive size, index status of old tweets, apps you have authorized, platform terms. Checking weekly would show no movement; checking yearly catches exactly one full cycle.</p>
+<p>A complete audit runs about two hours. Splitting it into four half-hour blocks is easier to sustain. For the split, see <a href="/blog/30-day-footprint-habit-plan">the 30-day habit plan</a> and <a href="/blog/how-often-check-digital-footprint">how often to run a footprint check</a>.</p>
+
+<h2>Group 1: Archive and retention (3 checks)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Pass criteria</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Download the current archive</td><td>This year's ZIP is on disk, covering up to the last month</td><td>Hours (background)</td></tr>
+    <tr><td>Compare archive size</td><td>Growth against last year matches how active you actually were</td><td>5 min</td></tr>
+    <tr><td>Store it offline</td><td>Two copies minimum, one held on offline media</td><td>15 min</td></tr>
+  </tbody>
+</table>
+<p>The archive is the base layer for everything after it. Without one, risk scanning means scrolling your own timeline, which always misses things. Download steps are in <a href="/blog/how-to-download-x-archive">downloading your X data archive</a>, and if the download stalls, <a href="/blog/x-archive-download-failed-fix">troubleshooting a failed archive download</a>.</p>
+<p>The second check is the one people skip. The growth curve carries information. A year that suddenly adds a few hundred megabytes usually means heavy image posting or a large like history. Likes go into the archive too, and they are just as much a privacy surface. What drives the size is covered in <a href="/blog/huge-archive-200mb">why an archive can hit 200MB</a>.</p>
+
+<h2>Group 2: Risky content (3 checks)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Pass criteria</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Phone and email scan</td><td>Zero hits, or historical hits no longer publicly visible</td><td>10 min</td></tr>
+    <tr><td>Address and location scan</td><td>Nothing that resolves to a street number or a specific workplace</td><td>10 min</td></tr>
+    <tr><td>Sensitive topic review</td><td>Emotional posts about former employers, industries or clients are no longer public</td><td>20 min</td></tr>
+  </tbody>
+</table>
+<p>These three are the core output of a footprint report, and a tool handles the first two categories automatically. The third needs a human call. What counts as sensitive depends on your field and where you are applying next. The same sentence carries a different risk level for an engineer and for a compliance officer.</p>
+<p>Write pass criteria concretely or every year ends with "looks fine to me." For phone numbers, the standard is that nobody can assemble a complete number from your public posts, not that you cannot recall posting one. For detection, see <a href="/blog/phone-number-in-tweets-check">checking for exposed phone numbers</a>.</p>
+
+<h2>Group 3: Permissions and sessions (2 checks)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Pass criteria</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Third-party app access</td><td>Only apps you used this year remain; everything else revoked</td><td>10 min</td></tr>
+    <tr><td>Logged-in devices and sessions</td><td>No unknown devices; all unrecognized sessions signed out</td><td>10 min</td></tr>
+  </tbody>
+</table>
+<p>The authorization list is where things balloon. Every "sign in with X" leaves a long-lived grant behind, and some of those carry write access. Cleanup steps are in <a href="/blog/x-connected-apps-permission-audit">auditing third-party app access</a>, and the device side in <a href="/blog/login-device-audit-x-account">reviewing login devices</a>.</p>
+<p>This group runs on a separate track from content cleanup. Plenty of people scrub their posts thoroughly while leaving a three-year-old write grant in place, which undercuts most of the benefit.</p>
+
+<h2>Group 4: Index state and third-party copies (2 checks)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Pass criteria</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Search result review</td><td>Searching your name plus handle returns no old tweets above the fold</td><td>15 min</td></tr>
+    <tr><td>Third-party copy check</td><td>Spot-check two or three high-risk posts for reposts or cache sites</td><td>15 min</td></tr>
+  </tbody>
+</table>
+<p>Search results do not vanish the moment you delete a tweet. That is expected, and the path through it is in <a href="/blog/google-remove-old-tweets-from-search">getting Google to remove old tweets</a>. What this group examines is the state after the deletion work is already done, which is often mistaken for the finish line.</p>
+
+<h2>Group 5: Rules and cadence (2 checks)</h2>
+<table>
+  <thead><tr><th>Check</th><th>Pass criteria</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Posting rules review</td><td>One or two new self-imposed limits written down, such as no live location</td><td>10 min</td></tr>
+    <tr><td>Next year's date</td><td>A specific date on the calendar, not "sometime next year"</td><td>2 min</td></tr>
+  </tbody>
+</table>
+<p>The last one sounds trivial and is the single item that decides whether you do this again next year. On the rules side, see <a href="/blog/future-tweet-rules">setting a few posting rules for yourself</a>.</p>
+
+<h2>A two-hour running order</h2>
+<ol>
+  <li><strong>Start with the archive.</strong> Kick the download off in the background and work the checks that do not depend on it.</li>
+  <li><strong>Then scan for risk.</strong> Once the archive lands, run a full check and export the risk list.</li>
+  <li><strong>Next, permissions.</strong> This group is content-independent and fits in the download window.</li>
+  <li><strong>Finally, index state.</strong> Come back to search results a few days after deletion work, once the index has caught up.</li>
+</ol>
+<p>The one order that cannot be reversed: the archive comes before the risk scan. It is a read-only snapshot, and having it gives every later action a rollback point.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) automates the most time-consuming group on this list. It parses your X archive on your own machine, flags tweets that carry phone numbers, emails, street addresses, precise locations or sensitive subject matter, and returns a 0-100 health score. Nothing is uploaded at any point.</p>
+<p>Two things make it a reasonable starting point for an annual audit. The check is free and read-only, so running it costs you nothing and changes nothing on your account. And it works from the archive rather than from your live timeline, which means it sees the posts you have already scrolled past a hundred times without registering.</p>
+<p>Run a free check from the <a href="/">homepage</a> to get this year's risk list. Deletion scope and per-post pricing are laid out on the <a href="/pricing">pricing page</a>, and the checks that no tool can perform for you are covered throughout the <a href="/blog">blog</a>.</p>`,
+    faq: [
+      { q: "年度复盘和日常清理有什么区别？", a: "日常清理处理的是刚发出去的内容，重点在及时。年度复盘处理的是你已经忘掉的那部分，重点在完整性。两者不能互相替代：只做日常清理，历史内容会一直漏；只做年度复盘，当年的新风险会积累一整年。", qEn: "How is an annual audit different from routine cleanup?", aEn: "Routine cleanup handles what you just posted and is about timeliness. An annual audit handles what you have already forgotten and is about completeness. Neither replaces the other. Daily cleanup alone leaves the back catalogue untouched, while an annual audit alone lets a full year of new risk pile up." },
+      { q: "真的需要两小时吗？", a: "12 项加起来的实际操作时间约一小时。剩下的时间通常花在下载归档的等待、以及第三组敏感话题的逐个判断上。把归档下载放在第一步并让它后台执行，可以省掉大部分等待。", qEn: "Does it really take two hours?", aEn: "The 12 checks total about an hour of hands-on work. The rest goes to waiting on the archive download and to judging sensitive topics one by one in group three. Starting the download first and letting it run in the background removes most of the wait." },
+      { q: "漏掉哪一项后果最严重？", a: "第三组。内容清理通常做得比较到位，而第三方应用授权和登录会话是两处独立的口子，很多人从未检查过。一个三年未撤销、带写入权限的授权，可以让一次彻底的清理失去大部分意义。", qEn: "Which check matters most if it gets skipped?", aEn: "Group three. Content cleanup tends to get done, while app authorizations and active sessions are separate openings that many people have never reviewed. A three-year-old grant with write access can undo most of the value of an otherwise thorough cleanup." },
+      { q: "第二年的检查可以更快吗？", a: "可以。归档下载和权限检查可以沿用上一年的结论作为基线，把注意力放在变化上：新增的风险内容、新增的授权、新增的索引残留。第二年起通常能压缩到一小时以内。", qEn: "Can the second year be faster?", aEn: "Yes. The archive download and permission checks can reuse last year's results as a baseline, so attention goes to what changed: newly added risky content, newly granted access, newly indexed leftovers. From the second year on, an hour is usually enough." },
+    ],
+  },
+  {
+    slug: "mass-deletion-tool-permission-scope",
+    title: "批量删除工具要什么权限：三种授权模式的风险差别",
+    titleEn: "What Permissions a Mass Deletion Tool Really Needs",
+    excerpt:
+      "删除工具索要的权限差别很大，有的只要删除范围，有的还要读取私信和关注列表。这篇把常见授权拆成三档，说明每一档实际能看到什么、失控时的后果，以及怎么在五分钟内判断一个授权是否过度。",
+    excerptEn:
+      "Deletion tools ask for very different levels of access. Some request only delete scope; others reach into direct messages and follower lists. Here are three tiers of authorization, what each one can actually see, what goes wrong, and how to judge an over-broad grant in five minutes.",
+    date: "2026-09-21",
+    updatedAt: "2026-09-21",
+    author: "Digital Footprint Health Team",
+    category: "竞品对比",
+    categoryEn: "Comparisons",
+    tags: ["删除工具","授权权限","OAuth","隐私风险","工具评测"],
+    tagsEn: ["deletion tools","permissions","OAuth","privacy risk","tool comparison"],
+    canonical: "/blog/mass-deletion-tool-permission-scope",
+    content: `<div class="introduction">
+  <p>挑选删除工具时，多数人先看价格和删除速度，权限那一栏通常直接点同意。这个顺序是反的。</p>
+  <p>价格差别是几十美元，权限差别可能是你的私信、关注列表和完整历史推文的读取权。工具用完可以换，已经交出去的授权不会自己消失。</p>
+</div>
+
+<h2>三种授权模式</h2>
+<table>
+  <thead><tr><th>模式</th><th>工具拿到什么</th><th>典型实现</th><th>失控后果</th></tr></thead>
+  <tbody>
+    <tr><td>本机解析</td><td>只有你主动上传的归档文件</td><td>浏览器端或本地程序处理 ZIP</td><td>数据不出你的设备，泄露面最小</td></tr>
+    <tr><td>受限 API 授权</td><td>读取你的公开推文并执行删除</td><td>OAuth 授权，只申请必要作用域</td><td>拿到公开内容与删除能力，看不到私信</td></tr>
+    <tr><td>完整账号授权</td><td>公开与私密内容、私信、关注关系、账号设置</td><td>要求账号密码或宽泛作用域</td><td>等同于交出一份长期有效的账号副本</td></tr>
+  </tbody>
+</table>
+<p>第二和第三档的差别不在技术难度，而在工具设计时选择了方便还是选择了克制。要求账号密码的第三方工具没有任何理由存在：平台提供的作用域机制足以完成删除工作。</p>
+
+<h2>每一档实际能看到什么</h2>
+<p>第一档能看到的内容上限等于归档的内容，也就是你自己主动交出去的那部分。归档里没有私信原文，没有关注关系的完整快照，也没有账号设置。这意味着即使工具本身不可信，它能泄露的也只是你上传的那个文件。</p>
+<p>第二档的读取范围是公开内容。工具可以遍历你的推文、分析词频、判断哪条含手机号。它看不到私信，也改不了你的账号设置。授权可以在平台的连接列表里随时撤销，撤销后令牌立即失效。</p>
+<p>第三档的边界模糊得多。宽泛作用域往往连带读取私信、查看关注与被关注列表、读取账号邮箱。这些数据对删除工作没有帮助，却是做用户画像和营销触达的原料。判断一个授权是否过度，看它申请的作用域里有多少项和"删除推文"这件事没有直接关系。</p>
+
+<h2>五分钟判断授权是否过度</h2>
+<ol>
+  <li><strong>看它有没有要求密码。</strong> 要求密码的一律不用，这一条没有例外。</li>
+  <li><strong>看授权页列出的作用域条数。</strong> 三到四条以内通常合理，超过七八条要逐条读。</li>
+  <li><strong>找"读取私信"类的条目。</strong> 删除公开推文不需要私信权限，出现即可判定过度。</li>
+  <li><strong>看撤销入口是否存在。</strong> 在平台的连接或已授权应用列表里能找到撤销按钮，才算可控。</li>
+  <li><strong>看工具的隐私政策是否写明数据留存时长。</strong> 只写"我们重视你的隐私"而没有具体天数的，视为未说明。</li>
+</ol>
+<p>第三步是最有效的单一判据。一个只做公开推文删除的工具，在功能上完全不需要私信作用域，申请它只能是别有用心的方便。授权审计的完整做法见<a href="/blog/x-connected-apps-permission-audit">第三方应用授权审计</a>。</p>
+
+<h2>授权之后仍要做的两件事</h2>
+<p>无论选哪一档，删除任务结束后都应该回到平台的已授权应用列表，把不再需要的授权撤销。工具用完就撤，下次要用再授一次，成本是一次点击。</p>
+<p>另一件事是检查登录设备。授权撤销只影响应用，不影响已经登录的会话。两处的检查方法见<a href="/blog/login-device-audit-x-account">登录设备排查</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）属于上表里的第一档：你上传 X 数据归档，解析和评分全部在本机完成，不上传、不申请账号权限。从<a href="/">首页</a>可以免费跑一次体检并看到风险清单；真要删除时再单独授权，范围与价格见<a href="/pricing">定价页</a>，更多工具对比收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>When people compare deletion tools, price and speed come first. Permissions get an automatic yes. That order is backwards.</p>
+  <p>A price difference is a few tens of dollars. A permission difference can be your direct messages, your follower graph and read access to your full history. You can swap tools whenever you like. A grant you already handed over does not disappear on its own.</p>
+</div>
+
+<h2>Three tiers of authorization</h2>
+<table>
+  <thead><tr><th>Tier</th><th>What the tool receives</th><th>Typical implementation</th><th>Worst case</th></tr></thead>
+  <tbody>
+    <tr><td>On-device parsing</td><td>Only the archive file you upload</td><td>Processing a ZIP in the browser or a local app</td><td>Data never leaves your machine</td></tr>
+    <tr><td>Scoped API access</td><td>Read your public posts and perform deletions</td><td>OAuth with narrowly requested scopes</td><td>Public content and delete rights, no direct messages</td></tr>
+    <tr><td>Full account access</td><td>Public and private content, DMs, social graph, settings</td><td>Asks for your password or very broad scopes</td><td>Equivalent to handing over a long-lived copy of your account</td></tr>
+  </tbody>
+</table>
+<p>The gap between the second and third tier is not technical difficulty. It is whether the tool chose restraint or convenience. A third-party tool asking for your password has no reason to exist: the platform's scope mechanism is sufficient for deleting posts.</p>
+
+<h2>What each tier can actually see</h2>
+<p>Tier one is capped at the archive contents, meaning whatever you chose to hand over. An archive does not carry direct message bodies, a complete follower snapshot or account settings. Even if the tool itself is untrustworthy, the exposure is limited to the file you supplied.</p>
+<p>Tier two reads public content. A tool can walk your posts, analyze word frequency and find the ones containing phone numbers. It cannot read DMs and cannot change your account settings. The grant can be revoked from the platform's connected-apps list at any time, and the token dies immediately.</p>
+<p>Tier three is far blurrier. Broad scopes tend to include reading DMs, viewing follows and followers, and reading the account email. None of that helps with deletion, and all of it is raw material for profiling and outreach. To judge whether a grant is excessive, count how many requested scopes have nothing to do with removing posts.</p>
+
+<h2>Five minutes to spot an over-broad grant</h2>
+<ol>
+  <li><strong>Does it ask for your password?</strong> Anything that does is out, no exceptions.</li>
+  <li><strong>Count the scopes on the consent screen.</strong> Three or four is usually reasonable. Past seven or eight, read each one.</li>
+  <li><strong>Look for a read-DMs entry.</strong> Deleting public posts does not require message access, so its presence settles the question.</li>
+  <li><strong>Confirm a revocation path exists.</strong> It is only manageable if you can find the revoke button in the connected-apps list.</li>
+  <li><strong>Check whether the privacy policy states a retention period.</strong> A page that says it values your privacy without naming a number of days has not answered.</li>
+</ol>
+<p>Step three is the most efficient single test. A tool that only deletes public posts has no functional need for message scope, so requesting it signals convenience for someone else. The full audit process is in <a href="/blog/x-connected-apps-permission-audit">auditing third-party app access</a>.</p>
+
+<h2>Two things to do after granting access</h2>
+<p>Whichever tier you pick, go back to the connected-apps list once the deletion job finishes and revoke anything you no longer need. Grant it again next time you use it. The cost is one click.</p>
+<p>The second item is checking logged-in devices. Revoking an app does not touch existing sessions. Both checks are covered in <a href="/blog/login-device-audit-x-account">reviewing login devices</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) sits in tier one. You upload your X archive and everything, parsing and scoring alike, happens on your own machine with no upload and no account permission requested. Run a free check from the <a href="/">homepage</a> to see your risk list; authorization only comes up if you choose to delete, with scope and pricing on the <a href="/pricing">pricing page</a> and further tool comparisons throughout the <a href="/blog">blog</a>.</p>`,
+    faq: [
+      { q: "本机解析的工具还需要联网吗？", a: "解析和评分不需要联网，全在本机完成。只有你决定删除推文时才需要网络请求，因为删除动作必须通过平台接口执行。体检和删除是两件独立的事，可以先只用体检。", qEn: "Does an on-device tool still need an internet connection?", aEn: "Parsing and scoring do not. They run entirely on your machine. A network request only becomes necessary when you decide to delete posts, because that action has to go through the platform's API. Checking and deleting are separate, so you can start with checking alone." },
+      { q: "授权撤销后工具还能操作我的账号吗？", a: "不能。撤销后令牌立即失效，工具后续的任何请求都会被平台拒绝。已经完成的操作不会因此回滚，也无法撤销工具此前读取过的数据，所以撤销要及时做。", qEn: "Can a tool still act on my account after I revoke access?", aEn: "No. The token dies the moment you revoke, and any later request from that tool is rejected. Actions already completed are not rolled back, and there is no way to un-read data it already accessed, which is why revoking promptly matters." },
+      { q: "免费工具更容易过度索取权限吗？", a: "不必然，但值得警惕。免费工具的运营成本需要有来源，一种来源是删除费用，另一种是数据本身。判断方法不变：看它申请的作用域里有多少项与删除无关，与是否免费没有直接关系。", qEn: "Are free tools more likely to over-ask for permissions?", aEn: "Not necessarily, and it is still worth watching. A free tool needs to cover its costs somehow, either through deletion fees or through the data itself. The test does not change: count how many requested scopes are unrelated to deletion. Being free is not a direct factor." },
+    ],
+  },
+  {
+    slug: "archive-request-before-erasure-request",
+    title: "申请删除前先拿归档：数据可携权与删除请求的先后顺序",
+    titleEn: "Archive First, Erasure Second: Ordering Your Data Rights Requests",
+    excerpt:
+      "数据可携权和删除权是两个独立请求，提交顺序会影响你能拿到什么。先申请归档再提交删除请求，可以留下完整证据链；顺序反了，可携权能拿到的内容会大幅缩水。这篇讲清两者的法定期限、交互影响和具体提交写法。",
+    excerptEn:
+      "Portability and erasure are two separate requests, and the order you file them changes what you receive. Requesting an archive first leaves you a complete evidence trail. Filed the other way round, your portability response shrinks substantially. Here are the statutory deadlines, how the two interact, and how to word each request.",
+    date: "2026-09-21",
+    updatedAt: "2026-09-21",
+    author: "Digital Footprint Health Team",
+    category: "合规与法律",
+    categoryEn: "Compliance & Legal",
+    tags: ["数据可携权","删除请求权","GDPR","证据留存","合规流程"],
+    tagsEn: ["data portability","right to erasure","GDPR","evidence retention","compliance process"],
+    canonical: "/blog/archive-request-before-erasure-request",
+    content: `<div class="introduction">
+  <p>按 GDPR 和多数地区的隐私法，你可以要求平台交出你的数据副本，也可以要求它删除你的数据。这两项权利名字不同、条款不同，提交顺序不同，最终拿到的东西差别很大。</p>
+  <p>顺序建议很简单：先要副本，再提删除。原因是删除一旦执行，你后续再想要一份"删除之前的完整记录"就没办法了，而这份记录在处理纠纷、核对删除范围、向监管机关举证时都用得上。</p>
+</div>
+
+<h2>两项权利的条款差异</h2>
+<table>
+  <thead><tr><th>维度</th><th>数据可携权</th><th>删除请求权</th></tr></thead>
+  <tbody>
+    <tr><td>核心内容</td><td>要求提供你的个人数据副本</td><td>要求删除你的个人数据</td></tr>
+    <tr><td>响应期限</td><td>通常一个月</td><td>通常一个月</td></tr>
+    <tr><td>可延期情形</td><td>请求复杂或数量多，可再延两个月并须告知</td><td>同左</td></tr>
+    <tr><td>交付格式</td><td>通用、结构化、机器可读</td><td>不适用，结果是数据不再被处理</td></tr>
+    <tr><td>常见限制</td><td>不得影响他人权利与自由</td><td>涉及法定义务、公共利益、法律主张时可拒绝</td></tr>
+  </tbody>
+</table>
+<p>两条都限定在一个月内响应，都允许在复杂情形下延长两个月，并且延长必须告知你。这一点常被忽略：平台不回复并不等于自动延期，延期需要正式告知才算成立。</p>
+
+<h2>为什么顺序反过来会缩水</h2>
+<p>删除请求执行后，平台不再持有这些数据，可携权请求自然无从交付。实际操作中会出现三种结果：要么平台告知相关数据已被删除、无法提供；要么只提供删除后仍保留的那部分；要么以"数据已不存在"为由完全拒绝。</p>
+<p>这三种结果都不利于你。你真正需要的那份记录，恰好是删除动作发生之前的状态。想要保留自己做过什么的证据，就必须在删除之前把它拿到手。</p>
+<p>另一个现实原因是时间差。可携权通常通过自助渠道交付，几天内就能下载；删除请求涉及人工审核，周期更长。先提可携权，两份材料不会互相等待。相关的删除申请写法见<a href="/blog/gdpr-erasure-request-twitter">向平台提交删除请求</a>。</p>
+
+<h2>归档拿到之后要做什么</h2>
+<ol>
+  <li><strong>核对完整性。</strong> 检查日期范围是否覆盖到你使用账号的第一天。</li>
+  <li><strong>算一次内容指纹。</strong> 记录推文总数与文件字节数，作为后续对比的基线。</li>
+  <li><strong>离线留存。</strong> 至少一份副本放在不联网的介质上，避免本地设备故障导致证据丢失。</li>
+  <li><strong>再提交删除请求。</strong> 此时你已经有完整的删除前状态，任何后续争议都有依据。</li>
+</ol>
+<p>第二步的内容指纹值得单独说。它的作用是在删除完成后验证执行范围：你原本有多少条推文、实际处理了多少、还剩下多少。没有这个基线，你只能凭印象判断删除是否彻底。验证方法见<a href="/blog/verify-old-tweets-really-deleted">确认旧推文真的被删掉了</a>。</p>
+
+<h2>提交请求时的写法要点</h2>
+<p>写清楚三件事就够了：你是谁并提供可核验的身份信息、你要求的是哪一项权利、以及要求以什么格式交付。不需要引用具体条款编号，也不需要长篇说明理由，监管机关审的不是你的法律素养。</p>
+<p>有一处容易写错：把两项权利要求写在同一封邮件里，容易让对方只处理其中一项。分成两次提交，每次只提一项，回复也更容易归档。</p>
+<p>如果一个月内没有收到实质回复，可以升级处理。各辖区的受理路径不同，欧美两地的差异见<a href="/blog/ccpa-global-privacy-laws">各辖区隐私条款对照</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）处理的是自助渠道之外的补充工作：拿到归档之后，在本机解析全部推文，标出含手机号、邮箱、住址、定位与敏感话题的内容，输出 0 到 100 的健康评分，整个过程不上传数据。从<a href="/">首页</a>可以免费跑一次体检；要把体检结果变成实际删除动作，范围与价格见<a href="/pricing">定价页</a>，合规相关的其他内容收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Under the GDPR and most regional privacy laws you can demand a copy of your data and demand that it be deleted. Different rights, different clauses, and the order you file them changes what you end up with.</p>
+  <p>The recommendation is simple: ask for the copy first, file the deletion request second. Once deletion runs, there is no way to obtain a complete record of the state before it, and that record is exactly what you need when disputing a takedown, confirming scope, or filing with a regulator.</p>
+</div>
+
+<h2>Where the two rights differ</h2>
+<table>
+  <thead><tr><th>Dimension</th><th>Right to portability</th><th>Right to erasure</th></tr></thead>
+  <tbody>
+    <tr><td>Core demand</td><td>Provide a copy of your personal data</td><td>Delete your personal data</td></tr>
+    <tr><td>Response window</td><td>Typically one month</td><td>Typically one month</td></tr>
+    <tr><td>Extension</td><td>Two more months if complex or numerous, with notice</td><td>Same</td></tr>
+    <tr><td>Delivery format</td><td>Common, structured, machine-readable</td><td>Not applicable; the outcome is that processing stops</td></tr>
+    <tr><td>Common limits</td><td>Must not impair the rights of others</td><td>Can be refused for legal obligations, public interest or legal claims</td></tr>
+  </tbody>
+</table>
+<p>Both carry a one-month deadline, both allow a two-month extension for complex cases, and that extension requires notice to you. This gets overlooked: silence from a platform is not an automatic extension. An extension only exists once you have been told about it.</p>
+
+<h2>Why reversing the order costs you</h2>
+<p>Once erasure has executed, the platform no longer holds the data and cannot deliver it under portability. In practice you see three outcomes: a message that the relevant data has been deleted and cannot be provided, a partial response covering only what survives, or an outright refusal on the grounds that the data no longer exists.</p>
+<p>None of those helps. The record you actually need is the state immediately before deletion. If you want evidence of what you had posted, you have to secure it before the deletion happens.</p>
+<p>A second practical reason is timing. Portability usually runs through a self-service channel and lands within days, while erasure involves human review and takes longer. Filing portability first keeps the two from blocking each other. On the deletion side, see <a href="/blog/gdpr-erasure-request-twitter">filing an erasure request with a platform</a>.</p>
+
+<h2>What to do once the archive arrives</h2>
+<ol>
+  <li><strong>Verify completeness.</strong> Check that the date range reaches back to your first day on the account.</li>
+  <li><strong>Compute a content fingerprint.</strong> Record the post count and file size as a baseline for later comparison.</li>
+  <li><strong>Store it offline.</strong> Keep at least one copy on offline media so a local drive failure cannot destroy the evidence.</li>
+  <li><strong>Then file the deletion request.</strong> At this point you hold the full pre-deletion state, and any later dispute has something to rest on.</li>
+</ol>
+<p>Step two deserves its own note. Its purpose is to verify scope after deletion: how many posts you started with, how many were processed, how many remain. Without that baseline you are judging thoroughness from memory. For the verification steps, see <a href="/blog/verify-old-tweets-really-deleted">confirming old tweets are really gone</a>.</p>
+
+<h2>How to word the requests</h2>
+<p>Three things are enough: who you are with verifiable identity details, which single right you are exercising, and what format you want the output in. Citing specific article numbers is unnecessary, and so is a long justification. A regulator is not grading your legal vocabulary.</p>
+<p>One wording mistake is common: combining both rights in one message, which invites a response that addresses only one of them. Submit separately, one right per filing, and the replies are far easier to track.</p>
+<p>If a month passes without a substantive reply, escalation is reasonable. Acceptance routes differ by jurisdiction, and the US and EU divergences are compared in <a href="/blog/ccpa-global-privacy-laws">regional privacy provisions</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) covers the work that sits outside self-service channels. Once you have the archive, it parses every post on your own machine, flags content containing phone numbers, emails, addresses, locations and sensitive topics, and outputs a 0-100 health score without uploading anything. Run a free check from the <a href="/">homepage</a>; to turn those findings into actual deletions, scope and pricing are on the <a href="/pricing">pricing page</a>, and the rest of the compliance material is throughout the <a href="/blog">blog</a>.</p>`,
+    faq: [
+      { q: "两项请求可以同时提交吗？", a: "可以提交，但不建议写在同一封邮件里。合并提交时对方常只处理其中一项，回复也难以对应。分成两次提交，各自留存回复，举证时更清晰。", qEn: "Can both requests be filed at the same time?", aEn: "You can file them concurrently, but not in a single message. Combined filings often get a response that addresses only one of the two, and the reply is hard to map back. Submit separately and keep each reply, which makes the paper trail much cleaner." },
+      { q: "平台说数据已删除所以无法提供副本，怎么办？", a: "这是顺序反了的典型后果。可以要求对方书面确认删除的时间范围与数据类别，把这份确认本身作为证据留档。它不能替代原始副本，但至少能固定删除动作发生过的事实。", qEn: "The platform says the data was deleted and cannot be provided. Now what?", aEn: "That is the classic result of filing in the wrong order. Ask for written confirmation of the deletion's time range and data categories, then keep that confirmation as evidence. It does not replace the original copy, but it does fix the fact that a deletion took place." },
+      { q: "延长到三个月合法吗？", a: "在请求复杂或数量多的情形下可以延长两个月，但必须告知你并说明理由。如果对方既没有在一个月内响应、也没有发出延期通知，就属于逾期未答复，可以据此升级处理。", qEn: "Is a three-month timeline legal?", aEn: "A two-month extension is available where the request is complex or numerous, but it has to be communicated with reasons. If neither a response arrives within a month nor an extension notice is sent, that is an overdue response and grounds for escalation." },
+      { q: "归档里的内容和我现在看到的账号不一致怎么办？", a: "归档是某个时间点的快照，与实时页面存在时间差，属于正常现象。要核对的是归档自身的日期范围是否连续。如果中间有明显断档，可以再提交一次可携权请求，要求补齐缺失区间。", qEn: "What if the archive does not match what I see on the account today?", aEn: "An archive is a point-in-time snapshot, so a gap against the live page is expected. What matters is whether the archive's own date range is continuous. If there is an obvious hole, file another portability request for the missing period." },
+    ],
+  },
+  {
+    slug: "chinese-name-search-footprint-cleanup",
+    title: "中文姓名被搜到旧推文：同名干扰与关键词清理思路",
+    titleEn: "When Your Chinese Name Surfaces Old Tweets: Name Collisions and Keyword Cleanup",
+    excerpt:
+      "中文姓名重名率高，搜索时的干扰信息也更多，直接照搬英文市场的清理思路效果很差。这篇讲中文检索环境的三个特殊之处、怎么用组合词缩小命中范围，以及拼音、繁体、英文名三条检索路径该怎么分别处理。",
+    excerptEn:
+      "Chinese names collide far more often than English ones, and search results carry more noise, so cleanup tactics copied from the English market perform poorly. Here is what makes Chinese search different, how to narrow hits with combined terms, and how to handle pinyin, traditional characters and an English name as three separate paths.",
+    date: "2026-09-21",
+    updatedAt: "2026-09-21",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    categoryEn: "Bilingual Markets",
+    tags: ["中文检索","姓名重名","关键词清理","本地化","数字足迹"],
+    tagsEn: ["Chinese search","name collision","keyword cleanup","localization","digital footprint"],
+    canonical: "/blog/chinese-name-search-footprint-cleanup",
+    content: `<div class="introduction">
+  <p>中文姓名重名的概率远高于英文姓名。一个常见的两字姓名，在同一座城市里就能找到几十个同名的人，放到全国范围数量级更大。</p>
+  <p>这个现实带来两个结果。一是搜索结果里混入大量与你无关的内容，排查时噪音很大；二是你自己当年留下的内容更不容易被认出来，因为它淹没在同样名字的海洋里。清理思路必须按这个前提重新设计。</p>
+</div>
+
+<h2>中文检索环境的三个特殊之处</h2>
+<p>第一是分词。中文没有空格，检索工具需要先切词。一个三字姓名可能被切成"姓 + 名"或"单字 + 双字"两种组合，加上账号昵称里常夹符号或英文，同一批内容会出现多种命中方式，覆盖率反而更低。</p>
+<p>第二是拼音与汉字分离。你用汉字搜索时，拼音形式的账号名不会出现；用拼音搜索时，纯汉字的内容又漏掉。这两条路径必须分别走一遍。</p>
+<p>第三是简繁分裂。同一批内容可能以简体或繁体存在，尤其涉及港台或海外中文社区时。两种字形在检索时不会被互相匹配。</p>
+<p>三点合起来意味着：中文环境的清理工作量和英文环境不在一个量级。英文市场一套姓名搜索基本能覆盖主体，中文市场需要走三到四条路径才能得到接近完整的画面。</p>
+
+<h2>用组合词缩小命中范围</h2>
+<table>
+  <thead><tr><th>组合方式</th><th>适用场景</th><th>命中精度</th></tr></thead>
+  <tbody>
+    <tr><td>姓名 + 城市</td><td>同时段同城活动，如读书会、本地赛事</td><td>中</td></tr>
+    <tr><td>姓名 + 学校</td><td>学生时代的社交内容</td><td>高</td></tr>
+    <tr><td>姓名 + 公司</td><td>职业相关的公开表达</td><td>高</td></tr>
+    <tr><td>姓名 + 手机号后四位</td><td>自己发过的联系方式类内容</td><td>极高</td></tr>
+    <tr><td>姓名 + 邮箱前缀</td><td>注册类、抽奖类内容</td><td>极高</td></tr>
+    <tr><td>姓名 + 常用昵称</td><td>账号名与真名不同时的兜底</td><td>中</td></tr>
+  </tbody>
+</table>
+<p>第四和第五行的效率最高。这两类组合直接把检索范围锁定到你自己的痕迹上，几乎不会混入重名者。清理时应当先做这两条，把确定属于你的内容处理完，再处理噪音更大的组合。</p>
+<p>反过来，只用姓名单搜的效率最低。它给出的是最多的结果和最低的可用比例，容易让人得出"信息太多根本处理不完"的结论而放弃。</p>
+
+<h2>三条路径要分别走</h2>
+<ol>
+  <li><strong>汉字路径。</strong> 用姓名原文搜索，覆盖简体与繁体两种写法的结果。</li>
+  <li><strong>拼音路径。</strong> 用姓名全拼与首字母缩写两种形式搜索，覆盖账号名类内容。</li>
+  <li><strong>英文名路径。</strong> 如果你用过英文名，单独搜一次，这条路径常被整体遗漏。</li>
+</ol>
+<p>第三条的重要性容易被低估。很多人对外使用英文名，内部社交账号却用中文名，两套身份的内容互不关联。做背景调查的人不一定会同时查这两套，但你自己不应该留下这个盲区。</p>
+<p>三条路径跑完通常会发现重复命中，也就是同一个账号在汉字和拼音两条路径里都出现。这反而说明排查是有效的。拼音相关的处理经验见<a href="/blog/chinese-pinyin-name-tweet-cleanup">拼音姓名清理</a>。</p>
+
+<h2>清理顺序上的三个建议</h2>
+<p>先处理高风险再处理噪音。手机号与邮箱类内容判断成本最低、风险最高，优先处理。情绪化表达和职业相关内容需要人判断，放在第二步。纯昵称重复导致的误判不需要处理。</p>
+<p>先处理可控内容再处理外部副本。你自己的账号可以直接操作，转载页和缓存站要走另外的流程。两者的处理路径不同，混在一起做容易卡住。</p>
+<p>最后是留档。把三条路径的搜索结果各存一份截图或存档，记录处理日期。下一次检查时对比变化，能很快看出新出现的内容。留存的必要性见<a href="/blog/snapshot-archive-before-clean">清理前先做快照</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）支持中文内容的本地扫描：上传 X 数据归档后，工具在本机解析全部推文，标出含手机号、邮箱、地址、定位与敏感话题的内容，识别范围包含中文文本，输出 0 到 100 的健康评分且不上传数据。从<a href="/">首页</a>可以免费做一次体检；删除范围与价格见<a href="/pricing">定价页</a>，其余中文市场的经验收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Chinese names collide far more often than English ones. A common two-character name can match dozens of people in a single city, and a national search pushes that into a different order of magnitude.</p>
+  <p>Two consequences follow. Search results fill with content that has nothing to do with you, so signal-to-noise is poor. At the same time, your own old posts are harder to recognize because they dissolve into a sea of identical names. Any cleanup plan has to start from that reality.</p>
+</div>
+
+<h2>Three things that make Chinese search different</h2>
+<p>First, word segmentation. Chinese has no spaces, so search tools have to split the string. A three-character name can be cut as surname plus given name or as one character plus two, and handles often mix in symbols or Latin letters, so a single body of content produces several matching patterns with lower coverage than you would expect.</p>
+<p>Second, pinyin and characters live in separate indexes. Searching in characters will not surface a pinyin handle, and searching in pinyin misses purely character-based content. The two paths have to be walked separately.</p>
+<p>Third, simplified and traditional forms split apart. The same content may exist in either form, particularly in Chinese-speaking communities outside the mainland, and the two are not matched against each other by search engines.</p>
+<p>Together these mean the workload in Chinese is not on the same scale as in English. One name search covers most of the surface in English. Chinese requires three or four passes to get a comparable picture.</p>
+
+<h2>Narrowing hits with combined terms</h2>
+<table>
+  <thead><tr><th>Combination</th><th>Where it applies</th><th>Precision</th></tr></thead>
+  <tbody>
+    <tr><td>Name + city</td><td>Same-period local activity, meetups, regional events</td><td>Medium</td></tr>
+    <tr><td>Name + school</td><td>Social content from student years</td><td>High</td></tr>
+    <tr><td>Name + employer</td><td>Public comments tied to your profession</td><td>High</td></tr>
+    <tr><td>Name + last four digits of a phone number</td><td>Contact details you posted yourself</td><td>Very high</td></tr>
+    <tr><td>Name + email prefix</td><td>Sign-ups and giveaway entries</td><td>Very high</td></tr>
+    <tr><td>Name + a handle you used</td><td>Fallback when your handle differs from your real name</td><td>Medium</td></tr>
+  </tbody>
+</table>
+<p>Rows four and five are the most efficient. Those combinations narrow results to your own traces and almost never pull in a namesake. Start with them: clear the content that is definitely yours, then work through the noisier combinations.</p>
+<p>Searching the bare name is the least efficient option. It returns the largest volume with the lowest usable ratio, which is exactly how people conclude the job is impossible and give up.</p>
+
+<h2>Walk all three paths</h2>
+<ol>
+  <li><strong>Character path.</strong> Search the name as written, covering simplified and traditional results alike.</li>
+  <li><strong>Pinyin path.</strong> Search the full romanization and the initials-only form to catch handle-based content.</li>
+  <li><strong>English name path.</strong> If you have used an English name, search it separately. This path is the one most often skipped entirely.</li>
+</ol>
+<p>The third path is underrated. Plenty of people use an English name externally while domestic social accounts carry the Chinese name, leaving the two identities unconnected. Someone running a background check may not search both, but you should not leave that blind spot for yourself.</p>
+<p>Walking all three usually produces overlapping hits, the same account appearing under both the character and pinyin paths. That overlap is a sign the sweep is working. For pinyin specifics, see <a href="/blog/chinese-pinyin-name-tweet-cleanup">pinyin name cleanup</a>.</p>
+
+<h2>Three rules for the cleanup order</h2>
+<p>Handle high risk before noise. Phone and email content is the cheapest to judge and carries the highest risk, so it goes first. Emotional and career-related posts need judgment calls and come second. Handle collisions that produce false positives need nothing.</p>
+<p>Handle what you control before external copies. Your own account takes direct action, while repost pages and cache sites require a different process. Mixing the two is how people get stuck.</p>
+<p>Finally, keep records. Save a screenshot or an archive of each of the three search paths along with the date you worked on it. Comparing against them at the next check shows new content almost immediately. Why this matters is covered in <a href="/blog/snapshot-archive-before-clean">taking a snapshot before cleanup</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) scans Chinese content locally. Upload your X archive and the tool parses every post on your own machine, flagging content with phone numbers, emails, addresses, locations and sensitive topics, including Chinese text, and returns a 0-100 health score without uploading anything. Run a free check from the <a href="/">homepage</a>; deletion scope and pricing are on the <a href="/pricing">pricing page</a>, and further notes on the Chinese market are throughout the <a href="/blog">blog</a>.</p>`,
+    faq: [
+      { q: "为什么只用中文姓名搜索效率很低？", a: "中文姓名重名率高，单用姓名会命中大量无关内容，可用比例很低。有效做法是叠加限定词，其中效率最高的是姓名加手机号后四位或邮箱前缀，这两类组合基本只指向你自己的痕迹。", qEn: "Why is searching only the Chinese name so inefficient?", aEn: "Chinese names collide heavily, so a bare name search returns mostly unrelated content with a very low usable ratio. The fix is layering qualifiers, and the two most effective are the name plus the last four digits of a phone number or an email prefix. Those combinations essentially only point at your own traces." },
+      { q: "繁体字版本需要单独处理吗？", a: "需要。简体与繁体在检索索引里是两套结果，互相不会匹配。如果你在海外中文社区出现过，两种字形都要搜一遍，否则会留下盲区。", qEn: "Do traditional character versions need separate handling?", aEn: "Yes. Simplified and traditional sit in separate indexes and are not matched against each other. If you have appeared in Chinese-language communities abroad, search both forms or you will leave a blind spot." },
+      { q: "重名者的内容会不会被误当成我的？", a: "会。处理前先确认归属，判断依据是账号里是否有你能核实的细节，比如学校、公司、发布时段。无法确认归属的内容不要处理，那既处理不了也容易误伤。", qEn: "Could a namesake's content be mistaken for mine?", aEn: "It happens. Confirm ownership before acting, using details you can verify such as school, employer or posting period. Leave anything you cannot attribute alone; there is nothing to act on and it invites mistakes." },
+      { q: "英文名路径为什么重要？", a: "因为两套身份的内容互不关联。你用英文名对外交流、用中文名在本地社交，搜索工具不会把两者联系起来，但做过完整排查的人会分别搜。三条路径都走过，才算覆盖完整。", qEn: "Why does the English name path matter?", aEn: "Because the two identities are not connected to each other. If you use an English name externally and the Chinese name on local accounts, search tools will not link them, though anyone doing a thorough sweep will search each. Only after all three paths are walked is coverage complete." },
+    ],
+  },
+  {
+    slug: "deletion-tool-trial-before-you-pay",
+    title: "付费前怎么试：删除工具的试用额度与退款条款怎么看",
+    titleEn: "Testing a Deletion Tool Before You Pay: Trials, Credits and Refunds",
+    excerpt:
+      "多数删除工具都提供免费预览或小额试用，但试用能验证的范围有限。这篇讲四类常见试用形态各自能测出什么、退款条款里的三种常见限制，以及一份 30 分钟内可完成的前置验证步骤。",
+    excerptEn:
+      "Most deletion tools offer a free preview or a small paid trial, and each format verifies a different subset of claims. Here are four trial types, what they actually prove, three common refund restrictions, and a 30-minute pre-purchase check you can run yourself.",
+    date: "2026-09-21",
+    updatedAt: "2026-09-21",
+    author: "Digital Footprint Health Team",
+    category: "竞品对比",
+    categoryEn: "Comparisons",
+    tags: ["删除工具","试用对比","退款条款","购买决策","工具评测"],
+    tagsEn: ["deletion tools","trial comparison","refund policy","buying decision","tool review"],
+    canonical: "/blog/deletion-tool-trial-before-you-pay",
+    content: `<div class="introduction">
+  <p>删除工具的定价页都写得很清楚，但真正让人犹豫的是另一件事：花这笔钱之后，实际删除效果是否和演示一致。</p>
+  <p>答案不需要靠付款后验证。多数工具都留了免费预览或者小额试用的口子，把这些环节用在正确的地方，可以在付费前排除掉大部分不合适的选项。</p>
+</div>
+
+<h2>四类试用形态，各自能测什么</h2>
+<table>
+  <thead><tr><th>试用形态</th><th>能验证</th><th>验证不了</th><th>适合的顾虑</th></tr></thead>
+  <tbody>
+    <tr><td>风险预览（免费）</td><td>扫描准确度、风险分类是否合理</td><td>删除速度、失败处理</td><td>担心报告不准</td></tr>
+    <tr><td>小额额度试用</td><td>端到端流程、接口稳定性</td><td>大批量下的表现</td><td>担心流程跑不通</td></tr>
+    <tr><td>时间限制试用</td><td>界面上手难度、任务管理方式</td><td>长期使用体验</td><td>担心操作复杂</td></tr>
+    <tr><td>退款保证</td><td>结果不符时的处理态度</td><td>不适用，属于事后补救</td><td>担心效果不达预期</td></tr>
+  </tbody>
+</table>
+<p>第一类最值得先用。扫描准确度是后面所有动作的基础：如果它把你明显无风险的日常推文标成高危，那后面按这个清单删除只会造成损失。反过来，扫描精准的工具通常在其他环节也不会太差。</p>
+<p>第四类要放在前面看，别留到最后。退款条款决定了你试错的上限，条款苛刻的工具意味着一旦判断失误，损失无法收回。</p>
+
+<h2>退款条款里的三种常见限制</h2>
+<p>第一种是按已处理量扣除。条款写的是"未使用的额度可退"，实际退款金额按已删除条数折算。这种条款本身合理，但需要你在试用时控制处理量，先小批量验证再决定是否继续。</p>
+<p>第二种是时限。多数条款规定在购买后若干天内提出，超过时限不再受理。这个日期要记下来，不要等到把所有推文处理完才考虑退款。</p>
+<p>第三种是效果类免责。条款会写明工具不保证特定内容的删除成功率，因为涉及平台接口限制和内容本身的可删除性。这一条要对照着看：如果工具在宣传里承诺了删除成功率，条款里又免责，那两者只能有一个成立。</p>
+<p>三种限制都读到之后再付款。条款细节的对比方法见<a href="/blog/tweet-deletion-tool-pricing-compared-2026">删除工具价格与条款对比</a>。</p>
+
+<h2>一份 30 分钟的前置验证</h2>
+<ol>
+  <li><strong>上传归档跑一次免费预览。</strong> 记录报告里的总条数与分类分布，判断分类是否贴合你的实际情况。</li>
+  <li><strong>抽查五条命中项。</strong> 逐条打开原始推文确认判断，全对说明扫描可信，有错要看错在哪一类。</li>
+  <li><strong>用小额额度跑一次真实删除。</strong> 选十条到二十条，观察任务能否正常启动、完成、并反映到账号上。</li>
+  <li><strong>核对线上结果。</strong> 删除完成后回到账号确认目标推文确实不在了，验证方法见<a href="/blog/verify-old-tweets-really-deleted">确认删除是否真的生效</a>。</li>
+  <li><strong>再读一遍退款条款。</strong> 确认剩余额度、时限和免责范围，然后决定是否购买完整套餐。</li>
+</ol>
+<p>第三步是关键。预览能验证分析质量，只有真实删除才能验证执行链路。小额试用的成本很低，却能暴露接口限流、任务卡死、进度不更新这类只在运行时才出现的问题。</p>
+
+<h2>试完之后还该看什么</h2>
+<p>流程跑通之后，剩下要比较的是删除范围的选择能力和留存策略。前者决定你能不能只处理特定时间段或特定类型的内容，后者决定你的归档和删除记录会不会被工具保存。</p>
+<p>范围选择的差异在实操中影响很大。只能全量删除的工具在处理过程中很难中止，而有范围控制的工具可以先做一段看效果。这部分对比见<a href="/blog/tweet-deletion-tools-comparison-2026">主流工具横向对比</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把可先验证的部分放在最前面：上传 X 数据归档后，本机解析全部推文并输出 0 到 100 的健康评分与风险清单，免费且不要求账号权限，也不必先付款。确认清单准确之后，再按需决定是否删除，范围与价格见<a href="/pricing">定价页</a>。从<a href="/">首页</a>可以免费跑一次，其他工具的经验收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>Deletion tools spell out their pricing clearly. What makes people hesitate is a different question: once you pay, will the actual results match the demo.</p>
+  <p>You do not need to spend money to find out. Most tools leave a free preview or a small paid trial open, and putting those steps to the right use filters out most bad fits before you commit.</p>
+</div>
+
+<h2>Four trial formats and what each proves</h2>
+<table>
+  <thead><tr><th>Trial type</th><th>Verifies</th><th>Does not verify</th><th>Addresses</th></tr></thead>
+  <tbody>
+    <tr><td>Risk preview (free)</td><td>Scan accuracy and whether categories make sense</td><td>Deletion speed, failure handling</td><td>Worry that the report is wrong</td></tr>
+    <tr><td>Small credit purchase</td><td>The end-to-end flow and API stability</td><td>Behaviour at large volume</td><td>Worry that the flow breaks</td></tr>
+    <tr><td>Time-limited trial</td><td>Interface learning curve, task management</td><td>Long-run experience</td><td>Worry that it is hard to operate</td></tr>
+    <tr><td>Refund guarantee</td><td>How the vendor behaves when results miss</td><td>Not applicable, it is after-the-fact</td><td>Worry that results disappoint</td></tr>
+  </tbody>
+</table>
+<p>The first type is the one to use earliest. Scan accuracy underpins everything downstream. A tool that flags your plainly harmless daily posts as high risk will cost you if you delete on that list, and a tool that scans precisely tends to hold up elsewhere too.</p>
+<p>The fourth belongs at the front of your evaluation, not the end. The refund terms cap your downside. Punitive terms mean one bad judgment call cannot be recovered.</p>
+
+<h2>Three common refund restrictions</h2>
+<p>The first is deduction by volume processed. The clause says unused credits are refundable, and the actual amount is calculated against posts already deleted. That is reasonable on its own, but it means controlling how much you process during a trial: verify with a small batch before deciding whether to continue.</p>
+<p>The second is a time limit. Most policies require the request within a set number of days after purchase and stop accepting them afterward. Put that date somewhere you will see it rather than waiting until every post is processed.</p>
+<p>The third is an outcomes disclaimer. Terms typically state that the tool does not guarantee a specific deletion success rate, citing platform API limits and whether given content is deletable at all. Read this against the marketing: if the landing page promises a success rate and the terms disclaim it, only one of the two can be true.</p>
+<p>Read all three before paying. For a side-by-side on terms, see <a href="/blog/tweet-deletion-tool-pricing-compared-2026">deletion tool pricing and terms compared</a>.</p>
+
+<h2>A 30-minute pre-purchase check</h2>
+<ol>
+  <li><strong>Upload an archive and run the free preview.</strong> Note the total hit count and the category breakdown, then judge whether the categories fit your actual situation.</li>
+  <li><strong>Spot-check five hits.</strong> Open the original posts one by one and confirm each call. All correct means the scan is trustworthy; any misses tell you which category is weak.</li>
+  <li><strong>Run a real deletion with a small credit.</strong> Pick ten to twenty posts and watch whether the task starts, completes, and reflects on the account.</li>
+  <li><strong>Verify online.</strong> Return to the account afterward and confirm the target posts are gone, using <a href="/blog/verify-old-tweets-really-deleted">verifying that deletions took effect</a>.</li>
+  <li><strong>Read the refund terms again.</strong> Confirm remaining credit, the deadline and the disclaimer, then decide whether to buy a full package.</li>
+</ol>
+<p>Step three is the crux. A preview validates analysis quality; only a real deletion validates the execution path. A small credit costs little and surfaces the problems that appear solely at runtime, such as rate limiting, stalled tasks and progress that never updates.</p>
+
+<h2>What to compare after the trial</h2>
+<p>Once the flow works, the remaining differences are range selection and retention policy. The first determines whether you can limit work to a date range or a content type. The second determines whether your archive and deletion history get stored by the tool.</p>
+<p>Range selection matters a lot in practice. A tool that only supports deleting everything is hard to stop partway through, while one with range controls lets you finish a segment and judge the result. That comparison is in <a href="/blog/tweet-deletion-tools-comparison-2026">the main tool comparison</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) puts the verifiable part first. Upload your X archive and it parses every post on your own machine, returning a 0-100 health score and a risk list, free, with no account permission and nothing to pay up front. Once you have confirmed the list is accurate, decide separately whether to delete, with scope and pricing on the <a href="/pricing">pricing page</a>. Run a free check from the <a href="/">homepage</a>, and find other tool notes throughout the <a href="/blog">blog</a>.</p>`,
+    faq: [
+      { q: "免费预览能替代真实试用吗？", a: "不能完全替代。预览验证的是扫描准确度，属于分析层；真实删除验证的是执行链路，涉及接口限流、任务状态和进度反馈。两层问题不同，用小额额度跑一次真实流程仍有必要。", qEn: "Can a free preview replace a real trial?", aEn: "Not entirely. A preview validates scan accuracy, which is the analysis layer. A real deletion validates the execution path, covering rate limits, task state and progress reporting. Those are different failure modes, so one small paid run is still worth doing." },
+      { q: "退款条款里最该注意哪一条？", a: "效果类免责条款。它决定了工具对结果不达预期是否负责。如果宣传页面承诺了删除成功率、条款里又整体免责，就要按条款来判断，把宣传当作参考，别当依据。", qEn: "Which refund clause matters most?", aEn: "The outcomes disclaimer. It decides whether the vendor answers for results that fall short. If the marketing promises a success rate while the terms disclaim everything, read the terms as controlling and treat the marketing as a hint rather than a commitment." },
+      { q: "试用阶段建议处理多少条推文？", a: "十条到二十条足够验证链路是否通畅。数量再大也不会暴露新问题，反而增加按量扣除后退款金额变少的风险。验证通过后再决定是否扩大处理范围。", qEn: "How many posts should a trial cover?", aEn: "Ten to twenty is enough to prove the path works. Going higher surfaces no new information and only reduces the refundable amount under volume-based deduction. Decide on a larger run after the small one succeeds." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

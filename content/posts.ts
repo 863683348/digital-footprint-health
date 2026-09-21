@@ -13047,6 +13047,532 @@ export const allPosts: BlogPost[] = [
       { q: "试用阶段建议处理多少条推文？", a: "十条到二十条足够验证链路是否通畅。数量再大也不会暴露新问题，反而增加按量扣除后退款金额变少的风险。验证通过后再决定是否扩大处理范围。", qEn: "How many posts should a trial cover?", aEn: "Ten to twenty is enough to prove the path works. Going higher surfaces no new information and only reduces the refundable amount under volume-based deduction. Decide on a larger run after the small one succeeds." },
     ],
   },
+  {
+    slug: 'footprint-score-weighting-explained',
+    title: '数字足迹评分权重拆解：0-100 分是怎么算出来的',
+    excerpt: '同一份 X 归档在不同工具里跑出的评分常常对不上，差异多半来自权重设计。拆开四个维度与各自的占比，你就知道是哪些内容在拉低分数、哪些提示可以暂时不处理。',
+    date: '2026-09-22',
+    updatedAt: '2026-09-22',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字足迹', '评分体系', '风险体检', 'X/Twitter'],
+    canonical: '/blog/footprint-score-weighting-explained',
+    faq: [
+      { q: '评分权重是公开的吗？', a: '多数工具只公布维度名称，不公布具体百分比。可以反向推断：删掉一条手机号推文后分数跳动的幅度，通常明显大于删掉几十条普通日常推文，说明身份信息类别的权重更高。', qEn: 'Are the scoring weights public?', aEn: 'Most tools publish the dimension names but not the exact percentages. You can infer them in reverse: removing a single tweet containing a phone number usually moves the score far more than removing dozens of ordinary daily posts, which tells you the identity category carries more weight.' },
+      { q: '为什么删了很多推文，分数还是没怎么变？', a: '权重作用在类别上，不在条数上。同一类别的条目取最高风险项作为主要输入，所以清理三百条低风险日常推文，对分数的贡献可能小于处理一条真正暴露身份信息的推文。', qEn: 'Why does the score barely move after deleting a lot of tweets?', aEn: 'Weights apply to categories, not to item counts. A category is usually driven by its highest-risk entry, so clearing three hundred low-risk daily posts can matter less than dealing with one tweet that exposes real identity details.' },
+      { q: '评分低于多少才算安全？', a: '没有通用阈值。同样的分数，对求职中的应届生和对已经退休的用户意义完全不同。更实用的做法是看各档命中项的数量分布，判断暴露集中在哪一类，不必盯着总分。', qEn: 'What score counts as safe?', aEn: 'There is no universal threshold. The same number means very different things to a graduate in a job search and to someone who has retired. A more useful read is the distribution of flagged items per category, which shows where your exposure concentrates.' },
+      { q: '可链接性这一项要怎么降低？', a: '最有效的动作不在删除，而在统一与拆分。把各平台的昵称、头像、个人简介链接整理成互不指向的两组，比逐条清理推文更快降低被关联的概率。', qEn: 'How do I reduce the linkability factor?', aEn: 'The highest-value action is not deletion but standardising and separating. Splitting your handles, avatars and profile links across platforms into two sets that do not point at each other lowers the chance of being linked faster than cleaning tweets one by one.' },
+      { q: '权重会随政策或平台变化调整吗？', a: '会。平台接口能返回的字段、你所在地区的法规、以及第三方数据经纪商的行为都会变。建议每季度重跑一次体检，把两次报告的同档命中项数量作对比，不必比较总分。', qEn: 'Do the weights change over time?', aEn: 'Yes. The fields a platform exposes, the rules in your jurisdiction, and the behaviour of third-party data brokers all shift. Re-run the check each quarter and compare flagged counts per category between the two reports rather than comparing total scores.' },
+    ],
+    titleEn: 'How the Digital Footprint Score Is Weighted: Inside the 0-100 Model',
+    excerptEn: 'The same X archive often produces different risk scores across tools, and the gap usually comes down to weighting. Breaking the model into four dimensions shows which items pull your score down and which flags can wait.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['Digital Footprint', 'Scoring', 'Risk Audit', 'X/Twitter'],
+    content: `<div class="introduction">
+  <p>同一份 X 数据归档，在不同工具里跑出来的风险评分经常对不上。差异多半来自权重：哪些痕迹算高危、每类痕迹占多少分，各家取法并不相同。</p>
+  <p>把权重拆开看，分数就不再是黑箱里的一个数字。你会清楚是哪些内容在拉低评分，也会知道哪些提示可以先放着不管。</p>
+</div>
+
+<h2>四个维度与各自的权重</h2>
+<table>
+  <thead><tr><th>维度</th><th>权重</th><th>扫描内容</th><th>常见误判</th></tr></thead>
+  <tbody>
+    <tr><td>直接身份信息</td><td>35%</td><td>手机号、邮箱、身份证号、住址门牌</td><td>把商品型号里的数字串认成电话</td></tr>
+    <tr><td>位置与行踪</td><td>25%</td><td>定位标签、城市与门店名、行程描述、时区线索</td><td>把一次出行打卡认成长期居住地泄露</td></tr>
+    <tr><td>敏感话题</td><td>25%</td><td>健康、财务、工作纠纷、亲密关系、公开立场</td><td>把影评式的吐槽认成真实立场</td></tr>
+    <tr><td>可链接性</td><td>15%</td><td>跨账号复用昵称、头像、个人主页链接、措辞习惯</td><td>把大众化昵称认成强关联证据</td></tr>
+  </tbody>
+</table>
+<p>四项加起来是一百分。前两项占去六成，理由很实际：能拨通的号码比一句立场表达更快带来现实麻烦，而位置信息能把线上内容对应到具体的人和地点。</p>
+<p>可链接性排在末位，权重却不算低。它衡量的是别人能否把两个账号判定成同一个人。这类风险不产生即时伤害，但会放大另外三项的影响：孤立看一条推文没什么，和真名账号放在一起就是另一回事。</p>
+
+<h2>身份信息为什么占最高档</h2>
+<p>手机号和邮箱属于可以被直接调用的信息。拿到号码的人可以试着拨打、发送验证码、在别的平台走一遍找回密码，整条链路都不需要你本人在场。邮箱更麻烦一些，它常常同时是账号的恢复方式和登录名。</p>
+<p>身份证号、住址门牌、快递单照片属于同一档。它们出现的频率远低于手机号，一旦出现，单条内容带来的暴露程度就很高。评分模型一般不按条数平均，而是取该类别的最高风险条目作为主要输入。</p>
+<p>这解释了一个反直觉的现象：删掉三百条带城市名的日常推文，分数可能只挪动一分；删掉一条写着完整手机号的推文，分数能跳十几分。权重作用在类别上，不在条数上。</p>
+
+<h2>同一份归档，分数为什么会变</h2>
+<p>对比几家工具的评分说明，差异集中在三处。第一处是位置信息的处理方式，有的工具把任何城市名都计入，有的只统计带坐标的定位标签，前者的命中项通常会多出一大截。第二处是敏感话题的判定粒度，关键词匹配会把「加班到崩溃」算进健康话题，语义判定则可能放过它。</p>
+<p>第三处是基础分的设计。有的模型从一百分往下扣，有的从零分往上加。前者在归档很小的时候分数偏高，后者在推文稀疏的时候分数偏低。评价一份报告之前，先确认它用的是哪种算法，否则横向比较没有意义。</p>
+<p>还有一处容易忽略的差异是时间窗口。把最近一年和全部十年一起算，两个结果会拉开明显差距。体检报告里通常会标注扫描的区间，看分数时先看这个区间。</p>
+
+<h2>用权重反推处理顺序</h2>
+<ol>
+  <li><strong>先看直接身份信息那一档的命中项。</strong> 这一档的条目数量通常不多，处理完对分数的贡献最大，投入产出比最高。</li>
+  <li><strong>再看位置与行踪里的高频地点。</strong> 把反复出现的家庭住址、常去的健身房、孩子学校附近的打卡单独挑出来，低频的一次性旅行打卡可以往后放。</li>
+  <li><strong>敏感话题那档区分公开态度和情绪发言。</strong> 前者需要处理，后者看你的风险承受能力。这一步的判断最依赖个人处境，工具给不了答案。</li>
+  <li><strong>可链接性放在最后，但别跳过。</strong> 统一各平台的昵称和头像，往往比删几十条推文更省事，效果也更持久。</li>
+</ol>
+<p>按这个顺序走，前两档处理完，多数人的评分会进入一个相对稳定的区间。剩下的分数要靠持续维护，不是一次清理能解决的事。清理节奏的安排可以参考<a href="/blog/tweet-cleanup-schedule">清理排期方案</a>。</p>
+
+<h2>权重不衡量的三件事</h2>
+<p>第一，它不衡量法律风险。同样一段立场表达，在不同司法辖区的后果差异很大，评分模型没有办法判断你所在地区的具体规定。</p>
+<p>第二，它不衡量人际风险。一条提到同事名字的吐槽可能评分很低，却是唯一真正会给你带来麻烦的内容。这类风险需要你自己识别，工具看不到你的职场关系。</p>
+<p>第三，它不衡量未来的风险。今天属于低风险的内容，在换了工作、搬了城市、身份变化之后可能变成高风险。评分是对当前归档的解释，不是长期担保。</p>
+<p>分数适合用来排序，不适合用来做最终判断。它告诉你先看哪里，不告诉你看到哪里就可以停。想了解分数区间的含义，可以对照<a href="/blog/footprint-health-score-meaning">评分含义解读</a>。</p>
+
+<h2>一周之内可以做完的复核</h2>
+<p>如果不想把这件事拖成长期任务，可以按一周节奏走：第一天跑体检拿到基线，记下各档命中项数量；第二天到第三天处理身份信息档；第四天处理高频地点；第五天把各平台昵称头像统一一遍；第六天重跑体检，对比两档数量变化；第七天把删除记录和归档快照存好，方法见<a href="/blog/snapshot-archive-before-clean">清理前存档的做法</a>。</p>
+<p>这个流程的重点是留下两份可对比的报告。只看单次分数没有意义，两次之间的差值才能说明你的动作有没有起作用。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把评分里的四个维度摊开呈现：上传 X 数据归档后，本机解析全部推文，按类别列出命中项并给出 0 到 100 的分数，体检免费且只读，不要求账号授权。看清哪些条目在影响分数之后，再决定是否删除，范围与价格见<a href="/pricing">定价页</a>。从<a href="/">首页</a>可以免费跑一次，评分体系的说明收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The same X data archive often produces different risk scores depending on which tool you run it through. The gap comes down to weighting: which traces count as high risk, and how much each category contributes.</p>
+  <p>Pulling the weights apart turns the score from a black-box number into something you can act on. You see which items are dragging the number down, and which flags can wait.</p>
+</div>
+
+<h2>Four dimensions and how they are weighted</h2>
+<table>
+  <thead><tr><th>Dimension</th><th>Weight</th><th>What gets scanned</th><th>Common false positive</th></tr></thead>
+  <tbody>
+    <tr><td>Direct identity data</td><td>35%</td><td>Phone numbers, email addresses, ID numbers, street addresses</td><td>Reading a product model number as a phone number</td></tr>
+    <tr><td>Location and movement</td><td>25%</td><td>Geotags, city and venue names, itinerary posts, timezone clues</td><td>Treating one travel check-in as a home address leak</td></tr>
+    <tr><td>Sensitive topics</td><td>25%</td><td>Health, finances, workplace disputes, relationships, stated positions</td><td>Treating a review-style complaint as a real stance</td></tr>
+    <tr><td>Linkability</td><td>15%</td><td>Reused handles, avatars, profile links, distinctive phrasing</td><td>Treating a generic handle as strong evidence of a link</td></tr>
+  </tbody>
+</table>
+<p>The four dimensions add up to a hundred. The first two take sixty points, and the reason is practical: a callable phone number creates real-world trouble faster than a stated opinion, and location data lets someone map your posts onto a person and a place.</p>
+<p>Linkability sits last but is not negligible. It measures whether someone can decide two accounts belong to the same person. That risk does not cause immediate harm, but it amplifies the other three. One post in isolation is unremarkable; the same post next to an account under your real name is a different situation.</p>
+
+<h2>Why identity data sits in the top band</h2>
+<p>Phone numbers and email addresses can be used directly. Someone who has your number can call it, trigger verification codes, and walk through a password reset on another platform without you being present. Email is trickier, since it is often both the login name and the recovery channel for an account.</p>
+<p>ID numbers, street addresses and photos of shipping labels belong in the same band. They appear far less often than phone numbers, but when they do appear the exposure from a single post is high. Scoring models generally do not average across items; they take the highest-risk entry in a category as the main input.</p>
+<p>That explains a counterintuitive result. Clearing three hundred daily posts that mention a city may move the score by one point. Removing a single post containing a full phone number can move it by more than ten. Weights apply to categories, not to counts.</p>
+
+<h2>Why the same archive scores differently</h2>
+<p>Comparing how several tools describe their scoring, the differences cluster in three places. The first is how location is handled: some count any city name, while others only count posts with coordinate tags, and the first approach produces a noticeably longer list of hits. The second is the granularity of topic detection, where keyword matching files a post about working until you collapse under health, while semantic matching may pass it.</p>
+<p>The third is the design of the baseline. Some models start at a hundred and subtract, others start at zero and add. The first reads high when your archive is small; the second reads low when your posting history is thin. Before comparing two reports, confirm which approach each one uses, or the comparison carries no information.</p>
+<p>One more difference is easy to miss: the time window. Scoring the last year against scoring a full decade produces clearly different results. Reports usually state the range they scanned, so check that line before reading the number.</p>
+
+<h2>Working backwards from the weights to a plan</h2>
+<ol>
+  <li><strong>Start with the identity band.</strong> It usually holds the fewest items and delivers the largest score movement, which makes it the best return on effort.</li>
+  <li><strong>Then handle repeated locations.</strong> Pull out the home address, the gym you visit weekly, the check-ins near a child's school. One-off travel posts can wait.</li>
+  <li><strong>Split the sensitive topics band into stated positions and venting.</strong> The first group needs action; the second depends on your own tolerance. This judgement depends on your situation, and no tool can make it for you.</li>
+  <li><strong>Finish with linkability, but do not skip it.</strong> Aligning handles and avatars across platforms is often less work than deleting dozens of posts, and the effect lasts longer.</li>
+</ol>
+<p>Work in that order and the first two bands will move most people into a steadier range. Everything after that is maintenance rather than a one-time cleanup. For pacing, see <a href="/blog/tweet-cleanup-schedule">a cleanup schedule that holds up</a>.</p>
+
+<h2>Three things the weights do not measure</h2>
+<p>First, they do not measure legal risk. The same stated position carries very different consequences across jurisdictions, and a scoring model cannot reason about the rules where you live.</p>
+<p>Second, they do not measure interpersonal risk. A post that names a colleague may score low while being the one item that actually causes trouble. That risk needs your knowledge of your own workplace, which the tool does not have.</p>
+<p>Third, they do not measure future risk. Content that reads as low risk today can become high risk after a job change, a move, or a shift in public status. A score explains your archive as it stands; it is not a guarantee going forward.</p>
+<p>Read the number as a sort order rather than a verdict. It tells you where to look first, not where you are allowed to stop. For what the bands mean, see <a href="/blog/footprint-health-score-meaning">what your footprint health score means</a>.</p>
+
+<h2>Reading a score against its own baseline</h2>
+<p>Comparing your score to someone else's tells you almost nothing useful. Archives differ in length, in what a person posts about, and in how many years of history they cover, so a 62 and an 81 do not describe the same set of choices. What does carry information is your own number over time.</p>
+<p>Record the score and the flagged count for each band on the day you run a check. Come back after your next round of cleanup and run it again. If the identity band dropped from nine items to two while the total moved by four points, the total understates what you achieved, because the category carrying the most weight is now nearly clear.</p>
+<p>Two runs on different days also expose drift that has nothing to do with your actions. Post a location-tagged photo between the two checks and the location band will pick it up. Reading the two reports side by side tells you which change came from your cleaning and which came from new activity.</p>
+
+<h2>A one-week review you can actually finish</h2>
+<p>If you would rather not turn this into an ongoing project, run it across a single week. Day one: get a baseline report and record the flagged count in each band. Days two and three: work through identity data. Day four: handle the repeated locations. Day five: align handles and avatars across platforms. Day six: re-run the check and compare the two band counts. Day seven: store the deletion log and an archive snapshot, following <a href="/blog/snapshot-archive-before-clean">how to snapshot before you clean</a>.</p>
+<p>The point of the sequence is ending up with two comparable reports. A single score on its own says little; the difference between the two is what shows whether your actions did anything.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) lays the four dimensions out in the open. You upload your X data archive, it parses every tweet on your own device, lists flagged items by category and produces a score from 0 to 100. The check is free and read-only, and it never asks for account access. Once you can see which items move the number, you decide whether anything gets deleted; scope and pricing are on the <a href="/pricing">pricing page</a>. You can run a check from the <a href="/">homepage</a>, and the rest of the scoring material lives on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'export-share-footprint-report',
+    title: '体检报告导出与分享：PDF、截图还是链接',
+    excerpt: '体检报告跑出来之后，怎么给别人看是一个独立问题。PDF、截图、在线链接三种形态各有泄露风险，选错一种可能把要清理的内容又扩散一次。',
+    date: '2026-09-22',
+    updatedAt: '2026-09-22',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['体检报告', '报告导出', '数据分享', '隐私保护'],
+    canonical: '/blog/export-share-footprint-report',
+    faq: [
+      { q: '报告可以直接发给出问题的对方吗？', a: '建议先脱敏。报告里的命中项会原样引用推文片段，包括手机号、地址和具体措辞。把引用列去掉、只留类别和数量，再发出去，信息量对沟通仍然够用。', qEn: 'Can I send the report straight to the other party?', aEn: 'Redact it first. Flagged items quote tweet fragments verbatim, including phone numbers, addresses and exact wording. Strip the quoted list and keep only categories and counts; that is usually enough for the conversation.' },
+      { q: '截图分享要注意什么？', a: '截图会带上页面底部的时间、账号名和部分导航，这些信息本身不敏感，但能定位到你的账号。分享前裁掉页眉页脚，只保留分数和类别分布那一块。', qEn: 'What should I watch out for with screenshots?', aEn: 'A screenshot carries the timestamp, account name and part of the navigation. None of that is sensitive on its own, but together it identifies your account. Crop the header and footer and keep just the score and category breakdown.' },
+      { q: '导出文件要保存多久？', a: '处理完当次清理就可以删。报告的留存价值和风险不成比例：它把你所有风险点集中在一个文件里。如果要留档，加密后存放，或者只保留类别数量摘要。', qEn: 'How long should I keep the export?', aEn: 'Delete it once that round of cleanup is done. The retention value and the risk are out of proportion, since the file concentrates every risk point in one place. If you must keep it, encrypt it or keep only a summary of category counts.' },
+      { q: '团队或公司场景下怎么分享更合适？', a: '用类别汇总，不要用命中明细。企业账号体检往往涉及同事的推文引用，逐条明细会牵出第三方的信息，这已经超出你个人可以授权的范围。', qEn: 'What is the better option for a team or company setting?', aEn: 'Share a category summary, not the flagged details. Checks on corporate accounts often quote colleagues, and item-level detail drags in third-party information that you are not in a position to authorise sharing.' },
+    ],
+    titleEn: 'Exporting and Sharing a Footprint Report: PDF, Screenshot or Link',
+    excerptEn: 'Once a footprint report exists, showing it to someone else becomes its own problem. PDFs, screenshots and live links carry different leakage risks, and the wrong choice spreads the very content you meant to clean up.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['Footprint Report', 'Export', 'Data Sharing', 'Privacy'],
+    content: `<div class="introduction">
+  <p>体检跑完，报告躺在屏幕上，下一个问题往往落在别处：这份东西怎么给别人看。求职背调、企业账号审计、家庭账号共同管理，都会遇到分享环节。</p>
+  <p>三种常见形态的风险不一样。选错一种，等于把刚清理完的内容又扩散了一次。</p>
+</div>
+
+<h2>三种导出形态的对比</h2>
+<table>
+  <thead><tr><th>形态</th><th>包含什么</th><th>泄露点</th><th>适用场景</th></tr></thead>
+  <tbody>
+    <tr><td>PDF 导出</td><td>分数、类别分布、命中项原文引用</td><td>引用段落含手机号、地址、具体措辞</td><td>自己留档、与律师沟通</td></tr>
+    <tr><td>页面截图</td><td>当前视图，含时间、账号名、部分导航</td><td>可定位到具体账号</td><td>社交平台展示、说服家人</td></tr>
+    <tr><td>在线链接</td><td>实时报告，随归档更新</td><td>链接可转发、可被索引</td><td>不推荐用于外部分享</td></tr>
+  </tbody>
+</table>
+<p>PDF 的风险最容易被低估。它的价值在于完整，而完整意味着每一个命中项都以原文形式呈现。把这份文件发给招聘方或客服，等同于把风险清单一起交出去。</p>
+<p>截图的问题不在内容而在边框。页面上方通常有账号标识，底部有时间戳，两者结合足以把报告对应到具体的人。</p>
+<p>在线链接看起来最方便，实际最不适合转发。链接一旦离开你的控制范围，转发链条无法收回，如果页面可被搜索引擎抓取，情况会更麻烦。</p>
+
+<h2>分享前该删掉哪几块</h2>
+<ol>
+  <li><strong>命中项原文引用。</strong> 这是最主要的一处。保留类别名称和数量，删掉具体段落。</li>
+  <li><strong>账号标识与时间戳。</strong> 截图裁边时顺手处理，PDF 可以在导出前关掉页眉页脚选项。</li>
+  <li><strong>归档文件名。</strong> 有些工具会把归档 ZIP 的文件名带进报告，文件名里常含注册邮箱。</li>
+  <li><strong>扫描区间。</strong> 区间本身不敏感，但如果只扫了最近一个月，对方可能误以为你的账号很干净，这一点要在说明里写清楚。</li>
+</ol>
+<p>做完这四步，报告的沟通价值基本保留：对方能看到你在体检、能看到暴露集中在哪一类、能看到你的处理进度，而拿不到可以直接利用的信息。</p>
+
+<h2>留档的原则</h2>
+<p>报告值得留档的情形有三种：正在处理法律或劳动争议、需要向家庭成员说明风险、以及企业账号需要留下审计痕迹。除此之外，处理完当次清理就可以删掉，理由是留存价值远低于风险。</p>
+<p>留档时把文件放进加密容器，密码不要与文件放在同一台设备的同一目录。加密归档的做法见<a href="/blog/encrypted-archive">归档加密方案</a>。</p>
+<p>如果只是想记录进度，不必留完整报告。记下日期、各档命中项数量、以及处理了哪些类别，信息量足够做趋势对比，风险接近于零。</p>
+
+<h2>一份可以复用的分享模板</h2>
+<p>把报告转述成文字，比直接发文件更安全。模板可以这样写：本次体检扫描了某个时间段内的全部推文，共命中若干条，分布在直接身份信息、位置与行踪、敏感话题、可链接性四类中；其中身份信息类若干条已处理，位置类若干条排期中；评分从多少提升到多少。</p>
+<p>这段文字不含任何可被利用的原文，却把关键信息给全了。需要对方确认处理效果时，再单独附上清理前后的分数截图，同样裁掉边框。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）的体检在本机完成，报告默认只在本地生成，不上传服务器，也不产生可被转发的在线链接。上传 X 数据归档即可得到 0 到 100 的评分与分类命中清单，体检免费且只读。确认清单准确之后再决定是否删除，范围与价格见<a href="/pricing">定价页</a>。从<a href="/">首页</a>可以免费跑一次，报告解读相关的内容收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The check finishes, the report sits on your screen, and the next question is usually not whether to delete anything but how to show the result to someone else. Job vetting, corporate account audits and shared family accounts all run into this.</p>
+  <p>The three common formats carry different risks, and picking the wrong one re-spreads content you just finished cleaning.</p>
+</div>
+
+<h2>Comparing the three export formats</h2>
+<table>
+  <thead><tr><th>Format</th><th>What it contains</th><th>Where it leaks</th><th>Fits</th></tr></thead>
+  <tbody>
+    <tr><td>PDF export</td><td>Score, category breakdown, quoted flagged items</td><td>Quotes include phone numbers, addresses, exact wording</td><td>Your own archive, correspondence with a lawyer</td></tr>
+    <tr><td>Screen capture</td><td>Current view, including timestamp and account name</td><td>Identifies the specific account</td><td>Social posts, convincing a family member</td></tr>
+    <tr><td>Live link</td><td>Real-time report that updates with the archive</td><td>Forwardable, potentially indexable</td><td>Not recommended for sharing at all</td></tr>
+  </tbody>
+</table>
+<p>The PDF risk is the easiest to underestimate. Its value lies in being complete, and complete means every flagged item appears in its original wording. Send that file to a recruiter or a support desk and you have handed over the risk list itself.</p>
+<p>The screenshot problem is not the content but the frame. There is usually an account identifier at the top and a timestamp at the bottom, and together they tie the report to a specific person.</p>
+<p>Live links look most convenient and travel worst. Once a link leaves your control the forwarding chain cannot be recalled, and if the page can be crawled the situation gets worse.</p>
+
+<h2>What to strip before sharing</h2>
+<ol>
+  <li><strong>Quoted flagged items.</strong> This is the main one. Keep the category names and counts, drop the passages.</li>
+  <li><strong>Account identifier and timestamp.</strong> Handle it while cropping a screenshot; in a PDF you can turn off headers and footers before export.</li>
+  <li><strong>The archive filename.</strong> Some tools carry the ZIP filename into the report, and that name often contains your registration email.</li>
+  <li><strong>The scanned range.</strong> The range itself is harmless, but if it covers only the last month the other party may read your account as clean. State the range explicitly.</li>
+</ol>
+<p>After these four steps the report still does its job. The other party can see that you ran a check, where your exposure concentrates, and how far along you are, without gaining anything they can use.</p>
+
+<h2>When keeping a copy makes sense</h2>
+<p>There are three situations where retention is worth it: an active legal or labour dispute, explaining the risk to family members, and a corporate account that needs an audit trail. Outside those, delete the file once the round of cleanup is done. The retention value is far below the risk.</p>
+<p>If you do keep it, put the file in an encrypted container and store the password somewhere other than the same directory on the same device. See <a href="/blog/encrypted-archive">how to encrypt an archive</a>.</p>
+<p>If all you want is a progress record, you do not need the full report. Note the date, the flagged count per band and which categories you handled. That is enough for a trend comparison and carries almost no risk.</p>
+
+<h2>A reusable way to describe the result</h2>
+<p>Writing the result out in words is safer than sending the file. It can read like this: the check scanned all posts within a given period and flagged a number of items across direct identity data, location and movement, sensitive topics and linkability. Of those, identity items have been handled and location items are queued. The score moved from one number to another.</p>
+<p>That paragraph contains nothing usable in its original form and still conveys the essentials. When someone needs confirmation that the work had an effect, attach a before-and-after score screenshot with the frame cropped.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Checks on Digital Footprint Health (digital-footprint-health.shop) run on your own device. Reports are generated locally by default, are never uploaded to a server and do not produce a forwardable online link. Upload your X data archive to get a score from 0 to 100 and a categorised list of flagged items; the check is free and read-only. Decide on deletion only once you trust the list, with scope and pricing on the <a href="/pricing">pricing page</a>. Run one from the <a href="/">homepage</a>, and report-related reading sits on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'deletion-scope-selection',
+    title: '删除范围怎么选：全量、按时间还是按风险',
+    excerpt: '删除范围决定一次清理的效果和不可逆程度。全量删除最彻底也最难回头，按时间删除适合阶段性整理，按风险删除命中率最高但需要一份可信的体检报告。',
+    date: '2026-09-22',
+    updatedAt: '2026-09-22',
+    author: 'Digital Footprint Health Team',
+    category: '删除指南',
+    tags: ['删除范围', '批量删除', '清理策略', 'X/Twitter'],
+    canonical: '/blog/deletion-scope-selection',
+    faq: [
+      { q: '可以先小范围试一次再决定吗？', a: '可以，而且应该这样做。先选一段时间或一类风险跑一次，观察任务能否正常完成、结果是否符合预期，再扩大范围。选型阶段的验证方法见工具试用对比。', qEn: 'Can I run a small batch first before deciding?', aEn: 'Yes, and you should. Start with one period or one risk category, watch whether the job finishes cleanly and whether the result matches expectations, then widen the scope.' },
+      { q: '按时间删除会漏掉真正有风险的内容吗？', a: '会。风险与时间不严格相关，一条两年前的手机号推文和一条上个月的地址推文，暴露程度可能一样。按时间删除适合做减法，不适合当作风险清理的替代方案。', qEn: 'Does deleting by date miss genuinely risky posts?', aEn: 'Yes. Risk does not track time closely. A two-year-old phone number post and a last-month address post can carry the same exposure. Date-based deletion reduces volume; it does not replace risk-based cleanup.' },
+      { q: '误删了还能恢复吗？', a: '平台侧不提供恢复。清理前的归档是唯一的退路，因此动手之前先确认归档完整、可读、并且保存在本机。参见清理前存档的做法。', qEn: 'Can I restore something I deleted by mistake?', aEn: 'The platform does not offer restoration. Your pre-cleanup archive is the only fallback, so confirm it is complete, readable and stored locally before you start.' },
+    ],
+    titleEn: 'Choosing a Deletion Scope: Everything, By Date, or By Risk',
+    excerptEn: 'The scope you pick decides both the result and how reversible the cleanup is. Deleting everything is thorough and hard to undo, a date range suits periodic tidying, and risk-based selection has the best hit rate but needs a report you trust.',
+    categoryEn: 'Deletion Guide',
+    tagsEn: ['Deletion Scope', 'Bulk Delete', 'Cleanup Strategy', 'X/Twitter'],
+    content: `<div class="introduction">
+  <p>体检报告列出了风险条目，接下来要决定的是删多少。范围选得太大，回头路就断了；范围选得太小，清理变成反复拉锯。</p>
+  <p>三种常见范围各有明确的适用条件，选之前先想清楚你这次要解决的是隐私问题还是数量问题。</p>
+</div>
+
+<h2>三种范围的核心差异</h2>
+<table>
+  <thead><tr><th>范围</th><th>怎么选</th><th>优点</th><th>代价</th></tr></thead>
+  <tbody>
+    <tr><td>全量删除</td><td>所有历史推文，不区分内容</td><td>暴露面归零，一次到位</td><td>不可逆，账号时间线归零</td></tr>
+    <tr><td>按时间删除</td><td>指定日期之前或某个区间</td><td>操作简单，容易分批</td><td>漏掉区间外的同类风险</td></tr>
+    <tr><td>按风险删除</td><td>依据体检报告的分类命中项</td><td>命中率最高，保留正常内容</td><td>依赖报告准确度</td></tr>
+    <tr><td>按关键词删除</td><td>匹配特定词或标签</td><td>适合处理某一类话题</td><td>需要反复调词，易过杀</td></tr>
+  </tbody>
+</table>
+<p>全量删除适合退出平台的场景。如果账号本身不打算继续运营，把时间线清空是合理的终点，但要注意这会连同正常内容一起消失。</p>
+<p>按风险删除适合大多数人。它的前提是报告可信：先抽查几条命中项，确认分类判断符合你的预期，再以报告为基础划定范围。</p>
+
+<h2>按时间删除什么时候够用</h2>
+<p>时间范围适合处理「阶段性痕迹」。例如换工作之前想把学生时代的发言压掉，或者换城市之前清理带有旧地址的打卡。这类目标本身就与时间绑定，按时间划定范围直接命中。</p>
+<p>它不适合当风险清理的主力。风险条目的分布是不均匀的：同一个人可能在某个时期密集发布含位置信息的内容，而这个时期未必是你想删除的那一段。先跑一次体检，看命中项的年份分布，再决定时间切点，比凭印象划定更可靠。归档里的时间字段解析方式见<a href="/blog/browser-side-archive-parsing">浏览器端解析归档</a>。</p>
+<p>另一个细节是边界。设定「某个日期之前」时，边界日当天的内容处理方式各工具不同，有的包含有的排除。范围设定后先看一眼预估条数，与自己的印象对得上再启动。</p>
+
+<h2>范围选定后的三个检查</h2>
+<ol>
+  <li><strong>核对预估条数。</strong> 工具通常会在执行前给出本次将处理的条数。这个数字明显高于或低于预期时，先停下来查范围设定。</li>
+  <li><strong>确认归档可读。</strong> 检查 ZIP 能否正常打开、文件是否完整。存储位置推荐放在本机，不要放同步盘，理由见归档安全存储。</li>
+  <li><strong>确认任务可中止。</strong> 看任务是否支持暂停与恢复。范围越小越容易判断失误，可中止的设计能兜住这一点，相关做法见<a href="/blog/pause-resume-refund-deletion">暂停与恢复机制</a>。</li>
+</ol>
+<p>三项检查加起来不超过十分钟，能避免大部分不可逆的失误。</p>
+
+<h2>组合使用的顺序</h2>
+<p>实际执行里，两种范围常常配合使用。先用体检报告圈出风险类别，再按时间切成两到三批：最早的一批先处理，观察任务表现和结果，再处理后面的批次。这样做的好处是每批之间都有观察点。</p>
+<p>如果目标是降低评分，优先处理身份信息类别里的条目，不管它们分布在哪个年份。如果目标是让时间线看起来干净，按时间删除更直接。两个目标可以分开执行，但不要在同一次操作里混着设定。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）在删除之前先给出完整清单：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，体检免费且只读。清单确认之后，再按风险类别划定删除范围，价格与范围选项见<a href="/pricing">定价页</a>。从<a href="/">首页</a>可以免费跑一次，批量删除的完整流程收录在<a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除实操指引</a>，更多内容见<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The report lists your risk items, and the next decision is how much to remove. Pick too wide a scope and there is no way back; pick too narrow and the cleanup turns into a series of rounds that never quite finish.</p>
+  <p>Each of the three common scopes has clear conditions for use. Before choosing, decide whether this round is about privacy or about volume.</p>
+</div>
+
+<h2>How the main scopes differ</h2>
+<table>
+  <thead><tr><th>Scope</th><th>How it selects</th><th>Strength</th><th>Cost</th></tr></thead>
+  <tbody>
+    <tr><td>Delete everything</td><td>All historical posts regardless of content</td><td>Exposure drops to zero in one pass</td><td>Irreversible, timeline empties out</td></tr>
+    <tr><td>Delete by date</td><td>Before a date, or within a range</td><td>Simple to run, easy to split into batches</td><td>Misses the same risk outside the range</td></tr>
+    <tr><td>Delete by risk</td><td>Based on flagged categories in the report</td><td>Highest hit rate, normal posts survive</td><td>Depends on report accuracy</td></tr>
+    <tr><td>Delete by keyword</td><td>Matching specific words or tags</td><td>Good for one topic at a time</td><td>Needs repeated tuning, over-deletes</td></tr>
+  </tbody>
+</table>
+<p>Deleting everything fits the case where you are leaving the platform. If the account will not be used again, clearing the timeline is a reasonable endpoint, though it takes normal content with it.</p>
+<p>Deleting by risk suits most people. It does depend on trusting the report, so spot-check a handful of flagged items first and confirm the categories match your own reading of the posts.</p>
+
+<h2>When a date range is enough</h2>
+<p>A date range handles traces tied to a period. If you are about to change jobs and want student-era posts pushed down, or moving city and want check-ins with the old address cleared, the goal is already bound to time and a date cut matches it directly.</p>
+<p>It is a poor main strategy for risk. Risky items are not evenly spread: one person may post location-heavy content in a period that is not the one they wanted to remove. Run a check first, look at how flagged items distribute across years, and set the cut from that instead of from memory. For how timestamps come out of the archive, see <a href="/blog/browser-side-archive-parsing">parsing an archive in the browser</a>.</p>
+<p>Watch the boundary as well. When you set a cut before a given date, tools differ on whether posts from that day are included. After setting the range, look at the estimated count and check it against your own sense of the history before starting.</p>
+
+<h2>Three checks once the scope is set</h2>
+<ol>
+  <li><strong>Confirm the estimated count.</strong> Tools usually show how many posts this run will touch. If the number is far above or below expectation, stop and inspect the range settings.</li>
+  <li><strong>Confirm the archive opens.</strong> Check that the ZIP opens cleanly and the files inside are complete. Keep it on local storage rather than a synced folder.</li>
+  <li><strong>Confirm the job can be stopped.</strong> Look for pause and resume support. The smaller the scope, the easier it is to misjudge, and a stoppable job covers that. See <a href="/blog/pause-resume-refund-deletion">how pause and resume work</a>.</li>
+</ol>
+<p>Those three checks take under ten minutes and prevent most irreversible mistakes.</p>
+
+<h2>Using two scopes together</h2>
+<p>In practice the two approaches often combine. Use the report to mark the risk categories, then split the work into two or three date-based batches: run the earliest batch first, watch how the job behaves and what the result looks like, then move on.</p>
+<p>If the goal is a lower score, handle the identity category first regardless of which years those posts fall in. If the goal is a cleaner-looking timeline, deleting by date is more direct. You can pursue both, just do not mix them inside a single run.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) produces the list before anything is removed. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 plus flagged items by category; the check is free and read-only. Once you trust the list, set your deletion scope by risk category, with options and pricing on the <a href="/pricing">pricing page</a>. Run a check from the <a href="/">homepage</a>, and the end-to-end walkthrough lives at <a href="/blog/bulk-delete-old-tweets-walkthrough">bulk deletion, step by step</a>. More reading is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'chinese-digital-footprint-glossary',
+    title: '数字足迹体检术语对照表：中文用户最容易搞混的 12 个词',
+    excerpt: '中文用户做数字足迹体检时，卡住人的地方往往是术语。中文的"开盒""考古"和英文界面的 archive、footprint、exposure 不是一一对应，理解偏差会直接影响你判断哪些内容该处理。',
+    date: '2026-09-22',
+    updatedAt: '2026-09-22',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字足迹', '术语对照', '中文用户', '隐私体检'],
+    canonical: '/blog/chinese-digital-footprint-glossary',
+    faq: [
+      { q: '为什么中文和英文的术语对不上？', a: '中文隐私领域的很多说法来自社区口语，比如"开盒""考古"，指向的是具体事件，并非某个技术概念。英文界面用的 archive、exposure、footprint 则是工具与平台的定义，两者覆盖范围不同，直接对译会走偏。', qEn: 'Why do the Chinese and English terms not line up?', aEn: 'Many Chinese privacy terms come from community slang and point at specific incidents rather than technical concepts. The English words used in tool interfaces are definitions set by platforms and vendors. Their coverage differs, so a literal translation misses the point.' },
+      { q: '搞清术语对实际操作有帮助吗？', a: '有，而且影响判断。比如把归档理解成备份的人，会以为删掉推文之后归档会同步更新；实际上归档是某个时间点的快照，删除之后的归档仍然保留原文，这是两个不同的东西。', qEn: 'Does terminology actually change what I do?', aEn: 'Yes, and it changes your judgement. Someone who reads archive as backup assumes the archive updates when posts are deleted. In practice an archive is a snapshot from one point in time, and the deleted post still exists inside it. Those are different things.' },
+      { q: '平时只看中文内容，还需要记英文术语吗？', a: '需要认，不需要背。多数工具的界面、导出报告和帮助文档是英文，至少要能认出 archive、footprint、exposure、erasure 这几个词，否则容易在导出和授权环节点错选项。', qEn: 'If I only read Chinese, do I still need the English terms?', aEn: 'You need to recognise them, not memorise them. Most tool interfaces, exported reports and help pages are in English. Being able to pick out archive, footprint, exposure and erasure keeps you from choosing the wrong option during export or authorisation.' },
+    ],
+    titleEn: 'A Working Glossary for Digital Footprint Checks',
+    excerptEn: 'When Chinese-speaking users run a footprint check, the barrier is usually terminology rather than operation. The words do not map one to one across languages, and a mismatched reading changes which posts you decide to handle.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['Digital Footprint', 'Glossary', 'Chinese Users', 'Privacy Check'],
+    content: `<div class="introduction">
+  <p>中文用户做数字足迹体检，卡住人的地方往往是术语，操作步骤反倒简单。中文社区里的「开盒」「考古」和英文界面的 archive、exposure、footprint 并不是一一对应的关系。</p>
+  <p>理解偏差会直接改变你的判断：以为归档会跟着删除同步更新的人，会按错误的假设决定处理范围。下面这张对照表按实际使用场景整理。</p>
+</div>
+
+<h2>12 个高频术语对照</h2>
+<table>
+  <thead><tr><th>中文说法</th><th>常见英文对应</th><th>实际含义</th><th>常见误解</th></tr></thead>
+  <tbody>
+    <tr><td>数字足迹</td><td>digital footprint</td><td>你在平台上留下的全部可追溯内容与痕迹</td><td>以为只包括自己发的推文</td></tr>
+    <tr><td>归档</td><td>archive</td><td>平台导出的数据快照，含推文、点赞、私信等</td><td>以为是备份，删除后会自动更新</td></tr>
+    <tr><td>体检</td><td>check / audit</td><td>只读分析，扫描风险但不做任何修改</td><td>以为体检等同清理</td></tr>
+    <tr><td>风险暴露</td><td>exposure</td><td>信息被第三方获取或可获取的程度</td><td>以为只有被看到才算暴露</td></tr>
+    <tr><td>可链接性</td><td>linkability</td><td>多个账号能否被判定为同一人</td><td>以为改昵称就足够</td></tr>
+    <tr><td>去标识</td><td>de-identification</td><td>移除可直接定位到个人的字段</td><td>以为删名字就完成去标识</td></tr>
+    <tr><td>删除请求</td><td>erasure request</td><td>依据法规要求平台删除数据</td><td>以为能删掉第三方的转载</td></tr>
+    <tr><td>数据可携</td><td>data portability</td><td>要求平台提供你的数据副本</td><td>与删除权混为一谈</td></tr>
+    <tr><td>考古</td><td>resurfacing</td><td>旧内容被重新翻出并传播</td><td>以为只发生在名人身上</td></tr>
+    <tr><td>开盒</td><td>doxxing</td><td>他人恶意汇集并公开你的个人信息</td><td>以为与自己做没做体检有关</td></tr>
+    <tr><td>限流</td><td>rate limit</td><td>平台对接口调用次数设的上限</td><td>以为是账号被处罚</td></tr>
+    <tr><td>本机处理</td><td>on-device processing</td><td>数据在你的设备上解析，不上传服务器</td><td>以为浏览器里跑就等于本机</td></tr>
+  </tbody>
+</table>
+<p>第一行就值得多说一句。「数字足迹」在日常语境里常被缩小成「我发过什么」，实际的覆盖面要宽得多：点赞、转发、关注列表、个人简介里的链接、以及头像和昵称在别的平台的复用，都属于足迹的一部分。</p>
+
+<h2>最容易出错的两个词</h2>
+<p>第一个是归档。中文语境里「备份」和「归档」经常混用，但它们在删除场景下的行为完全相反。备份跟着源数据走，源数据变了备份也会更新；归档是某个时间点的快照，你之后删除推文，归档里的原文依然存在。</p>
+<p>这意味着清理完成之后，本机的归档文件本身就是一份敏感数据。它集中保存了你所有已经决定要删掉的内容，处理完之后要按敏感文件对待，做法见<a href="/blog/store-x-archive-safely">归档的安全存放</a>。</p>
+<p>第二个是限流。删除任务中途暂停或变慢时，很多人第一反应是账号出了问题。多数情况只是接口调用次数到了上限，等一段时间会自动恢复。相关机制见<a href="/blog/x-api-rate-limits-deletion">接口调用频率限制</a>。</p>
+
+<h2>中文用户容易忽略的三类痕迹</h2>
+<p>第一类是拼音拼写。中文姓名转拼音之后，在搜索框里的匹配方式和汉字完全不同。有人搜你的中文名搜不到，搜拼音却能把你几年的推文聚在一起。这类痕迹的处理方式见<a href="/blog/chinese-pinyin-name-tweet-cleanup">拼音姓名痕迹清理</a>。</p>
+<p>第二类是跨平台同名。中文互联网的昵称习惯复用度高，同一个昵称在多个平台注册的情况很常见，这让可链接性这一项的实际权重比模型设定更高。</p>
+<p>第三类是评论与回复。很多人只关注自己发的主贴，忽略了自己在别人推文下的回复。这些回复同样出现在归档里，同样能暴露信息，清理时不要漏掉。</p>
+
+<h2>按使用场景挑词记忆</h2>
+<ol>
+  <li><strong>准备下载数据时：</strong> 认 archive、data portability、JSON 三个词，它们决定你拿到的是哪种文件。</li>
+  <li><strong>跑体检时：</strong> 认 check、exposure、linkability，它们决定报告怎么读。</li>
+  <li><strong>决定删除时：</strong> 认 deletion、rate limit、pause，它们决定任务会怎么执行。</li>
+  <li><strong>走合规路径时：</strong> 认 erasure、GDPR、CCPA，它们决定你走的是个人操作还是法定请求。</li>
+</ol>
+<p>不需要背，只要在界面上认得出就够了。真正容易出问题的环节是导出与授权，这两处都有英文选项。中文场景下的完整处理思路另见<a href="/blog/chinese-social-footprint-x-guide">中文用户的数字足迹指南</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）的界面与报告同时提供中英对照，上传 X 数据归档后本机解析全部推文，输出 0 到 100 的评分与分类命中项，体检免费且只读。术语看不懂时，先跑一次体检，把报告里的类别与实际推文对上，比查词典更快。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始，其他中文相关内容收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>When people run a digital footprint check, the obstacle is rarely the buttons. It is the vocabulary. Community slang and the words used in English tool interfaces do not map onto each other cleanly.</p>
+  <p>A mismatched reading changes your judgement in concrete ways. Someone who assumes the archive updates when posts are deleted will choose the wrong scope. This table is organised by where you actually meet each term.</p>
+</div>
+
+<h2>Twelve terms you will meet in practice</h2>
+<table>
+  <thead><tr><th>Term</th><th>What it means here</th><th>Common misreading</th></tr></thead>
+  <tbody>
+    <tr><td>Digital footprint</td><td>Every traceable item you have left on a platform</td><td>Assuming it only covers posts you wrote</td></tr>
+    <tr><td>Archive</td><td>A snapshot the platform exports, covering posts, likes, messages</td><td>Treating it as a backup that updates itself</td></tr>
+    <tr><td>Check / audit</td><td>Read-only analysis that scans risk without changing anything</td><td>Treating a check as cleanup</td></tr>
+    <tr><td>Exposure</td><td>How far information can be obtained by a third party</td><td>Assuming only seen information counts</td></tr>
+    <tr><td>Linkability</td><td>Whether separate accounts can be tied to one person</td><td>Assuming a handle change is enough</td></tr>
+    <tr><td>De-identification</td><td>Removing fields that point directly at a person</td><td>Assuming removing a name finishes the job</td></tr>
+    <tr><td>Erasure request</td><td>A legal request for a platform to delete data</td><td>Assuming it reaches third-party reposts</td></tr>
+    <tr><td>Data portability</td><td>A request for a copy of your data</td><td>Confusing it with the right to erasure</td></tr>
+    <tr><td>Resurfacing</td><td>Old content being dug up and spread again</td><td>Assuming it only happens to public figures</td></tr>
+    <tr><td>Doxxing</td><td>Someone gathering and publishing your personal details</td><td>Assuming a prior check caused it</td></tr>
+    <tr><td>Rate limit</td><td>A cap on how often an API can be called</td><td>Assuming the account is being punished</td></tr>
+    <tr><td>On-device processing</td><td>Data parsed on your machine, never uploaded</td><td>Assuming anything in a browser is on-device</td></tr>
+  </tbody>
+</table>
+<p>The first row deserves a note. In everyday use, footprint gets narrowed to what I posted, while the real scope is wider: likes, reposts, the following list, links in your bio, and reused handles or avatars on other platforms all count as traces.</p>
+
+<h2>The two terms that cause the most damage</h2>
+<p>The first is archive. In casual use it overlaps with backup, but the two behave in opposite ways during a cleanup. A backup follows the source data, so it updates when the source changes. An archive is a snapshot from one point in time, so posts you delete afterwards still exist inside it, with their original text.</p>
+<p>That has a practical consequence. Once the cleanup is done, the archive file on your machine is itself sensitive data. It concentrates everything you decided to remove. Treat it accordingly, as described in <a href="/blog/store-x-archive-safely">storing an archive safely</a>.</p>
+<p>The second is rate limit. When a deletion job pauses or slows down, the first reaction is usually that something is wrong with the account. Most of the time the API call allowance has simply run out and the job resumes on its own. See <a href="/blog/x-api-rate-limits-deletion">how API rate limits affect deletion</a>.</p>
+
+<h2>Three trace types that get overlooked</h2>
+<p>The first is romanised names. Once a Chinese name is written in pinyin, it matches in a search box in a completely different way from the characters. Someone who cannot find you by your Chinese name may still pull years of your posts together using the pinyin form. Handling for this is covered in <a href="/blog/chinese-pinyin-name-tweet-cleanup">cleaning up pinyin name traces</a>.</p>
+<p>The second is handle reuse across platforms. Reuse is common, and that pushes the practical weight of linkability higher than a model setting suggests.</p>
+<p>The third is replies. People focus on their own posts and skip the replies they left under someone else's. Replies appear in the archive too, and they carry the same information. Do not leave them out of the scope.</p>
+
+<h2>Learning the terms by task</h2>
+<ol>
+  <li><strong>Requesting your data:</strong> archive, data portability and JSON decide which file you end up with.</li>
+  <li><strong>Running the check:</strong> check, exposure and linkability decide how you read the report.</li>
+  <li><strong>Starting a cleanup:</strong> deletion, rate limit and pause decide how the job behaves.</li>
+  <li><strong>Going the legal route:</strong> erasure, GDPR and CCPA decide whether you act in the product or file a formal request.</li>
+</ol>
+<p>None of this needs memorising, only recognising on screen. The two places where it matters most are export and authorisation, both of which present English options. Chinese-specific guidance is collected at <a href="/blog/chinese-social-footprint-x-guide">a footprint guide for Chinese-speaking users</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) presents its interface and reports with Chinese and English side by side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category; the check is free and read-only. If a term is unclear, running one check and matching the report categories against your actual posts teaches more than looking it up. Scope and pricing are on the <a href="/pricing">pricing page</a>, you can start free from the <a href="/">homepage</a>, and related reading is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'q4-2026-privacy-changes-preview',
+    title: '2026 年第四季度要盯的三条线：平台接口、法规节点、数据经纪商',
+    excerpt: '第四季度通常是平台改接口、监管出细则的窗口期。对普通用户来说，需要关注的是这三条线会不会改变你能删除什么、能下载到什么，条款措辞本身反而是次要的。',
+    date: '2026-09-22',
+    updatedAt: '2026-09-22',
+    author: 'Digital Footprint Health Team',
+    category: '行业观察',
+    tags: ['行业趋势', '隐私法规', '平台政策', '季度前瞻'],
+    canonical: '/blog/q4-2026-privacy-changes-preview',
+    faq: [
+      { q: '这些变化现在就已经生效了吗？', a: '不都是。平台侧的接口调整通常按批次灰度上线，法规侧的细则有生效时间表。本文列出的是需要列入观察窗口的方向，不是已经落地的结论，具体条款以官方发布为准。', qEn: 'Are these changes already in force?', aEn: 'Not all of them. Platform interface changes usually roll out gradually, and regulatory detail comes with an effective date. What follows is a set of areas worth watching rather than settled outcomes; the official publication is the reference.' },
+      { q: '普通用户需要提前做什么准备吗？', a: '只需要一件事：把当前的数据归档下载并保存好。归档是你手上唯一不依赖平台持续开放的历史副本。无论之后接口怎么变，这份快照都还在。', qEn: 'Should ordinary users prepare anything in advance?', aEn: 'One thing: download and store your current data archive. It is the only historical copy you hold that does not depend on a platform keeping access open. Whatever happens to the interfaces later, that snapshot remains.' },
+      { q: '法规变化会影响我删除自己的推文吗？', a: '删除自己的内容始终是账号自带功能，不受法规影响。法规影响的是另一类诉求：要求平台删除、要求提供数据副本、以及要求第三方停止使用你的数据。两条路径不要混在一起看。', qEn: 'Will regulatory change affect deleting my own posts?', aEn: 'Removing your own content has always been a built-in account function and is unaffected. Regulation governs a different set of claims: asking a platform to erase data, asking for a copy, and asking third parties to stop using your data. Keep the two paths separate.' },
+    ],
+    titleEn: 'Three Lines to Watch in Q4 2026: Platform APIs, Regulation, Data Brokers',
+    excerptEn: 'The fourth quarter tends to be when platforms revise interfaces and regulators publish detail. For most users the question is narrower: will these three lines change what you can delete and what you can download.',
+    categoryEn: 'Industry Watch',
+    tagsEn: ['Industry Trends', 'Privacy Regulation', 'Platform Policy', 'Quarterly Outlook'],
+    content: `<div class="introduction">
+  <p>第四季度通常是平台调整接口、监管机构发布实施细则的窗口。对普通用户来说，值得关注的是这些变化会不会改变两件具体的事：你能删除什么，以及你能下载到什么。</p>
+  <p>下面三条线按影响程度排列，每一条都给出一个可以在自己账号上做的核对动作。</p>
+</div>
+
+<h2>第一条线：平台接口与导出字段</h2>
+<p>数据归档里的字段不是固定的。平台在不同时期会增删导出内容，例如调整点赞记录的范围、改变私信数据的格式、或者把某些字段从 JSON 拆成独立文件。这类变化不会发公告，通常是你下次下载归档时才发现。</p>
+<p>影响很直接：体检工具依赖归档里的字段做分析，字段消失意味着某一类痕迹无法被扫描。如果你的归档跨越了平台改版前后，两个时期的文件结构可能不一致。</p>
+<p><strong>本季度可做的核对：</strong>现在下载一份归档，记录文件列表和总条数，与半年前的报告对比，看哪些字段消失了。归档体积的常见范围见<a href="/blog/huge-archive-200mb">大体积归档的处理</a>。</p>
+
+<h2>第二条线：法规的执行细节</h2>
+<table>
+  <thead><tr><th>方向</th><th>关注什么</th><th>对你的影响</th></tr></thead>
+  <tbody>
+    <tr><td>删除权的执行时限</td><td>平台处理删除请求的期限是否有明确要求</td><td>决定走法定请求是否比自助删除更快</td></tr>
+    <tr><td>数据可携的格式</td><td>是否要求机器可读、可跨平台迁移</td><td>决定你拿到的归档能否被第三方工具解析</td></tr>
+    <tr><td>第三方数据使用</td><td>数据经纪商是否需要登记或披露来源</td><td>决定你的公开推文会流向哪里</td></tr>
+    <tr><td>跨境传输</td><td>数据出境的条件是否收紧</td><td>影响使用境外工具时的合规判断</td></tr>
+  </tbody>
+</table>
+<p>四行里最值得关注的是第三行。公开推文被数据经纪商汇集转卖，是很多人做数字足迹体检之后才第一次意识到的事，相关机制见<a href="/blog/data-brokers-selling-your-tweets">数据经纪商如何获取你的推文</a>。</p>
+<p>法规的推进节奏是慢变量，一个季度内通常看不到生效结果。它的价值在于判断方向：如果你计划做长期的内容运营，知道风向比知道具体条文更有用。</p>
+
+<h2>第三条线：搜索与索引行为</h2>
+<p>搜索引擎对社交内容的处理方式也在变。同一篇内容在不同时期的收录表现可以差别很大，删除推文之后被移出索引的时间也不固定。你的体检报告里的条目，有一部分在搜索引擎结果里仍然可查。</p>
+<p>这条线的影响是滞后的：你删了推文，搜索结果不会同步消失，中间可能相隔数周。若你的目标是让搜索结果干净，需要在删除之后单独处理索引层面，方法见<a href="/blog/google-remove-old-tweets-from-search">从搜索结果中移除旧推文</a>。</p>
+<p>需要注意的是，索引层面的处理与删除是两个独立环节。删除是内容的处置，索引是呈现的处置，两者都要做才算闭环。</p>
+
+<h2>本季度可以自己跑的一次核对</h2>
+<ol>
+  <li><strong>下载一份新归档。</strong> 与半年前的对比文件列表，记录字段变化。</li>
+  <li><strong>跑一次体检。</strong> 把本次的分数与分类命中项数量记录下来，作为本季度基线。</li>
+  <li><strong>抽查搜索表现。</strong> 用自己的中文名和拼音各搜一次，看哪些结果仍然可查。</li>
+  <li><strong>确认归档存放位置。</strong> 加密保存，避免同步盘，做法见<a href="/blog/encrypted-archive">归档加密</a>。</li>
+</ol>
+<p>这四项加起来大概半小时。它的作用是让你在下一季度变化落地时，手上有一份可以对照的基线，不必凭印象判断。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把季度核对里的第二步做成了一次免费操作：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。季度之间对比同档命中项数量，比对比总分更能反映真实变化。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始，其他行业观察内容收录在<a href="/blog">博客</a>。</p>`,
+    contentEn: `<div class="introduction">
+  <p>The fourth quarter is usually a window for platform interface changes and detailed regulatory rules. For most users the interesting question is narrower: will any of this change what you can delete and what you can download.</p>
+  <p>The three lines below are ordered by how much they affect you, and each one comes with a check you can run on your own account.</p>
+</div>
+
+<h2>Line one: platform interfaces and export fields</h2>
+<p>The fields inside a data archive are not fixed. Platforms add and remove export content over time, for instance by trimming the range of like records, changing the format of message data, or splitting fields out of one JSON file into separate ones. None of this is announced, and you usually notice only on your next download.</p>
+<p>The consequence is direct. Check tools rely on archive fields for analysis, so a missing field means a whole class of traces cannot be scanned. If your archive spans a platform revision, the two periods may not share a structure.</p>
+<p><strong>A check for this quarter:</strong> download an archive now, record the file list and total item count, then compare against a report from six months ago to see which fields disappeared. For typical size ranges, see <a href="/blog/huge-archive-200mb">handling large archives</a>.</p>
+
+<h2>Line two: enforcement detail in regulation</h2>
+<table>
+  <thead><tr><th>Area</th><th>What to watch</th><th>What it changes for you</th></tr></thead>
+  <tbody>
+    <tr><td>Erasure timelines</td><td>Whether a deadline applies to handling deletion requests</td><td>Whether a formal request beats self-service deletion</td></tr>
+    <tr><td>Portability format</td><td>Whether machine-readable, cross-platform export is required</td><td>Whether your archive can be parsed by third-party tools</td></tr>
+    <tr><td>Third-party data use</td><td>Whether brokers must register or disclose sources</td><td>Where your public posts end up</td></tr>
+    <tr><td>Cross-border transfer</td><td>Whether conditions tighten</td><td>How you judge compliance when using a tool abroad</td></tr>
+  </tbody>
+</table>
+<p>The third row is the one worth attention. Public posts being aggregated and resold by data brokers is something many people only discover after running a footprint check the first time. See <a href="/blog/data-brokers-selling-your-tweets">how data brokers obtain your posts</a>.</p>
+<p>Regulation moves slowly, and a single quarter rarely produces an enforceable result. Its value is directional: if you are planning long-term content work, knowing the direction matters more than tracking individual clauses.</p>
+
+<h2>Line three: search and indexing behaviour</h2>
+<p>How search engines treat social content shifts as well. The same content can index very differently across periods, and the time it takes for a deleted post to drop out of an index varies. Some items in your footprint report remain findable in search results.</p>
+<p>The effect lags. Delete a post and the search result does not disappear in step with it; weeks can pass in between. If a clean search footprint is the goal, handle the indexing layer separately after deletion, as described in <a href="/blog/google-remove-old-tweets-from-search">removing old posts from search results</a>.</p>
+<p>Deletion and indexing are independent steps. Deletion deals with the content, indexing deals with the display, and closing the loop needs both.</p>
+
+<h2>One review you can run this quarter</h2>
+<ol>
+  <li><strong>Download a fresh archive.</strong> Compare the file list against the one from six months ago and note field changes.</li>
+  <li><strong>Run a check.</strong> Record the score and the flagged count per category as this quarter's baseline.</li>
+  <li><strong>Spot-check search.</strong> Search your own name and its pinyin form, and note which results remain findable.</li>
+  <li><strong>Confirm where the archive lives.</strong> Keep it encrypted and off synced drives, following <a href="/blog/encrypted-archive">encrypting an archive</a>.</li>
+</ol>
+<p>All four take about half an hour. Their purpose is having a baseline to compare against when next quarter's changes land, rather than relying on memory.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) turns the second step above into a free operation. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category; it is read-only, never uploads and does not ask for account access. Comparing flagged counts per band across quarters tells you more than comparing totals. Scope and pricing are on the <a href="/pricing">pricing page</a>, you can start free from the <a href="/">homepage</a>, and further industry reading is on the <a href="/blog">blog</a>.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

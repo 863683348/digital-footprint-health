@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/site';
+import { SITE_URL, relPath, absUrl } from '@/lib/site';
 import { allPosts } from '@/content/posts';
 
 // Crawlers hit /sitemap.xml frequently; cache the generated route for a day so
@@ -49,13 +49,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogPages = allPosts.flatMap((post) => [
     {
-      url: `${SITE_URL}${post.canonical}`,
+      url: absUrl(post.canonical),
       lastModified: new Date(post.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.6,
     },
     {
-      url: `${SITE_URL}/en${post.canonical}`,
+      url: `${SITE_URL}/en${relPath(post.canonical)}`,
       lastModified: new Date(post.updatedAt),
       changeFrequency: 'monthly' as const,
       priority: 0.5,

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { allPosts, getPost } from '@/content/posts';
-import { SITE_URL } from '@/lib/site';
+import { absUrl } from '@/lib/site';
 import { BlogPostContent } from './post-content';
 
 interface PostParams {
@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: PostParams): Promise<Metadata
 
   // post.canonical is a relative path (e.g. /blog/what-is-digital-footprint-check);
   // absolute it against the production origin so canonical/OG URLs never drift.
-  const url = `${SITE_URL}${post.canonical}`;
+  const url = absUrl(post.canonical);
   // Static zh metadata (the canonical URL). /en/blog/:slug is served by the
   // /en catch-all with its own generateMetadata; the English page's body is
   // rendered client-side by BlogPostContent (route-driven language).

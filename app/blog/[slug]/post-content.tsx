@@ -3,7 +3,7 @@
 import { allPosts, type BlogPost } from '@/content/posts';
 import { useI18n } from '@/components/I18nProvider';
 import { LangLink } from '@/components/LangLink';
-import { SITE_URL } from '@/lib/site';
+import { absUrl } from '@/lib/site';
 
 /**
  * Client-rendered blog post body. Kept as a client component because the
@@ -36,7 +36,7 @@ export function BlogPostContent({ post, slug }: { post: BlogPost; slug: string }
       dateModified: post.updatedAt,
       author: { '@type': 'Organization', name: post.author },
       publisher: { '@type': 'Organization', name: 'Digital Footprint Health' },
-      mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE_URL}${post.canonical}` },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': absUrl(post.canonical) },
       inLanguage: lang === 'en' ? 'en' : 'zh-CN',
     },
   ];

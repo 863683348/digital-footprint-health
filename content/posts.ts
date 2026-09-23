@@ -13573,6 +13573,562 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the second step above into a free operation. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category; it is read-only, never uploads and does not ask for account access. Comparing flagged counts per band across quarters tells you more than comparing totals. Scope and pricing are on the <a href="/pricing">pricing page</a>, you can start free from the <a href="/">homepage</a>, and further industry reading is on the <a href="/blog">blog</a>.</p>`,
   },
+  {
+    slug: 'daily-tweet-deletion-limits',
+    title: '一天能删多少条推文？删除上限、分批节奏与真实耗时表',
+    excerpt:
+      '删除推文的速度取决于三类限制的叠加：接口写入额度、工具批处理大小、账号风控。这篇文章拆开三种上限，给出不同账号体量的每小时参照区间、1 千到 10 万条的耗时换算表，以及撞上限之后的三种失败模式和应对顺序。',
+    date: '2026-09-23',
+    updatedAt: '2026-09-23',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '推文删除上限', '批量删除', '删除节奏', '删除耗时'],
+    canonical: '/blog/daily-tweet-deletion-limits',
+    faq: [
+      { q: "一天最多能删多少条推文？", a: "没有统一的固定数字。实际速度由三层限制叠加决定：接口的写入额度（通常按 15 分钟窗口计算）、删除工具的批处理大小、以及账号风控阈值。多数老号在稳定运行时的处理量落在每小时 2000 到 3500 条之间，新号或者近期被限制过的账号要降到每小时 500 到 1500 条。", qEn: "Is there a fixed daily limit on tweet deletion?", aEn: "No single fixed number applies. Real throughput comes from three layers stacked together: the API write quota (usually counted in 15-minute windows), your deletion tool's batch size, and the account's risk-control threshold. A typical older account sits between 2,000 and 3,500 tweets per hour when running steadily, while new accounts or recently restricted ones should drop to 500 to 1,500 per hour." },
+      { q: "为什么删到一半速度突然变慢？", a: "最常见的原因是接口返回频率限制，工具进入退避重试，速度下降但仍在推进。也可能出现请求被静默跳过的情况：进度条在动，实际处理数量没变。判断方法是把工具日志与归档条目总数对账，数量对得上说明只是变慢，对不上说明有跳过，需要核对清单。", qEn: "Why does deletion suddenly slow down halfway through?", aEn: "The usual cause is a rate-limit response, which pushes the tool into backoff and retry: it slows down but keeps moving. Requests can also be silently skipped, where the progress bar advances while the processed count does not. Compare the tool log against your archive item count. If the numbers reconcile, you were only slowed down. If they do not, items were skipped and you need to reconcile the list." },
+      { q: "删 3 万条推文大概要多久？", a: "按每小时稳定处理 2500 条、每次连续运行 4 小时后留出间隔估算，3 万条约需 12 小时净处理时间，跨度上通常分成 3 个晚上。体量越大，中间遇到网络中断或电脑休眠的概率越高，所以超过一万条的任务应该优先确认能不能续跑，而不是追求更快的速度。", qEn: "How long does deleting 30,000 tweets take?", aEn: "At a steady 2,500 per hour with four-hour runs and gaps in between, 30,000 tweets need about 12 hours of actual processing, which usually spans three evenings. The larger the job, the more likely it is to hit a network drop or a sleeping laptop, so past 10,000 items the priority is whether the job can resume rather than how fast it runs." },
+      { q: "账号被临时限制后还能继续删吗？", a: "可以，但要先停。受限状态下重复发送请求会延长限制时间，正确做法是立刻停止任务，确认账号状态恢复正常后再继续，间隔通常需要几小时。如果同一个账号反复触发限制，说明当前节奏始终超出承受范围，应该把每小时处理量再降一档。", qEn: "Can I keep deleting after the account gets temporarily restricted?", aEn: "Yes, but stop first. Repeating requests while restricted extends the restriction. Stop the job, confirm the account is back to normal, then continue, which usually takes a few hours. If the same account trips the limit repeatedly, the current pace is still too aggressive and hourly throughput should drop another step." },
+      { q: "删除前怎么确认范围选对了？", a: "先跑全量的 1%，用最小样本确认筛选条件符合预期，再放开完整任务。删除范围一旦执行就不能撤销，这一步能避免删掉本来打算保留的内容，具体的范围筛选方法可以另外参考按风险与日期分层的做法。", qEn: "How do I confirm the deletion scope is right before starting?", aEn: "Run 1% of the total first. A minimal sample confirms the filters behave as expected before you commit the full job. Deletion cannot be undone once executed, so this step prevents removing content you meant to keep. The layered-by-risk-and-date approach is the usual way to define scope." },
+    ],
+    titleEn: 'How Many Tweets Can You Delete Per Day? Limits, Batching and Real Timelines',
+    excerptEn:
+      'Deletion speed is not set by batch size alone. Three limits stack on top of each other: API write quota, tool batch size, and account risk control. This guide separates the three, gives hourly throughput ranges by account profile, a time table from 1,000 to 100,000 tweets, and the three failure modes you hit when you run into a ceiling.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['X/Twitter', 'deletion limits', 'bulk delete tweets', 'deletion pacing', 'deletion time'],
+    content: `
+<p>关于「一天能删多少条推文」，网上流传的数字从几百到几万都有。差异不在推文，而在提问的人各自在说不同的限制。把三种限制拆开之后，这个问题的答案就变成一条可以自己算的线。</p>
+
+<h2>三种「上限」经常被混成一种</h2>
+<p>第一种是平台对写入类接口的调用额度，通常以 15 分钟为一个窗口滚动计算。第二种是删除工具自己设的批处理大小，多数工具允许调整，调大不等于更快。第三种是账号风控：当行为密度明显偏离日常时，账号会被临时限制动作，此时删除请求会被直接拒绝。</p>
+<p>前两种是数字问题，第三种是账号状态问题。把它们混在一起，就会出现「别人一小时能删三千条，我这里三百条就停了」这类无法复现的结论。分开看之后会发现，多数情况只是第三种限制在起作用。</p>
+<p>这个混淆在跨账号对比时最明显。同一个工具、同样的批处理设置，在一万粉丝的老号和刚注册的新号上表现差别很大，差别就来自第三种限制。理解这一点之后，别人报出的速度数字只能当参考上限，不能当目标。</p>
+
+<h2>分批的参照：按小时算，不按天</h2>
+<p>「一天」这个单位在删除任务里不太可靠，因为能不能连续跑满 24 小时是另一回事。工具需要间隔，账号也需要间隔，按小时配额叠加版本更接近实际表现。下面这张表来自多轮实测的区间中位，不同账号会有出入，可以当作起点。</p>
+<table>
+  <thead><tr><th>账号情况</th><th>建议每小时处理量</th><th>说明</th></tr></thead>
+  <tbody>
+    <tr><td>新号，注册不足一年</td><td>800 - 1500 条</td><td>风控阈值低，节奏要更慢</td></tr>
+    <tr><td>老号，内容以文字为主</td><td>2000 - 3500 条</td><td>多数批次能稳定跑完</td></tr>
+    <tr><td>老号，含大量媒体推文</td><td>1200 - 2000 条</td><td>单条请求更重，处理速度下降</td></tr>
+    <tr><td>近期有过被限制记录</td><td>500 - 1000 条</td><td>先跑小批量观察账号反应</td></tr>
+  </tbody>
+</table>
+<p>标「老号」的两行差别常被低估。媒体推文的删除请求需要处理附件引用，单位时间的完成量明显低于纯文字推文。如果你的归档里图片和视频占比很高，实际耗时会比按条数估算出来的结果更长。</p>
+
+<h2>规模换算：不同体量分别要多久</h2>
+<p>下面这张表把体量换成时间，假设每小时稳定处理 2500 条、每次连续运行 4 小时后留出间隔。</p>
+<table>
+  <thead><tr><th>归档体量</th><th>净处理时间</th><th>按每晚 4 小时计算</th></tr></thead>
+  <tbody>
+    <tr><td>1,000 条</td><td>约 25 分钟</td><td>一晚跑完，还有余量</td></tr>
+    <tr><td>10,000 条</td><td>约 4 小时</td><td>1 个晚上</td></tr>
+    <tr><td>30,000 条</td><td>约 12 小时</td><td>3 个晚上</td></tr>
+    <tr><td>50,000 条</td><td>约 20 小时</td><td>5 个晚上</td></tr>
+    <tr><td>100,000 条</td><td>约 40 小时</td><td>10 个晚上</td></tr>
+  </tbody>
+</table>
+<p>时间只是成本的一半，另一半是中间不能失败。<p>这张表还藏着一个前提：它按「归档里的内容都需要删除」计算。实际上命中清单通常只占归档的一部分，其中还有一批属于保留对象。先跑一次体检拿到命中项数量，再套用这张表，估算会准得多。</p>
+处理两万条以上的任务，几乎一定会碰到中断：网络掉线、电脑休眠、工具进程被系统回收。体量越大，越应该先确认任务能不能续跑，相关机制见<a href="/blog/build-local-tweet-deletion-script">自己写删除脚本</a>与<a href="/blog/pause-resume-refund-deletion">暂停与恢复删除</a>。</p>
+
+<h2>撞到上限之后会发生什么</h2>
+<p>删到一半突然变慢或者停住，通常是三种情况之一。第一种是接口返回频率限制，工具自动退避重试，表现为速度下降但仍在推进。第二种是请求被静默跳过，接口没有报错，目标条目却没被处理，表现为进度条在走、实际处理数量没变。第三种是账号被临时限制动作，任何删除请求都会被拒绝，进度完全停住。</p>
+<p>区分方法不复杂：把工具的日志和归档条目总数对一遍。数量对得上，说明只是变慢；对不上，说明存在静默跳过，需要按清单核对哪些没处理。第三种情况会在你尝试手动删一条时立刻暴露。</p>
+<p>确认是第三种时不要反复重试。受限状态下重复发送同一批请求，只会把限制时间拉长。停掉任务，等账号状态恢复再继续，间隔通常需要几小时。如果这个账号反复触发，说明当前节奏始终超出承受范围，把每小时处理量再降一档比换工具更有用。</p>
+
+<h2>把长任务切成可核查的段落</h2>
+<ol>
+  <li><strong>先跑全量的 1%。</strong> 用最小样本确认筛选条件正确，避免删掉本来打算保留的内容。</li>
+  <li><strong>按固定大小分批，每批结束落一次进度。</strong> 批次以 500 到 1000 条为宜，落盘内容至少包含已处理条数和最后一条的时间戳。</li>
+  <li><strong>每批结束后抽查。</strong> 随机取几条已处理的推文，确认线上确实不存在了，做法见<a href="/blog/verify-old-tweets-really-deleted">验证推文是否真的删掉</a>。</li>
+  <li><strong>跨天继续时先读进度文件。</strong> 不要凭印象从上次的位置接着跑，进度以文件为准。</li>
+</ol>
+<p>这四步会让整体速度慢一点，同时把「删到一半不知道删到哪」这种状态消掉。对超过一万条的任务来说，能不能续跑比快更值钱。</p>
+
+<h2>什么情况下应该换方案</h2>
+<p>有两种情况适合停下来重新选路径。第一种是账号反复触发限制，说明这条节奏走不通，继续尝试只会拉长时间。第二种是归档里存在需要法务或合规确认的内容，比如已经进入纠纷的推文，这类内容一旦删除可能影响证据链，应该先确认再动手。除此之外，多数体量都能靠调慢节奏跑完。</p>
+<p>删除的难点很少出在额度上，大部分麻烦来自任务太长，中途容易断。把这个前提记住，规划节奏时的取舍会清楚很多。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把上面第一步做成了免费操作：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。拿到命中项清单之后再决定删哪些，范围会清楚很多，筛选方法见<a href="/blog/deletion-scope-selection">删除范围怎么选</a>。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始。</p>`,
+    contentEn: `
+<p>Ask how many tweets you can delete in a day and the answers range from a few hundred to tens of thousands. The gap is not in the tweets. It is in which limit each answer is describing. Separate the three and the question turns into a line you can calculate.</p>
+
+<h2>Three limits get folded into one question</h2>
+<p>The first is the platform's quota on write endpoints, counted on a rolling 15-minute window. The second is the batch size your deletion tool picks, which most tools let you adjust, and a larger batch does not mean faster completion. The third is account risk control: when activity density drifts far from your normal pattern, the account gets temporarily blocked from taking actions, and deletion requests are refused outright.</p>
+<p>The first two are arithmetic. The third is an account state problem. Mix them together and you get unreproducible claims, like one person clearing 3,000 tweets an hour while yours stops at 300. Split them apart and most confusing cases turn out to be the third limit doing the work.</p>
+<p>The confusion shows up most when people compare accounts. The same tool with the same batch settings performs very differently on a ten-year-old account and on one registered last month, and that gap comes from the third limit. Once you see it, any throughput figure someone else reports reads as a ceiling on what is possible rather than a target. Where your own account sits in the range is something you learn from the first hour of running a job, not from a published number.</p>
+
+<h2>Pace the job per hour, not per day</h2>
+<p>A day is an unreliable unit here, because running flat out for 24 hours is a separate question from how fast the work can go. Tools need gaps and so do accounts, so hourly throughput stacked across sessions tracks reality more closely. The ranges below are midpoints from repeated runs on different account profiles. Treat them as a starting point.</p>
+<table>
+  <thead><tr><th>Account profile</th><th>Suggested per-hour volume</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>New account, under a year old</td><td>800 to 1,500</td><td>Lower risk threshold, slower pace</td></tr>
+    <tr><td>Older account, mostly text posts</td><td>2,000 to 3,500</td><td>Most batches complete steadily</td></tr>
+    <tr><td>Older account, heavy media posts</td><td>1,200 to 2,000</td><td>Heavier requests, slower throughput</td></tr>
+    <tr><td>Recently restricted account</td><td>500 to 1,000</td><td>Run small batches and watch the response</td></tr>
+  </tbody>
+</table>
+<p>The two older-account rows are easy to underrate. Deleting a media post means handling attachment references, so throughput lands well below text-only work. If your archive is heavy on images and video, real time will run longer than a simple per-item estimate suggests.</p>
+
+<h2>Turning volume into time</h2>
+<p>The table below converts volume to hours, assuming a steady 2,500 per hour and four-hour runs with gaps in between.</p>
+<table>
+  <thead><tr><th>Archive size</th><th>Net processing time</th><th>At four hours per evening</th></tr></thead>
+  <tbody>
+    <tr><td>1,000 tweets</td><td>About 25 minutes</td><td>One evening with room to spare</td></tr>
+    <tr><td>10,000 tweets</td><td>About 4 hours</td><td>One evening</td></tr>
+    <tr><td>30,000 tweets</td><td>About 12 hours</td><td>Three evenings</td></tr>
+    <tr><td>50,000 tweets</td><td>About 20 hours</td><td>Five evenings</td></tr>
+    <tr><td>100,000 tweets</td><td>About 40 hours</td><td>Ten evenings</td></tr>
+  </tbody>
+</table>
+<p>Time is only half the cost. The other half is not failing in the middle.</p>
+<p>There is a premise hidden in the table: it assumes everything in the archive needs removing. In practice a flagged list is a fraction of the whole, and part of it belongs on a keep-list. Run the check first to get an actual item count, then apply the table, and the estimate lands much closer. Media-heavy archives also sit at the top end of the range, since every item carries more work.</p>
+<p>Jobs above roughly 20,000 items almost always meet an interruption: a dropped connection, a sleeping laptop, a tool process reclaimed by the operating system. The bigger the job, the more the question shifts from how fast it runs to whether it can resume. Both mechanics are covered in <a href="/blog/build-local-tweet-deletion-script">building your own deletion script</a> and <a href="/blog/pause-resume-refund-deletion">pause and resume behaviour</a>.</p>
+
+<h2>What running into a ceiling actually looks like</h2>
+<p>When a running job slows down or stalls, it is usually one of three things. A rate-limit response, where the tool backs off and retries, so it slows while still making progress. Silently skipped requests, where nothing errors but items never get processed, so the progress bar moves while the processed count does not. Or an account-level action block, where every deletion request is refused and progress stops completely.</p>
+<p>Telling them apart is mechanical. Reconcile the tool log against your archive item count. If the numbers match, you were only slowed down. If they do not, items were skipped and the list needs reconciling. The third case announces itself the moment you try deleting a single post by hand.</p>
+<p>Once you confirm the third case, stop retrying. Repeating the same batch while restricted only extends the restriction. Stop the job, wait for the account to return to normal, typically a few hours, then continue. If the same account keeps tripping it, dropping the hourly volume one more step beats switching tools.</p>
+<p>A log signature helps at this point. If entries keep appearing with a retry annotation while the processed total still climbs, you are being slowed, nothing more. If that total freezes while timestamps keep advancing, requests are leaving and nothing is landing, which points at silent skips or an action block. Two minutes reading the log tells you which response fits, and it beats inferring from a progress bar.</p>
+<p>The same log gives you a baseline for the next run. Note the throughput you actually achieved on a clean stretch, without retries, and use that as the planning number. Published figures describe a range; your own clean-stretch figure describes your account.</p>
+
+<h2>Cut long jobs into checkable segments</h2>
+<ol>
+  <li><strong>Run the first 1%.</strong> A minimal sample confirms your filters behave as intended, before you remove anything you meant to keep.</li>
+  <li><strong>Batch at a fixed size and write progress at the end of every batch.</strong> Batches of 500 to 1,000 work well. At minimum, persist the processed count and the timestamp of the last item.</li>
+  <li><strong>Spot-check after each batch.</strong> Pick a few processed tweets at random and confirm they are gone from the live account, described in <a href="/blog/verify-old-tweets-really-deleted">verifying that tweets are actually deleted</a>.</li>
+  <li><strong>Read the progress file before resuming.</strong> Do not continue from memory. The file is the source of truth.</li>
+</ol>
+<p>This costs some speed and removes the state where you are 12 hours in and cannot say what has been handled. Past 10,000 items, resumability is worth more than throughput.</p>
+<p>One more practical note on pacing: leave a longer gap after the first run than feels necessary. The account has just absorbed an unusual burst of write activity, and starting the second run too soon is the single most common way people convert a clean job into a restricted one.</p>
+
+<h2>When to switch plans instead of pushing harder</h2>
+<p>Two situations justify stopping. The first is a repeat pattern of account restrictions, which means the current pace does not fit and more attempts only stretch the timeline. The second is content with legal or compliance exposure, such as posts already tied to a dispute, where deletion can affect a chain of evidence and needs confirmation first. Everything else can usually be finished by pacing it slower.</p>
+<p>The hard part of deletion was never quota. It is that long jobs break. Keep that in view and the trade-offs get easier to reason about.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) turns the first step above into a free operation. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. With the flagged list in hand, choosing what to remove gets much clearer, as covered in <a href="/blog/deletion-scope-selection">choosing a deletion scope</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
+  },
+  {
+    slug: 'whitelist-and-pinned-tweets',
+    title: '清理时怎么保住置顶推文、神回复和重要串',
+    excerpt:
+      '批量清理真正棘手的地方在误删。漏删一条下个批次能补，误删置顶推文或者一条串的起点，主页展示和上下文就断了，而且没有撤销入口。这篇文章给出三类必须保留的对象、白名单的三种做法，以及一份清理前的保留清单。',
+    date: '2026-09-23',
+    updatedAt: '2026-09-23',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '白名单', '置顶推文', '推文串', '删除范围'],
+    canonical: '/blog/whitelist-and-pinned-tweets',
+    faq: [
+      { q: "批量删除会连置顶推文一起删掉吗？", a: "取决于筛选条件。如果你的规则是按日期区间删除，置顶推文只要落在区间内就会被删掉，置顶状态不会让它自动豁免。唯一的保护方式是把它的推文 ID 加入排除名单，或者在删除前先取消置顶并把它移出删除范围。", qEn: "Will a bulk deletion remove my pinned tweet?", aEn: "It depends on the filter. If your rule deletes by date range, a pinned tweet inside that range gets removed like any other. Pinned status does not exempt it. The only protection is adding its tweet ID to an exclusion list, or unpinning it and moving it outside the deletion scope beforehand." },
+      { q: "删掉一条串的中间部分会怎样？", a: "被删的推文会从串里消失，剩下的推文仍然按串联关系连接，但读者看到的顺序会出现断点。如果你删的是串的起点，后面的回复会失去上下文入口，从主页点进去的读者看到的是一段没有开头的对话。所以做线程类的清理时，应以整条串为单位决定保留还是删除。", qEn: "What happens if I delete the middle of a thread?", aEn: "The removed post disappears and the rest stay linked, but readers see a break in the sequence. Delete the opening post and the replies lose their entry point, so anyone arriving from your profile lands in a conversation with no beginning. For thread-based content, decide per thread rather than per post." },
+      { q: "白名单和删除范围能不能同时用？", a: "可以，而且应该同时用。范围决定删哪些，白名单决定其中哪些不删。多数删除工具支持用推文 ID 或关键词做排除，把置顶、串起点和商业合作内容写进排除规则，剩下的再按范围批量执行。这比逐条确认快得多，也不会漏。", qEn: "Can I use a whitelist together with a deletion scope?", aEn: "Yes, and you should. Scope decides what gets deleted, the whitelist decides what is exempted from it. Most tools accept tweet IDs or keywords as exclusions. Put pinned posts, thread openers and sponsored content into the exclusion rules, then run the scope in bulk. It is much faster than confirming items one by one and it does not miss any." },
+      { q: "怎么确认保留的内容真的没被处理？", a: "删除任务结束后，按保留清单逐条打开确认，不要只看工具报告。工具的统计口径是「已发送删除请求」，并不等于「内容仍然存在」。抽查方法可以参考删除后验证的通用做法，重点看清单里的条目是否都还在。", qEn: "How do I confirm my protected posts were left alone?", aEn: "After the job finishes, open each item on your keep-list and check it directly instead of trusting the tool report. Tool counters measure requests sent, not content that survived. The general post-deletion verification routine works here, with attention on whether every keep-list item is still present." },
+    ],
+    titleEn: 'Keeping Pinned Posts, Threads and Favourites Safe During a Cleanup',
+    excerptEn:
+      'The real risk in bulk cleanup is not missing tweets, it is removing the wrong ones. Pinned posts, thread openers and heavily quoted content carry display and context, so deleting them breaks your profile and the threads around them. Here are the three categories to protect, three ways to build a whitelist, and a pre-cleanup checklist.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['X/Twitter', 'whitelist', 'pinned tweet', 'threads', 'deletion scope'],
+    content: `
+<p>批量清理的讨论大多围绕「怎么删干净」，很少讲「怎么不删错」。实际上，误删的代价比漏删高得多：漏删一条可以下个批次补上，误删置顶推文或者一条串的起点，主页展示和上下文就断了，而且没有撤销入口。</p>
+
+<h2>先分清楚哪些内容属于保留对象</h2>
+<p>值得写进保留名单的内容大致有三类。第一类是主页展示类，包括置顶推文和任何你希望访客第一眼看到的内容。第二类是结构类，指作为串起点的推文，以及被其他推文引用的原始内容。第三类是外部引用类，指被媒体、博客或第三方页面引用过的推文，删除后对方页面会出现失效链接。</p>
+<p>这三类的共同点是：它们的价值不在推文本身，而在它所处的位置。单看内容像是可以删掉的旧帖，放进结构里就成了承重墙。</p>
+
+<h2>置顶推文在批量删除里的真实行为</h2>
+<p>置顶只是一个展示状态，并不构成豁免。筛选条件命中它，它就会被删。多数工具在删除前不会特别提示，所以这件事只能自己提前处理。做法很简单：把置顶推文的 ID 单独记下来，写进工具的排除规则。</p>
+<p>另外要注意时间筛选的边界。如果你按「删除 2020 年 1 月 1 日之前的全部推文」执行，一条 2019 年的置顶推文正好落在范围内。设置区间时把保留内容的日期看一眼，比事后补救省事。</p>
+
+<h2>白名单的三种做法</h2>
+<table>
+  <thead><tr><th>做法</th><th>适用情况</th><th>代价</th></tr></thead>
+  <tbody>
+    <tr><td>推文 ID 排除</td><td>保留对象数量少、位置明确</td><td>需要逐条收集 ID，适合十到几十条</td></tr>
+    <tr><td>关键词或标签排除</td><td>保留对象有共同特征，比如都带某个标签</td><td>依赖内容特征一致性，规则容易漏</td></tr>
+    <tr><td>先导转移出范围</td><td>保留对象较多，且允许调整可见范围</td><td>需要事前操作，不适合量大的情况</td></tr>
+  </tbody>
+</table>
+<p>三种做法可以叠加。常见组合是关键词排除处理一批同类内容，ID 排除补齐零星几条。规则写完先跑 1% 的样本，确认保留对象没有被选中，再把完整任务放出去。</p>
+
+<h2>串和引用推文：删一条会连带什么</h2>
+<p>删掉一条串的中间推文，后续内容仍按串联关系相互连接，但读者看到的顺序里会出现断点。删掉串的起点，问题更明显：从主页点进去的读者看到的是一段没有开头的对话，看不出上下文。</p>
+<p>被引用过的情况反过来。你删掉原始的推文，引用它的推文仍然存在，只是引用卡片会变成失效状态。如果引用你内容的是媒体或行业博客，对方页面会留下一个打不开的位置。这类内容在删除前值得单独搜一遍，看有没有外部引用记录。</p>
+<p>线程类内容的清理原则是按整条串决定，不要按单条推文决定。保留就整条留，删除就整条删，中间截断是最难看的形态。</p>
+
+<h2>清理前的保留清单</h2>
+<ol>
+  <li><strong>导出置顶推文与主页展示内容的 ID。</strong> 这两项是访客第一眼看到的东西。</li>
+  <li><strong>标出所有串的起点。</strong> 从主页往回翻，凡是带后续回复的按串分组登记。</li>
+  <li><strong>搜索被外部引用过的推文。</strong> 用关键词加引号在搜索引擎里查一遍，看有没有第三方页面引用。</li>
+  <li><strong>把保留对象写进排除规则，跑 1% 样本验证。</strong> 这一步决定后面几万条的取舍。</li>
+  <li><strong>任务结束后按清单逐条回看。</strong> 确认保留内容都在，做法见<a href="/blog/verify-old-tweets-really-deleted">验证推文是否真的删掉</a>。</li>
+</ol>
+<p>整个清单的准备时间取决于串的数量，多数账号在两小时内能做完。比起误删之后再想办法找回，这段时间花得值。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）的第一步正好用来生成这份清单：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。命中项清单里能看到哪些内容带手机号、住址或敏感话题，把这些和相关串的起点一起写进排除规则即可，范围筛选思路见<a href="/blog/deletion-scope-selection">删除范围怎么选</a>与<a href="/blog/which-tweets-to-clean-by-risk">按风险优先级排序</a>。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始。</p>`,
+    contentEn: `
+<p>Most cleanup advice explains how to remove everything. Very little covers how to avoid removing the wrong things. The asymmetry matters: a missed post can be caught in the next batch, while a deleted pinned post or thread opener breaks your profile and its surrounding context with no undo available.</p>
+
+<h2>Three categories worth protecting</h2>
+<p>Content that belongs on a keep-list tends to fall into three groups. Display items, meaning your pinned post and anything you want a first-time visitor to see. Structural items, meaning thread openers and original posts that other posts quote or reply to. External references, meaning posts that media outlets, blogs or third-party pages have cited, where deletion leaves a dead link behind.</p>
+<p>What these share is that their value sits in their position rather than their text. Read on its own, an old post can look safe to delete. Placed at the top of your profile or the front of a thread, it is load-bearing.</p>
+
+<h2>How pinned posts actually behave in a bulk job</h2>
+<p>Pinning is a display flag, not an exemption. If your filter matches it, it gets removed. Most tools do not flag this beforehand, so the handling has to be yours. The fix is simple: record the ID of any pinned post and add it to the tool's exclusion rules.</p>
+<p>Watch the date boundary as well. If you run a rule such as deleting everything before 1 January 2020, a pinned post from 2019 sits inside the range. Checking where your keep-list items fall while setting the range is far cheaper than repairing the result afterwards.</p>
+
+<h2>Three ways to build a whitelist</h2>
+<table>
+  <thead><tr><th>Approach</th><th>Best for</th><th>Trade-off</th></tr></thead>
+  <tbody>
+    <tr><td>Exclude by tweet ID</td><td>A small number of precisely known items</td><td>IDs must be collected one by one, workable for dozens</td></tr>
+    <tr><td>Exclude by keyword or tag</td><td>Keep-list items sharing a common marker</td><td>Depends on consistent content markers and can miss items</td></tr>
+    <tr><td>Move items out of scope first</td><td>Larger keep-lists where visibility can be adjusted</td><td>Requires manual work beforehand and does not scale</td></tr>
+  </tbody>
+</table>
+<p>These combine well. A common pattern is keyword exclusion for a group of similar posts, with ID exclusions filling the gaps. Run 1% of the job first to confirm nothing on the keep-list is selected, then release the full run.</p>
+
+<h2>Threads and quoted posts</h2>
+<p>Remove the middle of a thread and the remaining posts stay connected, while readers see a gap in the sequence. Remove the opener and the problem is louder: someone arriving from your profile lands in a conversation with no beginning and no visible context.</p>
+<p>Quotes work in the other direction. Delete the original and the quoting post survives, except its quote card goes dead. When the quoting page belongs to a publication or an industry blog, you leave an unopenable slot on someone else's site. Those posts deserve a separate search before deletion to find external references.</p>
+<p>For thread content, decide per thread rather than per post. Keep the whole thread or remove the whole thread. A severed thread is the worst of the three outcomes.</p>
+
+<h2>A pre-cleanup keep-list</h2>
+<ol>
+  <li><strong>Export the IDs of pinned and profile-display posts.</strong> These are what a visitor sees first.</li>
+  <li><strong>Mark every thread opener.</strong> Scroll back through your profile and group posts that have replies attached.</li>
+  <li><strong>Search for externally cited posts.</strong> Run a quoted-keyword search to find third-party pages referencing your content.</li>
+  <li><strong>Write the keep-list into exclusion rules and test on a 1% sample.</strong> This step decides the outcome of the next tens of thousands of items.</li>
+  <li><strong>Walk the list again after the job finishes.</strong> Confirm everything is still there, following <a href="/blog/verify-old-tweets-really-deleted">post-deletion verification</a>.</li>
+</ol>
+<p>Preparation time depends on how many threads you have. For most accounts it fits inside two hours, and it costs far less than trying to recover a deleted structure.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) produces this list as its first step. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. The flagged list shows which posts carry phone numbers, addresses or sensitive topics, so you can combine those with your thread openers in exclusion rules, as described in <a href="/blog/deletion-scope-selection">choosing a deletion scope</a> and <a href="/blog/which-tweets-to-clean-by-risk">ranking by risk</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
+  },
+  {
+    slug: 'deletion-audit-record-export',
+    title: '删了什么要留痕：给删除留一份可核查的记录',
+    excerpt:
+      '删除通常是一次性动作，记录却可能在几个月后派上用场：核对费用、应对纠纷、或者单纯确认自己删过哪些内容。这篇文章给出删除记录该包含的字段、从体检报告到删除清单的串联方式，以及保存和复查的节奏。',
+    date: '2026-09-23',
+    updatedAt: '2026-09-23',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '删除记录', '数据留存', '合规核对', '删除复盘'],
+    canonical: '/blog/deletion-audit-record-export',
+    faq: [
+      { q: "删除记录要保存多久？", a: "多数情况下保存到下一年度结束就够用，如果涉及费用报销或潜在纠纷，建议至少保留两年。记录本身包含少量原始内容信息，所以不宜无限期保存。一个折中做法是保留统计部分长期存档，把逐条明细按年度清理。", qEn: "How long should I keep a deletion record?", aEn: "Until the end of the following year covers most situations. Where expense claims or potential disputes are involved, two years is a safer minimum. The record contains some original content details, so indefinite storage is not ideal. A workable split is keeping aggregate statistics long term and clearing the item-level detail on a yearly basis." },
+      { q: "记录里需要保存推文原文吗？", a: "不需要保存完整原文。保留推文 ID、发布时间和风险分类就能满足核对需求，完整原文反而会扩大记录本身的隐私暴露面。如果确实需要留档，把原文单独加密保存，与记录分开存放。", qEn: "Should the record contain the original tweet text?", aEn: "Not in full. Tweet ID, timestamp and risk category cover verification needs, while full text widens the privacy exposure of the record itself. If you genuinely need the content archived, encrypt it separately and store it apart from the record." },
+      { q: "怎么把体检结果和删除记录对应起来？", a: "用推文 ID 作为两侧的公共字段。体检报告输出的是分类命中项，把其中的 ID 导出成删除清单，执行后把同一批 ID 标记为已处理，两侧就能对上。只靠标题或时间对账，遇到同日多条内容时容易混淆。", qEn: "How do the check results and the deletion record line up?", aEn: "Tweet ID is the shared field. The check outputs flagged items by category, so export those IDs into a deletion list, run the job, then mark the same IDs as processed. Reconciling by title or timestamp instead tends to get confusing when several posts share a date." },
+      { q: "删除记录需要定期更新吗？", a: "建议每次任务结束后立即补齐，不要攒着。删除任务通常跨几个晚上，中间断点也多，事后凭记忆回填容易漏项。把写记录放在任务收尾的固定动作里，成本最低。", qEn: "Does the record need ongoing maintenance?", aEn: "Update it right after each job rather than accumulating backlog. Jobs often span several evenings with interruptions, and reconstructing them from memory misses entries. Making the record part of the job's closing routine is the cheapest option." },
+    ],
+    titleEn: 'Keeping a Verifiable Record of What You Deleted',
+    excerptEn:
+      'Deletion happens once. The record of it tends to matter months later, for reconciling a charge, answering a dispute, or simply confirming which posts you removed. Here is what a useful record contains, how to link a footprint check to a deletion list, and how to store and review it.',
+    categoryEn: 'Deletion Guide',
+    tagsEn: ['X/Twitter', 'deletion record', 'data retention', 'compliance', 'cleanup review'],
+    content: `
+<p>删除任务跑完之后，多数人会直接关掉工具，不再回头看。这份记录的价值通常在几个月后才显现出来，而那时已经无法重建。</p>
+
+<h2>三种真的会用上删除记录的场景</h2>
+<p>第一种是费用核对。按条计费的删除工具，账单条目和你实际删除的范围需要能对上，否则无法判断计费是否准确。第二种是合规与纠纷应对。企业内部账号、涉及前雇主的言论、已经进入争议的内容，删除动作本身可能被追问，有一份记录比口头回忆可靠。第三种是自我复盘。半年后想确认某条内容到底删没删，翻记录比重新下载归档解析快得多。</p>
+<p>三种场景对记录详略的要求不同，共同点是都需要推文 ID 和时间戳这两个不会变动的字段。</p>
+
+<h2>一条有用的记录该包含什么</h2>
+<table>
+  <thead><tr><th>字段</th><th>作用</th><th>是否必需</th></tr></thead>
+  <tbody>
+    <tr><td>推文 ID</td><td>唯一标识，用于与报告和账单对账</td><td>必需</td></tr>
+    <tr><td>发布时间</td><td>确认落在删除区间内</td><td>必需</td></tr>
+    <tr><td>风险分类</td><td>说明删除理由，例如含手机号或住址</td><td>必需</td></tr>
+    <tr><td>任务批次号</td><td>定位是哪一次任务处理的</td><td>建议</td></tr>
+    <tr><td>处理结果</td><td>区分已删除、已跳过、处理失败</td><td>必需</td></tr>
+    <tr><td>推文原文</td><td>仅在确有留档需求时保留</td><td>不建议默认保存</td></tr>
+  </tbody>
+</table>
+<p>字段里最容易被忽略的是处理结果。很多工具只报告发送了多少请求，没有区分实际生效的数量。记录里保留这一列，才能在出现争议时说明哪些内容确实已经不存在。</p>
+
+<h2>从体检报告到删除清单</h2>
+<p>体检报告输出的是分类命中项，天然就是一份筛选后的清单。把命中项按推文 ID 导出，就得到删除范围；执行完成后，把同一批 ID 标记为已处理，两侧通过 ID 对齐。整个链条只有三个节点：体检生成清单、删除执行清单、记录回填结果。</p>
+<p>这条链路的好处是可核对。如果账单条数与清单条数不一致，能很快定位到是范围设置问题还是计费问题。相关做法见<a href="/blog/export-share-footprint-report">导出体检报告</a>与<a href="/blog/tweet-deletion-cost">按条计费的说明</a>。</p>
+
+<h2>保存方式与期限</h2>
+<p>记录里包含推文 ID 和风险分类，属于低敏感度但非公开的信息。保存时注意两点：放在本地而不放在同步盘，避免被云盘索引；用加密归档存放，不要和归档原始数据混在一起。</p>
+<p>期限上，多数情况保存到下一年度结束够用，涉及费用报销或潜在争议时建议至少两年。一个折中做法是长期保留统计部分，逐条明细按年度清理，既留有可核对的框架，也不让记录无限膨胀。文件处理方式可以参考<a href="/blog/encrypted-archive">归档加密</a>与<a href="/blog/store-x-archive-safely">归档安全存放</a>。</p>
+
+<h2>复查节奏</h2>
+<ol>
+  <li><strong>任务结束后立即补齐。</strong> 把写记录放进收尾动作，不隔天回填。</li>
+  <li><strong>每月抽一次核对。</strong> 取上一批记录，随机挑几条确认线上已不存在。</li>
+  <li><strong>每季度对一次账。</strong> 如果使用计费工具，把记录条数与账单条数比一次。</li>
+  <li><strong>每年度清理一次明细。</strong> 保留统计，清理逐条部分。</li>
+</ol>
+<p>这套节奏的总耗时不多，作用是把「删过什么」从记忆问题变成可以查证的事实。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）覆盖了这条链路的第一个节点：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。命中项可以按分类导出，直接作为删除清单的输入，分类口径见<a href="/blog/risk-labels-explained">风险标签解读</a>与<a href="/blog/digital-footprint-health-score">健康分怎么算</a>。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始。</p>`,
+    contentEn: `
+<p>Once a deletion job finishes, most people close the tool and move on. The record tends to matter months later, at which point it can no longer be reconstructed.</p>
+
+<h2>Three situations where a record earns its keep</h2>
+<p>First, reconciling costs. When a tool charges per tweet, the invoice lines need to match the scope you actually removed, or you cannot tell whether the billing is accurate. Second, compliance and disputes. For company accounts, posts about a former employer, or content already tied to a disagreement, the deletion action itself can be questioned, and a record is more reliable than recollection. Third, your own review. Six months later, checking whether one post was removed is far faster from a record than from re-downloading and parsing an archive.</p>
+<p>Each situation wants a different level of detail. All three depend on two fields that never change: tweet ID and timestamp.</p>
+
+<h2>What a useful record contains</h2>
+<table>
+  <thead><tr><th>Field</th><th>Purpose</th><th>Required</th></tr></thead>
+  <tbody>
+    <tr><td>Tweet ID</td><td>Unique key for reconciling against reports and invoices</td><td>Yes</td></tr>
+    <tr><td>Posted at</td><td>Confirms the item fell inside the deletion window</td><td>Yes</td></tr>
+    <tr><td>Risk category</td><td>States the reason, such as containing a phone number or address</td><td>Yes</td></tr>
+    <tr><td>Job or batch ID</td><td>Identifies which run handled the item</td><td>Recommended</td></tr>
+    <tr><td>Outcome</td><td>Separates deleted, skipped and failed</td><td>Yes</td></tr>
+    <tr><td>Original text</td><td>Only where a genuine archival need exists</td><td>Not by default</td></tr>
+  </tbody>
+</table>
+<p>Outcome is the field most often dropped. Many tools report how many requests were sent without separating how many took effect. Keeping that column is what lets you state, in a dispute, which items are genuinely gone.</p>
+
+<h2>Linking a footprint check to a deletion list</h2>
+<p>A footprint check already produces a filtered list, since its flagged items are grouped by category. Export those IDs and you have your deletion scope. After the job runs, mark the same IDs as processed and the two sides reconcile on ID. The whole chain has three nodes: the check generates the list, deletion executes it, the record captures the outcome.</p>
+<p>That chain is auditable. When invoice lines and list rows disagree, you can quickly tell whether the scope was wrong or the billing was. Related reading covers <a href="/blog/export-share-footprint-report">exporting a check report</a> and <a href="/blog/tweet-deletion-cost">per-tweet pricing</a>.</p>
+
+<h2>Storage and retention</h2>
+<p>The record holds tweet IDs and risk categories, which are low-sensitivity but not public. Two storage habits help: keep it locally rather than on a synced drive, so a cloud index does not pick it up, and store it encrypted, separate from your raw archive data.</p>
+<p>On retention, the end of the following year covers most needs, with two years as a safer floor when expense claims or potential disputes are involved. A workable compromise keeps aggregate statistics long term and clears item-level detail yearly, preserving an auditable frame without letting the file grow forever. Handling is covered in <a href="/blog/encrypted-archive">encrypting an archive</a> and <a href="/blog/store-x-archive-safely">storing an archive safely</a>.</p>
+
+<h2>A review rhythm</h2>
+<ol>
+  <li><strong>Complete the record when the job ends.</strong> Make it part of the closing routine instead of filling it in the next day.</li>
+  <li><strong>Spot-check monthly.</strong> Take the previous batch and confirm a few items are genuinely gone.</li>
+  <li><strong>Reconcile quarterly.</strong> Where a paid tool is involved, compare record rows against invoice lines once a quarter.</li>
+  <li><strong>Clear detail yearly.</strong> Keep the statistics and drop the item-level rows.</li>
+</ol>
+<p>The total effort is modest and it converts what you deleted from a memory question into something you can look up.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) covers the first node in that chain. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. Flagged items export by category and feed straight into a deletion list, with the classification explained in <a href="/blog/risk-labels-explained">risk labels</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
+  },
+  {
+    slug: 'resumable-deletion-job-design',
+    title: '删除任务的断点续传是怎么设计的',
+    excerpt:
+      '处理上万条推文的删除任务几乎一定会中断：网络掉线、电脑休眠、进程被系统回收。能续跑的删除任务和不能续跑的差别，全在检查点、幂等和状态恢复这三件事上。这篇文章拆开设计思路，并给出最小实现骨架。',
+    date: '2026-09-23',
+    updatedAt: '2026-09-23',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    tags: ['X/Twitter', '断点续传', '删除脚本', '幂等', '任务状态'],
+    canonical: '/blog/resumable-deletion-job-design',
+    faq: [
+      { q: "断点续传的核心是什么？", a: "核心是两件事：把任务状态持久化到磁盘，以及保证重复处理同一条内容不会产生副作用。前者让中断后能知道做到哪了，后者让恢复过程可以安全地重跑最后一段。缺任何一件，续传都会出错。", qEn: "What is the core of a resumable job?", aEn: "Two things: persisting job state to disk, and ensuring that processing the same item twice causes no side effects. The first tells you where you stopped after an interruption, the second makes it safe to re-run the final segment. Missing either one breaks resumption." },
+      { q: "删除接口本身也有幂等性，为什么还要在任务层再做一次？", a: "删除接口接近幂等，重复删除同一条推文通常只会得到「未找到」响应。问题出在统计和计费上：重复发送的请求可能被计入处理量，让进度数字虚高，按条计费时也可能产生额外条目。所以幂等要在任务层实现，而不是依赖接口行为。", qEn: "Why does idempotency matter, is deletion not already idempotent?", aEn: "Deletion is close to idempotent, since re-deleting a post usually just returns not-found. The problem sits in counting and billing: repeated requests can inflate the processed total and, with per-item pricing, add extra lines. Idempotency therefore belongs at the job layer rather than being assumed from the API." },
+      { q: "检查点应该多久落一次盘？", a: "按批次落盘，批次大小取 500 到 1000 条比较合适。落盘太稀疏，中断时会重复处理较多内容；太频繁，磁盘写入本身会成为开销。落盘内容至少包含已处理条数、最后一条的时间戳和本批的处理结果。", qEn: "How often should a checkpoint be written?", aEn: "Once per batch, with batches of 500 to 1,000 items. Too sparse and an interruption forces you to repeat a lot of work, too frequent and the disk writes become their own overhead. At minimum, persist the processed count, the last timestamp, and the outcome of the batch." },
+      { q: "续跑时怎么确定从哪一条继续？", a: "用最后一条的时间戳配合推文 ID 做游标，不要只依赖条数。按时间排序的列表里，同一秒可能有几条推文，只记条数会在边界处错位。以时间戳加 ID 组合定位起点，可以避免漏处理或者重复处理。", qEn: "How does a resumed run know where to continue?", aEn: "Use the last timestamp together with the tweet ID as a cursor rather than relying on a count alone. Posts share timestamps, so a count-based offset can land in the wrong place at the boundary. A timestamp plus ID pair pins the restart point and avoids both gaps and duplicates." },
+    ],
+    titleEn: 'Designing a Resumable Deletion Job: Checkpoints, Idempotency and Safe Restarts',
+    excerptEn:
+      'Any deletion job handling tens of thousands of posts will get interrupted, whether by a dropped connection, a sleeping laptop or a reclaimed process. What separates a job that resumes from one that starts over is checkpointing, idempotency and state recovery. This covers the design and a minimal implementation skeleton.',
+    categoryEn: 'Advanced Tech',
+    tagsEn: ['X/Twitter', 'resumable jobs', 'deletion script', 'idempotency', 'job state'],
+    content: `
+<p>删除任务的规模一旦上百条，中断就是常态。网络会掉，笔记本会休眠，长跑的进程会被系统按内存压力回收。把「不会中断」当设计前提的任务，第一次断线就报废了，前面的工作全部要重来。</p>
+
+<h2>长任务为什么必然会中断</h2>
+<p>三类原因里，只有一类能靠重试解决。网络层的波动可以退避重试；本机层的休眠和进程回收，需要任务在外部唤醒之后能恢复；平台层的频率限制则需要任务主动降速并等待。三类原因的处理方式不同，但都要求同一件事：任务的状态不能只存在内存里。</p>
+<p>这也是「能不能续跑」的分界线。状态只存在内存中的任务，进程一消失，进度就一起消失。</p>
+
+<h2>状态机与检查点</h2>
+<p>把任务拆成有限几个状态，每个状态转换时把必要字段写进磁盘。下面这张表列出常见状态和各自需要落盘的内容。</p>
+<table>
+  <thead><tr><th>状态</th><th>需要落盘的字段</th><th>恢复时的动作</th></tr></thead>
+  <tbody>
+    <tr><td>已就绪</td><td>待处理清单、筛选条件</td><td>直接从头开始</td></tr>
+    <tr><td>处理中</td><td>已处理条数、最后一条时间戳与 ID、当前批次号</td><td>从游标位置继续</td></tr>
+    <tr><td>等待限流</td><td>限流开始时间、建议等待时长</td><td>等待期满后继续</td></tr>
+    <tr><td>批次完成</td><td>本批结果分类计数</td><td>启动下一批</td></tr>
+    <tr><td>已暂停</td><td>暂停原因、已处理总数</td><td>人工确认后继续</td></tr>
+    <tr><td>已完成</td><td>结果汇总、失败清单</td><td>进入复核环节</td></tr>
+  </tbody>
+</table>
+<p>状态机的价值在于让恢复动作唯一。恢复时不需要判断「现在大概做到哪了」，读状态文件，按表执行对应动作即可。状态越少越好，六个状态已经能覆盖常见情况。</p>
+
+<h2>幂等：重复处理同一条会怎样</h2>
+<p>删除接口本身接近幂等，重复删除一条已经不存在的推文，通常只会得到一个"未找到"的响应。真正的麻烦在任务的记账上：重复发送的请求如果都被计入处理量，进度数字会比实际偏高，按条计费时还可能多出条目。</p>
+<p>做法是在任务层维护一份已处理 ID 的集合，落盘保存。每批开始前先剔除已在集合中的条目，处理成功后再写入集合。集合大小需要控制，超过十万条时可以用分片的方式按天存储，查询时按日期范围加载。</p>
+<p>另一处容易被忽略的幂等点是结果统计。失败条目和跳过条目要分开计数，否则恢复后无法判断「数字对不上」是重复处理还是真的漏了。相关讨论见<a href="/blog/x-api-rate-limits-deletion">接口限流下的删除</a>。</p>
+
+<h2>和速率限制协同</h2>
+<p>续传机制和降速策略需要一起设计。如果任务在被限流后立刻重试，恢复逻辑再完善也没用，因为请求根本发不出去。合理的做法是让限流状态成为状态机的一个显式状态：进入该状态后写入等待时长，恢复时先读这个时长，不要读游标。</p>
+<p>批与批之间留出间隔也有帮助。间隔让账号的行为密度更接近日常，同时给任务一个天然的中断点，进程在间隔期间被回收也能安全恢复。</p>
+
+<h2>最小实现骨架</h2>
+<ol>
+  <li><strong>清单生成。</strong> 从归档解析结果中导出待处理条目，按时间排序，写入一个可断点读取的文件。</li>
+  <li><strong>状态文件。</strong> 独立于清单存在，记录当前状态和游标。写入采用先写临时文件再替换的方式，避免写一半断电损坏。</li>
+  <li><strong>游标推进。</strong> 每批完成后更新游标，游标使用时间戳加推文 ID 的组合。</li>
+  <li><strong>已处理集合。</strong> 按分片存储，启动时加载对应分片，用于跳过重复条目。</li>
+  <li><strong>结果分类。</strong> 成功、失败、跳过三类分别计数并落盘，为复核环节提供输入。</li>
+</ol>
+<p>五个模块合计不超过几百行代码，收益是任务从「一次跑完否则重来」变成「每次运行都在推进」。体量越大，这个收益越明显，关于任务规模的换算见<a href="/blog/daily-tweet-deletion-limits">删除上限与耗时估算</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）的第一步只做解析，不涉及写入：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。解析结果可以按分类导出，作为删除任务的输入清单，相关实现讨论见<a href="/blog/browser-side-archive-parsing">浏览器端解析归档</a>与<a href="/blog/build-local-tweet-deletion-script">自己写删除脚本</a>。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始。</p>`,
+    contentEn: `
+<p>Once a deletion job runs past a few hundred items, interruptions become normal. Connections drop, laptops sleep, and long-running processes get reclaimed under memory pressure. A job designed on the assumption that it will not be interrupted is ruined by the first disconnect, with all prior work lost.</p>
+
+<h2>Why long jobs always get interrupted</h2>
+<p>Of the three causes, only one is solved by retrying. Network-level blips respond to backoff and retry. Local causes such as sleep and process reclamation require the job to recover after the machine wakes. Platform rate limits require the job to slow down and wait deliberately. Each needs a different response, and all three demand the same property: job state cannot live only in memory.</p>
+<p>That is the dividing line for resumability. When state exists only in memory, the process disappears and takes the progress with it.</p>
+
+<h2>State machine and checkpoints</h2>
+<p>Reduce the job to a small set of states and write the necessary fields to disk on every transition. The table below lists common states with what each needs to persist.</p>
+<table>
+  <thead><tr><th>State</th><th>Fields to persist</th><th>Action on recovery</th></tr></thead>
+  <tbody>
+    <tr><td>Ready</td><td>Work list, filter definition</td><td>Start from the beginning</td></tr>
+    <tr><td>Running</td><td>Processed count, last timestamp and ID, current batch</td><td>Continue from the cursor</td></tr>
+    <tr><td>Rate limited</td><td>Limit start time, suggested wait</td><td>Wait, then continue</td></tr>
+    <tr><td>Batch complete</td><td>Outcome counts for the batch</td><td>Start the next batch</td></tr>
+    <tr><td>Paused</td><td>Pause reason, total processed</td><td>Continue after manual confirmation</td></tr>
+    <tr><td>Complete</td><td>Summary, failure list</td><td>Move to the verification step</td></tr>
+  </tbody>
+</table>
+<p>The point of the state machine is that the recovery action becomes unambiguous. No guessing about roughly where you were: read the state file and take the matching action. Fewer states are better, and six cover the common cases.</p>
+
+<h2>Idempotency: what happens when an item is processed twice</h2>
+<p>The delete endpoint is close to idempotent. Re-deleting a post that is already gone usually just returns not-found. The real difficulty is the job's own bookkeeping: if repeated requests all count toward the processed total, progress reads high, and with per-item pricing it can add invoice lines.</p>
+<p>The fix is a set of processed IDs maintained at the job layer and persisted to disk. Before each batch, drop items already in the set; after a successful item, add it. The set needs size control, so past 100,000 entries store it sharded by day and load only the relevant date range at startup.</p>
+<p>Outcome accounting is the other easy-to-miss idempotency point. Failures and skips need separate counters, otherwise after a restart there is no way to tell whether a mismatch means duplicate work or a genuine gap. Related reading covers <a href="/blog/x-api-rate-limits-deletion">deletion under API rate limits</a>.</p>
+
+<h2>Working with rate limits</h2>
+<p>Resumption and throttling have to be designed together. A job that retries immediately after a rate limit will not be saved by good recovery logic, because the requests never leave. The practical approach is making the rate-limited condition an explicit state: write the wait duration when entering it, and read that duration on recovery rather than reading the cursor.</p>
+<p>Gaps between batches help as well. They keep activity density closer to a normal pattern and give the job a natural interruption point, so a process reclaimed during a gap can still recover safely.</p>
+
+<h2>A minimal implementation skeleton</h2>
+<ol>
+  <li><strong>List generation.</strong> Export work items from the parsed archive, sort by time, and write a file that supports offset reads.</li>
+  <li><strong>State file.</strong> Separate from the list, holding the current state and cursor. Write to a temporary file and replace, so a partial write cannot corrupt it.</li>
+  <li><strong>Cursor advance.</strong> Update the cursor after each batch, using a timestamp plus tweet ID pair.</li>
+  <li><strong>Processed set.</strong> Sharded storage, loading the relevant shard at startup and skipping items already present.</li>
+  <li><strong>Outcome accounting.</strong> Count success, failure and skip separately, giving the verification step its input.</li>
+</ol>
+<p>The five modules fit in a few hundred lines, and the payoff is a job that makes progress on every run instead of starting over. The larger the job, the bigger the payoff, with sizing maths in <a href="/blog/daily-tweet-deletion-limits">deletion limits and time estimates</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) covers only the reading side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing, and never asks for account access. Results export by category as input for a deletion job, with implementation notes in <a href="/blog/browser-side-archive-parsing">parsing archives in the browser</a> and <a href="/blog/build-local-tweet-deletion-script">building your own deletion script</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
+  },
+  {
+    slug: 'chinese-users-cross-platform-footprint',
+    title: '微博 + X 双线清理：中文用户的数字足迹为什么更难管',
+    excerpt:
+      '中文用户的数字足迹常常分成两条线：一条在 X，一条在国内平台。拼音检索让「换个名字」失去效果，两个平台的删除机制、索引行为和留痕方式也不一样。这篇文章拆开双线结构，给出平台机制对照表和先清哪一边的判断顺序。',
+    date: '2026-09-23',
+    updatedAt: '2026-09-23',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文用户', '数字足迹', '拼音检索', '跨平台清理', '隐私习惯'],
+    canonical: '/blog/chinese-users-cross-platform-footprint',
+    faq: [
+      { q: "中文用户为什么通常有两条足迹线？", a: "因为使用习惯天然分叉：工作、行业和英文内容交流多在 X 或 LinkedIn，生活记录、同好社群和熟人社交留在国内平台。两条线的账号名、头像和发言风格往往不同，看起来互不相干，但都被同一个手机号或邮箱注册过，检索时容易串起来。", qEn: "Why do Chinese-speaking users often end up with two footprint lines?", aEn: "Usage splits naturally. Work, industry and English-language exchange tend to sit on X or LinkedIn, while life records, hobby communities and friend networks stay on domestic platforms. The two accounts often differ in name, avatar and tone, so they look unrelated even though the same phone number or email registered both." },
+      { q: "换个昵称能躲开搜索吗？", a: "躲不开。中文名转成拼音之后检索面反而变宽，因为拼音是有限组合，重名率高，搜索引擎往往会把同拼音的多个账号一并展示。想降低被串起来的概率，要靠清掉包含真实姓名、公司和常住城市的内容，而不是换昵称。", qEn: "Does renaming the account hide me from search?", aEn: "No. Converting a Chinese name to pinyin actually widens retrieval, because pinyin combinations are limited and collisions are common, so search engines often surface several accounts sharing one spelling. Lowering the risk means removing posts that contain your real name, employer and home city, rather than changing a display name." },
+      { q: "两个平台的删除机制主要差在哪？", a: "差在批量能力和留痕方式。X 侧可以通过数据归档拿到全量历史，再用工具批量处理；国内平台多数没有等价的归档下载，批量入口也分散，很多内容只能逐条操作。留痕方面，国内平台的删除通常不留下可导出的操作记录，需要自己另行登记。", qEn: "How do the two platforms differ on deletion?", aEn: "Mainly in bulk capability and record keeping. On X you can pull full history through a data archive and process it in bulk with a tool, while domestic platforms mostly lack an equivalent archive download and their bulk entry points are scattered, so much of the work is one item at a time. Domestic platforms also tend not to leave an exportable action log, so you have to keep your own record." },
+      { q: "应该先清哪一边？", a: "按暴露度排序，先处理能被公开检索到、且包含可识别信息的内容。通常顺序是：先清含真实姓名与城市的内容，再清含单位或学校信息的内容，最后处理观点类发言。这个顺序和单平台清理的优先级一致，只是要在两条线上各跑一遍。", qEn: "Which side should be cleaned first?", aEn: "Order by exposure. Start with content that is publicly searchable and contains identifiable details. A common sequence is real name and city first, then employer or school references, then opinion posts. That matches single-platform priority, except the pass has to run on both lines." },
+    ],
+    titleEn: 'Two Feeds, Two Footprints: Running an X Presence Alongside a Chinese-Language Profile',
+    excerptEn:
+      'For Chinese-speaking users, a digital footprint usually splits across two lines: one on X, one on domestic platforms. Pinyin search defeats the rename strategy, and the two sides differ in deletion mechanics, indexing behaviour and record keeping. Here is the structure, a comparison table, and an order of operations.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['Chinese-speaking users', 'digital footprint', 'pinyin search', 'cross-platform cleanup', 'privacy habits'],
+    content: `
+<p>中文互联网用户的数字足迹有个结构性特点：它很少是一条连续的线，更常见的是两条各自独立的线。处理其中一条时，另一条往往被忘掉，而检索工具会把它们连起来看。</p>
+
+<h2>双线结构是怎么形成的</h2>
+<p>分叉的原因是用途不同。工作、行业交流、英文内容讨论多发生在 X 或 LinkedIn，生活记录、同好社群和熟人互动留在国内平台。时间一长，两条线的发言风格、昵称甚至头像都会分化，看过去像两个人。</p>
+<p>但注册信息只有一个。同一个手机号或邮箱贯穿两条线，检索平台会把它当作关联依据。所以「两条线互不相干」只是一种感觉，真实情况是中间有根线连着。</p>
+
+<h2>拼音让换名字失效</h2>
+<p>中文名转拼音之后，检索面反而变宽了。拼音是有限组合，重名率高，搜索引擎在展示结果时经常把同一拼写的多个账号一起列出来。用户换成拼音变体或者加数字后缀，能改变的只是账号名，改变不了内容里的自我暴露。</p>
+<p>真正降低被串起来概率的做法，是清掉包含真实姓名、公司和常住城市的内容。这三类信息一旦同时出现在同一个账号下，检索就能把虚拟身份和现实身份对上。相关做法见<a href="/blog/chinese-name-search-footprint-cleanup">中文姓名检索下的清理</a>。</p>
+
+<h2>两个平台的机制差异</h2>
+<table>
+  <thead><tr><th>维度</th><th>X</th><th>国内平台（多数）</th></tr></thead>
+  <tbody>
+    <tr><td>历史数据下载</td><td>提供完整归档，含推文、点赞、私信</td><td>多数无等价归档入口</td></tr>
+    <tr><td>批量删除</td><td>可通过工具按条件批量执行</td><td>入口分散，常需逐条处理</td></tr>
+    <tr><td>删除后的操作记录</td><td>可通过工具日志导出</td><td>通常不提供可导出记录</td></tr>
+    <tr><td>被搜索引擎收录</td><td>部分内容可被索引</td><td>站内检索权重高，外部索引有限</td></tr>
+    <tr><td>删除后的残留形式</td><td>第三方抓取、快照、引用页面</td><td>转发、截图、站内搬运</td></tr>
+  </tbody>
+</table>
+<p>表格里最实用的信息在残留形式这一行。两个平台的残留机制不同：X 侧主要是搜索引擎快照和第三方抓取，需要单独处理索引；国内平台更常见的是转发和截图，删除原始内容之后依然可能被搬运号二次发布，这类残留只能通过举报渠道处理。</p>
+<p>第二行决定了工作量的分布。X 侧的清理可以一次性规划完成，国内平台多数要按内容类型分次处理，时间跨度更长，所以起手顺序值得先想清楚。</p>
+
+<h2>先清哪一边：一个判断顺序</h2>
+<ol>
+  <li><strong>先处理两条线共有的信息。</strong> 同时在两侧出现的姓名、城市、单位信息，暴露度最高，优先处理。</li>
+  <li><strong>再清能被公开检索的账号。</strong> X 的公开推文可被外部索引，国内平台的公开内容可被站内检索，两个方向都要查。</li>
+  <li><strong>处理观点类内容。</strong> 这类内容通常不涉及身份信息，风险来自语境变化，可以放到后面再处理。</li>
+  <li><strong>收尾处理残留。</strong> 删完之后分别搜一次自己的姓名和拼音，看还剩哪些结果，X 侧的处理方式见<a href="/blog/google-remove-old-tweets-from-search">从搜索结果中移除旧推文</a>。</li>
+</ol>
+<p>这个顺序的好处是先解决身份关联，再处理内容本身。身份关联一旦断开，后续内容的风险评估会简单很多。</p>
+
+<h2>三个常见误区</h2>
+<p>第一个是只清理一条线。多数人从自己最常用的平台开始，清理完之后就认为结束了，另一条线的旧内容还留在原地。第二个是以为改名等于重置。改名能影响账号展示，影响不了已经被索引的内容和已经存在的转发。第三个是把两条线的节奏设成一样。国内平台逐条处理，耗时更长，如果按 X 侧的节奏安排计划，预期会严重失真。</p>
+<p>把三条误区反过来读，就是一个可执行的计划：两侧同步排查、按内容判断风险、别按账号判断，给国内平台预留更长的时间。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）当前覆盖 X 侧：上传 X 数据归档，本机解析全部推文并输出 0 到 100 的评分与分类命中项，只读、不上传、不要求账号授权。先跑一次体检，能知道哪些旧内容带手机号、住址或敏感话题，再按上面的顺序规划两条线的清理，术语对照见<a href="/blog/chinese-digital-footprint-glossary">中文数字足迹术语表</a>。处理范围与价格见<a href="/pricing">定价页</a>，从<a href="/">首页</a>可以免费开始。</p>`,
+    contentEn: `
+<p>A digital footprint for Chinese-speaking users rarely forms one continuous line. More often it splits into two independent ones, and work on one side forgets the other while search tools keep connecting them.</p>
+
+<h2>How the split happens</h2>
+<p>The cause is different use. Work, industry exchange and English-language discussion tend to live on X or LinkedIn, while life records, hobby communities and friend networks stay on domestic platforms. Over time the two sides diverge in tone, handle and even avatar, so they read like two different people.</p>
+<p>Registration details do not split. One phone number or email runs through both lines, and search platforms treat that as a linking signal. The sense that the two accounts are unrelated is a feeling, not the actual state.</p>
+
+<h2>Pinyin search defeats a rename</h2>
+<p>Converting a Chinese name to pinyin widens the retrieval surface rather than narrowing it. Pinyin combinations are finite, collisions are common, and search engines frequently list several accounts sharing one spelling together. Switching to a pinyin variant or appending digits changes the handle, not the self-disclosure inside the posts.</p>
+<p>What actually lowers the chance of being linked is removing content that carries your real name, employer and home city. Once those three appear under one account, search can map a virtual identity onto a real one. Related reading covers <a href="/blog/chinese-name-search-footprint-cleanup">cleanup under Chinese name search</a>.</p>
+
+<h2>How the two sides differ</h2>
+<table>
+  <thead><tr><th>Dimension</th><th>X</th><th>Domestic platforms (most)</th></tr></thead>
+  <tbody>
+    <tr><td>Historical data download</td><td>Full archive including posts, likes, DMs</td><td>Usually no equivalent archive export</td></tr>
+    <tr><td>Bulk deletion</td><td>Runs in bulk through tools with filters</td><td>Scattered entry points, much of it one by one</td></tr>
+    <tr><td>Action log after deletion</td><td>Exportable from tool logs</td><td>Generally no exportable record</td></tr>
+    <tr><td>Search indexing</td><td>Some content is externally indexed</td><td>Strong in-platform search, limited external indexing</td></tr>
+    <tr><td>Residue after deletion</td><td>Third-party scraping, caches, quote pages</td><td>Reposts, screenshots, in-platform reuploads</td></tr>
+  </tbody>
+</table>
+<p>The last row is the most practical. Residue works differently on each side: on X it is mainly search caches and third-party scrapers, handled as a separate indexing step, while domestic platforms see more reposts and screenshots, so removing the original can still leave a copy on an aggregator account. That kind of residue only moves through reporting channels.</p>
+<p>The bulk-deletion row decides where the effort lands. X can be planned as one pass, while domestic platforms usually require several passes by content type, stretching over more time, which makes the starting order worth thinking through first.</p>
+
+<h2>Which side to clean first</h2>
+<ol>
+  <li><strong>Handle information present on both sides.</strong> Name, city and employer details that appear twice carry the highest exposure and go first.</li>
+  <li><strong>Then clean accounts that are publicly searchable.</strong> Public X posts can be externally indexed and public posts on domestic platforms can be searched in-platform, so check both directions.</li>
+  <li><strong>Handle opinion posts.</strong> These rarely carry identifying detail. Their risk comes from shifting context, so they can wait.</li>
+  <li><strong>Finish with residue.</strong> After deleting, search your name and its pinyin spelling again to see what remains, with the X side covered in <a href="/blog/google-remove-old-tweets-from-search">removing old posts from search results</a>.</li>
+</ol>
+<p>The order works because identity linking is resolved before content itself. Once the link is broken, judging the risk of individual posts gets much simpler.</p>
+
+<h2>Three common mistakes</h2>
+<p>The first is cleaning only one line. Most people start with the platform they use most, finish, and consider the job done while the other line sits untouched. The second is treating a rename as a reset. Renaming affects how an account is displayed, not what has already been indexed or reposted. The third is applying the same pace to both sides. Domestic platforms need item-by-item work and take longer, so planning them on an X-style timeline produces badly distorted expectations.</p>
+<p>Read in reverse, the three give a workable plan: audit both sides together, judge risk by content rather than by account, and budget more time for the domestic platforms.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) currently covers the X side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. Running one check first shows which old posts carry phone numbers, addresses or sensitive topics, which then informs the order above, with terminology in <a href="/blog/chinese-digital-footprint-glossary">the Chinese digital footprint glossary</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

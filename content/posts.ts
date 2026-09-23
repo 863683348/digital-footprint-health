@@ -14129,6 +14129,591 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) currently covers the X side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. Running one check first shows which old posts carry phone numbers, addresses or sensitive topics, which then informs the order above, with terminology in <a href="/blog/chinese-digital-footprint-glossary">the Chinese digital footprint glossary</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
+  {
+    slug: 'id-photo-tweets-leak',
+    title: '证件照、工牌、护照照片进了旧推文：被滥用路径与清理顺序',
+    excerpt:
+      '清理旧推文时，措辞通常被优先处理，真正容易被漏掉的是几张随手拍的照片。工牌、身份证、登机牌这类图片不表达观点，只交出标识字段。这篇文章拆开六类证件内容的泄露面与滥用路径，给出可叠加的三层筛选方法，以及「先缩小暴露面、再删内容」的五步清理顺序。',
+    date: '2026-09-24',
+    updatedAt: '2026-09-24',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '证件照泄露', '工牌照片', '隐私清理', '身份盗用'],
+    canonical: '/blog/id-photo-tweets-leak',
+    faq: [
+      { q: "为什么证件类照片比一句话更危险？", a: "文字的风险在语义，需要语境才能被理解；图片的风险在字段，可以被机器直接读取。工牌上的公司名、部门、编号是现成字段，图像识别对证件版式也足够熟悉。再加上时间因素，一句玩笑的风险会随语境变化，一张门禁照的风险几乎是恒定的，三年后那家公司出了新闻，同一张照片的价值就完全不同。", qEn: "Why is a document photo more dangerous than a badly worded tweet?", aEn: "Text risk lives in meaning and needs context to land. Photo risk lives in fields that machines can read directly. A badge photo carries a ready-made company name, department and number, and image recognition is already comfortable with document layouts. Time works differently too: the risk in a joke shifts with context, while the risk in an access-card photo stays close to constant, and that photo becomes a different asset entirely if the company makes the news in three years." },
+      { q: "哪些证件类照片要最先处理？", a: "按「能否单独完成一次身份验证」排序，字段多少不能作数。身份证与护照照片、驾照、银行卡或账单照片属于可以单独完成验证的一类，即使只有一条曝光也应当最先删除。工牌、门禁卡、登机牌、快递面单属于需要配合其他信息才能使用的一类，可以放到第二批成批处理。", qEn: "Which document photos should I handle first?", aEn: "Rank by whether the item can complete a verification on its own, not by how many fields it leaks. ID cards, passports, driving licences and bank or billing photos belong in the group that can stand alone, so a single copy is enough reason to delete first. Badges, access cards, boarding passes and delivery labels need other information to be useful, so they can wait for a second batched pass." },
+      { q: "删除推文之后风险就消失了吗？", a: "不一定会。如果图片已经被第三方抓取或存档，删除只改变你自己账号上的可见性，不会影响别人的副本。这种情况下应当把重点转到可更换的凭证上：员工编号、门禁卡、常旅客号都可以在机构侧更换，换掉才是真正把风险关掉的方式。判断方法是一句话：删掉之后，最坏的情况还能不能发生。", qEn: "Does deleting the tweet remove the risk?", aEn: "Not necessarily. If the image has already been scraped or archived elsewhere, deletion only changes visibility on your own account and does nothing to the other copy. Shift the focus to changeable credentials instead: employee numbers, access cards and frequent flyer numbers can all be reissued by the institution, and replacing them is what actually closes the risk. The test is one question: after the tweet is gone, can the worst case still happen." },
+      { q: "怎么把散落在多年里的证件照找出来？", a: "纯关键词只能命中带配文的推文，而最危险的照片往往什么字都没配。可行的做法是三层过滤叠加：关键词命中配文，时间与场景定位入职期、出差期、搬家期这类集中窗口，媒体类型筛出所有含图推文逐张过一遍。三层叠加后候选集通常从几万条降到几百条，人工确认才可行。", qEn: "How do I find document photos scattered across years?", aEn: "Keywords alone only catch posts that came with a caption, and the riskiest photos usually have none. Stack three filters instead: keywords for captions, time and scenario to target clusters such as a job start, a business trip or a move, and media type to pull every image-bearing tweet for a visual pass. After stacking, a candidate set of tens of thousands usually drops to a few hundred, which is small enough to confirm by hand." },
+      { q: "盘点和删除时最容易漏掉哪些载体？", a: "三类。引用推文：原图不在你的账号里，但你的引用让它在你的时间线上可见，必须同批处理。回复里的图片：很多证件照是回复他人时贴出来的，不会出现在主时间线的视觉记忆里。转推：媒体归属模糊，批量工具倾向跳过。实测中还有一个规律，用户以为只发过一两次，实际候选条目常是十几次，分布在六到八年之间。", qEn: "Which carriers are easiest to miss during inventory?", aEn: "Three. Quote tweets, where the original image is not in your account but your quote makes it visible on your timeline, so it has to go in the same pass. Images inside replies, which is often how a badge photo actually got posted and which never appear in your visual memory of the main timeline. And retweets, where media ownership is ambiguous and bulk tools tend to skip them. One more pattern shows up reliably: people who expect two or three candidates usually find a dozen, spread across six to eight years." },
+    ],
+    titleEn: 'ID Photos and Badges in Old Tweets: How They Get Used, and What to Clean First',
+    excerptEn:
+      'When people clean up old tweets they start with wording. The posts that cause lasting damage are usually a few casual photos. Badges, ID cards and boarding passes do not express an opinion, they hand over identifiers. This guide breaks down six document types, a three-layer filter that catches them, and a five-step order that shrinks exposure before deleting anything.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'document photo leak', 'badge photo', 'privacy cleanup', 'identity theft'],
+    content: `
+<p>清理旧推文的时候，多数人先想到的是措辞：哪句话容易被误解，哪个玩笑现在看着不合适。措辞当然要处理，但更容易造成长期麻烦的是几张随手拍的照片。工牌、放在桌上的证件、翻开护照的机票打卡，这类图片不表达观点，只交出标识字段，而标识字段是可以被直接使用的。</p>
+
+<h2>为什么照片比文字更难补救</h2>
+<p>文字的问题在语义，图片的问题在字段。一句十年前的地域玩笑今天被翻出来，你还能解释语境、说明当时在回应什么。一张清晰的工牌照片不需要任何语境，上面的公司名、部门、员工编号、门禁样式都是现成的字段，可以被抄进表格，也可以在社交工程的通话里被复述回来。</p>
+<p>另一个差别是识别方式。文字要被人读懂才起作用，图片可以被机器读。今天的图像识别对证件类版式已经相当熟悉，卡片边缘、人像位置、字段排布这些特征足以让系统判断这是一张工作证，并把文字提取出来。你不需要被谁刻意盯上，一次普通的批量扫描就会把它筛出来。</p>
+<p>时间的作用方式也不一样。一句话的风险随语境变化，一张证件照的风险几乎是恒定的。今天没人在意的一张门禁照，三年后那家公司出了新闻，同一张照片的价值就完全不同了。这也是为什么「当时没人看」不能作为判断依据。</p>
+
+<h2>一张证件照可以被用来做什么</h2>
+<p>下面这张表按条目类型拆开泄露面。需要注意，多数滥用并不依赖单张图片，而是把图片里的字段和其他渠道的信息拼起来。拼合的门槛越低，这一类就越该先处理。</p>
+<table>
+  <thead><tr><th>图片类型</th><th>泄露的字段</th><th>常见滥用路径</th><th>严重程度</th></tr></thead>
+  <tbody>
+    <tr><td>身份证 / 护照照片</td><td>姓名、证件号、出生日期、证件版式</td><td>冒充身份开户，或通过部分平台的实名验证</td><td>高</td></tr>
+    <tr><td>驾照 / 车辆照片</td><td>姓名、住址、车牌</td><td>与地址信息拼合后进行线下定位</td><td>高</td></tr>
+    <tr><td>机票 / 登机牌</td><td>全名、常旅客号、行程日期、条形码</td><td>用条形码还原行程与联系方式，推断居住地</td><td>高</td></tr>
+    <tr><td>银行卡 / 账单照片</td><td>卡号后四位、账单地址</td><td>配合其他信息完成身份验证</td><td>高</td></tr>
+    <tr><td>工牌 / 门禁卡</td><td>公司、部门、员工编号、楼宇</td><td>冒充同事进入办公区，或做精准钓鱼</td><td>中高</td></tr>
+    <tr><td>快递面单</td><td>姓名、电话、详细地址</td><td>直接获得可联系的完整信息</td><td>中</td></tr>
+  </tbody>
+</table>
+<p>表格里严重程度一列不是按字段数量排的，是按「能否单独完成一次身份验证」排的。能够单独通过验证的那几类，即使只有一条曝光，也应该按最高优先级处理。</p>
+
+<h2>先做一次盘点，再动手删</h2>
+<p>直接开始删除容易漏。证件类内容散布在不同年份，很多人凭记忆只能想起最近两三年。可操作的顺序是先拿到一份完整清单：下载 X 数据归档，用本机解析的方式把全部推文和媒体过一次，按条件筛出候选，再逐条确认。</p>
+<p>盘点阶段要留意三类容易漏掉的载体。第一是引用推文，原图不在你的账号里，但你的引用让它在你的时间线上可见，删除时要一起处理。第二是回复里的图片，很多证件照是回复他人时贴出来的，不会出现在主时间线的视觉记忆里。第三是转推，转推本身的媒体归属模糊，容易在批量处理时被跳过。</p>
+<p>盘点还有一个副产品：你会发现自己对「发过什么」的记忆并不可靠。实测中常见的情况是，用户以为只发过一两次，实际候选条目是十几次，分布在六到八年之间。</p>
+
+<h2>筛出证件类内容的实用做法</h2>
+<p>纯文字关键词只能命中带说明的推文，而最危险的照片往往什么字都没配。可行的做法是三层过滤叠加。</p>
+<table>
+  <thead><tr><th>过滤层</th><th>作用</th><th>局限</th></tr></thead>
+  <tbody>
+    <tr><td>关键词</td><td>命中「工牌」「入职」「护照」「驾照」「办证」这类配文</td><td>无配文的图片会全部漏掉</td></tr>
+    <tr><td>时间与场景</td><td>入职期、出差期、搬家期往往集中出现</td><td>需要先确定时间窗</td></tr>
+    <tr><td>媒体类型</td><td>筛出含图片的推文，逐张过一遍</td><td>数量大时耗时明显</td></tr>
+  </tbody>
+</table>
+<p>三层叠加之后，候选集通常从几万条降到几百条，人工确认才变得可行。只做第一层会漏掉最危险的那部分，因为最危险的照片通常连一个字都没配。</p>
+
+<h2>清理顺序：先缩小暴露面，再删内容</h2>
+<p>删除需要时间，而暴露是实时的。所以顺序上应该把「立刻能做的」放在最前面。</p>
+<ol>
+  <li><strong>先收紧可见性。</strong> 把账号设为保护状态或收紧可见范围。这一步不改变历史内容，但会立刻停止新的抓取与检索扩散。</li>
+  <li><strong>换掉照片里暴露的凭证。</strong> 员工编号、门禁卡、常旅客号这些可以在机构侧更换的，比删图更彻底。图片删了，号码还在别人手里的表格里。</li>
+  <li><strong>处理高严重度的条目。</strong> 按表格里能单独完成验证的那几类先删，不要按时间顺序删。</li>
+  <li><strong>再批量处理中低严重度的条目。</strong> 快递面单、登机牌这类往往成批出现，适合放在一次连续任务里跑完。</li>
+  <li><strong>删完复查一次。</strong> 用同样的筛选条件重新跑一遍，确认候选集为空，这比追求速度更重要。</li>
+</ol>
+<p>第 2 步经常被跳过。删图是可见的动作，换编号不是，但后者才是把风险真正关掉的方式。</p>
+
+<h2>哪些情况删推文不够</h2>
+<p>三种情况需要额外动作。第一种是图片已经被第三方抓取或存档，删除只影响你自己账号上的可见性，不会影响别人的副本，这时应当把重点放在可更换的凭证上。第二种是证件属于他人，例如同事的工牌、家人的护照，处理时要注意别在沟通中再次传播。第三种是内容已经进入纠纷或调查流程，删除可能影响证据链，动手前需要先确认。</p>
+<p>判断方法很简单：问一句「删掉这条之后，最坏的情况还能不能发生」。如果答案是能，就说明第 2 步的动作还没做完。</p>
+
+<h2>删完之后保持什么习惯</h2>
+<p>证件类内容的特点是一次性发布、长期有效。降低复发概率比一次彻底清理更重要。发布前问一句这张图里有没有可读取的字段；把证件类照片从手机相册的自动同步范围里排除；每年做一次归档体检，不要等想起来才做。</p>
+<p>如果同期还有手机号或邮箱散落在外，处理思路是相通的，可以先看<a href="/blog/phone-number-in-tweets-check">含手机号的推文怎么筛</a>，再决定筛选条件。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把上面的盘点步骤做成了一次免费操作：上传 X 数据归档，工具在你的设备上解析全部推文与媒体，输出 0 到 100 的健康评分和按类别标记的风险条目。全程只读，不上传任何数据，也不索取账号权限。拿到清单之后，删除范围的确定方式可以参考 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理方法</a>，地址与定位类内容的处理思路见 <a href="/blog/address-location-tweets-risk">地址与定位泄露</a>。价格与范围在 <a href="/pricing">定价页</a>，免费体检入口在<a href="/">首页</a>，其他场景可以直接<a href="/blog">浏览博客</a>。</p>`,
+    contentEn: `
+<p>When people clean up old tweets, they usually start with wording: which line could be misread, which joke has not aged well. Wording matters, but the posts that cause lasting damage are often a few casual photos. A company badge, an ID card left on a desk, a passport open next to a boarding pass. Photos like these do not express an opinion. They hand over identifiers, and identifiers can be used directly.</p>
+
+<h2>Why photos are harder to walk back than text</h2>
+<p>Text problems live in meaning. If a regional joke from ten years ago resurfaces, you can still explain the context and what you were reacting to. A clear photo of a staff badge needs no context at all. The company name, department, employee number and access-card design are all fields sitting there, ready to be copied into a spreadsheet or repeated back to you during a social engineering call.</p>
+<p>The other difference is how they get read. Text has to be understood by a person to do damage. Images can be read by machines. Image recognition is comfortable with document layouts now, and card edges, portrait placement and field arrangement are enough for a system to decide this is a work ID and pull the text out. You do not need to be targeted by anyone in particular. A routine bulk scan will surface it.</p>
+<p>Time behaves differently too. The risk in a sentence shifts with context. The risk in a document photo is close to constant. A picture of an office door that nobody cared about today becomes a different asset entirely if that company makes the news in three years. That is also why nobody looked at the time is not a usable reason to leave it up.</p>
+
+<h2>What a single ID photo can actually be used for</h2>
+<p>The table below separates the exposure by item type. Most abuse does not depend on one image on its own. It combines fields from the image with information from somewhere else. The lower that threshold, the earlier the item belongs in your queue.</p>
+<table>
+  <thead><tr><th>Photo type</th><th>Fields exposed</th><th>Common abuse path</th><th>Severity</th></tr></thead>
+  <tbody>
+    <tr><td>ID card / passport</td><td>Name, document number, date of birth, layout</td><td>Impersonation for account opening, or passing a real-name check</td><td>High</td></tr>
+    <tr><td>Driving licence / vehicle</td><td>Name, address, plate number</td><td>Combined with address data for physical locating</td><td>High</td></tr>
+    <tr><td>Ticket / boarding pass</td><td>Full name, frequent flyer number, travel dates, barcode</td><td>Barcode reveals itinerary and contact details, and hints at home base</td><td>High</td></tr>
+    <tr><td>Bank card / statement</td><td>Last four digits, billing address</td><td>Paired with other data to clear a verification step</td><td>High</td></tr>
+    <tr><td>Badge / access card</td><td>Company, department, employee number, building</td><td>Entering an office as a colleague, or targeted phishing</td><td>Medium-high</td></tr>
+    <tr><td>Delivery label</td><td>Name, phone, full address</td><td>Directly yields a complete contact profile</td><td>Medium</td></tr>
+  </tbody>
+</table>
+<p>The severity column is not ordered by how many fields leak. It is ordered by whether the item can complete an identity check on its own. The rows that can should be treated first even if only one copy is out there.</p>
+
+<h2>Take inventory before you start deleting</h2>
+<p>Deleting straight away is how items get missed. Document photos are scattered across years, and memory usually only reaches back two or three. The workable order is inventory first: download your X archive, parse every tweet and media file on your own machine, filter to candidates, then confirm them one by one.</p>
+<p>Three carriers are easy to miss at this stage. Quote tweets, where the original image is not in your account but your quote makes it visible on your timeline, so it has to go in the same pass. Images inside replies, which is often how a badge photo actually got posted, and which never appear in your visual memory of the main timeline. Retweets, where media ownership is ambiguous and bulk tools tend to skip them.</p>
+<p>Inventory has a side effect worth mentioning. It shows you how unreliable your memory of your own account is. In practice, people who expect two or three candidates usually find a dozen, spread across six to eight years.</p>
+
+<h2>A filtering approach that actually catches them</h2>
+<p>Text keywords only catch posts that came with a caption, and the riskiest photos usually have none. Stack three filters instead.</p>
+<table>
+  <thead><tr><th>Filter layer</th><th>What it catches</th><th>Where it fails</th></tr></thead>
+  <tbody>
+    <tr><td>Keywords</td><td>Captions like badge, onboarding, passport, licence</td><td>Every uncaptioned image slips through</td></tr>
+    <tr><td>Time and scenario</td><td>Clusters around a job start, a business trip, a move</td><td>You need to fix the window first</td></tr>
+    <tr><td>Media type</td><td>Every image-bearing tweet, for a visual pass</td><td>Slow once the volume climbs</td></tr>
+  </tbody>
+</table>
+<p>After stacking, a candidate set of tens of thousands usually drops to a few hundred, which is small enough to confirm by hand. Running only the first layer leaves the most dangerous part behind, because the most dangerous photos have no caption at all.</p>
+
+<h2>Cleanup order: shrink exposure first, delete second</h2>
+<p>Deletion takes time. Exposure is immediate. So the order should start with whatever you can do today.</p>
+<ol>
+  <li><strong>Tighten visibility.</strong> Protect your posts or narrow who can see them. This does not change history, but it stops new scraping and search spread right away.</li>
+  <li><strong>Replace the credentials the photos exposed.</strong> Employee numbers, access cards and frequent flyer numbers can all be reissued by the institution, which is more thorough than removing an image. Delete the picture and the number still sits in someone's spreadsheet.</li>
+  <li><strong>Handle the high-severity items.</strong> Start with the rows that can complete a verification alone. Do not work in date order.</li>
+  <li><strong>Then batch the lower-severity items.</strong> Delivery labels and boarding passes usually arrive in clusters, which suits one continuous job.</li>
+  <li><strong>Re-run the filter to confirm the candidate set is empty.</strong> Verification matters more here than speed.</li>
+</ol>
+<p>Step two gets skipped often, because deleting a photo is a visible action and changing an ID number is not. The second one is what actually closes the risk.</p>
+
+<h2>When deleting the tweet is not enough</h2>
+<p>Three cases need more than deletion. First, the image has already been scraped or archived by someone else, so removing it only changes visibility on your own account and does nothing to their copy. Shift the focus to credentials you can change. Second, the document belongs to someone else, a colleague's badge or a family member's passport, and handling it badly can spread it further during the conversation. Third, the content sits inside a dispute or an investigation, where removal can affect a chain of evidence and needs confirmation first.</p>
+<p>The test is a single question: after this tweet is gone, can the worst case still happen. If it can, the work is not finished.</p>
+
+<h2>Habits that stop it coming back</h2>
+<p>Document photos share one property. They are posted once and stay valid for years. Lowering the chance of a repeat matters more than one thorough cleanup. Ask whether the image contains any readable field before posting it. Keep ID photos out of your phone's automatic sync scope. Run an archive check once a year rather than when something reminds you.</p>
+<p>If phone numbers or email addresses are also scattered around, the approach is the same in spirit. Start from <a href="/blog/phone-number-in-tweets-check">finding tweets that contain phone numbers</a> and work out your filters from there.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) turns the inventory step into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. With the list in hand, the way to decide what to remove is covered in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk</a>, and address and location cases are covered in <a href="/blog/address-location-tweets-risk">address and location exposure</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and other walkthroughs are on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'sharenting-kids-photos-old-tweets',
+    title: '晒娃推文与孩子的数字身份：现在清理还来得及',
+    excerpt:
+      '孩子的照片一旦发布，数字身份就开始积累，而做决定的人从来不是 ta 自己。这篇文章给出四类高风险晒娃内容的判断标准、一次可立刻完成的盘点方法，以及「删还是留」的三条判断线，帮你在孩子长大前把不可逆的部分收回来。',
+    date: '2026-09-24',
+    updatedAt: '2026-09-24',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '晒娃', '儿童隐私', '家庭账号', '数字身份'],
+    canonical: '/blog/sharenting-kids-photos-old-tweets',
+    faq: [
+      { q: "晒娃内容为什么和成年人自己的内容性质不同？", a: "因为做决定的人和承担后果的人不是同一个。你清理自己的旧推文，是在处理自己的信息；清理孩子的照片，是在处理一个没有同意过的人的信息。这个差别改变三件事：判断标准要更保守，时间尺度要看得更远，以及需要提前想清楚谁有权决定留下什么。", qEn: "Why is sharenting content different from your own posts?", aEn: "Because the person who made the decision is not the person who carries the consequence. Cleaning your own tweets means handling your own information. Cleaning your child's photos means handling information from someone who never agreed. That shifts three things: the standard should be more conservative, the time horizon has to stretch further, and you need to decide in advance who holds the right to keep what." },
+      { q: "哪几类晒娃内容的长期风险最高？", a: "洗澡换衣等身体暴露类，在任何年龄都会随时间变得更敏感；姓名加学校加班级的组合，等于把线下位置固定下来；写有全名的生日或奖状照片，通常同时泄露出生日期和所在机构；固定机位的日常窗景照片，长期看能拼出居住区域。这四类即使只有一条，也建议优先处理。", qEn: "Which kinds of sharenting posts carry the highest long-term risk?", aEn: "Four. Bath and changing photos carry exposure that only becomes more sensitive with time. Name plus school plus class fixes a physical location. Birthday or award photos with a full name usually leak a date of birth and an institution at the same time. Fixed-window daily shots can be joined over years to place a neighbourhood. Any single one of these is worth handling first." },
+      { q: "删掉之后，别人手里的截图还算数吗？", a: "算数。删除只影响你自己账号上的可见性，不影响已经存在的副本。但删除仍然值得做，因为它切断了继续扩散的源头：没有链接可以再被转发，没有页面可以被检索。真正不可逆的部分是身体暴露类和证件类内容，这也是为什么这两类要排在删除队列最前面。", qEn: "If someone already saved a screenshot, does deleting still matter?", aEn: "The copy still exists, so deletion does not undo it. It is still worth doing because it cuts the source of further spread: no link can be reshared and no page can be indexed. What stays irreversible is exposure and document content, which is exactly why those two sit at the front of the queue." },
+      { q: "等孩子长大了，要面对的是什么？", a: "最直接的是可检索性。同龄人、学校、未来的雇主都会先搜索再接触人，而一个从三岁到十五岁都有影像记录的公开时间线，会先于本人出现在结果里。第二个是上下文缺失：照片本身不带说明，任何时间点被单独摘出来，解释权都不在孩子手上。第三是时间差，孩子形成判断力的时候，决定的后果已经存在了很多年。", qEn: "What will the child actually face later?", aEn: "Searchability first. Peers, schools and future employers search before they engage, and a public timeline with images from age three to fifteen shows up ahead of the person themselves. Then missing context: a photo carries no explanation, so whenever one is pulled out on its own, the child does not hold the right to frame it. Finally the time gap, where by the time the child can form a judgement, the consequences have already existed for years." },
+    ],
+    titleEn: 'Sharenting on X: Your Child\'s Digital Identity Starts in Your Archive',
+    excerptEn:
+      'The first photo of a child goes online without anyone deciding it should. Four kinds of sharenting posts carry the highest long-term risk, a short inventory you can run today, and three lines that settle the delete-or-keep question before the child is old enough to have a say.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'sharenting', 'children privacy', 'family account', 'digital identity'],
+    content: `
+<p>孩子的第一张照片出现在网上时，通常没有人做决定。它是随手发布的副产品：拍了就发，发了就过去了。但孩子的数字身份不会随时间淡化，它会随着 ta 长大，逐渐变成一个可以被检索、被引用、被存档的东西。</p>
+
+<h2>为什么它和你自己的内容性质不同</h2>
+<p>你清理自己的旧推文，是在处理自己的信息。清理孩子的照片，是在处理一个没有同意过的人的信息。这个差别会改变三件事。</p>
+<p>判断标准要更保守。同样一张照片，放在你自己账号上是个人选择，放在孩子身上就要按「如果这是别人发的我，我能不能接受」来判断。时间尺度要拉长，你要把判断依据放在十五年后搜索这个孩子的人身上，今天有没有人在看并不重要。决定权的问题最容易被忽略：现在做决定的是你，承担后果的是 ta，所以留下什么应当按最保守的版本执行。</p>
+
+<h2>四类风险最高的晒娃内容</h2>
+<p>下面这张表按「随时间放大还是衰减」来排。风险随时间放大的那几类，即使只有一条也应该优先处理。</p>
+<table>
+  <thead><tr><th>内容类型</th><th>风险点</th><th>随时间的变化</th></tr></thead>
+  <tbody>
+    <tr><td>洗澡、换衣等身体暴露类</td><td>在任何年龄都会随时间变得更敏感</td><td>放大</td></tr>
+    <tr><td>姓名 + 学校 + 班级的组合</td><td>把线下位置和日常动线固定下来</td><td>放大</td></tr>
+    <tr><td>写有全名的生日、奖状、校服照片</td><td>同时泄露出生日期与所属机构</td><td>放大</td></tr>
+    <tr><td>固定机位的日常窗景、门牌、接送路线</td><td>长期累积可拼出居住区域</td><td>放大</td></tr>
+    <tr><td>情绪化配文加孩子正脸</td><td>孩子无法参与这段叙事的定义</td><td>基本不变</td></tr>
+  </tbody>
+</table>
+<p>第四行容易被低估。单张窗景照片什么也说明不了，但同一个机位拍了八年，季节变化、建筑变化、对面商铺的招牌换了几次，这些细节的拼合能力远超一般人的直觉。</p>
+
+<h2>一次可以立刻做完的盘点</h2>
+<p>不需要等整理好心情再开始，盘点本身只要几步。</p>
+<ol>
+  <li><strong>下载完整归档。</strong> 用 X 数据归档拿到全部推文与媒体，具体步骤见<a href="/blog/how-to-download-x-archive">下载归档的完整流程</a>。</li>
+  <li><strong>按场景关键词过一遍。</strong> 学校、班级、校服、生日、奖状、发烧、幼儿园、接送这类词能命中大部分带配文的内容。</li>
+  <li><strong>筛出全部含图推文，按年份看。</strong> 无配文的照片只能靠人工看，按年份推进比按关键词推进更不容易漏。</li>
+  <li><strong>标记四类高风险条目。</strong> 按上面的表格分类，不要在这一步纠结中低风险内容。</li>
+  <li><strong>确认后再删。</strong> 删除不可撤销，范围筛选的方法可以参考<a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理思路</a>。</li>
+</ol>
+
+<h2>删还是留：三条判断线</h2>
+<p>不是所有内容都该删。完全清空会让孩子的成长记录一起消失，那也不是好结果。三条线可以帮你分流。</p>
+<table>
+  <thead><tr><th>判断线</th><th>通过则保留</th><th>不通过则删除</th></tr></thead>
+  <tbody>
+    <tr><td>可定位</td><td>不暴露学校、住址、固定动线</td><td>任何可拼出位置或机构的组合</td></tr>
+    <tr><td>可识别</td><td>无全名、无证件、无身体暴露</td><td>正脸加全名，或任何证件类内容</td></tr>
+    <tr><td>可改变</td><td>内容本身不构成长期记录</td><td>会随年龄变得更敏感的部分</td></tr>
+  </tbody>
+</table>
+<p>三条线的顺序不能换。可定位排在第一位，因为位置信息是很多其他风险的入口。可识别排在第二，因为它决定内容能不能被关联到具体的人。</p>
+
+<h2>几条可以现在就开始的发布习惯</h2>
+<p>清理是补救，习惯才是止损。发布前问一句这张图里有没有学校和门牌；把「姓名 + 机构」的组合拆开，两者不要同框；固定机位的日常照片只发给家人，不发公开时间线；孩子三岁以后，发布前试着想一下 ta 十五岁时会怎么读这条。</p>
+<p>如果家里不止一个账号在发，处理思路可以参考<a href="/blog/family-account-old-tweets-risk">家庭账号的旧推文风险</a>。涉及未成年时期的账号规则，另见<a href="/blog/underage-tweets">未成年时期推文的平台规则</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把这个盘点过程做成了一次免费操作：上传 X 数据归档，工具在你的设备上解析全部推文与媒体，输出 0 到 100 的健康评分和按类别标记的风险条目。全程只读，不上传任何数据，也不索取账号权限。评分体系说明见 <a href="/blog/digital-footprint-health-score">健康分怎么用</a>，报告结构见 <a href="/blog/anatomy-of-a-footprint-report">一份体检报告的构成</a>。价格与范围在 <a href="/pricing">定价页</a>，免费体检入口在<a href="/">首页</a>，其他场景可以直接<a href="/blog">浏览博客</a>。</p>`,
+    contentEn: `
+<p>The first photo of a child goes online without anyone deciding it should. It arrives as a by-product of posting: you take the picture, you share it, the moment passes. The child's digital identity does not fade the same way. It accumulates, and as the child grows it becomes something that can be searched, quoted and archived.</p>
+
+<h2>Why this is a different problem from your own posts</h2>
+<p>Cleaning your own old tweets means handling your own information. Cleaning your child's photos means handling information from someone who never agreed to any of it. That shifts three things.</p>
+<p>The standard should be more conservative. The same photo on your own account is a personal choice; on a child it should be judged by whether you would accept it if someone else had posted it about you. The time horizon has to stretch further. The question is not who is looking today but what someone searching this child will find in fifteen years. And the decision-rights question gets overlooked most often: you are making the call now, the child carries the consequence, so the conservative version is the one to keep.</p>
+
+<h2>Four kinds of sharenting posts with the highest risk</h2>
+<p>The table is ordered by whether the risk grows or fades with time. The rows that grow should be handled first even if there is only one.</p>
+<table>
+  <thead><tr><th>Post type</th><th>Risk</th><th>Over time</th></tr></thead>
+  <tbody>
+    <tr><td>Bath, changing or other exposure</td><td>Becomes more sensitive at any age as time passes</td><td>Grows</td></tr>
+    <tr><td>Name plus school plus class</td><td>Fixes the physical location and daily route</td><td>Grows</td></tr>
+    <tr><td>Birthday, award or uniform photos with a full name</td><td>Leaks date of birth and institution together</td><td>Grows</td></tr>
+    <tr><td>Fixed-window views, house numbers, pickup routes</td><td>Accumulates into a home area over years</td><td>Grows</td></tr>
+    <tr><td>Emotional captions over a child's face</td><td>The child cannot frame that narrative later</td><td>Mostly stable</td></tr>
+  </tbody>
+</table>
+<p>The fourth row gets underestimated. One window photo proves nothing. The same angle photographed for eight years shows seasonal change, building work, and a shop sign replaced three times, and that combination places an area far more precisely than most people expect.</p>
+
+<h2>An inventory you can finish today</h2>
+<p>You do not need to be in the right frame of mind first. The inventory is five steps.</p>
+<ol>
+  <li><strong>Download the full archive.</strong> X data archive gives you every tweet and media file, covered in <a href="/blog/how-to-download-x-archive">the download walkthrough</a>.</li>
+  <li><strong>Run scenario keywords.</strong> School, class, uniform, birthday, award, fever, pickup. These cover most captioned content.</li>
+  <li><strong>Pull every image-bearing tweet and work by year.</strong> Uncapped photos need a visual pass, and going year by year misses less than going keyword by keyword.</li>
+  <li><strong>Flag the four high-risk categories.</strong> Sort with the table above and do not spend time debating the low-risk items here.</li>
+  <li><strong>Confirm, then delete.</strong> Deletion is not reversible, so the scoping method in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk</a> is worth reading first.</li>
+</ol>
+
+<h2>Delete or keep: three lines that settle it</h2>
+<p>Not everything should go. Wiping the whole record erases the childhood documentation along with the risk, which is its own loss. Three lines sort the pile.</p>
+<table>
+  <thead><tr><th>Line</th><th>Keep if</th><th>Delete if</th></tr></thead>
+  <tbody>
+    <tr><td>Locatable</td><td>No school, address or fixed route</td><td>Any combination that places a location or institution</td></tr>
+    <tr><td>Identifiable</td><td>No full name, documents or exposure</td><td>Face plus full name, or any document content</td></tr>
+    <tr><td>Changeable</td><td>The content does not form a lasting record</td><td>It becomes more sensitive with age</td></tr>
+  </tbody>
+</table>
+<p>The order matters and should not be rearranged. Locatable comes first because location is the entry point to most other risks. Identifiable comes second because it decides whether the content can be tied to a specific person at all.</p>
+
+<h2>Habits worth starting now</h2>
+<p>Cleanup is repair. Habits are the stop-loss. Ask whether the image shows a school gate or a house number before posting. Keep name and institution out of the same frame. Send fixed-angle daily photos to family only, not to a public timeline. And once a child is past three, read the caption back imagining how they will read it at fifteen.</p>
+<p>If more than one account in the household posts, the same approach applies across all of them, covered in <a href="/blog/family-account-old-tweets-risk">family account risk</a>. Platform rules for content posted while you were a minor are in <a href="/blog/underage-tweets">underage tweets</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) turns this inventory into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. How the score works is explained in <a href="/blog/digital-footprint-health-score">using the health score</a>, and what a report contains is in <a href="/blog/anatomy-of-a-footprint-report">the anatomy of a report</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and other scenarios are on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'x-archive-csv-vs-json',
+    title: 'X 归档里的 CSV 与 JSON：两种格式各能做什么',
+    excerpt:
+      '打开 X 数据归档会看到两类文件混在一起：一批 .csv 表格和一批 .js 文件（内容其实是 JSON）。名字接近，能力完全不同。这篇文章给出两种格式的能力边界、各自适合回答的问题，以及三个最常见的选择错误。',
+    date: '2026-09-24',
+    updatedAt: '2026-09-24',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X/Twitter', '数据归档', 'CSV', 'JSON', '归档解析'],
+    canonical: '/blog/x-archive-csv-vs-json',
+    faq: [
+      { q: "归档里的 .js 文件为什么用表格软件打不开？", a: "因为它并不是 JavaScript 代码，实际内容是一层赋值包裹下的 JSON 数据。X 为了让这些文件能被本地直接读取，把纯 JSON 写成了一个赋值表达式。用文本编辑器打开会看到开头的赋值语句，删掉那一层之后就是标准 JSON，可以被任何解析器读取。", qEn: "Why won't spreadsheet software open the .js files in my archive?", aEn: "Because they are not JavaScript code. They are JSON data wrapped in an assignment. X writes them that way so the files can be read locally without a server. Open one in a text editor and you will see a leading assignment statement. Strip that outer layer and what remains is standard JSON that any parser can read." },
+      { q: "只想统计推文数量，用哪种格式？", a: "用 CSV。tweets.csv 里每条推文占一行，计数、按日期分组、按关键词筛选这类操作用表格软件几秒就能完成，不需要写任何代码。JSON 里做同样的事要先解析结构再遍历。数量、日期分布、语言分布这类问题都属于 CSV 的强项。", qEn: "If I only want to count tweets, which format should I use?", aEn: "CSV. tweets.csv holds one row per tweet, so counting, grouping by date and filtering by keyword take seconds in a spreadsheet with no code. Doing the same in JSON means parsing a structure and walking it. Counts, date distribution and language distribution all sit in CSV territory." },
+      { q: "哪些信息只在 JSON 里有？", a: "完整的嵌套结构。一条推文在 JSON 里可以带完整的实体信息：被提及的账号列表、话题标签、链接展开后的目标地址、媒体文件的多个尺寸变体、以及回复关系。CSV 把这些压成单元格文本，多层结构会被合并或丢失，所以做关联分析时 CSV 通常不够用。", qEn: "What only exists in the JSON?", aEn: "The full nested structure. A tweet in JSON can carry complete entities: the list of mentioned accounts, hashtags, expanded destination URLs, multiple size variants per media file, and the reply relationship. CSV flattens these into cell text, so multi-level structure gets merged or dropped, which is why CSV usually falls short for relationship analysis." },
+      { q: "两个格式的结果对不上，是数据错了吗？", a: "通常不是。最常见的三个原因是：CSV 按行记录，转推与回复常常缺媒体字段，数量上看不出差别但内容上少了；JSON 里存在 CSV 未导出的条目类型，比如点赞与私信各自独立成文件；以及时区处理不同，同一批时间戳在两边可能落在不同的日期分组里。核对时先把这三项排除。", qEn: "The two formats give different numbers. Is my data wrong?", aEn: "Usually not. Three causes cover most of it: CSV is row-based and often lacks media fields for retweets and replies, so counts look the same while content is thinner; JSON contains item types that CSV does not export, with likes and direct messages living in their own files; and timezone handling differs, so the same timestamps can fall into different date groups. Rule those three out first." },
+    ],
+    titleEn: 'CSV vs JSON in Your X Archive: What Each Format Can Actually Do',
+    excerptEn:
+      'An X archive mixes two file families: a set of .csv tables and a set of .js files that actually contain JSON. The names are close, the capabilities are not. This guide covers the boundary of each format, the questions each one answers well, and the three selection mistakes that show up most often.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X/Twitter', 'data archive', 'CSV', 'JSON', 'archive parsing'],
+    content: `
+<p>打开 X 数据归档，你会看到两类文件混在一起：一批 .csv 表格，和一批 .js 文件。名字很像，能力完全不同。选错格式，轻则丢字段，重则得出一个错误的结论，而你还以为数据就是这样。</p>
+
+<h2>区别在于「结构能不能被表达」</h2>
+<p>CSV 是二维的：行和列。它擅长表示「每一行都是一条同类记录」的清单，缺点是表达不了层级。JSON 是树状的，可以嵌套，表达层级是它的本意。</p>
+<table>
+  <thead><tr><th>维度</th><th>CSV</th><th>JSON</th></tr></thead>
+  <tbody>
+    <tr><td>结构</td><td>二维表格，一行一条</td><td>树状嵌套，可无限层</td></tr>
+    <tr><td>打开方式</td><td>任何表格软件</td><td>需要解析器或文本编辑器</td></tr>
+    <tr><td>嵌套实体</td><td>合并为文本，部分丢失</td><td>完整保留</td></tr>
+    <tr><td>适合的问题</td><td>数量、分布、筛选</td><td>关联、结构、字段完整核对</td></tr>
+    <tr><td>人工检查</td><td>直观，可直接看</td><td>需要格式化后才可读</td></tr>
+  </tbody>
+</table>
+<p>表格里「嵌套实体」一行是关键。一条带图片的推文在 JSON 里可以包含多个尺寸变体、媒体类型、以及原始链接；在 CSV 里，这些通常被压成一个字段或直接省略。</p>
+
+<h2>CSV 适合回答什么</h2>
+<p>凡是可以描述为「数一数」「分一分」的问题，都该用 CSV。你会用它回答这类问题：一共发了多少条；哪一年发得最多；哪些推文包含某个词；语言分布是什么样；某段时间的发布密度是否异常。这些问题在表格软件里几秒完成，不需要写代码，也不容易出错。</p>
+<p>CSV 还有一个被低估的优点：可以直接肉眼校对。你打开文件就能看到真实的行，对判断「筛选条件是不是写对了」非常有帮助。</p>
+
+<h2>JSON 适合回答什么</h2>
+<p>凡是要沿结构往下走的问题，都该用 JSON。例如：这条推文回复的是哪一条；被提及的账号有哪些；链接展开后的真实域名是什么；同一条推文有几个媒体文件。这类问题的答案藏在层级里，CSV 在导出时把它们拍平了。</p>
+<p>归档里的 .js 文件其实不是代码。X 把它们写成了包一层赋值的 JSON，方便本地直接读取。用文本编辑器打开会看到开头有一句赋值语句，去掉那一层就是标准 JSON。这也是为什么直接双击常常打不开，而用文本编辑器却能看到全部内容。</p>
+
+<h2>三个最常见的选择错误</h2>
+<ol>
+  <li><strong>用 CSV 做关联分析。</strong> 想找出「谁被提及最多」这类问题，在 CSV 里只能靠关键词近似，结果会明显偏低。被提及的账号在 JSON 里是独立字段，在 CSV 里是文本的一部分。</li>
+  <li><strong>用 JSON 做简单计数。</strong> 能写代码当然没问题，但多数人的实际场景是打开文件就想知道总数，这一步用 CSV 更快，也更少出错。</li>
+  <li><strong>两边结果不同就当数据损坏。</strong> 更常见的原因是口径不同：转推与回复的媒体字段缺失、条目类型覆盖范围不同、时区处理不同。核对顺序见下一个问题。</li>
+</ol>
+
+<h2>两种格式结果对不上时怎么核对</h2>
+<p>按顺序排除三件事就能定位大部分差异。第一件是条目范围：CSV 未必包含所有类型，点赞与私信通常各自独立成文件。第二件是字段完整度：转推和回复在 CSV 里常常缺媒体字段，条目数一致但内容更薄。第三件是时区：同一批时间戳在两边可能落在不同的日期分组里，跨日边界附近的条目最容易出现这种偏差。</p>
+<p>三项都排除之后，如果数量仍然对不上，再去怀疑数据本身。这个顺序能省掉大量时间。</p>
+
+<h2>怎么选：按问题选格式</h2>
+<p>实操上不需要二选一。清单类问题用 CSV 快速过一遍，结构类问题回到 JSON 逐条核对，两者互为校验。如果你打算本地解析大体积归档，可以参考<a href="/blog/browser-side-archive-parsing">浏览器端解析的做法</a>，媒体结构与字段说明另见<a href="/blog/whats-inside-x-archive-tweets-js">归档里有哪些文件</a>。归档的保存方式建议先看<a href="/blog/store-x-archive-safely">安全存放归档</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）替你处理格式问题：上传 X 数据归档，工具在你的设备上解析全部推文与媒体，输出 0 到 100 的健康评分和按类别标记的风险条目。全程只读，不上传任何数据，也不索取账号权限，你不需要先弄清楚 CSV 与 JSON 的差别。评分说明见 <a href="/blog/digital-footprint-health-score">健康分怎么用</a>，风险标签解释见 <a href="/blog/risk-labels-explained">标签含义</a>。价格与范围在 <a href="/pricing">定价页</a>，免费体检入口在<a href="/">首页</a>，其他说明可以直接<a href="/blog">浏览博客</a>。</p>`,
+    contentEn: `
+<p>Open an X archive and you will find two families of files mixed together: a set of .csv tables and a set of .js files. The names look similar. The capabilities are not. Pick the wrong one and you either lose fields or reach a wrong conclusion, while assuming the data simply looks that way.</p>
+
+<h2>The difference is whether structure can be expressed</h2>
+<p>CSV is two-dimensional: rows and columns. It handles lists where every row is the same kind of record, and it cannot express hierarchy. JSON is a tree. Nesting is the point.</p>
+<table>
+  <thead><tr><th>Dimension</th><th>CSV</th><th>JSON</th></tr></thead>
+  <tbody>
+    <tr><td>Structure</td><td>Flat table, one row per item</td><td>Nested tree, any depth</td></tr>
+    <tr><td>How to open</td><td>Any spreadsheet app</td><td>A parser or a text editor</td></tr>
+    <tr><td>Nested entities</td><td>Flattened into text, partly lost</td><td>Fully preserved</td></tr>
+    <tr><td>Questions it fits</td><td>Counts, distribution, filtering</td><td>Relationships, structure, field-level checks</td></tr>
+    <tr><td>Manual review</td><td>Direct, readable as-is</td><td>Needs formatting before it reads well</td></tr>
+  </tbody>
+</table>
+<p>The nested entities row is the one that matters. A tweet with images can carry several size variants, a media type and the original link in JSON. In CSV those are usually squeezed into a single field or dropped outright.</p>
+
+<h2>What CSV answers well</h2>
+<p>Anything you can phrase as count it or group it belongs in CSV. You will use it to answer questions like: how many tweets are there in total, which year was the heaviest, which posts contain a given word, what the language mix looks like, whether posting density in one period is unusual. These take seconds in a spreadsheet, need no code and go wrong rarely.</p>
+<p>CSV has an underrated advantage too. You can eyeball real rows directly, which is very useful when you want to confirm your filter conditions behave as intended.</p>
+
+<h2>What JSON answers well</h2>
+<p>Anything that walks down a structure belongs in JSON. For example: which tweet does this one reply to, which accounts were mentioned, what is the real domain behind a shortened link, how many media files a single tweet carries. Those answers live in the hierarchy, and CSV flattens them on export.</p>
+<p>The .js files in the archive are not code. X writes them as JSON wrapped in an assignment so they can be read locally without a server. Open one in a text editor and you will see a leading assignment statement. Strip that layer and standard JSON remains. That is also why double-clicking often fails while a text editor shows everything.</p>
+
+<h2>Three selection mistakes that show up most</h2>
+<ol>
+  <li><strong>Using CSV for relationship analysis.</strong> Questions like who gets mentioned most can only be approximated with text matching in CSV, and the result runs low. Mentioned accounts are a distinct field in JSON and part of a text blob in CSV.</li>
+  <li><strong>Using JSON for simple counts.</strong> Writing code is fine if that is your workflow, but most people just want a total when they open the file, and CSV is both faster and less error-prone there.</li>
+  <li><strong>Treating a mismatch as corrupted data.</strong> Different definitions explain it more often: missing media fields on retweets and replies, different item type coverage, different timezone handling. The check order is in the next section.</li>
+</ol>
+
+<h2>When the two formats disagree</h2>
+<p>Rule out three things in order and most gaps resolve. First, item coverage: CSV does not include every type, and likes and direct messages usually live in their own files. Second, field completeness: retweets and replies often lack media fields in CSV, so counts match while content is thinner. Third, timezone handling: the same timestamps can land in different date groups, and items near a day boundary show it first.</p>
+<p>Once those three are ruled out, question the data itself. Doing it in that order saves a lot of time.</p>
+
+<h2>Choosing by the question you are asking</h2>
+<p>In practice you do not have to pick one. Use CSV for a fast pass over anything list-shaped, and go back to JSON for structural checks, with the two cross-checking each other. If you plan to parse a large archive locally, the approach in <a href="/blog/browser-side-archive-parsing">browser-side parsing</a> is a useful reference, and the file and field layout is described in <a href="/blog/whats-inside-x-archive-tweets-js">what is inside the archive</a>. For storage, start with <a href="/blog/store-x-archive-safely">storing an archive safely</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) handles the format question for you. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access, and you do not need to work out the CSV and JSON difference first. The scoring model is explained in <a href="/blog/digital-footprint-health-score">using the health score</a>, and label meanings are in <a href="/blog/risk-labels-explained">risk labels</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and everything else is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'x-phishing-dm-scams',
+    title: '伪装成 X 官方的钓鱼私信：七个识别信号与账号自救顺序',
+    excerpt:
+      '这类私信不攻击你的技术，攻击你的流程。它只要你按给定顺序操作一次，账号就交出去了。这篇文章给出七个可逐条核对的识别信号、为什么它们看起来可信，以及点过链接之后的处理顺序。',
+    date: '2026-09-24',
+    updatedAt: '2026-09-24',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '钓鱼私信', '账号安全', '冒充官方', '双重验证'],
+    canonical: '/blog/x-phishing-dm-scams',
+    faq: [
+      { q: "真正的 X 官方会用私信联系我吗？", a: "几乎不会通过私信要求你完成验证、申诉或缴费。官方通知通常出现在应用内的通知中心或设置页面里，需要你主动进入查看，官方不会推给你一个链接。任何私信里附带「立即验证」「申诉入口」按钮并要求你输入密码或验证码的，都可以先按钓鱼处理。", qEn: "Does X support ever message me directly?", aEn: "It almost never uses a direct message to ask you to verify, appeal or pay. Official notices appear in the in-app notification centre or inside settings, where you go and look. They are not delivered as a link you are pushed to click. Any DM that carries a verify now or appeal button and expects a password or a code should be treated as phishing until proven otherwise." },
+      { q: "为什么这些私信看起来那么可信？", a: "三个因素叠在一起。账号名和头像可以做得和官方几乎一致；文案会引用真实存在的功能名称，比如验证徽章、版权申诉、登录异常，让内容听起来合理；以及时间压力，通常给出「24 小时内处理」这类期限。三者组合会让人跳过核对步骤，直接开始操作。", qEn: "Why do these messages look so convincing?", aEn: "Three factors stack. The handle and avatar can be made nearly identical to the official account. The copy cites features that really exist, such as verification badges, copyright appeals or unusual login alerts, so the content sounds reasonable. And there is time pressure, usually a deadline like within 24 hours. Together they push you past verification and straight into doing what the message asks." },
+      { q: "点过链接，但还没输入任何信息，怎么办？", a: "仍然按已经中招处理，因为部分页面会在加载时就尝试读取会话信息。顺序是：立刻在另一台设备上修改密码；进入设置里的已登录设备列表，把不认识的会话全部注销；检查已连接应用并撤销不认识的授权；确认双重验证开启且验证方式是你本人持有的。这四步做完再回到日常使用。", qEn: "I clicked the link but did not type anything. What now?", aEn: "Treat it as a live exposure anyway, because some pages try to read session data as soon as they load. The order: change your password from a different device, open the active session list in settings and sign out anything you do not recognise, review connected apps and revoke unknown grants, then confirm two-factor is on and tied to something you physically hold. Finish all four before returning to normal use." },
+      { q: "账号已经被接管了，恢复顺序是什么？", a: "先做账号找回，再做清理。找回阶段用官方提供的密码重置流程，并优先确认邮箱与手机号仍然属于你，因为攻击者常先改这两项。回到账号后立刻改密、注销其他会话、撤销已连接应用。清理阶段再检查是否有攻击者发布的推文、私信和被修改的资料，处理方式可以参考账号接管的恢复步骤。", qEn: "The account is already taken over. What is the order?", aEn: "Recover first, clean second. Use the official password reset flow and confirm the email and phone on the account still belong to you, since attackers change those two first. Once back in, change the password, sign out other sessions and revoke connected apps. Only then review anything the attacker posted, sent or changed in the profile, following the takeover recovery steps." },
+    ],
+    titleEn: 'Phishing DMs That Pretend to Be X Support: Seven Signals and What to Do',
+    excerptEn:
+      'These messages do not attack your technical setup. They attack your sequence. You follow the steps once and the account is gone. Seven signals you can check one by one, why the messages look credible, and what to do after you clicked.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'phishing DM', 'account security', 'impersonation', 'two-factor'],
+    content: `
+<p>伪装成 X 官方支持的钓鱼私信有一个共同特征：它们不攻击你的技术，攻击你的流程。你只要按它给的顺序操作一次，账号就交出去了。理解了这一点，识别就变得简单，因为你不需要判断页面做得多像，只需要判断「官方有没有可能用这种方式要求我做这件事」。</p>
+
+<h2>七个可以逐条核对的信号</h2>
+<ol>
+  <li><strong>通过私信要求验证。</strong> 官方流程不会把验证动作放在私信里，而是放在你需要主动进入的设置或通知中心。</li>
+  <li><strong>给出处理期限。</strong> 「24 小时内」这类措辞的唯一作用是压缩你的核对时间。</li>
+  <li><strong>链接域名与官方不一致。</strong> 把鼠标悬停或长按就能看到真实地址，重点看主域，路径里的字样不能作为依据。</li>
+  <li><strong>要求输入密码或验证码。</strong> 任何页面要求你把验证码交出去，都可以直接判定为钓鱼，验证码的作用就是不能被转交。</li>
+  <li><strong>账号名带额外字符。</strong> 官方账号名后面多一个下划线、多个数字或一对字母，是常见做法。</li>
+  <li><strong>历史很短或内容空。</strong> 打开对方主页看一眼，注册时间和推文数量通常能立刻说明问题。</li>
+  <li><strong>引导你离开平台沟通。</strong> 让你转到即时通讯或邮件继续，目的是脱离平台的风控检测。</li>
+</ol>
+<p>七条里任何一条单独出现都不足以定论，但两条同时出现就应当停止操作。第三条和第四条同时命中时，基本可以直接判定。</p>
+
+<h2>为什么这类私信看起来可信</h2>
+<p>三个因素叠在一起。账号名和头像可以做得和官方几乎一致，这一步成本很低。文案会引用真实存在的功能名称，比如验证徽章、版权申诉、登录异常，让内容听起来合理。再加上时间压力，给出一个不长的期限。</p>
+<p>这三者组合的效果是让人跳过核对步骤，直接进入「怎么解决」的思考。钓鱼真正利用的是这种状态，页面的技术质量并不重要。</p>
+
+<h2>点过链接之后要做什么</h2>
+<p>只要点开过，就按已经中招处理，因为部分页面会在加载时就尝试读取会话信息。顺序比动作重要。</p>
+<ol>
+  <li><strong>换设备改密码。</strong> 用另一台设备操作，避免在被影响的会话里继续使用。</li>
+  <li><strong>注销其他会话。</strong> 进入设置里的已登录设备列表，把不认识的会话全部注销，方法见<a href="/blog/login-device-audit-x-account">登录设备核查</a>。</li>
+  <li><strong>撤销已连接应用。</strong> 逐项检查授权列表，撤销不认识的授权，参考<a href="/blog/x-connected-apps-permission-audit">已连接应用权限审计</a>。</li>
+  <li><strong>确认双重验证。</strong> 确认开启且验证方式是你本人持有的，设置步骤见<a href="/blog/enable-2fa-x-account">开启双重验证</a>。</li>
+  <li><strong>检查资料与内容。</strong> 确认邮箱、手机号、简介没有被改动，这是攻击者最先动的地方。</li>
+</ol>
+<p>五步之外不要再做别的。收到这类私信后的第一反应常常是去搜「这是不是真的」,而搜索过程本身会把你带到更多同类页面，反而增加风险。</p>
+
+<h2>账号被接管后的恢复顺序</h2>
+<p>接管意味着有人已经在用你的账号。顺序是恢复、加固、清理三段。</p>
+<table>
+  <thead><tr><th>阶段</th><th>动作</th><th>判断完成的标准</th></tr></thead>
+  <tbody>
+    <tr><td>恢复</td><td>走官方密码重置，确认邮箱与手机号归你</td><td>能稳定登录，且验证渠道是自己持有的</td></tr>
+    <tr><td>加固</td><td>改密、注销其他会话、撤销授权、开启双重验证</td><td>设备列表与授权列表只剩自己认识的条目</td></tr>
+    <tr><td>清理</td><td>核对推文、私信、资料改动</td><td>没有不属于自己的内容残留</td></tr>
+  </tbody>
+</table>
+<p>恢复阶段的重点是邮箱与手机号。攻击者接管后最先改的通常是这两项，如果它们不在你手里，后续所有加固都会被绕过。完整流程见<a href="/blog/twitter-account-takeover-recovery">账号接管恢复</a>，涉及手机号的攻击形态另见<a href="/blog/sim-swap-attack-x-account-lockout">SIM 卡交换</a>。</p>
+
+<h2>把流程固定下来比记住特征更有用</h2>
+<p>识别信号会不断更新，固定流程不会。三条规则可以覆盖绝大多数情况：凡是要求你从外部链路完成验证的，一律不从；凡是要求你交出验证码的，一律不给；凡是带有期限压力的，一律先放一小时再处理。这三条不依赖你判断真伪，只依赖你不改变顺序。</p>
+<p>顺带一提，账号安全与旧内容清理是两个方向的事，但目标一致。把历史推文里的手机号、邮箱清出去，本身就会降低被定向钓鱼的概率，筛选思路见<a href="/blog/phone-number-in-tweets-check">含手机号推文怎么筛</a>与<a href="/blog/email-leak-in-tweets-fix">邮箱泄露的处理</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）处理的是另一半问题：历史内容里有多少可被用来定向的信息。上传 X 数据归档，工具在你的设备上解析全部推文与媒体，输出 0 到 100 的健康评分和按类别标记的风险条目。全程只读，不上传任何数据，也不索取账号权限。账号安全相关清单见 <a href="/blog/x-connected-apps-permission-audit">权限审计</a>，长期维护习惯见 <a href="/blog/30-day-footprint-habit-plan">30 天习惯计划</a>。价格与范围在 <a href="/pricing">定价页</a>，免费体检入口在<a href="/">首页</a>，其他内容可以直接<a href="/blog">浏览博客</a>。</p>`,
+    contentEn: `
+<p>Phishing DMs that pretend to be X support share one trait. They do not attack your technical setup, they attack your sequence. Follow the steps once and the account is gone. Once you see it that way, spotting them gets easier, because you no longer have to judge how convincing the page looks. You only have to judge whether the official channel would ever ask for this in this way.</p>
+
+<h2>Seven signals you can check one by one</h2>
+<ol>
+  <li><strong>A DM that asks you to verify.</strong> Official flows put verification inside settings or the notification centre, where you go and look, not in a message that comes to you.</li>
+  <li><strong>A deadline.</strong> Wording like within 24 hours exists for one purpose: to compress the time you spend checking.</li>
+  <li><strong>A domain that is not the real one.</strong> Hover or long-press to see the actual address, and read the main domain rather than words in the path.</li>
+  <li><strong>A request for a password or a code.</strong> Any page asking you to hand over a verification code can be treated as phishing immediately, because the point of a code is that it cannot be forwarded.</li>
+  <li><strong>A handle with extra characters.</strong> An added digit or a doubled letter in the handle is the standard pattern.</li>
+  <li><strong>A very short history.</strong> Open the profile and look. Account age and post count usually settle it in seconds.</li>
+  <li><strong>A push to move elsewhere.</strong> Being asked to continue on a messaging app or by email means leaving the platform's abuse detection behind.</li>
+</ol>
+<p>Any single one of these is thin on its own, but two together are reason to stop. When the third and fourth hit at the same time, the case is closed.</p>
+
+<h2>Why these messages look credible</h2>
+<p>Three factors stack. The handle and avatar can be made nearly identical to the official account, which is cheap to do. The copy cites features that really exist, such as verification badges, copyright appeals or unusual login alerts, so it sounds reasonable. Then time pressure supplies a short deadline.</p>
+<p>The combined effect is that people skip verification and jump straight to solving the problem. That state is what phishing actually exploits, not the technical quality of the page.</p>
+
+<h2>What to do after you clicked</h2>
+<p>If you opened the link at all, treat it as a live exposure, because some pages try to read session data as soon as they load. Order matters more than the individual actions.</p>
+<ol>
+  <li><strong>Change the password from another device.</strong> Work from a device that is not sharing the affected session.</li>
+  <li><strong>Sign out other sessions.</strong> Open the active session list in settings and sign out anything you do not recognise, covered in <a href="/blog/login-device-audit-x-account">auditing logged-in devices</a>.</li>
+  <li><strong>Revoke connected apps.</strong> Go through the authorisation list and cut unknown grants, described in <a href="/blog/x-connected-apps-permission-audit">connected app permission audit</a>.</li>
+  <li><strong>Confirm two-factor.</strong> Make sure it is on and tied to something you physically hold, per <a href="/blog/enable-2fa-x-account">enabling two-factor</a>.</li>
+  <li><strong>Check the profile.</strong> Confirm the email, phone number and bio are unchanged, since those are touched first.</li>
+</ol>
+<p>Do not add extra steps. The common first reaction is to search whether the message is real, and that search tends to surface more pages of the same kind, which raises your exposure rather than lowering it.</p>
+
+<h2>Recovery order after a takeover</h2>
+<p>A takeover means someone is already using the account. The order is recover, harden, clean.</p>
+<table>
+  <thead><tr><th>Phase</th><th>Actions</th><th>Done when</th></tr></thead>
+  <tbody>
+    <tr><td>Recover</td><td>Official password reset, confirm email and phone are yours</td><td>You can log in reliably and hold the verification channel</td></tr>
+    <tr><td>Harden</td><td>New password, sign out other sessions, revoke grants, enable two-factor</td><td>Session and authorisation lists contain only what you recognise</td></tr>
+    <tr><td>Clean</td><td>Review posts, messages and profile changes</td><td>Nothing on the account belongs to someone else</td></tr>
+  </tbody>
+</table>
+<p>The recovery phase hinges on email and phone. Attackers usually change those two first, and if they are not in your hands, every later hardening step can be bypassed. The full flow is in <a href="/blog/twitter-account-takeover-recovery">account takeover recovery</a>, and the phone-based variant is covered in <a href="/blog/sim-swap-attack-x-account-lockout">SIM swap attacks</a>.</p>
+
+<h2>A fixed sequence beats a memorised list</h2>
+<p>The signals keep changing. A fixed process does not. Three rules cover most cases. Never complete a verification that arrives through an external link. Never hand over a code. And when a message applies a deadline, put it down for an hour before touching it. None of these require you to judge authenticity, only to keep your order intact.</p>
+<p>One related point: account security and content cleanup point in the same direction. Removing phone numbers and email addresses from old tweets lowers the odds of targeted phishing in the first place, and the filtering approach is in <a href="/blog/phone-number-in-tweets-check">finding tweets with phone numbers</a> and <a href="/blog/email-leak-in-tweets-fix">handling an email leak</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) handles the other half: how much of your history is usable for targeting. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. For the security checklist side, see <a href="/blog/x-connected-apps-permission-audit">permission audits</a>, and for long-term upkeep see <a href="/blog/30-day-footprint-habit-plan">the 30-day habit plan</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and the rest is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'personal-data-in-old-tweets-faq',
+    title: '旧推文里的个人信息：读者最常问的十个问题',
+    excerpt:
+      '手机号、邮箱、地址、证件类内容散落在旧推文里时，读者问的问题高度集中。这一篇把十个高频问题集中回答，每条给出可执行的动作和判断依据，不重复背景铺垫。',
+    date: '2026-09-24',
+    updatedAt: '2026-09-24',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '个人信息', 'FAQ', '隐私清理', '旧推文'],
+    canonical: '/blog/personal-data-in-old-tweets-faq',
+    faq: [
+      { q: "怎么知道旧推文里有没有个人信息？", a: "凭记忆不可靠，实测中用户以为只有两三条，实际候选往往是十几条。可行方式是下载 X 数据归档后做一次本机解析，按手机号、邮箱、地址、证件四类条件过一遍，再逐条人工确认。全程不需要把数据上传到任何服务器。", qEn: "How do I find out whether my old tweets contain personal data?", aEn: "Memory is not a reliable source. In practice, people who expect two or three items usually find a dozen. Download your X data archive and run a local parse, filtering on phone numbers, email addresses, physical addresses and documents in four passes, then confirm the candidates by hand. Nothing needs to leave your machine." },
+      { q: "先删哪一类？", a: "按「能否单独完成一次身份验证」排序。证件与护照类、银行卡或账单类排最前，因为它们可以独立使用。手机号与邮箱排第二，因为它们是其他账号找回流程的入口。地址与定位排第三，它们通常需要与其他信息拼合才有用。日期顺序不是好用的排序依据。", qEn: "Which category should I delete first?", aEn: "Rank by whether the item can complete a verification on its own. Documents and passports, plus bank or billing photos, come first because they work standalone. Phone numbers and email addresses come second, since they open the recovery flow for other accounts. Addresses and locations come third, because they usually need to be combined with something else. Date order is a poor way to sort." },
+      { q: "删掉之后，别人手里的副本怎么办？", a: "删除只改变你自己账号上的可见性，不影响已经存在的副本。这不代表删除没意义，它切断了继续扩散的源头：没有链接可以被再次转发，没有页面会被检索到。真正需要额外处理的是可以更换的凭证，比如员工编号、会员号、绑定的手机号。", qEn: "What about copies other people already have?", aEn: "Deletion changes visibility on your own account and does not touch existing copies. That does not make it pointless, because it cuts the source of further spread: no link can be reshared and no page gets indexed. What needs separate handling is anything you can reissue, such as an employee number, a membership number or a bound phone number." },
+      { q: "多久检查一次比较合适？", a: "一年一次完整检查，加上每次发布敏感内容后的即时提醒。频率过高会产生清理疲劳，频率过低会让问题在两次检查之间累积。如果要养成习惯，可以参考 30 天计划把首次完整清理拆成每天一小块。", qEn: "How often should I check?", aEn: "A full pass once a year, plus an immediate review after posting anything sensitive. Checking too often produces cleanup fatigue, and checking too rarely lets problems accumulate between passes. If you want a structure, a 30-day plan splits the first full cleanup into one small piece per day." },
+      { q: "清理之后还会重新出现同类内容吗？", a: "会，如果发布习惯不变。复发通常来自三个场景：回复他人时贴出图片、转推时不检查原图内容、以及新设备自动同步把老照片重新进入可选范围。止损方式比清理方式更重要：发布前问一句图里有没有可读取的字段，并把证件类照片排除在自动同步之外。", qEn: "Will the same kind of content come back after cleanup?", aEn: "Yes, if posting habits do not change. Recurrence usually comes from three places: attaching an image in a reply, retweeting without checking the original image, and a new device syncing old photos back into reach. Stopping it matters more than cleaning it: ask whether the image carries any readable field before posting, and keep document photos out of automatic sync." },
+    ],
+    titleEn: 'Personal Data in Old Tweets: 10 Questions Readers Keep Asking',
+    excerptEn:
+      'Questions about phone numbers, email addresses, addresses and documents in old tweets cluster tightly. This piece answers the ten most common ones, each with a concrete action and the reasoning behind it, without repeating background.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'personal data', 'FAQ', 'privacy cleanup', 'old tweets'],
+    content: `
+<p>这一篇把读者问得最多的十个问题集中回答一次。问题来自旧推文里的手机号、邮箱、地址和证件类内容。每条答案给出可执行的动作和判断依据，不重复背景铺垫。</p>
+
+<h2>一、怎么知道旧推文里有没有个人信息</h2>
+<p>凭记忆不可靠。实测中最常见的偏差是用户以为只有两三条，实际候选是十几条，分布在六到八年之间。可行方式是下载归档后做一次本机解析，按手机号、邮箱、地址、证件四类条件分别过一遍。<a href="/blog/how-to-download-x-archive">归档下载流程</a>和<a href="/blog/whats-inside-x-archive-tweets-js">归档文件构成</a>是前置的两篇。</p>
+
+<h2>二、先删哪一类</h2>
+<p>按「能否单独完成一次身份验证」排序，时间或条数不能作数。证件与护照类、银行卡或账单类排最前，因为它们可以独立使用。手机号与邮箱排第二，因为它们是其他账号找回流程的入口。地址与定位排第三，它们通常需要拼合其他信息才有用。</p>
+
+<h2>三、删掉之后别人手里的副本怎么办</h2>
+<p>删除只改变你自己账号上的可见性，不影响已存在的副本。这不代表删除没意义：它切断了继续扩散的源头，没有链接可以被再次转发，没有页面会被检索到。真正需要额外处理的是能更换的凭证，员工编号、会员号、绑定手机号都可以在机构侧更换。</p>
+
+<h2>四、怎么把散在多年里的内容筛出来</h2>
+<p>三层过滤叠加：关键词命中带配文的内容；时间与场景锁定入职期、搬家期、出差期这类集中窗口；媒体类型筛出全部含图推文逐张过一遍。只在第一层做筛选会漏掉最危险的部分，因为风险最高的图片通常没有配文。</p>
+
+<h2>五、多久检查一次</h2>
+<p>一年一次完整检查，加上每次发布敏感内容后的即时复核。频率过高会产生清理疲劳，过低会让问题在两次之间累积。需要结构的话，<a href="/blog/30-day-footprint-habit-plan">30 天习惯计划</a>把首次完整清理拆成每天一小块。</p>
+
+<h2>六、删了还会重新出现同类内容吗</h2>
+<p>会，如果发布习惯不变。复发来自三个场景：回复他人时贴出图片、转推时不检查原图内容、新设备自动同步把老照片重新变成可选项。止损比清理更重要。</p>
+
+<h2>七、体检评分和清理范围是什么关系</h2>
+<p>评分回答「整体状况如何」，清理范围回答「先动哪里」。两者不是同一件事。评分低但风险条目集中在一类时，清理反而更快。评分构成见<a href="/blog/digital-footprint-health-score">健康分怎么用</a>，标签含义见<a href="/blog/risk-labels-explained">风险标签解释</a>。</p>
+
+<h2>八、报告里的项目会不会有误报</h2>
+<p>会有。常见误报来自同名、编号格式与手机号相似、以及引用他人内容。处理方式是逐条人工确认，不要照着报告直接批量删除，判定思路见<a href="/blog/footprint-report-false-positives">误报怎么判断</a>。</p>
+
+<h2>九、删除范围怎么定才不容易删错</h2>
+<p>先跑全量的极小样本，确认筛选条件符合预期，再放开完整任务。删除不可撤销，这一步能避免删掉本来打算保留的内容。范围筛选的完整方法见<a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理</a>与<a href="/blog/deletion-scope-selection">删除范围选择</a>。</p>
+
+<h2>十、清理完成之后还要做什么</h2>
+<p>两件事。第一件是复查：用同样的筛选条件重新跑一遍，确认候选集为空。第二件是把清单留档，方便下次检查时对照。留档与导出方式见<a href="/blog/deletion-audit-record-export">删除记录导出</a>。</p>
+
+<h2>关于 Digital Footprint Health</h2>
+<p>Digital Footprint Health（digital-footprint-health.shop）把上面第一个问题做成了一次免费操作：上传 X 数据归档，工具在你的设备上解析全部推文与媒体，输出 0 到 100 的健康评分和按类别标记的风险条目。全程只读，不上传任何数据，也不索取账号权限。其他场景见 <a href="/blog/id-photo-tweets-leak">证件类照片的处理</a> 与 <a href="/blog/sharenting-kids-photos-old-tweets">晒娃内容的清理</a>。价格与范围在 <a href="/pricing">定价页</a>，免费体检入口在<a href="/">首页</a>，也可以直接<a href="/blog">浏览博客</a>。</p>`,
+    contentEn: `
+<p>This piece answers the ten questions readers ask most often about phone numbers, email addresses, physical addresses and documents sitting in old tweets. Each answer gives a concrete action and the reasoning behind it, without repeating background.</p>
+
+<h2>1. How do I know whether my old tweets contain personal data?</h2>
+<p>Memory is not reliable. The most common gap in practice is expecting two or three items and finding a dozen, spread across six to eight years. The workable approach is a local parse of your archive, filtered in four passes: phone numbers, email addresses, addresses and documents. Two prerequisite reads are <a href="/blog/how-to-download-x-archive">downloading the archive</a> and <a href="/blog/whats-inside-x-archive-tweets-js">what is inside it</a>.</p>
+
+<h2>2. Which category should I delete first?</h2>
+<p>Rank by whether the item can complete a verification on its own, not by date or count. Documents and passports, plus bank and billing photos, come first because they work standalone. Phone numbers and email addresses come second, since they open the recovery flow for other accounts. Addresses and locations come third, because they usually need something else to be useful.</p>
+
+<h2>3. What about copies other people already have?</h2>
+<p>Deletion changes visibility on your account and does not touch existing copies. That does not make it pointless: it cuts the source of further spread, so no link can be reshared and no page gets indexed. What needs separate handling is anything you can reissue, and employee numbers, membership numbers and bound phone numbers can all be changed on the institution's side.</p>
+
+<h2>4. How do I find items scattered across years?</h2>
+<p>Stack three filters. Keywords catch captioned content. Time and scenario lock onto clusters such as a job start, a move or a business trip. Media type pulls every image-bearing tweet for a visual pass. Stopping at the first layer leaves the riskiest part behind, because the highest-risk images usually have no caption.</p>
+
+<h2>5. How often should I check?</h2>
+<p>A full pass once a year, plus an immediate review after posting anything sensitive. Too often produces cleanup fatigue, too rarely lets problems accumulate between passes. If you want structure, <a href="/blog/30-day-footprint-habit-plan">the 30-day habit plan</a> splits the first full cleanup into one piece a day.</p>
+
+<h2>6. Will the same content come back?</h2>
+<p>Yes, if posting habits do not change. It returns from three places: attaching images in replies, retweeting without checking the original, and a new device syncing old photos back into reach. Stopping it matters more than cleaning it.</p>
+
+<h2>7. How does a health score relate to cleanup scope?</h2>
+<p>The score answers how you are doing overall. Scope answers where to start. They are different questions, and a low score with risk concentrated in one category is actually faster to fix. The scoring model is in <a href="/blog/digital-footprint-health-score">using the health score</a> and label meanings are in <a href="/blog/risk-labels-explained">risk labels</a>.</p>
+
+<h2>8. Can a report contain false positives?</h2>
+<p>Yes. Common causes are shared names, number formats that resemble phone numbers, and quoted content from other people. The response is to confirm items one by one rather than deleting straight from the report, described in <a href="/blog/footprint-report-false-positives">judging false positives</a>.</p>
+
+<h2>9. How do I set a deletion scope without deleting the wrong things?</h2>
+<p>Run a very small sample first to confirm the filters behave as expected, then release the full job. Deletion cannot be undone, and this step is what keeps you from removing content you meant to keep. The full method is in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk</a> and <a href="/blog/deletion-scope-selection">choosing a deletion scope</a>.</p>
+
+<h2>10. What is left to do after the cleanup?</h2>
+<p>Two things. Re-run the same filters and confirm the candidate set is empty. Then keep the list on file so the next check has something to compare against. Exporting and storing it is covered in <a href="/blog/deletion-audit-record-export">exporting a deletion record</a>.</p>
+
+<h2>About Digital Footprint Health</h2>
+<p>Digital Footprint Health (digital-footprint-health.shop) turns the first question above into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. Related cases are in <a href="/blog/id-photo-tweets-leak">handling document photos</a> and <a href="/blog/sharenting-kids-photos-old-tweets">cleaning sharenting content</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and the rest is on the <a href="/blog">blog</a>.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

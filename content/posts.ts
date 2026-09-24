@@ -14714,6 +14714,658 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the first question above into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. Related cases are in <a href="/blog/id-photo-tweets-leak">handling document photos</a> and <a href="/blog/sharenting-kids-photos-old-tweets">cleaning sharenting content</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and the rest is on the <a href="/blog">blog</a>.</p>`,
   },
+  {
+    slug: 'tweet-deletion-tool-stack',
+    title: '清理旧推文的三件套：原生入口、批量工具、手动白名单怎么分工',
+    excerpt:
+      '一款工具删不完十年的推文。X 原生入口受 3200 条限制，批量工具按规则跑但会误伤，只有你能判断哪条该留。本文给出三层分工的具体做法，并附 1200 条推文的三种方案成本对照。',
+    date: '2026-09-25',
+    updatedAt: '2026-09-25',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    tags: ['X/Twitter', '删除工具', '工具组合', '批量删除'],
+    canonical: '/blog/tweet-deletion-tool-stack',
+    titleEn: 'The Three-Tool Stack for Cleaning Old Tweets',
+    excerptEn:
+      'No single tool finishes a decade of tweets. The native route caps near 3,200, bulk tools run on rules and misfire, and only you know which posts should stay. Here is the three-layer division of labor, plus cost math for 1,200 tweets under three plans.',
+    categoryEn: 'Comparison',
+    tagsEn: ['X/Twitter', 'deletion tools', 'tool stack', 'bulk delete'],
+    content: `
+<p>第一次清理旧推文的人，几乎都会在同一个地方卡住：下载完几百 MB 的归档，面对十年的发言记录，不知道该从哪一条下手。</p>
+<p>接下来的反应通常是去找一款"最全能的删除工具"。这个方向本身就是错的。清理旧推文是一次分工任务，市面上没有哪一款工具能独自把它做完。</p>
+
+<h2>为什么一款工具收不了尾</h2>
+<p>X 的原生删除入口只做逐条操作，单次可删总量在 3200 条上下，没有批量勾选，也没有按年份筛选。这个上限决定了原生入口只能处理零头。</p>
+<p>批量工具补上了速度，但它的判断依据是规则：年份区间、关键词、推文 ID 范围。规则能帮你圈出 90% 的候选，剩下 10% 需要人的判断。你三年前那条宣布换工作的推文，按年份规则会被归进"旧内容"，可它其实是你职业履历的一部分。</p>
+<p>纯手动删除的判断最准，速度却慢到没有意义。一天删 300 条，十年量级要删三个月，多数人第二周就放弃了。</p>
+<p>可行的做法是把活儿切成三层，每层交给最适合它的角色。</p>
+
+<h2>三层的分工边界</h2>
+<p>下面这张表是本方法的核心。先看清每层的能做什么、不能做什么，再决定预算和顺序。</p>
+<table>
+  <thead>
+    <tr><th>层</th><th>使用的东西</th><th>擅长</th><th>短板</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>定位层</td><td>数字足迹体检（解析归档）</td><td>扫描全部历史推文，按手机号、邮箱、地址、定位、敏感话题打风险标签</td><td>只读分析，不执行删除</td></tr>
+    <tr><td>批量层</td><td>第三方批量删除工具 / 本地脚本</td><td>按规则高速删除成百上千条</td><td>无法理解上下文，白名单靠手动维护</td></tr>
+    <tr><td>手动层</td><td>X 原生删除入口</td><td>精准控制每一条，处理边界情况</td><td>无批量，受接口配额限制</td></tr>
+  </tbody>
+</table>
+<p>三层不是三选一。定位层告诉你哪些值得删，批量层负责体力活，手动层收拾剩下的边角。跳过定位层直接批量删，等于在没有清单的情况下搬家。</p>
+
+<h2>批量层的规则怎么设才不误伤</h2>
+<p>规则设计有一个可靠的顺序：先按高风险模式收窄，再按时间排序补充，最后整体过一遍白名单。</p>
+<ol>
+  <li><strong>先删高风险模式。</strong>把体检报告里标记为"联系方式泄露"和"位置信息"的推文单独拉出来。这类内容的判断几乎没有争议，先处理它们能立刻降低风险敞口。</li>
+  <li><strong>再按年份批量补删。</strong>以"三年以前 + 无互动"作为宽松条件。无互动是关键的收窄条件，它把已经被转推、被引用、在对话中有上下文的推文排除在外。</li>
+  <li><strong>最后过白名单。</strong>把必须保留的推文列成清单：作品发布、公开承诺、客户案例、任何你希望被搜到的内容。清单要在批量执行之前建立，执行之后再补救成本翻倍。</li>
+</ol>
+<p>关于批量工具的权限，值得单独看一眼再授权。有些工具要求完整的读写权限，这意味着它理论上可以发推、改资料、看私信。审计权限范围的做法，可以参考 <a href="/blog/mass-deletion-tool-permission-scope">批量删除工具的权限范围怎么看</a>。</p>
+
+<h2>白名单那一层为什么必须手动</h2>
+<p>白名单的本质是价值判断，而价值判断没有规则可循。同一个账号里，有人想保住育儿记录，有人想保住行业观点，有人只想保住那几条被客户夸过的作品链接。这些标准无法写成工具能执行的规则。</p>
+<p>手动层还有一个不可替代的作用：处理"删了会留下痕迹"的情况。一条被大量转推的推文删掉后，引用它的对话会显示内容缺失，阅读体验突兀。想尽量平滑地处理这类推文，可以先看 <a href="/blog/delete-tweets-without-breaking-threads">删除推文时怎么不打断对话</a>，再决定是删、是隐藏，还是保留但编辑。</p>
+<p>另外，置顶推文和被你自己放在白名单里的内容需要单独标记。批量工具通常会把它们一起卷走，置顶位会空着，直到你手动补上。相关做法写在 <a href="/blog/whitelist-and-pinned-tweets">白名单与置顶推文的处理</a>。</p>
+
+<h2>1200 条推文的三种方案成本对照</h2>
+<p>假设体检后确认有 1200 条需要处理，其中 40 条属于必须保留、必须在手动层确认的类别。三种方案的差别如下。</p>
+<table>
+  <thead>
+    <tr><th>方案</th><th>耗时</th><th>误删风险</th><th>隐私处理方式</th><th>适合谁</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>纯手动</td><td>约 6 到 8 小时</td><td>极低</td><td>全程在 X 页面内完成</td><td>删减量在 200 条以内</td></tr>
+    <tr><td>纯云端批量工具</td><td>1 到 2 小时</td><td>中，规则覆盖不到边界情况</td><td>需要把账号授权给第三方服务器</td><td>删减量在 5000 条以上且不介意授权</td></tr>
+    <tr><td>三件套组合</td><td>2 到 3 小时</td><td>低，白名单提前锁定</td><td>体检在本机完成，只有删除动作走授权</td><td>量级在 500 到 5000 条之间</td></tr>
+  </tbody>
+</table>
+<p>组合方案多出来的那一小时，花在建立白名单和复核边界推文上。它换来的是不会把重要的履历内容一起删掉，也避免了事后从归档里翻回原始文本再手动重发。</p>
+
+<h2>三种常见误用</h2>
+<ul>
+  <li><strong>把批量工具当全量方案。</strong>先授权再思考，等删完才发现作品链接和客户案例全没了。归档里能找回文本，找回不了原始时间戳和互动数据。</li>
+  <li><strong>忽略删除的接口配额。</strong>删除请求受速率限制，一天的额度有限。工具显示"任务完成"时，可能只是配额用尽，剩余部分需要第二天继续。相关限制见 <a href="/blog/x-api-rate-limits-deletion">删除接口的速率限制</a>。</li>
+  <li><strong>删完不复验。</strong>删除请求返回成功，页面上也可能短暂缓存旧内容。确认结果的方法写在 <a href="/blog/verify-old-tweets-really-deleted">怎么确认推文真的被删掉了</a>。</li>
+</ul>
+
+<h2>从哪一步开始</h2>
+<p>顺序比工具重要。先在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 跑一次免费体检，拿到按风险排序的清单；再按清单在 <a href="/pricing">删除定价页</a> 估算需要处理多少条；最后按上面三层分工执行。体检在本机解析归档，不上传你的推文内容，这一步不花钱也不产生任何删除动作。</p>
+<p>更多关于删除范围判断和工具选择的写法，都在 <a href="/blog">博客目录</a> 里。</p>
+`,
+    contentEn: `
+<p>Almost everyone hits the same wall on their first cleanup. You download a few hundred megabytes of archive, open it, and find ten years of posts with no obvious place to start.</p>
+<p>The next instinct is to hunt for the one tool that does everything. That instinct is the problem. Cleaning old tweets is a division-of-labor job, and no single product finishes it alone.</p>
+
+<h2>Why one tool never finishes the job</h2>
+<p>The native delete button on X works one tweet at a time. The practical ceiling sits near 3,200 deletions, there is no multi-select, and there is no filter by year. That ceiling makes the native route useful only for the edges of the job.</p>
+<p>Bulk tools fix the speed problem, but they decide with rules: year ranges, keywords, ID ranges. Rules will surface roughly 90% of your candidates and leave the other 10% to human judgment. The tweet where you announced a new job three years ago looks like old content to a year filter. It is also the first line of your career history.</p>
+<p>Manual deletion makes the best calls and moves far too slowly to matter. At 300 tweets a day, a decade of posts takes three months, and most people quit in week two.</p>
+<p>What works is splitting the job into three layers and giving each layer to the thing that does it best.</p>
+<p>Think about what each layer actually knows. The check knows every tweet and every pattern inside it, and holds no opinion about your career. A bulk tool knows an ID range and a date filter, and nothing beyond that. You know why one post from ten years ago still matters. No product bundles all three kinds of knowledge, because two of them are not software problems.</p>
+
+<h2>What each layer can and cannot do</h2>
+<p>This table is the core of the method. Read it before you spend money or grant anyone access.</p>
+<table>
+  <thead>
+    <tr><th>Layer</th><th>What you use</th><th>Strength</th><th>Limit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Locate</td><td>Footprint check that parses your archive</td><td>Scans every historical tweet and tags phone numbers, emails, addresses, locations and sensitive topics</td><td>Read-only analysis, deletes nothing</td></tr>
+    <tr><td>Bulk</td><td>Third-party bulk deleter or a local script</td><td>Removes hundreds or thousands of tweets at speed</td><td>No context awareness, keep list maintained by hand</td></tr>
+    <tr><td>Manual</td><td>Native X delete flow</td><td>Exact control over individual tweets and edge cases</td><td>No batch mode, subject to API quota</td></tr>
+  </tbody>
+</table>
+<p>Permission scope follows the same split. Locating reads a file you already downloaded, so it needs no account access at all. Deleting in bulk needs a grant, because the removal calls go through the API. Manual work needs nothing beyond your own signed-in session. When a vendor bundles all three behind one login, you are handing over more access than any single layer requires.</p>
+<p>These layers are not alternatives. The locate layer tells you what deserves deletion. The bulk layer does the heavy lifting. The manual layer handles what is left. Skipping locate and going straight to bulk is moving house without a packing list.</p>
+
+<h2>Setting bulk rules that do not misfire</h2>
+<p>There is a reliable order: narrow by high-risk pattern first, widen by date second, and apply the keep list last.</p>
+<ol>
+  <li><strong>Start with high-risk patterns.</strong> Pull out the tweets your report flagged for contact information and location data. These calls are rarely debatable, so clearing them first shrinks your exposure fastest.</li>
+  <li><strong>Then widen by year.</strong> Use a loose condition such as older than three years with no engagement. The engagement filter matters. It protects tweets that were quoted, reposted, or that sit inside a conversation with visible context.</li>
+  <li><strong>Apply the keep list last.</strong> Write down everything you need to keep: product launches, public commitments, customer stories, anything you want people to find. Build that list before the bulk run, not after. Fixing it afterwards costs several times more.</li>
+</ol>
+<p>One more guardrail before the run: preview the rule instead of trusting it. Most tools will show you the matches first. Read that list, count how many tweets it wants to remove, and compare the number against what your check reported. A wide gap means the rule is broader than you intended, which is exactly the signal you want before anything becomes irreversible.</p>
+<p>Before you authorize any bulk tool, read its permission scope. Some request full read and write access, which means they can theoretically post, edit your profile and read direct messages. How to audit those scopes is covered in <a href="/blog/mass-deletion-tool-permission-scope">what a bulk deletion tool's permission scope actually means</a>.</p>
+
+<h2>Why the keep list has to be manual</h2>
+<p>A keep list is a set of value judgments, and value judgments do not compress into executable rules. Within one account, someone wants to preserve parenting notes, someone else wants industry commentary, and someone else only cares about the three links a client once praised. No filter expresses that.</p>
+<p>The manual layer also handles the case where deletion leaves a scar. Remove a heavily reposted tweet and every conversation quoting it shows a gap. If you want those to read smoothly, see <a href="/blog/delete-tweets-without-breaking-threads">how to delete tweets without breaking threads</a> before deciding whether to delete, hide, or keep and edit.</p>
+<p>Pinned tweets need their own flag. Bulk tools sweep them up with everything else, and the pin slot sits empty until you refill it. The handling is described in <a href="/blog/whitelist-and-pinned-tweets">whitelists and pinned tweets</a>.</p>
+
+<h2>Cost math for three plans</h2>
+<p>Say your check returns 1,200 tweets worth handling, and 40 of them need a human decision. Here is how the plans differ.</p>
+<table>
+  <thead>
+    <tr><th>Plan</th><th>Time</th><th>Misfire risk</th><th>Where your data goes</th><th>Best fit</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Manual only</td><td>6 to 8 hours</td><td>Very low</td><td>Nothing leaves the X interface</td><td>Under 200 deletions</td></tr>
+    <tr><td>Cloud bulk tool only</td><td>1 to 2 hours</td><td>Medium, rules miss edge cases</td><td>Account access handed to a third-party server</td><td>Over 5,000 deletions and you accept the access grant</td></tr>
+    <tr><td>Three-tool stack</td><td>2 to 3 hours</td><td>Low, keep list locked first</td><td>Check runs on your device, only deletion uses a grant</td><td>Between 500 and 5,000 deletions</td></tr>
+  </tbody>
+</table>
+<p>The extra hour in the third plan goes into building the keep list and reviewing borderline tweets. It buys you career history that survives the cleanup, and it saves you from digging original text out of the archive and reposting it by hand.</p>
+
+<h2>Three ways people get this wrong</h2>
+<ul>
+  <li><strong>Treating a bulk tool as the whole plan.</strong> They grant access before they think, then discover the portfolio links and client stories are gone. The archive holds the text. It does not hold the original timestamps or the engagement.</li>
+  <li><strong>Ignoring the deletion quota.</strong> Delete requests are rate limited and the daily allowance is finite. A tool that reports the task complete may simply have run out of quota, with the remainder waiting for tomorrow. The limits are in <a href="/blog/x-api-rate-limits-deletion">rate limits on deletion requests</a>.</li>
+  <li><strong>Never verifying the result.</strong> A request can report success while the page still serves a cached copy. How to confirm the outcome is in <a href="/blog/verify-old-tweets-really-deleted">confirming that old tweets are actually gone</a>.</li>
+</ul>
+
+<p>A habit that separates clean jobs from messy ones: log what you removed and when. Two weeks later you will not remember whether the tweet mentioning your old address is already gone, and re-checking by hand is slow. A dated list turns a scary irreversible action into something you can actually reason about.</p>
+
+<h2>Where to start</h2>
+<p>Order matters more than tooling. Run a free check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> to get a risk-sorted list, estimate the volume against the <a href="/pricing">pricing page</a>, then work the three layers above. The check parses your archive on your own machine, costs nothing, and deletes nothing.</p>
+<p>More on scoping and tool selection lives in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: '为什么不能只用一款批量删除工具？', a: '批量工具按规则运行，规则覆盖不到需要上下文判断的内容，比如宣布换工作的推文、客户案例、作品链接。三层分工里批量工具只负责中间那一段体力活，定位和白名单各由体检和手动完成。', qEn: 'Why not just use one bulk deletion tool?', aEn: 'Bulk tools run on rules, and rules cannot read context: job announcements, customer stories, portfolio links. In the three-layer split, a bulk tool handles only the middle stretch of repetitive work, while the check locates risk and manual review owns the keep list.' },
+      { q: '删除的 3200 条上限是怎么来的？', a: '这是 X 侧接口配额限制，不是工具的设定。原生删除入口和多数第三方工具都会撞到这个上限，超过部分需要分多日执行或走归档解析后的分段删除。', qEn: 'Where does the 3,200 deletion cap come from?', aEn: 'It comes from quota limits on the X side rather than from any tool. The native delete flow and most third-party tools run into it, and anything beyond that has to be spread across days or split into batches.' },
+      { q: '白名单应该什么时候建？', a: '在任何批量删除动作执行之前。执行后再补建，需要从归档里逐条找回原始文本重新发布，时间戳和互动数据无法恢复。', qEn: 'When should I build the keep list?', aEn: 'Before any bulk deletion runs. Building it afterwards means hunting the original text in your archive and reposting by hand, with timestamps and engagement gone for good.' },
+      { q: '三层组合方案大概要花多久？', a: '以 1200 条为目标量级，体检约 10 分钟，批量删除 1 到 2 小时，白名单和边界推文复核约 1 小时，整体 2 到 3 小时。', qEn: 'How long does the three-layer plan take?', aEn: 'For roughly 1,200 tweets: about 10 minutes for the check, 1 to 2 hours for bulk deletion, and about an hour for the keep list and borderline review. Two to three hours in total.' },
+    ],
+  },
+
+  {
+    slug: 'tweet-deletion-tool-privacy-compared',
+    title: '删除工具的隐私对比：数据留在本机还是上传服务器',
+    excerpt:
+      '同样是删推文，不同工具处理数据的位置完全不同。本文拆开三种架构的数据流向、授权范围和留存承诺，给出一份可以照着问的自查清单。',
+    date: '2026-09-25',
+    updatedAt: '2026-09-25',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    tags: ['X/Twitter', '删除工具', '隐私对比', '本机处理'],
+    canonical: '/blog/tweet-deletion-tool-privacy-compared',
+    titleEn: 'Tweet Deletion Tools Compared on Privacy: On-Device or Uploaded',
+    excerptEn:
+      'Two deleters can produce the same result and treat your data in opposite ways. This breaks down three architectures by data flow, permission scope and retention promises, with a checklist you can ask any vendor.',
+    categoryEn: 'Comparison',
+    tagsEn: ['X/Twitter', 'deletion tools', 'privacy comparison', 'on-device'],
+    content: `
+<p>两个工具都能删掉 2000 条旧推文，删除结果看起来一样。差别在过程里：你的推文内容去了哪里，谁能看见它，看完之后存多久。</p>
+<p>把"删除工具"当成一个品类来比较是没有意义的。真正需要比较的是它们的数据架构，架构决定了隐私风险的上限。</p>
+
+<h2>隐私差别集中在这三处</h2>
+<ol>
+  <li><strong>分析发生在哪里。</strong>在本机浏览器里解析归档，还是把归档上传到对方的服务器再解析。</li>
+  <li><strong>拿到什么权限。</strong>只读分析归档文件，还是拿到账号的读写授权，可以代表你发推、改资料、读私信。</li>
+  <li><strong>留存多久。</strong>明文内容处理完即弃，还是留在日志、缓存、备份里，留多久由谁决定。</li>
+</ol>
+
+<h2>三种架构的数据流向</h2>
+<table>
+  <thead>
+    <tr><th>架构</th><th>归档去哪</th><th>需要的授权</th><th>风险点</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>纯本机分析</td><td>留在你的浏览器内存里，不上传</td><td>无，不需要账号授权</td><td>分析在本地完成，无法删除，删除动作需另行处理</td></tr>
+    <tr><td>云端批量删除</td><td>归档或凭证上传到服务端</td><td>账号读写授权</td><td>明文内容可能进入日志与备份，删除结果依赖对方执行</td></tr>
+    <tr><td>官方接口直接操作</td><td>不存在归档，直接调用 X 接口</td><td>账号读写授权</td><td>权限范围完整，操作记录留在平台侧</td></tr>
+  </tbody>
+</table>
+<p>三种架构没有绝对优劣。本机分析把隐私风险降到最低，代价是它不执行删除；云端方案速度快，代价是你要信任一家公司对明文的处理纪律。选择取决于你手里是哪些内容。</p>
+<p>本机处理的具体实现方式，可以参考 <a href="/blog/on-device-analysis-privacy">本机分析是怎么做到数据不出电脑的</a>。如果更关心两种路径的取舍逻辑，<a href="/blog/local-vs-cloud-processing">本机处理与云端处理的适用场景</a> 讲得更细。</p>
+
+<h2>授权范围决定了什么</h2>
+<p>读写授权听起来抽象，它实际的含义是：拿到令牌的一方可以调用你的账号。可见的动作包括发推、删除推文、修改头像与简介、读取私信列表、查看关注关系。</p>
+<p>有些工具只申请删除所需的权限，有些会一次性申请完整范围。申请范围越宽，一旦对方出现安全事故，波及面越大。做法上有一条实用建议：给清理任务单开一个授权，任务完成后立刻在账号的连接应用列表里撤销。撤销入口和检查方法写在 <a href="/blog/x-connected-apps-permission-audit">已授权应用怎么逐个审计</a>。</p>
+
+<h2>留存承诺应该怎么问</h2>
+<p>多数隐私政策写的是"我们不会出售你的数据"，这句话没有回答真正的问题。要问的是下面几条，而且希望得到可以直接引用的答复。</p>
+<ul>
+  <li>上传的归档以明文还是加密形式存储，密钥由谁持有。</li>
+  <li>处理完成后多久删除明文，是否同时清除备份与日志副本。</li>
+  <li>删除请求走什么渠道，是否需要你主动申请。</li>
+  <li>是否存在第三方子处理方，名单是否可以公开。</li>
+</ul>
+<p>一份愿意把这几条讲清楚的政策，通常也愿意公开它拿到的权限范围。可以拿 <a href="/blog/tweet-tool-privacy-policy">删除工具隐私政策的读法</a> 当作对照模板。</p>
+
+<h2>一份可以照抄的自查清单</h2>
+<table>
+  <thead>
+    <tr><th>检查项</th><th>通过标准</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>分析位置</td><td>能明确说出数据是否离开本机</td></tr>
+    <tr><td>权限范围</td><td>只申请删除所需，不附带发推与私信权限</td></tr>
+    <tr><td>留存时长</td><td>有具体天数，不是"合理期限"这类模糊表述</td></tr>
+    <tr><td>撤销方式</td><td>完成任务后可一键断开，无需联系客服</td></tr>
+    <tr><td>删除范围可控</td><td>支持白名单与范围选择，可以只删指定区间</td></tr>
+  </tbody>
+</table>
+<p>范围控制这一项容易被忽略。工具如果只能"全删某个年份之前的内容"，你没法在保留作品链接的同时清掉联系方式。范围选择的判断方法见 <a href="/blog/deletion-scope-selection">删除范围怎么选</a>。</p>
+
+<h2>怎么用这份对比</h2>
+<p>把"我要隐私最好"翻译成可执行的一步：先用不花钱、不上传的方式看清自己有哪些风险，再决定是否要为速度付出授权。体检在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 免费开放，全程本机解析，不删除任何内容。需要进入删除阶段时，<a href="/pricing">定价页</a> 列出了按条计费的范围，更多工具对比文章收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>Two tools can both remove 2,000 old tweets and look identical in the result. The difference sits in the process: where your content goes, who can read it, and how long it stays.</p>
+<p>Comparing deletion tools as a single category does not work. What you are actually comparing is their data architecture, and architecture sets the ceiling on privacy risk.</p>
+
+<h2>Three places where privacy differs</h2>
+<ol>
+  <li><strong>Where analysis happens.</strong> Parsing the archive inside your browser, or uploading it to someone else's server and parsing it there.</li>
+  <li><strong>What access is granted.</strong> Reading an archive file only, or receiving read and write access so the tool can post, edit your profile and read direct messages on your behalf.</li>
+  <li><strong>How long data is kept.</strong> Plaintext dropped once processing ends, or retained in logs, caches and backups with the retention period set by someone else.</li>
+</ol>
+
+<h2>Data flow in three architectures</h2>
+<table>
+  <thead>
+    <tr><th>Architecture</th><th>Where the archive goes</th><th>Access needed</th><th>Exposure</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>On-device analysis</td><td>Stays in your browser memory, never uploaded</td><td>None, no account grant</td><td>Analysis only, so deletion has to happen separately</td></tr>
+    <tr><td>Cloud bulk deletion</td><td>Archive or credentials sent to a server</td><td>Read and write account access</td><td>Plaintext may reach logs and backups, and you wait on their execution</td></tr>
+    <tr><td>Direct via platform API</td><td>No archive involved, calls hit X directly</td><td>Read and write account access</td><td>Full scope, and the activity log sits on the platform side</td></tr>
+  </tbody>
+</table>
+<p>No architecture wins outright. On-device analysis pushes privacy risk to the floor and does not delete anything. Cloud tools are fast and require trusting someone's handling of your plaintext. The choice depends on what is in your archive.</p>
+<p>How on-device processing works in practice is covered in <a href="/blog/on-device-analysis-privacy">how on-device analysis keeps your data off the network</a>. For the trade-off logic itself, see <a href="/blog/local-vs-cloud-processing">local versus cloud processing</a>.</p>
+
+<h2>What permission scope really means</h2>
+<p>Read and write access sounds abstract. In practice it means the holder can act as your account. Visible actions include posting, deleting, changing your avatar and bio, reading direct messages, and inspecting who you follow.</p>
+<p>Some tools request only what deletion needs. Others ask for everything at once. The broader the grant, the wider the blast radius if that company has an incident. One practical habit: create the grant just for the cleanup, then revoke it in your account's connected apps list the moment the job is done. Where to find that list is in <a href="/blog/x-connected-apps-permission-audit">auditing connected apps one by one</a>.</p>
+
+<h2>How to read a retention promise</h2>
+<p>Most privacy policies say they do not sell your data, which answers a question you were not asking. Ask these instead, and look for answers you could quote.</p>
+<ul>
+  <li>Is the uploaded archive stored as plaintext or encrypted, and who holds the key.</li>
+  <li>How long after processing is plaintext removed, and are backups and log copies purged too.</li>
+  <li>What channel handles deletion requests, and must you file one yourself.</li>
+  <li>Are there subprocessors, and is that list public.</li>
+</ul>
+<p>A policy willing to answer these usually also publishes its access scopes. Use <a href="/blog/tweet-tool-privacy-policy">reading a deletion tool's privacy policy</a> as a template.</p>
+
+<h2>A checklist you can reuse</h2>
+<table>
+  <thead>
+    <tr><th>Item</th><th>Pass condition</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Analysis location</td><td>The vendor states clearly whether data leaves your device</td></tr>
+    <tr><td>Permission scope</td><td>Deletion needs only, no posting or DM access attached</td></tr>
+    <tr><td>Retention period</td><td>A specific number of days, not a phrase like reasonable period</td></tr>
+    <tr><td>Revocation</td><td>One click to disconnect after the job, no support ticket</td></tr>
+    <tr><td>Scope control</td><td>Keep list and range selection supported, so you can target one window</td></tr>
+  </tbody>
+</table>
+<p>Scope control gets overlooked. A tool that only offers delete everything before year X leaves you unable to keep portfolio links while clearing contact details. How to think about the range is in <a href="/blog/deletion-scope-selection">choosing a deletion scope</a>.</p>
+
+<h2>Using this comparison</h2>
+<p>Turn best privacy into a concrete step: start with a method that costs nothing and uploads nothing, then decide whether speed is worth a grant. The check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> runs entirely on your machine and deletes nothing. When you reach the deletion stage, the <a href="/pricing">pricing page</a> lists per-tweet ranges, and more comparisons sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: '本机分析和云端删除，哪个更安全？', a: '单看数据处理，本机分析风险更低，因为归档不离开你的电脑。但它不能执行删除。常见做法是两者叠加：用本机分析拿到风险清单，只在删除环节授权第三方。', qEn: 'Is on-device analysis or cloud deletion safer?', aEn: 'On its own, on-device analysis carries less risk because the archive never leaves your computer. It cannot delete anything, though. The common pattern stacks them: locate risk on-device, then grant a third party access only for the deletion step.' },
+      { q: '删除工具申请读写权限正常吗？', a: '执行删除必须通过 X 接口，接口鉴权通常是读写范围，所以工具申请读写权限本身正常。需要留意的是权限被用来做别的动作，以及任务完成后是否方便撤销。', qEn: 'Is it normal for a deletion tool to request read and write access?', aEn: 'Deletion runs through the X API, and API auth typically carries read and write scope, so the request itself is normal. What matters is whether the access is used for anything beyond deletion, and how easy it is to revoke afterwards.' },
+      { q: '怎么确认工具不会长期保存我的推文？', a: '看它的隐私政策是否给出具体留存天数、是否说明备份与日志的清理方式、是否有公开的子处理方名单。只有"我们重视你的隐私"这类表述，等于没有承诺。', qEn: 'How do I know a tool will not keep my tweets?', aEn: 'Look for a specific retention period, a description of how backups and logs are purged, and a published subprocessor list. A policy that only says it values your privacy has promised nothing.' },
+    ],
+  },
+
+  {
+    slug: 'x-terms-of-service-deletion-clauses',
+    title: 'X 服务条款里和删推文有关的条款，逐条读一遍',
+    excerpt:
+      '删掉一条推文之后，平台侧还留着什么？本文把 X 服务条款中与删除、缓存、内容许可相关的条款拆开讲清，并说明哪些副本不受你控制。',
+    date: '2026-09-25',
+    updatedAt: '2026-09-25',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['X/Twitter', '服务条款', '内容许可', '数据留存'],
+    canonical: '/blog/x-terms-of-service-deletion-clauses',
+    titleEn: 'Reading the X Terms of Service for Deletion Clauses',
+    excerptEn:
+      'When you delete a tweet on X, what stays behind? This walks through the clauses that govern deletion, caching and the content license, and flags the copies you never controlled.',
+    categoryEn: 'Compliance & Law',
+    tagsEn: ['X/Twitter', 'terms of service', 'content license', 'data retention'],
+    content: `
+<p>大多数人在删除推文之前不会去读服务条款，理由也充分：条款太长，而且看起来和"删一条推特"没关系。但删除之后会发生什么，恰好由条款决定。</p>
+<p>下面把 X 服务条款中与删除直接相关的几类条款拆开。这不是法律意见，是让你在动手之前知道自己控制到哪一步、哪一步控制不了。</p>
+
+<h2>删除之后，留存窗口从哪里来</h2>
+<p>你点下删除，内容从你的时间线和公开页面消失。这不等于数据在所有系统里同时消失。平台侧通常保留一段时间的副本，用于备份、灾难恢复和滥用调查。</p>
+<table>
+  <thead>
+    <tr><th>位置</th><th>删除后状态</th><th>你能控制吗</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>你的时间线与公开页面</td><td>立即不可见</td><td>能，删除即生效</td></tr>
+    <tr><td>平台侧备份与缓存</td><td>按平台的留存窗口逐步清除</td><td>不能，只能等待</td></tr>
+    <tr><td>搜索引擎索引</td><td>需要额外申请移除，抓取频率决定消失时间</td><td>部分能，可提交移除请求</td></tr>
+    <tr><td>第三方抓取与转发副本</td><td>不受平台控制，长期存在</td><td>基本不能</td></tr>
+  </tbody>
+</table>
+<p>最后一行是很多人删完之后仍然能搜到旧内容的原因。搜索引擎的缓存和在别人的截图、引用、聚合站点里的副本，都不在你和平台的控制范围内。想从搜索结果里移除，需要走单独的流程，方法写在 <a href="/blog/google-remove-old-tweets-from-search">怎么让旧推文从搜索结果里消失</a>。</p>
+
+<h2>内容许可在删除之后怎么处理</h2>
+<p>你在注册时授予平台一项内容许可，允许它展示、分发、缓存你的内容。这项许可通常写明在删除后终止，但终止的对象是"未来使用"，它不追溯已经发生的分发行为。</p>
+<p>这意味着两件事。已经进入搜索引擎索引的页面，需要单独申请移除。已经被第三方抓取或转载的内容，删掉原帖不会让它消失。</p>
+<p>对合规场景来说，这一点尤其重要。如果你的目标是让某条内容在公开渠道消失，只做平台侧删除是不够的，需要把搜索移除和第三方副本一并考虑。相关内容许可范围的解读，可以对照 <a href="/blog/gdpr-data-portability-twitter-archive">数据可携权与归档的关系</a> 一起看。</p>
+
+<h2>被转推、引用和缓存的副本</h2>
+<p>删除一条被大量转推的推文，会留下引用对话里的空缺。原帖消失，评论还在，读者看到的是一段没有上文的讨论。这是删除最常见的副作用，也是很多人删完之后后悔的原因。</p>
+<p>想减少这种副作用，处理顺序上可以先清理低互动内容，把高互动内容留到最后单独判断。判断边界的方法见 <a href="/blog/delete-tweets-without-breaking-threads">删除推文时怎么不打断对话</a>。</p>
+
+<h2>你的权利边界在哪里</h2>
+<ul>
+  <li><strong>你可以要求删除自己的内容。</strong>平台侧删除是你随时可以执行的动作，不需要理由。</li>
+  <li><strong>你可以要求导出自己的数据。</strong>归档导出是平台提供的标准功能，导出内容以结构化文件交付。归档怎么读写在 <a href="/blog/read-twitter-archive">X 归档的结构解读</a>。</li>
+  <li><strong>你可以依据当地法律提交请求。</strong>欧盟居民可以走遗忘权流程，加州居民可以走对应的删除请求渠道。两者的适用条件和流程差别见 <a href="/blog/right-to-be-forgotten-twitter">遗忘权请求怎么提</a> 与 <a href="/blog/ccpa-global-privacy-laws">各法域隐私法规对照</a>。</li>
+  <li><strong>你无法要求第三方删除合法转载。</strong>只要转载方在法域内合规，你的删除请求对它们没有直接约束力。</li>
+</ul>
+
+<h2>动手之前值得做的三件事</h2>
+<ol>
+  <li><strong>先导出完整归档。</strong>删除是不可逆的。归档是唯一能在事后找回原始文本的凭据，导出一次成本很低。</li>
+  <li><strong>按风险排序，别按心情排序。</strong>先处理联系方式和位置信息类内容，它们带来的现实风险最高。风险分类的逻辑见 <a href="/blog/which-tweets-to-clean-by-risk">按风险决定清理优先级</a>。</li>
+  <li><strong>把合规请求和平台删除分开处理。</strong>前者面向监管与法域，后者面向平台，两条流程的时间线不同，混在一起会拖慢进度。</li>
+</ol>
+
+<h2>读条款之后该做什么</h2>
+<p>条款读完之后最有用的结论很朴素：你能控制的是平台侧的可见性，控制不了的是已经被分发出去的副本。所以动作要早，顺序要对。先用 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 的免费体检把风险内容找出来，再按上面的顺序处理。体检在本机完成，不产生任何删除动作，处理方法与费用范围列在 <a href="/pricing">定价页</a>，更多合规与条款解读收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>Almost nobody reads the terms of service before deleting tweets, and the reasons are fair: it is long and it looks unrelated to one delete button. What actually happens after a deletion, though, is settled by those terms.</p>
+<p>This walks through the clauses that govern deletion on X. It is not legal advice. It is a way to know in advance which part you control and which part you do not.</p>
+
+<h2>Where the retention window comes from</h2>
+<p>You press delete, and the tweet leaves your timeline and the public page. That is not the same as the data vanishing from every system at once. Platforms typically retain copies for a period to cover backups, disaster recovery and abuse investigations.</p>
+<table>
+  <thead>
+    <tr><th>Location</th><th>State after deletion</th><th>Under your control?</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Your timeline and public pages</td><td>Gone immediately</td><td>Yes, deletion takes effect</td></tr>
+    <tr><td>Platform backups and caches</td><td>Cleared gradually across the retention window</td><td>No, you wait</td></tr>
+    <tr><td>Search engine indexes</td><td>Needs a separate removal request; crawl frequency sets the timing</td><td>Partly, you can file a request</td></tr>
+    <tr><td>Third-party scrapes and reposts</td><td>Independent of the platform, effectively permanent</td><td>Mostly no</td></tr>
+  </tbody>
+</table>
+<p>That last row explains why old posts still surface after a cleanup. Search caches, screenshots, quotes and aggregator copies sit outside your reach and the platform's. Removing them from search results is a separate process, described in <a href="/blog/google-remove-old-tweets-from-search">getting old tweets out of search results</a>.</p>
+
+<h2>What happens to the content license</h2>
+<p>When you signed up, you granted the platform a license to display, distribute and cache your content. That license typically states it ends when you delete the content, but termination applies to future use. It does not reach back into distribution that already happened.</p>
+<p>Two consequences follow. Pages already in a search index need a separate removal request. Content already scraped or reposted by third parties does not disappear because the original is gone.</p>
+<p>For compliance work this matters. If the goal is to make something disappear from public channels, platform-side deletion by itself is not enough. Search removal and third-party copies belong in the same plan. For the surrounding license questions, pair this with <a href="/blog/gdpr-data-portability-twitter-archive">data portability and your archive</a>.</p>
+
+<h2>Reposts, quotes and cached copies</h2>
+<p>Deleting a heavily reposted tweet leaves a hole in every conversation quoting it. The original is gone, the replies remain, and a reader lands in a discussion with no opening statement. This side effect is the most common reason people regret a cleanup.</p>
+<p>To soften it, work low-engagement content first and leave the high-engagement posts for a separate pass at the end. How to judge the borderline cases is in <a href="/blog/delete-tweets-without-breaking-threads">deleting tweets without breaking threads</a>.</p>
+
+<h2>Where your rights stop</h2>
+<ul>
+  <li><strong>You can remove your own content.</strong> Deletion on the platform is available to you at any time, with no reason required.</li>
+  <li><strong>You can export your data.</strong> Archive export is a standard feature, delivered as structured files. How to read one is in <a href="/blog/read-twitter-archive">reading the structure of an X archive</a>.</li>
+  <li><strong>You can file requests under local law.</strong> EU residents can use the right to erasure, and California residents have a parallel deletion channel. Conditions and procedures differ between the two, as covered in <a href="/blog/right-to-be-forgotten-twitter">filing an erasure request</a> and <a href="/blog/ccpa-global-privacy-laws">comparing privacy regimes</a>.</li>
+  <li><strong>You cannot force a third party to drop a lawful repost.</strong> If the republisher complies with its own jurisdiction, your deletion request does not bind them.</li>
+</ul>
+
+<h2>Three things worth doing first</h2>
+<ol>
+  <li><strong>Export a full archive.</strong> Deletion is irreversible. The archive is your only record of the original text, and exporting costs almost nothing.</li>
+  <li><strong>Sort by risk, not by mood.</strong> Clear contact details and location data first, since they carry the highest real-world exposure. The ranking logic is in <a href="/blog/which-tweets-to-clean-by-risk">choosing cleanup priorities by risk</a>.</li>
+  <li><strong>Keep compliance requests separate from platform deletion.</strong> One faces regulators and jurisdictions, the other faces the platform. The timelines differ, and merging them slows both.</li>
+</ol>
+
+<h2>What to do with this</h2>
+<p>The useful conclusion is plain: you control visibility on the platform, and you do not control copies already distributed. So act early and act in order. Start by locating risky content with the free check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a>, then work through the sequence above. The check runs on your machine and deletes nothing; handling options and costs are on the <a href="/pricing">pricing page</a>, and more compliance reading sits in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: '删除推文后，平台还保留数据吗？', a: '公开页面会立即不可见，备份、缓存和滥用调查用的副本会按平台留存窗口逐步清除。这段时间你无法直接干预，只能等待，这也是删除后短期内仍可能被检索到的原因之一。', qEn: 'Does the platform still keep data after I delete a tweet?', aEn: 'The public page becomes invisible right away, while copies kept for backups, caching and abuse investigations are cleared gradually across the retention window. You cannot intervene during that period, which is one reason content can still be found shortly after deletion.' },
+      { q: '内容许可在删除后会自动终止吗？', a: '许可通常写明随内容删除而终止，但终止只针对未来使用，不追溯已经发生的分发。已经进入搜索索引或已被第三方转载的内容，需要单独处理。', qEn: 'Does the content license end when I delete?', aEn: 'The license usually states that it ends with the content, but that termination looks forward. It does not reach distribution that already happened. Anything already indexed or reposted needs its own follow-up.' },
+      { q: '为什么删了推文还是能搜到？', a: '两个来源最常被忽略：搜索引擎缓存需要单独提交移除请求，第三方抓取和转载副本不受平台控制。只做平台侧删除，这两类内容不会跟着消失。', qEn: 'Why can I still find a tweet after deleting it?', aEn: 'Two sources get overlooked most often: search caches need a separate removal request, and third-party scrapes or reposts sit outside the platform. A platform-side delete does not touch either one.' },
+      { q: '读服务条款对普通用户有什么实际价值？', a: '价值在于预期管理。知道哪些副本你控制不了，就不会把时间花在无效的重删上，也能提前把搜索移除和合规请求排进计划。', qEn: 'What practical value do the terms have for a regular user?', aEn: 'Setting expectations. Knowing which copies are out of reach keeps you from re-deleting things pointlessly, and it gets search removal and compliance requests onto the plan early.' },
+    ],
+  },
+
+  {
+    slug: 'data-broker-removal-vs-tweet-deletion',
+    title: '数据经纪商移除与推文删除：两条流程不要混着排队',
+    excerpt:
+      '数据经纪商移除和推文删除解决的曝光来源不同，时间线和收费方式也完全不同。把曝光来源拆开排序，才知道先做哪一步。',
+    date: '2026-09-25',
+    updatedAt: '2026-09-25',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['X/Twitter', '数据经纪商', '背景调查', '曝光来源'],
+    canonical: '/blog/data-broker-removal-vs-tweet-deletion',
+    titleEn: 'Data Broker Removal vs Tweet Deletion: Two Different Queues',
+    excerptEn:
+      'Broker removal and tweet deletion address different sources of exposure, on different timelines and different billing models. Sorting exposure by source is what tells you which step comes first.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['X/Twitter', 'data brokers', 'background checks', 'exposure sources'],
+    content: `
+<p>搜索自己名字的时候，多数人会看到两类结果混在一起：一类来自社交平台，另一类来自把公开记录聚合成人物档案的网站。看到这一页之后，常见的反应是同时买两份服务，一份删推文，一份做移除。</p>
+<p>这两件事的流程差别很大。同时启动不会更快，反而会互相拖累。</p>
+
+<h2>它们处理的曝光来源不一样</h2>
+<p>推文删除处理的是你自己发布的内容。内容的来源是你，控制权也在你。</p>
+<p>数据经纪商处理的是把你分散在各处的公开信息拼起来的档案，来源包括公共记录、房产登记、选民名册、法院文件、社交资料。这些信息的原始发布者不是你，你无法从源头删除。</p>
+<p>把两类曝光混在一起看，会得出"到处都有我"的错误结论。拆开看，你会发现问题分成两个集合，解法也不同。</p>
+
+<h2>曝光来源对照</h2>
+<table>
+  <thead>
+    <tr><th>曝光来源</th><th>原始发布者</th><th>控制方式</th><th>典型响应时间</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>你发布的推文</td><td>你自己</td><td>平台侧删除，随时可执行</td><td>立即生效</td></tr>
+    <tr><td>被他人转推或引用</td><td>对方账号</td><td>无法直接删除，可请求对方处理</td><td>取决于对方</td></tr>
+    <tr><td>搜索引擎缓存</td><td>搜索引擎</td><td>提交移除请求</td><td>数天到数周</td></tr>
+    <tr><td>数据经纪商档案</td><td>经纪商聚合</td><td>按各站流程提交移除</td><td>数天到数周，可能重新出现</td></tr>
+    <tr><td>背景调查报告</td><td>调查服务方</td><td>依据当地法规申请更正或删除</td><td>按法规定义的处理期限</td></tr>
+  </tbody>
+</table>
+<p>表格里最该看的是最后一列。平台侧删除是即时的，搜索和经纪商移除是以周计的，背景调查更正走的是法定流程。时间尺度不同，把它们排进同一个待办清单会让人误判进度。背景调查这条线的整体情况，可以对照 <a href="/blog/social-media-background-check-2026">社交媒体背景调查的现状</a> 一起看。</p>
+
+<h2>先删推文还是先去经纪商</h2>
+<p>顺序上建议先处理你控制得了的部分，理由是经纪商的批量抓取有周期性。如果先把经纪商档案清干净，再删推文，下一轮抓取很可能把还没删的内容重新聚合进去，你等于做两遍。</p>
+<p>反过来先删推文，再提交经纪商移除，抓取到的旧内容会少一批。更彻底的做法是两者之间留出一个间隔：删完推文后等一个抓取周期，再统一提交移除请求。</p>
+<p>关于经纪商信息来源和移除可行性，<a href="/blog/data-brokers-selling-your-tweets">数据经纪商怎么处理你的推文</a> 有更细的拆解。</p>
+
+<h2>两条流程的时间线对照</h2>
+<table>
+  <thead>
+    <tr><th>阶段</th><th>推文删除</th><th>经纪商移除</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>准备</td><td>导出归档，跑一次体检拿到风险清单</td><td>在各站搜索自己姓名，记录被收录的条目</td></tr>
+    <tr><td>执行</td><td>按风险顺序批量删除，保留白名单</td><td>逐站提交移除或更正请求</td></tr>
+    <tr><td>等待</td><td>即时生效</td><td>数天到数周，按站点流程不同</td></tr>
+    <tr><td>复核</td><td>确认页面确实返回不存在</td><td>隔一个周期再搜一次，确认没有重新收录</td></tr>
+  </tbody>
+</table>
+<p>两条流程共享同一个准备工作：先搞清楚自己的信息分布在哪。推文这一侧可以自动化，跑一次体检就能拿到按风险排序的清单。经纪商那一侧目前主要靠人工逐站查，没有统一入口。</p>
+<p>如果只能先做一件事，先做推文这一侧。它可控、即时、成本可估，而且它是经纪商抓取的上游。上游清理干净，下游的移除成功率会高一些。</p>
+
+<h2>常见误区</h2>
+<ul>
+  <li><strong>以为买了移除服务就不用删推文。</strong>移除服务处理的是聚合结果，原始推文仍在索引里，下一轮抓取可能重新聚合。</li>
+  <li><strong>以为删了推文经纪商档案就会消失。</strong>已抓取的数据留在经纪商自己的库里，需要单独提交移除。</li>
+  <li><strong>忽略背景调查这条线。</strong>求职场景下的调查走的是法定流程，和消费级移除服务不是同一套机制。相关做法见 <a href="/blog/job-search-cleanup">求职前的账号清理</a>。</li>
+</ul>
+
+<h2>从哪一步开始</h2>
+<p>先把自己名字的搜索结果翻两页，把结果按来源分类：社交平台、搜索缓存、经纪商档案、其他。分类完成之后，选择顺序就很清楚了。推文这一侧的第一步在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 免费开放，本机解析归档、输出风险清单，不产生删除动作。需要执行删除时，<a href="/pricing">定价页</a> 列出按条计费的范围。更多关于曝光来源和行业流程的文章收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>Search your own name and you will usually see two kinds of results mixed together: pages from social platforms, and profile-style pages built by sites that aggregate public records. The usual reaction is to buy two services at once, one for tweets and one for removal.</p>
+<p>The two processes work very differently. Starting both on day one does not go faster. It makes each one slower.</p>
+
+<h2>They address different sources of exposure</h2>
+<p>Tweet deletion handles content you published. You are the source, so you hold the control.</p>
+<p>Broker removal handles dossiers assembled from public information scattered across the internet, including public records, property filings, voter rolls, court documents and social profiles. You did not publish that source material, and you cannot delete it at origin.</p>
+<p>Looking at both types as one pile produces the wrong conclusion that you are everywhere. Split them and the problem divides into two sets with two different solutions.</p>
+
+<h2>Exposure sources side by side</h2>
+<table>
+  <thead>
+    <tr><th>Source</th><th>Original publisher</th><th>Lever you have</th><th>Typical response time</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Tweets you published</td><td>You</td><td>Platform-side deletion, available anytime</td><td>Immediate</td></tr>
+    <tr><td>Reposts and quotes by others</td><td>Their account</td><td>No direct delete, you can ask</td><td>Depends on them</td></tr>
+    <tr><td>Search engine caches</td><td>The search engine</td><td>Submit a removal request</td><td>Days to weeks</td></tr>
+    <tr><td>Broker profiles</td><td>Aggregated by the broker</td><td>File removal through each site</td><td>Days to weeks, can reappear</td></tr>
+    <tr><td>Background check reports</td><td>The screening provider</td><td>Request correction or deletion under local law</td><td>Statutory processing window</td></tr>
+  </tbody>
+</table>
+<p>The last column is the one to notice. Platform deletion is instant, search and broker removal run in weeks, and background check corrections follow a legal clock. Those timelines are far apart, and dropping them into a single to-do list makes progress impossible to read. For the screening side overall, see <a href="/blog/social-media-background-check-2026">the state of social media background checks</a>.</p>
+
+<h2>Tweets first or brokers first</h2>
+<p>Handle the part you control first, for one reason: broker scraping runs on a cycle. Clear your broker profiles and then delete tweets, and the next scrape may rebuild those profiles from content you have not removed yet. You end up doing the work twice.</p>
+<p>Delete tweets first and the next scrape finds less. A more thorough sequence leaves a gap in the middle: finish the tweet cleanup, wait one scraping cycle, then submit removal requests in one pass.</p>
+<p>For where brokers get their data and whether removal sticks, <a href="/blog/data-brokers-selling-your-tweets">how data brokers handle your tweets</a> goes deeper.</p>
+
+<h2>The two timelines</h2>
+<table>
+  <thead>
+    <tr><th>Stage</th><th>Tweet deletion</th><th>Broker removal</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Prepare</td><td>Export the archive, run a check for the risk list</td><td>Search your name on each site, log every entry found</td></tr>
+    <tr><td>Execute</td><td>Bulk delete by risk order, keeping the keep list</td><td>File removal or correction requests site by site</td></tr>
+    <tr><td>Wait</td><td>Effective immediately</td><td>Days to weeks, varies by site process</td></tr>
+    <tr><td>Verify</td><td>Confirm the page returns not found</td><td>Search again after one cycle to confirm no re-listing</td></tr>
+  </tbody>
+</table>
+<p>Both share the same preparation step: find out where your information actually sits. The tweet side can be automated, and one check produces a risk-sorted list. The broker side is still manual, site by site, with no single entry point.</p>
+<p>If you can only do one thing first, do the tweet side. It is controllable, immediate and predictable in cost, and it feeds the scraping pipeline. Clean the upstream and the downstream removals hold better.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Assuming a removal subscription replaces tweet deletion.</strong> Removal services clear aggregated results while the original posts stay indexed, so the next scrape can rebuild the profile.</li>
+  <li><strong>Assuming deletion clears broker profiles.</strong> Scraped data already sits in the broker's own database and needs its own removal request.</li>
+  <li><strong>Ignoring the screening track.</strong> Employment screening runs on a legal process, not the consumer removal model. Related steps are in <a href="/blog/job-search-cleanup">cleaning up before a job search</a>.</li>
+</ul>
+
+<h2>Where to start</h2>
+<p>Search your name, read two pages, and sort every result by source: social platform, search cache, broker profile, other. Once sorted, the order is obvious. The first step on the tweet side is free at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a>, where your archive is parsed on your own machine and a risk list comes out with no deletion performed. When you are ready to delete, the <a href="/pricing">pricing page</a> lists per-tweet ranges. More on exposure sources and industry process is in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: '数据经纪商移除和推文删除能同时做吗？', a: '可以同时启动，但顺序会影响成功率。经纪商抓取有周期，先删推文再提交移除，下一轮抓取到的旧内容更少。同时做容易遇到"清完又被重新聚合"的重复劳动。', qEn: 'Can broker removal and tweet deletion run at the same time?', aEn: 'You can start both, but the order changes how well removal holds. Scraping runs on a cycle, so deleting tweets first means the next scrape finds less. Running them together tends to produce the same work twice.' },
+      { q: '为什么经纪商档案删掉了还会重新出现？', a: '经纪商的档案来自对公开信息的持续抓取。如果源头内容仍在公开页面上或仍在搜索索引里，下一轮抓取会重新聚合出条目。', qEn: 'Why does a broker profile come back after removal?', aEn: 'Broker profiles come from continuous scraping of public information. If the source content is still on public pages or still indexed by search engines, the next scrape rebuilds the entry.' },
+      { q: '先做哪一步收益更大？', a: '先做推文这一侧。它即时生效、成本可估算，而且它是经纪商抓取的上游。上游清理干净之后，下游的移除更稳定。', qEn: 'Which step pays off more first?', aEn: 'The tweet side. It takes effect immediately, its cost is easy to estimate, and it feeds the scraping pipeline. Clean the upstream and the downstream removals hold better.' },
+    ],
+  },
+
+  {
+    slug: 'footprint-check-vs-manual-review',
+    title: '自动体检和人工翻归档：覆盖率、成本、漏判率对照',
+    excerpt:
+      '人工翻一遍十年归档到底要花多久？自动体检又快又全，但它读不懂语境。本文对照两种方式的覆盖率与漏判位置，给出配合使用的方法。',
+    date: '2026-09-25',
+    updatedAt: '2026-09-25',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    tags: ['X/Twitter', '数字足迹体检', '归档分析', '人工复核'],
+    canonical: '/blog/footprint-check-vs-manual-review',
+    titleEn: 'Automated Footprint Check vs Manual Archive Review',
+    excerptEn:
+      'How long does it really take to read a decade of tweets by hand? An automated check is fast and broad but blind to context. Here is how the two compare on coverage and where each one misses.',
+    categoryEn: 'Check and Score',
+    tagsEn: ['X/Twitter', 'digital footprint check', 'archive analysis', 'manual review'],
+    content: `
+<p>决定认真清理之前，多数人先试一遍手动方式：打开归档文件，从头往下翻。前两百条看得挺仔细，五百条之后开始加快滚动，一千条之后基本靠扫关键词。</p>
+<p>手动方式的问题不在耐心，在于覆盖率和一致性。自动体检的问题相反，它覆盖得全，但看不懂语境。</p>
+
+<h2>手动翻一遍到底要多久</h2>
+<p>按实际节奏估算：一条推文的平均阅读时间在 3 到 5 秒，包括判断它是否包含手机号、地址、定位或敏感话题。1 万条推文的归档，读完需要 8 到 14 小时，分几个晚上完成。</p>
+<p>这还没有算上下载和解析归档的时间。归档是 ZIP，展开后包含 tweets.js、like.js 等文件，格式不直观。想看明白结构，先要花时间理解 JSON 的组织方式。归档结构在 <a href="/blog/whats-inside-x-archive-tweets-js">归档里都有什么</a> 有完整说明。</p>
+<p>更现实的问题是注意力衰减。读到三千条之后，判断标准会不自觉放松，前半段被标红的内容后半段可能被放过。同一批数据，两次人工复核的结论往往不一致。</p>
+
+<h2>两种方式各自能看见什么</h2>
+<table>
+  <thead>
+    <tr><th>对比项</th><th>自动体检</th><th>人工翻归档</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>覆盖率</td><td>全部推文逐条扫描</td><td>受注意力和时间限制，实际常低于六成</td></tr>
+    <tr><td>一致性</td><td>规则固定，同一输入结论一致</td><td>前后判断标准会漂移</td></tr>
+    <tr><td>速度</td><td>十分钟量级</td><td>8 到 14 小时（1 万条）</td></tr>
+    <tr><td>语境判断</td><td>弱，依赖模式匹配</td><td>强，能理解反讽、引用、行业术语</td></tr>
+    <tr><td>成本</td><td>免费或极低</td><td>时间成本高</td></tr>
+    <tr><td>风险排序</td><td>按类型输出优先级</td><td>全凭个人印象</td></tr>
+  </tbody>
+</table>
+<p>表格里最后一行常被低估。风险要有优先级才有意义，而知乎式的"我觉得这条比较严重"很难支撑一个上百条的处理计划。评分和排序的逻辑见 <a href="/blog/footprint-score-weighting-explained">体检评分权重是怎么算的</a>。</p>
+
+<h2>漏判发生在哪</h2>
+<p>两类漏判方向相反，值得分开看。</p>
+<ul>
+  <li><strong>自动体检漏在语境。</strong>一句带反讽的玩笑被标成敏感话题，一段技术讨论里的坐标被识别成地址。这类问题属于误报偏多，处理方式是人工复核边界条目。</li>
+  <li><strong>人工复核漏在规模。</strong>读不完、读得累、标准漂移，最后漏掉的是后半段里的高风险内容。这类漏判更危险，因为它漏的是真问题。</li>
+</ul>
+<p>误报的处理方式可以预留出来。体检报告里被标红但经人工判断无风险的条目，可以直接归入排除列表，不必逐条纠结。相关方法见 <a href="/blog/footprint-report-false-positives">体检报告误报怎么处理</a>。</p>
+
+<h2>怎么配合用</h2>
+<ol>
+  <li><strong>用体检建立基线。</strong>先跑一次，拿到全量扫描结果和风险排序。这一步几分钟完成，覆盖全部历史推文。</li>
+  <li><strong>把人工时间投在边界条目上。</strong>不要重新读一遍全部内容，只复核评分处在临界区间的推文，以及涉及行业术语、引用、反讽的条目。</li>
+  <li><strong>把人工结论沉淀成排除列表。</strong>复核过的误报记下来，下一次体检直接沿用，避免每次都重复判断同一批内容。</li>
+  <li><strong>定期重跑体检。</strong>新推文会持续产生新的风险点。检查频率怎么定，见 <a href="/blog/how-often-check-digital-footprint">多久做一次数字足迹体检</a>。</li>
+</ol>
+
+<h2>选哪种</h2>
+<p>如果归档规模在几百条以内，手动翻一遍完全可行，判断质量也够用。超过一千条，手动方式的覆盖率会快速下降，这时候先用体检建基线、再用人工复核边界条目，效率差别很明显。</p>
+<p>两种方式都不产生删除动作。体检在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 免费开放，本机解析归档，几分钟输出评分与风险清单，不上传你的推文内容。清理范围与费用列在 <a href="/pricing">定价页</a>，完整的体检方法说明收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>Most people test the manual route before committing to a cleanup: open the archive file, start reading from the top. The first two hundred tweets get careful attention, attention fades around five hundred, and by a thousand it is keyword scanning.</p>
+<p>The manual problem is not patience. It is coverage and consistency. The automated check has the opposite problem: broad coverage, no sense of context.</p>
+
+<h2>How long a manual pass actually takes</h2>
+<p>Estimate three to five seconds per tweet, including the judgment about whether it contains a phone number, an address, a location or a sensitive topic. A 10,000 tweet archive takes 8 to 14 hours of reading, spread over several evenings.</p>
+<p>That excludes download and parsing time. The archive arrives as a ZIP containing tweets.js, like.js and other files in a format nobody reads for fun. Understanding the layout takes its own session. The structure is documented in <a href="/blog/whats-inside-x-archive-tweets-js">what is inside an X archive</a>.</p>
+<p>Attention decay is the bigger issue. Past three thousand tweets, your threshold quietly loosens, and things you flagged in the first hour slip through in the fourth. Run the same archive twice and the two results will not match.</p>
+
+<h2>What each method can see</h2>
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>Automated check</th><th>Manual archive review</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Coverage</td><td>Every tweet, scanned in full</td><td>Bounded by attention and time, often under 60%</td></tr>
+    <tr><td>Consistency</td><td>Fixed rules, same input, same output</td><td>Judgment drifts as you go</td></tr>
+    <tr><td>Speed</td><td>Minutes</td><td>8 to 14 hours for 10,000 tweets</td></tr>
+    <tr><td>Context</td><td>Weak, pattern matching only</td><td>Strong, reads sarcasm, quotes, domain terms</td></tr>
+    <tr><td>Cost</td><td>Free or near free</td><td>High in hours</td></tr>
+    <tr><td>Risk ranking</td><td>Prioritized by category</td><td>Whatever sticks in memory</td></tr>
+  </tbody>
+</table>
+<p>The last row gets undervalued. Risk only matters once it has an order, and a feeling that this one seems worse cannot carry a plan of a hundred items. The scoring logic is in <a href="/blog/footprint-score-weighting-explained">how footprint score weights are calculated</a>.</p>
+
+<h2>Where each method misses</h2>
+<p>The two failure modes point in opposite directions.</p>
+<ul>
+  <li><strong>The check misses context.</strong> A sarcastic joke gets tagged sensitive, and coordinates inside a technical discussion read as an address. These are false positives, and the fix is human review of borderline items.</li>
+  <li><strong>The manual pass misses scale.</strong> You cannot finish, you get tired, your threshold drifts, and the high-risk items in the back half slip through. This failure is worse, because what it drops are real problems.</li>
+</ul>
+<p>Plan for false positives instead of fighting them one by one. Items flagged red that your own reading clears can go straight to an exclusion list. That method is in <a href="/blog/footprint-report-false-positives">handling false positives in a footprint report</a>.</p>
+
+<h2>Running them together</h2>
+<ol>
+  <li><strong>Let the check set the baseline.</strong> Run it once for a full scan and a risk order. This takes minutes and covers every historical tweet.</li>
+  <li><strong>Spend human time on borderline items.</strong> Do not re-read everything. Review the tweets sitting near a scoring threshold, plus anything involving domain jargon, quotes or sarcasm.</li>
+  <li><strong>Turn human calls into an exclusion list.</strong> Record the false positives you cleared so the next run skips the same debate.</li>
+  <li><strong>Re-run on a schedule.</strong> New tweets create new risk. How often to check is covered in <a href="/blog/how-often-check-digital-footprint">how often to run a footprint check</a>.</li>
+</ol>
+
+<h2>Which one to pick</h2>
+<p>Under a few hundred tweets, a manual pass is realistic and the judgment quality holds up. Past a thousand, manual coverage falls off fast, and using a check for the baseline plus human review for borderline items is a visible difference in effort.</p>
+<p>Neither method deletes anything. The check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> is free, parses your archive on your own machine, and returns a score plus a risk list in minutes without uploading your tweets. Cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and the full method write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: '人工翻一万条推文要多久？', a: '按每条 3 到 5 秒估算，需要 8 到 14 小时的净阅读时间，还不含下载和解析归档。实际执行中注意力会衰减，覆盖率通常低于六成。', qEn: 'How long does reading 10,000 tweets by hand take?', aEn: 'At three to five seconds per tweet, between 8 and 14 hours of actual reading, not counting download and parsing. Attention decays along the way, so real coverage usually lands below 60%.' },
+      { q: '自动体检会漏掉什么？', a: '主要漏在语境判断。反讽、行业术语、技术讨论中的坐标数字都可能被误判。方向上偏误报，处理方式是人工复核临界条目并建立排除列表。', qEn: 'What does an automated check miss?', aEn: 'Mostly context. Sarcasm, domain jargon and coordinate numbers inside technical threads can all be misread. The bias is toward false positives, handled by reviewing borderline items and keeping an exclusion list.' },
+      { q: '体检和人工复核可以只用一种吗？', a: '归档在几百条以内可以只用手动，判断质量够用。超过一千条建议先用体检建基线，否则人工方式会在后半段出现系统性漏判。', qEn: 'Can I use only one of the two?', aEn: 'Under a few hundred tweets, manual alone works and the judgment quality holds. Past a thousand, start with a check for the baseline, or the manual pass will miss high-risk items systematically in the back half.' },
+      { q: '体检本身会删除内容吗？', a: '不会。体检是只读分析，在本机解析归档并输出评分与风险清单，不执行任何删除动作。删除是独立且可选的步骤。', qEn: 'Does the check delete anything?', aEn: 'No. It is a read-only analysis that parses your archive on your device and returns a score with a risk list. Deletion is a separate, optional step.' },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

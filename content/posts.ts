@@ -15366,6 +15366,447 @@ export const allPosts: BlogPost[] = [
       { q: '体检本身会删除内容吗？', a: '不会。体检是只读分析，在本机解析归档并输出评分与风险清单，不执行任何删除动作。删除是独立且可选的步骤。', qEn: 'Does the check delete anything?', aEn: 'No. It is a read-only analysis that parses your archive on your device and returns a score with a risk list. Deletion is a separate, optional step.' },
     ],
   },
+  {
+    slug: "x-archive-migration-new-device",
+    title: "换设备后 X 归档怎么迁移：不丢数据的完整流程",
+    excerpt:
+      "归档迁移的难点不在复制文件，而在旧设备上积累的白名单、排除列表和体检基线。这篇给出迁前准备、跨系统路径差异、迁移六步与迁后验证清单，并说明哪些情况下重新下载比迁移更省事。",
+    date: '2026-09-26',
+    updatedAt: '2026-09-26',
+    author: 'Digital Footprint Health Team',
+    category: "归档入门",
+    tags: ["X/Twitter", "归档迁移", "换设备", "数据备份"],
+    canonical: '/blog/x-archive-migration-new-device',
+    titleEn: "Moving Your X Archive to a New Device Without Losing Data",
+    excerptEn:
+      "Copying the archive file is the easy part. The costly work sits in the whitelist, exclusion list and check baseline you built on the old machine. This covers pre-move prep, path differences across systems, a six-step transfer, and how to verify the result.",
+    categoryEn: "Archive Basics",
+    tagsEn: ["X/Twitter", "archive migration", "new device", "backup"],
+    content: `
+<p>换电脑或换手机的时候，X 归档通常排在待搬清单的最后。原因也简单：它只是一个压缩包，复制过去能打开，看起来就完事了。但归档的价值不在文件本身，而在旧设备上一点点积累起来的判断，白名单里记着哪些推文要留，排除列表里记着哪些误报已经确认过，体检基线记着上次的分数和风险条目数。这些判断不写在 ZIP 里，迁移完等于从头再来一遍。</p>
+<p>这篇把 X 归档迁移拆成迁前、迁移、迁后三段。按这个顺序做完，新设备上的体检结果应该和旧设备对得上，不会重新洗牌。</p>
+
+<h2>迁前先在旧设备上固定三份东西</h2>
+<p>先别急着拔硬盘，也别先开云同步。旧设备上还有完整的上下文，这是迁移最省事的时刻。</p>
+<ol>
+  <li><strong>归档 ZIP 原件。</strong>不要只留解压后的目录。压缩包里有 tweets.js、like.js、direct-messages.js 等文件，有些解析流程依赖原始目录结构，缺文件会直接报错，不会跳过继续跑。</li>
+  <li><strong>上一次体检的基线。</strong>分数、风险条目总数，以及按类别拆开的数量。迁移后拿它对表，一眼能分清是数据没搬全，还是新设备的解析版本和旧版本不同。</li>
+  <li><strong>白名单与排除列表。</strong>这是迁移里最贵的东西。白名单是"这条必须留"，排除列表是"这条我确认过没问题，以后别再报"。两份清单都是人工判断的结果，重建一次往往要花几个小时。</li>
+</ol>
+<p>旧设备还能开机的话，把这三份东西放进一个单独目录，和归档压缩包分开放。两者混在同一个文件夹里，迁移时很容易只搬了压缩包，配置留在原地。</p>
+
+<h2>归档文件在哪：各系统的常见落点</h2>
+<p>X 下载页只给一个压缩包，解压位置由你自己定，所以路径没有标准答案。下面是各系统的常见落点，用来在旧设备上快速定位。</p>
+<table>
+  <thead>
+    <tr><th>系统</th><th>常见落点</th><th>体积参考</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Windows</td><td>下载目录，或解压时新建的文件夹，里面有 data 子目录</td><td>50MB 到 400MB</td></tr>
+    <tr><td>macOS</td><td>下载目录解压后，data 子目录在第二层</td><td>同上</td></tr>
+    <tr><td>Android</td><td>内部存储的 Download 目录</td><td>通常更小，媒体文件不全</td></tr>
+    <tr><td>iOS</td><td>文件应用里的下载项，需要先手动解压</td><td>同上</td></tr>
+  </tbody>
+</table>
+<p>体积差主要来自媒体文件。同一个账号在桌面端下载的压缩包会比手机端大，手机端常省略部分图片和视频的原始文件。从手机迁到电脑时，先确认搬过去的压缩包是桌面端下载的那一份，否则体检结果里会少掉一批带图推文。手机端归档的完整流程见 <a href="/blog/download-x-archive-on-phone">手机下载 X 归档</a>。</p>
+
+<h2>跟着数据走的三样配置</h2>
+<p>三样配置指的是前面那两份清单加一份基线。它们不需要特殊格式，一份纯文本或一个表格就够，关键是固定成文件，别只留在脑子里。</p>
+<ul>
+  <li><strong>白名单格式。</strong>推文链接或推文 ID 一行一条，后面附一句原因。原因这一列看着多余，三个月后回看时，它是唯一能解释当时判断的东西。</li>
+  <li><strong>排除列表格式。</strong>除了 ID 和原因，再加一列"误报类型"，比如坐标数字、行业术语、引用他人内容。同类误报累计到一定数量，就能反过来调解析规则。</li>
+  <li><strong>基线快照。</strong>记录体检日期、总分、各风险档的条目数。只存一个总分不够用，因为不同类别权重不同，总分持平但内部结构变化的情况很常见。评分权重的计算方式见 <a href="/blog/footprint-score-weighting-explained">体检评分权重说明</a>。</li>
+</ul>
+<p>如果旧设备已经不能开机，只能从归档重新解析。这时候先跑一次体检生成新基线，再把能回忆起来的白名单补进去。顺序反了会白做一轮，先整理白名单再跑基线，等于把人工判断做了两遍。</p>
+
+<h2>迁移执行的六步</h2>
+<ol>
+  <li><strong>确认压缩包完整。</strong>对照旧设备上的文件大小，再确认解压后能看到 tweets.js。手上只剩解压目录的，先用原压缩包校验一次。</li>
+  <li><strong>拷贝压缩包，不要拷贝解压目录。</strong>解压目录文件数量多，跨系统复制时容易出现大小写或编码差异；压缩包只有一个文件，风险低得多。</li>
+  <li><strong>在新设备上解压到独立目录。</strong>不要直接扔进下载目录。以后再下载一份会混在一起，很难分清哪份是哪份。</li>
+  <li><strong>先导排除列表，再导白名单。</strong>两者有重叠时，排除列表先落地能避免白名单条目被重复报出。</li>
+  <li><strong>跑一次完整解析。</strong>这次解析的作用是建立新基线，不要顺手删东西。第一次跑完就动手清理，出问题时分不清是数据问题还是操作问题。</li>
+  <li><strong>和旧基线对表。</strong>分数与各档条目数应大致相同。差异超过一成就停下来查原因，通常是压缩包版本不同，或者排除列表没导全。</li>
+</ol>
+<p>压缩包存放位置本身也有讲究，放在会被同步盘扫描的目录里，等于把推文文本同步到了另一台设备上。安全存放的做法见 <a href="/blog/store-x-archive-safely">归档安全存放</a>。</p>
+
+<h2>迁完怎么验证</h2>
+<p>验证的核心是把"数据搬全了"和"判断搬全了"分开检查。两件事的排查路径完全不同，混在一起查会来回折腾。</p>
+<table>
+  <thead>
+    <tr><th>检查项</th><th>通过标准</th><th>不通过时先查</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>压缩包完整性</td><td>文件大小与旧设备一致，解压后 tweets.js 存在</td><td>拷贝是否中断，是否误搬了解压目录</td></tr>
+    <tr><td>解析条目数</td><td>与旧基线的推文总数一致</td><td>压缩包是不是手机端下载的那份</td></tr>
+    <tr><td>风险条目数</td><td>各档数量与旧基线接近</td><td>排除列表是否导入完整</td></tr>
+    <tr><td>白名单生效</td><td>白名单内的推文不出现在待清理列表</td><td>ID 格式是否被编辑器改动过</td></tr>
+    <tr><td>旧设备数据</td><td>验证通过前暂不删除</td><td>无</td></tr>
+  </tbody>
+</table>
+<p>最后一行经常被跳过。新设备验证通过之前，旧设备上的归档和配置都留着。两份数据同时存在的成本很低，重新申请一份归档并重建判断的成本要高得多。体检报告本身的结构可以对照 <a href="/blog/anatomy-of-a-footprint-report">体检报告的构成</a> 逐项核对。</p>
+
+<h2>什么时候别迁移，直接重新下载</h2>
+<p>迁移适合归档还能拿到、配置还想保留下来的情况。下面几种情况直接重新下载更省事。</p>
+<ul>
+  <li><strong>旧设备已经卖掉或送人。</strong>没有可搬的源，只能重新申请归档。</li>
+  <li><strong>压缩包是两年前下载的。</strong>这两年的新推文不在里面，搬过去还要再申请一次，不如一次性重新下载。</li>
+  <li><strong>白名单和排除列表从来没存过。</strong>没有可继承的判断，迁移只剩搬文件这一步，和重新下载差别不大。</li>
+  <li><strong>换的是手机操作系统。</strong>安卓和 iOS 的归档获取路径不同，媒体文件完整度也不一样，直接在新系统里重新申请更干净。</li>
+</ul>
+<p>重新下载通常要等几天。等待期间旧设备上的归档别删，等新归档到位并验证通过再处理。整个流程可以配合 <a href="/blog/x-archive-download-failed-fix">归档下载失败排查</a> 一起用，卡在哪一步都有对应的检查点。</p>
+
+<p>迁移本身不产生删除动作，它的回报在于省下重建判断的时间。搬到新设备后跑一次体检，可以顺手确认解析结果和旧基线是否对得上。体检在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 的 <a href="/">首页</a>免费开放，归档在本机解析，推文内容不上传。清理范围与费用列在 <a href="/pricing">定价页</a>，方法类文章都收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>When people move to a new laptop or phone, the X archive usually sits at the bottom of the list. It is one ZIP file, you copy it across, it opens, and the job looks done. The value of an archive is not in the file. It is in the judgment you accumulated on the old machine: the whitelist of tweets that must stay, the exclusion list of false positives you already cleared, and the check baseline that recorded last time's score and risk counts. None of that lives inside the ZIP.</p>
+<p>This piece splits a <strong>X archive migration</strong> into three stages: before the move, during the move, and after. Work through them in order and the check on the new device should line up with the old baseline instead of reshuffling it.</p>
+
+<h2>Lock down three things on the old device first</h2>
+<p>Do not pull the drive yet, and do not start cloud sync yet. The old device still holds the full context, and this is the cheapest moment to capture it.</p>
+<ol>
+  <li><strong>The original archive ZIP.</strong> Do not keep only the extracted folder. The package contains tweets.js, like.js, direct-messages.js and other files, and some parsers depend on the original directory layout. A missing file triggers an error rather than a silent skip.</li>
+  <li><strong>The last check baseline.</strong> Score, total risk item count, and the breakdown by category. Compare against it after the move and you can tell immediately whether data is missing or the parser version differs.</li>
+  <li><strong>The whitelist and exclusion list.</strong> These are the expensive part. The whitelist holds tweets that must stay. The exclusion list holds items you already reviewed and cleared. Both are products of human judgment, and rebuilding either one takes hours.</li>
+</ol>
+<p>If the old device still boots, put those three items in a folder of their own and keep them separate from the archive ZIP. Mix them into the same folder and the move will very likely carry the package over while the configuration stays behind.</p>
+
+<h2>Where the archive actually sits</h2>
+<p>X hands you a single compressed package, and the extraction location is your choice, so there is no standard path. These are the usual landing spots, useful for locating the file on the old device quickly.</p>
+<table>
+  <thead>
+    <tr><th>System</th><th>Typical location</th><th>Size reference</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Windows</td><td>Downloads folder, or a folder you created during extraction, with a data subfolder inside</td><td>50MB to 400MB</td></tr>
+    <tr><td>macOS</td><td>Extracted into Downloads, with the data subfolder one level down</td><td>Same range</td></tr>
+    <tr><td>Android</td><td>Download folder in internal storage</td><td>Usually smaller, incomplete media</td></tr>
+    <tr><td>iOS</td><td>Downloaded item in the Files app, needs manual extraction</td><td>Same as Android</td></tr>
+  </tbody>
+</table>
+<p>The size gap comes from media files. The same account downloaded on a desktop produces a larger package than on a phone, because mobile exports often omit original image and video files. Moving from a phone to a computer, confirm the package you are carrying came from a desktop download, or the check will come up short on image tweets. The mobile route is covered in <a href="/blog/download-x-archive-on-phone">downloading an X archive on your phone</a>.</p>
+
+<h2>The three pieces of configuration that travel with the data</h2>
+<p>Plain text or a spreadsheet is enough. What matters is that you fix them in a file instead of keeping them in your head.</p>
+<ul>
+  <li><strong>Whitelist format.</strong> One tweet link or ID per line, with a short reason after it. The reason column looks redundant until three months later, when it is the only thing that explains the call you made.</li>
+  <li><strong>Exclusion list format.</strong> ID, reason, plus a column for the false positive type, such as coordinate numbers, domain jargon, or quoted material. Once one type stacks up, you can tune the parser against it.</li>
+  <li><strong>Baseline snapshot.</strong> Date, total score, and the per-band item counts. A single score number is not enough, because categories carry different weights and a flat score can hide a shifted structure. The weighting logic is in <a href="/blog/footprint-score-weighting-explained">how footprint score weights work</a>.</li>
+</ul>
+<p>If the old device is already gone, you have to rebuild from the archive. Run the check first to produce a fresh baseline, then add back the whitelist entries you remember. Reversing that order wastes a full pass, since you end up doing the manual judgment twice.</p>
+
+<h2>Six steps for the move</h2>
+<ol>
+  <li><strong>Verify the package.</strong> Compare the file size against the old device, then confirm tweets.js is visible after extraction. If you only kept the extracted folder, validate against the original package first.</li>
+  <li><strong>Copy the ZIP, not the extracted folder.</strong> The extracted folder holds thousands of files, and cross-system copying invites case or encoding mismatches. A single ZIP carries far less risk.</li>
+  <li><strong>Extract into a dedicated folder on the new device.</strong> Do not drop it into Downloads. A second download later will mix the two, and you will lose track of which is which.</li>
+  <li><strong>Import the exclusion list, then the whitelist.</strong> When the two overlap, landing the exclusion list first keeps whitelist entries from being re-flagged.</li>
+  <li><strong>Run one full parse.</strong> Its purpose is to establish the new baseline, so resist deleting anything while you are at it. Clean up on the first run and you cannot tell a data problem from an operation problem later.</li>
+  <li><strong>Compare against the old baseline.</strong> Score and per-band counts should land close. A gap wider than about ten percent means stop and investigate, usually a different package version or an incomplete exclusion list.</li>
+</ol>
+<p>Where the package lives matters too. Keeping it inside a synced folder means the tweet text gets replicated to another device anyway. Safer storage is covered in <a href="/blog/store-x-archive-safely">storing an X archive safely</a>.</p>
+
+<h2>How to verify the move</h2>
+<p>Check data completeness and judgment completeness separately. The two have different failure paths, and mixing them into one pass sends you back and forth.</p>
+<table>
+  <thead>
+    <tr><th>Check</th><th>Pass condition</th><th>Look here first if it fails</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Package integrity</td><td>File size matches the old device, tweets.js present</td><td>Interrupted copy, or the extracted folder was moved by mistake</td></tr>
+    <tr><td>Parsed entry count</td><td>Matches the old baseline tweet total</td><td>Package came from a mobile download</td></tr>
+    <tr><td>Risk item count</td><td>Per-band counts close to the old baseline</td><td>Exclusion list imported incompletely</td></tr>
+    <tr><td>Whitelist active</td><td>Whitelisted tweets stay out of the cleanup queue</td><td>ID formatting altered by an editor</td></tr>
+    <tr><td>Old device data</td><td>Left in place until verification passes</td><td>Nothing to check</td></tr>
+  </tbody>
+</table>
+<p>The last row gets skipped often. Keep the archive and configuration on the old device until the new one passes. Two copies cost very little, while requesting a fresh archive and rebuilding the judgment costs a great deal. For the report side, compare structure against <a href="/blog/anatomy-of-a-footprint-report">what a footprint report contains</a>.</p>
+
+<h2>When to skip migration and download fresh</h2>
+<p>Migration fits the case where the archive is still available and the configuration is worth keeping. These cases are simpler if you start over.</p>
+<ul>
+  <li><strong>The old device is sold or given away.</strong> There is no source to move, so a new archive request is the only route.</li>
+  <li><strong>The package is two years old.</strong> Recent tweets are not in it, so you would request again anyway. One fresh download beats a move plus a request.</li>
+  <li><strong>The whitelist and exclusion list were never saved.</strong> Nothing carries over, leaving only a file copy, which is barely different from downloading again.</li>
+  <li><strong>You switched phone platforms.</strong> Android and iOS expose different export routes and differ in media completeness, so a clean request on the new platform is tidier.</li>
+</ul>
+<p>A fresh export takes a few days to arrive. Keep the old archive until the new one lands and passes verification. Both paths benefit from the checks in <a href="/blog/x-archive-download-failed-fix">fixing a failed archive download</a>, which covers the points where either route tends to stall.</p>
+
+<p>A migration deletes nothing. Its payoff is the hours of judgment you do not have to rebuild. Once the new device is set up, run the check to confirm the parse matches the old baseline. The check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> is free from the <a href="/">homepage</a>, parses your archive on your own machine, and never uploads tweet text. Cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and the method write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "X 归档迁移会丢数据吗？", a: "按压缩包整体拷贝、不逐文件复制的做法，数据本身不会丢。容易丢的是旧设备上的白名单、排除列表和体检基线，这三样不写在压缩包里，需要单独搬。", qEn: "Does migrating an X archive lose data?", aEn: "Copying the ZIP as a single file does not lose data. What gets lost easily is the whitelist, exclusion list and check baseline built on the old device. None of those live inside the archive, so they travel separately." },
+      { q: "手机下载的归档和电脑下载的有区别吗？", a: "有。手机端常省略部分媒体原始文件，压缩包更小，解析出的带图推文数量会少一批。迁移前先确认搬的是桌面端下载的那一份。", qEn: "Is a phone download different from a desktop download?", aEn: "Yes. Mobile exports often omit some original media files, so the package is smaller and the parsed count of image tweets comes out lower. Confirm the file you are moving came from a desktop download." },
+      { q: "迁移后体检分数变了，是数据问题吗？", a: "先比推文总数，再看各风险档的条目数。总数一致但分数不同，一般是排除列表没导全或解析版本不同；总数就少了，才是数据没搬全。", qEn: "The score changed after migrating. Is that a data problem?", aEn: "Compare total tweet counts first, then the per-category risk counts. Same total with a different score usually means an incomplete exclusion list or a different parser version. A lower total does point to incomplete data." },
+      { q: "旧设备上的归档什么时候可以删？", a: "新设备验证通过之后。验证包括条目数、各档风险数、白名单生效三项，全部对得上再删，两份数据并存的成本远低于重新申请归档。", qEn: "When can I delete the archive on the old device?", aEn: "After the new device passes verification: matching entry counts, matching per-category risk counts, and a working whitelist. Keeping both copies costs far less than requesting a fresh archive." },
+    ],
+  },
+  {
+    slug: "footprint-check-data-sources",
+    title: "数字足迹体检的数据从哪来：一份报告背后的数据流向",
+    excerpt:
+      "体检报告里的分数、风险标签和时间线都不是猜出来的，它们来自归档里具体的文件。这篇说明哪些文件被读取、哪些字段被忽略、数据在哪一步离开你的设备，以及为什么报告条数和 X 页面上看到的不完全一样。",
+    date: '2026-09-26',
+    updatedAt: '2026-09-26',
+    author: 'Digital Footprint Health Team',
+    category: "体检与评分",
+    tags: ["X/Twitter", "隐私体检", "数据流向", "本机处理"],
+    canonical: '/blog/footprint-check-data-sources',
+    titleEn: "Where a Digital Footprint Check Gets Its Data",
+    excerptEn:
+      "The score, risk labels and timeline in a footprint report are not guesses. They come from specific files inside your archive. This maps which files get read, which fields get ignored, where data leaves your device, and why report counts differ from what X shows.",
+    categoryEn: "Check and Score",
+    tagsEn: ["X/Twitter", "privacy check", "data flow", "on-device"],
+    content: `
+<p>很少有人问体检报告里的数字是怎么来的。看到 72 分和十几条高风险推文，第一反应是照着清单去删，至于这些数字读的是哪份数据、中间有没有上传，通常放到最后才想。数字足迹体检的数据来源其实很具体，它只读 X 归档压缩包里的几个文件，剩下的都靠规则判断。把这条链路说清楚，你才能判断一份报告的可信度到底在哪。</p>
+<p>下面按「读了什么、忽略了什么、数据去了哪、为什么对不上」四段拆开讲。</p>
+
+<h2>归档里真正被读取的文件</h2>
+<p>X 归档解压后，data 目录下会有二十来个文件。体检不全部读，只挑跟推文内容和账号轨迹有关的那几个。</p>
+<table>
+  <thead>
+    <tr><th>文件</th><th>提供什么</th><th>在报告里的作用</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>tweets.js</td><td>全部历史推文正文、时间戳、互动数</td><td>分数与风险清单的主要来源</td></tr>
+    <tr><td>like.js</td><td>点赞记录</td><td>判断兴趣倾向与话题暴露面</td></tr>
+    <tr><td>direct-messages.js</td><td>私信往来记录</td><td>识别是否泄露过联系方式</td></tr>
+    <tr><td>phone-number.js / email-address-change.js</td><td>账号绑定的联系方式与变更历史</td><td>联系信息类风险的旁证</td></tr>
+    <tr><td>ip-audit.js / account-creation-ip.js</td><td>登录与创建账号的 IP 记录</td><td>时间线校对与地域推断</td></tr>
+  </tbody>
+</table>
+<p>tweets.js 是重量级选手，一条推文的文本、时间、点赞与转推数都在里面。其余文件的作用是交叉印证：如果 tweets.js 里某段时间的定位信息很密集，而 ip-audit.js 显示同期登录地在同一城市，这条定位线索的可信度就比单看推文高得多。tweets.js 的内部结构见 <a href="/blog/whats-inside-x-archive-tweets-js">归档里 tweets.js 是什么</a>。</p>
+
+<h2>报告里的数字分别对应哪个文件</h2>
+<p>报告看上去是一份整体结论，拆开看，每一块的数据源头都不一样。</p>
+<table>
+  <thead>
+    <tr><th>报告模块</th><th>主要数据源</th><th>判断方式</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0-100 健康评分</td><td>tweets.js</td><td>按各风险类别的条目数与占比加权</td></tr>
+    <tr><td>风险条目清单</td><td>tweets.js</td><td>模式匹配手机号、邮箱、地址、定位</td></tr>
+    <tr><td>敏感话题标记</td><td>tweets.js</td><td>词典与语境规则，含误报</td></tr>
+    <tr><td>账号活动时间线</td><td>tweets.js + ip-audit.js</td><td>按时间戳聚合</td></tr>
+    <tr><td>联系信息暴露面</td><td>tweets.js + dm + 账号文件</td><td>多文件交叉比对</td></tr>
+  </tbody>
+</table>
+<p>评分怎么加权是另一个话题，粗暴地说，联系信息类权重最高，敏感话题类中档，定位类看密度。具体算法在 <a href="/blog/health-score-calculated-1min">健康评分是怎么算出来的</a> 里，这里不重复。需要注意的是任何一个模块出问题，都只会影响它对应的那一块，不会整体串味。</p>
+
+<h2>被忽略的字段，以及原因</h2>
+<p>不读的字段有两种：一种跟隐私风险无关，一种读了反而干扰判断。</p>
+<ul>
+  <li><strong>广告互动记录。</strong>跟你的推文内容无关，只会把条目数堆高。</li>
+  <li><strong>关注与粉丝列表。</strong>人数过多，噪声大于信息，而且涉及他人隐私，不做分析。</li>
+  <li><strong>设备令牌与个性化设置。</strong>对判断「哪条推文有风险」没有帮助。</li>
+  <li><strong>推文的界面语言标记。</strong>解析时会重新识别语言，用归档里的标记容易出错。</li>
+</ul>
+<p>忽略字段这件事有个副作用值得知道：报告里的条目数会比你想象中少。这不是漏读，而是把跟风险无关的内容先筛掉了。想核对读取范围，可以直接看归档里那份文件清单，路径说明见 <a href="/blog/read-twitter-archive">怎么读 X 归档</a>。</p>
+
+<h2>数据在哪一步离开本机</h2>
+<p>这是最多人问的一段，也是这份链路里最不该含糊的地方。</p>
+<ul>
+  <li><strong>解析阶段完全在本机。</strong>归档解压、文件读取、规则匹配、评分计算，全在你自己的设备上完成，推文文本不经过网络。</li>
+  <li><strong>报告结果不出本机。</strong>生成的评分与清单以本地数据结构保存，不提交到服务端。</li>
+  <li><strong>只有删除动作需要授权。</strong>删除必须调用平台接口，这一步绕不开授权，但走的是删除权限，不涉及把归档内容上传。</li>
+</ul>
+<p>这三条的分界线在「读」和「写」之间。本机处理与云端处理的差别，本质上就是这条线画在哪。更完整的架构说明见 <a href="/blog/local-vs-cloud-processing">本地处理与云端处理的区别</a>。如果你还想确认报告只在自己手里，导出与分享那一节的做法在 <a href="/blog/export-share-footprint-report">导出与分享体检报告</a>。</p>
+
+<h2>为什么报告条数和 X 页面上不一样</h2>
+<p>对不上是正常现象，原因有几种，分清楚之后就不会误判成漏读。</p>
+<ul>
+  <li><strong>时间差。</strong>归档是申请那一刻的快照，之后新发的推文不在里面。</li>
+  <li><strong>已删除内容。</strong>归档里保留了你后来删掉的推文，X 页面上看不到。</li>
+  <li><strong>转推与引用。</strong>两者的计数方式和页面展示不一致，容易在条数上差出几百条。</li>
+  <li><strong>纯媒体推文。</strong>没有文字的推文在正文匹配里不产生条目，但会出现在时间线里。</li>
+</ul>
+<p>知道这几条以后，核对方式就清楚了：用归档条目总数对 X 页面的推文总数，不要用风险条目数去对，后者本来就做过筛选。两份数据不一致时先看快照时间，其次看是否含已删除推文。</p>
+
+<p>把数据来源搞清楚，一份报告就不只是分数，而是一条可以追问的链路。体检在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 的 <a href="/">首页</a>免费开放，归档在本机解析，推文内容不上传。想先看报告长什么样，可以对照 <a href="/blog/anatomy-of-a-footprint-report">体检报告的结构说明</a>；清理范围与费用列在 <a href="/pricing">定价页</a>，其余方法文章收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>Most people never ask where the numbers in a footprint report come from. A score of 72 and a dozen high-risk tweets appear, and the instinct is to start deleting from the list. Which files were read, and whether anything was uploaded along the way, tends to be an afterthought. The data sources behind a <strong>digital footprint check</strong> are quite specific: a handful of files inside the X archive package, plus rule-based judgment on top. Understanding that chain is what tells you how much weight a report deserves.</p>
+<p>Four parts follow: what gets read, what gets ignored, where the data travels, and why the counts do not match what X shows.</p>
+
+<h2>The files that actually get read</h2>
+<p>After extraction, the data folder holds around twenty files. A check does not read all of them, only the ones tied to tweet content and account history.</p>
+<table>
+  <thead>
+    <tr><th>File</th><th>What it holds</th><th>Role in the report</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>tweets.js</td><td>Every historical tweet, timestamps, engagement counts</td><td>Primary source for the score and risk list</td></tr>
+    <tr><td>like.js</td><td>Like history</td><td>Signals interest patterns and topic exposure</td></tr>
+    <tr><td>direct-messages.js</td><td>Direct message history</td><td>Detects contact details shared in private threads</td></tr>
+    <tr><td>phone-number.js / email-address-change.js</td><td>Linked contact details and change history</td><td>Supporting evidence for contact exposure</td></tr>
+    <tr><td>ip-audit.js / account-creation-ip.js</td><td>IP records for logins and account creation</td><td>Timeline verification and region inference</td></tr>
+  </tbody>
+</table>
+<p>tweets.js does the heavy lifting, carrying text, timestamps, likes and reposts for every post. The other files cross-check it. If one stretch of tweets.js is dense with location mentions, and ip-audit.js shows logins from the same city during that period, the location signal is far stronger than tweet text alone. The internal structure is described in <a href="/blog/whats-inside-x-archive-tweets-js">what tweets.js in an X archive actually is</a>.</p>
+
+<h2>Which file feeds which part of the report</h2>
+<p>A report reads as one verdict. Taken apart, every block has a different origin.</p>
+<table>
+  <thead>
+    <tr><th>Report block</th><th>Main source</th><th>Method</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>0-100 health score</td><td>tweets.js</td><td>Weighted by item count and share per risk category</td></tr>
+    <tr><td>Risk item list</td><td>tweets.js</td><td>Pattern matching for phone numbers, emails, addresses, locations</td></tr>
+    <tr><td>Sensitive topic flags</td><td>tweets.js</td><td>Dictionary and context rules, false positives included</td></tr>
+    <tr><td>Account activity timeline</td><td>tweets.js + ip-audit.js</td><td>Aggregated by timestamp</td></tr>
+    <tr><td>Contact exposure surface</td><td>tweets.js + DMs + account files</td><td>Cross-file comparison</td></tr>
+  </tbody>
+</table>
+<p>How the score is weighted is a separate subject. Broadly, contact details carry the most weight, sensitive topics sit in the middle, and location depends on density. The algorithm is laid out in <a href="/blog/health-score-calculated-1min">how the health score is calculated</a>, so it is not repeated here. The useful part is that a problem in one block stays inside that block. It does not contaminate the rest of the report.</p>
+
+<h2>Fields that get ignored, and why</h2>
+<p>Unread fields fall into two groups: those unrelated to privacy risk, and those that would actively distort the analysis.</p>
+<ul>
+  <li><strong>Ad engagement records.</strong> Unrelated to what you posted, and they only inflate item counts.</li>
+  <li><strong>Follower and following lists.</strong> Volume swamps signal, and they involve other people's data, so they are left out.</li>
+  <li><strong>Device tokens and personalization settings.</strong> Nothing here helps decide whether a tweet carries risk.</li>
+  <li><strong>Language tags on tweets.</strong> Language is re-detected during parsing, since stored tags drift.</li>
+</ul>
+<p>Ignoring fields has one side effect worth knowing. Report item counts come out lower than people expect. That is filtering, not under-reading. To confirm the read scope for yourself, open the file manifest in your archive. The walking route is in <a href="/blog/read-twitter-archive">how to read an X archive</a>.</p>
+
+<h2>Where data leaves your device</h2>
+<p>This is the most common question, and the least acceptable place to be vague.</p>
+<ul>
+  <li><strong>Parsing stays local.</strong> Extraction, file reads, rule matching and scoring all run on your own device. Tweet text does not cross the network.</li>
+  <li><strong>Results stay local.</strong> The score and list are held in a local data structure and are not submitted to a server.</li>
+  <li><strong>Only deletion needs authorization.</strong> Removing tweets has to call the platform API, and that step requires an authorized connection. It uses delete permission and does not involve uploading archive content.</li>
+</ul>
+<p>The dividing line sits between reading and writing. On-device versus cloud processing is really a question of where that line falls. The architecture is described in <a href="/blog/local-vs-cloud-processing">local versus cloud processing</a>. If you also want to confirm the report stays in your hands, the sharing side is covered in <a href="/blog/export-share-footprint-report">exporting and sharing a footprint report</a>.</p>
+
+<h2>Why report counts differ from what X shows</h2>
+<p>A mismatch is normal. Sorting the causes keeps you from misreading it as missing data.</p>
+<ul>
+  <li><strong>Time gap.</strong> The archive is a snapshot from the moment you requested it. Later tweets are absent.</li>
+  <li><strong>Deleted content.</strong> The archive keeps tweets you removed afterwards, which no longer appear on X.</li>
+  <li><strong>Reposts and quotes.</strong> Counting rules differ from the page display, and the gap can run into hundreds.</li>
+  <li><strong>Media-only tweets.</strong> Posts without text produce no text matches but still show up on the timeline.</li>
+</ul>
+<p>With those causes in hand, the right comparison becomes obvious. Match archive entry totals against the tweet total on X, never against the risk list, which has already been filtered. When the two disagree, check the snapshot date first, then whether deleted tweets are included.</p>
+
+<p>Knowing where the data comes from turns a report from a number into a chain you can question. The check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> is free from the <a href="/">homepage</a>, parses your archive on your own machine, and never uploads tweet text. To see the output shape first, review <a href="/blog/anatomy-of-a-footprint-report">what a footprint report contains</a>. Cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and the rest of the method write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "体检会上传我的推文内容吗？", a: "不会。归档解压、文件读取、规则匹配和评分都在本机完成，推文文本不经过网络。只有实际执行删除时需要平台授权，那一步走的是删除权限，不涉及上传归档内容。", qEn: "Does the check upload my tweet content?", aEn: "No. Extraction, file reads, rule matching and scoring all run on your device, and tweet text never crosses the network. Only actual deletion needs platform authorization, and that step uses delete permission without uploading archive content." },
+      { q: "为什么报告里的推文条数比 X 上少？", a: "最常见的三个原因是快照时间差、转推与引用的计数方式不同，以及无文字的纯媒体推文不进入正文匹配。用归档条目总数去对 X 的推文总数更准确。", qEn: "Why is the report tweet count lower than on X?", aEn: "The three usual causes are the snapshot time gap, different counting rules for reposts and quotes, and media-only posts producing no text matches. Compare archive entry totals against the tweet total on X instead." },
+      { q: "点赞和私信记录也会被分析吗？", a: "会，但用途有限。like.js 用来判断兴趣倾向和话题暴露面，direct-messages.js 用来识别是否在私信里发过联系方式。两者都只作为旁证，不单独决定评分。", qEn: "Are likes and direct messages analyzed too?", aEn: "Yes, with a limited role. like.js signals interest patterns and topic exposure, while direct-messages.js detects contact details shared in private threads. Both act as supporting evidence and never drive the score on their own." },
+      { q: "哪些归档文件是刻意不读的？", a: "广告互动记录、关注与粉丝列表、设备令牌与个性化设置都不读。前三类与推文风险无关或涉及他人隐私，最后会让条目数虚高，反而干扰判断。", qEn: "Which archive files are deliberately skipped?", aEn: "Ad engagement records, follower and following lists, and device tokens with personalization settings. The first group is unrelated to tweet risk or involves other people's data, and including them would inflate counts and distort judgment." },
+    ],
+  },
+  {
+    slug: "teaching-kids-digital-footprint",
+    title: "教孩子认识数字足迹：家长能直接用的 5 个练习",
+    excerpt:
+      "跟孩子讲\"网上发的东西删不掉\"通常讲不通。这篇给出 5 个能直接做的练习：从翻自己的旧照片开始，到写一张发出去之前的检查清单，每个都说明适合年龄、大致时长，以及家长最容易讲错的地方。",
+    date: '2026-09-26',
+    updatedAt: '2026-09-26',
+    author: 'Digital Footprint Health Team',
+    category: "心理与习惯",
+    tags: ["家庭数字教育", "数字足迹", "隐私习惯", "亲子沟通"],
+    canonical: '/blog/teaching-kids-digital-footprint',
+    titleEn: "Teaching Kids About Their Digital Footprint: 5 Exercises That Work",
+    excerptEn:
+      "Telling a child that online posts never really go away rarely lands. These five exercises start from their own photos and end with a pre-post checklist, with notes on age range, how long each takes, and the part parents usually get wrong.",
+    categoryEn: "Mindset and Habits",
+    tagsEn: ["family digital education", "digital footprint", "privacy habits", "parenting"],
+    content: `
+<p>关于数字足迹，家长的开场白通常是"你发的东西删不掉，以后找工作会被翻出来"。这句话是真的，但对一个十二岁的孩子来说，它描述的是一个十年后才会发生的抽象后果，说三遍就没人在听了。教孩子认识数字足迹有一条更省力的路径：不谈后果，先把动作做出来，让他在做的过程里自己看到痕迹长什么样。</p>
+<p>下面这 5 个练习不需要任何工具，也不需要家长懂技术。按年龄挑着做，每个练习都有一个明确的问题要解决，做完能直接看到结果。</p>
+
+<h2>先说一件事：数字足迹不是坏东西</h2>
+<p>很多家长一开口就把足迹和危险绑在一起，孩子的第一反应是防御。足迹本身只是记录，它记录了作品、观点、和朋友开玩笑的话，也记录了不该公开的信息。真正要教的能力是分辨，不是回避。</p>
+<p>这个前提不立住，后面的练习都会变成审问。可以这样开头："我们一起看看你留下的东西，哪些是好的，哪些会让未来的你尴尬。"把评价权交给孩子，家长只负责提问。</p>
+
+<h2>五个练习</h2>
+<p>顺序是按难度排的，从旁观到动手，最后一步才涉及"发之前先想一下"。每个练习结束后都有一句收尾，用来把动作和道理接上。</p>
+<table>
+  <thead>
+    <tr><th>练习</th><th>解决的问题</th><th>适合年龄</th><th>大致时长</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>一、翻自己的旧照片</td><td>看到痕迹是具体的</td><td>8 岁以上</td><td>15 分钟</td></tr>
+    <tr><td>二、搜一次自己的名字</td><td>理解别人看到什么</td><td>10 岁以上</td><td>20 分钟</td></tr>
+    <tr><td>三、找一条不该公开的信息</td><td>学会分辨敏感内容</td><td>11 岁以上</td><td>20 分钟</td></tr>
+    <tr><td>四、清理一次旧动态</td><td>知道自己能改</td><td>12 岁以上</td><td>30 分钟</td></tr>
+    <tr><td>五、写一张发布前检查清单</td><td>把判断变成习惯</td><td>13 岁以上</td><td>25 分钟</td></tr>
+  </tbody>
+</table>
+<p><strong>练习一 · 翻自己的旧照片。</strong>打开相册，从最早的那一批往前翻，问一个问题：这张照片里有没有校服上的校徽、家门口的门牌、常去的那家店的招牌。孩子的反应通常很快，因为这些都是他自己一眼就认出来的东西。收尾句：照片里的信息比你记得的多。</p>
+<p><strong>练习二 · 搜一次自己的名字。</strong>用浏览器搜孩子的名字，也搜一次用户名。看到什么不重要，重要的是让他知道陌生人看到的第一屏是什么样子。如果搜出来的是别人的内容，正好说明重名和误认也是足迹的一部分。收尾句：别人认识你，往往从搜索框开始。</p>
+<p><strong>练习三 · 找一条不该公开的信息。</strong>翻自己的社交动态，找一条含手机号、住址、学校或行程的内容。找不到也没关系，那就找一条现在看会尴尬的。这一个练习是整组里最直接有效的，因为他第一次从公开视角读自己的内容。收尾句：尴尬的内容不危险，危险的是能被人找到你。</p>
+<p><strong>练习四 · 清理一次旧动态。</strong>从练习三找到的那条开始删，一次删三五条就够。重点不是删干净，而是让他体验"我能改"。删完可以顺手看看账号的可见范围设置。收尾句：删得掉的是内容，删不掉的是已经被人截走的图，所以越早处理越好。清理思路的成人版见 <a href="/blog/digital-minimalism-twitter">数字极简与旧推文清理</a>。</p>
+<p><strong>练习五 · 写一张发布前检查清单。</strong>让孩子自己写三到五行，比如"有没有门牌""有没有校服""有没有别人出镜"。写完之后贴在他常用的设备旁边。清单必须是他自己写的，家长代笔的那份不会被执行。收尾句：判断一次不难，难的是每次都判断。习惯养成的完整方法见 <a href="/blog/30-day-footprint-habit-plan">30 天数字足迹习惯计划</a>。</p>
+
+<h2>家长最容易讲错的三句话</h2>
+<p>练习做不下去，通常不是孩子的问题，而是某句话把气氛带偏了。</p>
+<ul>
+  <li><strong>「你这样以后找不到工作。」</strong>把一个十年后的威胁压在今天的聊天上，孩子听到的是指责，不是信息。换成描述性的话效果更好：这条信息能被陌生人找到。</li>
+  <li><strong>「你发的东西我全都看得到。」</strong>这句话会推动孩子换小号或者转到更私密的平台，反而让家长失去视野。留着"我随时可以一起看"这个位置，比强调监控更有效。</li>
+  <li><strong>「删掉就没事了。」</strong>这句话不准确。截图、转发和缓存都会留下副本，正确的说法是：删掉能大幅减少被翻出来的机会，但不是清零。</li>
+</ul>
+<p>这三句话有一个共同点，都把话题引到家长的情绪上，偏离了事实。改说的方式很简单，把评价换成一条可以验证的具体事实。</p>
+
+<h2>从一次练习到长期习惯</h2>
+<p>五个练习做完只是起点。真正起作用的是把检查动作嵌进日常：发之前看一眼、每个月翻一遍旧动态、换设备时清一次。频率不用高，固定下来比做得彻底更重要。多久检查一次合适，可以参考 <a href="/blog/how-often-check-digital-footprint">体检频率建议</a>。</p>
+<p>家长自己也可以一起做。孩子对"我们一起看"的接受度远高于"你让我看"。如果家里有过照片被发到公开账号的情况，那本身就是一个很好的开场：说明当时为什么要删，比讲抽象道理有效得多。相关的处理思路见 <a href="/blog/sharenting-kids-photos-old-tweets">孩子照片被发到旧动态后的处理</a>。</p>
+
+<p>教孩子认识数字足迹，本质上是把"看一眼再发"这个动作变成条件反射。成年人同样需要这套动作，只是规模更大：几百上千条历史内容靠人工翻看不现实。想要一份自己的基线，可以在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 的 <a href="/">首页</a>免费跑一次体检，归档在本机解析，不上传内容。清理范围与费用列在 <a href="/pricing">定价页</a>，其余习惯与方法类文章收在 <a href="/blog">博客目录</a>。</p>
+`,
+    contentEn: `
+<p>The standard opening from a parent is usually some version of: the things you post stay online, and one day a hiring manager will find them. That statement is true, but for a twelve-year-old it describes an abstract consequence ten years out. Say it three times and attention is gone. There is a cheaper route into the same lesson: skip the consequences, run the exercise first, and let the child see what a trace actually looks like.</p>
+<p>These five exercises need no tools and no technical background. Pick by age. Each one answers a specific question, and each produces something visible by the end.</p>
+
+<h2>Start here: a digital footprint is not a bad thing</h2>
+<p>Many parents open by pairing footprint with danger, and the child's first reaction is defense. A footprint is only a record. It holds work, opinions, jokes with friends, and also details that should never have been public. The skill worth teaching is discrimination, not avoidance.</p>
+<p>Without that premise, every exercise turns into an interrogation. Try this opener instead: let us look at what you have left behind, and sort out which parts are good and which parts your future self will find awkward. Give the child the judgment calls and keep the parent on questions only.</p>
+
+<h2>The five exercises</h2>
+<p>The order runs from watching to doing, and only the last step touches the pause-before-posting habit. Each one closes with a single line that connects the action to the principle.</p>
+<table>
+  <thead>
+    <tr><th>Exercise</th><th>Question it answers</th><th>Age range</th><th>Time</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1. Scroll back through old photos</td><td>Traces are concrete</td><td>8 and up</td><td>15 min</td></tr>
+    <tr><td>2. Search your own name once</td><td>What strangers see</td><td>10 and up</td><td>20 min</td></tr>
+    <tr><td>3. Find one post that should not be public</td><td>Spotting sensitive content</td><td>11 and up</td><td>20 min</td></tr>
+    <tr><td>4. Clean up a few old posts</td><td>You can still change things</td><td>12 and up</td><td>30 min</td></tr>
+    <tr><td>5. Write a pre-post checklist</td><td>Turning judgment into habit</td><td>13 and up</td><td>25 min</td></tr>
+  </tbody>
+</table>
+<p><strong>Exercise 1: scroll back through old photos.</strong> Open the camera roll and start from the earliest batch. Ask one question at each photo: does this show a school crest, a house number, a shop sign you visit often. Children spot these fast, because they are the details they already recognize. Closing line: a photo carries more information than you remember putting in it.</p>
+<p><strong>Exercise 2: search your own name.</strong> Search the child's name in a browser, then search the username. What appears matters less than what the first screen looks like to a stranger. If the results mostly belong to someone else, that is a useful side lesson about shared names. Closing line: people meet you through a search box first.</p>
+<p><strong>Exercise 3: find one post that should not be public.</strong> Scroll the social feed and look for a phone number, an address, a school name, or travel plans. If nothing turns up, find one post that now feels embarrassing. This is the most effective exercise in the set, because it is the first time the child reads their own content from the outside. Closing line: the awkward post is not the danger. Being findable is the danger.</p>
+<p><strong>Exercise 4: clean up a few old posts.</strong> Delete the post found in exercise three, plus a few more. Three to five is enough. The point is not a clean feed, it is the experience of being able to change something. Check the account visibility settings while you are there. Closing line: content can be deleted, screenshots cannot, which is why earlier is better. The adult version of this practice is in <a href="/blog/digital-minimalism-twitter">digital minimalism and old tweets</a>.</p>
+<p><strong>Exercise 5: write a pre-post checklist.</strong> Have the child draft three to five lines, such as no house numbers, no school uniform, nobody else in frame. Tape it next to the device they post from. The list has to be theirs. One written by a parent does not get followed. Closing line: judging one post is easy, judging every post is the hard part. The full habit method is in <a href="/blog/30-day-footprint-habit-plan">the 30-day footprint habit plan</a>.</p>
+
+<h2>The three sentences parents get wrong</h2>
+<p>When an exercise stalls, the cause is usually a sentence that bent the mood, not the child.</p>
+<ul>
+  <li><strong>This will cost you a job one day.</strong> That drops a ten-year threat onto today's conversation. The child hears blame, not information. A descriptive line works better: this detail can be found by strangers.</li>
+  <li><strong>I can see everything you post.</strong> That pushes a child toward a second account or a more private app, which costs the parent the visibility they wanted. Keeping the option of looking together beats emphasizing surveillance.</li>
+  <li><strong>Delete it and it is gone.</strong> Not accurate. Screenshots, reposts and caches leave copies. The honest version: deleting cuts the odds of it resurfacing a great deal, but it is not a reset to zero.</li>
+</ul>
+<p>All three share one habit. They steer the conversation toward the parent's feelings instead of the facts. The fix is small: replace the verdict with one specific detail the child can verify.</p>
+
+<h2>From one exercise to a lasting habit</h2>
+<p>Finishing five exercises is the starting line. What holds is embedding the check into ordinary routines: a glance before posting, a monthly scroll through old posts, a cleanup when a device is replaced. Frequency matters less than regularity. Useful intervals are covered in <a href="/blog/how-often-check-digital-footprint">how often to run a footprint check</a>.</p>
+<p>Parents can work through the same exercises. Children accept let us look together far more readily than do as I say. If the family has photos sitting on a public account, that is the best opening available: explaining why they came down beats any abstract argument. The handling steps are in <a href="/blog/sharenting-kids-photos-old-tweets">after kids photos end up in old posts</a>.</p>
+
+<p>Teaching a child about a digital footprint comes down to making pause-and-look a reflex. Adults need the same reflex at a larger scale, since a few hundred or a few thousand historical posts cannot be read by hand. For your own baseline, run the free check at <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> from the <a href="/">homepage</a>. It parses your archive on your own machine and uploads nothing. Cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and the habits and method write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "几岁开始教孩子数字足迹比较合适？", a: "八岁可以开始做练习一，从翻自己的照片看有没有门牌和校徽。十岁以后加搜索自己名字，十二岁再引入清理动作，十三岁开始写发布前检查清单。判断力跟不上时，练习会变成任务。", qEn: "At what age should this start?", aEn: "Exercise one works from about eight, looking through photos for house numbers and school crests. Add the name search at ten, cleanup at twelve, and the pre-post checklist at thirteen. Push faster than the judgment develops and the exercises turn into chores." },
+      { q: "孩子不肯让我看他的账号怎么办？", a: "强调监控通常会推动他换小号或者转到更私密的平台，反而更难看到。把位置留在\"可以一起看\"上，从公共内容开始聊，比要求交出账号更实际。", qEn: "My child will not let me see the account. What now?", aEn: "Pushing for oversight usually drives a second account or a move to a more private app, which costs you visibility. Keep the standing offer of looking together and start from public content instead of demanding access." },
+      { q: "这些练习对成年人有用吗？", a: "思路一样，规模不同。成年人的历史内容往往几百到几千条，人工翻看不现实，可以先跑一次体检建立基线，再在边界条目上花人工时间。", qEn: "Do these exercises work for adults?", aEn: "Same approach, different scale. Adult histories often run to hundreds or thousands of posts, which is not realistic to read by hand. Run a check for the baseline first, then spend human attention on borderline items." },
+      { q: "孩子已经发过不该公开的内容，该怎么处理？", a: "不用责备开场。把那条内容当作例子，一起看他为什么能被找到，然后删掉并顺手检查可见范围设置。解释清楚删掉的收益和局限，比强调危险有效。", qEn: "What if the content is already out there?", aEn: "Skip the scolding. Use that post as the example, look together at why it was findable, then delete it and check the visibility settings. Explaining both the value and the limits of deleting beats emphasizing danger." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

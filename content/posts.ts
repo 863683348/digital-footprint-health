@@ -15807,6 +15807,471 @@ export const allPosts: BlogPost[] = [
       { q: "孩子已经发过不该公开的内容，该怎么处理？", a: "不用责备开场。把那条内容当作例子，一起看他为什么能被找到，然后删掉并顺手检查可见范围设置。解释清楚删掉的收益和局限，比强调危险有效。", qEn: "What if the content is already out there?", aEn: "Skip the scolding. Use that post as the example, look together at why it was findable, then delete it and check the visibility settings. Explaining both the value and the limits of deleting beats emphasizing danger." },
     ],
   },
+  {
+    slug: "privacy-deletion-request-letter-template",
+    title: "隐私删除请求信模板：GDPR 和 CCPA 两条路径怎么选",
+    excerpt:
+      "平台自带的删除按钮只解决你自己发的内容。别人的转发、数据经纪商的档案、搜索引擎的缓存，都要靠一封正式请求信。这份模板按 GDPR 和 CCPA 分成两版，附发信前要准备的材料清单和 30 天时限说明。",
+    date: '2026-09-27',
+    updatedAt: '2026-09-27',
+    author: 'Digital Footprint Health Team',
+    category: "合规与法律",
+    tags: ["GDPR", "CCPA", "删除请求权", "数据隐私法"],
+    canonical: '/blog/privacy-deletion-request-letter-template',
+    titleEn: "Privacy Deletion Request Letter Template: Choosing Between GDPR and CCPA",
+    excerptEn:
+      "A platform delete button only covers what you posted yourself. Reposts, broker profiles and search caches need a formal request. This piece gives two versions of the letter, one under GDPR and one under CCPA, plus the material to gather first and what the 30-day clock actually covers.",
+    categoryEn: "Compliance & Legal",
+    tagsEn: ["GDPR", "CCPA", "right to erasure", "data privacy law"],
+    content: `
+<p>大多数人对"删除权"的印象停留在平台设置页里的那个按钮。那个按钮确实能用，但它只处理你亲手发出去的内容。转发的截图、数据经纪商档案里拼出来的你的条目、搜索引擎还在返回的缓存页,都不在按钮的管辖范围内。要动这些,得发信。</p>
+<p>发信这件事不难,难在选对法律依据。同一段诉求,套 GDPR 和套 CCPA,对方的响应时限、适用对象、拒绝理由都不一样。下面把两条路径拆开讲,模板可以直接抄。</p>
+
+<h2>两条路径的核心差异</h2>
+<p>先看一张对照表。选哪条不取决于你在哪,取决于数据控制者在哪,以及你的诉求落在哪个管辖范围内。</p>
+<table>
+  <thead>
+    <tr><th>维度</th><th>GDPR(欧盟 27 国 + 欧洲经济区)</th><th>CCPA / CPRA(加州)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>核心条款</td><td>第 17 条删除权(被遗忘权)</td><td>第 1798.105 条消费者删除权</td></tr>
+    <tr><td>适用对象</td><td>处理欧盟境内个人数据的控制者,不论公司注册地</td><td>达到营收或数据量门槛的营利实体</td></tr>
+    <tr><td>响应时限</td><td>原则上 1 个月,可因复杂度延长至 3 个月</td><td>收到可验证请求后 45 天,可延长 45 天</td></tr>
+    <tr><td>身份验证</td><td>控制者须采取合理措施核实身份</td><td>须经历"可验证的消费者请求"流程</td></tr>
+    <tr><td>典型拒绝理由</td><td>言论自由、法律义务、公共利益存档</td><td>完成交易所需、安全事件、内部合法使用</td></tr>
+    <tr><td>免费与否</td><td>免费,滥用时可收合理费用</td><td>免费,12 个月内最多两次</td></tr>
+  </tbody>
+</table>
+<p>一个实用的判断顺序:先看对方是否在欧盟有实体或面向欧盟用户,是就先走 GDPR。对方只有美国业务、且满足 CCPA 门槛,再走 CCPA。两边都不沾,那就只能靠平台自己的政策和商誉施压,那属于另一套打法。</p>
+
+<h2>发信前要准备的材料</h2>
+<p>请求信被驳回的最常见原因不是法律依据写错,是身份无法确认。把下面这些先整理好,一次附上,能省掉一整轮来回。</p>
+<ul>
+  <li><strong>可验证的身份材料。</strong>护照或驾照的姓名页,必要时带签发机构。不要发完整扫描件,遮掉证件号中间段。</li>
+  <li><strong>账号与邮箱清单。</strong>列出你用来注册的邮箱、用户名、可能用过的旧邮箱。经纪商档案常挂在旧邮箱下。</li>
+  <li><strong>具体条目的 URL。</strong>逐条列出要求删除的页面或记录,附上你第一次看到它的日期。笼统写"删掉关于我的所有东西"通常会被要求重新提交。</li>
+  <li><strong>法律依据与条款编号。</strong>GDPR 写第 17(1)(a)-(f) 条中的哪一项,CCPA 写 1798.105(a)。</li>
+  <li><strong>回执邮箱。</strong>用一个你长期能登录的地址,别用公司临时邮箱。</li>
+</ul>
+<p>如果你同时在处理 X 账号的历史内容,平台侧的归档申请和删除请求有一个先后顺序问题,顺序错了会让两边都变慢。<a href="/blog/archive-request-before-erasure-request">先归档再请求删除</a>这篇写清了为什么。</p>
+
+<h2>通用模板</h2>
+<p>下面这版把两条法律的框架都留出来,按需替换方括号部分。措辞刻意保持克制,情绪化表述在正式流程里只会让对方有理由搁置。</p>
+<pre>[日期]
+
+致:[数据控制者的法务或隐私官邮箱,不要发客服]
+
+主题:个人数据删除请求 / [你的姓名] / [法律依据]
+
+正文:
+
+我是 [姓名],居住在 [国家/州]。我请求贵方删除与我相关的以下个人数据:
+
+[条目 1:页面 URL 或记录标识]
+[条目 2]
+[条目 3]
+
+我提出该请求的依据是 [GDPR 第 17 条第 1 款 / CCPA 第 1798.105(a) 条]。
+
+随附可用于验证我身份的材料:[证件类型]。
+
+请以书面形式确认收到本请求,并在法定时限内告知处理结果。
+如需补充信息,请通过 [邮箱] 联系我。
+
+[姓名]
+[联系地址(可选)]
+</pre>
+<p>三个细节值得留意。"致法务或隐私官"这一步省不得,发客服的平均处理周期会长很多。附身份材料时给出最小必要信息,这一条在欧洲监管口径下属于数据最小化原则的体现,反过来也是保护你自己。"请书面确认收到"这七个字是后续维权的起点,邮件系统的时间戳比对方的承诺有用。</p>
+
+<h2>GDPR 版要补的内容</h2>
+<p>走 GDPR 时,模板里再加两段。第一段提出拒绝时的说明义务:如果对方拒绝,须告知拒绝理由,以及你有权向监管机构投诉、有权寻求司法救济。第二段处理搜索结果的特殊性:被遗忘权在搜索引擎上的适用范围,欧盟法院的口径是要求搜索引擎对特定查询做解除引用,原始页面本身并不因此消失。这意味着原始页面所在站点还要单独处理一次。</p>
+<p>平台侧的具体流程在 <a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求在 X 上怎么走</a>里有逐步说明,包括对方可能在哪个环节用"言论自由"挡回来。</p>
+
+<h2>CCPA 版要补的内容</h2>
+<p>CCPA 有两个容易踩的点。其一是"出售"定义很宽,把数据交给第三方做定向广告就可能构成出售,这意味着除了删除权,你还能叠加拒绝出售的权利。其二是验证流程可能要求你走一遍已有的账号验证通道,不配合就是拿不到"可验证请求"的认定。回复邮件里如果出现"我们无法验证你的身份",不要当作最终答复,按要求补充后重新提交。<a href="/blog/ccpa-global-privacy-laws">全球隐私法的适用范围差异</a>这篇对比了美国各州法的门槛,可以用来自查。</p>
+
+<h2>发出去之后会发生什么</h2>
+<p>时间线上通常是这样:24 到 72 小时内收到自动回执;1 到 2 周内收到人工确认,可能附带身份验证要求;之后进入法定处理窗口。GDPR 是一个月内答复,可延长到三个月;CCPA 是 45 天内答复,可再延 45 天。逾期没有回复,可以向监管机构投诉,欧盟各国数据保护机构都开了在线投诉入口,加州则是向总检察长办公室举报。</p>
+<p>另外一件常被忽略的事:删除请求通常不会触碰备份系统和日志,对方多半会以"法律义务"或"内部合法使用"为由保留一份。这不算违规。要确认的边界是,保留的副本不得被用于此前的商业目的。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 处理的是发信之前的那一步:先看清你手上到底有什么。把你的 X 数据归档拖进<a href="/">首页</a>的体检入口,工具在你自己的电脑上解析每一条推文,扫出手机号、邮箱、地址、定位和敏感话题,给出 0-100 的健康评分和风险清单,全程不上传。体检免费且只读,清理范围和费用在<a href="/pricing">定价页</a>,方法和习惯类文章收在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+<p>Most people think of the right to deletion as that button buried in a platform settings page. The button works, but it only covers what you posted yourself. Screenshots that got reposted, profiles assembled about you by data brokers, and search results still serving cached copies all sit outside its reach. For those, you send a letter.</p>
+<p>Writing the letter is the easy part. The hard part is picking the right legal basis, because the same demand framed under GDPR and under CCPA produces different deadlines, different obligations and different grounds for refusal. Here is how the two paths diverge, with templates you can copy directly.</p>
+
+<h2>What actually separates the two paths</h2>
+<p>Which one applies depends on where the data controller sits and where your request falls, not on where you live.</p>
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>GDPR (EU/EEA)</th><th>CCPA / CPRA (California)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Core provision</td><td>Article 17, right to erasure</td><td>Section 1798.105, consumer right to delete</td></tr>
+    <tr><td>Who it binds</td><td>Controllers processing EU personal data, regardless of company domicile</td><td>For-profit entities meeting revenue or data-volume thresholds</td></tr>
+    <tr><td>Deadline</td><td>One month in principle, extendable to three for complexity</td><td>45 days after a verifiable request, extendable by another 45</td></tr>
+    <tr><td>Identity check</td><td>Controller must take reasonable steps to confirm identity</td><td>Must go through a verifiable consumer request process</td></tr>
+    <tr><td>Common refusals</td><td>Freedom of expression, legal obligation, public-interest archiving</td><td>Completing a transaction, security incidents, internal lawful use</td></tr>
+    <tr><td>Cost</td><td>Free, reasonable fee allowed for manifestly unfounded requests</td><td>Free, up to twice per 12-month period</td></tr>
+  </tbody>
+</table>
+<p>A workable order of operations: check whether the company has EU operations or targets EU users. If yes, lead with GDPR. If it only operates in the US and clears the CCPA thresholds, lead with CCPA. If neither applies, you are down to platform policy and reputational pressure, which is a different playbook entirely.</p>
+
+<h2>Material to gather before you send anything</h2>
+<p>Requests get rejected over unverified identity far more often than over a misstated legal basis. Assemble this first and attach it in one pass.</p>
+<ul>
+  <li><strong>Verifiable identity document.</strong> The name page of a passport or licence, plus issuing authority if asked. Mask the middle digits of any document number.</li>
+  <li><strong>Account and email list.</strong> Every email you registered with, including old ones. Broker profiles frequently hang off an address you stopped using years ago.</li>
+  <li><strong>Specific URLs.</strong> List each page or record you want removed, with the date you first saw it. A blanket "delete everything about me" usually comes back for resubmission.</li>
+  <li><strong>Legal basis and section numbers.</strong> Cite which limb of GDPR Article 17(1) applies, or CCPA 1798.105(a).</li>
+  <li><strong>A durable reply address.</strong> Not a work address you may lose access to.</li>
+</ul>
+<p>If you are also cleaning up an X account, the archive request and the deletion request have an ordering problem. Get it backwards and both slow down. <a href="/blog/archive-request-before-erasure-request">Archive first, then request erasure</a> covers why.</p>
+
+<h2>The general template</h2>
+<p>This version keeps both legal frames open. Replace the bracketed parts. The tone is deliberately restrained, because emotional language gives a processor a reason to set the request aside.</p>
+<pre>[Date]
+
+To: [controller's legal or privacy officer address, not support]
+
+Subject: Personal data deletion request / [your name] / [legal basis]
+
+Dear Sir or Madam,
+
+I am [name], resident in [country/state]. I request that you delete the following personal data relating to me:
+
+[Item 1: page URL or record identifier]
+[Item 2]
+[Item 3]
+
+I make this request under [GDPR Article 17(1) / CCPA 1798.105(a)].
+
+Identity verification material is attached: [document type].
+
+Please confirm receipt in writing and inform me of the outcome within the statutory period. If further information is required, reach me at [email].
+
+[Name]
+[Postal address, optional]
+</pre>
+<p>Three details carry more weight than they look. Addressing the privacy officer rather than support cuts weeks off the average response. Sending minimal identity evidence is both a data-minimisation habit and self-protection. The line asking for written confirmation is where any later complaint starts, because your mail server timestamps it and the recipient's assurances do not.</p>
+
+<h2>Additions for a GDPR request</h2>
+<p>Two extra paragraphs belong in a GDPR letter. The first states the notification duty: if erasure is refused, the controller must explain why and tell you about your right to lodge a complaint with a supervisory authority and to seek a judicial remedy. The second addresses search engines specifically. The Court of Justice has treated the right as requiring de-referencing for particular queries rather than removal of the source page, which means the site hosting the original needs its own request.</p>
+<p>The platform-level mechanics, including the point where free-expression arguments typically get raised, are walked through in <a href="/blog/gdpr-erasure-request-twitter">how GDPR deletion requests work on X</a>.</p>
+
+<h2>Additions for a CCPA request</h2>
+<p>Two traps sit in the CCPA route. First, the definition of "sale" is broad enough that handing data to an ad network can count, which means you can stack the right to opt out of sale on top of deletion. Second, verification often routes through an existing account authentication channel; decline to cooperate and you never reach the status of a verifiable request. If a reply says your identity could not be confirmed, treat it as an interim step and resubmit with the requested material. <a href="/blog/ccpa-global-privacy-laws">How far global privacy laws reach</a> compares the state-level thresholds, which is useful for a quick self-check.</p>
+
+<h2>What happens after it goes out</h2>
+<p>The usual sequence: an automated acknowledgement within 24 to 72 hours, a human confirmation in one to two weeks possibly bundled with a verification request, then the statutory window. GDPR means one month, extendable to three. CCPA means 45 days, extendable by another 45. If the window closes with no reply, you can escalate, either to a national data protection authority in the EU, all of which run online complaint forms, or to the California Attorney General.</p>
+<p>One boundary is worth setting expectations around. A deletion request generally does not reach backup systems and logs. Controllers will often retain a copy under a legal-obligation or internal-use exemption, which is not by itself a violation. What you can insist on is that the retained copy is not put back to the commercial purpose that prompted the request.</p>
+
+<h2>Where you cannot fix it with a letter</h2>
+<p>Some of what follows you around is not held by any controller you can name. Cached copies on third-party scrapers, screenshots in group chats, and text quoted inside someone else's post all sit outside every statutory framework described above. A realistic plan handles those by lowering their prominence rather than by removing them: publish current, accurate material about yourself so the stale item loses ranking, and keep the items you can control clean. Treating the letter as complete coverage leads to disappointment, and treating it as one layer of several is closer to how it actually works.</p>
+<p>Deciding which items are worth the effort is the practical bottleneck. A list of a few thousand posts is not something you triage by reading. That triage is what the free check does.</p>
+
+<h2>Keeping a record of what you sent</h2>
+<p>The part that quietly decides whether a request succeeds is documentation. Save the sent message as a PDF rather than trusting your mail client's search, because the copy you can produce months later is the one that matters. Keep one plain text file listing each recipient, the date sent, the legal basis cited, the statutory deadline you calculated, and what came back. When a controller goes silent, that file turns a scattered inbox into a timeline you can attach to a complaint without reconstructing anything.</p>
+<p>Two habits make the log worth keeping. Note the deadline you computed at the moment of sending, since recalculating later invites argument about when the clock started. And log refusals verbatim, including the exemption clause cited, because patterns across several refusals are what supervisory authorities act on. A single complaint about one company rarely moves; three showing the same boilerplate rejection language from the same processor gets read differently.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> covers the step before the letter: seeing what you actually hold. Drop your X data archive into the check on the <a href="/">homepage</a> and the tool parses every post on your own machine, surfacing phone numbers, emails, addresses, locations and sensitive topics with a 0-100 health score and a ranked risk list. Nothing is uploaded. The check is free and read-only; cleanup scope and cost sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "删除请求一定要用挂号信吗？", a: "不一定。电子邮件在 GDPR 和 CCPA 的框架下都是有效形式,关键在于能证明送达时间和内容。用邮件时打开已读回执,并在正文里要求对方书面确认收到;对方长期不回复时可以再用挂号信补一次,把邮寄凭证一起留档。", qEn: "Does the request have to go by registered mail?", aEn: "No. Email is valid under both GDPR and CCPA. What matters is being able to prove when it arrived and what it said, so turn on delivery confirmation and ask for written acknowledgement in the body. If nothing comes back, a registered letter plus the postal receipt gives you a second, stronger record." },
+      { q: "对方说数据已经删了,我怎么验证？", a: "可以做两件事。一是要求对方说明删除范围,包括备份和日志的处理方式;二是过两到四周后重新检索那个条目,看是否还能通过搜索引擎或站内搜索找到。搜索索引同步有延迟,短期内仍能搜到不构成违规。", qEn: "They say the data is deleted. How do I verify that?", aEn: "Two steps. Ask them to describe the scope, including what happened to backups and logs. Then re-run the search for that item two to four weeks later to see whether it still surfaces. Search indexes lag, so a result showing up in the short term is not automatically a breach." },
+      { q: "同一个平台可以同时引用 GDPR 和 CCPA 吗？", a: "可以,但建议分主次。在正文里写明主要依据,再补一句\"如适用,我同样依据另一法域提出请求\"。这样对方不能靠主张自己不属于某个法域来关闭整个请求,同时主依据清晰,时限计算不会含糊。", qEn: "Can I cite both GDPR and CCPA in one letter?", aEn: "Yes, but rank them. State the primary basis in the body, then add a line saying you also make the request under the other regime where applicable. That stops a controller from closing the whole request by claiming the regime does not apply, while keeping the deadline arithmetic unambiguous." },
+      { q: "删除请求被拒绝后还有别的办法吗？", a: "有。GDPR 路径下可以要求对方出具正式拒绝说明,再向所在国数据保护机构投诉,这一层投诉通常是免费的。CCPA 路径下可以向加州总检察长举报。两条路都不需要律师,但都要保留完整的往来邮件作为证据链。", qEn: "What if the request is refused?", aEn: "You have options. Under GDPR, demand the formal refusal reasoning, then complain to the data protection authority in your country, which is normally free to do. Under CCPA, report to the California Attorney General. Neither route needs a lawyer, but both depend on keeping the full email chain as evidence." },
+    ],
+  },
+  {
+    slug: "social-account-password-manager-setup",
+    title: "社交账号密码管理器落地：从入库到应急访问",
+    excerpt:
+      "把社交账号一个个搬进密码管理器,真正的难点不在装软件,而在恢复码放哪、旧密码何时换、主密码丢了怎么办。这篇给出一套能在半小时内跑完的落地顺序,以及三个最容易留下后门的环节。",
+    date: '2026-09-27',
+    updatedAt: '2026-09-27',
+    author: 'Digital Footprint Health Team',
+    category: "账号安全",
+    tags: ["密码管理", "账号安全", "双重验证", "登录设备"],
+    canonical: '/blog/social-account-password-manager-setup',
+    titleEn: "Setting Up a Password Manager for Social Accounts: From Import to Emergency Access",
+    excerptEn:
+      "Moving social accounts into a password manager is not hard because of the software. It is hard because of where recovery codes live, when old passwords get rotated, and what happens if you lose the master password. Here is an order of operations that takes half an hour, plus the three places people leave a back door.",
+    categoryEn: "Account Security",
+    tagsEn: ["password manager", "account security", "two-factor", "login devices"],
+    content: `
+<p>社交账号是密码复用的重灾区。原因很实际:注册得早,那时候还没有双重验证,一个密码在论坛、邮箱、购物站之间来回用。等到某天某个不相干的小站被拖库,这套凭据就被拿去撞你的社交账号。密码管理器解决的正是这个问题,但装完不等于安全,顺序错了照样留后门。</p>
+
+<h2>半小时的落地顺序</h2>
+<p>按下面五步走,顺序不能换。先备份再加东西,是因为很多人在导入过程中出过一次意外之后就再也不用了。</p>
+<table>
+  <thead>
+    <tr><th>步骤</th><th>动作</th><th>大致耗时</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>导出浏览器现有密码,存成一个离线文件</td><td>3 分钟</td></tr>
+    <tr><td>2</td><td>设主密码,写下来放进实体保险箱或密封信封</td><td>5 分钟</td></tr>
+    <tr><td>3</td><td>导入社交账号凭据,逐个核对用户名</td><td>10 分钟</td></tr>
+    <tr><td>4</td><td>开启双重验证,恢复码单独存一份</td><td>8 分钟</td></tr>
+    <tr><td>5</td><td>删掉浏览器里的明文密码和导出的临时文件</td><td>3 分钟</td></tr>
+  </tbody>
+</table>
+<p>第二步值得多花两分钟。主密码不能只存在脑子里,也不是所有人都能接受把它写在纸上。折中方案是写一份放进家里固定的物理位置,再用一个只有你知道的规则改写其中几位。这个做法牺牲了一点强度,换来的是"忘记主密码"这种几乎无法挽回的局面不会发生。</p>
+
+<h2>恢复码比密码更容易出事</h2>
+<p>双重验证的恢复码是整套体系里最脆弱的环节。它经常被截图存在相册里,而相册会同步到云,云账号本身又用同一个密码管理器的账号注册。这条链路一旦被穿透,前面所有工作等于没做。</p>
+<p>可行的做法是把恢复码存在密码管理器的加密备注字段里,不要放进相册或云盘。如果必须留纸质副本,单独存放,不要和主密码的纸条放在一起。开启双重验证时优先选认证器应用或硬件密钥,短信验证码是三者里最容易被绕过的,手机号被劫持的情况下它几乎不设防。<a href="/blog/sim-swap-attack-x-account-lockout">SIM 卡交换攻击的完整链路</a>这篇拆解了短信验证码为什么会失效。</p>
+
+<h2>三个容易留下后门的环节</h2>
+<p><strong>旧密码没有换。</strong>把密码导入管理器只是记住了当前值,如果那个值本身已经在某次数据泄露里出现过,风险一点没降。导入完成后应逐个改密码,新的随机值由管理器生成,你不需要记住任何一个。</p>
+<p><strong>授权应用没清理。</strong>用社交账号登录第三方应用时授予的权限长期有效,清单里往往躺着几年前试过一次就再没打开过的服务。这些应用持有的是令牌,改密码不一定能让它们失效。<a href="/blog/x-connected-apps-permission-audit">第三方授权清单的审计方法</a>有逐步说明,建议和密码轮换放在同一天做。</p>
+<p><strong>登录设备没核对。</strong>密码管理器能防住凭据泄露,防不住已经登录的会话。打开账号的登录活动页面,把不认识的城市和设备踢掉,顺手把"上次登录时间"记下来作为基线。<a href="/blog/login-device-audit-x-account">登录设备审计</a>给出了核对顺序。双重验证本身的设置流程在<a href="/blog/enable-2fa-x-account">开启两步验证</a>里。</p>
+
+<h2>主密码丢了怎么办</h2>
+<p>主流密码管理器都不提供找回主密码的功能,这是设计选择而非缺陷。能做的准备有两件:一是前文说的离线副本;二是启用应急访问功能,指定一位可信联系人,在设定等待期后可以申请访问你的保险库。等待期通常设置为几天到几周,目的是给账号真正的主人留出拒绝的时间。启用这个功能等于把一部分信任交出去,想清楚再开。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>账号安全是入口,历史内容是出口,两边都要看。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 负责后者:把 X 数据归档拖进<a href="/">首页</a>的体检入口,工具在你本机解析全部推文,找出手机号、邮箱、地址、定位和敏感话题,输出 0-100 评分和风险清单,不联网上传。体检免费只读,删除的范围和价格在<a href="/pricing">定价页</a>,习惯类内容在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+<p>Social accounts are where password reuse does the most damage. The reason is mundane: they were registered early, before two-factor was normal, and the same password carried over from a forum, an email address, a shop. Then an unrelated site gets breached and that credential gets tried against your social logins. A password manager fixes this, but installing one is not the same as being covered. Get the order wrong and you leave a door open.</p>
+
+<h2>The half-hour sequence</h2>
+<p>Five steps, and the order matters. Backing up before you start is what keeps one bad import from ending the whole experiment.</p>
+<table>
+  <thead>
+    <tr><th>Step</th><th>Action</th><th>Time</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Export existing browser passwords into one offline file</td><td>3 min</td></tr>
+    <tr><td>2</td><td>Set the master password, write it down somewhere physical</td><td>5 min</td></tr>
+    <tr><td>3</td><td>Import social credentials, verify each username</td><td>10 min</td></tr>
+    <tr><td>4</td><td>Turn on two-factor, store recovery codes separately</td><td>8 min</td></tr>
+    <tr><td>5</td><td>Delete the plaintext browser store and the export file</td><td>3 min</td></tr>
+  </tbody>
+</table>
+<p>Step two deserves the extra two minutes. A master password cannot live only in your head, and not everyone is willing to write it on paper. The middle ground is a written copy kept in a fixed physical spot at home, with a few characters altered by a rule only you know. That trades some strength for eliminating the one failure mode you cannot recover from: forgetting it.</p>
+
+<h2>Recovery codes break more often than passwords</h2>
+<p>Two-factor recovery codes are the weakest link in the whole arrangement. They tend to get screenshotted into a photo library, the photo library syncs to a cloud account, and that cloud account is registered with the same password manager account. Break that chain and everything upstream of it was wasted effort.</p>
+<p>The workable placement is an encrypted note field inside the password manager, not a camera roll or cloud drive. If a paper copy is unavoidable, store it apart from the master password slip rather than beside it. Prefer an authenticator app or a hardware key over SMS, which is the easiest of the three to bypass and offers almost nothing if the phone number itself gets hijacked. <a href="/blog/sim-swap-attack-x-account-lockout">The full chain of a SIM-swap attack</a> explains why SMS verification fails.</p>
+
+<h2>Three places people leave a back door</h2>
+<p><strong>Old passwords left unrotated.</strong> Importing a password only records the current value. If that value already appeared in a breach, nothing improved. Work through the accounts afterwards and change each one to a generated random value you never have to remember.</p>
+<p><strong>Stale authorized apps.</strong> Permissions granted when you signed into a third-party service with your social account stay live indefinitely, and the list usually holds services you opened once years ago. Those hold tokens, and changing a password does not necessarily invalidate them. <a href="/blog/x-connected-apps-permission-audit">Auditing connected app permissions</a> walks through the list, and it pairs well with the rotation pass on the same day.</p>
+<p><strong>Unreviewed logged-in devices.</strong> A password manager stops credential theft, not an existing session. Open the account's login activity page, sign out any city or device you do not recognise, and record the last login time as a baseline. <a href="/blog/login-device-audit-x-account">Login device audits</a> lays out the review order, and the setup steps for two-factor itself are in <a href="/blog/enable-2fa-x-account">enabling two-step verification</a>.</p>
+
+<h2>Losing the master password</h2>
+<p>Mainstream password managers do not offer master password recovery. That is a design decision, not a gap. Two preparations are available. One is the offline copy described earlier. The other is emergency access, which nominates a trusted contact who can request access after a waiting period. The waiting period runs from days to weeks specifically to give the real owner time to refuse. Enabling it hands over part of your trust, so decide deliberately rather than by default.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Account security is the entrance and historical content is the exit; both need attention. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> handles the second. Drop your X data archive into the check on the <a href="/">homepage</a> and it parses every post locally, locating phone numbers, emails, addresses, locations and sensitive topics with a 0-100 score and a ranked risk list. Nothing leaves your machine. The check is free and read-only, deletion scope and pricing are on the <a href="/pricing">pricing page</a>, and habit-focused write-ups live in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "密码管理器本身被攻破怎么办？", a: "主流产品的设计是服务端只存加密后的保险库,主密码不上传,所以服务端泄露拿不到明文。真正需要防的是本地环境:电脑上有键盘记录器,或钓鱼页仿冒了管理器的登录界面。前者靠系统层面的防护,后者靠养成从应用内跳转、不点邮件链接的习惯。", qEn: "What if the password manager itself gets breached?", aEn: "Mainstream managers store only an encrypted vault server-side and never transmit the master password, so a server breach yields no plaintext. The exposure that matters is local: a keylogger on your machine, or a phishing page imitating the sign-in screen. The first is a system-level problem, the second is solved by opening sites from inside the app instead of clicking links in email." },
+      { q: "浏览器自带的密码保存功能够用吗？", a: "能用,但有两个短板:它和浏览器账号绑定,浏览器账号一旦被接管,所有密码跟着暴露;另外它通常不具备跨设备加密同步之外的应急访问机制。如果暂时不想换,至少把浏览器账号本身开双重验证,并把恢复码按前面说的方式单独存放。", qEn: "Is the built-in browser password store good enough?", aEn: "It works, with two gaps. It is tied to your browser account, so taking over that account exposes every saved password. It also generally lacks an emergency access mechanism beyond cross-device sync. If you are not switching yet, at minimum put two-factor on the browser account itself and store its recovery codes separately." },
+      { q: "多久换一次社交账号密码？", a: "不建议按固定周期无脑轮换,那会产生有规律的新密码。更有效的触发条件是:该密码曾在其他站点使用过、收到过登录预警、或第三方授权清单里出现了不记得的服务。出现这三种情况之一就换,平时不必动。", qEn: "How often should social passwords be rotated?", aEn: "Routine rotation on a fixed schedule is not worth it, since it produces predictable new values. Better triggers: the password was reused on another site, you got a login alert, or an unrecognised service appeared in the connected apps list. Rotate on any of those three and leave it alone otherwise." },
+    ],
+  },
+  {
+    slug: "offline-archive-search-indexing",
+    title: "给 200MB 的 X 归档建一份本地搜索索引",
+    excerpt:
+      "下载下来的归档是一个 ZIP,里面 tweets.js 动辄两三百 MB。想在里面找\"三年前提过一次的那个地址\",靠文本编辑器翻是不现实的。这篇用二十来行脚本把归档转成可检索的本地索引,并说明内存为什么会爆。",
+    date: '2026-09-27',
+    updatedAt: '2026-09-27',
+    author: 'Digital Footprint Health Team',
+    category: "技术进阶",
+    tags: ["X 归档", "本地索引", "全文检索", "隐私工程"],
+    canonical: '/blog/offline-archive-search-indexing',
+    titleEn: "Building a Local Search Index for a 200MB X Archive",
+    excerptEn:
+      "The archive arrives as a ZIP and tweets.js inside it often runs to a few hundred megabytes. Finding the one address you mentioned three years ago is not a text-editor job. A short script below turns the archive into a searchable local index, plus why memory blows up when you stream the file the naive way.",
+    categoryEn: "Technical Deep Dives",
+    tagsEn: ["X archive", "local index", "full-text search", "privacy engineering"],
+    content: `
+<p>X 数据归档解压后,推文正文集中在一个叫 tweets.js 的文件里。它的开头是一段赋值语句,后面跟着一个巨大的 JSON 数组。文件本身不加密,但也没有任何索引结构,而你要找的东西通常只是一个细节,比如某个门牌号、某个邮箱、某次出差住的酒店名。</p>
+<p>浏览器端解析归档的做法在<a href="/blog/browser-side-archive-parsing">另一篇</a>里写过,那篇解决的是"怎么在不装环境的情况下读完它"。这一篇换一个方向:把归档变成一个能反复查询的本地索引,一次建好,之后每次搜索都是毫秒级。</p>
+
+<h2>为什么直接读会爆内存</h2>
+<p>先看一组实测数字,这决定了脚本该怎么写。</p>
+<table>
+  <thead>
+    <tr><th>对象</th><th>典型大小</th><th>说明</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>归档 ZIP</td><td>150-400 MB</td><td>包含多个 js 与媒体目录</td></tr>
+    <tr><td>tweets.js</td><td>120-300 MB</td><td>UTF-8,单行 JSON</td></tr>
+    <tr><td>解析后的对象数组</td><td>原文件 3-5 倍</td><td>V8 里每个对象的内存开销远大于文本</td></tr>
+    <tr><td>索引文件(去停用词)</td><td>15-40 MB</td><td>取决于推文数量和分词粒度</td></tr>
+  </tbody>
+</table>
+<p>问题的根源是第三步。把两百多兆的 JSON 一次性 parse 进来,加上字符串去重后的驻留,很容易撞上 Node 默认的堆上限,表现是一句含糊的 "JavaScript heap out of memory"。加大堆上限能跑通,但没必要。索引只需要文本,不需要保留对象结构。</p>
+
+<h2>分流式读取</h2>
+<p>做法是先剥掉文件开头的赋值前缀,再把主体按顶层数组元素切开,逐条处理,处理完即释放。整个流程内存占用与推文数量无关,只与单条推文大小有关。</p>
+<pre>import fs from 'node:fs';
+import readline from 'node:readline';
+
+const src = process.argv[2];
+const out = fs.createWriteStream('index.ndjson');
+
+const rl = readline.createInterface({
+  input: fs.createReadStream(src, { encoding: 'utf8' }),
+  crlfDelay: Infinity,
+});
+
+let buf = '';
+let count = 0;
+
+rl.on('line', (line) =&gt; {
+  buf += line;
+  // 逐条切出顶层对象,不整体 parse
+  for (;;) {
+    const end = findObjectEnd(buf, 0);
+    if (end &lt; 0) break;
+    const chunk = buf.slice(0, end + 1);
+    buf = buf.slice(end + 1);
+    try {
+      const obj = JSON.parse(chunk);
+      const t = obj.tweet || obj;
+      out.write(JSON.stringify({
+        id: t.id_str,
+        d: t.created_at,
+        s: (t.full_text || t.text || '').replace(/\\s+/g, ' '),
+      }) + '\\n');
+      count++;
+    } catch (e) { /* 单条失败不影响整体 */ }
+  }
+});
+
+rl.on('close', () =&gt; {
+  out.end();
+  console.log('indexed', count);
+});
+</pre>
+<p>配套的 findObjectEnd 只需要做一件事:从给定位置开始扫描,维护一个花括号深度计数,遇到深度归零就返回下标。字符串内部的括号必须跳过,否则带引号的文本会让计数错位。</p>
+
+<h2>索引文件长什么样</h2>
+<p>输出是行为单位的 ndjson,每行一条推文,只保留三个字段:标识、时间、正文。行式存储的好处是可以直接用流式过滤器搜索,不需要把整个索引读进内存。</p>
+<ul>
+  <li><strong>标识</strong>用于回查原始条目,也用于去重。</li>
+  <li><strong>时间</strong>保留原始格式,需要排序时再转。</li>
+  <li><strong>正文</strong>压平所有空白字符,保留标点,便于正则匹配。</li>
+</ul>
+<p>如果要做真正的全文检索而不只是关键词匹配,可以把 ndjson 转成 SQLite 的 FTS5 表,一行命令导入即可,搜索响应比正则扫描快一个量级。归档里其他文件的结构差异在<a href="/blog/x-archive-csv-vs-json">CSV 与 JSON 两种导出的区别</a>里有对照。</p>
+
+<h2>搜索阶段</h2>
+<p>建好索引后,找东西的写法很简单:逐行读 ndjson,对正文跑你关心的模式。列出几个实际好用的模式。</p>
+<ul>
+  <li>手机号:匹配连续十一位数字,注意推文里常有空格和短横线分隔,匹配前先去掉这些字符。</li>
+  <li>邮箱:常规的本地部分加域名结构,注意 @ 前后可能有空格。</li>
+  <li>地址片段:匹配"街""路""号""栋"这类后缀词,再人工核对上下文。</li>
+  <li>时间窗口:先用日期过滤出区间,再在区间内跑上面的模式,避免全量扫描。</li>
+</ul>
+<p>把这些模式固化成一个小脚本,就能在每次归档更新后重跑一遍,只输出新增命中。这种做法配合<a href="/blog/build-local-tweet-deletion-script">本地删除脚本</a>的批处理逻辑,可以做到"扫出来的条目直接交给删除流程",中间不经过任何第三方服务。</p>
+
+<h2>索引文件本身也是敏感数据</h2>
+<p>索引去掉了对象结构,但保留了完整正文,敏感程度和原始归档没有区别。放对位置比建得快更重要:不要放进任何同步目录,不要留在临时文件夹。如果要长期保存,用<a href="/blog/local-encryption-keys">本地密钥管理</a>里描述的方式加密,密钥和索引分开存放。做完清理后,索引应该和归档一起重新生成或直接销毁。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>自己搭索引适合想完全掌控流程的人,不想写脚本的话有现成路径。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 把整个解析和一键扫描做成了产品:归档拖进<a href="/">首页</a>的入口,本机完成解析与风险识别,输出 0-100 评分和清单,不上传任何内容。体检免费且只读,清理范围和费用在<a href="/pricing">定价页</a>,工程类文章收在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+<p>Once an X archive is unpacked, the post text sits in a single file called tweets.js. It opens with an assignment statement followed by one enormous JSON array. Nothing is encrypted, but nothing is indexed either, and what you are looking for is usually a single detail: a house number, an email address, the name of a hotel from one trip.</p>
+<p>Parsing an archive inside the browser is covered in <a href="/blog/browser-side-archive-parsing">a separate piece</a>, which solves the "read it without installing anything" problem. This one goes the other way: turn the archive into a reusable local index, built once, queried in milliseconds afterwards.</p>
+
+<h2>Why reading it directly exhausts memory</h2>
+<p>Start with the numbers, because they dictate how the script should be written.</p>
+<table>
+  <thead>
+    <tr><th>Object</th><th>Typical size</th><th>Note</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Archive ZIP</td><td>150-400 MB</td><td>Several js files plus media folders</td></tr>
+    <tr><td>tweets.js</td><td>120-300 MB</td><td>UTF-8, single-line JSON</td></tr>
+    <tr><td>Parsed object array</td><td>3-5x the source file</td><td>Per-object overhead in V8 far exceeds the text</td></tr>
+    <tr><td>Index file, stopwords dropped</td><td>15-40 MB</td><td>Depends on post count and token granularity</td></tr>
+  </tbody>
+</table>
+<p>The third row is the problem. Parsing a couple hundred megabytes of JSON in one call, plus the resident strings after deduplication, reliably hits the default heap ceiling in Node and surfaces as a vague "JavaScript heap out of memory". Raising the limit gets it running, but there is no need to: an index only wants the text, not the object graph.</p>
+
+<h2>Streaming the structure away</h2>
+<p>The approach is to strip the assignment prefix, then split the body at top-level array elements, processing each one and releasing it immediately. Memory then scales with the largest single post rather than with the number of posts.</p>
+<pre>import fs from 'node:fs';
+import readline from 'node:readline';
+
+const src = process.argv[2];
+const out = fs.createWriteStream('index.ndjson');
+
+const rl = readline.createInterface({
+  input: fs.createReadStream(src, { encoding: 'utf8' }),
+  crlfDelay: Infinity,
+});
+
+let buf = '';
+let count = 0;
+
+rl.on('line', (line) =&gt; {
+  buf += line;
+  for (;;) {
+    const end = findObjectEnd(buf, 0);
+    if (end &lt; 0) break;
+    const chunk = buf.slice(0, end + 1);
+    buf = buf.slice(end + 1);
+    try {
+      const obj = JSON.parse(chunk);
+      const t = obj.tweet || obj;
+      out.write(JSON.stringify({
+        id: t.id_str,
+        d: t.created_at,
+        s: (t.full_text || t.text || '').replace(/\\s+/g, ' '),
+      }) + '\\n');
+      count++;
+    } catch (e) { /* one bad element should not stop the run */ }
+  }
+});
+
+rl.on('close', () =&gt; {
+  out.end();
+  console.log('indexed', count);
+});
+</pre>
+<p>The companion findObjectEnd does one thing: scan forward from a position while tracking brace depth, returning the index where depth returns to zero. Braces inside string literals have to be skipped, or a quoted parenthesis in someone's post shifts the count and the split goes wrong.</p>
+
+<h2>What the index looks like</h2>
+<p>The output is line-delimited JSON, one post per line, carrying three fields: identity, timestamp, text. Line-oriented storage means you can search with a streaming filter instead of loading the whole thing.</p>
+<ul>
+  <li><strong>Identity</strong> lets you map a hit back to the original record and deduplicate repeats.</li>
+  <li><strong>Timestamp</strong> stays in its original form and gets converted only when you need ordering.</li>
+  <li><strong>Text</strong> is whitespace-collapsed with punctuation preserved, which keeps regex work predictable.</li>
+</ul>
+<p>If you want scored full-text retrieval rather than pattern matching, load the ndjson into a SQLite FTS5 table. A single import command gets you there and search becomes an order of magnitude faster than scanning with regex. The structural differences between the archive's export formats are compared in <a href="/blog/x-archive-csv-vs-json">CSV versus JSON exports</a>.</p>
+
+<h2>Querying it</h2>
+<p>With the index built, finding something is a short loop over the ndjson lines against whatever pattern you care about. A few that earn their keep:</p>
+<ul>
+  <li>Phone numbers: match eleven consecutive digits, but strip spaces and hyphens first, since posts are inconsistent about both.</li>
+  <li>Emails: the usual local-part-at-domain shape, allowing whitespace around the at sign.</li>
+  <li>Address fragments: match suffix tokens like street, road, avenue, then confirm each hit by reading the surrounding text.</li>
+  <li>Date windows: filter to the range first, then run the patterns inside it, which keeps the scan bounded.</li>
+</ul>
+<p>Freeze those patterns into a small script and re-run it after every archive refresh, emitting only the new hits. Paired with the batching logic in <a href="/blog/build-local-tweet-deletion-script">a local deletion script</a>, flagged records can feed straight into cleanup without passing through any third-party service.</p>
+
+<h2>The index is sensitive data too</h2>
+<p>Stripping the object graph does not reduce sensitivity, because the full text remains. Placement matters more than build speed: keep it out of any synced folder and out of the temp directory. For long-term storage, encrypt it the way <a href="/blog/local-encryption-keys">local key management</a> describes, with the key held separately from the data. After a cleanup run, regenerate or destroy the index alongside the archive it came from.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Rolling your own index suits people who want full control of the pipeline. There is a packaged route if you would rather not write the script. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> turns parsing and scanning into a product: drop the archive into the entry point on the <a href="/">homepage</a> and everything runs locally, producing a 0-100 score and a risk list with nothing uploaded. The check is free and read-only, cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and engineering notes are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "19 万条推文的索引要建多久？", a: "在一台普通笔记本上,纯文本解析加写出的耗时通常在 20 到 40 秒之间,瓶颈是磁盘读,不在 CPU。真正的耗时差异来自分词:如果只做精确字符串匹配,建索引这一步可以跳过,直接每行读一遍即可,单次搜索在几秒内完成。", qEn: "How long does indexing 190,000 posts take?", aEn: "On an ordinary laptop, plain text extraction and writing usually lands between 20 and 40 seconds, and the bottleneck is disk reads rather than CPU. The real variance comes from tokenisation. If you only need exact string matching, you can skip the index step entirely and scan the source once per query, which finishes in a few seconds." },
+      { q: "归档更新后要整个重建索引吗？", a: "不必。新归档的推文标识是递增的,拿新索引里最大的一条标识和旧索引比对,只处理比它新的部分,再追加到 ndjson 末尾即可。这种增量方式也让\"上次扫到哪里\"变成一个可以记录的状态,搜索时可以只看增量片段确认有没有新命中。", qEn: "Does the index need a full rebuild after the archive updates?", aEn: "No. Post identities increase over time, so compare the highest identity in the new export against the old index and process only what is newer, appending to the end of the ndjson. That incremental pattern also turns \"where did the last scan stop\" into recorded state, so a query can look at just the delta." },
+      { q: "删除推文后归档里的记录会消失吗？", a: "不会。归档是导出那一刻的快照,之后你删除的内容仍然留在快照里。这也是本地索引存在的意义之一:它可以作为\"删除前\"的对照,用来看哪些内容其实早就删过但归档里还有。索引和线上状态之间的一致性说明在归档格式对照那篇里。", qEn: "Does deleting a post remove it from the archive?", aEn: "No. The archive is a snapshot from the moment of export, so anything you delete afterwards stays inside it. That is one reason a local index is worth having: it acts as a pre-deletion reference, showing what you already removed while the snapshot still holds it. The consistency question between archive and live state is covered in the archive format comparison." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

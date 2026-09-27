@@ -16272,6 +16272,616 @@ rl.on('close', () =&gt; {
       { q: "删除推文后归档里的记录会消失吗？", a: "不会。归档是导出那一刻的快照,之后你删除的内容仍然留在快照里。这也是本地索引存在的意义之一:它可以作为\"删除前\"的对照,用来看哪些内容其实早就删过但归档里还有。索引和线上状态之间的一致性说明在归档格式对照那篇里。", qEn: "Does deleting a post remove it from the archive?", aEn: "No. The archive is a snapshot from the moment of export, so anything you delete afterwards stays inside it. That is one reason a local index is worth having: it acts as a pre-deletion reference, showing what you already removed while the snapshot still holds it. The consistency question between archive and live state is covered in the archive format comparison." },
     ],
   },
+  {
+    slug: "cleanup-addiction-when-to-stop",
+    title: "清理成瘾：数字足迹洁癖的边界在哪里",
+    excerpt:
+      "删掉几条旧推文本来只需要半小时，有人却做了三个月还在半夜翻 2016 年的时间线。清理成瘾的判定标准不是删了多少条，而是清理有没有替代你原本想解决的那件事。这篇给出四个可自查的信号、一条能落地的停止线，以及清理结束后该转向什么。",
+    date: "2026-09-28",
+    updatedAt: "2026-09-28",
+    author: "Digital Footprint Health Team",
+    category: "心理与习惯",
+    tags: ["清理成瘾","数字极简","心理边界","隐私习惯"],
+    canonical: "/blog/cleanup-addiction-when-to-stop",
+    titleEn: "When Tweet Cleanup Turns Into Compulsion: Where to Draw the Line",
+    excerptEn:
+      "Deleting a few old tweets should take half an hour. Some people are still scrolling their 2016 timeline at midnight three months later. The test for cleanup compulsion is not how many posts you removed, but whether cleanup has quietly replaced the problem you meant to solve. Four self-check signals, one workable stopping line, and what to move on to.",
+    categoryEn: "Mindset and Habits",
+    tagsEn: ["cleanup compulsion","digital minimalism","psychological boundaries","privacy habits"],
+    content: `
+
+<p>清理成瘾（cleanup compulsion）是数字足迹管理里最少被提起的副作用。起点通常很普通：你想删掉几条带手机号和住址的旧推文。三个月后，你还在半夜翻 2016 年的时间线，一条一条读过去，删掉，刷新页面确认删干净了，然后继续往下翻。整个过程没有终点。</p>
+<p>这篇不谈怎么删得更快，谈的是什么时候该停。判断依据是清理这个行为本身，跟你删了多少条推文没有关系。</p>
+
+<h2>四个可以自查的信号</h2>
+<p>下面四条不需要专业评估就能自己核对，命中两条以上值得认真对待。</p>
+<ul>
+  <li><strong>反复确认已经完成的事。</strong>删完一批之后，隔十几分钟又去搜一遍同样的关键词，确认没有漏网。这种复查能让你安心几分钟，然后那种不安会自己回来。</li>
+  <li><strong>清理时间不断膨胀。</strong>计划花二十分钟，实际在电脑前坐了三小时。每一批都告诉自己这是最后一批。</li>
+  <li><strong>删完之后情绪没有变好。</strong>体检分数从 58 提到 82，报告上的红色标记清空了，可"还有东西没处理完"的感觉一直挂在那儿。</li>
+  <li><strong>清理排在更该做的事前面。</strong>该回的消息没回，该睡的觉没睡，先把这一批删完再说。</li>
+</ul>
+<p>这四条有一个共同点：清理被当成了缓解情绪的手段，达成目标反倒成了附带结果。目标其实早就达成了，手机号删掉了，住址删掉了，风险最高的那批内容不在了。剩下的动作在服务情绪，不在服务目标。</p>
+
+<h2>删除这个动作为什么容易上瘾</h2>
+<p>删除提供的反馈质量太高了。按一次按钮，数量减少，进度条前进，眼睛能看到结果。这是一种即时、确定、可量化的反馈，而日常工作里很少有东西能同时满足这三点。</p>
+<p>更要紧的是它可以无限重复。推文总数是有限的，但"检查有没有漏"这件事没有尽头。你可以用不同的关键词、不同的时间范围、不同的排序方式反复扫同一个账号，每次都能得到一个新的数字，每次都能得到一点"我还在处理"的确定感。</p>
+<p>有一条线索值得注意：如果是清理目标本身在驱动你，那么达成目标时你会停下来。如果是焦虑在驱动你，那么达成目标只会让你去寻找下一个目标。分会从 80 提到 90，再提到 95，永远差一点。</p>
+
+<h2>健康清理与过度清理的差别</h2>
+<p>把两者的特征并排放在一起，比抽象的自我判断更容易对上号。</p>
+<table>
+  <thead>
+    <tr><th>维度</th><th>健康清理</th><th>过度清理</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>起点</td><td>体检报告指出了具体风险项</td><td>感觉"肯定还有问题"</td></tr>
+    <tr><td>终点</td><td>风险清单清空即结束</td><td>清单清空后重新扫一遍</td></tr>
+    <tr><td>时间</td><td>按计划投入，到点收工</td><td>时间不断超支</td></tr>
+    <tr><td>完成后的感受</td><td>轻松，然后转去做别的事</td><td>短暂安心，随后不安回来</td></tr>
+    <tr><td>复查频率</td><td>下一次计划复查时再看</td><td>当天反复搜索同一批关键词</td></tr>
+    <tr><td>是否影响生活</td><td>不影响</td><td>挤掉睡眠、工作、社交</td></tr>
+  </tbody>
+</table>
+<p>这张表里最容易自查的是"起点"和"终点"两行。你的清理是从一份具体的风险清单开始的，还是从一种模糊的感觉开始的？结束的标志是清单清空，还是新的清单被重新生成？</p>
+
+<h2>一条能落地的停止线</h2>
+<p>与其依靠意志力，不如把停止线写成可执行的规则。下面四条按顺序生效，前一条不满足就不用看后一条。</p>
+<ol>
+  <li><strong>按风险等级设预算。</strong>体检报告把问题分成高风险、中风险、低风险三档。只处理高风险和中风险，低风险项一律不做。手机号、住址、身份证照片属高风险，措辞不够专业的旧观点属低风险。</li>
+  <li><strong>给清理排一个截止日期。</strong>写成日历上的一个事件，比如"周日晚上九点到十点，清理高风险项"。时间到了就停，哪怕还剩几条。剩下的放进下一周。</li>
+  <li><strong>规定复查频率。</strong>当你已经能用<a href="/blog/how-often-check-digital-footprint">合适的节奏</a>做完体检时，把复查并入下一次体检，不要在日常随时搜索自己的关键词。随时复查是成瘾循环里最强的一环。</li>
+  <li><strong>设一个可以判断"完成"的定义。</strong>例如"体检报告里没有红色标记"或"手机号与住址的命中数为零"。定义一旦满足，清理任务就此关闭，不再重开。</li>
+</ol>
+<p>这四条的作用不是限制你，而是把"什么时候可以停"从情绪判断变成规则判断。情绪判断在焦虑状态下永远倾向于"还没完"。</p>
+
+<h2>把清理当成有终点的一次性项目</h2>
+<p>如果你发现自己已经陷在这个循环里，最有效的做法是把它重新定义为一个项目，有范围、有截止日期、有交付物。</p>
+<p>范围就是一个账号、一份归档、一次体检报告。截止日期按风险项数量估，通常一次体检报告里的高风险项在一到两个小时能处理完，可以用<a href="/blog/resumable-deletion-job-design">可续跑的任务方式</a>分批做，不必一口气坐到底。交付物是体检报告的分数变化，或者一份<a href="/blog/deletion-audit-record-export">删除记录导出</a>。</p>
+<p>项目做完就归档。归档之后，你的账号进入维护状态，下一轮动作挂在日历上的下一次体检，跟情绪什么时候发作没有关系。</p>
+
+<h2>当不安的来源不是推文</h2>
+<p>需要说清楚的一件事：清完所有风险内容之后仍然不安，通常意味着焦虑的源头不在这批推文上。可能是某次面试、某段关系、某个不确定的职业选择，而推文只是最容易抓住的那个把手。删推文有明确的操作步骤和明确的结果，处理那些事没有。</p>
+<p>这一点在<a href="/blog/old-tweets-anxiety-cleanup">旧推文带来的焦虑</a>里也提到过。清理可以移除一个真实的威胁，但它不负责处理那些跟内容无关的担心。如果清理结束之后情绪问题还在，那需要解决的就是另一件事了，跟推文数量无关。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>把清理范围限定在真实风险上，前提是你有一份可信的风险清单。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 把 X 数据归档的解析和扫描做成了一个本机工具：在<a href="/">首页</a>把归档 ZIP 丢进入口，扫描在本机完成，数据不上传，输出 0-100 健康评分和按风险排序的清单，其中哪些项该处理、哪些项可以放着不管写得很清楚。体检本身免费且只读，清理的范围和价格在<a href="/pricing">定价页</a>，工程笔记集中在<a href="/blog">博客索引</a>。</p>
+
+`,
+    contentEn: `
+
+<p>Cleanup compulsion is the least discussed side effect of digital footprint management. It usually starts somewhere ordinary: you want to delete a handful of old tweets that carry a phone number and a home address. Three months later you are still scrolling your 2016 timeline at midnight, reading each post, deleting it, refreshing to confirm it is gone, then continuing further back. There is no finish line in that loop.</p>
+<p>This piece is not about deleting faster. It is about knowing when to stop. The signals below come from the behaviour itself, not from how many posts you have removed.</p>
+
+<h2>Four signals you can check yourself</h2>
+<p>None of these needs a formal assessment. Two or more is worth taking seriously.</p>
+<ul>
+  <li><strong>Re-confirming finished work.</strong> Ten minutes after a batch, you search the same keywords again to make sure nothing slipped through. The recheck buys you a few minutes of calm, then the unease returns on its own.</li>
+  <li><strong>Sessions that keep expanding.</strong> The plan was twenty minutes. You spend three hours at the desk, and every batch is described as the last one.</li>
+  <li><strong>No improvement in mood after deleting.</strong> Your score moves from 58 to 82 and the report is clean, yet the sense that something is still unfinished stays in place.</li>
+  <li><strong>Cleanup jumping the queue.</strong> Messages go unanswered and sleep gets pushed back so that one more batch can be finished first.</li>
+</ul>
+<p>All four share one trait: cleanup has become a way to manage a feeling rather than a way to reach a goal. The goal was met some time ago. The phone number is gone, the address is gone, the highest-risk posts are no longer public. What remains is serving the feeling, not the goal.</p>
+
+<h2>Why the delete button is habit-forming</h2>
+<p>Deletion returns unusually high-quality feedback. One press, a smaller count, a progress bar that moves, a visible result. Immediate, certain, measurable. Very little in ordinary work offers all three at once.</p>
+<p>It is also endlessly repeatable. The number of posts is finite, but "checking for anything missed" has no natural end. You can rescan the same account with different keywords, different date windows, different sort orders, and each pass produces a fresh number plus a small dose of certainty that you are still handling it.</p>
+<p>One clue is worth watching. When the goal drives the cleanup, reaching it makes you stop. When anxiety drives the cleanup, reaching it only sends you looking for the next mark. The score goes from 80 to 90, then to 95, and always stops just short.</p>
+
+<h2>Healthy cleanup against compulsive cleanup</h2>
+<p>Putting the traits side by side is easier to match against than an abstract self-assessment.</p>
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>Healthy</th><th>Compulsive</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Starting point</td><td>A report lists specific risks</td><td>A vague sense that something must still be wrong</td></tr>
+    <tr><td>Ending point</td><td>The risk list is cleared</td><td>The list is cleared, then regenerated</td></tr>
+    <tr><td>Time</td><td>Planned, then stopped</td><td>Repeatedly overruns</td></tr>
+    <tr><td>Feeling afterwards</td><td>Light, then on to other things</td><td>Brief calm, then the unease returns</td></tr>
+    <tr><td>Rechecking</td><td>At the next scheduled review</td><td>Same day, same keywords, several times</td></tr>
+    <tr><td>Impact on life</td><td>None</td><td>Eats sleep, work, time with people</td></tr>
+  </tbody>
+</table>
+<p>The two easiest rows to check are the first and the second. Did your cleanup start from a concrete risk list or from a feeling? Is it finished when the list empties, or when a new list appears?</p>
+
+<h2>A stopping line you can actually follow</h2>
+<p>Rules work better than willpower here. The four below apply in order, and each one depends on the one above it.</p>
+<ol>
+  <li><strong>Budget by risk tier.</strong> Reports typically sort findings into high, medium and low. Handle high and medium only. Phone numbers, addresses and photos of ID documents are high risk. An old opinion phrased less than professionally is low risk.</li>
+  <li><strong>Put cleanup on the calendar.</strong> One event, for example Sunday 9pm to 10pm, high-risk items only. When the hour ends, you stop, even with items left over. The remainder waits for next week.</li>
+  <li><strong>Fix a review cadence.</strong> Once you are running checks at <a href="/blog/how-often-check-digital-footprint">a sensible interval</a>, fold rechecking into that appointment instead of searching your own keywords on impulse. Impulse rechecking is the strongest link in the loop.</li>
+  <li><strong>Define what finished means.</strong> Something like "no red flags in the report" or "zero hits for phone number and address". Once the definition is met, the task closes and does not reopen.</li>
+</ol>
+<p>None of this restricts you. It moves the question of when to stop out of emotional judgement and into a rule, because emotional judgement under anxiety always answers "not yet".</p>
+
+<h2>Treat cleanup as a project with an end date</h2>
+<p>If you are already inside the loop, the most useful reframe is to call it a project: defined scope, deadline, deliverable.</p>
+<p>Scope is one account, one archive, one report. Estimate the deadline from the number of high-risk findings, which usually clears in one or two hours for a single report. You can split that into batches using <a href="/blog/resumable-deletion-job-design">a resumable job</a> rather than sitting through it in one push. The deliverable is the change in your report score or an <a href="/blog/deletion-audit-record-export">exported deletion record</a>.</p>
+<p>When the project closes, archive it. The account then sits in a maintenance state, and the next action waits for the next scheduled check rather than the next bad evening.</p>
+
+<h2>What to do when the urge shows up</h2>
+<p>Knowing the signals does not make the impulse disappear. What helps is having a replacement action ready before the moment arrives, so the decision is already made. Three that people report working:</p>
+<ul>
+  <li><strong>Write the finding down instead of acting on it.</strong> Keep a note with the date and the specific item. If it still looks urgent at your next scheduled session, handle it then. Most entries never get a second look.</li>
+  <li><strong>Change the physical setting.</strong> The loop runs on a specific chair, a specific browser tab, a specific hour. Opening the same window at midnight puts you back inside it. Moving the session to a different time of day breaks the cue more reliably than resisting it in place.</li>
+  <li><strong>Replace the check with a cost estimate.</strong> Before searching your own keywords again, estimate how much removing the result would change anything a stranger could act on. Usually the honest answer is nothing, and the honest answer is what ends the loop.</li>
+</ul>
+<p>None of this argues against cleanup. It argues for running cleanup on a schedule rather than on demand, because on demand hands the decision to the impulse, and the impulse has no stopping condition.</p>
+
+<h2>When the worry is not about the posts</h2>
+<p>One thing worth stating plainly: if the unease survives a finished cleanup, its source is probably not the tweets. It may be an interview, a relationship, an uncertain career decision, and the posts are simply the easiest handle to grab. Deleting posts has clear steps and clear results. Those other things do not.</p>
+<p>The same point comes up in <a href="/blog/old-tweets-anxiety-cleanup">the piece on anxiety around old posts</a>. Cleanup can remove a real threat; it is not designed to process a worry that has nothing to do with content. If the feeling outlasts a completed cleanup, the thing to work on is something else, and post counts will not move it.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Limiting cleanup to genuine risk assumes you have a trustworthy risk list. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> turns archive parsing and scanning into an on-device tool: drop the archive ZIP into the entry point on the <a href="/">homepage</a> and the scan runs locally, with nothing uploaded, producing a 0-100 health score and a list sorted by risk that separates what needs action from what can be left alone. The check is free and read-only, cleanup scope and pricing are on the <a href="/pricing">pricing page</a>, and engineering notes live in the <a href="/blog">blog index</a>.</p>
+
+`,
+    faq: [
+      { q: "怎么区分正常清理和清理成瘾？", a: "看起点和终点。正常清理从一份具体的风险清单开始，清单清空就结束；清理成瘾从一种模糊的不安开始，清单清空之后会重新扫一遍生成新清单。另一个信号是复查频率：正常清理按计划复查，成瘾会当天反复搜索同一批关键词。", qEn: "How do I tell normal cleanup from compulsive cleanup?", aEn: "Look at the start and the end. Normal cleanup begins with a concrete risk list and finishes when the list is empty. Compulsive cleanup begins with a vague sense of unease and, once the list is empty, regenerates a new one. A second signal is rechecking frequency: scheduled reviews versus searching the same keywords several times in a day." },
+      { q: "清理成瘾是不是意味着我不该做数字足迹体检？", a: "不是。体检本身是把风险从感觉变成清单，恰好是对抗成瘾的工具，因为它给了清理一个可以判断的终点。需要调整的是清理的执行方式：按风险等级设预算、给任务排截止日期、把复查并入下一次体检。", qEn: "Does cleanup compulsion mean I should skip a digital footprint check?", aEn: "No. A check converts risk from a feeling into a list, which is exactly the tool that works against the loop, because it gives cleanup a finish condition. What needs adjusting is execution: budget by risk tier, put the task on the calendar, and fold rechecking into the next scheduled check." },
+      { q: "删完所有风险内容之后还是不安，怎么办？", a: "这种残留的不安通常说明源头不在这批推文上，可能是面试、关系或职业选择方面的压力，推文只是最容易抓住的把手。可以给清理设一个明确的完成定义（比如报告无红色标记），一旦满足就关闭任务，然后去看那件真正让人不安的事。", qEn: "What if the unease stays after every risky post is gone?", aEn: "Residual unease usually points to a source outside the posts, such as pressure from a job search, a relationship or a career decision, with the tweets simply being the easiest handle to grab. Define finished explicitly, for example no red flags in the report, close the task once that is met, and then look at the thing that is actually worrying you." },
+      { q: "一天清理多少条算合理？", a: "按风险项数量来规划更实用，推文条数意义不大。一份体检报告里的高风险项通常能在一到两小时内处理完，可以拆成两到三批用可续跑的任务方式完成。给自己设一个时间上限，到点收工，剩下的留到下一次计划时间。", qEn: "How much should I clean in a single day?", aEn: "Plan by the number of high-risk findings rather than by post count. One report's high-risk items usually clear in one or two hours, which splits well into two or three batches using a resumable job. Set a time cap, stop when it hits, and leave the rest for the next planned session." },
+    ],
+  },
+  {
+    slug: "footprint-score-improvement-plan",
+    title: "体检分数怎么提上去：从 60 分到 85 分的执行计划",
+    excerpt:
+      "体检报告给出分数之后，真正的问题是下一步动哪一批内容。分数提升有明显的边际递减：前 20 分通常来自少数几个高风险项，后面的分数要跟账号历史硬碰。这份计划把提分动作按投入产出排序，并说明哪些分数注定提不上去。",
+    date: "2026-09-28",
+    updatedAt: "2026-09-28",
+    author: "Digital Footprint Health Team",
+    category: "体检与评分",
+    tags: ["体检评分","提分计划","风险等级","清理顺序"],
+    canonical: "/blog/footprint-score-improvement-plan",
+    titleEn: "Raising Your Footprint Score: A Plan From 60 to 85",
+    excerptEn:
+      "Once a report hands you a number, the real question is which content to touch first. Score gains drop off sharply: the first twenty points usually come from a few high-risk findings, and everything after that runs into account history. This plan sorts the moves by return on effort and names the gains that are simply not available.",
+    categoryEn: "Checkup and Scoring",
+    tagsEn: ["footprint score","improvement plan","risk tiers","cleanup order"],
+    content: `
+
+<p>体检报告给出一分数之后，多数人的第一反应是问"这个分算高还是低"。更实用的问题是哪一批内容先动。分数不是均匀分布的，它由<a href="/blog/footprint-score-weighting-explained">一组带权重的项</a>加总而成，而其中少数几项占了大头。</p>
+<p>下面这份计划假设你手上有一份刚生成的报告，分数在 55 到 65 之间，打算用一个月把分数推到 85 附近。这个目标在多数账号上是可以达成的，不过前提是承认有些分数拿不到。</p>
+
+<h2>先看清分数由什么构成</h2>
+<p>报告的分数来自三类信号，投入产出差别很大。</p>
+<table>
+  <thead>
+    <tr><th>类别</th><th>典型占比</th><th>能否改善</th><th>投入</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>直接标识信息</td><td>约 40%</td><td>可以完全消除</td><td>低，删除命中项即可</td></tr>
+    <tr><td>可推断信息</td><td>约 30%</td><td>部分可以降低</td><td>中，需要判断上下文</td></tr>
+    <tr><td>历史与结构因素</td><td>约 30%</td><td>多数无法改变</td><td>高或不可行</td></tr>
+  </tbody>
+</table>
+<p>第一类包括手机号、邮箱、住址、身份证照片。这些项在报告里通常是红色，命中即扣分，删掉之后分数立刻回升，而且不会有争议。第二类包括反复出现的定位、工作单位、家庭成员称呼，这类内容单看无害，堆在一起能拼出画像。第三类包括账号年龄、公开时间跨度、被引用和转发的历史，这部分决定了分数的上限。</p>
+
+<h2>提分最快的三类动作</h2>
+<p>按每小时能拿回的分数排序，前三名通常固定不变。</p>
+<ol>
+  <li><strong>清除直接标识信息。</strong>手机号、邮箱、住址、证件照片、快递单截图全部归到这一类。这一步在多数账号上能带来 10 到 15 分，耗时通常不超过两小时。处理方法见<a href="/blog/which-tweets-to-clean-by-risk">按风险等级决定清理顺序</a>。</li>
+  <li><strong>压缩定位密度。</strong>单条带定位的推文很难说是问题，但连续几十条精确到街道的记录会形成一条可读的移动轨迹。把精确坐标降级为城市名，或者删掉集中在一段时间内的高密度定位，能拿回大约 5 到 8 分。</li>
+  <li><strong>处理敏感话题集中区。</strong>报告会把某个时间段标出来，通常集中在几周或几个月内。这批内容的价值不在单条，而在于它们和你的真实身份可以被对应上。分批处理，不需要一次删完。</li>
+</ol>
+<p>这三步做完，多数账号会落在 80 到 88 之间。分数提升到这里开始明显变慢。</p>
+
+<h2>提分上限在哪里</h2>
+<p>有些扣分项改不掉，早一点接受能省下大量时间。</p>
+<ul>
+  <li><strong>账号年龄。</strong>账号存在的时间越长，可被检索的历史窗口越大，这一项在评分里是固定的。</li>
+  <li><strong>已经进入第三方索引的内容。</strong>被搜索引擎、聚合站或数据经纪商抓走过的内容，删原帖不会让它们消失。这部分要另外走移除流程，分数不会因此回升。</li>
+  <li><strong>公开互动记录。</strong>别人账号里 @ 你、引用你、回复你的内容不在你的删除范围内。</li>
+  <li><strong>内容的语义特征。</strong>措辞风格、关注领域、发言频率这些结构特征无法通过删除改变，报告里这类提示只作为观察项计入。</li>
+</ul>
+<p>报告的<a href="/blog/digital-footprint-score-benchmarks">对照区间</a>把分数分成几档，需要留意的是 90 分以上通常不是"清理得更干净"，而是账号本身历史短、内容少。把一个十年账号的分数和三年账号放在一起比较没有意义。</p>
+
+<h2>一个月的执行顺序</h2>
+<p>把动作拆到四周，每周只做一类，避免重复扫描和反复决策。</p>
+<ul>
+  <li><strong>第一周：</strong>处理直接标识信息。这一周的目标是红标清零，做完重新生成报告确认。</li>
+  <li><strong>第二周：</strong>处理定位密度与工作相关暴露。只处理报告标出的集中时间段，不做全量翻查。</li>
+  <li><strong>第三周：</strong>处理敏感话题集中区。用可续跑的方式分批做，单次不超过一小时。</li>
+  <li><strong>第四周：</strong>复检。生成新报告，记录分数变化，然后停止清理，转入定期体检节奏。</li>
+</ul>
+<p>第四周之后不要再重开清理。如果你的分数停在 85、到不了 90，正常的原因是账号历史长度，继续投入时间不会改变它。分数变化的记录可以走<a href="/blog/export-share-footprint-report">报告导出</a>留存，方便下一次对比。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>提分计划的前提是报告能把"该处理的"和"可以忽略的"分开。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 在<a href="/">首页</a>接收 X 数据归档，扫描全程在本机完成，输出 0-100 健康评分和按风险排序的清单，每一项都标注了属于上述哪一类。免费且只读，清理的费用和范围见<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+
+`,
+    contentEn: `
+
+<p>When a report hands you a number, the first reaction is usually to ask whether it is high or low. The more useful question is which batch of content to touch first. Scores are not spread evenly. They are summed from <a href="/blog/footprint-score-weighting-explained">a weighted set of findings</a>, and a small number of findings carry most of the weight.</p>
+<p>The plan below assumes you have a fresh report, a score somewhere between 55 and 65, and a month to push it toward the mid eighties. That target is reachable on most accounts, as long as you accept that some points are not for sale.</p>
+
+<h2>Start with what the score is made of</h2>
+<p>Three kinds of signal feed the score, and their return on effort differs a lot.</p>
+<table>
+  <thead>
+    <tr><th>Category</th><th>Typical share</th><th>Can it improve?</th><th>Effort</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Direct identifiers</td><td>About 40%</td><td>Fully removable</td><td>Low, delete the hits</td></tr>
+    <tr><td>Inferable details</td><td>About 30%</td><td>Partly reducible</td><td>Medium, needs judgement</td></tr>
+    <tr><td>History and structure</td><td>About 30%</td><td>Mostly fixed</td><td>High or impossible</td></tr>
+  </tbody>
+</table>
+<p>The first category covers phone numbers, email addresses, home addresses and photos of ID documents. These arrive flagged red, they cost points the moment they match, and deleting them lifts the score without argument. The second covers repeated locations, employer details and family references. Each one is harmless alone, and together they assemble into a profile. The third covers account age, the span of public history, and how often your posts have been quoted or reposted. This part sets the ceiling.</p>
+
+<h2>The three fastest moves</h2>
+<p>Sorted by points recovered per hour, the top three rarely change.</p>
+<ol>
+  <li><strong>Clear direct identifiers.</strong> Phone numbers, email addresses, street addresses, ID photos, parcel label screenshots. On most accounts this step is worth 10 to 15 points and takes under two hours. The ordering is covered in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk tier</a>.</li>
+  <li><strong>Thin out location density.</strong> A single post with a location is hard to call a problem. Several dozen posts accurate to street level add up to a readable travel pattern. Rounding precise coordinates down to city level, or removing clusters of dense location posts from one period, usually recovers 5 to 8 points.</li>
+  <li><strong>Work the sensitive-topic clusters.</strong> Reports isolate a period, often a few weeks or months, where the flagged posts sit together. Their value to an observer is not in any single post but in how easily they connect to your real identity. Handle them in batches rather than in one sitting.</li>
+</ol>
+<p>After these three, most accounts land between 80 and 88. Progress gets noticeably slower from there.</p>
+
+<h2>Where the ceiling sits</h2>
+<p>Some deductions cannot be changed, and accepting that early saves a lot of time.</p>
+<ul>
+  <li><strong>Account age.</strong> The longer the account has existed, the wider the searchable window. This term is fixed in the scoring.</li>
+  <li><strong>Content already held by third parties.</strong> Anything search engines, aggregators or data brokers have already captured survives the deletion of the original post. Those have separate removal routes, and the score will not recover.</li>
+  <li><strong>Public interactions.</strong> Posts where other accounts mention, quote or reply to you sit outside your deletion scope.</li>
+  <li><strong>Semantic characteristics.</strong> Writing style, topics of interest and posting frequency are structural features that deleting posts cannot change. The report lists them as observations only.</li>
+</ul>
+<p>The <a href="/blog/digital-footprint-score-benchmarks">banding table</a> splits scores into ranges, and it is worth remembering that 90 and above usually means a short, sparse account rather than a thorough cleanup. Comparing a ten-year account with a three-year account tells you nothing useful.</p>
+
+<h2>A four-week order of work</h2>
+<p>Split the work by week so that each week covers one category, which avoids rescanning and repeated decisions.</p>
+<ul>
+  <li><strong>Week one:</strong> direct identifiers. The goal is a clean sweep of red flags, confirmed by regenerating the report.</li>
+  <li><strong>Week two:</strong> location density and work-related exposure. Handle only the clusters the report flagged instead of reading everything.</li>
+  <li><strong>Week three:</strong> sensitive-topic clusters. Run it as a resumable job in sessions under an hour.</li>
+  <li><strong>Week four:</strong> recheck. Generate a new report, record the change, then stop cleaning and move to a scheduled check rhythm.</li>
+</ul>
+<p>Do not reopen cleanup after week four. If your score settles at 85 rather than 90, the ordinary explanation is account history, and more hours will not move it. Recording score changes through <a href="/blog/export-share-footprint-report">report export</a> makes the next comparison easy.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Any improvement plan depends on a report that separates what needs action from what can be ignored. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> takes an X archive at the <a href="/">homepage</a>, scans it entirely on your own machine, and returns a 0-100 health score with a list sorted by risk, each finding tagged with the category described above. Free and read-only; cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and method pieces are collected in the <a href="/blog">blog index</a>.</p>
+
+`,
+    faq: [
+      { q: "体检分数到多少算合格？", a: "没有统一标准，更有意义的是看分数由什么构成。如果 85 分是因为账号历史长、公开互动多，这个分数已经接近该账号的上限；如果 85 分是因为还有未处理的手机号或住址，那还有明确的提升空间。先看报告里的红标数量，再看总分。", qEn: "What counts as a passing footprint score?", aEn: "There is no universal threshold, and what the score is made of matters more than the number. An 85 driven by long account history and public interactions is close to that account's ceiling. An 85 that still contains an unhandled phone number or address has clear room left. Check the red flags first, then the total." },
+      { q: "为什么我的分数提到 85 之后就上不去了？", a: "85 分左右通常是结构项开始主导的位置。账号存在时间、公开时间跨度、他人引用你的内容、以及已经被第三方抓取的信息都不在可删除范围内。继续投入时间在这些项上不会改变分数，把清理转入定期复检节奏更划算。", qEn: "Why does my score stall around 85?", aEn: "Around 85, structural terms begin to dominate. Account age, the span of public history, content other people have quoted, and anything already captured by third parties all sit outside deletion scope. More hours will not move them, so shifting to a scheduled recheck cadence is the better use of time." },
+      { q: "提分应该先删推文还是先做账号安全设置？", a: "两件事不分先后，但顺序影响体验。先处理直接标识信息，因为这一步的分数回报最高也最有形；账号安全设置（两步验证、登录设备检查）不直接改变体检分数，但决定删掉的内容会不会因为账号被盗而重新暴露。建议第一周做前者，账号安全检查并入同周的收尾动作。", qEn: "Should I delete posts first or fix account security first?", aEn: "Both matter, and the order mostly affects how it feels. Start with direct identifiers, since that step returns the most score and the most visible progress. Security settings such as two-factor authentication and device checks do not move the score directly, but they decide whether deleted content can reappear through a hijacked account. Do the deletions in week one and fold the security pass into that week's wrap-up." },
+    ],
+  },
+  {
+    slug: "chinese-overseas-student-footprint-check",
+    title: "留学生数字足迹自查：从签证表到学校背调要检查什么",
+    excerpt:
+      "出国前的材料准备里，有一项最容易被漏掉：社交媒体账号。美国签证申请表自 2019 年起要求填写过去五年的社交媒体账号，部分学校和雇主也会做公开内容检索。这篇按时间顺序列出中文用户需要自查的六类内容，以及哪些是中文语料特有的暴露点。",
+    date: "2026-09-28",
+    updatedAt: "2026-09-28",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["留学生","背景调查","中文市场","社交媒体审核"],
+    canonical: "/blog/chinese-overseas-student-footprint-check",
+    titleEn: "What Chinese Students Abroad Should Audit in Their Old Posts",
+    excerptEn:
+      "One line item is easy to miss in the paperwork before studying abroad: social media accounts. The US visa form has asked for five years of handles since 2019, and some schools and employers run public-content searches. Six categories to audit, plus the exposure points that only appear in Chinese-language posts.",
+    categoryEn: "Bilingual Markets",
+    tagsEn: ["students abroad","background checks","Chinese market","social media screening"],
+    content: `
+
+<p>出国前的材料清单里，奖学金证明、成绩单、推荐信都会被反复核对，社交媒体账号却常常被忘掉。美国签证申请表自 2019 年起要求填写过去五年的社交媒体账号，学校录取后的合规环节和毕业后的雇主背调，也可能对公开内容做一次检索。</p>
+<p>问题在于中文用户的账号结构跟英文用户不太一样：同一个人的内容分散在多个平台，用中文实名发言，而且早期的表达习惯和现在差别很大。下面这份自查清单按时间顺序排，从最早的内容开始。</p>
+
+<h2>六类需要自查的内容</h2>
+<p>顺序按风险从高到低，前两类建议在提交材料之前处理完。</p>
+<ul>
+  <li><strong>直接标识信息。</strong>手机号、家庭住址、身份证或护照照片、录取通知书截图、快递单。这一类在中文账号里命中率很高，因为早期发帖习惯是把截图直接发出来。</li>
+  <li><strong>签证与学校的关联信息。</strong>录取通知、I-20 或 CAS 编号、语言考试成绩截图、中介聊天截图。这些内容把"这个账号属于谁"和"这个人正在办什么手续"直接连起来。</li>
+  <li><strong>身份与家庭信息。</strong>父母的姓名与工作单位、家庭成员的称呼、家庭住址周边地标。中文表达里这类信息往往是嵌在叙述里的，不会单独成为一条明显的暴露贴。</li>
+  <li><strong>立场性表达。</strong>涉及政治、宗教、民族、性别的激烈表达。这一类的风险不在观点本身，而在它出现在一个可以被对应到真实身份的公开账号上。</li>
+  <li><strong>学业与实习记录。</strong>与同学、导师、实习单位的冲突叙述，或对具体机构的负面评论。雇主背调最容易命中的就是这一类。</li>
+  <li><strong>旧平台残留。</strong>微博、贴吧、知乎、豆瓣、B 站的早期内容。这些平台的搜索入口和账号绑定关系跟 X 不同，是否会被检索到取决于平台的公开设置。</li>
+</ul>
+
+<h2>中文语料特有的暴露点</h2>
+<p>有几类风险只在中文内容里出现，英文自查清单通常不会提到。</p>
+<table>
+  <thead>
+    <tr><th>暴露点</th><th>为什么容易漏</th><th>处理方式</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>拼音与中文名混用</td><td>用拼音搜索和用汉字搜索会得到不同结果，只查一种会漏</td><td>两种写法各查一遍，包括姓名和学校名</td></tr>
+    <tr><td>手机号分段写法</td><td>中间加空格或短横线能绕过简单的关键词匹配</td><td>去掉分隔符后再查一次</td></tr>
+    <tr><td>截图代替文字</td><td>图片里的文字不参与文本搜索，但人眼能读</td><td>依赖图片识别扫描，或人工过一遍带图内容</td></tr>
+    <tr><td>缩写与谐音</td><td>用缩写指代学校或单位，搜索关键词对不上</td><td>把常用的缩写列出来单独查</td></tr>
+    <tr><td>跨平台联动</td><td>同一昵称或头像在多个平台复用，能被串起来</td><td>检查昵称和头像的复用情况</td></tr>
+  </tbody>
+</table>
+<p>第一行是最容易被忽略的。<a href="/blog/chinese-name-search-footprint-cleanup">用中文名搜索自己的旧内容</a>和用拼音搜索，结果集可能完全不同，两种都要跑。</p>
+
+<h2>按时间线安排自查</h2>
+<p>把动作绑在申请节点上，比等想起来再做更容易执行。</p>
+<ol>
+  <li><strong>提交签证材料前两到三周。</strong>处理直接标识信息和签证关联信息，确认要填写的账号历史里没有这两类内容。</li>
+  <li><strong>拿到录取后、入学前。</strong>处理身份与家庭信息，检查账号的公开范围设置。</li>
+  <li><strong>找实习前一个月。</strong>处理学业与实习相关的叙述性内容和立场性表达，这一轮重点看雇主的检索角度。</li>
+  <li><strong>每次换国家或换学校。</strong>重复一遍第一轮，因为新材料的披露范围可能更宽。</li>
+</ol>
+
+<h2>删除之外还要做的事</h2>
+<p>删掉原帖不等于内容消失。搜索引擎缓存和第三方聚合站的抓取需要另外处理，中文平台的内容还可能被搬运到其他站点。<a href="/blog/right-to-be-forgotten-twitter">移除请求</a>和<a href="/blog/data-brokers-selling-your-tweets">数据经纪商清理</a>是两条不同的路径，前者针对搜索引擎，后者针对数据聚合方。</p>
+<p>另外值得先做的一件事是账号安全。留学生的账号常年在多个网络环境下登录，异地登录提醒频繁，容易被忽略。把<a href="/blog/social-account-password-manager-setup">密码管理与两步验证</a>配好，能避免删掉的内容因为账号被盗而重新出现。</p>
+<p>中文用户在跨平台上的足迹分布与英文用户差异很大，这一点的整体情况在<a href="/blog/chinese-users-cross-platform-footprint">跨平台足迹</a>那篇里有更完整的梳理。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>自查的前提是能在一个地方看到全部命中项。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 支持在<a href="/">首页</a>上传 X 数据归档，扫描在本机完成，输出的清单把直接标识信息、身份关联和叙述性内容分开列出，方便按上面的时间线分阶段处理。体检免费且只读，清理范围与费用见<a href="/pricing">定价页</a>，中文相关的说明集中在<a href="/blog">博客索引</a>。</p>
+
+`,
+    contentEn: `
+
+<p>Ahead of studying abroad, transcripts, funding letters and references all get checked more than once. Social media accounts tend to get forgotten. The US visa form has asked applicants to list five years of social media handles since 2019, and compliance steps after admission, along with employer background checks after graduation, may include a public-content search.</p>
+<p>The wrinkle for Chinese-speaking users is that the account layout differs from the typical English-language one. Content is spread across several platforms, often under a real name, and the writing style from five years ago can look nothing like the current one. The audit below runs in chronological order, starting with the oldest material.</p>
+
+<h2>Six categories to audit</h2>
+<p>Ordered from highest risk to lowest. The first two are worth finishing before any application material goes out.</p>
+<ul>
+  <li><strong>Direct identifiers.</strong> Phone numbers, home addresses, photos of ID cards or passports, screenshots of admission letters, parcel labels. These hit often in Chinese-language accounts, because early posting habits were to share screenshots as images.</li>
+  <li><strong>Links to the application itself.</strong> Admission letters, I-20 or CAS numbers, language test scores, screenshots of agency chats. These join the account to a real person and to a specific procedure in progress.</li>
+  <li><strong>Identity and family details.</strong> Parents' names and employers, references to siblings, landmarks near a home address. In Chinese writing these details are usually embedded inside a story rather than posted as a standalone disclosure.</li>
+  <li><strong>Strongly stated positions.</strong> Heated posts on politics, religion, ethnicity or gender. The risk is not the opinion, it is the opinion sitting on an account that maps to a real identity.</li>
+  <li><strong>Academic and internship history.</strong> Accounts of conflict with classmates, supervisors or an employer, or negative comments about a named institution. This is the category employer checks are most likely to surface.</li>
+  <li><strong>Older platforms.</strong> Early posts on Weibo, Tieba, Zhihu, Douban and Bilibili. Their search entry points and account linking work differently from X, and whether they surface depends on each platform's public visibility settings.</li>
+</ul>
+
+<h2>Exposure points specific to Chinese-language posts</h2>
+<p>A few risks appear only in Chinese content, so English checklists rarely mention them.</p>
+<table>
+  <thead>
+    <tr><th>Exposure</th><th>Why it gets missed</th><th>How to handle it</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Pinyin and characters used interchangeably</td><td>Searching in pinyin and searching in characters returns different sets</td><td>Run both, for your name and your school</td></tr>
+    <tr><td>Phone numbers written with separators</td><td>A space or hyphen defeats simple keyword matching</td><td>Strip separators and search again</td></tr>
+    <tr><td>Screenshots instead of text</td><td>Text inside images is invisible to text search but readable by eye</td><td>Use image-text scanning, or review image-heavy posts manually</td></tr>
+    <tr><td>Abbreviations and homophones</td><td>A shorthand reference to a school or employer will not match the keyword</td><td>List your usual abbreviations and search each one</td></tr>
+    <tr><td>Cross-platform linking</td><td>The same handle or avatar reused elsewhere connects the accounts</td><td>Check where your handle and avatar are reused</td></tr>
+  </tbody>
+</table>
+<p>The first row is the one most people skip. <a href="/blog/chinese-name-search-footprint-cleanup">Searching your own posts by Chinese name</a> and searching by pinyin can return different results, so both passes are needed.</p>
+
+<h2>Tie the audit to application milestones</h2>
+<p>Binding the work to milestones beats waiting until you remember.</p>
+<ol>
+  <li><strong>Two to three weeks before submitting visa material.</strong> Clear direct identifiers and application links, then confirm neither appears in the account history you are about to declare.</li>
+  <li><strong>After admission, before arrival.</strong> Handle identity and family details, and review the visibility settings on each account.</li>
+  <li><strong>A month before applying for internships.</strong> Handle the narrative and position-taking categories, reading them from an employer's angle.</li>
+  <li><strong>On every move to a new country or school.</strong> Repeat the first pass, since the disclosure scope of new paperwork may be wider.</li>
+</ol>
+
+<h2>What deletion alone does not cover</h2>
+<p>Removing the original post does not remove the content. Search caches and third-party aggregators need separate handling, and Chinese-platform content can be reposted elsewhere. <a href="/blog/right-to-be-forgotten-twitter">Removal requests</a> and <a href="/blog/data-brokers-selling-your-tweets">broker cleanups</a> are two different routes, one aimed at search engines and one at data aggregators.</p>
+<p>Worth doing first is account security. Student accounts log in from many networks, so unfamiliar-device alerts arrive often and get ignored. Setting up <a href="/blog/social-account-password-manager-setup">password management and two-factor authentication</a> prevents deleted content from reappearing through a hijacked account.</p>
+<p>How a Chinese-speaking user's footprint spreads across platforms differs a lot from the English-language pattern, and <a href="/blog/chinese-users-cross-platform-footprint">the cross-platform overview</a> covers that layout in more detail.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>An audit only works if every hit is visible in one place. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> accepts an X archive at the <a href="/">homepage</a> and scans it locally, returning a list that separates direct identifiers, identity links and narrative content, which maps onto the staged timeline above. The check is free and read-only, cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and Chinese-language coverage sits in the <a href="/blog">blog index</a>.</p>
+
+`,
+    faq: [
+      { q: "签证申请表要求填写社交媒体账号，是只填 X 还是所有平台？", a: "表格要求列出过去五年使用过的社交媒体平台与账号，通常按平台分别填写，包含中文平台。建议按实际使用情况完整填写，同时在提交前把可公开检索的内容处理一遍，因为填写的账号会被作为检索入口。", qEn: "Does the visa form cover X only, or every platform?", aEn: "The form asks for the social media platforms and handles used over the past five years, listed per platform, and Chinese-language platforms are included. Fill it in completely and accurately, and clean up publicly searchable content before submitting, since the handles you declare become search entry points." },
+      { q: "用拼音搜索和用中文搜索，结果为什么不一样？", a: "两个原因。搜索系统对中文字符和拉丁字母的处理方式不同，索引和分词规则都不一样；你自己发帖时也可能混用两种写法。把姓名、学校名、常用缩写分别用汉字、全拼、常见缩写各查一遍，才能覆盖实际范围。", qEn: "Why do pinyin and character searches return different results?", aEn: "Two reasons. Search systems handle Chinese characters and Latin letters differently, so indexing and tokenisation rules differ, and you probably mixed the two forms in your own posts. Search your name, your school and your usual abbreviations in characters, in full pinyin and in the common abbreviation, and the passes together cover the real range." },
+      { q: "图片里的文字搜不到，是不是就不用管了？", a: "不能这么算。文本搜索确实读不到图片里的字，但人眼可以，而背调环节有人工查看的可能。带截图的内容需要单独过一遍，特别是录取通知、聊天记录、证件和快递单这几类。", qEn: "Image text is invisible to search, so can it be ignored?", aEn: "No. Text search cannot read inside images, but people can, and a background check may include a manual review. Posts containing screenshots need a separate pass, particularly admission letters, chat logs, ID documents and parcel labels." },
+      { q: "毕业之后还需要继续做数字足迹自查吗？", a: "需要，但频率可以降下来。毕业后的主要触发点是换工作、申请其他国家的签证、以及进入对合规要求较高的行业。把自查并入每半年一次的体检节奏，比在需要时才临时处理更从容。", qEn: "Is an audit still needed after graduation?", aEn: "Yes, at a lower frequency. The triggers afterwards are changing jobs, applying for a visa for another country, and entering a field with stricter compliance expectations. Folding the audit into a twice-yearly check is calmer than handling it under deadline pressure." },
+    ],
+  },
+  {
+    slug: "x-login-alert-unfamiliar-device-faq",
+    title: "收到陌生设备登录提醒？先弄清这五个问题",
+    excerpt:
+      "X 弹出「新设备登录」提醒时，第一反应通常是把所有会话踢掉。但在动手之前有几个问题值得先确认：提醒是真是假、登录发生在哪里、账号有没有被动过。这份快答按处理顺序列出五个问题，附每一步的具体位置。",
+    date: "2026-09-28",
+    updatedAt: "2026-09-28",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    tags: ["登录提醒","账号安全","会话管理","钓鱼识别"],
+    canonical: "/blog/x-login-alert-unfamiliar-device-faq",
+    titleEn: "Unfamiliar Login Alert on X? Five Questions to Settle First",
+    excerptEn:
+      "When X reports a sign-in from a new device, the reflex is to kill every session at once. A few questions are worth settling before that: whether the alert is genuine, where the sign-in came from, and whether anything on the account changed. Five questions in the order worth handling, with the exact location of each step.",
+    categoryEn: "Account Security",
+    tagsEn: ["login alerts","account security","session management","phishing"],
+    content: `
+
+<p>X 发出「有新设备登录」提醒时，最省事的做法是把所有会话一次性踢掉。这个动作本身没错，但直接做会丢掉排查所需的线索：登录发生的时间、来源地区、以及那段时间账号有没有其他改动。下面五个问题按顺序处理，前后加起来通常不超过十五分钟。</p>
+
+<h2>一、提醒本身是不是真的？</h2>
+<p>钓鱼邮件和推送会模仿登录提醒的样式，目的就是让你点进一个假的登录页。判断方法只有一条：不要点提醒里的链接，自己手动打开 X 应用或输入网址登录，然后在设置里查看会话列表。</p>
+<p>如果真实会话列表里没有那条陌生记录，提醒就是伪造的。这类消息通常配合<a href="/blog/x-phishing-dm-scams">私信钓鱼</a>出现。</p>
+
+<h2>二、那条会话是从哪里发起的？</h2>
+<p>在设置的「安全与账号访问」里能看到设备和会话列表，包含大致地区、客户端类型和最近使用时间。需要留意的是自己常用的网络环境：公司网络、校园网、VPN、机场 Wi-Fi 都可能显示成异地。</p>
+<p>判断标准不是地区陌生，而是设备和客户端不认识。<a href="/blog/login-device-audit-x-account">登录设备审计</a>那篇给了逐个核对的流程。</p>
+
+<h2>三、那段时间账号被改动过什么？</h2>
+<p>登录提醒只是结果，真正要确认的是登录之后有没有留下动作。逐项检查：发布的推文、修改过的个人资料、绑定过的应用、改过的隐私设置、以及关注列表的变化。检查清单在<a href="/blog/x-connected-apps-permission-audit">已授权应用的权限审计</a>里写得更细。</p>
+
+<h2>四、先改密码还是先踢会话？</h2>
+<p>顺序建议是：先改密码，再踢会话，最后检查两步验证。改密码会让其他会话失效，这一步同时完成了两个动作。踢完会话之后立刻确认<a href="/blog/enable-2fa-x-account">两步验证</a>是否开启并且绑定的还是你自己的验证方式。</p>
+<p>如果两步验证已被换成陌生的手机号或验证器，说明对方已经拿到了足够的权限，处理方式见<a href="/blog/twitter-account-takeover-recovery">账号接管的恢复流程</a>。</p>
+
+<h2>五、处理完之后还要做什么？</h2>
+<p>把密码换成密码管理器生成的独立密码，不要与其他站点复用。同时检查邮箱账号本身，因为邮箱是重置密码的入口，邮箱被控制的话，改多少次 X 密码都没有意义。<a href="/blog/social-account-password-manager-setup">密码管理器的配置流程</a>里有具体步骤。</p>
+<p>另外值得顺手做的一件事是整理自己近期的登录环境。如果你经常在公共网络或共享设备上登录，提醒会持续出现，慢慢就麻木了，而真正异常的那次也会被混在里面。</p>
+
+<h2>常见问题</h2>
+<dl>
+  <dt>登录提醒显示的设备是我以前用过但已经卖掉的手机，需要处理吗？</dt>
+  <dd>需要。先把那条会话踢掉并改密码，因为设备在你手里的时候登录过，会话可能仍然有效。</dd>
+  <dt>提醒里说账号被锁，让我点链接验证，是真的吗？</dt>
+  <dd>处理原则不变：不点链接，自己打开应用确认。真实的锁定状态在应用里能看到。</dd>
+  <dt>改了密码但陌生会话还在，怎么办？</dt>
+  <dd>再检查一次会话列表，把剩余会话逐个退出，然后确认两步验证绑定的是你自己的验证方式。</dd>
+</dl>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>账号安全决定已删除的内容会不会重新暴露出去。判断哪些旧内容值得优先清理，可以从一次<a href="https://digital-footprint-health.shop/">体检</a>开始：在<a href="/">首页</a>上传 X 数据归档，扫描在本机完成，输出按风险排序的清单。免费且只读，清理范围与费用见<a href="/pricing">定价页</a>，安全类文章集中在<a href="/blog">博客索引</a>。</p>
+
+`,
+    contentEn: `
+
+<p>When X reports a sign-in from a new device, the easiest move is to kill every session at once. That move is not wrong, but doing it first throws away the evidence you need: when the sign-in happened, where it came from, and whether anything else on the account changed during that window. The five questions below take about fifteen minutes in total.</p>
+
+<h2>1. Is the alert genuine?</h2>
+<p>Phishing emails and push notifications copy the look of a login alert so that you click through to a fake sign-in page. There is one reliable check: do not use the link in the alert. Open the X app yourself or type the address, sign in, and read the session list in settings.</p>
+<p>If no unfamiliar entry appears in the real session list, the alert was fabricated. Messages like that usually arrive alongside <a href="/blog/x-phishing-dm-scams">phishing DMs</a>.</p>
+
+<h2>2. Where did that session start from?</h2>
+<p>Settings holds the device and session list under security and account access, showing an approximate region, the client type and the last active time. Check your own habits first. Corporate networks, campus Wi-Fi, VPNs and airport networks all register as unfamiliar locations.</p>
+<p>The test is not an unfamiliar city, it is an unfamiliar device and client. <a href="/blog/login-device-audit-x-account">The login device audit</a> walks through checking each entry.</p>
+
+<h2>3. What changed on the account during that window?</h2>
+<p>The alert is an outcome. What you actually need to establish is whether the sign-in left actions behind. Walk through these: posts published, profile details edited, apps authorised, privacy settings changed, and following list edits. The checklist is laid out in more detail in <a href="/blog/x-connected-apps-permission-audit">the connected-apps permission audit</a>.</p>
+
+<h2>4. Change the password first, or kill sessions first?</h2>
+<p>Order it as: new password, then sessions, then two-factor. Changing the password invalidates other sessions, so one step does both jobs. Immediately after that, confirm that <a href="/blog/enable-2fa-x-account">two-factor authentication</a> is on and still bound to a method you control.</p>
+<p>If the second factor has been switched to an unknown phone number or authenticator, whoever did that holds enough access to treat this as a takeover, and <a href="/blog/twitter-account-takeover-recovery">the recovery walkthrough</a> covers that case.</p>
+
+<h2>5. What still needs doing afterwards?</h2>
+<p>Replace the password with a generated one that is not reused anywhere else. Then check the email account itself, because email is the entry point for password resets; if the mailbox is controlled, no number of X password changes will help. <a href="/blog/social-account-password-manager-setup">The password manager walkthrough</a> has the setup steps.</p>
+<p>Worth doing while you are there: review where you normally sign in from. Frequent logins on shared networks or shared devices produce a steady stream of alerts, and familiarity with that noise is what hides the one that matters.</p>
+
+<h2>Common questions</h2>
+<dl>
+  <dt>The device in the alert is an old phone I already sold. Anything to do?</dt>
+  <dd>Yes. Kill that session and change the password, since the session was created while the device was still yours and may still be valid.</dd>
+  <dt>The alert says my account is locked and asks me to click a link. Real?</dt>
+  <dd>The rule does not change: skip the link and open the app yourself. A genuine lock state is visible inside the app.</dd>
+  <dt>I changed the password but the unknown session is still listed.</dt>
+  <dd>Re-read the session list, sign out the remaining entries one by one, then confirm the second factor is bound to a method you control.</dd>
+</dl>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Account security decides whether the content you deleted can come back. To see which old posts deserve attention first, start with <a href="https://digital-footprint-health.shop/">a check</a>: upload your X archive at the <a href="/">homepage</a> and the scan runs on your own machine, returning a list sorted by risk. Free and read-only; cleanup scope and pricing are on the <a href="/pricing">pricing page</a>, and security write-ups sit in the <a href="/blog">blog index</a>.</p>
+
+`,
+    faq: [
+      { q: "X 的登录提醒能造假吗？", a: "提醒本身可以是伪造的。邮件和推送容易仿制，判断方法是不要点提醒里的链接，自己打开 X 应用，在安全设置里查看真实的会话列表。列表里没有那条记录，就是伪造的。", qEn: "Can an X login alert be faked?", aEn: "The alert itself can be faked. Email and push notifications are easy to imitate, so skip the link, open the X app yourself, and read the real session list under security settings. If that entry is not there, the alert was fabricated." },
+      { q: "登录位置显示异地，但设备名是我认识的，需要处理吗？", a: "先确认那个界面是不是你自己。常见的误报来源是 VPN、公司网络、校园网和公共 Wi-Fi，这些都会让登录地显示成不认识的地区。如果客户端类型和时间点也对不上，再按异常处理：改密码、踢会话、检查两步验证。", qEn: "The location looks foreign but the device name is familiar. Any action needed?", aEn: "First confirm whether the session was yours. VPNs, corporate networks, campus Wi-Fi and public hotspots all register as unfamiliar regions, which is the usual source of false alarms. If the client type and timing also do not line up, treat it as an incident: change the password, kill sessions, check the second factor." },
+      { q: "改密码之后陌生设备会自动退出吗？", a: "通常会，其他会话会失效，但要登录后在设置里确认一遍。如果那条会话仍在列表里，手动退出，并检查两步验证与绑定邮箱是否被改动过，因为改密码的权限本身可能已经不在你手上。", qEn: "Does changing the password sign the unknown device out automatically?", aEn: "Usually yes, other sessions are invalidated, but confirm it in settings after signing back in. If the entry is still listed, sign it out manually and check whether the second factor and recovery email were changed, since control of the password-change step itself may no longer be yours." },
+      { q: "为什么我经常收到登录提醒？", a: "多数情况是登录环境变化频繁：换网络、清浏览器数据、重装应用、使用多个设备都会触发提醒。持续出现会让人对提醒麻木，真正异常的那次容易被忽略。减少不必要的多设备登录，并在常用设备上保持登录状态，可以减少噪音。", qEn: "Why do I get login alerts so often?", aEn: "Usually because your sign-in environment changes often. Switching networks, clearing browser data, reinstalling the app and using several devices all trigger alerts. Constant alerts dull the response, and the genuinely odd one slips past. Cutting unnecessary sign-ins and staying signed in on your main device reduces the noise." },
+    ],
+  },
+  {
+    slug: "q4-2026-recruiting-season-cleanup",
+    title: "Q4 招聘季倒计时：旧推文该在哪一步处理掉",
+    excerpt:
+      "十月到十二月是一年里招聘动作最集中的一段：秋招收尾、来年预算确定、年终补员。社交内容检索通常发生在这个流程的后半段，也就是候选人已经进入短名单之后。这篇倒推时间点，说明每一周该处理什么，以及哪些动作在面试前做已经来不及。",
+    date: "2026-09-28",
+    updatedAt: "2026-09-28",
+    author: "Digital Footprint Health Team",
+    category: "行业与生态",
+    tags: ["招聘季","背景调查","Q4 时间线","求职准备"],
+    canonical: "/blog/q4-2026-recruiting-season-cleanup",
+    titleEn: "Q4 Hiring Season: When to Clean Up Old Tweets",
+    excerptEn:
+      "October through December is when hiring moves fastest: autumn recruiting wraps up, next year's budgets land, and year-end backfill opens. Public-content searches usually happen in the back half of that process, once a candidate reaches the shortlist. A reverse timeline of what to handle each week, and which steps are too late to take once interviews start.",
+    categoryEn: "Industry and Ecosystem",
+    tagsEn: ["hiring season","background checks","Q4 timeline","job search"],
+    content: `
+
+<p>第四季度是一年里招聘节奏最紧的一段。秋招在这个阶段收尾，来年的人员预算陆续确定，年终补员的岗位同时打开。对求职者来说有一个时间差需要留意：社交内容的检索通常发生在流程的后半段，也就是进入短名单之后；投递阶段基本不会触发。这意味着处理旧内容的窗口比多数人以为的更宽，但也确实有截止点。</p>
+
+<h2>招聘流程里的检索发生在哪一步</h2>
+<p>把典型流程拆开看，每一步的时间关系决定了清理该排在哪里。</p>
+<table>
+  <thead>
+    <tr><th>阶段</th><th>典型时间</th><th>是否会检索公开内容</th><th>清理的意义</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>投递与初筛</td><td>10 月上旬至中旬</td><td>一般不查</td><td>低，但可提前处理高风险项</td></tr>
+    <tr><td>首轮面试</td><td>10 月中至 11 月初</td><td>偶有，多为非正式搜索</td><td>中，影响不大但成本低</td></tr>
+    <tr><td>短名单与终面</td><td>11 月</td><td>较常发生</td><td>高，这一轮的搜索最认真</td></tr>
+    <tr><td>背景调查与入职</td><td>12 月及之后</td><td>按岗位与行业而定</td><td>高，此时内容已经固定</td></tr>
+  </tbody>
+</table>
+<p>真正需要提前排的是第三行。到短名单阶段，搜索往往由具体的用人经理或招聘团队执行，他们会看你在公开平台的发言风格、专业表达和立场性内容，而不只是查有没有负面记录。<a href="/blog/recruiters-check-twitter">招聘方在社交平台上具体看什么</a>那篇把角度列得更细。</p>
+
+<h2>按周倒推的安排</h2>
+<p>从十月初往回排，四周足够处理完绝大多数账号的高风险与中风险项。</p>
+<ol>
+  <li><strong>第一周（10 月上旬）：</strong>清掉直接标识信息。手机号、家庭住址、证件照片、与前雇主的合同截图。这一步的回报最高，也最不受行业差异影响。</li>
+  <li><strong>第二周（10 月中）：</strong>处理与前雇主和同事相关的负面叙述。这类内容对背调的影响比立场性表达更直接，因为它指向具体的机构和个人。</li>
+  <li><strong>第三周（10 月下旬）：</strong>复检账号安全设置，包括两步验证、登录设备、已授权应用。这一步防止已经删掉的内容因为账号问题重新出现，流程见<a href="/blog/social-account-password-manager-setup">密码与两步验证配置</a>。</li>
+  <li><strong>第四周（11 月初）：</strong>生成一份新报告，确认风险清单已经清空，转入不再动手的观察状态。进入终面阶段之后修改公开记录意义不大，重点应该放在面试准备上。</li>
+</ol>
+
+<h2>哪些动作做晚了也没用</h2>
+<p>有几类处理在临近面试时才开始做，效果会明显打折。</p>
+<ul>
+  <li><strong>搜索引擎移除请求。</strong>提交到索引更新生效需要时间，通常以周为单位。十月下旬才提交，大概率赶不上十一月中的搜索。</li>
+  <li><strong>第三方聚合站的搬运内容。</strong>删原帖不影响已经抓走的副本，需要单独联系站点，周期更长。</li>
+  <li><strong>账号整体重建。</strong>换账号意味着丢掉历史与关注关系，在求职阶段通常得不偿失，而且新账号在搜索结果中的位置需要时间积累。</li>
+</ul>
+<p>索引层面的时间成本，与跨年之后隐私与合规窗口的变化叠在一起，会让十二月的处理更慢，相关背景见<a href="/blog/q4-2026-privacy-changes-preview">第四季度隐私变化的预告</a>。</p>
+
+<h2>行业差异值得先确认</h2>
+<p>金融、法律、教育、医疗和政府相关岗位的背调范围通常更宽，公开内容检索更常见。技术与创意岗位多数情况下只看与工作相关的表达。判断自己属于哪一类，可以参考<a href="/blog/social-media-background-check-2026">背景调查的范围差异</a>与<a href="/blog/digital-footprint-recruitment-tools">招聘侧的检索工具生态</a>。如果岗位涉及合规要求，把上面四周的安排提前一个月开始更稳妥。</p>
+<p>求职期间的账号状态维护还有一份更完整的清单，在<a href="/blog/job-search-cleanup">求职期清理</a>那篇里。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>四周的安排要能执行，前提是第一周就有一份明确的清单。<a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 在<a href="/">首页</a>接收 X 数据归档，扫描在本机完成，输出的报告把直接标识信息、机构相关叙述和立场性内容分档列出，正好对应上面每周的动作。体检免费且只读，清理范围与费用见<a href="/pricing">定价页</a>，更多方法类内容在<a href="/blog">博客索引</a>。</p>
+
+`,
+    contentEn: `
+
+<p>The fourth quarter is when hiring moves fastest. Autumn recruiting wraps up, next year's headcount budgets land, and year-end backfill roles open at the same time. One timing detail is worth knowing: public-content searches usually happen in the back half of the process, once a candidate reaches the shortlist, not at the point of application. That gives you a wider window than most people assume, and it does have a cutoff.</p>
+
+<h2>Where the search happens in the pipeline</h2>
+<p>Breaking the process into stages shows where cleanup belongs on the calendar.</p>
+<table>
+  <thead>
+    <tr><th>Stage</th><th>Typical timing</th><th>Public-content search</th><th>Value of cleanup</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Application and screen</td><td>Early to mid October</td><td>Rarely</td><td>Low, though high-risk items can go first</td></tr>
+    <tr><td>First interviews</td><td>Mid October to early November</td><td>Sometimes, often informal</td><td>Medium, low cost either way</td></tr>
+    <tr><td>Shortlist and final rounds</td><td>November</td><td>Common</td><td>High, this is the careful pass</td></tr>
+    <tr><td>Background check and onboarding</td><td>December onward</td><td>Depends on role and industry</td><td>High, and the content is already fixed</td></tr>
+  </tbody>
+</table>
+<p>The third row is the one to plan around. By the shortlist stage, the search is often run by the hiring manager or the recruiting team, and they read tone, professional framing and position-taking in your public posts rather than just looking for red flags. <a href="/blog/recruiters-check-twitter">What recruiters actually look at</a> breaks that angle down further.</p>
+
+<h2>Working backwards, week by week</h2>
+<p>Counting back from early October, four weeks cover the high and medium risk findings on most accounts.</p>
+<ol>
+  <li><strong>Week one (early October):</strong> clear direct identifiers. Phone numbers, home addresses, ID photos, contract screenshots from a previous employer. This step returns the most and varies least by industry.</li>
+  <li><strong>Week two (mid October):</strong> handle negative accounts involving former employers or colleagues. These affect a background check more directly than opinions do, because they name specific institutions and people.</li>
+  <li><strong>Week three (late October):</strong> recheck account security, covering two-factor authentication, signed-in devices and authorised apps. This stops deleted content from reappearing through an account problem; the steps are in <a href="/blog/social-account-password-manager-setup">password and two-factor setup</a>.</li>
+  <li><strong>Week four (early November):</strong> generate a fresh report to confirm the risk list is clear, then stop touching the account. Editing public records once final rounds begin buys little, and interview preparation deserves the time.</li>
+</ol>
+
+<h2>Steps that are too late to start late</h2>
+<p>A few actions lose most of their value if started close to an interview.</p>
+<ul>
+  <li><strong>Search-engine removal requests.</strong> Submission to index update runs on a scale of weeks. Filed in late October, they will likely miss a mid-November search.</li>
+  <li><strong>Content reposted by aggregators.</strong> Deleting the original does not affect copies already captured, and contacting those sites takes longer still.</li>
+  <li><strong>Rebuilding the account from scratch.</strong> A new account discards history and follower relationships, which rarely pays off mid-search, and the new one takes time to accumulate any search presence.</li>
+</ul>
+<p>That indexing lag combines badly with the change in privacy and compliance windows at the turn of the year, which makes December handling slower. Background on that is in <a href="/blog/q4-2026-privacy-changes-preview">the Q4 privacy preview</a>.</p>
+
+<h2>Check your industry first</h2>
+<p>Finance, legal, education, healthcare and government-adjacent roles usually run wider checks, and public-content searches are more common. Technical and creative roles mostly look at work-related expression. To place yourself on that spectrum, see <a href="/blog/social-media-background-check-2026">how background check scope differs</a> and <a href="/blog/digital-footprint-recruitment-tools">the tooling recruiters use</a>. If the role carries compliance requirements, start the four-week plan a month earlier.</p>
+<p>There is a longer checklist for keeping an account in shape during a job search in <a href="/blog/job-search-cleanup">the job-search cleanup guide</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>A four-week plan only runs if week one starts with a clear list. <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> takes an X archive at the <a href="/">homepage</a>, scans it locally, and returns a report that groups direct identifiers, institution-related accounts and position-taking posts into tiers, which maps onto the weekly steps above. The check is free and read-only, cleanup scope and cost are on the <a href="/pricing">pricing page</a>, and further method pieces sit in the <a href="/blog">blog index</a>.</p>
+
+`,
+    faq: [
+      { q: "求职期间清理旧推文，最晚什么时候做？", a: "以短名单阶段为界，建议在进入这一阶段前两周完成。原因是搜索引擎的索引更新和第三方站点搬运的处理都以周为单位，越靠近终面，能改变的东西越少。进入终面之后把时间放在面试准备上更划算。", qEn: "What is the latest point to clean up old tweets during a job search?", aEn: "Use the shortlist stage as the cutoff and finish two weeks before it. Search index updates and third-party repost cleanups both run on a scale of weeks, so the closer you get to final rounds, the less you can change. Past that point, interview preparation is the better use of time." },
+      { q: "招聘方真的会去看候选人的社交账号吗？", a: "取决于岗位和行业。金融、法律、教育、医疗和政府相关岗位的检索更常见，技术与创意岗位多数只看与工作相关的内容。检索多发生在进入短名单之后，由用人经理或招聘团队执行。", qEn: "Do recruiters really check candidates' social accounts?", aEn: "It depends on role and industry. Finance, legal, education, healthcare and government-adjacent roles see it more often, while technical and creative roles usually look at work-related content only. The search most often happens after a candidate reaches the shortlist, run by the hiring manager or recruiting team." },
+      { q: "第四季度清理和明年一月清理有什么区别？", a: "主要差别是处理周期。第四季度提交的索引移除请求，处理时间跨年，遇到节奏放缓会更慢；同时部分隐私与合规窗口在新年切换，规则确认需要额外时间。如果已经确定要清理，在十月到十一月做完全部动作更省事。", qEn: "How does Q4 cleanup differ from cleaning up in January?", aEn: "Mainly turnaround time. Removal requests filed in Q4 run across the year boundary and slow down further when teams wind down, and some privacy and compliance windows reset in January, which adds time to confirm the rules. If you already know cleanup is needed, finishing it in October or November is the easier path." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

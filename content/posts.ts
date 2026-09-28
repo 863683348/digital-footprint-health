@@ -16882,6 +16882,621 @@ rl.on('close', () =&gt; {
       { q: "第四季度清理和明年一月清理有什么区别？", a: "主要差别是处理周期。第四季度提交的索引移除请求，处理时间跨年，遇到节奏放缓会更慢；同时部分隐私与合规窗口在新年切换，规则确认需要额外时间。如果已经确定要清理，在十月到十一月做完全部动作更省事。", qEn: "How does Q4 cleanup differ from cleaning up in January?", aEn: "Mainly turnaround time. Removal requests filed in Q4 run across the year boundary and slow down further when teams wind down, and some privacy and compliance windows reset in January, which adds time to confirm the rules. If you already know cleanup is needed, finishing it in October or November is the easier path." },
     ],
   },
+  {
+    slug: "ai-answer-engines-old-tweets",
+    title: "AI 答案引擎正在重播你的旧推文：先查这三处，再动手",
+    excerpt:
+      "现在查一个人，越来越多人跳过搜索引擎，直接问 AI。Perplexity、Google AI 概览、ChatGPT 搜索把公开网页当检索源，而\"公开网页\"里包含你十年前的推文。这篇拆开旧推文被重播的三条路径，给一份 20 分钟自查清单，再讲怎么让答案引擎抓不到它们。",
+    date: "2026-09-29",
+    updatedAt: "2026-09-29",
+    author: "Digital Footprint Health Team",
+    category: "行业与生态",
+    tags: ["AI 搜索","旧推文","数字足迹","搜索引擎"],
+    canonical: "/blog/ai-answer-engines-old-tweets",
+    titleEn: "AI Answer Engines Are Resurfacing Your Old Tweets",
+    excerptEn:
+      "More people now ask an AI instead of opening a search box. Perplexity, Google AI Overviews and ChatGPT Search pull from public web pages, and public web pages include tweets you wrote a decade ago. This piece walks through the three paths that bring old posts back, a 20-minute self-check, and what actually cuts the supply.",
+    categoryEn: "Industry & Ecosystem",
+    tagsEn: ["AI search","old tweets","digital footprint","search engines"],
+    content: `
+
+<p>2026 年想了解一个人，越来越多人不问搜索引擎，而是直接问 AI。Perplexity、Google AI 概览、ChatGPT 搜索会去抓公开网页，摘一段、总结一段、附上来源链接。关键在于，被当成"公开网页"抓取的东西里，包含你十年前发的那条加班抱怨。</p>
+<p>这件事和传统搜索的体验不一样。旧推文以前要被人主动翻到才有影响，现在它可能被摘要成一句话，直接端到对方面前，连原帖链接都省得点。</p>
+
+<h2>AI 答案引擎和传统搜索，差别在哪</h2>
+<p>传统搜索给的是链接列表，判断权在你手上：十条里点哪条，点开之后信不信。答案引擎给的是结论，链接被压到脚注位置。多数人看完那段总结就停住了，不会再去核原文。</p>
+<p>三个结构性差异值得记住：</p>
+<ul>
+  <li><strong>摘要会脱离上下文。</strong>你当年的原话可能带着自嘲，被摘出来的一句总结没有这个语气，意思就变了。</li>
+  <li><strong>引用比排名更容易被看到。</strong>传统搜索里排名第 40 的页面几乎无人问津，但在答案里作为来源被列出，曝光量级完全不同。</li>
+  <li><strong>回答本身会被再复制。</strong>有人把 AI 答案截图发到群里、写进邮件，内容离开原页面，之后你删原帖也追不回来。</li>
+</ul>
+
+<h2>旧推文是怎么被"重播"出来的</h2>
+<p>搞清楚路径，才知道该在哪一层动手。实际有三条，各自独立。</p>
+<h3>路径一：实时检索抓取</h3>
+<p>答案引擎的爬虫按自己的节奏访问公开页面。X 的公开推文页是否被抓，取决于平台当时的爬虫策略与 robots 声明。这一层是动态的：平台今天放、明天收，你无法直接控制，只能通过删除源头内容让页面本身消失。</p>
+<h3>路径二：索引快照</h3>
+<p>爬虫抓过一次，内容就进了它的存储。你后来删了原帖，快照未必同步更新。更新频率是各家的实现细节，通常以天到周为单位，不会即时跟上你的操作。这一层靠等待和后续请求，急不来。</p>
+<h3>路径三：第三方镜像与聚合站</h3>
+<p>真正让旧推文长期存活的常常是这一层。各种"推文存档""名人发言合集""热搜留档"站点会成批搬运内容，并把页面留在公开网络上。它们被答案引擎抓取的优先级有时比原帖还高，因为页面更集中、更长、更容易摘。这一层你在 X 上做任何操作都影响不到。</p>
+
+<h2>20 分钟自查：三个入口</h2>
+<p>先看现状再决定要不要动手。三个入口，用小号或登出状态查，避免自己看到的结果被登录态影响。</p>
+<table>
+  <tr><th>入口</th><th>怎么查</th><th>看到什么算需要处理</th></tr>
+  <tr><td>AI 答案引擎</td><td>直接提问"<你的名字> 说过什么 / 有什么争议"，换两种问法问一遍</td><td>答案里出现你从没公开提过的事，或引用了某条旧推文</td></tr>
+  <tr><td>传统搜索</td><td>搜姓名、常用网名、邮箱前缀，加不加引号各试一次</td><td>前两页出现推文存档站或聚合页</td></tr>
+  <tr><td>镜像站排查</td><td>用站点限定搜一次，例如只看第三方存档域</td><td>出现与你账号同名或同 ID 的存档页</td></tr>
+</table>
+<p>这三个入口查出的东西常常不一致，属于正常。同一个问题在三个入口结果不同，说明它命中了不同的数据层，处理方式也不同。</p>
+<p>想要更系统的排查顺序，可以先看<a href="/blog/google-remove-old-tweets-from-search">从搜索索引里移除旧推文的流程</a>，那边讲的是请求与响应周期；本文讲的是另一条链路。</p>
+
+<h2>让答案引擎抓不到：按层断供</h2>
+<p>没有一键开关，只能分层处理。按性价比排序：</p>
+<ol>
+  <li><strong>先删源头。</strong>包含手机号、住址、单位、身份证件的帖子优先。<a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>这类工具能从归档里把这类帖子按风险分层拉出来，比靠记忆翻推文快得多。</li>
+  <li><strong>再处理公开账号状态。</strong>把账号转为不公开、或清理长期不用的公开账号，会让一批历史页面对未登录访问者失效。这一步影响面大，做之前想清楚哪些内容你还想留着。</li>
+  <li><strong>单独处理第三方存档站。</strong>对镜像页走该站自己的移除流程，或直接联系站长。这个过程按站点逐个走，没有批量捷径。</li>
+  <li><strong>最后才考虑索引刷新请求。</strong>传统搜索引擎有移除工具，AI 答案引擎多数没有对应的自助入口。<a href="/blog/ai-training-on-your-old-posts">旧帖被用于模型训练</a>是另一件事，处理路径也不同。</li>
+</ol>
+
+<h2>多久见效</h2>
+<table>
+  <tr><th>动作</th><th>典型响应周期</th><th>说明</th></tr>
+  <tr><td>删除源帖</td><td>页面即时消失</td><td>但快照与镜像页不受影响</td></tr>
+  <tr><td>搜索引擎移除请求</td><td>数天到数周</td><td>按各引擎的审核节奏</td></tr>
+  <tr><td>AI 索引快照更新</td><td>一到数周</td><td>取决于该引擎的抓取与刷新策略</td></tr>
+  <tr><td>第三方存档站处理</td><td>完全不确定</td><td>取决于对方是否回应</td></tr>
+</table>
+<p>如果旧推文已经进入了一桩具体纠纷，处理顺序还要变。涉及举证和保留义务时，先看<a href="/blog/old-tweets-as-court-evidence">旧推文被当作证据时的处理边界</a>，再决定哪些能动、哪些不能动。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>断供的第一步永远是知道源头有哪些。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单。体检免费且只读，不删除任何内容；清理的范围与计费方式在<a href="/pricing">定价页</a>，方法论文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>In 2026, finding out about someone increasingly means asking an AI rather than opening a search box. Perplexity, Google AI Overviews and ChatGPT Search crawl public web pages, lift a passage, summarise it and attach a source link. The catch is that "public web pages" includes the complaint about your old job that you posted ten years ago.</p>
+<p>That is a different experience from classic search. An old tweet used to require someone actively digging for it. Now it can be compressed into a single sentence and handed over directly, with no need to click through to the original post.</p>
+
+<h2>How answer engines differ from classic search</h2>
+<p>Classic search returns a list of links and leaves the judgement with you: pick from ten results, then decide whether to trust what you open. An answer engine returns a conclusion and pushes the links down to a footnote position. Most readers stop after the summary and never check the original.</p>
+<p>Three structural differences are worth remembering:</p>
+<ul>
+  <li><strong>Summaries lose their context.</strong> Your original wording may have been self-deprecating. A single extracted sentence carries none of that tone, so the meaning shifts.</li>
+  <li><strong>A citation is more visible than a ranking.</strong> A page sitting at position 40 in classic search is effectively invisible, while the same page listed as a source under an answer reaches a completely different scale of exposure.</li>
+  <li><strong>The answer gets copied onward.</strong> People screenshot AI answers into group chats and email threads. Once the content leaves the page, deleting the original post no longer reaches it.</li>
+</ul>
+
+<h2>The three paths that bring an old tweet back</h2>
+<p>Knowing which layer is delivering the post tells you where to act. There are three, and they operate independently.</p>
+<h3>Path one: live crawling</h3>
+<p>Answer engine crawlers visit public pages on their own schedule. Whether a public X post page gets crawled depends on the platform's crawler policy and robots declarations at that moment. This layer is dynamic: a platform can allow it today and block it tomorrow. You cannot control it directly. Removing the source content so the page itself disappears is the lever available to you.</p>
+<h3>Path two: cached indexes</h3>
+<p>Once a crawler has read a page, the content sits in its storage. If you delete the post afterwards, the cache does not necessarily update in step. Refresh intervals are an implementation detail of each provider and usually run on a scale of days to weeks rather than following your action in real time. This layer is a waiting game followed by a removal request.</p>
+<h3>Path three: third-party mirrors and aggregators</h3>
+<p>This is usually the layer that keeps an old tweet alive for years. Various archive sites, quote collections and trending-topic dump pages repost content in bulk and leave the pages on the open web. Answer engines sometimes crawl those pages more readily than the original, because the page is denser, longer and easier to extract from. Nothing you do inside X touches this layer.</p>
+
+<h2>A 20-minute self-check in three places</h2>
+<p>Look before you act. Run all three checks while logged out or from a secondary account, so your logged-in state does not filter what you see.</p>
+<table>
+  <tr><th>Where</th><th>How to check</th><th>What counts as a problem</th></tr>
+  <tr><td>AI answer engines</td><td>Ask directly what your name has said or been criticised for, then rephrase and ask again</td><td>The answer contains something you never said publicly, or cites a specific old post</td></tr>
+  <tr><td>Classic search</td><td>Search your name, your usual handle and your email prefix, with and without quotation marks</td><td>An archive site or aggregator page appears on the first two pages</td></tr>
+  <tr><td>Mirror sweep</td><td>Run a site-restricted search that targets third-party archive domains only</td><td>An archive page carries your account name or handle</td></tr>
+</table>
+<p>Results across the three rarely match, and that is expected. The same question returning different results in different places means it hit different data layers, which means different fixes apply.</p>
+<p>For a fuller sequence, the process for <a href="/blog/google-remove-old-tweets-from-search">removing old tweets from search indexes</a> covers the request-and-response cycle. This piece deals with the other chain.</p>
+
+<h2>Cutting the supply, layer by layer</h2>
+<p>There is no single switch. Work through the layers in order of return on effort:</p>
+<ol>
+  <li><strong>Delete the source first.</strong> Posts carrying phone numbers, home addresses, employers or identity documents come before everything else. A tool such as <a href="/blog/what-is-digital-footprint-check">a digital footprint check</a> can pull those out of your archive by risk tier, which beats scrolling through ten years of posts from memory.</li>
+  <li><strong>Then revisit account visibility.</strong> Making an account private, or clearing out long-dormant public accounts, invalidates a batch of historic pages for logged-out visitors. The blast radius is large, so decide what you still want to keep before touching it.</li>
+  <li><strong>Handle mirror sites one at a time.</strong> Use each site's own removal process or contact the operator. This runs site by site, with no bulk shortcut.</li>
+  <li><strong>Leave index refresh requests for last.</strong> Classic search engines have removal tooling. Most answer engines have no equivalent self-service path. Whether your content was <a href="/blog/ai-training-on-your-old-posts">used to train a model</a> is a separate question with its own route.</li>
+</ol>
+
+<h2>How long each fix takes</h2>
+<table>
+  <tr><th>Action</th><th>Typical turnaround</th><th>Notes</th></tr>
+  <tr><td>Deleting the source post</td><td>The page disappears immediately</td><td>Caches and mirror pages are unaffected</td></tr>
+  <tr><td>Search engine removal request</td><td>Days to weeks</td><td>Follows each engine's review queue</td></tr>
+  <tr><td>AI cache refresh</td><td>One to several weeks</td><td>Depends on that provider's crawl and refresh policy</td></tr>
+  <tr><td>Third-party archive site</td><td>Fully unpredictable</td><td>Depends entirely on whether the operator replies</td></tr>
+</table>
+<p>If an old post is already part of a live dispute, the order changes. Where retention obligations apply, read <a href="/blog/old-tweets-as-court-evidence">how old tweets are treated as evidence</a> before deciding which posts can still be removed.</p>
+
+<h2>What stays outside your reach</h2>
+<p>Be clear about the limits, because most of the frustration in chasing an old post comes from expecting a fix that does not exist.</p>
+<ul>
+  <li><strong>You cannot force a cache refresh.</strong> Providers do not publish their refresh intervals and offer no button for it. Filing a request and waiting is the entire procedure.</li>
+  <li><strong>You cannot remove a screenshot.</strong> Once someone has saved the image, it lives outside every system you control. The only available lever is asking the person who holds it.</li>
+  <li><strong>You cannot recall a copy that was already pasted.</strong> People drop AI answers into email threads and slide decks. That copy has left the index for good.</li>
+  <li><strong>You cannot reach every reader with a correction.</strong> Someone who read the summary last month may never see the update. Once content spreads, reach matters more than accuracy.</li>
+</ul>
+<p>There is a maintenance angle here too. Content that was already crawled tends to reappear through new mirrors long after you stop watching, so the workable rhythm is a check before each event that invites searching rather than permanent monitoring. Two passes a year, placed ahead of job changes and applications, catch most of what matters.</p>
+<p>What stays within reach is narrower and more useful: make the source disappear, narrow what remains publicly listed, and work through mirrors one at a time. The rest is patience, and it is worth budgeting for it instead of treating every slow week as a failure.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Cutting the supply starts with knowing what the supply is. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post on your own device, returning a risk list grouped into contact details, location data, institutional ties and opinion posts. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups live in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "Perplexity 或 ChatGPT 里出现我的旧推文，能直接要求删除吗？", a: "大多数 AI 答案引擎没有面向个人的\"帮我删掉这条引用\"自助入口。可行路径是删掉源头页面，让它下一次抓取时抓不到；如果引用来自第三方存档站，还需要单独处理那个站点的页面，这一层和 AI 厂商是分开的两件事。", qEn: "Can I ask Perplexity or ChatGPT to remove a quote from my old tweet?", aEn: "Most answer engines offer no self-service \"remove this citation\" option for individuals. The workable path is to remove the source page so the next crawl cannot pick it up. If the quote comes from a third-party archive site, that page needs its own takedown process. The two layers are separate." },
+      { q: "我把推文删了，AI 的答案里为什么还看得到？", a: "因为答案可能来自索引快照或第三方镜像页，原帖未必还参与其中。快照更新通常以天到周为单位，不会跟着你的删除操作即时变化；镜像页更是完全独立，你删原帖对它没有任何影响。", qEn: "I deleted the tweet, so why does the AI answer still show it?", aEn: "Because the answer may be drawing on a cached index or a third-party mirror page rather than the original post. Cache refreshes typically run on a scale of days to weeks and do not track your deletion in real time, while mirror pages are fully independent and are unaffected by anything you do on X." },
+      { q: "账号转成不公开，能挡住多少？", a: "能挡住未登录访问者对历史页面的直接查看，也降低了被抓取的概率，但已经进入索引或已被镜像的内容不会因此消失。而且转不公开会影响你所有粉丝，做之前要确认自己愿意承担这个代价。", qEn: "How much does switching the account to private block?", aEn: "It blocks logged-out visitors from browsing your history directly and lowers the chance of fresh crawls, but content already indexed or already mirrored does not disappear. Going private also affects every follower, so it is worth confirming you accept that cost before doing it." },
+      { q: "多久查一次比较合适？", a: "每次换工作、申请签证、发布新作品这类会引来检索的节点前查一次就够。日常不必频繁查，这类索引变化很慢，一周查三次和一季度查一次看到的结果通常没什么差别。", qEn: "How often is it worth checking?", aEn: "Once before each event that invites searching, such as a job change, a visa application or a launch. There is no need to check daily: index changes move slowly, so checking three times a week and checking once a quarter usually surfaces the same results." },
+    ],
+  },
+  {
+    slug: "second-hand-embarrassment-old-posts",
+    title: "翻到自己十年前的推文会脸红，这个反应其实有用",
+    excerpt:
+      "翻旧推文时那种想立刻关掉页面的感觉，不是玻璃心，也不是矫情。它来自一个具体机制：评价标准变了，但记录没有跟着更新。这篇讲清尴尬感的来源，怎么把它变成一份可执行的检查表，以及为什么不该因为尴尬就把内容全删。",
+    date: "2026-09-29",
+    updatedAt: "2026-09-29",
+    author: "Digital Footprint Health Team",
+    category: "心理与习惯",
+    tags: ["旧推文","清理心态","数字极简","数字足迹"],
+    canonical: "/blog/second-hand-embarrassment-old-posts",
+    titleEn: "Cringing at Your Old Tweets Is Actually Useful",
+    excerptEn:
+      "The urge to close the tab when you read your own decade-old posts is not fragility. It comes from a specific mechanism: your standards moved and the record did not. Here is where the feeling comes from, how to turn it into a workable checklist, and why deleting everything in a flush of embarrassment is the wrong move.",
+    categoryEn: "Mindset & Habits",
+    tagsEn: ["old tweets","cleanup mindset","digital minimalism","digital footprint"],
+    content: `
+
+<p>很多人第一次认真翻自己的 X 历史记录，会在十几分钟内经历三个阶段：好奇、皱眉、想直接把页面关掉。有人会怀疑自己是不是太容易受影响，其实这个反应很常见，而且它有具体来源。</p>
+<p>尴尬感不是性格问题，是信息差。当年发那条推文时，你手上只有当时的信息；现在回头看，你手上有十年的后续经验。两个版本的你，评价标准不一样。</p>
+
+<h2>尴尬感是怎么产生的</h2>
+<p>拆开来看，至少三个机制在同时作用。</p>
+<h3>标准变了，记录没变</h3>
+<p>人的判断标准大约每几年会换一轮。二十岁时觉得幽默的玩笑，三十岁看是刻薄；刚工作时觉得坦率的吐槽，现在看是把情绪留在了公开场合。推文本身没动，是衡量它的尺子换了。</p>
+<h3>观众变了</h3>
+<p>发帖当下，你的观众是当时那几十个互关好友。现在这条推文的潜在读者包括招聘方、合作方、客户，以及任何搜索你名字的人。同一句话，在两套观众面前的成本完全不同。</p>
+<h3>记录是切片，记忆是剪辑</h3>
+<p>你记得的自己是连贯的，有起因有过程。推文只保留脱离上下文的那一句。看到切片被当成全部，本身就是一种不适感来源。</p>
+
+<h2>三种反应，只有一种是信号</h2>
+<p>尴尬之后通常会出现三种后续想法，值得分开看。</p>
+<table>
+  <tr><th>反应</th><th>要不要当回事</th><th>原因</th></tr>
+  <tr><td>"这条别留着了"</td><td>值得当回事</td><td>指向一条具体内容，是可执行判断</td></tr>
+  <tr><td>"我怎么这么幼稚"</td><td>不必当回事</td><td>针对的是过去的自己，不是现在的风险</td></tr>
+  <tr><td>"全删了算了"</td><td>需要警惕</td><td>一次性清空会连你真正想保留的内容一起清掉</td></tr>
+</table>
+<p>第三种反应尤其值得警惕。它有很强的即时缓解作用，删完当下确实轻松，代价是把那些记录着你职业转折、真实关系、重要节点的帖子一起处理掉了。清理成瘾和清理需求是两回事，<a href="/blog/cleanup-addiction-when-to-stop">什么时候该停</a>这个话题值得单独看。</p>
+
+<h2>把尴尬感变成检查表</h2>
+<p>尴尬的准确用法是做筛子，不做判决。用这几条过滤，比凭情绪决定去留稳定得多。</p>
+<ol>
+  <li><strong>它会不会被误读？</strong>离开上下文之后，这句话会不会得出你不想看到的结论。会，就进待处理清单。</li>
+  <li><strong>它带了什么信息？</strong>手机号、邮箱、住址、公司内部信息、证件照片，这类不看语气，直接处理。</li>
+  <li><strong>现在的你愿意公开重复一遍吗？</strong>愿意，就留下。不愿意但也不危险，可以留着，它记录的是当时的你。</li>
+  <li><strong>它有没有对具体的人不好？</strong>点名嘲讽、泄露他人信息、未经同意转发他人内容，这几类即使语气温和也该处理。</li>
+</ol>
+<p>按这四条过一遍，绝大多数旧帖会被留在中间地带。真正需要动的通常远少于情绪推动下的第一反应。如果翻完之后留下的是持续焦虑，而非短促的尴尬，那属于另一条线，可以看<a href="/blog/old-tweets-anxiety-cleanup">旧推文引发的持续焦虑怎么处理</a>。</p>
+
+<h2>为什么不该因为尴尬就清空</h2>
+<p>全部清掉看起来最省事，实际上有三个代价。</p>
+<ul>
+  <li><strong>你会删掉自己想留的。</strong>情绪状态下做批量判断，标准的稳定性最差。三个月后回头找某条记录，才发现连它一起没了。</li>
+  <li><strong>尴尬会重复发生。</strong>删的是内容，不是"用现在的标准审判过去的自己"这个习惯。下一次翻旧内容，同样的流程会再来一遍。</li>
+  <li><strong>记录本身有价值。</strong>旧推文里有你换城市、换行业、认识重要的人的时间线。全部清空等于把这份时间线也交出去。关于囤积和保留的边界，可以看<a href="/blog/digital-hoarding-old-tweets">数字囤积</a>那一篇的分层做法。</li>
+</ul>
+<p>合理的做法是分层：少量必须处理的，一批愿意保留但需要收窄可见范围的，剩下的原样留着。这个思路和<a href="/blog/digital-minimalism-twitter">数字极简</a>里的取舍逻辑一致，只是入口换成了尴尬感。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>尴尬感能指出方向，但指不出准确位置。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机逐条解析，把联系方式、地址定位、机构关联和立场表达分开列出，你可以只看高风险那几层，不必从头翻完十年记录。体检免费且只读，清理范围与计费方式见<a href="/pricing">定价页</a>，其余方法文章在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Most people who sit down with their full X history go through three stages inside fifteen minutes: curiosity, a frown, then a strong urge to close the tab. Some wonder whether they are simply too easily affected. The reaction is common and it has an identifiable source.</p>
+<p>The discomfort is not a personality flaw. It is an information gap. When you posted that tweet you had only the information available then. Reading it now, you have ten years of hindsight. The two versions of you are working from different standards.</p>
+
+<h2>Where the cringe actually comes from</h2>
+<p>Unpacked, at least three mechanisms run at the same time.</p>
+<h3>Your standards moved, the record did not</h3>
+<p>Judgement criteria tend to turn over every few years. A joke that felt funny at twenty reads as needlessly sharp at thirty. A candid workplace complaint that felt brave in your first job now looks like emotion parked in public. The tweet never changed. The ruler used to measure it did.</p>
+<h3>The audience changed</h3>
+<p>When you posted it, your audience was several dozen mutuals. The potential readers now include recruiters, clients, partners and anyone who searches your name. The same sentence carries a completely different cost in front of the second audience.</p>
+<h3>A record is a slice, memory is an edit</h3>
+<p>You remember yourself as continuous, with causes and consequences attached. A tweet preserves only the sentence that survived, stripped of context. Seeing a single slice treated as the whole thing is uncomfortable on its own.</p>
+
+<h2>Three reactions, only one is a signal</h2>
+<p>Three follow-up thoughts tend to appear after the initial cringe. They are worth separating.</p>
+<table>
+  <tr><th>Reaction</th><th>Take it seriously?</th><th>Why</th></tr>
+  <tr><td>"I should not leave this up"</td><td>Yes</td><td>It points at a specific post and is actionable</td></tr>
+  <tr><td>"I was so immature"</td><td>No</td><td>It judges a past self, not a present risk</td></tr>
+  <tr><td>"I should just delete everything"</td><td>Treat with caution</td><td>A single sweep takes out the posts you actually want to keep</td></tr>
+</table>
+<p>The third one deserves the most caution. It relieves the feeling immediately, and the cost is losing the posts that mark career turns, real relationships and significant dates. Cleanup appetite and cleanup need are different things, and <a href="/blog/cleanup-addiction-when-to-stop">when to stop</a> is worth reading on its own.</p>
+
+<h2>Turning the cringe into a checklist</h2>
+<p>The accurate use of embarrassment is as a filter, not a verdict. These four questions are far more consistent than deciding by mood.</p>
+<ol>
+  <li><strong>Could it be misread?</strong> Read without context, does it produce a conclusion you would not want? If yes, it goes on the list.</li>
+  <li><strong>What information does it carry?</strong> Phone numbers, emails, home addresses, internal company details, photos of documents. These skip the tone question and get handled directly.</li>
+  <li><strong>Would present-day you say it in public again?</strong> If yes, keep it. If no but it is not risky, keeping it is fine. It records who you were.</li>
+  <li><strong>Does it harm a specific person?</strong> Named mockery, someone else's private details, material reposted without consent. These get handled even when the tone is mild.</li>
+</ol>
+<p>Run those four and most old posts land in the middle, staying where they are. The set that genuinely needs action is usually much smaller than the first emotional pass suggests. If reading through leaves you with ongoing anxiety rather than a brief pang, that follows a different track, covered in <a href="/blog/old-tweets-anxiety-cleanup">handling anxiety about old tweets</a>.</p>
+
+<h2>Why a full wipe is the wrong response</h2>
+<p>Clearing everything looks like the least effort. It carries three costs.</p>
+<ul>
+  <li><strong>You delete things you wanted.</strong> Bulk decisions made while emotional are the least stable kind. Three months later you go looking for a particular record and find it went with the rest.</li>
+  <li><strong>The cringe comes back.</strong> What got deleted was content, not the habit of judging a past self by present standards. The next time you read old material, the same cycle runs again.</li>
+  <li><strong>The record has value.</strong> Old tweets hold the timeline of cities moved, industries changed and people met. A full wipe hands that timeline over too. For the line between hoarding and keeping, the tiered approach in <a href="/blog/digital-hoarding-old-tweets">digital hoarding</a> is the practical version.</li>
+</ul>
+<p>The sensible shape is tiering: a small set that must be handled, a batch worth keeping but worth narrowing in visibility, and the rest left alone. That mirrors the trade-off logic in <a href="/blog/digital-minimalism-twitter">digital minimalism</a>, with embarrassment as the entry point instead.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Cringe points at a direction but not at a location. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses it on your own device, listing contact details, location data, institutional ties and opinion posts as separate groups, so you can work only the high-risk tiers instead of reading ten years end to end. The check is free and read-only. Cleanup scope and pricing are on the <a href="/pricing">pricing page</a>, and the rest of the method write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "看旧推文觉得尴尬，是不是说明我心态有问题？", a: "多数情况下不是。尴尬感的来源是评价标准随时间更新，而记录停留在原处，这是一种信息差带来的正常反应。只有当它变成持续焦虑、反复检查停不下来，才需要当成另一类问题处理。", qEn: "Does cringing at my old tweets mean something is wrong with me?", aEn: "Usually not. The feeling comes from your standards updating over time while the record stays where it was, which is a normal response to an information gap. It only becomes a separate issue when it turns into ongoing anxiety or repeated checking you cannot stop." },
+      { q: "删掉那些让我尴尬的推文，就会好受吗？", a: "短期内会。但如果没有改变判断方式，下次翻旧内容时同样的流程会重演。更重要的是，在情绪状态下批量删除，容易把你想保留的记录一起清掉，回头再找通常找不回来。", qEn: "Will deleting the embarrassing posts make me feel better?", aEn: "In the short term, yes. But without changing how you judge the posts, the same cycle repeats the next time you look. The bigger risk is that bulk deleting while emotional takes out records you wanted to keep, and those are usually not recoverable." },
+      { q: "隔多久回头看一次比较合适？", a: "以年度为节奏比较稳。清理类动作放在换工作、申请、发布作品这类节点之前做一次就够。频繁回看会强化尴尬感，而内容本身变化很慢，看不看差别不大。", qEn: "How often should I look back?", aEn: "An annual rhythm works well. A cleanup pass before events such as a job change, an application or a launch covers most needs. Frequent revisits reinforce the discomfort while the content itself barely changes, so little is gained." },
+      { q: "如果我想留一部分，节点怎么定？", a: "按\"这条以后会不会被当成误解证据\"分。会被误读的收窄可见范围或删除，记录个人节点的、对他人没有影响的留着。判断标准是误读风险，不是当时写得够不够好。", qEn: "If I want to keep some, where do I draw the line?", aEn: "Sort by whether a post could later be read as evidence of something you did not mean. Narrow the visibility of those or delete them, and keep the ones marking personal milestones with no effect on anyone else. The test is misreading risk, not how well written the post was." },
+    ],
+  },
+  {
+    slug: "x-session-revocation-all-devices",
+    title: "点了\"登出所有设备\"还是被登着：X 会话吊销的完整做法",
+    excerpt:
+      "登出所有设备只处理了一类凭证。浏览器会话、第三方应用的 OAuth 授权、以及历史 API 令牌是三套独立的东西，任何一套没清掉，访问权就还在。这篇把三者拆开，给出逐项吊销的顺序和吊销之后必须复查的清单。",
+    date: "2026-09-29",
+    updatedAt: "2026-09-29",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    tags: ["账号安全","会话管理","X/Twitter","授权审查"],
+    canonical: "/blog/x-session-revocation-all-devices",
+    titleEn: "Logging Out Everywhere Is Not Enough: X Session Revocation Explained",
+    excerptEn:
+      "Logging out of all devices only clears one kind of credential. Browser sessions, OAuth grants to third-party apps and legacy API tokens are three separate things, and access survives as long as any one of them is live. Here is how to tell them apart, the order to revoke in, and what to re-check afterwards.",
+    categoryEn: "Account Security",
+    tagsEn: ["account security","session management","X/Twitter","access audit"],
+    content: `
+
+<p>账号出现异常登录时，大多数人的第一反应是进设置点"登出所有设备"。做完之后重新登录，以为事情结束了。过几天再看，某台没见过的设备记录又出现了。它从来不是靠浏览器的登录状态留在里面的。</p>
+<p>X 上的访问权分布在三套互相独立的凭证系统里。"登出所有设备"只清掉第一套。</p>
+
+<h2>三套凭证，别混为一谈</h2>
+<h3>浏览器会话</h3>
+<p>这是"登出所有设备"处理的对象。每台设备登录后持有一个会话凭证，过期时间按平台的策略走。吊销之后，那台设备下次操作会被要求重新登录。</p>
+<h3>第三方应用的 OAuth 授权</h3>
+<p>你用过"用 X 登录"的应用、发帖排程工具、数据分析面板，都持有长期授权。这类授权不经过浏览器登录状态，登出所有设备对它没有任何影响。它们拿到的是权限，不是会话。</p>
+<h3>API 令牌与应用密钥</h3>
+<p>如果你注册过开发者应用、跑过脚本、用过第三方删除工具，可能还留着访问令牌和密钥。这类凭证一旦泄露，攻击者可以完全不碰登录页面就操作用你的账号。历史令牌常常被遗忘，因为注册时填完就没再管过。</p>
+
+<h2>按顺序逐项吊销</h2>
+<p>顺序不是随意的。先处理范围最大的，再处理最细的，最后才轮到改密码，否则会把自己新改的密码又暴露在仍然有效的授权里。</p>
+<table>
+  <tr><th>顺序</th><th>处理对象</th><th>在哪做</th><th>影响范围</th></tr>
+  <tr><td>1</td><td>不认识或不再使用的第三方应用授权</td><td>账号的已连接应用列表</td><td>该应用立即失去读写权限</td></tr>
+  <tr><td>2</td><td>历史 API 令牌与开发者应用</td><td>开发者后台的应用管理</td><td>所有使用该令牌的脚本与工具失效</td></tr>
+  <tr><td>3</td><td>所有设备的浏览器会话</td><td>账号安全设置里的登出全部设备</td><td>全部设备需重新登录</td></tr>
+  <tr><td>4</td><td>账号密码</td><td>账号设置</td><td>配合第 3 步一起完成</td></tr>
+  <tr><td>5</td><td>双重验证方式复查</td><td>账号安全设置</td><td>确认恢复方式没有被替换</td></tr>
+</table>
+<p>第 1 步的排查方法比列表本身更麻烦，因为授权记录通常只显示应用名称，不显示它具体拿了什么权限。<a href="/blog/x-connected-apps-permission-audit">已连接应用的权限审查</a>把这件事拆成了逐项核对流程，可以配合着做。</p>
+
+<h2>吊销之后必须复查的四件事</h2>
+<p>吊销动作本身不会告诉你有没有被人提前动手脚，所以复查不能省。</p>
+<ol>
+  <li><strong>登录记录。</strong>看吊销时间点前后有没有出现你无法对应的设备或位置。重点是吊销之后还有没有新的。</li>
+  <li><strong>联系方式。</strong>确认账号绑定的邮箱和手机号仍然是你自己的。攻击者常见手法是先把恢复邮箱换成自己的，这样你改密码也救不回来。</li>
+  <li><strong>已发内容与私信。</strong>检查有没有非本人发布的帖子、被改过的简介、异常的关注与取关记录。</li>
+  <li><strong>恢复代码与备用方式。</strong>重新生成一次双重验证的恢复代码，旧的作废。恢复代码截图如果存在相册或云笔记里，一并处理。</li>
+</ol>
+<p>如果吊销之前已经确认被人登录过，处理顺序要调整，先按<a href="/blog/twitter-account-takeover-recovery">账号被接管的恢复流程</a>走，把找回控制权放在清理之前。你判断不清是被接管还是钓鱼导致，可以先看<a href="/blog/x-phishing-dm-scams">私信钓鱼的常见形态</a>对照一下特征。</p>
+
+<h2>什么时候需要走到这一步</h2>
+<p>日常不必频繁吊销，会打断自己在用设备上的登录。这几种情况下值得完整做一遍。</p>
+<ul>
+  <li>收到陌生设备登录提醒，或登录记录里出现无法解释的条目。</li>
+  <li>手机丢失、送修、转卖，或者旧电脑淘汰。</li>
+  <li>你在多个第三方工具之间切换过，且记不清授权过哪些应用。</li>
+  <li>有账号关联的邮箱曾经被撞库，即使当时没有发现异常。</li>
+</ul>
+<p>吊销完成后，把双重验证补齐是性价比最高的一步。<a href="/blog/enable-2fa-x-account">双重验证的设置方式</a>那一篇讲了不同验证形式的取舍，选哪种都比只靠密码强。</p>
+<p>需要说明的是，吊销会话解决的是访问权问题，和你账号里那批存在风险的历史推文是两件事。前者是门锁，后者是屋里放了什么。如果你正在同时处理这两条线，可以从<a href="/blog/login-device-audit-x-account">登录设备审查</a>入手，先把门锁确认好。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>控制权确认之后，剩下的问题是账号里有什么。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联和立场表达分层输出清单，不需要联网上传，也不删除任何内容。清理范围与计费方式在<a href="/pricing">定价页</a>，账号安全周边文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>When an account shows an unfamiliar sign-in, the reflex is to go into settings and log out of all devices. Then you sign back in and assume it is handled. A few days later a device you do not recognise appears in the list again, because it was never staying in through browser login state.</p>
+<p>On X, access lives in three separate credential systems. Logging out everywhere clears one of them.</p>
+
+<h2>Three credential types, not one</h2>
+<h3>Browser sessions</h3>
+<p>This is what "log out of all devices" handles. Each device that signs in holds a session credential with a lifetime set by the platform. Once revoked, that device has to sign in again on its next action.</p>
+<h3>OAuth grants to third-party apps</h3>
+<p>Any app you signed into with X, any scheduling tool, any analytics dashboard holds a long-lived grant. That grant does not run through browser login state, so logging out everywhere has no effect on it. What the app holds is permission, not a session.</p>
+<h3>API tokens and app keys</h3>
+<p>If you registered a developer app, ran a script or used a third-party deletion tool, you may still have access tokens and keys in place. A leaked token lets an attacker operate your account without ever touching the login page. Legacy tokens are frequently forgotten because nobody revisits them after registration.</p>
+
+<h2>Revoke in this order</h2>
+<p>The order is not arbitrary. Handle the widest scope first, the narrowest last, and change the password only after that, otherwise a new password ends up exposed inside grants that are still active.</p>
+<table>
+  <tr><th>Step</th><th>What to clear</th><th>Where</th><th>Effect</th></tr>
+  <tr><td>1</td><td>Third-party app grants you do not recognise or no longer use</td><td>Connected apps list in account settings</td><td>The app loses read and write access immediately</td></tr>
+  <tr><td>2</td><td>Legacy API tokens and developer apps</td><td>App management in the developer dashboard</td><td>Every script and tool using that token stops working</td></tr>
+  <tr><td>3</td><td>Browser sessions on all devices</td><td>The log-out-everywhere control in security settings</td><td>All devices must sign in again</td></tr>
+  <tr><td>4</td><td>Account password</td><td>Account settings</td><td>Done together with step 3</td></tr>
+  <tr><td>5</td><td>Two-factor method review</td><td>Security settings</td><td>Confirm recovery methods were not swapped out</td></tr>
+</table>
+<p>Step one is harder than the list makes it sound, because grant entries typically show an app name and nothing about which permissions it holds. <a href="/blog/x-connected-apps-permission-audit">Auditing connected app permissions</a> breaks that into a checklist worth running alongside this.</p>
+
+<h2>Four things to re-check after revoking</h2>
+<p>Revoking does not tell you whether someone acted before you got there, so the follow-up pass is not optional.</p>
+<ol>
+  <li><strong>Sign-in history.</strong> Look for devices or locations around the revocation that you cannot account for. What matters most is whether anything new appears afterwards.</li>
+  <li><strong>Contact details.</strong> Confirm the linked email and phone number are still yours. A common move is to swap in the attacker's recovery email first, which makes a password change useless on its own.</li>
+  <li><strong>Posts and direct messages.</strong> Check for content you did not publish, an edited bio, and follow or unfollow activity you cannot explain.</li>
+  <li><strong>Recovery codes.</strong> Regenerate the two-factor recovery codes and invalidate the old set. If a screenshot of the old codes sits in a photo library or cloud note, deal with that too.</li>
+</ol>
+<p>If you have confirmed someone did get in before you revoked, change the sequence and work through <a href="/blog/twitter-account-takeover-recovery">recovering a taken-over account</a> before any cleanup, since regaining control comes first. If you cannot tell takeover from a phishing outcome, comparing against <a href="/blog/x-phishing-dm-scams">common direct-message phishing patterns</a> helps narrow it down.</p>
+
+<h2>When a full revocation is worth it</h2>
+<p>There is no need to do this routinely, since it interrupts your own signed-in devices. These cases justify a complete pass.</p>
+<ul>
+  <li>A sign-in alert arrives, or the history holds an entry you cannot explain.</li>
+  <li>A phone is lost, sent for repair or sold, or an old laptop is retired.</li>
+  <li>You have moved between several third-party tools and cannot recall which apps you authorised.</li>
+  <li>The email tied to the account was caught in a credential-stuffing breach, even if nothing looked wrong at the time.</li>
+</ul>
+<p>Once revocation is done, closing the two-factor gap is the highest-value follow-up. <a href="/blog/enable-2fa-x-account">Setting up two-factor authentication</a> covers the trade-offs between methods, and any of them beats a password on its own.</p>
+<p>One clarification: revoking sessions solves an access problem, which is separate from the risky historic posts sitting inside the account. The first is the lock, the second is what is in the room. If you are working both at once, starting from <a href="/blog/login-device-audit-x-account">the login device audit</a> gets the lock confirmed first.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Once control is confirmed, the remaining question is what the account holds. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post on your own device, returning a tiered list of contact details, location data, institutional ties and opinion posts. Nothing is uploaded to a server and nothing is deleted. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the account security write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "为什么登出所有设备之后，可疑设备还会出现？", a: "因为可疑访问可能来自第三方应用的长期授权，或者来自某个还在使用的 API 令牌，这两种凭证都不属于\"设备会话\"。登出所有设备只吊销浏览器会话，对它们没有作用，需要到已连接应用列表和开发者后台分别处理。", qEn: "Why does a suspicious device show up again after logging out everywhere?", aEn: "Because the access may come from a long-lived OAuth grant to a third-party app, or from an API token still in use. Neither is a device session. Logging out everywhere only revokes browser sessions, so those two have to be cleared separately in the connected apps list and the developer dashboard." },
+      { q: "吊销第三方应用授权会删掉用那个应用发的内容吗？", a: "不会。吊销只收回权限，已经发布的内容留在账号里。区别在于该应用之后不能再代表你读取或发布任何东西。如果用的是删除类工具，吊销之后它也无法继续执行删除任务。", qEn: "Does revoking a third-party app delete the content it posted?", aEn: "No. Revoking only withdraws permission; content already published stays on the account. What changes is that the app can no longer read or post on your behalf. If it was a deletion tool, it also can no longer carry out deletion jobs." },
+      { q: "改密码能替代吊销会话吗？", a: "不能完全替代。多数平台在改密码时会顺带失效一部分会话，但第三方应用授权通常不受影响，仍然可以继续访问。所以顺序是先清授权，再吊销设备会话，最后改密码，三者都要做。", qEn: "Can changing the password replace revoking sessions?", aEn: "Not fully. Most platforms invalidate some sessions when the password changes, but third-party grants usually survive and keep working. The order is to clear the grants first, revoke device sessions next and change the password last. All three steps are needed." },
+      { q: "多久做一次完整审查比较合适？", a: "半年一次够用。另外几个时间点值得单独加做：换手机或电脑之后、发现邮箱有异常登录之后、以及你集中试用过一批第三方工具之后。这三种情况下授权列表变化最大。", qEn: "How often is a full audit worth doing?", aEn: "Twice a year covers most situations. Three extra moments deserve their own pass: after changing a phone or computer, after any suspicious sign-in on the linked email, and after trying a batch of third-party tools. Those are when the grant list changes the most." },
+    ],
+  },
+  {
+    slug: "chinese-fandom-tweets-cleanup",
+    title: "考公、考研复试前的社交账号自查：饭圈旧帖怎么处理",
+    excerpt:
+      "政审和复试阶段的社交账号核查，真正会出问题的是三类具体内容：与人争吵的记录、暴露真实身份的信息、以及被截图流传的应援发言。政治立场很少是重点。这篇按中文平台的实际生态，给出饭圈历史内容的排查顺序与处理边界。",
+    date: "2026-09-29",
+    updatedAt: "2026-09-29",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["中文市场","饭圈","政审自查","社交账号"],
+    canonical: "/blog/chinese-fandom-tweets-cleanup",
+    titleEn: "Cleaning Up Fandom-Era Posts Before a Public-Sector Background Check",
+    excerptEn:
+      "For Chinese candidates entering civil service review or graduate admissions interviews, the posts that cause trouble are rarely about politics. They fall into three concrete categories: arguments with strangers, details that reveal your real identity, and reposted fandom statements that travelled as screenshots. This is the Chinese-market playbook for working through that history.",
+    categoryEn: "Bilingual Market",
+    tagsEn: ["Chinese market","fandom","background check","social accounts"],
+    content: `
+
+<p>每年九月到次年三月，是各类考试的结果期与复试期。很多人在这个时间点第一次认真回头看自己的社交账号，然后发现一个问题：真正让自己不安的那批内容，属于十年前追星时期的发言。</p>
+<p>社交账号核查早已不限于看头像和简介。实际核查中更常见的是随手检索关联信息，而检索能命中什么，取决于你过去留下了什么。饭圈内容之所以容易出事，是因为它天然带有高互动属性：争吵多、转发多、截图多。</p>
+
+<h2>真正会被抓到的三类内容</h2>
+<h3>第一类：与他人争吵留下的记录</h3>
+<p>饭圈最不缺的就是摩擦。控评、反黑、撕番位、粉丝之间互相开火，这类发言往往情绪强度高、点名对象明确。单条看着没什么，连起来看是一种持续的、针对具体人的攻击行为。核查者看到的是行为模式，不是某一句的措辞。</p>
+<h3>第二类：暴露真实身份的信息</h3>
+<p>比争吵更麻烦的是身份关联。饭圈活动里常见这些痕迹：应援物上印的学校或单位、线下活动定位、学生证与工牌照片、"大三宿舍"这类具体场景描述、以及用同一个网名同时注册多个平台。这些信息单独看零散，拼在一起就能锁定具体的人。</p>
+<h3>第三类：被截图做成长图的发言</h3>
+<p>这一类的特点是原作已经删了，图还在别处。应援声明、长篇锐评、群体性发言，容易被整理成九图长图在超话与群里传播。原帖删除不影响图片继续流通，所以自查时不能只看自己账号还剩什么。</p>
+
+<h2>中文平台生态与 X 的差别</h2>
+<p>如果你的饭圈活动同时分布在微博、超话、QQ 群和 X，排查逻辑要按平台分开，因为留痕方式不同。</p>
+<table>
+  <tr><th>平台特征</th><th>典型留痕</th><th>排查难点</th></tr>
+  <tr><td>微博与超话</td><td>签到记录、超话等级、历史发帖、转赞评</td><td>早期转发的内容自己也记不清，需要按时间倒查</td></tr>
+  <tr><td>QQ 与微信群</td><td>群昵称、群名片、历史发言</td><td>群聊记录不在自己手上，退群后无法回看</td></tr>
+  <tr><td>X 与海外平台</td><td>推文、转推、关注列表、归档文件</td><td>关注列表与转推同样会被看到，不只是原创内容</td></tr>
+  <tr><td>跨平台关联</td><td>同一网名、同一头像、同一拼音或谐音 ID</td><td>这是把多个平台串成一个人的关键线索</td></tr>
+</table>
+<p>最后一行最值得重视。单个平台的记录可能都还算克制，但同一套网名横跨四个平台，等于自己把身份拼图递了出去。中文用户在这方面的暴露方式有很强的共性，主要来自拼音、谐音和固定前缀的命名习惯，<a href="/blog/chinese-name-search-footprint-cleanup">姓名与网名检索留下的痕迹</a>那一篇专门拆过这一点。</p>
+
+<h2>按这个顺序排查</h2>
+<p>不要从最新的内容往回翻，容易越翻越焦虑却没有重点。按下面的优先级走。</p>
+<ol>
+  <li><strong>先固定身份线索。</strong>把所有用过的网名、头像、简介里的学校与单位信息列出来，然后逐个在不同平台搜一遍，看能不能串起来。这一步的目的是确认暴露面有多大，不是立刻删东西。</li>
+  <li><strong>再处理带具体信息的帖子。</strong>证件照片、工牌、宿舍门牌、带定位的线下活动记录，这类不看语气，统一删掉。</li>
+  <li><strong>然后处理点名攻击他人的发言。</strong>针对具体账号的持续攻击、挂人、引导围攻，这几类删掉的收益最高。</li>
+  <li><strong>接着收窄关注与转推。</strong>转推和关注列表在你主页上同样可见，很多人只清理了原创内容，这里留着一整屏记录。</li>
+  <li><strong>最后处理被搬运的截图。</strong>搜索自己的常用网名，看有没有被整理成合集流传。这一步只能发现，处理要看对方是否回应。</li>
+</ol>
+<p>第 4 步经常被忽略。如果主要活动在 X，可以用归档文件把转推和关注一并拉出来看，具体做法见<a href="/blog/chinese-social-footprint-x-guide">中文用户的 X 足迹排查指南</a>；如果只关心哪些词条最容易把自己搜出来，可以先看<a href="/blog/chinese-tweets-cleanup-keywords">中文关键词自查</a>。</p>
+
+<h2>处理边界：哪些不要碰</h2>
+<p>自查的目的是降低风险，不是把记录清空。有几种情况建议保留原样。</p>
+<ul>
+  <li><strong>正常的兴趣记录。</strong>看剧、听歌、转发行程，这类内容不构成风险，删掉反而让账号看起来是被处理过的。</li>
+  <li><strong>涉及他人的证据。</strong>如果你曾在某次纠纷中保存过对自己有利的记录，删除前先确认它以后不需要用。</li>
+  <li><strong>已经进入正式程序的材料。</strong>涉及诉讼或投诉时，部分内容可能负有保留义务，处理前要先确认。</li>
+</ul>
+<p>如果账号同时用于求职，处理节奏可以参考<a href="/blog/job-search-cleanup">求职期的账号清理</a>，两边的时间点经常重叠在一起。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>饭圈历史内容量大，靠手翻很难覆盖完整。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文与转推，把联系方式、地址定位、机构关联和立场表达分层列出，中文内容同样按这套分类走，不依赖关键词硬匹配。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，中文场景相关文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Between September and the following March, Chinese candidates sit through civil service reviews and graduate admissions interviews. It is also when many of them look at their own social accounts properly for the first time, and discover that the material making them uneasy comes from a decade spent in fandom.</p>
+<p>Social account screening stopped being a glance at a profile picture and a bio a long time ago. In practice it is a casual linked search, and what that search turns up depends on what you left behind. Fandom history is unusually exposed because it is built on interaction: arguments, reposts and screenshots, in volume.</p>
+<p>This piece covers the Chinese platform landscape specifically. The mechanics differ from X in ways that matter to anyone cleaning up fandom-era content.</p>
+
+<h2>Three categories that actually cause trouble</h2>
+<h3>Arguments with other users</h3>
+<p>Fandom runs on friction. Coordinated commenting, counter-campaigns, disputes over billing order, fan groups attacking each other. These posts carry high emotional intensity and name specific people. Individually none looks serious; read as a sequence they describe sustained targeting of individuals. What a reviewer sees is the pattern, not the wording of any single post.</p>
+<h3>Details that reveal the real person</h3>
+<p>More damaging than the arguments is identity linkage. Fandom activity leaves traces: a school or employer printed on merchandise, geotagged offline events, photos of a student card or workplace badge, casual mentions of which dormitory or which year, and one handle reused across several platforms. Each detail is fragmentary; combined, they identify an individual.</p>
+<h3>Statements that travelled as screenshots</h3>
+<p>The distinguishing feature here is that the original is gone and the image is not. Group statements, long critiques and collective posts get compiled into image sets that circulate through topic pages and chat groups. Deleting the original does nothing to those copies, which is why a self-check cannot stop at your own profile.</p>
+
+<h2>How Chinese platforms differ from X</h2>
+<p>If your fandom activity spans Weibo, topic pages, chat groups and X, the audit has to run per platform, because each leaves a different kind of trace.</p>
+<table>
+  <tr><th>Platform</th><th>Typical traces</th><th>Where it gets hard</th></tr>
+  <tr><td>Weibo and topic pages</td><td>Check-in streaks, topic levels, historic posts, reposts and comments</td><td>You will not remember what you reposted years ago, so the search has to run backwards by date</td></tr>
+  <tr><td>QQ and WeChat groups</td><td>Group nicknames, group cards, historic messages</td><td>Chat logs are not on your device, and leaving a group removes your access</td></tr>
+  <tr><td>X and overseas platforms</td><td>Posts, reposts, following list, archive file</td><td>Reposts and follows are visible too, not just originals</td></tr>
+  <tr><td>Cross-platform linkage</td><td>Same handle, same avatar, same pinyin or homophone ID</td><td>This is the thread that stitches several platforms into one person</td></tr>
+</table>
+<p>The last row is the one worth pausing on. Each platform alone may be restrained, but one handle running across four platforms hands over an identity puzzle already assembled. Chinese users share a strong, predictable pattern here, driven by pinyin, homophone and fixed-prefix naming. The write-up on <a href="/blog/chinese-name-search-footprint-cleanup">traces left by name searches</a> breaks that pattern down.</p>
+
+<h2>The order to work in</h2>
+<p>Do not start at your most recent posts and scroll backwards. That produces anxiety without producing priorities.</p>
+<ol>
+  <li><strong>Fix the identity clues first.</strong> List every handle, avatar and bio mention of a school or employer, then search each across platforms to see whether they connect. The goal is measuring your exposure, not deleting yet.</li>
+  <li><strong>Handle posts carrying concrete information.</strong> Document photos, badges, dormitory numbers, geotagged event posts. These bypass the tone question and get removed together.</li>
+  <li><strong>Then the posts that target people.</strong> Sustained attacks on one account, public callouts, pile-on coordination. These give the best return per removal.</li>
+  <li><strong>Narrow follows and reposts next.</strong> Both are visible on your profile. Many people clean only originals and leave a full screen of history in these two tabs.</li>
+  <li><strong>Deal with mirrored screenshots last.</strong> Search your usual handles for compilations. This stage can only surface them; removal depends on whether the other party responds.</li>
+</ol>
+<p>Step four is the one most often skipped. If X is your main platform, an archive file pulls reposts and follows into view, and the method is covered in the <a href="/blog/chinese-social-footprint-x-guide">X footprint guide for Chinese users</a>. If you only want to know which search terms surface you fastest, start with <a href="/blog/chinese-tweets-cleanup-keywords">the Chinese keyword self-check</a>.</p>
+
+<h2>What to leave alone</h2>
+<p>The point is reducing risk, not emptying the account. Some categories are better kept.</p>
+<ul>
+  <li><strong>Ordinary interest posts.</strong> Watching a series, following a tour, sharing a track. None of it is a risk, and removing it makes an account look scrubbed.</li>
+  <li><strong>Records involving other people.</strong> If you kept evidence from an earlier dispute, confirm you will not need it before deleting.</li>
+  <li><strong>Material inside an active process.</strong> Where a legal complaint or proceeding is open, some content may carry a retention duty. Confirm before touching it.</li>
+</ul>
+<p>When the same account is also used for job hunting, the timing usually overlaps with <a href="/blog/job-search-cleanup">cleaning up for a job search</a>, and the two plans are worth coordinating.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Fandom history is large enough that manual reading rarely covers it. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post and repost on your own device, then groups contact details, location data, institutional ties and opinion posts into tiers. Chinese-language content runs through the same classification rather than keyword matching. The check is free and read-only and deletes nothing. Cleanup scope and pricing are on the <a href="/pricing">pricing page</a>, and the Chinese-market write-ups sit in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "政审或复试真的会查社交账号吗？", a: "多数情况没有专门调取环节，属随手的关联检索。核查方通常只看检索结果的前几页。所以真正需要处理的是能被搜到、且容易被误读的内容，把账号清空反而没有必要。", qEn: "Do background reviews actually check social accounts?", aEn: "Usually not through a formal retrieval, but through a casual linked search. Reviewers generally look only at the first pages of results. What needs handling is content that can be found and easily misread, not a wiped account." },
+      { q: "我把原帖删了，为什么还能看到截图？", a: "因为截图已经离开了你的账号。饭圈发言常被整理成长图在超话、群聊和其他平台流传，删除原帖不影响这些副本。这也是自查时不能只看自己主页的原因，需要额外搜一遍常用网名看有没有被搬运。", qEn: "I deleted the original post, so why are screenshots still around?", aEn: "Because a screenshot stops belonging to your account the moment it is taken. Fandom posts often get compiled into long image sets that circulate on topic pages, group chats and other platforms, and deleting the original does not touch those copies. That is why a self-check has to include searching your usual handles." },
+      { q: "转推和关注列表也要清理吗？", a: "需要。转推和关注列表在主页上同样公开可见，很多人在账号里只清了原创内容，结果关注列表和转推区留下了完整记录。这两处往往比原创内容更能反映长期的兴趣与立场。", qEn: "Do reposts and the following list need cleaning too?", aEn: "Yes. Reposts and your following list are publicly visible on the profile as well. Many people clear only their original posts and leave a full record sitting in the two other tabs, which often says more about long-term interests than the originals do." },
+      { q: "同一网名跨平台使用，风险有多大？", a: "这是把多个平台串成同一个人的主要线索。拼音、谐音或固定前缀的命名方式会让这个串联变得很容易，一旦其中某个平台的记录出问题，其他平台会被一并看到。至少让高风险平台的账号名与其他平台脱钩。", qEn: "How much risk comes from reusing one handle across platforms?", aEn: "It is the main thread that links separate platforms to one person. Pinyin, homophone and fixed-prefix naming make that link easy to draw, so if one platform holds a problem, the others get read alongside it. At minimum, decouple the account name on the highest-risk platform from the rest." },
+    ],
+  },
+  {
+    slug: "old-tweets-as-court-evidence",
+    title: "旧推文进法庭：社交内容在民事纠纷里怎么被采信",
+    excerpt:
+      "推文不只是声誉问题，它可能成为程序里的证据。劳动纠纷、合同争议、名誉纠纷中都出现过以社交媒体内容作为依据的情况。这篇讲清社交内容进入程序的三类场景、采信时被审查的四个维度，以及什么情况下你反而不能删帖。",
+    date: "2026-09-29",
+    updatedAt: "2026-09-29",
+    author: "Digital Footprint Health Team",
+    category: "合规与法律",
+    tags: ["证据","法律合规","社交内容","旧推文"],
+    canonical: "/blog/old-tweets-as-court-evidence",
+    titleEn: "When Old Tweets Become Evidence",
+    excerptEn:
+      "Posts are not only a reputation matter. They can end up as evidence. Labour disputes, contract fights and defamation claims have all turned on social media content. This covers the three situations where posts enter a proceeding, the four things examined when such content is weighed, and when deleting a post is the wrong move.",
+    categoryEn: "Compliance & Legal",
+    tagsEn: ["evidence","compliance","social content","old tweets"],
+    content: `
+
+<p>大多数人清理旧推文的动机是声誉和求职。但社交内容还有另一个去向：成为纠纷里的材料。这个去向不常见，一旦出现，处理方式和普通的清理完全不同。</p>
+<p>先说清楚前提：下面讲的是通用逻辑，不是法律意见。任何已进入程序的具体问题，都需要按所在地规则找专业人士确认。本文的目的是让你在动手删帖之前知道该问什么问题。</p>
+
+<h2>三类场景里，旧推文会进到程序里</h2>
+<h3>劳动纠纷</h3>
+<p>离职争议中常见的用法有两头。一头是你自己的发言被用来印证某种主张，例如关于工作内容、加班情况、或对前单位评价的记录。另一头是对方账号的发言被用来证明某种事实，例如招聘过程中的表态、内部沟通口径。双方都可能主动提交对方的内容。</p>
+<h3>合同与商业纠纷</h3>
+<p>公开的推广发言、合作口径、产品描述，可能被用来确认双方在某个时间点对外表达过什么。这类内容的特点是有时间戳，而时间戳正是商业争议里最难取得的东西之一。一条两年前的推广推文，可能比一份事后整理的说明更有说服力。</p>
+<h3>名誉与人身相关</h3>
+<p>针对具体人的攻击、未经同意公开他人信息、编造事实的指控，这些内容本身就可能是争议对象。这类情况下被审查的是内容是否构成侵权，与它是否真实反映发布者的观点无关。</p>
+
+<h2>采信时看什么</h2>
+<p>社交内容不会因为被截图就自动成立。通常会被从四个方向审查。</p>
+<table>
+  <tr><th>维度</th><th>在查什么</th><th>常见质疑点</th></tr>
+  <tr><td>真实性</td><td>这条内容确实由该账号发布</td><td>截图可伪造，账号可能被盗用</td></tr>
+  <tr><td>完整性</td><td>引用是否断章取义</td><td>只提供半句、缺少上下文与前后帖</td></tr>
+  <tr><td>关联性</td><td>这条内容与待证事实是否有关</td><td>时间、主体或内容对不上</td></tr>
+  <tr><td>取得方式</td><td>证据是怎么拿到的</td><td>通过非正常手段获取，可能影响效力</td></tr>
+</table>
+<p>这张表解释了两件事。第一，截图单独存在的证明力有限，尤其是来源不明的截图；第二，完整性是被当作攻击点的，所以保留上下文往往比保留那句话更重要。这也是为什么在<a href="/blog/archive-request-before-erasure-request">先存档再提交删除请求</a>这个顺序上，存档是前置动作。</p>
+
+<h2>什么情况下反而不能删</h2>
+<p>这是最容易被忽略的部分。清理旧推文的前提是你拥有自由处置权。有几种情况这个前提不成立。</p>
+<ul>
+  <li><strong>已经进入程序的争议。</strong>当某个纠纷已经立案或进入仲裁，与争议相关的材料可能负有保存义务。此阶段删除相关内容，可能被解释为销毁证据，后果远大于内容本身。</li>
+  <li><strong>你收到了保存通知。</strong>无论是来自对方、平台还是审理机构，收到这类通知之后，相关内容就应当原样保留。</li>
+  <li><strong>你自己需要用它。</strong>如果你曾保存过对自己有利的记录，在争议结束前不要动它。</li>
+</ul>
+<p>判断标准可以简化成一句：这条内容是否与一个已经发生或可能发生的争议相关。相关就不动，不相关再按常规清理流程走。</p>
+
+<h2>实际操作：先存档，再决定</h2>
+<ol>
+  <li><strong>先把现状固定下来。</strong>完整导出账号归档，保留原始文件，不要只留截图。归档文件带有时间信息，比截图更适合做前后对照。</li>
+  <li><strong>再做范围划分。</strong>把与争议有关和无关的内容分开列出。有关的冻结，无关的按普通清理逻辑处理。</li>
+  <li><strong>记录你的操作。</strong>你删了什么、什么时候删的、依据是什么。留下自己的操作记录，可以在被质疑时说明删除发生在争议之前。关于操作留痕的做法，<a href="/blog/deletion-audit-record-export">删除操作的审计记录导出</a>那一篇有更细的说明。</li>
+  <li><strong>验证删除效果。</strong>删除完成之后确认内容是否真的不可见，包括缓存与镜像。这一步不能只看自己的账号页面，<a href="/blog/verify-old-tweets-really-deleted">验证推文是否真的被删除</a>给出了逐项核对方式。</li>
+  <li><strong>处理外部副本。</strong>被搬运到第三方页面的内容需要单独走流程，删除原帖不影响它们。</li>
+</ol>
+<p>还有一类容易被忘掉的情况：账号持有人已经无法自己处理，例如长期离世或失能。这类安排属于另一条线，<a href="/blog/protect-digital-legacy-after-death">数字遗产的处理</a>讨论的是同一批内容在另一种情形下的归属。而在内容已经进入公开检索的场合，AI 答案引擎带来的二次传播也值得一并考虑，见<a href="/blog/ai-answer-engines-old-tweets">答案引擎重播旧推文的机制</a>。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>存档是所有后续动作的地基。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文并分层列出联系方式、地址定位、机构关联与立场表达，全程本地处理，不上传服务器。体检免费且只读，不删除任何内容；当你确认哪些可以处理之后再决定清理范围，计费方式在<a href="/pricing">定价页</a>，方法文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Most people clean up old posts for reputational or job-search reasons. Social content has another destination: becoming material in a dispute. That destination is uncommon, and when it appears the handling is nothing like ordinary cleanup.</p>
+<p>One caveat first. What follows is general reasoning, not legal advice. Any live matter needs a professional who knows the rules where you are. The purpose here is to make sure you know what to ask before you start deleting.</p>
+
+<h2>Three situations where posts enter a proceeding</h2>
+<h3>Labour disputes</h3>
+<p>Departure disputes run in both directions. Your own posts can be used to support a claim, for example records about the scope of your work, working hours, or how you described a former employer. Posts from the other side can be used to establish what was said publicly, such as statements made during hiring. Either party may submit the other's content.</p>
+<h3>Contract and commercial disputes</h3>
+<p>Public promotional statements, partnership announcements and product descriptions can be used to establish what each side told the world at a given moment. What makes this category distinctive is the timestamp, which is among the hardest things to obtain in a commercial dispute. A promotional post from two years ago can carry more weight than an explanation assembled afterwards.</p>
+<h3>Reputation and personal claims</h3>
+<p>Targeted attacks on a specific person, publishing someone's details without consent, and fabricated allegations can themselves be the subject of the dispute. Here what gets examined is whether the content is actionable, not whether it fairly reflected the writer's view.</p>
+
+<h2>What gets examined</h2>
+<p>Social content does not become established fact because someone screenshotted it. Four directions of scrutiny are typical.</p>
+<table>
+  <tr><th>Dimension</th><th>What is being tested</th><th>Common challenge</th></tr>
+  <tr><td>Authenticity</td><td>That the account really published this</td><td>Screenshots can be edited and accounts can be compromised</td></tr>
+  <tr><td>Completeness</td><td>Whether the quote is partial</td><td>Half a sentence offered without surrounding context or adjacent posts</td></tr>
+  <tr><td>Relevance</td><td>Whether it bears on the fact in question</td><td>Timing, subject or content does not line up</td></tr>
+  <tr><td>How it was obtained</td><td>The route used to get it</td><td>Material gathered improperly may be treated differently</td></tr>
+</table>
+<p>Two things follow. First, a screenshot standing alone carries limited weight, especially one with no clear origin. Second, completeness is a standard attack surface, which makes preserving context more valuable than preserving the sentence. It is also why, in the sequence of <a href="/blog/archive-request-before-erasure-request">archiving before filing an erasure request</a>, the archive comes first.</p>
+
+<h2>When deleting is the wrong move</h2>
+<p>This part is most often overlooked. Cleanup assumes you are free to dispose of the content. In several situations that assumption fails.</p>
+<ul>
+  <li><strong>A dispute already in process.</strong> Once a claim is filed or arbitration has begun, material connected to it may fall under a preservation duty. Deleting at that stage can be characterised as destroying evidence, and the consequences run well beyond the content itself.</li>
+  <li><strong>You received a preservation notice.</strong> Whether it came from the other side, the platform or a deciding body, content covered by it should be left exactly as it is.</li>
+  <li><strong>You need it yourself.</strong> If you kept records that support your position, leave them alone until the matter closes.</li>
+</ul>
+<p>The test compresses to one question: is this content connected to a dispute that has happened or could happen? If yes, leave it. If no, ordinary cleanup applies.</p>
+
+<h2>In practice: archive first, decide after</h2>
+<ol>
+  <li><strong>Fix the current state.</strong> Export the full account archive and keep the original files rather than screenshots only. Archive files carry timing information, which makes them better for before-and-after comparison.</li>
+  <li><strong>Then draw the boundary.</strong> List connected and unconnected content separately. Freeze the first group and run ordinary cleanup on the second.</li>
+  <li><strong>Record what you did.</strong> Note what you deleted, when, and on what basis. Keeping your own record lets you show that a deletion predates the dispute. <a href="/blog/deletion-audit-record-export">Exporting a deletion audit record</a> covers the mechanics of that trail.</li>
+  <li><strong>Verify the result.</strong> After deleting, confirm the content is genuinely no longer visible, including caches and mirrors. Checking only your own profile page is not enough, and <a href="/blog/verify-old-tweets-really-deleted">verifying a tweet is really gone</a> lists the checks to run.</li>
+  <li><strong>Handle external copies.</strong> Content reposted to third-party pages needs its own process. Removing the original does not reach it.</li>
+</ol>
+<p>One case that tends to be forgotten: the account holder can no longer act, through death or incapacity. That falls on a different track, and <a href="/blog/protect-digital-legacy-after-death">handling a digital legacy</a> covers who the same content belongs to under those circumstances. Where content has already entered public search, the second-order spread through AI answers is worth weighing too, as covered in <a href="/blog/ai-answer-engines-old-tweets">how answer engines resurface old posts</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The archive is the foundation for everything after it. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list of contact details, location data, institutional ties and opinion posts. Nothing goes to a server. The check is free and read-only and deletes nothing; you decide the cleanup scope once you have confirmed what can be handled. Pricing sits on the <a href="/pricing">pricing page</a> and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "纠纷发生之后才删推文，会有问题吗？", a: "如果争议已经进入正式程序，或者你已经收到保存通知，此时删除相关材料可能被解释为销毁证据，风险远大于内容本身带来的影响。如果争议尚未发生、也没有任何通知，常规清理一般不受影响。关键在时间点和是否已经产生保存义务。", qEn: "Is it a problem to delete tweets after a dispute starts?", aEn: "If the dispute has entered a formal process, or you have received a preservation notice, removing related material at that point can be read as destroying evidence, and that risk outweighs whatever the content itself carried. If no dispute exists and no notice has arrived, ordinary cleanup is generally unaffected. The timing and the duty matter, not the deletion itself." },
+      { q: "只保存截图够吗？", a: "通常不够。截图容易被质疑真实性和完整性，因为它不携带账号发布的原始信息，也容易被裁剪。完整导出账号归档并保留原始文件更稳妥，截图可以作为补充，但不适合当唯一材料。", qEn: "Is saving a screenshot enough?", aEn: "Usually not. Screenshots draw challenges on authenticity and completeness because they carry no original account data and are easy to crop. A full archive export with the original files intact is the steadier route. Screenshots work as a supplement, not as the only material." },
+      { q: "别人发了关于我的内容，我能要求删掉吗？", a: "取决于内容性质。如果涉及未经同意公开你的个人信息、编造事实的指控，通常有可主张的空间，走平台投诉或法律途径都行。如果只是对你发表评价，即使措辞尖锐，诉求成立的难度会大很多。判断点在于内容指向事实还是观点。", qEn: "Can I have a post someone else wrote about me removed?", aEn: "It depends on what the post contains. If it shares your personal information without consent or makes fabricated allegations, there is usually ground to act through a platform report or a legal route. If it simply expresses an opinion about you, even a harsh one, the claim is much harder to establish. The test is whether the post asserts facts or views." },
+      { q: "账号持有人已经不在了，旧推文怎么处理？", a: "这属于数字遗产的范畴，处理方式取决于平台政策和所在地规则，通常需要提供关系与身份证明。多数平台对纪念账号有专门设置，可以保留账号同时限制访问。这类内容与普通清理的流程不同，动手前先确认适用规则。", qEn: "What happens to old tweets when the account holder has died?", aEn: "This falls under digital legacy. The route depends on platform policy and local rules, and usually requires proof of relationship and identity. Most platforms offer a memorialised account setting that preserves the account while limiting access. It follows a different process from ordinary cleanup, so confirm the rules first." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

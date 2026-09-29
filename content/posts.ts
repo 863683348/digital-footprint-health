@@ -17497,6 +17497,753 @@ rl.on('close', () =&gt; {
       { q: "账号持有人已经不在了，旧推文怎么处理？", a: "这属于数字遗产的范畴，处理方式取决于平台政策和所在地规则，通常需要提供关系与身份证明。多数平台对纪念账号有专门设置，可以保留账号同时限制访问。这类内容与普通清理的流程不同，动手前先确认适用规则。", qEn: "What happens to old tweets when the account holder has died?", aEn: "This falls under digital legacy. The route depends on platform policy and local rules, and usually requires proof of relationship and identity. Most platforms offer a memorialised account setting that preserves the account while limiting access. It follows a different process from ordinary cleanup, so confirm the rules first." },
     ],
   },
+  {
+    slug: "delete-tweets-restricted-account",
+    title: "账号被限制或冻结时，还能删除推文吗？",
+    excerpt:
+      "清理旧推文的中途突然收到账号限制通知，第一反应通常是「还能继续删吗」。受限、锁定、停用是三种完全不同的状态，能不能删、先做哪一步都不一样。这篇把三种状态拆开，给出可执行的判断顺序与进度保全做法。",
+    date: "2026-09-30",
+    updatedAt: "2026-09-30",
+    author: "Digital Footprint Health Team",
+    category: "删除实操",
+    tags: ["删除推文","账号状态","账号受限","X/Twitter","数字足迹"],
+    canonical: "/blog/delete-tweets-restricted-account",
+    titleEn: "Can You Still Delete Tweets When Your X Account Is Restricted?",
+    excerptEn:
+      "Midway through cleaning up old posts, a restriction notice arrives and the first question is whether deletion can continue. Restricted, locked and suspended are three different states, and each one changes what to do next. This piece separates them and gives a workable order of operations.",
+    categoryEn: "Deletion How-To",
+    tagsEn: ["delete tweets","account status","account restricted","X/Twitter","digital footprint"],
+    content: `
+
+<p>清理旧推文做到一半，页面顶部冒出一条账号限制通知。这时候真正让人卡住的不是通知本身，而是两个具体问题：现在还能不能继续删，以及已经删到哪儿了要不要重来。这两个问题都有答案，但答案取决于账号处在哪一种状态。</p>
+<p>下面只谈账号状态如何影响「删除推文」这个动作，不展开申诉流程。如果目标是找回账号，那是另一条路，判断依据也不一样。</p>
+
+<h2>三种状态，处理顺序完全不同</h2>
+<p>平时说的「号被封了」其实混了三种情况，它们在机制上互不相同，混着看很容易做错第一步。</p>
+<table>
+  <tr><th>状态</th><th>典型表现</th><th>删除推文是否可行</th></tr>
+  <tr><td>受限 restricted</td><td>部分功能降级，例如不能发帖、不能关注或转发</td><td>多数情况下可行，已发布内容的操作往往不在限制范围内</td></tr>
+  <tr><td>锁定 locked</td><td>登录后被要求验证手机号或邮箱才能继续</td><td>验证完成前通常不可行</td></tr>
+  <tr><td>停用 suspended</td><td>账号整体不可访问，主页对外不可见</td><td>不可行，需要先走恢复流程</td></tr>
+</table>
+<p>用法很简单：先确定自己在哪一行，再看第三列。三种状态对应三种不同的下一步。</p>
+
+<h2>受限状态下，删除通常还走得通</h2>
+<p>受限多半是功能层面的降级。你能正常登录、能看自己的时间线，但发帖、关注、私信这些写操作被收紧了。删除旧推文严格来说也是写操作，但它作用于已经发布的内容，和「新增内容」的处理路径并不完全重合。</p>
+<p>不过有一种情况例外。如果限制的触发原因是系统判定账号存在可疑活动，平台往往会同时对整类写操作做更严格的把关，这时候新增和删除可能一起被挡。所以别只看通知措辞，要实测。</p>
+<h3>用一条不重要的推文做验证</h3>
+<p>实测方式成本很低：挑一条你本来就想删、删错了也无所谓的旧推文，手动删一次。成功就说明这条路径可用，可以继续推进；失败会给出具体的错误提示，比研究通知文本快得多。拿一条内容重要的推文去试，是常见的浪费动作，没必要。</p>
+
+<h2>锁定状态：先解锁，再谈清理</h2>
+<p>锁定是验证门槛，性质上更接近流程要求，跟处罚是两回事。X 要求你完成手机号或邮箱验证，验证通过后功能一般会恢复原状。在验证完成之前，去尝试删除通常会失败。</p>
+<p>这里有一个容易被忽略的细节：验证期间反复尝试各种操作，可能让系统对账号的风险评级进一步收紧。比较稳的做法是停下来，先把验证做完，再回到清理任务。</p>
+
+<h2>停用状态下，删除排在恢复之后</h2>
+<p>账号停用意味着内容对外已经不可见。从纯隐私角度看，这本身让暴露面大幅收窄，别人打开你的主页看到的是错误页，搜索引擎也会逐步把页面移出索引。</p>
+<p>但如果你要的是彻底清除，那必须等账号恢复之后才能操作。恢复通常有时间窗口，超过期限账号可能被永久移除，随之消失的也包括里面全部内容。这两条路径的终点不一样，动手前先确认自己要哪个结果。</p>
+
+<h2>账号状态和第三方工具的关系</h2>
+<p>删除工具依赖平台开放的接口权限，而权限随账号状态浮动。受限会直接影响工具获得的写入范围，有时候表现为调用被拒，有时候表现为授权被撤销。</p>
+<p>撤销之后的恢复动作是重新授权，不是重启工具。如果你在状态异常期间反复重试，很容易把问题误判成工具故障。建议在状态明确恢复之前，暂停所有批量操作，只保留阅读和评估。</p>
+
+<h2>状态异常期间的六步操作顺序</h2>
+<p>把上面的判断整理成一条线，按顺序走可以避免来回试错。</p>
+<ol>
+  <li><strong>确认状态类别。</strong>受限、锁定、停用三选一，不确定就看登录后缺了哪些功能。</li>
+  <li><strong>判断写权限。</strong>能否发一条测试性内容，比读通知更直接。</li>
+  <li><strong>用一条旧推文实测删除。</strong>选无关紧要的，别拿重要内容做实验。</li>
+  <li><strong>记录已完成的删除范围。</strong>日期区间、关键词、数量，写在本地。</li>
+  <li><strong>暂停批量任务。</strong>避免在状态不明时持续触发接口调用。</li>
+  <li><strong>状态恢复后从记录处续跑。</strong>不要从零开始，重复劳动还容易漏。</li>
+</ol>
+
+<h2>进度会不会丢</h2>
+<p>已经删掉的推文不会因为账号状态变化而回来，这部分是确定的。会丢的是「未完成的队列」和「已经删过哪些」的判断依据。批量任务中断后，如果没有本地记录，你很难分清哪些处理过、哪些没有。</p>
+<p>这也是本地留一份删除记录的价值所在。记录不需要复杂，一张表写清 slug 或发布时间、处理状态、处理时间，就足够支撑中断后的续跑。关于删除过程如何留痕，<a href="/blog/deletion-audit-record-export">删除记录导出</a>那篇讲得更细。</p>
+
+<h2>几种边界情况</h2>
+<p>有几个场景容易判断失误，单独说明。</p>
+<ul>
+  <li><strong>受限期间新发的推文。</strong>如果账号在受限前后又产生了新内容，这批内容的删除顺序应该排在旧内容之后，先处理历史暴露面。</li>
+  <li><strong>多设备同时操作。</strong>一台设备在跑批量任务、另一台在手动删除，两边看到的进度会打架。状态异常期间更要避免这种并行。</li>
+  <li><strong>误判为封号而彻底放弃。</strong>受限是常见状态，多数会在几天内自动解除。放弃清理的代价通常比等几天更高。</li>
+</ul>
+<p>如果删除请求本身反复失败，但账号显示正常，那问题在别处，常见原因和排查顺序集中在<a href="/blog/deletion-failed-retry-faq">删除失败重试</a>里。</p>
+
+<h2>一份可用的本地记录包含什么</h2>
+<p>三列足够：标识（发布时间或内容开头）、处理状态、处理时间。中断后按表续跑，比凭记忆重来可靠。跨批次处理时，范围怎么切见<a href="/blog/deletion-scope-selection">删除范围的选择</a>，并建议每周导出一份，避免记录本身丢失。</p>
+
+<h2>什么时候该等</h2>
+<p>受限状态大多几天内解除，恢复后按原计划推进成本最低。只有一种情况需要立刻动手：暴露内容正在被传播。发布范围稳定、没有新增互动时，等几天不会让风险上升，这也是<a href="/blog/why-old-tweets-wont-delete">旧推文删不掉的原因</a>里反复出现的判断逻辑。</p>
+
+<h2>常见问题</h2>
+<p>下面是这类场景里被问得最多的几个问题，答案都按当前可见的机制给出，平台细则变化时以官方说明为准。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>清理的前置条件永远是先看清有哪些暴露点。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单，归档不离开你的电脑。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>You are halfway through cleaning up old posts when a restriction notice appears at the top of the page. The thing that actually stops you is not the notice itself but two concrete questions: can deletion continue right now, and how much of the earlier work still counts. Both have answers, and both depend on which state your account is actually in.</p>
+<p>What follows covers only how account state affects the act of deleting tweets. It does not cover appeals. If the goal is getting the account back, that is a different path with different evidence.</p>
+
+<h2>Three states, three different orders of operations</h2>
+<p>What people call a banned account usually mixes up three separate situations. They behave differently enough that using the wrong first step wastes real time.</p>
+<table>
+  <tr><th>State</th><th>What it looks like</th><th>Can you delete tweets?</th></tr>
+  <tr><td>Restricted</td><td>Some features degraded, such as posting, following or reposting</td><td>Usually yes; operations on existing content often sit outside the restriction</td></tr>
+  <tr><td>Locked</td><td>Login stops at a phone or email verification step</td><td>Usually no, until verification is finished</td></tr>
+  <tr><td>Suspended</td><td>The account is unreachable and the profile is not publicly visible</td><td>No. Account recovery comes first</td></tr>
+</table>
+<p>Read it as: find your row, then read the third column.</p>
+
+<h2>Under a restriction, deletion often still works</h2>
+<p>A restriction is mostly a downgrade at the feature level. You can log in and read your own timeline, while posting, following and direct messages get tightened. Deleting an old post is technically a write action too, but it acts on content that already exists, and that path does not fully overlap with the path for adding new content.</p>
+<p>One case breaks the pattern. When the restriction was triggered by a suspected-activity flag, platforms tend to tighten the whole category of write actions at once, which can block posting and deletion together. So do not rely on the wording of the notice. Test it.</p>
+<h3>Test with a tweet you do not care about</h3>
+<p>The test is cheap. Pick an old post you already wanted gone, one where a mistake costs you nothing, and delete it by hand. Success means the route is open and you can keep going. Failure returns a specific error, which is far more informative than re-reading the notice. Using an important post as the test subject is a common and entirely avoidable waste.</p>
+
+<h2>Locked accounts: verify first, clean later</h2>
+<p>Locking is a verification gate rather than a penalty. X asks you to confirm a phone number or an email address, and normal access generally returns once that is done. Attempts to delete while verification is pending tend to fail.</p>
+<p>There is a detail people miss: retrying various actions during the verification window can push the account's risk score tighter. The steadier move is to stop, finish the verification, then return to the cleanup queue.</p>
+
+<h2>Suspended accounts: recovery comes first</h2>
+<p>When an account is suspended, the content is already invisible. From a pure exposure standpoint that shrinks the surface a great deal. Anyone opening your profile gets an error page, and search engines drop the pages over time.</p>
+<p>If complete removal is the goal, though, you have to wait for recovery before acting. Recovery usually runs on a window, and past that window the account may be removed permanently, taking its content with it. Those two paths end in different places, so decide which outcome you want before starting.</p>
+
+<h2>How account state interacts with third-party tools</h2>
+<p>Deletion tools depend on API permissions, and permissions move with account state. A restriction can narrow the write scope a tool receives. Sometimes that shows up as rejected calls, sometimes as a revoked authorization.</p>
+<p>The recovery step after revocation is re-authorizing, not restarting the tool. If you retry repeatedly while the account is in an unclear state, the failure looks like a broken tool when the cause sits elsewhere. Pause bulk operations until the state is confirmed, and keep only reading and assessment running.</p>
+
+<h2>Six steps to follow while the account is abnormal</h2>
+<p>Laid out in order, this avoids most of the trial and error.</p>
+<ol>
+  <li><strong>Identify the state.</strong> Restricted, locked or suspended. If unsure, check which features are missing after login.</li>
+  <li><strong>Check write access.</strong> Whether you can publish a throwaway post is more direct than reading the notice.</li>
+  <li><strong>Delete one unimportant tweet.</strong> Not an important one.</li>
+  <li><strong>Record the range already cleared.</strong> Dates, keywords, counts, written down locally.</li>
+  <li><strong>Pause batch jobs.</strong> No point hammering the API while the state is unknown.</li>
+  <li><strong>Resume from the record once recovered.</strong> Restarting from zero duplicates work and invites misses.</li>
+</ol>
+
+<h2>Will your progress be lost</h2>
+<p>Tweets already deleted do not come back when account state changes. That part is settled. What gets lost is the unfinished queue and the evidence of what was already handled. After an interrupted batch job, without a local record it becomes genuinely hard to tell which posts were processed.</p>
+<p>That is the argument for keeping a local deletion log. It does not need to be elaborate: post time or identifier, handling status, and the timestamp covers resume-from-interruption. The <a href="/blog/deletion-audit-record-export">exporting a deletion audit record</a> piece goes further into what a usable log looks like.</p>
+
+<h2>A few edge cases</h2>
+<p>Three situations are easy to get wrong, so they are worth separating out.</p>
+<ul>
+  <li><strong>Posts created during the restriction.</strong> If new content appeared around the restriction window, handle it after the older material. Historical exposure comes first.</li>
+  <li><strong>Two devices at once.</strong> One machine running a batch job while another deletes by hand means two conflicting views of progress. Avoid that parallelism even more while the state is unclear.</li>
+  <li><strong>Giving up because it looked permanent.</strong> Restrictions are common and often lift within days. Abandoning the cleanup usually costs more than waiting.</li>
+</ul>
+<p>If deletion requests keep failing while the account looks normal, the cause is elsewhere. The common reasons and the order to check them sit in <a href="/blog/deletion-failed-retry-faq">deletion failure and retries</a>.</p>
+
+<h2>What a usable local record looks like</h2>
+<p>A local log does not need to be a system. Three columns carry it: an identifier (post time, or the opening words of the post), a status (pending, deleted, kept), and a timestamp. Resuming from that table after an interruption is far more reliable than working from memory. If the cleanup spans several sessions, see <a href="/blog/deletion-scope-selection">choosing a deletion scope</a> for how to split the work, and export a copy weekly so the log itself does not go missing.</p>
+<p>There is a second use for the record later on. It answers what was handled and when, which matters if the account state changes again or if someone else takes over the cleanup. Memory is a poor archive for a job that runs across weeks.</p>
+
+<h2>When waiting beats working around it</h2>
+<p>Most restrictions lift within days. Resuming the original plan once the account recovers is the cheapest route, and forcing progress through a degraded state rarely saves time in the end. One situation genuinely calls for immediate action: exposure that is actively spreading. If a post is being reposted, quoted or screenshotted right now, waiting is not neutral.</p>
+<p>Where the publishing footprint is stable and no new engagement is arriving, a few days of delay does not raise the risk. Telling those two apart is the entire decision. The same reasoning runs through <a href="/blog/why-old-tweets-wont-delete">why old tweets will not delete</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Knowing what is actually exposed is the precondition for any cleanup. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list covering contact details, location data, institutional ties and opinion posts. The archive never leaves your machine. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "账号被限制期间删除推文，会被算作违规操作吗？", a: "删除自己发布的内容属于账号内的常规操作，本身不构成新的违规。需要留意的是操作频率，短时间内大量调用接口可能被风控系统记录。如果你在受限期间推进清理，把节奏放慢、单批数量压小，比一次性跑完更稳。", qEn: "Does deleting tweets during a restriction count as a violation?", aEn: "Deleting your own content is ordinary account activity and does not itself create a new violation. What matters is the rate. A large burst of API calls in a short window can get flagged by risk systems. If you continue cleanup during a restriction, a slower pace with smaller batches is safer than finishing in one pass." },
+      { q: "锁定状态下反复尝试删除，会有什么后果？", a: "最直接的后果是失败，其次是可能让系统对账号的风险评级收紧，延长恢复时间。锁定本质上是验证门槛，完成手机号或邮箱验证后功能一般会恢复。建议在验证完成之前不要反复试操作。", qEn: "What happens if I keep trying to delete while locked?", aEn: "The immediate result is failure. The secondary risk is a tighter risk score and a longer recovery. Locking is a verification gate, and access generally returns after phone or email verification. Avoid repeated attempts before that is finished." },
+      { q: "账号停用后，里面的内容还会被搜到吗？", a: "主页对外不可见之后，搜索结果通常会逐步移除这些页面，但这个过程需要时间，缓存和第三方镜像可能保留更久。如果你要的是彻底清除，需要先恢复账号再操作；如果只是降低可见度，停用状态本身已经起到相当作用。", qEn: "After suspension, can the content still be found in search?", aEn: "Once the profile is invisible, search results typically drop those pages over time, though caches and third-party mirrors can linger longer. Complete removal requires recovering the account first. If the goal is only reduced visibility, suspension already does much of the work." },
+      { q: "第三方删除工具在账号状态异常时还能用吗？", a: "取决于工具获得的接口权限是否受影响。受限状态可能收窄写入范围，也可能导致授权被撤销。判断方法是看工具报错类型，权限问题通常返回明确的授权错误，内容处理错误则是另一类提示。重新授权往往就能恢复。", qEn: "Do third-party deletion tools still work when the account state is abnormal?", aEn: "It depends on whether the API permissions the tool holds are affected. A restriction can narrow the write scope or revoke authorization outright. The test is the error type: permission problems return explicit authorization errors rather than content errors, and re-authorizing usually restores access." },
+      { q: "中断之后怎么知道哪些推文已经删过了？", a: "靠操作前留下的本地记录。建议记录发布时间或标识、处理状态、处理时间三项，中断后按记录续跑即可，不必从零开始。没有记录时，可以对照归档文件逐条核对，只是耗时明显更长。", qEn: "After an interruption, how do I know which tweets are already gone?", aEn: "From a local log written before the job started. Post time or identifier, handling status and timestamp are enough to resume. Without a log you can reconcile against your archive file post by post, though it takes considerably longer." },
+    ],
+  },
+  {
+    slug: "deletion-request-response-timeline",
+    title: "删除请求要等多久？GDPR 30 天与 CCPA 45 天时限对照",
+    excerpt:
+      "向平台或数据经纪商提交删除请求之后，最实际的问题是多久能等到答复。GDPR 给了一个月，CCPA 给 45 天，两者都允许延长一次。这篇把时限、延长条件、起算点和超期后的动作讲清楚，并附一份可直接套用的跟进节奏表。",
+    date: "2026-09-30",
+    updatedAt: "2026-09-30",
+    author: "Digital Footprint Health Team",
+    category: "合规与法律",
+    tags: ["删除请求","GDPR","CCPA","数据合规","隐私权"],
+    canonical: "/blog/deletion-request-response-timeline",
+    titleEn: "How Long Does a Deletion Request Take? GDPR 30 Days vs CCPA 45 Days",
+    excerptEn:
+      "After filing a deletion request with a platform or a data broker, the practical question is how long the answer takes. GDPR allows one month, CCPA allows 45 days, and both permit a single extension. This covers the deadlines, the extension conditions, when the clock starts, and what to do when it runs out.",
+    categoryEn: "Compliance & Legal",
+    tagsEn: ["deletion request","GDPR","CCPA","data compliance","privacy rights"],
+    content: `
+
+<p>删除请求提交出去之后，很多人会陷入一种不确定状态：不知道对方有没有收到，也不知道该等多久，更不知道该催到什么程度。这件事其实有明确的规则可以靠。GDPR 和 CCPA 都写明了法定响应时限，差别主要在一个月与 45 天，以及延长条件。</p>
+<p>本文只讲时限本身和执行细节。请求内容怎么写、法律依据怎么引用，属于另一块内容，可以参考<a href="/blog/privacy-deletion-request-letter-template">删除请求模板</a>。</p>
+
+<h2>两个法域的基本时限</h2>
+<p>先把最常用的两个数字摆出来，后面再拆细节。</p>
+<table>
+  <tr><th>法域</th><th>法定响应时限</th><th>延长</th><th>起算点</th></tr>
+  <tr><td>GDPR（欧盟）</td><td>一个月</td><td>可延长两个月，需说明理由</td><td>收到请求之日起</td></tr>
+  <tr><td>CCPA / CPRA（加州）</td><td>45 天</td><td>可延长 45 天，需事先通知</td><td>收到可核实请求之日起</td></tr>
+  <tr><td>中国个人信息保护法</td><td>未规定统一天数，要求及时处理</td><td>由处理规则与个案判断</td><td>收到申请之日起</td></tr>
+</table>
+<p>注意第三列：两个法域都允许延长，但延长都需要履行通知义务。对方如果只是沉默地拖过期限，那就已经构成不合规。</p>
+
+<h2>一个月和 45 天是怎么算的</h2>
+<p>GDPR 的一个月通常按自然月计算，7 月 3 日收到的请求，对应 8 月 3 日。如果落在节假日，一般顺延到下一个工作日。</p>
+<p>CCPA 的 45 天按日历天计算，含周末和节假日。这一点区别在实际催办时很重要：用自然月的口径去催一个加州主体，可能会算错日期。</p>
+<h3>延长什么时候有效</h3>
+<p>延长不是自动的。GDPR 下的延长需要在初次回复里说明原因，例如请求数量多或涉及复杂的数据流。CCPA 下的延长需要在原 45 天内通知你，并且说明延长理由。也就是说，第一次答复本身必须出现，不能等到期限过了再补通知。</p>
+
+<h2>起算点比你想象的更靠前</h2>
+<p>常见的误会是「我说清楚了才开始算」。实际上起算点是对方收到请求的时间，不是对方确认请求可处理的时间。你发出快递或邮件的那一刻，对方收到即开始计时，取证的价值就在这里。</p>
+<p>因此提交方式很重要。有签收记录的邮寄、带时间戳的邮件，都比在线表单更容易确定起算点。用在线表单时，保留提交成功页面的截图和自动回复邮件，就是最低限度的证据。</p>
+
+<h2>可核实请求是个变量</h2>
+<p>CCPA 明确要求请求「可核实」。如果对方认为无法确认你就是要删数据的那个人，可以要求补充信息。这类要求必须合理，比如核对与账号绑定的邮箱；要求提供身份证扫描件这类材料就明显超出了必要范围。</p>
+<p>对方提出的核实要求会打断计时吗？不会自动打断，但可以构成延长的理由，前提是对方在期限内明确通知了你。如果既没通知又没答复，那还是超期。</p>
+
+<h2>超期之后可以做什么</h2>
+<p>等待没有结果时，按顺序升级通常比重复发送同一封邮件有效。</p>
+<ol>
+  <li><strong>发一封跟进函。</strong>引用原请求日期、法定时限和当前超期天数，要求书面答复。这封信的作用是固定证据。</li>
+  <li><strong>向监管机构投诉。</strong>欧盟各国有数据保护机构，加州方面由州隐私保护机构受理。投诉不需要律师，在线表单即可提交。</li>
+  <li><strong>保留全程记录。</strong>请求时间、回复时间、每次沟通内容和渠道，按时间顺序整理成一份文件。</li>
+  <li><strong>评估后续路径。</strong>如果涉及实际损失，个别法域允许私人诉权，但门槛与适用范围差别很大，需要单独判断。</li>
+</ol>
+<p>这四步里，第一步和第三步的成本最低，收益最直接。很多请求最终是由一封带日期的跟进函推动完成的。</p>
+
+<h2>数据经纪商的时限表现不一样</h2>
+<p>平台类主体通常有成型流程，答复时间接近法定上限。数据经纪商的情况分化较大，一部分有自动化入口，响应很快；另一部分依赖人工，容易拖到延长期末尾。</p>
+<p>还有一类主体根本不在你的法域管辖范围内，这时法定时限对它没有直接约束力，实际效果取决于对方是否愿意配合，以及它在其他法域是否有关联实体。判断这一点，比单纯催办更有用。</p>
+
+<h2>一份可套用的跟进节奏</h2>
+<p>把上面的规则整理成时间表，照着走不容易漏节点。</p>
+<table>
+  <tr><th>时间点</th><th>动作</th><th>目的</th></tr>
+  <tr><td>提交当天</td><td>保存提交凭证与自动回复</td><td>固定起算点</td></tr>
+  <tr><td>第 7 天</td><td>确认对方已受理</td><td>排除请求未送达</td></tr>
+  <tr><td>第 25 天（GDPR）/ 第 40 天（CCPA）</td><td>发送提醒，询问是否延长</td><td>逼出延长通知</td></tr>
+  <tr><td>期限届满后第 3 天</td><td>发送带日期的跟进函</td><td>形成超期证据</td></tr>
+  <tr><td>超期两周后</td><td>提交监管投诉</td><td>引入外部压力</td></tr>
+</table>
+<p>这张表的节奏可以按实际情况压缩，但顺序不建议颠倒。先内部跟进、再外部投诉，能让后续投诉的材料更完整。</p>
+
+<h2>平台自身流程和法定时限是两回事</h2>
+<p>平台自己的删除入口（例如账号内的批量删除功能）走的是产品流程，不受上述时限约束，处理速度通常快得多，但也有自己的边界，相关限制可以看<a href="/blog/why-old-tweets-wont-delete">旧推文删不掉的原因</a>。</p>
+<p>法定删除请求权适用于你要对方删除、而对方掌握着决定权的场合，比如第三方转载、数据经纪商档案、搜索引擎快照。分清这两条路，能省掉不少无效催办。GDPR 请求在平台场景下的具体写法，<a href="/blog/gdpr-erasure-request-twitter">被遗忘权请求实操</a>讲得更细。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>对外发请求之前，先弄清自己到底暴露了什么，能让请求内容准确得多。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单，归档不离开你的电脑。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Once a deletion request is out the door, most people land in an uncertain middle: no confirmation it arrived, no sense of how long to wait, no idea how hard to push. There is a firmer footing than that. GDPR and CCPA both set statutory response deadlines, and the main difference between them is a month versus 45 days, plus how extensions work.</p>
+<p>This covers the deadlines and the mechanics around them. How to draft the request itself, including which legal basis to cite, is a separate topic covered in the <a href="/blog/privacy-deletion-request-letter-template">deletion request template</a>.</p>
+
+<h2>The two baseline deadlines</h2>
+<p>Start with the two numbers people cite most, then take them apart.</p>
+<table>
+  <tr><th>Regime</th><th>Statutory deadline</th><th>Extension</th><th>Clock starts</th></tr>
+  <tr><td>GDPR (EU)</td><td>One month</td><td>Up to two further months, with reasons</td><td>On receipt of the request</td></tr>
+  <tr><td>CCPA / CPRA (California)</td><td>45 days</td><td>Up to 45 more days, with prior notice</td><td>On receipt of a verifiable request</td></tr>
+  <tr><td>China PIPL</td><td>No fixed number; prompt handling required</td><td>Case by case</td><td>On receipt of the application</td></tr>
+</table>
+<p>Note the extension column. Both regimes allow extensions, and both require notice to use them. An organisation that simply goes quiet past the deadline is already out of compliance.</p>
+
+<h2>How the month and the 45 days are counted</h2>
+<p>The GDPR month is generally counted as a calendar month. A request received on 3 July is answered by 3 August. Where that lands on a holiday, it usually rolls to the next working day.</p>
+<p>The CCPA 45 days are calendar days, weekends and holidays included. That distinction matters when you chase: applying the calendar-month logic to a California entity will get your dates wrong.</p>
+<h3>When an extension is valid</h3>
+<p>Extensions are not automatic. Under GDPR, the reason has to appear in the first response, for example a high volume of requests or complex data flows. Under CCPA, notice has to reach you within the original 45 days with the reason stated. In both cases the first reply itself has to arrive. You cannot extend by sending notice after the deadline has passed.</p>
+
+<h2>The clock starts earlier than most people assume</h2>
+<p>A common misunderstanding is that counting begins once you have explained everything clearly. It does not. It begins when the organisation receives the request, not when it agrees the request is actionable. The moment delivery happens, the clock runs, and that is exactly why proof of delivery carries weight.</p>
+<p>Submission method therefore matters. Registered mail and timestamped email establish the starting point far more easily than a web form. With a web form, a screenshot of the confirmation page plus the auto-reply email is the minimum evidence to keep.</p>
+
+<h2>Verifiability is a moving part</h2>
+<p>CCPA explicitly requires a verifiable request. If the organisation cannot confirm you are the person whose data is in question, it may ask for more information. Those requests have to be reasonable, such as confirming the email tied to the account, not demanding a scanned identity document that goes well beyond what is necessary.</p>
+<p>Does a verification request pause the clock? Not automatically. It can justify an extension, but only if the organisation notified you within the deadline. No notice and no answer still counts as a missed deadline.</p>
+
+<h2>What to do once the deadline passes</h2>
+<p>Escalating in order tends to work better than resending the same email.</p>
+<ol>
+  <li><strong>Send a dated follow-up.</strong> Cite the original request date, the statutory deadline and the number of days overdue, and ask for a written response. Its main job is to create a record.</li>
+  <li><strong>File with a regulator.</strong> EU member states each have a data protection authority, and California has its own privacy agency. Complaints do not require a lawyer and can be filed through an online form.</li>
+  <li><strong>Keep the whole trail.</strong> Request date, reply dates, and the content and channel of every exchange, arranged chronologically in one document.</li>
+  <li><strong>Assess further options.</strong> Where there are actual damages, some jurisdictions allow a private right of action, but thresholds and scope vary widely and need separate analysis.</li>
+</ol>
+<p>Of the four, the first and third cost the least and pay off most directly. Plenty of requests finally move because of one follow-up letter with a date on it.</p>
+
+<h2>Data brokers behave differently</h2>
+<p>Platforms usually have a settled process and answer close to the statutory limit. Data brokers split into two groups. Some run automated intake and respond quickly. Others depend on manual review and drift toward the end of the extension.</p>
+<p>There is also a group outside your jurisdiction entirely, where the statutory deadline has no direct hold. The practical outcome then depends on whether the organisation wants to cooperate and whether it has affiliated entities in a jurisdiction that does bind it. Working that out is more useful than sending more reminders.</p>
+
+<h2>A follow-up schedule you can reuse</h2>
+<p>Turned into a timeline, the rules are easier to work through.</p>
+<table>
+  <tr><th>When</th><th>Action</th><th>Purpose</th></tr>
+  <tr><td>Day of submission</td><td>Save the submission receipt and auto-reply</td><td>Fixes the start of the clock</td></tr>
+  <tr><td>Day 7</td><td>Confirm the request was accepted</td><td>Rules out non-delivery</td></tr>
+  <tr><td>Day 25 (GDPR) / Day 40 (CCPA)</td><td>Send a reminder asking about extension</td><td>Forces the extension notice</td></tr>
+  <tr><td>3 days after the deadline</td><td>Send the dated follow-up</td><td>Creates overdue evidence</td></tr>
+  <tr><td>2 weeks overdue</td><td>File the regulator complaint</td><td>Brings in outside pressure</td></tr>
+</table>
+<p>Tighten the spacing to fit your situation, but keep the order. Chasing internally before escalating produces a stronger complaint file.</p>
+
+<h2>An in-product flow is not the same as a statutory deadline</h2>
+<p>A platform's own deletion features, such as an in-account bulk delete, run as a product flow. They are not bound by the deadlines above and are usually much faster, though they have limits of their own, covered in <a href="/blog/why-old-tweets-wont-delete">why old tweets will not delete</a>.</p>
+<p>The statutory right applies where the other party controls the decision: third-party reposts, data broker files, search engine caches. Separating the two routes saves a lot of wasted chasing. For how a GDPR request plays out against a platform specifically, see <a href="/blog/gdpr-erasure-request-twitter">filing an erasure request</a>.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Knowing what you have actually exposed makes any outgoing request far more precise. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list covering contact details, location data, institutional ties and opinion posts. The archive never leaves your machine. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "GDPR 的一个月是按 30 天还是自然月算？", a: "一般按自然月计算，例如 7 月 3 日收到请求，对应 8 月 3 日。遇到非工作日通常顺延到下一个工作日。这与 CCPA 的 45 个日历天口径不同，催办时按对应口径算日期更准确。", qEn: "Is the GDPR month 30 days or a calendar month?", aEn: "Generally a calendar month. A request received on 3 July is due by 3 August, and a non-working day is usually pushed to the next working day. CCPA counts 45 calendar days instead, so match the counting method to the regime when you calculate dates." },
+      { q: "对方说要延长，需要满足什么条件？", a: "延长必须通知，并且说明理由。GDPR 要求在首次回复中说明，最多再延长两个月；CCPA 要求在原 45 天内告知，最多再延长 45 天。没有通知的沉默拖延，不构成有效延长，仍然属于超期。", qEn: "What is required for a valid extension?", aEn: "Notice plus a stated reason. GDPR requires the reason in the first response and allows up to two further months. CCPA requires notice within the original 45 days and allows 45 more. Silence past the deadline is not a valid extension and still counts as overdue." },
+      { q: "请求提交后对方一直没回复，什么时候可以投诉？", a: "法定期限届满后即可。比较稳的做法是先发一封引用原请求日期和超期天数的跟进函，等一周左右仍无答复再提交投诉。这样投诉材料里包含完整的沟通记录，处理效率通常更高。", qEn: "If there is no reply, when can I file a complaint?", aEn: "Once the statutory deadline has passed. A steadier sequence is to send a follow-up citing the original date and the number of days overdue, wait about a week, and file if nothing comes back. The complaint then carries a complete communication record, which tends to move faster." },
+      { q: "平台自带的删除功能也受这些时限约束吗？", a: "不受。平台内置的删除功能属于产品流程，处理速度通常远快于法定时限，但有自己的边界，例如时间范围或数量限制。法定时限适用于你要对方删除、而由对方掌握决定权的情形，例如第三方转载或数据经纪商档案。", qEn: "Are a platform's own deletion tools bound by these deadlines?", aEn: "No. In-product deletion is a product flow, usually far faster than the statutory deadline, but it has its own limits around date ranges and volume. The statutory deadlines apply where the other party holds the decision, such as third-party reposts or data broker files." },
+    ],
+  },
+  {
+    slug: "x-archive-media-files",
+    title: "X 归档里的 media 文件夹：里面存了什么，该怎么处理",
+    excerpt:
+      "解压 X 数据归档之后，体积最大的一块通常不是文本，而是图片和视频。这个文件夹里到底存了哪些文件、命名规则是什么、为什么会缺图，以及清理时该保留还是丢弃，一次讲清。",
+    date: "2026-09-30",
+    updatedAt: "2026-09-30",
+    author: "Digital Footprint Health Team",
+    category: "归档入门",
+    tags: ["X 归档","数据归档","媒体文件","隐私保护","数字足迹"],
+    canonical: "/blog/x-archive-media-files",
+    titleEn: "The media Folder in Your X Archive: What It Holds and What to Do With It",
+    excerptEn:
+      "After unzipping an X data archive, the largest folder is usually not text but images and video. This covers what the media folder actually contains, how the files are named, why some images are missing, and whether to keep or discard it during cleanup.",
+    categoryEn: "Archive Basics",
+    tagsEn: ["X archive","data archive","media files","privacy","digital footprint"],
+    content: `
+
+<p>下载并解压 X 数据归档之后，很多人第一眼会去看 tweets.js 或 tweets.csv，因为那里是文字。但真正占体积的往往是另一个文件夹：media。一个中等活跃度的账号，media 目录轻松超过几百 MB，活跃账号到几 GB 也不意外。</p>
+<p>这个文件夹容易带来两个困惑：不确定它是不是有用的资料，也不确定清理隐私时该不该连它一起处理。先把它的构成说清楚，后面的判断会容易很多。</p>
+
+<h2>media 里放的是什么</h2>
+<table>
+  <tr><th>内容</th><th>说明</th><th>体积影响</th></tr>
+  <tr><td>你原创发布的图片</td><td>发推时直接上传的照片、截图</td><td>数量最多，占主要体积</td></tr>
+  <tr><td>视频与动图文件</td><td>上传的视频，以及被转存的 GIF</td><td>单个文件最大</td></tr>
+  <tr><td>后续修改过的版本</td><td>同一张图的不同尺寸副本</td><td>容易被忽略的额外体积</td></tr>
+</table>
+<p>注意这里只有你上传的文件。别人发布的内容、你转发的内容，通常不会连同原始文件一起打包。</p>
+
+<h2>文件命名规则说明了什么</h2>
+<p>media 目录里的文件大多以数字或字母数字串命名，看起来没有规律。这串字符对应平台内部的媒体标识，不是原始文件名。也就是说，你不能靠文件名判断是哪条推文。</p>
+<p>好在有几个补救办法。文件的时间戳通常接近发布或上传时间，配合 tweets.js 里的发布时间，可以用时间窗口把文件和推文对应起来。整理量不大时，这条路径基本够用。需要更系统的做法时，可以参考<a href="/blog/whats-inside-x-archive-tweets-js">归档里的 tweets.js 结构</a>那篇。</p>
+
+<h2>为什么有些图在归档里找不到</h2>
+<p>归档不完整是常见现象，几种原因混在一起。</p>
+<ul>
+  <li><strong>外链图片不打包。</strong>如果推文里放的是外部图床链接，归档通常只保留链接文本，不下载文件本身。链接失效后，归档里就只剩一段地址。</li>
+  <li><strong>转推内容不在其中。</strong>你转发的他人内容，媒体文件一般归属于原作者，不会进你的归档。</li>
+  <li><strong>已删除内容不会回头补。</strong>如果你在导出之前已经删过推文，对应文件一般不会出现在归档里。</li>
+</ul>
+<p>还有一种情况是导出中断。归档包体积大，网络不稳定时可能生成不完整的压缩包，表现为解压报错或某些目录为空。遇到这种情况，重新申请一次导出比手工修补更省事，相关排查见<a href="/blog/x-archive-download-failed-fix">归档下载失败的排查</a>。</p>
+
+<h2>清理时该保留还是丢弃</h2>
+<p>判断依据是「这个文件夹有没有独立价值」，跟它占了多少空间无关。</p>
+<table>
+  <tr><th>情况</th><th>建议</th><th>原因</th></tr>
+  <tr><td>只关心隐私暴露</td><td>文本层优先，media 作为二次核对</td><td>风险信息主要在文字里，图里偶有截图类风险</td></tr>
+  <tr><td>要留存个人记录</td><td>整体保留，另做加密备份</td><td>媒体是原始素材，删了不易找回</td></tr>
+  <tr><td>只想省空间</td><td>按时间分层，保留近期</td><td>早期文件多数已无使用场景</td></tr>
+</table>
+<p>容易被忽略的一点是：截图类图片本身可能携带风险信息，比如账单、证件、工牌、门禁卡。这类内容在文本扫描里看不出来，需要人工过一遍。归档存放在哪里、怎么保管，可以参考<a href="/blog/store-x-archive-safely">归档的安全存放</a>。</p>
+
+<h2>处理大体积归档的实际做法</h2>
+<p>归档超过几个 GB 时，直接在本机全量打开会很吃资源。比较稳的做法是先分层，再针对处理。</p>
+<ol>
+  <li><strong>先看目录构成。</strong>确认 media 与文本文件各占多少，判断主要体积来源。</li>
+  <li><strong>按年份切分。</strong>把 media 里的文件按时间戳归档到不同年份目录，后续可以只处理需要的那一层。</li>
+  <li><strong>文本先跑一遍风险扫描。</strong>文字层的暴露点确定之后，再回头核对相关的媒体文件。</li>
+  <li><strong>截图类单独建一个目录。</strong>人工过一遍，这类内容自动化很难判断。</li>
+  <li><strong>整体做加密备份。</strong>归档包含大量个人信息，明文存放不合适。</li>
+</ol>
+<p>处理体积较大的归档时，本地解析比上传云端更合适。200MB 以上的归档处理方式，<a href="/blog/huge-archive-200mb">大体积归档的处理</a>有更具体的说明。</p>
+
+<h2>media 与删除操作的关联</h2>
+<p>有一点需要说明：删除推文时，随推文发布的媒体文件会一并处理，不需要单独操作。归档里的 media 目录只是导出时刻的快照，它不会因为你后来删了推文而自动更新。</p>
+<p>所以不要把归档当成当前状态的镜像。判断现在还剩哪些内容，要看线上；判断历史上发过什么，才用归档。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>归档是全部后续判断的起点。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单，归档不离开你的电脑。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>After downloading and unzipping an X data archive, most people look at tweets.js or tweets.csv first, because that is where the text lives. The folder that actually dominates the file size is usually a different one: media. For a moderately active account it clears several hundred megabytes without effort, and for a heavy account reaching several gigabytes is normal.</p>
+<p>It tends to create two points of confusion. Is this folder useful material or clutter, and should a privacy cleanup touch it at all. Laying out what it contains makes both questions easier.</p>
+
+<h2>What is inside the media folder</h2>
+<table>
+  <tr><th>Content</th><th>Notes</th><th>Size impact</th></tr>
+  <tr><td>Images you posted</td><td>Photos and screenshots uploaded directly</td><td>Highest count, most of the bulk</td></tr>
+  <tr><td>Video and animated files</td><td>Uploaded video plus saved GIFs</td><td>Largest individual files</td></tr>
+  <tr><td>Later versions of the same asset</td><td>Different size copies of one image</td><td>Easy to overlook</td></tr>
+</table>
+<p>Only files you uploaded appear here. Content posted by other people, including the things you reposted, normally does not arrive with the original file attached.</p>
+
+<h2>What the file names tell you</h2>
+<p>Files in the media folder are mostly named with numeric or alphanumeric strings that look arbitrary. That string is an internal media identifier, not your original filename. It will not tell you which post the file belongs to.</p>
+<p>There are workarounds. File timestamps usually sit close to the upload time, so pairing them with post timestamps from tweets.js lets you match files to posts using a time window. That is enough for small jobs. For a more systematic approach, the write-up on <a href="/blog/whats-inside-x-archive-tweets-js">the structure of tweets.js</a> covers it in more depth.</p>
+
+<h2>Why some images are missing</h2>
+<p>Incomplete archives are common, and several causes overlap.</p>
+<ul>
+  <li><strong>Linked images are not packaged.</strong> If a post pointed at an external image host, the archive usually keeps only the link text rather than downloading the file. Once the link dies, all that remains is an address.</li>
+  <li><strong>Reposted content is excluded.</strong> Media in someone else's post belongs to them and generally does not enter your archive.</li>
+  <li><strong>Deleted content does not come back.</strong> Anything you deleted before exporting normally will not appear.</li>
+</ul>
+<p>An interrupted export is a fourth case. Archive bundles are large, and an unstable connection can produce a partial zip, which shows up as a failed extraction or empty directories. Re-requesting the export is easier than repairing by hand, and the diagnostics are covered in <a href="/blog/x-archive-download-failed-fix">troubleshooting a failed archive download</a>.</p>
+
+<h2>Keep it or discard it</h2>
+<p>The test is whether the folder has standalone value, not how much space it occupies.</p>
+<table>
+  <tr><th>Situation</th><th>Suggestion</th><th>Reason</th></tr>
+  <tr><td>Only worried about exposure</td><td>Text first, media as a second pass</td><td>Risk data sits mostly in text; images carry occasional screenshot risk</td></tr>
+  <tr><td>Keeping a personal record</td><td>Keep everything, back it up encrypted</td><td>Media is source material and is hard to recover</td></tr>
+  <tr><td>Just want space back</td><td>Tier by date, keep recent</td><td>Early files rarely have a use case</td></tr>
+</table>
+<p>One easily missed point: screenshots can carry risk by themselves, including bills, identity documents, workplace badges and access cards. Text scanning will not surface those, so they need a manual pass. How and where to store the archive is covered in <a href="/blog/store-x-archive-safely">storing an X archive safely</a>.</p>
+
+<h2>Working with a large archive in practice</h2>
+<p>Past a few gigabytes, opening everything at once taxes the machine. Tiers first, then targeted work.</p>
+<ol>
+  <li><strong>Survey the directory structure.</strong> Compare media against the text files to find the real source of bulk.</li>
+  <li><strong>Split by year.</strong> Move media files into year folders using timestamps, so later passes can work one tier at a time.</li>
+  <li><strong>Scan the text layer first.</strong> Once exposure in the text layer is mapped, go back and check the related media.</li>
+  <li><strong>Separate screenshots.</strong> Give them their own folder and review by hand. Automation handles this category poorly.</li>
+  <li><strong>Back up the whole thing encrypted.</strong> The archive holds a lot of personal information and does not belong in plain storage.</li>
+</ol>
+<p>On large archives, local parsing beats uploading to a cloud service. Larger bundles are handled in more detail in <a href="/blog/huge-archive-200mb">working with a 200MB archive</a>.</p>
+
+<h2>How media interacts with deletion</h2>
+<p>One clarification: when you delete a post, the media published with it goes with it, and there is nothing separate to remove. The media folder in your archive is only a snapshot from the export moment. It does not update when you delete posts later.</p>
+<p>So do not treat the archive as a mirror of the current state. For what is still live, check the platform. For what existed historically, use the archive.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The archive is the starting point for everything downstream. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list covering contact details, location data, institutional ties and opinion posts. The archive never leaves your machine. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "归档里的 media 文件夹包含别人发的图吗？", a: "一般不包含。归档只打包你自己上传的媒体文件，你转发或引用的他人内容，其媒体文件归属于原作者，不会出现在你的归档里。如果你在推文里放的是外部图床链接，归档通常也只保留链接文本。", qEn: "Does the media folder include images other people posted?", aEn: "Generally no. The archive packages only media you uploaded. Media in content you reposted or quoted belongs to the original author and does not enter your archive. Where you posted an external image link, the archive typically keeps only the link text." },
+      { q: "media 文件夹占了好几 GB，可以直接删掉吗？", a: "取决于你是否需要保存原始素材。如果只关心隐私暴露面，文本层的风险信息更集中，media 主要是二次核对用途；如果把它当个人记录保存，建议整体保留并做加密备份，因为媒体文件删除后很难找回。", qEn: "The media folder is several gigabytes. Can I just delete it?", aEn: "It depends on whether you want the original assets. If exposure is the only concern, the text layer holds most of the risk data and media serves a second-pass role. If the archive is a personal record, keep it whole and back it up encrypted, because deleted media is very hard to recover." },
+      { q: "删推文之后，归档里的媒体文件会同步消失吗？", a: "不会。归档是导出那一刻的快照，后续你在平台上做的删除不会回写到这个文件里。判断当前还剩哪些内容要看线上状态，判断历史上发过什么才用归档，两者混用容易得出错误结论。", qEn: "Do media files disappear from the archive when I delete posts?", aEn: "No. The archive is a snapshot from the export moment, and later deletions on the platform are not written back into it. Use the live state to see what remains and the archive to see what existed. Mixing the two leads to wrong conclusions." },
+    ],
+  },
+  {
+    slug: "x-email-change-security-alert",
+    title: "收到 X 邮箱变更通知邮件？先做这五步",
+    excerpt:
+      "邮箱变更通知有两种来源：你自己改的，和不是你改的。后者意味着有人已经拿到了登录权限。这篇给出收到通知后的前五分钟动作清单，以及篡改被撤销后需要回头补做的检查项。",
+    date: "2026-09-30",
+    updatedAt: "2026-09-30",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    tags: ["账号安全","邮箱变更","账号接管","X/Twitter","双重验证"],
+    canonical: "/blog/x-email-change-security-alert",
+    titleEn: "Got an X Email Change Alert? Take These Five Steps First",
+    excerptEn:
+      "There are two sources for an email change notification: you made the change, or someone else did. The second case means someone already holds login access. This covers the first five minutes after the alert and the checks to run once the change is reverted.",
+    categoryEn: "Account Security",
+    tagsEn: ["account security","email change","account takeover","X/Twitter","two-factor"],
+    content: `
+
+<p>邮箱变更通知是一类容易被忽略的安全邮件。很多人扫一眼标题，确认不是自己改的，然后关掉页面。问题是，如果变更确实不是你发起的，说明对方已经拿到了可用的登录权限，并且正在把找回通道换成自己的。</p>
+<p>这类攻击的典型节奏是：先改邮箱，再改密码，最后撤销你的其他设备。所以收到通知后的前几分钟，动作顺序比动作数量更重要。</p>
+
+<h2>先分清两种情况</h2>
+<table>
+  <tr><th>情况</th><th>判断依据</th><th>处理方向</th></tr>
+  <tr><td>你自己发起的变更</td><td>时间、操作内容与你的行为一致</td><td>无需处理，确认完成后关闭通知</td></tr>
+  <tr><td>不是你发起的</td><td>时间不符、地点异常、你根本没做这个操作</td><td>按下面的五步立即处理</td></tr>
+  <tr><td>看起来像通知但内容奇怪</td><td>链接域名不对、要求输入密码</td><td>不点链接，直接打开官方应用核对</td></tr>
+</table>
+<p>第三行是钓鱼邮件的常见形态。真通知不会要求你在邮件里输入密码。判断方法很简单：不用邮件里的链接，自己打开应用或手动输入域名查看账号设置。</p>
+
+<h2>第一步到第五步</h2>
+<p>顺序不是随意排的，按这个顺序能最大限度压缩对方的活动窗口。</p>
+<ol>
+  <li><strong>不要点邮件里的任何链接。</strong>直接打开已登录的官方应用或手动输入域名，进入账号设置确认当前绑定邮箱。</li>
+  <li><strong>立即改密码。</strong>用一个全新的、没有在其他站点使用过的密码。邮箱账号的密码也要一起改，因为邮箱往往是找回链路的入口。</li>
+  <li><strong>开启或重置双重验证。</strong>优先选验证器应用或硬件密钥，短信验证码容易受到 SIM 卡交换攻击的影响，相关情况可以看<a href="/blog/sim-swap-attack-x-account-lockout">SIM 卡交换导致账号被锁</a>那篇。</li>
+  <li><strong>撤销其他设备会话。</strong>把所有已登录设备踢出，只保留你手上这一台。同时检查已连接的应用授权，不清楚用途的一律解除，清单核对方法见<a href="/blog/x-connected-apps-permission-audit">已连接应用权限审计</a>。</li>
+  <li><strong>检查并改回邮箱。</strong>如果邮箱已被改成陌生地址，立刻改回你控制的地址。改回后重新确认双重验证仍然生效。</li>
+</ol>
+<p>这五步里，如果账号已经无法登录，先走找回流程。账号接管的完整恢复路径，<a href="/blog/twitter-account-takeover-recovery">账号被接管的恢复步骤</a>讲得更细。</p>
+
+<h2>撤销之后还要补做的检查</h2>
+<p>把人踢出去只是止血。对方在持有权限期间可能做了别的事，需要回头核对。</p>
+<ul>
+  <li><strong>检查登录记录。</strong>看是否存在你不认识的设备、地点或时间段，确认对方的活动范围。</li>
+  <li><strong>检查已发内容。</strong>有没有新增的推文、私信或关注，尤其是私信，因为对方可能用它向你的联系人发起诈骗。</li>
+  <li><strong>检查关联账号。</strong>同一个邮箱注册的其他服务，尤其是金融类和邮箱类，是否出现异常登录。</li>
+  <li><strong>检查自动转发规则。</strong>邮箱里的转发和过滤器设置是隐蔽的持久化手段，很多人漏掉这一步。</li>
+</ul>
+<p>这几项检查做一遍通常十几分钟，但能排除掉最麻烦的隐患。</p>
+
+<h2>为什么对方能发起邮箱变更</h2>
+<p>常见的入口有三个。</p>
+<table>
+  <tr><th>入口</th><th>表现</th><th>对应措施</th></tr>
+  <tr><td>密码复用</td><td>其他站点泄露的密码被拿来撞库</td><td>全部重要账号换独立密码</td></tr>
+  <tr><td>邮箱本身被接管</td><td>攻击者先拿下邮箱，再改下游账号</td><td>邮箱单独开启双重验证</td></tr>
+  <tr><td>第三方应用授权过宽</td><td>早期授权的应用保留了超出预期的权限</td><td>定期审计并清理授权</td></tr>
+</table>
+<p>第一行是最常见的。密码复用在多个站点共用一套密码的情况下，任何一处泄露都会传导到其他账号。这也是为什么第 2 步强调用全新密码，在原密码上做小改动没有意义。</p>
+
+<h2>怎么判断通知是不是真的</h2>
+<p>邮件本身可以伪造。可靠的判断方式只有一条：不看邮件，直接登录查看账号设置里的当前邮箱。如果和邮件说的一致，通知是真的；如果不一致，那封邮件可能是钓鱼。</p>
+<p>还有一个细节值得留意：真正的安全通知通常不会催你。凡是用「立即处理否则封号」这类措辞制造紧迫感的，先当成可疑邮件处理。</p>
+
+<h2>平时怎么降低发生概率</h2>
+<p>几个习惯成本很低，效果直接。</p>
+<ul>
+  <li>邮箱账号单独设置强密码，且不与任何其他服务共用。</li>
+  <li>邮箱和社交账号都开启双重验证，优先验证器应用。</li>
+  <li>每季度过一遍已连接应用列表，清掉不再使用的授权。</li>
+  <li>把安全邮箱设置成你长期在用、能稳定接收通知的地址。</li>
+</ul>
+<p>最后一条容易被忽略。用一个很少登录的旧邮箱做安全邮箱，会直接延长你发现异常的时间。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>账号安全的另一半是内容暴露面。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单，归档不离开你的电脑。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Email change notifications are an easy category of security mail to wave off. Most people scan the subject line, confirm it was not them, and close the tab. The problem is that when the change really was not you, it means someone already holds working login access and is in the process of replacing your recovery route with their own.</p>
+<p>The usual sequence runs: change the email, then the password, then revoke your other sessions. So in the first few minutes after the alert, the order of actions matters more than the number of them.</p>
+
+<h2>Start by separating two cases</h2>
+<table>
+  <tr><th>Case</th><th>How to tell</th><th>What to do</th></tr>
+  <tr><td>You made the change</td><td>Timing and content match your own activity</td><td>Nothing. Close the notification</td></tr>
+  <tr><td>You did not</td><td>Wrong time, wrong location, no such action from you</td><td>Work through the five steps below</td></tr>
+  <tr><td>Looks like a notice but reads oddly</td><td>Wrong link domain, asks for your password</td><td>Do not click. Open the official app and verify directly</td></tr>
+</table>
+<p>The third row is the standard phishing shape. A real notification does not ask you to enter your password inside an email. The test is simple: skip the link, open the app yourself or type the domain by hand, and look at your account settings.</p>
+
+<h2>Steps one through five</h2>
+<p>The sequence is deliberate. Followed in order it narrows the attacker's window as much as possible.</p>
+<ol>
+  <li><strong>Click nothing in the email.</strong> Open the official app where you are already signed in, or type the domain manually, then check which address is currently bound to the account.</li>
+  <li><strong>Change the password now.</strong> Use a brand new password that has never been used anywhere else. Change the email account password too, since the mailbox is usually the entry point for recovery.</li>
+  <li><strong>Turn on or reset two-factor authentication.</strong> A validator app or a hardware key is the better choice. SMS codes are exposed to SIM swap attacks, covered in <a href="/blog/sim-swap-attack-x-account-lockout">SIM swap lockouts</a>.</li>
+  <li><strong>Revoke other sessions.</strong> Sign every device out except the one in your hand. Then review connected app authorisations and remove anything whose purpose you cannot explain. The audit method sits in <a href="/blog/x-connected-apps-permission-audit">auditing connected app permissions</a>.</li>
+  <li><strong>Check and restore the email.</strong> If the address was changed to something unfamiliar, set it back to one you control. Then confirm two-factor authentication survived the change.</li>
+</ol>
+<p>If the account is no longer accessible at step one, go through account recovery first. The full route is detailed in <a href="/blog/twitter-account-takeover-recovery">recovering a taken-over account</a>.</p>
+
+<h2>Checks to run after you have reverted it</h2>
+<p>Kicking the other party out stops the bleeding. While they held access they may have done other things, so go back and verify.</p>
+<ul>
+  <li><strong>Review login history.</strong> Look for devices, locations or time windows you do not recognise and work out the attacker's footprint.</li>
+  <li><strong>Review published activity.</strong> Any new posts, direct messages or follows. Direct messages matter most, because they may have been used to run a scam against your contacts.</li>
+  <li><strong>Review linked accounts.</strong> Other services registered with the same email, especially financial and email services, for abnormal sign-ins.</li>
+  <li><strong>Review forwarding rules.</strong> Auto-forwarding and filters in the mailbox are a quiet persistence method and get missed constantly.</li>
+</ul>
+<p>The whole set takes about fifteen minutes and rules out the more painful possibilities.</p>
+
+<h2>How someone manages to trigger an email change</h2>
+<p>Three entry points account for most cases.</p>
+<table>
+  <tr><th>Entry</th><th>What it looks like</th><th>Countermeasure</th></tr>
+  <tr><td>Password reuse</td><td>A password leaked elsewhere is fed into this account</td><td>Unique passwords across important accounts</td></tr>
+  <tr><td>The mailbox itself was taken</td><td>Attacker owns the inbox, then moves downstream</td><td>Two-factor on the mailbox separately</td></tr>
+  <tr><td>Over-broad app authorisation</td><td>An old integration kept more access than expected</td><td>Audit and clear authorisations regularly</td></tr>
+</table>
+<p>The first row is the most common. When one password covers several services, a single leak carries over everywhere. That is why step two calls for a genuinely new password rather than a small variation on the old one.</p>
+
+<h2>How to tell whether the notice is real</h2>
+<p>Email can be forged, so there is exactly one reliable test: ignore the email, sign in, and read the current address in your account settings. If it matches the notice, the notice was real. If it does not, the email may be phishing.</p>
+<p>One detail is worth noticing. Genuine security notices generally do not pressure you. Anything phrased as act now or lose the account is worth treating as suspicious until proven otherwise.</p>
+
+<h2>Reducing the odds over time</h2>
+<p>A few habits cost very little.</p>
+<ul>
+  <li>Give the email account a strong password that is not shared with any other service.</li>
+  <li>Turn on two-factor for both the mailbox and the social account, preferring a validator app.</li>
+  <li>Walk through the connected apps list once a quarter and clear unused authorisations.</li>
+  <li>Set the security email to an address you actually check, on a reliable connection.</li>
+</ul>
+<p>The last one gets overlooked. Using an old mailbox you rarely open directly extends the time before you notice anything wrong.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The other half of account security is what your content exposes. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list covering contact details, location data, institutional ties and opinion posts. The archive never leaves your machine. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "收到邮箱变更通知，但账号已经登不进去了，怎么办？", a: "先走账号找回流程，不要继续尝试重置密码，因为找回链路可能已经被改到对方控制的地址。如果找回入口也被改掉，走平台的人工申诉通道，并准备能证明账号归属的材料，例如注册时间、历史邮箱、常用登录设备。", qEn: "I got the alert but can no longer sign in. What now?", aEn: "Go through account recovery first rather than continuing to reset the password, since the recovery route may already point at an address the other party controls. If the recovery entry itself was changed, use the platform's manual appeal channel and bring evidence of ownership: registration date, previous email address, usual login devices." },
+      { q: "改了密码之后还需要做什么？", a: "至少再做三件：撤销所有其他设备会话、复核已连接应用授权、检查邮箱的转发与过滤规则。改密码只关闭了密码这条路径，其他已建立的访问通道仍然可能有效，需要逐一清理。", qEn: "After changing the password, what else is needed?", aEn: "At least three more things: revoke all other device sessions, review connected app authorisations, and check the mailbox forwarding and filter rules. Changing the password closes one route. Other access paths that were already established can remain live and need clearing individually." },
+      { q: "双重验证用短信验证码够吗？", a: "短信验证码明显优于没有验证，但不是最强的形式。SIM 卡交换攻击可以在你不知情的情况下把号码转移到攻击者控制的卡上，从而绕过短信验证。验证器应用或硬件密钥不依赖运营商，安全等级更高。", qEn: "Is SMS verification good enough for two-factor?", aEn: "SMS is far better than nothing but is not the strongest form. A SIM swap can move the number to a card the attacker controls without your knowledge and bypass SMS verification entirely. Validator apps and hardware keys do not depend on the carrier and sit at a higher security level." },
+      { q: "没有看到异常登录记录，是不是就没事了？", a: "不一定。部分攻击者会刻意保持低活动量，只做必要的权限变更，以避免触发通知。除了登录记录，还应该核对已连接应用、转发规则、绑定邮箱与手机号这几处，它们不显示在登录历史里，但同样能形成持久访问。", qEn: "If there is no abnormal login record, am I in the clear?", aEn: "Not necessarily. Some attackers keep activity deliberately low, making only the permission changes they need to avoid triggering alerts. Beyond login history, check connected apps, forwarding rules, and the bound email and phone number. Those do not appear in login history and can still create persistent access." },
+    ],
+  },
+  {
+    slug: "travel-documents-in-tweets",
+    title: "登机牌和护照照片发到 X 上，会泄露什么",
+    excerpt:
+      "旅行期间发登机牌照片是很常见的习惯，照片里能读出的信息比大多数人多得多：姓名、常旅客编号、座位、行程，有时还包括证件号。这篇拆解每一类旅行证件照片的暴露点，并给出清理前的判断顺序。",
+    date: "2026-09-30",
+    updatedAt: "2026-09-30",
+    author: "Digital Footprint Health Team",
+    category: "风险场景",
+    tags: ["旅行证件","隐私泄露","旧推文","登机牌","数字足迹"],
+    canonical: "/blog/travel-documents-in-tweets",
+    titleEn: "Boarding Passes and Passport Photos on X: What They Actually Leak",
+    excerptEn:
+      "Posting a boarding pass photo while travelling is a common habit, and the image carries far more than most people realise: name, frequent flyer number, seat, itinerary, and sometimes a document number. This breaks down the exposure in each type of travel document photo.",
+    categoryEn: "Risk Scenarios",
+    tagsEn: ["travel documents","privacy leak","old tweets","boarding pass","digital footprint"],
+    content: `
+
+<p>出差或度假时发一张登机牌照片，是很自然的动作。照片本身看着没什么，姓名被裁掉一角的也不在少数。问题在于，登机牌上能被读出来的信息远不止姓名。</p>
+<p>这类内容的风险和普通生活照不同：它不是暴露你在哪里，而是暴露一整套可以用来验证你身份的字段。下面按证件类型逐类拆。</p>
+
+<h2>登机牌上有什么</h2>
+<p>登机牌的正面通常印着几行文字和一组条形码。容易被忽略的是下面这些。</p>
+<table>
+  <tr><th>字段</th><th>位置</th><th>风险方向</th></tr>
+  <tr><td>姓名全拼</td><td>醒目位置</td><td>身份关联的基础信息</td></tr>
+  <tr><td>常旅客编号</td><td>姓名附近或条码区</td><td>可用于登录航空公司账号或找回密码</td></tr>
+  <tr><td>行程与日期</td><td>起降机场与时间</td><td>推断你什么时候不在家</td></tr>
+  <tr><td>座位号与舱位</td><td>登机信息区</td><td>辅助验证，常与其他信息组合使用</td></tr>
+  <tr><td>预订编号</td><td>条码附近</td><td>可在航空公司网站上读取和修改订单</td></tr>
+</table>
+<p>最后一行是最常被低估的一项。凭预订编号加姓名，在部分航空公司的网站上可以直接调出订单，查看行程、选座，甚至修改联系方式。</p>
+
+<h2>条形码不是装饰</h2>
+<p>登机牌上的二维条码编码了远多于票面文字的信息。公开场合讨论这件事已经很多年，结论是：任何能扫码的设备都能读出里面的内容，而你很难用打码的方式把它处理干净。</p>
+<p>常见的处理方式有两种，效果不同。</p>
+<ul>
+  <li><strong>用贴纸或涂鸦遮住条码。</strong>只要遮挡完整、不透光，这种方式有效。但如果是手机拍照后加马赛克，需要确认马赛克没有留下可还原的纹理。</li>
+  <li><strong>只裁掉边角。</strong>这种方式基本无效。条码被裁掉一部分后仍有可能被部分解码，而票面上的文字信息完全没动。</li>
+</ul>
+<p>比较稳的判断是：只要条码完整出现，这张照片就不适合公开发布。</p>
+
+<h2>护照与其他证件照片</h2>
+<p>护照照片的信息密度比登机牌更高，因为它本身就是身份凭证。</p>
+<table>
+  <tr><th>证件类型</th><th>主要暴露字段</th><th>风险等级</th></tr>
+  <tr><td>护照资料页</td><td>护照号、出生日期、签发与到期日期、照片</td><td>高，直接构成身份凭证</td></tr>
+  <tr><td>签证页</td><td>签证号、签发机构、有效期限</td><td>中高，可与其他信息组合</td></tr>
+  <tr><td>身份证件</td><td>证件号、住址</td><td>高，且通常同时暴露住址</td></tr>
+  <tr><td>登机牌</td><td>见上表</td><td>中，取决于条码是否露出</td></tr>
+</table>
+<p>证件类照片有一个共同点：它们没有「打码后仍然可用」的中间状态。要么完整可见，要么不该发布。</p>
+
+<h2>为什么旅行期间的风险更高</h2>
+<p>同一张照片，在家发和在旅行途中发，风险并不一样。</p>
+<p>旅行期间发布行程信息，等于对外确认了一个具体的时间窗口：你不在家，家里可能没人。这个信息和你的其他推文组合起来，能推断出大致住址的边界会明显缩小。住址关联类信息的组合风险，<a href="/blog/address-location-tweets-risk">地址与定位泄露</a>那篇有更细的讨论。</p>
+<p>此外，旅行期间的账号使用习惯往往更松散：公共网络、临时设备、更频繁的分享。这三点叠加，正好是账号安全最薄弱的一段。相关信息可以对照<a href="/blog/x-phishing-dm-scams">私信钓鱼的识别</a>。</p>
+
+<h2>清理这类内容时的判断顺序</h2>
+<p>旅行证件类照片通常分布在几年的记录里，逐张翻很费时间。按下面的顺序处理效率更高。</p>
+<ol>
+  <li><strong>先在归档里按关键词筛。</strong>常见关键词包括机场代码、航空公司名、护照、签证、登机等，先圈出候选集。</li>
+  <li><strong>按风险分级。</strong>证件资料页和条码完整的登机牌排在前面，只露机场名的行程感慨排在后面。</li>
+  <li><strong>检查同一条推文的其他信息。</strong>文字里是否带了日期、同行人、酒店名称，这些会放大照片本身的风险。</li>
+  <li><strong>确认已发布范围。</strong>同一条内容是否同步发到了其他平台，只删一处效果有限。</li>
+  <li><strong>处理完再核对一遍归档。</strong>归档是快照，不会同步更新，需要以线上状态为准。</li>
+</ol>
+<p>如果筛出来的候选量很大，可以用<a href="/blog/phone-number-in-tweets-check">联系方式与敏感信息的筛查方法</a>先做一遍粗筛，再人工确认。</p>
+
+<h2>已经发出去很久了怎么办</h2>
+<p>旧照片的处置取决于它的传播范围，与发布时间无关。</p>
+<ul>
+  <li><strong>还在原账号上。</strong>直接删除，同时清理其他平台的同步内容。</li>
+  <li><strong>被别人转发或保存过。</strong>删除原帖能降低权重，但无法收回已经扩散的副本。这种情况需要按搜索结果和镜像站逐一处理。</li>
+  <li><strong>已经进了搜索引擎。</strong>删除原帖后申请移除快照，具体路径参考<a href="/blog/google-remove-old-tweets-from-search">从搜索结果中移除旧推文</a>。</li>
+</ul>
+<p>证件号类的信息如果确认已经泄露，评估是否需要更换证件，比单纯删帖更实际。</p>
+
+<h2>出发前可以做的两件小事</h2>
+<p>比起事后清理，前面的动作成本低得多。一是拍登机牌时把条码整块挡住再拍；二是发布时把发布时间推后到行程结束。第二条看起来麻烦，但能直接消掉「你不在家」这条信息。</p>
+<p>如果目的是记录行程，拍一张窗外的云或者到达后的街景，信息量并不比登机牌少，风险低很多。</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>旅行证件类内容分散在多年记录里，靠人工翻很难翻全。在 <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> 从<a href="/">首页</a>上传 X 数据归档，工具在本机解析全部推文，按联系方式、地址定位、机构关联、立场表达分层给出风险清单，归档不离开你的电脑。体检免费且只读，不删除任何内容；清理范围与计费方式在<a href="/pricing">定价页</a>，方法类文章集中在<a href="/blog">博客索引</a>。</p>
+`,
+    contentEn: `
+
+<p>Posting a boarding pass photo while travelling is a natural move. The picture looks harmless, and plenty of people crop the name out anyway. The trouble is that a boarding pass gives up far more than a name.</p>
+<p>The risk profile here differs from an ordinary holiday snapshot. It does not reveal where you are so much as hand over a set of fields that can be used to verify who you are. Below, one document type at a time.</p>
+
+<h2>What is on a boarding pass</h2>
+<p>The face of a boarding pass carries a few lines of text and a barcode. The items most often overlooked are these.</p>
+<table>
+  <tr><th>Field</th><th>Where</th><th>Risk direction</th></tr>
+  <tr><td>Full name</td><td>Prominent</td><td>Base identity link</td></tr>
+  <tr><td>Frequent flyer number</td><td>Near the name or in the barcode area</td><td>Can be used to access or reset an airline account</td></tr>
+  <tr><td>Route and date</td><td>Airport codes and times</td><td>Shows when you are away from home</td></tr>
+  <tr><td>Seat and cabin</td><td>Boarding details</td><td>Supporting detail, often combined with others</td></tr>
+  <tr><td>Booking reference</td><td>Near the barcode</td><td>Can pull up and modify a booking on the airline site</td></tr>
+</table>
+<p>That last row is the most underestimated. With a booking reference and a surname, several airline websites will show the itinerary, allow seat changes, and sometimes accept contact detail edits.</p>
+
+<h2>The barcode is not decoration</h2>
+<p>The two-dimensional barcode on a boarding pass encodes considerably more than the printed text. This has been discussed publicly for years, and the conclusion has not changed: any device that can scan it can read the contents, and masking it cleanly is harder than it looks.</p>
+<p>Two common approaches, with different results.</p>
+<ul>
+  <li><strong>Cover the barcode with a sticker or solid fill.</strong> Effective, provided the cover is complete and opaque. If you are blurring after taking a phone photo, check that the blur leaves no recoverable pattern.</li>
+  <li><strong>Crop off a corner.</strong> Essentially useless. A partially cropped barcode can still decode in part, and the printed text is untouched.</li>
+</ul>
+<p>The practical test: if the barcode is fully visible, the photo is not suitable for public posting.</p>
+
+<h2>Passports and other identity documents</h2>
+<p>A passport photo carries a higher information density than a boarding pass, because the document is itself a proof of identity.</p>
+<table>
+  <tr><th>Document</th><th>Main exposed fields</th><th>Risk level</th></tr>
+  <tr><td>Passport data page</td><td>Number, date of birth, issue and expiry dates, photo</td><td>High. Directly usable as an identity credential</td></tr>
+  <tr><td>Visa page</td><td>Visa number, issuing authority, validity</td><td>Medium-high. Combines with other data</td></tr>
+  <tr><td>National ID card</td><td>Number, home address</td><td>High, and usually exposes the address too</td></tr>
+  <tr><td>Boarding pass</td><td>See table above</td><td>Medium. Depends on barcode visibility</td></tr>
+</table>
+<p>Identity document photos share one property: there is no middle state where a redacted version remains useful. Either it is fully visible, or it should not be published.</p>
+
+<h2>Why travel windows carry more risk</h2>
+<p>The same photo is not the same risk at home and mid-trip.</p>
+<p>Posting itinerary details while travelling confirms a specific time window in which you are not at home and the house may be empty. Combined with other posts, that narrows the boundaries of a likely home address considerably. The compounding effect of address-linked data is covered in <a href="/blog/address-location-tweets-risk">address and location exposure</a>.</p>
+<p>There is a second factor. Habits loosen during travel: public networks, temporary devices, more frequent sharing. Those three stack up to the weakest stretch for account security. The related material on spotting inbound scams is in <a href="/blog/x-phishing-dm-scams">identifying phishing DMs</a>.</p>
+
+<h2>Order of operations when cleaning this up</h2>
+<p>Travel document photos usually sit scattered across several years, and going image by image takes forever. Work in this order instead.</p>
+<ol>
+  <li><strong>Filter the archive by keyword first.</strong> Airport codes, airline names, and terms for passport, visa and boarding pass will produce a candidate set.</li>
+  <li><strong>Rank by risk.</strong> Data pages and boarding passes with intact barcodes go first. A post that merely mentions an airport name goes last.</li>
+  <li><strong>Check the rest of the post.</strong> Whether the text names dates, travel companions or a hotel changes how much the photo gives away.</li>
+  <li><strong>Confirm the publishing scope.</strong> If the same content went out on other platforms, deleting one copy does little.</li>
+  <li><strong>Re-check the archive afterwards.</strong> The archive is a snapshot and does not update, so use the live state as the reference.</li>
+</ol>
+<p>When the candidate set is large, the screening method in <a href="/blog/phone-number-in-tweets-check">checking contact details and sensitive data</a> can narrow it before manual review.</p>
+
+<h2>What to do about photos posted long ago</h2>
+<p>Handling depends on reach, not on how old the post is.</p>
+<ul>
+  <li><strong>Still on the original account.</strong> Delete it, and clear the mirrored copies on other platforms at the same time.</li>
+  <li><strong>Reposted or saved by others.</strong> Deleting the original lowers its weight but does not recall copies already out there. Those need handling one by one across search results and mirror sites.</li>
+  <li><strong>Already in search engines.</strong> After deleting the original, request cache removal. The path is described in <a href="/blog/google-remove-old-tweets-from-search">removing old tweets from search results</a>.</li>
+</ul>
+<p>If a document number is confirmed leaked, deciding whether to reissue the document is a more practical question than deleting the post.</p>
+
+<h2>Two small habits before departure</h2>
+<p>Both cost far less than the cleanup afterwards. First, cover the barcode completely before taking the photo. Second, delay publishing until the trip is over. The second feels inconvenient and removes the you-are-not-home signal entirely.</p>
+<p>If the point is to record the trip, a photo out of the window or a street scene on arrival carries as much meaning with far less exposure.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Travel document content spreads across years of history, which is exactly what manual review misses. Upload an X archive at the <a href="/">homepage</a> of <a href="https://digital-footprint-health.shop/">digital-footprint-health.shop</a> and the tool parses every post locally, returning a tiered list covering contact details, location data, institutional ties and opinion posts. The archive never leaves your machine. The check is free and read-only and deletes nothing. Cleanup scope and pricing sit on the <a href="/pricing">pricing page</a>, and the method write-ups are collected in the <a href="/blog">blog index</a>.</p>
+`,
+    faq: [
+      { q: "把登机牌上的姓名裁掉再发，安全吗？", a: "不够。登机牌上的条码编码了包括姓名、预订编号在内的多项信息，裁掉姓名不影响条码被读取。只要条码完整出现在照片里，这张照片就不适合公开发布。要发就整块遮住条码，并且确认遮挡不透光。", qEn: "Is cropping the name off a boarding pass enough?", aEn: "No. The barcode encodes multiple fields including the name and booking reference, so cropping the printed name does not stop it being read. If the barcode is fully visible in the photo, the photo is not safe to post. Cover it completely and make sure the cover is opaque." },
+      { q: "几年前发的登机牌照片，现在还有风险吗？", a: "单次行程的信息时效性已经很低，但姓名、常旅客编号这类字段是长期有效的，它们不会因为时间过去而失效。判断依据是字段类型，不是发布时间。如果照片里露出了证件号或条码，建议直接删除。", qEn: "Is a boarding pass photo from years ago still a risk?", aEn: "The itinerary itself has little value now, but fields such as the name and frequent flyer number stay valid indefinitely. The test is the field type, not the posting date. If a document number or an intact barcode is visible, delete it." },
+      { q: "护照照片泄露之后需要换证件吗？", a: "取决于泄露的范围和证件号是否可读。如果只有照片本体、证件号不可辨认，通常不需要更换；如果证件号清晰可读，且同时暴露了出生日期等辅助字段，更换证件是值得考虑的选项。这个判断需要结合证件类型和所在地规则。", qEn: "Do I need to replace a passport after a photo leak?", aEn: "It depends on the scope and whether the number is legible. If only the photo leaked and the number cannot be read, replacement is usually unnecessary. If the number is clear and supporting fields such as the date of birth are also visible, replacing the document is worth considering. The call depends on the document type and local rules." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

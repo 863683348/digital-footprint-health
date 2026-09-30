@@ -18244,6 +18244,639 @@ rl.on('close', () =&gt; {
       { q: "护照照片泄露之后需要换证件吗？", a: "取决于泄露的范围和证件号是否可读。如果只有照片本体、证件号不可辨认，通常不需要更换；如果证件号清晰可读，且同时暴露了出生日期等辅助字段，更换证件是值得考虑的选项。这个判断需要结合证件类型和所在地规则。", qEn: "Do I need to replace a passport after a photo leak?", aEn: "It depends on the scope and whether the number is legible. If only the photo leaked and the number cannot be read, replacement is usually unnecessary. If the number is clear and supporting fields such as the date of birth are also visible, replacing the document is worth considering. The call depends on the document type and local rules." },
     ],
   },
+  {
+    slug: "tweets-js-emoji-unicode-parsing",
+    title: "解析 tweets.js：编码、emoji 与中文文本的坑",
+    excerpt:
+      "从 X 归档里拿到 tweets.js 之后，真正的麻烦往往不在解析本身，而在字符。emoji 变方块、中文变乱码、字数统计永远差一截，这些现象根因相近。这篇把前缀处理、编码、代理对、中日文混排四件事拆开讲，并给出可复用的流程与报错对照表。",
+    date: "2026-10-01",
+    updatedAt: "2026-10-01",
+    author: "Digital Footprint Health Team",
+    category: "技术进阶",
+    tags: ["tweets.js","X 归档","编码","emoji","数字足迹"],
+    canonical: "/blog/tweets-js-emoji-unicode-parsing",
+    titleEn: "Parsing tweets.js: Emoji, CJK Text and Encoding Traps",
+    excerptEn:
+      "Once tweets.js lands on your disk, the hard part is rarely the parsing itself. It is the characters. Emoji turning into boxes, CJK text turning into mojibake and a word count that never adds up all trace back to a small set of causes. This piece separates the prefix problem from the encoding problem and gives a repeatable pipeline.",
+    categoryEn: "Technical Deep Dive",
+    tagsEn: ["tweets.js","X archive","encoding","emoji","digital footprint"],
+    content: `
+
+<p>解压 X 归档之后会看到一个 tweets.js，很多人第一次打开就去调 JSON.parse，然后拿到一句语法错误。文件没有损坏，它只是不是纯 JSON：开头多了一段赋值语句，真正的数组被包在一句 JavaScript 里面。把这段前缀处理掉，剩下的才是标准数据。</p>
+<p>解析动作本身不难，难的是解析完之后字符开始出错。emoji 变成问号、中文变成乱码、字数统计永远差一截，这几类现象根因相近。下面按「先拿到数据、再处理字符」的顺序展开。如果你还没搞清楚这个文件里都有什么，可以先读<a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 的字段构成</a>，本文往前一步。</p>
+
+<h2>剥掉前缀：三步拿到合法 JSON</h2>
+<p>tweets.js 的第一行大致长这样：window.YTD.tweets.part0 等于后面接一个方括号数组。不同归档版本的前缀略有出入，但结构一致。处理方式有三种，按场景选。</p>
+<ul>
+  <li>快速查看：用文本编辑器找到第一个方括号的位置，把前面的内容删掉，另存为 json 文件。</li>
+  <li>脚本处理：读入整串，从第一个开方括号切到最后一个闭方括号，再交给解析器。</li>
+  <li>批量处理：归档里所有数据文件都是同一模式，写一个函数统一剥前缀，逐文件输出。</li>
+</ul>
+<p>第三种最省事，因为归档通常包含推文、点赞、私信等多个数据文件，逐个手改容易漏掉一两个。</p>
+
+<h2>编码问题的三种表现</h2>
+<p>字符出错时先看症状，症状对应根因，别一上来就换库。</p>
+<table>
+  <tr><th>症状</th><th>典型根因</th><th>处理方向</th></tr>
+  <tr><td>中文显示成乱码或问号</td><td>用错误编码读取，常见是把 UTF-8 当 Latin-1 解</td><td>读取时显式指定 UTF-8，输出保持同一编码</td></tr>
+  <tr><td>emoji 变成方块或空白</td><td>终端或字体不支持，文件本身没问题</td><td>先做一次码点检查，再判断是否需要换环境</td></tr>
+  <tr><td>字符串长度与肉眼不符</td><td>把码点、UTF-16 单元、字节数混为一谈</td><td>统计字符时统一按码点计算</td></tr>
+</table>
+<p>第二行值得单独说：多数时候文件是好的，只是查看它的终端或预览工具渲染不了 emoji。把它写进一个 HTML 文件再用浏览器打开，通常一眼就能分辨。</p>
+
+<h2>emoji 与代理对：长度为什么对不上</h2>
+<p>一个 emoji 在肉眼看来是一个符号，在 UTF-16 里可能占两个单元，在字节数里可能是四个。同一个字符串用 length、按码点展开后的长度、字节长度量出来是三个不同的数字，这本身就是最常见的困惑来源。</p>
+<p>实际影响在于截断。如果按 length 切片做摘要，很可能把一个 emoji 从中间切开，结果是两个无效的半字符，渲染成一串方块。要按可见字符截断，得先按码点拆分再拼接。</p>
+<h3>一个便宜的检查方法</h3>
+<p>把可疑字符串逐字符打印码点，人工看几眼就能判断是数据问题还是渲染问题。码点落在常见区间的是正常字符；出现 55296 到 57343 之间的孤立数值，说明代理对被切开了。</p>
+
+<h2>中文、日文与混排文本</h2>
+<p>中文没有空格分词，按空白切分标题或标签在中文内容上基本失效。要做关键词统计，得改用字符级计数，或者引入专门的分词处理。英文和中文混排时，字数统计的口径要提前定好，否则筛出来的长文本其实是同一批短句。</p>
+<p>另一个细节是标点。中英混排的推文里往往同时存在半角和全角标点，直接做去重或匹配会漏掉一部分。在比对前统一做一次标点归一，成本很低但收益明显。</p>
+
+<h2>常见报错与修法对照</h2>
+<table>
+  <tr><th>报错或现象</th><th>修法</th></tr>
+  <tr><td>Unexpected token w in JSON</td><td>前缀没剥干净，从第一个开方括号开始取</td></tr>
+  <tr><td>Unexpected end of JSON input</td><td>截取时把结尾的分号或多余字符带进去了，从最后一个闭方括号收尾</td></tr>
+  <tr><td>解析成功但字段全空</td><td>归档可能是分片结构，内容在内层数组里，需要多取一层</td></tr>
+  <tr><td>emoji 统计数量偏少</td><td>按 length 计数，改用码点计数</td></tr>
+</table>
+
+<h2>解析完之后该做什么</h2>
+<p>拿到结构化数据只是开始。下一层需求通常是分类：按年份筛、按关键词筛、按风险等级筛。这几件事都需要先在本地建立索引，才能在不依赖网络的前提下反复查询，这也是把归档分析放在本机进行的主要理由，相关取舍可以参考<a href="/blog/on-device-analysis-privacy">本地分析与云端处理的差别</a>。</p>
+<p>索引建好之后，删除才有依据。哪些该留、哪些该删，取决于你给自己定的规则；按时间一刀切通常不是好办法。真要动手时，可以从<a href="/blog/bulk-delete-old-tweets-walkthrough">批量清理旧推文的完整流程</a>开始，按批次推进并保留可回退的记录。</p>
+<h3>把口径写下来，比换工具更重要</h3>
+<p>同一个归档，不同人统计出来的「推文总数」经常不一样，差别通常只来自口径：是否计入转推、是否计入回复、是否按码点计数。把这三条先写进脚本注释，后面所有对比才有意义。</p>
+
+<h2>解析结果存成什么格式</h2>
+<p>解析完成之后，第一件事是决定输出格式。三种常见选择各有用处：表格格式便于在电子表格里按年份或关键词筛选，适合人工逐条核对；原始结构格式保留嵌套字段，适合后续再加工；本地索引适合反复查询和跨字段检索。</p>
+<p>如果归档要长期留存，建议至少保留一份原始结构格式的输出，不要只留处理过的版本。字段口径以后可能变化，原始数据留着才能重新算。</p>
+<h3>字段里带逗号时</h3>
+<p>导出为表格格式时，推文正文里的逗号和换行会直接把列拆乱。解决办法是给每个字段加引号并在内部做转义，简单用逗号拼接会直接拆列。这个错误很隐蔽，通常在导入之后才发现列错位。</p>
+<h2>不同时期归档的结构差异</h2>
+<p>归档格式经历过多次调整，不同年份导出的文件结构并不完全一致。早期版本可能把推文分片存放，后来字段命名也做过修改。用同一套脚本处理多个时期的归档时，先跑一次字段探测，确认关键字段都在，再进入正式流程。</p>
+<p>探测的做法很简单：读取之后打印第一层对象的字段名，与预期清单对照。缺字段时报错退出，比静默产出空值好得多。</p>
+<p>digital-footprint-health.shop 提供免费的足迹体检与本地优先的处理流程。想先看看自己的公开内容里有哪些值得关注，可以从<a href="/">首页</a>开始做一次快速体检；需要成批处理旧推文，可在<a href="/upload">上传页</a>查看支持的数据格式，具体方案与费用见<a href="/pricing">定价页</a>。</p>
+`,
+    contentEn: `
+
+<p>After you unzip an X archive, you will find a file called tweets.js. A lot of people open it, call JSON.parse, and get a syntax error on the first line. The file is not corrupt. It is just not plain JSON: there is an assignment statement wrapped around the array, so the real data sits inside a line of JavaScript. Strip that prefix and what remains is standard data.</p>
+<p>The parsing step is the easy part. The trouble starts with the characters. Emoji that render as boxes, CJK text that turns into mojibake, and a word count that is always slightly off all trace back to a small set of causes. This piece walks through the prefix problem, the encoding problem, surrogate pairs, and mixed-script text. If you are still working out what lives in the file, start with <a href="/blog/whats-inside-x-archive-tweets-js">the field layout of tweets.js</a> first.</p>
+
+<h2>Stripping the prefix in three steps</h2>
+<p>The first line of tweets.js looks roughly like an assignment: window.YTD.tweets.part0 equals a bracketed array. The exact prefix shifts between archive versions, but the shape does not. You have three ways to handle it, and the right one depends on how many files you are dealing with.</p>
+<ul>
+  <li>Quick look: open it in a text editor, find the first opening bracket, delete everything before it, and save as a json file.</li>
+  <li>Scripted: read the whole string, slice from the first opening bracket to the last closing bracket, then hand the result to a parser.</li>
+  <li>Batch: every data file in the archive follows the same pattern, so write one function that strips the prefix and loops over the folder.</li>
+</ul>
+<p>The third option pays off because an archive usually ships several data files: posts, likes, direct messages. Editing them by hand invites misses.</p>
+
+<h2>Three symptoms of an encoding problem</h2>
+<p>When characters break, read the symptom before you reach for a different library. Each symptom points at a different layer.</p>
+<table>
+  <tr><th>Symptom</th><th>Likely cause</th><th>Direction</th></tr>
+  <tr><td>CJK text shows as mojibake or question marks</td><td>Read with the wrong codec, often UTF-8 decoded as Latin-1</td><td>Specify UTF-8 on read and keep the same codec on write</td></tr>
+  <tr><td>Emoji render as boxes or blanks</td><td>The terminal or font cannot render them; the file is fine</td><td>Check code points first, then decide whether the environment is the issue</td></tr>
+  <tr><td>String length does not match what you see</td><td>Code points, UTF-16 units and bytes are being treated as the same thing</td><td>Count characters by code point throughout</td></tr>
+</table>
+<p>The middle row deserves its own note. Most of the time the file is healthy and the viewer is the problem. Write the content into an HTML file and open it in a browser to settle the question in seconds.</p>
+
+<h2>Emoji and surrogate pairs</h2>
+<p>A single emoji looks like one symbol to your eyes. In UTF-16 it may occupy two units, and in bytes it may take four. Measure the same string with length, with a code-point expansion, and with a byte count, and you get three different numbers. That mismatch is the most common source of confusion in this entire workflow.</p>
+<p>The practical damage shows up in truncation. Slice a string by length and you can cut an emoji in half, leaving two invalid halves that render as boxes. To truncate by visible character, expand to code points first and join afterwards.</p>
+<h3>A cheap way to check</h3>
+<p>Print the code point of every character in the suspicious string and read the output. Normal characters land in familiar ranges. A stray value between 55296 and 57343 means a surrogate pair was split.</p>
+
+<h2>CJK and mixed-script text</h2>
+<p>Chinese and Japanese do not use spaces between words, so splitting a title or a tag on whitespace does nothing useful. Keyword statistics on CJK content need character-level counting or a dedicated tokenizer. When Latin and CJK text sit in the same post, fix your counting rule before you write the script, or the long-text filter will return the same short sentences over and over.</p>
+<p>Punctuation needs the same care. Mixed-script posts often carry both half-width and full-width punctuation, so naive deduplication or matching silently skips part of the set. Normalising punctuation before comparison costs almost nothing and catches a surprising number of misses.</p>
+
+<h2>Error to fix reference</h2>
+<table>
+  <tr><th>Error or symptom</th><th>Fix</th></tr>
+  <tr><td>Unexpected token w in JSON</td><td>Prefix not fully stripped; slice from the first opening bracket</td></tr>
+  <tr><td>Unexpected end of JSON input</td><td>Trailing semicolon or extra characters captured; end at the last closing bracket</td></tr>
+  <tr><td>Parses fine but every field is empty</td><td>Archive may be sharded; the payload sits one array level deeper</td></tr>
+  <tr><td>Emoji count comes out low</td><td>Counting by length; switch to code points</td></tr>
+</table>
+
+<h2>What to do once parsing works</h2>
+<p>Structured data is a starting point, not an outcome. The next layer is almost always classification: by year, by keyword, by how much risk a post carries. All three want a local index so you can query the archive repeatedly without touching the network. That is the main reason to keep archive analysis on your own machine, and the trade-offs are covered in <a href="/blog/on-device-analysis-privacy">local versus cloud processing</a>.</p>
+<p>Once the index exists, deletion has a basis. Which posts stay and which go should follow rules you set, not a single date cut-off. When you are ready to act, <a href="/blog/bulk-delete-old-tweets-walkthrough">the batch cleanup walkthrough</a> sets out a workflow that keeps a reversible record at each step.</p>
+<h3>Write the definitions down</h3>
+<p>Two people can count the same archive and get different totals, and the difference is almost always definitional: whether reposts count, whether replies count, whether characters are measured by code point. Put those three choices in a comment at the top of the script, and every later comparison becomes meaningful.</p>
+
+<h2>Choosing an output format</h2>
+<p>Once parsing works, the next decision is the output format. Three options cover most needs. A tabular export is easy to filter by year or keyword in a spreadsheet, which suits manual review. The original nested structure is best for further processing. A local index suits repeated queries and cross-field lookups.</p>
+<p>If the archive is going to be kept, store at least one copy in the original nested structure. Field definitions change between versions, and the raw data lets you recalculate later instead of re-exporting.</p>
+<h3>When fields contain commas</h3>
+<p>Exporting to a tabular format runs into trouble the moment a post contains commas or line breaks, because both will split the columns. Quote every field and escape the contents rather than joining with plain commas. The error is quiet, and it usually surfaces only after the import when the columns are already misaligned.</p>
+<h2>Structural drift between archive versions</h2>
+<p>Archive formats have been revised more than once, so files exported in different years are not identical in shape. Earlier versions shard the posts across files, and field names have been renamed since. When one script has to handle archives from several periods, run a field probe first and confirm the key fields exist before processing anything.</p>
+<p>The probe is simple: read the file, print the field names on the first-level objects, and compare against the expected list. Failing loudly beats writing empty values without a warning.</p>
+<p>digital-footprint-health.shop offers a free footprint check and a local-first processing workflow. To see which of your public posts deserve attention, start with a quick check from the <a href="/">homepage</a>. For bulk work on old posts, the <a href="/upload">upload page</a> lists the supported data formats, and plans are laid out on the <a href="/pricing">pricing page</a>.</p>
+`,
+    faq: [
+      { q: "tweets.js 能用 JSON.parse 直接解析吗？", a: "不能。文件开头有一段赋值语句，真正的数组被包在里面。需要先剥掉前缀，只保留第一个开方括号到最后一个闭方括号之间的内容，才是合法 JSON。", qEn: "Can tweets.js be parsed with JSON.parse directly?", aEn: "No. The file opens with an assignment statement that wraps the array. Strip the prefix and keep only the text between the first opening bracket and the last closing bracket, and what remains is valid JSON." },
+      { q: "归档里的中文变成乱码是什么原因？", a: "通常是读取编码不对，例如把 UTF-8 的文件按 Latin-1 解。读取和写出都显式指定 UTF-8 即可恢复；若文本本身已在上一步被错误解码并写回，需要重新从原始归档解压。", qEn: "Why does CJK text in my archive turn into mojibake?", aEn: "The usual cause is a codec mismatch on read, such as decoding a UTF-8 file as Latin-1. Specify UTF-8 on both read and write to recover. If the text was already decoded incorrectly and saved back, re-extract from the original archive." },
+      { q: "为什么统计出来的推文条数跟页面不一致？", a: "多数是口径问题：是否计入转推、是否计入回复、按码点还是按 UTF-16 单元计数。先把三条口径固定下来，再做跨表对比。", qEn: "Why does my post count differ from what the site shows?", aEn: "It is almost always a definitional gap: whether reposts count, whether replies count, and whether characters are counted by code point or UTF-16 unit. Fix those three rules first, then compare." },
+      { q: "emoji 显示成方块，是数据坏了吗？", a: "多数情况下不是。终端或字体不支持渲染时就会显示方块，文件内容完好。把同一段文本写进 HTML 用浏览器打开即可验证。", qEn: "Emoji show up as boxes. Is the data broken?", aEn: "Usually not. A terminal or font that cannot render them will show boxes even when the file is intact. Write the same text into an HTML file and open it in a browser to confirm." },
+      { q: "解析完归档后第一步应该做什么？", a: "先建本地索引：按年份、关键词、风险等级三个维度做一次结构化整理。有了索引再决定删什么，比按时间一刀切更可控。", qEn: "What is the first thing to do after parsing?", aEn: "Build a local index first, organised by year, keyword and risk level. Deciding what to delete is far easier once you can query the archive, and it beats a blanket date cut-off." },
+    ],
+  },
+  {
+    slug: "chinese-vs-western-platform-privacy-settings",
+    title: "X 与中文平台的隐私设置差异：中文用户该优先关哪几个开关",
+    excerpt:
+      "在中文平台养成的隐私直觉，搬到 X 上经常失灵。默认可见性、搜索收录、数据导出能力三处差异最大。这篇按中文用户的实际使用场景，列出最值得优先调整的设置项，并给出一份十分钟能跑完的检查清单。",
+    date: "2026-10-01",
+    updatedAt: "2026-10-01",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["隐私设置","中文用户","X/Twitter","数据导出","数字足迹"],
+    canonical: "/blog/chinese-vs-western-platform-privacy-settings",
+    titleEn: "X vs Chinese Platforms: Which Privacy Settings Actually Matter",
+    excerptEn:
+      "Privacy instincts built on Chinese platforms often fail when transplanted to X. Default visibility, search indexing and data export capability differ the most. This guide maps those gaps onto real usage scenarios and ends with a ten-minute settings audit.",
+    categoryEn: "Bilingual Market",
+    tagsEn: ["privacy settings","Chinese users","X/Twitter","data export","digital footprint"],
+    content: `
+
+<p>很多中文用户第一次认真配置 X 的隐私设置时，会觉得别扭：在微博、小红书、豆瓣上形成的直觉，在这里对不上。原因是这两类产品的默认值设计取向不同，一个是先公开再收紧，另一个更倾向于先小范围再放开。理解这个差异，比逐条对着菜单改更省事。</p>
+<p>下面不谈抽象的隐私理念，只处理一个具体问题：一个主要用中文发帖、偶尔和海外同事互动的账号，设置该从哪里开始动。</p>
+
+<h2>默认值不一样，所以直觉会失灵</h2>
+<p>在中文平台上，多数人的账号从第一天起就处在半公开状态，可见范围更接近「关注者可见」，外部搜索引擎通常拿不到完整内容。X 的默认取向相反，账号建立即为公开，主页、回复、引用都可以被任何人和任何爬虫看到，除非你主动改。</p>
+<p>这个差别解释了为什么有人换了平台之后，两年前的一条随手回复会突然被截图。不是对方用了什么工具，而是那条回复从一开始就对全网可见。</p>
+
+<h2>三处最值得优先调整的开关</h2>
+<p>设置项很多，但真正影响暴露面的只有少数几个。按优先级排：</p>
+<table>
+  <tr><th>优先级</th><th>设置项</th><th>为什么优先</th></tr>
+  <tr><td>高</td><td>账号可见性（公开 / 受保护）</td><td>一次性决定全站内容的默认暴露面，影响最大</td></tr>
+  <tr><td>高</td><td>允许通过手机号或邮箱被找到</td><td>关联性强，是陌生人定位账号最常用的入口</td></tr>
+  <tr><td>中</td><td>位置信息</td><td>历史推文里的位置标签会长期留存，事后很难批量清理</td></tr>
+</table>
+<p>第二项常被忽略。手机号一旦可以被搜到，账号就和真实身份绑定了，后面所有内容的匿名性都会打折扣。中文用户常用手机号注册，这项默认打开的账号不在少数。</p>
+
+<h2>搜索与推荐：内容会被谁看到</h2>
+<p>X 上有两类可见性需要分开看。一类是「谁能打开你的主页」，另一类是「谁能通过搜索找到你的内容」。把账号设为受保护会同时收紧两者，但代价是新内容不再进入公开讨论，对需要曝光的使用者不合适。</p>
+<p>折中做法是保持公开，但定期做一次公开面体检：用搜索引擎搜自己的账号名，看哪些内容进了结果页。中文用户还需要额外搜一次拼音，因为索引里往往同时存在汉字和拼音两种写法，只搜一种会漏掉一半。</p>
+
+<h2>数据导出与删除能力差异</h2>
+<table>
+  <tr><th>能力</th><th>X</th><th>常见中文平台</th></tr>
+  <tr><td>完整数据导出</td><td>支持，含历史推文、点赞、私信等结构化文件</td><td>多数支持，覆盖面因平台而异</td></tr>
+  <tr><td>批量删除历史内容</td><td>无官方批量入口，需要工具或脚本</td><td>部分平台提供官方批量清理</td></tr>
+  <tr><td>内容对搜索引擎可见</td><td>默认可见，需自行处理</td><td>多数默认不对站外搜索开放</td></tr>
+</table>
+<p>第一行是最实用的一行。导出之后你手上就有了一份完整底稿，判断哪些内容值得处理不再依赖平台页面逐条翻。归档拿到之后怎么解读，可以参考<a href="/blog/chinese-x-archive-guide">中文用户的归档使用说明</a>。</p>
+
+<h2>中文用户的三个特有场景</h2>
+<h3>姓名与拼音的双重索引</h3>
+<p>汉字姓名和拼音姓名会被分别索引。清理时如果只处理一种写法，另一种仍然留在结果页里，等于没清理。做法是两种写法各搜一遍，取并集再处理。</p>
+<h3>截图传播不在你的控制范围内</h3>
+<p>删掉原帖可以消除索引里的记录，但已经被截图的版本不受影响。这一点在任何平台上都成立，中文语境里因为转发链路更依赖截图，体感会更明显。所以对真正敏感的表述，删除只能算补救，不能算预防。</p>
+<h3>跨平台的同一身份</h3>
+<p>同一个昵称、同一张头像同时用在几个平台上时，任一平台的公开内容都可以被用来反推其他平台。想切断这种关联，最省力的做法是让不同平台的头像与昵称不一致，逐个平台做深度清理既费时又收效有限。</p>
+
+<h2>十分钟检查清单</h2>
+<ul>
+  <li>确认账号可见性是否符合预期，不要假设默认值。</li>
+  <li>关闭通过手机号和邮箱被搜索到的开关。</li>
+  <li>检查历史推文的位置标签，评估是否需要处理。</li>
+  <li>用汉字和拼音各搜一次自己的名字，看结果页。</li>
+  <li>导出一次归档，保存到本地并确认文件完整。</li>
+  <li>核对登录设备列表，移除不再使用的设备。</li>
+</ul>
+<p>第六项和隐私设置的关系容易被低估。账号被别人登录过，前面的设置做得再细也没有意义。设备列表的检查方式见<a href="/blog/x-session-revocation-all-devices">撤销所有设备登录的操作步骤</a>。</p>
+
+<p>digital-footprint-health.shop 提供免费的足迹体检，中英双语的报告都支持。想先看自己公开内容里的风险分布，可以从<a href="/">首页</a>开始体检，处理选项与费用在<a href="/pricing">定价页</a>，常见问题集中放在<a href="/faq">答疑页</a>。</p>
+`,
+    contentEn: `
+
+<p>The first time a Chinese-speaking user sits down to configure privacy on X, something feels off. The instincts built up over years on Weibo, Xiaohongshu or Douban do not transfer. The reason is a difference in defaults. Those platforms lean towards a narrower starting scope that widens on request, while X starts fully public and narrows only when you ask.</p>
+<p>This guide skips the philosophy and answers one concrete question: for an account that posts mainly in Chinese and occasionally talks to overseas colleagues, which settings deserve attention first?</p>
+
+<h2>Different defaults, so different instincts</h2>
+<p>On most Chinese platforms an account begins in a semi-public state where visibility leans towards followers and external search engines rarely see the full picture. X takes the opposite position. A new account is public from the first second, and the profile, replies and quotes are visible to anyone and to any crawler unless you change it.</p>
+<p>That gap explains a scenario people describe constantly: a throwaway reply from two years ago suddenly shows up in a screenshot. Nobody ran a special tool. The reply was visible to the whole web the moment it was posted.</p>
+
+<h2>The three settings worth changing first</h2>
+<p>The settings screen is long, but only a few items move the exposure line. Ranked by impact:</p>
+<table>
+  <tr><th>Priority</th><th>Setting</th><th>Why it ranks high</th></tr>
+  <tr><td>High</td><td>Account visibility (public or protected)</td><td>Sets the default exposure for everything at once</td></tr>
+  <tr><td>High</td><td>Discoverable by phone number or email</td><td>The most common route strangers use to tie an account to a person</td></tr>
+  <tr><td>Medium</td><td>Location information</td><td>Location tags persist in old posts and are hard to clean in bulk later</td></tr>
+</table>
+<p>The second item is routinely overlooked. Once a phone number is searchable, the account is tied to a real identity and every later post loses a layer of anonymity. Chinese users often register with a phone number, so a fair number of accounts have this left on by default.</p>
+
+<h2>Search and recommendation visibility</h2>
+<p>Two kinds of visibility need separate handling on X. One is who can open your profile. The other is who can find your posts through search. Switching to a protected account tightens both at once, but the cost is that new posts stop entering public discussion, which does not suit anyone who needs reach.</p>
+<p>A workable middle path is to stay public and run a periodic visibility audit: search your own handle and see which posts surface. Chinese users should search twice, once in characters and once in pinyin, because indexes usually carry both spellings and searching one misses half the results.</p>
+
+<h2>Export and deletion capability</h2>
+<table>
+  <tr><th>Capability</th><th>X</th><th>Typical Chinese platform</th></tr>
+  <tr><td>Full data export</td><td>Supported, with structured files for posts, likes and messages</td><td>Usually supported, coverage varies by platform</td></tr>
+  <tr><td>Bulk deletion of history</td><td>No official bulk tool; needs a third-party tool or script</td><td>Some platforms ship an official bulk cleanup</td></tr>
+  <tr><td>Content visible to search engines</td><td>Visible by default, you handle it yourself</td><td>Most keep off-site search out by default</td></tr>
+</table>
+<p>The first row is the practical one. Once you export, you hold a complete local copy, and deciding what to act on no longer depends on paging through a web interface. For how to read the archive afterwards, see <a href="/blog/chinese-x-archive-guide">the archive guide for Chinese-speaking users</a>.</p>
+
+<h2>Three scenarios specific to Chinese users</h2>
+<h3>Names indexed in two scripts</h3>
+<p>Names written in characters and names written in pinyin get indexed separately. Clean one form and the other stays in the results, which amounts to no cleanup at all. Search both and take the union.</p>
+<h3>Screenshots are outside your control</h3>
+<p>Deleting the original post removes it from the index, but screenshot copies are unaffected. This holds on every platform, and it feels sharper in Chinese-language circles because forwarding leans heavily on screenshots. For genuinely sensitive wording, deletion is remediation, never prevention.</p>
+<h3>One identity across platforms</h3>
+<p>When the same handle and the same avatar appear on several platforms, public content on any one of them can be used to infer the rest. The cheapest way to break that link is to keep avatars and handles different across platforms, rather than running deep cleanups on each one.</p>
+
+<h2>A ten-minute audit</h2>
+<ul>
+  <li>Confirm account visibility matches what you expect. Do not assume the default.</li>
+  <li>Turn off discovery by phone number and email.</li>
+  <li>Review location tags in older posts and decide whether they need handling.</li>
+  <li>Search your own name in characters and in pinyin.</li>
+  <li>Export the archive, store it locally, and confirm the files are complete.</li>
+  <li>Check the device list and remove anything you no longer use.</li>
+</ul>
+<p>The last item is underrated. If someone else has signed in, no amount of settings work elsewhere helps. The steps for clearing sessions are in <a href="/blog/x-session-revocation-all-devices">revoking access on every device</a>.</p>
+
+<p>digital-footprint-health.shop runs a free footprint check with bilingual reports. To see how risk is distributed across your public posts, start from the <a href="/">homepage</a>. Options and pricing sit on the <a href="/pricing">pricing page</a>, and recurring questions are collected on the <a href="/faq">FAQ page</a>.</p>
+`,
+    faq: [
+      { q: "X 的内容默认会被搜索引擎收录吗？", a: "公开账号的内容默认对搜索引擎和爬虫可见，包括回复和引用。要限制这一点需要主动调整账号可见性，或对已发布内容的公开面做处理。", qEn: "Are X posts indexed by search engines by default?", aEn: "Posts from a public account are visible to search engines and crawlers by default, including replies and quotes. Limiting that requires changing account visibility or cleaning up what is already public." },
+      { q: "把账号设为受保护就够了吗？", a: "不够。受保护账号会限制新内容的传播，但历史内容在切换之前的公开记录可能已被索引和缓存，需要额外处理。另外受保护账号也会失去正常的公开曝光。", qEn: "Is switching to a protected account enough?", aEn: "No. A protected account limits how new posts travel, but anything public before the switch may already be indexed or cached. You also give up normal public reach." },
+      { q: "中文名字要搜几次？", a: "建议两次：一次用汉字，一次用拼音。两种写法通常会被分别索引，只搜一种会漏掉相当一部分结果。若有常用的英文名，也建议一并搜。", qEn: "How many times should I search my name?", aEn: "Twice at minimum: once in characters and once in pinyin, since the two forms are indexed separately. If you use an English name as well, search that too." },
+      { q: "删掉原帖之后截图还存在，怎么办？", a: "截图无法通过删除消除，这部分属于传播层面的问题。可做的是减少可被截图的敏感表述，以及在自己的可控渠道上说明澄清。继续依赖删除并不能覆盖这一层。", qEn: "Screenshots survive even after I delete the post. What now?", aEn: "Deletion cannot reach screenshots, which is a distribution problem rather than a platform one. The practical response is to reduce the kind of phrasing that invites screenshots and to clarify through channels you control." },
+    ],
+  },
+  {
+    slug: "footprint-score-drop-causes",
+    title: "体检分数突然下降？先排查这 6 个原因",
+    excerpt:
+      "同一份公开内容，昨天 78 分，今天变 65 分，中间什么都没改。这种下降多数不是新暴露，而是口径、权重或数据源变了。按这六类原因逐一排查，通常十分钟内就能定位，并且避免对着一份误报做大动作。",
+    date: "2026-10-01",
+    updatedAt: "2026-10-01",
+    author: "Digital Footprint Health Team",
+    category: "体检与评分",
+    tags: ["体检评分","数字足迹","误报","评分下降","隐私报告"],
+    canonical: "/blog/footprint-score-drop-causes",
+    titleEn: "Footprint Score Dropped? Check These Six Causes First",
+    excerptEn:
+      "Same public content, 78 yesterday and 65 today with nothing changed in between. Most drops are not new exposure. They come from definition changes, weight adjustments or a wider data source. These six causes usually locate the answer inside ten minutes and keep you from overreacting to a false alarm.",
+    categoryEn: "Health Check and Scoring",
+    tagsEn: ["footprint score","digital footprint","false positives","score drop","privacy report"],
+    content: `
+
+<p>用过一段时间数字足迹体检的人，迟早会遇到这种情况：上周报告 78 分，这周打开变成 65 分，可这段时间你没有发新内容，也没有删过任何东西。第一反应通常是「是不是被人翻出来了」，但实际经验里，这类下降大多来自计算口径的变化，只有少数是真实暴露增加。</p>
+<p>把两类下降分开，是排查的第一步。</p>
+
+<h2>先分清两种下降</h2>
+<p>一种是真实变化：确实出现了新的公开内容，或者旧内容被重新索引。另一种是口径变化：内容没变，但评分的算法、权重或数据源覆盖变了。两种下降在报告里看起来一模一样，处理方式却完全相反。</p>
+<p>区分方法很简单：把两版报告的明细逐条对比。如果新增的扣分项对应的是同一个已经存在的东西，那就是口径变化；如果对应的是新出现的条目，那才是真实变化。</p>
+
+<h2>六类常见原因</h2>
+<table>
+  <tr><th>原因</th><th>典型表现</th><th>是否需要行动</th></tr>
+  <tr><td>评分权重调整</td><td>同一批条目，扣分幅度变了，条目数没变</td><td>通常不需要</td></tr>
+  <tr><td>数据源覆盖扩大</td><td>报告里多出以前没出现过的来源</td><td>需要核对新来源是否真实</td></tr>
+  <tr><td>新内容权重更高</td><td>近期发布的条目被单独标注，扣分明显</td><td>需要处理新内容</td></tr>
+  <tr><td>误报与错误关联</td><td>扣分项指向的信息你不认识</td><td>需要申诉或修正</td></tr>
+  <tr><td>跨平台数据并入</td><td>出现你没在这个平台注册过的记录</td><td>需要核实账号归属</td></tr>
+  <tr><td>账号状态变化</td><td>伴随可见性调整、限制通知等事件</td><td>先处理账号本身</td></tr>
+</table>
+<p>六行里只有两行需要马上动手。把这张表当分流器用，能省掉大量无效操作。</p>
+
+<h3>权重调整为什么最容易被误判</h3>
+<p>评分模型不是一成不变的，权重会随版本调整。同一批数据在新版权重下可能整体下移几分，而明细条目一条没变。这类下降只影响分数曲线，不代表暴露面发生了变化。判断方法是把上一版报告导出留档，逐条比对条目数。条目数相同、分数不同，基本可以判定为权重问题，相关机制见<a href="/blog/footprint-score-weighting-explained">评分权重是怎么定的</a>。</p>
+
+<h3>数据源扩大带来的假性新增</h3>
+<p>体检工具接入的来源会随时间增加。新增来源第一次跑出来时，报告里会一次性出现一批「新发现」，但它们可能已经在公开状态存在了很多年，只是以前没被扫到。这种情况要核对的是「这条信息是否真实存在」，它是否刚刚出现并不重要。</p>
+
+<h2>误报需要单独对待</h2>
+<p>六类原因里最需要警惕的是误报。姓名重合、同名的其他账号、来源页把多个人的信息混在一起，都会让报告指向不属于你的条目。误报会造成两种损失：一是虚高的风险感受，二是把精力花在本来就不属于你的内容上。</p>
+<p>识别误报的判据是细节一致性：手机号尾号、邮箱前缀、所在地是否都对得上。只对上姓名一项，基本可以判定为误报。这类条目的处理方式与真实条目不同，具体做法见<a href="/blog/footprint-report-false-positives">体检报告里的误报怎么处理</a>。</p>
+
+<h2>三分钟自查表</h2>
+<ul>
+  <li>对比两版报告的条目数，条目数没变而分数变了，先怀疑权重。</li>
+  <li>看扣分项指向的信息是否与你本人一致，对不上就是误报。</li>
+  <li>确认这段时间是否发布过新内容，包括回复和引用。</li>
+  <li>检查账号可见性是否被改动过。</li>
+  <li>核对登录设备列表，排除账号被他人使用的情况。</li>
+</ul>
+<p>最后一条不要跳过。评分下降本身是结果，账号被别人登录才是需要优先解决的问题。</p>
+
+<h2>什么时候可以忽略分数变化</h2>
+<p>如果你只关心暴露面有没有扩大，那分数本身的价值有限，明细条目才是判据。分数适合用来看趋势，不适合用来看单点变化。连续三周下降，且明细里对应的是同一批条目，那说明这批内容确实需要处理；单次几分波动，不值得专门投入时间。</p>
+<p>另外，不同工具之间的分数不可比。同样是 70 分，在不同权重体系下代表的暴露程度可能差很远，跨工具比较分数会得出错误结论。要做对比，用的是条目清单，不是分数。</p>
+
+<p>digital-footprint-health.shop 的体检报告会同时给出分数与明细条目，方便逐条核对，不必只看一个数字。想先跑一份看看，可以从<a href="/">首页</a>免费体检开始；报告导出与分享方式见<a href="/faq">答疑页</a>，成批处理旧内容的方案在<a href="/pricing">定价页</a>。</p>
+`,
+    contentEn: `
+
+<p>Anyone who uses a digital footprint check long enough runs into this: 78 last week, 65 this week, and nothing changed in between. No new posts, nothing deleted. The first instinct is that someone has dug something up, but in practice most drops of this kind come from a change in how the score is computed. Only a minority reflect genuinely new exposure.</p>
+<p>Separating those two cases is the first step.</p>
+
+<h2>Two kinds of drop</h2>
+<p>One is a real change: new public content appeared, or old content was re-indexed. The other is a definitional change: the content is identical but the algorithm, the weights or the coverage of the data source moved. The two look the same in a report and call for opposite responses.</p>
+<p>Telling them apart is straightforward. Compare the line items of both reports side by side. If the new deductions map to something that already existed, you are looking at a definitional change. If they map to newly appearing records, the change is real.</p>
+
+<h2>Six causes worth checking</h2>
+<table>
+  <tr><th>Cause</th><th>Typical signal</th><th>Action needed</th></tr>
+  <tr><td>Scoring weights adjusted</td><td>Same items, different deduction sizes</td><td>Usually none</td></tr>
+  <tr><td>Data source coverage widened</td><td>Sources appear that were never listed before</td><td>Verify the new sources are real</td></tr>
+  <tr><td>Recent content weighted higher</td><td>Newer items flagged separately with steep deductions</td><td>Handle the new content</td></tr>
+  <tr><td>False positive or wrong match</td><td>A deduction points at information you do not recognise</td><td>Dispute or correct it</td></tr>
+  <tr><td>Cross-platform data merged in</td><td>A record appears from a platform you never joined</td><td>Confirm account ownership</td></tr>
+  <tr><td>Account status changed</td><td>Coincides with visibility changes or restriction notices</td><td>Fix the account first</td></tr>
+</table>
+<p>Only two of those six rows need immediate work. Treat the table as a triage filter and you skip a lot of wasted effort.</p>
+
+<h3>Why weight changes get misread</h3>
+<p>Scoring models are versioned and weights move between releases. The same data set can score a few points lower under new weights while the line items stay identical. That kind of drop changes the curve without changing your exposure. Export the earlier report and compare item counts. Same count with a different score is almost always a weighting change, explained further in <a href="/blog/footprint-score-weighting-explained">how scoring weights are set</a>.</p>
+
+<h3>Wider coverage looks like new findings</h3>
+<p>The sources a check tool reaches grow over time. The first run after a new source is added can surface a batch of findings at once, even though those records may have been public for years and simply were not scanned before. The useful question is whether the record exists, not whether it just appeared.</p>
+
+<h2>False positives need their own handling</h2>
+<p>Of the six causes, false positives deserve the most caution. Shared names, a different account with the same name, or a source page that mixes several people together can all point a report at records that are not yours. The cost is double: an inflated sense of risk, and effort spent on content that was never about you.</p>
+<p>The test is consistency of detail. Phone suffix, email prefix and location should all line up. A match on name alone is almost always a false positive, and those items are handled differently from real ones. See <a href="/blog/footprint-report-false-positives">what to do with false positives in a report</a>.</p>
+
+<h2>A three-minute self check</h2>
+<ul>
+  <li>Compare item counts across reports. Same count with a different score points at weights.</li>
+  <li>Check whether the flagged records match your actual details. A mismatch means a false positive.</li>
+  <li>Confirm whether you posted anything new, including replies and quotes.</li>
+  <li>Check whether account visibility was changed.</li>
+  <li>Review the device list to rule out someone else using the account.</li>
+</ul>
+<p>Do not skip the last one. A lower score is a symptom, and an account someone else can access is the problem to solve first.</p>
+
+<h2>When to ignore the change</h2>
+<p>If your real interest is whether exposure grew, the score has limited value and the line items carry the evidence. Scores suit trends, not single readings. Three consecutive weeks of decline with the same items behind it means those items deserve attention. A few points of movement once means very little.</p>
+<p>Scores are also not comparable across tools. A 70 under one weighting model can represent a very different exposure level than a 70 under another, so comparing numbers across products leads to wrong conclusions. Compare item lists instead.</p>
+
+<p>Reports from digital-footprint-health.shop include both the score and the underlying line items, so you can verify each one rather than trusting a single number. To run one, start a free check from the <a href="/">homepage</a>. Export and sharing options are on the <a href="/faq">FAQ page</a>, and bulk cleanup plans are on the <a href="/pricing">pricing page</a>.</p>
+`,
+    faq: [
+      { q: "什么都没改，为什么体检分数会下降？", a: "多半是评分权重或数据源覆盖发生了变化，并非新出现了暴露内容。对比两版报告的条目数即可区分：条目数不变而分数变了，通常是权重调整。", qEn: "Why did my score drop when I changed nothing?", aEn: "Usually because weights or data source coverage changed rather than new exposure appearing. Comparing item counts across versions separates the two: an unchanged count with a different score points at weights." },
+      { q: "体检报告的扣分项指向的信息不是我的，怎么办？", a: "先核对细节一致性，比如手机号尾号、邮箱前缀、所在地是否对得上。只对上姓名通常是同名误报，应按误报流程处理，不要当作真实暴露去清理。", qEn: "A deduction points at information that is not mine. What now?", aEn: "Check whether the details line up: phone suffix, email prefix, location. A match on name alone usually means a shared-name false positive, which follows a different path from real exposure." },
+      { q: "不同工具的分数可以直接比较吗？", a: "不可以。权重体系不同，同样的分数代表的暴露程度可能差别很大。跨工具比较应该用条目清单，分数之间不可比。", qEn: "Can I compare scores between different tools?", aEn: "No. Different weighting models mean the same number can represent very different levels of exposure. Compare item lists across tools, not scores." },
+      { q: "体检多久做一次比较合理？", a: "按内容发布频率来定。日常不常发帖的账号每月一次足够；发布频繁或有公开身份需求的账号，可以两周一次，并在重要节点前后各加一次。", qEn: "How often should I run a check?", aEn: "Match it to how often you post. Monthly is plenty for a quiet account. If you post often or maintain a public profile, every two weeks plus one run before and after any significant event works well." },
+    ],
+  },
+  {
+    slug: "x-two-factor-backup-codes",
+    title: "X 的两步验证备份码：存在哪、怎么用、丢了怎么办",
+    excerpt:
+      "开了两步验证却没有备份码，是账号安全里最常见的单点故障。手机丢了、验证器换了、手机号停用了，都会直接把你挡在门外。这篇讲清备份码的生成、保存、消耗与找回，并给出两种情况下的处理顺序。",
+    date: "2026-10-01",
+    updatedAt: "2026-10-01",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    tags: ["两步验证","备份码","账号安全","X/Twitter","账号恢复"],
+    canonical: "/blog/x-two-factor-backup-codes",
+    titleEn: "X Two-Factor Backup Codes: Where to Keep Them and What to Do When They're Gone",
+    excerptEn:
+      "Turning on two-factor authentication without saving backup codes is the most common single point of failure in account security. A lost phone, a switched authenticator app or a deactivated number can all lock you out. This piece covers generating, storing, spending and recovering those codes.",
+    categoryEn: "Account Security",
+    tagsEn: ["two-factor authentication","backup codes","account security","X/Twitter","account recovery"],
+    content: `
+
+<p>开两步验证的人不少，把备份码存下来的人少得多。这两件事之间的落差，就是账号安全里最常见的单点故障：验证手段一旦失效，账号立刻进不去，而验证手段失效的原因比想象中多，换手机、换验证器应用、手机号停机、设备损坏都算。</p>
+<p>这一篇只谈备份码这一件事，包括它解决什么问题、怎么保存、怎么消耗，以及最关键的，丢了之后按什么顺序处理。</p>
+
+<h2>备份码解决的问题</h2>
+<p>两步验证的常规路径依赖一个你随身携带的东西：验证器应用里的动态码，或者短信。这条路径的设计前提是这个东西始终在手边且可用。一旦前提不成立，常规路径就断了。</p>
+<p>备份码是给这种情况准备的逃生通道。它是一组一次性代码，每行一个，输入任意一个未使用过的码就能完成验证。它不依赖网络、不依赖手机，只需要你把那串字符存在某个能拿到的地方。</p>
+<p>注意「一次性」三个字。每个码用掉之后就作废，所以它是一份会消耗的凭证，需要定期检查余量。</p>
+
+<h2>生成与保存：三个能落地的地方</h2>
+<p>生成入口在账号的安全设置里，通常和两步验证方法并列。生成之后，需要选择保存方式。三种做法按可靠性排序：</p>
+<table>
+  <tr><th>方式</th><th>优点</th><th>风险</th></tr>
+  <tr><td>密码管理器里单独一条</td><td>加密存储、多设备同步、不易丢失</td><td>依赖主密码，主密码忘了一切归零</td></tr>
+  <tr><td>纸质抄写并放在固定位置</td><td>不依赖任何电子设备</td><td>家中意外、搬家丢失、被人看到</td></tr>
+  <tr><td>加密文件存本地</td><td>可控性强</td><td>需要自己管好解密口令与备份</td></tr>
+</table>
+<p>三种都可以用，关键是至少选一种并且真正执行。最常见的反面做法是生成之后截个图放在相册里，然后相册跟着手机一起丢。密码管理器这一条要配合已有的主密码管理习惯，具体做法见<a href="/blog/social-account-password-manager-setup">密码管理器的初始配置</a>。</p>
+
+<h2>用掉一次少一个</h2>
+<p>每次用备份码登录，就消耗掉一个。如果连续几次都靠备份码进来，余量会掉得比预期快。建议把「检查剩余备份码」放进定期维护清单，和<a href="/blog/enable-2fa-x-account">开启两步验证</a>时的设置项一起过一遍。</p>
+<p>余量低于一半时就应该重新生成一组。注意大多数平台在重新生成时会一次性作废旧码，所以新码生成后要立刻完成保存，不要等到下次再存。</p>
+
+<h2>备份码丢了怎么办</h2>
+<p>分两种情况，处理顺序完全不同。</p>
+<h3>情况一：还能正常登录</h3>
+<p>这是好消息，处理起来也简单。直接进入安全设置，重新生成一组备份码，保存好，旧的作废。整个过程几分钟。</p>
+<p>这里有一个容易被忽略的细节：如果你之所以来查这个问题，是因为听说别人遇到过麻烦，那么顺便把验证方式整体过一遍，把手机号、验证器应用、硬件密钥的可用性各确认一次。这类排查的成本很低，收益却集中在最坏的时刻。</p>
+<h3>情况二：已经进不去账号</h3>
+<p>这时走的恢复流程与备份码无关，需要靠注册邮箱、绑定手机号或申诉流程。这也是为什么手机号被停用会造成很大麻烦：它同时破坏了两条路径，验证路径和恢复路径。</p>
+<p>如果账号是被他人接管的，处理顺序还要往前移一步，先走账号找回流程，再谈安全设置。相关步骤见<a href="/blog/twitter-account-takeover-recovery">账号被接管后的找回路径</a>。</p>
+
+<h2>三种验证方式的关系</h2>
+<table>
+  <tr><th>方式</th><th>依赖</th><th>典型失效场景</th></tr>
+  <tr><td>短信验证码</td><td>手机号与运营商网络</td><td>停机、换号、补卡攻击</td></tr>
+  <tr><td>验证器应用</td><td>设备上的应用与本地密钥</td><td>换机未迁移、设备损坏、应用被重置</td></tr>
+  <tr><td>备份码</td><td>你保存的那份副本</td><td>找不到、未生成、已用尽</td></tr>
+</table>
+<p>三行的失效场景没有交集，这正是备份码存在的意义。同时也说明，短信验证是三者里最脆弱的一环，SIM 卡交换攻击专门针对它，相关机制见<a href="/blog/sim-swap-attack-x-account-lockout">SIM 卡交换是怎么锁定账号的</a>。</p>
+
+<h2>一套自用的保存规则</h2>
+<ul>
+  <li>生成后十分钟内完成保存，不要推迟。</li>
+  <li>用密码管理器存一条，条目名写清楚是哪个平台的备份码。</li>
+  <li>同时在离线位置留一份纸质副本，用于主密码也忘记的极端情况。</li>
+  <li>把「检查剩余数量」写进季度维护清单。</li>
+  <li>重新生成之后确认旧码已作废，不要两份混用。</li>
+</ul>
+<p>最后一条容易出错。手上同时有两组码时，你以为在用新的，实际可能拿的是旧的，试错几次之后容易误判为全部失效。</p>
+
+<p>digital-footprint-health.shop 的体检会把账号安全设置纳入公开面评估。想先看自己账号的整体暴露情况，可以从<a href="/">首页</a>开始免费体检；账号相关的高频问题整理在<a href="/faq">答疑页</a>，批量清理旧内容的方案见<a href="/pricing">定价页</a>。</p>
+`,
+    contentEn: `
+
+<p>Plenty of people enable two-factor authentication. Far fewer save the backup codes. That gap is the most common single point of failure in account security: once your usual verification method stops working, the account is out of reach, and the list of reasons it stops working is longer than most people expect. A new phone, a reinstalled authenticator, a deactivated number, a dead device.</p>
+<p>This piece covers the backup codes alone: what they solve, how to store them, how they get spent, and the order of operations when they are lost.</p>
+
+<h2>The problem backup codes solve</h2>
+<p>Normal two-factor authentication depends on something you carry: a rotating code in an authenticator app, or an SMS message. That design assumes the device stays with you and stays functional. When the assumption fails, the normal path disappears.</p>
+<p>Backup codes are the escape hatch for exactly that situation. They are a set of one-time codes, one per line, and any unused code completes verification. They need no network and no phone, only a copy you can reach.</p>
+<p>Note the phrase one-time. Each code retires after use, which makes it a consumable credential that needs a periodic inventory check.</p>
+
+<h2>Where to put them</h2>
+<p>You generate them inside the account security settings, usually alongside the other verification methods. After generation you pick a storage method. Three approaches, ordered by reliability:</p>
+<table>
+  <tr><th>Method</th><th>Strength</th><th>Risk</th></tr>
+  <tr><td>A dedicated entry in a password manager</td><td>Encrypted, synced across devices, hard to lose</td><td>Depends on the master password; lose that and everything goes</td></tr>
+  <tr><td>Handwritten on paper, stored in one fixed place</td><td>No electronics involved</td><td>Fire, moving house, someone finding it</td></tr>
+  <tr><td>Encrypted file held locally</td><td>Full control</td><td>You must manage the passphrase and the backups yourself</td></tr>
+</table>
+<p>Any of the three works. What matters is picking one and actually doing it. The common anti-pattern is taking a screenshot and leaving it in the camera roll, where it disappears along with the phone. The password manager route assumes you already have that habit in place, covered in <a href="/blog/social-account-password-manager-setup">setting up a password manager</a>.</p>
+
+<h2>Every use spends one</h2>
+<p>Signing in with a backup code consumes it. If you lean on them several times in a row, the stack shrinks faster than expected. Put a check of the remaining count into your periodic maintenance list, alongside the settings you review in <a href="/blog/enable-2fa-x-account">enabling two-factor authentication</a>.</p>
+<p>Regenerate once you are below half. On most platforms regenerating invalidates the old set at the same time, so save the new codes immediately rather than leaving it for later.</p>
+
+<h2>When the codes are gone</h2>
+<p>Two cases, and they call for completely different sequences.</p>
+<h3>Case one: you can still sign in</h3>
+<p>This is the easy one. Open security settings, generate a fresh set, store them, and the old ones are void. The whole thing takes minutes.</p>
+<p>One detail is easy to miss. If you came looking because of a story you heard from someone else, take the opportunity to review all verification methods at once: the phone number, the authenticator, and any hardware key. The check is cheap and the payoff arrives at the worst possible moment.</p>
+<h3>Case two: you are already locked out</h3>
+<p>Recovery at this point has nothing to do with backup codes. It runs through the registration email, the linked phone number, or a support appeal. This is also why a deactivated number hurts so much: it breaks two paths at once, verification and recovery.</p>
+<p>If someone else took over the account, shift the order again. Recover the account first, then address the security settings. The steps are in <a href="/blog/twitter-account-takeover-recovery">recovering a hijacked account</a>.</p>
+
+<h2>How the three methods relate</h2>
+<table>
+  <tr><th>Method</th><th>Depends on</th><th>Typical failure</th></tr>
+  <tr><td>SMS codes</td><td>A phone number and carrier network</td><td>Deactivation, number change, SIM swap</td></tr>
+  <tr><td>Authenticator app</td><td>An app and a local secret on the device</td><td>Device swap without migration, hardware failure, app reset</td></tr>
+  <tr><td>Backup codes</td><td>The copy you stored</td><td>Misplaced, never generated, exhausted</td></tr>
+</table>
+<p>The failure modes do not overlap, which is the whole point. They also show that SMS is the weakest of the three. SIM swap attacks target it specifically, as covered in <a href="/blog/sim-swap-attack-x-account-lockout">how a SIM swap locks an account</a>.</p>
+
+<h2>A storage routine that holds up</h2>
+<ul>
+  <li>Save within ten minutes of generating. Do not defer it.</li>
+  <li>Keep one copy in a password manager with a clear entry name.</li>
+  <li>Keep an offline paper copy for the case where the master password is also lost.</li>
+  <li>Add a remaining-count check to your quarterly maintenance list.</li>
+  <li>Confirm the old set is void after regenerating. Do not run two sets at once.</li>
+</ul>
+<p>That last point trips people up. With two sets in hand, you can easily try codes from the wrong one, fail a few times, and conclude the whole thing is broken.</p>
+
+<p>digital-footprint-health.shop folds account security settings into its public-exposure assessment. To see the overall picture for your account, start a free check from the <a href="/">homepage</a>. Common account questions are collected on the <a href="/faq">FAQ page</a>, and bulk cleanup plans sit on the <a href="/pricing">pricing page</a>.</p>
+`,
+    faq: [
+      { q: "X 的备份码在哪里生成？", a: "在账号的安全设置里，与两步验证方法并列的位置。生成后需要立即保存，多数情况下重新生成会让旧的一组失效。", qEn: "Where do I generate backup codes on X?", aEn: "In the account security settings, alongside the other two-factor methods. Save them right away, since regenerating normally invalidates the previous set." },
+      { q: "备份码可以用几次？", a: "每个码只能用一次，用过即作废。一组通常有若干个，用完需要重新生成。建议把检查剩余数量放进定期维护清单，余量低于一半时重新生成。", qEn: "How many times can a backup code be used?", aEn: "Each code works once and is void afterwards. A set contains several, and you regenerate when they run out. Check the remaining count periodically and regenerate below half." },
+      { q: "备份码和验证器应用可以同时用吗？", a: "可以，而且建议同时配置。两者的失效场景不同，备份码正是在验证器不可用时使用。用备份码登录后，该码立即作废，其余码不受影响。", qEn: "Can I use backup codes and an authenticator app together?", aEn: "Yes, and you should. Their failure modes differ, and the codes exist for the moment the authenticator is unavailable. Using one code voids only that code." },
+      { q: "备份码全部用完了怎么办？", a: "只要能登录，进入安全设置重新生成一组即可。如果已经无法登录，就要走账号恢复流程，靠注册邮箱、绑定手机号或申诉，备份码在这一阶段帮不上忙。", qEn: "What if I have used every backup code?", aEn: "If you can still sign in, generate a new set from security settings. If you cannot, recovery runs through the registration email, linked phone number or an appeal, not through backup codes." },
+      { q: "把备份码存进密码管理器安全吗？", a: "这是三种方式里综合可靠性最高的一种，前提是主密码足够强且你能记住。建议同时在离线位置保留一份纸质副本，用于主密码也忘记的极端情况。", qEn: "Is it safe to store backup codes in a password manager?", aEn: "It is the most reliable of the three options, provided the master password is strong and memorable. Keep an offline paper copy as well for the case where the master password is also lost." },
+    ],
+  },
+  {
+    slug: "social-media-break-vs-cleanup",
+    title: "停用账号还是清理旧推文：哪种更能缓解焦虑",
+    excerpt:
+      "同样的焦虑感，有人靠停用账号缓解，有人靠删掉旧内容缓解，效果差别很大。这两种做法的机制不同，一个处理摄入，一个处理存量。搞混了就会反复回到原点，或者越清越焦虑。",
+    date: "2026-10-01",
+    updatedAt: "2026-10-01",
+    author: "Digital Footprint Health Team",
+    category: "心理与习惯",
+    tags: ["数字焦虑","清理旧推文","数字极简","社交媒体","习惯"],
+    canonical: "/blog/social-media-break-vs-cleanup",
+    titleEn: "Taking a Break or Cleaning Up: Which Actually Eases the Anxiety?",
+    excerptEn:
+      "The same anxious feeling gets treated two ways: some people step away from the account, others delete old posts. The results differ sharply because the mechanisms differ, one handling intake and the other handling backlog. Mixing them up sends you back to the start.",
+    categoryEn: "Mindset and Habits",
+    tagsEn: ["digital anxiety","old tweets cleanup","digital minimalism","social media","habits"],
+    content: `
+
+<p>谈到社交媒体带来的不适感，常见的建议分成两派。一派主张停用一段时间，另一派主张把旧内容清理干净。两种建议都有人反馈有效，也都有人反馈没用。原因在于它们处理的根本不是同一个东西：一个减少输入，一个减少存量。</p>
+<p>分清楚这一点，才知道自己该选哪一个。</p>
+
+<h2>两种做法针对的是不同来源</h2>
+<p>焦虑感通常来自两个方向。一个是当下的输入：刷到的内容、比较、被卷入讨论。另一个是过去的存量：担心某条旧帖被人翻出来、担心搜索结果显示出来不好的东西。这两类来源的心理机制不同，缓解手段自然也不同。</p>
+<p>停用账号对第一类直接有效，对第二类几乎无效，因为存量还在那里，随时可以被搜到。反过来，清理旧内容对存量有效，但如果你每天仍然大量输入，清理带来的安心感会被很快冲淡。</p>
+
+<h2>停用账号：见效快，但会反弹</h2>
+<p>停用的效果来得很快。断掉输入之后，那种被信息推着走的感觉会在几天内明显减轻。这也是它受欢迎的原因。</p>
+<p>问题在恢复使用之后。如果停用期间没有处理任何存量，回到平台的那一刻，之前担心的内容原样还在，甚至会因为这段时间的空白而显得更陌生、更难判断。于是循环开始：焦虑、停用、好转、恢复、焦虑。</p>
+<p>另外，停用有一个容易被忽略的副作用：长时间不登录会错过安全通知。账号被别人尝试登录的提醒、验证方式被修改的通知，都在这段时间里发出去。所以停用更适合短期使用，长期依赖它并不合适。</p>
+
+<h2>清理旧内容：见效慢，但留得下</h2>
+<p>清理的心理收益和停用不同。它带来的不是即时的轻松感，而是一种「这件事我已经处理过了」的确定感。这种确定感的衰减速度比停用带来的轻松感慢很多。</p>
+<p>代价是需要付出实际动作。翻历史内容本身就可能引发不适，这是很多人卡住的地方。把这件事拆小是关键，一次处理一个年份或者一个主题，比一次性翻完全部更容易坚持。节奏安排可以参考<a href="/blog/30-day-footprint-habit-plan">三十天的清理习惯计划</a>。</p>
+
+<h2>两种做法对照</h2>
+<table>
+  <tr><th>维度</th><th>停用账号</th><th>清理旧内容</th></tr>
+  <tr><td>作用对象</td><td>当下的输入</td><td>过去的存量</td></tr>
+  <tr><td>见效速度</td><td>几天内明显</td><td>需要数周累积</td></tr>
+  <tr><td>是否持久</td><td>恢复使用后效果衰减</td><td>处理过的内容不会再回来</td></tr>
+  <tr><td>副作用</td><td>错过安全通知、社交关系生疏</td><td>翻旧内容过程本身有情绪成本</td></tr>
+  <tr><td>适合的触发场景</td><td>信息过载、被卷入争论</td><td>担心旧内容被翻出、搜索结果不干净</td></tr>
+</table>
+<p>最后一行是关键。先确定自己的不适来自哪一栏，再选做法，不要把两件事当同一件事处理。</p>
+
+<h2>更稳的顺序：先清理，再休息</h2>
+<p>如果两类来源同时存在，处理顺序建议先清理后停用。理由很直接：清理的过程需要登录、需要浏览大量历史内容，本身消耗情绪；等这部分做完再断开，休息期的质量会高得多，也不会因为「还留着没处理的东西」而反复想起。</p>
+<p>顺序反过来的常见后果是：停用期间安心，恢复后发现问题一个没少，于是对清理这件事产生更强的抵触，拖得更久。</p>
+<p>这个顺序还有一个附带好处。清理本身是有终点的，做完就是做完；停用没有终点，只有「什么时候恢复」的问题。先做有终点的，再做无终点的，心理负担更轻。</p>
+
+<h2>怎么判断自己需要哪一种</h2>
+<ul>
+  <li>刷手机之后感到疲惫或烦躁，属于输入问题，先考虑减少使用时长。</li>
+  <li>想到某条旧帖被看到就紧张，属于存量问题，先考虑清理。</li>
+  <li>两者都有，先清理再休息。</li>
+  <li>清理过程中越清越焦虑，可能是把清理当成了控制感的替代品，需要暂停并调整节奏。</li>
+</ul>
+<p>最后一行的信号值得认真对待。清理是一项工具，如果它本身变成了必须完成的仪式，就已经偏离了原本的目的。这个边界在哪，可以参考<a href="/blog/cleanup-addiction-when-to-stop">清理到什么程度该停下来</a>。</p>
+
+<p>digital-footprint-health.shop 提供免费的足迹体检，把公开内容按风险分布整理出来，让人不用盲目翻历史。想先了解自己账号的存量情况，可以从<a href="/">首页</a>开始；清理的方法论在<a href="/blog">博客索引</a>按主题归类，成批处理的方案与费用见<a href="/pricing">定价页</a>。</p>
+`,
+    contentEn: `
+
+<p>Ask about the discomfort that comes with social media and the advice splits into two camps. One says step away for a while. The other says delete the old posts and be done with it. Both camps report success, and both report failure, because the two approaches address different things. One reduces intake. The other reduces backlog.</p>
+<p>Sorting that out is what tells you which one you actually need.</p>
+
+<h2>Different sources of the same feeling</h2>
+<p>Anxiety usually arrives from one of two directions. The first is present input: the feed, the comparison, getting pulled into an argument. The second is past inventory: the worry that an old post will surface, that a search result will show something unflattering. The two have distinct mechanisms, so the relief looks different too.</p>
+<p>Stepping away works directly on the first and barely touches the second, because the backlog stays where it is and remains searchable. Cleaning up works on the backlog, but if you keep consuming heavily every day, the calm it produces gets diluted within a week.</p>
+
+<h2>Stepping away: fast, then it rebounds</h2>
+<p>The effect arrives quickly. Cut the input and the sense of being pushed along by information eases within days. That is exactly why the advice is popular.</p>
+<p>The trouble shows up on return. If nothing was done about the backlog while you were gone, the content you were worried about is still sitting there, and after a pause it can feel stranger and harder to judge than before. The loop starts: anxiety, break, relief, return, anxiety.</p>
+<p>There is also an easily missed side effect. Long absences mean missed security notices. Alerts about someone trying to sign in, or a verification method being changed, go out during that window. Short breaks are better suited to this than long ones.</p>
+
+<h2>Cleaning up: slower, but it stays</h2>
+<p>The psychological return is different in kind. It is not the immediate lightness of a break but the settled feeling of having dealt with something. That settles more slowly than a break's relief fades.</p>
+<p>The cost is real work. Paging through your own history can itself be uncomfortable, which is where many people stall. Breaking it into small pieces is the answer: one year or one topic per sitting beats trying to review everything at once. A pacing structure is laid out in <a href="/blog/30-day-footprint-habit-plan">a thirty-day cleanup plan</a>.</p>
+
+<h2>Side by side</h2>
+<table>
+  <tr><th>Dimension</th><th>Stepping away</th><th>Cleaning up</th></tr>
+  <tr><td>What it acts on</td><td>Present input</td><td>Past inventory</td></tr>
+  <tr><td>Time to effect</td><td>Noticeable within days</td><td>Builds over weeks</td></tr>
+  <tr><td>Durability</td><td>Fades once you return</td><td>Handled content does not come back</td></tr>
+  <tr><td>Side effect</td><td>Missed security notices, loosened ties</td><td>Emotional cost while reviewing history</td></tr>
+  <tr><td>Best trigger</td><td>Overload, being pulled into arguments</td><td>Worry about old posts, unclean search results</td></tr>
+</table>
+<p>The last row is the one to read twice. Work out which column your discomfort comes from, then pick the method. Treating them as interchangeable is what causes the loop.</p>
+
+<h2>The steadier order: clean first, then rest</h2>
+<p>When both sources are present, handle the backlog first and take the break afterwards. The reasoning is plain. Cleaning requires signing in and browsing a lot of history, which costs emotional energy, so doing it first makes the rest period far better. It also removes the nagging sense that something is still waiting.</p>
+<p>Reversing the order tends to end badly. The break feels fine, the return reveals that nothing changed, and the aversion to cleaning grows stronger, which delays it further.</p>
+<p>There is a bonus to this sequence. Cleaning has an end state, so you know when it is finished. A break has no end, only the question of when to return. Doing the finite task first and the open-ended one second is lighter to carry.</p>
+
+<h2>Working out which one you need</h2>
+<ul>
+  <li>Feeling drained or irritated after scrolling points at input. Start by cutting screen time.</li>
+  <li>Feeling tense at the thought of one old post being seen points at inventory. Start with cleanup.</li>
+  <li>Both present: clean first, rest second.</li>
+  <li>If cleaning makes you more anxious the further you go, the habit may have become a stand-in for control. Pause and reset the pace.</li>
+</ul>
+<p>That last signal deserves attention. Cleanup is a tool, and when it turns into a ritual that must be completed, it has drifted from its purpose. Where that line sits is covered in <a href="/blog/cleanup-addiction-when-to-stop">knowing when to stop cleaning</a>.</p>
+
+<p>digital-footprint-health.shop runs a free footprint check that sorts public content by risk, so you do not have to read through everything to find out what is there. To see your own backlog, start from the <a href="/">homepage</a>. Cleanup methods are grouped by topic in the <a href="/blog">blog index</a>, and bulk options are on the <a href="/pricing">pricing page</a>.</p>
+`,
+    faq: [
+      { q: "停用账号之后焦虑会消失吗？", a: "短期会明显减轻，因为输入被切断了。但如果存量问题没有处理，恢复使用后焦虑通常会回来，而且比之前更难判断。停用更适合短期使用。", qEn: "Does anxiety disappear when I step away from the account?", aEn: "It eases noticeably in the short term because the input is cut off. If the backlog was never addressed, the anxiety usually returns on resumption and is harder to judge. Breaks suit short-term use." },
+      { q: "清理旧推文要一次性做完吗？", a: "不建议。翻历史内容本身有情绪成本，一次性做完容易中途放弃或越做越焦虑。按年份或主题拆成多次，每次控制在可承受的范围内更可持续。", qEn: "Should I clean up all the old posts at once?", aEn: "Better not. Reviewing history carries an emotional cost, and doing it in one pass invites burnout or worsening anxiety. Split it by year or topic across several sessions." },
+      { q: "两种做法可以同时进行吗？", a: "可以，但顺序建议先清理再休息。清理需要登录和浏览历史，先做完这部分再断开，休息质量更高，也不会因为还有未处理的内容而反复想起。", qEn: "Can I do both at the same time?", aEn: "Yes, though cleaning before resting works better. Cleanup needs sign-ins and history browsing, so finishing it first produces a better break and removes the nagging reminder." },
+      { q: "怎么判断清理已经够了？", a: "当清理的动机从「处理具体风险」变成「必须做到某个数字」，就已经过界。合理的停止点是你对公开内容的担心不再影响日常判断，清空全部历史并不是目标。", qEn: "How do I know when cleanup is enough?", aEn: "When the motive shifts from handling a specific risk to hitting a number, it has gone too far. The right stopping point is when worry about public content stops shaping your daily decisions, not an empty history." },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -18877,6 +18877,376 @@ rl.on('close', () =&gt; {
       { q: "怎么判断清理已经够了？", a: "当清理的动机从「处理具体风险」变成「必须做到某个数字」，就已经过界。合理的停止点是你对公开内容的担心不再影响日常判断，清空全部历史并不是目标。", qEn: "How do I know when cleanup is enough?", aEn: "When the motive shifts from handling a specific risk to hitting a number, it has gone too far. The right stopping point is when worry about public content stops shaping your daily decisions, not an empty history." },
     ],
   },
+  {
+  slug: '60-day-digital-footprint-milestone',
+  title: '数字足迹清理 60 天复盘：12 个方法里，真正值得做的只有这 5 个',
+  excerpt: '我们用 60 天连续发布了 160 多篇数字足迹与推文隐私指南，也亲手试了市面上大部分清理方法。这篇复盘把最值得做的 5 件事讲清楚，帮你在 30 分钟内定下自己的清理优先级。',
+  date: '2026-10-02',
+  updatedAt: '2026-10-02',
+  author: 'Digital Footprint Health Team',
+  category: '特辑复盘',
+  tags: ['数字足迹', '隐私清理', '60天', 'X/Twitter', '隐私体检'],
+  content: `
+<p>到今天，数字足迹系列已经连续更新 60 天、发布了 160 多篇推文隐私与账号安全指南。我们不只是写文章，也亲手试了市面上大部分清理方法。这篇复盘把最值得做的 5 件事讲清楚，让你用大约 30 分钟定下自己的清理优先级，不必被各种"一键清理"广告带偏。</p>
+
+<h2>为什么做这次 60 天复盘</h2>
+<p>很多人以为删几条推文就是清理数字足迹，实际远不止。你的手机号、住址、定位、身份证件照片、甚至对某家公司的吐槽，都可能留在几年前的旧推文里。招聘官、骗子、搜索引擎都能看到这些内容。60 天里我们反复验证的，是怎么用最低成本把这类痕迹降到可控范围，而"彻底消失"这种目标本来就不现实。</p>
+
+<h2>60 天里被验证的方法（对照表）</h2>
+<table>
+<thead><tr><th>方法</th><th>自己动手耗时</th><th>主要风险</th><th>推荐度</th></tr></thead>
+<tbody>
+<tr><td>本机隐私体检</td><td>5 分钟</td><td>几乎为零</td><td>必做</td></tr>
+<tr><td>导出 X 数据归档</td><td>10 分钟</td><td>需保管好 ZIP</td><td>必做</td></tr>
+<tr><td>按风险删除推文</td><td>30 分钟起</td><td>误删需先备份</td><td>必做</td></tr>
+<tr><td>开启两步验证</td><td>5 分钟</td><td>要存好备用码</td><td>必做</td></tr>
+<tr><td>每月复查</td><td>10 分钟</td><td>容易忘记</td><td>推荐</td></tr>
+<tr><td>第三方代删服务</td><td>看套餐</td><td>要交账号授权</td><td>谨慎</td></tr>
+<tr><td>直接改用户名重来</td><td>5 分钟</td><td>旧链接仍有效</td><td>不推荐</td></tr>
+</tbody>
+</table>
+
+<h2>方法一：先做本机隐私体检</h2>
+<p>体检不删任何东西，只做分析。打开 <a href="/">digital-footprint-health.shop</a>，上传你的 X 数据归档，工具会在你的电脑上解析每一条推文，标出手机号、邮箱、地址和敏感话题，给出 0-100 健康评分。整个过程数据不出本地，不会上传到任何服务器。<a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a> 这篇讲得更细。</p>
+
+<h2>方法二：导出并归档你的 X 数据</h2>
+<p>在删除之前，先备份。X 允许你免费导出完整数据归档（ZIP），里面包含你发过的每一条推文。把它存到本机加密盘，<a href="/blog/how-to-download-x-archive">下载归档的详细步骤</a> 我们已经写过；换了设备也能照着 <a href="/blog/x-archive-migration-new-device">归档迁移指南</a> 重新导入。</p>
+
+<h2>方法三：按风险等级删除推文</h2>
+<p>不要一条条手动找。先按风险给旧推文分级：手机号、住址、证件照片属于高危，应该优先删；对公司和前雇主的吐槽属于中危；普通日常属于低危。具体怎么批量删、怎么按年份删，见 <a href="/blog/how-to-delete-old-tweets-2026">2026 删除旧推文实操</a> 和 <a href="/blog/delete-tweets-by-year">按年份删除</a>。</p>
+
+<h2>方法四：把账号本身锁好</h2>
+<p>清理只能补救过去，保护好账号才能防止新的泄露。开启两步验证、存好备用恢复码、定期查登录设备，这三步花不了十分钟。<a href="/blog/enable-2fa-x-account">开启 X 两步验证</a> 和 <a href="/blog/x-two-factor-backup-codes">备份恢复码</a> 两篇可以直接照做。</p>
+
+<h2>方法五：把复查变成习惯</h2>
+<p>一次清理不够。建议每个月花十分钟重跑一次体检，看看有没有新暴露的痕迹。我们整理过一份 <a href="/blog/30-day-footprint-habit-plan">30 天足迹习惯计划</a>，照着做比靠记忆靠谱得多。</p>
+
+<h2>我们踩过的坑</h2>
+<p>复盘也要诚实：第一，光改用户名没用，旧推文的快照和搜索引擎缓存还在；第二，代删服务要你的账号授权，等于把钥匙交给别人，风险不低；第三，删之前没备份，想找回某条推文时只能干瞪眼。这三点我们都写进了指南，希望你别重蹈。</p>
+
+<h2>你的 30 分钟启动清单</h2>
+<ol>
+<li>打开 digital-footprint-health.shop，跑一次本机体检（5 分钟）。</li>
+<li>导出 X 数据归档并加密备份（10 分钟）。</li>
+<li>按风险等级删除高危推文（10 分钟起）。</li>
+<li>开启两步验证并存好备用码（5 分钟）。</li>
+</ol>
+
+<p>如果你想在本机一次性完成体检和清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后，工具会在你的电脑上解析每一条推文并标出风险，全程数据不出本地。更多方法见 <a href="/blog/how-to-delete-old-tweets-2026">如何删除旧推文</a> 与 <a href="/blog/digital-footprint-health-score">健康评分说明</a>。</p>
+`,
+  canonical: '/blog/60-day-digital-footprint-milestone',
+  faq: [
+    { q: '60 天指南的核心结论是什么？', a: '核心结论是：用本机体检、归档备份、按风险删除、开启两步验证这四步，就能把大部分隐私风险降到可控，不需要花钱买代删服务。', qEn: 'What is the core takeaway of the 60-day guides?', aEn: 'The core takeaway: an on-device check, an archive backup, risk-ranked deletion, and 2FA cover most privacy risk without paying for a deletion service.' },
+    { q: '数字足迹能彻底删干净吗？', a: '做不到彻底消失。旧推文的快照、搜索引擎缓存和别人转发的副本都可能还在。现实目标是把高危痕迹降到可控范围。', qEn: 'Can a digital footprint be erased completely?', aEn: 'No. Snapshots, search caches and other people reposts may remain. The realistic goal is to reduce high-risk traces to a manageable level.' },
+    { q: '哪一步最该先做？', a: '先做本机体检。它只读不删，几分钟内就能告诉你风险集中在哪，再决定删什么。', qEn: 'Which step should come first?', aEn: 'Start with the on-device check. It is read-only and shows where your risk concentrates within minutes, before you decide what to delete.' },
+    { q: '代删服务为什么慎用？', a: '因为它需要你的账号授权，等于把登录权限交给第三方，存在账号被盗和隐私二次泄露的风险。', qEn: 'Why be careful with deletion services?', aEn: 'They require account authorization, which hands your login to a third party and risks account takeover and a second privacy leak.' },
+    { q: '多久复查一次比较合适？', a: '建议每月一次，十分钟就能重跑体检，及时发现新暴露的痕迹。', qEn: 'How often should I recheck?', aEn: 'Once a month is enough. Ten minutes reruns the check and catches newly exposed traces early.' },
+  ],
+  titleEn: '60 Days of Digital-Footprint Cleanup: The 5 Steps That Actually Matter',
+  excerptEn: 'We published 160-plus digital-footprint and tweet-privacy guides over 60 straight days, and tested most cleanup methods ourselves. This recap narrows it to the five steps worth your time, so you can set cleanup priorities in about 30 minutes.',
+  categoryEn: 'Milestones',
+  tagsEn: ['digital footprint', 'privacy cleanup', '60 days', 'X/Twitter', 'privacy check'],
+  contentEn: `
+<p>Today marks 60 days of publishing digital-footprint and tweet-privacy guides, more than 160 posts in total. We did not just write about cleanup; we tested most of the available methods ourselves. This recap narrows it down to five steps worth your time, so you can set your own cleanup priorities in about 30 minutes instead of chasing one-click-cleanup ads.</p>
+
+<h2>Why this 60-day recap exists</h2>
+<p>Many people think deleting a few tweets is the same as cleaning up a digital footprint. It is not. Your phone number, home address, location, ID photos, and even a rant about a former employer can all sit in tweets from years ago. Recruiters, scammers, and search engines can read them. What we validated over 60 days is how to bring those traces down to a manageable level at low cost, not the impossible goal of making them vanish completely.</p>
+
+<h2>Methods we tested, side by side</h2>
+<table>
+<thead><tr><th>Method</th><th>Your time</th><th>Main risk</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr><td>On-device privacy check</td><td>5 min</td><td>Almost none</td><td>Do it</td></tr>
+<tr><td>Export your X archive</td><td>10 min</td><td>Must store the ZIP safely</td><td>Do it</td></tr>
+<tr><td>Delete tweets by risk</td><td>30 min+</td><td>Back up before deleting</td><td>Do it</td></tr>
+<tr><td>Turn on 2FA</td><td>5 min</td><td>Lose the backup codes</td><td>Do it</td></tr>
+<tr><td>Monthly recheck</td><td>10 min</td><td>Easy to forget</td><td>Recommended</td></tr>
+<tr><td>Third-party deletion service</td><td>Plan-based</td><td>Hand over account access</td><td>Be careful</td></tr>
+<tr><td>Just change your username</td><td>5 min</td><td>Old links still work</td><td>Skip it</td></tr>
+</tbody>
+</table>
+
+<h2>Step 1: run an on-device privacy check first</h2>
+<p>A check deletes nothing; it only analyzes. Open <a href="/">digital-footprint-health.shop</a>, upload your X archive, and the tool parses every tweet on your own computer, flags phone numbers, emails, addresses and sensitive topics, and gives you a 0-100 health score. Your data never leaves your machine. <a href="/blog/what-is-digital-footprint-check">What a digital footprint check is</a> goes deeper on this.</p>
+
+<h2>Step 2: export and archive your X data</h2>
+<p>Back up before you delete. X lets you export a full archive (ZIP) for free, containing every tweet you ever sent. Store it on an encrypted local drive. We already wrote the <a href="/blog/how-to-download-x-archive">step-by-step export guide</a>, and if you switch devices the <a href="/blog/x-archive-migration-new-device">archive migration guide</a> covers re-import.</p>
+
+<h2>Step 3: delete tweets by risk level</h2>
+<p>Do not hunt them one by one. Rank old tweets by risk first: phone numbers, addresses and ID photos are high risk and go first; complaints about employers are medium; ordinary daily posts are low. For the actual batch delete and year-by-year delete, see <a href="/blog/how-to-delete-old-tweets-2026">deleting old tweets in 2026</a> and <a href="/blog/delete-tweets-by-year">deleting by year</a>.</p>
+
+<h2>Step 4: lock the account down</h2>
+<p>Cleanup only fixes the past. Protect the account to stop new leaks: turn on two-factor authentication, save the backup codes, and review signed-in devices. These three steps take under ten minutes. <a href="/blog/enable-2fa-x-account">Enabling X two-factor</a> and <a href="/blog/x-two-factor-backup-codes">saving backup codes</a> are both direct walkthroughs.</p>
+
+<h2>Step 5: make rechecking a habit</h2>
+<p>One cleanup is not enough. Spend ten minutes each month re-running the check to catch new exposures. We put together a <a href="/blog/30-day-footprint-habit-plan">30-day footprint habit plan</a> that is easier to follow than memory alone.</p>
+
+<h2>Mistakes we made so you don't</h2>
+<p>Honesty in the recap: first, changing your username does nothing because snapshots and search caches of old tweets survive; second, a deletion service asks for account authorization, which is handing over your keys; third, deleting without a backup means you cannot recover a tweet you later want. All three are now written into our guides.</p>
+
+<h2>Your 30-minute start list</h2>
+<ol>
+<li>Open digital-footprint-health.shop and run the on-device check (5 min).</li>
+<li>Export your X archive and back it up encrypted (10 min).</li>
+<li>Delete high-risk tweets by rank (10 min and up).</li>
+<li>Turn on 2FA and save backup codes (5 min).</li>
+</ol>
+
+<p>If you would rather do the whole thing on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive, and the tool parses every tweet locally to flag risks, with your data never leaving your computer. For next steps, see <a href="/blog/how-to-delete-old-tweets-2026">how to delete old tweets</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>.</p>
+`,
+  },
+  {
+  slug: 'footprint-score-vs-credit-score',
+  title: '数字足迹评分和信用评分不是一回事：3 个关键区别',
+  excerpt: '很多人把"数字足迹健康评分"和银行信用评分混为一谈。这篇讲清三者（其实两类）的区别：谁来算、算什么、以及它到底会不会影响你贷款。结论：它不影响贷款，但会影响招聘和背景调查。',
+  date: '2026-10-02',
+  updatedAt: '2026-10-02',
+  author: 'Digital Footprint Health Team',
+  category: '体检评分',
+  tags: ['数字足迹', '健康评分', '信用评分', '隐私体检', '背景调查'],
+  content: `
+<p>我们在后台经常收到同一个问题：数字足迹健康评分是不是就是信用评分？会不会因为我评分低就贷不到款？先把结论放在前面：它是两类完全不同的东西。这篇把三个最容易混淆的点拆开讲。</p>
+
+<h2>它们分别是什么</h2>
+<p>信用评分（比如央行征信、FICO）由银行或征信机构计算，用来判断你借钱还不还得了。数字足迹健康评分是我们这类工具算的，用来衡量你公开在 X 等平台上的隐私暴露程度。两者的目的、数据、后果都不一样。</p>
+
+<h2>区别一：谁来算</h2>
+<p>信用评分的算力在金融机构手里，你通常只能查自己的分。数字足迹评分的算力在你自己的电脑上：以 <a href="/">digital-footprint-health.shop</a> 为例，归档在你本机解析，评分过程不会把数据传出去。<a href="/blog/digital-footprint-health-score">健康评分怎么算</a> 这篇讲了具体权重。</p>
+
+<h2>区别二：算的是什么数据</h2>
+<p>信用评分看的是你的借贷、还款、逾期记录。数字足迹评分看的是你推文里暴露的手机号、邮箱、住址、定位、身份证件和敏感话题。<a href="/blog/footprint-score-weighting-explained">评分权重详解</a> 列了每一项占多少。</p>
+
+<h2>区别三：后果不一样</h2>
+<p>信用评分低，银行可以拒贷、提利率。数字足迹评分低，不会有人拒绝给你贷款，但招聘官、背景调查公司、甚至陌生人都能从你的公开推文里挖到你的隐私。真正受影响的是求职、签证和社交安全，不是钱包。</p>
+
+<h2>你的数字足迹评分该怎么用</h2>
+<p>把它当成一个"自检清单"，分数低就按提示把高危推文删掉，分数高说明公开痕迹已经比较干净。<a href="/blog/footprint-score-drop-causes">分数突然下降的常见原因</a> 也能帮你定位是哪类内容在拉低分数。</p>
+
+<p>如果你还没跑过体检，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后本机生成 0-100 评分，全程数据不出本地。相关方法见 <a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a>。</p>
+`,
+  canonical: '/blog/footprint-score-vs-credit-score',
+  faq: [
+    { q: '数字足迹评分会影响贷款吗？', a: '不会。它只衡量公开隐私暴露程度，银行放贷看的是信用评分，两者互不相干。', qEn: 'Does the footprint score affect loans?', aEn: 'No. It only measures public privacy exposure. Banks lend on credit scores, which are unrelated.' },
+    { q: '这个评分谁看得到？', a: '只有你自己。以 digital-footprint-health.shop 为例，评分在你本机算出，不会被上传或展示给任何人。', qEn: 'Who can see this score?', aEn: 'Only you. At digital-footprint-health.shop the score is computed on your device and is never uploaded or shown to anyone.' },
+    { q: '分数低一定要全部删掉吗？', a: '不一定。先看报告把高危项（手机号、住址、证件）处理掉，中低危可以按需保留。', qEn: 'Must I delete everything if the score is low?', aEn: 'Not necessarily. Handle the high-risk items the report flags first; medium and low items can stay if you choose.' },
+  ],
+  titleEn: 'A Digital-Footprint Score Is Not a Credit Score: 3 Key Differences',
+  excerptEn: 'Many people confuse a digital-footprint health score with a bank credit score. This post explains the difference in three points: who computes it, what it measures, and whether it affects your loan. Verdict: it does not touch your loan, but it does affect hiring and background checks.',
+  categoryEn: 'Score & Audit',
+  tagsEn: ['digital footprint', 'health score', 'credit score', 'privacy check', 'background check'],
+  contentEn: `
+<p>One question comes up often in our inbox: is the digital-footprint health score the same as a credit score, and will a low score stop me getting a loan? Short answer: they are two completely different things. This post breaks down the three points people mix up most.</p>
+
+<h2>What each one actually is</h2>
+<p>A credit score, such as a central-bank report or FICO, is calculated by banks or credit bureaus to judge whether you repay debt. A digital-footprint score is calculated by tools like ours to measure how much private information you have left public on X and similar platforms. They differ in purpose, data and consequences.</p>
+
+<h2>Difference 1: who calculates it</h2>
+<p>Credit scores are owned by financial institutions; you can usually only view your own. A digital-footprint score is computed on your own computer. At <a href="/">digital-footprint-health.shop</a>, the archive is parsed locally, so scoring never sends your data out. <a href="/blog/digital-footprint-health-score">How the health score works</a> covers the weights.</p>
+
+<h2>Difference 2: what data feeds it</h2>
+<p>A credit score reads your borrowing, repayment and default history. A digital-footprint score reads phone numbers, emails, addresses, locations, ID documents and sensitive topics sitting in your tweets. <a href="/blog/footprint-score-weighting-explained">The weighting explainer</a> lists how much each item counts.</p>
+
+<h2>Difference 3: the consequences</h2>
+<p>A low credit score lets a bank decline a loan or raise the rate. A low digital-footprint score will not stop any loan, but recruiters, background-check firms and even strangers can dig your private details out of public tweets. What is really affected is hiring, visas and social safety, not your wallet.</p>
+
+<h2>How to use your footprint score</h2>
+<p>Treat it as a self-check list. A low score means delete the high-risk tweets the report flags; a high score means your public traces are already fairly clean. <a href="/blog/footprint-score-drop-causes">Why your score might drop suddenly</a> helps you pinpoint which content is dragging it down.</p>
+
+<p>If you have never run a check, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and get a 0-100 score computed locally, with your data never leaving your machine. For context, see <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
+`,
+  },
+  {
+  slug: 'x-account-locked-recovery-steps',
+  title: 'X 账号被锁了怎么办：一份分步恢复指南',
+  excerpt: '账号突然登不上、提示被锁定，是最让人慌的情况之一。这篇列出从"先别重复试密码"到"联系官方支持"的完整恢复步骤，以及锁定的常见原因和预防办法。',
+  date: '2026-10-02',
+  updatedAt: '2026-10-02',
+  author: 'Digital Footprint Health Team',
+  category: '账号安全',
+  tags: ['X/Twitter', '账号锁定', '账号恢复', '两步验证', '账号安全'],
+  content: `
+<p>X 账号突然提示"账号被锁定"或登不上去，是很多人遇到过、也最容易慌的情况。先稳住：大多数锁定都能在几小时内解。这篇按正确顺序列出恢复步骤，以及怎么避免下次再被锁。</p>
+
+<h2>第一步：先别反复试密码</h2>
+<p>登不上时最容易犯的错，是不停输入密码。这会被系统判定为暴力破解，锁定时间反而更长。先停下来，确认是不是密码错、还是账号真的被锁。</p>
+
+<h2>第二步：走官方恢复流程</h2>
+<p>在登录页点"忘记密码"，用绑定的邮箱或手机号收验证码重置。如果邮箱和手机号都还能收信，这一步通常就能解开。重置后建议立刻打开 <a href="/">digital-footprint-health.shop</a> 顺便做一次体检，看看账号有没有异常授权。</p>
+
+<h2>第三步：两步验证卡住了怎么办</h2>
+<p>开了两步验证但丢了手机，验证码就收不到。<a href="/blog/x-two-factor-backup-codes">备用恢复码</a> 就是这时候用的：当初开启时保存的那一串一次性码，可以绕过设备验证。没存过？走申诉流程，准备好注册邮箱和近期登录信息。<a href="/blog/enable-2fa-x-account">如何开启两步验证</a> 也讲了怎么把码存好。</p>
+
+<h2>第四步：账号被封和单纯锁定不一样</h2>
+<p>锁定通常可恢复，封号则是因为违反了平台规则。如果你的账号被封，要先走申诉，重置密码并不能解开封禁。<a href="/blog/sim-swap-attack-x-account-lockout">SIM 卡交换攻击</a> 这种案例里，攻击者正是利用手机号把账号锁死再窃取，所以绑定邮箱的安全设置也很关键。</p>
+
+<h2>第五步：还不行就联系官方支持</h2>
+<p>以上都失败，去 X 的帮助中心提交申诉，提供注册邮箱、用户名和近期活动信息。响应可能要几天，期间别信任何"付费秒解"的私信，那基本都是骗子。</p>
+
+<h2>怎么预防下次被锁</h2>
+<p>三件事：开启两步验证并存好备用码、<a href="/blog/x-email-change-security-alert">换绑邮箱时开安全提醒</a>、不在陌生设备登录。做好了，账号被锁的概率会低很多。</p>
+
+<p>如果担心账号已经暴露，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 归档后本机检查有没有异常授权和隐私泄露，全程数据不出本地。</p>
+`,
+  canonical: '/blog/x-account-locked-recovery-steps',
+  faq: [
+    { q: '账号被锁一般多久能解？', a: '多数临时锁定几小时内自动解除；走密码重置或申诉的，通常 1-3 天。反复试密码会拖长。', qEn: 'How long does a lock last?', aEn: 'Most temporary locks clear within hours; password reset or appeal cases usually take one to three days. Repeating the password extends it.' },
+    { q: '没有备用恢复码还能解开两步验证吗？', a: '可以走账号申诉，提供注册邮箱和近期登录信息，由官方人工核实后放行。', qEn: 'Can I get past 2FA without backup codes?', aEn: 'Yes, file an account appeal with your sign-up email and recent activity; staff verify and release it.' },
+    { q: '收到达"付费解封"私信能信吗？', a: '不能。官方不会私信收费解锁，这类私信基本都是诈骗，直接忽略并举报。', qEn: 'Should I trust a paid unlock DM?', aEn: 'No. X never charges via DM to unlock; such messages are scams. Ignore and report them.' },
+  ],
+  titleEn: 'Locked Out of X: A Step-by-Step Account Recovery Guide',
+  excerptEn: 'A sudden "account locked" notice is one of the most panic-inducing situations. This post lists the full recovery path from "stop retyping the password" to "contact official support," plus common causes and prevention.',
+  categoryEn: 'Account Security',
+  tagsEn: ['X/Twitter', 'account locked', 'account recovery', '2FA', 'account security'],
+  contentEn: `
+<p>Seeing "account locked" on X, or being suddenly unable to sign in, is common and easy to panic over. First, stay calm: most locks clear within hours. This post lists recovery steps in the right order and how to avoid the next lock.</p>
+
+<h2>Step 1: stop guessing the password</h2>
+<p>The most common mistake is typing the password again and again. That looks like a brute-force attempt and extends the lock. Stop and confirm whether it is a wrong password or a real lock.</p>
+
+<h2>Step 2: use the official recovery flow</h2>
+<p>On the sign-in page, choose "forgot password" and reset with the code sent to your email or phone. If both still receive messages, this step usually unlocks the account. After resetting, open <a href="/">digital-footprint-health.shop</a> and run a quick check for suspicious authorizations.</p>
+
+<h2>Step 3: stuck at two-factor verification</h2>
+<p>If 2FA is on but the phone is gone, you cannot get the code. This is exactly what <a href="/blog/x-two-factor-backup-codes">backup codes</a> are for: the one-time codes you saved when enabling 2FA bypass device verification. Never saved them? File an appeal with your sign-up email and recent activity. <a href="/blog/enable-2fa-x-account">Enabling 2FA</a> also explains how to store the codes.</p>
+
+<h2>Step 4: a ban is not the same as a lock</h2>
+<p>A lock is usually reversible; a ban means a rule was broken. If your account is banned, you appeal first rather than resetting the password. In cases like <a href="/blog/sim-swap-attack-x-account-lockout">SIM-swap attacks</a>, the attacker locks the account through the phone number to take it over, so the email security settings matter just as much.</p>
+
+<h2>Step 5: contact official support</h2>
+<p>If everything above fails, submit an appeal through X help center with your sign-up email, username and recent activity. Responses can take days, and during that time ignore any "pay to unlock" direct message, which is almost always a scam.</p>
+
+<h2>How to prevent the next lock</h2>
+<p>Three things: enable 2FA and store backup codes, <a href="/blog/x-email-change-security-alert">turn on email-change alerts</a>, and avoid signing in on unfamiliar devices. Do these and the odds of another lock drop sharply.</p>
+
+<p>If you worry the account is already exposed, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and check locally for suspicious authorizations and privacy leaks, with your data never leaving your machine.</p>
+`,
+  },
+  {
+  slug: 'delete-tweets-before-background-check',
+  title: '背景调查前，先清理这三类旧推文',
+  excerpt: '求职、签证、入党、考公，几乎都要过背景调查，而调查方会翻你的社交账号。这篇讲清楚背景调查通常看什么、哪三类旧推文最该在投递前清理、以及怎么不留痕迹地删。',
+  date: '2026-10-02',
+  updatedAt: '2026-10-02',
+  author: 'Digital Footprint Health Team',
+  category: '删除实操',
+  tags: ['删除推文', '背景调查', '求职', '隐私清理', 'X/Twitter'],
+  content: `
+<p>投递简历前后，背景调查几乎是绕不开的一环。很多人只改了简历，却忘了调查方会翻你的社交账号。这篇讲清楚背景调查通常看什么，以及哪三类旧推文最该在投递前清理。</p>
+
+<h2>背景调查会看社交账号吗</h2>
+<p>会。尤其外企、金融、政府和相关敏感岗位，调查公司会搜索你的公开社交足迹，包括 X、LinkedIn 等。他们看的不只是你说了什么，还有你对前雇主、客户和同事的态度。</p>
+
+<h2>最该删的三类旧推文</h2>
+<p>第一，暴露个人信息的：手机号、住址、证件照片，这类既危险又是调查方的重点。第二，对前雇主或同事的负面吐槽，哪怕过了几年，仍可能被视为职业素养问题。第三，争议性极强的观点或情绪发泄，容易被断章取义。</p>
+
+<h2>批量删除，告别一条条翻找</h2>
+<p>手动翻几年前的推文效率低。<a href="/blog/how-to-delete-old-tweets-2026">2026 删除旧推文实操</a> 讲了用归档批量删的方法；如果只想清理某个时间段的，<a href="/blog/delete-tweets-by-year">按年份删除</a> 更精准。删之前务必先导出归档备份，见 <a href="/blog/how-to-download-x-archive">下载归档指南</a>。</p>
+
+<h2>删了还会被搜到吗</h2>
+<p>推文删掉后，X 自己的搜索结果会很快消失，但搜索引擎的缓存和别人转发的副本可能还在。<a href="/blog/google-remove-old-tweets-from-search">让谷歌移除旧推文</a> 这篇讲了怎么进一步申请移除缓存。</p>
+
+<h2>建议的时间线</h2>
+<p>至少提前两周开始：第一周导出并体检、定位高危推文；第二周删除并提交移除申请。别等到面试官发来背调通知的当天才开始。</p>
+
+<p>想在本机高效又安全地清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 归档后按风险批量标记和删除，全程数据不出本地。如果是留学生身份，<a href="/blog/chinese-overseas-student-footprint-check">留学生足迹检查</a> 这篇也值得先看。</p>
+`,
+  canonical: '/blog/delete-tweets-before-background-check',
+  faq: [
+    { q: '背景调查一般提前多久开始？', a: '建议至少提前两周，给自己留出导出、删除和申请移除缓存的时间。', qEn: 'How far ahead should I start?', aEn: 'At least two weeks, leaving time to export, delete and request cache removal.' },
+    { q: '删了推文，别人转发的副本还在吗？', a: '还在。你只能删自己发的，转发由别人账号持有；必要时可申请搜索引擎移除缓存。', qEn: 'Do reposts by others survive deletion?', aEn: 'They do. You can only delete your own posts; reposts sit on other accounts, and you may need a search-cache removal request.' },
+    { q: '只发中文的推文调查方看得到吗？', a: '看得到。公开推文不分语言，英文检索同样能命中，中文内容也要一并清理。', qEn: 'Can they see Chinese-only tweets?', aEn: 'Yes. Public tweets are language-neutral; English search still matches them, so clean Chinese posts too.' },
+  ],
+  titleEn: 'Clean These Three Types of Old Tweets Before a Background Check',
+  excerptEn: 'Job, visa, and clearance applications almost all involve a background check, and the checker reads your social accounts. This post covers what they look for, which three types of old tweets to clean before applying, and how to delete without leaving traces.',
+  categoryEn: 'Deletion',
+  tagsEn: ['delete tweets', 'background check', 'job search', 'privacy cleanup', 'X/Twitter'],
+  contentEn: `
+<p>Around every application, a background check is almost unavoidable. Many people polish the resume but forget that the checker will read their social accounts. This post covers what checks usually look at and which three types of old tweets to clean before you apply.</p>
+
+<h2>Do background checks read social accounts?</h2>
+<p>Yes. Especially foreign companies, finance, government and sensitive roles; the firm searches your public social footprint, including X and LinkedIn. They read not only what you said but how you talk about former employers, clients and colleagues.</p>
+
+<h2>The three types of old tweets to delete first</h2>
+<p>First, anything exposing personal data: phone numbers, addresses, ID photos, which are both risky and a checker favorite. Second, negative rants about former employers or coworkers; even years old, they read as a professionalism problem. Third, strongly controversial or emotional posts that are easy to quote out of context.</p>
+
+<h2>How to delete in bulk, not one by one</h2>
+<p>Scrolling years of tweets is slow. <a href="/blog/how-to-delete-old-tweets-2026">Deleting old tweets in 2026</a> covers archive-based bulk deletion; if you only want a date range, <a href="/blog/delete-tweets-by-year">deleting by year</a> is more precise. Back up the archive first, per <a href="/blog/how-to-download-x-archive">the export guide</a>.</p>
+
+<h2>Will deleted tweets still show up in search?</h2>
+<p>Once deleted, X own search drops them quickly, but search-engine caches and other people reposts may remain. <a href="/blog/google-remove-old-tweets-from-search">Getting Google to remove old tweets</a> explains how to request cache removal.</p>
+
+<h2>Suggested timeline</h2>
+<p>Start at least two weeks early: week one, export and check to locate high-risk tweets; week two, delete and file removal requests. Do not wait until the interviewer sends the check notice.</p>
+
+<p>To clean efficiently and safely on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and bulk-flag and delete by risk, with your data never leaving your computer. If you are a student abroad, <a href="/blog/chinese-overseas-student-footprint-check">the overseas-student check</a> is worth reading first.</p>
+`,
+  },
+  {
+  slug: 'chinese-privacy-myths-x-tweets',
+  title: '中国用户最容易忽略的 5 个推文隐私误区',
+  excerpt: '很多中文用户以为"我没发过敏感内容就安全"，或者"注销账号就一了百了"。这篇从中文使用者的真实场景出发，指出 5 个最常见、也最危险的推文隐私误区，以及正确的做法。',
+  date: '2026-10-02',
+  updatedAt: '2026-10-02',
+  author: 'Digital Footprint Health Team',
+  category: '双语市场',
+  tags: ['中文用户', '推文隐私', '隐私误区', '数字足迹', '账号安全'],
+  content: `
+<p>在帮中文用户做数字足迹体检时，我们发现一些误区反复出现。这些误区往往来自中英互联网使用习惯的差异。很多人把国内平台的经验套到 X 上，结果反而更危险。这篇专门从中文使用者的真实场景，讲清 5 个最常见的推文隐私误区。</p>
+
+<h2>误区一：注销账号，痕迹就消失了</h2>
+<p>不少人以为把 X 账号注销，以前发的推文就没人能看了。事实是：注销只让你的账号无法登录，别人转发的副本、搜索引擎的缓存、数据经纪商的存档都还在。注销解决不了历史痕迹，反而让你失去"主动管理"的能力。正确做法是先清理再决定要不要保留账号。</p>
+
+<h2>误区二：只发中文，外国人就搜不到</h2>
+<p>这是最典型的认知偏差。公开推文不分语言，英文检索一样能命中中文关键词，数据经纪商更是有中文语料的抓取能力。<a href="/blog/chinese-vs-western-platform-privacy-settings">中西平台隐私设置差异</a> 这篇对比过，X 的默认公开范围比很多国内平台更宽。中文内容同样要按风险清理。</p>
+
+<h2>误区三：私信不算公开信息</h2>
+<p>私信确实不公开，但一旦账号被盗、被冒用，或者被对方截图外传，私信内容就暴露了。再加上 X 数据归档里私信也是可导出的一部分，所以涉及手机号、地址的私信也要当公开信息处理。</p>
+
+<h2>误区四：不用的旧号，放着不管没事</h2>
+<p>很多人有几年前的旧 X 号，早就不登录了，觉得"没人看"。但这些旧号上的手机号、住址还在，且往往没有两步验证保护，成了被锁死和冒用的最高危入口。<a href="/blog/chinese-users-cross-platform-footprint">中文用户跨平台足迹</a> 讲的就是这类"沉睡账号"的连锁风险。定期回收或加固旧号很有必要。</p>
+
+<h2>误区五：国内平台安全，国外平台就安全</h2>
+<p>还有人觉得"我主要在国内平台，X 偶尔用用没关系"。其实 X 的公开性和搜索引擎收录程度远高于多数国内平台，一条旧推文被英文索引抓到，影响面反而更大。两边都要管，不能只防一边。</p>
+
+<h2>正确的做法</h2>
+<p>把清理当成一次性的"体检 + 归档 + 删除"组合：先用工具在本机跑一次体检找出高危项，再导出归档备份，最后按风险删除。<a href="/blog/chinese-fandom-tweets-cleanup">中文饭圈内容清理</a> 这类场景里，历史内容的存量尤其大，更要提前处理。</p>
+
+<p>想在本机不花钱、不联网就完成体检和清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后工具在本地解析并标出风险，全程数据不出电脑。配合 <a href="/blog/chinese-vs-western-platform-privacy-settings">中西平台隐私设置对比</a>，把两边都管好。</p>
+`,
+  canonical: '/blog/chinese-privacy-myths-x-tweets',
+  faq: [
+    { q: '注销 X 账号能删掉历史推文吗？', a: '不能。注销只让账号无法登录，转发、缓存和经纪商存档还在；应先清理再决定是否注销。', qEn: 'Does deactivating X delete old tweets?', aEn: 'No. Deactivation only locks sign-in; reposts, caches and broker archives remain. Clean up before you decide to leave.' },
+    { q: '只发中文为什么要管英文检索？', a: '公开推文不分语言，英文搜索和数据经纪商都能命中中文关键词，所以中文内容同样要清理。', qEn: 'Why worry about English search if I post in Chinese?', aEn: 'Public tweets are language-neutral; English search and brokers match Chinese keywords, so Chinese posts need cleanup too.' },
+    { q: '旧号不登录会有什么风险？', a: '旧号往往留着手机号、住址又没两步验证，是最容易被锁死和冒用的入口，建议回收或加固。', qEn: 'What is the risk of an unused old account?', aEn: 'Old accounts often keep phone numbers and addresses with no 2FA, making them the easiest target for lockout and takeover; reclaim or harden them.' },
+  ],
+  titleEn: '5 Tweet-Privacy Myths Chinese Users Overlook Most',
+  excerptEn: 'Many Chinese users assume "I never posted anything sensitive, so I am safe," or "deactivating the account settles everything." Written for real Chinese-user scenarios, this post points out the five most common and most dangerous tweet-privacy myths, and what to do instead.',
+  categoryEn: 'Bilingual',
+  tagsEn: ['Chinese users', 'tweet privacy', 'privacy myths', 'digital footprint', 'account security'],
+  contentEn: `
+<p>While running digital-footprint checks for Chinese users, we keep seeing the same blind spots. They usually come from the gap between Chinese and Western internet habits: people apply domestic-platform intuition to X and end up more exposed. This post, written for Chinese users specifically, lists the five most common and most dangerous tweet-privacy myths.</p>
+
+<h2>Myth 1: deleting the account erases the traces</h2>
+<p>Many assume that once the X account is gone, old tweets are unreadable. In reality, deactivation only locks sign-in; reposts by others, search-engine caches and data-broker archives all survive. Deleting the account removes your ability to manage the history, which is the opposite of helpful. Clean up first, then decide whether to keep the account.</p>
+
+<h2>Myth 2: Chinese-only posts are invisible to foreign search</h2>
+<p>This is the most common misconception. Public tweets are language-neutral; English search matches Chinese keywords, and data brokers crawl Chinese text too. <a href="/blog/chinese-vs-western-platform-privacy-settings">The China-vs-West privacy-settings comparison</a> shows X default reach is wider than many domestic platforms. Chinese content needs the same risk-based cleanup.</p>
+
+<h2>Myth 3: DMs are not public, so they are safe</h2>
+<p>Direct messages are not public, but if the account is hijacked or the other person screenshots them, they leak. X archive also exports DMs, so a DM containing a phone number or address should be treated like public information.</p>
+
+<h2>Myth 4: an abandoned old account is harmless</h2>
+<p>People leave years-old X accounts unused and think no one looks. Those accounts still hold phone numbers and addresses, often with no 2FA, making them the easiest entry point for lockout and takeover. <a href="/blog/chinese-users-cross-platform-footprint">Cross-platform footprint for Chinese users</a> covers the chain risk of these sleeping accounts. Reclaim or harden old accounts regularly.</p>
+
+<h2>Myth 5: domestic platforms are safe, so X does not matter</h2>
+<p>Some think "I mainly use domestic platforms, X is occasional." But X public reach and search indexing are far wider than most domestic platforms, so one old tweet caught by English indexes spreads further. Manage both sides, not just one.</p>
+
+<h2>What to do instead</h2>
+<p>Treat cleanup as a one-time combo of check, archive and delete: run an on-device check to find high-risk items, export an archive as backup, then delete by risk. In cases like <a href="/blog/chinese-fandom-tweets-cleanup">cleaning up fandom history</a>, the backlog is especially large, so start early.</p>
+
+<p>To check and clean on your own machine, free and offline, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and let the tool parse and flag risks locally, with your data never leaving your computer. Pair it with <a href="/blog/chinese-vs-western-platform-privacy-settings">the China-vs-West settings comparison</a> to cover both sides.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

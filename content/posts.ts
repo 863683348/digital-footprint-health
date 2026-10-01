@@ -19037,10 +19037,23 @@ rl.on('close', () =&gt; {
 <li>Turn on 2FA and save backup codes (5 min).</li>
 </ol>
 
+
+
+<h2>What we deliberately did not do</h2>
+<p>The recap should also state the limits. First, we never recommend a paid deletion service as the first choice, because it asks for account authorization and the risk is rarely worth it when local, on-device steps cover most needs. Second, we never promise total erasure, since that is impossible and any pitch claiming otherwise deserves suspicion. Third, we do not treat changing your username as cleanup; it only swaps the door sign while the old traces remain. Putting these three points in the guides is meant to save you from detours.</p>
+
+<h2>From a one-time cleanup to a habit</h2>
+<p>The real win is not how many tweets you delete on a single day, but adopting a default-privacy mindset when you use the account. Before posting, ask whether this exposes a phone number; keep the sign-up email separate; know where the 2FA backup codes are stored. Turning that into muscle memory beats a once-a-year purge, and our 30-day plan exists to make it stick.</p>
+
+<h2>Why these 30 minutes</h2>
+<p>Many people delay cleanup because they imagine it takes a whole day. The necessary steps add up to just over half an hour: a five-minute check shows where the problem is, a ten-minute backup prevents losing a tweet you later want, risk-ranked deletion starts at ten minutes, and 2FA wraps up in five. Seen as separate steps, it is far less daunting and far easier to actually do. We sell no course and no tool; we just hand you the half-hour list and leave the rest to your judgment.</p>
+
+<h2>What the next 60 days should focus on</h2>
+<p>The methods above are stable, but the surroundings keep moving. Over the next two months we plan to cover platform policy shifts, new export formats, and the privacy habits that matter most for people who post across both Chinese and English. If you want a head start, the <a href="/blog/chinese-vs-western-platform-privacy-settings">China-vs-West settings comparison</a> and the <a href="/blog/30-day-footprint-habit-plan">30-day habit plan</a> are the two posts we would read first. Treat this recap as a baseline, not a finish line.</p>
+
 <p>If you would rather do the whole thing on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive, and the tool parses every tweet locally to flag risks, with your data never leaving your computer. For next steps, see <a href="/blog/how-to-delete-old-tweets-2026">how to delete old tweets</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>.</p>
 `,
-  },
-  {
+  }  {
   slug: 'footprint-score-vs-credit-score',
   title: '数字足迹评分和信用评分不是一回事：3 个关键区别',
   excerpt: '很多人把"数字足迹健康评分"和银行信用评分混为一谈。这篇讲清三者（其实两类）的区别：谁来算、算什么、以及它到底会不会影响你贷款。结论：它不影响贷款，但会影响招聘和背景调查。',
@@ -19104,10 +19117,20 @@ rl.on('close', () =&gt; {
 <h2>How to use your footprint score</h2>
 <p>Treat it as a self-check list. A low score means delete the high-risk tweets the report flags; a high score means your public traces are already fairly clean. <a href="/blog/footprint-score-drop-causes">Why your score might drop suddenly</a> helps you pinpoint which content is dragging it down.</p>
 
+
+
+<h2>A common myth: a low score gets you blacklisted</h2>
+<p>Some worry that a low score means a platform ban or a blacklist. That conflates two unrelated things. A digital-footprint score is a self-check number computed on your own device; the platform cannot see it and will not restrict you because of it. It is also not the same as an account-health score some platforms use internally to flag spam. So a low score only means more public privacy exposure, not a violation.</p>
+
+<h2>How to read your score report</h2>
+<p>The report usually scores categories such as phone number, email, address, location, ID documents and sensitive topics, then flags the high-risk ones. Tackling the red items first works better than staring at the total. After fixing a batch, rerun the check to see the score move. Everything stays on your device, so you can review the report as often as you like without uploading anything.</p>
+
+<h2>A one-minute sanity check</h2>
+<p>If you only do one thing after reading this, run the check once and look at the red items. You do not need to understand every category. Just note which type of data shows up most, delete a few of those tweets, and rerun. The score is a guide, not a grade, and a single pass already tells you more than guessing.</p>
+
 <p>If you have never run a check, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and get a 0-100 score computed locally, with your data never leaving your machine. For context, see <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
 `,
-  },
-  {
+  }  {
   slug: 'x-account-locked-recovery-steps',
   title: 'X 账号被锁了怎么办：一份分步恢复指南',
   excerpt: '账号突然登不上、提示被锁定，是最让人慌的情况之一。这篇列出从"先别重复试密码"到"联系官方支持"的完整恢复步骤，以及锁定的常见原因和预防办法。',
@@ -19177,10 +19200,20 @@ rl.on('close', () =&gt; {
 <h2>How to prevent the next lock</h2>
 <p>Three things: enable 2FA and store backup codes, <a href="/blog/x-email-change-security-alert">turn on email-change alerts</a>, and avoid signing in on unfamiliar devices. Do these and the odds of another lock drop sharply.</p>
 
+
+
+<h2>Is your data safe while the account is locked</h2>
+<p>A lock usually only blocks sign-in; the DMs, archive and bound information stored in the account do not vanish and are not visible to others because of it. But the lock period is when attackers are most active, often dangling "I can unlock it for you" to phish your code. So after a lock, watch out for strange links in DMs, never send a verification code to anyone, and remember that X never asks for your password by DM.</p>
+
+<h2>What if the bound email is also lost</h2>
+<p>If the bound email cannot receive mail, recovery gets harder. Try the email provider account-recovery flow first, using a backup email or phone. If that fails, file an X appeal with your sign-up date, common login locations and historical tweet patterns; staff usually release it after manual checks. Keeping the email and X recovery methods in separate places saves a lot of trouble.</p>
+
+<h2>If you suspect a takeover, not just a lock</h2>
+<p>A lock and a takeover look similar at first, but the fix differs. Signs of takeover include posts you did not write, DMs sent from your account, or a changed email or phone. If you see any of those, secure the account before you recover it: revoke active sessions, change the password, and turn on 2FA with fresh backup codes. The <a href="/blog/x-session-revocation-all-devices">session revocation guide</a> walks through kicking every device off at once.</p>
+
 <p>If you worry the account is already exposed, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and check locally for suspicious authorizations and privacy leaks, with your data never leaving your machine.</p>
 `,
-  },
-  {
+  }  {
   slug: 'delete-tweets-before-background-check',
   title: '背景调查前，先清理这三类旧推文',
   excerpt: '求职、签证、入党、考公，几乎都要过背景调查，而调查方会翻你的社交账号。这篇讲清楚背景调查通常看什么、哪三类旧推文最该在投递前清理、以及怎么不留痕迹地删。',
@@ -19244,10 +19277,20 @@ rl.on('close', () =&gt; {
 <h2>Suggested timeline</h2>
 <p>Start at least two weeks early: week one, export and check to locate high-risk tweets; week two, delete and file removal requests. Do not wait until the interviewer sends the check notice.</p>
 
+
+
+<h2>Should you tell the checker you cleaned up</h2>
+<p>You do not need to announce "I deleted some tweets," which only draws attention. The checker searches on their own; your job is to make sure nothing inappropriate shows up. If they ask for your social accounts in the process, give them, but do not volunteer explanations. The real point is to clear the high-risk content before applying so their search results are clean, rather than explaining afterwards.</p>
+
+<h2>Myth: deleting settles everything</h2>
+<p>Deletion handles the content on your own account, but not three things: reposts by others, search-engine caches and data-broker archives. So after deleting, file a cache-removal request when needed, and post less high-risk content going forward. Cleanup lowers exposure; it does not erase traces. Set that expectation straight, or the chase for perfection may stop you from starting at all.</p>
+
+<h2>Already applied and forgot to clean</h2>
+<p>If the application is already in and you only now think about cleanup, do not panic. Start deleting the high-risk items now; a cleaner profile today still helps if the check happens later or repeats. You can also note in the process that old posts are being reviewed, though most checkers simply search again. The key is to act, not to assume the window has closed.</p>
+
 <p>To clean efficiently and safely on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and bulk-flag and delete by risk, with your data never leaving your computer. If you are a student abroad, <a href="/blog/chinese-overseas-student-footprint-check">the overseas-student check</a> is worth reading first.</p>
 `,
-  },
-  {
+  }  {
   slug: 'chinese-privacy-myths-x-tweets',
   title: '中国用户最容易忽略的 5 个推文隐私误区',
   excerpt: '很多中文用户以为"我没发过敏感内容就安全"，或者"注销账号就一了百了"。这篇从中文使用者的真实场景出发，指出 5 个最常见、也最危险的推文隐私误区，以及正确的做法。',
@@ -19314,10 +19357,17 @@ rl.on('close', () =&gt; {
 <h2>What to do instead</h2>
 <p>Treat cleanup as a one-time combo of check, archive and delete: run an on-device check to find high-risk items, export an archive as backup, then delete by risk. In cases like <a href="/blog/chinese-fandom-tweets-cleanup">cleaning up fandom history</a>, the backlog is especially large, so start early.</p>
 
+
+
+<h2>Three actions you can take today</h2>
+<p>You do not have to wait for a free day; three small things work now: first, open digital-footprint-health.shop and run an on-device check to see where the risk concentrates; second, locate your X 2FA backup codes and store them safely; third, scroll your old tweets and delete the ones that clearly expose a phone number or address. Together they take under twenty minutes yet close off most common holes. What Chinese users overlook is exactly these "do-it-in-passing" steps.</p>
+
+<h2>Where Chinese users should start</h2>
+<p>If the five myths above feel like a lot, start with the one that costs nothing: run a check on your own archive this week. Most Chinese users who do find the surprises are old phone numbers and addresses sitting in posts from years ago. Clear those first, then come back for the rest. Privacy is not a one-time project; it is a habit of checking before you post and cleaning after you have posted.</p>
+
 <p>To check and clean on your own machine, free and offline, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and let the tool parse and flag risks locally, with your data never leaving your computer. Pair it with <a href="/blog/chinese-vs-western-platform-privacy-settings">the China-vs-West settings comparison</a> to cover both sides.</p>
 `,
-  },
-];
+  }];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

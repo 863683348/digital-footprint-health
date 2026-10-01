@@ -19051,9 +19051,13 @@ rl.on('close', () =&gt; {
 <h2>What the next 60 days should focus on</h2>
 <p>The methods above are stable, but the surroundings keep moving. Over the next two months we plan to cover platform policy shifts, new export formats, and the privacy habits that matter most for people who post across both Chinese and English. If you want a head start, the <a href="/blog/chinese-vs-western-platform-privacy-settings">China-vs-West settings comparison</a> and the <a href="/blog/30-day-footprint-habit-plan">30-day habit plan</a> are the two posts we would read first. Treat this recap as a baseline, not a finish line.</p>
 
+<h2>A note on free versus paid tools</h2>
+<p>You will see plenty of paid "privacy cleanup" products promising to erase everything for you. Most of what they do, you can do yourself in half an hour with a free archive export and an on-device check. The paid option only makes sense if you genuinely lack the time and trust the vendor with your account access. Read the permission scope before you connect anything, and prefer tools that work locally over ones that upload your archive to a server.</p>
+
 <p>If you would rather do the whole thing on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive, and the tool parses every tweet locally to flag risks, with your data never leaving your computer. For next steps, see <a href="/blog/how-to-delete-old-tweets-2026">how to delete old tweets</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>.</p>
 `,
-  }  {
+  },
+  {
   slug: 'footprint-score-vs-credit-score',
   title: '数字足迹评分和信用评分不是一回事：3 个关键区别',
   excerpt: '很多人把"数字足迹健康评分"和银行信用评分混为一谈。这篇讲清三者（其实两类）的区别：谁来算、算什么、以及它到底会不会影响你贷款。结论：它不影响贷款，但会影响招聘和背景调查。',
@@ -19130,7 +19134,8 @@ rl.on('close', () =&gt; {
 
 <p>If you have never run a check, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and get a 0-100 score computed locally, with your data never leaving your machine. For context, see <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
 `,
-  }  {
+  },
+  {
   slug: 'x-account-locked-recovery-steps',
   title: 'X 账号被锁了怎么办：一份分步恢复指南',
   excerpt: '账号突然登不上、提示被锁定，是最让人慌的情况之一。这篇列出从"先别重复试密码"到"联系官方支持"的完整恢复步骤，以及锁定的常见原因和预防办法。',
@@ -19213,7 +19218,8 @@ rl.on('close', () =&gt; {
 
 <p>If you worry the account is already exposed, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and check locally for suspicious authorizations and privacy leaks, with your data never leaving your machine.</p>
 `,
-  }  {
+  },
+  {
   slug: 'delete-tweets-before-background-check',
   title: '背景调查前，先清理这三类旧推文',
   excerpt: '求职、签证、入党、考公，几乎都要过背景调查，而调查方会翻你的社交账号。这篇讲清楚背景调查通常看什么、哪三类旧推文最该在投递前清理、以及怎么不留痕迹地删。',
@@ -19288,9 +19294,13 @@ rl.on('close', () =&gt; {
 <h2>Already applied and forgot to clean</h2>
 <p>If the application is already in and you only now think about cleanup, do not panic. Start deleting the high-risk items now; a cleaner profile today still helps if the check happens later or repeats. You can also note in the process that old posts are being reviewed, though most checkers simply search again. The key is to act, not to assume the window has closed.</p>
 
+<h2>How long the cleanup actually protects you</h2>
+<p>Deleting a tweet reduces your exposure the moment X drops it from search, but older copies can linger. Plan for a two-week tail: delete first, then watch for cached results and reposts, and re-run a search on your name a week later to catch anything still showing. Cleanup is not instant, and treating it as a short project with a follow-up beats assuming one pass is enough.</p>
+
 <p>To clean efficiently and safely on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and bulk-flag and delete by risk, with your data never leaving your computer. If you are a student abroad, <a href="/blog/chinese-overseas-student-footprint-check">the overseas-student check</a> is worth reading first.</p>
 `,
-  }  {
+  },
+  {
   slug: 'chinese-privacy-myths-x-tweets',
   title: '中国用户最容易忽略的 5 个推文隐私误区',
   excerpt: '很多中文用户以为"我没发过敏感内容就安全"，或者"注销账号就一了百了"。这篇从中文使用者的真实场景出发，指出 5 个最常见、也最危险的推文隐私误区，以及正确的做法。',
@@ -19367,7 +19377,8 @@ rl.on('close', () =&gt; {
 
 <p>To check and clean on your own machine, free and offline, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and let the tool parse and flag risks locally, with your data never leaving your computer. Pair it with <a href="/blog/chinese-vs-western-platform-privacy-settings">the China-vs-West settings comparison</a> to cover both sides.</p>
 `,
-  }];
+  },
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

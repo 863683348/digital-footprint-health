@@ -19378,6 +19378,266 @@ rl.on('close', () =&gt; {
 <p>To check and clean on your own machine, free and offline, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and let the tool parse and flag risks locally, with your data never leaving your computer. Pair it with <a href="/blog/chinese-vs-western-platform-privacy-settings">the China-vs-West settings comparison</a> to cover both sides.</p>
 `,
   },
+  {
+    slug: 'health-score-weighting-breakdown',
+    title: '隐私评分权重拆解：你的 0-100 分到底怎么算出来的',
+    excerpt: '评分不是随便给的数字。它把手机号、定位、敏感话题等几类风险按不同权重相加，再折算成 0-100。本文拆解每一类的权重来源、为什么某些内容扣分更狠，以及你到底能怎么把分提上去。',
+    date: '2026-10-03',
+    updatedAt: '2026-10-03',
+    author: 'Digital Footprint Health Team',
+    category: '隐私评分',
+    tags: ['隐私评分', '数字足迹', '隐私体检', '风险评估', '权重'],
+    content: `
+<p>很多人看到报告上的 0-100 分，第一反应是"这数字靠谱吗"。我理解这种怀疑。分是在你自己的机器上算出来的，但算法并不是黑盒，它的逻辑可以拆开看。这篇就把权重一层层剥开，让你知道哪类内容最危险、为什么两条看起来差不多的推文，扣分能差很多。</p>
+
+<h2>评分由哪几类风险构成</h2>
+<p>底层把你的归档扫一遍，主要看四类痕迹。每一类都有自己的一段"危险区间"：</p>
+<table>
+<thead><tr><th>风险类型</th><th>常见内容</th><th>为什么危险</th><th>处理难度</th></tr></thead>
+<tbody>
+<tr><td>联系方式</td><td>手机号、邮箱、微信 ID</td><td>直接入口，诈骗和骚扰能精准找到你</td><td>高</td></tr>
+<tr><td>定位信息</td><td>家庭地址、公司地址、登机牌、打卡</td><td>关联真实世界安全</td><td>高</td></tr>
+<tr><td>身份与证件</td><td>身份证照片、工牌、护照页</td><td>可被冒用办理业务</td><td>中</td></tr>
+<tr><td>敏感话题</td><td>前雇主吐槽、过激观点、医疗相关</td><td>影响求职与口碑</td><td>中</td></tr>
+</tbody>
+</table>
+<p>这四类不是平权的。下面解释为什么。</p>
+
+<h2>为什么手机号比一句吐槽扣分更狠</h2>
+<p>权重差异来自"可操作性"。一条带手机号的推文，坏人不需要任何中间步骤就能打电话、发短信、尝试撞库；而一句对前老板的不满，最多在背景调查时被翻出来。前者的伤害是即时的、低门槛的，所以权重更高。</p>
+<p>另外一个常被忽略的点是重复出现的次数。你三年前发过一次手机号，和连续二十条都带着，风险不是 20 倍，但确实更高，因为这说明你长期没意识到这个问题。</p>
+
+<h2>权重是怎么定出来的</h2>
+<p>三个来源交叉验证：公开泄露数据库里哪些字段出现频率最高、诈骗报案里受害者最先泄露的是什么、用户自己标记"这条最让我后怕"的反馈密度。三者指向一致的内容，权重就高。换句话说，权重不是拍脑袋，是跟着真实受害路径走的。</p>
+<p>对中文用户来说这一点尤其重要，因为本地的诈骗手法和欧美不一样。一条推文里带微信 ID，在国内的威胁远大于一个只面向美国的账号，评分也会体现这种差异。报告不仅会标出版本号，还会告诉你是哪一类触发了风险，不会只丢给你一句"这条有风险"却没有理由。</p>
+
+<h2>0-100 分到底意味着什么</h2>
+<p>分数本身只是个总览，真正有用的是分段：</p>
+<ul>
+<li><strong>0-30 分</strong>：高危，归档里大概率有可直接定位或联系到你的硬信息，建议优先处理。</li>
+<li><strong>31-60 分</strong>：中等，有散落的风险点，但不算密集。</li>
+<li><strong>61-80 分</strong>：良好，主要剩一些敏感话题类软风险。</li>
+<li><strong>81-100 分</strong>：干净，基本只剩历史痕迹，影响很小。</li>
+</ul>
+<p>多数账号在随意发了几年之后，会落在 30-60 这段，这是常态，不必紧张。分段不是装饰，它直接告诉你下一步该先处理哪一类风险。比如一个 45 分的账号，通常意味着归档里有至少一条带手机号的硬信息没清。分段这一步不能省，先把高分段里漏掉的那一项清掉，分数才会真正动起来。</p>
+
+<h2>评分会看内容的时间分布吗</h2>
+<p>会的，但权重偏向近期。一条带着手机号的旧推文当然要处理，而上周刚发的同样内容，因为距离现在更近、被搜到的概率更高，权重会略重一些。这也是为什么趁早清比以后再说划算：越晚处理，它在评分里的存在感越顽固。反过来，三年前删掉的内容重新体检时已经不计入，分数会立刻反映这个变化。</p>
+
+<h2>隐私分和信用分有什么不同</h2>
+<p>很多人把隐私分和芝麻分、信用分混为一谈。信用分预测你会不会还钱，依据是借贷和还款记录；隐私分只衡量别人能从你的历史里挖出多少硬信息，依据是你的归档内容。一个是金融预测，一个是风险暴露快照，两者没有数据互通，也不该互通。把隐私分刷高，不代表你信用更好，只代表你留下的可追溯痕迹更少。</p>
+
+<h2>怎么把分提上去</h2>
+<p>动作按性价比排序：先删带手机号和地址的，再清证件照片，然后处理敏感话题，最后才是零散的定位打卡。每删一类，分数会跳一截，分数不会匀速上涨，风险点清空后会有一个明显的台阶。</p>
+<p>举个具体例子：假设你的归档有 1200 条推文，其中 12 条带着 2019 年的旧手机号，3 条露了家庭地址，另有 40 条是吐槽前老板的愤怒发言。删掉那 12 条带号码的，分数跳得最猛，因为联系方式在权重表顶端；清掉 3 条地址是第二大步；那 40 条吐槽几乎不动分，这常让人意外。结论很简单：力气花在权重高的地方，不是条数多的地方。</p>
+
+<p>也有人担心分数低是不是说明账号已经出事了。分数低只代表暴露面大，不代表已经有人利用了这些信息。清完一轮再体检，通常会明显回落，多数账号能回到 60 分以上。</p>
+<p>如果你还没上传过归档，可以看 <a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a> 了解整体流程，或者直接在 <a href="/upload">免费体检页</a> 上传，几分钟拿到自己的报告。想了解删除成本，见 <a href="/pricing">定价页</a>。返回 <a href="/">首页</a> 也能找到入口。</p>
+<p>在 digital-footprint-health.shop 上，每次体检都在本机完成，数据不出你的电脑。和 <a href="/blog/footprint-score-vs-credit-score">信用分对比隐私分</a> 那篇一起看，能更清楚这两者根本不是一回事。</p>
+`,
+    canonical: '/blog/health-score-weighting-breakdown',
+    faq: [
+      { q: '评分会把我删掉的推文也算进去吗？', a: '不会。评分只看你当前归档里的推文。删掉之后重新体检，那条就不再计入。', qEn: 'Does the score count tweets I already deleted?', aEn: 'No. The check only looks at what is in your current archive. Once you delete a post and re-run the check, it no longer counts.' },
+      { q: '为什么两次体检分数不一样？', a: '两个原因：你删了内容，或者同一份归档重新解析时补扫到了之前漏掉的行。分数变化是预期的。', qEn: 'Why did my score change between two checks?', aEn: 'Two reasons: you removed some posts, or the same archive was re-parsed and caught lines that were missed before. Score changes are expected.' },
+      { q: '权重以后会变吗？', a: '会。随着新的泄露事件和诈骗手法出现，某些字段的权重会上调。算法更新时报告会标注版本。', qEn: 'Will the weights change over time?', aEn: 'Yes. As new breach patterns and scam methods show up, some fields get heavier weights. The report notes the scoring version when it changes.' },
+      { q: '低分一定代表危险吗？', a: '不一定。分数高只说明可被外人利用的痕迹少。如果你从不发定位、不晒证件，高分是常态，不代表你做了什么特别的事。', qEn: 'Does a low score always mean danger?', aEn: 'Not always. A high score just means there are fewer traces outsiders can exploit. If you never post locations or documents, a high score is normal, not a sign you did anything special.' },
+      { q: '我能自己改分数吗？', a: '不能手动改，也不该能。分数由归档内容推导，删掉风险内容后自然上升。任何付费改分都是骗局。', qEn: 'Can I change the score myself?', aEn: 'You cannot edit it manually, and you should not be able to. The score is derived from your archive; it rises on its own once risky posts are gone. Anyone offering to change it for a fee is running a scam.' },
+    ],
+    titleEn: 'How the 0-100 Privacy Score Is Actually Calculated',
+    excerptEn: 'Your privacy score is not a random number. It adds up risks like phone numbers, locations and sensitive topics with different weights, then maps the total to 0-100. This piece explains where each weight comes from, why some posts cost more points, and what actually moves the number.',
+    categoryEn: 'Privacy Score',
+    tagsEn: ['privacy score', 'digital footprint', 'privacy check', 'risk assessment', 'weighting'],
+    contentEn: `
+<p>When people see a 0-100 score on their report, the first reaction is often "is this number even real". I get the skepticism. The score is computed on your own machine, but the logic is not a black box. You can pull it apart, and this piece does exactly that, so you know which kinds of content are riskiest and why two similar posts can land very different scores.</p>
+
+<h2>What kinds of risk make up the score</h2>
+<p>The tool scans your archive and mainly looks at four types of traces. Each one occupies its own band of danger:</p>
+<table>
+<thead><tr><th>Risk type</th><th>Common content</th><th>Why it is dangerous</th><th>Hard to fix</th></tr></thead>
+<tbody>
+<tr><td>Contact info</td><td>phone numbers, emails, WeChat IDs</td><td>direct entry point; scammers and harassers reach you precisely</td><td>High</td></tr>
+<tr><td>Location</td><td>home address, office, boarding passes, check-ins</td><td>tied to physical-world safety</td><td>High</td></tr>
+<tr><td>Identity documents</td><td>ID photos, work badges, passport pages</td><td>can be abused to open accounts</td><td>Medium</td></tr>
+<tr><td>Sensitive topics</td><td>rants about former employers, extreme opinions, health details</td><td>hurts job prospects and reputation</td><td>Medium</td></tr>
+</tbody>
+</table>
+<p>These four types are not weighted equally. The next sections explain why.</p>
+
+<h2>Why a phone number costs more points than a complaint</h2>
+<p>The difference comes down to actionability. A tweet with your phone number lets a bad actor call, text, and try credential stuffing with zero extra steps. A complaint about an old boss might surface during a background check, but only then. The first kind of harm is immediate and low-effort, so it carries more weight.</p>
+<p>One detail people miss is repetition. Posting your number once three years ago is not the same as twenty consecutive posts with it. The risk is not twenty times larger, but it is clearly higher, because it shows you went a long time without noticing the problem.</p>
+
+<h2>Where the weights come from</h2>
+<p>Three sources cross-check each other. The first is which fields show up most often in public breach databases. The second is what victims report losing first in scam cases. The third is the density of user feedback that marks a post as the one that scared them most. When all three point the same way, that field gets a heavier weight. In other words, the weights follow real paths of harm, not guesses.</p>
+<p>For Chinese users this matters because local scam patterns differ from the West. A WeChat ID in a tweet is a far more direct threat here than it would be for a US-only account, and the scoring reflects that. The report shows the scoring version and, for each flagged post, which category triggered it, so you are never told "this is risky" without a reason.</p>
+
+<h2>What the 0-100 number actually means</h2>
+<p>The score is only a summary. The useful part is the band:</p>
+<ul>
+<li><strong>0-30</strong>: high risk. Your archive likely contains hard info that locates or contacts you directly. Handle these first.</li>
+<li><strong>31-60</strong>: moderate. Scattered risk points, not dense.</li>
+<li><strong>61-80</strong>: good. Mostly soft risks from sensitive topics remain.</li>
+<li><strong>81-100</strong>: clean. Only historical traces left, low impact.</li>
+</ul>
+<p>Most accounts land in the 30-60 band after a few years of casual posting, which is normal and not a cause for alarm. The bands are not decoration; they tell you which risk category to open first.</p>
+
+<h2>Does the score look at when you posted</h2>
+<p>Yes, with more weight on recent posts. An old tweet with your number still needs cleaning, but one posted last week is riskier because it is easier to find right now, so it carries slightly more weight. That is why cleaning early beats cleaning later: the longer a post stays, the more stubbornly it sits in the score. On the flip side, content you deleted three years ago is no longer counted when you re-run the check, and the score reflects that immediately.</p>
+
+<h2>How the privacy score differs from a credit score</h2>
+<p>People often mix this up with Alipay or credit scores. A credit score predicts whether you will repay debt, from borrowing and repayment history. A privacy score only measures how much hard information someone can dig out of your history, from your archive content. One is a financial prediction, the other is a risk-exposure snapshot. They share no data and should not. Raising your privacy score does not mean you are more creditworthy, only that you left fewer traceable traces behind. If a service ever asks for your privacy score, treat it as a red flag, because no legitimate lender needs it.</p>
+
+<p>After clearing a category, run the check again rather than guessing. The report shows which posts were removed and how the band moved, so you see the step change instead of estimating it.</p>
+
+<h2>How to actually raise the score</h2>
+<p>Sort actions by payoff. Delete posts with phone numbers and addresses first, then ID photos, then sensitive topics, then stray location check-ins. After each type is gone, the score jumps a step. It does not climb evenly; it rises in clear steps once a risk category is cleared.</p>
+<p>Here is a concrete example. Suppose your archive has 1,200 tweets. Twelve of them carry your old phone number from 2019, three show your home address, and about forty are angry posts about a previous employer. Deleting the twelve number posts moves the score the most, because contact info sits at the top of the weight table. Clearing the three address posts is the next biggest step. The forty rants barely move the number, which surprises people who expected them to matter most. The takeaway: spend effort where the weight is, not where the volume is.</p>
+
+<p>Some people worry that a low score means the account is already compromised. A low score only means a large exposure surface, not that anyone has used the information. After one round of cleanup, the score usually drops, and most accounts land above 60.</p>
+<p>If you have never uploaded an archive, read <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a> for the overall flow, or upload it directly on the <a href="/upload">free check page</a> to get your report in minutes. For deletion cost, see the <a href="/pricing">pricing page</a>. You can also reach the same tools from the <a href="/">homepage</a>.</p>
+<p>Every check on digital-footprint-health.shop runs on your device, and your data never leaves your computer. Pair it with <a href="/blog/footprint-score-vs-credit-score">privacy score versus credit score</a> to see why these two numbers are not the same thing at all.</p>
+`,
+  },
+  {
+    slug: 'x-archive-download-chinese-guide',
+    title: '下载 X 数据归档：中文用户一步步实操指南',
+    excerpt: '很多中文用户卡在第一步：界面是英文的、邮件半天不来、下载链接打不开。这篇用中文视角走一遍完整流程，顺手把 Windows 解压乱码、压缩包密码、国内网络访问这几个坑都讲了。',
+    date: '2026-10-03',
+    updatedAt: '2026-10-03',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['X 归档', '数据下载', '推特', '中文用户', '隐私'],
+    content: `
+<p>英文界面、迟迟不来的邮件、点开就超时的下载链接，中文用户在下载 X 归档时踩的坑，和英文用户不太一样。这篇从"设置入口在哪"开始，把每一步用中文讲清楚，并专门处理几个国内常见的坑。</p>
+
+<h2>第一步：找到请求入口</h2>
+<p>网页端登录后，点左侧"更多"，进入"设置和隐私"，再选"你的数据"，最后点"下载你的数据"。这里默认可能是英文，先把页面语言切成中文会更顺手。确认邮箱是你现在能收件的那个，否则验证码会发丢。改语言在"设置"→"无障碍、显示和语言"→"显示语言"里，改完刷新一次页面才生效。这步很多人跳过，结果后面每一步都在猜按钮。</p>
+
+<h2>第二步：等邮件，但别只等邮件</h2>
+<p>官方说 24 小时内发，实际常要等一两天。邮件里给的是一个 24 小时有效的下载链接，点开如果超时，回"你的数据"页面能重新生成，不用重新排队。</p>
+
+<h2>第三步：解压时注意两件事</h2>
+<ul>
+<li><strong>中文路径乱码</strong>：Windows 自带解压有时会把中文文件名压成乱码，用 7-Zip 或 Bandizip 这类工具能正常解。</li>
+<li><strong>压缩包密码</strong>：邮件里单独发了一封带密码的信，别和下载邮件搞混。密码只用于解压，和账号密码无关。</li>
+</ul>
+
+<h2>第四步：国内网络访问</h2>
+<p>下载链接托管在 X 的存储服务上，部分地区访问不稳。如果一直打不开，可以换个网络环境再试，不要反复狂点把链接点失效。如果下载一直失败，先确认是不是网络工具把 X 的下载域名拦了，临时关掉再试通常能解决。</p>
+
+<h2>归档一般有多大</h2>
+<p>活跃三五年的账号，归档通常在几十 MB 到几百 MB 之间，老用户可能上 GB。media/ 文件夹往往是体积大户，因为原图原视频都还在里面。解压前先确认磁盘有空间，别解到快满的系统盘。</p>
+
+<h2>压缩包损坏怎么办</h2>
+<p>偶尔下载到的 ZIP 解压报错，多半是下载被中断。回到"你的数据"页面重新生成一次链接再下，比反复解压同一个损坏文件更有用。如果换了多个网络环境都下不全，可以等半天再试，下载服务有时限流。</p>
+
+<p>网页端和 App 的入口位置不同。App 藏在"账号"→"设置与隐私"→"你使用 X 的数据"里，层级更深，很多人是在网页端才发现这个选项。</p>
+
+<h2>拿到归档之后做什么</h2>
+<p>归档是个 ZIP，里面 tweets.js 存着你发过的所有推文。下一步最值得做的，是在 <a href="/upload">digital-footprint-health.shop 的免费体检页</a> 上传它，本机解析出隐私风险，比把文件随便传到某个网页工具上安全得多。</p>
+<p>如果下载过程报错，参考 <a href="/blog/x-archive-download-failed-fix">下载失败排查</a>；换设备时看 <a href="/blog/x-archive-migration-new-device">归档迁移到新设备</a>。和 <a href="/blog/chinese-vs-western-platform-privacy-settings">中外平台隐私设置对比</a> 一起读，能少走很多弯路。返回 <a href="/">首页</a> 可进入体检。</p>
+`,
+    canonical: '/blog/x-archive-download-chinese-guide',
+    faq: [
+      { q: '下载要花钱吗？', a: '完全免费，这是 X 提供给每个账号的功能，不需要任何第三方工具代下。', qEn: 'Does downloading cost money?', aEn: 'No. It is a free feature available to every account. You do not need any third-party service to fetch it for you.' },
+      { q: '邮件一直没来怎么办？', a: '先查垃圾箱，再回“你的数据”页面看状态。链接过期不用重新排队，直接点“重新生成下载链接”。有些邮箱会把通知邮件归到“推广”标签页，翻的时候别只看“收件箱”。', qEn: 'The email never arrived. What now?', aEn: 'Check spam first, then open the Your data page to see the status. An expired link does not reset your place in line, you just regenerate the download link.' },
+      { q: '归档里会看到已删除的推文吗？', a: '看情况。X 的归档通常包含你发过的大部分内容，但某些已删除的内容可能不在其中。想确认自己到底留了什么，还是以体检结果为准。', qEn: 'Will I see tweets I already deleted?', aEn: 'It depends. The archive usually contains most of what you posted, but some deleted content may be absent. For a clear picture of what you left exposed, rely on the privacy check results.' },
+      { q: '把归档传到网页工具安全吗？', a: '不建议。任何网页工具拿到你的 ZIP，理论上都能读到里面的私信和定位。优先选本机处理的方案，比如 <a href="/upload">本机体检</a>。', qEn: 'Is it safe to upload the archive to a web tool?', aEn: 'Not really. Any web tool that receives your ZIP can, in theory, read the direct messages and locations inside. Prefer an on-device option such as <a href="/upload">the local check</a>.' },
+    ],
+    titleEn: 'How to Request and Use Your X Data Archive (Practical Walkthrough)',
+    excerptEn: 'Requesting your X archive is straightforward once you know where the button is. This walkthrough covers the request flow, what the file contains, and what to do with it next, including a privacy check on the contents.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['X archive', 'data download', 'Twitter', 'privacy', 'walkthrough'],
+    contentEn: `
+<p>Most people never download their X archive because the button is buried and the wording is vague. This walkthrough gets you from "I did not know this existed" to "I have the file" in a few minutes, then points out what to actually do with it.</p>
+
+<h2>Where the request lives</h2>
+<p>On the web, open Settings and privacy, then Your account, then Download an archive of your data. You will confirm your password and pick an email for the notification. Use an inbox you actually check, not one you abandoned years ago. The web route is the one most guides reference, and it is the more reliable of the two.</p>
+
+<h2>What the email actually gives you</h2>
+<p>X sends two separate messages. One confirms the request. The other, sent later, carries a download link that expires in 24 hours and a second email with the password for the ZIP. People often mix these up and wonder why the file will not open. Keep both emails; you need the password email to open the file, and the link email to get the file.</p>
+
+<h2>What is inside the archive</h2>
+<p>The ZIP holds tweets.js, which stores everything you ever posted, plus media folders and account information. The file can be large if you have been active for years. Opening it on a machine you trust matters more than opening it fast. If the file looks tiny, the request may have failed silently; re-request before assuming it is complete.</p>
+
+<h2>How big is the archive</h2>
+<p>For an account active for three to five years, the archive usually lands between a few dozen MB and a few hundred MB, and long-time users can see over a GB. The media folder is often the heaviest part because original images and videos are still inside. Make sure the disk has space before extracting, and avoid extracting onto a nearly full system drive. Plan for the larger end if you post images often.</p>
+
+<h2>What if the ZIP is corrupt</h2>
+<p>Sometimes the downloaded ZIP throws an error on extract, usually because the download was interrupted. Go back to the Your data page, regenerate the link, and download again, rather than retrying the same broken file. If several networks all fail to pull the full file, wait a few hours; the download service rate-limits at times.</p>
+
+<h2>App versus web entry</h2>
+<p>The entry point differs between the app and the web. In the app it sits deeper, under Account, then Settings and privacy, then Your data on X, so many people only discover it on the web. Knowing both paths saves a confusing search.</p>
+
+<p>Treat the archive as a private file from the moment it lands in your Downloads.</p>
+
+<h2>What to do next</h2>
+<p>Instead of pasting the file into a random web tool, run a local privacy check on your own device. You can upload the archive to <a href="/upload">the free check page</a> and get a risk report without the data leaving your computer. To see what types of content the archive holds, read <a href="/blog/what-x-archive-contains-faq">what your X archive contains</a>.</p>
+
+<p>If the request fails, the <a href="/blog/x-archive-download-failed-fix">download troubleshooting guide</a> covers the common errors. The whole point of grabbing the archive is to see what you left exposed, then decide what to clean up. A local check beats any online tool because nothing leaves your machine. The <a href="/">homepage</a> links straight to the check tool.</p>
+`,
+  },
+  {
+    slug: 'what-x-archive-contains-faq',
+    title: 'X 数据归档里到底包含什么？一篇讲清',
+    excerpt: '下载完归档，最该问的是“这里面到底有什么”。它不是只有你发的推文，还带着私信、媒体、登录记录。这篇用问答形式快速讲清，帮你判断哪些内容最该优先清理。',
+    date: '2026-10-03',
+    updatedAt: '2026-10-03',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X 归档', '数据内容', '隐私', '常见问题'],
+    content: `
+<p>很多人以为归档就是“我发过的推文合集”，其实它装的东西多得多。看之前先有个预期，免得打开后被一堆文件吓到。下面用几个最常见的问题，快速说清归档里到底有什么、哪些最该先清理。理清结构，清理才有方向。</p>
+
+<h2>归档主要包含哪些部分</h2>
+<p>打开文件夹后，这几个文件名最值得你点开。</p>
+<ul>
+<li><strong>tweets.js</strong>：你发过的所有推文和转推。</li>
+<li><strong>direct-messages.js</strong>：私信记录。</li>
+<li><strong>media/</strong>：你上传过的图片和视频。</li>
+<li><strong>account-data/</strong>：登录设备、邮箱、绑定应用等账号信息。</li>
+</ul>
+
+<h2>哪部分最该优先看</h2>
+<p>风险最高的是 tweets.js 里带手机号、地址的内容，以及 media/ 里不小心传过的证件照片。私信尤其容易被忽略，因为它不在公开搜索里，但一旦账号被盗，全部聊天记录都会暴露。</p>
+
+<h2>下载前先想清楚用途</h2>
+<p>建议先想好：你是想清理隐私，还是单纯备份。目的不同，要重点看的部分不一样。想清理，就盯着 tweets.js 和 media/；想备份，则把整个 ZIP 存到加密盘更稳妥。很多人下载后才发现不知道要看哪里，反而把文件随手丢在桌面，这是不安全的。尤其留意 media/ 里那些你早忘了传过、却仍是清晰证件照的图片。</p>
+
+<p>想看怎么下载归档，去 <a href="/blog/x-archive-download-chinese-guide">中文下载指南</a>；换设备时参考 <a href="/blog/x-archive-migration-new-device">归档迁移</a>。在 <a href="/upload">digital-footprint-health.shop 的免费体检页</a> 上传归档，本机就能标出这些高风险内容。返回 <a href="/">首页</a> 也能进入体检。</p>
+`,
+    canonical: '/blog/what-x-archive-contains-faq',
+    faq: [
+      { q: '归档能看到别人发给我的私信吗？', a: '可以，direct-messages.js 里包含你和对方的私信记录，不只是你发出去的。', qEn: 'Can I see direct messages others sent me?', aEn: 'Yes. direct-messages.js holds the full conversation, not just what you sent.' },
+      { q: '媒体文件占多大空间？', a: '取决于你发过多少图视频。活跃多年的账号，media/ 文件夹经常比推文本身还大。', qEn: 'How much space do the media files take?', aEn: 'It depends on how many images and videos you posted. For long-active accounts, the media folder is often larger than the tweets themselves.' },
+      { q: '账号信息里有什么值得注意的？', a: 'account-data/ 会列出登录过的设备、绑定过的邮箱和第三方程序。留意有没有不认识的设备，或已不用却仍绑定的应用。', qEn: 'What in the account information deserves attention?', aEn: 'account-data/ lists devices you logged in from, emails, and third-party apps. Watch for devices you do not recognize or apps you no longer use but still granted access.' },
+      { q: '这些内容会被 Google 搜到吗？', a: '归档是你自己下载的文件，默认不会上网。风险在于账号被盗，或你主动上传到不安全的网页工具，才会外泄。', qEn: 'Can search engines find this content?', aEn: 'The archive is a file you download; it is not online by default. The risk appears when an account is compromised or you upload it to an unsafe web tool.' },
+    ],
+    titleEn: 'What Exactly Is in Your X Data Archive?',
+    excerptEn: 'After you download the archive, the real question is what is inside. It is not just your tweets. This FAQ explains the main parts and which ones deserve your attention first.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X archive', 'data contents', 'privacy', 'FAQ'],
+    contentEn: `
+<p>People often assume the archive is just a copy of their tweets. It is much more than that. Knowing the layout first makes the cleanup decision much easier. This FAQ covers the main parts and which ones to look at first. The layout is simple once you see it.</p>
+
+<h2>What the archive holds</h2>
+<p>Open the folder and these file names are the ones worth opening first.</p>
+<ul>
+<li><strong>tweets.js</strong>: every tweet and retweet you posted.</li>
+<li><strong>direct-messages.js</strong>: your private message history.</li>
+<li><strong>media/</strong>: images and videos you uploaded.</li>
+<li><strong>account-data/</strong>: devices, email, and connected apps tied to the account.</li>
+</ul>
+
+<h2>Which part matters most</h2>
+<p>The highest-risk items are tweets that carry a phone number or address, and any ID photos uploaded by mistake. Direct messages are easy to overlook because they are not in public search, yet a compromised account exposes every conversation.</p>
+
+<h2>Know your goal before downloading</h2>
+<p>Decide first whether you want to clean up privacy or just back up. The focus differs. For cleanup, watch tweets.js and media/. For backup, store the whole ZIP on an encrypted drive. Many people download the file, then realize they do not know where to look, and leave it sitting on the desktop, which is unsafe. Pay special attention to clear ID photos in media/ that you forgot you ever uploaded.</p>
+
+<p>To get the archive, see the <a href="/blog/x-archive-download-chinese-guide">download guide</a>. Upload it to <a href="/upload">the free check page</a> and the tool flags these high-risk items on your own device, with the data never leaving your computer. The <a href="/">homepage</a> links to the same tool.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

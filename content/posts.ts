@@ -19653,6 +19653,256 @@ rl.on('close', () =&gt; {
 <p>To get the archive, see the <a href="/blog/x-archive-download-chinese-guide">download guide</a>. Upload it to <a href="/upload">the free check page</a> and the tool flags these high-risk items on your own device, with the data never leaving your computer. The <a href="/">homepage</a> links to the same tool.</p>
 `,
   },
+  {
+    slug: 'request-x-archive-step-by-step-2026',
+    title: '申请 X 数据归档：2026 年一步步完整流程（含大账号分卷 ZIP）',
+    excerpt: '想清理旧推文，第一步是先下载自己的归档。这篇把 2026 年当前的申请流程走一遍，重点讲一个今年很关键的变化：活跃几年、积累上万条的账号，归档开始拆成多个 100MB 左右的分卷 ZIP。',
+    date: '2026-10-04',
+    updatedAt: '2026-10-04',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X 归档', '数据下载', '推特', '分卷', '隐私体检'],
+    content: `
+<p>想清理 X 上的旧推文，第一步不是删，是先把自己的归档下载下来。很多人卡在第一步：入口藏在三级菜单里，界面还是英文的。这篇把 2026 年当前的申请流程完整走一遍，顺手讲清楚一个今年很关键的变化：大账号的归档开始分卷了。</p>
+
+<h2>申请入口到底藏在哪里</h2>
+<p>网页端登录后，点左侧的「更多」，进「设置和隐私」，选「你的数据」，最后点「下载你的数据」。这条路径最稳，绝大多数教程指的也是它。App 里的入口更深，藏在「账号」→「设置与隐私」→「你使用 X 的数据」里，不少人是在网页端才第一次发现这个选项。</p>
+<p>一个容易踩的坑是语言。默认界面是英文，按钮名字和你脑子里的中文对不上，每一步都在猜。先把页面语言切成中文会顺手很多，改语言在「设置」→「无障碍、显示和语言」→「显示语言」，改完记得刷新一次页面才生效。别跳过这步，后面会省很多事。</p>
+<p>一个补充：如果你习惯用手机 App 操作，建议切到网页端再申请。网页端的选项更全，报错信息也更清楚，App 有时候会把入口藏得更深，排错时不方便。申请前确认登录邮箱是你现在能收件的那个，很多人卡在验证码发到了三年前的旧邮箱。</p>
+
+<h2>2026 年的关键变化：大账号归档开始分卷</h2>
+<p>早些年，不管你发了多少，归档都是一个 ZIP 包。今年起，活跃几年、积累上万条的账号，归档会被拆成多个大约 100MB 的 ZIP，按 tweet.js、likes.js、media 等分卷压缩。文件名带序号，比如 part1、part2。</p>
+<p>下载邮件里给的是整批入口，不是单个分卷的链接。也就是说，你要点开那个入口，把这一批分卷全部下齐，只下一个不够覆盖全部内容。清理的时候必须先把所有分卷解到同一目录、合并解析，漏掉一卷就少算几千条推文，体检结果会失真。</p>
+<p>怎么确认自己下齐了？下载邮件通常会写明这批分卷的总大小和数量，解压前核对一下本地文件数和总体积，对不上就说明漏了。也有人遇到过分卷命名不连续，比如 part3 缺失，这种要回到页面重新生成整批链接再下，不要只补单个。</p>
+<p>对普通几年积累的账号，归档通常在几十 MB 到几百 MB；老用户可能上 GB。media 文件夹往往是体积大户，因为原图原视频都还在里面。解压前确认磁盘有空间，别解到快满的系统盘。</p>
+
+<h2>验证身份与等待时间</h2>
+<p>提交申请时要确认密码，如果你的账号开了二次验证，可能还要过一道。官方说法 24 小时内发归档，实测常常要等一两天，别卡着点等。邮件其实有两封：一封确认请求，另一封稍后带着下载链接发来，链接 24 小时有效；还有一封单独的密码信，专门用来解压 ZIP。三封容易混，尤其是把密码信和下载信搞反，结果文件打不开。</p>
+<p>如果开了二次验证但验证设备不在手边，先确认能收到验证码再提交，不然申请会卡在验证那一步，白等一两天。验证通过后官方说 24 小时内发，实测常要一两天，这是正常的，不用反复提交，重复提交反而可能把队列往后挤。</p>
+
+<h2>下载与解压的两个坑</h2>
+<p>下载链接只有 24 小时。点开如果超时，不用重新排队，回到「你的数据」页面重新生成一条链接就行。解压密码在单独那封邮件里，和账号密码不是一回事。</p>
+<p>Windows 自带的解压工具偶尔会把中文文件名压成乱码，换 7-Zip 或 Bandizip 这类工具就能正常解。分卷要放在同一个目录一起解，单独解 part2 会报错。</p>
+
+<h2>归档里到底有什么（以及没有什么）</h2>
+<p>ZIP 里 tweets.js 存着你发过的所有推文，likes.js 是你点过赞的内容，media 文件夹是原始图片和视频，另外还有一份 account 信息。account 信息里包括注册时间、绑定的邮箱、登录记录概要，这些本身也是隐私，别随手转发。一个常见的误解是以为已删的推文还在归档里。其实归档只含当前还在的推文，你早就删掉的那些不会出现在 tweets.js 中。所以归档是「你现在留下了什么」的快照，不是「你曾经发过什么」的全记录。</p>
+
+<h2>拿到归档后下一步做什么</h2>
+<p>最不推荐的做法，是把文件随便传到某个网页工具上解析。归档是你的隐私全集，传出去就等于交出去了。更稳妥的是在本机做体检：把归档上传到 digital-footprint-health.shop 的免费体检页，解析全程在你的电脑上完成，数据不出本机。想先看归档里都有哪几类内容，可以读 <a href="/blog/what-x-archive-contains-faq">X 归档里到底有什么</a>；下载过程报错就看 <a href="/blog/x-archive-download-failed-fix">下载失败排查</a>。</p>
+<p>顺带说一句，归档下载完建议先备份一份到本地加密盘，再开始删。这样万一删错，还有原始副本可以对照和恢复，避免把唯一的一份弄丢。</p>
+
+<h2>常见卡点速查</h2>
+<ul>
+<li><strong>邮件一直不来</strong>：先查垃圾箱，再确认申请时填的邮箱是你现在能收件的那个，别用三年前废弃的邮箱。</li>
+<li><strong>链接打开超时</strong>：链接 24 小时过期，回页面重生成一条，不要反复狂点把链接点失效。</li>
+<li><strong>分卷下不全</strong>：下载服务有时会限流，换几个网络环境都下不全就等半天再试，重下比反复解同一个损坏文件有用。</li>
+<li><strong>ZIP 解压报错</strong>：多半是下载被中断，重新生成链接再下，对着坏文件反复解是浪费时间。</li>
+</ul>
+
+<p>在 digital-footprint-health.shop，每次归档体检都在你的设备本地完成，文件不会上传到任何服务器。如果你还没下载过自己的归档，先从 <a href="/upload">免费体检页</a> 了解流程，或者直接去 <a href="/blog/x-archive-download-failed-fix">下载排错</a> 把第一步走通。清理成本可以看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 也能找到所有入口。</p>
+`,
+    canonical: '/blog/request-x-archive-step-by-step-2026',
+    faq: [
+      { q: '分卷归档漏下一卷会怎样？', a: '体检会少算那一卷里的推文，硬信息可能漏报。下载时把整批分卷都下齐，放同一目录一起解析。', qEn: 'What if I miss one archive volume?', aEn: 'The check undercounts the posts in that volume and may miss hard info. Download the whole batch and extract all volumes into one folder before parsing.' },
+      { q: '已删的推文在归档里吗？', a: '不在。归档只含当前还在的推文，早就删掉的不出现。', qEn: 'Are deleted posts in the archive?', aEn: 'No. The archive only holds posts still live; anything you removed earlier is absent.' },
+      { q: '下载链接过期了怎么办？', a: '回「你的数据」页面重新生成一条链接，不用重新排队申请。', qEn: 'The download link expired, now what?', aEn: 'Go back to the Your data page and regenerate a link. You do not need to re-queue the request.' },
+      { q: '归档能证明我清理干净了吗？', a: '不能完全证明，因为归档只反映当前内容。删完再下一次归档，对比两次的差异，才知道清掉了什么。', qEn: 'Does the archive prove I cleaned up?', aEn: 'Not fully, because it only reflects current content. Download again after cleanup and compare the two to see what changed.' },
+      { q: '把归档传网页工具安全吗？', a: '不安全。归档是你的隐私全集，传出去就交出去了。本机体检让数据不出电脑。', qEn: 'Is it safe to upload the archive to a web tool?', aEn: 'No. The archive is your full privacy set; uploading hands it over. A local check keeps the data on your device.' },
+    ],
+    titleEn: 'How to Request Your X Data Archive in 2026: Step by Step',
+    excerptEn: 'Before you delete anything on X, get your own archive first. This walkthrough covers the 2026 request flow end to end and explains one change that matters a lot this year: large accounts now get a split archive.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X archive', 'data download', 'Twitter', 'split archive', 'privacy check'],
+    contentEn: `
+<p>Before you delete anything on X, get your own archive first. Most people never do, because the button is buried and the wording is vague. This walkthrough covers the 2026 request flow end to end, and explains one change that matters a lot this year: large accounts now get a split archive.</p>
+
+<h2>Where the request actually lives</h2>
+<p>On the web, open Settings and privacy, then Your account, then Download an archive of your data. That path is the reliable one most guides point to. In the app the entry sits deeper, under Account, then Settings and privacy, then Your data on X, so plenty of people only stumble on it on the web. Switch the interface language to something you read comfortably before you start; it saves guesswork later.</p>
+<p>One more thing: if you normally use the app, switch to the web before requesting. The web has the fuller set of options and clearer error messages, while the app buries the entry and makes troubleshooting awkward. Before you start, confirm the sign-in email is one you still check; plenty of people get stuck because the code went to an inbox they abandoned years ago.</p>
+
+<h2>The 2026 change: large accounts get a split archive</h2>
+<p>For years the archive was one ZIP, whatever your volume. This year, accounts that have been active for years and accumulated tens of thousands of posts get the archive split into several ZIP files of roughly 100 MB each, divided into tweet.js, likes.js, media, and so on. The filenames carry a sequence number like part1, part2.</p>
+<p>The download email points to the whole batch, not to a single volume. You open that entry and pull every volume, and one alone does not cover everything. When you clean up, you must extract all volumes into the same folder and parse them together. Miss one volume and you undercount thousands of posts, which throws off the check.</p>
+<p>How do you know you got every volume? The download email usually states the total size and count of the batch. Before extracting, check your local file count and total size against that, and if they differ you missed one. Some people see a gap in the naming, like part3 missing; in that case go back and regenerate the whole batch rather than patching a single file.</p>
+<p>For a typical few-year account the archive runs from a few dozen MB to a few hundred MB, and long-time users can pass a GB. The media folder is usually the heaviest part because original images and videos stay inside. Make sure the disk has space before extracting, and avoid extracting onto a nearly full system drive.</p>
+
+<h2>Verification and wait time</h2>
+<p>Submitting the request asks for your password, and if two-factor is on you clear that too. The official line is within 24 hours, but in practice one to two days is common, so do not schedule around the deadline. Two emails actually arrive: one confirms the request, and a later one carries the download link, which expires in 24 hours. A separate email holds the ZIP password. People mix these up and then wonder why the file will not open.</p>
+<p>If two-factor is on but the device is not nearby, make sure you can receive the code before submitting, or the request stalls at verification and you waste a day or two. After verification the official window is 24 hours, but one to two days is common and normal; do not resubmit repeatedly, because duplicate requests can push you further back in the queue.</p>
+
+<h2>Two download and extract traps</h2>
+<p>The download link lives for 24 hours. If it times out, do not re-queue; go back to the Your data page and regenerate a link. The extract password sits in its own email and is unrelated to your account password. Windows built-in extraction sometimes mangles Chinese filenames into garbage; 7-Zip or Bandizip handle them cleanly. Keep all volumes in one folder and extract together, because extracting part2 alone errors out.</p>
+
+<h2>What the archive holds, and what it does not</h2>
+<p>Inside the ZIP, tweet.js stores every post you still have, likes.js holds what you liked, the media folder keeps original images and videos, and there is an account info file. The account file covers sign-up time, the bound email, and a login summary, and those are private too, so do not forward them. A common myth is that deleted posts are still in there. They are not. The archive only contains posts currently live; tweets you removed long ago do not appear in tweet.js. So the archive is a snapshot of what you left behind, not a full history of everything you ever posted.</p>
+
+<h2>What to do after you have the archive</h2>
+<p>The least safe move is pasting the file into some random web tool for parsing. The archive is your full privacy set; handing it over gives it away. A safer route is a local check: upload the archive to the <a href="/upload">free check page</a> on digital-footprint-health.shop and the parsing runs on your device, so the data never leaves your computer. To see what categories the archive covers, read <a href="/blog/what-x-archive-contains-faq">what your X archive contains</a>. If the download broke, see <a href="/blog/x-archive-download-failed-fix">download troubleshooting</a>. The report groups findings by risk type, contact info, location, and documents, so you can clear the worst hits before the mild ones.</p>
+<p>Worth noting: once the archive downloads, back it up to a local encrypted drive before you start deleting. That way if you remove the wrong thing, you still have the original to compare against and recover from, instead of losing the only copy.</p>
+
+<h2>Quick fixes for common stalls</h2>
+<ul>
+<li><strong>Email never arrives</strong>: check spam first, then confirm the address you entered is one you still read. Do not use an inbox you abandoned years ago.</li>
+<li><strong>Link times out</strong>: the 24-hour link expires, so regenerate it from the Your data page instead of clicking until it dies.</li>
+<li><strong>Volumes will not finish</strong>: the download service rate-limits at times. If several networks all fail, wait a few hours and retry; re-downloading beats fighting the same broken file.</li>
+<li><strong>ZIP will not extract</strong>: usually the download was interrupted. Regenerate the link and pull again; retrying the corrupt copy is a waste of time.</li>
+</ul>
+
+<p>Every archive check on digital-footprint-health.shop runs locally on your device, and the file is not uploaded to any server. If you have never downloaded your own archive, start at the <a href="/upload">free check page</a> or read <a href="/blog/x-archive-download-failed-fix">download troubleshooting</a> to get past step one. For deletion cost, see the <a href="/pricing">pricing page</a>. You can reach the same tools from the <a href="/">homepage</a>.</p>
+`,
+  },
+  {
+    slug: 'china-public-sector-job-x-tweets-audit',
+    title: '体制内、国企求职者，怎么自查 X 上的旧推文风险',
+    excerpt: '体制内和国企招聘有政审环节，也会看网络言论。X 在国内打不开，但归档、背景调查公司、别人转存的副本都可能把它翻出来。投递前自己先查一遍，比出事再删强。',
+    date: '2026-10-04',
+    updatedAt: '2026-10-04',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['体制内', '国企', '政审', 'X 推文', '求职'],
+    content: `
+<p>体制内和国企招聘有一道政审环节，不只看成绩和履历，也会看网络言论。X 虽然在国内打不开，但你的归档、背景调查公司、甚至是竞争对手都可能把它翻出来。与其出事再删，不如投递前自己先查一遍。</p>
+
+<h2>为什么体制内、国企更在意这个</h2>
+<p>政审看的是本人一贯表现，网络发言是其中一项。X 上的旧推文，哪怕你以为没人看，也可能被存档站、搜索引擎缓存或者别人转存留底。海外留学、交流经历让不少人都有 X 账号，这反而提高了被翻出来的概率。</p>
+<p>还有一点容易忽略：政审看的不只是你自己的发言，也包括你转发的别人的内容、你点赞的内容。likes.js 里记着你点过的赞，有些赞的对象本身就有争议，翻出来一样算。所以自查时别只看自己发的，点赞和转发也要过一遍。</p>
+
+<h2>自查清单：按风险从高到低</h2>
+<ul>
+<li><strong>手机号和微信 ID</strong>：最直接的定位入口，坏人可以精准找到你。</li>
+<li><strong>定位打卡、登机牌</strong>：暴露真实世界轨迹，家、公司、出差地都写出来。</li>
+<li><strong>对前单位、领导的吐槽</strong>：政审和背景调查最在意这类，影响口碑。</li>
+<li><strong>敏感话题和过激观点</strong>：短期情绪表达，长期可能变成把柄。</li>
+<li><strong>证件照片、工牌</strong>：可被冒用办理业务。</li>
+</ul>
+
+<h2>微信 ID 和 X 联动的隐藏风险</h2>
+<p>推文里带微信 ID，在国内的威胁远大于一个纯英文账号。因为微信 ID 能直接关联到你的真实社交圈、支付和熟人关系。数字足迹体检的评分会体现这种差异：同样一条带联系方式的推文，带微信 ID 的权重比带邮箱更高。这也解释了为什么很多人觉得自己「只是随手留了个联系方式」，风险却比预期大。</p>
+
+<h2>处置：删、改隐私、还是只归档</h2>
+<p>真正要紧的，直接删。一般的敏感内容，可以改账号隐私设置，把历史可见范围收起来、限制被搜到。只归档不删也会留痕，因为归档本身就是一份完整快照，别人拿到照样能看。处置前后可以读 <a href="/blog/delete-tweets-before-background-check">背景调查前删推文</a>，了解不同场景下的取舍；中外平台隐私设置差异见 <a href="/blog/chinese-vs-western-platform-privacy-settings">中外平台隐私设置对比</a>。</p>
+
+<h2>时间线：投递前多久该清</h2>
+<p>至少提前一到两个月。原因不在删除动作本身，而在删完之后：搜索引擎缓存、存档站、别人转存的副本不会立刻消失，需要几周才沉降。拖到投递前一周才动手，那些副本大概率还在。早清早安心，也给自己留出错峰处理的余地。</p>
+<p>如果时间实在紧，至少先把带手机号和定位的硬信息清掉，这两类最直接、最容易被利用。敏感观点类的内容，删了当然更好，但不删至少把账号隐私收严，降低被搜到的概率。</p>
+
+<p>在 digital-footprint-health.shop，你可以用本机体检一次性扫出归档里所有硬信息，数据全程不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档，几分钟拿到风险报告；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。相关对比见 <a href="/blog/chinese-vs-western-platform-privacy-settings">中外平台隐私设置</a>。</p>
+`,
+    canonical: '/blog/china-public-sector-job-x-tweets-audit',
+    faq: [
+      { q: '政审会直接去翻我的 X 吗？', a: '不一定直接翻，但背景调查公司、存档站、别人转存都能提供材料。不能抱侥幸。', qEn: 'Will vetting directly dig through my X?', aEn: 'Not necessarily directly, but background-check firms, archive sites, and saved copies supply material. Do not assume you are safe.' },
+      { q: '删了推文，存档站还有副本怎么办？', a: '删是第一步。副本需要时间沉降，所以提前一两个月清，给缓存和存档站留出失效窗口。', qEn: 'I deleted the post, but an archive site has a copy. Now what?', aEn: 'Deletion is step one. Copies need time to fade, so clean one to two months early to give caches and archive sites a window to expire.' },
+      { q: '微信 ID 比邮箱更危险吗？', a: '在国内语境下是的。微信 ID 关联真实社交圈和支付，暴露面比邮箱大，体检评分也会更高。', qEn: 'Is a WeChat ID riskier than an email?', aEn: 'In the local context, yes. A WeChat ID links to your real social graph and payments, so the exposure is wider than an email, and the check scores it higher.' },
+      { q: '只把账号设私有够吗？', a: '不够。私有只限制新访客，历史归档和别人已转存的内容不受账号设置影响。要紧的该删。', qEn: 'Is setting the account private enough?', aEn: 'No. Private only limits new visitors; old archives and copies others already saved sit outside account settings. Delete what truly matters.' },
+    ],
+    titleEn: 'Audit Your Old X Posts Before a Chinese Public-Sector Job Application',
+    excerptEn: 'If you are applying for a role in a Chinese state-owned or public-sector entity, your old X posts can surface during vetting. X is blocked in mainland China, but your archive, a background-check firm, or saved copies can still pull them up.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['public sector', 'state-owned', 'vetting', 'X posts', 'job application'],
+    contentEn: `
+<p>If you are applying for a role in a Chinese state-owned or public-sector entity, your old X posts can surface during the vetting process. X is blocked in mainland China, but your archive, a background-check firm, or someone who saved your posts can still pull them up. Auditing your own history before you apply beats scrambling after a flag.</p>
+
+<h2>Why this matters more for public-sector roles</h2>
+<p>Vetting looks at your consistent conduct, and online speech is part of it. Old X posts, even ones you thought were invisible, may live on in search caches, archive sites, or someone else's saved copy. Overseas study or exchange often means you have an X account, which raises the odds it gets dug up.</p>
+<p>One often missed point: vetting looks at more than your own posts. It also covers what you reposted and what you liked. likes.js records the posts you liked, and some of those liked objects are themselves controversial, so they count too. When you audit, do not stop at what you wrote; run through likes and reposts as well.</p>
+
+<h2>Audit checklist, highest risk first</h2>
+<ul>
+<li><strong>Phone number and WeChat ID</strong>: the most direct way to locate you, and the easiest for a bad actor to exploit.</li>
+<li><strong>Check-ins and boarding passes</strong>: they reveal your real-world routine, home, office, and travel.</li>
+<li><strong>Rants about former employers or bosses</strong>: vetting and background checks weigh these heavily.</li>
+<li><strong>Sensitive topics and heated opinions</strong>: a moment of emotion can become a handle later.</li>
+<li><strong>ID photos and work badges</strong>: can be abused to open accounts.</li>
+</ul>
+
+<h2>The hidden risk of linking a WeChat ID on X</h2>
+<p>A WeChat ID in a tweet is a far bigger threat here than on a plain English account, because it ties straight into your real social graph, payments, and people you know. A local privacy check scores this difference: the same contact line with a WeChat ID carries more weight than one with an email. That is why people who thought they only left a casual contact line end up more exposed than expected.</p>
+
+<h2>What to do: delete, lock down, or just archive</h2>
+<p>For anything that truly matters, delete it. For milder sensitive content, tighten account privacy so old posts are harder to find. Archiving without deleting still leaves a trace, because the archive itself is a full snapshot anyone with it can read. For trade-offs by scenario, read <a href="/blog/delete-tweets-before-background-check">deleting posts before a background check</a>, and for platform differences see <a href="/blog/chinese-vs-western-platform-privacy-settings">privacy settings across platforms</a>.</p>
+
+<h2>Timeline: how early to clean</h2>
+<p>Start at least one to two months before you apply. The reason is not that deletion is slow, but that search caches, archive sites, and other people's saved copies do not vanish the moment you delete. They need time to settle. Cleaning a week out leaves those copies very much alive. Earlier is calmer and gives you room to space out the work.</p>
+<p>If time is tight, at least clear the hard info with phone numbers and locations first, because those are the most direct and the easiest to exploit. Sensitive opinions are better deleted too, but if you cannot, at least tighten account privacy to lower the odds of being found.</p>
+
+<p>On digital-footprint-health.shop you can run a local check that scans your archive for every hard detail in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get a risk report in minutes. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
+`,
+  },
+  {
+    slug: 'holiday-season-2026-footprint-cleanup',
+    title: '双十一、黑五、年终：2026 促销季前的社媒数字足迹清理清单',
+    excerpt: '双十一、黑五、圣诞是一年最大的网购季。很多人入场前从不清社媒足迹，收货地址、手机号顺着晒单和定位全暴露了。促销季前花半小时清一遍，比事后补救划算。',
+    date: '2026-10-04',
+    updatedAt: '2026-10-04',
+    author: 'Digital Footprint Health Team',
+    category: '行业生态',
+    tags: ['双十一', '黑五', '数字足迹', '收货地址', '清理'],
+    content: `
+<p>双十一（11 月 11 日）、黑五（11 月 28 日）、圣诞，是一年最大的网购季。很多人入场前从不清自己的社媒足迹，结果收货地址、手机号顺着晒单和定位全暴露了。促销季前花半小时清一遍，比事后补救划算得多。</p>
+
+<h2>为什么促销季前该清</h2>
+<p>比价插件、剁手分享、抽奖转发，都会把你的收货地址、手机号带出去。更隐蔽的是账号关联：用 X 账号登录电商，你的历史言论和购物行为就绑到了同一个身份上。清理一遍，等于把入场前的底裤先穿好。</p>
+<p>有人觉得「我就买点小东西，没什么好暴露的」。但收货地址和手机号一旦出现在晒单和定位里，哪怕只是一次，就会被爬虫、比价网、营销库收集，长期挂在数据经纪商那里。下次精准诈骗来的时候，对方手里就有你的真实姓名和门牌。所以清足迹不是矫情，是减少被盯上的概率。</p>
+
+<h2>清理清单</h2>
+<ul>
+<li><strong>收货地址截图、订单号</strong>：旧推文里晒过的快递单、订单，暴露门牌和姓名。</li>
+<li><strong>定位打卡</strong>：快递柜、家门口、公司楼的定位，拼出常驻轨迹。</li>
+<li><strong>手机号和微信 ID</strong>：抽奖转发常要求留联系方式，顺手就发出去了。</li>
+<li><strong>晒单照片</strong>：含门牌、快递单、快递柜取件码，最容易被忽略。</li>
+</ul>
+
+<h2>双十一 vs 黑五：不同的暴露点</h2>
+<p>双十一主打国内电商，暴露集中在收货地址、微信绑定、手机号。黑五和跨境海淘，暴露更多在邮箱、信用卡尾号、英文账号。两场都逛的人，要把两套信息都清，别清了国内忘了跨境。</p>
+<p>还有一类常被忘的：促销期间的抽奖、助力、组队活动，往往要求填手机号、留微信号才能参与。这类入口临时性强、活动一结束就把你信息留在对方库里。参与前想清楚值不值，参与后记得去删那条带联系方式的动态。</p>
+
+<h2>用归档一次性扫出来</h2>
+<p>与其一条条翻，不如下载 X 归档，在本机做一次体检，把所有硬信息一次性列出来。手动一条条翻效率很低，而且容易漏。归档把全部推文打包成一份文件，本机体检按风险类型（联系方式、定位、证件、敏感话题）逐条标出来，你照着清单删就行，不会漏掉藏在三年前的某条。下载报错看 <a href="/blog/x-archive-download-failed-fix">下载失败排查</a>；归档里有哪些内容见 <a href="/blog/what-x-archive-contains-faq">X 归档里到底有什么</a>。解析全程在你电脑上，数据不出本机。</p>
+
+<h2>清完再入场</h2>
+<p>促销季少发定位、少晒含门牌的快递单。把账号隐私收一收，抽奖转发别留真联系方式。清完再逛，心里踏实。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的收货地址、手机号等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档拿报告；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。下载排错见 <a href="/blog/x-archive-download-failed-fix">这篇</a>。</p>
+`,
+    canonical: '/blog/holiday-season-2026-footprint-cleanup',
+    faq: [
+      { q: '促销季前清一次够吗？', a: '够覆盖当前风险。但双十一和黑五隔两周，两场都逛的人，清完第一场也留意第二场的跨境信息。', qEn: 'Is one cleanup before the season enough?', aEn: 'It covers current risk. But Singles Day and Black Friday are two weeks apart; if you shop both, clean the cross-border side too after the first.' },
+      { q: '晒单照片为什么危险？', a: '常见含门牌、快递单号、取件码，能拼出你的住址和取件习惯，被忽略最多。', qEn: 'Why are haul photos dangerous?', aEn: 'They often show door numbers, parcel labels, and pickup codes that map your address and habits, and they are the most overlooked leak.' },
+      { q: '用 X 登录电商有什么隐患？', a: '账号关联把你的发言历史和购物绑定到同一身份，背景调查或数据泄露时一起暴露。', qEn: 'What is the risk of logging into shops with X?', aEn: 'Account linkage ties your posting history to your shopping under one identity, so a breach or check exposes both at once.' },
+      { q: '本机体检和网页工具差在哪？', a: '本机体检解析在你的电脑上，归档不出本机；网页工具要把文件传上去，等于交出隐私全集。', qEn: 'How is a local check different from a web tool?', aEn: 'A local check parses on your device and the archive never leaves it; a web tool uploads the file, handing over your full privacy set.' },
+    ],
+    titleEn: 'Clean Your Social Footprint Before the 2026 Holiday Shopping Season',
+    excerptEn: 'Singles Day, Black Friday, and Christmas are the biggest online shopping window of the year. Most people walk in without cleaning their social footprint first, and their shipping address and phone number leak through haul photos and check-ins.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['Singles Day', 'Black Friday', 'digital footprint', 'shipping address', 'cleanup'],
+    contentEn: `
+<p>Singles Day (November 11), Black Friday (November 28), and Christmas are the biggest online shopping window of the year. Most people walk in without cleaning their social footprint first, and their shipping address and phone number leak through haul photos and check-ins. Spend half an hour cleaning before the season, and you avoid the cleanup after.</p>
+
+<h2>Why clean before the shopping season</h2>
+<p>Price-comparison extensions, haul shares, and giveaway reposts all carry your shipping address and phone number outward. The quieter leak is account linkage: logging into a shop with your X account ties your posting history to your shopping behavior under one identity. Cleaning first is putting your pants on before you walk out.</p>
+<p>Some think they only buy small things, so there is nothing to expose. But a shipping address and phone number, the moment they show up in a haul photo or a check-in, get picked up by crawlers, price-comparison sites, and marketing databases, and they sit with data brokers for a long time. The next targeted scam reaches you with your real name and door number. Cleaning is not fuss; it lowers the odds of being picked.</p>
+
+<h2>Cleanup checklist</h2>
+<ul>
+<li><strong>Shipping address screenshots and order numbers</strong>: old posts showing parcels or orders expose your door and name.</li>
+<li><strong>Check-ins</strong>: parcel-locker, home, and office pins map your routine.</li>
+<li><strong>Phone number and WeChat ID</strong>: giveaways often ask for contact info, and it goes out in a click.</li>
+<li><strong>Haul photos</strong>: door numbers, parcel labels, locker codes are the easiest to miss.</li>
+</ul>
+
+<h2>Singles Day vs Black Friday: different leaks</h2>
+<p>Singles Day leans on domestic platforms, so the exposure centers on shipping address, WeChat linkage, and phone number. Black Friday and cross-border shopping leak more through email, card last digits, and English accounts. If you shop both, clean both sets; do not clear the domestic side and forget the cross-border one.</p>
+<p>One more often forgotten type: the giveaways, help-me-win, and team-up events during the season usually ask for a phone number or WeChat ID to join. These are temporary, and once the event ends your info sits in the other side's database. Think twice before joining, and after, delete the post that carries your contact info.</p>
+
+<h2>Pull it all at once from the archive</h2>
+<p>Instead of scrolling post by post, download your X archive and run a local check that lists every hard detail in one pass. Scrolling by hand is slow and easy to miss. The archive bundles every tweet into one file, and a local check flags each one by risk type, contact info, location, documents, sensitive topics, so you work from a list and will not overlook something buried three years back. If the download breaks, see <a href="/blog/x-archive-download-failed-fix">download troubleshooting</a>. For what the archive covers, read <a href="/blog/what-x-archive-contains-faq">what your X archive contains</a>. Parsing stays on your device, so the data never leaves your computer.</p>
+
+<h2>Clean, then shop</h2>
+<p>During the season, post fewer check-ins and fewer parcel photos with door numbers. Tighten account privacy and never leave real contact info on giveaway reposts. Clean first, then browse, and you shop with a calmer mind.</p>
+
+<p>On digital-footprint-health.shop a local check pulls shipping addresses, phone numbers, and other hard details from your archive in one pass, and the data never leaves your computer. Start at the <a href="/upload">free check page</a> to upload the archive and get the report. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Download help is in <a href="/blog/x-archive-download-failed-fix">this piece</a>.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

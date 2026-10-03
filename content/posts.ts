@@ -18919,6 +18919,7 @@ rl.on('close', () =&gt; {
   },
   {
   slug: '60-day-digital-footprint-milestone',
+  canonical: '/blog/60-day-digital-footprint-milestone',
   title: '数字足迹清理 60 天复盘：12 个方法里，真正值得做的只有这 5 个',
   excerpt: '我们用 60 天连续发布了 160 多篇数字足迹与推文隐私指南，也亲手试了市面上大部分清理方法。这篇复盘把最值得做的 5 件事讲清楚，帮你在 30 分钟内定下自己的清理优先级。',
   date: '2026-10-02',
@@ -19065,6 +19066,7 @@ rl.on('close', () =&gt; {
   },
   {
   slug: 'footprint-score-vs-credit-score',
+  canonical: '/blog/footprint-score-vs-credit-score',
   title: '数字足迹评分和信用评分不是一回事：3 个关键区别',
   excerpt: '很多人把"数字足迹健康评分"和银行信用评分混为一谈。这篇讲清三者（其实两类）的区别：谁来算、算什么、以及它到底会不会影响你贷款。结论：它不影响贷款，但会影响招聘和背景调查。',
   date: '2026-10-02',
@@ -19144,6 +19146,7 @@ rl.on('close', () =&gt; {
   },
   {
   slug: 'x-account-locked-recovery-steps',
+  canonical: '/blog/x-account-locked-recovery-steps',
   title: 'X 账号被锁了怎么办：一份分步恢复指南',
   excerpt: '账号突然登不上、提示被锁定，是最让人慌的情况之一。这篇列出从"先别重复试密码"到"联系官方支持"的完整恢复步骤，以及锁定的常见原因和预防办法。',
   date: '2026-10-02',
@@ -19229,6 +19232,7 @@ rl.on('close', () =&gt; {
   },
   {
   slug: 'delete-tweets-before-background-check',
+  canonical: '/blog/delete-tweets-before-background-check',
   title: '背景调查前，先清理这三类旧推文',
   excerpt: '求职、签证、入党、考公，几乎都要过背景调查，而调查方会翻你的社交账号。这篇讲清楚背景调查通常看什么、哪三类旧推文最该在投递前清理、以及怎么不留痕迹地删。',
   date: '2026-10-02',
@@ -19311,6 +19315,7 @@ rl.on('close', () =&gt; {
   },
   {
   slug: 'chinese-privacy-myths-x-tweets',
+  canonical: '/blog/chinese-privacy-myths-x-tweets',
   title: '中国用户最容易忽略的 5 个推文隐私误区',
   excerpt: '很多中文用户以为"我没发过敏感内容就安全"，或者"注销账号就一了百了"。这篇从中文使用者的真实场景出发，指出 5 个最常见、也最危险的推文隐私误区，以及正确的做法。',
   date: '2026-10-02',

@@ -4913,7 +4913,8 @@ export const allPosts: BlogPost[] = [
 <p>Many people delay cleanup because they imagine it takes a whole day. The necessary steps add up to just over half an hour: a five-minute check shows where the problem is, a ten-minute backup prevents losing a tweet you later want, risk-ranked deletion starts at ten minutes, and 2FA wraps up in five. Seen as separate steps, it is far less daunting and far easier to actually do. We sell no course and no tool; we just hand you the half-hour list and leave the rest to your judgment.</p>
 
 <p>digital-footprint-health.shop runs a 100% on-device footprint check: you download your X archive, the tool parses it locally, and you get a 0-100 health score plus a risk list, with your archive never touching our servers. Want to see your history first? Try the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/whats-inside-x-archive-tweets-js">what is actually inside that archive</a>.</p>
- [
+`,
+    faq: [
       {
         "q": "TweetDelete 能删掉我 2015 年的推文吗？",
         "a": "不能。受 X API 限制，TweetDelete 这类第三方工具最多只够得着最近约 3,200 条推文，更早的历史它看不到也删不了。要清早年历史，只能走归档加本机体检。",
@@ -5013,7 +5014,8 @@ export const allPosts: BlogPost[] = [
 <p>The report usually scores categories such as phone number, email, address, location, ID documents and sensitive topics, then flags the high-risk ones. Tackling the red items first works better than staring at the total. After fixing a batch, rerun the check to see the score move. Everything stays on your device, so you can review the report as often as you like without uploading anything.</p>
 
 <p>digital-footprint-health.shop runs a 100% on-device footprint check: download your X archive, parse it locally, filter and delete precisely by phone, address, or keyword, with the archive never leaving your machine. Want to try keyword cleanup? Try the <a href="/">free check</a>, read <a href="/blog/delete-tweets-by-date">delete tweets by date</a>, or see <a href="/blog/delete-wrong-tweet-prechecks">the pre-delete checklist</a>.</p>
- [
+`,
+    faq: [
       {
         "q": "按关键词删会误删想留的推文吗？",
         "a": "有可能，尤其没设排除词时。建议三层筛选：核心关键词加日期范围加排除词，也就是白名单，删前人工过一遍。",
@@ -5113,7 +5115,8 @@ export const allPosts: BlogPost[] = [
 <p>If the bound email cannot receive mail, recovery gets harder. Try the email provider account-recovery flow first, using a backup email or phone. If that fails, file an X appeal with your sign-up date, common login locations and historical tweet patterns; staff usually release it after manual checks. Keeping the email and X recovery methods in separate places saves a lot of trouble.</p>
 
 <p>digital-footprint-health.shop runs a 100% on-device footprint check: download your X archive, parse it locally, and it flags leaks like phone numbers, emails, and addresses, with nothing uploaded. Want to see how many emails you left exposed? Try the <a href="/">free check</a>, read <a href="/blog/phone-number-in-tweets-check">phone-number risks in tweets</a>, or see <a href="/blog/address-location-tweets-risk">how to find address and location tweets</a>.</p>
- [
+`,
+    faq: [
       {
         "q": "推文里写了 QQ 邮箱，删掉推文就安全了吗？",
         "a": "不完全。邮箱可能已在爬虫库里存了几年，光删推文清不掉历史快照。还要改密码、开两步验证、停止复用。",
@@ -5219,7 +5222,8 @@ export const allPosts: BlogPost[] = [
 <p>Deletion handles the content on your own account, but not three things: reposts by others, search-engine caches and data-broker archives. So after deleting, file a cache-removal request when needed, and post less high-risk content going forward. Cleanup lowers exposure; it does not erase traces. Set that expectation straight, or the chase for perfection may stop you from starting at all.</p>
 
 <p>digital-footprint-health.shop runs a 100% on-device footprint check: load your X archive, parse tweets.js locally, auto-detect phone numbers, emails, and addresses, and give a 0-100 health score. Want to try? Try the <a href="/">free check</a>, read <a href="/blog/whats-inside-x-archive-tweets-js">what is inside your X archive</a>, or see <a href="/blog/how-to-download-x-archive">how to download your X archive</a>.</p>
- [
+`,
+    faq: [
       {
         "q": "不懂编程能提取 tweets.js 里的手机号吗？",
         "a": "能。用 100% 本机体检工具加载归档，它会自动正则匹配常见手机号格式并逐条列出，你不用写代码。",
@@ -5316,7 +5320,8 @@ export const allPosts: BlogPost[] = [
 <p>You do not have to wait for a free day; three small things work now: first, open digital-footprint-health.shop and run an on-device check to see where the risk concentrates; second, locate your X 2FA backup codes and store them safely; third, scroll your old tweets and delete the ones that clearly expose a phone number or address. Together they take under twenty minutes yet close off most common holes. What Chinese users overlook is exactly these "do-it-in-passing" steps.</p>
 
 <p>digital-footprint-health.shop runs a 100% on-device footprint check: after you download your X archive, it parses locally and gives a 0-100 health score plus a risk list, with the archive never uploaded. Want a safe first step? Try the <a href="/">free check</a>, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, or see <a href="/blog/whats-inside-x-archive-tweets-js">what is inside that archive</a>.</p>
- [
+`,
+    faq: [
       {
         "q": "中文用户下载归档最常卡在哪？",
         "a": "两处：一是用错邮箱，邮件发到注册邮箱而非日常邮箱；二是邮件进了 QQ 或 163 的垃圾箱没看到。",
@@ -18980,6 +18985,7 @@ rl.on('close', () =&gt; {
 
 <p>如果你想在本机一次性完成体检和清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后，工具会在你的电脑上解析每一条推文并标出风险，全程数据不出本地。更多方法见 <a href="/blog/how-to-delete-old-tweets-2026">如何删除旧推文</a> 与 <a href="/blog/digital-footprint-health-score">健康评分说明</a>。</p>
  '/blog/60-day-digital-footprint-milestone',
+`,
   faq: [
     { q: '60 天指南的核心结论是什么？', a: '核心结论是：用本机体检、归档备份、按风险删除、开启两步验证这四步，就能把大部分隐私风险降到可控，不需要花钱买代删服务。', qEn: 'What is the core takeaway of the 60-day guides?', aEn: 'The core takeaway: an on-device check, an archive backup, risk-ranked deletion, and 2FA cover most privacy risk without paying for a deletion service.' },
     { q: '数字足迹能彻底删干净吗？', a: '做不到彻底消失。旧推文的快照、搜索引擎缓存和别人转发的副本都可能还在。现实目标是把高危痕迹降到可控范围。', qEn: 'Can a digital footprint be erased completely?', aEn: 'No. Snapshots, search caches and other people reposts may remain. The realistic goal is to reduce high-risk traces to a manageable level.' },
@@ -19094,6 +19100,7 @@ rl.on('close', () =&gt; {
 
 <p>如果你还没跑过体检，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后本机生成 0-100 评分，全程数据不出本地。相关方法见 <a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a>。</p>
  '/blog/footprint-score-vs-credit-score',
+`,
   faq: [
     { q: '数字足迹评分会影响贷款吗？', a: '不会。它只衡量公开隐私暴露程度，银行放贷看的是信用评分，两者互不相干。', qEn: 'Does the footprint score affect loans?', aEn: 'No. It only measures public privacy exposure. Banks lend on credit scores, which are unrelated.' },
     { q: '这个评分谁看得到？', a: '只有你自己。以 digital-footprint-health.shop 为例，评分在你本机算出，不会被上传或展示给任何人。', qEn: 'Who can see this score?', aEn: 'Only you. At digital-footprint-health.shop the score is computed on your device and is never uploaded or shown to anyone.' },
@@ -19175,6 +19182,7 @@ rl.on('close', () =&gt; {
 
 <p>如果担心账号已经暴露，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 归档后本机检查有没有异常授权和隐私泄露，全程数据不出本地。</p>
  '/blog/x-account-locked-recovery-steps',
+`,
   faq: [
     { q: '账号被锁一般多久能解？', a: '多数临时锁定几小时内自动解除；走密码重置或申诉的，通常 1-3 天。反复试密码会拖长。', qEn: 'How long does a lock last?', aEn: 'Most temporary locks clear within hours; password reset or appeal cases usually take one to three days. Repeating the password extends it.' },
     { q: '没有备用恢复码还能解开两步验证吗？', a: '可以走账号申诉，提供注册邮箱和近期登录信息，由官方人工核实后放行。', qEn: 'Can I get past 2FA without backup codes?', aEn: 'Yes, file an account appeal with your sign-up email and recent activity; staff verify and release it.' },
@@ -19256,6 +19264,7 @@ rl.on('close', () =&gt; {
 
 <p>想在本机高效又安全地清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 归档后按风险批量标记和删除，全程数据不出本地。如果是留学生身份，<a href="/blog/chinese-overseas-student-footprint-check">留学生足迹检查</a> 这篇也值得先看。</p>
  '/blog/delete-tweets-before-background-check',
+`,
   faq: [
     { q: '背景调查一般提前多久开始？', a: '建议至少提前两周，给自己留出导出、删除和申请移除缓存的时间。', qEn: 'How far ahead should I start?', aEn: 'At least two weeks, leaving time to export, delete and request cache removal.' },
     { q: '删了推文，别人转发的副本还在吗？', a: '还在。你只能删自己发的，转发由别人账号持有；必要时可申请搜索引擎移除缓存。', qEn: 'Do reposts by others survive deletion?', aEn: 'They do. You can only delete your own posts; reposts sit on other accounts, and you may need a search-cache removal request.' },
@@ -19337,6 +19346,7 @@ rl.on('close', () =&gt; {
 
 <p>想在本机不花钱、不联网就完成体检和清理，可以打开 <a href="/">digital-footprint-health.shop</a>，上传 X 数据归档后工具在本地解析并标出风险，全程数据不出电脑。配合 <a href="/blog/chinese-vs-western-platform-privacy-settings">中西平台隐私设置对比</a>，把两边都管好。</p>
  '/blog/chinese-privacy-myths-x-tweets',
+`,
   faq: [
     { q: '注销 X 账号能删掉历史推文吗？', a: '不能。注销只让账号无法登录，转发、缓存和经纪商存档还在；应先清理再决定是否注销。', qEn: 'Does deactivating X delete old tweets?', aEn: 'No. Deactivation only locks sign-in; reposts, caches and broker archives remain. Clean up before you decide to leave.' },
     { q: '只发中文为什么要管英文检索？', a: '公开推文不分语言，英文搜索和数据经纪商都能命中中文关键词，所以中文内容同样要清理。', qEn: 'Why worry about English search if I post in Chinese?', aEn: 'Public tweets are language-neutral; English search and brokers match Chinese keywords, so Chinese posts need cleanup too.' },

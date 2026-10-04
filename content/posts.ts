@@ -19903,6 +19903,399 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop a local check pulls shipping addresses, phone numbers, and other hard details from your archive in one pass, and the data never leaves your computer. Start at the <a href="/upload">free check page</a> to upload the archive and get the report. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Download help is in <a href="/blog/x-archive-download-failed-fix">this piece</a>.</p>
 `,
   },
+  {
+    slug: 'delete-tweets-by-engagement',
+    title: '按互动量清理推文：保留高光，删掉风险（X 删除实操）',
+    excerpt: '想清理 X 旧推文，全删可惜、全留又怕。一个更省心的办法是按互动量排序：高互动、仍有价值的留着，低互动但带手机号和定位的旧推文优先删。',
+    date: '2026-10-05',
+    updatedAt: '2026-10-05',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['删除推文', '互动量', '点赞', '清理策略', '数字足迹'],
+    content: `
+<p>想清理 X 上的旧推文，很多人卡在两难：全删了可惜，里面不少是当年的高光；全留着又怕哪条突然被翻出来。一个比"全删"或"全留"都更省心的办法，是按互动量来筛：把高互动、至今还带来价值的内容留着，把互动低但风险高的旧推文优先删掉。</p>
+
+<h2>为什么按互动量清理更聪明</h2>
+<p>互动量（点赞、转发、回复、查看）是现成的排序信号。一条几年前的推文如果还在被搜、被转，说明它对你仍有正向价值，删了是损失。反过来，互动低又带硬信息（手机号、定位、吐槽前东家）的旧推文，风险高、收益低，是清理的首选。按互动量分流，等于用数据替你做第一轮取舍，不用逐条纠结。</p>
+<p>这种方法也治好了"清理焦虑"。你不需要一次性删几百条，只要先把"高风险低互动"那一小撮清掉，整体风险就降了一大半。剩下的可以慢慢来。</p>
+
+<h2>高风险低互动：最先删的一类</h2>
+<p>这一类最该优先。典型特征：发的时候随手，现在看却后怕，半年内零互动。比如带手机号的旧动态、定位打卡、对前单位的吐槽、过激观点。它们不被搜到不等于安全，搜索引擎缓存、别人转存、存档站都可能留底。互动越低，意味着越少人记得它、也越少人替你辩护，翻出来时更孤立。</p>
+
+<h2>高互动内容：留着，但要回看隐私</h2>
+<p>高互动推文通常值得留。但"火"过的内容也可能埋雷：当时的照片里有没有门牌？文案里有没有顺手留的微信 ID？一条被转了几百次的旧帖，风险面比冷帖大得多。所以高互动不是免检，而是"留着但要回看一眼隐私"。</p>
+
+<h2>怎么看一条推文的互动量</h2>
+<p>自己账号的公开统计只能看近期。真正全量的历史互动，在你自己的 X 数据归档里：tweets.js 每条记录带 favorite_count、retweet_count 等字段。把归档下载下来，本机解析，就能按互动量给全部历史推文排个序。整个过程在你的电脑上完成，数据不出本机。</p>
+<ul>
+<li><strong>favorite_count</strong>：点赞数，最直观的"被认可"信号。</li>
+<li><strong>retweet_count</strong>：转发数，代表内容被传播的范围。</li>
+<li><strong>reply_count</strong>：回复数，高回复往往意味着争议或讨论。</li>
+<li><strong>impression</strong>：部分归档含展示量，反映被看到的频次。</li>
+</ul>
+
+<h2>实操步骤：用归档数据排序</h2>
+<p>第一步，下载 X 归档（入口在"设置和隐私 → 你的数据 → 下载你的数据"）。第二步，在本机体检页上传归档，工具会按风险类型和互动量分别列出。第三步，把"低风险高互动"的放进保留清单；把"高风险低互动"的放进删除清单。第四步，按需批量删除保留清单之外的风险推文，删除可暂停、可恢复、按条计费。</p>
+<p>一个省力技巧：先按"含硬信息"筛，再在结果里按互动量升序排。最该删的永远排在前面，你只需处理列表头部的几十条。</p>
+
+<h2>常见误区：互动高就等于安全</h2>
+<p>不少人觉得"这条赞了几百，删了可惜，留着没事"。但高互动只说明它有价值，不等于它没风险。一条带定位的聚餐照被转得越广，泄露的住址轨迹越精确。互动量是"留不留"的参考，不是"安不安全"的答案。安全判断要单独做：这条有没有硬信息、会不会被截图流传。</p>
+
+<h2>四类推文怎么处理（速查表）</h2>
+<table>
+<thead><tr><th>类型</th><th>特征</th><th>建议</th></tr></thead>
+<tbody>
+<tr><td>高风险低互动</td><td>带手机号/定位/吐槽，零互动</td><td>优先删</td></tr>
+<tr><td>高风险高互动</td><td>火过但含硬信息</td><td>留，但先抹掉隐私</td></tr>
+<tr><td>低风险高互动</td><td>干货、被常搜</td><td>保留</td></tr>
+<tr><td>低风险低互动</td><td>普通碎碎念</td><td>可留可删，按需</td></tr>
+</tbody>
+</table>
+
+<p>还有一个维度容易被忽略：时间。越早的推文，互动量的参考价值越低，因为当时的关注者基数和现在完全不同。所以排序时别只看绝对数值，结合发布年份一起看，前几年的低互动推文清理优先级更高，最近半年的低互动可以先放着。</p>
+
+<h2>清理后怎么验证</h2>
+<p>删完别凭感觉。重新下载一次归档，和清理前的版本对比，确认目标推文真的不在 tweets.js 里了。想确认线上是否还看得到，等搜索引擎缓存沉降后再搜一次自己的昵称加关键词。删除动作在本机工具里是可暂停、可恢复的，误删也能在窗口内补救。</p>
+
+<h2>工具如何把「排序」变成「一键操作」</h2>
+<p>手动按互动量排序很费劲，尤其是几千条历史。本机体检工具读入归档后，会直接按风险类型和互动量两个维度给每条推文打分并排序，你看到的已经是一份排好优先级的清单。高风险低互动的集中在顶部，点进去就能批量删除，不用自己一条条判断。这也是为什么建议先用归档体检、再决定删什么：数据替你完成了最累的第一轮筛选。这套思路不只对 X 有效，任何带互动数据的归档都能照用。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性按风险类型和互动量给归档里的全部推文排序，数据全程不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档，几分钟拿到排序后的风险清单；不同场景的删除取舍可看 <a href="/blog/delete-tweets-before-background-check">背景调查前删推文</a>，按年份批量删见 <a href="/blog/delete-tweets-by-year">按年份删旧推文</a>。清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。</p>
+`,
+    canonical: '/blog/delete-tweets-by-engagement',
+    faq: [
+      { q: '按互动量删会不会误删好内容？', a: '排序只是帮你把高风险低互动的优先排到前面，最终删哪些由你确认。高互动的会进保留清单，不会自动删。', qEn: 'Will sorting by engagement delete good content by mistake?', aEn: 'Sorting only brings high-risk low-engagement posts to the top; you confirm what to delete. High-engagement posts land on the keep list and are never auto-deleted.' },
+      { q: '归档里的互动数据和后台看到的一致吗？', a: '归档是你账号当时的全量快照，含 favorite_count、retweet_count 等字段，比公开后台更全，但只反映归档生成那一刻的状态。', qEn: 'Is archive engagement data consistent with what I see in the app?', aEn: 'The archive is a full snapshot of your account at generation time, with favorite_count and retweet_count fields, broader than public stats but reflecting only that moment.' },
+      { q: '高互动但带定位的帖子怎么处理？', a: '建议留，但先想办法把照片里的定位信息或门牌抹掉再考虑。互动量是留不留的参考，隐私要单独判断。', qEn: 'What about high-engagement posts that show a location?', aEn: 'Keep them, but strip the location or door number from the photo first. Engagement guides keep-or-not; privacy needs its own check.' },
+      { q: '删完还能恢复吗？', a: '本机删除工具支持暂停和恢复，在窗口内误删可以补救；一旦彻底删除且超过窗口，归档里也不会再出现。', qEn: 'Can deleted posts be recovered?', aEn: 'A local deletion tool supports pause and resume, so a mistake within the window can be fixed. Once fully deleted past the window, they will not reappear in the archive either.' },
+      { q: '本机体检会动我的账号吗？', a: '不会。体检只解析你上传的归档文件，不上传服务器、不登录你的账号、不删任何内容，删除是独立的可选步骤。', qEn: 'Does a local check touch my account?', aEn: 'No. The check only parses the archive file you upload. It does not upload to a server, does not log into your account, and deletes nothing; deletion is a separate optional step.' },
+    ],
+    titleEn: 'Delete Tweets by Engagement: Keep Your Highlights, Remove the Risk',
+    excerptEn: 'When cleaning old X posts, deleting all loses your highlights and keeping all keeps the risk. A calmer method is to sort by engagement: keep what still earns its place, clear the low-engagement posts that carry hidden risk.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['delete tweets', 'engagement', 'likes', 'cleanup strategy', 'digital footprint'],
+    contentEn: `
+<p>When you decide to clean up old posts on X, most people stall at the same fork: delete everything and lose years of highlights, or keep everything and risk an old post resurfacing. A calmer approach is to sort by engagement. Keep the posts that still earn their place through likes and replies, and clear out the low-engagement posts that carry hidden risk.</p>
+
+<h2>Why sorting by engagement is smarter</h2>
+<p>Engagement, likes, reposts, replies, views, is a ready-made ranking signal. A post from years ago that still gets searched and shared clearly has value today, so deleting it is a loss. A low-engagement post that also carries a phone number, a check-in, or a rant about a former employer is high risk and low reward, which makes it the first to go. Sorting by engagement lets the data make the first cut for you instead of debating every single post.</p>
+<p>This method also cures cleanup anxiety. You do not need to delete hundreds of posts at once. Clear the small slice that is high risk and low engagement, and your overall exposure drops by a lot. The rest can wait.</p>
+
+<h2>High risk, low engagement: delete these first</h2>
+<p>This is the class to prioritize. The typical signs: posted on a whim, now cringe-worthy, zero interaction in half a year. Examples include old updates with a phone number, location check-ins, complaints about a previous employer, and heated opinions. Not being searched often does not mean safe; search caches, saved copies, and archive sites may still hold them. The lower the engagement, the fewer people remember it and the fewer people would defend it if it resurfaces.</p>
+
+<h2>High engagement: keep, but check privacy</h2>
+<p>High-engagement posts usually deserve to stay. But a post that went viral can also hide landmines: is there a door number in the photo, or a WeChat ID dropped in the caption? A post shared hundreds of times has a far larger risk surface than a cold one. So high engagement is not a free pass; it means keep, but look once at the privacy.</p>
+
+<h2>How to read a post's engagement</h2>
+<p>Your public account stats only show recent activity. The full historical engagement lives in your own X data archive: each record in tweet.js carries fields like favorite_count and retweet_count. Download the archive, parse it on your device, and you can rank every historical post by engagement. The whole process runs on your computer, so the data never leaves your machine.</p>
+<ul>
+<li><strong>favorite_count</strong>: the like count, the most direct signal of resonance.</li>
+<li><strong>retweet_count</strong>: how widely the post was spread.</li>
+<li><strong>reply_count</strong>: high replies often mean debate or controversy.</li>
+<li><strong>impression</strong>: some archives include view counts, showing how often it was seen.</li>
+</ul>
+
+<h2>Steps: rank with archive data</h2>
+<p>Step one, download your X archive from Settings and privacy, then Your data, then Download an archive of your data. Step two, upload it to the local check page, where the tool lists findings by risk type and by engagement. Step three, put low-risk high-engagement posts on the keep list, and high-risk low-engagement posts on the delete list. Step four, bulk delete the risky posts outside the keep list; deletion is pausable, resumable, and billed per post.</p>
+<p>One time-saver: first filter by hard info, then sort that result by engagement ascending. The posts you most need to delete always sit at the top, so you only handle the first few dozen.</p>
+
+<h2>Common myth: high engagement means safe</h2>
+<p>Many people think a post with hundreds of likes is safe to keep. High engagement only tells you the post has value; it says nothing about whether it is risky. A group photo with a location, the more it was shared, the more precisely it leaked your home trajectory. Engagement is a reference for keep or not, not an answer for safe or not. Safety needs its own check: does this post carry hard info, could it be screenshotted and passed around.</p>
+
+<h2>How to handle four classes of posts</h2>
+<table>
+<thead><tr><th>Type</th><th>Sign</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>High risk, low engagement</td><td>phone, location, rant, zero interaction</td><td>Delete first</td></tr>
+<tr><td>High risk, high engagement</td><td>went viral but has hard info</td><td>Keep, but strip privacy first</td></tr>
+<tr><td>Low risk, high engagement</td><td>useful, often searched</td><td>Keep</td></tr>
+<tr><td>Low risk, low engagement</td><td>ordinary chatter</td><td>Optional</td></tr>
+</tbody>
+</table>
+
+<p>There is one more dimension easy to miss: time. Older posts have lower reference value for engagement, because the follower base then was a different size. So when you rank, do not read the absolute number alone; combine it with the publish year. Low-engagement posts from a few years back deserve higher cleanup priority, while low-engagement posts from the last six months can wait.</p>
+
+<h2>How to verify after cleanup</h2>
+<p>Do not trust your feeling after deleting. Download the archive again and compare it with the pre-cleanup version to confirm the target posts are truly gone from tweet.js. To check whether they are still visible online, wait for search caches to settle, then search your handle plus keywords. The deletion action in a local tool is pausable and resumable, so a mistake can be recovered within the window.</p>
+
+<h2>How a tool turns sorting into one click</h2>
+<p>Sorting by engagement by hand is exhausting, especially across thousands of old posts. A local check reads the archive and scores each post along risk type and engagement, then hands you a prioritized list. The high-risk low-engagement posts sit at the top, and you can bulk-delete from there without judging every single post yourself. That is why the suggested order is archive check first, decide later: the data does the tiring first pass for you. This approach is not limited to X; any archive that carries interaction data can be ranked the same way. It turns a vague worry into a sorted list you can act on in minutes.</p>
+
+<p>On digital-footprint-health.shop, a local check ranks every post in your archive by risk type and engagement in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get the ranked risk list in minutes. For trade-offs by scenario, read <a href="/blog/delete-tweets-before-background-check">deleting posts before a background check</a>, and for year-by-year bulk deletion see <a href="/blog/delete-tweets-by-year">delete old tweets by year</a>. For deletion cost, see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
+`,
+  },
+  {
+    slug: 'chinese-platforms-history-cleanup-guide',
+    title: '微博、微信、小红书的历史内容怎么清：和清理 X 不是一回事',
+    excerpt: '国内社媒和 X 的删除逻辑完全不同：入口、规则、下架是否等于消失，都不一样。用清理 X 的思路去清微博微信，很容易踩坑。这篇讲清差异和顺序。',
+    date: '2026-10-05',
+    updatedAt: '2026-10-05',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['微博', '微信', '小红书', '历史内容', '隐私清理'],
+    content: `
+<p>很多中文用户习惯先清 X，再顺手清国内平台，结果发现两套逻辑根本对不上。微博、微信、小红书、抖音的删除入口、平台规则、以及"下架是不是真消失"，都和 X 不一样。用清理 X 的思路去清国内社媒，很容易漏掉真正的风险点。</p>
+
+<h2>国内平台和 X 的三个根本不同</h2>
+<p>第一，入口深。X 的归档下载是标准功能，国内平台大多没有"一键导出全部历史"的等价物，删要一条条进界面。第二，规则变。国内平台的内容审核和可见性规则调整频繁，今天能搜到明天可能被限流，不能按固定预期判断。第三，联动强。微信 ID、手机号、支付宝把这些平台串成一张网，一个地方漏了，别的地方还能拼出来。</p>
+
+<h2>微博：历史微博怎么批量删</h2>
+<p>微博网页端和 App 都支持按年份查看，但批量删除能力有限，早年账号几万条时手动清不现实。可行做法是先搜自己的昵称加关键词（手机号、地名、前单位），把命中风险帖单独处理；公开微博即使删了，搜索引擎缓存和第三方存档站可能还留着，要等缓存沉降。</p>
+
+<h2>微信：聊天记录与朋友圈是两回事</h2>
+<p>朋友圈像 X，是公开或半公开的时间线，清理靠逐条删或改可见范围。聊天记录则是私密的，但一旦截图外传就失控。最容易被忽略的是"文件传输助手"和"收藏"里存的旧截图，它们不含发布动作，却可能含门牌、证件。清理时这两处要比朋友圈更仔细。</p>
+
+<h2>小红书 / 抖音：下架不等于消失</h2>
+<p>在小红书或抖音删掉一条笔记，平台侧可能仍保留副本用于审核或推荐训练。你自己看不到了，不代表数据被销毁。涉及定位、人脸、证件的笔记，删除前要先把原图里的信息打码，因为删除动作救不回已经泄露的画面。</p>
+
+<h2>一个常被忽略的：搜索引擎缓存</h2>
+<p>无论哪个平台，删完都要面对搜索引擎。百度、搜狗对国内平台内容的缓存很深，一条带手机号的旧帖删了，搜索结果可能几周甚至几个月才更新。所以清理节奏要提前，别等要用的时候才动手。</p>
+
+<h2>跨平台一起清的顺序建议</h2>
+<p>先清含硬信息的（手机号、定位、证件），再清观点类；先处理被搜概率高的平台（微博、小红书），再处理私密角落（微信收藏）。X 的归档可以一次性本机体检扫全，国内平台则更依赖关键词搜索自查。想顺手把 X 也清了，可用 <a href="/blog/delete-tweets-by-engagement">按互动量清理推文</a> 的策略；本机体检入口在 <a href="/upload">免费体检页</a>。</p>
+
+<p>在 digital-footprint-health.shop，本机体检专攻 X 归档，能一次性扫出手机号、定位、证件等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。国内平台的部分建议结合上面的分步自查。</p>
+`,
+    canonical: '/blog/chinese-platforms-history-cleanup-guide',
+    faq: [
+      { q: '国内平台有没有像 X 归档那样的导出？', a: '大多没有标准的一键全量导出。微博可按年份浏览，微信有聊天记录迁移，但都不如 X 归档完整，清理更依赖关键词自查。', qEn: 'Do domestic platforms have an export like the X archive?', aEn: 'Most lack a standard one-click full export. Weibo browses by year and WeChat migrates chats, but neither matches the X archive, so cleanup leans on keyword self-checks.' },
+      { q: '删了小红书笔记，数据还在吗？', a: '平台侧可能保留副本用于审核或训练，你自己看不到了不代表销毁。含定位证件的要先打码再删。', qEn: 'After I delete a Xiaohongshu note, is the data gone?', aEn: 'The platform may keep a copy for review or training; you not seeing it is not erasure. Redact location or documents before deleting.' },
+      { q: '微信该先清哪里？', a: '先看文件传输助手和收藏里的旧截图，它们含门牌证件却无发布动作，最易被忽略；其次才是朋友圈。', qEn: 'Where should I clean in WeChat first?', aEn: 'Start with old screenshots in File Transfer and Favorites, which hold door numbers and IDs without a publish action; then Moments.' },
+      { q: '为什么国内平台清理要更早动手？', a: '百度、搜狗缓存深，删后搜索结果几周甚至几个月才更新。赶着用的时候才清，副本大概率还在。', qEn: 'Why start domestic cleanup earlier?', aEn: 'Baidu and Sogou cache deeply, and results may lag weeks or months. Cleaning only when urgent leaves copies alive.' },
+    ],
+    titleEn: 'A Different Cleanup Playbook for Chinese Platforms (Weibo, WeChat, Xiaohongshu)',
+    excerptEn: 'Chinese platforms follow very different deletion rules from X: the entry points, the policies, and whether takedown really means gone all differ. Applying an X cleanup mindset here leads to avoidable mistakes.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['Weibo', 'WeChat', 'Xiaohongshu', 'old posts', 'privacy cleanup'],
+    contentEn: `
+<p>Many Chinese users clean X first, then turn to domestic platforms, only to find the two logics do not match. Weibo, WeChat, Xiaohongshu, and Douyin differ from X in where the delete button lives, how the rules shift, and whether takedown truly means gone. Applying an X cleanup mindset here leads to avoidable gaps.</p>
+
+<h2>Three ways domestic platforms differ from X</h2>
+<p>First, the entry is buried. X offers a standard archive export; domestic platforms mostly lack an equivalent one-click full export, so deletion means entering the interface post by post. Second, the rules move. Visibility and moderation policies shift often, so you cannot assume a fixed behavior. Third, the links are strong. A WeChat ID, a phone number, and Alipay tie these platforms into one web, so a leak in one place can be reassembled from another.</p>
+
+<h2>Weibo: how to bulk-delete old posts</h2>
+<p>Weibo web and app let you browse by year, but bulk deletion is limited, and manual cleanup is unrealistic for accounts with tens of thousands of posts. A workable approach is to search your handle plus keywords like phone number, city, or former employer, and handle the risk hits individually. Even after deletion, search caches and third-party archive sites may keep copies, so wait for the cache to settle.</p>
+
+<h2>WeChat: chats and Moments are different things</h2>
+<p>Moments behaves like X, a public or semi-public timeline you clean post by post or by tightening visibility. Chats are private, but once screenshotted they escape your control. The most overlooked spots are old screenshots saved in File Transfer and Favorites, which carry no publish action yet may hold door numbers and IDs. Clean those more carefully than Moments.</p>
+
+<h2>Xiaohongshu and Douyin: takedown is not erasure</h2>
+<p>Deleting a note on Xiaohongshu or Douyin may leave a platform copy for review or recommendation training. You stop seeing it, but the data may not be destroyed. Notes with location, faces, or documents should be redacted before deletion, because the action cannot undo an image already leaked.</p>
+
+<h2>Often missed: search engine caches</h2>
+<p>On every platform, caches are the final boss. Baidu and Sogou cache domestic content deeply, and a deleted post with a phone number may linger in results for weeks or months. Clean early, not when you urgently need it gone.</p>
+
+<h2>Suggested order across platforms</h2>
+<p>Clear hard-info posts first (phone, location, documents), then opinion posts; handle high-search-risk platforms (Weibo, Xiaohongshu) before private corners (WeChat Favorites). An X archive can be scanned in one local pass, while domestic platforms rely more on keyword self-checks. To clean X too, use the <a href="/blog/delete-tweets-by-engagement">delete-by-engagement strategy</a>; the local check entry is on the <a href="/upload">free check page</a>.</p>
+
+<p>A practical tip: set a calendar reminder a few weeks before any event where your history matters, such as a job application or a visa process. Domestic platform caches are slow, so early action is the only thing that gives the cache time to expire.</p>
+
+<p>On digital-footprint-health.shop, the local check targets X archives and surfaces hard info like phone numbers, locations, and documents in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Pair it with the step-by-step self-check above for domestic platforms.</p>
+`,
+  },
+  {
+    slug: 'chinese-phone-number-x-tweets-selfcheck',
+    title: '中文用户自查：X 推文里泄露的国内手机号和微信怎么清',
+    excerpt: '中文用户常在推文里随手留国内手机号或微信 ID，在国内语境下风险比纯英文账号大得多。这篇教你三步自查、准确定位、干净清理。',
+    date: '2026-10-05',
+    updatedAt: '2026-10-05',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['手机号', '微信', 'X 推文', '自查', '隐私泄露'],
+    content: `
+<p>中文用户在 X 上随手留国内手机号、微信 ID 是常态，很多人没意识到这在国内语境下比纯英文账号危险得多。一个微信 ID 能直接关联到你的真实社交圈、支付和熟人关系，暴露面远大于一个邮箱。这篇教你用三步把藏在旧推文里的这些信息揪出来。</p>
+
+<h2>为什么国内手机号在 X 上特别危险</h2>
+<p>国内手机号绑定了微信、支付宝、银行卡，是绝大多数账号的找回入口。推文里出现一次，坏人就能拿它做撞库、钓鱼、甚至冒充你。英文账号留个 Gmail 风险相对小，因为 Gmail 不绑国内支付。所以同一行联系方式，带国内手机号权重要高得多，体检评分也会体现这种差异。</p>
+
+<h2>自查三步：下载归档 → 本机体检 → 逐条看</h2>
+<p>第一步，下载 X 数据归档（"设置和隐私 → 你的数据 → 下载你的数据"）。第二步，把归档上传到本机体检页，工具会按风险类型标出所有手机号、微信 ID、定位。第三步，对照清单逐条确认哪些推文要删，哪些只是误报（比如文末签名里的联系方式是否可以改成私信获取）。</p>
+
+<h2>哪些推文最容易带手机号</h2>
+<ul>
+<li><strong>抽奖转发</strong>：常要求"留手机号参与"，顺手就发出去了。</li>
+<li><strong>兼职 / 业务推广</strong>：为了好联系，直接贴号码。</li>
+<li><strong>求助帖</strong>：找人、找货时把电话写正文里。</li>
+<li><strong>换号通知</strong>：旧号停用、新号公布，最集中的泄露点。</li>
+</ul>
+
+<h2>清完之后：改隐私 + 换号考量</h2>
+<p>删推文只是第一步。如果号码已经在外流转，要考虑是否换号，至少把微信和支付宝的"通过手机号找到我"关掉。账号隐私收一收，限制被搜到，能降低后续被利用的概率。别只删不收，旧副本还在别人手里。</p>
+
+<h2>微信 ID 比邮箱更该先清</h2>
+<p>邮箱泄露后最多收点垃圾邮件；微信 ID 泄露后，对方能顺着它看到你的朋友圈、头像、甚至通过"猜你想加"找到熟人。所以自查时微信 ID 的优先级要排在最前。已经公开的，除了删推文，也建议改一次微信号（每个账号一生可改一次），切断旧的关联链。</p>
+
+<h2>一个常被忽略的细节：验证码与二次验证</h2>
+<p>自查时别只盯着正文。很多人把短信验证码、登录二次验证的截图也发在推文里，这些截图含手机号尾号和运营商，比正文更危险。另有一种间接泄露：用手机号做 X 账号找回，别人拿到号码就能尝试登录。所以清完推文，顺手把「通过手机号找到我」「允许通过手机号登录」这类开关收一收。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里所有手机号和微信 ID，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；想了解国内平台联动风险见 <a href="/blog/chinese-platforms-history-cleanup-guide">国内平台清理指南</a>，按互动量清理策略见 <a href="/blog/delete-tweets-by-engagement">这篇</a>。清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。</p>
+`,
+    canonical: '/blog/chinese-phone-number-x-tweets-selfcheck',
+    faq: [
+      { q: '微信 ID 和手机号哪个更该先清？', a: '微信 ID 优先。它关联真实社交圈和支付，暴露面比邮箱大得多，且能通过推荐找到熟人。', qEn: 'Which should I clear first, WeChat ID or phone number?', aEn: 'WeChat ID first. It links to your real social graph and payments, a wider exposure than email, and can surface acquaintances through suggestions.' },
+      { q: '只删推文够吗？', a: '不够。号码若已在外流转，还要收账号隐私、考虑换号。删推文是切断新泄露，旧副本仍在别人手里。', qEn: 'Is deleting the post enough?', aEn: 'No. If the number has circulated, also lock down privacy and consider a new number. Deletion stops new leaks; old copies remain with others.' },
+      { q: '怎么快速找到所有带手机号的旧推文？', a: '下载 X 归档后本机体检会按风险类型列出全部手机号和微信 ID，比一条条翻高效且不会漏。', qEn: 'How do I quickly find every old post with my number?', aEn: 'After downloading the X archive, a local check lists all phone numbers and WeChat IDs by risk type, faster and more complete than scrolling.' },
+      { q: '微信号改了能切断旧关联吗？', a: '可以。每个账号一生可改一次微信号，改后旧的搜索和推荐链路会断，是清理后的有效加固。', qEn: 'Does changing the WeChat ID cut old links?', aEn: 'Yes. Each account allows one WeChat ID change in a lifetime; after that, old search and suggestion chains break, a solid加固 after cleanup.' },
+    ],
+    titleEn: 'Self-Check: Find and Remove Your Chinese Phone Number and WeChat ID from X Posts',
+    excerptEn: 'Chinese users often drop a mainland phone number or WeChat ID into posts, which is far riskier in the local context than on a plain English account. This walks through a three-step self-check to find and clear them.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['phone number', 'WeChat', 'X posts', 'self-check', 'privacy leak'],
+    contentEn: `
+<p>Chinese users often drop a mainland phone number or WeChat ID into posts without thinking, and many do not realize this is far riskier in the local context than on a plain English account. A WeChat ID links straight to your real social graph, payments, and people you know, so the exposure is much wider than an email. This walks through a three-step self-check to pull those details out of old posts.</p>
+
+<h2>Why a mainland phone number is especially dangerous on X</h2>
+<p>A mainland number is tied to WeChat, Alipay, and bank cards, and it is the recovery entry for most accounts. One appearance in a post lets a bad actor attempt credential stuffing, phishing, or impersonation. An English account leaking a Gmail is comparatively mild because Gmail is not bound to domestic payments. The same contact line with a mainland number carries far more weight, and a local check scores it that way.</p>
+
+<h2>Three-step self-check: archive, local check, review</h2>
+<p>Step one, download your X archive from Settings and privacy, then Your data, then Download an archive of your data. Step two, upload it to the local check page, where the tool flags every phone number, WeChat ID, and location by risk type. Step three, go through the list and decide which posts to delete, and which are false positives, such as a contact line in your signature that could move to private messages.</p>
+
+<h2>Which posts most often carry a phone number</h2>
+<ul>
+<li><strong>Giveaway reposts</strong>: often ask for a number to join, sent in a click.</li>
+<li><strong>Side gigs and promotions</strong>: posted for easy contact.</li>
+<li><strong>Help-seeking posts</strong>: looking for a person or item, with the number in the body.</li>
+<li><strong>Number-change notices</strong>: old number retired, new one published, the densest leak point.</li>
+</ul>
+
+<h2>After cleanup: tighten privacy and consider a new number</h2>
+<p>Deleting posts is only step one. If the number has circulated, consider changing it, or at least turn off find-me-by-phone in WeChat and Alipay. Tighten account privacy so you are harder to find, which lowers later exploitation. Do not only delete and skip the lockdown, because old copies still sit with other people.</p>
+
+<h2>WeChat ID deserves priority over email</h2>
+<p>A leaked email mostly means spam. A leaked WeChat ID lets the other side see your Moments, avatar, and even reach acquaintances through suggestions. So in your self-check, put the WeChat ID at the very top. For ones already public, beyond deleting the post, consider changing the WeChat ID once (each account allows one change in a lifetime) to cut the old link chain.</p>
+
+<h2>One overlooked detail: verification codes</h2>
+<p>Do not only scan the body text. Many people post screenshots of SMS codes or two-factor prompts, which reveal the carrier and the number tail, and are more dangerous than the prose. There is also indirect leakage: if your X account uses the phone number for recovery, someone with the number can attempt login. After clearing posts, also tighten switches like find-me-by-phone and allow-login-by-phone.</p>
+
+<p>On digital-footprint-health.shop, a local check scans your archive for every phone number and WeChat ID in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For cross-platform risk see the <a href="/blog/chinese-platforms-history-cleanup-guide">domestic cleanup guide</a>, and for the engagement strategy see <a href="/blog/delete-tweets-by-engagement">this piece</a>. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
+`,
+  },
+  {
+    slug: 'ccpa-gdpr-deletion-rights-faq-2026',
+    title: 'CCPA 与 GDPR 删除权 FAQ：你的推文数据能要求平台删吗（2026）',
+    excerpt: 'GDPR（欧盟）和 CCPA（加州）都给了用户的删除权，但范围、对象、例外都不一样。这篇用问答形式讲清：账号删除、向平台主张删除、2026 年有哪些变化。',
+    date: '2026-10-05',
+    updatedAt: '2026-10-05',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['CCPA', 'GDPR', '删除权', '隐私权', '合规'],
+    content: `
+<p>GDPR（欧盟）和 CCPA（加州）都给了用户"删除权"，但两法在适用范围、可向谁主张、有哪些例外上差别很大。很多人把"删自己账号"和"要求平台删关于我的数据"混为一谈。下面用几个常见问答把边界讲清。</p>
+
+<h2>CCPA 和 GDPR 的删除权有什么不同</h2>
+<p>GDPR 的删除权（第 17 条）覆盖欧盟居民，强调"被遗忘"，但有不少例外，比如言论自由、法定义务。CCPA 的删除权覆盖加州居民，允许企业因完成交易、安全、合规等理由保留部分数据。简单说：GDPR 更强调原则性删除，CCPA 更务实、留的口子更多。</p>
+
+<h2>平台账号删除，不等于平台删了你的数据</h2>
+<p>你在 X 上点"删除账号"，平台可能仍依法保留一部分数据（如日志、风控记录）。删除权主张要单独向平台提出，明确列出要删的数据范围；只点一个删除按钮并不等于干净了。</p>
+
+<h2>2026 年有什么变化</h2>
+<p>2026 年多条州级隐私法（如得州、佛州的相关法案）陆续生效，美国"各州各自立法"的局面让删除权主张更碎片化。欧盟一侧则继续强化对跨境数据传输的审查。对普通用户而言，主张删除的入口更分散，但平台侧的合规响应机制也更成熟。</p>
+
+<h2>对清理旧推文有什么实操意义</h2>
+<p>法规是兜底，自己动手最快。与其等法律程序几个月，不如先把归档下载下来，本机体检扫出硬信息，按需删掉高风险旧推文。法律主张适合处理平台侧残留的备份和日志类数据。</p>
+
+<p>在 digital-footprint-health.shop，本机体检帮你快速定位归档里的手机号、定位等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；关于删除与账号状态的关系见 <a href="/blog/delete-tweets-restricted-account">受限账号如何删</a>。清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a>。</p>
+`,
+    canonical: '/blog/ccpa-gdpr-deletion-rights-faq-2026',
+    faq: [
+      { q: '删了 X 账号，平台还会留我的数据吗？', a: '可能。日志、风控记录等依法可保留，删除权要单独主张，不能只靠点删除按钮。', qEn: 'After I delete my X account, does the platform still keep my data?', aEn: 'Possibly. Logs and risk-control records may be kept by law, so a deletion right must be asserted separately, not assumed from one button.' },
+      { q: 'GDPR 和 CCPA 我能用哪个？', a: '看你的居民身份：欧盟居民走 GDPR，加州居民走 CCPA；2026 年部分州也有自己的法案，按所在地选适用法。', qEn: 'Which of GDPR or CCPA applies to me?', aEn: 'It depends on residency: EU residents use GDPR, California residents use CCPA; in 2026 some other states have their own acts, choose by where you live.' },
+      { q: '主张删除要等多久？', a: '平台通常有一个月左右响应期，复杂请求可延长。比自己动手清理慢得多，适合处理备份和日志类残留。', qEn: 'How long does a deletion request take?', aEn: 'Platforms usually have about a month to respond, extendable for complex cases. Much slower than cleaning yourself, and better for backup and log residuals.' },
+      { q: '法律删除和本机清理要二选一吗？', a: '不用。自己先清高风险旧推文最快，法律主张处理平台侧残留，两者互补。', qEn: 'Must I choose between legal deletion and local cleanup?', aEn: 'No. Clean high-risk old posts yourself first for speed, and use legal requests for platform residuals; the two complement each other.' },
+      { q: '删除权有例外吗？', a: '有。言论自由、法定义务、完成交易等情形下平台可保留数据，不是所有数据都能删干净。', qEn: 'Are there exceptions to the right to deletion?', aEn: 'Yes. Freedom of expression, legal obligations, and completing transactions let platforms keep data; not everything can be erased.' },
+    ],
+    titleEn: 'CCPA vs GDPR Deletion Rights FAQ: Can You Demand Platforms Delete Your Post Data (2026)',
+    excerptEn: 'Both GDPR and CCPA grant a right to deletion, but their scope, targets, and exceptions differ. This FAQ explains account deletion, demanding erasure from platforms, and what changed in 2026.',
+    categoryEn: 'Compliance',
+    tagsEn: ['CCPA', 'GDPR', 'right to deletion', 'privacy', 'compliance'],
+    contentEn: `
+<p>Both GDPR (EU) and CCPA (California) grant a right to deletion, but the two laws differ sharply in who they cover, whom you can assert them against, and what exceptions apply. Many people confuse deleting your own account with demanding that a platform delete data about you. The Q and A below draws the line.</p>
+
+<h2>How do CCPA and GDPR deletion rights differ</h2>
+<p>GDPR's right to erasure (Article 17) covers EU residents and stresses the right to be forgotten, yet it carries exceptions like freedom of expression and legal obligation. CCPA's deletion right covers California residents and lets businesses keep some data for completing transactions, security, and compliance. In short, GDPR leans on principled erasure, while CCPA is more pragmatic with more carve-outs.</p>
+
+<h2>Deleting your account is not the same as platform erasure</h2>
+<p>When you click delete account on X, the platform may still lawfully keep some data such as logs and risk-control records. A deletion-right request must be filed separately, naming the data range you want removed, not assumed clean after one button.</p>
+
+<h2>What changed in 2026</h2>
+<p>In 2026 several state-level privacy laws (such as Texas and Florida acts) took effect, fragmenting US deletion rights across states. The EU side kept tightening scrutiny of cross-border transfers. For ordinary users, the request entry points are more scattered, but platform compliance response is more mature.</p>
+
+<h2>Practical takeaway for cleaning old posts</h2>
+<p>Law is a backstop; doing it yourself is fastest. Rather than wait months for a legal process, download your archive, run a local check to surface hard info, and delete high-risk old posts as needed. Legal requests fit the platform-side residuals like backups and logs.</p>
+
+<p>On digital-footprint-health.shop, a local check helps you locate phone numbers and locations in your archive fast, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion under a restricted account see <a href="/blog/delete-tweets-restricted-account">deleting from a restricted account</a>. For cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
+`,
+  },
+  {
+    slug: 'halloween-social-media-privacy-2026',
+    title: '万圣节社媒隐私：晒妆造、发派对定位前先看清这几处',
+    excerpt: '万圣节是社媒泄露高发期：妆造照藏着门牌和人脸，派对定位实时发等于广播行踪。节前花几分钟自查，节后顺手清一遍，比出事再删强。',
+    date: '2026-10-05',
+    updatedAt: '2026-10-05',
+    author: 'Digital Footprint Health Team',
+    category: '行业生态',
+    tags: ['万圣节', '社媒隐私', '定位', '派对', '清理'],
+    content: `
+<p>万圣节前后，社媒上全是妆造照和派对定位。热闹归热闹，这也是一年里隐私泄露最高发的时段之一：一张妆造照可能带出门牌，一条实时定位等于把当晚行踪广播出去。节前花几分钟看清风险点，节后顺手清一遍，比出事再删强得多。</p>
+
+<h2>为什么万圣节是社媒泄露高发期</h2>
+<p>平时人们会克制，过节就放松了。妆造照要拍全脸、拍背景，背景里常常有门牌、快递柜、地标；派对要发定位、发合照，等于实时告诉所有人"我此刻在这里"。这种"节日松懈"被爬虫和坏人盯得最紧。</p>
+
+<h2>妆造照里的隐藏信息</h2>
+<ul>
+<li><strong>背景门牌与地标</strong>：合照墙上的快递柜取件码、小区名，拼出你的住址。</li>
+<li><strong>人脸</strong>：高清妆造照带全脸，可被用于深度伪造素材。</li>
+<li><strong>穿戴细节</strong>：胸牌、工牌、校服 logo，暴露职业或学校。</li>
+</ul>
+
+<h2>派对定位别实时发</h2>
+<p>最好的做法是拍完、玩完，回家再发，并且关掉精确定位、只标城市。实时定位加"在家没人"的心理，等于给入室风险开了口子。带孩子的家庭更要注意，别把孩子的妆造照带校名发出去。</p>
+
+<h2>节后清理清单</h2>
+<p>节后花十分钟，把这几类动态处理掉：带门牌背景的妆造照、实时派对定位、含胸牌工牌的合照。如果平时也爱发，建议下载 X 归档做一次本机体检，把历史里所有定位、手机号一次性扫出来。X 的清理策略可参考 <a href="/blog/delete-tweets-by-engagement">按互动量删推文</a>。</p>
+
+<h2>节前顺手做的两件小事</h2>
+<p>拍照前先转一圈镜头看背景，把快递柜、门牌、小区名挡掉再拍，比事后删省力。出门前把手机的「共享实时位置」关掉，很多派对打卡是这个功能误开导致的。这两件事不用等出事，节前花一分钟设好，当晚就少一堆隐患。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的定位、手机号等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。节假日前后都建议做一轮快速自查。</p>
+`,
+    canonical: '/blog/halloween-social-media-privacy-2026',
+    faq: [
+      { q: '实时发派对定位有什么风险？', a: '等于向外广播你此刻的位置和家中无人的信号，给入室或跟踪开了口子。建议回家再发、只标城市。', qEn: 'What is the risk of posting a party location live?', aEn: 'It broadcasts that you are there and possibly home alone, opening a door to intrusion. Post after you are home and tag only the city.' },
+      { q: '妆造照最该遮掉什么？', a: '背景里的门牌、快递柜取件码、地标，以及胸牌工牌。人脸高清照也尽量少发原图。', qEn: 'What should I hide in a costume photo?', aEn: 'Door numbers, parcel-locker codes, and landmarks in the background, plus badges and work IDs. Avoid sending full-face originals.' },
+      { q: '节后怎么快速清？', a: '先删带门牌背景的妆造照、实时定位、含工牌的合照；常发的建议下归档本机体检一次扫全。', qEn: 'How do I clean up quickly after the holiday?', aEn: 'Delete costume shots with a door in the background, live check-ins, and badge group photos; if you post often, download the archive and run one local check.' },
+      { q: '带孩子过节要注意什么？', a: '别把孩子的妆造照带校名发出去，也别标注常去的活动地点，避免暴露学校和孩子轨迹。', qEn: 'What about kids during the holiday?', aEn: 'Do not send costume shots that show a school name, and avoid tagging regular activity spots, to keep the school and the child\'s routine private.' },
+    ],
+    titleEn: 'Halloween Social Media Privacy: Check These Before You Post the Costume and the Party',
+    excerptEn: 'Halloween is a peak season for social leaks: costume photos hide door numbers and faces, and live party check-ins broadcast your whereabouts. A quick self-check before the night and a cleanup after beats deleting in panic.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['Halloween', 'social privacy', 'location', 'party', 'cleanup'],
+    contentEn: `
+<p>Around Halloween, social feeds fill with costume photos and party check-ins. Fun as it is, this is one of the peak seasons for privacy leaks: a costume shot can reveal a door number, and a live location broadcasts your whereabouts for the night. A quick check before the evening and a cleanup after beats deleting in panic.</p>
+
+<h2>Why Halloween drives so many leaks</h2>
+<p>People hold back on ordinary days and relax on holidays. Costume shots need a full face and a background, and that background often holds a door number, a parcel locker, or a landmark. Party posts carry check-ins and group photos, telling everyone exactly where you are right now. That holiday looseness is exactly what crawlers and bad actors watch for.</p>
+
+<h2>Hidden info in costume photos</h2>
+<ul>
+<li><strong>Background door numbers and landmarks</strong>: a parcel locker code or estate name in a group photo maps your address.</li>
+<li><strong>Faces</strong>: a high-res costume shot shows a full face, usable as deepfake material.</li>
+<li><strong>Worn details</strong>: badges, work IDs, school logos expose your job or school.</li>
+</ul>
+
+<h2>Do not post party location in real time</h2>
+<p>The safer move is to shoot, enjoy, then post after you are home, with precise location off and only the city tagged. Real-time check-ins plus the sense that nobody is home open a door to intrusion. Families with kids should avoid sending costume shots that show a school name.</p>
+
+<h2>Post-holiday cleanup list</h2>
+<p>Spend ten minutes after the holiday on these: costume shots with a door in the background, live party check-ins, and group photos with badges or work IDs. If you post often, download your X archive and run a local check to surface every location and phone number from the past. For the X cleanup strategy see <a href="/blog/delete-tweets-by-engagement">delete tweets by engagement</a>.</p>
+
+<h2>Two small things to do before the night</h2>
+<p>Before shooting, swing the camera around to check the background and block parcel lockers, door numbers, and estate names before you capture, which is easier than deleting later. Before heading out, turn off share-live-location on your phone, since many party check-ins are caused by that toggle left on. Neither needs a crisis to act on; spend a minute setting them before the holiday and you remove a pile of risk that night.</p>
+
+<p>On digital-footprint-health.shop, a local check scans your archive for locations, phone numbers, and other hard info in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A quick self-check around any holiday is worth it.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

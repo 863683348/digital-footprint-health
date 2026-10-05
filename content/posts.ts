@@ -20296,6 +20296,417 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, a local check scans your archive for locations, phone numbers, and other hard info in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A quick self-check around any holiday is worth it.</p>
 `,
   },
+  {
+    slug: 'twitter-native-delete-vs-tools-2026',
+    title: 'X 自带删除和第三方工具删推文，到底差在哪（2026 实测对比）',
+    excerpt: '很多人以为在 X 里点删除就够了。其实 X 自带删除和第三方删除工具，在能删多少、能不能批量、能不能动老推文、删完还搜不搜得到这几件事上，差别很大。这篇用实测讲清边界。',
+    date: '2026-10-06',
+    updatedAt: '2026-10-06',
+    author: 'Digital Footprint Health Team',
+    category: '竞品对比',
+    tags: ['X 删除', '自带删除', '删除工具', '批量删推文', '3200 限制'],
+    content: `
+<p>在 X 里删一条推文很简单：点开、选删除。但当你想清理几百条、甚至几年前的旧推文时，"自带删除"和"第三方删除工具"之间的差距会一下子拉开。这一篇不站队，只把两边能做什么、不能做什么、边界在哪讲清楚，方便你按自己的情况选。</p>
+
+<h2>X 自带删除能做什么，不能做什么</h2>
+<p>X 官方提供的删除入口，本质上是"逐条手动删"。它最稳的地方是：你直接操作自己的账号，不依赖任何外部服务，也不会把账号凭证交给别人。但短板同样明显。第一，它没有批量能力，几千条历史靠手点不现实。第二，也是最关键的，X 只让你直接操作最近约 3200 条推文；更早的历史被收进了数据归档，界面上根本够不着。第三，它删的是"你账号里的那条"，搜索引擎的缓存和别人转存的副本，它管不到。</p>
+
+<h2>第三方工具靠什么删</h2>
+<p>正规删除工具走的是另一条路：先下载你的 X 数据归档（ZIP），在本机解析出全部历史推文，再按你选的范围调用 X 的删除接口逐条删。这条路能碰到的范围比界面大得多，因为它读的是归档里的全量记录；界面只暴露了其中的 3200 条，工具才能越过这道限制。代价是：你要先把归档下载下来，并且要把删除动作交给工具（哪怕工具只在本地编排、不碰你的密码）。</p>
+
+<h2>六个维度实测对比</h2>
+<table>
+<thead><tr><th>维度</th><th>X 自带删除</th><th>第三方删除工具</th></tr></thead>
+<tbody>
+<tr><td>能否批量</td><td>否，只能逐条</td><td>是，可一次性选范围</td></tr>
+<tr><td>能否删 3200 条以外</td><td>否，界面够不着</td><td>能，读归档全量</td></tr>
+<tr><td>能否暂停恢复</td><td>否</td><td>多数支持，按条计费</td></tr>
+<tr><td>是否交出账号凭证</td><td>不需要</td><td>看工具，本地编排类不需要密码</td></tr>
+<tr><td>搜索引擎缓存</td><td>不处理</td><td>同样不处理，需等缓存沉降</td></tr>
+<tr><td>成本</td><td>免费</td><td>免费体检 + 按需付费删</td></tr>
+</tbody>
+</table>
+
+<h2>什么时候该用自带删除</h2>
+<p>如果你只想删最近几条、且都在那 3200 条范围内，自带删除完全够用，也最省心。偶尔误发一条、想撤掉一条带定位的动态，直接点删除就好，没必要上工具。还有一种情况适合自带删除：你只想动最近的内容，对几年前的旧推文无所谓，那就别折腾归档。</p>
+
+<h2>什么时候该用工具</h2>
+<p>当你要清理的数量超过几十条，或者明确想处理 3200 条以外的老推文，工具几乎是唯一现实的路径。尤其是那些带手机号、定位、前单位吐槽的旧帖，手动翻几年前的历史不现实，本机体检加归档驱动的删除能一次性把范围排出来。想按互动量、按年份、按含硬信息来筛，也是工具的强项。具体筛选思路可参考 <a href="/blog/delete-tweets-by-engagement">按互动量清理推文</a>。</p>
+
+<h2>隐私上最容易忽略的一点</h2>
+<p>无论用哪种方式，删除都只发生在"你账号里"。Google 等搜索引擎的缓存、别人截图转存的副本、第三方存档站，都不会因为你在 X 上点删除而消失。所以"删完"和"网上搜不到了"是两件事。真正降低风险的做法是：先删账号里的，再等搜索缓存沉降，必要时向搜索引擎提交移除请求。受限账号下删除会更麻烦，相关情况见 <a href="/blog/delete-tweets-restricted-account">受限账号如何删</a>。</p>
+
+<h2>删之前先确认这两件事</h2>
+<p>第一，确认归档下载畅通。如果归档一直下不下来，工具这条路就断了，所以先把申请提交、拿到 ZIP 再说。第二，确认你要删的范围。别一上来全选，先按体检排出来的高风险清单处理，能省不少删除费用，也避免误删还有价值的旧帖。范围确认清楚，后面的删法选择才有意义。</p>
+<h2>一个常见的组合策略</h2>
+<p>把两种删法配合起来用，比二选一更稳。先用 X 自带删除处理最近几条急的、带定位的动态，几分钟就能把最显眼的隐患压下去；再把归档下下来，本机体检把更早的高风险旧推文排出来，按需批量删。这样你既不交出额外的账号权限，又能覆盖界面够不着的旧历史。实际操作时，先把最显眼的几条用自带删除压住，剩余的再交给归档工具，节奏更顺，也更容易坚持到底。</p>
+<p>举一个具体场景：你刚发现一条两年前的吐槽包含了前单位名字和手机号。自带删除够不到它，因为已经超过界面能操作的范围；这时只能靠归档加工具。等这条清掉之后，再回头把最近几条带定位的打卡清理掉，整体风险就低了。</p>
+<h2>给你的实操建议</h2>
+<p>别二选一，可以组合。先用 X 自带删除处理最近几条急的；再把归档下下来，用本机体检把"高风险低互动"的旧推文排出来，按需批量删。这样既不交出不必要的权限，又能覆盖界面够不着的旧历史。下载归档的步骤见 <a href="/blog/request-x-archive-step-by-step-2026">一步步申请归档</a>，归档里都有什么见 <a href="/blog/what-x-archive-contains-faq">归档包含什么</a>。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的手机号、定位、证件等硬信息，数据全程不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档，几分钟拿到风险清单；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。无论你最后用自带删除还是工具，先把范围看清，比盲目开删省心得多。</p>
+`,
+    canonical: '/blog/twitter-native-delete-vs-tools-2026',
+    faq: [
+      { q: 'X 自带删除能删几年前很老的推文吗？', a: '界面上够不着。X 只让你直接操作最近约 3200 条，更老的在归档里，必须用归档 + 工具才能删。', qEn: 'Can X\'s built-in delete remove very old posts?', aEn: 'Not through the interface. X only lets you act on roughly the latest 3,200 posts; older ones live in the archive and need the archive plus a tool.' },
+      { q: '第三方工具会要我的 X 密码吗？', a: '正规的本地编排类工具不需要你的密码，它读你下载好的归档文件、再用你的授权令牌调用删除接口。选工具时看清它要什么凭证。', qEn: 'Do third-party tools need my X password?', aEn: 'Proper local-orchestration tools do not need your password; they read the archive file you downloaded and call the delete endpoint with your token. Check what credential a tool asks for before using it.' },
+      { q: '删了推文，搜索引擎还能搜到吗？', a: '可能。删除只发生在你账号内，搜索缓存和别人转存的副本不受控，要等缓存沉降或提交移除请求。', qEn: 'After I delete a post, can search engines still find it?', aEn: 'Possibly. Deletion happens only in your account; search caches and copies others saved are outside your control, so you wait for the cache to settle or file a removal request.' },
+      { q: '免费和付费的边界在哪？', a: '体检（扫描归档、出风险清单）通常是免费的；真正删除风险推文才按需付费，且多数支持暂停和恢复。', qEn: 'Where is the free versus paid line?', aEn: 'The check, scanning the archive and producing a risk list, is usually free; actually deleting risky posts is paid per post, and most tools let you pause and resume.' },
+      { q: '哪种方式更适合大量清理？', a: '几十到几千条、或要碰 3200 条以外的老推文，工具更现实；只删最近几条用自带删除就够。', qEn: 'Which suits a large cleanup better?', aEn: 'Dozens to thousands of posts, or reaching old posts beyond 3,200, a tool is realistic; for a few recent ones the built-in delete is enough.' },
+    ],
+    titleEn: 'X\'s Built-In Delete vs Tweet Deletion Tools: What Actually Differs in 2026',
+    excerptEn: 'Many people assume tapping delete inside X is enough. In reality X\'s built-in delete and third-party deletion tools differ a lot in how much they can remove, whether they bulk delete, whether they reach old posts, and whether the post still shows up in search.',
+    categoryEn: 'Comparison',
+    tagsEn: ['X delete', 'built-in delete', 'deletion tool', 'bulk delete tweets', '3200 limit'],
+    contentEn: `
+<p>Deleting a single post in X is easy: open it, choose delete. But the moment you want to clear hundreds of posts, or years-old ones, the gap between X's built-in delete and a third-party deletion tool suddenly matters. This piece takes no side; it lays out what each can and cannot do, and where the boundaries sit, so you can pick based on your own situation.</p>
+
+<h2>What X's built-in delete does and does not do</h2>
+<p>The official delete entry is, at its core, manual one-by-one removal. Its strongest point is that you operate your own account directly, with no external service and no handing over of credentials. The weaknesses are just as clear. First, there is no bulk capability; thousands of old posts by hand is not realistic. Second, and most important, X only lets you act on roughly the most recent 3,200 posts through the interface; anything older is sealed inside your data archive and the UI simply cannot reach it. Third, what it deletes is the copy in your account. Search engine caches and screenshots others saved are outside its reach.</p>
+
+<h2>What third-party tools rely on</h2>
+<p>A proper deletion tool takes a different path: first you download your X data archive, the ZIP, then the tool parses your full history on your own device, and then it calls X's delete endpoint for the posts you selected. This path reaches far more than the interface, because it reads the complete archive record rather than the 3,200 the UI exposes. The trade-off is that you must download the archive first, and you hand the deletion action to a tool, even if that tool only orchestrates locally and never sees your password.</p>
+
+<h2>Six dimensions compared</h2>
+<table>
+<thead><tr><th>Dimension</th><th>X built-in delete</th><th>Third-party tool</th></tr></thead>
+<tbody>
+<tr><td>Bulk delete</td><td>No, one by one only</td><td>Yes, select a range at once</td></tr>
+<tr><td>Reach older than 3,200</td><td>No, UI cannot reach</td><td>Yes, reads full archive</td></tr>
+<tr><td>Pause and resume</td><td>No</td><td>Most support it, billed per post</td></tr>
+<tr><td>Hand over credentials</td><td>Not needed</td><td>Depends; local-orchestration types need no password</td></tr>
+<tr><td>Search engine cache</td><td>Not handled</td><td>Also not handled, wait for cache to settle</td></tr>
+<tr><td>Cost</td><td>Free</td><td>Free check plus pay per delete</td></tr>
+</tbody>
+</table>
+
+<h2>When to use the built-in delete</h2>
+<p>If you only want to remove a few recent posts, all within that 3,200 window, the built-in delete is enough and the simplest. A wrongly sent post, or a check-in you want gone, is a direct delete; no tool needed. Another fit: you care only about recent content and are fine leaving old posts alone, so do not bother with the archive.</p>
+
+<h2>When to use a tool</h2>
+<p>When the number you want to clear runs into the dozens, or you clearly want to handle posts older than 3,200, a tool is close to the only realistic path. Especially for old posts carrying a phone number, a location, or a rant about a former employer, scrolling years of history by hand is not practical, while an on-device check plus archive-driven deletion can rank the risky ones at once. Filtering by engagement, by year, or by hard info is also where tools shine. For the filtering idea see <a href="/blog/delete-tweets-by-engagement">delete tweets by engagement</a>.</p>
+
+<h2>The privacy point most people miss</h2>
+<p>Whichever method you use, deletion only happens inside your account. Google caches, screenshots others forwarded, and third-party archive sites do not vanish because you tapped delete in X. So "deleted" and "no longer searchable" are two different states. The real risk reduction is: delete the account copy first, then wait for search caches to settle, and if needed file a removal request with the search engine. Deletion under a restricted account is harder; for that see <a href="/blog/delete-tweets-restricted-account">deleting from a restricted account</a>.</p>
+
+<h2>Two things to confirm before deleting</h2>
+<p>First, confirm the archive download works. If the archive never arrives, the tool path is cut off, so submit the request and get the ZIP before anything else; a stalled archive request is the most common reason a cleanup stalls. Second, confirm the range you want gone. Do not select all at once; start with the high-risk list the check produces, which saves deletion cost and avoids removing posts that still have value. With the range clear, the choice of method actually means something.</p>
+<h2>A common combined strategy</h2>
+<p>Using the two deletion methods together is steadier than picking one. First use X's built-in delete for a few urgent recent posts with a location, which presses down the most visible risk in minutes; then download the archive and let an on-device check rank the older high-risk posts for bulk deletion. That way you hand over no extra account access and still cover the old history the interface cannot reach. In practice, clear the most visible few with built-in delete first, then hand the rest to the archive tool; the pace feels smoother and is easier to follow through to the end.</p>
+<p>Here is a concrete scene: you just noticed a two-year-old rant that included a former employer name and a phone number. Built-in delete cannot reach it because it is past the interface limit; only the archive plus a tool will. After that post is gone, go back and clear a few recent location check-ins, and the overall risk drops.</p>
+<h2>Practical suggestion</h2>
+<p>Do not choose one over the other; combine them. Use X's built-in delete for a few urgent recent posts, then download the archive and let an on-device check rank the high-risk low-engagement old posts for bulk deletion. That way you hand over no unnecessary access and still cover the old history the interface cannot reach. For the download steps see <a href="/blog/request-x-archive-step-by-step-2026">request your archive step by step</a>, and for what the archive holds see <a href="/blog/what-x-archive-contains-faq">what the archive contains</a>.</p>
+
+<p>On digital-footprint-health.shop, an on-device check surfaces phone numbers, locations, and documents from your archive in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get the risk list in minutes. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Whether you end up with built-in delete or a tool, see the full range first; it beats deleting blind.</p>
+`,
+  },
+  {
+    slug: 'chinese-users-x-privacy-settings-checklist',
+    title: '中文用户 X 隐私设置清单：逐项收紧，从国内视角看',
+    excerpt: '很多中文用户照搬英文教程调 X 隐私设置，却漏掉了国内语境特有的风险：微信 ID、手机号、支付关联。这份清单按国内视角逐项过一遍，比泛泛的教程更贴身。',
+    date: '2026-10-06',
+    updatedAt: '2026-10-06',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['X 隐私设置', '中文用户', '账号安全', '本机体检', '微信'],
+    content: `
+<p>中文用户调 X 隐私设置时，如果照着英文教程一条条点，往往会漏掉几个国内语境才有的坑。比如你把"通过邮箱找到我"关了，却忘了"通过手机号找到我"还开着；或者公开主页里挂着自己的微信号。这篇不重复通用教程，只按国内视角把最该收紧的几项过一遍。</p>
+
+<h2>为什么中文用户要单独看一遍</h2>
+<p>国内手机号、微信 ID、支付宝这些身份锚点，在英文语境里几乎没有对应物。一个微信 ID 能顺藤摸瓜到你的真实社交圈和支付，风险权重比一个 Gmail 高得多。所以同样一个"联系方式可见"开关，对中文用户的意义和英文用户完全不同。体检评分也会体现这种差异。</p>
+
+<h2>账号可见性：受保护账号值不值</h2>
+<p>把账号设为"受保护"（仅粉丝可见）能从源头减少新推文被搜到的概率，适合只想留个小圈子的人。代价是涨粉和公开传播会变难。如果你做内容或者靠 X 接活，就需要权衡：是宁可慢一点也要安全，还是保持公开但靠后面的清理兜底。没有标准答案，按你的用途定。</p>
+
+<h2>发现页与搜索可见</h2>
+<p>X 有几处"是否允许被搜索到"的开关，建议逐项关掉不必要的入口。重点是"通过手机号找到我"和"通过邮箱找到我"这两个，国内用户尤其要把手机号那条收掉。另外"允许搜索引擎链接到你的资料"也建议关，能减少被 Google 索引的概率。</p>
+
+<h2>登录与二次验证</h2>
+<p>二次验证（2FA）建议开，且优先用验证器 App，短信通道尽量避开。短信验证码走的是手机号通道，而手机号本身又是高风险信息，等于把两件事绑在一起。把恢复码单独存好，别截图发到别处。具体备份码怎么存见 <a href="/blog/x-two-factor-backup-codes">X 二次验证备份码</a>。</p>
+
+<h2>已授权应用：容易被遗忘的出口</h2>
+<p>很多人授权过一堆第三方应用，之后就忘了。这些应用可能仍握有读或写你账号的权限，是隐私和安全的隐形出口。定期到"已授权应用"里把不用的清掉，尤其是那些"一键登录过一次"的小工具。每清掉一个，就少一个潜在泄露面。</p>
+
+<h2>顺手做一次本机体检</h2>
+<p>设置收紧之后，最该做的是把历史推文扫一遍。下载 X 归档，本机体检会按风险类型标出手机号、定位、微信 ID，比一条条翻高效得多，也不会漏。关于怎么申请归档看 <a href="/blog/request-x-archive-step-by-step-2026">一步步申请归档</a>，归档里都有什么看 <a href="/blog/what-x-archive-contains-faq">归档包含什么</a>。</p>
+
+<h2>清单速查表</h2>
+<table>
+<thead><tr><th>项目</th><th>建议</th></tr></thead>
+<tbody>
+<tr><td>受保护账号</td><td>按用途权衡，接活/做内容者慎用</td></tr>
+<tr><td>通过手机号找到我</td><td>关</td></tr>
+<tr><td>通过邮箱找到我</td><td>关</td></tr>
+<tr><td>搜索引擎链接资料</td><td>关</td></tr>
+<tr><td>二次验证</td><td>开，优先验证器 App</td></tr>
+<tr><td>已授权应用</td><td>定期清理不用的</td></tr>
+<tr><td>历史推文</td><td>下归档，本机体检扫一遍</td></tr>
+</tbody>
+</table>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的手机号、微信 ID、定位等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。设置收紧是第一步，历史清理才是大头。</p>
+`,
+    canonical: '/blog/chinese-users-x-privacy-settings-checklist',
+    faq: [
+      { q: '受保护账号会不会影响我接 X 上的活？', a: '会。受保护后新推文只对粉丝可见，公开传播和涨粉变难。接活或做内容的人要权衡，可保持公开但靠历史清理兜底。', qEn: 'Will a protected account hurt my X work?', aEn: 'Yes. Protected makes new posts follower-only, which slows reach and growth. People who take jobs or make content should weigh it, and may stay public but rely on cleanup.' },
+      { q: '只关邮箱不关手机号够吗？', a: '不够。国内手机号绑定了微信、支付宝、银行，是高风险入口，建议把通过手机号找到我那个开关也一起关掉。', qEn: 'Is closing email but not phone enough?', aEn: 'No. A mainland number is tied to WeChat, Alipay, and banks, a high-risk entry, so turn off find-me-by-phone as well.' },
+      { q: '二次验证用短信还是验证器？', a: '优先验证器 App。短信走手机号通道，而手机号本身是高风险的，两个绑一起更危险。', qEn: 'SMS or authenticator for two-factor?', aEn: 'Prefer an authenticator app. SMS rides the phone channel, and the number itself is high-risk, so linking them is worse.' },
+      { q: '已授权应用不清理会怎样？', a: '这些应用可能仍握有读或写你账号的权限，是隐形泄露面，建议定期清掉不用的。', qEn: 'What if I leave authorized apps alone?', aEn: 'Those apps may still hold read or write access, an invisible leak surface, so remove the ones you no longer use on a regular basis.' },
+    ],
+    titleEn: 'A Privacy Settings Checklist for Chinese X Users, Viewed from the Local Context',
+    excerptEn: 'Many Chinese users follow English tutorials to tune X privacy, yet miss risks specific to the local context: WeChat IDs, phone numbers, payment links. This checklist walks the settings from that local angle.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['X privacy settings', 'Chinese users', 'account security', 'on-device check', 'WeChat'],
+    contentEn: `
+<p>When Chinese users tune X privacy by following an English tutorial line by line, they often miss a few traps that only appear in the local context. You close find-me-by-email, but leave find-me-by-phone open, or your public profile still shows a WeChat ID. This piece skips the generic tutorial and goes through the items that matter most from that local angle.</p>
+
+<h2>Why Chinese users need a separate pass</h2>
+<p>A mainland phone number, a WeChat ID, Alipay, these identity anchors barely exist in the English context. A WeChat ID can trace back to your real social graph and payments, a much higher risk weight than a Gmail. So the same contact-visibility toggle means something different for a Chinese user than for an English one, and a local check scores it that way.</p>
+
+<h2>Account visibility: is protected worth it</h2>
+<p>Setting the account to protected, visible to followers only, cuts the chance new posts get searched, good for someone who wants a small circle. The cost is slower growth and weaker public reach. If you make content or take X jobs, weigh it: stay safe and slower, or stay public and rely on cleanup later. No single answer; decide by your use.</p>
+
+<h2>Discovery and search visibility</h2>
+<p>X has several let-me-be-found switches; turn off the ones you do not need. The two that matter are find-me-by-phone and find-me-by-email, and local users should especially close the phone one. Also consider turning off let-search-engines-link-your-profile, which reduces the chance of being indexed by Google.</p>
+
+<h2>Login and two-factor</h2>
+<p>Turn on two-factor, and prefer an authenticator app over SMS. SMS codes ride the phone-number channel, and the number itself is high-risk info, which ties two sensitive things together. Store backup codes separately, not as a screenshot you forward elsewhere. For how to keep backup codes see <a href="/blog/x-two-factor-backup-codes">X two-factor backup codes</a>.</p>
+
+<h2>Authorized apps: the forgotten exit</h2>
+<p>Many people authorized a pile of third-party apps and forgot them. Those apps may still hold read or write access to your account, an invisible privacy and security exit. Regularly visit authorized apps and remove the ones you no longer use, especially one-tap logins from small tools. Each removal shrinks a potential leak surface.</p>
+
+<h2>Run an on-device check while you are at it</h2>
+<p>After tightening settings, the bigger job is scanning old posts. Download the X archive; an on-device check flags phone numbers, locations, and WeChat IDs by risk type, far faster and more complete than scrolling. For the archive request see <a href="/blog/request-x-archive-step-by-step-2026">request your archive step by step</a>, and for what it holds see <a href="/blog/what-x-archive-contains-faq">what the archive contains</a>.</p>
+
+<h2>Quick checklist</h2>
+<table>
+<thead><tr><th>Item</th><th>Suggestion</th></tr></thead>
+<tbody>
+<tr><td>Protected account</td><td>Weigh by use; careful if you take jobs or make content</td></tr>
+<tr><td>Find me by phone</td><td>Off</td></tr>
+<tr><td>Find me by email</td><td>Off</td></tr>
+<tr><td>Search engines link profile</td><td>Off</td></tr>
+<tr><td>Two-factor</td><td>On, prefer authenticator app</td></tr>
+<tr><td>Authorized apps</td><td>Clean unused ones regularly</td></tr>
+<tr><td>Old posts</td><td>Download archive, run an on-device check</td></tr>
+</tbody>
+</table>
+
+<p>On digital-footprint-health.shop, an on-device check scans your archive for phone numbers, WeChat IDs, and locations in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Tightening settings is step one; the historical cleanup is the larger part.</p>
+`,
+  },
+  {
+    slug: 'chinese-freelancers-x-client-dm-privacy',
+    title: '中文自由职业者：X 上客户 DM 与作品集的隐私清理',
+    excerpt: '自由职业者在 X 上靠作品集和 DM 接活，但这也留下两类隐私痕迹：客户聊天里的报价和联系方式、作品集帖里暴露的设备和住址。这篇讲怎么清理又不丢生意。',
+    date: '2026-10-06',
+    updatedAt: '2026-10-06',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['自由职业', '客户 DM', '作品集', '隐私清理', 'X 接活'],
+    content: `
+<p>中文自由职业者很依赖 X 接活：发作品集、在 DM 里聊报价、交换联系方式。这套流程顺手，但也留下两类容易被忽略的隐私痕迹。一类在聊天里，一类在公开的作品集帖里。两者清理方式不同，但都值得定期做一遍。</p>
+
+<h2>自由职业者在 X 上的两类隐私痕迹</h2>
+<p>第一类是客户 DM。为了好沟通，很多人把微信、手机号、甚至支付宝直接发在私信里。私信是"私密"的错觉很常见，但 X 账号一旦出问题，私信同样可能泄露。第二类是作品集帖。为了方便，帖子里可能带截图，截图里露出了桌面文件、门牌、快递柜，或者定位。这些本意是展示能力，却顺手暴露了生活轨迹。</p>
+
+<h2>客户 DM 里藏着什么</h2>
+<ul>
+<li><strong>联系方式</strong>：微信 ID、手机号、支付宝，本是方便沟通，却是最该收回的硬信息。</li>
+<li><strong>报价与合同细节</strong>：报价单、客户名、项目名，属于商业敏感，被人拼起来能判断你的客户圈。</li>
+<li><strong>身份照片</strong>：为了"证明本人"，有人发过手持证件或工牌，风险极高。</li>
+</ul>
+
+<h2>作品集帖里的自我暴露</h2>
+<p>作品集帖通常是公开的，所以暴露面比 DM 更大。一张办公室打卡照可能带门牌，一段录屏可能露出桌面上的文件名和下载目录，一次"在家办公"的定位可能暴露常驻城市。自由职业者常犯的错误，是把"证明我有实力"和"暴露我在哪"混为一谈。</p>
+
+<h2>怎么清理而不丢生意</h2>
+<p>清理不等于删光。DM 里的联系方式，可以改成私信里拿微信，别再直发号码；已经发了的，提醒客户撤回或换私信沟通。作品集帖里的截图，重新发一版打码过的，或者把敏感信息裁掉。关键是把"硬信息"和"公开展示"分开：展示能力用脱敏素材，真实联系方式走私信。</p>
+
+<h2>长期习惯比一次清理更重要</h2>
+<p>与其每半年恐慌式清理一次，不如养成习惯：新发作品集前先转镜头看背景，发 DM 前想清楚要不要在 X 里留联系方式。另外，把 X 的"已授权应用"定期清一遍，减少第三方读到你私信的可能，具体做法见 <a href="/blog/chinese-users-x-privacy-settings-checklist">中文用户隐私设置清单</a>。想顺手扫一遍历史推文里的硬信息，可用 <a href="/blog/request-x-archive-step-by-step-2026">归档申请</a> 配合本机体检。</p>
+
+<h2>自由职业者可以设的两条红线</h2>
+<p>第一条，客户联系方式绝不在 X 公开帖里留，只走私信，且私信里也尽量用私信里拿微信这类说法，别去直发号码。第二条，作品集截图发布前强制过一遍背景和文件名，把门牌、桌面路径、定位裁掉再发。两条线设好，长期暴露面会小很多。</p>
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的手机号、定位、微信 ID，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。自由职业者的作品集是资产，但隐私痕迹不是，分开处理最稳妥。</p>
+`,
+    canonical: '/blog/chinese-freelancers-x-client-dm-privacy',
+    faq: [
+      { q: '客户 DM 里的手机号一定要删吗？', a: '不一定要删，但建议从 X 里收回。可以改成私信里拿微信，已发的提醒客户撤回或换私信沟通，降低长期暴露。', qEn: 'Must I delete the phone number in client DMs?', aEn: 'Not necessarily, but take it out of X. Switch to message me for WeChat, and for ones sent, ask the client to unsend or move to private chat, cutting long-term exposure.' },
+      { q: '作品集截图怎么脱敏？', a: '重发打码版，裁掉门牌、快递柜、桌面文件名等；展示能力用脱敏素材，真实信息走私信。', qEn: 'How do I sanitize a portfolio screenshot?', aEn: 'Repost a redacted version, cropping door numbers, parcel lockers, and desktop file names; show skill with sanitized assets and keep real info in private messages.' },
+      { q: '自由职业者多久清一次合适？', a: '不用频繁，但发新作品集前先自查背景，DM 里不留长期联系方式，已授权应用每季度清一次就够。', qEn: 'How often should a freelancer clean up?', aEn: 'Not often, but check the background before a new portfolio post, avoid leaving long-term contacts in DMs, and clear authorized apps each quarter.' },
+      { q: 'X 私信真的安全吗？', a: '不完全。账号一旦出问题，私信也可能泄露，所以硬信息尽量别在 X 里长期留，改走私信换取联系方式。', qEn: 'Are X DMs truly safe?', aEn: 'Not fully. If the account is compromised, DMs can leak too, so avoid leaving hard info in X long-term and use DMs only to exchange contacts.' },
+    ],
+    titleEn: 'Chinese Freelancers: Cleaning Up Client DMs and Portfolio Traces on X',
+    excerptEn: 'Freelancers on X land jobs through portfolios and DMs, but that leaves two kinds of privacy traces: quotes and contacts in client chats, and device or address reveals in portfolio posts. This is how to clean up without losing work.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['freelancer', 'client DM', 'portfolio', 'privacy cleanup', 'X jobs'],
+    contentEn: `
+<p>Chinese freelancers rely on X to land jobs: post a portfolio, talk rates in DMs, swap contacts. The flow is convenient, but it leaves two privacy traces people overlook. One lives in chats, the other in public portfolio posts. They need different cleanup, and both deserve a regular pass.</p>
+
+<h2>Two kinds of freelancer traces on X</h2>
+<p>The first is client DMs. To keep things smooth, many send a WeChat ID, phone number, or even Alipay straight into a private message. The illusion that DMs are private is common, but if the account is compromised, DMs can leak too. The second is portfolio posts. For convenience, a post may carry a screenshot that reveals a desktop file, a door number, or a parcel locker, or a check-in that shows your city. Meant to show skill, these quietly expose your life trail.</p>
+
+<h2>What hides in client DMs</h2>
+<ul>
+<li><strong>Contacts</strong>: WeChat ID, phone, Alipay, meant for easy talk, yet the hardest info to take back.</li>
+<li><strong>Rates and deal details</strong>: quotes, client names, project names, commercially sensitive, and combinable to guess your client circle.</li>
+<li><strong>Identity photos</strong>: to prove you are real, some sent a handheld ID or work badge, a very high risk.</li>
+</ul>
+
+<h2>Self-exposure in portfolio posts</h2>
+<p>Portfolio posts are usually public, so their exposure surface is larger than DMs. An office check-in photo may show a door number, a screen recording may reveal file names on your desktop, a work-from-home tag may expose your city. The common freelancer mistake is mixing prove-I-am-good with reveal-where-I-am.</p>
+
+<h2>How to clean up without losing work</h2>
+<p>Cleanup does not mean delete everything. For contacts in DMs, switch to message me for WeChat rather than posting the number, and for ones already sent, ask the client to unsend or move to private chat. For portfolio screenshots, repost a redacted version or crop the sensitive parts. The key is separating hard info from public display: show skill with sanitized assets, keep real contacts in private messages.</p>
+
+<h2>Habits beat one-time cleanup</h2>
+<p>Rather than a panic cleanup every six months, build the habit: swing the camera around before a new portfolio shot, and think before leaving a contact in X. Also clear X authorized apps regularly to shrink the chance a third party reads your DMs; for the steps see <a href="/blog/chinese-users-x-privacy-settings-checklist">privacy settings checklist for Chinese users</a>. To scan old posts for hard info, pair the <a href="/blog/request-x-archive-step-by-step-2026">archive request</a> with an on-device check.</p>
+
+<h2>Two red lines freelancers can set</h2>
+<p>First, never leave client contacts in a public X post; keep them in DMs, and even there prefer say message me for WeChat over posting the number. Second, before any portfolio screenshot goes out, force a pass over the background and file names, cropping door numbers, desktop paths, and locations. With both lines set, the long-term exposure shrinks a lot.</p>
+<p>On digital-footprint-health.shop, an on-device check surfaces phone numbers, locations, and WeChat IDs from your archive in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A freelancer portfolio is an asset; privacy traces are not, so keep them apart.</p>
+`,
+  },
+  {
+    slug: 'change-x-username-privacy-faq',
+    title: '改 X 用户名能清除旧足迹吗？FAQ',
+    excerpt: '有人以为改了 X 用户名（@handle）就像换个身份，旧推文和旧足迹就跟着没了。事实没那么简单。这篇用几个常见问题讲清改用户名到底改了什么、没改什么。',
+    date: '2026-10-06',
+    updatedAt: '2026-10-06',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['改用户名', 'X handle', '旧足迹', '隐私', 'FAQ'],
+    content: `
+<p>改 X 用户名（@handle）是很多人的第一反应：账号"翻车"了，换个名字是不是就干净了？这篇用几个常见问题把这件事讲清，免得你改完才发现旧足迹原封不动。</p>
+
+<h2>改用户名到底改了什么</h2>
+<p>改用户名只改了"@后面的那串"和资料页的地址。你的推文内容、历史、关注关系、点赞，统统不变。别人用旧 @handle 搜到的资料页会跳转或直接失效，但那些推文本身还在你的时间线里，内容一字未动。</p>
+
+<h2>改了之后，旧足迹还在吗</h2>
+<table>
+<thead><tr><th>项目</th><th>改用户名后</th></tr></thead>
+<tbody>
+<tr><td>旧推文内容</td><td>不变，仍在时间线</td></tr>
+<tr><td>搜索引擎缓存</td><td>仍可能搜到旧 @handle 的快照</td></tr>
+<tr><td>别人转存的截图</td><td>不受影响</td></tr>
+<tr><td>旧 @handle 资料页</td><td>失效或跳转，但内容没删</td></tr>
+<tr><td>归档里的记录</td><td>不变，仍含旧 handle</td></tr>
+</tbody>
+</table>
+
+<h2>所以改用户名能解决什么</h2>
+<p>它能让"用旧名直接找到你资料页"这条路变难，对降低被精准盯上有一点用。但它不删任何内容，所以不能作为清理隐私的手段。把它当成换个门牌号，不是把屋子里的东西清空。</p>
+
+<h2>真正要清理该怎么做</h2>
+<p>想减少旧足迹，还是得回到内容本身：逐条删，或者下归档用本机体检把高风险旧推文排出来批量删。改用户名可以配合，但不能替代。关于受限账号下的删除麻烦，见 <a href="/blog/delete-tweets-restricted-account">受限账号如何删</a>。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的手机号、定位等硬信息，数据不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。改用户名是遮门牌，不是清屋子。</p>
+`,
+    canonical: '/blog/change-x-username-privacy-faq',
+    faq: [
+      { q: '改了用户名，旧推文会消失吗？', a: '不会。改用户名只改 @handle 和资料页地址，推文内容、历史、关注都不变，旧推文仍在时间线里。', qEn: 'Do old posts disappear after a handle change?', aEn: 'No. A handle change only alters the @handle and profile URL; post content, history, and follows stay, and old posts remain in the timeline.' },
+      { q: '搜索引擎还能搜到旧名吗？', a: '可能。搜索引擎缓存里仍可能有旧 @handle 的快照，改用户名不会主动清缓存，要等沉降或提交移除。', qEn: 'Can search engines still find the old name?', aEn: 'Possibly. Search caches may still hold old-handle snapshots; a handle change does not clear caches, so wait or file a removal request.' },
+      { q: '改用户名算不算隐私清理？', a: '不算。它只让用旧名找到你这件事变难，不删任何内容，不能替代逐条或批量删推文。', qEn: 'Does a handle change count as privacy cleanup?', aEn: 'No. It only makes finding you by the old name harder; it deletes no content and cannot replace deleting posts.' },
+      { q: '想真正清旧足迹该怎么做？', a: '回到内容本身：逐条删，或下归档用本机体检把高风险旧推文批量删，改用户名只能配合不能替代。', qEn: 'How do I truly shrink the old footprint?', aEn: 'Go back to the content: delete post by post, or download the archive and bulk-delete high-risk old posts via an on-device check; a handle change only pairs, never replaces.' },
+      { q: '改一次用户名要钱吗？', a: '免费，且可以随时改，但频繁改会让别人更难找到你，影响账号辨识度，建议想清楚再改。', qEn: 'Does a handle change cost money?', aEn: 'It is free and can be done anytime, but changing often makes you harder to find and hurts recognition, so think before you do.' },
+    ],
+    titleEn: 'Does Changing Your X Username Clear the Old Footprint? FAQ',
+    excerptEn: 'Some think changing the X username, the handle, is like a fresh identity and the old posts vanish with it. It is not that simple. This FAQ explains what a handle change does and does not do.',
+    categoryEn: 'Account Security',
+    tagsEn: ['change username', 'X handle', 'old footprint', 'privacy', 'FAQ'],
+    contentEn: `
+<p>Changing the X username, the handle, is many people's first instinct: the account flopped, so a new name means a clean slate. This FAQ explains it so you do not change it and find the old footprint untouched.</p>
+
+<h2>What a username change actually changes</h2>
+<p>A handle change only alters the string after the @ and the profile URL. Your posts, history, follows, and likes all stay. Someone searching the old handle may hit a dead or redirected profile, but the posts themselves remain in your timeline, text unchanged.</p>
+
+<h2>After the change, is the old footprint gone</h2>
+<table>
+<thead><tr><th>Item</th><th>After a handle change</th></tr></thead>
+<tbody>
+<tr><td>Old post content</td><td>Unchanged, still in timeline</td></tr>
+<tr><td>Search engine cache</td><td>May still show old-handle snapshots</td></tr>
+<tr><td>Screenshots others saved</td><td>Unaffected</td></tr>
+<tr><td>Old handle profile</td><td>Dead or redirected, content not deleted</td></tr>
+<tr><td>Archive records</td><td>Unchanged, still carry old handle</td></tr>
+</tbody>
+</table>
+
+<h2>So what does a handle change solve</h2>
+<p>It makes the direct path of finding your profile by the old name harder, a small help against being precisely targeted. But it deletes no content, so it is not a privacy cleanup. Treat it as changing the door number, not emptying the house.</p>
+
+<h2>What real cleanup looks like</h2>
+<p>To shrink the old footprint, go back to the content itself: delete post by post, or download the archive and let an on-device check rank high-risk old posts for bulk deletion. A handle change can pair with that, not replace it. For deletion under a restricted account see <a href="/blog/delete-tweets-restricted-account">deleting from a restricted account</a>.</p>
+
+<p>On digital-footprint-health.shop, an on-device check surfaces phone numbers and locations from your archive in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A handle change hides the door, it does not clear the rooms.</p>
+`,
+  },
+  {
+    slug: 'cybersecurity-awareness-month-x-footprint-2026',
+    title: '十月是网络安全宣传月：顺手做一次 X 数字足迹审计',
+    excerpt: '十月在不少国家是网络安全宣传月，各类机构都会提醒你查密码、查账号。但很少有人提醒你查自己的旧推文。借着这个月的由头，花十五分钟给 X 数字足迹做一次审计，正合适。',
+    date: '2026-10-06',
+    updatedAt: '2026-10-06',
+    author: 'Digital Footprint Health Team',
+    category: '行业生态',
+    tags: ['网络安全月', '数字足迹', 'X 审计', '隐私', '十月'],
+    content: `
+<p>十月在不少国家是网络安全宣传月，邮箱里会冒出一堆"快去改密码"的提醒。但有一个角落几乎没人提：你自己的旧推文。借着这个月的由头，花十五分钟给 X 数字足迹做一次审计，比换十个密码都实在。</p>
+
+<h2>为什么拿这个月做审计</h2>
+<p>网络安全宣传月的价值不在于某一天，而在于它给了你一个"为什么现在动手"的理由。平时总说"等有空再清"，结果永远没空。把它当成日历上的一个固定动作，和换季整理一个性质。而且十月离年底各种背景调查、求职季还有一段距离，现在清理，刚好给搜索缓存留出沉降时间。</p>
+
+<h2>十五分钟能做完的清单</h2>
+<ul>
+<li><strong>下载归档</strong>：进"设置和隐私 → 你的数据 → 下载你的数据"，发起归档请求（具体步骤见 <a href="/blog/request-x-archive-step-by-step-2026">一步步申请归档</a>）。</li>
+<li><strong>本机体检</strong>：等归档好了上传到本机体检页，几分钟扫出手机号、定位、微信 ID 等硬信息（数据不出电脑）。</li>
+<li><strong>收紧隐私设置</strong>：按 <a href="/blog/chinese-users-x-privacy-settings-checklist">中文用户隐私设置清单</a> 逐项过一遍开关。</li>
+<li><strong>处理高风险旧推文</strong>：把体检排出来的"高风险低互动"旧推文优先删掉。</li>
+</ul>
+
+<h2>三个常被忽略的角落</h2>
+<p>第一，私信里的联系方式。审计时别只盯公开推文，DM 里的手机号、微信同样该收回。第二，几年前的定位打卡。它们藏在旧帖里，平时想不起来，体检能一次性揪出。第三，授权过的第三方应用，很多人忘了自己授权过什么，定期清理能少一个泄露面。</p>
+
+<h2>做完之后</h2>
+<p>清理不是一次性的。把"每年十月审计一次"写进日历，比单次大扫除有用。删完之后，搜索引擎缓存还要几周才更新，所以别指望第二天搜自己就干净了，给缓存一点时间。想确认线上是否还看得到，等缓存沉降后再搜一次昵称加关键词。</p>
+
+<p>在 digital-footprint-health.shop，本机体检能一次性扫出归档里的手机号、定位、微信 ID 等硬信息，数据全程不出电脑。先去 <a href="/upload">免费体检页</a> 上传归档；清理成本看 <a href="/pricing">定价页</a>，返回 <a href="/">首页</a> 进入体检。趁着网络安全宣传月这个由头，把"查旧推文"也加进你的清单。</p>
+`,
+    canonical: '/blog/cybersecurity-awareness-month-x-footprint-2026',
+    faq: [
+      { q: '网络安全宣传月和清理推文有什么关系？', a: '它的价值是给你一个现在就动手的理由。平时总说等有空，借这个月的由头定成年度动作，比单次大扫除有用。', qEn: 'What does the awareness month have to do with cleaning posts?', aEn: 'Its value is a reason to act now. You always say later, so use the month to fix it as an annual action, more useful than a one-off purge.' },
+      { q: '十五分钟真的够吗？', a: '够做审计的前半段：发起归档、收紧设置、列清单。真正删要等归档好了再本机体检，整体一两小时，但启动只要十五分钟。', qEn: 'Is fifteen minutes really enough?', aEn: 'Enough for the first half: start the archive, tighten settings, list tasks. Real deletion waits for the archive and the check, one to two hours total, but the start is fifteen minutes.' },
+      { q: '为什么现在动手，不等到年底？', a: '十月离年底求职季还有距离，现在删能给搜索缓存留沉降时间，等用到的时候副本多半已经更新。', qEn: 'Why clean now instead of year-end?', aEn: 'October sits before the year-end hiring season, so deleting now gives search caches time to settle, and by the time it matters the copies have likely updated.' },
+      { q: '审计要不要花钱？', a: '不用。下载归档和本机体检都免费，只有你决定按条删除风险推文才付费，且可暂停恢复。', qEn: 'Does the audit cost money?', aEn: 'No. Downloading the archive and the on-device check are free; only per-post deletion of risky posts is paid, and it is pausable and resumable.' },
+    ],
+    titleEn: 'October Is Cybersecurity Awareness Month: Run an X Digital Footprint Audit',
+    excerptEn: 'October is Cybersecurity Awareness Month in several countries, when groups remind you to check passwords and accounts. Few remind you to check your old posts. Use the prompt to spend fifteen minutes auditing your X digital footprint.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['cybersecurity month', 'digital footprint', 'X audit', 'privacy', 'October'],
+    contentEn: `
+<p>October is Cybersecurity Awareness Month in several countries, and inboxes fill with change-your-password reminders. One corner almost no one mentions is your own old posts. Use the prompt to spend fifteen minutes auditing your X digital footprint; it is more useful than rotating ten passwords.</p>
+
+<h2>Why run the audit this month</h2>
+<p>The value of the awareness month is not a single day, it is the reason to act now. Normally you say I will clean up when I have time and never do. Treat it as a fixed calendar action, like a seasonal tidy. And October sits a little before year-end background checks and hiring season, so cleaning now gives search caches time to settle.</p>
+
+<h2>A fifteen-minute checklist</h2>
+<ul>
+<li><strong>Download the archive</strong>: go to Settings and privacy, then Your data, then Download your data, and start the request (steps in <a href="/blog/request-x-archive-step-by-step-2026">request your archive step by step</a>).</li>
+<li><strong>Run an on-device check</strong>: once the archive is ready, upload it to the local check page; in minutes it flags phone numbers, locations, and WeChat IDs (data never leaves your device).</li>
+<li><strong>Tighten privacy settings</strong>: go through the switches using the <a href="/blog/chinese-users-x-privacy-settings-checklist">privacy settings checklist for Chinese users</a>.</li>
+<li><strong>Handle high-risk old posts</strong>: prioritize deleting the high-risk low-engagement old posts the check ranks.</li>
+</ul>
+
+<h2>Three corners often missed</h2>
+<p>First, contacts in DMs. Do not stare only at public posts; phone numbers and WeChat in messages deserve the same withdrawal. Second, location check-ins from years back. They hide in old posts and never cross your mind, but a check pulls them all at once. Third, third-party apps you authorized; many forgot what they approved, and regular cleanup removes a leak surface.</p>
+
+<h2>After you finish</h2>
+<p>Cleanup is not one-and-done. Put audit every October on the calendar; it beats a single big purge. After deleting, search caches take weeks to update, so do not expect a clean search of yourself the next day; give the cache time. A small habit helps too: rerun the check whenever you change jobs or move, since those moments shift what counts as risky. To confirm what is still visible, search your handle plus keywords after the cache settles.</p>
+
+<p>On digital-footprint-health.shop, an on-device check scans your archive for phone numbers, locations, and WeChat IDs in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. With the awareness month as the prompt, add check your old posts to your list too.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

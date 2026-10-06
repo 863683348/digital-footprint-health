@@ -20707,6 +20707,460 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check scans your archive for phone numbers, locations, and WeChat IDs in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. With the awareness month as the prompt, add check your old posts to your list too.</p>
 `,
   },
+  {
+    slug: 'local-vs-cloud-tweet-archive-parsing',
+    title: '本地解析 vs 云端解析：X 归档到底怎么处理才更私密',
+    excerpt: '清理 X 旧推文的第一步是拿到数据归档（ZIP），但拿到之后怎么"读"这份归档，决定了你的隐私边界。本文对比本地解析与云端解析的差别，并给出可落地的技术实现。',
+    date: '2026-10-07',
+    updatedAt: '2026-10-07',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    tags: ['X/Twitter', '归档解析', '隐私架构', '本地处理', '数据归档'],
+    content: `
+<h2>两种处理路径，差别在"数据去了哪"</h2>
+<p>你决定清理 X 上的旧推文之后，第一步永远是向平台申请并下载你的数据归档（一个 ZIP 包）。但下载完成只是开始：这份归档里装着从注册第一天起的全部推文、私信线索、媒体文件和登录记录。接下来"怎么读它"，才是隐私分水岭。</p>
+<p>路径只有两条。一条是把 ZIP 传到某个网站或在线服务，让对方的服务器帮你解析；另一条是把 ZIP 留在自己电脑上，用浏览器或本机脚本直接读。前者叫云端解析，后者叫本地解析。两者的差别不在速度，而在你的数据到底去了谁的手里。</p>
+
+<h2>云端解析的三个隐患</h2>
+<p>云端解析看起来最省事：拖进去，等几秒，报告就出来了。代价藏在三处。</p>
+<ul>
+  <li><strong>上传即交出全部历史。</strong>你的 ZIP 含有手机号、家庭住址、登机牌、深夜吐槽前公司的原话。上传的瞬间，这些全到了第三方服务器上。</li>
+  <li><strong>留存与二次利用。</strong>很多在线工具的服务条款允许它们"为改进服务而保留数据"，而改进往往意味着训练模型或转卖画像。你没法验证它是否真的删了。</li>
+  <li><strong>凭证暴露风险。</strong>部分服务不仅收 ZIP，还索要账号密码或 API key 来"自动删除"。这就把钥匙也交出去了。</li>
+</ul>
+
+<h2>本地解析为什么更稳</h2>
+<p>本地解析的逻辑很简单：归档下载到本机，解析过程全程不联网，结果只在你屏幕上。它的好处是实打实的。</p>
+<ul>
+  <li>数据不出设备，断网也能跑。</li>
+  <li>开源脚本可以逐行审计，你知道它在扫什么、存了什么。</li>
+  <li>处理完直接删掉中间文件，不留后门。</li>
+</ul>
+<p>对隐私清理这种场景，本地解析几乎总是优于云端。你本来就是为了防止信息外泄才清理的，没必要先把全部家底交给别人。</p>
+
+<h2>本地解析怎么落地（三种做法）</h2>
+<p>不需要是工程师也能用上本地解析，门槛从低到高有三种。</p>
+<table>
+  <thead><tr><th>方式</th><th>适合谁</th><th>需要装什么</th></tr></thead>
+  <tbody>
+    <tr><td>浏览器端解析</td><td>不想装软件的人</td><td>只要一个支持本地读文件的网页</td></tr>
+    <tr><td>命令行脚本</td><td>愿意跑一段代码的人</td><td>Node.js</td></tr>
+    <tr><td>自己写的小工具</td><td>有开发能力、要定制规则的人</td><td>任意语言 + 归档文件结构知识</td></tr>
+  </tbody>
+</table>
+<p>浏览器端做法最轻：用 FileReader 把 ZIP 里的 <code>tweets.js</code> 读进内存，前端 JavaScript 直接遍历数组、用正则扫敏感字段，页面关掉数据就没了。命令行做法则是用 Node 加载 <code>tweets.js</code>，逐条匹配手机号、邮箱、住址关键词，输出一份只读报告。</p>
+
+<h2>本地解析的两个注意点</h2>
+<ul>
+  <li><strong>别在脚本里硬编码密钥。</strong>解析过程不需要任何账号凭证，把 token 写进代码既没必要也不安全，用内存变量处理完即弃。</li>
+  <li><strong>输出只读报告，不自动改写。</strong>先把风险点列清楚，再由你手动决定是否删除，比让工具"一键清空"更可控。</li>
+</ul>
+
+<h2>什么时候云端可以勉强接受</h2>
+<p>只有一种情况可以考虑云端：你已手动把归档里含真实手机号和住址的行删干净，且服务方明确声明不留存、可审计。但话说回来，既然都手动脱敏了，本地解析通常也能接着做完。能本地就本地。</p>
+
+<h2>一个具体例子：同一份归档的两种命运</h2>
+<p>假设你 2019 年在 X 上发了"新家在 xx 路，终于搬进来啦"，还配了窗景。云端解析的场景下，你为了图方便把 ZIP 传到一个陌生网站，对方服务器除了生成报告，还顺手把含住址的那条推文记进了数据库。三年后这个网站被拖库，你的住址和昵称一起出现在暗网。本地解析的场景下，那条推文只在你浏览器内存里出现一瞬，报告看完，关掉页面，磁盘上什么都没留。</p>
+<p>这不是假设。归档里最危险的内容往往就是这种"随手一句"，它们单看无害，组合起来却能拼出一个人的真实坐标。处理方式决定它们是被锁在本地，还是流出去成为别人的素材。</p>
+
+<h2>几个容易踩的误区</h2>
+<ul>
+  <li><strong>"大平台总归更安全"。</strong>体量大小和它是否留存你的数据没有必然联系，关键看它声明什么、你能不能审计。</li>
+  <li><strong>"我只传一次，删了就行"。</strong>你无法确认对方服务器端真的删了，传输那一瞬间数据已经离开你的控制。</li>
+  <li><strong>"加密上传也算本地"。</strong>加密只保护传输过程，服务器拿到密钥或干脆不删明文，风险依旧。</li>
+</ul>
+
+<h2>怎么判断一个工具是不是真本地</h2>
+<p>三个信号：第一，它要求你上传文件，而不是在浏览器里直接读；第二，它的隐私声明里没有"我们不存储"的明确句子；第三，它要你的账号密码才能"自动清理"。三条里命中任意一条，都建议绕开。真正本地优先的工具，会明确告诉你数据停留在设备上、处理完即弃。</p>
+
+<h2>实际操作里的小坑</h2>
+<p>本地解析虽好，也有几个常见卡点。归档太大的时候，浏览器一次性读进内存可能卡顿，可以改成流式读取或只解析 tweets.js 这一个文件。正则扫描容易误伤，比如把"电话"两个字当成手机号，所以报告出来后要人工过一遍。还有人把解析结果存成明文文件忘了删，等于在本地又造了一份隐私副本，处理完记得清空。</p>
+
+<h2>开始清理你的数字足迹</h2>
+<p>想先看自己到底留了多少痕迹，可以先读 <a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>，再用 <a href="/blog/browser-side-archive-parsing">浏览器端解析归档</a> 在本机跑一遍体检。也欢迎回到 <a href="/">digital-footprint-health.shop 首页</a> 了解 100% 本机运行的免费方案。</p>
+`,
+    canonical: '/blog/local-vs-cloud-tweet-archive-parsing',
+    faq: [
+      { q: '本地解析和云端解析最大的区别是什么？', a: '区别在于数据是否离开你的设备。本地解析在电脑上离线完成，云端解析要把整个归档上传到第三方服务器，等于把全部推文历史交给了别人。', qEn: 'What is the biggest difference between local and cloud parsing?', aEn: 'The difference is whether your data leaves the device. Local parsing finishes offline on your computer; cloud parsing uploads the whole archive to a third-party server, handing over your entire tweet history.' },
+      { q: '云端解析工具会保存我的推文吗？', a: '多数在线工具的服务条款允许"为改进服务而保留数据"，你可能无法验证它是否真的删除。除非服务方明确声明不留存且可审计，否则默认它留了副本。', qEn: 'Will a cloud parsing tool keep my tweets?', aEn: 'Most online tools reserve the right to retain data "to improve the service", and you usually cannot verify deletion. Unless the provider states plainly that it keeps nothing and can be audited, assume a copy remains.' },
+      { q: '不懂编程能用本地解析吗？', a: '可以。浏览器端解析工具只需要你用网页读取本地的归档文件，解析在页面内完成，关掉页面数据即清除，不需要安装任何软件。', qEn: 'Can a non-programmer use local parsing?', aEn: 'Yes. In-browser parsing only needs you to load the archive file with a web page; the parse happens inside the page and the data is gone when you close it. No software install required.' },
+      { q: '本地解析需要我的 X 账号密码吗？', a: '不需要。解析归档只需要你下载好的 ZIP 文件，不涉及任何账号凭证。任何索要密码或 API key 的工具都要警惕。', qEn: 'Does local parsing need my X account password?', aEn: 'No. Parsing the archive only needs the ZIP you downloaded and involves no credentials. Be wary of any tool that asks for a password or API key.' },
+      { q: '想把风险推文删掉，本地解析能直接删吗？', a: '稳妥做法是本地解析只输出只读报告，由你手动决定是否删除。比让工具"一键清空"更可控，也避免误删。', qEn: 'Can local parsing delete risky tweets directly?', aEn: 'The safer approach is for local parsing to output a read-only report and let you decide what to delete. That is more controllable than a one-click wipe and avoids accidental loss.' },
+    ],
+    titleEn: 'Local vs Cloud Parsing: Which Way to Process Your X Archive Is Actually Private',
+    excerptEn: 'The first step to cleaning old X tweets is downloading your data archive (ZIP), but how you read that archive decides your privacy boundary. This piece compares local parsing with cloud parsing and gives a workable technical approach.',
+    categoryEn: 'Technical Deep Dive',
+    tagsEn: ['X/Twitter', 'archive parsing', 'privacy architecture', 'local processing', 'data archive'],
+    contentEn: `
+<h2>Two paths, and the difference is where your data goes</h2>
+<p>Once you decide to clean old tweets on X, the first step is always requesting and downloading your data archive (a ZIP file). But downloading is only the start. That archive holds every tweet since day one, direct-message traces, media files, and login records. How you read it next is the real privacy line.</p>
+<p>There are only two paths. One uploads the ZIP to some website or service and lets its servers parse it. The other keeps the ZIP on your own computer and reads it with a browser or a local script. The first is cloud parsing, the second is local parsing. The gap is not speed. It is who ends up holding your data.</p>
+
+<h2>Three problems with cloud parsing</h2>
+<p>Cloud parsing looks easiest: drop the file in, wait a few seconds, get a report. The cost hides in three places.</p>
+<ul>
+  <li><strong>Uploading hands over your whole history.</strong> Your ZIP carries phone numbers, home addresses, a boarding pass, and that late-night rant about your old employer. The moment you upload, all of it sits on a third-party server.</li>
+  <li><strong>Retention and reuse.</strong> Many online tools reserve the right to keep data "to improve the service", and improving often means training models or selling profiles. You cannot verify that they actually deleted it.</li>
+  <li><strong>Credential exposure.</strong> Some services ask not just for the ZIP but also for your account password or API key to "delete automatically". That hands over the keys too.</li>
+</ul>
+
+<h2>Why local parsing is safer</h2>
+<p>The logic of local parsing is simple: the archive downloads to your machine, the parse runs fully offline, and the result stays on your screen. The benefits are concrete.</p>
+<ul>
+  <li>Data never leaves the device, and it runs without a network connection.</li>
+  <li>Open-source scripts can be audited line by line, so you know what they scan and what they store.</li>
+  <li>Delete the intermediate files when done, and there is no back door left behind.</li>
+</ul>
+<p>For privacy cleanup, local parsing almost always beats cloud. You are cleaning precisely to stop information from leaking, so there is no reason to hand your entire history to someone else first.</p>
+
+<h2>How local parsing works (three options)</h2>
+<p>You do not need to be an engineer to use local parsing. From lowest to highest effort there are three ways.</p>
+<table>
+  <thead><tr><th>Method</th><th>For whom</th><th>What to install</th></tr></thead>
+  <tbody>
+    <tr><td>In-browser parsing</td><td>People who dislike installing software</td><td>Just a page that reads files locally</td></tr>
+    <tr><td>Command-line script</td><td>People fine running a snippet</td><td>Node.js</td></tr>
+    <tr><td>Your own small tool</td><td>Developers who need custom rules</td><td>Any language plus archive structure knowledge</td></tr>
+  </tbody>
+</table>
+<p>The in-browser route is lightest: use FileReader to load <code>tweets.js</code> from the ZIP into memory, let front-end JavaScript walk the array and scan sensitive fields with regex, and the data vanishes when you close the tab. The command-line route loads <code>tweets.js</code> with Node, matches phone numbers, emails, and address keywords per tweet, and prints a read-only report.</p>
+
+<h2>Two things to watch in local parsing</h2>
+<ul>
+  <li><strong>Do not hardcode secrets in the script.</strong> Parsing needs no account credentials. Putting a token in code is unnecessary and unsafe; use an in-memory variable and discard it after.</li>
+  <li><strong>Output a read-only report, change nothing automatically.</strong> List the risks first, then you decide what to delete. That is more controllable than letting a tool wipe everything in one click.</li>
+</ul>
+
+<h2>When cloud parsing is barely acceptable</h2>
+<p>Only one case justifies cloud: you have already manually removed rows with real phone numbers and addresses, and the provider states clearly that it keeps nothing and can be audited. But if you have already scrubbed the archive by hand, local parsing can usually finish the job too. Go local when you can.</p>
+
+<h2>A concrete example: one archive, two fates</h2>
+<p>Suppose in 2019 you posted "finally moved into the new place on XX Road" with a window view. Under cloud parsing, to save effort you upload the ZIP to an unknown site; besides the report, its server quietly logs the address tweet into a database. Three years later the site is breached, and your address and handle surface on the dark web together. Under local parsing, that tweet appears in your browser memory for a moment, you read the report, close the tab, and nothing stays on disk.</p>
+<p>This is not hypothetical. The riskiest content in an archive is often a casual line like that. Alone it looks harmless, but combined with others it pins down a real location. The handling method decides whether it stays locked on your device or leaks out as someone else's material.</p>
+
+<h2>Misconceptions worth dropping</h2>
+<ul>
+  <li><strong>"A big platform must be safer."</strong> Size and whether it keeps your data are unrelated. What matters is what it states and whether you can audit it.</li>
+  <li><strong>"I upload once and delete it."</strong> You cannot confirm the server truly erased it; the moment it was transmitted, the data left your control.</li>
+  <li><strong>"Encrypted upload counts as local."</strong> Encryption only protects transit. If the server holds the key or keeps plaintext, the risk remains.</li>
+  <li><strong>"Cloud is faster, so it wins."</strong> Speed saves seconds on one file and costs you control of the whole archive. The trade is rarely worth it.</li>
+</ul>
+
+<h2>How to tell whether a tool is truly local</h2>
+<p>Three signals: first, it asks you to upload a file instead of reading it inside the browser; second, its privacy statement has no clear line saying it does not store anything; third, it wants your account password to "clean automatically". Hit any one of those and it is safer to walk away. A genuinely local-first tool tells you plainly that data stays on your device and is discarded after processing.</p>
+
+<h2>Small practical snags</h2>
+<p>Local parsing is good but has common snags. With a large archive, reading it all into memory at once can stall the browser; switch to streaming reads or parse only tweets.js. Regex scanning throws false positives, flagging the word "phone" as a number, so review the report by hand. Some people save the parse result as a plaintext file and forget to delete it, creating a local privacy copy; clear it when done.</p>
+
+<h2>Start cleaning your digital footprint</h2>
+<p>To see how much you have left behind, first read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then run a check on your own machine with <a href="/blog/browser-side-archive-parsing">in-browser archive parsing</a>. You can also return to the <a href="/">digital-footprint-health.shop homepage</a> for a 100% on-device free option.</p>
+`,
+  },
+  {
+    slug: 'chinese-content-creators-x-privacy-cleanup',
+    title: '中文创作者在 X 上的"人设炸弹"：接商单前，旧推文得先清',
+    excerpt: '很多中文创作者把 X 当成"海外版微博"随手发，却忘了品牌方和粉丝都会考古。一条几年前的情绪推文，可能直接影响商单和涨粉。本文从中文本地视角讲怎么系统清理。',
+    date: '2026-10-07',
+    updatedAt: '2026-10-07',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文创作者', 'X/Twitter', '人设管理', '商单背调', '推文清理'],
+    content: `
+<h2>中文创作者的 X，藏着三类"考古雷"</h2>
+<p>做中文内容的人，常把 X 当成发牢骚、聊八卦、怼黑粉的地方。问题在于：微博的过去会被时间冲淡，X 的过去会被搜索引擎和品牌方反复翻出来。接商单前，对方公关或 MCN 做的第一件事往往是搜你全网历史。</p>
+<ul>
+  <li><strong>情绪化发言。</strong>几年前的吐槽、对同行或平台的冷嘲，被截图转发就是一轮舆情。</li>
+  <li><strong>过早的立场表态。</strong>某些话题你当年随手站了队，今天回头看可能和现在的人设完全冲突。</li>
+  <li><strong>泄露真实信息。</strong>晒过小区、常去的咖啡馆、线下活动定位，等于给私生粉和诈骗分子留了线索。</li>
+</ul>
+
+<h2>为什么"中文视角"的清理和英文博主不一样</h2>
+<p>英文圈的清理教程大多讲 GDPR、右遗忘权，对中文创作者参考价值有限。中文场景有三个特殊点：商单背调更看重"人设稳定性"；粉丝爱翻旧帖做"黑历史合集"；跨平台搬运（微博、小红书、X 互相截）让一条旧推文的生命周期被反复拉长。</p>
+<p>所以中文创作者的清理不是"删几条脏话"，而是一次<strong>人设体检</strong>：哪些内容会让 2026 年的你尴尬，就先处理哪些。</p>
+
+<h2>实操四步（全部本机完成）</h2>
+<ol>
+  <li><strong>下载归档。</strong>在 X 设置里申请数据归档，拿到 ZIP。</li>
+  <li><strong>本机解析。</strong>用浏览器或脚本在本地扫一遍，把所有含手机号、住址、定位的推文挑出来（不上传任何网站）。</li>
+  <li><strong>按"人设风险"分级。</strong>红色=直接影响商单的；黄色=可能被考古放大的；绿色=可留。</li>
+  <li><strong>分批删除。</strong>红色优先，黄色看情况，删除过程可暂停、可恢复，别一次性清空导致账号异常。</li>
+</ol>
+
+<h2>一个容易被忽略的细节</h2>
+<p>很多创作者只清主账号，忘了小号、已改名前的旧账号。品牌方会顺着昵称历史找回你删掉的东西的存档。改名不等于消失，最好把能找回的旧身份一并纳入清理范围。</p>
+
+<h2>最容易忽略的一类：图片里的隐藏信息</h2>
+<p>创作者爱发截图和实拍，但很多人不知道，原图往往带着 Exif 信息：拍摄时间、手机型号、甚至 GPS 坐标。一条"今天在 studio 拍了一天"的配图，可能把你的常驻城市暴露给所有人。这条风险对探店、探厂类达人尤其明显，因为出镜地点就是内容本身。清理时别只盯文字，图片也要过一遍：发之前压掉 Exif，归档里的旧图更要本地检查是否含定位。</p>
+
+<h2>清理频率怎么定</h2>
+<p>没必要每天清。建议在大节点前做一次：接商单、参加平台活动、准备涨粉 campaign。平时每月随手扫一遍新发的推文即可，把"考古风险"控制在可控范围。</p>
+
+<h2>把人设主动权拿回来</h2>
+<p>想系统做一次中文视角的体检，可以先看 <a href="/blog/how-to-delete-old-tweets-2026">2026 删除旧推文完整指南</a>，再用 <a href="/blog/browser-side-archive-parsing">浏览器端解析</a> 在本机把风险推文挑出来。回到 <a href="/">digital-footprint-health.shop 首页</a> 也能找到 100% 本机运行的免费方案。</p>
+`,
+    canonical: '/blog/chinese-content-creators-x-privacy-cleanup',
+    faq: [
+      { q: '品牌方真的会查我几年前的推文吗？', a: '会。商单背调的第一项往往是全网历史检索，尤其是你涨粉之后，黑粉和竞品也会主动考古。旧推文被翻出来的概率比很多人以为的高。', qEn: 'Do brands really check tweets from years ago?', aEn: 'Yes. Sponsorship vetting often starts with a full-history search, and once you grow, critics and competitors dig too. Old tweets resurface more often than most creators expect.' },
+      { q: '改名能让旧推文消失吗？', a: '不能。改名只改显示名，历史存档、别人引用的截图、搜索引擎缓存都不受改名影响。真正要处理的是内容本身。', qEn: 'Does a rename make old tweets disappear?', aEn: 'No. A rename only changes the display name. Archived copies, quoted screenshots, and search-engine caches are unaffected. The content itself is what needs handling.' },
+      { q: '中文创作者清理和英文博主有什么不同？', a: '中文场景更看重人设稳定性与跨平台搬运，商单背调也更严格。英文教程讲的法规对中文创作者参考有限，需要按中文粉丝考古习惯来分级。', qEn: 'How does cleanup differ for Chinese creators versus English bloggers?', aEn: 'The Chinese scene weighs persona stability and cross-platform reposting more, and sponsorship vetting is stricter. Legal-focused English guides help little, so grading by Chinese follower digging habits matters more.' },
+      { q: '一次性删光所有旧推文安全吗？', a: '不建议。短时间大量删除可能触发账号异常，也损失了正常内容。分批、可暂停、可恢复地删更稳妥。', qEn: 'Is wiping all old tweets at once safe?', aEn: 'Not advised. Mass deletion in a short window can trigger account anomalies and throws away normal content. Batch deletion that is pausable and resumable is safer.' },
+    ],
+    titleEn: 'X Privacy Cleanup for Chinese Content Creators',
+    excerptEn: 'Many Chinese creators treat X like an overseas Weibo and post without thought, forgetting that brands and followers both dig through old posts. One emotional tweet from years back can hurt sponsorships and growth. This guide covers a systematic cleanup.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['Chinese creators', 'X/Twitter', 'personal brand', 'sponsor vetting', 'tweet cleanup'],
+    contentEn: `
+<h2>Three types of old posts that bite creators</h2>
+<p>Chinese creators often use X like an overseas Weibo: a place to vent, gossip, and clash with trolls. The problem is that Weibo past fades with time, while X past gets re-opened by search engines and brand teams. Before a sponsorship, the first thing a brand or its agency does is search your entire history.</p>
+<ul>
+  <li><strong>Emotional posts.</strong> A rant from years ago, or a jab at a peer or platform, becomes a screenshot campaign the moment it resurfaces.</li>
+  <li><strong>Early stance taking.</strong> Topics where you picked a side casually back then may clash hard with the persona you show today.</li>
+  <li><strong>Leaked real info.</strong> Posting your neighborhood, a regular cafe, or event locations hands clues to obsessed fans and scammers.</li>
+</ul>
+
+<h2>Why cleanup for creators is its own job</h2>
+<p>Most English cleanup guides talk about GDPR and the right to be forgotten, which helps Chinese creators only a little. The creator scene has three specifics: sponsorship vetting cares most about persona stability; followers love compiling "cancelled moments" threads; and cross-platform reposting (Weibo, Xiaohongshu, X quoting each other) keeps one old tweet alive far longer than you expect.</p>
+<p>So cleanup for a creator is not "delete a few swear words". It is a persona audit: handle whatever would embarrass the 2026 version of you first.</p>
+
+<h2>Four steps you can run locally</h2>
+<ol>
+  <li><strong>Download the archive.</strong> Request your data export in X settings and get the ZIP.</li>
+  <li><strong>Parse on your machine.</strong> Use a browser or script locally to flag every tweet with a phone number, address, or location. Upload nothing to any site.</li>
+  <li><strong>Grade by persona risk.</strong> Red means it directly harms sponsorships; yellow means it could be amplified by digging; green means keep.</li>
+  <li><strong>Delete in batches.</strong> Red first, yellow as needed. Keep deletion pausable and resumable so you never wipe everything at once and trigger account anomalies.</li>
+</ol>
+
+<h2>One detail people miss</h2>
+<p>Many creators clean only the main account and forget alt accounts or the old handle before a rename. Brand teams trace nickname history and find archived copies of what you deleted. A rename is not erasure. Fold every recoverable old identity into the cleanup scope.</p>
+
+<h2>The most overlooked type: hidden info in images</h2>
+<p>Creators love screenshots and photos, but many do not know originals often carry Exif data: capture time, phone model, sometimes GPS coordinates. A post saying "shot all day at the studio" with a photo can leak your home city to everyone. This risk is sharpest for venue-hopping and factory-tour creators, because the location is the content itself. Do not watch only text during cleanup; images need a pass too. Strip Exif before posting, and check old archive images locally for embedded location.</p>
+
+<h2>How often to clean</h2>
+<p>You do not need daily cleanup. Do a full pass before big moments: a sponsorship, a platform event, a growth campaign. Day to day, a monthly scan of newly posted tweets keeps the digging risk within bounds.</p>
+
+<h2>Take back control of your persona</h2>
+<p>For a creator-focused audit, start with <a href="/blog/how-to-delete-old-tweets-2026">the 2026 guide to deleting old tweets</a>, then use <a href="/blog/browser-side-archive-parsing">in-browser parsing</a> to flag risky posts on your own machine. The <a href="/">digital-footprint-health.shop homepage</a> also has a 100% on-device free option.</p>
+`,
+  },
+  {
+    slug: 'passkey-x-account-faq-2026',
+    title: 'X 账号能用 Passkey 登录吗？2026 密钥登录常见问答',
+    excerpt: 'Passkey（密钥）正在 replaces 密码成为更安全的登录方式。本文回答 X 账号是否支持 Passkey、它比 2FA 强在哪、丢了设备怎么办等高频问题。',
+    date: '2026-10-07',
+    updatedAt: '2026-10-07',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', 'Passkey', '账号安全', '登录', '密钥'],
+    content: `
+<h2>先把结论放在前面</h2>
+<p>Passkey（密钥）是一种基于设备生物识别或 PIN 的登录凭证，不需要你记住一长串密码，也不容易被钓鱼。它正在成为主流平台的默认选项之一。</p>
+
+<h2>高频问答</h2>
+<p><strong>问：X 现在支持 Passkey 吗？</strong><br>答：X 已逐步开放 Passkey 作为登录方式之一，具体入口在账号设置的安全中心，是否对你账号开放取决于平台灰度节奏，建议直接在设置里查看。</p>
+<p><strong>问：Passkey 比两步验证（2FA）强在哪？</strong><br>答：2FA 仍然依赖密码这一环，密码可能泄露或被钓鱼；Passkey 没有可被窃取的密码，登录时设备做本地验证，钓鱼网站拿不到可用凭证。</p>
+<p><strong>问：换了手机，Passkey 还在吗？</strong><br>答：多数系统会把 Passkey 同步到同账号的其它设备（如平板、电脑）或通过云端钥匙串备份。换机前确认已开启同步，否则需重新绑定。</p>
+<p><strong>问：设备丢了怎么办？</strong><br>答：立刻用备用设备移除该设备的 Passkey，并启用新的验证方式。平时应保留至少一个备用登录途径（如备用码或第二台设备）。</p>
+<p><strong>问：用了 Passkey 还要 2FA 吗？</strong><br>答：可以叠加。Passkey 负责"你是设备主人"，2FA 或备用码负责"多一道兜底"。两者并存比只用其一更稳。</p>
+
+<h2>顺手做一件事</h2>
+<p>登录安全只是账号防护的一环。想看自己的推文里有没有泄露手机号或住址，可以读 <a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>，再用 <a href="/blog/browser-side-archive-parsing">浏览器端解析</a> 在本机扫一遍。回到 <a href="/">digital-footprint-health.shop 首页</a> 了解 100% 本机运行的免费体检。</p>
+`,
+    canonical: '/blog/passkey-x-account-faq-2026',
+    faq: [
+      { q: 'X 现在支持 Passkey 登录吗？', a: 'X 已逐步开放 Passkey 作为登录方式，入口在账号设置的安全中心，是否对你开放取决于平台灰度节奏，建议直接进设置查看。', qEn: 'Does X support passkey sign-in now?', aEn: 'X has been rolling out passkeys as a sign-in method; the entry point is the security section in settings, and availability depends on the platform rollout, so check your settings directly.' },
+      { q: 'Passkey 比两步验证安全在哪？', a: '2FA 仍依赖可能被钓鱼或泄露的密码；Passkey 没有可被窃取的密码，设备本地验证，钓鱼网站拿不到可用凭证。', qEn: 'How is a passkey safer than 2FA?', aEn: '2FA still depends on a password that can be phished or leaked. A passkey has no stealable password, the device verifies locally, and a phishing site cannot harvest a usable credential.' },
+      { q: '换手机后 Passkey 还在吗？', a: '多数系统会把 Passkey 同步到同账号其它设备或云端钥匙串。换机前确认已开启同步，否则需重新绑定。', qEn: 'Is the passkey still there after I switch phones?', aEn: 'Most systems sync passkeys to other devices on the same account or to a cloud keychain. Turn on sync before switching, or you will need to re-bind.' },
+      { q: '设备丢了怎么办？', a: '立刻用备用设备移除该设备的 Passkey，并启用新验证方式；平时保留至少一个备用登录途径，如备用码或第二台设备。', qEn: 'What if I lose the device?', aEn: 'Immediately remove that device passkey from a backup device and enable a new verification method. Keep at least one backup sign-in path, such as recovery codes or a second device.' },
+      { q: '用了 Passkey 还需要 2FA 吗？', a: '可以叠加。Passkey 证明你是设备主人，2FA 或备用码做兜底，两者并存比只用其一更稳。', qEn: 'Do I still need 2FA with a passkey?', aEn: 'You can stack them. The passkey proves device ownership and 2FA or recovery codes add a safety net, so having both beats either alone.' },
+    ],
+    titleEn: 'Can You Use a Passkey on X? 2026 FAQ',
+    excerptEn: 'Passkeys are replacing passwords as a safer way to sign in. This FAQ answers whether X supports passkeys, how they beat 2FA, and what to do if you lose the device.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'Passkey', 'account security', 'login', 'security key'],
+    contentEn: `
+<h2>The short answer first</h2>
+<p>A passkey is a sign-in credential based on your device biometric or PIN. You do not memorize a long password, and phishing gets much harder. It is becoming a default option on major platforms.</p>
+
+<h2>Frequently asked questions</h2>
+<p><strong>Q: Does X support passkeys now?</strong><br>A: X has been rolling out passkeys as one of its sign-in methods. The entry point is the security section in account settings, and availability per account depends on the platform rollout, so check your settings directly.</p>
+<p><strong>Q: How is a passkey stronger than 2FA?</strong><br>A: 2FA still relies on a password, which can leak or be phished. A passkey has no stealable password; the device verifies locally, so a phishing site cannot harvest a usable credential.</p>
+<p><strong>Q: If I switch phones, is the passkey gone?</strong><br>A: Most systems sync passkeys to other devices on the same account (tablet, computer) or back them up through a cloud keychain. Turn on sync before switching, or you will need to re-bind.</p>
+<p><strong>Q: What if I lose the device?</strong><br>A: Immediately remove that device passkey from a backup device and enable a new verification method. Keep at least one backup sign-in path, such as recovery codes or a second device.</p>
+<p><strong>Q: Do I still need 2FA with a passkey?</strong><br>A: You can stack them. The passkey proves you own the device, and 2FA or recovery codes add a safety net. Having both beats either alone.</p>
+
+<h2>One thing to do alongside</h2>
+<p>Sign-in security is only one part of account protection. To check whether your tweets leak a phone number or address, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then scan it locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> has a 100% on-device free check.</p>
+`,
+  },
+  {
+    slug: 'chinese-exporters-x-b2b-tweets-privacy',
+    title: '外贸老板的 X 账号：一条旧推文怎么把客户吓跑',
+    excerpt: '很多中国外贸和 B2B 卖家把 X 当免费获客渠道，却没意识到客户会反向背调。晒工厂定位、报价截图、供应商名字，都可能成为丢单原因。本文从中文本地视角讲怎么自查。',
+    date: '2026-10-07',
+    updatedAt: '2026-10-07',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['外贸', 'B2B', 'X/Twitter', '客户背调', '商业隐私'],
+    content: `
+<h2>客户不是只看你发的产品图</h2>
+<p>做外贸的人习惯在 X 上晒展会、晒产线、晒出货，目的是让买家觉得"这家有实力"。但海外买家下单前，几乎一定会反向搜你：你的账号、你员工的账号、你竞争对手怎么评价你。一条随手发的推文，可能正好戳中对方的红线。</p>
+
+<h2>外贸账号最常见的三类"自曝"</h2>
+<ul>
+  <li><strong>定位暴露供应链。</strong>晒工厂大门、园区名牌、常去酒店，等于把成本和产能区间直接告诉对手与砍价客户。</li>
+  <li><strong>报价截图带敏感信息。</strong>截图里往往有客户名、邮箱、甚至银行尾号，被同行扒出来就是一轮价格战。</li>
+  <li><strong>吐槽客户或供应商。</strong>一句"这个印度客户难搞"，被对方团队搜到，信任直接归零。</li>
+</ul>
+
+<h2>为什么中文外贸视角要单独讲</h2>
+<p>英文教程讲"个人品牌"，对老板没用；外贸场景的核心词是"客户背调"和"商业机密保护"。中文买家和卖家都更习惯用 X 做背调，且截图上手快、传播猛。所以自查要围绕"哪些信息会帮对手砍我的价、帮客户压我的单"来展开。</p>
+
+<h2>本机自查四步</h2>
+<ol>
+  <li><strong>拉归档。</strong>在 X 设置申请数据归档，拿 ZIP。</li>
+  <li><strong>本地扫敏感字段。</strong>用浏览器或脚本在电脑上找手机号、邮箱、住址、银行尾号、客户名，全程不上传网站。</li>
+  <li><strong>按商业风险分级。</strong>红=泄露客户或供应商机密；黄=暴露成本/产能；绿=可留的产品宣传。</li>
+  <li><strong>分批处理。</strong>红色优先删，黄色视合作阶段决定，删除可暂停可恢复。</li>
+</ol>
+
+<h2>一条推文能暴露多少商业情报</h2>
+<p>外贸人常觉得"发产品图而已，能有什么秘密"。但连续的帖子会拼出画像：你主要做哪类目、月产能大概多少、核心客户在哪个市场、利润空间粗估。买家和对手都不需要黑客，靠公开时间线就能估出你的底牌。把定位、产能、客户名拆开讲是展示实力，但堆在同一条带坐标的推文里，就是免费情报包。</p>
+<h2>员工账号也是风险面</h2>
+<p>很多老板只管主账号，忘了业务员、跟单员的个人 X 也会提公司名、晒客户聊天。客户反向搜时，这些关联账号一样会被看到。建议把能关联到你公司的员工账号也纳入自查范围，统一提醒"别在公号晒客户名和报价"。</p>
+
+<h2>清理的节奏建议</h2>
+<p>大促前（如广交会、海外购物季）是客户背调高发期，建议提前两周做一轮自查。平时每季过一遍即可，把含客户名、银行尾号的旧帖优先处理，产线展示类内容可留。新人入职也建议做一次，避免个人号带出公司敏感信息。</p>
+
+<h2>别让旧帖拖了新单</h2>
+<p>想系统自查，可先看 <a href="/blog/how-to-delete-old-tweets-2026">2026 删除旧推文完整指南</a>，再用 <a href="/blog/browser-side-archive-parsing">浏览器端解析</a> 在本机把敏感推文挑出来。回到 <a href="/">digital-footprint-health.shop 首页</a> 也有 100% 本机运行的免费方案。</p>
+`,
+    canonical: '/blog/chinese-exporters-x-b2b-tweets-privacy',
+    faq: [
+      { q: '海外买家真的会搜我的 X 历史吗？', a: '会。尤其 B2B 大额订单前，采购会反向搜供应商及其员工账号，评估可靠性和议价空间。旧帖的信任成本比想象中高。', qEn: 'Do overseas buyers really search my X history?', aEn: 'Yes. Before large B2B orders, procurement searches the supplier and staff accounts to gauge reliability and bargaining room. The trust cost of old posts is higher than people think.' },
+      { q: '晒工厂和展会为什么有风险？', a: '这些图会暴露园区、产能和常去地点，对手据此估你的成本区间，客户据此压价。对外展示实力没问题，但别连定位一起发。', qEn: 'Why is posting factories and trade shows risky?', aEn: 'Those images expose the park, capacity, and frequent locations, so rivals estimate your cost range and clients push price down. Showing strength is fine, just do not post the location with it.' },
+      { q: '报价截图能发吗？', a: '尽量不要原图发。截图常含客户名、邮箱、银行尾号，一旦被同行扒到就是价格战素材。要展示请用脱敏后的样例。', qEn: 'Can I post quote screenshots?', aEn: 'Avoid posting originals. Screenshots often carry client names, emails, and bank suffixes that become price-war material if a rival finds them. Use redacted samples instead.' },
+      { q: '中文外贸账号怎么高效自查？', a: '拉归档后在本机扫手机号、邮箱、客户名等敏感字段，按商业风险分级：泄露客户/供应商机密的最优先删，暴露成本的次之。', qEn: 'How can a Chinese exporter self-check efficiently?', aEn: 'After pulling the archive, scan locally for phone numbers, emails, and client names, then grade by business risk: leaks of client or supplier secrets go first, cost exposure next.' },
+    ],
+    titleEn: 'X Tweet Privacy for Chinese Exporters and B2B Sellers',
+    excerptEn: 'Many Chinese exporters and B2B sellers use X as free lead generation without realizing clients vet them back. Posting factory locations, quote screenshots, or supplier names can cost deals. This guide covers a local-self-check from the Chinese market view.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['exporter', 'B2B', 'X/Twitter', 'client vetting', 'business privacy'],
+    contentEn: `
+<h2>Clients do not only look at your product photos</h2>
+<p>Exporters love posting trade shows, production lines, and shipments on X to signal "this supplier has capacity". But before placing an order, overseas buyers almost always search you back: your account, your staff accounts, what competitors say about you. One casual tweet can hit the other side's red line.</p>
+
+<h2>Three common self-exposures on exporter accounts</h2>
+<ul>
+  <li><strong>Location leaks the supply chain.</strong> Posting the factory gate, the park nameplate, or a regular hotel tells rivals and bargain-hunters your cost and capacity range.</li>
+  <li><strong>Quote screenshots carry sensitive data.</strong> Those images often show client names, emails, even bank suffixes. A competitor digging them up starts a price war.</li>
+  <li><strong>Trashing clients or suppliers.</strong> A line like "this buyer is impossible" found by their team drops trust to zero.</li>
+</ul>
+
+<h2>Why the exporter view deserves its own guide</h2>
+<p>English tutorials talk about "personal brand", which does little for an owner. The exporter scene runs on "client vetting" and "trade-secret protection". Chinese buyers and sellers both use X for vetting, and screenshots spread fast. So the self-check should center on what helps a rival cut your price or a client squeeze your margin.</p>
+
+<h2>Four local self-check steps</h2>
+<ol>
+  <li><strong>Pull the archive.</strong> Request your data export in X settings and get the ZIP.</li>
+  <li><strong>Scan sensitive fields locally.</strong> Use a browser or script on your computer to find phone numbers, emails, addresses, bank suffixes, and client names. Upload nothing.</li>
+  <li><strong>Grade by business risk.</strong> Red means leaking client or supplier secrets; yellow means exposing cost or capacity; green means keepable product promo.</li>
+  <li><strong>Handle in batches.</strong> Delete red first, decide yellow by deal stage, and keep deletion pausable and resumable.</li>
+</ol>
+
+<h2>How much business intelligence one tweet leaks</h2>
+<p>Exporters often think "I only post product photos, what secret can there be". But a stream of posts builds a profile: which category you focus on, rough monthly capacity, which market your core clients sit in, and a crude read on margin. Buyers and rivals need no hacker; the public timeline estimates your hand. Spreading location, capacity, and client names across posts shows strength, but piling them into one geo-tagged tweet is a free intelligence package.</p>
+<h2>Staff accounts are a risk surface too</h2>
+<p>Many owners watch only the main account and forget that sales reps and merchandisers post the company name and client chats on personal X. When clients search backward, those linked accounts show up too. Fold staff accounts that mention your company into the self-check, and remind everyone not to post client names and quotes on public handles. The cost of one leaked quote is small, but the pattern of many is what changes a buyer's mind.</p>
+
+<h2>Suggested cleanup cadence</h2>
+<p>Before big sourcing events (trade fairs, overseas shopping seasons) client vetting spikes, so run a self-check two weeks ahead. A quarterly pass is enough otherwise; prioritize old posts with client names and bank suffixes, and keep production-line promo.</p>
+
+<h2>Do not let old posts sink new orders</h2>
+<p>For a systematic self-check, start with <a href="/blog/how-to-delete-old-tweets-2026">the 2026 guide to deleting old tweets</a>, then flag sensitive posts locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> also has a 100% on-device free option.</p>
+`,
+  },
+  {
+    slug: 'x-algorithm-change-old-tweets-reach-2026',
+    title: '2026 年 X 算法调整，旧推文怎么又被翻出来了',
+    excerpt: '2026 年 X 多次调整推荐算法，不少用户发现几年前的旧推文突然又被推到时间线顶部。本文解释算法变化如何影响旧内容曝光，以及该怎么应对。',
+    date: '2026-10-07',
+    updatedAt: '2026-10-07',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['X/Twitter', '算法', '旧推文', '曝光', '2026'],
+    content: `
+<h2>旧推文"复活"不是错觉</h2>
+<p>2026 年 X 对推荐系统做了多轮调整，核心方向之一是更激进地复用站内历史内容来填充时间线。结果就是：一条你 2021 年发的、早就沉底的推文，可能因为某个新话题与其相关，被重新推给一批陌生用户。</p>
+
+<h2>算法为什么偏爱旧内容</h2>
+<ul>
+  <li><strong>降低成本。</strong>重新分发已有高互动内容，比持续生产新内容更省算力。</li>
+  <li><strong>话题召回。</strong>当某个事件登上热搜，系统会捞取历史相关推文做"背景补充"。</li>
+  <li><strong>长尾曝光。</strong>旧帖的二次传播不再依赖你主动转发，而是被算法自动唤醒。</li>
+</ul>
+
+<h2>这对隐私意味着什么</h2>
+<p>过去你以为"旧推文没人看了"是一种自然遗忘。算法复活打破了这层保护：当年随手发的定位、吐槽、立场，今天可能被推到一个完全陌生的 audience 面前。对求职者、创作者、外贸卖家来说，这正是旧内容风险的来源。</p>
+
+<h2>三个应对动作</h2>
+<ol>
+  <li><strong>定期体检。</strong>不要等被翻出来才处理，主动拉归档扫一遍。</li>
+  <li><strong>分级清理。</strong>高风险内容优先删，安全内容可留。</li>
+  <li><strong>关掉不必要的"关联推荐"。</strong>在设置里收紧与你账号相关的二次分发选项。</li>
+</ol>
+
+<h2>这次调整和以往有什么不同</h2>
+<p>早年的算法主要按"你关注的人"和"近期互动"排时间线，旧内容自然沉底。2026 年的改动把"相关性"权重抬得更高，系统不再只看时间，而是看一条旧帖和当下热点的语义关联。这意味着哪怕你三年没互动，只要话题对上，旧帖就会被重新点亮。对隐私来说，这等于把"遗忘曲线"拉平了。</p>
+
+<h2>普通用户能做什么</h2>
+<p>算法你改不了，但你能控制自己的内容库存。把归档当成一次"定期大扫除"，重点清掉带定位、带真实姓名、带情绪立场的推文。尤其是准备求职、结婚、跳槽的人，旧帖被算法翻出来影响的是现实人生，不是虚拟分数。</p>
+
+<h2>把曝光主动权拿回来</h2>
+<p>想看自己有哪些旧推文会被算法反复推，可以先读 <a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>，再用 <a href="/blog/browser-side-archive-parsing">浏览器端解析</a> 在本机挑出敏感内容。回到 <a href="/">digital-footprint-health.shop 首页</a> 了解 100% 本机运行的免费体检。</p>
+`,
+    canonical: '/blog/x-algorithm-change-old-tweets-reach-2026',
+    faq: [
+      { q: '为什么 2026 年旧推文又出现了？', a: 'X 在 2026 年多次调整推荐算法，更激进地复用历史高互动内容来填充时间线，旧帖因此被自动重新分发。', qEn: 'Why are old tweets showing up again in 2026?', aEn: 'X changed its recommendation algorithm several times in 2026 to reuse historical high-engagement content more aggressively for timelines, so old posts get redistributed automatically.' },
+      { q: '算法复活旧推文对隐私有什么影响？', a: '它打破了"旧内容自然被遗忘"的假设，当年随手发的定位和吐槽可能被推给陌生受众，对求职者、创作者、卖家尤其危险。', qEn: 'How does algorithmic revival affect privacy?', aEn: 'It breaks the assumption that old content fades. A casual location or rant can reach a stranger audience, which is especially risky for job seekers, creators, and sellers.' },
+      { q: '我能关掉旧推文的二次分发吗？', a: '可以在账号设置里收紧与账号相关的"关联推荐/二次分发"选项，但无法保证完全停止；最稳妥还是主动清理高风险旧内容。', qEn: 'Can I turn off secondary distribution of old tweets?', aEn: 'You can tighten related-recommendation settings tied to your account, but full stop is not guaranteed. The safer move is to clean high-risk old content yourself.' },
+      { q: '怎么知道哪些旧推文会被反复推？', a: '拉取归档后在本机扫一遍，重点看含定位、手机号、敏感立场的内容，这些最容易被算法在相关话题下召回。', qEn: 'How do I know which old tweets keep getting pushed?', aEn: 'Pull the archive and scan locally, focusing on posts with locations, phone numbers, or sensitive stances, since those are most likely recalled under related topics.' },
+    ],
+    titleEn: 'X Algorithm Change 2026: Why Your Old Tweets Are Resurfacing',
+    excerptEn: 'With several X recommendation changes in 2026, many users notice years-old tweets surfacing at the top of timelines again. This piece explains how algorithm shifts affect old content reach and what to do.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['X/Twitter', 'algorithm', 'old tweets', 'reach', '2026'],
+    contentEn: `
+<h2>Old tweets resurfacing is not your imagination</h2>
+<p>In 2026 X made several recommendation-system changes, one direction being more aggressive reuse of historical posts to fill timelines. The result: a tweet you posted in 2021 and forgot can resurface to a fresh audience because a new topic relates to it.</p>
+
+<h2>Why the algorithm favors old content</h2>
+<ul>
+  <li><strong>Lower cost.</strong> Redistributing existing high-engagement content is cheaper than producing new posts continuously.</li>
+  <li><strong>Topic recall.</strong> When an event trends, the system pulls related historical tweets as "background".</li>
+  <li><strong>Long-tail reach.</strong> Old posts get a second life without you reposting, awakened automatically by the algorithm.</li>
+</ul>
+
+<h2>What this means for privacy</h2>
+<p>You used to assume old tweets faded from view, a form of natural forgetting. Algorithmic revival breaks that protection: a location, a rant, or a stance you posted casually years ago can land in front of a completely unfamiliar audience today. For job seekers, creators, and exporters, this is exactly where old-content risk comes from. The practical fix is not to post less, but to post assuming anything can return years later. Treat every location tag and name drop as permanent.</p>
+
+<h2>Three moves to respond</h2>
+<ol>
+  <li><strong>Check regularly.</strong> Do not wait to be embarrassed; pull the archive and scan on a schedule.</li>
+  <li><strong>Clean by tier.</strong> Delete high-risk content first, keep safe content.</li>
+  <li><strong>Tighten related recommendations.</strong> In settings, narrow the secondary distribution tied to your account.</li>
+</ol>
+
+<h2>What is different this time</h2>
+<p>Earlier algorithms sorted mostly by who you follow and recent interactions, so old content sank naturally. The 2026 changes raise the weight of "relevance": the system looks less at time and more at the semantic link between an old post and a current trend. That means even without interaction for three years, an old post relights the moment the topic matches. For privacy, it flattens the forgetting curve. Older posts that once felt buried now compete with fresh content for the same screen.</p>
+
+<h2>What an ordinary user can do</h2>
+<p>You cannot change the algorithm, but you control your own content inventory. Treat the archive like a periodic deep clean, focusing on posts with locations, real names, and emotional stances. For people about to job hunt, marry, or switch careers, old posts resurfaced by the algorithm affect real life, not a virtual score. Set a calendar reminder so the cleanup becomes a habit instead of a panic before a life event. That one habit removes most of the surprise when an old post resurfaces.</p>
+
+<h2>Take back control of your reach</h2>
+<p>To see which old tweets the algorithm may keep pushing, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then flag sensitive content locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> has a 100% on-device free check.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -21161,6 +21161,312 @@ rl.on('close', () =&gt; {
 <p>To see which old tweets the algorithm may keep pushing, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then flag sensitive content locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> has a 100% on-device free check.</p>
 `,
   },
+  {
+    slug: 'x-data-breach-response-steps',
+    title: 'X 账号数据泄露了怎么办：一步步止损与恢复指南',
+    excerpt: '如果你的 X 账号出现在某次数据泄露名单里，或你怀疑账号被盗，第一时间怎么止损？本文给出可操作的步骤清单：改密码、踢设备、开 2FA、查异常、清理旧推文、通知相关方。',
+    date: '2026-10-08',
+    updatedAt: '2026-10-08',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '数据泄露', '账号安全', '止损', '恢复'],
+    content: `
+<h2>先搞清楚：你是"被泄露"还是"被盗号"</h2>
+<p>两个词常被混用，但应对完全不同。"数据泄露"指某家公司的数据库被拖库，你的邮箱或密码在暗网流传；"盗号"指有人已经拿到了你 X 账号的登录权，正在冒充你发帖或私信。前者你没法阻止发生，只能快速止损；后者要立刻夺回控制权。判断方法很简单：如果你还能登录，却看到自己没发过的推文，那是盗号；如果你只是收到"你的密码出现在某泄露库"的提醒，那是泄露。</p>
+
+<h2>第一步，立刻改密码并踢掉所有设备</h2>
+<p>不管泄露还是盗号，第一动作都一样：改密码。X 的密码修改入口在"设置和隐私 → 你的账号 → 修改密码"。改完之后，顺手在"账号信息 → 登录与安全 → 登录记录"里点"退出所有其他会话"。这一步很关键，因为很多用户改了密码却忘了清掉已经登录的陌生设备，攻击者还在上面挂着。</p>
+<ul>
+  <li>用一段没在任何其他地方用过的密码，不要和邮箱密码相同。</li>
+  <li>如果你记不住，用密码管理器生成并保存。</li>
+  <li>改完密码后再退设备，顺序反了可能让你自己先被踢。</li>
+</ul>
+
+<h2>第二步，开启双重验证（2FA）</h2>
+<p>只改密码不够。如果泄露的库里同时有你的邮箱，攻击者可以走"找回密码"把你挡在门外。开启 2FA 后，登录需要第二因子，哪怕密码泄露也进不来。优先用验证器 App（如 Authy、Google Authenticator），少用短信验证码，因为短信能被 SIM 卡交换攻击拦截。务必把备份码抄下来，存到密码管理器或纸上，别只截个图留在手机里。</p>
+
+<h2>第三步，审查登录记录与授权应用</h2>
+<p>登录记录能告诉你过去谁在什么时候从哪个地点登过你的号。看到陌生城市或设备，立刻踢掉。另一块容易被忽略的是"授权应用"：你早年用 X 账号授权登录过的第三方工具、小游戏、分析面板，很多至今还握着读权限。去"账号信息 → 已连接的应用和会话"逐个检查，不认识的、不再用的，全部撤销。</p>
+
+<h2>第四步，清理可能暴露的旧推文</h2>
+<p>账号安全修复完了，但泄露的副作用还在：你过去十年发的推文里，可能早就写明了手机号、家庭住址、孩子学校。攻击者拿到这些，不需要登你的号也能精准诈骗。下载你的 X 数据归档，在本机扫一遍，把带真实联系方式、定位、情绪立场的高风险旧推文清掉。准备求职、结婚、跳槽的人尤其要提前做。旧帖被翻出来，代价落在现实人生里，远不止影响一个虚拟分数。</p>
+
+<h2>第五步，通知该通知的人</h2>
+<p>如果你的 X 账号关联了商业用途、客户沟通，或者你用它登录过其他服务，泄露后该说一声。不用群发恐慌，但给真正受影响的人一句提醒是负责任的做法。如果泄露涉及支付或身份凭证，按平台要求走申诉和冻结流程，别等损失发生。</p>
+
+<h2>改完密码后，还要复查三件事</h2>
+<p>很多人改完密码就以为结束了，但泄露的连锁反应才刚开始。第一，查一遍"已连接的应用"，收回早年授权的第三方工具，它们可能还握着你的读权限，等于在门上新配了一把钥匙。第二，留意接下来两周的短信和邮件，泄露之后针对你的精准钓鱼会变多，凡是"账号异常""限时验证"的链接都先别点，直接去官方 App 里确认。第三，如果同一个邮箱还在别的平台使用，顺便把那些平台的密码也改掉，因为撞库攻击会拿着泄露的邮箱和密码去试其他站点，一个地方漏，处处漏。</p>
+
+<h2>泄露之后，你的数字足迹还留着什么</h2>
+<p>很多人以为改完密码就万事大吉，其实账号层面的修复只是第一层。真正长期的风险，是那些已经公开、被搜索引擎收录、被截图流转的旧内容。它们不会因为你的密码更新而消失。定期做一次数字足迹体检，比出事之后再补救轻松得多。</p>
+
+<h2>要不要主动通知 X 平台</h2>
+<p>如果是 X 自身的安全事件，平台通常会发站内通知并强制重置密码，你按提示操作即可。如果是第三方泄露、只是邮箱或密码相同，X 本身不需要通知，但你应当尽快在 X 上开启 2FA，堵住"密码复用"这条最容易被利用的通道。真正需要通知的是那些和泄露账号共用密码的服务；X 本身不在其中。</p>
+
+<h2>把主动权拿回来</h2>
+<p>数据泄露频发的时代，没人能保证自己永远不在某个泄露名单里。但你能在出事之前，先把账号锁好、把旧内容清干净。先读 <a href="/blog/how-to-download-x-archive">如何下载 X 数据归档</a>，再了解 <a href="/blog/x-two-factor-backup-codes">2FA 备份码怎么存</a>。回到 <a href="/">digital-footprint-health.shop 首页</a> 用 100% 本机运行的免费体检，看清自己到底留了多少隐私痕迹。</p>
+`,
+    canonical: '/blog/x-data-breach-response-steps',
+    faq: [
+      { q: '数据泄露后多久该改密码？', a: '越快越好，理想是收到提醒的当天。拖一天就多一天被滥用的窗口。', qEn: 'How soon after a breach should I change my password?', aEn: 'As soon as possible, ideally the same day you get the alert. Every day you wait is another day of abuse.' },
+      { q: '开了 2FA 就绝对安全吗？', a: '不是绝对，但能挡掉绝大多数靠密码泄露发起的攻击。配合备份码和陌生设备审查，安全性会高很多。', qEn: 'Am I completely safe with 2FA on?', aEn: 'Not completely, but it blocks most attacks that rely on a leaked password. Pair it with backup codes and device auditing and your security improves a lot.' },
+      { q: '登录记录里的陌生设备要怎么处理？', a: '直接在该条记录上选择"退出会话"或"移除"，并检查它出现的地点和时间是否可疑。', qEn: 'What do I do about an unfamiliar device in login history?', aEn: 'Choose log out or remove on that entry, and check whether its location and time look suspicious.' },
+      { q: '授权应用是什么，为什么要撤销？', a: '授权应用是你早年用 X 账号登录过的第三方工具，很多至今还握着读权限。不用的全部撤销，减少泄露面。', qEn: 'What are authorized apps and why revoke them?', aEn: 'Authorized apps are third-party tools you logged into with X years ago, many still holding read permission. Revoke the ones you no longer use to shrink your exposure.' },
+      { q: '旧推文和数据泄露有什么关系？', a: '泄露本身不靠旧推文，但旧推文里的手机号、住址会被攻击者直接拿来诈骗，所以清理旧内容也是止损的一部分。', qEn: 'What do old tweets have to do with a breach?', aEn: 'The breach itself does not depend on old tweets, but phone numbers and addresses in them get used directly for scams, so cleaning old content is part of containment.' },
+    ],
+    titleEn: 'X Account Data Breach: Step-by-Step Containment and Recovery',
+    excerptEn: 'If your X account shows up in a breach list, or you suspect it was compromised, what do you do first? This guide gives a concrete checklist: reset the password, revoke devices, turn on 2FA, audit activity, clean old tweets, and notify the right people.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'data breach', 'account security', 'containment', 'recovery'],
+    contentEn: `
+<h2>First, figure out: were you breached, or was your account taken over?</h2>
+<p>People use these two words interchangeably, but the response is different. A breach means some company database was stolen and your email or password is now circulating on the dark web. Account takeover means someone already has your X login and is posting or DMing as you. You cannot stop a breach from happening, but you can contain the damage fast. You can and must fight a takeover immediately. The test is simple: if you can still log in but see tweets you never wrote, that is takeover. If you only got an alert that your password appeared in a leak database, that is a breach.</p>
+
+<h2>Step 1: change your password and kick every device</h2>
+<p>Whether it is a breach or a takeover, the first move is the same: change the password. On X, that is Settings and privacy, then Your account, then Change your password. After that, go to Account information, then Login and security, then Sessions, and choose Log out of all other sessions. This step is easy to skip, and it matters: plenty of people change the password but leave a stranger device still logged in.</p>
+<ul>
+  <li>Use a password you have not used anywhere else, and do not reuse your email password.</li>
+  <li>If you cannot remember it, generate one with a password manager.</li>
+  <li>Change the password first, then log out devices. Reverse the order and you might lock yourself out.</li>
+</ul>
+
+<h2>Step 2: turn on two-factor authentication (2FA)</h2>
+<p>Changing the password alone is not enough. If the leaked database also included your email, an attacker can use password reset to lock you out. With 2FA on, login needs a second factor, so even a leaked password will not get them in. Use an authenticator app (Authy, Google Authenticator) rather than SMS codes, because SMS can be intercepted through a SIM swap. Save your backup codes somewhere safe, in a password manager or on paper, not just a screenshot on the same phone that could be stolen.</p>
+
+<h2>Step 3: audit login history and authorized apps</h2>
+<p>Login history shows who logged in, from where, and on what device. Unfamiliar cities or devices should be removed on the spot. The part people miss is authorized apps: third-party tools, mini games, and analytics panels you granted X access to years ago often still hold read permission. Go to Account information, then Connected apps and sessions, and review each one. Anything you do not recognize or no longer use, revoke it.</p>
+
+<h2>Step 4: clean up old tweets that expose you</h2>
+<p>Account security is fixed, but the side effect of a breach lingers: your tweets from the last decade may already contain your phone number, home address, or your child school. With that information, an attacker can run a precise scam without ever logging into your account. Download your X archive, scan it on your own device, and remove high-risk old tweets that carry real contact details, locations, or emotional statements. If you are job hunting, getting married, or switching jobs, do this early. An old post resurfacing affects your real life, not a virtual score.</p>
+
+<h2>Step 5: tell the people who need to know</h2>
+<p>If your X account is tied to business, client communication, or login for other services, a breach is worth a heads-up. You do not need to broadcast panic, but a short note to the people actually affected is the responsible move. If the leak involved payment or identity credentials, follow the platform dispute and freeze procedures instead of waiting for loss to happen.</p>
+
+<h2>What to watch for in the weeks after</h2>
+<p>A breach does not end when you change the password. The follow-up is where most people get hurt. Expect a wave of targeted phishing that references the leaked service by name, urging you to reset something or claim a refund. Do not click those links. Independently type the official site into your browser. Also watch for credential stuffing: attackers take the leaked email and password and try them on banks, email providers, and shopping sites. Changing the password everywhere you reused it is the only real defense.</p>
+
+<h2>After the breach, what footprint is still out there</h2>
+<p>Many people assume a password change closes the matter. Account-level fixes are only the first layer. The lasting risk is the content already public, indexed by search engines, and passed around in screenshots. It will not vanish because you updated a password. Think of it as a house: changing the lock helps, but the windows you left open years ago are still open. Running a periodic digital footprint check beats scrambling after something bad happens.</p>
+
+<h2>Should you report the breach to X</h2>
+<p>If the breach is X own security event, the platform usually sends an in-app notice and forces a password reset, and you just follow the prompts. If it is a third-party leak where only your email or password was shared, X itself does not need to be told, but you should turn on 2FA on X right away to close the password-reuse path that attackers exploit most. The services that truly need your attention are the ones reusing the same password, not X.</p>
+
+<h2>How long until you can relax</h2>
+<p>There is no single deadline. The dangerous window is the first few weeks, when leaked credentials circulate and phishing spikes. After you have changed passwords everywhere they were reused, turned on 2FA, revoked stray app permissions, and cleaned the most exposed old tweets, the acute risk drops sharply. Keep an eye on login alerts for another month, but you do not need to live in fear indefinitely. A routine quarterly footprint check is enough to stay ahead.</p>
+
+<h2>If you already lost access to the account</h2>
+<p>If the takeover already happened and you are locked out, move fast. Use X account recovery and any verified email or phone on file. If the attacker changed the email, recovery gets harder, which is exactly why backup codes and a secondary email matter. While you wait for recovery, warn anyone who might trust a message from your account, because the attacker will likely DM your contacts with scam links. Once you are back in, do not just change the password and leave. Revoke every session, turn on 2FA if it was off, review authorized apps, and check whether the attacker posted or sent anything in your name. Then run the footprint cleanup, because a locked-out period is also a chance for old private data to be scraped. Recovery can take hours or days depending on how much proof you can supply, so the prevention steps above are worth doing well before you ever need them. The cheapest defense is the boring one: unique passwords and 2FA everywhere, set up on a calm day rather than during a crisis.</p>
+
+<h2>Take back control</h2>
+<p>In an age of frequent breaches, no one can guarantee their name stays off every leak list. What you can do is lock the account and clear the old content before trouble arrives. Start by reading <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then learn <a href="/blog/x-two-factor-backup-codes">how to store 2FA backup codes</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free, 100% on-device footprint check and see exactly how many privacy traces you have left.</p>
+`,
+  },
+  {
+    slug: 'chinese-real-name-system-x-privacy',
+    title: '实名制下，中国用户的 X 账号隐私有什么特殊风险',
+    excerpt: '中国大陆实行网络实名制，这一背景让 X 账号的隐私风险与普通海外用户不同。本文从中文用户视角，拆解实名关联、跨平台暴露、以及旧推文被翻出的真实后果。',
+    date: '2026-10-08',
+    updatedAt: '2026-10-08',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['X/Twitter', '实名制', '中文用户', '隐私风险', '数字足迹'],
+    content: `
+<p>在中国大陆，注册绝大多数国内平台都要实名：手机号实名、甚至人脸识别。这套机制本身不是为了 X，但它深刻改变了"中国用户的 X 账号一旦出事"的后果。本文专门从中文用户视角，讲清楚实名制背景下，X 账号隐私风险的几个特殊点。</p>
+
+<h2>实名关联让"匿名"形同虚设</h2>
+<p>你在 X 上可能用了英文昵称，但你的手机号、邮箱、甚至微信，早就把"你是谁"钉死了。一旦 X 账号泄露，攻击者拿到的不是一串虚拟 ID，而是能追溯到真实身份的联系方式。对中文用户来说，X 的"匿名感"是错觉。</p>
+
+<h2>跨平台暴露比单站更危险</h2>
+<p>中国用户普遍同时活跃在微信、微博、小红书、X 等多个平台，而且习惯用相同或高度相似的昵称、头像、写作风格。攻击者只要在一个平台认出你，就能顺着线索在另一个平台找到你。X 上的旧推文，往往成为跨平台人肉搜索的入口。</p>
+
+<h2>旧推文被翻出的现实代价</h2>
+<p>海外用户担心旧推文影响求职；中国用户还多一层：出境签证、外企面试、学术合作，都可能被对方用英语或中文关键词搜一遍。一条多年前的情绪化发言，可能卡住一纸签证或一份 offer。这不是危言耸听，而是越来越常见的背景调查手段。</p>
+
+<h2>中文长尾关键词更难被发现</h2>
+<p>多数英文隐私工具只扫英文关键词，对中文里"我家在 xx 小区""我孩子是 xx 学校"这类表述无能为力。中文用户如果只依赖英文工具自查，会漏掉最致命的那部分隐私。建议用支持中文识别的工具，把中文长尾也扫一遍。</p>
+
+<h2>该怎么做</h2>
+<p>第一步，把 X 账号和国内实名信息的关联降到最低：不同平台用不同邮箱、不同昵称。第二步，定期清理 X 上的中文敏感内容，尤其是含真实地点、姓名、单位的旧推文。可参考 <a href="/blog/chinese-platforms-history-cleanup-guide">中文平台历史清理指南</a> 和 <a href="/blog/chinese-phone-number-x-tweets-selfcheck">手机号自查</a>。回到 <a href="/">digital-footprint-health.shop 首页</a>，用支持中英双语识别的免费体检，看清实名制下的真实暴露面。</p>
+`,
+    canonical: '/blog/chinese-real-name-system-x-privacy',
+    faq: [
+      { q: '实名制下 X 真的匿名吗？', a: '对多数中国用户来说不是。手机号、邮箱、微信已把虚拟昵称和真实身份绑定，泄露后攻击者能直接追溯到真人。', qEn: 'Is X really anonymous under real-name systems?', aEn: 'For most Chinese users, no. Phone, email, and WeChat already bind the handle to a real identity, so a leak points straight to a person.' },
+      { q: '中文长尾隐私为什么英文工具扫不到？', a: '多数英文工具只识别英文关键词，对"我家在 xx 小区"这类中文表述无能为力，而这恰恰是最致命的部分。', qEn: 'Why do English tools miss Chinese long-tail privacy?', aEn: 'Most English tools only recognize English keywords and miss Chinese phrases like "I live in district X", which is often the most damaging part.' },
+      { q: '跨平台人肉搜索怎么防？', a: '不同平台用不同邮箱和昵称，降低关联；X 上定期清中文敏感内容，尤其含真实地点和姓名的部分。', qEn: 'How do I prevent cross-platform doxxing?', aEn: 'Use a different email and nickname per platform to reduce linkage, and regularly clear Chinese sensitive content on X, especially real locations and names.' },
+      { q: '出境签证会查我的 X 吗？', a: '越来越常见。对方可能用中英文关键词搜你的公开内容，一条旧情绪帖可能卡住签证或 offer。', qEn: 'Will a visa check look at my X?', aEn: 'Increasingly yes. The other side may search your public content in both languages, and an old emotional post can stall a visa or an offer.' },
+    ],
+    titleEn: 'Real-Name Systems and Your X Footprint: What Chinese Users Should Know',
+    excerptEn: 'Real-name registration changes how a Chinese user X footprint should be handled. This piece looks at the practical privacy gaps that standard advice misses, from identity linkage to cross-platform exposure.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['X/Twitter', 'real-name', 'Chinese users', 'privacy', 'digital footprint'],
+    contentEn: `
+<p>Most privacy advice for X assumes a Western context: one email, one platform, and a clean separation between your online handle and your offline identity. For users in mainland China, that assumption breaks down. Real-name registration and a heavy multi-platform life change the math. This piece looks at the gaps standard advice misses.</p>
+<h2>Why an anonymous X is a myth for Chinese users</h2>
+<p>You may post on X under an English handle, but your phone number, email, and WeChat already tie that handle to a real identity. A breach does not hand an attacker a throwaway ID; it hands them a path to who you actually are. The sense of anonymity on X is, for many Chinese users, an illusion.</p>
+<h2>Cross-platform linking multiplies the risk</h2>
+<p>Chinese users typically move between WeChat, Weibo, Xiaohongshu, and X, often reusing similar nicknames, avatars, and writing habits. Once someone recognizes you on one platform, they can follow the thread to another. An old X post becomes the entry point for cross-platform doxxing.</p>
+<h2>The real-world cost of a resurfaced post</h2>
+<p>Overseas users worry about old posts hurting job searches. Chinese users carry an extra layer: visas, foreign-company interviews, and academic collaborations are increasingly screened with keyword searches in both English and Chinese. A heated post from years ago can stall a visa or an offer. Background checks are no longer hypothetical.</p>
+<h2>Chinese long-tail phrases are easy to miss</h2>
+<p>Most English privacy tools only scan English keywords. Phrases like "I live in district X" or "my kid goes to school Y" slip right past them. Chinese users who rely only on English tools leave the most damaging privacy exposure untouched. Use a tool that reads Chinese, and scan the Chinese long tail too.</p>
+<h2>What to do</h2>
+<p>First, reduce the link between your X account and domestic identity data: different email, different nickname per platform. Second, regularly clear Chinese sensitive content on X, especially old posts with real locations, names, or employers. See the <a href="/blog/chinese-platforms-history-cleanup-guide">Chinese platform cleanup guide</a> and the <a href="/blog/chinese-phone-number-x-tweets-selfcheck">phone-number self-check</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free check that recognizes both Chinese and English traces, and see your real exposure under a real-name system.</p>
+`,
+  },
+  {
+    slug: 'digital-footprint-health-basics-faq',
+    title: '数字足迹体检常见问题（2026 版）',
+    excerpt: '关于数字足迹体检，你最关心的几个问题：免费吗？会删推文吗？数据上传吗？多久做一次？这里一次说清。',
+    date: '2026-10-08',
+    updatedAt: '2026-10-08',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字足迹', '隐私体检', '常见问题', 'X/Twitter'],
+    content: `
+<p>数字足迹体检是个免费、只读的隐私扫描：你上传 X 数据归档，工具在本机解析每一条推文，标出手机号、地址、定位、敏感话题，给出 0-100 健康评分。下面是大家问得最多的几个问题。它不替你做决定，只把风险摆在你面前，清不清、清哪些，由你说了算。</p>
+
+<h2>体检免费吗？会删我的推文吗？</h2>
+<p>免费，而且只读。体检本身不碰你的任何内容，删除是可选项，按条计费、可暂停可退款。你可以反复体检，一次都不删。</p>
+
+<h2>体检会把我的数据上传到服务器吗？</h2>
+<p>不会。全程 100% 本机处理，归档在本地解析、本地加密存储，只在你明确选择删除时才调用 X 的写接口。你的数据不出你的电脑。</p>
+
+<h2>多久做一次比较合适？</h2>
+<p>如果你正准备求职、跳槽、结婚，或者刚经历过账号异常，建议立刻做一次；日常节奏可以每季度一次，配合 X 的归档下载周期。想知道评分怎么算，读 <a href="/blog/health-score-weighting-breakdown">健康评分权重详解</a>。</p>
+
+<h2>体检发现高危推文，下一步做什么？</h2>
+<p>先看评分和分类，按"手机号/地址 > 定位 > 敏感立场"的优先级清理。具体怎么删，参考 <a href="/blog/how-to-delete-old-tweets-2026">2026 删除旧推文完整指南</a>。回到 <a href="/">digital-footprint-health.shop 首页</a> 开始一次免费体检。</p>
+`,
+    canonical: '/blog/digital-footprint-health-basics-faq',
+    faq: [
+      { q: '数字足迹体检收费吗？', a: '体检本身完全免费且只读，不删任何内容；只有你主动选择删除时才按条计费。', qEn: 'Does a digital footprint check cost anything?', aEn: 'The check itself is completely free and read-only; it deletes nothing. You only pay per tweet if you choose to delete.' },
+      { q: '体检会把数据传到云端吗？', a: '不会。100% 本机处理，归档本地解析和加密存储，只在你明确删除时才调用 X 写接口。', qEn: 'Does the check send data to the cloud?', aEn: 'No. It is 100% on-device: the archive is parsed and stored locally, and X write API is only called when you choose to delete.' },
+      { q: '多久做一次合适？', a: '求职、跳槽、结婚或刚遇账号异常时立刻做；日常每季度一次，配合 X 归档下载周期。', qEn: 'How often should I run it?', aEn: 'Run one now if you are job hunting, switching jobs, getting married, or just had an account incident; quarterly as a routine.' },
+      { q: '评分低代表什么？', a: '说明你的公开内容里高风险痕迹较多，建议按手机号/地址 > 定位 > 敏感立场的顺序清理。', qEn: 'What does a low score mean?', aEn: 'It means a lot of high-risk traces sit in your public content. Clean in order: phone or address, then location, then sensitive stances.' },
+    ],
+    titleEn: 'Digital Footprint Health Check: Common Questions (2026)',
+    excerptEn: 'The questions people ask most about a digital footprint check: is it free, does it delete tweets, does it upload data, how often should you run it. Answered plainly.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['digital footprint', 'privacy check', 'FAQ', 'X/Twitter'],
+    contentEn: `
+<p>A digital footprint check is a free, read-only privacy scan. You upload your X archive, the tool parses every tweet on your own device, flags phone numbers, addresses, locations, and sensitive topics, and gives a 0-100 health score. These are the questions people ask most.</p>
+<p>If you have never run one, the result is usually a surprise. Most people find at least a few old posts with a phone number or a home address they forgot they ever posted. The score is not a judgment. It is a map of where your past self left the door open. Running it takes a few minutes and costs nothing, which is why there is little reason to delay.</p>
+<h2>Is it free, and does it delete my tweets?</h2>
+<p>Yes, it is free, and it is read-only. The check never touches your content. Deletion is optional, priced per tweet, and pauseable or refundable. You can run the check as many times as you like and delete nothing.</p>
+<h2>Does it upload my data to a server?</h2>
+<p>No. Processing is 100% on-device. The archive is parsed and stored encrypted locally, and X write API is only called when you explicitly choose to delete. Your data never leaves your computer.</p>
+<h2>How often should I run it?</h2>
+<p>If you are job hunting, switching jobs, getting married, or just had an account incident, run one now. As a routine, once a quarter lines up with X archive download cycle. For how the score is weighted, read <a href="/blog/health-score-weighting-breakdown">how the health score is weighted</a>.</p>
+<h2>I found high-risk tweets. What next?</h2>
+<p>Read the score and labels, then clean in priority order: phone or address first, then location, then sensitive stances. For the actual deletion steps, see the <a href="/blog/how-to-delete-old-tweets-2026">complete 2026 guide to deleting old tweets</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, start a free check.</p>
+`,
+  },
+  {
+    slug: 'chinese-mini-program-vs-x-data',
+    title: '微信小程序和 X，哪个更"记得"你？中文用户的双平台数据对比',
+    excerpt: '中国用户同时活在微信和 X 两个世界里。本文对比两者在数据存储、可追溯性、清理难度上的差异，帮你认清跨平台的数字足迹。',
+    date: '2026-10-08',
+    updatedAt: '2026-10-08',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['微信', 'X/Twitter', '小程序', '数据隐私', '中文用户'],
+    content: `
+<p>中国用户的一天，往往同时在微信和 X 两个世界里展开：微信处理工作、支付、挂号；X 用来冲浪、表达、看海外信息。两个平台都在"记住"你，但记住的方式和你能清理的程度完全不同。本文做一次直白的双平台数据对比。</p>
+
+<h2>数据存储：谁的库更"全"</h2>
+<p>微信的底层是强实名、强绑卡，小程序每次授权都留下行为轨迹，而且大多沉淀在腾讯的服务器上，你几乎无法直接导出一份完整记录。X 的数据虽然分散，但至少你能通过"下载数据归档"拿到一份属于自己的 ZIP，里面是你发过的每一条推文和私信。从"能否拿回自己的数据"看，X 反而更透明。</p>
+
+<h2>可追溯性：谁更容易被人肉</h2>
+<p>微信朋友圈默认半封闭，陌生人看不到；小程序授权则高度私密。X 默认公开，旧推文被搜索引擎收录后，任何人都搜得到。对中文用户来说，风险点正好相反：微信的风险在于"授权过多、自己都忘了给了谁"，X 的风险在于"当年随手发、如今全网可查"。</p>
+
+<h2>清理难度：谁更难擦掉</h2>
+<p>微信里你删一条朋友圈，只是自己看不见，服务端可能仍有留存；小程序授权要一个个手动收回，没有批量入口。X 虽然默认公开，但至少有官方删除接口和归档解析两条路，可以批量、可控地清掉旧推文。两者都不是"删了就消失"，但 X 的清理主动权更多握在你手里。</p>
+
+<h2>给中文用户的双平台建议</h2>
+<p>微信侧：定期进"设置 → 隐私 → 授权管理"收回不用的小程序，支付授权尤其要谨慎。X 侧：每季度下载一次归档，把含真实地点、手机号、情绪立场的旧推文清掉。对照 <a href="/blog/chinese-vs-western-platform-privacy-settings">中外平台隐私设置差异</a>，再看 <a href="/blog/chinese-content-creators-x-privacy-cleanup">内容创作者的 X 清理</a>。回到 <a href="/">digital-footprint-health.shop 首页</a>，用免费体检把两个平台的痕迹一起看清。</p>
+`,
+    canonical: '/blog/chinese-mini-program-vs-x-data',
+    faq: [
+      { q: '微信和 X 哪个更隐私？', a: '没有绝对的谁更隐私。微信风险在授权过多且自己难察觉，X 风险在默认公开且被全网检索，两者清理方式不同。', qEn: 'Which is more private, WeChat or X?', aEn: 'Neither is absolutely safer. WeChat risk is over-authorization you barely notice; X risk is public-by-default and globally searchable. Cleanup differs.' },
+      { q: '小程序授权怎么批量收回？', a: '微信目前没有批量入口，只能进"设置 → 隐私 → 授权管理"逐个撤销，重点清掉支付类授权。', qEn: 'How do I revoke mini-program authorizations in bulk?', aEn: 'WeChat has no batch option yet; go to Settings, Privacy, Authorization management, and revoke one by one, prioritizing payment authorizations.' },
+      { q: 'X 的归档能导出微信数据吗？', a: '不能，两者互不相通。X 归档只含你在 X 的内容，微信数据要从微信自己的导出通道拿。', qEn: 'Can X archive export WeChat data?', aEn: 'No, they are separate. The X archive only contains your X content; WeChat data comes from WeChat own export path.' },
+      { q: '中文用户最该先清哪个平台？', a: '两个都该清，但优先级看风险：X 的公开旧推文最易被陌生人搜到，建议先扫 X 归档。', qEn: 'Which platform should Chinese users clean first?', aEn: 'Both, but prioritize by risk: X public old posts are easiest for strangers to find, so scan the X archive first.' },
+    ],
+    titleEn: 'WeChat Mini-Programs vs X: Where Does Your Data Actually Live?',
+    excerptEn: 'Chinese users live across WeChat and X at once. This comparison looks at where each platform keeps your data, how traceable it is, and how hard it is to clean up.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['WeChat', 'X/Twitter', 'mini-program', 'data privacy', 'Chinese users'],
+    contentEn: `
+<p>A Chinese user day often plays out across two worlds at once: WeChat for work, payments, and appointments, and X for browsing, expression, and overseas news. Both platforms remember you, but how they remember and how much you can clean up are very different. This is a straight comparison.</p>
+<h2>Data storage: whose vault is fuller</h2>
+<p>WeChat runs on strong real-name binding and card linkage. Every mini-program authorization leaves a behavior trail, and most of it sits on Tencent servers, with no easy way for you to export a complete record. X data is scattered, but at least you can request a ZIP archive of your own tweets and DMs. On the question of getting your own data back, X is the more transparent of the two.</p>
+<h2>Traceability: which is easier to dox</h2>
+<p>WeChat Moments are semi-closed by default, and mini-program authorizations are highly private. X is public by default, and old tweets indexed by search engines are visible to anyone. For Chinese users the risk flips: WeChat risk is over-sharing authorizations you forgot you granted, while X risk is posts you made casually years ago that are now globally searchable.</p>
+<h2>Cleanup difficulty: which is harder to erase</h2>
+<p>Delete a WeChat Moments post and it disappears from your view, but the server may still keep it. Mini-program authorizations must be revoked one by one, with no batch option. X is public by default, yet it offers both an official deletion API and archive parsing, letting you clean old tweets in bulk and on your own terms. Neither is deleted means gone, but X leaves more of the cleanup control in your hands.</p>
+<h2>Advice for Chinese users on both platforms</h2>
+<p>On WeChat, regularly open Settings, then Privacy, then Authorization management, and revoke mini-programs you no longer use, with payment authorizations treated most carefully. On X, download your archive every quarter and clear old tweets with real locations, phone numbers, or emotional stances. Compare with the <a href="/blog/chinese-vs-western-platform-privacy-settings">privacy-setting differences across Chinese and Western platforms</a>, then read <a href="/blog/chinese-content-creators-x-privacy-cleanup">X cleanup for content creators</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free check that shows traces from both platforms at once.</p>
+`,
+  },
+  {
+    slug: 'black-friday-2026-online-privacy-footprint',
+    title: '黑五 2026 来临前，先清理你的数字足迹：购物季隐私清单',
+    excerpt: '黑五 2026 不只是打折季，也是数据收割季：你填的收货地址、邮箱、支付信息会被反复利用。本文给出购物前的数字足迹清理清单。',
+    date: '2026-10-08',
+    updatedAt: '2026-10-08',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['黑五', '2026', '隐私清单', '购物季', '数字足迹'],
+    content: `
+<p>黑五（Black Friday）2026 不只是打折季，也是数据收割季。你为了凑单填的收货地址、邮箱、支付信息，会被商家、广告网络、数据经纪商反复利用一整年。在钱包出手之前，先给自己的数字足迹做一次"购物前体检"。</p>
+
+<h2>为什么购物季是隐私高风险期</h2>
+<p>黑五期间你会在几十个站点留下信息：邮箱订阅、一键登录、地址自动填充、比价插件。每多填一次，就多一份被转卖、被撞库的风险。促销弹窗和"限时领券"页面，也是钓鱼的高发地。冲动下单的同时，你的数据足迹也在膨胀。</p>
+
+<h2>购物前隐私清单（5 项）</h2>
+<ol>
+  <li><strong>清理邮箱里的旧订单和快递单号。</strong>它们含姓名、电话、住址，泄露后极易被用于精准诈骗。</li>
+  <li><strong>用一个专用邮箱和虚拟号下单。</strong>把购物账号和主邮箱、主手机号隔离，被泄露也不牵连核心身份。</li>
+  <li><strong>检查浏览器自动填充。</strong>关掉"自动填地址/卡号"，避免在任何站点误留支付信息。</li>
+  <li><strong>复查 X 等社交平台的旧推文。</strong>别让"收到的快递箱""新买的 xx"暴露你的真实住址和消费习惯。</li>
+  <li><strong>临时用、用完清。</strong>促销期间注册的账号，节后统一注销或改强密码。</li>
+</ol>
+
+<h2>黑五之后别忘了收尾</h2>
+<p>购物季结束不是终点。被收集的邮箱会在接下来半年持续收到营销和钓鱼邮件，被记下的浏览行为会反过来推更精准的广告。建议节后做一次全面的数字足迹体检，把这一轮新增的暴露面清一遍。</p>
+
+<h2>把清理变成购物前的习惯</h2>
+<p>把"先看体检、再下单"当成黑五的固定动作，比事后补救轻松得多。先读 <a href="/blog/holiday-season-2026-footprint-cleanup">节假日足迹清理</a>，再看 <a href="/blog/x-algorithm-change-old-tweets-reach-2026">算法怎么翻出旧内容</a>。回到 <a href="/">digital-footprint-health.shop 首页</a>，用 100% 本机运行的免费体检，购物前先看清自己暴露了什么。</p>
+`,
+    canonical: '/blog/black-friday-2026-online-privacy-footprint',
+    faq: [
+      { q: '黑五为什么是隐私高风险期？', a: '你会在大量站点留下邮箱、地址、支付信息，被商家和数据经纪商反复利用一整年，促销弹窗也是钓鱼高发地。', qEn: 'Why is Black Friday a privacy high-risk window?', aEn: 'You leave email, address, and payment data across many sites, reused by merchants and brokers for a year, and promo popups are prime phishing.' },
+      { q: '专用邮箱和虚拟号怎么帮到我？', a: '把购物账号和主邮箱、主手机号隔离，一旦泄露也不牵连你的核心身份和验证码接收。', qEn: 'How do a dedicated email and virtual number help?', aEn: 'They isolate shopping accounts from your main email and phone, so a leak does not hit your core identity or code reception.' },
+      { q: '浏览器自动填充要关吗？', a: '建议关掉地址和卡号自动填充，避免在任何站点误留支付信息，尤其促销期间临时站点多。', qEn: 'Should I turn off browser autofill?', aEn: 'Yes, turn off address and card autofill so payment data is never left on a random site, especially during the sale.' },
+      { q: '黑五之后还要做什么？', a: '节后做一次全面数字足迹体检，清理这一轮新增的暴露面，并注销临时注册的账号。', qEn: 'What should I do after Black Friday?', aEn: 'Run a full footprint check after the season to clear new exposure, and delete accounts you created just for the sale.' },
+    ],
+    titleEn: 'Before Black Friday 2026: Clean Your Digital Footprint With This Shopping-Season Privacy Checklist',
+    excerptEn: 'Black Friday 2026 is not just a discount season, it is also a data harvest: shipping addresses, emails, and payment details get reused. This pre-shopping footprint cleanup checklist helps you act before you spend.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['Black Friday', '2026', 'privacy checklist', 'shopping season', 'digital footprint'],
+    contentEn: `
+<p>Black Friday 2026 is not just a discount season, it is also a data harvest. The shipping addresses, emails, and payment details you fill in to snag a deal get reused by merchants, ad networks, and data brokers for a full year. Before your wallet moves, give your digital footprint a pre-shopping checkup.</p>
+<h2>Why shopping season is a privacy high-risk window</h2>
+<p>During Black Friday you leave information on dozens of sites: email subscriptions, one-click logins, address autofill, and price-comparison extensions. Each extra form is one more chance to be resold or caught in a credential stuffing attack. Promo popups and claim-your-coupon pages are also prime phishing territory. While you chase deals, your data footprint grows.</p>
+<h2>Pre-shopping privacy checklist (5 items)</h2>
+<ol>
+  <li><strong>Clear old order and tracking emails.</strong> They carry name, phone, and address, and leaks turn them into precise scam material.</li>
+  <li><strong>Use a dedicated email and a virtual number.</strong> Isolate shopping accounts from your main email and phone so a leak does not hit your core identity.</li>
+  <li><strong>Check browser autofill.</strong> Turn off automatic address and card filling so payment data is never left on a random site.</li>
+  <li><strong>Review old social posts.</strong> Do not let a package-arrived or just-bought-X post expose your real address and spending habits.</li>
+  <li><strong>Use temporarily, clean after.</strong> Accounts created for the sale should be deleted or given strong passwords once the season ends.</li>
+</ol>
+<h2>Do not skip the aftermath</h2>
+<p>The end of shopping season is not the end of risk. The emails collected will keep drawing marketing and phishing for half a year, and recorded behavior feeds more targeted ads. Run a full footprint check after the season to clear the new exposure this round added.</p>
+<h2>Make cleanup a pre-shopping habit</h2>
+<p>Treat check first, then buy as a fixed Black Friday routine. It is far easier than cleanup after the fact. Read the <a href="/blog/holiday-season-2026-footprint-cleanup">holiday footprint cleanup</a> guide, then see <a href="/blog/x-algorithm-change-old-tweets-reach-2026">how algorithms resurface old content</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free, 100% on-device check and see what you are exposing before you spend.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

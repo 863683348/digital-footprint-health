@@ -22186,6 +22186,633 @@ rl.on('close', () =&gt; {
         aEn: 'It depends on your use. If you earn from distribution, verification helps. If only for the badge, weigh the identity data and amplified old-content exposure before deciding.'
       }
     ]
+  },
+  {
+    slug: "political-views-old-tweets-career-risk",
+    title: "几年前的政治表态推文，正在悄悄影响你的职业",
+    excerpt: "你三年前随手转发的那条政治表态，可能正在招聘官的屏幕上被反复端详。本文讲清旧推文为什么会被翻出来、哪些行业最敏感，以及三步把暴露面降下来的实操方法。",
+    date: "2026-10-10",
+    updatedAt: "2026-10-10",
+    author: "Digital Footprint Health Team",
+    category: "风险场景",
+    tags: ["X/Twitter", "政治观点", "职业风险", "隐私保护", "背景调查"],
+    canonical: "/blog/political-views-old-tweets-career-risk",
+    faq: [
+      { q: "招聘官真的会查旧推文吗？", a: "会，尤其是管理岗、对外岗和涉及公共形象的角色。社媒检索已经是很常见的背景调查动作，不只是看学历和履历。", qEn: "Do recruiters really check old tweets?", aEn: "Yes, especially for leadership, outward-facing, and reputation-sensitive roles. Social-media search is a common part of background checks, not just a scan of CVs." },
+      { q: "把推文设为仅自己可见，还算公开吗？", a: "不算。仅自己可见的内容别人看不到，暴露面大幅下降；但它仍存在于你的账号里，建议同时做一次本机体检确认没有其他公开硬隐私。", qEn: "If I set tweets to only me, are they still public?", aEn: "No. Only-me content is invisible to others and sharply reduces exposure, but it still lives in your account, pair it with an on-device check to confirm no other hard-private facts are public." },
+      { q: "删了原帖，搜索引擎还能搜到吗？", a: "可能。搜索引擎会缓存推文页，第三方转载也可能保留。删除能降低风险，但无法保证快照立刻消失，所以清理后建议隔段时间复查。", qEn: "If I delete the original, can search engines still find it?", aEn: "Possibly. Search engines cache tweet pages and third parties may repost. Deletion lowers risk but does not guarantee the snapshot vanishes, so re-check after a while." },
+      { q: "普通看法类内容也要删吗？", a: "不必一刀切。明确带立场、带攻击性、点名具体人或单位的内容优先处理；温和的观点表达可以保留或转私密，重点是降低最刺眼的风险。", qEn: "Should I delete mild opinion posts too?", aEn: "Not necessarily. Prioritize explicit stance, attacks, and named individuals or organizations; mild opinions can stay or go private. The goal is removing the most glaring risks." },
+      { q: "怎么知道哪些旧推文最危险？", a: "最稳的办法是把完整归档拉到本机，用体检工具按敏感话题和关键词扫描，给出风险清单，比凭记忆翻找可靠得多。", qEn: "How do I know which old tweets are riskiest?", aEn: "The safest method is to pull your full archive on-device and let a check tool scan by sensitive topic and keyword, producing a risk list, far more reliable than scrolling from memory." }
+    ],
+    titleEn: "How Your Old Political Tweets Can Quietly Affect Your Career",
+    excerptEn: "That political post you retweeted three years ago may still be on a recruiter screen. This guide explains why old tweets resurface, which industries are most sensitive, and three practical steps to shrink your exposure.",
+    categoryEn: "Risk Scenarios",
+    tagsEn: ["X/Twitter", "political opinions", "career risk", "privacy", "background check"],
+    content: `
+<p>很多人以为社交账号是发完就忘的地方。但招聘官不这么想，尤其是当你应聘的岗位越敏感，你的历史推文就越可能被翻出来重新打量。一条几年前的政治表态，不一定让你丢工作，但足以让对方在要不要约面试这一刻多犹豫三秒。</p>
+
+<h2>为什么旧推文会被重新翻出来</h2>
+<p>第一，背景调查早已不再只看学历和前东家。大量公司把社媒检索当成标准动作，尤其是管理岗、对外岗、涉及公共形象的角色。第二，平台算法会把有争议的旧内容重新推上时间线，一次转发就能让它回到公众视野。第三，搜索引擎会长期缓存你的推文页，哪怕你删了原帖，快照里可能还在。这三股力量叠加，让一条你早忘了的推文，在关键时刻又被摆上台面。</p>
+
+<h2>哪些行业对旧表态最敏感</h2>
+<p>并不是所有行业都一视同仁。下面的表按历史言论被翻出的代价做了粗略分级，仅供参考，不等于绝对结论。真正决定敏感度的，往往是岗位是否面向公众、是否涉及合规、是否要代表机构发言。</p>
+<table>
+  <thead>
+    <tr><th>行业</th><th>敏感度</th><th>原因</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>公务员 / 事业单位</td><td>高</td><td>政治中立要求强，历史表态易被放大</td></tr>
+    <tr><td>教育 / 学校</td><td>高</td><td>面向未成年人与公众信任，言论受审视</td></tr>
+    <tr><td>金融 / 法律</td><td>中高</td><td>合规与声誉考量，客户信任敏感</td></tr>
+    <tr><td>医疗 / 公关</td><td>中</td><td>专业形象与公众沟通要求高</td></tr>
+    <tr><td>纯技术 / 研发</td><td>中低</td><td>更看重能力证据，但仍非零风险</td></tr>
+  </tbody>
+</table>
+
+<h2>招聘官到底在看什么</h2>
+<p>他们关注的往往不是你持什么观点，而是几条更具体的信号：是否有人身攻击或辱骂性表达，是否点名具体人或单位，是否暴露了与岗位严重冲突的立场，以及整体语气是否稳定可信。换句话说，偶尔表达看法通常没事，真正危险的是带攻击性、带具体指向、带极端化的内容。理解这一点，你才知道该优先清理哪一类。</p>
+
+<h2>一个真实场景：一条转发引发的连锁反应</h2>
+<p>设想你五年前转发过一条带人身攻击的表态，当时没人在意。后来你应聘一家学校的岗位，HR 在背景调查时搜到这条，虽然你早忘了，但对方看到的是带攻击性的当下印象。结果不是直接出局，而是被放进待定名单，机会悄悄流走。这种损失很难归因，却真实发生。它说明：旧推文的风险不总是显性拒信，更多是让你在关键节点少了一个机会。</p>
+
+<h2>已经发了后悔的，怎么止损</h2>
+<ul>
+  <li><strong>别慌删一切。</strong>先把最刺眼的几类找出来，逐条处理，比清空账号更稳。</li>
+  <li><strong>转私密优先。</strong>对有价值的讨论留底，只对自己可见，降低暴露又不丢记忆。</li>
+  <li><strong>补一段说明。</strong>如果某观点现在变了，可以发新帖表达成长，让时间线呈现完整脉络，比删光更自然。</li>
+</ul>
+
+<h2>三步把暴露面降下来</h2>
+<ul>
+  <li><strong>先体检，再清理。</strong>用 <a href="/blog/how-to-download-x-archive">X 数据归档</a> 把全部历史推文拉到本机，按关键词和敏感话题自己扫一遍，比凭记忆可靠得多。</li>
+  <li><strong>分优先级处理。</strong>明确带立场、带人身攻击、带具体人或单位的内容优先处理；普通看法类可以保留或转私密。</li>
+  <li><strong>改私密而非硬删。</strong>如果账号有对外价值，把旧文设为仅自己可见，既保留记忆也降低暴露，比一刀切删除更稳。</li>
+</ul>
+
+<h2>清理时最常见的三个误区</h2>
+<p>第一，以为删了就干净。搜索引擎快照和第三方转载常常比原帖活得更久。第二，只删政治类，忘了定位、住址、手机号这类硬隐私同样危险。第三，清理完不复查，建议隔两周再体检一次，确认没有漏网内容。</p>
+
+<h2>一个更稳妥的长期习惯</h2>
+<p>与其每次求职前临时抱佛脚，不如把社交账号当成一种长期资产来维护。每年做一次隐私体检，把新产生的硬隐私和过激表达及时收掉，平时发之前多想一秒：这条如果被未来的面试官看到，我会尴尬吗。把清理变成习惯，比一次性大扫除轻松得多，也更能扛住时间线算法的反复翻案。</p>
+<h2>招聘之外，还有谁会翻旧账</h2>
+<p>招聘官不是唯一会看的人。未来的主管可能向现任同事打听你，而那位同事很可能顺手刷了你的主页。同样的逻辑在这里也成立：读起来不稳定或有攻击性的内容，才会通过口头传播；你那些有理有据的长帖，反而很少被提起。把账号维持稳定，也是在保护那些永远不会出现在正式背景调查里的非正式渠道。</p>
+
+<p>如果你想系统看看自己到底漏了多少，去 <a href="/">digital-footprint-health.shop</a> 做一次本机隐私体检：上传归档，工具在你的电脑上解析，数据不出本机，给出 0-100 的健康评分和高风险清单。先把底子打干净，再去谈职业形象才踏实。</p>
+`,
+    contentEn: `
+<p>A lot of people treat social accounts as post and forget. Recruiters do not. The more sensitive the role, the more likely your old timeline gets reopened and re-read. A political post from three years ago will not always cost you a job, but it can make someone pause for three seconds at the should we invite them moment.</p>
+
+<h2>Why old tweets resurface</h2>
+<p>First, background checks rarely stop at degrees and former employers now. Many companies treat social-media search as standard, especially for leadership, outward-facing, and reputation-sensitive roles. Second, platform algorithms keep pushing controversial old content back into timelines; one retweet can bring it back to public view. Third, search engines cache your tweet pages for a long time, so even a deleted original may still live in a snapshot. These three forces stack up and put a post you forgot right back on the table at the worst moment.</p>
+
+<h2>Which industries are most sensitive</h2>
+<p>Not every industry weighs history equally. The table below grades exposure cost roughly, for reference, not as a hard rule. What really drives sensitivity is whether the role faces the public, touches compliance, or speaks for an institution.</p>
+<table>
+  <thead>
+    <tr><th>Industry</th><th>Sensitivity</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Civil service / public sector</td><td>High</td><td>Strong neutrality expectations; old statements get amplified</td></tr>
+    <tr><td>Education / schools</td><td>High</td><td>Public trust and minor safety scrutiny</td></tr>
+    <tr><td>Finance / law</td><td>Medium-high</td><td>Compliance and reputation considerations</td></tr>
+    <tr><td>Healthcare / PR</td><td>Medium</td><td>Professional image and communication demands</td></tr>
+    <tr><td>Pure tech / R&D</td><td>Low-medium</td><td>Skill evidence matters more, but risk is not zero</td></tr>
+  </tbody>
+</table>
+
+<h2>What recruiters actually look for</h2>
+<p>They usually care less about which view you hold and more about a few concrete signals: whether there is personal attack or abusive language, whether specific people or organizations are named, whether the stance sharply conflicts with the role, and whether the overall tone is steady and credible. In other words, occasional opinion is usually fine; the real danger is attacking, naming, or extremifying. Once you understand that, you know which category to clean first.</p>
+
+<h2>A real scenario: one retweet and the chain reaction</h2>
+<p>Imagine you retweeted an attack-laden stance five years ago and nobody cared then. Later you apply to a school role, and HR finds it during a background search. You forgot it, but they see an attack-laden impression in the present. The result is not an outright rejection, but a hold list, and the chance slips away quietly. This loss is hard to attribute yet real. It shows old-tweet risk is not always a visible rejection letter, more often a missing opportunity at a key node.</p>
+
+<h2>If you already posted something you regret</h2>
+<ul>
+  <li><strong>Do not panic-delete everything.</strong> Find the most glaring few first and handle them, steadier than wiping the account.</li>
+  <li><strong>Privatize first.</strong> Keep valuable discussion for yourself only, lowering exposure without losing memory.</li>
+  <li><strong>Add context.</strong> If a view changed, post a new note showing growth so the timeline shows a full arc, more natural than a blank wipe.</li>
+</ul>
+
+<h2>Three steps to shrink exposure</h2>
+<ul>
+  <li><strong>Check before you clean.</strong> Pull your full history with an <a href="/blog/how-to-download-x-archive">X data archive</a> and scan it on your own machine by keyword and sensitive topic, far more reliable than memory.</li>
+  <li><strong>Prioritize.</strong> Clear explicit stance, personal attacks, and anything naming specific people or organizations first; keep or privatize milder opinion posts.</li>
+  <li><strong>Privatize instead of hard delete.</strong> If the account has outward value, set old posts to only me to keep the memory while lowering exposure, steadier than a blanket purge.</li>
+</ul>
+
+<h2>Three common cleanup mistakes</h2>
+<p>First, assuming deleted means clean. Search snapshots and third-party reposts often outlive the original. Second, deleting only political posts while forgetting location, home address, and phone number, those hard-private facts are just as risky. Third, not re-checking: run another check two weeks later to catch what slipped through.</p>
+
+<h2>A steadier long-term habit</h2>
+<p>Instead of scrambling before every job hunt, treat your social account as a long-term asset. Run a privacy check once a year, pull back new hard-private facts and overheated takes in time, and pause one second before posting: if a future interviewer saw this, would I cringe. Making cleanup a habit is far easier than a one-off purge, and it survives the algorithm dragging your old posts back up.</p>
+<h2>How to monitor your own name</h2>
+<p>Cleanup is not the end. Set a light self-monitoring loop so new risks do not pile up unnoticed. Search your own name and handle every couple of months, and turn on search alerts where available, so a resurfaced post reaches you instead of only a recruiter. If you find an old post quoted out of context, reply once with the full context or post a short clarification, then move on. Over-managing every mention burns time; the goal is to catch the few that actually matter.</p>
+
+<h2>Public versus private: what changes</h2>
+<p>A common question is whether switching to a private account erases the past. It does not retroactively hide posts that were public before the switch, and screenshots or third-party archives made while public still exist. What a private account does is stop future scraping and narrow who can see new posts. Treat the switch as a going-forward wall, not a time machine. Pair it with the archive cleanup above for the posts that already went out.</p>
+
+<h2>When a post is borderline, what to do</h2>
+<p>Not every old post is clearly safe or clearly risky; many sit in the middle. A useful test: would you say this to a colleague in a meeting. If yes, it is probably fine to leave. If you would lower your voice or pick different words, it is a candidate for privatizing. You do not need to purge the middle band, only the part that would genuinely shift a decision against you. This keeps your timeline human while removing the landmines.</p>
+
+<h2>A note on references and referrals</h2>
+<p>Recruiters are not the only ones who look. A future manager may ask a current colleague for an informal read, and that colleague might skim your profile. The same logic applies: the posts that read as unstable or hostile are what travel through word of mouth, not your carefully argued threads. Keeping the account steady protects you in the informal channels that never show up in a formal background check.</p>
+
+<h2>Quick reference: the keep, privatize, delete split</h2>
+<ul>
+  <li><strong>Delete:</strong> personal attacks, named individuals in conflict, illegal or doxxing content.</li>
+  <li><strong>Privatize:</strong> heated but lawful opinion, niche humor that ages badly, old debates.</li>
+  <li><strong>Keep:</strong> professional wins, harmless hobbies, posts you would defend in a meeting.</li>
+</ul>
+
+<p>The point of all this is not to scrub your personality from the internet. It is to make sure a careless moment from years ago does not outweigh the person you are today. A steady, human timeline does that better than an empty one. You keep the posts that show growth, drop the ones that show only heat, and let the rest sit. That balance survives the next algorithm sweep without constant panic, and it reads as a real person rather than a sanitized brand.</p>
+
+<p>If you want to see how much you have actually leaked, run an on-device privacy check at <a href="/">digital-footprint-health.shop</a>: upload your archive, the tool parses it on your computer, nothing leaves your machine, and you get a 0-100 health score with a prioritized risk list. Clean the foundation first, then worry about your professional image.</p>
+`
+  },
+  {
+    slug: "minor-tweets-deletion-rights",
+    title: "未成年人的推文，谁有权删除",
+    excerpt: "未成年人的社交数据受到额外保护，但家长能不能代删和平台必须删到什么程度并不是一回事。本文理清未成年人删除权的边界，以及家长实际能做的事。",
+    date: "2026-10-10",
+    updatedAt: "2026-10-10",
+    author: "Digital Footprint Health Team",
+    category: "合规与法律",
+    tags: ["未成年人", "数据保护", "删除权", "GDPR", "家长"],
+    canonical: "/blog/minor-tweets-deletion-rights",
+    faq: [
+      { q: "孩子成年后，家长还能代删吗？", a: "通常不能。成年后账号归属本人，家长不再有法定代理删除权，只能由本人操作或走平台的一般删除流程。", qEn: "Once a child is an adult, can a parent still delete?", aEn: "Usually no. The account belongs to the adult themselves; parents lose statutory proxy deletion rights and can only act through the person or the platform general flow." },
+      { q: "平台必须把未成年人的推文全网删光吗？", a: "不用。平台只负责它自己控制的内容，第三方转载和搜索引擎缓存不在它的删除范围内，需要分别走移除申请。", qEn: "Must the platform delete a minor tweets across the whole web?", aEn: "No. The platform only handles what it controls; third-party reposts and search caches are out of scope and need separate removal requests." },
+      { q: "家长代删需要证明什么？", a: "一般需要证明监护关系，比如户口本、出生证明或平台指定的材料，且删除范围限于该未成年子女账号下的内容。", qEn: "What must a parent prove to delete on behalf of a minor?", aEn: "Generally proof of guardianship, household register, birth certificate, or platform-specified documents, and the scope is limited to content under that minor child account." },
+      { q: "未成年人数据保护最核心的一点是什么？", a: "更高的同意门槛和更便利的撤回。简单说：收集要更谨慎，孩子或监护人想收回时要更容易。", qEn: "What is the core of minor data protection?", aEn: "A higher consent bar and easier withdrawal. In plain terms: collect more carefully, and make it easier for the child or guardian to take it back." }
+    ],
+    titleEn: "Who Can Delete a Minor Tweets",
+    excerptEn: "Minors social data gets extra protection, but can a parent delete on their behalf and how far must the platform go are different questions. This piece clarifies the boundaries of a minor deletion rights and what parents can actually do.",
+    categoryEn: "Compliance & Law",
+    tagsEn: ["minors", "data protection", "right to deletion", "GDPR", "parents"],
+    content: `
+<p>孩子小时候发的推文，长大后再看常常让人冒冷汗。但真要动手删，碰到的第一道墙往往是：法律到底把这件事交给谁决定？</p>
+
+<h2>未成年人数据为什么被特殊对待</h2>
+<p>儿童和青少年的数据被视为高敏感信息，一来他们未必理解言论的长尾后果，二来这些信息可能被用于他们成年后并不想要的定位与画像。因此无论在欧盟的 GDPR 还是其他地区的类似规则里，未成年人相关处理都要求更高的同意门槛和更便利的撤回机制。换句话说，法律先把未成年人当成需要额外保护的一方，再谈平台义务。</p>
+
+<h2>家长能代删吗</h2>
+<p>这要看平台规则和当地法律。多数平台允许监护人就自己未成年子女账号提出删除或限制请求，但通常要求证明监护关系，且范围限于该账号下的内容。家长不能替一个已经成年的子女删号，也不能跨平台追着每一条转载去删。实际操作时，准备好户口本、出生证明或平台指定的材料，按账号归属逐一处理最稳妥。</p>
+
+<h2>平台的义务边界在哪</h2>
+<p>平台一般需要提供请求删除的入口，并针对未成年人账号做年龄核验与默认更严格的隐私设置。但它没有义务替你全网清理，第三方转载、搜索引擎缓存、他人截图都不在平台的删除半径里。换句话说，平台能删的是它自己控制的内容。</p>
+<table>
+  <thead>
+    <tr><th>动作</th><th>平台能做的</th><th>平台做不到的</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>删除本账号内容</td><td>能，凭监护证明</td><td>第三方转载的同样内容</td></tr>
+    <tr><td>收紧隐私设置</td><td>能，默认更严</td><td>改变他人已下载的存档</td></tr>
+    <tr><td>清除搜索缓存</td><td>能申请移除部分</td><td>保证全网快照消失</td></tr>
+  </tbody>
+</table>
+
+<h2>监护关系证明怎么准备</h2>
+<p>不同平台要的材料略有差异，但核心都是证明你是账号使用者的法定监护人。常见的可用材料包括户口本（体现监护关系那一页）、出生医学证明、法院监护裁定，以及平台自己提供的申诉表单。建议提前把这几样扫描成电子版放在一处，需要时代填代交，省去临时翻找的慌乱。注意：证明只用于这一账号下的删除或限制，不能用来跨账号操作。</p>
+
+<h2>家长实际能做的三件事</h2>
+<ul>
+  <li>先在本平台提交未成年人删除或限制请求；</li>
+  <li>同步把账号隐私设置调到最严，并开启登录保护；</li>
+  <li>对搜索引擎缓存，走各家的移除申请流程，耐心跟进。</li>
+</ul>
+<p>想先看看孩子账号到底留了哪些硬隐私，可以用 <a href="/blog/how-to-download-x-archive">归档下载</a> 把数据拉到本机，在 <a href="/">digital-footprint-health.shop</a> 做一次本机体检，数据不出电脑，按风险清单逐项处理更安心。</p>
+`,
+    contentEn: `
+<p>Tweets a child posted can look alarming when reread years later. But the first wall you hit when trying to delete them is often: who does the law actually put in charge of that decision?</p>
+
+<h2>Why minor data gets special treatment</h2>
+<p>Children and teens data is treated as highly sensitive. They may not grasp the long-tail consequences of what they post, and that information can later feed profiling they never wanted as adults. That is why both the EU GDPR and similar rules elsewhere demand a higher consent bar and easier withdrawal for minor-related processing. In short, the law treats minors as needing extra protection first, then talks about platform duty.</p>
+
+<h2>Can a parent delete on their behalf?</h2>
+<p>It depends on platform policy and local law. Most platforms let a guardian request deletion or restriction for their own minor child account, but usually require proof of guardianship, and the scope is limited to content under that account. A parent cannot delete on behalf of an adult child, nor chase every repost across the web. In practice, prepare the household register, birth certificate, or platform-specified documents, and handle accounts one by one by ownership.</p>
+
+<h2>Where does the platform duty end</h2>
+<p>Platforms generally must provide a request deletion entry point and apply stricter default privacy settings plus age verification for minor accounts. But they are not obligated to scrub the entire web, third-party reposts, search caches, and screenshots sit outside their deletion radius. In short, the platform deletes what it itself controls.</p>
+<table>
+  <thead>
+    <tr><th>Action</th><th>Platform can</th><th>Platform cannot</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Delete in-account content</td><td>Yes, with guardianship proof</td><td>Same content on third-party reposts</td></tr>
+    <tr><td>Tighten privacy</td><td>Yes, stricter by default</td><td>Change others downloaded copies</td></tr>
+    <tr><td>Clear search cache</td><td>Can request partial removal</td><td>Guarantee all snapshots vanish</td></tr>
+  </tbody>
+</table>
+
+<h2>How to prepare guardianship proof</h2>
+<p>Platforms differ slightly on materials, but the core is proving you are the account user legal guardian. Commonly accepted items include the household register page showing the relationship, the birth certificate, a court guardianship order, and the platform own appeal form. Scan these into one digital folder in advance so you can fill and submit quickly when needed, avoiding a last-minute scramble. Note: the proof is only for deletion or restriction under that one account, not cross-account action.</p>
+
+<h2>Three things parents can actually do</h2>
+<ul>
+  <li>First submit the minor deletion or restriction request on the platform;</li>
+  <li>At the same time, set the account privacy to maximum and turn on login protection;</li>
+  <li>For search caches, use each engine removal request flow and follow up patiently.</li>
+</ul>
+<h2>What if the platform denies the request</h2>
+<p>Denials happen, often for missing or unclear proof. Before appealing, re-read the exact documents the platform lists and resubmit a cleaner package, one relationship page, one ID, one form, rather than a pile of unrelated scans. If the denial stands, you can still act on the account directly: tighten privacy, remove identifying posts, and limit who can see historical content. The platform refusal is not the end of protecting the child data, only the end of that one channel.</p>
+
+<h2>Age thresholds vary by region</h2>
+<p>The line between child and adult is not the same everywhere. Some regions set the digital consent age at 13, others at 16, a few higher, and the platform rule may differ from the local law. Know the threshold that applies to your case before assuming a parent can act, because acting outside it can get the request bounced or the account flagged. When in doubt, lead with the platform own help center wording.</p>
+
+<p>To see what hard-private data a child account actually left behind, pull the archive with <a href="/blog/how-to-download-x-archive">archive download</a> and run an on-device check at <a href="/">digital-footprint-health.shop</a>, nothing leaves your computer, and you work through the risk list item by item.</p>
+`
+  },
+  {
+    slug: "digital-legacy-old-tweets",
+    title: "你留下的旧推文，也是一种数字遗产",
+    excerpt: "我们很少把社交账号当成遗产来想，但人不在了，账号和里面的旧推文会怎样，是很多人都还没处理的事。本文从心理和习惯角度，聊聊现在就能做的三件事。",
+    date: "2026-10-10",
+    updatedAt: "2026-10-10",
+    author: "Digital Footprint Health Team",
+    category: "心理与习惯",
+    tags: ["数字遗产", "账号继承", "隐私规划", "数字极简"],
+    canonical: "/blog/digital-legacy-old-tweets",
+    faq: [
+      { q: "数字遗产只包含社交账号吗？", a: "不只是。它还涵盖云盘、邮件、订阅、加密货币钱包等所有线上资产，社交账号里的旧推文只是其中最容易被忽略的一部分。", qEn: "Does digital legacy only mean social accounts?", aEn: "No. It also covers cloud drives, email, subscriptions, crypto wallets, everything online. Old tweets in a social account are just the most overlooked slice." },
+      { q: "家人能直接登录我的账号清理吗？", a: "技术上也许能，但法律上常常处于灰色地带，且平台条款多禁止账号共享。更稳妥的是生前写好授权与处理意向。", qEn: "Can family just log in and clean my account?", aEn: "Technically maybe, but legally it is often gray, and platform terms usually forbid account sharing. Safer to write authorization and intent while alive." },
+      { q: "为什么现在就要想这件事？", a: "因为等到出事再处理，往往家人既拿不到权限，也不知道你的意愿，最后只能被动接受平台默认规则。", qEn: "Why think about this now?", aEn: "Because after the fact, family often has neither access nor your wishes, and ends up accepting the platform default rules passively." },
+      { q: "定期清理对数字遗产有什么用？", a: "它把一次性大扫除变成细水长流，每次只处理一小批，既减轻心理负担，也让身后留下的内容更干净。", qEn: "How does regular cleanup help digital legacy?", aEn: "It turns a one-time purge into a steady trickle, small batches each time, less mental load, and a cleaner trail left behind." }
+    ],
+    titleEn: "Your Old Tweets Are Also a Kind of Digital Legacy",
+    excerptEn: "We rarely think of social accounts as legacy, but when someone is gone, what happens to the account and its old tweets is something most people never plan for. From a mindset angle, here are three things you can do now.",
+    categoryEn: "Mindset & Habits",
+    tagsEn: ["digital legacy", "account inheritance", "privacy planning", "digital minimalism"],
+    content: `
+<p>清理数字足迹，不只是为了别被翻旧账。它也是你在为身后留下什么、留下多少，做一次主动的选择。</p>
+
+<h2>什么是数字遗产</h2>
+<p>数字遗产是你离世后留下的一切线上痕迹：社交账号、云盘、邮件，以及里面那些你可能早就忘了的旧推文。它们有的温暖，有的尴尬，有的则带着你并不想被长期记住的硬隐私，比如住址、家庭关系、健康信息。很多人以为数字遗产是名人才需要操心的事，其实普通人的账号里同样藏着大量可被拼接的个人信息。</p>
+
+<h2>账号在人走之后会怎样</h2>
+<p>不同平台的处理差异很大。有的允许继承人申请停用或下载，有的默认长期保留，有的会在长期不登录后回收。问题在于：绝大多数人从没告诉家人我的账号怎么办、密码在哪、哪些内容想删。结果往往是账号被遗忘，或者尴尬内容一直挂在那里，甚至被陌生人利用来冒充本人。</p>
+
+<h2>数字遗产和遗产继承不是一回事</h2>
+<p>现实里的财产继承有法律流程，但社交账号往往不在其中。多数平台的条款把账号视为个人许可，不允许转让，继承人能做的通常只是申请停用或下载数据，而非接管使用。这也意味着：如果你希望某些内容被保留、某些被删除，必须在生前用书面或平台工具明确表达，否则默认规则未必合你心意。</p>
+
+<h2>现在就能做的三件事</h2>
+<ul>
+  <li><strong>先清一遍硬隐私。</strong>把住址、手机号、家庭照片这类内容处理掉，别把它们留成别人要替你收拾的烂摊子。</li>
+  <li><strong>写一份简单的账号说明。</strong>哪些账号希望保留、哪些希望删除、谁有权处理，一段话就够，比什么都不说强。</li>
+  <li><strong>定期做数字极简。</strong>把清理旧推文当成每年一次的小习惯，别等到出事才想起来。</li>
+</ul>
+
+<h2>为什么这件事值得现在动手</h2>
+<p>人在健康时做这些决定最清醒，也最能被家人理解。等真的到了那一天，家人往往手忙脚乱，既拿不到权限，也不知道你的意愿，最后只能被动接受平台默认规则。把账号归属和清理意向写下来，本质上是在替未来的家人减负，也是在替自己保留体面。它不需要多正式，一份存在密码管理器里的备注就足够。</p>
+<p>如果你还没做过这一步，不妨先从一次本机体检开始：到 <a href="/">digital-footprint-health.shop</a> 上传你的 X 归档，在电脑上解析，数据不出本机，先看看哪些旧内容最该现在就处理。</p>
+`,
+    contentEn: `
+<p>Cleaning your digital footprint is not only about not getting caught by old posts. It is also an active choice about what you leave behind, and how much of it.</p>
+
+<h2>What is digital legacy</h2>
+<p>Digital legacy is every online trace you leave after you are gone: social accounts, cloud drives, email, and the old tweets you may have long forgotten. Some are warm, some awkward, and some carry hard-private facts you would not want remembered forever, an address, family ties, health details. Many think digital legacy is only for famous people, but ordinary accounts also hide plenty of personally joinable information.</p>
+
+<h2>What happens to accounts after someone passes</h2>
+<p>Platforms differ a lot. Some let heirs request deactivation or download; some keep accounts indefinitely by default; some recycle them after long inactivity. The problem: almost nobody tells their family here is what to do with my account, where the password is, and what to delete. The result is either a forgotten account or embarrassing content left hanging, sometimes even hijacked by strangers impersonating the person.</p>
+
+<h2>Digital legacy is not the same as inheritance</h2>
+<p>Real-world property inheritance has a legal process, but social accounts often sit outside it. Most platform terms treat accounts as personal licenses, not transferable, and heirs can usually only request deactivation or data download, not take over use. That means: if you want some content kept and some deleted, you must state it in writing or via platform tools while alive, otherwise the default rule may not match your wish.</p>
+
+<h2>Three things you can do now</h2>
+<ul>
+  <li><strong>Clear the hard-private stuff first.</strong> Handle address, phone, and family photos so no one has to clean up your mess later.</li>
+  <li><strong>Write a short account note.</strong> Which accounts to keep, which to delete, who is allowed to act, one paragraph beats saying nothing.</li>
+  <li><strong>Make digital minimalism a habit.</strong> Treat cleaning old tweets as a once-a-year small ritual, not a panic move after something happens.</li>
+</ul>
+
+<h2>Why do it now</h2>
+<p>You make these calls most clearly while healthy, and your family understands them best then. On that day, family is often overwhelmed, with neither access nor your wishes, and ends up accepting the platform default rules passively. Writing down account ownership and cleanup intent lifts a burden from your future family and keeps your own dignity. It need not be formal, a note in your password manager is enough.</p>
+<h2>Built-in legacy tools already exist</h2>
+<p>You do not have to invent this from scratch. Major platforms now offer legacy or inactive-account features: a legacy contact who can manage a memorialized profile, or an inactive-account manager that triggers after a set period of no login. These are imperfect and vary by service, but they beat leaving family to guess. Naming a contact takes minutes and removes the hardest part, who is allowed to touch the account at all.</p>
+
+<h2>Passwords and second factors are part of the plan</h2>
+<p>A legacy contact helps, but if nobody can log in, the account stays locked regardless. Storing access hints in a password manager shared with a trusted person, or writing them into your account note, is what makes the plan executable. The point is not to hand over passwords casually, but to remove the single biggest blocker, no access, at the moment it is needed most. Pair this with the annual cleanup so the accessible account is also a clean one.</p>
+
+<p>A short note today spares a hard conversation later, and it keeps the decision in your hands rather than the platforms. The cost of skipping it is paid by someone else, at the worst possible time.</p>
+
+<p>If you have not done this yet, start with one on-device check: upload your X archive at <a href="/">digital-footprint-health.shop</a>, parse it on your computer with nothing leaving the machine, and see which old content most deserves handling now.</p>
+`
+  },
+  {
+    slug: "x-archive-missing-recent-tweets",
+    title: "为什么 X 归档里常常找不到最近一个月的推文",
+    excerpt: "你刚下载的 X 数据归档，可能并不包含最近几周的推文。这不是你操作错了，而是归档本身的快照机制决定的。本文讲清原因、对比不同下载方式，并给出补缺口的实操。",
+    date: "2026-10-11",
+    updatedAt: "2026-10-11",
+    author: "Digital Footprint Health Team",
+    category: "归档入门",
+    tags: ["X归档", "数据下载", "归档不全", "体检前置"],
+    canonical: "/blog/x-archive-missing-recent-tweets",
+    faq: [
+      { q: "归档为什么不是实时的？", a: "因为它是后台周期性打包的数据包，从你请求到真正可下载之间有一段时间差，下载到的是请求前某时刻的状态，而非按下按钮那一秒的全量。", qEn: "Why is the archive not real-time?", aEn: "Because it is a periodically bundled package generated in the background; there is a delay between your request and the downloadable file, which reflects a state from before you clicked, not a live copy." },
+      { q: "最近一个月都缺失是正常的吗？", a: "常见，但不代表一定正常。若超过一个月仍完全缺失，建议重新请求一次，并和 App 里的时间线手动核对缺口范围。", qEn: "Is it normal for the last month to be missing?", aEn: "Common, but not automatically fine. If more than a month is fully absent, re-request and reconcile against your in-app timeline to confirm the gap range." },
+      { q: "怎么把缺口补上？", a: "最稳的是等几天重新请求归档，让最近内容进新包；技术用户可用 API 增量拉取并与旧归档合并，避免重复与遗漏。", qEn: "How do I close the gap?", aEn: "The safest is to wait a few days and re-request so recent content enters the new package; technical users can pull incrementally via API and merge with the old archive to avoid duplicates and omissions." },
+      { q: "用不完整的归档做体检会怎样？", a: "分数可能偏乐观，因为最近一个月的硬隐私没被扫到。建议先补全最近数据再做体检，结论才靠谱。", qEn: "What happens if I check from an incomplete archive?", aEn: "The score may be overly optimistic because the last month of hard-private facts was not scanned. Complete the recent data first so the conclusion is trustworthy." },
+      { q: "API 增量拉取普通人能用吗？", a: "需要一定的技术能力和开发者权限，适合定期同步的重度用户；普通用户用网页请求归档、隔几天重下一次，基本也能覆盖。", qEn: "Can ordinary users do API incremental pulls?", aEn: "It needs some technical skill and developer access, suited to heavy users who sync regularly; ordinary users can mostly cover the gap by requesting the web archive and re-requesting after a few days." }
+    ],
+    titleEn: "Why Your X Archive Often Misses the Last Month of Tweets",
+    excerptEn: "The X archive you just downloaded may not include the last few weeks of tweets. That is not a mistake on your end, it is how the snapshot mechanism works. This guide explains why, compares download methods, and shows how to close the gap.",
+    categoryEn: "Archive Basics",
+    tagsEn: ["X archive", "data download", "incomplete archive", "pre-check"],
+    content: `
+<p>很多人第一次下载 X 归档都会遇到同一个困惑：明明上周发的内容，在归档里却找不到。先别怀疑自己点错了，这通常是归档机制本身的特性，不是你操作失误。</p>
+
+<h2>归档是一张快照，不是实时镜像</h2>
+<p>X 的归档本质上是一份周期性生成的数据包。你点击请求归档后，系统需要时间打包，真正能下载的往往是请求时刻之前某一段时间的状态，不是按下按钮那一秒的实时全量。所以最近的推文经常还没进包。理解这一点很重要：归档回答的是到某个时间点为止你发过什么，不是此刻你账号上有什么。</p>
+
+<h2>为什么最近 30 天常缺失</h2>
+<p>几个原因叠加：打包队列有延迟；高频发帖的账号数据量更大，生成更慢；部分实时互动，比如刚发生的转发、刚点的赞，本就不在主归档结构里。结果是：你越活跃，最近一段的缺口越明显。这也解释了为什么有些人缺口只有几天，有些人却缺了将近一个月。</p>
+
+<h2>不同下载方式覆盖对比</h2>
+<table>
+  <thead>
+    <tr><th>方式</th><th>覆盖最近推文</th><th>生成速度</th><th>适合场景</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>网页请求完整归档</td><td>常有数周缺口</td><td>慢，排队</td><td>一次性全量备份</td></tr>
+    <tr><td>API 增量拉取</td><td>较完整</td><td>快</td><td>技术用户定期同步</td></tr>
+    <tr><td>第三方工具导出</td><td>取决于接口权限</td><td>中</td><td>需要结构化分析</td></tr>
+  </tbody>
+</table>
+
+<h2>归档和实时接口的取舍</h2>
+<p>如果你只是想做一次隐私体检，网页归档通常够用，只要记得补上最近缺口。如果你在做长期数据分析、需要逐日对比，实时接口或 API 增量更合适，代价是要一点技术准备。两者不是替代关系，而是按目的选工具：体检用归档，持续追踪用接口。</p>
+
+<h2>怎么把缺口补上</h2>
+<ul>
+  <li><strong>等几天再下一次。</strong>快照机制下，隔一段时间重新请求，最近的内容通常会被补进新包。</li>
+  <li><strong>用时间线手动核对。</strong>把归档里的推文时间和你在 App 里看到的最近几条对一下，确认缺口范围。</li>
+  <li><strong>增量合并。</strong>技术用户可用 API 把新拉到的近期推文和旧归档合并，避免重复与遗漏。</li>
+</ul>
+
+<h2>一个常见误判：以为归档等于全部历史</h2>
+<p>除了最近缺口，很多人还误以为归档一定包含自己删掉的推文，或者包含所有互动。事实上，归档主要记录你发布过的内容，删掉的、仅自己可见的、以及大量互动数据往往并不完整。把归档当成全部历史去体检，结论会天然偏乐观。正确姿态是：把它当作一个有用的、但不完整的切片。</p>
+
+<h2>给重度用户的建议</h2>
+<p>如果你每天发很多，建议把归档下载排进每月固定动作，别等到要用才想起来。配合一次本机体检，你能在缺口最小的时候拿到最完整的快照。对数据量特别大的账号，提前预留生成时间，别在急需时才点请求。</p>
+
+<h2>归档不全时，体检要注意什么</h2>
+<h2>具体怎么申请归档</h2>
+<p>路径在 App 和网页端基本一致：打开「设置与隐私」，进入「你的账号」，选择「下载你的数据归档」。选定时间范围后提交，等系统通知文件就绪。这一步不是即时的，账号越大等待越久，最近缺口正是这么来的。建议在需要之前就申请，别等到出事才点。</p>
+<h2>你拿到的是什么</h2>
+<p>归档是一个文件夹，不是一张清单。里面通常有 data 目录，含 tweets.js 之类的结构化文件记录你的帖子，还有媒体和其他资源。这个文件能读但很笨重，多数人用脚本或体检工具解析，不靠一行行翻。了解文件结构有助于理解为什么随手一翻会漏：最近的帖子可能不在你以为的位置。</p>
+<h2>多久重新申请一次</h2>
+<p>没有完美节奏。活跃用户每月一次、轻度用户每季一次是合理默认；在简历、签证、公众角色等可能被人查历史的节点前，再把窗口收紧。每次重新申请都会把上次的缺口补上，所以规律申请会随着时间积累出近乎完整的链条。</p>
+<h2>为什么缺口比你想的重要</h2>
+<p>最近的推文，往往也是你最容易忘记自己发过、却仍带着硬隐私的那批：实时定位、手机号、对某雇主的抱怨。因为归档滞后，刚下载完就做体检，可能恰好跳过最该清理的那一个月。补上缺口远不只是技术细节，它决定体检能否抓到你最危险的那个月。</p>
+
+<p>如果你打算用归档做隐私体检，缺口意味着体检分数可能偏乐观，最近一个月的硬隐私没被扫到。稳妥做法是先补全最近数据再体检。需要一份本机解析的体检工具，可以看 <a href="/blog/how-to-download-x-archive">归档下载教程</a>，在 <a href="/">digital-footprint-health.shop</a> 上传归档后于电脑本地解析，数据不出本机。</p>
+`,
+    contentEn: `
+<p>A common first-time confusion with X archives: tweets from last week are simply not in the file. Do not assume you clicked wrong, this is usually a property of the archive mechanism itself, not your mistake.</p>
+
+<h2>An archive is a snapshot, not a live mirror</h2>
+<p>The X archive is essentially a periodically generated data package. After you request it, the system needs time to bundle it, and what you can download is often the state from some point before your request, not a real-time full copy at the exact second you clicked. That is why recent tweets often have not entered the package yet. This matters: the archive answers what you posted up to a point in time, not what is on your account right now.</p>
+
+<h2>Why the last 30 days are often missing</h2>
+<p>Several causes stack up: the packaging queue has latency; very active accounts generate larger files and slower bundles; and some real-time interactions, a just-made retweet, a just-tapped like, are not in the main archive structure at all. The result: the more active you are, the more visible the recent gap becomes. It also explains why some people miss only a few days while others miss nearly a month.</p>
+
+<h2>Coverage by download method</h2>
+<table>
+  <thead>
+    <tr><th>Method</th><th>Recent tweets</th><th>Speed</th><th>Best for</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Web full archive request</td><td>Often weeks of gap</td><td>Slow, queue</td><td>One-off full backup</td></tr>
+    <tr><td>API incremental pull</td><td>More complete</td><td>Fast</td><td>Technical users, periodic sync</td></tr>
+    <tr><td>Third-party exporter</td><td>Depends on API scope</td><td>Medium</td><td>Structured analysis</td></tr>
+  </tbody>
+</table>
+
+<h2>Archive versus real-time API trade-off</h2>
+<p>If you only want a privacy check, the web archive is usually enough, as long as you fill the recent gap. If you run long-term analytics and need day-by-day comparison, a real-time API or incremental pull fits better, at the cost of some technical setup. They are not replacements, pick by purpose: archive for check, API for continuous tracking.</p>
+
+<h2>How to close the gap</h2>
+<ul>
+  <li><strong>Wait a few days and re-request.</strong> Under the snapshot model, requesting again later usually backfills recent content.</li>
+  <li><strong>Reconcile with your timeline manually.</strong> Match archive tweet timestamps against the most recent posts you see in the app to confirm the gap range.</li>
+  <li><strong>Merge incrementally.</strong> Technical users can pull recent tweets via API and merge with the old archive to avoid both duplicates and omissions.</li>
+</ul>
+
+<h2>A common misjudgment: archive equals full history</h2>
+<p>Beyond the recent gap, many assume the archive must contain tweets they deleted, or all interactions. In fact, the archive mainly records what you published; deleted, only-me, and much interaction data are often incomplete. Treating the archive as full history for a check makes the conclusion naturally optimistic. The right posture: treat it as a useful but incomplete slice.</p>
+
+<h2>Advice for heavy users</h2>
+<p>If you post a lot daily, put archive download on a monthly fixed routine instead of remembering only when needed. Paired with an on-device check, you get the most complete snapshot when the gap is smallest. For very large accounts, reserve generation time in advance, do not click request only when urgent.</p>
+
+<h2>What to watch when checking from an incomplete archive</h2>
+<h2>How to actually request your archive</h2>
+<p>The path is consistent across the app and web: open Settings and privacy, then Your account, then Download an archive of your data. Pick the period you want, request the bundle, and wait for a notification that the file is ready. The wait is not instant; for large accounts it can be hours or longer, which is exactly why the recent gap appears. Request it before you need it, not during a crisis.</p>
+
+<h2>What you get in the file</h2>
+<p>The archive is a folder, not a single list. You will usually find a data directory with a tweets.js or similar file holding your posts as structured data, plus media and other assets. The JavaScript file is readable but awkward; most people parse it with a small script or a privacy tool rather than reading it line by line. Knowing the shape of the file helps you understand why a quick look misses things, the recent posts may sit in a different part than you expect.</p>
+
+<h2>Opening and parsing it locally</h2>
+<p>You do not need to upload the file anywhere to learn from it. Open it on your own computer and let a local tool scan it, which keeps the data on your machine. This is the safest pattern: the archive never leaves your device, so even a sensitive old post is only seen by you. Pairing local parsing with a health score turns a raw dump into an actionable list.</p>
+
+<h2>How often to re-request</h2>
+<p>There is no perfect cadence. A reasonable default is monthly for active posters and quarterly for lighter users, tightening the window right before any event where your history might be reviewed, a job hunt, a visa, a public role. Each re-request backfills the recent gap from the last one, so regular requests leave you with a near-complete chain over time.</p>
+
+<h2>Why the gap matters more than people think</h2>
+<p>The most recent posts are also the ones most likely to still carry hard-private details you forgot you shared, a live location, a phone number, a complaint about an employer. Because the archive lags, a check run right after download can silently skip exactly the posts most worth cleaning. Closing the gap is not a technical nicety, it is the difference between a check that misses your riskiest month and one that catches it.</p>
+
+<h2>A practical order of operations</h2>
+<ul>
+  <li>Request the archive and note the date range it covers.</li>
+  <li>Wait, then download, and check the newest timestamp inside the file.</li>
+  <li>If the newest post is more than a few days old, re-request before relying on it.</li>
+  <li>Parse locally, fix the hard-private items you find, then repeat next cycle.</li>
+</ul>
+
+<h2>Common surprises inside the archive</h2>
+<p>People expect a clean list of their own posts and instead find direct messages they forgot, muted accounts, and ads they interacted with. None of that is the focus of a privacy check, but it shows how much the file reveals about behavior, not just statements. Treat the archive as a behavioral record, and the case for closing the recent gap gets stronger, your newest habits are the part the snapshot is most likely to hide.</p>
+
+<h2>One more reason not to wait</h2>
+<p>Archive generation can slow during peak demand, so the gap can widen exactly when many people request at once, say after a privacy scare in the news. If you wait for a trigger event, you may join a queue and get a file that misses even more. Requesting on a calm schedule beats racing the crowd.</p>
+
+<h2>A small habit that pays off</h2>
+<p>The simplest version of this is a recurring reminder: request, download, scan, repeat. You do not need to read every post, only the ones the tool flags as risky. Fifteen minutes a month keeps the gap small and your history honest about what you actually shared.</p>
+
+<p>If you plan to use the archive for a privacy check, the gap means the score may be overly optimistic, hard-private facts from the last month were not scanned. The safe move is to complete the recent data first. For an on-device parsing tool, see the <a href="/blog/how-to-download-x-archive">archive download guide</a> and upload your archive at <a href="/">digital-footprint-health.shop</a>, where it is parsed locally on your computer with nothing leaving the machine.</p>
+`
+  },
+  {
+    slug: "chinese-students-abroad-x-privacy-checklist",
+    title: "留学生 X 账号隐私自查：签证、回国、求职三道关",
+    excerpt: "在海外读书的留学生，X 上的发言比想象中更值钱，签证官、国内用人单位、甚至回国审查都可能看到。这份清单专为中国留学生视角写，照着做能挡掉大部分坑。",
+    date: "2026-10-11",
+    updatedAt: "2026-10-11",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["留学生", "海外隐私", "自查清单", "签证风险"],
+    canonical: "/blog/chinese-students-abroad-x-privacy-checklist",
+    faq: [
+      { q: "留学生发 X 真的会被签证官看吗？", a: "存在这种可能，尤其涉及公共安全、违法或极端立场的内容。绝大多数日常发言不会被专门翻，但敏感项一旦被截图传播，风险就会被放大。", qEn: "Will visa officers really look at a student X?", aEn: "It is possible, especially for content touching public safety, illegality, or extreme stances. Most daily posts are not specifically reviewed, but sensitive items amplified by screenshots carry outsized risk." },
+      { q: "护照号发在私信里安全吗？", a: "私信比公开安全，但并非绝对，对方账号被盗、截图外传都可能泄露。涉及护照、签证编号这类，尽量走官方渠道，不在社交平台传递。", qEn: "Is sending a passport number in DMs safe?", aEn: "DMs are safer than public posts but not absolute, if the other account is hacked or screenshotted, it leaks. For passport or visa IDs, use official channels, not social DMs." },
+      { q: "回国后旧帖会有影响吗？", a: "大多数普通内容无影响；但涉及高度敏感政治、违法或极端言论的截图，在特定审查场景下可能被翻出。克制表述、定期清理是低成本的自保。", qEn: "Can old posts matter after I return home?", aEn: "Most ordinary content has no effect; but screenshots of highly sensitive political, illegal, or extreme speech can resurface in specific screening contexts. Restraint and regular cleanup are low-cost self-protection." },
+      { q: "把账号设成仅关注者可见就够了吗？", a: "能大幅降低被陌生人搜到的概率，但不是保险箱，关注者仍可截图外传。它适合作为第一层，配合定期清理硬隐私才更稳。", qEn: "Is followers only enough?", aEn: "It sharply lowers the chance of being found by strangers, but is not a vault, followers can still screenshot. Treat it as a first layer, paired with regular hard-private cleanup." }
+    ],
+    titleEn: "A Privacy Checklist for Chinese Students Abroad on X",
+    excerptEn: "For Chinese students studying abroad, what you post on X is worth more than you think, visa officers, domestic employers, and even return-screening may see it. Written specifically from the Chinese student perspective, this checklist blocks most of the common pitfalls.",
+    categoryEn: "Bilingual Market",
+    tagsEn: ["study abroad", "overseas privacy", "checklist", "visa risk"],
+    content: `
+<p>很多留学生把 X 当成海外吐槽和看世界的窗口，却没意识到：你发的内容，可能比简历先被看到。签证、回国、求职，三道关都可能翻你的旧帖。</p>
+
+<h2>先说最容易被忽略的：身份类信息</h2>
+<p>护照号、学签编号、宿舍门牌、课表，这些在国内可能随手发，在国外同样危险。它们能拼出你是谁、住哪、几点在哪儿，一旦被滥用，轻则骚扰，重则被冒用身份。发之前先问自己：这条能不能让别人定位到我。身份类信息在任何平台都不该公开，更别说是面向全球的 X。</p>
+
+<h2>定位和行程，是最该收着的</h2>
+<p>今天飞某某国、周末去这个城市玩，这类实时动态等于公开播报你的空窗期。建议行程类内容等结束后再发，或者只发感悟不发具体时间与地点。定位标签能不点就不点，它比文字描述更精确，也更难撤回。</p>
+
+<h2>政治与敏感话题：分场景处理</h2>
+<p>在海外讨论本地政治、社会议题本来正常，但涉及本国立场、民族、宗教等高度敏感话题时，建议用更克制的表述，避免被截图断章取义。记住：截图比原帖活得久，语境常常在传播中丢失。你以为的理性讨论，到了别人截图里可能只剩一句最刺眼的话。</p>
+
+<h2>一份可以照做的清单</h2>
+<ul>
+  <li>护照、学签、住址、课表，绝不公开发；</li>
+  <li>实时定位与未完成的行程，发之前删掉具体时间地点；</li>
+  <li>高度敏感话题，克制表述，少点情绪化标签；</li>
+  <li>旧帖里如果已有硬隐私，先清理再继续发；</li>
+  <li>账号设为关注者可见或更严，减少被搜到的概率。</li>
+</ul>
+
+<h2>三类场景各自要防什么</h2>
+<table>
+  <thead>
+    <tr><th>场景</th><th>主要风险</th><th>应对</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>签证申请</td><td>敏感立场被翻出</td><td>旧帖提前清理，少发极端表述</td></tr>
+    <tr><td>回国审查</td><td>截图断章取义</td><td>克制措辞，定期自查</td></tr>
+    <tr><td>国内求职</td><td>背景调查翻旧账</td><td>硬隐私先收，账号收紧</td></tr>
+  </tbody>
+</table>
+
+<h2>万一被截图了怎么办</h2>
+<p>截图一旦传开很难彻底消除，但可以做几件减损的事：一是判断截图是否断章取义，若是，可在原帖上下文里补充完整表述，让后来者看到全貌；二是检查同批旧帖里是否还有类似隐患，顺手清理；三是把账号可见范围收紧，降低后续被翻的概率。重点是别惊慌删号，删号反而显得心虚，且历史截图并不随之消失。</p>
+<p>想系统扫一遍旧帖，最稳的是把 X 归档拉到本机，在 <a href="/">digital-footprint-health.shop</a> 做一次本机体检：上传归档、电脑本地解析、数据不出本机，按风险清单一条条处理，留学生身份下的敏感项也更容易被识别。</p>
+`,
+    contentEn: `
+<p>Many students abroad treat X as a window to vent and see the world, not realizing: what you post may be read before your CV is. Visa, return home, and job hunting, all three can reopen your old posts.</p>
+
+<h2>The most overlooked risk: identity information</h2>
+<p>Passport numbers, study-visa IDs, dorm room numbers, class schedules, things you might post casually, are just as dangerous abroad. They piece together who you are, where you live, when you are where, and once misused, range from harassment to identity theft. Before posting, ask: can this let someone locate me. Identity information should never be public on any platform, let alone a global-facing X.</p>
+
+<h2>Location and itinerary are the first to lock down</h2>
+<p>Flying to X today or weekend in this city broadcasts your empty window in real time. Post trip content after it ends, or share the feeling without exact time and place. Skip the location tag whenever you can, it is more precise than words and harder to retract.</p>
+
+<h2>Politics and sensitive topics: handle by context</h2>
+<p>Discussing local politics and social issues abroad is normal, but on highly sensitive topics, home-country stance, ethnicity, religion, use more restrained wording to avoid screenshots taken out of context. Remember: screenshots outlive the original, and context is lost in sharing. What you call a rational discussion may, in someone else screenshot, boil down to one harsh line.</p>
+
+<h2>A checklist you can follow</h2>
+<ul>
+  <li>Passport, visa, address, schedule, never public;</li>
+  <li>Real-time location and unfinished trips, strip exact time and place before posting;</li>
+  <li>Highly sensitive topics, restrained wording, fewer emotional hashtags;</li>
+  <li>If old posts already hold hard-private facts, clean them before posting more;</li>
+  <li>Set the account to followers only or stricter to reduce being found.</li>
+</ul>
+
+<h2>What each of the three scenarios must guard against</h2>
+<table>
+  <thead>
+    <tr><th>Scenario</th><th>Main risk</th><th>Response</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Visa application</td><td>Sensitive stance resurfaced</td><td>Clean old posts early, avoid extreme wording</td></tr>
+    <tr><td>Return screening</td><td>Screenshot taken out of context</td><td>Restrained wording, periodic self-check</td></tr>
+    <tr><td>Domestic job hunt</td><td>Background check on old posts</td><td>Secure hard-private facts first, tighten account</td></tr>
+  </tbody>
+</table>
+
+<h2>What if a screenshot is already out</h2>
+<p>Once a screenshot spreads, full removal is hard, but you can limit damage: first judge whether it is taken out of context, and if so, add the full context on the original thread so later readers see the whole picture; second, check sibling old posts for similar risks and clean them; third, tighten account visibility to lower the odds of further digging. The key is not to panic-delete the account, deletion looks guilty and the screenshot does not vanish with it.</p>
+<h2>Split academic and personal accounts</h2>
+<p>If you use X for both coursework and personal venting, consider separate accounts with different visibility. An academic handle, posts about research, conferences, and program news, can stay more open to build a professional footprint. A personal handle, daily gripes and private life, should be locked down. Splitting reduces the chance that one careless late-night post drags down the account a professor or recruiter might check.</p>
+
+<h2>What to do before each semester</h2>
+<p>Treat the start of each term as a privacy checkpoint. Before classes begin, re-scan the last few months of posts for location tags, visa or school details, and anything said in the heat of a news cycle. A five-minute pass each semester beats a panicked cleanup before a visa interview or a return-home screening. The checklist above stays the same, the cadence is what keeps it from piling up.</p>
+
+<p>To scan old posts systematically, the safest path is to pull your X archive on-device and run a check at <a href="/">digital-footprint-health.shop</a>: upload the archive, parse locally on your computer with nothing leaving the machine, and work through the risk list, sensitive items under a student-abroad identity are easier to flag.</p>
+`
+  },
+  {
+    slug: "ai-scraping-old-tweets-training-data",
+    title: "你的旧推文，可能正在给 AI 当训练素材",
+    excerpt: "大模型需要海量文本，而公开的旧推文是现成的语料。本文梳理训练数据从哪来、你的旧推文可能落在哪、以及普通用户到底能不能撤回。",
+    date: "2026-10-11",
+    updatedAt: "2026-10-11",
+    author: "Digital Footprint Health Team",
+    category: "行业与生态",
+    tags: ["AI训练数据", "数据抓取", "隐私", "X数据"],
+    canonical: "/blog/ai-scraping-old-tweets-training-data",
+    faq: [
+      { q: "平台公开帖文被抓去训练合法吗？", a: "这取决于司法辖区和平台条款。很多地方公开内容可被合理使用，但关于同意与退出权的争议一直没停，监管也在持续变化。", qEn: "Is scraping public posts for training legal?", aEn: "It depends on jurisdiction and platform terms. Many places allow fair use of public content, but debate over consent and opt-out rights is ongoing and regulation keeps shifting." },
+      { q: "删了推文，模型还会记得我吗？", a: "一旦被摄入，即便你删了原帖，副本也可能留在中间产物里，所以删除更多是降低以后被抓的风险，而非抹掉已发生的事。", qEn: "If I delete the tweet, will the model still remember me?", aEn: "Once ingested, a copy may persist in intermediate artifacts even if you delete the original, so deletion lowers future risk more than erasing the past." },
+      { q: "设为私密能防止被训练吗？", a: "能大幅降低被抓取的概率，因为非公开内容不在公开抓取范围内；但已发生过的抓取无法靠改私密撤回。", qEn: "Does setting posts private prevent training use?", aEn: "It sharply lowers scrape probability since non-public content is outside public scraping scope, but it cannot retract grabs that already happened." },
+      { q: "普通用户最该先做什么？", a: "先清理真正危险的硬隐私，住址、手机号、身份号等，它们比被模型读到更该优先；再考虑私密化与关注退出机制。", qEn: "What should ordinary users do first?", aEn: "First clear the truly dangerous hard-private facts, address, phone, ID numbers, those outrank being read by a model, then consider privatizing and opt-out mechanisms." }
+    ],
+    titleEn: "Your Old Tweets May Be Feeding AI Training Data",
+    excerptEn: "Large models need massive text, and public old tweets are ready-made corpus. This piece covers where training data comes from, where your old tweets may land, and whether ordinary users can actually retract them.",
+    categoryEn: "Industry & Ecosystem",
+    tagsEn: ["AI training data", "data scraping", "privacy", "X data"],
+    content: `
+<p>你几年前随手写的推文，可能正在某个模型的训练集里打工。这听起来像科幻，但已经是行业常态。问题在于：你并没有签字同意。</p>
+
+<h2>训练数据到底从哪来</h2>
+<p>大模型公司需要天文数字级的文本。公开网页、书籍、论坛、开放数据集都是来源，而社交平台的公开帖文因为量大、带真实对话语境，成了性价比极高的语料。很多数据是通过公开接口或公开页面批量抓取的，过程并不需要你的单独授权。这也带来一个尴尬事实：你发公开帖的那一刻，可能就已经进入了某份语料的候选池。</p>
+
+<h2>你的旧推文可能落在哪</h2>
+<ul>
+  <li><strong>公开帖文本身。</strong>只要设为公开，被抓取的概率就高，且往往无需单独授权。</li>
+  <li><strong>第三方整理的数据集。</strong>有团队会把公开社交内容清洗后打包成研究或商用数据集，传播范围更广。</li>
+  <li><strong>快照与缓存。</strong>即便你后来删除，训练时抓取的副本可能已经固化在模型权重之外的中间产物里。</li>
+</ul>
+
+<h2>普通用户能不能撤回</h2>
+<p>能做的首先是减少源头：把旧推文设为私密或删除，能降低被后续抓取的概率；对平台已抓取的部分，可关注平台与监管提供的异议、删除或退出机制，但效果因司法辖区而异。更现实的做法，是先把真正危险的硬隐私清掉，那些比被模型读到更值得优先处理。把注意力全部放在被训练上，反而容易忽略更紧迫的住址、手机号泄露。</p>
+
+<h2>一个常被忽略的角度：训练数据也塑造模型偏见</h2>
+<p>公开推文里大量的情绪化、极端化表达，会潜移默化地进入模型语气。你当年随手的一句过激话，可能以另一种样貌出现在某个 AI 的回答里。这提醒我们：清理旧推文不只是保护自己，也是在减少互联网被喂给模型的噪声。从更大的视角看，个人清理和平台级的合规，是同一件事的两面。</p>
+
+<h2>如果想主动退出训练集</h2>
+<p>目前没有一键退出按钮，但可以叠加几件事：把历史公开帖批量转私密或删除，降低后续被抓的概率；关注平台公布的异议与删除通道，对明确违规的抓取提异议；对已经训练完的模型，影响有限，所以重点放在源头控制。把它当成和清理硬隐私一样的长期动作，比指望某天出现万能开关更实际。</p>
+<p>想看看自己公开内容里到底有哪些硬隐私，先把 X 归档拉到本机，在 <a href="/">digital-footprint-health.shop</a> 做一次本机体检，电脑本地解析、数据不出本机，按风险清单逐项清理，比单纯担心被训练更踏实。</p>
+`,
+    contentEn: `
+<p>The tweets you wrote years ago may be working inside some model training set. It sounds like science fiction, but it is industry normal now. The catch: you never signed for it.</p>
+
+<h2>Where does training data actually come from</h2>
+<p>Large models need astronomical amounts of text. Public web pages, books, forums, and open datasets are all sources, and public social posts are high-value corpus because of their volume and real conversational context. Much of it is scraped in bulk through public APIs or public pages, with no need for your separate consent. This leads to an awkward fact: the moment you posted publicly, you may have entered some corpus candidate pool.</p>
+
+<h2>Where your old tweets may land</h2>
+<ul>
+  <li><strong>The public posts themselves.</strong> If set to public, the odds of being scraped are high, often without separate consent.</li>
+  <li><strong>Third-party curated datasets.</strong> Teams clean public social content into research or commercial datasets, widening the spread.</li>
+  <li><strong>Snapshots and caches.</strong> Even if you later delete, the copy grabbed at training time may already be fixed in intermediate artifacts outside the model weights.</li>
+</ul>
+
+<h2>Can ordinary users retract</h2>
+<p>What you can do first is reduce the source: set old tweets private or delete them to lower the chance of future scraping; for what platforms already grabbed, watch for objection, deletion, or opt-out mechanisms they and regulators provide, though effectiveness varies by jurisdiction. The more practical move is to clear the truly dangerous hard-private facts first, those matter more than being read by a model. Focusing only on being trained on can distract from the more urgent address or phone leak.</p>
+
+<h2>A often-ignored angle: training data also shapes model bias</h2>
+<p>The emotional and extreme expressions in public tweets subtly enter the model tone. A heated line you posted years ago may reappear, in another form, inside some AI answer. This reminds us: cleaning old tweets protects you and also reduces the noise the internet feeds models. From a bigger view, personal cleanup and platform-level compliance are two sides of the same thing.</p>
+
+<h2>If you want to actively opt out of training sets</h2>
+<p>There is no one-click opt-out yet, but you can stack a few moves: batch-privatize or delete historical public posts to lower future scrape odds; watch platform-published objection and deletion channels and object to clearly violating scrapes; for already-trained models, influence is limited, so focus on source control. Treat it as a long-term action like cleaning hard-private facts, more practical than hoping for a magic switch someday.</p>
+<h2>Can you tell if your posts were in a known dataset</h2>
+<p>Sometimes yes. When a training dataset is documented publicly, researchers publish which sources it drew from, and news outlets report on large scrapes. You can search your handle or distinctive phrases to see if your content shows up in disclosed sets. This is hit or miss and only covers what was made public, but it gives a rough sense of exposure. The more useful action is still source control, because proving inclusion rarely leads to quick removal.</p>
+
+<h2>What platforms changed after the scraping debate</h2>
+<p>Since public scraping became a flashpoint, several platforms updated terms, added opt-out or objection forms, or restricted bulk access through their APIs. The specifics shift often and differ by region, so a yearly check of the platform current policy is worth it. None of these changes retroactively erase what was already taken, which is why the realistic defense is reducing what is public going forward, not expecting a clean slate.</p>
+
+<p>To see what hard-private content your public posts actually contain, pull your X archive on-device and run a check at <a href="/">digital-footprint-health.shop</a>, parsed locally on your computer, nothing leaves the machine, then clean item by item from the risk list. That is steadier than just worrying about being trained on.</p>
+`
   }];
 
 export function getPost(slug: string): BlogPost | undefined {

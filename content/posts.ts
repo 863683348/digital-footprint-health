@@ -22813,7 +22813,366 @@ rl.on('close', () =&gt; {
 
 <p>To see what hard-private content your public posts actually contain, pull your X archive on-device and run a check at <a href="/">digital-footprint-health.shop</a>, parsed locally on your computer, nothing leaves the machine, then clean item by item from the risk list. That is steadier than just worrying about being trained on.</p>
 `
-  }];
+  },
+  {
+    slug: 'footprint-checkup-step-by-step',
+    title: '数字足迹体检怎么做：从下载归档到拿到 0-100 评分的 7 个步骤',
+    excerpt: '一条一条翻推文看不出隐私风险。数字足迹体检把你的 X 数据归档在本机解析，自动标出手机号、住址、定位和敏感话题，给出 0-100 健康评分。本文把从下载 ZIP 到拿到报告的流程拆成 7 个可操作步骤。',
+    date: '2026-10-12',
+    updatedAt: '2026-10-12',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '隐私体检', '本机处理', '隐私评分'],
+    canonical: '/blog/footprint-checkup-step-by-step',
+    faq: [
+      { q: '体检需要把推文上传到云端吗？', a: '不需要。整个解析过程在你的电脑上完成，归档 ZIP 不会被上传，数据不出本机。', qEn: 'Does the check upload my tweets to the cloud?', aEn: 'No. The entire parse happens on your own computer. The archive ZIP is never uploaded and your data never leaves your device.' },
+      { q: '体检会删除我的推文吗？', a: '不会。体检是只读分析，只产出评分和风险清单，删除是独立的、可选的后续步骤。', qEn: 'Will the check delete my tweets?', aEn: 'No. The check is read-only analysis that only produces a score and a risk list. Deletion is a separate, optional next step.' },
+      { q: '0-100 分怎么看？', a: '分数越低风险越高。90 分以上基本干净，60 分以下建议优先处理手机号、住址和定位类高风险推文。', qEn: 'How do I read the 0-100 score?', aEn: 'Lower means higher risk. Above 90 is essentially clean; below 60 we recommend prioritizing high-risk tweets exposing phone numbers, home addresses and locations.' },
+      { q: '多久体检一次？', a: '建议每 3 到 6 个月一次，尤其在求职、换城市或准备公开露面之前。', qEn: 'How often should I run a check?', aEn: 'Every three to six months is a good rhythm, especially before a job hunt, a move, or any public appearance.' },
+      { q: '体检收费吗？', a: '体检本身免费且只读。只有在你决定清理风险推文时才按条付费，支持暂停、恢复和退款。', qEn: 'Is the check free?', aEn: 'The check itself is free and read-only. You only pay per tweet when you decide to clean up, and that is pauseable, resumable and refundable.' }
+    ],
+    titleEn: 'How a Digital Footprint Check Works, Step by Step',
+    excerptEn: 'Reading tweets one by one will not reveal your privacy risk. A digital footprint check parses your X data archive on your own device, flags phone numbers, addresses, locations and sensitive topics, and returns a 0-100 health score. This guide breaks the process into seven concrete steps.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy check', 'on-device', 'privacy score'],
+    content: `
+<h2>为什么手动翻推文查不出隐私风险</h2>
+<p>你大概不记得自己 90% 的旧推文。但招聘经理、诈骗分子和搜索引擎记得。2009 到 2018 年间，大多数人发过今天绝不会发的内容：新家的门牌、登机牌、工牌照片、对前雇主的吐槽。这些推文不会自动消失，它们会被索引、被抓取、被截图，在求职或争议最尴尬的时刻被翻出来。</p>
+<p>一条一条翻看既慢又容易漏。手机号藏在正文第 3 行，住址在图片 EXIF 里，定位在签到标签中。手动检查几乎不可能覆盖全部，这正是工具存在的理由。</p>
+<h2>数字足迹体检的 7 个步骤</h2>
+<p>体检把你的 X 数据归档在本机解析，全程不联网、不上传。完整流程如下：</p>
+<ol>
+<li><strong>下载归档</strong>：在 X 设置里申请「你的数据」归档，几小时到几天后收到 ZIP 压缩包。</li>
+<li><strong>解压到本地</strong>：把 ZIP 解压到你的电脑，归档包含 tweets.js、account.js 等文件。</li>
+<li><strong>导入工具</strong>：打开数字足迹体检，选择归档文件夹，工具开始读取。</li>
+<li><strong>本机解析</strong>：工具在浏览器本地逐条扫描推文，识别手机号、邮箱、住址、定位和敏感话题，数据不出设备。</li>
+<li><strong>风险标注</strong>：每条命中的推文被打上「电话、住址、定位、敏感话题」标签，并标出风险等级。</li>
+<li><strong>计算评分</strong>：综合命中数量、敏感度和时间跨度，输出 0-100 的健康评分。</li>
+<li><strong>生成报告</strong>：导出可分享的风险清单，列出需要优先处理的推文与对应建议。</li>
+</ol>
+<h2>0-100 评分是怎么算出来的</h2>
+<p>评分不是随便给的数字。它看三件事：命中了哪几类隐私信息、每条的敏感度、以及这些推文有多老。下方是权重参考：</p>
+<table>
+<thead><tr><th>风险类型</th><th>权重</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>手机号或微信 ID</td><td>高</td><td>诈骗和骚扰的直接入口</td></tr>
+<tr><td>家庭住址或办公地址</td><td>高</td><td>现实安全威胁</td></tr>
+<tr><td>实时定位或签到</td><td>中高</td><td>暴露日常轨迹</td></tr>
+<tr><td>身份证或证件照片</td><td>高</td><td>身份盗用风险</td></tr>
+<tr><td>敏感话题或言论</td><td>中</td><td>职业与名誉影响</td></tr>
+</tbody>
+</table>
+<p>分数越低，说明暴露越严重。90 分以上基本干净；60 分以下建议优先处理高风险的手机号和住址类推文。</p>
+<h2>归档里到底有什么</h2>
+<p>很多人以为删掉 App 就删了历史，其实没有。X 发给你的归档保存了多年的数据：每一条推文、每一次点赞、私信元数据、你登录过的设备，以及算法给你贴的标签。也正因为如此，归档才是唯一完整的记录，也是 3200 条之外旧推文唯一还留着的地方。</p>
+<h2>手动检查的 3 个错误</h2>
+<p>三个习惯最浪费精力。第一，只搜自己的名字就停手，漏掉雇主、学校、城市的提及。第二，忘了图片，住址和证件几乎都藏在图里。第三，清理了一个账号，却忽略同一个邮箱绑定的其他账号。一次合格的体检要同时覆盖文字、图片和关联账号。</p>
+<h2>拿到报告后该做什么</h2>
+<p>体检只分析、不删除。报告给你一张按风险排序的清单后，下一步是否清理完全由你决定。你可以先处理最危险的几条，也可以按月分批。清理支持暂停、恢复和退款，不用担心一次付太多。</p>
+<p>想先看自己的分数？<a href="/">免费下载归档并跑一次体检</a>。如果还不知道怎么拿到归档，可以读我们的 <a href="/blog/how-to-download-x-archive">X 数据归档下载教程</a>，或者看看 <a href="/blog/why-can-you-only-delete-3200-tweets">为什么 X 只能删最近 3200 条</a> 来理解归档为什么是关键。</p>
+<h2>多久做一次体检</h2>
+<p>建议每 3 到 6 个月一次，尤其是求职、搬家或准备公开露面之前。归档里的旧推文不会自己变少，时间越久，被翻出来的概率越高。把体检当成换季整理，比出事后再补救轻松得多。</p>
+<h2>体检工具本身安全吗</h2>
+<p>合理的疑问是：把归档交给一个工具，会不会反而泄露？关键看它是否在本机运行。数字足迹体检全程在浏览器本地解析，归档不上传任何服务器，解析完数据留在你自己的电脑上。你甚至可以离线打开，断网也能跑。判断一个工具值不值得信任，先看它敢不敢明说「数据不出本机」。</p>
+<h2>小号也别侥幸</h2>
+<p>有人觉得小号没几个关注者，翻出来也无所谓。但背景调查不挑账号大小，一条带住址的旧推文，配上一两个公开资料，就足以定位现实中的你。况且很多盗号和数据经纪商会批量扫描，并不关心你是不是大 V。把小号也纳入体检，成本只是多导入一个归档。</p>
+<h2>体检和手动搜索插件有什么不同</h2>
+<p>不少人装过关键词搜索插件，以为那就是体检。差别在于：插件只搜你指定的词，漏掉同义写法、图片里的信息、以及跨账号的关联；体检则按风险类型（电话、住址、定位、敏感话题）系统扫描全文和图片，并给出量化评分。前者是钓鱼竿，后者是渔网。</p>
+<h2>分数出乎意料怎么办</h2>
+<p>如果你觉得旧发言都无害，低分可能让人不服气。评分看的是暴露程度，不是动机，所以一张带住址的归档截图就能把分拉得很低。把数字当成待办清单，别当成判决。报告会明确告诉你哪几条推文拉低了分数，看清名字之后，大多处理起来很快。</p>
+<h2>哪些人应该先做体检</h2>
+<p>如果你属于这几类，请优先做体检：求职者、正在换城市的人、公开演讲者、孩子出现在照片里的家长，以及曾在争议时刻发过言的人。归档不在乎你当时的初衷，它只记录你说过什么。</p>
+<h2>隐私守的是你输得起的东西</h2>
+<p>听到清理建议，最常见的回答是「我又没做什么见不得人的事」。这句话没说到点上。你或许没什么要隐藏的，但你有很多会失去的：一个手机号落到坏人手里就喂养一场诈骗，一个住址让现实骚扰成为可能，一条旧言论在升职时翻出来。足迹体检不是为了保密，而是为了缩小陌生人能利用的表面积。</p>
+`,
+    contentEn: `
+<h2>Why scrolling through your tweets will not reveal your privacy risk</h2>
+<p>You probably do not remember 90% of your old tweets. Recruiters, scammers, and search engines do. Between 2009 and 2018 most of us posted things we would never post today: a new home address, a boarding pass, a workplace badge photo, an angry rant about a former employer. Those tweets do not vanish. They get indexed, scraped, screenshotted, and occasionally dug up at the worst possible moment: job applications, media attention, background checks.</p>
+<p>Reading posts one by one is slow and misses things. A phone number hides in the third line of a caption. An address sits inside an image's EXIF data. A check-in tag carries your location. Manual review cannot cover all of it, which is exactly why a tool helps.</p>
+<h2>The seven steps of a digital footprint check</h2>
+<p>A digital footprint check parses your X data archive on your own device. Nothing is uploaded and nothing touches the network. The full flow has seven parts:</p>
+<ol>
+<li><strong>Request your archive.</strong> In X settings, ask for the "Your data" archive. You receive a ZIP within a few hours to a few days.</li>
+<li><strong>Unzip it locally.</strong> Extract the ZIP on your computer. It contains files such as tweets.js and account.js.</li>
+<li><strong>Import into the tool.</strong> Open the digital footprint check and point it at the archive folder. The tool starts reading.</li>
+<li><strong>Parse on device.</strong> The tool scans every tweet locally in your browser, spotting phone numbers, emails, addresses, locations, and sensitive topics. Your data never leaves the device.</li>
+<li><strong>Flag the risks.</strong> Each match gets a label, phone, address, location, or sensitive topic, plus a risk level.</li>
+<li><strong>Compute the score.</strong> Combining the number of hits, their sensitivity, and how old they are, the tool produces a 0-100 health score.</li>
+<li><strong>Generate the report.</strong> Export a shareable risk list that names the tweets to handle first and the reasons why.</li>
+</ol>
+<h2>How the 0-100 score is calculated</h2>
+<p>The score is not a random number. It weighs three things: which categories of private information were found, how sensitive each one is, and how old the tweets are. The weights below are a reference:</p>
+<table>
+<thead><tr><th>Risk type</th><th>Weight</th><th>Why it matters</th></tr></thead>
+<tbody>
+<tr><td>Phone number or WeChat ID</td><td>High</td><td>Direct entry point for scams and harassment</td></tr>
+<tr><td>Home or work address</td><td>High</td><td>Real-world safety threat</td></tr>
+<tr><td>Live location or check-ins</td><td>Medium-high</td><td>Exposes daily routine</td></tr>
+<tr><td>ID document photo</td><td>High</td><td>Identity theft risk</td></tr>
+<tr><td>Sensitive opinions</td><td>Medium</td><td>Career and reputation impact</td></tr>
+</tbody>
+</table>
+<p>A lower score means more exposure. Above 90 is essentially clean. Below 60 we suggest prioritizing high-risk phone-number and address tweets.</p>
+<h2>What the archive actually contains</h2>
+<p>Many people assume deleting the app deletes the history. It does not. The archive X sends you holds years of data: every tweet, every like, direct-message metadata, the devices you logged in from, and the topics the algorithm associated with you. This is precisely why the archive, not the visible profile, is the only complete record, and the only place where tweets older than 3,200 still live.</p>
+<h2>Common mistakes when checking manually</h2>
+<p>Three habits waste effort. First, people search for their own name and stop, missing mentions of their employer, school, or city. Second, they forget images, where most address and ID leaks hide. Third, they clean one account and ignore the others tied to the same email. A proper check covers text, images, and linked accounts together.</p>
+<h2>What to do after the report</h2>
+<p>The check only analyzes. It never deletes. Once the report gives you a risk-ordered list, whether to clean up is entirely your call. You can fix the most dangerous few first, or work in monthly batches. Cleanup is pauseable, resumable, and refundable, so you never have to commit a large sum at once.</p>
+<p>Want to see your own score? <a href="/">Download your archive and run a free check</a>. If you are not sure how to get the archive, read our <a href="/blog/how-to-download-x-archive">X archive download guide</a>, or see <a href="/blog/why-can-you-only-delete-3200-tweets">why X only lets you delete the most recent 3,200 tweets</a> to understand why the archive matters.</p>
+<h2>How often should you run a check</h2>
+<p>Every three to six months is a good rhythm, especially before a job hunt, a move, or any public appearance. Old tweets in your archive do not shrink on their own; the longer they sit, the more likely they surface. Treat the check like a seasonal cleanup, far easier than damage control afterwards.</p>
+<h2>Is the check tool itself safe</h2>
+<p>A fair question: handing your archive to a tool might leak it further. The difference is where the parse runs. A proper digital footprint check parses entirely in your browser on your own device. The archive is never uploaded to any server, and the result stays on your computer. You can even open it offline; the analysis runs without a network. When judging whether a tool is worth trusting, the first test is whether it openly states that your data never leaves the device.</p>
+<h2>Small accounts are not exempt</h2>
+<p>Some people think a small account with few followers is safe to ignore. Background checks do not care about follower count. One old tweet with a home address, combined with a couple of public profile details, is enough to locate you in real life. Worse, many scrapers and data brokers scan accounts in bulk and never ask whether you are a public figure. Folding a small account into the same check costs nothing more than importing one extra archive.</p>
+<h2>How a check differs from a search plugin</h2>
+<p>Many users install a keyword search plugin and call that a check. The gap is real. A plugin only finds the exact words you tell it to look for, missing synonyms, information inside images, and links across accounts. A check scans the whole text and every image by risk type, phone, address, location, and sensitive topic, and turns the result into a single score. One is a fishing rod; the other is a net.</p>
+<h2>What if the score surprises you</h2>
+<p>A low score can feel unfair if you thought your old posts were harmless. The score weighs exposure, not intent, so a single archived boarding pass can pull it down hard. Treat the number as a to-do list, not a verdict. The report tells you exactly which tweets moved the needle, and most of them are quick to handle once you see them named.</p>
+<h2>Who should run a check first</h2>
+<p>If you fall into any of these groups, run a check before anything else: job seekers, people changing cities, public speakers, parents whose kids appear in photos, and anyone who posted during a controversial moment. The archive does not care about your intent at the time; it only records what was said.</p>
+<h2>What to keep after the check is done</h2>
+<p>A check is a snapshot, not a one-time cure. The archive you downloaded stays useful after the report: store it in an encrypted folder so you can re-run the parse later without asking X again, and compare next quarter's score against this one. The trends matter more than any single number, because a score that drifts down tells you a new risky post slipped in. Treat the saved archive as your personal baseline, and the check becomes a habit instead of a panic.</p>
+<h2>Privacy is about what you have to lose</h2>
+<p>The usual reply to cleanup advice is "I have nothing to hide." That misses the point. You may have nothing to hide, but you have plenty to lose: a phone number in the wrong hands funds a scam, an address enables real-world harassment, an old opinion resurfaces during a promotion. A footprint check is not about secrecy; it is about reducing the surface area strangers can exploit.</p>
+`
+  },
+  {
+    slug: 'chinese-national-id-tweets-privacy',
+    title: '推文里晒过身份证号？中文用户最容易忽略的 4 类隐私泄露',
+    excerpt: '中文用户在 X 上的隐私暴露有自己的特点：身份证号、真实姓名、学籍和单位信息常常顺手就发出去了。本文从中文语境出发，列出 4 类最常被忽视的泄露，以及为什么归档清理比逐条删更高效。',
+    date: '2026-10-12',
+    updatedAt: '2026-10-12',
+    author: 'Digital Footprint Health Team',
+    category: '中文隐私',
+    tags: ['X/Twitter', '身份证', '隐私泄露', '中文用户', '实名信息'],
+    canonical: '/blog/chinese-national-id-tweets-privacy',
+    faq: [
+      { q: '身份证号发在推文里有多大风险？', a: '风险很高。身份证号加姓名可以办电话卡、网贷和注册账号，是身份盗用最直接的原料，建议尽快清理。', qEn: 'How risky is posting an ID number in a tweet?', aEn: 'High risk. An ID number plus a name can be used to open phone lines, take out loans, and register accounts. It is the raw material for identity theft, so remove it as soon as possible.' },
+      { q: '中文用户最容易漏掉哪种泄露？', a: '图片里的证件和背景。登机牌、工牌、录取通知书、合同页常带姓名、单位、编号，文字搜索查不到，必须靠归档图片检查。', qEn: 'What leak do Chinese users miss most?', aEn: 'Documents and backgrounds inside images. Boarding passes, badges, admission letters, and contract pages often carry names, employers, and numbers that text search cannot catch.' },
+      { q: '用化名发推就安全了吗？', a: '不够。即便昵称是化名，学籍、单位、城市、学校这些组合信息仍可能拼出你是谁，尤其当多条推文互相印证时。', qEn: 'Am I safe if I post under a handle?', aEn: 'Not enough. Even with a pseudonym, combinations of school, employer, city, and institution can still identify you, especially when many posts corroborate each other.' },
+      { q: '中文内容该用英文工具清理吗？', a: '可以，但要确认工具能正确识别中文姓名、身份证号和中文地址格式，否则会漏判。', qEn: 'Can I use an English tool to clean Chinese content?', aEn: 'Yes, but confirm the tool correctly recognizes Chinese names, ID formats, and Chinese address patterns, or it will miss matches.' }
+    ],
+    titleEn: 'ID Numbers and Real Names in Tweets: Privacy Gaps Chinese Users Miss',
+    excerptEn: 'Chinese users leak privacy on X in their own ways: ID numbers, real names, school and employer details get posted without a second thought. This piece lists four leak types from a Chinese-language context, and why archive cleanup beats deleting one by one.',
+    categoryEn: 'Chinese Privacy',
+    tagsEn: ['X/Twitter', 'ID number', 'privacy leak', 'Chinese users', 'real-name info'],
+    content: `
+<h2>中文用户最容易忽略的 4 类泄露</h2>
+<p>英文隐私指南总在讲手机号和定位，但中文用户还有一层它们没覆盖的风险。下面这些泄露在中文推文里极其常见，却很少有人清理：</p>
+<ol>
+<li><strong>身份证号和真实姓名</strong>。表单截图、合同截图、录取通知书，常常把全名加身份证号一起亮出来。这一对信息足够开一张电话卡或办一笔网贷。</li>
+<li><strong>学校和单位信息</strong>。「刚考上清华」或「深圳某厂入职」，听起来无害，但配上城市加年份就能精准定位到你。</li>
+<li><strong>小区和门牌名</strong>。新房照片、快递地址、小区名称，直接暴露你实际住在哪里。</li>
+<li><strong>家人和关系信息</strong>。孩子的校牌、父母的医院、配偶的单位，这些拼起来就是陌生人能利用的人物画像。</li>
+</ol>
+<h2>为什么图片才是盲区</h2>
+<p>绝大多数中文泄露藏在图片里，不在文字里。登机牌、工牌、录取通知书、合同页，全都带着姓名、单位和编号，文字搜索永远扫不到。你删不掉看不见的东西，所以能解析归档（包括图片）的工具，比手动翻主页重要得多。</p>
+<h2>用化名不等于匿名</h2>
+<p>用昵称发推让人觉得安全，其实不然。即便没有真名，学校、单位、城市、毕业年份的组合仍可能拼出你是谁，尤其当几十条推文互相印证时。一条关于某场特定考试、某个具体区、某个年份的旧推文，往往就够了。</p>
+<h2>归档清理比逐条删更高效</h2>
+<p>手动删帖又慢又留尾巴，3200 条之外的旧推文根本碰不到。足迹体检在本机解析整个归档，把文字和图片里的身份证号、姓名、住址、敏感话题都标出来，再给你一张按风险排序的清单，删不删由你定。</p>
+<h2>一条微博如何引发连锁</h2>
+<p>危害很少来自单独一条。一条带姓名加单位的推文、另一条带小区的推文、第三条带毕业年份的推文，这些线索就能让陌生人拼出你的身份，根本不需要看到真名。画像一旦成型，诈骗、定向钓鱼和人肉搜索就有了原料。最便宜的防御是在线索积累之前就切断它。</p>
+<p>动手前，先 <a href="/">跑一次免费的本机体检</a>。如果想看中文专属视角，我们的 <a href="/blog/chinese-real-name-system-x-privacy">实名制暴露指南</a> 和 <a href="/blog/chinese-students-abroad-x-privacy-checklist">留学生隐私自查清单</a> 把同类风险讲得更透。</p>
+<h2>真实案例：一张录取通知书</h2>
+<p>看一个常见场景：有人晒出大学录取通知书，满心欢喜。图里却带着全名、身份证号、准考证号，有时还有毕业中学的排名。一天之内，爬虫就把图存走了。几年后，同一个身份证号加姓名会被匹配到其他推文，陌生人就能以这个学生的名义去开各种服务。这些在正文里一个字都看不出来，所以归档里的图片解析才关键。解法不是「少发」，而是「查图，不只查字」，因为泄露几乎总是藏在图里，不在配文里。</p>
+<h2>这周就能做的一件事</h2>
+<p>挑一个下午。下载归档，跑一次体检，先把身份证号和住址类命中清掉。这两类的现实代价最高，也最可能在背景调查时被翻出来。</p>
+`,
+    contentEn: `
+<h2>Four leak types Chinese users miss</h2>
+<p>English privacy guides talk about phone numbers and locations. Chinese users face a second layer those guides miss. The leaks below show up constantly in Chinese-language posts and rarely get cleaned:</p>
+<ol>
+<li><strong>ID numbers and real names.</strong> Screenshots of forms, contracts, and exam results often reveal a full name plus an ID number. That pair is enough to open a phone line or take out a loan.</li>
+<li><strong>School and employer details.</strong> "Just got into Tsinghua" or "starting at a Shenzhen factory" sounds harmless, but combined with a city and a year it pinpoints you.</li>
+<li><strong>House and community names.</strong> Photos of a new home, a delivery address, or a gated community name expose where you actually live.</li>
+<li><strong>Family and relationship facts.</strong> A child's school badge, a parent's hospital, a spouse's workplace, these build a profile a stranger can exploit.</li>
+</ol>
+<h2>Why images are the blind spot</h2>
+<p>Most Chinese-language leaks hide in pictures, not text. A boarding pass, a work badge, an admission letter, a contract page, all carry names, employers, and numbers that a text search will never surface. You cannot delete what you cannot see, which is why a tool that parses the archive, including images, matters more than manually scanning your profile.</p>
+<h2>A handle is not anonymity</h2>
+<p>Posting under a nickname feels safe. It is not. Even without your real name, the mix of school, employer, city, and graduation year can identify you, especially when dozens of posts corroborate each other. An old tweet about a specific exam, a specific district, and a specific year is often enough.</p>
+<h2>Archive cleanup beats one-by-one deletion</h2>
+<p>Manually deleting posts is slow and leaves the older-than-3,200 tweets untouched. A footprint check parses the whole archive on your device, flags ID numbers, names, addresses, and sensitive topics in both text and images, then gives you a risk-ordered list. You decide what to remove.</p>
+<h2>A concrete chain reaction</h2>
+<p>The damage is rarely a single post. A name plus an employer in one tweet, a district in another, a graduation year in a third, these threads let a stranger reconstruct your identity without ever seeing your real name. Once that profile exists, it feeds phishing, targeted scams, and doxxing. The cheapest defense is to break the thread early, before the pieces accumulate.</p>
+<p>Before you start, <a href="/">run a free on-device check</a>. If you want the Chinese-specific view, our <a href="/blog/chinese-real-name-system-x-privacy">guide on real-name exposure</a> and the <a href="/blog/chinese-students-abroad-x-privacy-checklist">checklist for students abroad</a> go deeper on the same risks. Most of these leaks are reversible once you see them named, so the first step is simply to look, and one afternoon makes the whole list manageable. The cost of ignoring them shows up years later, at the worst possible moment.</p>
+<h2>A real example: one admission letter</h2>
+<p>Consider a common post: a photo of a university admission letter, shared with pride. The image shows the full name, the ID number, the admission number, and sometimes the applicant's school ranking. Within a day, scrapers copy it. Years later, that same ID number plus the name can be matched to other posts, and suddenly a stranger can open services in the student's name. None of this is visible from the caption text, which is exactly why image parsing inside the archive matters. The fix is not "post less"; it is "check the image, not just the words," because the leak almost always lives in the picture, not the caption.</p>
+<h2>What to do this week</h2>
+<p>Pick one afternoon. Download the archive, run the check, and clear the ID-number and address hits first. They carry the highest real-world cost, and they are the ones most likely to surface during a background check.</p>
+`
+  },
+  {
+    slug: 'recover-hacked-x-account-faq',
+    title: 'X 账号被盗怎么找回：5 个高频问题速答',
+    excerpt: '账号突然发广告、密码失效、绑定的邮箱被改？这是 X 账号被盗的典型信号。本文用 5 个高频问答，讲清从锁定账号到找回控制的每一步，以及平时怎么降低被盗概率。',
+    date: '2026-10-12',
+    updatedAt: '2026-10-12',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '账号被盗', '找回账号', '安全'],
+    canonical: '/blog/recover-hacked-x-account-faq',
+    faq: [
+      { q: '怎么判断账号是不是被盗了？', a: '典型信号：你没发过的广告或链接、登录设备里出现陌生地点、密码突然失效、绑定的邮箱或手机号被改。出现任意一项就要警惕。', qEn: 'How do I know if my account was hacked?', aEn: 'Typical signs: ads or links you never posted, unfamiliar locations in the login devices list, a suddenly invalid password, or a changed recovery email or phone number. Any one of these is a warning.' },
+      { q: '还能登录时第一件事做什么？', a: '立刻改密码，把绑定的邮箱和手机号改回自己控制的，撤销所有第三方应用的授权，并开启两步验证。', qEn: 'What is the first thing to do if I can still log in?', aEn: 'Change the password immediately, restore the recovery email and phone to ones you control, revoke all third-party app permissions, and turn on two-factor authentication.' },
+      { q: '完全登不进去了怎么办？', a: '走 X 的账号恢复流程，验证身份后重置。准备好曾经用过的邮箱、注册时间等信息，人工审核可能需要几天。', qEn: 'What if I am completely locked out?', aEn: 'Use X account recovery to verify your identity and reset access. Have former emails and the signup period ready; manual review can take a few days.' },
+      { q: '找回后还要做什么？', a: '检查已发内容、删掉盗号期间发的广告，回顾授权过的应用，确认绑定的邮箱和手机号没被改走，再开启两步验证。', qEn: 'What should I do after recovery?', aEn: 'Review posted content, delete anything the attacker sent, audit authorized apps, confirm the recovery email and phone were not changed away, then enable two-factor authentication.' },
+      { q: '怎么降低下次被盗的概率？', a: '用独立强密码、开启两步验证、不点陌生登录链接、定期审查授权应用。这几点做好了，绝大多数盗号都能挡在门外。', qEn: 'How do I lower the odds of being hacked again?', aEn: 'Use a unique strong password, turn on two-factor authentication, avoid unfamiliar login links, and review authorized apps regularly. Those steps stop most account takeovers.' }
+    ],
+    titleEn: 'Recovering a Hacked X Account: 5 Frequently Asked Questions',
+    excerptEn: 'Ads posting on their own, a dead password, a changed recovery email, these are the classic signs of a hacked X account. This FAQ walks through locking down the account, getting control back, and lowering the odds next time.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'hacked account', 'account recovery', 'security'],
+    content: `
+<h2>还能登录时，先做这四件事</h2>
+<p>如果还能登进去，按顺序做：改密码、把绑定邮箱和手机号改回自己控制的、撤销所有第三方应用授权、开启两步验证。这套顺序能阻止攻击者再溜回来。</p>
+<h2>完全登不进去时</h2>
+<p>走账号恢复流程，验证身份后重置。准备好曾经用过的邮箱和注册时间。人工审核可能要几天，所以尽早发起，别去信任何「秒解封」的付费骗局。</p>
+<h2>找回之后还要做</h2>
+<p>检查盗号期间发了什么，删掉攻击者发的广告；审查授权过的应用；确认绑定邮箱和手机号没被改走；如果两步验证还关着，马上打开。</p>
+<h2>怎么降低下次被盗的概率</h2>
+<p>一个独立强密码加两步验证，就能挡掉绝大多数盗号。再加两个习惯：不点陌生登录链接，每几个月审查一次授权应用。更完整的方案可以看我们的 <a href="/blog/x-two-factor-backup-codes">备份码指南</a> 和 <a href="/blog/passkey-x-account-faq-2026">通行密钥 FAQ</a>。</p>
+<h2>什么情况直接找 X 客服</h2>
+<p>如果恢复流程卡了一周以上，或攻击者把账号邮箱改成了你够不到的地址，就用原来的登录邮箱和任何消费记录开支持工单。能证明过去活动的证据，比模糊的描述更能缩短等待，所以动笔前先把旧推文截图和账单邮件收齐。</p>
+<h2>把这件事放进日历</h2>
+<p>发现得早，找回就轻松。设一个每季度检查登录设备和授权应用的提醒。出问题的第一个信号通常是出现一台你不认识的设备，早点发现，一场噩梦就变成十分钟能解决的小事。担心攻击者看到了什么？跑一次 <a href="/">免费本机足迹体检</a>，看看旧推文已经暴露了多少个人信息。</p>
+`,
+    contentEn: `
+<h2>Start here if you still have access</h2>
+<p>If you can log in, do four things in order: change the password, restore the recovery email and phone to ones you control, revoke every third-party app permission, and turn on two-factor authentication. That sequence stops the attacker from walking back in.</p>
+<h2>If you are fully locked out</h2>
+<p>Use the account recovery flow and verify your identity. Have former emails and your signup period ready. Manual review can take a few days, so start it as early as you can and avoid paying any scam that promises instant recovery.</p>
+<h2>After you get it back</h2>
+<p>Review what was posted during the takeover and delete the attacker's ads. Audit authorized apps, confirm the recovery email and phone were not changed away, then enable two-factor authentication if it is still off.</p>
+<h2>Lower the odds next time</h2>
+<p>A unique strong password plus two-factor authentication removes most takeover risk. Add two habits: do not click unfamiliar login links, and review authorized apps every few months. For a wider plan, our <a href="/blog/x-two-factor-backup-codes">guide to backup codes</a> and the <a href="/blog/passkey-x-account-faq-2026">passkey FAQ</a> cover the stronger options.</p>
+<h2>When to contact X support directly</h2>
+<p>If recovery stalls for more than a week, or if the attacker changed the account email to an address you cannot reach, open a support ticket with the former login email and any purchase receipts. Proof of past activity shortens the wait far more than vague descriptions ever will, so gather screenshots of old tweets and billing emails before you write in.</p>
+<h2>Put this on a calendar</h2>
+<p>Recovery is easier when you notice fast. Set a recurring reminder to check login devices and authorized apps every quarter. The first sign of trouble is usually a device you do not recognize, and catching it early turns a nightmare into a ten-minute fix. Worried about what the attacker saw? Run a <a href="/">free on-device footprint check</a> to see what personal details your old tweets already expose.</p>
+`
+  },
+  {
+    slug: 'data-portability-rights-x-archive',
+    title: '数据可携权是什么：为什么你的 X 归档能完整下载',
+    excerpt: '你为什么能一键下载自己在 X 上的全部历史？这背后是「数据可携权」：GDPR 和很多地区法律赋予用户把个人数据完整导出的权利。本文讲清这项权利是什么、归档为什么这么全、以及它和删除权有什么区别。',
+    date: '2026-10-12',
+    updatedAt: '2026-10-12',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['X/Twitter', '数据可携权', 'GDPR', '归档', '合规'],
+    canonical: '/blog/data-portability-rights-x-archive',
+    faq: [
+      { q: '数据可携权是什么？', a: '它是一项用户权利：平台必须让你把自己的个人数据以常用、机器可读的格式完整导出。X 的归档 ZIP 就是这项权利的产品形态。', qEn: 'What is the right to data portability?', aEn: 'It is a user right: platforms must let you export your personal data in a common, machine-readable format. The X archive ZIP is the product form of that right.' },
+      { q: '可携权和删除权是一回事吗？', a: '不是。可携权让你把数据拿走（导出），删除权让你要求平台把数据删掉（遗忘权）。两者方向相反，但常常一起使用。', qEn: 'Is portability the same as the right to deletion?', aEn: 'No. Portability lets you take data out, deletion lets you ask the platform to erase it. They point in opposite directions but are often used together.' },
+      { q: '为什么归档里连点赞和登录设备都有？', a: '因为可携权要求导出「与你相关的全部个人数据」，不止推文本身。点赞、私信元数据、登录设备都属于这一范围。', qEn: 'Why does the archive include likes and login devices?', aEn: 'Because portability covers all personal data related to you, not just tweets. Likes, direct-message metadata, and login devices all fall in that scope.' },
+      { q: '导出的数据能用来做什么？', a: '你可以用它做隐私体检、本地备份，或迁移到别的平台。关键是你拿回了数据的控制权，不再被困在一家服务里。', qEn: 'What can the exported data be used for?', aEn: 'You can run a privacy check, keep a local backup, or move to another service. The point is you regain control of the data instead of being locked inside one service.' }
+    ],
+    titleEn: 'What Is the Right to Data Portability, and Why Your X Archive Is Complete',
+    excerptEn: 'Why can you download your entire X history in one click? Behind it is the right to data portability, a right under GDPR and many regional laws to export your personal data in full. This article explains the right, why the archive is so complete, and how it differs from the right to deletion.',
+    categoryEn: 'Compliance and Law',
+    tagsEn: ['X/Twitter', 'data portability', 'GDPR', 'archive', 'compliance'],
+    content: `
+<h2>可携权到底是什么</h2>
+<p>数据可携权说的是：平台必须让你把自己的个人数据带走，而且得是通用、机器可读的格式。它在 GDPR 和不少地区的法律里都有体现。X 的归档 ZIP 不过是把这项权利做成了产品：你申请，服务就把和你账号相关的一切交还给你。</p>
+<h2>归档为什么这么全</h2>
+<p>可携权覆盖的是「与你相关的全部个人数据」，不只是一你写过的推文。所以归档里会有点赞、私信元数据、你登录过的设备，以及跟你关联的标签。法律的口径本来就宽，一份合格的导出不能只停在看得见的推文上。</p>
+<h2>可携权不等于删除权</h2>
+<p>这两者常被搞混。可携权把数据往外搬、朝向你；删除权（遗忘权）把数据往外推、离开平台。方向相反，却天然成对：先导出看清有什么，再决定删什么。</p>
+<h2>导出数据能做什么</h2>
+<p>拿到归档后，你可以在本机做隐私体检、留一份本地备份，或者迁移到别的平台。关键的变化是控制权：数据不再被锁在一家公司里。关于删除那一侧，我们的 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 删除 FAQ</a> 和 <a href="/blog/gdpr-erasure-request-twitter">遗忘权申请指南</a> 讲了下一步。</p>
+<h2>可携权不是无限权利</h2>
+<p>这项权利也有边界。它通常只覆盖你提供的数据，以及由你的活动生成的数据，不包括别人的推文、平台的商业秘密，或公开会伤害他人的内容。摸清边界，能避免你提交被驳回的申请，也帮你把精力放在确实有权拿到的归档上。</p>
+<h2>归档会保留多久</h2>
+<p>申请之后，归档在下载区只放一段有限时间，常常只有几天，随后就会从下载区移除。养成习惯：邮件一到立刻去拉，存进你自己控制、加密的文件夹。把下载下来的文件当成主副本，其余都是平台随时可能收回的视图。</p>
+<h2>可携权提醒你：备份是你的责任</h2>
+<p>平台依法把数据还给你，不代表它会替你永久保存。X 的归档下载入口随时可能调整，账号也可能被封导致你再也拿不到。可携权给的是「此刻能拿」的权利，不是「永远帮你存着」的承诺。最稳的做法是：每次拿到归档，立刻在本地加密存一份，再跑体检。这样即便将来某天平台不让你下载了，你手里仍有完整的旧推文可供清理和备份。</p>
+<h2>导出格式为什么重要</h2>
+<p>归档以 JSON 和 HTML 形式交付，是电脑不用特殊软件就能解析的格式。这正是可携权的用意：交给你的不是锁死的 PDF，而是真正能用起来的数据。体检工具直接读 JSON，本机解析才得以实现。如果某天某个服务只给你截图或加密文件，那就没通过可携权的检验，你也有理由去较真。弄清应有的格式，能帮你识别一份敷衍或不合规的导出。</p>
+<h2>一个实用顺序</h2>
+<p>先下载归档，在本机解析看清它暴露了什么，再处理高风险项。你不必在「留备份」和「做清理」之间二选一；可携权和删除权是队友，不是对手。</p>
+<p>从 <a href="/">申请归档并跑一次免费体检</a> 开始。</p>
+`,
+    contentEn: `
+<h2>What portability actually means</h2>
+<p>The right to data portability says a platform must let you take your personal data with you, in a common, machine-readable format. It exists in GDPR and in similar laws in several regions. The X archive ZIP is simply that right made into a product: you ask, and the service hands back everything tied to your account.</p>
+<h2>Why the archive is so complete</h2>
+<p>Portability covers all personal data related to you, not just the posts you wrote. That is why the archive holds likes, direct-message metadata, the devices you logged in from, and the topics associated with you. The law's scope is broad on purpose, so a proper export cannot stop at visible tweets.</p>
+<h2>Portability is not the same as deletion</h2>
+<p>People confuse the two. Portability moves data out, toward you. Deletion, the right to be forgotten, pushes data out, away from the platform. They run in opposite directions, yet they pair naturally: export first to see what is there, then decide what to erase.</p>
+<h2>What you can do with the export</h2>
+<p>Once you hold the archive, you can run a privacy check on your own device, keep a local backup, or move to another service. The key shift is control: the data stops being locked inside one company. For the deletion side, our <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA and GDPR deletion FAQ</a> and the <a href="/blog/gdpr-erasure-request-twitter">guide to filing an erasure request</a> explain the next step.</p>
+<h2>Portability is not unlimited</h2>
+<p>The right has boundaries. It typically applies to data you provided or that was generated by your activity, not to other people's posts, platform trade secrets, or content where release would harm someone else. Knowing the edges stops you from filing requests that get rejected, and helps you focus on the archive you are actually entitled to.</p>
+<h2>How long the archive is kept</h2>
+<p>After you request it, the archive is available for a limited window, often a few days, then removed from the download area. Build the habit of pulling it the moment the email arrives and storing it in an encrypted folder you control. Treat the downloaded file as the master copy; everything else is a view the platform can revoke.</p>
+<h2>Portability reminds you: backing up is your job</h2>
+<p>The law gives you the right to take the data now, not a promise that the platform will keep it for you forever. The archive download path can change, and an account can be suspended so you can never pull it again. Treat portability as a right that exists in the present tense. The safe habit is to store an encrypted copy locally the moment the archive arrives, then run the check. That way, even if the platform later blocks downloads, you still hold the full history for cleanup and backup.</p>
+<h2>Why the export format matters</h2>
+<p>The archive ships as JSON and HTML, formats a computer can parse without special software. That is the point of portability: you are not handed a locked PDF, but data you can actually use. A check tool reads the JSON directly, which is why the on-device parse works at all. If a service ever offered only a screenshot or a locked file, that would fail the portability test, and you would have grounds to push back. Knowing the expected format helps you spot a weak or non-compliant export before you waste time on it.</p>
+<h2>A practical order of operations</h2>
+<p>Download the archive, parse it on device to see what it exposes, then act on the high-risk items. You do not have to choose between keeping a backup and cleaning up; portability and deletion are teammates, not rivals.</p>
+<p>Start by <a href="/">requesting your archive and running a free check</a>.</p>
+`
+  },
+  {
+    slug: 'ai-search-indexing-old-tweets-2026',
+    title: 'AI 搜索开始重播你的旧推文：2026 年该重新清理的 3 个理由',
+    excerpt: '传统搜索引擎只是收录你的旧推文，AI 搜索会直接把它们的内容拼进答案里。2026 年多家 AI 搜索上线后，十年前的吐槽被重新端到用户面前的概率高了不少。本文给出现在就该重新清理的 3 个理由。',
+    date: '2026-10-12',
+    updatedAt: '2026-10-12',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['X/Twitter', 'AI搜索', '旧推文', '隐私', '时效'],
+    canonical: '/blog/ai-search-indexing-old-tweets-2026',
+    faq: [
+      { q: 'AI 搜索和传统搜索有什么不同？', a: '传统搜索给你一个链接列表，点不点由你；AI 搜索会把旧推文的内容直接写进它生成的答案里，用户甚至不会意识到来源是你的旧发言。', qEn: 'How is AI search different from traditional search?', aEn: 'Traditional search gives a list of links you may or may not click. AI search writes your old tweet content directly into the answer it generates, often without the user realizing the source is your old post.' },
+      { q: '为什么 2026 年更要清理？', a: '多家 AI 搜索产品在 2026 年集中上线，它们更大规模地抓取和重播历史内容，旧推文被重新端出来的概率明显上升。', qEn: 'Why clean up especially in 2026?', aEn: 'Several AI search products launched in 2026 and ingest historical content at far larger scale, so the odds of an old tweet resurfacing have clearly gone up.' },
+      { q: '清理还来得及吗？', a: '来得及，但越早越好。先跑一次本机体检，标出高风险推文，再分批处理；已删的内容不会再被 AI 搜索引用。', qEn: 'Is it too late to clean up?', aEn: 'Not too late, but sooner is better. Run an on-device check to flag high-risk tweets, then handle them in batches. Once deleted, content stops being cited by AI search.' }
+    ],
+    titleEn: 'AI Search Is Resurfacing Your Old Tweets: 3 Reasons to Clean Up in 2026',
+    excerptEn: 'Traditional search engines only indexed your old tweets. AI search stitches their content straight into answers. With several AI search products launching in 2026, a decade-old rant is far more likely to be served back to users. Here are three reasons to clean up now.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['X/Twitter', 'AI search', 'old tweets', 'privacy', 'timely'],
+    content: `
+<h2>传统搜索只收录，AI 搜索会重播</h2>
+<p>老搜索给你一个链接，点不点由你。AI 搜索会读你的旧推文，把内容揉进它生成的答案里，当作事实呈现。用户常常根本不知道来源是你多年前发的东西。这改变了风险性质：不再是能忽略的链接，而是被主动递到面前的原话。</p>
+<h2>理由一：2026 是 AI 搜索放量的一年</h2>
+<p>多家 AI 搜索产品在 2026 年上线或扩张，它们抓取历史内容的规模是传统引擎从未有过的。一条 2014 年安静躺在归档里的推文，如今更可能被扯进别人关于你、你单位或你评论过的话题的答案里。</p>
+<h2>理由二：上下文会被抽掉</h2>
+<p>AI 答案会压缩。玩笑、日期、「我 19 岁说错话」的背景，全被丢掉。剩下的是光秃秃的那句话，被当成你现在的立场。对求职者和公众人物来说，这种压缩才是真风险，原帖本身反倒不是。</p>
+<h2>理由三：删除是唯一持久的开关</h2>
+<p>你没法要求每个 AI 模型忘掉某句话，但可以删掉源头。一旦推文从归档和平台删掉，搜索引擎和 AI 系统能重新抓取的素材就少了。清理是你真正能控制的那个杠杆。</p>
+<h2>对普通人意味着什么</h2>
+<p>你不需要是大 V，这事才和你有关。AI 搜索会回答关于小区、学校、前单位、本地争议的问题，而旧推文会喂给这些答案，跟你是不是公众人物无关。最容易被旧推文吓一跳的，往往是那个以为小号没人看的人。把清理当成维护，就像你会定期改密码一样。</p>
+<h2>一个实用的检查顺序</h2>
+<p>别想一次清完。先从点名你单位、城市或家人的推文入手，因为 AI 答案最爱引用这些。再处理带证件或定位图片的内容。最后才是那些语气已不再像你的旧吐槽。足迹体检正是按风险给这些排好序的，让报告定顺序，别自己猜。一个安静的下午，通常够清掉最高风险那一档；目标不是一张一尘不染的主页，而是移除那几条可能在你不知情时替你说话的推文。</p>
+<h2>这个季度该做什么</h2>
+<p>跑一次本机 <a href="/">足迹体检</a>，标出高风险推文，分批清掉。我们的 <a href="/blog/ai-answer-engines-old-tweets">AI 答案引擎重播旧推文</a> 和 <a href="/blog/ai-scraping-old-tweets-training-data">旧推文被抓去训练数据</a> 两篇，从另外两个角度讲了同一场变化。</p>
+<p>窗口还没关，但在收窄。你忘记的那些推文，最可能替你说话。</p>
+`,
+    contentEn: `
+<h2>Traditional search indexed; AI search repeats</h2>
+<p>Old search showed a link and let you decide whether to click. AI search reads your old tweets, folds the content into a generated answer, and presents it as fact. The user often never sees that the source was something you posted years ago. That changes the stakes: it is no longer about a link that can be ignored, but a quote that is delivered unsolicited.</p>
+<h2>Reason 1: 2026 is the year AI search scaled</h2>
+<p>Several AI search products went live or expanded in 2026, and they ingest historical posts at a scale traditional engines never did. A tweet from 2014 that sat quietly in an archive is now more likely to be pulled into someone's answer about you, your employer, or a topic you commented on.</p>
+<h2>Reason 2: context gets stripped</h2>
+<p>AI answers compress. The joke, the date, the "I was 19 and wrong" context, all get dropped. What survives is the bare claim, presented as if it were a current position. For job seekers and public figures this compression is the real danger, not the original post itself.</p>
+<h2>Reason 3: deletion is the only durable off-switch</h2>
+<p>You cannot ask every AI model to forget a line. But you can remove the source. Once a tweet is deleted from the archive and the platform, the material that search engines and AI systems re-ingest shrinks. Cleanup is the one lever you actually control.</p>
+<h2>What this means for ordinary users</h2>
+<p>You do not need to be famous for this to matter. AI search answers questions about neighborhoods, schools, former employers, and local controversies, and old posts feed those answers whether or not you are a public figure. The person most surprised by a resurfaced tweet is usually the one who assumed their small account was invisible. Treat cleanup as maintenance, the same way you would update a password.</p>
+<h2>A practical order of checking</h2>
+<p>Do not try to clean everything at once. Start with the posts that name your employer, your city, or a family member, because those are the ones AI answers love to quote. Then move to anything with an image that shows a document or a location. Finish with older rants whose tone no longer matches you. A footprint check ranks exactly these by risk, so let the report set the order instead of guessing. One quiet afternoon is usually enough to clear the top tier, and the goal is not a spotless profile; it is removing the few posts that could speak for you without permission.</p>
+<h2>What to do this quarter</h2>
+<p>Run an on-device <a href="/">footprint check</a>, flag the high-risk posts, and clear them in batches. Our <a href="/blog/ai-answer-engines-old-tweets">piece on answer engines resurfacing old tweets</a> and the <a href="/blog/ai-scraping-old-tweets-training-data">write-up on scraping for training data</a> cover the same shift from two other angles.</p>
+<p>The window is not closed, but it is narrowing. The posts you forget are the ones most likely to speak for you. Run the check this week rather than next, because each indexed copy of an old post already out there is one more source an answer engine can cite. The effort is about an hour; the downside it prevents is open-ended.</p>
+`
+  }
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

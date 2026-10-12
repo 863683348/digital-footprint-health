@@ -23171,6 +23171,307 @@ rl.on('close', () =&gt; {
 <p>Run an on-device <a href="/">footprint check</a>, flag the high-risk posts, and clear them in batches. Our <a href="/blog/ai-answer-engines-old-tweets">piece on answer engines resurfacing old tweets</a> and the <a href="/blog/ai-scraping-old-tweets-training-data">write-up on scraping for training data</a> cover the same shift from two other angles.</p>
 <p>The window is not closed, but it is narrowing. The posts you forget are the ones most likely to speak for you. Run the check this week rather than next, because each indexed copy of an old post already out there is one more source an answer engine can cite. The effort is about an hour; the downside it prevents is open-ended.</p>
 `
+  },
+  {
+    slug: 'social-media-cleanup-burnout',
+    title: '清理倦怠：为什么删推文越删越累，以及怎么打破循环',
+    excerpt: '很多人一开始兴致勃勃地清理旧推文，删了两天就放弃了。清理倦怠常被误以为是偷懒，其实多半是方法不对。一次性大扫除注定失败，这篇讲清倦怠从哪来，以及用「小批量+工具」如何真正坚持下来。',
+    date: '2026-10-13',
+    updatedAt: '2026-10-13',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['清理倦怠', '数字断舍离', '推文清理', '隐私习惯'],
+    content: `<h2>清理倦怠到底是什么</h2>
+<p>你下定决心清理 X 上的黑历史，周六大清早泡了杯咖啡，打开归档，从第 1 条推文开始看。两小时后你删了 40 条，眼睛发酸，越看越沮丧。剩下的 9,000 条怎么办？这就是清理倦怠：一开始动力满格，接触真实工作量后迅速泄气。</p>
+<p>问题不在你，在于「大扫除心态」。我们从小被教育大扫除要一次搞定，但推文清理不是扫地，它是 10 年累计的 9,000 条碎片，没有人能一口气处理完还保持判断清醒。</p>
+<h2>为什么一次性清理注定失败</h2>
+<p>第一，决策疲劳。每删一条你都要判断「这条要不要留」，一天做几百个判断，大脑直接罢工。第二，情绪消耗。翻到 2014 年的中二发言、分手后的怨气、对前公司的吐槽，这些会反复戳你。第三，看不到头。没有进度感，人就放弃了。</p>
+<table>
+<thead><tr><th>方式</th><th>第 1 天</th><th>第 3 天</th><th>第 7 天</th></tr></thead>
+<tbody>
+<tr><td>一次性大扫除</td><td>兴奋，删 200 条</td><td>倦怠，删 20 条</td><td>放弃，0 条</td></tr>
+<tr><td>每天 15 分钟</td><td>平稳，删 30 条</td><td>平稳，删 30 条</td><td>平稳，累计 210 条</td></tr>
+<tr><td>工具按条件批量</td><td>设规则，删 500 条</td><td>微调规则，删 300 条</td><td>收尾，扫清长尾</td></tr>
+</tbody>
+</table>
+<h2>三个能坚持的方法</h2>
+<ul>
+<li><strong>小批量，固定时段。</strong>每天只花 15 分钟，设个闹钟，时间一到就停。把清理变成刷牙一样的习惯，而不是周末战役。</li>
+<li><strong>先高危，后琐碎。</strong>用体检报告把推文按风险排序，先删含手机号、住址、定位的那些，普通吐槽最后再说。最危险的清掉，焦虑就降一大半。</li>
+<li><strong>让工具替你判断。</strong>手动逐条看太累。上传归档后让工具按「含手机号」「2018 年以前」「含定位」这些条件批量筛出，你只复核清单，不逐条读。</li>
+</ul>
+<h2>什么时候该停手</h2>
+<p>清理是为了让自己安心，不是为了完美。高危信息清掉、账号能安心给别人看，就可以停。剩下的零星旧推文不影响安全，留着当时间胶囊也行。你不是档案管理员，没必要把每一条都归档到位。</p>
+<p>如果某天翻到特别难受的内容，关掉页面，明天再继续。保护情绪比删干净更重要。</p>
+
+<p>如果你还没做过体检，可以上传 X 归档在 <a href="/upload">digital-footprint-health.shop</a> 免费生成本机隐私报告，看到底哪些旧推文留下了手机号、定位和敏感话题。清理前也可以先到 <a href="/blog">博客</a> 看实操指南，或直接看 <a href="/pricing">删除定价</a> 按需付费，支持暂停、恢复和退款。</p>`,
+    canonical: '/blog/social-media-cleanup-burnout',
+    faq: [
+      { q: '清理倦怠是心理问题吗？', a: '通常不是。它更多来自「一次性大扫除」这种错误方法，工作量被严重低估，大脑在决策疲劳和情绪消耗下自然放弃。换成小批量+工具就能明显缓解。', qEn: 'Is cleanup burnout a mental health issue?', aEn: 'Usually not. It comes from the wrong method, the "one big purge," where the workload is badly underestimated and the brain quits under decision fatigue and emotional drain. Small batches plus a tool fix most of it.' },
+      { q: '每天清理多久比较合适？', a: '15 分钟足够。固定时段、设闹钟、时间一到就停，比周末花 3 小时更能长期坚持，也避免情绪过载。', qEn: 'How long should I clean each day?', aEn: 'About 15 minutes is enough. A fixed slot, a timer, and stopping when it rings beats a three-hour weekend session and avoids emotional overload.' },
+      { q: '工具批量删除会不会误删重要推文？', a: '会，所以要先看清单再确认。好的做法是工具按条件筛出候选，你复核清单、把想保留的加白名单，再执行删除。数字足迹体检支持暂停、恢复和退款，误删风险可控。', qEn: 'Will bulk deletion by a tool delete important tweets by mistake?', aEn: 'It can, so always review the shortlist before confirming. The safe flow is: the tool filters candidates by condition, you review and whitelist what to keep, then delete. A good check offers pause, resume, and refunds, which keeps accidental loss manageable.' },
+      { q: '清理到什么程度可以停？', a: '含手机号、住址、定位、敏感话题的高危推文清掉，账号能放心给别人看，就可以停。剩下的零星旧内容不影响安全，留着当回忆也行。', qEn: 'When is it safe to stop cleaning?', aEn: 'Once high-risk tweets with phone numbers, addresses, locations, and sensitive topics are gone and you can show the account to others without worry, you can stop. The remaining stray old posts do not affect safety and can stay as memories.' },
+      { q: '清理会影响账号本身吗？', a: '删除推文只移除内容，不影响账号登录、关注和粉丝。注意别在清理时顺便改密码或注销，那才是真正不可逆的操作。', qEn: 'Does cleanup affect the account itself?', aEn: 'Deleting tweets only removes content. It does not touch login, followers, or following. Just do not change your password or deactivate the account during cleanup, since those are the truly irreversible moves.' }
+    ],
+    titleEn: 'Social Media Cleanup Burnout: Why Deleting Feels Exhausting and How to Break the Cycle',
+    excerptEn: 'Most people start deleting old tweets with energy and quit after two days. Cleanup burnout is not laziness; it is the wrong method. This guide explains where the exhaustion comes from and how small batches plus the right tool make it stick.',
+    categoryEn: 'Psychology & Habits',
+    tagsEn: ['cleanup burnout', 'digital decluttering', 'tweet cleanup', 'privacy habit'],
+    contentEn: `<h2>What cleanup burnout actually is</h2>
+<p>You decide to clean up your X history, brew coffee Saturday morning, open the archive, and start at tweet number one. Two hours later you have deleted 40 tweets, your eyes hurt, and the other 9,000 are still there. That sinking feeling is cleanup burnout: full energy at the start, rapid collapse once you see the real volume.</p>
+<p>The problem is not you. It is the "spring cleaning" mindset. We are taught to finish cleaning in one go, but tweet cleanup is not sweeping the floor. It is a decade of 9,000 fragments, and no one stays sharp through that by brute force.</p>
+<h2>Why a single big purge fails</h2>
+<p>First, decision fatigue. Every delete asks "keep or remove," and after a few hundred judgments your brain quits. Second, emotional cost. Digging up 2014 cringe, post-breakup anger, and old employer rants hits repeatedly. Third, no finish line. Without a sense of progress, people give up.</p>
+<table>
+<thead><tr><th>Method</th><th>Day 1</th><th>Day 3</th><th>Day 7</th></tr></thead>
+<tbody>
+<tr><td>One big purge</td><td>Excited, 200 deleted</td><td>Burned out, 20 deleted</td><td>Quit, 0 deleted</td></tr>
+<tr><td>15 min daily</td><td>Steady, 30 deleted</td><td>Steady, 30 deleted</td><td>Steady, 210 total</td></tr>
+<tr><td>Tool by filter</td><td>Set rules, 500 deleted</td><td>Refine rules, 300 deleted</td><td>Wrap up the long tail</td></tr>
+</tbody>
+</table>
+<h2>Three ways to actually keep going</h2>
+<ul>
+<li><strong>Small batches on a fixed schedule.</strong> Spend only 15 minutes a day, set a timer, and stop when it rings. Make cleanup a habit like brushing teeth, not a weekend battle.</li>
+<li><strong>High risk first, trivial later.</strong> Use a privacy report to rank tweets by risk, delete the ones with phone numbers, addresses, and locations first, and leave ordinary venting for last. Clearing the dangerous stuff cuts most of the anxiety.</li>
+<li><strong>Let the tool decide.</strong> Reading every tweet by hand is exhausting. Upload the archive and let a tool filter by conditions like "contains a phone number," "before 2018," or "has a location tag," then you only review the shortlist.</li>
+</ul>
+<h2>When to stop</h2>
+<p>Cleanup exists to make you feel safe, not to be perfect. Once the high-risk info is gone and you can show the account to others without flinching, you can stop. The odd old tweet does not affect your safety and can stay as a time capsule. You are not an archivist who must file everything perfectly.</p>
+<p>If you hit something painful on a given day, close the tab and come back tomorrow. Protecting your mood matters more than deleting everything.</p>
+
+<p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
+  },
+  {
+    slug: 'x-account-recovery-without-phone',
+    title: '换号后怎么找回 X 账号：没有旧手机号也能拿回来',
+    excerpt: '旧手机号注销了、SIM 卡丢了、换国家了，X 账号的二步验证还绑着那个号码怎么办？这篇讲清没有旧手机号的几种找回路径，以及平时该怎样留好后路。',
+    date: '2026-10-13',
+    updatedAt: '2026-10-13',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X 账号找回', '二步验证', '手机号丢失', '账号安全'],
+    content: `<h2>先搞清楚卡在哪一步</h2>
+<p>X 登录分两层：密码 + 二步验证（2FA）。如果你只是忘了密码，用邮箱或备用码就能重置。真正麻烦的是 2FA 还绑着那个已经用不了的号码。X 会往旧号码发短信验证码，你收不到，就卡住了。</p>
+<h2>没有旧手机号的找回路径</h2>
+<ul>
+<li><strong>备用恢复码。</strong>开通 2FA 时 X 给过一组一次性恢复码，找找当时的截图或密码管理器。输一个就能跳过短信验证。</li>
+<li><strong>绑定的邮箱或密保邮箱。</strong>在登录页选「用邮箱验证」，走邮箱链接重置。前提是邮箱还在你手里。</li>
+<li><strong>身份验证应用（Authenticator）。</strong>如果你当初绑定的是 Google Authenticator 之类而不是短信，换手机后用同一应用的云备份或转移码仍能出码。</li>
+<li><strong>申诉表单。</strong>以上都失败，走 X 的账号申诉，提供注册邮箱、曾用密码、绑定过的设备等信息，人工审核后解绑旧号码。</li>
+</ul>
+<h2>申诉时要准备什么</h2>
+<p>X 的人工审核会看你提供的证据是否连贯：注册用邮箱、最近登录的大致设备、曾发过的内容类型。信息越具体，通过越快。别编，编错反而被判定盗号。</p>
+<h2>平时留好后路（比找回重要）</h2>
+<ul>
+<li>开通 2FA 立刻把备用恢复码存进密码管理器，别只截在手机相册。</li>
+<li>优先用身份验证应用而非短信验证，换号不受影响。</li>
+<li>在 <a href="/blog/x-two-factor-backup-codes">X 二步验证备份码</a> 这篇里看具体的备份步骤。</li>
+<li>主邮箱也开 2FA，且别和 X 绑同一个手机号。</li>
+</ul>
+<p>找回账号和清理旧推文是两件事，但常一起发生：很多人是换号、找回之后才想起来要清黑历史。建议找回后顺手用 <a href="/upload">数字足迹体检</a> 扫一遍，看看旧号码、旧定位有没有留在推文里。</p>
+
+<p>如果你还没做过体检，可以上传 X 归档在 <a href="/upload">digital-footprint-health.shop</a> 免费生成本机隐私报告，看到底哪些旧推文留下了手机号、定位和敏感话题。清理前也可以先到 <a href="/blog">博客</a> 看实操指南，或直接看 <a href="/pricing">删除定价</a> 按需付费，支持暂停、恢复和退款。</p>`,
+    canonical: '/blog/x-account-recovery-without-phone',
+    faq: [
+      { q: '旧手机号注销了还能找回 X 吗？', a: '能。先用备用恢复码或绑定的邮箱，都不行再走申诉表单，提供注册邮箱和曾用设备信息，人工审核后会解绑旧号码。', qEn: 'Can I recover X after the old number is cancelled?', aEn: 'Yes. Try backup codes or the linked email first. If those fail, file an appeal with your signup email and past device info. Human review then unbinds the old number.' },
+      { q: '申诉一般要多久？', a: '没有固定时限，资料越具体越快，通常几天到两周。期间别反复提交，重复申诉反而拖慢。', qEn: 'How long does the appeal take?', aEn: 'There is no fixed timeline. The more specific your details, the faster, usually a few days to two weeks. Do not submit repeatedly, as that slows things down.' },
+      { q: '用验证器 App 还用不用怕换号？', a: '不怕。验证器 App 的输出和手机号无关，换手机后用云备份或转移码继续出码。真正怕换号的是「短信验证」。', qEn: 'Does an authenticator app still fear a number change?', aEn: 'No. The authenticator app produces codes independent of any phone number. A cloud backup or transfer key keeps working on a new phone. Only SMS verification fears a number change.' },
+      { q: '找回后第一件事该做什么？', a: '解绑旧号码、换上验证器 App、把备用码存进密码管理器，再用体检扫一遍推文里残留的旧手机号和定位。', qEn: 'What should I do first after recovery?', aEn: 'Unbind the old number, switch to an authenticator app, store backup codes in a password manager, then scan your tweets for leftover old numbers and locations with a privacy check.' }
+    ],
+    titleEn: 'Recovering Your X Account Without a Phone Number',
+    excerptEn: 'Your old number is cancelled, the SIM is lost, or you moved countries, but two-factor verification is still tied to that number. This guide covers the recovery paths when you no longer have the old phone, and how to set up a backup beforehand.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X account recovery', 'two-factor', 'lost phone number', 'account security'],
+    contentEn: `<h2>First, figure out where you are stuck</h2>
+<p>X login has two layers: password plus two-factor verification (2FA). If you only forgot the password, email or backup codes reset it. The real trouble is when 2FA is still tied to a number you can no longer use. X sends an SMS code to the old number, you never receive it, and you are locked out.</p>
+<h2>Recovery paths without the old phone</h2>
+<ul>
+<li><strong>Backup recovery codes.</strong> When you enabled 2FA, X gave you a set of one-time codes. Check old screenshots or your password manager. One code skips the SMS step.</li>
+<li><strong>Linked or backup email.</strong> On the login page choose "verify by email" and follow the link. This works only if the email is still yours.</li>
+<li><strong>Authenticator app.</strong> If you originally bound an app like Google Authenticator instead of SMS, the same app's cloud backup or transfer key still produces codes after a phone change.</li>
+<li><strong>Appeal form.</strong> If all else fails, file an X account appeal with your signup email, past passwords, and devices used. Human review then unbinds the old number.</li>
+</ul>
+<h2>What to prepare for the appeal</h2>
+<p>X's human review checks whether your evidence is consistent: the signup email, the rough devices you logged in from, the kind of content you posted. The more specific, the faster the pass. Do not invent details; wrong guesses get flagged as account theft.</p>
+<h2>Set up a backup before you need it</h2>
+<ul>
+<li>Save 2FA backup codes to a password manager the moment you enable it, not just a screenshot in your photo album.</li>
+<li>Prefer an authenticator app over SMS so a number change does not block you.</li>
+<li>See <a href="/blog/x-two-factor-backup-codes">X two-factor backup codes</a> for the exact backup steps.</li>
+<li>Turn on 2FA for your main email too, and do not tie it to the same phone number as X.</li>
+</ul>
+<p>Recovering an account and cleaning old tweets are separate tasks, but they often happen together: many people only think about old posts after a number change and recovery. Once back in, run a <a href="/upload">digital footprint check</a> to see whether the old number or location is still sitting in your tweets.</p>
+
+<p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
+  },
+  {
+    slug: 'chinese-job-switch-tweet-cleanup',
+    title: '跳槽前，中国职场人该清理哪些 X 推文（和英文版不一样的思路）',
+    excerpt: '国内职场人用 X 的习惯和欧美完全不同：常混用中英文、爱晒工牌和团建、随手定位公司。跳槽谈 offer 前，这些推文比你想的更容易被背调看到。这篇从中文用户的实际习惯出发，讲清该清什么、怎么清。',
+    date: '2026-10-13',
+    updatedAt: '2026-10-13',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['职场隐私', '跳槽清理', '中文用户', '背调'],
+    content: `<h2>中文用户的三个「特有」风险点</h2>
+<p>欧美教程总让你删政治言论和裸照，但中国职场人真正的高危推文往往不是这些：</p>
+<ul>
+<li><strong>工牌和团建照。</strong>很多人发「今天入职」「团建合照」并定位公司，等于把雇主、部门、入职时间写在了公开档案里。跳槽时前司 HR 或猎头一搜就看到。</li>
+<li><strong>中英夹杂的吐槽。</strong>用中文骂甲方、用英文骂前领导，自以为对方看不懂，其实背调公司雇的就是双语猎手，两种都看。</li>
+<li><strong>定位打卡。</strong>「在 XX 大厦开会」这类打卡，把你的通勤圈、客户圈都暴露了，竞品公司一眼认出你是谁。</li>
+</ul>
+<h2>和英文版不一样的清理顺序</h2>
+<p>英文用户习惯先删「争议话题」，中文用户更该先删「身份锚点」，也就是能让人锁定你真实身份和现雇主的信息。顺序建议：</p>
+<ol>
+<li>含公司名、工牌、工牌邮箱域名的推文；</li>
+<li>定位在办公地点、客户现场的推文；</li>
+<li>中英夹杂、能指向具体上司或项目的吐槽；</li>
+<li>最后才是普通情绪宣泄。</li>
+</ol>
+<h2>一个常被忽略的细节：邮箱域名</h2>
+<p>很多人推文里没写公司，但签名档挂着 <code>@公司名.com</code> 的企业邮箱，或者回复客户时露了域名。背调不一定看你发了什么，更看你「属于哪家公司」。这类信息要优先清。</p>
+<h2>怎么清最快</h2>
+<p>手动翻 10 年推文不现实。上传归档到 <a href="/upload">数字足迹体检</a>，它会按「含公司关键词」「含定位」「含邮箱域名」批量筛出来，你只复核清单。需要按条删除就到 <a href="/pricing">删除定价</a> 看费用，支持暂停和退款。</p>
+<p>清理不是心虚，是职业素养。把能暴露现雇主和真实身份的内容收一收，谈 offer 时更从容。</p>
+
+<p>如果你还没做过体检，可以上传 X 归档在 <a href="/upload">digital-footprint-health.shop</a> 免费生成本机隐私报告，看到底哪些旧推文留下了手机号、定位和敏感话题。清理前也可以先到 <a href="/blog">博客</a> 看实操指南，或直接看 <a href="/pricing">删除定价</a> 按需付费，支持暂停、恢复和退款。</p>`,
+    canonical: '/blog/chinese-job-switch-tweet-cleanup',
+    faq: [
+      { q: '中文推文和英文推文都要清吗？', a: '都要。背调公司是双语团队，中英文都看。尤其警惕中英夹杂的吐槽，自以为对方看不懂反而最危险。', qEn: 'Should I clean both Chinese and English tweets?', aEn: 'Both. Check firms are bilingual and read everything. Mixed-language complaints are the riskiest because people assume the other side will not understand.' },
+      { q: '工牌照一定要删吗？', a: '建议删或至少隐藏定位。工牌照直接暴露雇主和部门，求职谈薪时是减分项。如果舍不得，至少把定位信息抹掉。', qEn: 'Do I have to delete badge photos?', aEn: 'Best to delete or at least strip the location. A badge exposes your employer and department and works against you in salary talks. If you keep it, at least remove the geotag.' },
+      { q: '企业邮箱域名在推文里露了怎么处理？', a: '优先清掉含域名的推文和签名档。这类信息让人直接判定你属于哪家公司，比单条内容更危险。', qEn: 'What if my corporate email domain shows in a tweet?', aEn: 'Clear those tweets and the signature first. That detail lets someone pin your company directly, which is riskier than any single post.' },
+      { q: '清理会不会被现雇主发现？', a: '删除是静默的，对方不会收到通知。但如果你删完立刻改头像、停更，同事可能会注意到。节奏放自然点就行。', qEn: 'Will cleaning alert my current employer?', aEn: 'Deletion is silent; no one gets a notice. But if you change your avatar and go quiet right after, colleagues may notice. Keep your rhythm natural.' }
+    ],
+    titleEn: 'What Chinese Professionals Should Clean on X Before a Job Switch',
+    excerptEn: 'Chinese professionals use X differently from Western users: mixed Chinese-English posts, casual photos of work badges and team outings, and frequent check-ins at the office. Before a job offer is finalized, these tweets are more visible to background checks than you think. This piece starts from real Chinese usage habits.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['workplace privacy', 'job switch', 'Chinese users', 'background check'],
+    contentEn: `<h2>Three risk points specific to Chinese users</h2>
+<p>Western guides tell you to delete political rants and photos. Chinese professionals' real high-risk tweets are usually different:</p>
+<ul>
+<li><strong>Badge and team-outing photos.</strong> Many post "first day" or "team building" with the office tagged, which writes the employer, department, and start date into a public record. A former HR or recruiter finds it in one search during a switch.</li>
+<li><strong>Mixed-language complaints.</strong> Cursing a client in Chinese and a boss in English, assuming the other side will not understand. Background-check firms hire bilingual researchers who read both.</li>
+<li><strong>Location check-ins.</strong> "Meeting at XX tower" reveals your commute and client circle, letting a competitor identify you at once.</li>
+</ul>
+<h2>A cleanup order that differs from the English version</h2>
+<p>English users start with "controversial topics." Chinese users should start with "identity anchors" that let someone pin down your real name and current employer. Suggested order:</p>
+<ol>
+<li>Tweets with the company name, badge, or corporate email domain.</li>
+<li>Tweets tagged at the office or a client site.</li>
+<li>Mixed-language complaints that point at a specific manager or project.</li>
+<li>Ordinary venting last.</li>
+</ol>
+<h2>One detail people miss: the email domain</h2>
+<p>Many never name the company in a post but sign off with a corporate email like name@company.com, or expose the domain replying to a client. A check may care less about what you posted and more about which company you belong to. Clear this first.</p>
+<h2>The fastest way to clean</h2>
+<p>Manually scrolling a decade of tweets is unrealistic. Upload the archive to a <a href="/upload">digital footprint check</a>, which filters in bulk by "company keyword," "location," and "email domain," and you only review the shortlist. For per-tweet deletion, see <a href="/pricing">deletion pricing</a>, which supports pause and refund.</p>
+<p>Cleaning is not guilt. It is professionalism. Tidy the content that exposes your current employer and real identity, and you walk into offer talks more relaxed.</p>
+
+<p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
+  },
+  {
+    slug: 'gdpr-erasure-platform-reality-2026',
+    title: 'GDPR 删除权：平台在 2026 年到底会不会真的删你的推文',
+    excerpt: 'GDPR 说你有权要求删除自己的数据，但落到 X 这样的平台，现实和法条之间有一道缝。这篇讲清「被遗忘权」在 2026 年的实际执行：平台删了什么、留了什么、你还能怎么自己动手清。',
+    date: '2026-10-13',
+    updatedAt: '2026-10-13',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['GDPR', '被遗忘权', '数据删除', '平台合规'],
+    content: `<h2>法条说了什么</h2>
+<p>GDPR 第 17 条「被遗忘权」规定，在若干情形下（账号注销、撤回同意、数据不再必要）你可以要求控制者删除你的个人数据。听起来很硬，但有两个关键词限制了它的威力：<strong>「在可行范围内」</strong>和<strong>「法定例外」</strong>。</p>
+<h2>2026 年平台实际怎么做</h2>
+<ul>
+<li><strong>注销账号会删公开推文。</strong>你主动注销后，X 会在一定期限內移除你主页的推文。但注意，注销是不可逆的，你连账号一起没了。</li>
+<li><strong>单条删除≠彻底消失。</strong>你手动删一条推文，X 的前端不显示，但备份、日志和合规存档里可能还留副本，期限由其内部政策决定。</li>
+<li><strong>法定例外会留下数据。</strong>涉及法律义务（税务、防欺诈、法院命令）的数据，平台有权依法保留，不响应删除请求。</li>
+<li><strong>第三方已经抓走的，管不了。</strong>爬虫、存档站、别人转发的截图，不在 X 的控制范围，GDPR 删不掉它们。</li>
+</ul>
+<h2>一个常见的误解</h2>
+<p>很多人以为发一封「根据 GDPR 删除我所有推文」的邮件，平台就会把十年内容从地球上抹掉。现实是：平台会按自己的流程和法定义务处理，可能只删部分、或要求你先注销账号。指望平台替你「净身」不现实。</p>
+<h2>更靠谱的做法：自己动手清</h2>
+<p>与其等平台慢慢响应，不如自己掌控：上传归档到 <a href="/upload">数字足迹体检</a>，看清哪些推文含手机号、定位、敏感话题，再用 <a href="/pricing">删除工具</a> 按条件批量清掉。这属于你主动行使控制权，比发法律函更快、更可控。如果涉及跨境或特殊合规场景，可参考 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 删除权 FAQ</a>。</p>
+
+<p>如果你还没做过体检，可以上传 X 归档在 <a href="/upload">digital-footprint-health.shop</a> 免费生成本机隐私报告，看到底哪些旧推文留下了手机号、定位和敏感话题。清理前也可以先到 <a href="/blog">博客</a> 看实操指南，或直接看 <a href="/pricing">删除定价</a> 按需付费，支持暂停、恢复和退款。</p>`,
+    canonical: '/blog/gdpr-erasure-platform-reality-2026',
+    faq: [
+      { q: '我发邮件要求删除，平台必须马上删吗？', a: '不必马上，也没有义务删干净。平台会按自己的流程和法定义务处理，可能涉及注销账号或只删部分。指望一封邮件清零不现实。', qEn: 'Must the platform delete immediately after my email?', aEn: 'No, and it is not obliged to delete everything. The platform follows its own process and legal duties, which may mean deactivating the account or deleting only part. One email will not zero it out.' },
+      { q: '删掉的推文平台还留着吗？', a: '前端不显示，但备份、日志、合规存档可能保留副本，期限由平台内部政策决定。涉及法定义务的还会依法留存。', qEn: 'Does the platform keep deleted tweets?', aEn: 'They disappear from the front end, but backups, logs, and compliance archives may keep a copy for a term set by internal policy. Data under legal duty is kept as required.' },
+      { q: 'GDPR 能删掉别人转发的我的推文吗？', a: '不能。别人截图、存档站、爬虫拿走的副本不在 X 控制范围内，GDPR 管不到。自己清原帖能减少源头，但扩散出去的管不了。', qEn: 'Can GDPR delete my tweet that someone else reposted?', aEn: 'No. Screenshots, archive sites, and scraped copies are outside X control, so GDPR cannot reach them. Cleaning your original cuts the source, but spread copies are out of reach.' },
+      { q: '想彻底清理，最可控的办法是什么？', a: '自己上传归档、用工具按条件批量删。比发法律函快，也不依赖平台心情。属于你主动行使数据控制权。', qEn: 'What is the most controllable way to clean up fully?', aEn: 'Upload your archive yourself and bulk-delete by condition with a tool. It is faster than a legal letter and does not depend on the platform. It is you exercising data control directly.' }
+    ],
+    titleEn: 'GDPR Right to Erasure: What Platforms Actually Do in 2026',
+    excerptEn: 'GDPR says you can demand erasure of your data, but between the law and a platform like X there is a gap. This piece covers how the "right to be forgotten" actually plays out in 2026: what the platform deletes, what it keeps, and what you can still do yourself.',
+    categoryEn: 'Compliance & Law',
+    tagsEn: ['GDPR', 'right to erasure', 'data deletion', 'platform compliance'],
+    contentEn: `<h2>What the law says</h2>
+<p>GDPR Article 17, the "right to erasure," lets you demand that a controller delete your personal data in several cases: account deletion, withdrawn consent, or data no longer needed. It sounds absolute, but two phrases limit its power: "to the extent feasible" and "legal exceptions."</p>
+<h2>What platforms actually do in 2026</h2>
+<ul>
+<li><strong>Deactivating removes public tweets.</strong> After you deactivate, X removes your tweets from your profile within a period. But deactivation is irreversible: you lose the account entirely.</li>
+<li><strong>Single delete is not total disappearance.</strong> You delete one tweet, X hides it on the front end, but backups, logs, and compliance archives may keep a copy for a term set by internal policy.</li>
+<li><strong>Legal exceptions keep data.</strong> Data tied to legal duties (tax, fraud prevention, court orders) can be retained lawfully and will not respond to erasure requests.</li>
+<li><strong>What third parties scraped is out of reach.</strong> Crawlers, archive sites, and screenshots others took are outside X's control. GDPR cannot delete those.</li>
+</ul>
+<h2>A common misunderstanding</h2>
+<p>Many believe that emailing "delete all my tweets under GDPR" makes a platform wipe a decade from the planet. In reality the platform follows its own process and legal duties, may delete only part, or may require you to deactivate first. Expecting the platform to "clean you up" is unrealistic.</p>
+<h2>A more reliable path: do it yourself</h2>
+<p>Instead of waiting on the platform, take control: upload your archive to a <a href="/upload">digital footprint check</a>, see which tweets carry phone numbers, locations, and sensitive topics, then use a <a href="/pricing">deletion tool</a> to clear them in bulk by condition. This is you exercising control directly, faster and more predictable than a legal letter. For cross-border or special compliance cases, see the <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA and GDPR erasure FAQ</a>.</p>
+
+<p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
+  },
+  {
+    slug: 'locked-out-x-account-faq',
+    title: '被锁死在 X 门外？账号锁定常见问题快答',
+    excerpt: '账号突然被锁、登录提示异常活动、二步验证收不到码，这篇用 5 个高频问题，快速说清 X 账号被锁时该做什么、不该做什么。',
+    date: '2026-10-13',
+    updatedAt: '2026-10-13',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['账号锁定', 'X 登录', '账号安全', '解锁'],
+    content: `<h2>为什么会被锁</h2>
+<p>X 在检测到异常登录、批量操作或可疑脚本时会临时锁定账号，属于保护机制，不代表你做错了什么。</p>
+<h2>常见问题</h2>
+<h3>锁了之后能直接删推文吗？</h3>
+<p>不能。锁定期内多数操作被禁，先解锁再谈清理。解锁后如果担心黑历史，可到 <a href="/upload">数字足迹体检</a> 扫一遍。</p>
+<h3>收不到二步验证短信怎么办？</h3>
+<p>先看手机号是否还能用、是否换了号。能用备用恢复码或验证器 App 就跳过短信。都不行走申诉，详见 <a href="/blog/x-account-recovery-without-phone">换号后找回 X 账号</a>。</p>
+<h3>解锁要等多久？</h3>
+<p>多数临时锁定几小时到一天自动解除；需要人工审核的视证据完整度，可能几天。</p>
+<h3>解锁时要不要改密码？</h3>
+<p>建议改，且主邮箱也单独开 2FA。别在解锁过程中顺手注销账号，那是不可逆的。</p>
+<h3>锁过一次会更常被锁吗？</h3>
+<p>不会因一次锁定被标记。但反复触发异常行为（脚本、批量操作）会提高频率，正常使用就好。</p>
+
+<p>如果你还没做过体检，可以上传 X 归档在 <a href="/upload">digital-footprint-health.shop</a> 免费生成本机隐私报告，看到底哪些旧推文留下了手机号、定位和敏感话题。清理前也可以先到 <a href="/blog">博客</a> 看实操指南，或直接看 <a href="/pricing">删除定价</a> 按需付费，支持暂停、恢复和退款。</p>`,
+    canonical: '/blog/locked-out-x-account-faq',
+    faq: [
+      { q: '账号被锁是被盗了吗？', a: '不一定。多数是异常登录或批量操作触发的保护。先按官方流程解锁，别急着改所有密码，反而可能把自己锁更久。', qEn: 'Does a lock mean I was hacked?', aEn: 'Not necessarily. Most locks are protection against unusual login or bulk actions. Follow the official recovery flow first; do not change every password at once, which can lock you longer.' },
+      { q: '解锁期间能发推吗？', a: '不能。锁定期内发推、删推、改资料基本都被禁。等解锁后再操作。', qEn: 'Can I tweet while locked?', aEn: 'No. Posting, deleting, and editing profile are mostly blocked during a lock. Wait until it lifts.' },
+      { q: '一直收不到验证码，申诉要准备什么？', a: '注册邮箱、曾用密码、常用登录设备这些连贯证据。资料越具体通过越快。', qEn: 'If codes never arrive, what goes in the appeal?', aEn: 'Your signup email, past passwords, and common devices as consistent evidence. The more specific, the faster the pass.' },
+      { q: '解锁后要不要清理旧推文？', a: '看你自己需要。担心黑历史就用体检扫一遍，按条件批量删，比手动翻十年省事得多。', qEn: 'Once you are back in, should you clean old tweets?', aEn: 'Only if you want to. Worried about old posts? Run a check and bulk-delete by condition, far easier than scrolling a decade by hand.' },
+      { q: '锁过之后会被限流吗？', a: '单次锁定不影响正常曝光。只有反复违规才会触发更严的限制，正常使用无需担心。', qEn: 'Will a lock hurt my reach?', aEn: 'A single lock does not affect normal reach. Only repeated violations trigger stricter limits, so normal use is fine.' }
+    ],
+    titleEn: 'Locked Out of X? Quick FAQ on Account Lockouts',
+    excerptEn: 'Account suddenly locked, a prompt about unusual activity, or no 2FA code arriving. This quick FAQ covers five common lockout scenarios and what to do and avoid.',
+    categoryEn: 'Account Security',
+    tagsEn: ['account locked', 'X login', 'account security', 'account recovery'],
+    contentEn: `<h2>Why accounts get locked</h2>
+<p>X temporarily locks an account when it detects unusual login, bulk actions, or suspicious scripts. It is a protective measure, not proof you did something wrong.</p>
+<h2>Common questions</h2>
+<h3>Can I delete tweets while locked?</h3>
+<p>No. Most actions are blocked during a lock. Regain access first, then worry about cleanup. Once you are back in, if you are concerned about old posts, run a <a href="/upload">digital footprint check</a>.</p>
+<h3>What if the 2FA SMS never arrives?</h3>
+<p>Check whether the number still works or changed. Use backup codes or an authenticator app to skip SMS. If neither works, file an appeal; see <a href="/blog/x-account-recovery-without-phone">recovering X without a phone</a>.</p>
+<h3>How long until the lock lifts?</h3>
+<p>Most temporary locks lift in a few hours to a day. Human review depends on how complete your evidence is and can take days.</p>
+<h3>Should I change the password once I am back in?</h3>
+<p>Yes, and turn on 2FA for the main email too. Do not deactivate the account while recovering access; that move is irreversible.</p>
+<h3>Will one lock mean more locks later?</h3>
+<p>No, a single lock does not flag you. But repeatedly triggering unusual behavior (scripts, bulk actions) raises the frequency. Just use the account normally.</p>
+
+<p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
   }
 ];
 

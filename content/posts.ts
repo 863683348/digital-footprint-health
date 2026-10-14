@@ -23591,6 +23591,461 @@ rl.on('close', () =&gt; {
     content: "<h2>为什么每月都该看一眼政策</h2>\n<p>平台政策不是一成不变的。隐私条款、数据导出方式、账号安全默认值，都有可能在一个版本更新里悄悄调整。你不需要逐字读条款，但每月花几分钟看一眼可见变动，能在清理旧推文时少踩坑。关于为什么清理本身重要，可以参考 <a href=\"/blog/black-friday-2026-online-privacy-footprint\">大促期间的隐私足迹</a>。</p>\n<h2>本月隐私相关变动</h2>\n<p>2026 年 10 月，X 在隐私设置页把\"下载我的数据\"入口做了更显眼的提示，并细化了导出内容的分类说明。对用户来说，这意味着发起归档后更容易看懂包里有什么，但这并不改变你导出频率的选择。真正值得记一笔的是入口更显眼，可能让更多人养成定期导出的习惯。</p>\n<h2>数据导出与归档</h2>\n<p>本月没有观察到导出队列的明显提速或降速。如果你发现归档好几天没下来，先排查网络、浏览器拦截和邮箱垃圾箱，确认不是本地问题后再怀疑平台。仍卡住就看 <a href=\"/blog/x-archive-download-failed-fix\">下载失败排查</a>。把导出动作排进每月固定日程，比关心快慢更有意义。</p>\n<h2>账号安全默认值的调整</h2>\n<p>本月登录会话和受信任设备的展示更清晰，你在\"账号安全\"页能更直接看到活跃设备。借着这个变动，顺手按 <a href=\"/blog/x-suspicious-login-alert-response-steps\">可疑登录六步</a> 把设备列表清一遍，比平时更值得做。也顺便复查有没有不认识的授权应用挂在账号上。</p>\n<h2>对搜索引擎与第三方存档的影响</h2>\n<p>平台侧的政策变动通常不影响已经存在于搜索引擎缓存或第三方存档里的内容。换句话说，删了旧推文不代表网上副本立刻消失。这提醒我们：清理要趁早，且删完应隔一段时间复查搜索结果，别以为删完就万事大吉。</p>\n<h2>对你清理旧推文节奏的影响</h2>\n<p>小结：本月变动里，真正影响清理节奏的是\"导出更易懂\"，让你评估要删什么时更方便；其余多是展示层调整。删除动作本身的政策没有收紧或放松，按你原有的计划推进即可，不必因为一条公告就突击删帖。</p>\n<table>\n<thead><tr><th>变动项</th><th>是否影响清理</th><th>建议动作</th></tr></thead>\n<tbody>\n<tr><td>隐私页导出入口提示</td><td>间接</td><td>更易看懂归档</td></tr>\n<tr><td>导出分类说明细化</td><td>间接</td><td>无需改变频率</td></tr>\n<tr><td>会话与设备展示增强</td><td>是</td><td>清一遍设备列表</td></tr>\n</tbody></table>\n<p>回到 <a href=\"/\">首页</a> 查看我们持续更新的数字足迹指南。</p>",
     contentEn: "<h2>Why glance at policy every month</h2>\n<p>Platform policy is not fixed. Privacy terms, data-export methods, and account-security defaults can shift quietly in a single update. You do not need to read every clause, but spending a few minutes each month on visible changes helps you avoid surprises while cleaning old tweets. For why cleanup matters, see our <a href=\"/en/blog/black-friday-2026-online-privacy-footprint\">holiday privacy footprint</a>.</p>\n<h2>Privacy changes this month</h2>\n<p>In October 2026, X made the \"download my data\" entry more visible on the privacy page and sharpened the category descriptions in the export. For users this means the archive is easier to understand after you request it, but it does not change how often you export. The detail worth noting is that a more visible entry may push more people to export regularly.</p>\n<h2>Data export and archives</h2>\n<p>No clear speed-up or slowdown in the export queue this month. If an archive has not arrived in days, check your network, browser blockers, and spam folder before blaming the platform. If it is still stuck, see our <a href=\"/en/blog/x-archive-download-failed-fix\">download failure troubleshooting</a>. Scheduling export into a monthly habit matters more than the speed.</p>\n<h2>Account-security default tweaks</h2>\n<p>This month, login sessions and trusted devices display more clearly, so you can see active devices directly in Account security. With that change, running through the <a href=\"/en/blog/x-suspicious-login-alert-response-steps\">six-step suspicious login response</a> to clean the device list is worth doing now more than usual, and glance at any unknown authorized apps while you are there.</p>\n<h2>Effect on search engines and third-party archives</h2>\n<p>Platform-side policy changes usually do not affect content already sitting in search caches or third-party archives. In other words, deleting old tweets does not make online copies vanish at once. This reminds us to clean early and re-check search results after a while, rather than assuming deletion settles everything.</p>\n<h2>Effect on your old-tweet cleanup pace</h2>\n<p>Summary: of this month's changes, the one that really touches cleanup is \"export is easier to read\", which helps you judge what to delete; the rest are display tweaks. The policy on deletion itself did not tighten or loosen, so proceed with your existing plan instead of panic-deleting after one announcement.</p>\n<table>\n<thead><tr><th>Change</th><th>Affects cleanup?</th><th>Suggested action</th></tr></thead>\n<tbody>\n<tr><td>Privacy export entry prompt</td><td>Indirect</td><td>Archive easier to read</td></tr>\n<tr><td>Export category notes</td><td>Indirect</td><td>No change in frequency</td></tr>\n<tr><td>Session and device display</td><td>Yes</td><td>Clean device list</td></tr>\n</tbody></table>\n<p>Return to the <a href=\"/\">homepage</a> for our continuously updated digital footprint guides.</p>",
   },
+  {
+    slug: 'old-tweets-financial-info-leak-risk',
+    title: '旧推文里的财务信息，可能是你没注意的泄露口',
+    excerpt: '工资条截图、退税讨论、带银行名的定位，这些旧推文会暴露你的收入与账户线索。本文梳理四类财务痕迹，并给出三步自查与清理方法。',
+    date: '2026-10-15',
+    updatedAt: '2026-10-15',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '数字足迹', '隐私泄露', '财务隐私'],
+    content: `
+<p>你大概在 X（Twitter）上发过一张工资条截图、一段吐槽报销流程的对话，或者一个带着银行支行名字的定位。这些信息单独看无关紧要，但被搜索引擎、数据经纪商和诈骗分子拼起来，就能还原你的收入区间、雇主、常去场所和消费习惯。更麻烦的是，旧推文不会因为你忘了就消失，它们一直停在公开时间线里，被索引、被截图、被反复翻出。本文梳理旧推文里最常见的财务泄露点，并给出可操作的清理步骤，帮你在不动声色之间把风险降下来。</p>
+
+<h2>为什么财务信息会混进推文</h2>
+<p>财务信息不像手机号那样一眼就能认出，它经常藏在看似日常的内容里。三类场景最容易出现。一是晒图，工资条、退税单、报销凭证、中奖通知都带着具体金额；二是对话，和同事讨论薪资、期权、年终奖时会顺手写出数字；三是定位，银行网点、公司园区、高端消费场所会被一并发出。这些内容一旦发布，默认对所有人和搜索引擎可见，而且多年之后仍然能被搜到。很多用户以为删掉就好，但转发和缓存副本常常还在，单靠删除并不能一次清干净。更关键的是，你发的时候往往没有意识到这些碎片会被长期保存，等到需要清理时，它们已经分散在无数截图和存档里，找回和处理都要花更多力气。</p>
+
+<h2>最容易被忽略的 4 类财务痕迹</h2>
+<table>
+<thead><tr><th>痕迹类型</th><th>常见出现位置</th><th>泄露风险</th></tr></thead>
+<tbody>
+<tr><td>收入与税单</td><td>工资条截图、退税到账、年终奖讨论</td><td>高：直接暴露收入区间</td></tr>
+<tr><td>雇主与部门</td><td>工牌照片、园区定位、内部项目代号</td><td>中：结合其他信息锁定身份</td></tr>
+<tr><td>银行账户线索</td><td>银行名、支行、卡面局部、转账截图</td><td>高：被用于钓鱼和诈骗</td></tr>
+<tr><td>消费能力信号</td><td>高端酒店、航班、奢侈品定位</td><td>中：推断经济状况和习惯</td></tr>
+</tbody>
+</table>
+
+<h2>谁在盯着这些痕迹</h2>
+<p>你的财务痕迹会被至少四类角色利用。搜索引擎把旧推文长期收录，别人按关键词就能翻出你多年前发的截图。数据经纪商批量抓取公开资料，打包卖给营销和风控机构，你的收入区间可能已经在某个名单里。诈骗分子用银行名、收入数字定制话术，冒充客服或同事实施钓鱼。背景调查方在招聘和合作时会用这些痕迹判断你的稳定性。这四类角色不需要互相通气，各自拿走一块拼图，整体风险就高了。值得注意的是，他们拿到的通常是零散的线索，很少能凑成完整档案，但正是这些线索让精准诈骗变得便宜又常见，这也是财务类泄露最容易被低估的地方。</p>
+
+<h2>三步自查你的旧推文</h2>
+<ol>
+<li>导出 X 归档，用工具在本机解析每一条推文，搜索「工资」「退税」「银行」「报销」「转账」等关键词，把含金额的图文全部列出来。</li>
+<li>把命中结果按风险分级：含卡面、税单、转账截图的直接归为高风险，纯文字讨论可以先放一放。</li>
+<li>对高风险条目批量删除，删除前先保留一份归档副本，方便之后核对是否真的清干净了。</li>
+</ol>
+
+<h2>财务痕迹与身份泄露是连着的</h2>
+<p>财务信息往往和身份线索绑在一起。一张带公司 logo 的报销截图，既能暴露雇主，也能暴露消费水平；一个银行支行定位，既能暴露常去区域，也能暴露作息时间。攻击者最擅长的就是把多张零散截图拼成完整画像。所以清理时要连着看：删掉财务截图的同时，也要顺手处理同一条推文里的定位、工牌和亲友互动，避免留下半截拼图。这种连带关系也意味着，单删一条财务推文往往不够，要把同一条时间线里相邻的定位、合照、@ 互动一起处理，否则残留的线索依然能把财务信息重新指向你。</p>
+
+<h2>真实案例：一次报销吐槽引发的钓鱼</h2>
+<p>一位用户曾在推文里抱怨「公司报销系统又卡了，财务说要等下个月」，并附了带公司 logo 的截图。半年后，他收到一封冒充财务的邮件，准确说出了公司名和报销流程，诱导他点开伪造的登录页。这类攻击之所以精准，正是因为公开推文提供了拼图的第一块。如果当初发图前打码了 logo 和金额，整条攻击链就会断在第一步。类似的手法也常见于冒充银行客服的短信，对方能说出你常用的支行名字，正是因为那条几年前的定位推文还挂在公开档案里，成了诈骗的话术素材。</p>
+
+<h2>被存档和转发的内容，清理起来更麻烦</h2>
+<p>很多人只记得删自己账号下的推文，却忽略了两件事。第一，搜索引擎的快照会保留旧页面，即使你删了原文，缓存版本仍可能被搜到；第二，别人转发的截图和引用，已经脱离了你的控制，你删不掉它们。所以清理不能只盯着自己的时间线，要同时考虑快照移除请求和转发排查。对已经外泄的财务信息，最好的办法是让它失去时效性：更换相关账户的密码、更新预留手机号，让旧线索无法继续被利用。把一次性的删除，升级成让旧数据失效的主动防护，效果会稳固得多。</p>
+
+<h2>清理之后还要做的两件事</h2>
+<p>删完不等于安全。第一，关闭未来推文的精确定位权限，发图前手动打码金额和账号片段，别让新的财务痕迹继续累积。第二，养成每季度自查一次的习惯，因为新发的推文同样会带出财务信号，拖久了又是一笔糊涂账。把自查变成固定动作，比一次性大扫除更省心，也能让风险始终控制在可承受的范围内。真正稳妥的做法，是把防护前置到每次发图之前，等泄露发生后再补救就太迟了。</p>
+<h2>一个快速起步的小动作</h2>
+<p>如果你想知道从哪开始，先做性价比最高的一步：找出任何带卡面、税单或转账截图的推文，优先删掉这几条。几分钟就能去掉大部分暴露面，剩下的可以慢慢细化。比起一个永远写不完的完美计划，小而持续的行动更可靠。把这次清理当成起点，防护才会真正落地。</p>
+
+<h2>为什么这件事比你想的更值得</h2>
+<p>财务泄露的代价往往在被利用时才显现，而一次钓鱼或身份盗用带来的麻烦，远超过发图前多花的那几秒。把防护前置，本质是用小成本换大安全。很多人等到账户真的出问题才重视，那时补救的难度和损失都已翻倍。越早动手，你握有的主动权就越多。</p>
+<p>回到 <a href="/">首页</a>，用我们的本机体检工具上传 X 归档，30 秒看到你的财务类风险清单，全程数据不出电脑。</p>
+`,
+    canonical: '/blog/old-tweets-financial-info-leak-risk',
+    faq: [
+      { q:'旧推文里的工资条截图有多大风险？', a:'风险较高。截图直接暴露收入区间和雇主，诈骗分子可用它冒充财务或同事发送钓鱼信息。建议删除含具体金额的截图，或至少打码关键数字与 logo。', qEn:'How risky is a pay slip screenshot in an old tweet?', aEn:'Fairly high. The image exposes your income range and employer, and scammers reuse that to impersonate finance or coworkers in phishing messages. Delete screenshots with exact figures, or blur the key numbers and the logo.' },
+      { q:'我已经删了推文，为什么还能被搜到？', a:'删除只移除你账号下的内容，搜索引擎缓存、第三方快照和他人转发的副本可能仍在。彻底清理需要同时处理转发和快照请求，并定期复检。', qEn:'I deleted the tweet, so why is it still searchable?', aEn:'Deletion only removes the content from your account. Search engine caches, third-party snapshots, and reposts by other people may remain. Complete cleanup means also handling reposts and cache requests, then rechecking periodically.' },
+      { q:'怎样快速找出带财务信息的旧推文？', a:'导出 X 归档后，用本机工具解析全文，搜索「工资」「退税」「银行」「报销」「转账」等关键词，再按风险分级处理。', qEn:'How do I find old tweets with financial info quickly?', aEn:'Export your X archive, parse the full text on your device, and search for "salary", "tax", "bank", "reimbursement", and "transfer", then grade by risk.' },
+      { q:'发图前应该打码哪些财务信息？', a:'至少打码金额、账号片段、税号、工牌姓名和支行全称。定位类信息建议直接关闭精确定位再发。', qEn:'What financial details should I blur before posting an image?', aEn:'At minimum blur amounts, account fragments, tax IDs, badge names, and full branch names. For location tags, turn off precise location before posting.' },
+      { q:'财务类推文清理后还要做什么？', a:'关闭未来推文的精确定位，养成每季度自查的习惯，并保留一份归档副本以便核对删除结果。', qEn:'What should I do after cleaning financial tweets?', aEn:'Disable precise location for future posts, build a quarterly self-check habit, and keep an archive copy to verify your deletions.' }
+    ],
+    titleEn: 'The Financial Information Hiding in Your Old Tweets',
+    excerptEn: 'Pay slips, tax threads, and bank-tagged locations quietly reveal your income and account clues. This guide lists four financial traces and shows a three-step self-check.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy leak', 'financial privacy'],
+    contentEn: `
+<p>You have probably posted a pay slip screenshot, a thread complaining about reimbursement, or a check-in tagged at your bank branch. Each piece looks harmless on its own. Search engines, data brokers, and scammers combine them to reconstruct your income range, employer, and spending habits. The harder part is that old tweets do not vanish just because you forgot them. They sit in your public timeline, indexed, screenshotted, and pulled back up years later. This guide covers the financial traces that hide in old tweets and gives you a practical cleanup plan.</p>
+
+<h2>Why financial details end up in tweets</h2>
+<p>Financial information is less obvious than a phone number, and it hides in ordinary posts. Three situations cause most leaks. First, photos: pay slips, tax refunds, reimbursement receipts, and prize notices all show numbers. Second, conversations: discussing salary, stock options, or bonuses with coworkers surfaces exact figures. Third, locations: bank branches, company campuses, and upscale venues travel with your post. Once published, every one of these is visible to everyone and to search engines for years. Many users assume deleting fixes it, but reposts and cache copies often remain, so deletion alone rarely clears the board. The deeper problem is timing: when you post, you rarely expect the fragment to be kept this long, yet by the time you decide to clean up, the pieces have already scattered across countless screenshots and archives that you no longer control, and gathering them back takes far more effort.</p>
+
+<h2>Four financial traces people overlook</h2>
+<table>
+<thead><tr><th>Trace</th><th>Where it appears</th><th>Risk</th></tr></thead>
+<tbody>
+<tr><td>Income and tax</td><td>Pay slip screenshots, refund posts, bonus talk</td><td>High: exposes income range directly</td></tr>
+<tr><td>Employer and team</td><td>Badge photos, campus check-ins, project codenames</td><td>Medium: pins down identity with other data</td></tr>
+<tr><td>Bank account clues</td><td>Bank names, branches, card fragments, transfer shots</td><td>High: fuels phishing and fraud</td></tr>
+<tr><td>Spending signals</td><td>Luxury hotels, flights, high-end venues</td><td>Medium: reveals economic status and habits</td></tr>
+</tbody>
+</table>
+
+<h2>Who is watching</h2>
+<p>At least four groups reuse your financial traces. Search engines index old tweets and surface them years later on a keyword search. Data brokers scrape public profiles in bulk and resell the package to marketers and risk teams, so your income range may already sit on some list. Scammers use bank names and income numbers to craft messages that impersonate your employer or bank. Background checkers judge your stability from these traces during hiring or deals. These groups do not need to coordinate; each takes one piece of the puzzle, and the combined risk climbs. What makes this dangerous is that none of them needs your full file. A single scattered clue is enough to make a targeted scam cheap and convincing, which is exactly why financial leaks get underestimated so often.</p>
+
+<h2>A three-step self-check</h2>
+<ol>
+<li>Export your X archive, parse every tweet on your own device, and search for "salary", "tax", "bank", "reimbursement", and "transfer" to list every image or line with a number.</li>
+<li>Grade each hit by risk: items with card images, tax documents, or transfer shots go straight to high risk, while plain text can wait.</li>
+<li>Delete the high-risk tweets in bulk, but keep an archive copy before you delete so you can verify later that the job is actually done.</li>
+</ol>
+
+<h2>Financial traces are tied to identity leaks</h2>
+<p>Financial information usually rides alongside identity clues. A reimbursement screenshot with a company logo exposes both the employer and the spending level; a bank branch check-in exposes both the neighborhood and the routine. Attackers are best at stitching scattered screenshots into one profile. So clean in context: when you remove a financial image, also handle the location, badge, and family replies in the same tweet, so no half-puzzle is left behind. The connection also means deleting one financial tweet is rarely enough. You have to treat the adjacent location tags, group photos, and @ replies on the same timeline as part of the same cleanup, because any one of them can re-link the financial fragment back to you.</p>
+
+<h2>A real pattern: a reimbursement rant that enabled phishing</h2>
+<p>One user complained that the reimbursement system was slow and attached a screenshot with the company logo. Six months later, a message impersonating finance named the company and the reimbursement flow, then pushed a fake login page. The attack worked because the public tweet supplied the first piece of the puzzle. Had the logo and amount been blurred before posting, the whole chain would have broken at step one. The same playbook shows up in fake bank texts that mention your usual branch by name, a detail that only survives because an old check-in still sits in a public archive years later and feeds the scam script.</p>
+
+<h2>Archives and reposts make cleanup harder</h2>
+<p>Most people remember to delete the tweet on their own account but miss two things. First, search engine snapshots keep the old page, so even after you delete the original, a cached version can still rank. Second, screenshots and quote posts made by other people are out of your control, and you cannot delete them. Cleanup therefore cannot stop at your timeline; you also need removal requests for caches and a sweep for reposts. For financial details that already leaked, the best move is to make them stale: change the related passwords and update the contact details, so the old clues can no longer be used against you. Upgrading a one-time deletion into active protection that ages the data out works far more reliably.</p>
+
+<h2>Two things to do after cleanup</h2>
+<p>Deleting is not the end. Turn off precise location for future posts and blur amounts and account fragments before sharing any image, so new financial traces stop accumulating. Run a self-check every quarter, because new posts carry financial signals just as fast, and ignoring them builds the same mess again. Turning the check into a fixed habit beats one big cleanup, and it keeps the risk inside a range you can actually manage. The truly steady approach is to push protection before each image you post, rather than waiting for a leak to happen and then reacting.</p>
+<h2>A small move to start fast</h2>
+<p>If you want to know where to begin, start with the highest-return step: find any tweet showing a card image, tax document, or transfer screenshot, and remove those first. A few minutes clears most of the exposure, and you can refine the rest later. Small, consistent action beats a perfect plan you never finish. Treat this cleanup as a starting point, and the protection actually sticks.</p>
+
+<h2>Why this matters more than it seems</h2>
+<p>The cost of a financial leak shows up only when it is used, and a single phishing or identity-theft incident causes far more trouble than the few seconds you spend blurring an image. Pushing protection forward is trading a small cost for large safety. Many people only care after an account is hit, by which point the fix is harder and the loss is already doubled. The earlier you act, the more control you keep.</p>
+<p>If the volume feels overwhelming, remember that the first pass only needs to catch the obvious items. Refine in later passes, because momentum matters more than perfection on day one.</p>
+<p>Back on the <a href="/">homepage</a>, upload your X archive to our on-device check and see your financial risk list in 30 seconds. Your data never leaves your computer.</p>
+`
+  },
+  {
+    slug: 'realtime-location-tweets-safety',
+    title: '实时定位推文：你正在直播自己的位置',
+    excerpt: '每次打卡、每次「人在某地」的实时推文都在暴露你的行踪。本文说明实时定位的风险，并给出发推前的安全检查。',
+    date: '2026-10-15',
+    updatedAt: '2026-10-15',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '定位隐私', '数字足迹', '安全防范'],
+    content: `
+<p>你发「刚到机场」「在某某餐厅吃饭」这类实时推文时，其实在把当下的位置告诉所有人。对大多数人来说这只是分享生活，但对跟踪者、小偷和诈骗分子来说，这是一张实时地图。更隐蔽的是，连续打卡会画出你的日常路线，让你在毫无察觉时暴露作息。很多人直到出事才意识到，那条随手发的定位，早就把自己放到了危险里。</p>
+
+<h2>实时定位的三类风险</h2>
+<ul>
+<li>物理安全：公开「家里没人」或「在外过夜」，等于告诉小偷可以动手。</li>
+<li>跟踪与骚扰：连续打卡会画出你的日常路线，被有心人利用。</li>
+<li>社交工程：结合定位能猜出你的住址、常去场所和作息。</li>
+</ul>
+<p>这三类风险不是孤立的。一条「独自在家」的推文，可能同时给小偷提供时机、给跟踪者提供确认、给诈骗分子提供话术素材。风险叠加起来，比单条内容看起来要严重得多，这也是很多人低估定位危害的原因。</p>
+
+<h2>为什么延迟发布更稳妥</h2>
+<p>实时播报和延迟分享的区别，在于对方拿到信息的时间差。你发「刚下飞机」的瞬间，知道你不在家的人就有了窗口。改成到家后再发「今天飞了某地」，既分享了经历，又不给任何人实时线索。这个习惯花不了几秒，却能把被盯上的概率降一大截。更重要的是，延迟发布不会削弱你分享的欲望，只是把时间点往后挪，对阅读体验几乎没有影响，却能挡掉最危险的实时暴露。</p>
+
+<h2>发推前的 4 项检查</h2>
+<ol>
+<li>关掉精确定位权限，只用城市级定位或不带定位。</li>
+<li>延迟发布：到家后再发「今天去了哪」，不要实时播报。</li>
+<li>检查照片 EXIF，发图前清除经纬度等隐藏信息。</li>
+<li>避免连续打卡形成可预测的日常路线。</li>
+</ol>
+
+<h2>容易被忽视的「独处信号」</h2>
+<p>除了明确定位，还有一些间接信号会暴露你独自在家或不在家。比如深夜发「终于一个人安静了」、连续多天只在固定时段上线、发家里 layout 的照片。这些细节单看无害，组合起来却能勾勒出你的生活规律。养成习惯：发之前想一下，这条内容会不会让人知道「现在家里只有我」或「现在家里没人」。只要答案偏向yes，就先按住不发了。</p>
+
+<h2>家庭同住者的定位也要管</h2>
+<p>很多人只管自己的定位，却忘了同住的家人也会暴露你。伴侣发「他出差了，家里就我一人」，或者室友发合照定位，都会间接透露你的作息和空窗期。防护要覆盖整个同住圈：和大家约定不在公开推文里写「家里几人、谁不在」，也不发能看出你独处或外出的合照。一个账号谨慎，抵不过身边人随手一条。</p>
+
+<h2>已经被实时定位了怎么办</h2>
+<p>先回顾最近一个月的实时推文，删掉仍在暴露「当前位置」或「独处」的条目；再关闭精确定位权限，并检查旧照片里的 EXIF。如果已经有人利用这些信息骚扰你，保留证据并向平台举报。回到 <a href="/">首页</a>，用本机体检工具扫描归档里所有带定位的推文，一次性清理。</p>
+`,
+    canonical: '/blog/realtime-location-tweets-safety',
+    faq: [
+      { q:'实时定位推文真的有危险吗？', a:'有。连续打卡会暴露你的日常路线和独处时段，被跟踪者或小偷利用的风险真实存在。建议关闭精确定位并延迟发布。', qEn:'Are real-time location tweets actually dangerous?', aEn:'Yes. Back-to-back check-ins expose your routine and alone time, and the risk of stalkers or burglars reusing that is real. Disable precise location and delay posting.' },
+      { q:'怎样关闭 X 的精确定位？', a:'在发推界面关闭位置标签，或在系统设置里收回 X 的定位权限。已发布的带定位推文需逐条删除或编辑去掉位置。', qEn:'How do I turn off precise location on X?', aEn:'Disable the location tag when composing, or revoke X location permission in system settings. Already-published tagged posts must be edited or deleted to remove the tag.' },
+      { q:'照片里的定位信息怎么清除？', a:'发图前用工具清除 EXIF 中的经纬度，或直接在相册里去掉位置。归档里的旧图也要一并处理。', qEn:'How do I strip location from photos?', aEn:'Remove latitude and longitude from EXIF before posting, or drop the location in your photo app. Old images in your archive need the same treatment.' },
+      { q:'已经发了实时位置，现在删还来得及吗？', a:'来得及。删除仍暴露当前位置的条目，并关闭未来精确定位。搜索引擎缓存可能还在，可后续提交移除请求。', qEn:'I already posted my live location, is deletion still useful?', aEn:'Yes. Delete posts still exposing your current spot and disable future precise location. Search caches may linger, so follow up with removal requests later.' }
+    ],
+    titleEn: 'Live-Tweeting Your Location: Why Real-Time Posts Put You at Risk',
+    excerptEn: 'Every check-in and every "I am at X right now" post broadcasts your whereabouts. This article explains the risk and a pre-post safety check.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'location privacy', 'digital footprint', 'safety'],
+    contentEn: `
+<p>When you post "just landed" or "eating at this place right now", you are telling everyone your current location. For most people it is just sharing life, but for stalkers, burglars, and scammers it is a live map. The quieter danger is that repeated check-ins draw your daily route and expose your routine before you notice. Many people only realize the risk after something goes wrong, by which point the casual check-in has already placed them in harm's way.</p>
+
+<h2>Three risks of real-time location</h2>
+<ul>
+<li>Physical safety: posting "house is empty" or "sleeping elsewhere" tells burglars when to act.</li>
+<li>Stalking and harassment: repeated check-ins draw your daily route for anyone who wants it.</li>
+<li>Social engineering: location hints reveal home, frequent spots, and routine.</li>
+</ul>
+<p>These three risks do not stand alone. A single "home alone" post can hand a burglar the timing, confirm a stalker's suspicion, and feed a scammer's script at the same time. Stacked together, the danger is far greater than any one line suggests, which is why location harm gets underestimated so often.</p>
+
+<h2>Why delayed posting is safer</h2>
+<p>The gap between live posting and delayed sharing is the window an observer gets. The moment you post "just landed", anyone who knows you are away has an opening. Switch to "visited this place today" after you are home, and you share the experience without handing out a real-time clue. The habit costs seconds and cuts the chance of being targeted by a wide margin. Better still, delayed posting does not dull your urge to share; it only moves the timestamp, and the reading experience barely changes, while blocking the most dangerous real-time exposure.</p>
+
+<h2>A four-item pre-post check</h2>
+<ol>
+<li>Turn off precise location; use city-level or no location tagging.</li>
+<li>Delay posting: share "where I went" after you are home, not live.</li>
+<li>Strip EXIF from photos so latitude and longitude stay hidden.</li>
+<li>Avoid back-to-back check-ins that map a predictable routine.</li>
+</ol>
+
+<h2>The "alone signal" people miss</h2>
+<p>Beyond explicit check-ins, indirect signals also reveal whether you are home alone or away. Late-night posts like "finally quiet by myself", predictable online windows, or photos of your home layout all feed the same picture. Each detail looks harmless alone, but combined they sketch your daily life. Build the habit of asking, before you post, whether the content tells someone "I am the only one home right now" or "nobody is home". If the answer leans yes, hold off and do not post it.</p>
+
+<h2>Manage the location of people you live with</h2>
+<p>Many people only guard their own location and forget that housemates expose them too. A partner posting "he is away, I am the only one home", or a roommate sharing a located group photo, indirectly reveals your routine and empty windows. Protection has to cover the whole household: agree not to write "who is home, who is away" in public posts, and not to post group photos that show you alone or out. One careful account cannot offset a careless post from someone close.</p>
+
+<h2>Already posted real-time location?</h2>
+<p>If you want a quick win, review the last two weeks first, since recent live posts are the ones most likely to be seen in the moment. Older ones still matter, but the recent window is where the risk runs hottest.</p>
+<p>Review the last month of live posts and delete ones still exposing "right now" or "alone". Then disable precise location and check EXIF in old images. If someone has already used this information to harass you, keep evidence and report it to the platform. Back on the <a href="/">homepage</a>, scan your archive for every location-tagged tweet with our on-device tool and clear them in one pass.</p>
+`
+  },
+  {
+    slug: 'chinese-users-twitter-doxxing-defense',
+    title: '中文用户防推文被「人肉」：一份实战清单',
+    excerpt: '「人肉搜索」会把公开推文拼成你的现实身份。针对中文用户的语料特点，本文给出可落地的防暴露清单与应对步骤。',
+    date: '2026-10-15',
+    updatedAt: '2026-10-15',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['X/Twitter', '人肉搜索', '中文隐私', '数字足迹'],
+    content: `
+<p>「人肉搜索」是中文互联网特有的风险：别人不只会去搜你的手机号，还会把你的昵称、学校、工作单位、家乡、亲友关系从多年推文里一点点拼出来，再对照微博、公众号、领英等平台锁定真人。英文用户的隐私清单往往只讲邮箱和定位，对中文语境里的高频暴露点覆盖不到。本文专门从中文语料出发，给出一份能直接照做的防御清单。</p>
+
+<h2>中文推文最容易暴露的 4 个点</h2>
+<ul>
+<li>实名与昵称互链：在简介写真名、又把微博或公众号挂在置顶，容易被交叉比对。</li>
+<li>方言与地域词：一句家乡话、一个本地商圈名，就能缩小到你所在的城市。</li>
+<li>学历与单位：校庆、入职周年、工牌照片，会暴露学校和雇主。</li>
+<li>亲友互动：和家人、同事的 @ 互动，间接暴露关系网。</li>
+</ul>
+
+<h2>为什么中文场景更值得单独应对</h2>
+<p>中文社区有两个特点让暴露更快：一是跨平台习惯强，很多人同一个昵称用遍全网，搜到一个就能顺藤摸瓜；二是熟人网络密，@ 互动和合照定位会暴露身边人。这两点叠加，单条看似无害的推文，被熟人圈一层层放大，就可能把账号对应到现实中的你。对一个攻击者来说，不需要技术，只要耐心和几个平台的公开资料，就能完成拼图。</p>
+
+<h2>一份实战防御清单</h2>
+<ol>
+<li>把简介里的真名和跨平台账号脱钩，昵称不要和现实身份一一对应。</li>
+<li>回看旧推文，删掉含家乡、学校、单位、家庭关系的精确表述。</li>
+<li>关闭精确定位，方言和本地商圈名在讨论敏感话题时避开。</li>
+<li>和家人约定：不在公开推文里互相 @ 或晒合照定位。</li>
+<li>定期用本机工具导出归档，按上面的暴露点自查一次。</li>
+</ol>
+
+<h2>跨平台昵称：最容易被忽略的线索</h2>
+<p>很多人以为只要本平台匿名就安全，但同一个独特昵称出现在微博、公众号、GitHub、领英和小红书上，攻击者只要搜一次，就能把几个账号串起来。真正安全的做法，是给不同平台起不同的昵称，并且不要在任何一个平台留下能指回现实身份的线索。昵称越独特，越要分散使用，否则一个搜索词就能把你的多个身份一次性收拢。</p>
+
+<h2>照片和合照里的隐藏线索</h2>
+<p>比起文字，照片更容易泄密却常被忽略。背景里的工牌、公司 logo、小区名字、车内饰，都能把账号对应到现实。合照里出现同事或亲友，也会暴露你的关系网。发图前养成习惯：把背景打码、不拍能识别单位的细节、合照里的人要知情且同意。一次无心的随手拍，可能比十条文字推文暴露得还多。</p>
+
+<h2>已经被「人肉」了怎么办</h2>
+<p>先批量删除暴露现实身份的关键推文，再收紧简介和互链设置。如果已经出现线下骚扰，保留证据并向平台和警方举报。回到 <a href="/">首页</a>，用本机体检工具扫描归档，优先标出含真名、学校和单位的条目。</p>
+`,
+    canonical: '/blog/chinese-users-twitter-doxxing-defense',
+    faq: [
+      { q:'「人肉搜索」和普通隐私泄露有什么不同？', a:'普通泄露是单条信息外泄，「人肉」是把你多年推文里的昵称、学校、单位、亲友关系拼成完整现实身份，危害更大也更难事后抹除。', qEn:'How is doxxing different from a normal privacy leak?', aEn:'A normal leak exposes one piece of data. Doxxing assembles your nickname, school, employer, and family ties from years of posts into a full real-world identity, which is harder to undo.' },
+      { q:'中文推文里最该先删的是什么？', a:'优先删含真名、学校、单位、家乡和亲友关系的精确表述，其次是方言和本地商圈名。这些信息最容易把账号对应到真人。', qEn:'What should Chinese users delete first?', aEn:'Start with exact mentions of legal name, school, employer, hometown, and family ties, then dialect and local landmark words. These map an account to a real person fastest.' },
+      { q:'昵称和真名要怎么脱钩？', a:'别在简介写真名，别把微博、公众号等跨平台账号挂在置顶，昵称也不要和现实姓名谐音对应。', qEn:'How do I decouple my handle from my legal name?', aEn:'Do not put your legal name in the bio, do not pin cross-platform accounts, and avoid a handle that phonetically matches your real name.' },
+      { q:'家人互 @ 也会暴露我吗？', a:'会。公开 @ 互动和合照定位会间接暴露关系网，建议和家人约定不在公开推文里互相 @ 或晒定位合照。', qEn:'Can family @ replies expose me too?', aEn:'They can. Public replies and tagged photos leak your relationship network. Agree with family not to @ each other or post located photos in public threads.' }
+    ],
+    titleEn: 'How Chinese X Users Can Defend Against Doxxing',
+    excerptEn: 'Doxxing stitches your public posts into a real-world identity. Written for Chinese users, this checklist targets the exposure patterns unique to Chinese-language posts.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['X/Twitter', 'doxxing', 'Chinese privacy', 'digital footprint'],
+    contentEn: `
+<p>Doxxing is a risk with its own shape in Chinese-language communities. Others do not only search your phone number; they assemble your real identity from years of posts, matching nickname, school, employer, hometown, and family ties, then cross-reference Weibo, public accounts, and LinkedIn to find the person. Privacy checklists written for English users tend to focus on email and location, and they miss the high-frequency exposure points that show up in Chinese posts. This article works from the Chinese corpus and gives a checklist you can follow directly.</p>
+
+<h2>Four exposure points unique to Chinese posts</h2>
+<ul>
+<li>Real name linked to handle: putting your legal name in the bio and pinning a Weibo or public account invites cross-matching.</li>
+<li>Dialect and regional words: one hometown phrase or a local mall name narrows you to a city.</li>
+<li>Education and employer: anniversary posts, onboarding photos, and badge shots reveal school and company.</li>
+<li>Family interaction: public @ replies and photos with relatives leak your relationship network.</li>
+</ul>
+
+<h2>Why the Chinese context deserves its own playbook</h2>
+<p>Two habits speed up exposure in Chinese communities. One is strong cross-platform use: many people reuse the same nickname everywhere, so finding one account leads to the rest. The other is a dense acquaintance network: @ replies and tagged photos expose the people around you. Stack those two, and a single harmless post, amplified by the acquaintance circle, can map an account to the real you. For an attacker, no special skill is needed, only patience and a few platforms of public data, to finish the puzzle.</p>
+
+<h2>A practical defense checklist</h2>
+<ol>
+<li>Decouple your legal name and cross-platform accounts from your handle so the nickname does not map one-to-one to real identity.</li>
+<li>Review old posts and delete precise mentions of hometown, school, employer, and family ties.</li>
+<li>Disable precise location, and avoid dialect or local landmark words when discussing sensitive topics.</li>
+<li>Agree with family not to @ each other or post tagged photos in public threads.</li>
+<li>Export your archive with an on-device tool every few months and self-check against the points above.</li>
+</ol>
+
+<h2>The cross-platform nickname trap</h2>
+<p>Many users think a pseudonym on one platform is enough, but the same distinctive handle across Weibo, public accounts, GitHub, LinkedIn, and Xiaohongshu lets an attacker string the accounts together with a single search. The safer move is a different nickname per platform, with no clue on any of them that points back to your real identity. The more unique the name, the more you should spread it out, because one search term can otherwise sweep up several of your identities at once.</p>
+
+<h2>Hidden clues in photos and group shots</h2>
+<p>Compared with text, photos leak more yet get less attention. A badge in the background, a company logo, the apartment name, or car details can all map an account to the real world. Group photos that include coworkers or relatives also expose your network. Build the habit before posting: blur the background, never shoot details that name your employer, and make sure everyone in a group photo knows and agrees. One careless snapshot can expose more than ten text posts.</p>
+
+<h2>Already doxxed?</h2>
+<p>A good rule is to treat any line that names a real institution, a city you live in, or a family member as high-priority for review. Most leaks start from one such ordinary sentence that felt safe at the time.</p>
+<p>First delete the key posts that expose your real identity, then tighten your bio and cross-links. If offline harassment starts, keep evidence and report to the platform and the police. Back on the <a href="/">homepage</a>, scan your archive with our on-device tool to flag posts containing your legal name, school, and employer first.</p>
+`
+  },
+  {
+    slug: 'delete-tweets-before-job-interview',
+    title: '面试前，先把这几类推文清掉',
+    excerpt: '面试前清理推文是低成本的自我保护。本文列出最该删的 5 类内容，以及一份可照做的清理清单。',
+    date: '2026-10-15',
+    updatedAt: '2026-10-15',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '求职隐私', '推文清理', '数字足迹'],
+    content: `
+<p>招聘方在面试前后经常会搜你的社交账号。你几年前的吐槽、情绪化发言、对前公司的负面评价，可能比简历先被看到。面试前花半小时清理推文，是性价比很高的自我保护，而且完全由你掌控。很多人等到收到面试通知才开始着急，其实提前一两周做，会更从容，也更容易漏掉高风险内容。</p>
+
+<h2>面试前最该删的 5 类内容</h2>
+<ul>
+<li>对前公司、前老板的负面评价，哪怕事出有因。</li>
+<li>情绪化或攻击性发言，容易被断章取义。</li>
+<li>暴露收入、银行、雇主的财务类推文。</li>
+<li>敏感话题站队，涉及争议且无建设性的内容。</li>
+<li>定位与工牌类信息，能锁定你的现实身份。</li>
+</ul>
+
+<h2>为什么招聘方会看社交账号</h2>
+<p>社交账号能反映简历之外的一面：你如何处理分歧、是否情绪稳定、对行业有没有基本尊重。招聘方未必抱着挑刺的心态，但一条刺眼的旧发言足够让人在几秒内动摇。清理推文的目的，是让你的第一印象由简历和内容决定；一条多年前的吐槽不该抢在前头。把解释权握在自己手里，比被动等待对方解读更稳妥，也更能展现你的成熟。</p>
+
+<h2>一份可照做的清理清单</h2>
+<ol>
+<li>导出 X 归档，在本机搜索关键词：公司名、薪资、吐槽、前老板、地址。</li>
+<li>把命中结果按风险排序，高风险优先删除。</li>
+<li>删除前保留归档副本，方便后续核对。</li>
+<li>清理完再检查公开资料里的简介和置顶。</li>
+</ol>
+<p>除了推文本身，转发和评论里的敏感内容也常被忽略。你转发的那条带定位的行业聚会照、那句对热点事件的过激评论，同样会出现在搜索结果里，需要一并处理。只清自己发的、不管转发的，等于留了一半隐患。</p>
+
+<h2>时间线之外的三个坑</h2>
+<p>除了推文正文，还有三处常被忽略。一是点赞和收藏，招聘方点进你的资料能看到你认同什么、关注什么；二是列表和话题参与，你加入的求职群、讨论的岗位话题会暴露倾向；三是第三方链接，你转发的招聘帖、测评链接可能带出身份信息。清理时把这三类也过一遍，别让它们成为背景调查里的意外项。</p>
+
+<h2>清理是控量，不是删光</h2>
+<p>另外，清理不必一次做完。按风险分批处理，先删最可能先被看到的负面和定位内容，其余可以之后慢慢细化。节奏比完美更重要，先动起来就能挡掉大部分风险。</p>
+<p>不必把账号清空成空白，那样反而显得刻意，还可能让招聘方怀疑你隐藏了什么。保留正常的生活动态，只拿掉会误导第一印象的高风险条目即可。把账号当作一份公开作品集来维护，比临时大扫除更自然，也更能经得起反复查看。回到 <a href="/">首页</a>，用本机体检工具按风险标签批量筛出待删推文。</p>
+`,
+    canonical: '/blog/delete-tweets-before-job-interview',
+    faq: [
+      { q:'面试前一定要清理推文吗？', a:'不是必须，但强烈建议。招聘方常搜社交账号，清理掉高风险条目能避免第一印象被旧发言带偏，成本很低。', qEn:'Do I have to clean tweets before an interview?', aEn:'Not required, but strongly advised. Recruiters search social accounts, and removing high-risk items prevents old posts from skewing a first impression at low cost.' },
+      { q:'删推文会不会显得我在掩饰？', a:'不会。保留正常动态、只删高风险内容，反而显得你有分寸。清空账号才容易让人觉得刻意。', qEn:'Will deleting tweets look like I am hiding something?', aEn:'No. Keeping normal updates while removing risky ones shows judgment. Wiping the account entirely is what looks deliberate.' },
+      { q:'怎样高效找出要删的推文？', a:'导出归档后用本机工具按关键词和定位批量搜索，比在 App 里逐条翻快得多，也更全。', qEn:'How do I find tweets to delete efficiently?', aEn:'Export the archive and search by keyword and location on your own device; it is faster and more complete than scrolling the app.' },
+      { q:'删完还要检查什么？', a:'检查公开简介、置顶推文和转发里的敏感内容，这些同样会被招聘方看到。', qEn:'What else should I check after deleting?', aEn:'Review your public bio, pinned post, and reposts, since recruiters see those too.' }
+    ],
+    titleEn: 'Tweets to Delete Before a Job Interview',
+    excerptEn: 'Cleaning tweets before an interview is cheap self-protection. This article lists the five content types to remove and a checklist you can follow.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['X/Twitter', 'job search privacy', 'tweet cleanup', 'digital footprint'],
+    contentEn: `
+<p>Recruiters often search your social accounts before and after an interview. A rant from years ago, an emotional post, or a negative comment about a former employer may be seen before your resume. Spending half an hour cleaning tweets is low-cost self-protection with a high return, and it is fully under your control. Many people only panic after the interview invite arrives, yet starting one or two weeks earlier makes the whole thing far calmer and leaves fewer high-risk items overlooked.</p>
+
+<h2>Five content types to delete before an interview</h2>
+<ul>
+<li>Negative comments about past companies or bosses, even if justified.</li>
+<li>Emotional or hostile posts that can be taken out of context.</li>
+<li>Financial tweets that expose income, bank, or employer.</li>
+<li>Polarizing takes that are controversial without being constructive.</li>
+<li>Location and badge posts that pin down your real identity.</li>
+</ul>
+
+<h2>Why recruiters look at social accounts</h2>
+<p>A social account shows a side the resume cannot: how you handle disagreement, whether you stay steady under pressure, and whether you show basic respect for the industry. Recruiters may not be hunting for faults, but one glaring old post can shake their view in seconds. The point of cleanup is to let your first impression come from your resume and your work; a rant from years ago should not speak first. Holding the explanation in your own hands beats waiting for the other side to interpret it, and it shows maturity too.</p>
+
+<h2>A checklist you can follow</h2>
+<ol>
+<li>Export your X archive and search locally for company names, salary, rants, former boss, and address.</li>
+<li>Sort hits by risk and delete the high-risk ones first.</li>
+<li>Keep an archive copy before deleting so you can verify later.</li>
+<li>After cleanup, review your public bio and pinned post.</li>
+</ol>
+<p>Beyond the tweets themselves, sensitive content in reposts and replies is often missed. The located photo from an industry meetup you reposted, or the heated comment on a trending topic, also shows up in search results and needs the same treatment. Cleaning only your own posts while ignoring reposts leaves half the risk in place.</p>
+
+<h2>Three traps beyond the timeline</h2>
+<p>Beyond the tweet text, three spots get ignored. First, likes and bookmarks: a recruiter who opens your profile can see what you endorse and follow. Second, lists and topic takes: the job groups you join and the role threads you discuss reveal your leanings. Third, third-party links: the hiring posts and assessment links you repost may carry identity details. Sweep these three during cleanup so they do not become surprises in a background check.</p>
+
+<h2>Clean, do not wipe</h2>
+<p>Another point: cleanup does not have to happen in one sitting. Work in risk batches, removing the negative and location items most likely to be seen first, and refine the rest later. Pace beats perfection, and starting now blocks most of the risk while you fine-tune. A half-done pass today is worth more than a flawless plan you never start. If a post is borderline, ask whether a recruiter could read it the wrong way; when in doubt, move it to the delete list rather than leaving it up. The goal is a cleaner signal, not an empty profile, and recruiters read patterns rather than single posts, so steady consistency is what protects you.</p>
+<p>You do not need to blank out the account, which looks deliberate and may make recruiters suspect you hid something. Keep normal life updates and only remove high-risk items that would mislead a first impression. Treat the account as a public portfolio you maintain, which reads more natural than a last-minute purge and survives repeated looks. Back on the <a href="/">homepage</a>, use our on-device tool to filter deletable tweets by risk label in bulk.</p>
+`
+  },
+  {
+    slug: 'delete-tweets-after-leaving-job',
+    title: '离职后，工作相关的旧推文该不该留',
+    excerpt: '离职后，吐槽前公司、晒内部项目的旧推文可能变成隐患。本文帮你在职业自由与安全意识之间做选择。',
+    date: '2026-10-15',
+    updatedAt: '2026-10-15',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '离职隐私', '推文清理', '职业安全'],
+    content: `
+<p>离职后，你在职时发的那些吐槽、项目分享、工牌照片，并不会因为换工作就自动安全。前同事、新雇主、甚至竞业限制方都可能回头看。要不要删，取决于这些内容暴露了什么，与你当时有没有恶意无关。很多人觉得「都离职了还管什么」，其实离职前后恰恰是风险最高、也最该清理的窗口。</p>
+
+<h2>建议删掉的 3 类离职后仍危险的内容</h2>
+<ul>
+<li>含公司机密或内部项目代号的推文，哪怕你觉得已经无关紧要。</li>
+<li>吐槽前公司、前领导的情绪化发言，易被新雇主搜到。</li>
+<li>工牌、园区、客户信息的定位类内容。</li>
+</ul>
+
+<h2>可以保留的 2 类</h2>
+<ul>
+<li>纯粹的职业技能分享，不点名、不泄密。</li>
+<li>离职感言类中性内容，体现职业素养。</li>
+</ul>
+
+<h2>为什么离职后才是清理窗口</h2>
+<p>在职时发的内容，离职后语境会完全改变。一条当时无心的项目分享，到了竞业限制或背调阶段，可能被重新解读成泄密；一条当时的吐槽，可能在你申请下一份工作时被翻出来。离职前后各做一次清理，比等出了问题再补救要轻松得多。语境变了，风险等级也跟着变，这是很多人忽略的关键，也解释了为什么离职期比在职期更需要谨慎。</p>
+
+<h2>离职清理的步骤</h2>
+<ol>
+<li>导出归档，搜索前公司名、项目代号、客户名。</li>
+<li>对命中项按「是否泄密、是否负面」分级。</li>
+<li>删掉泄密和负面两类，保留中性职业内容。</li>
+<li>顺手检查转发和回复里的敏感信息。</li>
+</ol>
+<p>除了自己账号下的内容，也要留意别人 @ 你、或者你出现在合照里的推文。那些内容不在你手里，但同样会暴露你和前公司的关联，必要时可以请对方删除或打码，别因为「不是我发的」就放任不管。</p>
+
+<h2>竞业限制期要格外当心</h2>
+<p>如果你签过竞业限制，离职后的旧推文风险会翻倍。前雇主可能在竞业期内持续盯着你的公开账号，寻找你为新对手工作的证据，或把旧项目分享解读成泄密。这段时期建议把账号设为更私密，暂停涉及行业内部的发言，旧的高风险内容提前清理干净。竞业期通常有限，撑过这段窗口，再恢复正常分享也不迟。</p>
+
+<p>最后提醒一句：清理的用意，是把解释权收回自己手里，同时给过去做个了断。保留能体现专业度的内容，拿掉会误导判断的片段，你的公开形象就能真实又安全。离职只是一次重新整理的机会，与其等背调时被动解释，不如现在主动梳理。把账号当成你的职业门面来维护，长期看最省心。</p>
+<p>回到 <a href="/">首页</a>，用本机体检工具按风险标签一次性筛出待删推文，删除前先保留归档副本。</p>
+`,
+    canonical: '/blog/delete-tweets-after-leaving-job',
+    faq: [
+      { q:'离职后必须删工作相关推文吗？', a:'不必全删，但泄密和负面两类建议删。保留中立的职业分享反而体现专业度，关键看内容是否点名、是否泄密。', qEn:'Must I delete work-related tweets after leaving?', aEn:'Not all, but delete the leaking and negative ones. Keeping neutral career shares shows professionalism; the key is whether it names anyone or leaks anything.' },
+      { q:'吐槽前公司会有什么后果？', a:'新雇主可能会搜你的账号，负面发言会在面试前先入为主；情绪化内容也容易被截图转发。', qEn:'What happens if I complain about a former employer?', aEn:'New employers may search your profile, and a negative post can skew their view before you even talk. Emotional posts are also easy to screenshot and reuse.' },
+      { q:'内部项目代号算机密吗？', a:'算。哪怕项目已结束，代号仍可能对应真实业务，被竞争对手或前同事拼出信息。离职后建议删除或打码。', qEn:'Does an internal project codename count as a secret?', aEn:'Yes. Even if finished, the codename can map to real work and be reassembled by competitors or former colleagues. Delete or blur it after leaving.' },
+      { q:'离职感言要不要删？', a:'中立、得体的离职感言可以留，它体现职业素养；但含具体公司吐槽或客户信息的要删。', qEn:'Should I delete a farewell post?', aEn:'A neutral, polite farewell can stay and shows professionalism, but one with specific company complaints or client details should go.' }
+    ],
+    titleEn: 'Should You Delete Work-Related Tweets After Leaving a Job?',
+    excerptEn: 'After you leave, old posts about the former employer or internal projects can become liabilities. This article helps you balance career freedom with safety.',
+    categoryEn: 'Deletion How-to',
+    tagsEn: ['X/Twitter', 'offboarding privacy', 'tweet cleanup', 'career safety'],
+    contentEn: `
+<p>After you leave, the rants, project shares, and badge photos from your time at the company do not become safe just because you changed jobs. Former colleagues, new employers, and even non-compete parties may look back. Whether to delete depends on what those posts expose, and has nothing to do with whether you meant any harm at the time. Many people think "I already left, why care", yet the period around departure is exactly when the risk peaks and cleanup matters most.</p>
+
+<h2>Three types to delete after leaving</h2>
+<ul>
+<li>Posts with company secrets or internal project codenames, even if they feel irrelevant now.</li>
+<li>Emotional posts criticizing the former employer or manager, easy for a new employer to find.</li>
+<li>Location posts with badge, campus, or client information.</li>
+</ul>
+
+<h2>Two types you can keep</h2>
+<ul>
+<li>Pure skill-sharing that names no one and leaks nothing.</li>
+<li>Neutral farewell posts that show professionalism.</li>
+</ul>
+
+<h2>Why offboarding is the cleanup window</h2>
+<p>Content posted while employed changes context completely after you leave. A careless project share can be reread as a leak during a non-compete or background check; a rant can surface when you apply for the next job. Cleaning once before and once after departure is far easier than fixing a problem after it appears. Context shifts, and the risk level shifts with it, a point many people miss, which also explains why the departure period deserves more caution than the employed one.</p>
+
+<h2>Offboarding cleanup steps</h2>
+<ol>
+<li>Export the archive and search for the former company name, project codenames, and client names.</li>
+<li>Grade each hit by "does it leak" and "is it negative".</li>
+<li>Delete the leaking and negative ones, keep neutral career content.</li>
+<li>Check reposts and replies for sensitive information too.</li>
+</ol>
+<p>Beyond your own account, watch for posts where others @ you or where you appear in a group photo. Those are not in your hands, but they still expose your link to the former employer, and when needed you can ask the other person to delete or blur them. Do not let "I did not post it" stop you from dealing with the risk.</p>
+
+<h2>Watch the non-compete window closely</h2>
+<p>If you signed a non-compete, old tweets after leaving carry double risk. The former employer may keep watching your public account through the restricted period, hunting for proof you work for a rival, or reading an old project share as a leak. During this window, set the account more private, pause industry-inside posts, and clear high-risk content ahead of time. The non-compete is usually limited, so holding off normal sharing until it passes costs little.</p>
+
+<p>One last reminder: cleanup is not about cutting ties with the past, it is about taking the explanation back into your own hands. Keep what shows professionalism, remove the pieces that mislead, and your public image stays both honest and safe. Leaving is a chance to reorganize, and doing it before a background check beats explaining under pressure. Treat the account as your career front door, because maintaining it pays off over time. If a post feels even slightly risky, remember that deleting costs almost nothing while a misunderstood old tweet during a job move can carry a real price. When unsure, the safer side is the better side to choose. A tidy account is a quiet advantage you keep for every future application, and the effort is small next to the peace of mind it brings. Most people skip this step, which is exactly why doing it helps you stand out. Close the door you no longer need open, and let your work speak instead.</p>
+<p>Back on the <a href="/">homepage</a>, filter deletable tweets by risk label with our on-device tool in one pass, and keep an archive copy before deleting.</p>
+`
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

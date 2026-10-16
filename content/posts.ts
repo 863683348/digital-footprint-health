@@ -24603,7 +24603,351 @@ rl.on('close', () =&gt; {
 <p>When a change actually ships, do not rush to delete everything in one panic session. Instead, download a fresh archive that day, confirm your backup exists, and only then start clearing the highest-risk items. A calm, ordered pass beats a frantic bulk delete that may hit new limits and fail halfway. If deletion slows under the new rules, fall back to native deletion for the rest and finish over a few days. The preparation you did earlier is what turns a stressful launch into a routine tidy-up.</p>
 `,
   },
-];
+  {
+    slug: 'delete-tweets-by-date-range-guide',
+    title: '按日期范围批量删除推文：清理 2018–2020 旧推文的实操指南',
+    excerpt: 'X 原生界面不能按日期批量删推文，只能一条条删最近 3,200 条。要按年份或具体区间清理旧推文，得用数据归档配合本地工具或支持时间范围的第三方工具。本文讲清三种能落地的方法与常见坑。',
+    date: '2026-10-17',
+    updatedAt: '2026-10-17',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '按日期删推文', '批量删除', '数据归档', '隐私清理'],
+    canonical: '/blog/delete-tweets-by-date-range-guide',
+    faq: [
+      { q: '能直接按日期删除推文吗？', a: 'X 原生界面不支持按日期批量删除，只能一条条删最近约 3,200 条。要按日期区间清理，得用数据归档配合本地工具，或支持时间范围的第三方工具。', qEn: 'Can I delete tweets by date directly?', aEn: 'X native interface does not support date-based bulk deletion; you can only remove the most recent ~3,200 tweets one at a time. To clean by date range, use your data archive with an on-device tool, or a third-party tool that supports time ranges.' },
+      { q: '删除 3,200 条以外的旧推文怎么办？', a: '在设置里申请数据归档，拿到 tweets.js / tweets.csv 后，用本地工具解析并按年份筛选，再批量删除。归档是你唯一能拿到完整历史的地方。', qEn: 'How do I delete tweets beyond the 3,200 limit?', aEn: 'Request your data archive from Settings. Once you have tweets.js / tweets.csv, parse it with an on-device tool, filter by year, and bulk-delete. The archive is the only place that holds your full history.' },
+      { q: '删除后还能恢复吗？', a: '不能。X 删除是永久的，没有回收站。删前务必导出要删的部分做备份。', qEn: 'Can deleted tweets be recovered?', aEn: 'No. Deletion on X is permanent with no trash folder. Always export the tweets you plan to delete before removing them.' },
+      { q: '第三方工具安全吗？', a: '只看工具要的权限：删推文只需“读取+删除”权限，别给“发推”或“读私信”。优先选在本机运行的工具，数据不上传服务器。', qEn: 'Are third-party deletion tools safe?', aEn: 'Only check the permissions they ask for: deleting tweets needs read + delete access, not "post tweets" or "read DMs". Prefer tools that run on your own device so data is not uploaded.' },
+      { q: '时区会导致删错吗？', a: '会。归档时间多是 UTC，和本地差 8 小时。按本地日期筛之前，先把时间统一成同一时区再操作。', qEn: 'Can time zones cause wrong deletions?', aEn: 'Yes. Archive timestamps are often UTC, an 8-hour gap from local time. Convert everything to one time zone before filtering by date.' }
+    ],
+    titleEn: 'How to Bulk-Delete Tweets by Date Range (Clean Up 2018–2020 Posts)',
+    excerptEn: 'X native interface cannot delete tweets by date; it only removes the most recent 3,200 one at a time. To clean by year or exact range, use your data archive with an on-device tool or a third-party tool that supports time ranges. This guide covers three working methods and the common traps.',
+    categoryEn: 'Deletion',
+    tagsEn: ['X/Twitter', 'delete tweets by date', 'bulk delete', 'data archive', 'privacy cleanup'],
+    content: `
+<p>你想删掉 2018 到 2020 年那段时期的推文，但 X 的界面只能一条条翻着删。翻到一半就放弃了。这很正常，手动删除几百条旧推文，光是滚动加载就能耗掉一个下午。</p>
+
+<p>好消息是：按日期范围批量清理是可行的，而且不需要逐条点击。下面把三种能落地的方法讲清楚，也把几个最容易踩的坑列出来。</p>
+
+<h2>为什么按日期删，而不是一条条删</h2>
+<p>旧推文的问题通常集中在某几年。比如你 2019 年换工作前后发的内容、2020 年疫情期间的情绪化转发，过了那个阶段基本就不会再翻看。针对性地清理某个区间，比全场通杀更高效，也更能保住你还在意的那部分内容。</p>
+<p>另一个原因很现实：X 只让你直接删除最近约 3,200 条推文。更早的历史被锁在归档文件里，界面上根本点不到。所以"按日期删"几乎必然要绕到数据归档；你要是坚持手动删，撞上 3,200 条上限之后，剩下的旧推文还是挂在那里。</p>
+
+<h2>方法一：下载归档，用本地工具按年份筛</h2>
+<p>在 X 设置里申请"下载数据归档"，你会拿到一个 ZIP，里面的 <code>tweets.js</code> 或 <code>tweets.csv</code> 记录了你全部历史推文，含发布时间，通常还包括推文正文、发布时刻，有时还有媒体链接。</p>
+<p>本地隐私工具可以解析这个文件，按年份或具体日期区间筛出要删的推文，然后生成删除清单。整个过程在你的电脑上完成，账号密码不外传。你先核对清单、确认无误，工具再通过你自己的登录会话发起删除请求。</p>
+<table>
+  <thead><tr><th>步骤</th><th>做什么</th><th>注意</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>申请并下载 X 数据归档</td><td>归档可能要等几小时到一天</td></tr>
+    <tr><td>2</td><td>用工具解析 tweets.js / tweets.csv</td><td>确认时间字段是 UTC 还是本地时区</td></tr>
+    <tr><td>3</td><td>按日期区间筛选要删的推文</td><td>先导出清单，人工核对再删</td></tr>
+    <tr><td>4</td><td>执行删除并保留日志</td><td>留一份删除记录备查</td></tr>
+  </tbody>
+</table>
+<p>这个方法对大历史最稳，因为它不依赖 3,200 条上限，你是在操作源文件，而不是被界面限制。</p>
+
+<h2>方法二：第三方删除工具的时间范围设置</h2>
+<p>一些删除工具支持"删除某日期之前 / 之间的推文"。这类工具通常需要你授权读取和删除权限，设置时重点看三处：时间范围是闭区间还是开区间、是否包含转推和回复、删除失败后是否会重试。</p>
+<p>授权范围要收着点：只给删除所需的权限，别顺手勾选"代表你发推"或"读取私信"这类选项。一个只需要读和删的工具，不该向你索要更多。</p>
+
+<h2>本地工具还是云端工具：怎么选</h2>
+<p>按日期删旧推文，工具主要分两类。一类是在你电脑上跑的本地工具，它读你的归档文件、生成删除清单，全程不把数据传到别人服务器；另一类是网页或云端服务，你授权后它在远端操作你的账号。</p>
+<table>
+  <thead><tr><th>对比项</th><th>本地工具</th><th>云端工具</th></tr></thead>
+  <tbody>
+    <tr><td>数据去向</td><td>只在你电脑上</td><td>经过对方服务器</td></tr>
+    <tr><td>需要的权限</td><td>读归档文件</td><td>账号读写权限</td></tr>
+    <tr><td>适合场景</td><td>大批量、重隐私</td><td>偶尔小清理</td></tr>
+    <tr><td>风险点</td><td>几乎无外泄风险</td><td>依赖对方安全水平</td></tr>
+  </tbody>
+</table>
+<p>如果你在意隐私、又要删几百上千条，本地工具更稳。云端工具图省事，但要先看它拿走了什么权限、有没有把你的归档上传。</p>
+
+<h2>一次删太多会被限流吗</h2>
+<p>一个常见担心是：短时间删大量推文，账号会不会被 X 判定异常、限流甚至封号。实际情况是，通过官方接口按节奏删除，平台一般不会因此惩罚账号。真正要小心的是"瞬间并发几千条删除请求"，那可能触发接口限速，导致部分请求失败。</p>
+<p>稳妥做法是分批、带间隔地删：每批几百条，批与批之间停几分钟。这样既不会撞限速，也给你时间核对有没有误删。</p>
+
+<h2>删除请求报错了怎么办</h2>
+<p>报错通常分三种。一是网络中断，重跑那一批就行；二是单条推文早已不存在（被你自己或平台删过），跳过它继续；三是授权过期，工具登出了，重新授权再跑。绝大多数删除工具都有"断点续跑"功能，记下已删到哪条，从中断处接着来，不用从头删。</p>
+
+<h2>常见坑：3200 条限制、时区和草稿</h2>
+<ul>
+  <li><strong>3,200 条上限</strong>：界面删除只够到最近 3,200 条，更早的必须走归档。</li>
+  <li><strong>时区错乱</strong>：归档里的时间常是 UTC，和你本地差 8 小时。按"2020 年 1 月"筛，可能把 2019 年 12 月的推文也带进来或漏掉。</li>
+  <li><strong>草稿也算数</strong>：部分工具会把草稿和已删推文算进统计，看着数量对不上，先确认它读的是哪个文件。</li>
+</ul>
+
+<h2>删完之后：确认真的删掉了</h2>
+<p>删除请求可能悄悄失败。隔一天，在你自己的主页搜一个你以为已经删掉的关键词，如果还在，就查工具的日志看报错，然后把那一批重跑一遍。别以为进度条显示"完成"就代表每条都删掉了。</p>
+<p>还要记住：X 上的删除只移除你账号里的那条推文，但副本可能留在别处，截图、Google 的缓存、引用过你的网站。按日期清理管的是你自己的账号，它没法让互联网上其他副本消失。</p>
+
+<h2>把日期范围和关键词组合用</h2>
+<p>光按日期删有个盲区：敏感内容不一定只集中在那几年。比如你的手机号可能 2017 年也发过，2015 年也有。更稳的做法是，先用日期范围缩小到某个区间，再叠加关键词（"手机""微信""地址"）二次筛选，把真正高风险的那几条挑出来单独删。日期管"哪段时间"，关键词管"哪类内容"，两者配合比单用一种更准。</p>
+
+<h2>删旧推文会影响粉丝和互动吗</h2>
+<p>很多人担心删了几百条旧推文，账号会不会被限流、粉丝会不会掉、注册时间会不会重置。都不会。删除只移除具体的推文，不影响粉丝数、不影响账号的注册时长，也不会触发平台的限流。你删的是内容，不是账号本身。真正会变的只有"别人能翻到的历史"变短了。</p>
+
+<h2>删除前，先留一份归档备份</h2>
+<p>删之前把要删的那部分推文导出成文件存好。留一份副本，等哪天需要证明"我当年确实发过那条"时，手头有记录会省很多事。</p>
+
+<h2>一个不容易翻车的清理节奏</h2>
+<p>别一次删几千条。分批来：先删最敏感的一类（手机号、住址），隔一两天再删情绪化内容，最后处理无关痛痒的。分批能让你随时停下来核对，也降低误删重要推文的概率。</p>
+<p>想先看自己账号的足迹风险分布，可以先做一次<a href="/">本机隐私体检</a>，按风险等级决定先删哪批。</p>
+    `,
+    contentEn: `
+<p>You want to wipe the tweets you posted between 2018 and 2020, but X's interface only lets you delete them one at a time. Halfway through, you give up. That's normal. Manually deleting a few hundred old tweets eats an entire afternoon just in scroll-loading.</p>
+
+<p>Here's the good part: cleaning by date range is doable, and you don't have to click through every single post. Below are three methods that actually work, plus the mistakes that trip most people up.</p>
+
+<h2>Why delete by date instead of one by one</h2>
+<p>Old tweets tend to cluster in certain years. The stuff from around your 2019 job change, the emotional retweets during 2020, the things you'd never post now. You rarely look at them after that phase passes. Targeting a specific window is more efficient than nuking everything, and it lets you keep the parts you still care about.</p>
+<p>There's a practical reason too: X only lets you delete the most recent ~3,200 tweets through the interface. Anything older is locked inside your archive file, where the UI can't reach it. So "delete by date" almost always means going through the archive. If you try to do it by hand, you'll hit the wall at 3,200 and the rest stays up.</p>
+
+<h2>Method 1: Download the archive and filter by year on your device</h2>
+<p>In X settings, request your "data archive." You get a ZIP, and inside it <code>tweets.js</code> or <code>tweets.csv</code> holds your entire tweet history with timestamps. The file includes the tweet text, the posted time, and often the media links.</p>
+<p>An on-device privacy tool can parse that file, filter the tweets you want gone by year or exact date range, and produce a deletion list. The whole process runs on your computer; your credentials never leave it. You review the list, approve it, and the tool sends the delete requests through your own logged-in session.</p>
+<table>
+  <thead><tr><th>Step</th><th>What you do</th><th>Watch out for</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Request and download your X archive</td><td>It can take hours to a day to arrive</td></tr>
+    <tr><td>2</td><td>Parse tweets.js / tweets.csv with a tool</td><td>Check whether timestamps are UTC or local</td></tr>
+    <tr><td>3</td><td>Filter by date range</td><td>Export the list and review before deleting</td></tr>
+    <tr><td>4</td><td>Run the deletion, keep a log</td><td>Save a record of what was removed</td></tr>
+  </tbody>
+</table>
+<p>This method is the most reliable for large histories because it doesn't depend on the 3,200 limit. You're working from the source file, not the interface.</p>
+
+<h2>Method 2: Third-party tools with a date range option</h2>
+<p>Several deletion tools let you set "delete tweets before / between dates." These usually need read and delete permissions on your account. When you configure them, look at three things: whether the range is inclusive or exclusive, whether retweets and replies are included, and what happens if a deletion fails mid-way.</p>
+<p>Keep the permission scope tight. Grant only what deletion needs. Don't casually check boxes like "post on your behalf" or "read your DMs." A tool that only needs to read and delete shouldn't be asking for more.</p>
+
+<h2>Local tool or cloud tool: which to pick</h2>
+<p>Tools for date-based deletion fall into two groups. One runs on your computer: it reads your archive, builds the deletion list, and never sends your data to someone else's server. The other is a web or cloud service that operates your account from its side after you authorize it.</p>
+<table>
+  <thead><tr><th>Factor</th><th>Local tool</th><th>Cloud tool</th></tr></thead>
+  <tbody>
+    <tr><td>Where data goes</td><td>Stays on your computer</td><td>Passes through their server</td></tr>
+    <tr><td>Permissions needed</td><td>Read the archive file</td><td>Account read and write</td></tr>
+    <tr><td>Best for</td><td>Large batches, privacy-minded</td><td>Occasional small cleanups</td></tr>
+    <tr><td>Risk</td><td>Almost no leak risk</td><td>Depends on their security</td></tr>
+  </tbody>
+</table>
+<p>If you care about privacy and need to delete hundreds or thousands, the local tool is safer. A cloud tool is convenient, but check first what permissions it takes and whether it uploads your archive.</p>
+
+<h2>Will deleting a lot at once get you rate-limited</h2>
+<p>A common worry is that removing many tweets in a short span will flag your account, throttle it, or get it suspended. In practice, deleting through the official API at a steady pace rarely triggers punishment. What actually causes trouble is firing thousands of delete requests at the same instant, which can hit the API rate limit and fail part of the batch.</p>
+<p>The safe approach is batched deletion with gaps: a few hundred per batch, a few minutes between batches. That avoids the rate limit and gives you time to check for mistakes.</p>
+
+<h2>What to do when a deletion request errors out</h2>
+<p>Errors usually fall into three types. A network drop means rerun that batch. A single tweet already gone (deleted by you or the platform earlier) means skip it and continue. An expired authorization means the tool logged out, so re-authorize and run again. Most deletion tools support resume: note where you stopped and pick up from there instead of starting over.</p>
+
+<h2>Common traps: the 3,200 limit, time zones, and drafts</h2>
+<ul>
+  <li><strong>The 3,200 cap</strong>: interface deletion only reaches the most recent 3,200. Older ones must go through the archive.</li>
+  <li><strong>Time zone drift</strong>: archive timestamps are often UTC, 8 hours off your local time. Filtering "January 2020" might pull in December 2019 tweets or miss some.</li>
+  <li><strong>Drafts count too</strong>: some tools count drafts and already-deleted tweets in their totals, so the number looks off. Confirm which file it's reading.</li>
+</ul>
+
+<h2>After you delete: confirm it actually worked</h2>
+<p>Deletion requests can silently fail. A day later, search your own profile for a phrase you thought was gone. If it's still there, check the tool's log for errors and re-run that batch. Don't assume a "completed" progress bar means every tweet is gone.</p>
+<p>Also remember that deletion on X removes the tweet from your account, but copies may live elsewhere: screenshots, Google's cache, other sites that quoted you. Date-range deletion cleans your own account; it can't unpublish the rest of the internet.</p>
+
+<h2>Combine date range with keyword filtering</h2>
+<p>Date-only deletion has a blind spot: sensitive content doesn't always sit in one window. Your phone number might show up in 2017 too, and again in 2015. A more reliable approach is to narrow by date range first, then layer keyword filtering on top (phone, WeChat, address) to pull out the genuinely high-risk tweets for separate deletion. Date handles "which period"; keywords handle "which type of content." Using both beats either alone.</p>
+
+<h2>Does deleting old tweets hurt your followers or reach</h2>
+<p>Plenty of people worry that removing a few hundred old tweets will get them shadowbanned, drop followers, or reset their account age. None of that happens. Deletion only removes specific posts. It doesn't touch your follower count, doesn't change when you joined, and doesn't trigger throttling. You're deleting content, not the account. The only thing that changes is how much history others can scroll through.</p>
+
+<h2>Before deleting, keep one backup copy</h2>
+<p>Export the tweets you're about to delete and store them somewhere safe. Keep a copy so that on the day you need to prove "yes, I did post that back then," you have the record and save hours of hassle.</p>
+
+<h2>A cleanup pace that doesn't blow up</h2>
+<p>Don't delete thousands at once. Batch it: remove the most sensitive category first (phone numbers, home addresses), then the emotional stuff a day or two later, then the harmless leftovers. Batching lets you stop and verify anytime, and lowers the odds of nuking something you needed.</p>
+<h2>A note on very large archives</h2>
+<p>If your archive is huge (hundreds of thousands of tweets), parsing it can take a while and the deletion list gets long. Split the work by year: parse once, then run deletion per year so each batch stays manageable and you can verify one year at a time. There's no prize for finishing fastest; a clean, verified clear-out beats a fast, sloppy one.</p>
+<p>Not sure where your account stands? Run a <a href="/">privacy check on your own device</a> first, then decide which batch to delete based on risk level.</p>
+    `,
+  },
+  {
+    slug: 'footprint-health-score-vs-search-visibility',
+    title: '数字足迹健康分高，别人就搜不到你了吗？',
+    excerpt: '健康分衡量的是你账号里敏感信息的密度，搜索可见度取决于账号隐私设置和搜索引擎收录。两者不是一回事：清掉高风险内容不会让你的账号从搜索里消失。本文讲清它们真实的关系。',
+    date: '2026-10-17',
+    updatedAt: '2026-10-17',
+    author: 'Digital Footprint Health Team',
+    category: '体检评分',
+    tags: ['数字足迹', '健康分', '搜索可见度', '隐私设置', 'X/Twitter'],
+    canonical: '/blog/footprint-health-score-vs-search-visibility',
+    faq: [
+      { q: '健康分高别人就搜不到我了吗？', a: '不会。健康分只反映你清理掉了多少敏感内容，不影响账号本身的可搜索性。想降低被搜到，要去设置里调整隐私选项。', qEn: 'Does a high score mean nobody can find me?', aEn: 'No. The score only reflects how much sensitive content you have cleared; it does not change how searchable your account is. To lower being found, adjust privacy options in settings.' },
+      { q: '删了旧推文，Google 还能搜到吗？', a: '删除后 Google 的缓存会逐渐失效，但旧索引不会立刻消失，通常需要几周到几个月。已被其他网站转载的内容，那些页面仍在。', qEn: 'After deleting old tweets, can Google still find them?', aEn: 'After deletion, Google cache fades over time, but old indexes do not vanish at once; it usually takes weeks to months. Content reposted by other sites stays on those pages.' },
+      { q: '怎么才能让账号不被搜索到？', a: '把账号设为私有，并在设置里关闭“允许搜索引擎链接到你的账号”。单靠删内容做不到完全隐身。', qEn: 'How do I stop my account from being searchable?', aEn: 'Set the account to private and turn off "allow search engines to link to your account" in settings. Deleting content alone will not make you fully invisible.' },
+      { q: '健康分低一定要清理吗？', a: '不一定。低分只说明历史推文里敏感信息多，如果你不打算求职、不出名、也不担心被扒，可以先放着。但若在意隐私，清理是最直接的办法。', qEn: 'Do I have to clean up if my score is low?', aEn: 'Not necessarily. A low score only means your history holds more sensitive info. If you are not job hunting, not public, and not worried about being dug up, you can leave it. But if privacy matters to you, cleaning is the most direct fix.' }
+    ],
+    titleEn: 'Does a Better Footprint Health Score Make You Harder to Find?',
+    excerptEn: 'The health score measures how dense the sensitive info is in your account; search visibility depends on your privacy settings and search indexing. They are not the same: clearing high-risk content does not make your account vanish from search. This article explains the real relationship.',
+    categoryEn: 'Health Score',
+    tagsEn: ['digital footprint', 'health score', 'search visibility', 'privacy settings', 'X/Twitter'],
+    content: `
+<p>很多人做完数字足迹体检，看到分数从 40 涨到 82，第一反应是："是不是以后别人就搜不到我了？"答案没那么简单。健康分和搜索可见度是两个不同的东西，把这两者混为一谈，容易让人要么过度乐观，要么白忙一场。</p>
+
+<h2>健康分到底在衡量什么</h2>
+<p>数字足迹健康分衡量的是你账号里"暴露风险"的密度：手机号、住址、定位、身份证号这类敏感信息在你的历史推文中出现的频率和严重程度。分高，说明你清理得干净；分低，说明还挂着不少高风险内容。</p>
+<p>它衡量的是"你发出了什么"，不是"别人能不能看到"。</p>
+
+<h2>搜索可见度由什么决定</h2>
+<p>别人能不能搜到你，取决于另一套因素：你的账号是公开还是私有、用户名是否常见、你发的内容有没有被搜索引擎收录、有没有其他网站引用你。这些和"足迹干不干净"基本是两码事。</p>
+<ul>
+  <li><strong>账号隐私设置</strong>：私有账号的推文不进搜索索引。</li>
+  <li><strong>搜索引擎收录</strong>：公开推文会被 Google 等收录，删掉后索引慢慢失效。</li>
+  <li><strong>外部引用</strong>：别人转载、截图你的内容，那些页面照样能被搜到。</li>
+</ul>
+
+<h2>两者的真实关系</h2>
+<p>提高健康分能间接影响可见度，但只是其中一环：你删掉了带手机号的旧推文，那条推文就从搜索结果里消失，但你的账号名、头像、简介这些仍然照常可被搜到。换句话说，健康分能清除"高风险内容"，清不掉"你的存在"。</p>
+<table>
+  <thead><tr><th>你想达成的目标</th><th>该做的</th><th>健康分能帮上吗</th></tr></thead>
+  <tbody>
+    <tr><td>不让别人搜到旧手机号</td><td>删除含手机号的旧推文</td><td>能，直接清除</td></tr>
+    <tr><td>不让别人搜到我的账号</td><td>把账号设为私有</td><td>不能直接解决</td></tr>
+    <tr><td>降低被扒旧料的风险</td><td>清理敏感内容 + 关掉搜索引擎收录</td><td>能，清除内容源头</td></tr>
+  </tbody>
+</table>
+
+<h2>一次看清两件事的方法</h2>
+<p>想同时知道"我暴露了多少"和"别人能不能搜到我"，可以分两步走：先用本机体检拿到健康分和具体风险推文清单，再去设置里看账号是公开还是私有、搜索引擎收录开关是否打开。两步合起来，你就知道该先动内容还是先动设置，不用瞎猜。</p>
+
+<h2>一个常见的误判</h2>
+<p>有人看到分数低就急着把所有推文删光，结果账号还是能被搜到，于是觉得"清理没用"。其实问题不在清理本身，而是只做了一半：删了内容却没关搜索引擎收录，别人照样能从缓存里翻到。分清楚要清的是"内容"还是"可见性"，才不会出现这种白费劲。</p>
+
+<h2>该怎么做才不白费劲</h2>
+<p>如果你的目标是"少被人翻旧账"，那么提高健康分（清理敏感内容）是对的入手点，但记得同步去设置里关掉"允许搜索引擎链接到你的账号"。如果你的目标是"彻底隐身"，那单靠清内容不够，还要动隐私设置。</p>
+<p>先做一次<a href="/">本机隐私体检</a>看清楚自己到底暴露了哪类信息，再决定先动内容还是先动设置，比盲目清理效率高得多。</p>
+    `,
+    contentEn: `
+<p>After finishing a digital footprint check, a lot of people see their score climb from 40 to 82 and immediately think: "Does that mean nobody can find me now?" The answer isn't that clean. Health score and search visibility are two different things. Mixing them up leads to either false relief or wasted effort.</p>
+
+<h2>What the health score actually measures</h2>
+<p>A digital footprint health score measures how dense the "exposure risk" is in your account: how often and how severely things like phone numbers, home addresses, locations, and ID numbers show up in your tweet history. A high score means you've cleaned up well. A low score means risky content is still sitting there.</p>
+<p>It measures what you put out, not whether others can see it.</p>
+
+<h2>What controls search visibility</h2>
+<p>Whether others can find you depends on a different set of factors: is your account public or private, is your handle common, has your content been indexed by search engines, and have other sites quoted you. These have almost nothing to do with how "clean" your footprint is.</p>
+<ul>
+  <li><strong>Account privacy</strong>: a private account's tweets don't enter search indexes.</li>
+  <li><strong>Search indexing</strong>: public tweets get picked up by Google, and they fade from results after you delete them.</li>
+  <li><strong>External quotes</strong>: when others repost or screenshot you, those pages stay searchable.</li>
+</ul>
+
+<h2>The real relationship between the two</h2>
+<p>Raising your health score affects visibility indirectly, and only on one front: if you delete the old tweet with your phone number, that tweet drops out of search results, but your handle, avatar, and bio remain searchable as usual. In other words, the score clears "high-risk content," not "your existence."</p>
+<table>
+  <thead><tr><th>Goal</th><th>What to do</th><th>Does the score help</th></tr></thead>
+  <tbody>
+    <tr><td>Stop old phone number from showing up</td><td>Delete old tweets with the number</td><td>Yes, clears it directly</td></tr>
+    <tr><td>Stop your account from being found</td><td>Set account to private</td><td>No, not directly</td></tr>
+    <tr><td>Lower the chance of old posts resurfacing</td><td>Clean sensitive content + block search indexing</td><td>Yes, removes the source</td></tr>
+  </tbody>
+</table>
+
+<h2>Check both at once</h2>
+<p>To see "how much I've exposed" and "can others find me" together, do two steps: run the on-device check for your score and the exact risky tweets, then open settings to see whether the account is public and whether search indexing is on. Those two steps tell you whether to fix content or settings first, without guessing.</p>
+
+<h2>A common misread</h2>
+<p>Some people see a low score and rush to delete every tweet, then find the account is still searchable and decide "cleaning doesn't work." The problem isn't cleaning itself; they did half the job. They removed content but left search indexing on, so others still reach it through cache. Telling apart "content to clear" from "visibility to block" is what prevents that wasted effort.</p>
+
+<h2>How to avoid wasting effort</h2>
+<p>If your goal is "fewer people digging up my past," then raising the health score by cleaning sensitive content is the right starting point. But also go to settings and turn off "allow search engines to link to your account." If your goal is "disappear completely," cleaning content alone won't do it; you need the privacy settings too.</p>
+<h2>When a high score is enough on its own</h2>
+<p>If your only concern is "I don't want my old phone number floating around," then raising the score by deleting that one risky batch may be all you need. You don't have to chase a perfect 100. Decide the goal first, let the score tell you how much content work is left, and let the privacy settings handle the rest of the visibility question.</p>
+<p>Run a <a href="/">privacy check on your own device</a> first to see exactly what you've exposed, then decide whether to tackle content or settings first. That beats cleaning blindly.</p>
+    `,
+  },
+  {
+    slug: 'chinese-users-x-account-closure-checklist',
+    title: '注销 X 账号前，中文用户必须清理的 6 类痕迹',
+    excerpt: '注销只关掉你能编辑的入口，清不掉已经散出去的信息。中文用户的高风险痕迹和英文用户不同：手机号、微信、拼音姓名、证件、国内平台交叉引用。本文给出注销前必须清理的 6 类痕迹与顺序。',
+    date: '2026-10-17',
+    updatedAt: '2026-10-17',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['X/Twitter', '注销账号', '中文用户', '隐私清理', '身份信息'],
+    canonical: '/blog/chinese-users-x-account-closure-checklist',
+    faq: [
+      { q: '注销后旧推文还会被搜到吗？', a: '会。注销只关掉你的编辑权限，已经进搜索引擎、被截图或转发的旧内容不受影响。要清掉，得在注销前自己删。', qEn: 'Will old tweets still be searchable after deletion?', aEn: 'Yes. Deletion only closes your edit permission; old content already in search engines, screenshotted, or reposted is unaffected. To clear it, you must delete it yourself before deactivating.' },
+      { q: '停用和注销有什么区别？', a: '停用有 30 天反悔期，登录即恢复；注销要等停用期满才彻底删除。两者都不会自动清理历史推文里的敏感信息。', qEn: 'What is the difference between deactivate and delete?', aEn: 'Deactivation has a 30-day grace period; log in and it returns. Deletion only happens after that window closes. Neither auto-cleans sensitive info from your history.' },
+      { q: '只删带手机号的推文够吗？', a: '不够。中文用户的高风险痕迹还包括拼音姓名、证件、平台交叉引用，只删手机号会漏掉大半。按 6 类逐条清才稳妥。', qEn: 'Is deleting tweets with my phone number enough?', aEn: 'No. Chinese users face other high-risk traces too: pinyin names, ID documents, cross-platform links. Deleting only phone numbers leaves most of it. Clear all six types one by one.' },
+      { q: '国内平台链接也要删吗？', a: '建议删。推文里贴过微博、公众号链接，等于把不同平台的身份关联起来，别人顺着能拼出更完整的你。', qEn: 'Should I also delete domestic platform links?', aEn: 'It is a good idea. Tweeting your Weibo or public account links ties your identities across platforms together, letting others piece together a fuller picture of you.' }
+    ],
+    titleEn: 'Before You Delete Your X Account: A Cleanup Checklist for Chinese Users',
+    excerptEn: 'Deletion only closes the door you can still edit; it does not retract information already spread. Chinese users face different high-risk traces than English users: phone numbers, WeChat, pinyin names, ID documents, cross-platform links. This article lists the six trace types to clear and the order to do it.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['X/Twitter', 'delete account', 'Chinese users', 'privacy cleanup', 'identity info'],
+    content: `
+<p>注销 X 账号和"清理推文"不是一回事。很多中文用户以为点了注销就万事大吉，结果旧内容早就被截图、被搜索引擎收录、被国内平台的爬虫抓走。注销只是关掉你还能编辑的入口，清不掉已经散出去的信息。所以在动手注销前，先把这几类中文用户特有的痕迹处理掉。</p>
+
+<h2>为什么中文用户要单独列清单</h2>
+<p>中文语境下的暴露点，和英文用户不太一样。我们更容易在推文里留手机号、微信、支付宝这类国内特有的联系方式，也更常出现拼音姓名、身份证号、护照首页这类身份文件。这些内容一旦被扒，风险比一般的情绪化发言高得多。</p>
+
+<h2>注销前必须清理的 6 类痕迹</h2>
+<ul>
+  <li><strong>1. 手机号与微信 / 支付宝账号</strong>：直接写在推文或简介里的联系方式，是最容易被骚扰和诈骗利用的入口。</li>
+  <li><strong>2. 拼音姓名与真实姓名</strong>：很多人的 handle 或简介里带拼音全名，配合其他线索能拼出真实身份。</li>
+  <li><strong>3. 身份证号、护照、签证页</strong>：晒证件证明"我在国外"很常见，但这些图片长期挂在公开推文里极危险。</li>
+  <li><strong>4. 国内平台交叉引用</strong>：推文里贴过微博、小红书、公众号链接，等于把不同平台的身份串成一条线。</li>
+  <li><strong>5. 定位与常去地点</strong>：城市名、小区名、通勤路线，长期积累能还原你的活动圈。</li>
+  <li><strong>6. 求职与背调相关内容</strong>：吐槽前公司、透露行业圈子，会被未来雇主或竞争对手拿来做文章。</li>
+</ul>
+
+<h2>注销不等于删除，区别要搞清楚</h2>
+<p>X 的"停用"（deactivate）有 30 天反悔期，期间内登录就恢复；真正的"删除"要等停用期满后系统才彻底清除。两种情况都不会自动清理你历史推文里的敏感信息，也不会撤回已经被别人存下来的副本。注销前不自己动手清，那些内容就一直挂着。</p>
+
+<h2>注销后还能恢复吗</h2>
+<p>如果你只是"停用"，30 天内随时登录就恢复原样；一旦过了窗口、进入彻底删除，内容就找不回来了。所以停用期其实是个缓冲：你可以先停用，利用这 30 天慢慢把高危痕迹清完，确认干净了再让它进入删除。别在还留着敏感内容时就直接走完删除流程。</p>
+
+<h2>从决定注销到彻底消失要多久</h2>
+<p>时间线大致是：你点停用，进入 30 天反悔期，期满系统开始清除，搜索引擎缓存再花几周到几个月慢慢失效。也就是说，哪怕你今天注销，互联网上关于你的旧副本也可能还要大半年才淡出。越早开始清理，残留越少。</p>
+
+<h2>建议的清理顺序</h2>
+<p>先删最高风险的（证件、手机号），再删身份线索（拼音姓名、平台交叉引用），最后处理定位和低风险内容。别一上来就点注销，那样你反而失去了对内容的控制权。</p>
+<p>不确定自己暴露了多少？先跑一次<a href="/">本机隐私体检</a>，它会按风险等级把这几类痕迹标出来，你照着清单逐条删就行。</p>
+    `,
+    contentEn: `
+<p>Deleting your X account and "cleaning your tweets" are not the same thing. Many Chinese users assume hitting delete settles everything, only to find old posts were already screenshotted, indexed by search engines, and scraped by domestic platform crawlers. Deletion only closes the door you can still edit; it doesn't retract information that already spread. So before you deactivate, clear the traces that are specific to Chinese users.</p>
+
+<h2>Why Chinese users need a separate checklist</h2>
+<p>The exposure points in a Chinese context differ from English-speaking users. We're more likely to drop phone numbers, WeChat, or Alipay handles straight into tweets and bios, and more likely to show pinyin names, ID numbers, or passport pages. Once dug up, that content is far riskier than a routine emotional rant.</p>
+
+<h2>Six types of traces to clear before deletion</h2>
+<ul>
+  <li><strong>1. Phone, WeChat, Alipay</strong>: contact details written into tweets or bios are the easiest entry point for harassment and scams.</li>
+  <li><strong>2. Pinyin and real names</strong>: many handles or bios carry a full pinyin name; combined with other clues it can reconstruct your real identity.</li>
+  <li><strong>3. ID numbers, passports, visa pages</strong>: posting documents to prove "I'm abroad" is common, but those images stay dangerous in public tweets.</li>
+  <li><strong>4. Cross-platform links</strong>: tweeting your Weibo, Xiaohongshu, or public account links ties your identities across platforms into one line.</li>
+  <li><strong>5. Locations and frequent spots</strong>: city names, neighborhood names, commute routes accumulate into a map of your routine.</li>
+  <li><strong>6. Job and background-check content</strong>: complaining about a former employer or revealing your industry circle can be used against you by future bosses or competitors.</li>
+</ul>
+
+<h2>Deactivate is not delete</h2>
+<p>X's deactivation has a 30-day grace period; log in during it and the account returns. True deletion only happens after that window closes. Neither version auto-cleans sensitive info from your history, nor retracts copies others already saved. If you don't clean up before deactivating, that content stays.</p>
+
+<h2>Can you recover after deletion</h2>
+<p>If you only deactivated, logging in within 30 days brings everything back. Once that window closes and full deletion starts, the content is gone for good. So the deactivation period is a buffer: deactivate first, use those 30 days to clear high-risk traces, and only let it proceed to deletion once you're clean. Don't run the full deletion while sensitive content is still up.</p>
+
+<h2>How long from decision to gone</h2>
+<p>The timeline runs roughly: you hit deactivate, then 30 days of grace, then the system starts clearing, then search engine caches take weeks to months to fade. So even if you deactivate today, old copies of you across the internet may linger for half a year or more. The earlier you start cleaning, the less stays behind.</p>
+
+<h2>Suggested cleanup order</h2>
+<p>Start with the highest-risk items (documents, phone numbers), then identity clues (pinyin names, cross-platform links), then locations and low-risk content. Don't hit delete first; doing so hands over control of your content.</p>
+<h2>What to keep after you deactivate</h2>
+<p>Before the 30-day window closes, save anything you might need later: login records, receipts, conversations with support, or posts you want as a personal archive. Deletion removes them from the account, and after the window you can't get them back. Treat the deactivation period as your last chance to grab what matters, separate from the cleanup itself.</p>
+<p>Also think about linked services. If you used this X account to log into other apps, revoke those connections while you still can. Once the account is gone, recovering access to a third-party app through it becomes a hassle you could have avoided in ten minutes today.</p>
+<h2>A quick sanity check before you commit</h2>
+<p>Before the final deletion, open your own profile in a private browser and skim your older posts once. If anything still feels exposed, clear it during the grace period. The goal isn't a spotless account; it's one where nothing in your history can be used to target or impersonate you.</p>
+<p>Not sure how much you've exposed? Run a <a href="/">privacy check on your own device</a> first. It flags these trace types by risk level, and you just work through the list.</p>
+    `,
+  },];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

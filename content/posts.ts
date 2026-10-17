@@ -24947,7 +24947,432 @@ rl.on('close', () =&gt; {
 <p>Before the final deletion, open your own profile in a private browser and skim your older posts once. If anything still feels exposed, clear it during the grace period. The goal isn't a spotless account; it's one where nothing in your history can be used to target or impersonate you.</p>
 <p>Not sure how much you've exposed? Run a <a href="/">privacy check on your own device</a> first. It flags these trace types by risk level, and you just work through the list.</p>
     `,
-  },];
+  },
+  {
+    slug: 'social-media-data-retention-laws-2026',
+    title: '社交平台会把你的数据保留多久？旧推文受哪些法律管',
+    excerpt: '你以为删掉的推文，平台可能还留着备份。本文讲清数据保留的法定义务、X 实际怎么存你的数据，以及 GDPR 与 CCPA 下你能主张的删除、访问、可携权，并给出一份可执行的清理清单。',
+    date: '2026-10-18',
+    updatedAt: '2026-10-18',
+    author: 'Digital Footprint Health Team',
+    category: '隐私法规',
+    tags: ['数据保留', 'GDPR', 'CCPA', 'X/Twitter', '隐私保护'],
+    canonical: '/blog/social-media-data-retention-laws-2026',
+    faq: [
+      { q: '删除推文后，平台还会保留备份吗？', a: '公开时间线会较快移除，但内部备份和元数据可能按保留策略留存一段时间。具体时长各家不公开，这也是为什么法律会要求平台证明删除已发生。', qEn: 'After I delete a tweet, does the platform keep a backup?', aEn: 'The public timeline is removed quickly, but internal backups and metadata may remain under a retention policy. Providers rarely publish exact windows, which is exactly why laws require them to prove deletion happened.' },
+      { q: 'GDPR 下的删除权能管到第三方吗？', a: '能。GDPR 的删除权要求平台把请求传递到处理你数据的第三方（如广告与分析伙伴），而不只是删掉平台自己那份。', qEn: 'Does the GDPR right to erasure reach third parties?', aEn: 'Yes. GDPR requires the platform to pass the request to third parties processing your data, such as advertising and analytics partners, not just delete its own copy.' },
+      { q: 'CCPA 和 GDPR 最大的区别是什么？', a: 'CCPA 侧重"退出出售或共享个人信息"，GDPR 范围更宽，包含访问、更正、删除与可携多项权利，且适用地域不同（欧盟 vs 加州）。', qEn: 'What is the biggest difference between CCPA and GDPR?', aEn: 'CCPA centers on opting out of the sale or sharing of personal information. GDPR is broader, covering access, rectification, erasure, and portability, and applies across the EU/EEA rather than just California.' },
+      { q: '搜索引擎缓存的旧推文，法律能删吗？', a: '可以。删除请求应要求平台通知索引方移除缓存结果，但执行力度因服务商而异，通常需要你主动提交移除申请并跟进。', qEn: 'Can the law remove cached old tweets from search engines?', aEn: 'It can. An erasure request should ask the platform to notify indexers to drop cached results, but enforcement varies, and you often need to submit and follow up on a removal request yourself.' },
+      { q: '普通用户现在最该做的一步是什么？', a: '先申请数据归档、跑一次本机体检看清风险分布，再针对性删除高风险推文，比盲目指望平台自动遗忘更有效。', qEn: 'What is the one step a regular user should take now?', aEn: 'Request your archive, run an on-device check to see your risk distribution, then delete the high-risk posts first. That beats hoping the platform simply forgot.' }
+    ],
+    titleEn: 'How Long Do Social Platforms Keep Your Data? The Laws Behind Your Old Tweets',
+    excerptEn: 'A deleted tweet is not always gone. This guide covers retention obligations, how X actually stores your data, and the erasure, access, and portability rights you have under GDPR and CCPA, plus a practical cleanup checklist.',
+    categoryEn: 'Privacy Law',
+    tagsEn: ['data retention', 'GDPR', 'CCPA', 'X/Twitter', 'privacy'],
+    contentEn: `
+<p>Most people assume that deleting a tweet removes it. The platform keeps far more than you think, and for far longer. Data retention is the quiet machinery behind every old post that still turns up in a Google search or a background check: it decides how long your words are stored, who can see them, and whether they can be lawfully erased.</p>
+
+<h2>What "data retention" actually means</h2>
+<p>Retention is the period a company keeps your data after you create it or delete it. It covers your tweet text, but also direct messages, login records, IP addresses, device fingerprints, and the behavioral signals tied to your account, such as what you click, how long you stay, and who you interact with. A platform's retention policy decides whether a "deleted" tweet is truly gone or simply hidden from the public while a copy sits in a backup.</p>
+<p>The key insight is to separate "deleted as you see it" from "deleted as the platform sees it." What you see is a front-end result; the platform's back-end timeline is a different story entirely.</p>
+
+<h2>How long X keeps your data</h2>
+<p>X does not publish a single clean number, and that silence is the point. From public disclosures, privacy terms, and third-party audits, several layers emerge:</p>
+<ul>
+  <li><strong>Tweets you delete yourself</strong> leave the public timeline quickly, but internal copies can persist in backups for a defined window.</li>
+  <li><strong>Account metadata</strong>, login history, and associated IP logs may be retained to meet security and legal obligations.</li>
+  <li><strong>Advertising and analytics partners</strong> receive hashed or aggregated signals that can outlive the original post.</li>
+  <li><strong>Logs and risk signals</strong>, such as suspicious logins and content-moderation records, are typically kept longer for compliance.</li>
+</ul>
+<table>
+  <thead>
+    <tr><th>Data type</th><th>Can you delete it directly?</th><th>What the platform usually keeps</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Public tweet text</td><td>Yes, but only the most recent ~3,200</td><td>Likely still in backups</td></tr>
+    <tr><td>Direct messages</td><td>Only after both sides delete</td><td>May linger in risk logs</td></tr>
+    <tr><td>Login and IP records</td><td>Almost never</td><td>Retained for security compliance</td></tr>
+    <tr><td>Behavioral signals</td><td>No</td><td>Persist in aggregated form</td></tr>
+  </tbody>
+</table>
+<p>The practical takeaway: deletion is a front-end action. What stays behind depends on contracts, backups, and regulation, and you rarely get to see it.</p>
+
+<h2>The two laws that actually protect you</h2>
+<p>For EU and California users, two frameworks matter most:</p>
+<table>
+  <thead>
+    <tr><th>Framework</th><th>What it gives you</th><th>Response clock</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>GDPR (EU/EEA)</td><td>Access, rectify, erase, and port your data. Erasure requests must reach third parties processing your data.</td><td>Usually 30 days, extendable to 90</td></tr>
+    <tr><td>CCPA/CPRA (California)</td><td>Request deletion and opt out of the sale or sharing of personal information.</td><td>Usually 45 days, one extension allowed</td></tr>
+  </tbody>
+</table>
+<p>The UK, Canada, Brazil, and Japan have similar statutes with their own deadlines and regions. These laws do not force platforms to wipe everything at once, but they set response clocks and require proof that deletion happened. In other words, they turn "should the platform delete this" from a promise into an accountable obligation.</p>
+
+<h2>Why your old tweets survive outside the platform</h2>
+<p>Even if X erases a post, copies live elsewhere:</p>
+<ul>
+  <li>Search engines cache pages for weeks or months, often without you noticing.</li>
+  <li>Data brokers and archiving services scrape public timelines into queryable products.</li>
+  <li>AI labs trained models on large public corpora that include historical tweets, and once text is in a model it is nearly impossible to pull back.</li>
+  <li>Screenshots, reposts, and quotes keep a single tweet alive in forms you cannot control.</li>
+</ul>
+<p>A legal erasure request is your only lever to push deletion into those downstream systems, and enforcement varies a lot between providers. You usually have to submit and follow up more than once.</p>
+
+<h2>A retention reality checklist</h2>
+<p>Before you act, set the right expectations:</p>
+<ol>
+  <li>A platform's promised "deletion" usually covers only the publicly visible layer.</li>
+  <li>Backup and log layers sit outside your control.</li>
+  <li>Third-party copies need their own separate deletion requests.</li>
+  <li>The law gives you the right to ask, but response quality and speed differ by provider.</li>
+  <li>The most reliable control point is always the archive on your own device and local analysis.</li>
+</ol>
+
+<h2>Five things you can do this week</h2>
+<ol>
+  <li>Request your archive and see what the platform actually stores.</li>
+  <li>If you fall under GDPR or CCPA, file an erasure request and keep the receipt.</li>
+  <li>Run a <a href="/blog/footprint-checkup-step-by-step">footprint check</a> to find high-risk tweets and clean them at the source.</li>
+  <li>Revoke unused third-party app connections to tighten data exits.</li>
+  <li>Put a quarterly review on the calendar instead of a one-time panic cleanup.</li>
+</ol>
+
+<h2>What a footprint check changes</h2>
+<p>A check does not delete anything. It parses your archive on your own device, scores the risk, and shows you exactly which posts carry phone numbers, addresses, or sensitive opinions, so you decide what to remove. <a href="/blog/how-to-delete-old-tweets-2026">The full guide to deleting old tweets</a> stresses the same point: real cleanup rests on evidence, not guesswork. Retention law gives you rights, but the first step in exercising them is seeing how much you have actually left behind.</p>
+
+<h2>Retention and your job search</h2>
+<p>If you are job hunting, retention stops being theoretical. Recruiters and background vendors read public posts, and an old tweet with a former employer's name or an unprofessional line can resurface at the worst moment. The erasure request under GDPR or CCPA is the lever that reaches past the platform, but it runs on a clock of weeks, so start before you need it. Combine the legal request with local cleanup so the posts disappear at the source, not just from view.</p>
+
+<h2>Backups are the part nobody sees</h2>
+<p>Most retention talk stops at the public timeline. The harder question is backups: platforms keep redundant copies across regions for disaster recovery, and those copies often outlive the deletion window you are told about. You cannot reach them directly, which is why the practical defense is to limit what was sensitive to begin with and to act early, while posts are still within your own control rather than someone else's backup.</p>
+
+<h2>How to measure your own exposure</h2>
+<p>Do not guess. Pull your archive, run a local check, and read the score. A number turns a vague worry into a list you can work through, and it shows you whether your risk is contact details, locations, or opinions. That distinction changes what you do next, because deleting a phone number and softening an old opinion are different jobs with different urgency.</p>
+
+<h2>Why retention differs by platform</h2>
+<p>Retention is not uniform. A platform with strong EU operations tends to build deletion workflows that satisfy GDPR, while a smaller app with no dedicated data-protection team may keep logs indefinitely because no one ever wrote the purge job. The practical lesson is not to trust a marketing line about taking privacy seriously, but to assume the weakest link in the chain defines how long your data actually lives. That is why a local archive and a local cleanup stay the only controls that do not depend on a third party remembering to erase you when asked.</p>
+
+<h2>The bottom line</h2>
+<p>Retention laws give you rights, but they do not exercise them for you. The fastest path to a smaller footprint is local analysis plus targeted deletion, not hoping the platform forgot about you. Law is the backstop; local cleanup is the tool you use every day.</p>
+<p>Back to the <a href="/">homepage</a> to run a free, 100% on-device footprint check. See exactly how much you have left behind before you decide the next step.</p>
+`,
+    content: `
+<p>大多数人以为点下"删除"，那条推文就消失了。现实是平台留下的副本，远比你想象的多，也远比你想象的长。数据保留，就是每一句旧发言背后那套看不见的机器：它决定你的话被存多久、被谁看到、又能不能被合法抹掉。</p>
+
+<h2>什么是"数据保留"</h2>
+<p><strong>数据保留（data retention）</strong>指公司在你创建或删除数据之后，继续保存它的时长。它不只覆盖你的推文正文，还包括私信、登录记录、IP 地址、设备指纹，以及绑在你账号上的行为信号（你点了什么、停留多久、和谁互动）。平台的保留策略，决定了你"删除"的推文是真的没了，还是仅仅从公开界面藏起来、备份里还留着一份。</p>
+<p>理解保留的关键，是先分清"对你可见的删除"和"对平台而言的删除"不是一回事。你看到的是前端结果，平台后台的时间线完全是另一回事。</p>
+
+<h2>X 实际保留多久</h2>
+<p>X 没有给出一个干净利落的数字，这种沉默本身就很说明问题。从公开披露、隐私条款和第三方审计里，能拼出几个层次：</p>
+<ul>
+  <li><strong>你主动删除的推文</strong>：公开时间线会较快移除，但内部备份可能按既定窗口保留一段时间。</li>
+  <li><strong>账号元数据</strong>：登录历史、关联 IP、设备信息，会因安全与法律义务被长期留存。</li>
+  <li><strong>广告与分析伙伴</strong>：拿到的是哈希或聚合信号，这些信号可能比原始推文活得更久。</li>
+  <li><strong>日志与风控数据</strong>：异常登录、内容审核记录，通常保留更久以满足合规。</li>
+</ul>
+<table>
+  <thead>
+    <tr><th>数据类型</th><th>你能否直接删</th><th>平台通常保留</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>公开推文正文</td><td>能（仅最近约 3200 条）</td><td>备份中仍可能留存</td></tr>
+    <tr><td>私信</td><td>双方删除后才消失</td><td>风控日志中可能长期留痕</td></tr>
+    <tr><td>登录与 IP 记录</td><td>基本不能</td><td>按安全合规保留</td></tr>
+    <tr><td>行为信号</td><td>不能</td><td>以聚合形式长期存在</td></tr>
+  </tbody>
+</table>
+<p>实际结论很简单：删除是前端动作，留在后面的部分取决于合同、备份和监管，你几乎看不到。</p>
+
+<h2>真正保护你的两部法律</h2>
+<p>对欧盟和加州用户，最重要的框架是这两个：</p>
+<table>
+  <thead>
+    <tr><th>框架</th><th>给你什么权利</th><th>平台要在多久内响应</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>GDPR（欧盟/EEA）</td><td>访问、更正、删除、可携你的数据；删除请求要触达处理你数据的第三方</td><td>通常 30 天，复杂情形可延至 90 天</td></tr>
+    <tr><td>CCPA/CPRA（加州）</td><td>要求删除，并可以退出个人信息的"出售"或"共享"</td><td>通常 45 天，可延期一次</td></tr>
+  </tbody>
+</table>
+<p>英国、加拿大、巴西、日本也有类似法规，只是响应时限和适用地域不同。这些法律不会让平台瞬间清空一切，但会设定响应时钟，并要求证明删除确实发生。换句话说，它们把"平台该不该删"从一句承诺，变成了可追责的义务。</p>
+
+<h2>为什么旧推文还活在其他地方</h2>
+<p>就算 X 自己删了某条推文，副本依然散落：</p>
+<ul>
+  <li>搜索引擎会把页面缓存几周甚至几个月，且你很难察觉；</li>
+  <li>数据经纪商和归档服务会抓取公开时间线，做成可查询的产品；</li>
+  <li>AI 实验室用海量公开语料训练模型，历史推文就在其中，且一旦进入模型几乎无法撤回；</li>
+  <li>截图、转发、引用，让一条推文以你控制不了的形态继续传播。</li>
+</ul>
+<p>法律上的删除请求，是你把这些下游系统也推入删除流程的唯一杠杆，而且各家的执行力度差别很大，往往需要你主动提交并反复跟进。</p>
+
+<h2>一份保留现实清单</h2>
+<p>在动手之前，先建立正确预期：</p>
+<ol>
+  <li>平台承诺的"删除"通常只覆盖公开可见层；</li>
+  <li>备份与日志层不在你的控制范围内；</li>
+  <li>第三方副本需要单独的删除请求去推动；</li>
+  <li>法律给了你请求权，但响应质量和速度因服务商而异；</li>
+  <li>最可靠的控制点，永远是你自己设备上的归档与本地分析。</li>
+</ol>
+
+<h2>这周就能做的五件事</h2>
+<ol>
+  <li>申请你的数据归档，看看平台到底存了什么；</li>
+  <li>如果你在 GDPR 或 CCPA 适用范围内，提交删除请求，并保留回执；</li>
+  <li>做一次<a href="/blog/footprint-checkup-step-by-step">数字足迹体检</a>，找出高风险推文从源头清理；</li>
+  <li>撤销不再使用的第三方 App 授权，收紧数据出口；</li>
+  <li>把"每季度复查"排进日程，而不是出事才慌忙大扫除。</li>
+</ol>
+
+<h2>体检能改变什么</h2>
+<p>体检本身不删任何东西。它在你本机解析归档、给风险打分，精确指出哪些推文带着手机号、住址或敏感观点，由你决定删什么。<a href="/blog/how-to-delete-old-tweets-2026">删除旧推文的完整指南</a>里也强调：真正的清理，是建立在证据上，而不是凭感觉。保留法律给了你权利，但行使权利的第一步，是先看清自己到底留了多少。</p>
+
+<h2>保留与你的求职</h2>
+<p>如果你正在找工作，保留就不再是抽象概念。招聘方和背调机构会读你的公开发言，一条带前公司名字或不得体措辞的旧推文，可能在最糟的时刻被翻出来。GDPR 或 CCPA 下的删除请求，是唯一能越过平台本身的杠杆，但它以"周"为单位运行，所以要赶在需要用之前就启动。把法律请求和本机清理结合起来，让推文从源头消失，而不只是从视线里藏起来。</p>
+
+<h2>你看不到的那部分：备份</h2>
+<p>多数保留讨论停在公开时间线。更难的问题是备份：平台为灾难恢复，会在多个区域保留冗余副本，这些副本的存活时间，往往超过它告诉你的删除窗口。你无法直接触及它们，所以务实的防御是：一开始就少留敏感内容，并在推文还在自己掌控范围内时尽早行动，而不是等它躺进别人的备份里。</p>
+
+<h2>怎么衡量自己的暴露面</h2>
+<p>别靠猜。拉一份归档，跑一次本机体检，读那个分数。数字把模糊的担心变成一张可以逐条处理的清单，也让你看清风险到底是联系方式、定位，还是观点。这个区分决定了下一步动作，因为删掉手机号和"软化"一条旧观点，是两件紧急程度不同的事。</p>
+
+<h2>关键结论</h2>
+<p>保留法律给了你权利，但不会替你行使。缩小数字足迹最快的路径，是本机分析加定向删除，而不是指望平台已经忘了你。法律是兜底，本地清理才是日常可用的手段。</p>
+<p>回到<a href="/">首页</a>，免费跑一次 100% 本机的数字足迹体检，先看清楚自己到底留了多少，再决定下一步。</p>
+`,
+  },
+  {
+    slug: 'weekend-digital-footprint-reset-routine',
+    title: '周末两小时，给 X 账号做一次数字足迹大扫除',
+    excerpt: '不用等出事才清理。本文给你一套周末两小时可执行的 X 账号数字足迹大扫除流程：下载归档、本机体检、清理高风险、固化习惯，并附常见卡点与排期建议。',
+    date: '2026-10-18',
+    updatedAt: '2026-10-18',
+    author: 'Digital Footprint Health Team',
+    category: '数字足迹指南',
+    tags: ['周末清理', '数字足迹', 'X/Twitter', '隐私习惯'],
+    canonical: '/blog/weekend-digital-footprint-reset-routine',
+    faq: [
+      { q: '两周一次会不会太频繁？', a: '对大多数人刚好。太稀疏容易积压，太密集又难坚持。固定节奏比单次强度更重要，日历提醒比意志力可靠。', qEn: 'Is every two weeks too frequent?', aEn: 'For most people it is the right cadence. Too sparse lets things pile up; too dense is hard to keep. A fixed rhythm matters more than intensity, and a calendar reminder beats willpower.' },
+      { q: '两小时里最不能省的是哪一步？', a: '本机体检。没有评分，你只能凭记忆删，极易漏掉真正高风险的内容，后面反而要花更多时间返工。', qEn: 'Which step is the one you cannot skip?', aEn: 'The on-device check. Without a score you delete from memory and miss the genuinely risky posts, which costs more time to fix later.' },
+      { q: '归档一定要上传到云端才能分析吗？', a: '不必。本机解析正是为了不让归档离开你的设备，避免把最敏感的数据交出去，大文件也能直接处理。', qEn: 'Does the archive have to go to the cloud to be analyzed?', aEn: 'No. On-device parsing exists precisely so the archive never leaves your machine, keeping your most sensitive data in your hands, and large files are handled locally.' },
+      { q: '清理完这一轮，下次从哪开始？', a: '直接复用上次的风险清单与归档解析经验，重新下载最新归档即可，流程不变，越做越快。', qEn: 'After this round, where do I start next time?', aEn: 'Reuse the last risk list and parsing experience, download the freshest archive, and run the same flow. It gets faster each time.' }
+    ],
+    titleEn: 'A Two-Hour Weekend Reset for Your X Digital Footprint',
+    excerptEn: 'You do not need a crisis to clean up. This is a repeatable two-hour weekend routine for your X account: download the archive, run an on-device check, clear the high risks, and lock in the habit, with common stuck points and scheduling advice.',
+    categoryEn: 'Digital Footprint Guide',
+    tagsEn: ['weekend cleanup', 'digital footprint', 'X/Twitter', 'privacy habit'],
+    contentEn: `
+<p>Cleaning up a digital footprint is easy to postpone. By the time a job screening or a public controversy forces it, the damage is often done. Turn it into a two-hour weekend habit and it becomes nearly effortless, and far less likely to be abandoned halfway.</p>
+
+<h2>Why the weekend works</h2>
+<p>Weekend attention is more continuous and less chopped up by work messages. Two hours is enough to close the full loop without making you want to quit. The key is a <strong>fixed rhythm</strong>: every two weeks beats one frantic burst per year. Willpower is unreliable; a calendar reminder is not.</p>
+
+<h2>How to split the two hours</h2>
+<table>
+  <thead>
+    <tr><th>Step</th><th>Time</th><th>Output</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Download the archive</td><td>10 min (plus waiting)</td><td>One ZIP archive</td></tr>
+    <tr><td>On-device check and score</td><td>40 min</td><td>0-100 risk score plus a risk list</td></tr>
+    <tr><td>Clear high-risk tweets</td><td>50 min</td><td>Phone, address, and sensitive-opinion posts handled</td></tr>
+    <tr><td>Review and schedule</td><td>20 min</td><td>Next cleanup on the calendar</td></tr>
+  </tbody>
+</table>
+
+<h2>Step 1: get your archive</h2>
+<p>The path is Settings, then Your account, then Download an archive of your data. X packages your entire tweet history into a ZIP, which is the only way to reach posts older than the recent 3,200. <a href="/blog/how-to-download-x-archive">The full download walkthrough</a> has screenshots for each step; the first time, follow it through once.</p>
+
+<h2>Step 2: check on-device, not by eye</h2>
+<p>Thousands of tweets cannot be reviewed by hand. Feed the archive to an on-device parser that flags posts with phone numbers, addresses, locations, and sensitive topics, then ranks them. Your data never leaves your computer. See <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>. This is the step you cannot skip: without a score you delete from memory and miss the genuinely risky posts.</p>
+
+<h2>Step 3: delete the riskiest first</h2>
+<p>Do not aim to wipe everything at once. Work down the risk list and handle real contact details, home addresses, and rants about former employers first. Those are what screenings and high-risk scenarios dig up. For tweets you cannot delete through the normal interface, the <a href="/blog/why-can-you-only-delete-3200-tweets">archive-parsing approach</a> explains how to reach earlier history through the archive itself.</p>
+
+<h2>Step 4: make the habit stick</h2>
+<p>Spend the last ten minutes putting the next cleanup on the calendar. The value of two hours is not this one session, but the fact that it becomes an action you no longer need willpower for. Pair it with the <a href="/blog/footprint-checkup-step-by-step">step-by-step check flow</a> so each round reuses the last one and gets faster.</p>
+
+<h2>Common stuck points</h2>
+<ul>
+  <li><strong>"The archive is too big to open."</strong> Parse it on-device; you never upload the file anywhere, and large files are exactly where the on-device approach shines.</li>
+  <li><strong>"I do not know which to delete."</strong> Let the score set the priority instead of your memory.</li>
+  <li><strong>"I delete and forget."</strong> A calendar entry beats willpower; set it as a recurring every-two-weeks reminder.</li>
+  <li><strong>"I am afraid of deleting something important."</strong> Export first, then delete, and keep a local copy you can go back to.</li>
+</ul>
+
+<h2>Scheduling advice for different people</h2>
+<p>Job seekers should clean at least a month before sending applications. Creators, whose exposure is larger, can move to weekly. Regular users are fine every two weeks. Frequency matters less than simply not breaking the chain.</p>
+<p><h2>What if you miss a week</h2>
+<p>Life happens. If you skip a round, do not try to catch up by deleting everything in one sitting, which leads to mistakes. Just resume the rhythm next weekend and keep the archive fresh. The goal is a low-stress habit, not a perfect streak, and a single gap does not undo the months of steady progress you already built.</p>
+
+<p>Back to the <a href="/">homepage</a> and run a free on-device check this weekend. Spend the two hours; it beats any later "I will do it sometime."</p>
+`,
+    content: `
+<p>清理数字足迹这件事，最容易拖。等到求职背调、舆论风波才动手，往往已经晚了。把它变成周末两小时的小习惯，反而最省力，也最不容易半途而废。</p>
+
+<h2>为什么放在周末</h2>
+<p>周末的注意力更连续，不会被工作消息切碎。两小时足够完成一次完整闭环，又不会让人想放弃。关键是<strong>固定节奏</strong>：每两周一次，比一年爆发一次有效得多。人的意志力不可靠，但日历提醒可靠。</p>
+
+<h2>两小时怎么分</h2>
+<table>
+  <thead>
+    <tr><th>环节</th><th>耗时</th><th>产出</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>下载数据归档</td><td>10 分钟（含等待）</td><td>一份 ZIP 归档</td></tr>
+    <tr><td>本机体检打分</td><td>40 分钟</td><td>0-100 风险评分 + 风险清单</td></tr>
+    <tr><td>清理高风险推文</td><td>50 分钟</td><td>手机号/住址/敏感观点类推文已处理</td></tr>
+    <tr><td>复查与排期</td><td>20 分钟</td><td>下次清理已写进日历</td></tr>
+  </tbody>
+</table>
+
+<h2>第一步：拿到你的归档</h2>
+<p>路径是：设置 → 你的账号 → 下载数据归档。X 会把全部历史推文打包成 ZIP，这是触达 3200 条之前旧推文的唯一入口。<a href="/blog/how-to-download-x-archive">下载 X 归档的完整步骤</a>里有更细的截图说明，第一次做建议跟着走一遍。</p>
+
+<h2>第二步：本机体检，而不是肉眼翻</h2>
+<p>几千条推文靠人翻不现实。把归档交给本机工具解析，它会标出带手机号、住址、定位、敏感话题的推文，并给出优先级。整个过程数据不出你的电脑，详见<a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a>。这一步是整个流程里最不能省的，没有评分你只能凭记忆删，极易漏掉真正高风险的内容。</p>
+
+<h2>第三步：先删最危险的</h2>
+<p>别追求一次清空。按风险清单从上往下，先把含真实联系方式、家庭住址、前公司吐槽的内容处理掉。这些才是背调和高风险场景里最容易被翻出来的。删不动的早年推文，参考<a href="/blog/why-can-you-only-delete-3200-tweets">为什么只能删最近 3200 条</a>里的归档解析思路，用归档去触达更早的历史。</p>
+
+<h2>第四步：把习惯固化</h2>
+<p>结束前花十分钟，把下次清理写进日历。两小时的价值不在于这一次，而在于它变成了一个你不再需要意志力的动作。配合<a href="/blog/footprint-checkup-step-by-step">分步体检流程</a>，每次都能直接复用上次的经验，越做越快。</p>
+
+<h2>常见卡点</h2>
+<ul>
+  <li><strong>"归档太大打不开"</strong>：用本机解析，不需要把文件上传到任何服务器，大文件正是本机方案的优势。</li>
+  <li><strong>"不知道删哪条"</strong>：让评分替你排优先级，别凭记忆。</li>
+  <li><strong>"删完就忘"</strong>：日历排期比意志力可靠，设成每两周重复提醒。</li>
+  <li><strong>"怕误删重要内容"</strong>：先导出再删，保留一份本地副本，需要时可回溯。</li>
+</ul>
+
+<h2>给不同人群的排期建议</h2>
+<p>求职季的人，建议把清理提前到投递前一个月；做自媒体的人，频率可以提到每周一次，因为暴露面更大；普通用户每两周一次足矣。频率不重要，重要的是别断。</p>
+<p>回到<a href="/">首页</a>，这周末就跑一次免费的本机体检，把两小时用掉，比任何"以后再说"都管用。</p>
+`,
+  },
+  {
+    slug: 'third-party-apps-your-tweets-data-2026',
+    title: '第三方 App 在用你的推文数据做什么？2026 现状盘点',
+    excerpt: '你授权过的第三方 App，可能仍在读取你的推文与关系链。本文盘点 2026 年 X 开放生态的数据流向、AI 训练与权限审计，并教你如何收回授权、降低暴露。',
+    date: '2026-10-18',
+    updatedAt: '2026-10-18',
+    author: 'Digital Footprint Health Team',
+    category: '行业观察',
+    tags: ['第三方App', 'X API', '数据授权', '隐私审计'],
+    canonical: '/blog/third-party-apps-your-tweets-data-2026',
+    faq: [
+      { q: '怎么查看自己授权过哪些第三方 App？', a: '在 X 设置 → 安全和账户访问 → 已连接的应用里，能看到当前所有连接及其权限级别，逐个核对即可，建议每半年做一次。', qEn: 'How do I see which third-party apps I authorized?', aEn: 'In X settings, go to Security and account access, then Connected apps. You will see every active connection and its permission tier; review them one by one, ideally every six months.' },
+      { q: '撤销授权后，对方手里的旧数据会删吗？', a: '不一定。撤销只停止"未来"的读取，对方已抓取并存储的数据是否删除，取决于其自有保留策略与你的删除请求，必要时要单独提。', qEn: 'After I revoke, does the other party delete the data it already has?', aEn: 'Not necessarily. Revoking stops future reads only. Whether stored data is deleted depends on the provider retention policy and any deletion request you file, which may need to be separate.' },
+      { q: '公开推文被 AI 训练，我能阻止吗？', a: '对已经公开的语料很难完全撤回，但可以减少新暴露：收紧第三方授权、减少含个人信息的发文、必要时提删除请求。详见 AI 抓取旧推文的分析。', qEn: 'My public tweets are in AI training data. Can I stop it?', aEn: 'Pulling public corpora back is hard, but you can cut new exposure: tighten third-party authorization, post less personal detail, and file erasure requests where applicable.' },
+      { q: '最小权限具体指什么？', a: '只给 App 完成功能所必需的权限，比如只读公开资料就别开放代发与私信；用不上的功能直接不授权，宁可少给不要多给。', qEn: 'What does minimal permission mean in practice?', aEn: 'Grant only what the app needs to function. If it only needs public profile data, do not allow posting or direct-message access, and skip features you will not use. When in doubt, give less.' }
+    ],
+    titleEn: 'What Third-Party Apps Do With Your Tweet Data: A 2026 Snapshot',
+    excerptEn: 'Apps you authorized years ago may still read your tweets and social graph. This 2026 snapshot covers data flows in the X developer ecosystem, AI training, permission audits, and how to revoke access and cut exposure.',
+    categoryEn: 'Industry Watch',
+    tagsEn: ['third-party apps', 'X API', 'data authorization', 'privacy audit'],
+    contentEn: `
+<p>You have probably forgotten which third-party apps you once connected to X. Many of those authorizations are still alive, quietly reading your tweets, your social graph, and sometimes your direct messages. In 2026 this ecosystem is more active, and more worth watching, than most people assume.</p>
+
+<h2>What third-party apps can actually access</h2>
+<p>The permission tier decides the scope. Common levels include reading your public profile and timeline, posting on your behalf, reading direct messages, and accessing your follow list. Plenty of old apps were granted the broad "read everything" tier years ago and still hold it, even though you stopped using them long ago.</p>
+
+<h2>Where the data ends up</h2>
+<ul>
+  <li><strong>Analytics tools</strong> turn your interaction data into reports, some resold to advertisers.</li>
+  <li><strong>AI training</strong> pulls public tweets into model corpora, the same pipeline described in <a href="/blog/ai-scraping-old-tweets-training-data">AI scraping of old tweets</a>.</li>
+  <li><strong>Data brokers</strong> package your social graph into queryable products sold to screeners and marketers.</li>
+  <li><strong>Cross-posting tools</strong> forward your content to other sites, widening exposure.</li>
+  <li><strong>Profiling and targeting</strong> feed your interests and connections into ad or recommendation systems.</li>
+</ul>
+
+<h2>Two shifts in 2026</h2>
+<p>First, after API pricing changed, many small developers left, leaving mostly commercial and data-driven products that have stronger data needs. Second, regulators now demand clearer consent language, yet broad tiers like "read everything" remain common, and users still struggle to see what they actually handed over.</p>
+<table>
+  <thead>
+    <tr><th>Shift</th><th>Impact on regular users</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Small developers exit</td><td>Remaining apps lean toward data monetization, so permissions deserve more scrutiny</td></tr>
+    <tr><td>Clearer consent language</td><td>More awareness, but broad permissions are not fundamentally changed</td></tr>
+  </tbody>
+</table>
+
+<h2>Run a permission audit</h2>
+<ol>
+  <li>Open X settings, then Security and account access, then Connected apps.</li>
+  <li>Review each one: do I still use this, and is the permission level reasonable?</li>
+  <li>Revoke every connection you do not recognize, no longer use, or that asks for too much.</li>
+  <li>For the ones you keep, drop them to minimal permissions and recheck on a schedule.</li>
+</ol>
+<p>On the account-security side, both <a href="/blog/x-account-locked-recovery-steps">recovery after a lockout</a> and the <a href="/blog/recover-hacked-x-account-faq">hacked-account FAQ</a> stress the same point: pulling back excess authorization is the first gate against takeover. An old app that can still post on your behalf is a key in someone else's hand.</p>
+
+<h2>How this relates to an on-device check</h2>
+<p>A permission audit controls who can still read you going forward; an on-device check controls what you already left behind. They complement each other: revoke first, then clean history. The <a href="/blog/footprint-checkup-step-by-step">step-by-step check flow</a> helps you quantify that historical risk, and you can compare it against the audit to see which side has the bigger hole.</p>
+
+<h2>Signs an app is over-reaching</h2>
+<p>Some red flags are easy to spot once you look: an app that asks for direct-message access but only shows you a timeline, a tool that wants to post on your behalf when it has no posting feature, or a connection you do not remember making. None of these are proof of malice, but they are reasons to tighten or cut the link. Permission should match function, and anything extra is exposure you did not choose.</p>
+
+<h2>Keep the audit short</h2>
+<p>The whole review should take ten minutes, not an afternoon. Sort connections by whether you recognize them, drop the unknowns, then glance at the permission tiers of the rest. Most people finish faster than they expect, which is exactly why it is worth doing more than once a year. A quick check you actually run beats a perfect one you keep postponing.</p>
+
+<h2>One-line advice</h2>
+<p>Revoke unused third-party connections at least once a year. It is far easier than chasing leaked data afterward. Back to the <a href="/">homepage</a>, start by seeing your historical tweet risk clearly, then go back and clean up those still-active old authorizations.</p>
+`,
+    content: `
+<p>你大概早忘了自己授权过哪些第三方 App 连过 X。这些授权很多还活着，持续读取你的推文、关注关系和私信权限。2026 年，这个生态比想象中更活跃，也更值得警惕。</p>
+
+<h2>第三方 App 能拿到什么</h2>
+<p>授权等级决定权限范围，常见包括：读取你的公开资料与时间线、代你发推、读取私信、访问关注列表。很多老 App 当年申请的是"读全部"级别，如今仍在生效，而你早已不用它了。</p>
+
+<h2>数据最终去了哪</h2>
+<ul>
+  <li><strong>分析工具</strong>：把你的互动数据做成报表，部分会转卖给广告客户；</li>
+  <li><strong>AI 训练</strong>：公开推文被纳入大模型语料，这是<a href="/blog/ai-scraping-old-tweets-training-data">AI 抓取旧推文</a>这条链路的源头；</li>
+  <li><strong>数据经纪商</strong>：把社交图谱打包成可查询的产品，卖给背调、营销机构；</li>
+  <li><strong>跨平台同步</strong>：把你的内容自动转发到其他站点，扩大暴露面；</li>
+  <li><strong>画像与定向</strong>：用你的兴趣与关系链，喂给广告或推荐系统。</li>
+</ul>
+
+<h2>2026 年的两个变化</h2>
+<p>一是 API 收费结构调整后，中小开发者退出，留下的大多是商业化和数据导向的产品，它们对数据的需求更强；二是监管开始要求更清晰的授权说明，但"读全部"这类宽泛权限仍普遍存在，用户依旧很难看清自己到底交出了什么。</p>
+<table>
+  <thead>
+    <tr><th>变化</th><th>对普通用户的影响</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>中小开发者退出</td><td>留下的 App 更偏向数据变现，授权更值得审查</td></tr>
+    <tr><td>授权说明更清晰</td><td>知情权提升，但宽泛权限未根本改变</td></tr>
+  </tbody>
+</table>
+
+<h2>做一次权限审计</h2>
+<ol>
+  <li>打开 X 设置 → 安全和账户访问 → 已连接的应用；</li>
+  <li>逐个核对：这个 App 我还在用吗？它要的权限合理吗？</li>
+  <li>撤销所有不认识、不用、或权限过宽的连接；</li>
+  <li>对仍在用的，改为最小权限，并定期复查。</li>
+</ol>
+<p>账号安全层面，<a href="/blog/x-account-locked-recovery-steps">账号被锁后的恢复步骤</a>和<a href="/blog/recover-hacked-x-account-faq">被盗账号找回 FAQ</a>都强调：收回多余授权，是降低被接管风险的第一道闸。一个还能代你发推的老 App，就是一把别人手里的钥匙。</p>
+
+<h2>和本机体检的关系</h2>
+<p>权限审计管的是"未来谁还能读你"，本机体检管的是"过去已经留下了什么"。两者互补：先收授权，再清历史。<a href="/blog/footprint-checkup-step-by-step">分步体检流程</a>可以帮你把历史风险量化出来，和审计结果对照着看，哪边漏洞大先补哪边。</p>
+
+<h2>哪些信号说明 App 越权了</h2>
+<p>只要认真看，一些危险信号很好辨认：一个只展示时间线却索要私信权限的 App、一个没有发推功能却要求代你发推的工具、或者一段你根本不记得做过的授权。这些都不等于恶意，但都是收紧或切断连接的理由。权限应该和功能匹配，多出来的那部分，是你没主动选择的暴露。</p>
+
+<h2>把审计控制在十分钟</h2>
+<p>整次复查应该花十分钟，而不是一个下午。按"是否认识"给连接分类，删掉不认识的，再扫一眼其余的权限级别。大多数人比预期更快做完，这也正是它值得一年做不止一次的原因。你真正会去跑的轻量检查，胜过一直拖延的完美检查。</p>
+
+<h2>一句话建议</h2>
+<p>每年至少撤销一次不用的第三方连接，比事后追着删泄露的数据省力得多。回到<a href="/">首页</a>，先把历史推文的风险看清楚，再回头收拾那些还活着的老授权。</p>
+`,
+  },
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

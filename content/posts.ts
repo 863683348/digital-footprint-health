@@ -25372,6 +25372,556 @@ rl.on('close', () =&gt; {
 <p>每年至少撤销一次不用的第三方连接，比事后追着删泄露的数据省力得多。回到<a href="/">首页</a>，先把历史推文的风险看清楚，再回头收拾那些还活着的老授权。</p>
 `,
   },
+  {
+    slug: 'switch-from-x-footprint-2026',
+    title: '从 X 搬到 Bluesky、Mastodon 或 Threads，旧推文的数字足迹怎么处理',
+    excerpt: '2026 年下半年不少人把社交重心迁到 Bluesky、Mastodon 或 Threads。但换平台不会自动抹掉你在 X 上十几年的旧推文，手机号、住址、定位和政治观点都可能留在里面。本文讲迁移前如何用本机体检自查，并对比四个平台的隐私差异。',
+    date: '2026-10-19',
+    updatedAt: '2026-10-19',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['X 迁移', 'Bluesky', 'Mastodon', '数字足迹', '社交平台隐私'],
+    content: `
+<h2>为什么越来越多人开始迁出 X</h2>
+<p>2026 年下半年，关于 X（原 Twitter）算法调整、内容审核变化和账号限流的讨论一直没有停过。不少人把社交重心搬到了 Bluesky、Mastodon 或 Threads。但在点下"导出数据"之前，很少有人想到：你在 X 上十几年留下的旧推文，并不会因为换平台就自动消失。这些旧内容里可能藏着手机号、家庭住址、实时定位、政治观点，甚至前雇主的名字，它们共同构成你的"数字足迹"。先做一次本机体检，能在不联网的情况下扫描你的 X 数据归档，把这些风险点列成清单，让你带着清楚的认知离开。很多人在注销之后才想起来翻旧文，那时平台侧已经不好批量操作，所以迁移前是清理的黄金窗口。</p>
+
+<h2>迁移前先做一次本机体检</h2>
+<p>很多人以为注销 X 账号就能抹掉历史。事实是，X 的删除是分层的：注销会隐藏你的公开时间线，但平台仍可能保留数据用于训练或合规。更稳妥的做法是，在离开前先用 X 官方的数据归档导出做一次彻底自查。把归档下载到本地后，用支持本机解析的工具读取 tweets.js，扫描每一天发文里是否出现过电话、邮箱、家庭地址、定位签到和敏感话题。整个过程 100% 在你的电脑上完成，数据不出本机。</p>
+<ul>
+<li>第一步：在 X 设置里申请"下载数据归档"，通常 24 小时内收到 ZIP 压缩包。</li>
+<li>第二步：解压后找到 data/tweets.js，用本机工具解析，不要把文件上传到任何第三方服务器。</li>
+<li>第三步：按风险等级（高、中、低）给每条命中打标，优先处理含真实身份信息的旧推文。</li>
+<li>第四步：导出一份风险清单，作为你迁移前后对比的基准线。</li>
+<li>第五步：对高风险条目做批量删除或设为仅自己可见，留下清理记录备查。</li>
+</ul>
+
+<h2>四个平台的隐私差异</h2>
+<p>离开 X 之后，你在新平台留下的痕迹规则完全不同。下面这张表把四个平台在四个关键维度上做了对比，帮你判断"迁移"到底减了多少暴露面。</p>
+<table>
+<thead><tr><th>维度</th><th>X</th><th>Bluesky</th><th>Mastodon</th><th>Threads</th></tr></thead>
+<tbody>
+<tr><td>数据归属</td><td>集中在一家公司</td><td>公开但可自托管</td><td>分散在多个实例</td><td>与 Instagram 账号体系打通</td></tr>
+<tr><td>删除力度</td><td>注销后仍可能留存</td><td>删除相对干净</td><td>取决于所在实例策略</td><td>联动 Meta 生态，留存复杂</td></tr>
+<tr><td>算法可见性</td><td>强推荐流</td><td>时间线为主</td><td>时间线为主</td><td>强推荐流</td></tr>
+<tr><td>本机优先</td><td>弱</td><td>中</td><td>强</td><td>弱</td></tr>
+</tbody>
+</table>
+<p>可以看到，没有任何一个平台能"自动"抵消你在 X 上累积的足迹。迁移改变的是未来的暴露，过去的内容需要你主动处理。即便新平台隐私更友好，它也不会替你清理旧账号里已经写下的信息。</p>
+
+<h2>旧推文要不要删：三种策略</h2>
+<p>处理 X 上的旧内容，常见有三条路，适合不同人群：</p>
+<ul>
+<li><b>全量删除</b>：适合曾发过真实身份信息的账号。按关键词和日期批量清理，优先删含电话、住址、定位的推文。可参考 <a href="/blog/how-to-delete-old-tweets-2026">旧推文删除实操指南</a>。</li>
+<li><b>选择性隐藏</b>：适合内容无害、只想降低可见度的账号。把高互动的旧文设为仅自己可见，但注意平台仍可能保留底层数据。</li>
+<li><b>保留但归档</b>：适合把旧推文当个人史料的人。先把 <a href="/blog/how-to-download-x-archive">X 数据归档</a> 下载到本地妥善保存，再决定是否公开。</li>
+</ul>
+
+<h2>跨平台残留怎么清</h2>
+<p>即使你离开了 X，搜索引擎和第三方工具可能还缓存着你的旧文。迁移完成后，建议做一次跨平台复查：用本名加用户名搜一遍，看看哪些旧内容还能被搜到；对已经删除的推文，确认它不再出现在 <a href="/blog/what-is-digital-footprint-check">足迹体检</a> 的命中里。如果担心数据经纪商手里还有副本，可以顺手走一遍 <a href="/blog/chinese-users-cross-platform-footprint">跨平台足迹清理</a> 的流程。另外，记得把 X 上授权过的第三方应用也一并解绑，很多残留信号其实来自这些长期有效的 token。</p>
+
+<h2>迁移后第一周的检查清单</h2>
+<p>搬到新平台不等于万事大吉，第一周建议做几件事：确认旧账号的公开时间线已按预期处理；检查新账号的默认可见范围是不是"公开"；关闭新平台可能默认开启的通讯录匹配；把旧归档 ZIP 加密备份到本地硬盘，不要放云盘。这几步能把"迁移"真正变成一次隐私减负，避免只是把问题从一个平台搬到另一个平台。</p>
+
+<h2>迁移常见的三个误区</h2>
+<p>很多人以为只要换了个平台，旧账号的历史就和自己没关系了。其实有三个误区最容易让人放松警惕。第一，认为注销就等于删除，但前面说过，平台层可能仍保留数据。第二，认为新平台更私密就不需要管旧文，实际上旧文留在原平台，任何人都能翻。第三，认为删掉几条高危推文就万事大吉，但数据经纪商手里的缓存副本并不会因你删除而消失。看清这三个误区，才能把迁移当成一次真正的清理，别让它沦为走过场。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供 100% 本机的 X 数字足迹体检：上传你的数据归档 ZIP，工具在本地解析每一条推文，扫描手机号、邮箱、地址、定位和敏感话题，输出 0-100 健康评分与风险清单，数据全程不出你的电脑。开始免费体检请访问 <a href="/">digital-footprint-health.shop</a>，更多做法见 <a href="/blog/store-x-archive-safely">归档安全存储指南</a> 与 <a href="/blog/x-archive-csv-vs-json">归档格式对比</a>。</p>
+`,
+    canonical: '/blog/switch-from-x-footprint-2026',
+    titleEn: 'Moving From X to Bluesky, Mastodon, or Threads: What Happens to Your Old Tweets',
+    excerptEn: 'Many people moved their social presence to Bluesky, Mastodon, or Threads in late 2026. Switching platforms does not erase the years of old tweets you left on X, where phone numbers, home addresses, check-ins, and political views may still sit. This guide covers a local pre-migration check and a privacy comparison across the four platforms.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['leave X', 'Bluesky', 'Mastodon', 'digital footprint', 'social platform privacy'],
+    contentEn: `
+<h2>Why people are leaving X</h2>
+<p>In the second half of 2026, talk about algorithm changes, moderation shifts, and account throttling on X (formerly Twitter) has not stopped. Quite a few users moved their social presence to Bluesky, Mastodon, or Threads. Before clicking export, though, few stop to think that the old tweets you left on X over more than ten years do not vanish just because you switch platforms. Those posts may still hold phone numbers, home addresses, check-ins, and political views, and together they form your digital footprint. A local check scans your X archive on your own machine and turns the risk points into a list, so you leave with a clear picture. Many people only think about old posts after deactivation, when bulk action on the platform side is already hard, so the window before migration is the best time to clean.</p>
+
+<h2>Run a local check before you migrate</h2>
+<p>Many people assume deactivating the X account wipes the history. The reality is layered: deactivation hides your public timeline, but the platform may still keep data for training or compliance. A safer move is to do a full self-check with the official X data export before you go. Download the archive to your device, then read tweets.js with a tool that parses it locally, scanning every post for phone numbers, emails, home addresses, location check-ins, and sensitive topics. The whole process stays on your computer, and your data never leaves it.</p>
+<ul>
+<li>Step 1: Request a data archive download in X settings; the ZIP usually arrives within 24 hours.</li>
+<li>Step 2: Unzip and open data/tweets.js with a local parser; do not upload the file to any third-party server.</li>
+<li>Step 3: Tag each hit by risk level (high, medium, low), and handle posts with real identity info first.</li>
+<li>Step 4: Export a risk list as your before-and-after baseline for the migration.</li>
+<li>Step 5: Bulk-delete or set high-risk items to only-you, and keep a cleanup log for reference.</li>
+</ul>
+
+<h2>Privacy differences across four platforms</h2>
+<p>After you leave X, the rules for what you leave behind on the new platform are completely different. The table compares the four platforms on four key dimensions, so you can judge how much exposure the move actually cuts.</p>
+<table>
+<thead><tr><th>Dimension</th><th>X</th><th>Bluesky</th><th>Mastodon</th><th>Threads</th></tr></thead>
+<tbody>
+<tr><td>Data ownership</td><td>One company</td><td>Public but self-hostable</td><td>Split across instances</td><td>Linked to Instagram account</td></tr>
+<tr><td>Deletion strength</td><td>May persist after deactivation</td><td>Relatively clean</td><td>Depends on instance</td><td>Tied to Meta, complex retention</td></tr>
+<tr><td>Algorithmic reach</td><td>Strong feed</td><td>Chronological</td><td>Chronological</td><td>Strong feed</td></tr>
+<tr><td>Local-first</td><td>Weak</td><td>Medium</td><td>Strong</td><td>Weak</td></tr>
+</tbody>
+</table>
+<p>No platform automatically undoes the footprint you built on X. Migration changes future exposure, and past content needs your active handling. Even if the new platform is more privacy-friendly, it will not clean the information you already wrote on the old account.</p>
+
+<h2>Delete old tweets or not: three strategies</h2>
+<p>There are three common paths for handling old X content, for different people:</p>
+<ul>
+<li><b>Delete in bulk</b>: best for accounts that posted real identity info. Clean by keyword and date, starting with posts that show phone, address, or location. See the <a href="/blog/how-to-delete-old-tweets-2026">old tweet deletion guide</a>.</li>
+<li><b>Hide selectively</b>: for accounts with harmless content that only want lower visibility. Set high-traffic old posts to only-you, but note the platform may still keep the underlying data.</li>
+<li><b>Keep but archive</b>: for people who treat old posts as a personal record. Download the <a href="/blog/how-to-download-x-archive">X archive</a> to local storage first, then decide what to publish.</li>
+</ul>
+
+<h2>How to clear cross-platform leftovers</h2>
+<p>Even after you leave X, search engines and third-party tools may still cache old posts. After the move, do a cross-platform review: search your real name plus handle to see what old content still shows up, and confirm deleted tweets no longer appear in <a href="/blog/what-is-digital-footprint-check">footprint check</a> hits. If you worry data brokers still hold copies, run the <a href="/blog/chinese-users-cross-platform-footprint">cross-platform cleanup</a> flow. Also unbind third-party apps you authorized on X; many leftover signals actually come from those long-lived tokens.</p>
+
+<h2>First-week checklist after the move</h2>
+<p>Moving to a new platform is not the end. In the first week, confirm the old account timeline is handled as intended, check the new account default visibility is not public, turn off contact matching the new platform may enable by default, and encrypt the old archive ZIP to a local drive rather than a cloud folder. These steps turn a migration into real privacy relief instead of moving the problem from one platform to another.</p>
+
+<h2>Three migration mistakes that catch people off guard</h2>
+<p>Plenty of users assume that once they move to a new platform, the old account history no longer matters to them. Three mistakes tend to lower the guard, and each one leaves a real gap in your cleanup. Most people only notice the gap after a problem appears, which is the worst time to fix it.</p>
+<ul>
+<li>Assuming deactivation equals deletion. As noted earlier, the platform layer may still keep data for training or compliance, so the public hide does not mean the backend is empty.</li>
+<li>Assuming a more private new platform means old posts need no care. Those posts stay on the original platform for anyone to scroll, and search engines may still cache them.</li>
+<li>Assuming that deleting a few high-risk tweets settles everything. Cached copies held by data brokers do not vanish just because you deleted the source, so a one-time sweep is not the end.</li>
+<li>Assuming the new handle is a clean slate. Even with a fresh account, old screenshots and quotes elsewhere can still link back to you through search.</li>
+</ul>
+<p>Seeing these mistakes clearly turns a migration into a real cleanup instead of a token gesture. Pair the move with a local archive check, keep the risk list as your baseline, and revisit it a month later to confirm nothing resurfaced.</p>
+
+<h2>What to keep from the old account</h2>
+<p>Leaving X does not mean throwing away everything. Some material is worth keeping if you handle it right. Your archive ZIP, stored encrypted on a local drive, is a personal record you may need for tax, legal, or memory reasons. Export it once, keep one clean copy, and do not leave it in an open cloud folder. Keep it on a drive only you can open.</p>
+<p>Old posts that carry no identity and no location can stay as a public history, but review them for anything that hints at your routine. If a post reveals when you are usually offline or where you travel each year, trim it even if it seems harmless. The goal is not a blank profile but a profile you actually control.</p>
+<p>For accounts tied to a business or a public role, keep a redacted export so you can answer what did we post back then without opening the live timeline. That way the past stays useful without re-exposing the raw data.</p>
+<p>The point is control, not erasure. A history you can open on your own terms beats one you deleted and can never check again. Keep the export where only you can reach it.</p>
+
+<h2>When the old account still matters</h2>
+<p>Some people keep the X account open for a reason: an audience they built, a professional identity, or a channel they are not ready to abandon. If you stay, the cleanup is not a one-time event. Set a recurring reminder to scan the archive every few months, because the risk profile of old posts changes as your life changes. A post that looked safe at twenty can read differently at thirty. Treat the archive as a living document, not a closed chapter.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop offers a 100% local X footprint check: upload your archive ZIP, and the tool parses every tweet on your device, scanning for phone numbers, emails, addresses, location, and sensitive topics, then outputs a 0-100 health score and a risk list. Your data never leaves your computer. Start a free check at <a href="/">digital-footprint-health.shop</a>. For more, see the <a href="/blog/store-x-archive-safely">archive storage guide</a> and the <a href="/blog/x-archive-csv-vs-json">archive format comparison</a>.</p>
+`,
+    faq: [
+      {
+        q: '注销 X 账号后旧推文还会在吗？',
+        a: '注销会隐藏你的公开时间线，但平台出于合规或训练需要仍可能保留底层数据。要真正降低暴露，应该在注销前主动批量删除含身份信息的旧推文。',
+        qEn: 'Do old tweets stay after deactivating X?',
+        aEn: 'Deactivation hides your public timeline, but the platform may still keep underlying data for compliance or training. To lower exposure, bulk-delete identity-bearing old posts before you deactivate.'
+      },
+      {
+        q: 'Bluesky 比 X 更隐私吗？',
+        a: 'Bluesky 默认时间线、数据可自托管，删除相对干净，但公开帖子仍会被索引。它减少的是未来暴露和算法推荐，不等于抹掉你过去的 X 足迹。',
+        qEn: 'Is Bluesky more private than X?',
+        aEn: 'Bluesky uses a chronological feed and supports self-hosting, with cleaner deletion, but public posts are still indexed. It cuts future exposure and feed ranking, not your past X footprint.'
+      },
+      {
+        q: '迁移前必须下载归档吗？',
+        a: '建议下载。归档是你离开后唯一能完整自查历史推文的材料，本机解析能发现很多平台界面上看不到的字段，比如定位元数据。',
+        qEn: 'Must I download the archive before migrating?',
+        aEn: 'It is recommended. The archive is the only complete record you can self-check after leaving, and local parsing reveals fields the web interface hides, such as location metadata.'
+      },
+      {
+        q: '换平台后还要管 X 的旧内容吗？',
+        a: '要。搜索引擎缓存和第三方工具可能仍保留旧文快照，建议迁移后做一次本名搜索复查，确认高风险内容已不可见。',
+        qEn: 'Do I still need to manage old X content after switching?',
+        aEn: 'Yes. Search engines and third-party tools may keep snapshots of old posts, so do a real-name search review after the move to confirm high-risk content is gone.'
+      },
+      {
+        q: '本机体检会把我数据上传吗？',
+        a: '不会。digital-footprint-health.shop 的体检在浏览器本地解析你的归档 ZIP，数据不出你的电脑，服务器只负责渲染结果。',
+        qEn: 'Does the local check upload my data?',
+        aEn: 'No. The digital-footprint-health.shop check parses your archive ZIP in your browser, and your data never leaves your computer. The server only renders the result.'
+      },
+    ],
+  },
+  {
+    slug: 'chinese-rednote-x-crosspost-privacy',
+    title: '小红书和 X 双平台发文，旧内容怎么互相暴露隐私',
+    excerpt: '很多中文用户同时在小红书（RED）和 X 上活跃，两个平台的账号名、真名和照片常常互通。本文从中文社区的真实习惯出发，讲双平台发文怎么让旧内容互相暴露隐私，以及一套适合中文用户的清理顺序。',
+    date: '2026-10-19',
+    updatedAt: '2026-10-19',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['小红书', 'X 跨平台', '中文隐私', '双平台暴露', '数字足迹'],
+    content: `
+<h2>中文用户为什么容易双平台撞脸</h2>
+<p>在中文互联网里，很多人把小红书当生活圈、把 X 当观点圈，但两个账号往往用同一个真名、同一张头像，甚至同一个昵称。这样做的好处是朋友好找，坏处是一旦一边发了带定位、带公司或带家人的内容，另一边的人顺着昵称就能拼出你的完整画像。中文社区尤其看重"实名感"和"人设统一"，所以这种互通比英文用户更普遍。一个做自媒体的朋友曾跟我聊过，她在小红书发团建、在 X 发行业观点，结果同行靠同一个昵称把两边拼起来，直接猜到她供职的公司和部门。</p>
+
+<h2>双平台暴露由三层叠加而成</h2>
+<p>双平台暴露不是一次性事件，它由三层叠加：</p>
+<ul>
+<li><b>身份信息互通</b>：小红书里发过工牌、公司团建、出差定位，X 上又被同事或同行顺着昵称找到，职业画像就被补全。</li>
+<li><b>照片反向搜索</b>：同一张旅行或宠物照同时发在两个平台，搜索引擎和人脸工具更容易把两个账号关联起来。</li>
+<li><b>时间线交叉</b>：同一天的两条内容如果在两个平台互指，外人能还原你的实时位置和作息。</li>
+</ul>
+<p>这三层单独看都不致命，叠在一起就会让"两个平台的你"变成"一个被完整画像的人"。</p>
+
+<h2>一套适合中文用户的清理顺序</h2>
+<p>中文用户清理时，建议按"先高敏后低敏"的顺序，不要一刀切全删：</p>
+<ol>
+<li>先收掉含真实单位、工牌、客户名的小红书笔记，这些最容易被人肉。</li>
+<li>再处理 X 上含定位签到、家庭住址的旧推文，可参考 <a href="/blog/chinese-platforms-history-cleanup-guide">中文平台历史清理指南</a>。</li>
+<li>最后统一两个平台的昵称策略，避免真名直接当用户名。</li>
+</ol>
+<p>如果你在两个平台都发过长期内容，先把 <a href="/blog/chinese-x-archive-guide">X 中文归档指南</a> 跑一遍，确认 X 侧到底留了哪些字段，再决定小红书侧怎么配合。很多人在这一步才发现，自己三年前的定位签到还好好躺在归档里。</p>
+
+<h2>真实场景：一次跨平台人肉的全过程</h2>
+<p>设想这样一个链条：你在小红书发过"某大厂入职一周年"的工牌照，又在 X 用同一个昵称发行业吐槽。陌生人先在 X 看到你的昵称，去小红书搜同名，找到工牌照确认公司，再回 X 顺着你的历史推文拼出你的城市、母校和常去咖啡店。整个链条不需要你主动透露地址，只是两边内容被同一个昵称串了起来。理解这个链条，才知道该先收哪类内容。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的体检专注 X 一侧的本机解析：上传归档 ZIP，本地扫描手机号、邮箱、地址和定位，输出风险清单，数据不出电脑。双平台用户可先用它摸清 X 侧的底，再去小红书做对称清理。免费体检入口在 <a href="/">digital-footprint-health.shop</a>，相关做法见 <a href="/blog/chinese-users-cross-platform-footprint">跨平台足迹清理</a>。</p>
+`,
+    canonical: '/blog/chinese-rednote-x-crosspost-privacy',
+    titleEn: 'Posting on RED and X at Once: How Old Content Exposes You on Both',
+    excerptEn: 'Many Chinese users stay active on both RED (Xiaohongshu) and X, where handles, real names, and photos often overlap. This post starts from real Chinese-language habits and explains how cross-posting lets old content expose you on both platforms, plus a cleanup order that fits Chinese users.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['RED', 'X crosspost', 'Chinese privacy', 'dual-platform', 'digital footprint'],
+    contentEn: `
+<h2>Why Chinese users easily overlap on two platforms</h2>
+<p>In Chinese online spaces, many people use RED (Xiaohongshu) as a life circle and X as an opinion circle, yet both accounts often share the same real name, the same avatar, even the same nickname. The upside is that friends find you easily; the downside is that once you post location, company, or family content on one side, someone on the other side can follow the nickname and piece together your full profile. Chinese communities value a real-name feel and a consistent persona, so this overlap is more common than among English users. A creator friend told me she posted team-building on RED and industry takes on X, and a peer used the same nickname to link both sides and guess her employer and department.</p>
+
+<h2>How cross-platform exposure stacks up</h2>
+<p>Dual-platform exposure is not a one-time event; it builds from three layers:</p>
+<ul>
+<li><b>Identity overlap</b>: RED posts with a work badge, team-building, or business travel let X colleagues complete your career profile by following the nickname.</li>
+<li><b>Photo reverse search</b>: the same travel or pet photo on both platforms makes search engines and face tools link the two accounts more easily.</li>
+<li><b>Timeline cross-reference</b>: two posts on the same day that point at each other let outsiders rebuild your real-time location and routine.</li>
+</ul>
+<p>Each layer alone is not fatal, but together they turn "you on two platforms" into "one fully profiled person".</p>
+
+<h2>A cleanup order that fits Chinese users</h2>
+<p>When cleaning, Chinese users should go high-sensitivity first, not delete everything at once:</p>
+<ol>
+<li>First pull RED notes with real employer, work badge, or client names; these are easiest to dox.</li>
+<li>Then handle X old posts with location check-ins or home addresses; see the <a href="/blog/chinese-platforms-history-cleanup-guide">Chinese platform history guide</a>.</li>
+<li>Last, unify nickname strategy across both platforms; avoid using your real name as the username.</li>
+</ol>
+<p>If you posted long-term on both, run the <a href="/blog/chinese-x-archive-guide">Chinese X archive guide</a> first to confirm what fields X kept, then decide how RED should match. Many people discover at this step that their three-year-old location check-ins are still sitting in the archive.</p>
+
+<h2>Real scenario: one cross-platform dox chain</h2>
+<p>Picture the chain: you posted a work-badge "one-year-at-big-tech" note on RED, and used the same nickname for industry rants on X. A stranger sees your nickname on X, searches the same name on RED, finds the badge photo to confirm the company, then returns to X and reconstructs your city, school, and favorite cafe from your history. The chain needs no address from you; it only needs both sides linked by one nickname. Understanding the chain shows which content to pull first.</p>
+
+<h2>Why photo reverse search hits harder in Chinese spaces</h2>
+<p>Photo reverse search is a general risk, but it bites harder for Chinese users for two reasons. First, Chinese platforms push images into feeds where faces and backgrounds are easy to read, so one travel photo can reveal your hotel, your companion, and your city in a single frame. Second, Chinese users often reuse the same photo across RED and X, which gives the search engine two anchors instead of one. A single picture posted twice is enough for a tool to tie the two accounts together with high confidence. The fix is simple: crop or change at least one photo before cross-posting, and avoid posting the exact same frame on both platforms on the same day. A small edit to the image is cheaper than a full privacy cleanup later.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The digital-footprint-health.shop check focuses on local X parsing: upload the archive ZIP, scan phone, email, address, and location on your device, and get a risk list with data that never leaves your computer. Dual-platform users can map the X side first, then do symmetric cleanup on RED. The free check is at <a href="/">digital-footprint-health.shop</a>. Related reading: <a href="/blog/chinese-users-cross-platform-footprint">cross-platform cleanup</a>.</p>
+`,
+    faq: [
+      {
+        q: '小红书和 X 用同一昵称有风险吗？',
+        a: '有。同一昵称让两边熟人互相找到你，职业和家庭画像更容易被补全。建议两个平台用不同昵称，至少别直接用真名。',
+        qEn: 'Is sharing a nickname on RED and X risky?',
+        aEn: 'Yes. One nickname lets acquaintances on both sides find you and complete your career or family profile. Use different nicknames, and avoid your real name as the username.'
+      },
+      {
+        q: '同一张照片发两个平台会怎样？',
+        a: '照片反向搜索会把两个账号关联起来，外人更容易确认这是同一个人。出行、宠物、家人照尤其敏感。',
+        qEn: 'What if I post the same photo on both?',
+        aEn: 'Photo reverse search links the two accounts, making it easier for outsiders to confirm one person. Travel, pet, and family photos are especially sensitive.'
+      },
+      {
+        q: '中文用户清理顺序怎么排？',
+        a: '先收高敏的小红书笔记（工牌、客户名），再处理 X 的定位和住址旧推文，最后统一昵称策略。',
+        qEn: 'What cleanup order fits Chinese users?',
+        aEn: 'Pull high-sensitivity RED notes first (badge, client names), then X location and address posts, then unify nicknames last.'
+      },
+      {
+        q: 'X 侧怎么先摸清底？',
+        a: '用 <a href="/blog/chinese-x-archive-guide">中文归档指南</a> 导出并本机解析，确认 X 留了哪些字段，再去小红书做对称清理。',
+        qEn: 'How do I map the X side first?',
+        aEn: 'Use the <a href="/blog/chinese-x-archive-guide">Chinese archive guide</a> to export and parse locally, confirm what X kept, then do symmetric cleanup on RED.'
+      },
+    ],
+  },
+  {
+    slug: 'delete-old-tweets-vs-hide-faq',
+    title: '删推文还是隐藏推文：旧内容隐私处理常见问题',
+    excerpt: '打算降低 X 数字足迹时，最常纠结的就是"删"还是"藏"。本文用问答形式讲清删除与隐藏在隐私、可见性和平台留存上的差别，帮你按内容风险选对动作。',
+    date: '2026-10-19',
+    updatedAt: '2026-10-19',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['删除推文', '隐藏推文', '隐私处理', 'FAQ', 'X 清理'],
+    content: `
+<h2>删和藏，到底差在哪</h2>
+<p>降低足迹有两个动作常被混为一谈：删除是把推文从时间线拿掉，隐藏（设为仅自己可见）只是不公开。对搜索引擎、数据经纪商和平台底层留存来说，两者的效果完全不同。下面用几个高频问题一次说清。</p>
+
+<h2>常见问题</h2>
+<h3>隐藏后别人还能搜到吗？</h3>
+<p>设为仅自己可见后，公开时间线看不到，但已经进搜索引擎缓存或第三方数据库的内容不会自动消失。隐藏降低的是"主动来访"的可见度，不是"被检索到"的残留。</p>
+
+<h3>删除后平台还会留底吗？</h3>
+<p>X 出于合规或训练需要，可能在底层保留已删推文的副本。所以删除能去掉公开暴露，但不能假设平台侧彻底清零。这正是迁移或求职前要做本机体检的原因。</p>
+
+<h3>含真实身份信息的旧推文该删还是藏？</h3>
+<p>只要出现过手机号、住址、定位或工牌，建议直接删，不要只藏。隐藏挡不住顺藤摸瓜的人，删除至少去掉公开入口。批量删法见 <a href="/blog/how-to-delete-old-tweets-2026">删除实操指南</a>。</p>
+
+<h3>为什么有 3200 条上限？</h3>
+<p>X 官方界面只能删近 3200 条，更早的历史要用数据归档配合本机工具。原因和绕过方法见 <a href="/blog/why-can-you-only-delete-3200-tweets">3200 条限制解析</a>。</p>
+
+<h3>按关键词删和按日期删怎么选？</h3>
+<p>内容风险集中在某些词（如城市名、公司名）就按关键词删；想整体瘦身就按日期删。两种都支持，详见 <a href="/blog/delete-tweets-by-keyword-2026">按关键词删除</a>。</p>
+
+<h3>删完还需要复查吗？</h3>
+<p>需要。删除后建议等几天再用本名加用户名搜一次，确认搜索引擎缓存已更新，高风险内容不再出现在结果里。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 提供本机体检，上传归档 ZIP 后本地扫描手机号、邮箱、地址和定位，输出风险清单并标出该删还是该藏，数据不出电脑。免费体检在 <a href="/">digital-footprint-health.shop</a>。</p>
+`,
+    canonical: '/blog/delete-old-tweets-vs-hide-faq',
+    titleEn: 'Delete or Hide Old Tweets: FAQ on Privacy Handling',
+    excerptEn: 'When lowering your X footprint, the hardest choice is delete or hide. This FAQ explains the privacy, visibility, and retention differences between deletion and hiding, so you pick the right action by content risk.',
+    categoryEn: 'Deletion Practice',
+    tagsEn: ['delete tweets', 'hide tweets', 'privacy', 'FAQ', 'X cleanup'],
+    contentEn: `
+<h2>What delete and hide actually mean</h2>
+<p>Two actions get mixed up when lowering your footprint: delete removes the tweet from the timeline, while hide (set to only-you) just stops publishing it. For search engines, data brokers, and platform retention, the effect is completely different. The FAQ below clears it up.</p>
+
+<h2>Common questions</h2>
+<h3>Can others still find hidden posts?</h3>
+<p>After setting only-you, the public timeline hides them, but content already in search caches or third-party databases does not vanish on its own. Hiding lowers visibility for direct visitors, not retrieval residue.</p>
+
+<h3>Does the platform keep deleted tweets?</h3>
+<p>For compliance or training, X may keep a copy of deleted tweets at the backend. Deletion removes public exposure but does not assume the platform side is fully wiped. That is why a local check before a move or a job search matters.</p>
+
+<h3>Delete or hide posts with real identity info?</h3>
+<p>If a post ever showed a phone number, address, location, or work badge, delete it directly rather than hide. Hiding does not stop someone from following the thread; deletion at least removes the public entry. See the <a href="/blog/how-to-delete-old-tweets-2026">deletion guide</a>.</p>
+
+<h3>Why the 3200 limit?</h3>
+<p>The X web interface only deletes the most recent 3200 tweets; older history needs the data archive plus a local tool. The reason and workaround are in the <a href="/blog/why-can-you-only-delete-3200-tweets">3200 limit explainer</a>.</p>
+
+<h3>Delete by keyword or by date?</h3>
+<p>If risk clusters around certain words (city, company), delete by keyword; if you want a general trim, delete by date. Both are supported, see <a href="/blog/delete-tweets-by-keyword-2026">delete by keyword</a>.</p>
+
+<h3>Should I review after deleting?</h3>
+<p>Yes. A few days after deletion, search your real name plus handle once more to confirm the search cache updated and high-risk content no longer appears in results.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop offers a local check: upload the archive ZIP, scan phone, email, address, and location on your device, and get a risk list that flags delete-versus-hide, with data that never leaves your computer. The free check is at <a href="/">digital-footprint-health.shop</a>.</p>
+`,
+    faq: [
+      {
+        q: '隐藏推文能防人肉吗？',
+        a: '不能完全防。隐藏只让公开时间线看不到，已被搜索引擎或数据库缓存的内容仍在。含身份信息的旧推文应直接删。',
+        qEn: 'Does hiding stop doxxing?',
+        aEn: 'Not fully. Hiding only hides the public timeline; cached content in search or databases remains. Posts with identity info should be deleted.'
+      },
+      {
+        q: '删除后数据经纪商还有吗？',
+        a: '可能有。平台底层留存和第三方数据库不会因你删除而自动清空，所以删除后要复查搜索结果。',
+        qEn: 'Do data brokers still have deleted tweets?',
+        aEn: 'Possibly. Platform backend retention and third-party databases do not auto-clear when you delete, so review search results after deletion.'
+      },
+      {
+        q: '只藏不删适合什么内容？',
+        a: '适合无害但想降低可见度的内容，比如高互动的旧观点文。但任何含定位、住址、工牌的内容都该删。',
+        qEn: 'When is hide-without-delete fine?',
+        aEn: 'For harmless content you only want less visible, like old high-traffic opinion posts. Anything with location, address, or badge should be deleted.'
+      },
+      {
+        q: '怎么批量判断该删还是该藏？',
+        a: '先用本机体检按风险等级打标：高风险（身份、定位）删，低风险（观点）可藏。digital-footprint-health.shop 的风险清单就是按这个逻辑输出。',
+        qEn: 'How do I batch decide delete vs hide?',
+        aEn: 'Run a local check and tag by risk: high risk (identity, location) delete, low risk (opinion) hide. The digital-footprint-health.shop list follows this logic.'
+      },
+    ],
+  },
+  {
+    slug: 'singles-day-2026-privacy-footprint',
+    title: '双十一 2026 网购狂欢，你的数字足迹正在被商家疯狂读取',
+    excerpt: '双十一（11.11）是中文世界最大的网购节点。2026 年的大促里，商家对旧社交内容、浏览历史和账号画像的读取比往年更细。本文讲大促期间你的数字足迹怎么被用，以及下单前能做的几件隐私动作。',
+    date: '2026-10-19',
+    updatedAt: '2026-10-19',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['双十一', '网购隐私', '数字足迹', '用户画像', '促销'],
+    content: `
+<h2>双十一为什么是隐私高风险期</h2>
+<p>双十一前后，电商和品牌的投放系统会进入高频抓取模式：它们不仅读你的购物车和浏览记录，还会把你在社交平台上的旧内容、所在城市、常提的品牌名一并算进"用户画像"，用来决定给你推什么、定什么价。2026 年的大促里，这种跨平台拼图比前几年更常见，因为广告中台打通得更快。一个真实的例子：有人在 X 上随口提了某款相机，几天后就在购物 App 收到了同品牌配件的定向优惠，而他从没在 App 里搜过那款相机。</p>
+
+<h2>你的旧推文会被怎么用</h2>
+<p>如果你在 X 上提过某品牌、某城市或某类需求，相关广告主可能通过数据合作拿到信号，给你的账号打上兴趣标签。即便你没在购物 App 里搜过，旧社交内容也可能成为推荐依据。想看清自己留了哪些信号，可以先做一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。</p>
+<ul>
+<li>品牌词：提过的具体商品名会变成兴趣标签。</li>
+<li>城市词：定位或常提的城市影响本地优惠和到店推送。</li>
+<li>情绪词：促销节点的抱怨或期待会被用来判断价格敏感度。</li>
+</ul>
+
+<h2>价格差异是怎么来的</h2>
+<p>很多人不知道，大促价并不一定人人相同。投放系统会根据你的画像估算"这个人能接受多高的价"，再决定展示哪档优惠。你发过的收入相关吐槽、常去的商圈、用的设备型号，都会成为定价的隐性输入。所以"为什么同事比我便宜"的答案，往往藏在彼此不同的数字足迹里。</p>
+
+<h2>下单前能做的隐私动作</h2>
+<ol>
+<li>大促前清理 X 上含品牌名、城市名的旧推文，减少被广告中台抓取的信号，方法见 <a href="/blog/how-to-delete-old-tweets-2026">删除指南</a>。</li>
+<li>用独立账号或隐私模式比价，避免浏览记录直接绑定主账号。</li>
+<li>关掉购物 App 的个性化推荐开关，至少让价格少受画像影响。</li>
+<li>留意授权登录：用 X 或微信一键登录第三方抽奖页，会把社交画像同步给商家。</li>
+<li>大促后复查一次自己的公开内容，确认没有因为领券而多暴露信息。</li>
+</ol>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的本机体检能在双十一前帮你摸清 X 侧暴露：上传归档 ZIP，本地扫描品牌词、城市词和定位，数据不出电脑。免费体检入口在 <a href="/">digital-footprint-health.shop</a>，顺手也可看 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私足迹</a> 做对照。</p>
+`,
+    canonical: '/blog/singles-day-2026-privacy-footprint',
+    titleEn: 'Singles Day 2026 Shopping: How Brands Read Your Digital Footprint',
+    excerptEn: 'Singles Day (11.11) is the largest shopping event in Chinese-speaking markets. In the 2026 sales, brands read old social content, browsing history, and account profiles more closely than before. This post covers how your footprint is used during the event and a few privacy moves before you checkout.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['Singles Day', 'shopping privacy', 'digital footprint', 'user profile', 'sales'],
+    contentEn: `
+<h2>Why Singles Day is a high-risk privacy period</h2>
+<p>Around Singles Day, e-commerce and brand ad systems enter a high-frequency scraping mode: they read not only your cart and browsing history but also old social content, your city, and brand names you often mention, folding all of it into a user profile to decide what to show and at what price. In the 2026 sales, this cross-platform puzzle is more common than past years because ad middleware connects faster. A real example: someone casually mentioned a camera on X, and days later got a targeted deal for that brand's accessory in a shopping app, without ever searching it there.</p>
+
+<h2>How your old tweets get used</h2>
+<p>If you mentioned a brand, a city, or a need on X, related advertisers may get the signal through data partnerships and tag your account with interest labels. Even if you never searched it in a shopping app, old social content can become a recommendation basis. To see what signals you left, run a <a href="/blog/what-is-digital-footprint-check">footprint check</a> first.</p>
+<ul>
+<li>Brand words: specific product names you mentioned turn into interest tags.</li>
+<li>City words: location or often-mentioned cities affect local deals and in-store pushes.</li>
+<li>Mood words: complaints or anticipation during the sale hint at price sensitivity.</li>
+</ul>
+
+<h2>Where price differences come from</h2>
+<p>Many people do not know sale prices are not equal for everyone. The ad system estimates how high a price you accept from your profile, then decides which discount tier to show. Income-related rants, frequent business districts, and device models you posted all become hidden inputs to pricing. So the answer to "why is my colleague's price lower" often sits in two different digital footprints.</p>
+
+<h2>Privacy moves before checkout</h2>
+<ol>
+<li>Before the sale, clean X old posts with brand or city names to cut signals ad middleware can scrape; see the <a href="/blog/how-to-delete-old-tweets-2026">deletion guide</a>.</li>
+<li>Compare prices with a separate account or private mode so browsing history is not tied to your main account.</li>
+<li>Turn off personalized recommendation in the shopping app, at least to soften price effects from your profile.</li>
+<li>Watch authorized login: one-tap X or WeChat login to third-party lottery pages syncs your social profile to the merchant.</li>
+<li>After the sale, review your public content once more to confirm no extra exposure from claiming coupons.</li>
+</ol>
+
+<h2>One more move after the sale ends</h2>
+<p>When the sale closes, the privacy work is not done. Brands keep the signals they collected during the event for months, so a cleanup done only before the sale leaves a tail. About a week after the event, search your own name and handle, and review the permissions you granted to lottery and coupon pages. Revoke anything you no longer use. This last pass closes the loop and stops old signals from feeding next season's pricing. Most users skip this step and then wonder why targeted ads keep showing up after the event ends. Set a calendar note so it does not slip.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The digital-footprint-health.shop local check helps you map X-side exposure before Singles Day: upload the archive ZIP, scan brand words, city words, and location on your device, with data that never leaves your computer. The free check is at <a href="/">digital-footprint-health.shop</a>. For contrast, see the <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday footprint</a> post.</p>
+`,
+    faq: [
+      {
+        q: '双十一前清理旧推文有用吗？',
+        a: '有用。品牌词和城市词是广告中台常用的信号，清掉含这些词的旧推文能减少被精准定价和推送的依据。',
+        qEn: 'Does cleaning old tweets before Singles Day help?',
+        aEn: 'Yes. Brand and city words are common signals for ad middleware; removing old posts with those words cuts the basis for targeted pricing and pushes.'
+      },
+      {
+        q: '我没在购物 App 搜过也会被推荐吗？',
+        a: '可能。社交平台的旧内容经数据合作会变成兴趣标签，不一定需要你在购物 App 里搜过。',
+        qEn: 'Will I get recommendations without searching in the app?',
+        aEn: 'Possibly. Old social content becomes interest tags through data partnerships, without you searching in the shopping app.'
+      },
+      {
+        q: '一键登录抽奖页有什么风险？',
+        a: '会把你的社交画像同步给商家，包括昵称、好友关系和部分公开内容，建议大促期间少用第三方授权登录。',
+        qEn: 'What is the risk of one-tap login to lottery pages?',
+        aEn: 'It syncs your social profile to the merchant, including nickname, friend graph, and some public content. Avoid third-party authorized login during the sale.'
+      },
+      {
+        q: '怎么快速看自己留了哪些信号？',
+        a: '用 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a> 本机扫描品牌词、城市词和定位，几分钟出风险清单。',
+        qEn: 'How do I quickly see what signals I left?',
+        aEn: 'Run a <a href="/blog/what-is-digital-footprint-check">footprint check</a> to scan brand words, city words, and location locally, with a risk list in minutes.'
+      },
+    ],
+  },
+  {
+    slug: 'chinese-sme-x-account-reputation-privacy',
+    title: '中文小微商家 X 账号：声誉和隐私要一起管',
+    excerpt: '很多中文小微商家用 X 做出海获客，但账号里混着客户名、报价和后台截图，一旦被搜到就会同时伤隐私和声誉。本文从中文商家的真实场景出发，讲一套"先护隐私、再稳声誉"的做法。',
+    date: '2026-10-19',
+    updatedAt: '2026-10-19',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['小微商家', 'X 出海', '品牌声誉', '中文隐私', '客户信息'],
+    content: `
+<h2>中文商家账号的特殊暴露面</h2>
+<p>中文小微商家在 X 上做获客时，习惯把沟通截图、报价单、客户反馈直接发出来当案例。这种做法转化好，但截图里常带着客户真名、微信 ID、报价区间和后台数据。英文市场的客户一旦顺着账号搜到这些信息，既担心自己的隐私，也会质疑商家的专业度。所以中文商家的 X 账号，隐私和声誉是一件事的两面。一个做独立站代运营的朋友就踩过坑：她把和客户的对账截图发出来秀业绩，结果客户本人刷到，直接取消了合作。</p>
+
+<h2>先护隐私：三类内容必须收</h2>
+<ul>
+<li><b>客户真名与联系方式</b>：案例展示用角色名或缩写，绝不发微信 ID、邮箱、电话。</li>
+<li><b>报价与合同细节</b>：只发区间或脱敏后的片段，不晒完整报价单。</li>
+<li><b>后台与系统截图</b>：打码处理 URL、订单号和内部账号，避免泄露运营结构。</li>
+</ul>
+<p>如果历史推文已经发过这些，尽快批量清理，方法见 <a href="/blog/chinese-job-switch-tweet-cleanup">中文账号清理思路</a>（逻辑可迁移到商家号）。建议每月固定做一次"商家号体检"，把新发的案例图也过一遍打码清单。</p>
+
+<h2>再稳声誉：被搜到时怎么呈现</h2>
+<p>隐私收干净后，还要让账号在被检索时显得专业：</p>
+<ol>
+<li>用固定品牌名而非个人真名当显示名，降低人肉风险。</li>
+<li>把成功案例改写成脱敏复盘，突出方法而非客户身份，参考 <a href="/blog/reputation-management-service-worth-it">声誉管理思路</a>。</li>
+<li>定期做一次 <a href="/blog/chinese-users-x-account-closure-checklist">账号注销前自查</a>，确认停更或转型时不留隐患。</li>
+</ol>
+
+<h2>一个可复用的发布清单</h2>
+<p>每次要发客户相关的内容前，先过三问：这张图里有真名吗？有报价或订单号吗？有后台 URL 吗？三问都否，才允许发。把这张某流程固化成团队规范，比事后删帖省心得多。很多小团队就是少了这道闸门，才在大促节点被人翻出旧图。</p>
+
+<h2>出海商家常被忽略的两类信号</h2>
+<p>除了客户真名和报价，还有两类信号最容易被商家号忽略。一类是物流单号，很多代运营把快递截图直接发出来，单号能反查出买家城市和收货人。另一类是内部系统路径，后台 URL 往往带账号 ID 和店铺编号，截图不打码就等于把运营入口公开。这两类信号不显眼，却是最容易被人拿来拼图的线索，发布前务必过一遍打码清单。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>digital-footprint-health.shop 的本机体检可帮商家号扫描 X 归档里是否混了客户名、电话和报价词，输出风险清单，数据不出电脑。免费体检在 <a href="/">digital-footprint-health.shop</a>，出海商家也可看 <a href="/blog/chinese-users-cross-platform-footprint">跨平台清理</a> 做全盘自查。</p>
+`,
+    canonical: '/blog/chinese-sme-x-account-reputation-privacy',
+    titleEn: 'Small Chinese Businesses on X: Manage Reputation and Privacy Together',
+    excerptEn: 'Many small Chinese businesses use X for overseas reach, but their accounts mix client names, quotes, and backend screenshots, and once found they hurt both privacy and reputation. Starting from real Chinese merchant scenarios, this post gives a privacy-first, reputation-next routine.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['small business', 'X overseas', 'brand reputation', 'privacy', 'client info'],
+    contentEn: `
+<h2>The special exposure of Chinese merchant accounts</h2>
+<p>Small Chinese businesses on X for overseas reach often post chat screenshots, quotes, and client feedback as case studies. It converts well, but those screenshots usually carry client real names, WeChat IDs, price ranges, and backend data. Once English-market clients find this through the account, they worry about their own privacy and doubt the merchant's professionalism. For Chinese businesses on X, privacy and reputation are two sides of one problem. A friend who runs store outsourcing stepped on this: she posted a reconciliation screenshot to show performance, the client saw it, and canceled the deal.</p>
+
+<h2>Protect privacy first: three content types to pull</h2>
+<ul>
+<li><b>Client real names and contacts</b>: use role names or initials for cases; never post WeChat ID, email, or phone.</li>
+<li><b>Quotes and contract details</b>: post only ranges or redacted snippets, not full quote sheets.</li>
+<li><b>Backend and system screenshots</b>: mask URLs, order numbers, and internal accounts to avoid leaking ops structure.</li>
+</ul>
+<p>If old posts already showed these, clean them in bulk; the logic in <a href="/blog/chinese-job-switch-tweet-cleanup">Chinese account cleanup</a> transfers to merchant accounts. A monthly "merchant account check" that runs new case images through a redaction list is worth setting up.</p>
+
+<h2>Stabilize reputation next: how to look when found</h2>
+<p>After privacy is clean, make the account look professional when searched:</p>
+<ol>
+<li>Use a fixed brand name, not your real name, as the display name to cut dox risk.</li>
+<li>Rewrite success cases as redacted retrospectives that show method, not client identity; see <a href="/blog/reputation-management-service-worth-it">reputation thinking</a>.</li>
+<li>Run a <a href="/blog/chinese-users-x-account-closure-checklist">pre-closure check</a> regularly so a paused or pivoted account leaves no loose ends.</li>
+</ol>
+
+<h2>A reusable publish checklist</h2>
+<p>Before posting anything client-related, ask three questions: does this image show a real name, a quote or order number, a backend URL? Only post when all three are no. Turning this into a team rule saves more trouble than deleting posts later. Many small teams lack this gate and get old images dug up during peak sales.</p>
+
+<h2>Two signal types merchants overlook</h2>
+<p>Beyond client names and quotes, two signal types get missed most often by business accounts. One is the logistics tracking number. Many outsourcing teams post courier screenshots directly, and a tracking number can reveal the buyer's city and the recipient, plus the date window of a shipment. The other is the internal system path. Backend URLs often carry account IDs and store numbers, so an unmasked screenshot effectively publishes the operations entry point to anyone who reads the image.</p>
+<p>These two signals look minor next to a full client name, yet they are the clues most often used to piece a profile together. A competitor who finds a tracking number can estimate your shipment volume. A leaked backend path can expose how many stores you run, and which tool you use to manage them. For a small team, that information shapes both pricing and negotiation, so the leak is not only a privacy problem but a business one.</p>
+<p>The cost shows up later, not right away. A redaction step that takes two minutes protects more than one post; it protects the whole account's standing with clients who now trust you to handle their data. Make redaction part of the publish routine, not an afterthought. When it is a step you always take, client screenshots stop being a liability and return to being the marketing asset they were meant to be.</p>
+<p>None of this asks you to stop posting proof of your work. It asks you to post proof that no longer carries the keys to your business. That single habit is what separates an account that scales from one that leaks.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>The digital-footprint-health.shop local check helps merchant accounts scan the X archive for mixed client names, phones, and quote words, with a risk list and data that never leaves your computer. The free check is at <a href="/">digital-footprint-health.shop</a>. Overseas merchants can also read <a href="/blog/chinese-users-cross-platform-footprint">cross-platform cleanup</a> for a full self-check.</p>
+`,
+    faq: [
+      {
+        q: '商家号发客户截图有风险吗？',
+        a: '有。截图常带客户真名、微信 ID 和报价，被竞品或客户本人搜到会同时伤隐私和声誉。案例用角色名和脱敏片段。',
+        qEn: 'Is posting client screenshots risky for a business account?',
+        aEn: 'Yes. Screenshots often carry client real names, WeChat IDs, and quotes; found by competitors or the client, they hurt both privacy and reputation. Use role names and redacted snippets.'
+      },
+      {
+        q: '中文商家怎么平衡转化和隐私？',
+        a: '先护隐私再稳声誉：收掉三类高敏内容，再把案例改写成脱敏复盘，转化靠方法而非客户身份。',
+        qEn: 'How do Chinese merchants balance conversion and privacy?',
+        aEn: 'Privacy first, reputation next: pull three high-sensitivity content types, then rewrite cases as redacted retrospectives; convert on method, not client identity.'
+      },
+      {
+        q: '显示名用真名还是品牌名？',
+        a: '用品牌名。真名当显示名容易被人肉，也显得不专业；固定品牌名降低风险也利于检索统一。',
+        qEn: 'Real name or brand name as display name?',
+        aEn: 'Use a brand name. A real name as display invites doxxing and looks unprofessional; a fixed brand name cuts risk and unifies search.'
+      },
+      {
+        q: '历史推文已经发了敏感信息怎么办？',
+        a: '尽快批量清理含客户名、电话、报价的旧推文，并用本机体检确认是否还有残留信号。',
+        qEn: 'What if old posts already leaked sensitive info?',
+        aEn: 'Clean old posts with client names, phones, and quotes in bulk, then confirm no residue with a local check.'
+      },
+    ],
+  }
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

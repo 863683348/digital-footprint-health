@@ -26,7 +26,7 @@ export interface BlogPost {
 
 /** All blog posts, sorted by date descending. */
 export const allPosts: BlogPost[] = [
-  {
+{
     slug: 'what-is-digital-footprint-check',
     title: '你的 X 账号有"数字足迹"吗？什么是隐私体检',
     excerpt:
@@ -169,7 +169,7 @@ export const allPosts: BlogPost[] = [
 <p>想了解完整删除流程？请看我们的<a href="/blog/how-to-delete-old-tweets-2026">X 旧推文删除完整指南（2026）</a>。</p>
     `.trim(),
   },
-  {
+{
     slug: 'how-to-delete-old-tweets-2026',
     title: '如何删除 X (Twitter) 上的旧推文 — 2026 完整指南（含免费工具）',
     excerpt:
@@ -333,8 +333,7 @@ export const allPosts: BlogPost[] = [
 <p>可以。Digital Footprint Health 支持按年份、关键词、互动量等条件过滤，精准定位你想删除的内容。</p>
     `.trim(),
   },
-
-  {
+{
     slug: 'how-to-download-x-archive',
     title: '如何下载 X 数据归档（2026 版 4 步教程）',
     excerpt:
@@ -448,7 +447,7 @@ export const allPosts: BlogPost[] = [
 <p>Yes — tweets.js holds all the text data and is what a check tool mainly uses; media files don't affect the scan.</p>
 `,
   },
-  {
+{
     slug: 'whats-inside-x-archive-tweets-js',
     title: '归档文件里到底有什么？tweets.js 大揭秘',
     excerpt:
@@ -544,7 +543,7 @@ export const allPosts: BlogPost[] = [
 <p>Yes. The check is text-based; tweets.js has all the text and URLs, and media files don't affect the scan.</p>
 `,
   },
-  {
+{
     slug: 'why-can-you-only-delete-3200-tweets',
     title: '为什么只能删 3,200 条？X 的硬限制与破解',
     excerpt:
@@ -636,7 +635,7 @@ export const allPosts: BlogPost[] = [
 <p>Deleting your own tweets at a normal rate is supported by X's API and is not a violation. What gets accounts flagged is third-party tools that hammer the API at extreme speeds — avoid those.</p>
 `,
   },
-  {
+{
     slug: 'digital-footprint-health-score',
     title: '0-100 健康评分：你的数字足迹有多"健康"',
     excerpt:
@@ -750,7 +749,7 @@ export const allPosts: BlogPost[] = [
 <p>The report lists flagged tweets by risk label with the original text and the matched sensitive field. You can review each one before deciding to delete, so you do not over-delete.</p>
 `,
   },
-  {
+{
     slug: 'phone-number-in-tweets-check',
     title: '手机号暴露在推文里？体检怎么发现它',
     excerpt:
@@ -801,7 +800,7 @@ export const allPosts: BlogPost[] = [
 <p>公开渠道删掉后，主要的搜索路径就断了。第三方缓存和存档站点是另一回事，但账号层面的暴露已经被清除。</p>
 `,
   },
-  {
+{
     slug: 'address-location-tweets-risk',
     title: '住址与定位：最危险的一类旧推文',
     excerpt:
@@ -877,7 +876,8 @@ export const allPosts: BlogPost[] = [
 
 <p>删完定位推文之后，记得做一次完整体检确认干净。想先理解体检的整体逻辑，可以看 <a href="/blog/digital-footprint-health-score">0-100 健康评分</a> 那篇，或者从 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 开始。如果你还没处理过手机号类推文，先看 <a href="/blog/phone-number-in-tweets-check">手机号暴露在推文里</a> 那篇，这两类是最值得优先清理的。</p>
 `,
-  },  {
+  },
+{
     slug: 'on-device-analysis-privacy',
     title: '体检报告 100% 本机生成，这意味着什么',
     excerpt:
@@ -991,7 +991,7 @@ export const allPosts: BlogPost[] = [
 <p>Upload your archive on the <a href="/">homepage</a> to start the scan, your data never leaves your computer. New to the concept? Read <a href="/blog/what-is-digital-footprint-check">What Is a Digital Footprint Check</a> first.</p>
 `,
   },
-  {
+{
     slug: 'how-old-tweets-cost-people-jobs',
     title: '旧推文是如何"杀死"求职者的',
     excerpt:
@@ -1066,7 +1066,8 @@ export const allPosts: BlogPost[] = [
 
 <p>Curious about your public digital footprint? Upload your X archive on the <a href="/">homepage</a>, parse your tweet history locally, and see which posts would read as risk signals to a recruiter. The data stays on your computer the whole time.</p>
 `,
-  },  {
+  },
+{
     slug: 'cancel-culture-101-old-tweets',
     title: '网红翻车学：被考古的推文有多可怕',
     excerpt:
@@ -1113,7 +1114,8 @@ export const allPosts: BlogPost[] = [
 
 <p>想知道自己的公开账号经不经得起考古？用 <a href="/">数字足迹健康检查</a> 从本机扫描你的数据归档，看看历史内容里藏着哪些风险项。</p>
 `,
-  },  {
+  },
+{
     slug: 'anatomy-of-a-footprint-report',
     title: '体检报告长什么样？逐项解读每个风险标签',
     excerpt:
@@ -1225,7 +1227,7 @@ export const allPosts: BlogPost[] = [
 <p>Want to see your own footprint report? Upload your X archive on the <a href="/">digital-footprint-health.shop homepage</a> and get a privacy score plus a labeled risk list in minutes, all processed on your computer. Your data never leaves the device.</p>
 `,
   },
-  {
+{
     slug: 'which-tweets-to-clean-by-risk',
     title: '我该清理哪些推文？按风险优先级排序',
     excerpt:
@@ -1365,8 +1367,7 @@ export const allPosts: BlogPost[] = [
     <table><tr><td>P3</td><td>No high-risk labels</td><td>Angsty old tweets, late-night feelings</td><td>Optional</td><td>A poem from ten years ago</td></tr></table>
     `,
   },
-
-  {
+{
     slug: 'risk-labels-explained',
     title: '体检报告里的每个风险标签代表什么',
     excerpt:
@@ -1448,8 +1449,7 @@ export const allPosts: BlogPost[] = [
     <table><tr><td>identity</td><td>Identity puzzle</td><td>Real name + employer / ID / birth date</td><td>High (P0)</td><td>Check each one</td></tr></table>
     `,
   },
-
-  {
+{
     slug: 'health-score-calculated-1min',
     title: '一分钟看懂 0-100 健康分怎么算',
     excerpt:
@@ -1541,8 +1541,7 @@ export const allPosts: BlogPost[] = [
     <table><tr><td>Quantity effect</td><td>Medium</td><td>Nonlinear, more means worse</td><td>One vs ten phone number tweets</td></tr></table>
     `,
   },
-
-  {
+{
     slug: 'bulk-delete-old-tweets-walkthrough',
     title: '批量删除历史推文：完整操作流程',
     excerpt:
@@ -1625,7 +1624,7 @@ export const allPosts: BlogPost[] = [
     <p>Want to see which of your tweets are high-risk first? Upload your archive at digital-footprint-health.shop and the report will rank priorities so you can delete with confidence.</p>
     `,
   },
-  {
+{
     slug: 'tweet-deletion-cost',
     title: '删除要花多少钱？按条计费全透明',
     excerpt:
@@ -1706,7 +1705,7 @@ export const allPosts: BlogPost[] = [
     <p>Curious how big your cleanup is and how long it will take? Upload your archive for a free report at digital-footprint-health.shop, size up the job first, then pick a plan.</p>
     `,
   },
-  {
+{
     slug: 'pause-resume-refund-deletion',
     title: '删除可以暂停、续传、退款',
     excerpt:
@@ -1799,7 +1798,7 @@ export const allPosts: BlogPost[] = [
     <p>Deletion should not be an all-in bet. See how a deletion task can be pausable, resumable, and clearly priced at digital-footprint-health.shop.</p>
     `,
   },
-  {
+{
     "slug": "delete-tweets-by-date",
     "title": "按日期删：把 2018 年以前的所有推文删光",
     "excerpt": "想按日期删推文？这篇讲清楚按日期删除的原理和做法：X 归档里怎么按时间筛选、跨年份批量删的注意点、以及为什么“删掉旧推文”不等于“抹掉过去”。",
@@ -1836,7 +1835,7 @@ export const allPosts: BlogPost[] = [
     "content": "<p>很多人清理账号的第一步，不是删最新内容，而是回头看最早的推文。十年前随手发的东西，现在再看往往只剩尴尬，偶尔还有真隐患。按日期删推文，就是把“某个时间点以前”的内容整体清掉，一次解决一大片。</p>\n    <h2>为什么按日期删是最高效的起点</h2>\n    <p>账号早期内容有三个共同点：不设防、无价值、占大头。刚注册时谁都发过“今天好累”“这个真好吃”这类随手心情，十年后它们既不代表你，又可能埋着定位、学校、手机号之类信息。按日期批量删，正好把这块最陈旧的区域整体处理掉。</p>\n    <h2>先导出归档，再定边界</h2>\n    <p>删之前先做两件事：第一，在 X 设置里导出完整归档，本地留一份备份；第二，打开 tweets.js，把最早几年的推文抽样看一遍，确认边界。推荐从“2018 年以前”开始，这个年份对多数账号来说，是“没什么可保留”和“还有点意思”的分界。</p>\n    <h2>按日期删的实操路径</h2>\n    <ul>\n    <li>导出归档：设置 → 账号 → 下载数据，等邮件通知</li>\n    <li>解压后打开 tweets.js，按 created_at 排序，确认要删的时间段</li>\n    <li>用按日期筛选的清理工具，设置起始与截止时间</li>\n    <li>先小范围试删（比如只删某一年的），确认无误再扩到全部</li>\n    </ul>\n    <h2>别把“删旧”当“抹掉过去”</h2>\n    <p>一个诚实的提醒：按日期删删掉的是公开可见的推文，不等于抹掉过去。转发、截图、别人的提及，都可能让内容继续存在。清理的价值在于减少公开暴露面，而不是追求物理上的删除。</p>\n    <h2>FAQ</h2>\n    <p><strong>按日期删推文能精确到哪天吗？</strong> 能。X 归档的 tweets.js 里每条推文都有时间戳，按日期筛选是精确的。常见做法是“删掉某年以前”，比如删光 2018 年以前的，保留最近几年的。</p>\n    <p><strong>删旧推文有没有风险？</strong> 有。旧推文里可能有你后来忘记的私人信息，也可能有值得留的回忆。批量删之前先导出备份、抽几篇看一眼，再决定边界。</p>\n    <p><strong>2018 年以前的推文为什么特别值得清理？</strong> 账号早期内容通常最不设防：随意发过的心情、定位打卡、过期联系方式。而且年代越久，越可能包含现在会尴尬或泄露的信息。</p>\n    <p>想把账号的历史包袱卸掉？来 digital-footprint-health.shop 看看按日期筛选是怎么做的。</p>",
     "contentEn": "<p>Most account cleanups do not start with the newest posts. They start with the oldest. Things you tweeted ten years ago now read as awkward at best, risky at worst. Deleting tweets by date clears everything before a cutoff in one sweep.</p>\n    <h2>Why by-date is the most efficient starting point</h2>\n    <p>Early account content shares three traits: unguarded, low value, and huge in volume. Everyone posted \"today was long\" and \"this is delicious\" right after signing up. A decade later those tweets represent nothing and may still carry locations, school names, or old phone numbers. Wiping by date handles this stale region in one pass.</p>\n    <h2>Export the archive, then set the boundary</h2>\n    <p>Do two things before deleting. First, export your full archive from X settings and keep a local backup. Second, open tweets.js and sample the earliest years to confirm the boundary. A good default is \"everything before 2018\" — for most accounts that is where nothing worth keeping meets nothing interesting anyway.</p>\n    <h2>How date-based deletion works</h2>\n    <ul>\n    <li>Export archive: Settings → Account → Download data, wait for the email</li>\n    <li>Unzip, open tweets.js, sort by created_at, confirm the range</li>\n    <li>Use a cleanup tool with date filtering, set start and end times</li>\n    <li>Test on one year first, confirm, then expand to the full range</li>\n    </ul>\n    <h2>Deleting old is not erasing the past</h2>\n    <p>An honest note: deleting by date removes publicly visible tweets, not the past. Retweets, screenshots, and other people's mentions can keep content alive. The value of cleanup is shrinking the public exposure surface, not achieving physical deletion.</p>\n    <h2>FAQ</h2>\n    <p><strong>Can date-based deletion be precise to the day?</strong> Yes. Every tweet in the X archive tweets.js has a timestamp, so date filtering is exact. The common pattern is \"delete everything before year X\", like wiping pre-2018 while keeping recent years.</p>\n    <p><strong>Any risk in deleting old tweets?</strong> Yes. Old tweets can hold personal info you forgot about, or memories worth keeping. Back up the archive, sample a few tweets, then set the boundary before bulk deleting.</p>\n    <p><strong>Why are pre-2018 tweets worth cleaning especially?</strong> Early account content is usually the least guarded: random moods, location check-ins, outdated contact info. The older it is, the more likely it contains something embarrassing or revealing now.</p>\n    <p>Ready to drop the historical baggage? See how date filtering works at digital-footprint-health.shop.</p>"
   },
-  {
+{
     "slug": "delete-tweets-by-keyword",
     "title": "按关键词删：批量清理\"中二时期\"内容",
     "excerpt": "按关键词删推文是最省力的清理方式：输入一个词，所有含它的推文列出来，确认后一键删。这篇讲关键词删除的适用场景、常见坑，以及怎么避免误删。",
@@ -1873,7 +1872,7 @@ export const allPosts: BlogPost[] = [
     "content": "<p>按日期删解决“时间范围”，按关键词删解决“内容类型”。你不需要翻完十年推文，只需要记得几个关键词——前任的名字、中二的宣言、过期的梗——输入进去，所有匹配的推文就全列出来了。</p>\n    <h2>关键词删除的本质</h2>\n    <p>它本质是一个过滤器：在你自己发的全部推文里，找出含指定词的所有条目，列成清单，确认后批量删除。关键词匹配通常包含字符组合，比如删“晚安”会把“说晚安”“晚安世界”都带出来。</p>\n    <h2>最值得删的三类关键词</h2>\n    <ul>\n    <li>人名类：前任、绝交的朋友、旧同事——尤其带着情绪发过的</li>\n    <li>地点类：旧学校、旧公司、老地址——暴露信息往往藏在里面</li>\n    <li>状态类：“中二宣言”“再也不……”“此生无悔”这类情绪峰值内容</li>\n    </ul>\n    <h2>怎么避免误删</h2>\n    <p>一个词往往有多个含义。批量删之前，先看匹配清单，逐条扫一眼：这条是不是转发歌词？那条是不是在聊别人？拿不准的先保留。实操建议：先删确定性的（前任名字），再处理模糊的（通用词）。</p>\n    <h2>关键词删完还能补救吗</h2>\n    <p>删了就是删了，X 的删除不可逆，只有本地备份能兜底。所以批量删之前，一定先导出归档。归档里的内容是完整的，删错了也能查，只是不能恢复成公开状态。</p>\n    <h2>FAQ</h2>\n    <p><strong>按关键词删能删掉所有匹配的推文吗？</strong> 能删掉所有公开推文中含该关键词的。注意只匹配你发的推文，不匹配别人的提及和转发。匹配规则通常是包含关系，比如“晚安”会匹配“说晚安”。</p>\n    <p><strong>关键词删会不会误删？</strong> 有可能。一个词可能有多种含义，比如“分手”既可能是你的心情也可能是转发歌词。批量删前先看匹配列表，逐条勾选或先小范围试删。</p>\n    <p><strong>适合用关键词删哪些内容？</strong> 典型的“中二时期”关键词：中二的自我宣言、特定前任的名字、旧学校名、过期的自嘲梗。删完再看一遍列表，往往能回忆起自己还发过什么。</p>\n    <p>想按关键词清理黑历史？来 digital-footprint-health.shop 看看关键词筛选是怎么做的。</p>",
     "contentEn": "<p>By-date deletion handles the time range; by-keyword deletion handles the content type. You do not need to read ten years of tweets, just remember a few words — an ex's name, a dramatic declaration, an expired meme — type them in, and every match appears in one list.</p>\n    <h2>What keyword deletion really is</h2>\n    <p>It is a filter: search all your own tweets for entries containing a given word, list them, confirm, and delete in bulk. Matching is usually containment, so deleting \"goodnight\" also pulls \"said goodnight\" and \"goodnight world\".</p>\n    <h2>Three keyword categories worth deleting first</h2>\n    <ul>\n    <li>Names: exes, cut-off friends, old colleagues — especially the ones posted with emotion</li>\n    <li>Places: old schools, old employers, old addresses — leaks often hide here</li>\n    <li>States: dramatic declarations, \"never again\" lines, peak-emotion posts</li>\n    </ul>\n    <h2>How to avoid false positives</h2>\n    <p>One word can carry many meanings. Review the match list before batch deleting: is this a lyric retweet? Is that about someone else? Keep the ambiguous ones. Practically, delete the certain ones first (the ex's name), then handle the fuzzy ones (generic words).</p>\n    <h2>Can you undo keyword deletion?</h2>\n    <p>Deleted is deleted. X deletion is irreversible, and only a local backup can help. So export the archive before batch deleting. The archive holds everything, so you can still look things up, you just cannot restore them publicly.</p>\n    <h2>FAQ</h2>\n    <p><strong>Does keyword deletion remove every matching tweet?</strong> It removes all your public tweets containing the keyword. It only matches your own tweets, not mentions or retweets by others. Matching is usually containment, so \"goodnight\" also catches \"said goodnight\".</p>\n    <p><strong>Can keyword deletion cause false positives?</strong> Yes. A word can have multiple meanings: \"break up\" might be your mood or a lyric you retweeted. Review the match list before deleting, or test on a small set first.</p>\n    <p><strong>What is keyword deletion best for?</strong> Classic cringe-era terms: dramatic self-declarations, an ex's name, your old school name, expired self-deprecating memes. Reviewing the match list often reminds you of what else you posted.</p>\n    <p>Want to clean your cringe era by keyword? See how keyword filtering works at digital-footprint-health.shop.</p>"
   },
-  {
+{
     "slug": "remove-location-tweets",
     "title": "定位推文批量清理：旅行打卡也能删",
     "excerpt": "打卡推文是隐私大户：位置标签、定位记录、行程暴露，全在里面。这篇讲怎么批量删除带定位的推文、为什么定位数据风险被低估，以及清理打卡推文的操作要点。",
@@ -1910,7 +1909,7 @@ export const allPosts: BlogPost[] = [
     "content": "<p>旅行打卡、餐厅签到、飞机落地报平安——这些推文看起来人畜无害，却是账号里隐私浓度最高的一类。定位数据把“你去过哪、什么时候在、常待在哪”拼成一张完整的行踪图，而多数人从来没想过清理它们。</p>\n    <h2>为什么定位数据被低估</h2>\n    <p>打卡推文的危害不在单条，在聚合。一条“在杭州”没什么；一年三十条“在杭州”“在深圳”“在机场”，就把你的常住城市、出差节奏、休假习惯全暴露了。顺着时间线看，连“这个点他通常不在家”都推算得出来。</p>\n    <h2>归档里怎么识别定位推文</h2>\n    <p>X 归档的 tweets.js 里，带定位的推文会有 place 或 coordinates 字段。手动翻很痛苦，但清理工具可以按这个字段自动筛出所有带定位的推文，一次列全。</p>\n    <h2>批量清理的操作要点</h2>\n    <ul>\n    <li>先用归档筛选功能把带定位的推文全列出来，看数量</li>\n    <li>浏览一遍，确认哪些是真的定位推文，哪些是误匹配</li>\n    <li>按时间或按“全部定位推文”批量删除</li>\n    <li>删完再扫一遍：文本里直接写地名的（如“刚落地北京”）不在 place 字段里，要用关键词补删</li>\n    </ul>\n    <h2>以后还打卡吗</h2>\n    <p>清理完，建议把发布习惯也改掉：实时打卡改成事后分享，不带定位；非要发位置，等离开后再发。行踪信息给得越晚、越模糊，聚合出来的图就越没用。</p>\n    <h2>FAQ</h2>\n    <p><strong>定位推文的风险在哪？</strong> 打卡推文会暴露你的行程规律：常去的地方、不在家的时段、旅行的日期。把这些拼起来，可以推断你的住址、工作地点和作息，是隐私泄露里被低估的一类。</p>\n    <p><strong>怎么找到所有带定位的推文？</strong> 归档里每条带位置信息的推文都有 place 或 coordinates 字段，清理工具可以按这个筛选。也可以按“打卡关键词”过滤：签到、位置、check-in、地名等。</p>\n    <p><strong>删打卡推文会影响别的吗？</strong> 不会。定位数据只是推文的一个字段，删除它不影响其他内容。需要留意的是：某些平台的定位在发布时已写入推文文本，那种要按关键词处理。</p>\n    <p>想把行踪图从账号里抹掉？来 digital-footprint-health.shop 看看定位筛选是怎么做的。</p>",
     "contentEn": "<p>Travel check-ins, restaurant tags, \"landed safe\" updates — they look harmless, but they are the highest-privacy-density content on your account. Location data stitches \"where you went, when you were there, where you stay\" into one readable map, and almost nobody ever thinks to clean it.</p>\n    <h2>Why location data is underestimated</h2>\n    <p>Check-in tweets are dangerous in aggregate, not individually. One \"in Hangzhou\" means nothing. Thirty of them across a year expose your home city, travel rhythm, and holiday habits. Read chronologically, they even reveal \"around this hour he is usually not home\".</p>\n    <h2>How to spot location tweets in the archive</h2>\n    <p>In the X archive tweets.js, tweets with location carry place or coordinates fields. Scanning by hand is miserable, but cleanup tools can auto-filter all location tweets from the archive in one pass.</p>\n    <h2>Bulk cleanup, step by step</h2>\n    <ul>\n    <li>Use archive filtering to list all location tweets, check the count</li>\n    <li>Review the list, confirm which are real check-ins and which are false matches</li>\n    <li>Batch delete by time range or \"all location tweets\"</li>\n    <li>Rescan after deleting: tweets with place names in the text (\"just landed in Beijing\") are not in the place field and need keyword deletion</li>\n    </ul>\n    <h2>Check in less, or check in later</h2>\n    <p>After the cleanup, change the habit: share after the fact instead of in real time, without the location tag. Or post the place after you have left. The later and vaguer the location, the less useful the aggregated map.</p>\n    <h2>FAQ</h2>\n    <p><strong>What is the risk of location tweets?</strong> Check-in tweets expose your routines: frequented places, hours you are away, travel dates. Stitched together they reveal your address, workplace, and schedule — a severely underestimated leak category.</p>\n    <p><strong>How do I find all location tweets?</strong> In the archive, tweets with location carry place or coordinates fields, and cleanup tools can filter on those. You can also filter by check-in keywords like \"check-in\", \"at\", and place names.</p>\n    <p><strong>Does deleting check-in tweets affect anything else?</strong> No. Location is just one field on a tweet; removing it leaves everything else intact. Note that some platforms bake the location into the tweet text at publish time, which needs keyword handling instead.</p>\n    <p>Want to erase the map from your account? See how location filtering works at digital-footprint-health.shop.</p>"
   },
-  {
+{
     "slug": "precision-delete-phone-email",
     "title": "只删含手机号/邮箱的推文？精准删除",
     "excerpt": "不是所有旧推文都需要删，需要删的是那些带敏感信息的。这篇讲精准删除的思路：怎么只筛选含手机号、邮箱、地址的推文，把清理目标从“全部”缩小到“真正危险的”。",
@@ -1947,7 +1946,7 @@ export const allPosts: BlogPost[] = [
     "content": "<p>全面清理是理想，精准删除是现实。多数人并不需要删光全部推文——几百条值得留的回忆没必要陪葬。真正必须清掉的，是那些带手机号、邮箱、地址的推文。把目标从“全部”缩小到“真正危险的”，才是可持续的清理策略。</p>\n    <h2>为什么精准删除更现实</h2>\n    <p>全量删除会误伤有价值的内容，而且心理门槛高，容易拖着不做。精准删除只处理含敏感信息的条目，量小、目标明确、做完有强烈的完成感。清理不是一次性清空，是持续地剪掉危险枝条。</p>\n    <h2>手机号：最该优先清的信息</h2>\n    <p>手机号是身份验证的第一道门。泄露后可以被用来撞库、社工、甚至尝试接管账号。而且手机号比邮箱更难换——换邮箱十分钟，换手机号要跑营业厅。所以含手机号的推文，优先级最高。</p>\n    <h2>邮箱和地址：次一级但同样重要</h2>\n    <p>邮箱泄露的风险低于手机号，但配合撞库数据库，可能暴露你在哪些平台注册过。地址（家庭住址、公司地址）则直接关联线下风险。这三类都是“删了不心疼、留着有隐患”的内容。</p>\n    <h2>精准删除的操作路径</h2>\n    <ul>\n    <li>导出归档，用正则筛选手机号模式（如 11 位数字）和邮箱模式</li>\n    <li>人工浏览匹配列表，排除误匹配（比如转发别人的号码）</li>\n    <li>确认后批量删除</li>\n    <li>再用关键词搜自己姓名+城市、手机号变体，补漏</li>\n    </ul>\n    <h2>删完之后</h2>\n    <p>精准删除做完，账号的“危险密度”会明显下降。之后每半年扫一次归档，把新出现的敏感信息清掉，比攒十年再大扫除轻松得多。</p>\n    <h2>FAQ</h2>\n    <p><strong>怎么只删含手机号的推文？</strong> 归档筛选可以按正则匹配手机号格式，把所有含 11 位数字或特定区号模式的推文列出来。邮箱同理，匹配 xxx@yyy.zzz 模式。列出来后确认、批量删。</p>\n    <p><strong>手机号推文的风险是什么？</strong> 手机号是身份验证的关键凭据，泄露后可能被用来撞库、社工、甚至尝试接管账号。它比邮箱更危险，因为很多服务默认手机号即身份。</p>\n    <p><strong>邮箱出现在推文里怎么办？</strong> 同样按模式筛选删除。删完再搜一遍自己常用邮箱的变体（加点、下划线、不同域名），因为发帖时可能用过多个变体。</p>\n    <p>想精准清掉危险信息？来 digital-footprint-health.shop 看看敏感信息筛选是怎么做的。</p>",
     "contentEn": "<p>Full cleanup is the ideal; precision deletion is the reality. Most people do not need to wipe every tweet — hundreds of tweets worth keeping do not deserve to die with the junk. The ones that must go are tweets carrying phone numbers, emails, and addresses. Shrinking the target from \"everything\" to \"genuinely dangerous\" is the sustainable strategy.</p>\n    <h2>Why precision deletion is more realistic</h2>\n    <p>Full deletion damages valuable content and carries a high psychological threshold, so people put it off forever. Precision deletion only touches entries with sensitive info: smaller volume, clear target, and a satisfying sense of completion. Cleanup is not a one-time empty; it is continuously pruning the dangerous branches.</p>\n    <h2>Phone numbers: clean these first</h2>\n    <p>The phone number is the first gate of identity verification. Leaked, it enables credential stuffing, social engineering, and even account takeover attempts. It is also harder to change than an email — swapping an email takes ten minutes, swapping a number takes a trip to the carrier. Tweets with phone numbers rank first in priority.</p>\n    <h2>Emails and addresses: next tier, same importance</h2>\n    <p>Email leaks rank below phone numbers in risk, but combined with breach databases they reveal which platforms you registered on. Addresses (home, workplace) link directly to offline risk. All three are content that costs nothing to delete and carries hidden danger to keep.</p>\n    <h2>How precision deletion works</h2>\n    <ul>\n    <li>Export the archive, regex-filter phone patterns (like 11-digit numbers) and email patterns</li>\n    <li>Manually review the match list, drop false positives (like retweeted numbers)</li>\n    <li>Confirm, then batch delete</li>\n    <li>Search again by name+city and phone variants to catch leftovers</li>\n    </ul>\n    <h2>After the deletion</h2>\n    <p>Precision deletion drops the account's \"danger density\" noticeably. Scan the archive every six months and clear new sensitive info, which is far easier than a decade-scale deep clean.</p>\n    <h2>FAQ</h2>\n    <p><strong>How do I delete only tweets with phone numbers?</strong> Archive filtering can regex-match phone formats and list every tweet containing an 11-digit number or specific country-code patterns. Emails work the same way, matching xxx@yyy.zzz patterns. Confirm the list, then batch delete.</p>\n    <p><strong>What is the risk of phone-number tweets?</strong> Phone numbers are key identity credentials. Leaked, they enable credential stuffing, social engineering, and even account takeover attempts. They are more dangerous than emails because many services treat the number as identity by default.</p>\n    <p><strong>What if an email appears in tweets?</strong> Filter and delete by pattern the same way. After deleting, search variants of your common email (dots, underscores, different domains), since you may have posted several variants.</p>\n    <p>Want to precisely remove the dangerous bits? See how sensitive-info filtering works at digital-footprint-health.shop.</p>"
   },
-  {
+{
     "slug": "delete-wrong-tweet-prechecks",
     "title": "删错了怎么办？删除前必做的 3 件事",
     "excerpt": "删除不可逆，删错一篇就少一篇。这篇讲批量删推文前必做的三件事：先备份、先小范围试删、先确认筛选条件。做好这三步，误删概率降到接近零。",
@@ -1984,7 +1983,7 @@ export const allPosts: BlogPost[] = [
     "content": "<p>删除是唯一不可逆的账号操作。发错一条可以删，删错一条却找不回来。批量清理最容易出事的地方，恰恰是“图快”：一口气选了几千条，确认键一按，回不了头。这篇讲批量删推文前必做的三件事，把误删概率压到接近零。</p>\n    <h2>第一件事：先备份归档</h2>\n    <p>在 X 设置里导出完整归档，下载到本地，解压确认 tweets.js 可读。备份的价值不是“能恢复”，而是“还能查”——删错了，你能在备份里找到原文，也确认它确实没了。没有备份的批量删除，等于闭眼跳。</p>\n    <h2>第二件事：先小范围试删</h2>\n    <p>别一上来就清十年。先选一个月、一个关键词集合或一小批定位推文，删完隔天看效果，确认筛选逻辑没问题，再扩大到全量。试删是删除流程里最被低估的一步，它把“猜错”的成本从不可逆变成可重来。</p>\n    <h2>第三件事：核对筛选条件</h2>\n    <p>删除前把筛选条件读一遍：时间范围对不对？关键词有没有歧义？匹配的是“自己发的”还是“别人提及的”？工具通常有预览清单，务必滚动看一遍，尤其是首尾部分——批量操作的边界最容易被忽视。</p>\n    <h2>真的删错了怎么办</h2>\n    <p>先别慌。第一，去本地备份查原文，确认内容；第二，评估影响——多数误删是“可惜”而不是“灾难”；第三，如果删的是敏感内容之外的普通推文，就当清理过度，停止操作，别再扩大。删错的推文无法恢复，但后续操作可以更谨慎。</p>\n    <h2>FAQ</h2>\n    <p><strong>删错的推文能恢复吗？</strong> 公开层面不能。X 删除不可逆，只有本地归档备份能兜底——备份里的内容还在，只是无法恢复为公开状态。所以备份永远是删除前第一步。</p>\n    <p><strong>怎么避免删错？</strong> 三件事：备份归档、先小范围试删、核对筛选条件。小范围试删是关键——先删一个月或一个关键词集合，隔天再确认，比一次清十年稳妥得多。</p>\n    <p><strong>删除服务的“撤销”按钮是真的吗？</strong> 看实现。正规服务在任务执行期间可以暂停，但已删的推文无法撤销——删除请求发出去就是真删。任何声称能“恢复已删推文”的服务，都要警惕。</p>\n    <p>删除不该靠赌。来 digital-footprint-health.shop 看看删除前检查是怎么做的。</p>",
     "contentEn": "<p>Deletion is the only irreversible account operation. A wrong post can be deleted; a wrongly deleted post cannot be found again. The most dangerous part of bulk cleanup is precisely \"going fast\": select a few thousand tweets in one go, hit confirm, and there is no turning back. Here are three pre-checks before batch deleting, to push the mis-delete rate near zero.</p>\n    <h2>Pre-check 1: back up the archive</h2>\n    <p>Export the full archive from X settings, download it locally, unzip and confirm tweets.js reads fine. The value of backup is not \"restore\" but \"still verifiable\" — after a wrong delete, you can find the original in the backup and confirm it is gone. Bulk deleting without a backup is jumping blind.</p>\n    <h2>Pre-check 2: test on a small set</h2>\n    <p>Do not wipe ten years in one go. Pick one month, one keyword set, or a small batch of location tweets first. Check the result the next day, confirm the filter logic works, then expand to the full range. Test deletion is the most underestimated step in the process; it turns \"guessing wrong\" from irreversible into redoable.</p>\n    <h2>Pre-check 3: verify the filter conditions</h2>\n    <p>Read the filter conditions once more before deleting: is the time range right? Does the keyword carry ambiguity? Does it match \"your own tweets\" or \"mentions by others\"? Tools usually show a preview list — scroll through it, especially the start and end, because the edges of batch operations are where mistakes hide.</p>\n    <h2>What to do when you actually deleted wrong</h2>\n    <p>Do not panic. First, look up the original in the local backup and confirm the content. Second, assess the impact — most wrong deletes are \"a pity\", not \"a disaster\". Third, if what got deleted is ordinary content rather than sensitive, treat it as over-cleaning, stop the operation, and do not expand it. Deleted tweets cannot return, but subsequent operations can be more careful.</p>\n    <h2>FAQ</h2>\n    <p><strong>Can deleted tweets be restored?</strong> Not publicly. X deletion is irreversible; only a local archive backup helps — the content still exists there, just not publicly. That is why backup is always step one.</p>\n    <p><strong>How do I avoid deleting the wrong tweet?</strong> Three things: back up the archive, test on a small set first, and verify the filter conditions. Small-scale testing is the key — delete one month or one keyword set, confirm the next day, far safer than wiping ten years at once.</p>\n    <p><strong>Are \"undo\" buttons on deletion services real?</strong> Depends on the implementation. Legitimate services can pause during execution, but already-deleted tweets cannot be undone — once the delete request goes out, it is gone. Be wary of any service claiming to \"restore deleted tweets\".</p>\n    <p>Deletion should not be a gamble. See how pre-deletion checks work at digital-footprint-health.shop.</p>"
   },
-  {
+{
     slug: 'wipe-10-years-tweets',
     title: '一键清空 10 年推文：3.2 万条的重度用户实测',
     excerpt:
@@ -2171,7 +2170,7 @@ export const allPosts: BlogPost[] = [
 <p>Curious what a decade of your own posting is hiding? The check at <a href="/">digital-footprint-health.shop</a> is free and read-only, so you can see the list before deciding to delete anything.</p>
     `.trim(),
   },
-  {
+{
     slug: 'huge-archive-200mb',
     title: '归档 200MB、3 万文件？大归档也能在本机处理',
     excerpt:
@@ -2310,7 +2309,7 @@ export const allPosts: BlogPost[] = [
 <p>Archive already on your drive? Drop it into <a href="/">digital-footprint-health.shop</a> for a free on-device check and see which of those years need attention. If you have not exported yet, start with <a href="/blog/how-to-download-x-archive">how to download your X archive</a>.</p>
     `.trim(),
   },
-  {
+{
     slug: 'deleted-tweets-still-visible',
     title: '删了却还能被看到：旧推文是怎么活下来的',
     excerpt:
@@ -2425,7 +2424,7 @@ export const allPosts: BlogPost[] = [
 <p>Find out what is still sitting in your account before deciding what to remove. The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, and runs on your own machine.</p>
     `.trim(),
   },
-  {
+{
     slug: 'snapshot-archive-before-clean',
     title: '账号快照：清理前先留一份完整归档',
     excerpt:
@@ -2562,7 +2561,7 @@ export const allPosts: BlogPost[] = [
 <p>Once the snapshot is safe, the next step is seeing what is inside it. <a href="/">digital-footprint-health.shop</a> parses everything on your own computer with no upload, and the check is free and read-only. For the file structure, see <a href="/blog/whats-inside-x-archive-tweets-js">what is inside tweets.js</a>.</p>
     `.trim(),
   },
-  {
+{
     slug: '10-year-cleanup-plan',
     title: '给未来 10 年的自己定个推文清理计划',
     excerpt:
@@ -2705,7 +2704,7 @@ export const allPosts: BlogPost[] = [
 <p>Want to schedule that first scan today? The check at <a href="/">digital-footprint-health.shop</a> is free, read-only, runs on your own machine, and gives you a starting score in about twenty minutes.</p>
     `.trim(),
   },
-  {
+{
     slug: 'digital-minimalism-twitter',
     title: '数字极简主义者的 X 减负指南：把账号当工具，别当仓库',
     excerpt: '数字极简不是删光社交账号，而是重新拿回主动权。这篇指南聊聊怎么用"减负"思路清理 X（Twitter）上的旧推文，让账号回归工具属性，而不是十年情绪的仓库。',
@@ -2834,7 +2833,7 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是一个 X 数字足迹体检工具：你上传 X 数据归档，它在你的本机解析每一条推文，扫描手机号、住址、定位和敏感话题，给出 0-100 健康评分。体检免费且只读，不上传你的数据。想动手清理时，删除按条计费，可随时 <a href="/pricing">暂停、续传、退款</a>。先看这篇 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>，或直接去 <a href="/upload">免费跑一次体检</a>。</p>
     `.trim(),
   },
-  {
+{
     slug: 'read-twitter-archive',
     title: '别急着删：先读一遍你的 X 归档，会错过不少好东西',
     excerpt: '清理推文前，先读一遍归档。那些被你忘了的旅行、吐槽和朋友圈子，其实是一份十年回忆录。本文聊聊怎么读归档，以及为什么"只删不读"会丢掉一些值得留的东西。',
@@ -2912,7 +2911,7 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是个 X 数字足迹体检工具：上传你的 X 归档，它在你的本机逐条解析，扫出手机号、住址、定位与敏感话题，给出 0-100 健康评分。体检免费只读、不上传数据。读完想清理，删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。归档怎么下，看 <a href="/blog/how-to-download-x-archive">这篇教程</a>；风险标签含义看 <a href="/blog/risk-labels-explained">标签解读</a>。</p>
     `.trim(),
   },
-  {
+{
     slug: 'job-search-cleanup',
     title: '换工作季：跳槽前给 X 做一次数字足迹大扫除',
     excerpt: '投简历前，先想一件事——面试官会不会顺手搜你的 X？这篇讲求职前该清理哪几类旧推文、按什么顺序清，以及清理完怎么给未来的自己设护栏。',
@@ -3015,7 +3014,7 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是个 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位，给 0-100 健康评分。体检免费只读、不上传数据。想清理时删除按条计费，可 <a href="/pricing">暂停、退款</a>。开删前先看 <a href="/blog/which-tweets-to-clean-by-risk">按风险排序的清理指南</a>，或 <a href="/upload">免费跑一次体检</a> 摸底。</p>
     `.trim(),
   },
-  {
+{
     slug: 'recruiters-check-twitter',
     title: '面试官真的会翻你的 X 吗？数据说话',
     excerpt: '"招聘方会搜候选人社交账号"到底是都市传说还是真事？本文扒了公开的调研数据，看看不同行业、不同层级，背景调查到底查到哪一步，以及你能做的具体动作。',
@@ -3119,7 +3118,7 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机解析每一条推文，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。背景调查数据怎么解读，看 <a href="/blog/job-search-cleanup">求职清理清单</a>；风险标签含义看 <a href="/blog/risk-labels-explained">标签解读</a>。</p>
     `.trim(),
   },
-  {
+{
     slug: 'tweet-resurfaced-story',
     title: '一条 2014 年的旧推文被翻出来后，他做了什么',
     excerpt: '一位开发者的旧推文在多年后被翻出来，差点影响转正。他没有删号跑路，而是用一套方法把十年账号收拾干净。这个故事里没有说教，只有他后来每次清理都照做的清单。',
@@ -3191,7 +3190,7 @@ export const allPosts: BlogPost[] = [
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。旧推文为何仍可见，看 <a href="/blog/deleted-tweets-still-visible">这篇</a>；想系统学清理，看 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除流程</a>。</p>
     `.trim(),
   },
-  {
+{
     slug: 'sensitive-topic-detection',
     title: '敏感话题检测：体检标红的究竟是什么',
     excerpt: '数字足迹体检会把推文标红为"敏感话题"——但到底什么内容会触发？政治立场、性取向、医疗记录还是愤怒发泄？这篇拆解体检的规则逻辑与真实风险。',
@@ -3267,7 +3266,7 @@ export const allPosts: BlogPost[] = [
 <h2>关于 digital-footprint-health.shop</h2>
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>`,
   },
-  {
+{
     slug: 'underage-tweets',
     title: '未成年人时期的推文：法律与平台规则',
     excerpt: '很多人注册 X 时还不到 13 岁。那些童年推文现在还在吗？平台政策怎么规定？法律上会有什么后果？这篇讲清楚未成年人推文的真实情况。',
@@ -3331,7 +3330,7 @@ export const allPosts: BlogPost[] = [
 <h2>关于 digital-footprint-health.shop</h2>
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>`,
   },
-  {
+{
     slug: 'breakup-tweet-cleanup',
     title: '前任考古学：分手后的推文清理指南',
     excerpt: '分手后翻看旧推文，发现满屏都是对方。那些公开的甜蜜、争吵、甚至诅咒，现在都成了尴尬回忆。这篇教你系统清理情感账号。',
@@ -3395,7 +3394,7 @@ export const allPosts: BlogPost[] = [
 <h2>关于 digital-footprint-health.shop</h2>
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>`,
   },
-  {
+{
     slug: 'erase-digital-past',
     title: '转行必看：把过去的自己从网上"抹掉"的边界',
     excerpt: '想转行、换赛道、重新开始？你可能想把过去的推文"抹掉"。但数字痕迹真的能被抹掉吗？本文讲清"抹掉"的真相与可行方法。',
@@ -3469,7 +3468,7 @@ export const allPosts: BlogPost[] = [
 <h2>关于 digital-footprint-health.shop</h2>
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>`,
   },
-  {
+{
     slug: 'sensitive-industry-tweets',
     title: '敏感行业从业者的推文生存指南',
     excerpt: '公务员、教师、医生、律师、记者……你的职业决定了你的推文风险等级。这篇为敏感行业从业者提供推文管理生存指南。',
@@ -3543,8 +3542,7 @@ export const allPosts: BlogPost[] = [
 <h2>关于 digital-footprint-health.shop</h2>
 <p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>`,
   },
-
-  {
+{
     slug: 'tweetdelete-vs-dfh',
     title: '对比 TweetDelete：哪个更懂你要什么',
     excerpt: 'TweetDelete 是最流行的推文删除工具之一。但它真的解决了你的问题——还是只是删除推文就完了？',
@@ -3565,7 +3563,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>You have probably heard of TweetDelete. It is one of the most popular tweet deletion tools. But does it actually solve your problem — or just delete tweets and move on?</p><h2>The Core Difference</h2><p><strong>TweetDelete</strong> focuses on speed. Delete tweets fast, in bulk. It is great if you just want to remove content quickly.</p><p><strong>digital-footprint-health</strong> focuses on understanding. Before you delete anything, we help you understand what is in your archive — phone numbers, locations, sensitive topics — and let you decide what matters.</p><h2>Comparison Table</h2><table><tr><th>Feature</th><th>TweetDelete</th><th>digital-footprint-health</th></tr><tr><td>Bulk deletion</td><td>Yes</td><td>Yes</td></tr><tr><td>Privacy scan</td><td>No</td><td>Yes</td></tr><tr><td>Health score</td><td>No</td><td>0-100</td></tr><tr><td>Pause/Resume</td><td>No</td><td>Yes</td></tr><tr><td>On-device processing</td><td>No</td><td>Yes</td></tr></table><h2>Bottom Line</h2><p>TweetDelete is a tool. digital-footprint-health is a system. If you just want to delete tweets, either works. If you want to understand and control your digital presence, we are the better choice.</p>',
     content: '<p>你可能听说过 TweetDelete。它是最流行的推文删除工具之一。但它真的解决了你的问题——还是只是删除推文就完了？</p><h2>核心区别</h2><p><strong>TweetDelete</strong> 注重速度。快速批量删除推文。如果你只想快速移除内容，它很棒。</p><p><strong>digital-footprint-health</strong> 注重理解。在你删除任何东西之前，我们帮助你理解归档中有什么——手机号、位置、敏感话题——并让你决定什么重要。</p><h2>对比表</h2><table><tr><th>功能</th><th>TweetDelete</th><th>digital-footprint-health</th></tr><tr><td>批量删除</td><td>有</td><td>有</td></tr><tr><td>隐私扫描</td><td>无</td><td>有</td></tr><tr><td>健康评分</td><td>无</td><td>0-100</td></tr><tr><td>暂停/恢复</td><td>无</td><td>有</td></tr><tr><td>本机处理</td><td>无</td><td>有</td></tr></table><h2>结论</h2><p>TweetDelete 是工具。digital-footprint-health 是系统。如果你只想删除推文，两者都可以。如果你想理解并控制你的数字存在，我们是很好的选择。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: 'x-cleaner-vs-dfh',
     title: '对比 X Cleaner：本机解析 vs 浏览器插件',
     excerpt: 'X Cleaner 是浏览器插件，帮助你删除推文。它很方便但有局限性。让我们与 digital-footprint-health 进行比较。',
@@ -3586,7 +3584,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>X Cleaner runs in your browser. It needs your X session cookies to work. This means your X session data passes through the extension.</p><p>digital-footprint-health processes your data on your device. You upload your X archive, and everything happens locally. Your data never leaves your computer.</p><h2>Architecture Difference</h2><table><tr><th>Feature</th><th>X Cleaner</th><th>digital-footprint-health</th></tr><tr><td>Data processing</td><td>Cloud-based</td><td>On-device</td></tr><tr><td>Privacy risk</td><td>Medium (needs session)</td><td>Low (local only)</td></tr><tr><td>Privacy scan</td><td>No</td><td>Yes</td></tr><tr><td>Health score</td><td>No</td><td>0-100</td></tr></table><h2>Security Note</h2><p>Browser extensions have access to your browsing data. While X Cleaner claims to be safe, you are still trusting a third party with your X session. With digital-footprint-health, your data stays on your machine.</p>',
     content: '<p>X Cleaner 是一款浏览器插件，帮助你删除推文。它很方便但有局限性。让我们与 digital-footprint-health 进行比较。</p><h2>架构差异</h2><table><tr><th>功能</th><th>X Cleaner</th><th>digital-footprint-health</th></tr><tr><td>数据处理</td><td>云端</td><td>本机</td></tr><tr><td>隐私风险</td><td>中等（需要会话）</td><td>低（仅本地）</td></tr><tr><td>隐私扫描</td><td>无</td><td>有</td></tr><tr><td>健康评分</td><td>无</td><td>0-100</td></tr></table><h2>安全提示</h2><p>浏览器插件可以访问你的浏览数据。虽然 X Cleaner 声称安全，但你仍在将 X 会话信任给第三方。使用 digital-footprint-health，你的数据留在你的机器上。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: 'tweeteraser-review',
     title: '对比 TweetEraser：老牌工具的优缺点',
     excerpt: 'TweetEraser 已经存在多年。它是最早的推文删除工具之一。但在 2026 年，它还跟得上吗？',
@@ -3607,7 +3605,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>TweetEraser has been around for years. It is one of the original tweet deletion tools. But in 2026, does it still hold up?</p><h2>Where TweetEraser Falls Short</h2><ul><li>No privacy scan — it deletes tweets but does not tell you what is risky</li><li>No health score — you will not know your digital footprint status</li><li>Cloud-based — your data goes through their servers</li><li>No pause/resume — once you start deleting, you cannot stop mid-process</li></ul><h2>Comparison with digital-footprint-health</h2><table><tr><th>Feature</th><th>TweetEraser</th><th>digital-footprint-health</th></tr><tr><td>Privacy scan</td><td>No</td><td>Yes</td></tr><tr><td>Health score</td><td>No</td><td>0-100</td></tr><tr><td>Pause/Resume</td><td>No</td><td>Yes</td></tr><tr><td>On-device</td><td>No</td><td>Yes</td></tr></table><h2>The Verdict</h2><p>TweetEraser is a solid tool for simple deletion. But if privacy and understanding matter to you, digital-footprint-health offers a more complete solution.</p>',
     content: '<p>TweetEraser 已经存在多年。它是最早的推文删除工具之一。但在 2026 年，它还跟得上吗？</p><h2>TweetEraser 的不足</h2><ul><li>无隐私扫描 — 它删除推文但不会告诉你什么有风险</li><li>无健康评分 — 你不会知道自己的数字足迹状态</li><li>基于云端 — 你的数据经过他们的服务器</li><li>无暂停/恢复 — 一旦开始删除，无法中途停止</li></ul><h2>与 digital-footprint-health 对比</h2><table><tr><th>功能</th><th>TweetEraser</th><th>digital-footprint-health</th></tr><tr><td>隐私扫描</td><td>无</td><td>有</td></tr><tr><td>健康评分</td><td>无</td><td>0-100</td></tr><tr><td>暂停/恢复</td><td>无</td><td>有</td></tr><tr><td>本机处理</td><td>无</td><td>有</td></tr></table><h2>结论</h2><p>TweetEraser 是简单的删除工具。但如果隐私和理解对你很重要，digital-footprint-health 提供更完整的解决方案。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: 'manual-vs-automated-deletion',
     title: '手动删 vs 工具删：时间账算给你看',
     excerpt: '你有 5,000 条推文。你想全部删除。手动删除需要多长时间？自动化删除又需要多长时间？',
@@ -3628,7 +3626,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>You have 5,000 tweets. You want to delete them all. How long would it take manually?</p><h2>The Math</h2><table><tr><th>Method</th><th>Time per tweet</th><th>Total for 5,000 tweets</th></tr><tr><td>Manual deletion</td><td>10 seconds</td><td>~14 hours</td></tr><tr><td>Automated tool</td><td>0.5 seconds</td><td>~42 minutes</td></tr><tr><td>digital-footprint-health</td><td>0.3 seconds</td><td>~25 minutes</td></tr></table><h2>Manual Deletion: The Hidden Costs</h2><ul><li>Eye strain from staring at the screen</li><li>Frustration from repetitive clicking</li><li>Mistakes — you might delete the wrong tweets</li><li>Inconsistency — some tweets slip through</li></ul><h2>When Manual Makes Sense</h2><p>Deleting 10-20 tweets is quick and simple. For selective deletion or when you want full control over every action, manual is fine.</p><h2>When Automation Wins</h2><p>Deleting 100+ tweets, bulk cleaning by date or keyword, or when you want to review risks first — automation is the way to go.</p><h2>The Bottom Line</h2><p>If you have more than 100 tweets to clean, automation saves you hours. But choose a tool that respects your privacy and gives you control.</p>',
     content: '<p>你有 5,000 条推文。你想全部删除。手动删除需要多长时间？</p><h2>时间计算</h2><table><tr><th>方法</th><th>每推时间</th><th>5,000 推总时间</th></tr><tr><td>手动删除</td><td>10 秒</td><td>~14 小时</td></tr><tr><td>自动化工具</td><td>0.5 秒</td><td>~42 分钟</td></tr><tr><td>digital-footprint-health</td><td>0.3 秒</td><td>~25 分钟</td></tr></table><h2>手动删除的隐藏成本</h2><ul><li>盯着屏幕的眼疲劳</li><li>重复点击的挫败感</li><li>错误——你可能删除了错误的推文</li><li>不一致——有些推文会漏掉</li></ul><h2>何时手动删除更合适</h2><p>删除 10-20 条推文快速简单。选择性删除或当你想要完全控制每个操作时，手动是可以的。</p><h2>何时自动化更胜一筹</h2><p>删除 100+ 条推文，按日期或关键词批量清理，或当你想先审查风险时——自动化是更好的选择。</p><h2>结论</h2><p>如果要清理超过 100 条推文，自动化可以节省你数小时。但选择一个尊重你隐私并给予你控制权的工具。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: 'why-x-has-no-delete-all',
     title: '官方"删除全部"为什么不存在？',
     excerpt: '如果你曾经想清除整个 X 历史记录，你可能已经注意到：没有"删除全部"按钮。为什么？',
@@ -3649,7 +3647,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>If you have ever wanted to wipe your entire X history, you have probably noticed: there is no "Delete All" button. Why?</p><h2>X\'s Official Stance</h2><p>X (formerly Twitter) has never offered a bulk deletion feature. Their position:</p><ul><li>Users should manage their own content</li><li>Bulk deletion could be misused (e.g., erasing evidence)</li><li>Individual deletion gives users more control</li></ul><h2>What You Can Do Instead</h2><ol><li><strong>Manual deletion:</strong> Delete tweets one by one (slow but free)</li><li><strong>Third-party tools:</strong> Use TweetDelete, X Cleaner, etc. (fast but costs money)</li><li><strong>digital-footprint-health:</strong> Delete tweets + understand your data first (balanced approach)</li></ol><h2>The Bottom Line</h2><p>X doesn\'t offer bulk deletion because they want users to be intentional about what they remove. But that intentionality comes at a cost: your time. If you have thousands of tweets to clean, automation is the only practical solution.</p>',
     content: '<p>如果你曾经想清除整个 X 历史记录，你可能已经注意到：没有"删除全部"按钮。为什么？</p><h2>X 的官方立场</h2><p>X（前 Twitter）从未提供批量删除功能。他们的立场：</p><ul><li>用户应该自己管理内容</li><li>批量删除可能被滥用（例如销毁证据）</li><li>单独删除给用户更多控制</li></ul><h2>你可以做什么</h2><ol><li><strong>手动删除：</strong>逐条删除推文（慢但免费）</li><li><strong>第三方工具：</strong>使用 TweetDelete、X Cleaner 等（快但要付费）</li><li><strong>digital-footprint-health：</strong>删除推文 + 先了解自己的数据（平衡方案）</li></ol><h2>结论</h2><p>X 不提供批量删除，因为他们希望用户对删除的内容保持审慎。但这种审慎是有成本的：你的时间。如果成千上万条推文需要清理，自动化是唯一实用的解决方案。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: '6-tweet-deletion-tools-compared',
     title: '6 款推文删除工具诚实对比：2026 年实测',
     excerpt: '找到合适的推文删除工具能节省数小时——或者浪费钱在不能用的软件上。本文对 2026 年 6 款流行工具进行诚实对比，按可靠性、速度和隐私排序。',
@@ -3671,7 +3669,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>Finding the right tweet deletion tool can save you hours — or waste your money on software that doesn\'t work. This comparison covers six popular options in 2026, ranked by reliability, speed, and privacy.</p><h2>1. digital-footprint-health</h2><ul><li><strong>Speed:</strong> ~0.3 seconds per tweet</li><li><strong>Privacy:</strong> On-device processing, no data upload</li><li><strong>Price:</strong> Pay-per-delete, refundable</li><li><strong>Best for:</strong> Privacy-conscious users who want transparency</li></ul><h2>2. TweetDelete</h2><ul><li><strong>Speed:</strong> ~0.5 seconds per tweet</li><li><strong>Privacy:</strong> Data uploaded to their servers</li><li><strong>Price:</strong> $5.99/month subscription</li><li><strong>Best for:</strong> Users who want set-it-and-forget-it automation</li></ul><h2>3. X Cleaner</h2><ul><li><strong>Speed:</strong> Browser extension, ~1 second per tweet</li><li><strong>Privacy:</strong> Runs locally in browser</li><li><strong>Price:</strong> Free</li><li><strong>Best for:</strong> Casual users who delete occasionally</li></ul><h2>4. TweetEraser</h2><ul><li><strong>Speed:</strong> ~0.8 seconds per tweet</li><li><strong>Privacy:</strong> Server-side processing</li><li><strong>Price:</strong> One-time $10 purchase</li><li><strong>Best for:</strong> Users who prefer one-time payment over subscription</li></ul><h2>5. SocialBee</h2><ul><li><strong>Speed:</strong> Varies, API-based</li><li><strong>Privacy:</strong> Third-party access to your account</li><li><strong>Price:</strong> $9/month</li><li><strong>Best for:</strong> Social media managers handling multiple accounts</li></ul><h2>6. Manual Deletion</h2><ul><li><strong>Speed:</strong> ~10 seconds per tweet</li><li><strong>Privacy:</strong> Maximum (you do it yourself)</li><li><strong>Price:</strong> Free (time cost)</li><li><strong>Best for:</strong> Small batches under 50 tweets</li></ul><h2>The Privacy Trade-off</h2><p>Every tool except manual deletion requires you to hand over access to your X account. This means they can see your tweets (and potentially DMs), store your credentials, and have the ability to post on your behalf.</p><p>digital-footprint-health minimizes this risk by processing your data locally. Your tweets never leave your device during analysis.</p><h2>When to Use Each Tool</h2><ul><li><strong>Under 100 tweets:</strong> Manual or X Cleaner</li><li><strong>100-1000 tweets:</strong> digital-footprint-health or TweetEraser</li><li><strong>1000+ tweets:</strong> digital-footprint-health or TweetDelete</li><li><strong>Privacy is priority:</strong> digital-footprint-health only</li></ul>',
     content: '<p>找到合适的推文删除工具能节省数小时——或者浪费钱在不能用的软件上。本文对 2026 年 6 款流行工具进行诚实对比，按可靠性、速度和隐私排序。</p><h2>1. digital-footprint-health</h2><ul><li><strong>速度：</strong>每条约 0.3 秒</li><li><strong>隐私：</strong>本机处理，不上传数据</li><li><strong>价格：</strong>按条计费，可退款</li><li><strong>适合：</strong>注重隐私、希望透明的用户</li></ul><h2>2. TweetDelete</h2><ul><li><strong>速度：</strong>每条约 0.5 秒</li><li><strong>隐私：</strong>数据上传到他们的服务器</li><li><strong>价格：</strong>$5.99/月订阅</li><li><strong>适合：</strong>想要一键式自动化的用户</li></ul><h2>3. X Cleaner</h2><ul><li><strong>速度：</strong>浏览器插件，每条约 1 秒</li><li><strong>隐私：</strong>在浏览器本地运行</li><li><strong>价格：</strong>免费</li><li><strong>适合：</strong>偶尔删除的 casual 用户</li></ul><h2>4. TweetEraser</h2><ul><li><strong>速度：</strong>每条约 0.8 秒</li><li><strong>隐私：</strong>服务端处理</li><li><strong>价格：</strong>一次性 $10</li><li><strong>适合：</strong>喜欢一次性付费而非订阅的用户</li></ul><h2>5. SocialBee</h2><ul><li><strong>速度：</strong>视情况而定，基于 API</li><li><strong>隐私：</strong>第三方访问你的账户</li><li><strong>价格：</strong>$9/月</li><li><strong>适合：</strong>管理多个账号的社交媒体经理</li></ul><h2>6. 手动删除</h2><ul><li><strong>速度：</strong>每条约 10 秒</li><li><strong>隐私：</strong>最高（你自己操作）</li><li><strong>价格：</strong>免费（时间成本）</li><li><strong>适合：</strong>少于 50 条的小批量</li></ul><h2>隐私权衡</h2><p>除手动删除外，每个工具都需要你授予访问 X 账户的权限。这意味着他们可以查看你的推文（甚至可能是私信）、存储你的凭据，并有权代表你发帖。</p><p>digital-footprint-health 通过本机处理来降低这种风险。你的推文在分析期间永远不会离开你的设备。</p><h2>何时使用哪个工具</h2><ul><li><strong>少于 100 条：</strong>手动或 X Cleaner</li><li><strong>100-1000 条：</strong>digital-footprint-health 或 TweetEraser</li><li><strong>1000+ 条：</strong>digital-footprint-health 或 TweetDelete</li><li><strong>隐私优先：</strong>只用 digital-footprint-health</li></ul>',
   },
-  {
+{
     slug: 'safe-tweet-deleter-checklist',
     title: '别只看价格：选删除工具的安全清单',
     excerpt: '不是所有推文删除工具都是一样的。有些是合法服务，有些是伪装的的数据收割机。这份清单帮助你在交出 X 凭据之前识别安全工具。',
@@ -3692,7 +3690,7 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>Not all tweet deletion tools are created equal. Some are legitimate services. Others are data harvesting operations in disguise. This checklist helps you identify safe tools before handing over your X credentials.</p><h2>Red Flags to Watch For</h2><h3>1. Vague Privacy Policy</h3><p>If the tool doesn\'t explicitly state what data they collect, how long they keep it, and who they share it with — run. A legitimate service will have a detailed privacy policy, preferably written in plain language.</p><h3>2. Unnecessary Permissions</h3><p>A tweet deletion tool should only need:<br>- Read access to your tweets<br>- Write access to delete tweets</p><p>If it requests access to your DMs, direct messages, or the ability to post on your behalf — that\'s a red flag. You don\'t need posting access to delete tweets.</p><h3>3. No Clear Pricing</h3><p>"Free forever" tools often make money by selling your data. Transparent pricing is a sign of a legitimate business. Look for clear subscription fees or per-tweet costs.</p><h3>4. No User Reviews</h3><p>Check Reddit, Trustpilot, and Twitter for real user experiences. If a tool has no independent reviews, be skeptical.</p><h2>Green Flags</h2><ul><li>Clear, detailed privacy policy</li><li>Local/on-device processing</li><li>Transparent pricing with no hidden fees</li><li>Positive reviews on independent platforms</li><li>Option to pause and resume deletions</li><li>Refund policy</li></ul><h2>The Bottom Line</h2><p>Your X account contains years of personal history. Don\'t hand over access to a tool that doesn\'t respect your privacy. digital-footprint-health processes everything on your device — your data never leaves your machine.</p>',
     content: '<p>不是所有推文删除工具都是一样的。有些是合法服务，有些是伪装的的数据收割机。这份清单帮助你在交出 X 凭据之前识别安全工具。</p><h2>需警惕的危险信号</h2><h3>1. 模糊的隐私政策</h3><p>如果工具没有明确说明他们收集什么数据、保留多久、与谁共享——快跑。合法服务会有详细的隐私政策，最好是用通俗易懂的语言撰写。</p><h3>2. 不必要的权限</h3><p>推文删除工具只需要：<br>- 读取你的推文的权限<br>- 删除推文的写入权限</p><p>如果它请求访问你的私信或代表你发帖的权限——这是危险信号。删除推文不需要发帖权限。</p><h3>3. 无明确定价</h3><p>"永远免费"的工具通常通过出售你的数据来盈利。透明定价是合法业务的标志。寻找清晰的订阅费用或按条计费。</p><h3>4. 无用户评价</h3><p>在 Reddit、Trustpilot 和 Twitter 上查看真实用户评价。如果一个工具没有任何独立评价，要保持怀疑。</p><h2>绿色信号</h2><ul><li>清晰详细的隐私政策</li><li>本地/本机处理</li><li>透明定价，无隐藏费用</li><li>独立平台上有正面评价</li><li>可暂停和恢复删除</li><li>退款政策</li></ul><h2>结论</h2><p>你的 X 账户包含数年的个人历史。不要把访问权交给不尊重你隐私的工具。digital-footprint-health 在所有数据都在你的设备上处理——你的数据永远不会离开你的机器。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-  {
+{
     slug: 'tweet-tool-privacy-policy',
     title: '你的删除工具会读你的数据吗？',
     excerpt: '当你使用推文删除工具时，你本质上是在给陌生人访问你个人历史的权限。了解他们能看到什么——以及他们永远不应该看到什么——对于保护你的隐私至关重要。',
@@ -3713,18 +3711,15 @@ export const allPosts: BlogPost[] = [
     contentEn: '<p>When you use a tweet deletion tool, you\'re essentially giving a stranger access to your personal history. Understanding what they can see — and what they should never see — is critical for protecting your privacy.</p><h2>What Tweet Tools Can Access</h2><h3>Public tweets</h3><p>All tools that connect to your X account can read your public tweets. This includes: tweet text, timestamps, engagement metrics (likes, retweets), and media attachments.</p><h3>Direct messages</h3><p>Some tools request access to DMs. This is a major privacy risk — your private conversations could be read, stored, or leaked.</p><h3>Profile information</h3><p>Your bio, location, follower count, and account creation date are all visible to connected apps.</p><h3>List memberships</h3><p>Tools may be able to see which Twitter Lists you\'re a member of.</p><h2>What They Should NEVER Access</h2><ul><li>Your password (you should never enter it in a third-party tool)</li><li>Your 2FA codes</li><li>Your email or phone number (beyond what\'s public)</li><li>Your DMs (unless absolutely necessary and you trust the tool)</li></ul><h2>How digital-footprint-health Protects You</h2><p>Our tool processes your data entirely on your device. We never upload your tweets to our servers. Your archive stays on your machine throughout the entire process.</p><p>This means:<br>- No one else can see your tweets<br>- No data is stored on our servers<br>- You maintain full control at all times</p><h2>The Bottom Line</h2><p>Before using any tweet deletion tool, ask: what data do they need? If the answer includes anything beyond reading and deleting tweets, be very careful. Your digital history is yours — protect it.</p>',
     content: '<p>当你使用推文删除工具时，你本质上是在给陌生人访问你个人历史的权限。了解他们能看到什么——以及他们永远不应该看到什么——对于保护你的隐私至关重要。</p><h2>推文工具可以访问的内容</h2><h3>公开推文</h3><p>所有连接到你的 X 账户的工具都可以读取你的公开推文。包括：推文内容、时间戳、互动数据（点赞、转推）和媒体附件。</p><h3>私信</h3><p>有些工具请求访问私信。这是重大隐私风险——你的私人对话可能被读取、存储或泄露。</p><h3>个人资料信息</h3><p>你的个人简介、位置、关注者数量和账户创建日期对所有已连接的应用都可见。</p><h3>列表成员资格</h3><p>工具可能能够看到你加入了哪些 Twitter 列表。</p><h2>他们永远不应该访问的内容</h2><ul><li>你的密码（你绝不应在第三方工具中输入）</li><li>你的双因素认证代码</li><li>你的邮箱或手机号（超出公开信息范围）</li><li>你的私信（除非绝对必要且你信任该工具）</li></ul><h2>digital-footprint-health 如何保护你</h2><p>我们的工具完全在你的设备上处理数据。我们永远不会将你的推文上传到我们的服务器。你的归档文件在整个过程中都留在你的机器上。</p><p>这意味着：<br>- 没有人能看到你的推文<br>- 没有数据存储在我們的服务器上<br>- 你始终拥有完全控制权</p><h2>结论</h2><p>在使用任何推文删除工具之前，问自己：他们需要哪些数据？如果答案超出读取和删除推文的范围，请非常小心。你的数字历史是你的——保护它。</p><h2>关于 digital-footprint-health.shop</h2><p>digital-footprint-health.shop 是 X 数字足迹体检工具：上传归档，本机逐条解析，扫手机号、住址、定位与敏感话题，给 0-100 健康评分。体检免费只读、不上传数据。清理时删除按条计费，可 <a href="/pricing">暂停、续传、退款</a>。</p>',
   },
-
-  { slug: "delete-10000-tweets-real-cost", title: "The Real Cost of Deleting 10,000+ Tweets", titleEn: "一次删除上万条的真实成本与耗时", excerpt: "How much time and money does bulk-deleting 10,000 tweets cost?", excerptEn: "批量删除一万条推文需要多少时间和金钱？", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "cleanup", tags: ["bulk deletion"], content: "Deleting 10,000 tweets takes roughly 10 hours. X rate limits cap you at ~1,000 tweets/hour.", contentEn: "", canonical: "/blog/delete-10000-tweets-real-cost" },
-  { slug: "delete-vs-protect-safety", title: "Delete vs Protect: What Actually Keeps You Safe", titleEn: "删除 vs 锁号：哪个才是安全", excerpt: "Deleting tweets vs locking your account — which protects your digital footprint?", excerptEn: "删除推文和锁定账号，哪个更能保护你的数字足迹？", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "privacy", tags: ["privacy"], content: "Delete removes permanently. Lock makes account private. Delete harmful tweets, lock to reduce exposure.", contentEn: "", canonical: "/blog/delete-vs-protect-safety" },
-  { slug: "tweets-js-anatomy", title: "tweets.js Fully Decoded: Anatomy of One Tweet", titleEn: "tweets.js 结构全解析", excerpt: "What does the data structure of a single tweet look like inside tweets.js?", excerptEn: "tweets.js 归档文件里每条推文的数据结构", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "technical", tags: ["tweets.js", "JSON"], content: "tweets.js contains every tweet you posted. Core fields: created_at, full_text, id_str, favorite_count, retweet_count, entities.", contentEn: "", canonical: "/blog/tweets-js-anatomy" },
-  { slug: "bilingual-privacy-report", title: "中英文双语报告：为什么需要两种语言体检", titleEn: "Bilingual Reports: Why Your Check Speaks Two Languages", excerpt: "你的数字足迹体检用两种语言，因为你的数字生活也是如此。", excerptEn: "Your digital footprint check speaks two languages because your digital life does too.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["双语", "隐私体检"], content: "双语报告确保美国用户获得清晰的英文风险说明，中文用户获得准确翻译，跨文化风险也能被捕捉到。", contentEn: "A bilingual report ensures US-based users get clear English explanations of risks, Chinese-speaking users get accurate translations, and cross-cultural risks are caught.", canonical: "/blog/bilingual-privacy-report" },
-  { slug: "tweet-cleanup-schedule", title: "删除频率策略：一周删还是一个月删一次", titleEn: "Deletion Cadence: Weekly vs Monthly Cleanups", excerpt: "你应该多久清理一次推文？", excerptEn: "How often should you clean up your tweets?", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["清理", "推文"], content: "高风险用户适合每周清理，大多数人按月清理即可。关键是保持一致性。", contentEn: "Weekly cleanup is for high-risk users. Monthly cleanup works for most people. The key is consistency.", canonical: "/blog/tweet-cleanup-schedule" },
-  { slug: "future-tweet-rules", title: "清理后如何守住：未来推文的 5 条红线", titleEn: "After the Clean: 5 Red Lines for Future Tweets", excerpt: "清理旧推文只是战斗的一半。", excerptEn: "Cleaning up old tweets is only half the battle.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["推文", "隐私保护"], content: "不实时定位、不拍他人可识别照片、不讨论敏感工作、不透露财务信息、不情绪化发布。", contentEn: "No real-time location tagging, no identifiable photos of others, no sensitive work discussions, no financial information, no emotional impulses.", canonical: "/blog/future-tweet-rules" },
-  { slug: "forgotten-tweets", title: "隐私体检能发现\"你忘了的\"那些事", titleEn: "What the Check Finds That You Forgot", excerpt: "最令人惊讶的不是你记得发过的内容——而是你忘记的内容。", excerptEn: "The most surprising thing isn't what you remember posting — it's what you forgot.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["隐私体检", "推文"], content: "用户普遍反映，体检能发现多年前他们完全忘记存在的推文，这些推文往往包含风险信息。", contentEn: "Users consistently report being shocked by tweets from years ago they completely forgot existed.", canonical: "/blog/forgotten-tweets" },
-  { slug: "encrypted-archive", title: "加密落盘是什么？你的归档在你机器上有多安全", titleEn: "Encrypted Storage: How Safe Is Your Archive on Your Machine", excerpt: "你的档案仅在设备上解密。", excerptEn: "Your archive is decrypted only on your device.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "technical", tags: ["加密", "安全"], content: "本地加密确保服务器永远不会看到你的原始推文数据。", contentEn: "Local-only encryption ensures no server ever sees your raw tweet data.", canonical: "/blog/encrypted-archive" },
-
-
-  {
+{ slug: "delete-10000-tweets-real-cost", title: "The Real Cost of Deleting 10,000+ Tweets", titleEn: "一次删除上万条的真实成本与耗时", excerpt: "How much time and money does bulk-deleting 10,000 tweets cost?", excerptEn: "批量删除一万条推文需要多少时间和金钱？", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "cleanup", tags: ["bulk deletion"], content: "Deleting 10,000 tweets takes roughly 10 hours. X rate limits cap you at ~1,000 tweets/hour.", contentEn: "", canonical: "/blog/delete-10000-tweets-real-cost" },
+{ slug: "delete-vs-protect-safety", title: "Delete vs Protect: What Actually Keeps You Safe", titleEn: "删除 vs 锁号：哪个才是安全", excerpt: "Deleting tweets vs locking your account — which protects your digital footprint?", excerptEn: "删除推文和锁定账号，哪个更能保护你的数字足迹？", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "privacy", tags: ["privacy"], content: "Delete removes permanently. Lock makes account private. Delete harmful tweets, lock to reduce exposure.", contentEn: "", canonical: "/blog/delete-vs-protect-safety" },
+{ slug: "tweets-js-anatomy", title: "tweets.js Fully Decoded: Anatomy of One Tweet", titleEn: "tweets.js 结构全解析", excerpt: "What does the data structure of a single tweet look like inside tweets.js?", excerptEn: "tweets.js 归档文件里每条推文的数据结构", date: "2026-08-23", updatedAt: "2026-08-23", author: "digital-footprint-health", category: "technical", tags: ["tweets.js", "JSON"], content: "tweets.js contains every tweet you posted. Core fields: created_at, full_text, id_str, favorite_count, retweet_count, entities.", contentEn: "", canonical: "/blog/tweets-js-anatomy" },
+{ slug: "bilingual-privacy-report", title: "中英文双语报告：为什么需要两种语言体检", titleEn: "Bilingual Reports: Why Your Check Speaks Two Languages", excerpt: "你的数字足迹体检用两种语言，因为你的数字生活也是如此。", excerptEn: "Your digital footprint check speaks two languages because your digital life does too.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["双语", "隐私体检"], content: "双语报告确保美国用户获得清晰的英文风险说明，中文用户获得准确翻译，跨文化风险也能被捕捉到。", contentEn: "A bilingual report ensures US-based users get clear English explanations of risks, Chinese-speaking users get accurate translations, and cross-cultural risks are caught.", canonical: "/blog/bilingual-privacy-report" },
+{ slug: "tweet-cleanup-schedule", title: "删除频率策略：一周删还是一个月删一次", titleEn: "Deletion Cadence: Weekly vs Monthly Cleanups", excerpt: "你应该多久清理一次推文？", excerptEn: "How often should you clean up your tweets?", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["清理", "推文"], content: "高风险用户适合每周清理，大多数人按月清理即可。关键是保持一致性。", contentEn: "Weekly cleanup is for high-risk users. Monthly cleanup works for most people. The key is consistency.", canonical: "/blog/tweet-cleanup-schedule" },
+{ slug: "future-tweet-rules", title: "清理后如何守住：未来推文的 5 条红线", titleEn: "After the Clean: 5 Red Lines for Future Tweets", excerpt: "清理旧推文只是战斗的一半。", excerptEn: "Cleaning up old tweets is only half the battle.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["推文", "隐私保护"], content: "不实时定位、不拍他人可识别照片、不讨论敏感工作、不透露财务信息、不情绪化发布。", contentEn: "No real-time location tagging, no identifiable photos of others, no sensitive work discussions, no financial information, no emotional impulses.", canonical: "/blog/future-tweet-rules" },
+{ slug: "forgotten-tweets", title: "隐私体检能发现\"你忘了的\"那些事", titleEn: "What the Check Finds That You Forgot", excerpt: "最令人惊讶的不是你记得发过的内容——而是你忘记的内容。", excerptEn: "The most surprising thing isn't what you remember posting — it's what you forgot.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "privacy", tags: ["隐私体检", "推文"], content: "用户普遍反映，体检能发现多年前他们完全忘记存在的推文，这些推文往往包含风险信息。", contentEn: "Users consistently report being shocked by tweets from years ago they completely forgot existed.", canonical: "/blog/forgotten-tweets" },
+{ slug: "encrypted-archive", title: "加密落盘是什么？你的归档在你机器上有多安全", titleEn: "Encrypted Storage: How Safe Is Your Archive on Your Machine", excerpt: "你的档案仅在设备上解密。", excerptEn: "Your archive is decrypted only on your device.", date: "2026-08-25", updatedAt: "2026-08-25", author: "digital-footprint-health", category: "technical", tags: ["加密", "安全"], content: "本地加密确保服务器永远不会看到你的原始推文数据。", contentEn: "Local-only encryption ensures no server ever sees your raw tweet data.", canonical: "/blog/encrypted-archive" },
+{
     slug: 'gdpr-data-portability-twitter-archive',
     title: 'GDPR 数据可携带权：如何导出你的 Twitter 数据',
     excerpt: 'GDPR 赋予你接收个人数据副本并转移到其他服务的权利。对于 Twitter 用户，这意味着可以下载完整的推文历史、媒体和账户数据。',
@@ -3779,7 +3774,7 @@ export const allPosts: BlogPost[] = [
 <p>The archive contains your entire Twitter history. Download and extract it on a secure device, avoid public computers.</p>
 `,
   },
-  {
+{
     slug: 'ccpa-global-privacy-laws',
     title: 'CCPA 与全球隐私法：你的权利是什么',
     excerpt: '加州消费者隐私法（CCPA）是最全面的美隐私法律之一。它赋予加州居民对其个人数据的特定权利：知情权、删除权、选择退出权和非歧视权。',
@@ -3834,7 +3829,7 @@ export const allPosts: BlogPost[] = [
 </table>
 `,
   },
-  {
+{
     slug: 'local-vs-cloud-processing',
     title: '本机处理 vs 云端处理：隐私保护的关键选择',
     excerpt: '你的数据在哪里处理决定了谁能看到它。这是本机处理和云端处理之间的根本区别。',
@@ -3897,7 +3892,7 @@ export const allPosts: BlogPost[] = [
 <p>Cloud processing is convenient but creates a trust dependency. On-device processing requires more technical knowledge but eliminates the trust gap. If privacy is your priority, always choose on-device processing.</p>
 `,
   },
-  {
+{
     slug: 'local-encryption-keys',
     title: '密钥留在本机：端到端加密的重要性',
     excerpt: '加密的强度取决于你的密钥管理。当加密密钥存储在你的设备上而不是服务器上时，你对数据保持真正的控制。',
@@ -3956,7 +3951,7 @@ export const allPosts: BlogPost[] = [
 <p>When keys are stored in the cloud, you're trusting the service provider with the "keys to your kingdom." If they're compromised, your data is exposed regardless of encryption quality.</p>
 `,
   },
-  {
+{
     slug: 'read-vs-write-api',
     title: '只读 vs 写入 API：为什么报告免费但删除收费',
     excerpt: '了解 API 权限解释了为什么我们提供免费隐私报告但删除服务收费。这不是任意定价——它基于 API 访问的技术和法律现实。',
@@ -4019,8 +4014,7 @@ export const allPosts: BlogPost[] = [
 <p>Twitter's API has strict rate limits. Deleting 10,000 tweets at the maximum rate takes over 33 hours. This is why we use automation tools that respect rate limits while ensuring complete deletion.</p>
 `,
   },
-
-  {
+{
     slug: 'digital-footprint-recruitment-tools',
     title: '数字足迹的趋势：招聘方用什么工具看你',
     excerpt:
@@ -4109,8 +4103,7 @@ export const allPosts: BlogPost[] = [
 <p>Want to know how to delete old tweets? Read our <a href="/blog/how-to-delete-old-tweets-2026">complete guide</a>.</p>
 `,
   },
-
-  {
+{
     slug: 'leave-twitter-cleanup',
     title: '新平台迁移潮：离开 X 前先清理？',
     excerpt:
@@ -4185,8 +4178,7 @@ export const allPosts: BlogPost[] = [
 <p>Use our <strong>digital footprint check tool</strong> to audit your X account and generate a free privacy health score. Then decide: clean up, migrate, or do both.</p>
 `,
   },
-
-  {
+{
     slug: 'digital-footprint-10-years',
     title: '十年数字足迹对比：2016 vs 2026',
     excerpt:
@@ -4295,7 +4287,7 @@ export const allPosts: BlogPost[] = [
 <p>Digital footprints don't disappear. Every tweet and photo you clean up today reduces risk for your future self. Start your digital footprint check today with our free tool.</p>
 `,
   },
-  {
+{
     "slug": "brand-mascot-accounts-cleaning",
     "title": "品牌吉祥物账号：如何清理那些\"可爱\"的小号",
     "excerpt": "品牌吉祥物账号是你的数字化身，也是数字足迹的一部分。三种清理策略帮你决定保留还是删除。",
@@ -4342,7 +4334,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "creator-interview-12000-tweets",
     "title": "数字足迹体检访谈：他删掉了 12,437 条推文",
     "excerpt": "Marcus Chen 用三个月删除了 12,437 条推文。这不是羞愧，而是有意为之。听听他的清理逻辑。",
@@ -4389,7 +4381,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "data-ethics-footprint-tools",
     "title": "数字足迹工具的 data ethics：谁来保护你的隐私？",
     "excerpt": "数字足迹工具承诺隐私，但当它们分析你的数据时，谁来保护你的隐私？看清承诺与现实的差距。",
@@ -4436,7 +4428,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "2027-digital-privacy-trends",
     "title": "2027 数字隐私趋势：6 个你必须知道的变化",
     "excerpt": "数字隐私格局正在快速转变。从 AI 监控到数据最小化立法，以下是 2027 年你需要预期的 6 大趋势。",
@@ -4483,7 +4475,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "year-end-deletion-review",
     "title": "年终删除复盘：2026 年大家都在删什么",
     "excerpt": "随着 2026 年接近尾声，回顾人们从数字生活中清理的内容：社交账号、照片、邮件与 App。",
@@ -4529,9 +4521,8 @@ export const allPosts: BlogPost[] = [
         "aEn": "Start with the highest-risk content: old social posts, sensitive cloud photos, subscription emails, and unused apps. One category at a time."
       }
     ]
-  }
-  ,
-  {
+  },
+{
     "slug": "black-friday-deleter-scams",
     "title": "黑五特辑：别被\"半价删除工具\"骗了",
     "excerpt": "黑五期间涌现大量\"半价推文删除器\"促销。其中不少是钓鱼 OAuth 或借机上传你归档的陷阱。本文用真实案例拆解 3 类骗局，并给出 4 步自检清单——以及什么时候千万别图便宜。",
@@ -4583,7 +4574,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "digital-footprint-mental-health",
     "title": "数字足迹与心理健康：清理也是治愈",
     "excerpt": "旧推文带来的焦虑是真实存在的。本文用一个求职者的具体案例，说明\"体检—筛选—删除\"三步如何把健康评分从 41 提到 86，并解释为什么过度清空反而会伤 identity。",
@@ -4634,7 +4625,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "christmas-gift-footprint-check",
     "title": "圣诞礼物：给爱上网的家人送一次\"体检\"",
     "excerpt": "父母常把穿校服孙辈的照片、家庭住址随手发上网。本文讲怎么把\"一次数字足迹体检\"做成圣诞礼物，含 4 步流程，并提醒：没征得同意别擅自清理。",
@@ -4684,7 +4675,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "2026-digital-footprint-white-paper",
     "title": "2026 年度数字足迹白皮书（数据汇总）",
     "excerpt": "基于 2026 年 12,400 次匿名本机体检的汇总：41% 归档含手机号、23% 含住址、归档中位数 84MB。本文给出 5 项年度发现，并说明样本局限——它不能替代个案应对。",
@@ -4735,7 +4726,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     "slug": "day-100-take-control-footprint",
     "title": "第 100 天：你的数字足迹，由你掌控",
     "excerpt": "一个 100 天清理挑战的复盘：用户累计删掉 9,300 条推文，健康分从 32 升到 88。本文给出可复制的 4 阶段计划，并说明什么时候其实不需要 100 天。",
@@ -4783,7 +4774,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'tweetdelete-vs-manual-delete-2026',
     title: 'TweetDelete 和手动删除，2026 年到底哪个更适合你',
     excerpt: '很多人想清理旧推文，第一反应是装个 TweetDelete。但 2026 年的现实是：TweetDelete 只能管最近 3,200 条、按固定周期删、还要绑卡。本文用一份对照表，把它和本机体检加按需删除两种方式拆开比，帮你选对路。',
@@ -4935,7 +4926,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'delete-tweets-by-keyword-2026',
     title: '按关键词批量删除推文：2026 进阶筛选与避坑',
     excerpt: '删推文最笨的办法是一条条翻。按关键词批量删能省 90% 时间，但删错了和没删干净是两个常见坑。本文讲怎么用关键词加日期加排除词三层筛选，并给出复盘清单。',
@@ -5036,7 +5027,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'email-leak-in-tweets-fix',
     title: '推文里泄露了邮箱？三步把门堵上（中文用户特别注意）',
     excerpt: '你可能在留个邮箱我发你资料这类推文里，顺手把私人邮箱发出去了。中文用户尤其爱用 QQ 或 163 邮箱当账号，一旦泄露，垃圾邮件和撞库攻击就来了。本文给一套中文用户专属的堵漏步骤。',
@@ -5137,7 +5128,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'tweets-js-extract-phone-numbers',
     title: '不用写代码：从 tweets.js 里把手机号挑出来',
     excerpt: 'tweets.js 是 X 归档里最核心的文件，10 万条推文全在里面。想快速找出所有含手机号的推文，其实不用学编程。本文讲清原理，再给你两种实操方法。',
@@ -5244,7 +5235,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'chinese-x-archive-guide',
     title: '中文用户下载 X 归档的 5 个坑（别等到被搜出来才看）',
     excerpt: '很多中文用户第一次下载 X 归档就卡住：邮箱一直没收到、等了三天、解压还报错。问题往往出在几个只有中文用户才会踩的点上。本文专为中文用户写，把申请归档到收邮件到解压到本机解析完整链路走一遍，并标出 5 个坑。',
@@ -5342,7 +5333,7 @@ export const allPosts: BlogPost[] = [
       }
     ]
   },
-  {
+{
     slug: 'enable-2fa-x-account',
     title: '如何为 X 账号开启两步验证：2026 防被盗指南',
     excerpt: '开启 X 两步验证是守住账号的第一道防线。本文讲清为什么 2FA 重要、如何在 X 上开启双重验证、验证器 App 与短信哪种更安全，以及它如何配合你的数字足迹清理。',
@@ -5452,7 +5443,7 @@ export const allPosts: BlogPost[] = [
 <p>不会。两步验证只保护登录。要移除有风险的旧内容，请在锁好账号后用专门的<a href="/blog/how-to-delete-old-tweets-2026">推文删除工具</a>。</p>
     `.trim()
   },
-  {
+{
     slug: 'footprint-health-score-meaning',
     title: '数字足迹健康分 0-100 到底代表什么',
     excerpt: '数字足迹体检给出的 0-100 健康分，到底怎么算、高分和低分各意味着什么？本文拆解评分背后的风险标签，并告诉你如何把分数提上去。',
@@ -5554,7 +5545,7 @@ export const allPosts: BlogPost[] = [
 <p>分数反映的是你运行体检那一刻的归档状态。你新发的推文或重新下载的归档都会改变它，所以建议定期复检。</p>
     `.trim()
   },
-  {
+{
     slug: 'delete-tweets-by-year',
     title: '按年份删除推文：把 2020 年以前的旧推文清干净',
     excerpt: '不想一条条翻？按年份删除推文是最省心的清理方式。本文讲清为什么要按年份清、年份筛选怎么用、删除前如何备份，以及几个常见误区。',
@@ -5660,8 +5651,7 @@ export const allPosts: BlogPost[] = [
 <p>只要通过你自己授权的会话、并带限速保护，就是安全的。用那种能暂停、续传、且只在本地解析归档的工具——见我们的<a href="/blog/how-to-delete-old-tweets-2026">完整删除指南</a>。</p>
     `.trim()
   },
-
-  {
+{
     slug: 'protect-digital-legacy-after-death',
     date: '2026-09-08',
     updatedAt: '2026-09-08',
@@ -5860,7 +5850,7 @@ export const allPosts: BlogPost[] = [
 <p>数字遗产规划是对你爱的人的一种关爱行为。通过花时间组织你的数字生活并传达你的意愿，你确保你的数字存在按照你的价值观和偏好处理。从今天开始——规划永远不嫌早，整理也永远不嫌晚。</p>
 `,
   },
-  {
+{
     slug: 'digital-footprint-audit-checklist-2026',
     date: '2026-09-11',
     updatedAt: '2026-09-11',
@@ -6013,7 +6003,7 @@ export const allPosts: BlogPost[] = [
 <p>审计不是要删掉你的人格，而是让你知道自己有多少内容可见，并有意识地做决定，而不是在最糟的时刻被动发现。今天花 30 分钟，就能消除一类事后无法弥补的问题。</p>
     `,
   },
-  {
+{
     slug: 'why-old-tweets-wont-delete',
     date: '2026-09-11',
     updatedAt: '2026-09-11',
@@ -6120,7 +6110,7 @@ export const allPosts: BlogPost[] = [
 <p>删除失败几乎都不是谜题。读日志、把症状对到表格、修掉那个具体原因，而不是第四次跑同一个任务。</p>
     `,
   },
-  {
+{
     slug: 'old-tweets-used-in-online-harassment',
     date: '2026-09-11',
     updatedAt: '2026-09-11',
@@ -6217,7 +6207,7 @@ export const allPosts: BlogPost[] = [
 <p>顺序很关键：保全、分类、收拢、最后才删。按这个顺序做，你的选择余地会保留下来，也能让难熬的一周不至于变成永久的记录。</p>
     `,
   },
-  {
+{
     slug: 'social-media-background-check-2026',
     date: '2026-09-11',
     updatedAt: '2026-09-11',
@@ -6316,7 +6306,7 @@ export const allPosts: BlogPost[] = [
 <p>雇主找的是一小撮特定的淘汰项，而不是拒绝你的理由。把这些修好，其余的别动，也就不用再为一个没人细看的时间线缴焦虑税。</p>
     `,
   },
-  {
+{
     slug: 'ai-training-on-your-old-posts',
     date: '2026-09-11',
     updatedAt: '2026-09-11',
@@ -6419,7 +6409,7 @@ export const allPosts: BlogPost[] = [
 <p>收集已经完成，影响是弥散的，而未来抓取才是你还能左右的部分。把力气花在那里，而不是追逐不可能的反转。</p>
     `,
   },
-  {
+{
     slug: 'delete-twitter-account-permanently',
     date: '2026-09-10',
     updatedAt: '2026-09-10',
@@ -6538,7 +6528,7 @@ export const allPosts: BlogPost[] = [
 <p>如果你想要一次干净的退出，删号是合适的——只要先下载归档、解除所有「用 X 登录」、然后 30 天别去碰它。</p>
     `,
   },
-  {
+{
     slug: 'ethics-deleting-someone-else-tweets',
     date: '2026-09-10',
     updatedAt: '2026-09-10',
@@ -6643,7 +6633,7 @@ export const allPosts: BlogPost[] = [
 <p>替别人删除，有时是善举，从不是随便之举。先确认你的权限，销毁前先导出，并且优先走平台流程，而不是那个你本不该拥有的密码。</p>
     `,
   },
-  {
+{
     slug: 'use-x-native-deletion-tools',
     date: '2026-09-10',
     updatedAt: '2026-09-10',
@@ -6758,7 +6748,7 @@ export const allPosts: BlogPost[] = [
 <p>先用手上的原生工具。下载归档、在其中搜索、手动删掉少数真正重要的。只有当规模或判据让它不可能时，才动用第三方工具——而那时，选择本地处理的那一个。</p>
     `,
   },
-  {
+{
     slug: 'digital-minimalism-peace',
     date: '2026-09-10',
     updatedAt: '2026-09-10',
@@ -6859,7 +6849,7 @@ export const allPosts: BlogPost[] = [
 <p>数字极简的目标不是空资料页，而是根本无需去想你的资料页。把机制装好一次，平静就会成为默认状态，而不是一次大扫除后的余温。</p>
     `,
   },
-  {
+{
     slug: 'right-to-be-forgotten-twitter',
     date: '2026-09-12',
     updatedAt: '2026-09-12',
@@ -7052,7 +7042,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'data-brokers-selling-your-tweets',
     date: '2026-09-12',
     updatedAt: '2026-09-12',
@@ -7207,7 +7197,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'deletion-failed-retry-faq',
     date: '2026-09-12',
     updatedAt: '2026-09-12',
@@ -7302,7 +7292,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'chinese-tweets-cleanup-keywords',
     title: '中文推文清理指南：长尾词怎么挖，中文用户多踩了哪三个坑',
     titleEn: 'Cleaning Chinese-Language Tweets: Mining Long-Tail Queries and Three Traps English Guides Skip',
@@ -7453,7 +7443,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'back-to-school-footprint-check-2026',
     title: '开学季前的数字足迹检查：学生账号最该先清的 5 类帖子（2026）',
     titleEn: 'Back-to-School Footprint Check 2026: Five Post Types Students Should Clear First',
@@ -7580,7 +7570,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'login-device-audit-x-account',
     title: 'X 账号的旧设备会话与被遗忘的第三方授权：一次清干净',
     titleEn: 'Old Sessions and Forgotten App Grants on X: A Complete Audit',
@@ -7693,7 +7683,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'tweet-deletion-tools-comparison-2026',
     title: '旧推文清理工具横评：云端服务、官方功能与本机解析该怎么选',
     titleEn: 'Old Tweet Cleanup Tools Compared: Cloud Services, Native Tools and Local Parsing',
@@ -7897,7 +7887,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'x-api-rate-limits-deletion',
     title: 'X 接口限流为什么让批量删除变慢：配额机制与排队策略',
     titleEn: 'Why X Rate Limits Slow Down Bulk Deletion: Quotas and Queueing',
@@ -8029,7 +8019,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'chinese-social-footprint-x-guide',
     title: '中文用户清理 X 旧推文的三个特殊之处：昵称复用、中文关键词与转发链',
     titleEn: 'Cleaning Up an X Account as a Chinese-Speaking User: Handles, Keywords and Repost Chains',
@@ -8178,7 +8168,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'privacy-calendar-september-old-content',
     title: '九月的隐私日历：为什么这个月适合处理旧内容与数据请求',
     titleEn: 'A September Privacy Calendar: Why This Month Suits Old Content and Data Requests',
@@ -8311,7 +8301,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'bulk-delete-tweets-faq-2026',
     title: '批量删除旧推文的高频五问：上限、耗时、搜索残留与误删',
     titleEn: 'Bulk Deleting Old Tweets: Five Questions People Ask Most',
@@ -8441,7 +8431,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'how-often-check-digital-footprint',
     title: '数字足迹多久体检一次？按账号活跃度分层的频率指南',
     titleEn: 'How Often Should You Run a Digital Footprint Check?',
@@ -8602,7 +8592,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'q3-2026-footprint-review',
     title: '2026 第三季度数字足迹复盘：平台改了什么，你该改什么',
     titleEn: 'Q3 2026 Digital Footprint Review: What Changed on the Platform and What to Fix',
@@ -8735,7 +8725,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'store-x-archive-safely',
     title: 'X 数据归档怎么存才安全？ZIP 落地后的六条规矩',
     titleEn: 'How to Store Your X Data Archive Safely: Six Rules After the ZIP Lands',
@@ -8864,7 +8854,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'chinese-pinyin-name-tweet-cleanup',
     title: '中文名、拼音和手机号：中文用户删推文最容易漏掉的三类检索',
     titleEn: 'Chinese Names, Pinyin and Phone Numbers: Three Search Gaps Chinese Users Keep Missing',
@@ -9002,7 +8992,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: '30-day-footprint-habit-plan',
     title: '30 天数字足迹习惯计划：把清理拆成每天十分钟',
     titleEn: 'A 30-Day Digital Footprint Habit Plan: Ten Minutes a Day',
@@ -9123,7 +9113,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'delete-tweets-without-breaking-threads',
     title: '删推文会连带删掉什么？线程、引用推文和回复的连锁反应',
     titleEn: 'What Happens When You Delete a Tweet: Threads, Quotes and Replies',
@@ -9328,7 +9318,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'tweet-deletion-speed-factors',
     title: '删推文的速度到底受什么限制？四个变量和实际节奏',
     titleEn: 'What Actually Limits How Fast You Can Delete Tweets',
@@ -9463,7 +9453,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'footprint-report-false-positives',
     title: '体检报告误报了怎么办？五类假阳性和判断方法',
     titleEn: 'When Your Footprint Report Flags Something Innocent',
@@ -9598,7 +9588,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'digital-footprint-score-benchmarks',
     title: '数字足迹分数多少算正常？按账号类型的参照区间',
     titleEn: 'What Counts as a Normal Digital Footprint Score?',
@@ -9735,7 +9725,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'download-x-archive-on-phone',
     title: '手机上能导出 X 数据归档吗？可行路径和绕不过的限制',
     titleEn: 'Can You Download Your X Archive on a Phone?',
@@ -9868,7 +9858,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'company-x-account-employee-tweets',
     title: '企业 X 账号的员工推文风险：品牌号、个人号和代理商的边界',
     titleEn: 'Employee Tweets and Company X Accounts: Where the Risk Actually Sits',
@@ -10043,7 +10033,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'family-account-old-tweets-risk',
     title: '家人共用账号和旧手机：被忽略的家庭数字足迹缺口',
     titleEn: 'Family Accounts and Handed-Down Phones: The Footprint Gap Nobody Checks',
@@ -10176,7 +10166,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'tweet-deletion-tool-pricing-compared-2026',
     title: '删推文工具怎么定价：按条、包月、买断三种模型的实际成本',
     titleEn: 'How Tweet Deletion Tools Price Themselves: Per-Tweet, Subscription or One-Off',
@@ -10329,7 +10319,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'circlos-tweet-deletion-review',
     title: '托管型删推服务（如 Circlos）评测：交出账号权限前要问清的九件事',
     titleEn: 'Hosted Deletion Services Like Circlos: Nine Questions Before You Hand Over Access',
@@ -10484,7 +10474,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'gdpr-erasure-request-twitter',
     title: 'GDPR 删除请求权怎么行使：向 X 提交正式请求的步骤与模板',
     titleEn: 'Using the GDPR Right to Erasure on X: Steps and a Request Template',
@@ -10685,7 +10675,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'build-local-tweet-deletion-script',
     title: '自己写一个本机推文删除脚本：从归档解析到可续跑批处理',
     titleEn: 'Build a Local Tweet-Deletion Script: From Archive Parsing to a Resumable Batch Runner',
@@ -10926,7 +10916,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'browser-side-archive-parsing',
     title: '在浏览器里解析 200MB 的 X 归档：流式读取、内存与线程安排',
     titleEn: 'Parsing a 200MB X Archive in the Browser: Streaming, Memory and Threads',
@@ -11091,7 +11081,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'twitter-account-takeover-recovery',
     title: 'X 账号被接管之后：拿回控制权、评估暴露面、按顺序加固',
     titleEn: 'After a Twitter Account Takeover: Regaining Control and Assessing Exposure',
@@ -11260,7 +11250,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'x-connected-apps-permission-audit',
     title: 'X 已授权应用体检：找出长期访问权并安全撤销',
     titleEn: 'Auditing Connected Apps on X: Finding Standing Access and Revoking It Safely',
@@ -11445,7 +11435,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: 'old-tweets-anxiety-cleanup',
     title: '翻旧推文翻出的焦虑：先止损，再清理，最后收手',
     titleEn: 'Anxiety From Old Tweets: Contain It, Clean It Up, Then Stop',
@@ -11596,7 +11586,7 @@ export const allPosts: BlogPost[] = [
       },
     ],
   },
-  {
+{
     slug: "sim-swap-attack-x-account-lockout",
     title: "SIM 卡交换攻击盯上你的 X 账号：手机号是怎么变成入口的",
     titleEn: "How a SIM Swap Turns Your Phone Number Into an X Account Backdoor",
@@ -11769,7 +11759,7 @@ export const allPosts: BlogPost[] = [
       { q: "为什么对方不改密码也能控制账号？", a: "改密码并不是接管的前提。添加一个恢复邮箱、保留一个已登录设备，同样可以在不触发你警觉的情况下持续访问账号。所以恢复流程检查要覆盖恢复邮箱、恢复电话和活跃会话三处，只改密码是不够的。", qEn: "How can someone control an account without changing the password?", aEn: "Changing the password is not a prerequisite for control. Adding a recovery email or keeping one signed-in device alive gives ongoing access without setting off alarms. That is why a recovery review has to cover the recovery email, the recovery phone, and active sessions, not just the password." },
     ],
   },
-  {
+{
     slug: "google-remove-old-tweets-from-search",
     title: "推文删了还能搜到：把旧推文从搜索结果里移除的完整路径",
     titleEn: "Deleted Tweets Still in Google: How to Get Them Out of Search Results",
@@ -11916,7 +11906,7 @@ export const allPosts: BlogPost[] = [
       { q: "引用转发的内容该怎么处理？", a: "原帖删除不会带走引用帖。如果对方的引用帖里仍然包含你的原文或含个人信息的截图，需要单独处理：先请对方删除，沟通无效再考虑向搜索平台提交移除申请。", qEn: "What about quote posts that copied my content?", aEn: "Deleting the original does not remove a quote post. If someone else's quote still carries your text or a screenshot with personal details, handle it separately: ask them to delete it first, and only then consider a search removal request if that goes nowhere." },
     ],
   },
-  {
+{
     slug: "x-archive-download-failed-fix",
     title: "X 归档下载失败：卡在准备中、收不到邮件、ZIP 打不开的排查顺序",
     titleEn: "X Archive Download Failed: Stuck Requests, Missing Emails, Broken ZIPs",
@@ -12085,7 +12075,7 @@ export const allPosts: BlogPost[] = [
       { q: "归档里的推文数据文件特别大，用什么打开比较合适？", a: "不要用普通文本编辑器打开，体积大时编辑器会卡死或截断显示。比较稳妥的做法是交给解析工具处理，需要先看看里面有什么内容的话，按站内的归档阅读方法操作。", qEn: "The tweet data file in my archive is huge. What should I open it with?", aEn: "Not a plain text editor, which will freeze or truncate on large files. Hand it to a parser instead. If you want a preview of what is inside first, follow the archive reading method described on the site." },
     ],
   },
-  {
+{
     slug: "digital-hoarding-old-tweets",
     title: "数字囤积：为什么你留着十年前的推文不肯删",
     titleEn: "Digital Hoarding: Why You Keep Ten Years of Old Tweets",
@@ -12244,7 +12234,7 @@ export const allPosts: BlogPost[] = [
       { q: "归档备份还没做就直接删，会有什么问题？", a: "删掉之后无法恢复，而公开页面和搜索引擎缓存不一定同步消失，容易出现\"以为没了其实还在\"的混乱。先下载完整归档存到本地，删除就从销毁变成归档，心理阻力也会小很多。", qEn: "What goes wrong if I start deleting before backing up my archive?", aEn: "Deletion is not reversible, while public pages and search caches do not disappear in step, which creates plenty of confusion about what is actually gone. Download the full archive first and store it locally, and deletion becomes archiving rather than destruction, which also lowers the resistance." },
     ],
   },
-  {
+{
     slug: "verify-old-tweets-really-deleted",
     title: "删完之后怎么确认推文真的没了：四步验证",
     titleEn: "How to Verify Old Tweets Are Really Gone: A Four-Step Check",
@@ -12357,7 +12347,7 @@ export const allPosts: BlogPost[] = [
       { q: "批量删除中断过，怎么确认哪些没删掉？", a: "批量任务通常有执行记录，先找出中断的位置和当时的范围设定。然后抽查该区间内的若干条推文 URL，确认是否返回不存在。批量中断最常见的两个原因是频率限制和范围设定与实际需求不一致。", qEn: "My batch run was interrupted. How do I work out what was not deleted?", aEn: "Batch runs usually keep an execution record, so start by finding where it stopped and what range it was set to. Then spot check several post URLs inside that range to confirm they return not-found. The two most common causes of an interrupted batch are rate limiting and a range that does not match what you actually wanted." },
     ],
   },
-  {
+{
     slug: "reputation-management-service-worth-it",
     title: "花钱请声誉管理公司清理旧推文，值不值",
     titleEn: "Is a Reputation Management Service Worth It for Old Tweets?",
@@ -12504,7 +12494,7 @@ export const allPosts: BlogPost[] = [
       { q: "外包和自己做，成本差多少？", a: "差别不在工作时长，而在通道。自己做批量删除的一次性成本通常只有工具的十几到几十美元，而全案声誉管理多为每月数千到数万美元。差价主要买的是站外副本删除、数据经纪商退出和长期搜索结果压制这三类你看不到入口的能力。", qEn: "How much more expensive is outsourcing than doing it myself?", aEn: "The difference is not hours of work but access. Self-serve bulk deletion usually costs the low tens of dollars as a one-off tool fee, while a full-service retainer runs into thousands or tens of thousands per month. The gap buys three capabilities whose entry points you cannot easily reach: off-site takedowns, broker opt-outs and long-run search suppression." },
     ],
   },
-  {
+{
     slug: "x-account-annual-audit-review",
     title: "X 账号年度体检复盘：一年一次要检查的 12 个项目",
     titleEn: "The Annual X Account Audit: 12 Checks to Run Once a Year",
@@ -12681,7 +12671,7 @@ export const allPosts: BlogPost[] = [
       { q: "第二年的检查可以更快吗？", a: "可以。归档下载和权限检查可以沿用上一年的结论作为基线，把注意力放在变化上：新增的风险内容、新增的授权、新增的索引残留。第二年起通常能压缩到一小时以内。", qEn: "Can the second year be faster?", aEn: "Yes. The archive download and permission checks can reuse last year's results as a baseline, so attention goes to what changed: newly added risky content, newly granted access, newly indexed leftovers. From the second year on, an hour is usually enough." },
     ],
   },
-  {
+{
     slug: "mass-deletion-tool-permission-scope",
     title: "批量删除工具要什么权限：三种授权模式的风险差别",
     titleEn: "What Permissions a Mass Deletion Tool Really Needs",
@@ -12777,7 +12767,7 @@ export const allPosts: BlogPost[] = [
       { q: "免费工具更容易过度索取权限吗？", a: "不必然，但值得警惕。免费工具的运营成本需要有来源，一种来源是删除费用，另一种是数据本身。判断方法不变：看它申请的作用域里有多少项与删除无关，与是否免费没有直接关系。", qEn: "Are free tools more likely to over-ask for permissions?", aEn: "Not necessarily, and it is still worth watching. A free tool needs to cover its costs somehow, either through deletion fees or through the data itself. The test does not change: count how many requested scopes are unrelated to deletion. Being free is not a direct factor." },
     ],
   },
-  {
+{
     slug: "archive-request-before-erasure-request",
     title: "申请删除前先拿归档：数据可携权与删除请求的先后顺序",
     titleEn: "Archive First, Erasure Second: Ordering Your Data Rights Requests",
@@ -12878,7 +12868,7 @@ export const allPosts: BlogPost[] = [
       { q: "归档里的内容和我现在看到的账号不一致怎么办？", a: "归档是某个时间点的快照，与实时页面存在时间差，属于正常现象。要核对的是归档自身的日期范围是否连续。如果中间有明显断档，可以再提交一次可携权请求，要求补齐缺失区间。", qEn: "What if the archive does not match what I see on the account today?", aEn: "An archive is a point-in-time snapshot, so a gap against the live page is expected. What matters is whether the archive's own date range is continuous. If there is an obvious hole, file another portability request for the missing period." },
     ],
   },
-  {
+{
     slug: "chinese-name-search-footprint-cleanup",
     title: "中文姓名被搜到旧推文：同名干扰与关键词清理思路",
     titleEn: "When Your Chinese Name Surfaces Old Tweets: Name Collisions and Keyword Cleanup",
@@ -12985,7 +12975,7 @@ export const allPosts: BlogPost[] = [
       { q: "英文名路径为什么重要？", a: "因为两套身份的内容互不关联。你用英文名对外交流、用中文名在本地社交，搜索工具不会把两者联系起来，但做过完整排查的人会分别搜。三条路径都走过，才算覆盖完整。", qEn: "Why does the English name path matter?", aEn: "Because the two identities are not connected to each other. If you use an English name externally and the Chinese name on local accounts, search tools will not link them, though anyone doing a thorough sweep will search each. Only after all three paths are walked is coverage complete." },
     ],
   },
-  {
+{
     slug: "deletion-tool-trial-before-you-pay",
     title: "付费前怎么试：删除工具的试用额度与退款条款怎么看",
     titleEn: "Testing a Deletion Tool Before You Pay: Trials, Credits and Refunds",
@@ -13087,7 +13077,7 @@ export const allPosts: BlogPost[] = [
       { q: "试用阶段建议处理多少条推文？", a: "十条到二十条足够验证链路是否通畅。数量再大也不会暴露新问题，反而增加按量扣除后退款金额变少的风险。验证通过后再决定是否扩大处理范围。", qEn: "How many posts should a trial cover?", aEn: "Ten to twenty is enough to prove the path works. Going higher surfaces no new information and only reduces the refundable amount under volume-based deduction. Decide on a larger run after the small one succeeds." },
     ],
   },
-  {
+{
     slug: 'footprint-score-weighting-explained',
     title: '数字足迹评分权重拆解：0-100 分是怎么算出来的',
     excerpt: '同一份 X 归档在不同工具里跑出的评分常常对不上，差异多半来自权重设计。拆开四个维度与各自的占比，你就知道是哪些内容在拉低分数、哪些提示可以暂时不处理。',
@@ -13212,7 +13202,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) lays the four dimensions out in the open. You upload your X data archive, it parses every tweet on your own device, lists flagged items by category and produces a score from 0 to 100. The check is free and read-only, and it never asks for account access. Once you can see which items move the number, you decide whether anything gets deleted; scope and pricing are on the <a href="/pricing">pricing page</a>. You can run a check from the <a href="/">homepage</a>, and the rest of the scoring material lives on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'export-share-footprint-report',
     title: '体检报告导出与分享：PDF、截图还是链接',
     excerpt: '体检报告跑出来之后，怎么给别人看是一个独立问题。PDF、截图、在线链接三种形态各有泄露风险，选错一种可能把要清理的内容又扩散一次。',
@@ -13309,7 +13299,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Checks on Digital Footprint Health (digital-footprint-health.shop) run on your own device. Reports are generated locally by default, are never uploaded to a server and do not produce a forwardable online link. Upload your X data archive to get a score from 0 to 100 and a categorised list of flagged items; the check is free and read-only. Decide on deletion only once you trust the list, with scope and pricing on the <a href="/pricing">pricing page</a>. Run one from the <a href="/">homepage</a>, and report-related reading sits on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'deletion-scope-selection',
     title: '删除范围怎么选：全量、按时间还是按风险',
     excerpt: '删除范围决定一次清理的效果和不可逆程度。全量删除最彻底也最难回头，按时间删除适合阶段性整理，按风险删除命中率最高但需要一份可信的体检报告。',
@@ -13403,7 +13393,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) produces the list before anything is removed. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 plus flagged items by category; the check is free and read-only. Once you trust the list, set your deletion scope by risk category, with options and pricing on the <a href="/pricing">pricing page</a>. Run a check from the <a href="/">homepage</a>, and the end-to-end walkthrough lives at <a href="/blog/bulk-delete-old-tweets-walkthrough">bulk deletion, step by step</a>. More reading is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'chinese-digital-footprint-glossary',
     title: '数字足迹体检术语对照表：中文用户最容易搞混的 12 个词',
     excerpt: '中文用户做数字足迹体检时，卡住人的地方往往是术语。中文的"开盒""考古"和英文界面的 archive、footprint、exposure 不是一一对应，理解偏差会直接影响你判断哪些内容该处理。',
@@ -13515,7 +13505,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) presents its interface and reports with Chinese and English side by side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category; the check is free and read-only. If a term is unclear, running one check and matching the report categories against your actual posts teaches more than looking it up. Scope and pricing are on the <a href="/pricing">pricing page</a>, you can start free from the <a href="/">homepage</a>, and related reading is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'q4-2026-privacy-changes-preview',
     title: '2026 年第四季度要盯的三条线：平台接口、法规节点、数据经纪商',
     excerpt: '第四季度通常是平台改接口、监管出细则的窗口期。对普通用户来说，需要关注的是这三条线会不会改变你能删除什么、能下载到什么，条款措辞本身反而是次要的。',
@@ -13613,7 +13603,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the second step above into a free operation. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category; it is read-only, never uploads and does not ask for account access. Comparing flagged counts per band across quarters tells you more than comparing totals. Scope and pricing are on the <a href="/pricing">pricing page</a>, you can start free from the <a href="/">homepage</a>, and further industry reading is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'daily-tweet-deletion-limits',
     title: '一天能删多少条推文？删除上限、分批节奏与真实耗时表',
     excerpt:
@@ -13753,7 +13743,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the first step above into a free operation. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. With the flagged list in hand, choosing what to remove gets much clearer, as covered in <a href="/blog/deletion-scope-selection">choosing a deletion scope</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
-  {
+{
     slug: 'whitelist-and-pinned-tweets',
     title: '清理时怎么保住置顶推文、神回复和重要串',
     excerpt:
@@ -13854,7 +13844,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) produces this list as its first step. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. The flagged list shows which posts carry phone numbers, addresses or sensitive topics, so you can combine those with your thread openers in exclusion rules, as described in <a href="/blog/deletion-scope-selection">choosing a deletion scope</a> and <a href="/blog/which-tweets-to-clean-by-risk">ranking by risk</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
-  {
+{
     slug: 'deletion-audit-record-export',
     title: '删了什么要留痕：给删除留一份可核查的记录',
     excerpt:
@@ -13957,7 +13947,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) covers the first node in that chain. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. Flagged items export by category and feed straight into a deletion list, with the classification explained in <a href="/blog/risk-labels-explained">risk labels</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
-  {
+{
     slug: 'resumable-deletion-job-design',
     title: '删除任务的断点续传是怎么设计的',
     excerpt:
@@ -14066,7 +14056,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) covers only the reading side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing, and never asks for account access. Results export by category as input for a deletion job, with implementation notes in <a href="/blog/browser-side-archive-parsing">parsing archives in the browser</a> and <a href="/blog/build-local-tweet-deletion-script">building your own deletion script</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
-  {
+{
     slug: 'chinese-users-cross-platform-footprint',
     title: '微博 + X 双线清理：中文用户的数字足迹为什么更难管',
     excerpt:
@@ -14169,7 +14159,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) currently covers the X side. Upload your X data archive and it parses every tweet on your own device, returning a score from 0 to 100 and flagged items by category. It is read-only, uploads nothing and never asks for account access. Running one check first shows which old posts carry phone numbers, addresses or sensitive topics, which then informs the order above, with terminology in <a href="/blog/chinese-digital-footprint-glossary">the Chinese digital footprint glossary</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, and you can start free from the <a href="/">homepage</a>.</p>`,
   },
-  {
+{
     slug: 'id-photo-tweets-leak',
     title: '证件照、工牌、护照照片进了旧推文：被滥用路径与清理顺序',
     excerpt:
@@ -14315,7 +14305,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the inventory step into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. With the list in hand, the way to decide what to remove is covered in <a href="/blog/which-tweets-to-clean-by-risk">cleaning by risk</a>, and address and location cases are covered in <a href="/blog/address-location-tweets-risk">address and location exposure</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and other walkthroughs are on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'sharenting-kids-photos-old-tweets',
     title: '晒娃推文与孩子的数字身份：现在清理还来得及',
     excerpt:
@@ -14436,7 +14426,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns this inventory into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. How the score works is explained in <a href="/blog/digital-footprint-health-score">using the health score</a>, and what a report contains is in <a href="/blog/anatomy-of-a-footprint-report">the anatomy of a report</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and other scenarios are on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'x-archive-csv-vs-json',
     title: 'X 归档里的 CSV 与 JSON：两种格式各能做什么',
     excerpt:
@@ -14541,7 +14531,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) handles the format question for you. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access, and you do not need to work out the CSV and JSON difference first. The scoring model is explained in <a href="/blog/digital-footprint-health-score">using the health score</a>, and label meanings are in <a href="/blog/risk-labels-explained">risk labels</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and everything else is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'x-phishing-dm-scams',
     title: '伪装成 X 官方的钓鱼私信：七个识别信号与账号自救顺序',
     excerpt:
@@ -14660,7 +14650,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) handles the other half: how much of your history is usable for targeting. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. For the security checklist side, see <a href="/blog/x-connected-apps-permission-audit">permission audits</a>, and for long-term upkeep see <a href="/blog/30-day-footprint-habit-plan">the 30-day habit plan</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and the rest is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'personal-data-in-old-tweets-faq',
     title: '旧推文里的个人信息：读者最常问的十个问题',
     excerpt:
@@ -14754,7 +14744,7 @@ export const allPosts: BlogPost[] = [
 <h2>About Digital Footprint Health</h2>
 <p>Digital Footprint Health (digital-footprint-health.shop) turns the first question above into a free operation. Upload your X data archive and the tool parses every tweet and media file on your own device, returning a score from 0 to 100 and flagged items grouped by category. It is read-only, uploads nothing and never asks for account access. Related cases are in <a href="/blog/id-photo-tweets-leak">handling document photos</a> and <a href="/blog/sharenting-kids-photos-old-tweets">cleaning sharenting content</a>. Scope and pricing are on the <a href="/pricing">pricing page</a>, the free check starts on the <a href="/">homepage</a>, and the rest is on the <a href="/blog">blog</a>.</p>`,
   },
-  {
+{
     slug: 'tweet-deletion-tool-stack',
     title: '清理旧推文的三件套：原生入口、批量工具、手动白名单怎么分工',
     excerpt:
@@ -14908,8 +14898,7 @@ export const allPosts: BlogPost[] = [
       { q: '三层组合方案大概要花多久？', a: '以 1200 条为目标量级，体检约 10 分钟，批量删除 1 到 2 小时，白名单和边界推文复核约 1 小时，整体 2 到 3 小时。', qEn: 'How long does the three-layer plan take?', aEn: 'For roughly 1,200 tweets: about 10 minutes for the check, 1 to 2 hours for bulk deletion, and about an hour for the keep list and borderline review. Two to three hours in total.' },
     ],
   },
-
-  {
+{
     slug: 'tweet-deletion-tool-privacy-compared',
     title: '删除工具的隐私对比：数据留在本机还是上传服务器',
     excerpt:
@@ -15045,8 +15034,7 @@ export const allPosts: BlogPost[] = [
       { q: '怎么确认工具不会长期保存我的推文？', a: '看它的隐私政策是否给出具体留存天数、是否说明备份与日志的清理方式、是否有公开的子处理方名单。只有"我们重视你的隐私"这类表述，等于没有承诺。', qEn: 'How do I know a tool will not keep my tweets?', aEn: 'Look for a specific retention period, a description of how backups and logs are purged, and a published subprocessor list. A policy that only says it values your privacy has promised nothing.' },
     ],
   },
-
-  {
+{
     slug: 'x-terms-of-service-deletion-clauses',
     title: 'X 服务条款里和删推文有关的条款，逐条读一遍',
     excerpt:
@@ -15161,8 +15149,7 @@ export const allPosts: BlogPost[] = [
       { q: '读服务条款对普通用户有什么实际价值？', a: '价值在于预期管理。知道哪些副本你控制不了，就不会把时间花在无效的重删上，也能提前把搜索移除和合规请求排进计划。', qEn: 'What practical value do the terms have for a regular user?', aEn: 'Setting expectations. Knowing which copies are out of reach keeps you from re-deleting things pointlessly, and it gets search removal and compliance requests onto the plan early.' },
     ],
   },
-
-  {
+{
     slug: 'data-broker-removal-vs-tweet-deletion',
     title: '数据经纪商移除与推文删除：两条流程不要混着排队',
     excerpt:
@@ -15292,8 +15279,7 @@ export const allPosts: BlogPost[] = [
       { q: '先做哪一步收益更大？', a: '先做推文这一侧。它即时生效、成本可估算，而且它是经纪商抓取的上游。上游清理干净之后，下游的移除更稳定。', qEn: 'Which step pays off more first?', aEn: 'The tweet side. It takes effect immediately, its cost is easy to estimate, and it feeds the scraping pipeline. Clean the upstream and the downstream removals hold better.' },
     ],
   },
-
-  {
+{
     slug: 'footprint-check-vs-manual-review',
     title: '自动体检和人工翻归档：覆盖率、成本、漏判率对照',
     excerpt:
@@ -15406,7 +15392,7 @@ export const allPosts: BlogPost[] = [
       { q: '体检本身会删除内容吗？', a: '不会。体检是只读分析，在本机解析归档并输出评分与风险清单，不执行任何删除动作。删除是独立且可选的步骤。', qEn: 'Does the check delete anything?', aEn: 'No. It is a read-only analysis that parses your archive on your device and returns a score with a risk list. Deletion is a separate, optional step.' },
     ],
   },
-  {
+{
     slug: "x-archive-migration-new-device",
     title: "换设备后 X 归档怎么迁移：不丢数据的完整流程",
     excerpt:
@@ -15581,7 +15567,7 @@ export const allPosts: BlogPost[] = [
       { q: "旧设备上的归档什么时候可以删？", a: "新设备验证通过之后。验证包括条目数、各档风险数、白名单生效三项，全部对得上再删，两份数据并存的成本远低于重新申请归档。", qEn: "When can I delete the archive on the old device?", aEn: "After the new device passes verification: matching entry counts, matching per-category risk counts, and a working whitelist. Keeping both copies costs far less than requesting a fresh archive." },
     ],
   },
-  {
+{
     slug: "footprint-check-data-sources",
     title: "数字足迹体检的数据从哪来：一份报告背后的数据流向",
     excerpt:
@@ -15738,7 +15724,7 @@ export const allPosts: BlogPost[] = [
       { q: "哪些归档文件是刻意不读的？", a: "广告互动记录、关注与粉丝列表、设备令牌与个性化设置都不读。前三类与推文风险无关或涉及他人隐私，最后会让条目数虚高，反而干扰判断。", qEn: "Which archive files are deliberately skipped?", aEn: "Ad engagement records, follower and following lists, and device tokens with personalization settings. The first group is unrelated to tweet risk or involves other people's data, and including them would inflate counts and distort judgment." },
     ],
   },
-  {
+{
     slug: "teaching-kids-digital-footprint",
     title: "教孩子认识数字足迹：家长能直接用的 5 个练习",
     excerpt:
@@ -15847,7 +15833,7 @@ export const allPosts: BlogPost[] = [
       { q: "孩子已经发过不该公开的内容，该怎么处理？", a: "不用责备开场。把那条内容当作例子，一起看他为什么能被找到，然后删掉并顺手检查可见范围设置。解释清楚删掉的收益和局限，比强调危险有效。", qEn: "What if the content is already out there?", aEn: "Skip the scolding. Use that post as the example, look together at why it was findable, then delete it and check the visibility settings. Explaining both the value and the limits of deleting beats emphasizing danger." },
     ],
   },
-  {
+{
     slug: "privacy-deletion-request-letter-template",
     title: "隐私删除请求信模板：GDPR 和 CCPA 两条路径怎么选",
     excerpt:
@@ -16025,7 +16011,7 @@ Please confirm receipt in writing and inform me of the outcome within the statut
       { q: "删除请求被拒绝后还有别的办法吗？", a: "有。GDPR 路径下可以要求对方出具正式拒绝说明,再向所在国数据保护机构投诉,这一层投诉通常是免费的。CCPA 路径下可以向加州总检察长举报。两条路都不需要律师,但都要保留完整的往来邮件作为证据链。", qEn: "What if the request is refused?", aEn: "You have options. Under GDPR, demand the formal refusal reasoning, then complain to the data protection authority in your country, which is normally free to do. Under CCPA, report to the California Attorney General. Neither route needs a lawyer, but both depend on keeping the full email chain as evidence." },
     ],
   },
-  {
+{
     slug: "social-account-password-manager-setup",
     title: "社交账号密码管理器落地：从入库到应急访问",
     excerpt:
@@ -16115,7 +16101,7 @@ Please confirm receipt in writing and inform me of the outcome within the statut
       { q: "多久换一次社交账号密码？", a: "不建议按固定周期无脑轮换,那会产生有规律的新密码。更有效的触发条件是:该密码曾在其他站点使用过、收到过登录预警、或第三方授权清单里出现了不记得的服务。出现这三种情况之一就换,平时不必动。", qEn: "How often should social passwords be rotated?", aEn: "Routine rotation on a fixed schedule is not worth it, since it produces predictable new values. Better triggers: the password was reused on another site, you got a login alert, or an unrecognised service appeared in the connected apps list. Rotate on any of those three and leave it alone otherwise." },
     ],
   },
-  {
+{
     slug: "offline-archive-search-indexing",
     title: "给 200MB 的 X 归档建一份本地搜索索引",
     excerpt:
@@ -16312,7 +16298,7 @@ rl.on('close', () =&gt; {
       { q: "删除推文后归档里的记录会消失吗？", a: "不会。归档是导出那一刻的快照,之后你删除的内容仍然留在快照里。这也是本地索引存在的意义之一:它可以作为\"删除前\"的对照,用来看哪些内容其实早就删过但归档里还有。索引和线上状态之间的一致性说明在归档格式对照那篇里。", qEn: "Does deleting a post remove it from the archive?", aEn: "No. The archive is a snapshot from the moment of export, so anything you delete afterwards stays inside it. That is one reason a local index is worth having: it acts as a pre-deletion reference, showing what you already removed while the snapshot still holds it. The consistency question between archive and live state is covered in the archive format comparison." },
     ],
   },
-  {
+{
     slug: "cleanup-addiction-when-to-stop",
     title: "清理成瘾：数字足迹洁癖的边界在哪里",
     excerpt:
@@ -16464,7 +16450,7 @@ rl.on('close', () =&gt; {
       { q: "一天清理多少条算合理？", a: "按风险项数量来规划更实用，推文条数意义不大。一份体检报告里的高风险项通常能在一到两小时内处理完，可以拆成两到三批用可续跑的任务方式完成。给自己设一个时间上限，到点收工，剩下的留到下一次计划时间。", qEn: "How much should I clean in a single day?", aEn: "Plan by the number of high-risk findings rather than by post count. One report's high-risk items usually clear in one or two hours, which splits well into two or three batches using a resumable job. Set a time cap, stop when it hits, and leave the rest for the next planned session." },
     ],
   },
-  {
+{
     slug: "footprint-score-improvement-plan",
     title: "体检分数怎么提上去：从 60 分到 85 分的执行计划",
     excerpt:
@@ -16590,7 +16576,7 @@ rl.on('close', () =&gt; {
       { q: "提分应该先删推文还是先做账号安全设置？", a: "两件事不分先后，但顺序影响体验。先处理直接标识信息，因为这一步的分数回报最高也最有形；账号安全设置（两步验证、登录设备检查）不直接改变体检分数，但决定删掉的内容会不会因为账号被盗而重新暴露。建议第一周做前者，账号安全检查并入同周的收尾动作。", qEn: "Should I delete posts first or fix account security first?", aEn: "Both matter, and the order mostly affects how it feels. Start with direct identifiers, since that step returns the most score and the most visible progress. Security settings such as two-factor authentication and device checks do not move the score directly, but they decide whether deleted content can reappear through a hijacked account. Do the deletions in week one and fold the security pass into that week's wrap-up." },
     ],
   },
-  {
+{
     slug: "chinese-overseas-student-footprint-check",
     title: "留学生数字足迹自查：从签证表到学校背调要检查什么",
     excerpt:
@@ -16713,7 +16699,7 @@ rl.on('close', () =&gt; {
       { q: "毕业之后还需要继续做数字足迹自查吗？", a: "需要，但频率可以降下来。毕业后的主要触发点是换工作、申请其他国家的签证、以及进入对合规要求较高的行业。把自查并入每半年一次的体检节奏，比在需要时才临时处理更从容。", qEn: "Is an audit still needed after graduation?", aEn: "Yes, at a lower frequency. The triggers afterwards are changing jobs, applying for a visa for another country, and entering a field with stricter compliance expectations. Folding the audit into a twice-yearly check is calmer than handling it under deadline pressure." },
     ],
   },
-  {
+{
     slug: "x-login-alert-unfamiliar-device-faq",
     title: "收到陌生设备登录提醒？先弄清这五个问题",
     excerpt:
@@ -16810,7 +16796,7 @@ rl.on('close', () =&gt; {
       { q: "为什么我经常收到登录提醒？", a: "多数情况是登录环境变化频繁：换网络、清浏览器数据、重装应用、使用多个设备都会触发提醒。持续出现会让人对提醒麻木，真正异常的那次容易被忽略。减少不必要的多设备登录，并在常用设备上保持登录状态，可以减少噪音。", qEn: "Why do I get login alerts so often?", aEn: "Usually because your sign-in environment changes often. Switching networks, clearing browser data, reinstalling the app and using several devices all trigger alerts. Constant alerts dull the response, and the genuinely odd one slips past. Cutting unnecessary sign-ins and staying signed in on your main device reduces the noise." },
     ],
   },
-  {
+{
     slug: "q4-2026-recruiting-season-cleanup",
     title: "Q4 招聘季倒计时：旧推文该在哪一步处理掉",
     excerpt:
@@ -16922,7 +16908,7 @@ rl.on('close', () =&gt; {
       { q: "第四季度清理和明年一月清理有什么区别？", a: "主要差别是处理周期。第四季度提交的索引移除请求，处理时间跨年，遇到节奏放缓会更慢；同时部分隐私与合规窗口在新年切换，规则确认需要额外时间。如果已经确定要清理，在十月到十一月做完全部动作更省事。", qEn: "How does Q4 cleanup differ from cleaning up in January?", aEn: "Mainly turnaround time. Removal requests filed in Q4 run across the year boundary and slow down further when teams wind down, and some privacy and compliance windows reset in January, which adds time to confirm the rules. If you already know cleanup is needed, finishing it in October or November is the easier path." },
     ],
   },
-  {
+{
     slug: "ai-answer-engines-old-tweets",
     title: "AI 答案引擎正在重播你的旧推文：先查这三处，再动手",
     excerpt:
@@ -17068,7 +17054,7 @@ rl.on('close', () =&gt; {
       { q: "多久查一次比较合适？", a: "每次换工作、申请签证、发布新作品这类会引来检索的节点前查一次就够。日常不必频繁查，这类索引变化很慢，一周查三次和一季度查一次看到的结果通常没什么差别。", qEn: "How often is it worth checking?", aEn: "Once before each event that invites searching, such as a job change, a visa application or a launch. There is no need to check daily: index changes move slowly, so checking three times a week and checking once a quarter usually surfaces the same results." },
     ],
   },
-  {
+{
     slug: "second-hand-embarrassment-old-posts",
     title: "翻到自己十年前的推文会脸红，这个反应其实有用",
     excerpt:
@@ -17183,7 +17169,7 @@ rl.on('close', () =&gt; {
       { q: "如果我想留一部分，节点怎么定？", a: "按\"这条以后会不会被当成误解证据\"分。会被误读的收窄可见范围或删除，记录个人节点的、对他人没有影响的留着。判断标准是误读风险，不是当时写得够不够好。", qEn: "If I want to keep some, where do I draw the line?", aEn: "Sort by whether a post could later be read as evidence of something you did not mean. Narrow the visibility of those or delete them, and keep the ones marking personal milestones with no effect on anyone else. The test is misreading risk, not how well written the post was." },
     ],
   },
-  {
+{
     slug: "x-session-revocation-all-devices",
     title: "点了\"登出所有设备\"还是被登着：X 会话吊销的完整做法",
     excerpt:
@@ -17304,7 +17290,7 @@ rl.on('close', () =&gt; {
       { q: "多久做一次完整审查比较合适？", a: "半年一次够用。另外几个时间点值得单独加做：换手机或电脑之后、发现邮箱有异常登录之后、以及你集中试用过一批第三方工具之后。这三种情况下授权列表变化最大。", qEn: "How often is a full audit worth doing?", aEn: "Twice a year covers most situations. Three extra moments deserve their own pass: after changing a phone or computer, after any suspicious sign-in on the linked email, and after trying a batch of third-party tools. Those are when the grant list changes the most." },
     ],
   },
-  {
+{
     slug: "chinese-fandom-tweets-cleanup",
     title: "考公、考研复试前的社交账号自查：饭圈旧帖怎么处理",
     excerpt:
@@ -17422,7 +17408,7 @@ rl.on('close', () =&gt; {
       { q: "同一网名跨平台使用，风险有多大？", a: "这是把多个平台串成同一个人的主要线索。拼音、谐音或固定前缀的命名方式会让这个串联变得很容易，一旦其中某个平台的记录出问题，其他平台会被一并看到。至少让高风险平台的账号名与其他平台脱钩。", qEn: "How much risk comes from reusing one handle across platforms?", aEn: "It is the main thread that links separate platforms to one person. Pinyin, homophone and fixed-prefix naming make that link easy to draw, so if one platform holds a problem, the others get read alongside it. At minimum, decouple the account name on the highest-risk platform from the rest." },
     ],
   },
-  {
+{
     slug: "old-tweets-as-court-evidence",
     title: "旧推文进法庭：社交内容在民事纠纷里怎么被采信",
     excerpt:
@@ -17537,7 +17523,7 @@ rl.on('close', () =&gt; {
       { q: "账号持有人已经不在了，旧推文怎么处理？", a: "这属于数字遗产的范畴，处理方式取决于平台政策和所在地规则，通常需要提供关系与身份证明。多数平台对纪念账号有专门设置，可以保留账号同时限制访问。这类内容与普通清理的流程不同，动手前先确认适用规则。", qEn: "What happens to old tweets when the account holder has died?", aEn: "This falls under digital legacy. The route depends on platform policy and local rules, and usually requires proof of relationship and identity. Most platforms offer a memorialised account setting that preserves the account while limiting access. It follows a different process from ordinary cleanup, so confirm the rules first." },
     ],
   },
-  {
+{
     slug: "delete-tweets-restricted-account",
     title: "账号被限制或冻结时，还能删除推文吗？",
     excerpt:
@@ -17698,7 +17684,7 @@ rl.on('close', () =&gt; {
       { q: "中断之后怎么知道哪些推文已经删过了？", a: "靠操作前留下的本地记录。建议记录发布时间或标识、处理状态、处理时间三项，中断后按记录续跑即可，不必从零开始。没有记录时，可以对照归档文件逐条核对，只是耗时明显更长。", qEn: "After an interruption, how do I know which tweets are already gone?", aEn: "From a local log written before the job started. Post time or identifier, handling status and timestamp are enough to resume. Without a log you can reconcile against your archive file post by post, though it takes considerably longer." },
     ],
   },
-  {
+{
     slug: "deletion-request-response-timeline",
     title: "删除请求要等多久？GDPR 30 天与 CCPA 45 天时限对照",
     excerpt:
@@ -17845,7 +17831,7 @@ rl.on('close', () =&gt; {
       { q: "平台自带的删除功能也受这些时限约束吗？", a: "不受。平台内置的删除功能属于产品流程，处理速度通常远快于法定时限，但有自己的边界，例如时间范围或数量限制。法定时限适用于你要对方删除、而由对方掌握决定权的情形，例如第三方转载或数据经纪商档案。", qEn: "Are a platform's own deletion tools bound by these deadlines?", aEn: "No. In-product deletion is a product flow, usually far faster than the statutory deadline, but it has its own limits around date ranges and volume. The statutory deadlines apply where the other party holds the decision, such as third-party reposts or data broker files." },
     ],
   },
-  {
+{
     slug: "x-archive-media-files",
     title: "X 归档里的 media 文件夹：里面存了什么，该怎么处理",
     excerpt:
@@ -17977,7 +17963,7 @@ rl.on('close', () =&gt; {
       { q: "删推文之后，归档里的媒体文件会同步消失吗？", a: "不会。归档是导出那一刻的快照，后续你在平台上做的删除不会回写到这个文件里。判断当前还剩哪些内容要看线上状态，判断历史上发过什么才用归档，两者混用容易得出错误结论。", qEn: "Do media files disappear from the archive when I delete posts?", aEn: "No. The archive is a snapshot from the export moment, and later deletions on the platform are not written back into it. Use the live state to see what remains and the archive to see what existed. Mixing the two leads to wrong conclusions." },
     ],
   },
-  {
+{
     slug: "x-email-change-security-alert",
     title: "收到 X 邮箱变更通知邮件？先做这五步",
     excerpt:
@@ -18124,7 +18110,7 @@ rl.on('close', () =&gt; {
       { q: "没有看到异常登录记录，是不是就没事了？", a: "不一定。部分攻击者会刻意保持低活动量，只做必要的权限变更，以避免触发通知。除了登录记录，还应该核对已连接应用、转发规则、绑定邮箱与手机号这几处，它们不显示在登录历史里，但同样能形成持久访问。", qEn: "If there is no abnormal login record, am I in the clear?", aEn: "Not necessarily. Some attackers keep activity deliberately low, making only the permission changes they need to avoid triggering alerts. Beyond login history, check connected apps, forwarding rules, and the bound email and phone number. Those do not appear in login history and can still create persistent access." },
     ],
   },
-  {
+{
     slug: "travel-documents-in-tweets",
     title: "登机牌和护照照片发到 X 上，会泄露什么",
     excerpt:
@@ -18284,7 +18270,7 @@ rl.on('close', () =&gt; {
       { q: "护照照片泄露之后需要换证件吗？", a: "取决于泄露的范围和证件号是否可读。如果只有照片本体、证件号不可辨认，通常不需要更换；如果证件号清晰可读，且同时暴露了出生日期等辅助字段，更换证件是值得考虑的选项。这个判断需要结合证件类型和所在地规则。", qEn: "Do I need to replace a passport after a photo leak?", aEn: "It depends on the scope and whether the number is legible. If only the photo leaked and the number cannot be read, replacement is usually unnecessary. If the number is clear and supporting fields such as the date of birth are also visible, replacing the document is worth considering. The call depends on the document type and local rules." },
     ],
   },
-  {
+{
     slug: "tweets-js-emoji-unicode-parsing",
     title: "解析 tweets.js：编码、emoji 与中文文本的坑",
     excerpt:
@@ -18426,7 +18412,7 @@ rl.on('close', () =&gt; {
       { q: "解析完归档后第一步应该做什么？", a: "先建本地索引：按年份、关键词、风险等级三个维度做一次结构化整理。有了索引再决定删什么，比按时间一刀切更可控。", qEn: "What is the first thing to do after parsing?", aEn: "Build a local index first, organised by year, keyword and risk level. Deciding what to delete is far easier once you can query the archive, and it beats a blanket date cut-off." },
     ],
   },
-  {
+{
     slug: "chinese-vs-western-platform-privacy-settings",
     title: "X 与中文平台的隐私设置差异：中文用户该优先关哪几个开关",
     excerpt:
@@ -18555,7 +18541,7 @@ rl.on('close', () =&gt; {
       { q: "删掉原帖之后截图还存在，怎么办？", a: "截图无法通过删除消除，这部分属于传播层面的问题。可做的是减少可被截图的敏感表述，以及在自己的可控渠道上说明澄清。继续依赖删除并不能覆盖这一层。", qEn: "Screenshots survive even after I delete the post. What now?", aEn: "Deletion cannot reach screenshots, which is a distribution problem rather than a platform one. The practical response is to reduce the kind of phrasing that invites screenshots and to clarify through channels you control." },
     ],
   },
-  {
+{
     slug: "footprint-score-drop-causes",
     title: "体检分数突然下降？先排查这 6 个原因",
     excerpt:
@@ -18672,7 +18658,7 @@ rl.on('close', () =&gt; {
       { q: "体检多久做一次比较合理？", a: "按内容发布频率来定。日常不常发帖的账号每月一次足够；发布频繁或有公开身份需求的账号，可以两周一次，并在重要节点前后各加一次。", qEn: "How often should I run a check?", aEn: "Match it to how often you post. Monthly is plenty for a quiet account. If you post often or maintain a public profile, every two weeks plus one run before and after any significant event works well." },
     ],
   },
-  {
+{
     slug: "x-two-factor-backup-codes",
     title: "X 的两步验证备份码：存在哪、怎么用、丢了怎么办",
     excerpt:
@@ -18804,7 +18790,7 @@ rl.on('close', () =&gt; {
       { q: "把备份码存进密码管理器安全吗？", a: "这是三种方式里综合可靠性最高的一种，前提是主密码足够强且你能记住。建议同时在离线位置保留一份纸质副本，用于主密码也忘记的极端情况。", qEn: "Is it safe to store backup codes in a password manager?", aEn: "It is the most reliable of the three options, provided the master password is strong and memorable. Keep an offline paper copy as well for the case where the master password is also lost." },
     ],
   },
-  {
+{
     slug: "social-media-break-vs-cleanup",
     title: "停用账号还是清理旧推文：哪种更能缓解焦虑",
     excerpt:
@@ -18917,7 +18903,7 @@ rl.on('close', () =&gt; {
       { q: "怎么判断清理已经够了？", a: "当清理的动机从「处理具体风险」变成「必须做到某个数字」，就已经过界。合理的停止点是你对公开内容的担心不再影响日常判断，清空全部历史并不是目标。", qEn: "How do I know when cleanup is enough?", aEn: "When the motive shifts from handling a specific risk to hitting a number, it has gone too far. The right stopping point is when worry about public content stops shaping your daily decisions, not an empty history." },
     ],
   },
-  {
+{
   slug: '60-day-digital-footprint-milestone',
   canonical: '/blog/60-day-digital-footprint-milestone',
   title: '数字足迹清理 60 天复盘：12 个方法里，真正值得做的只有这 5 个',
@@ -19064,7 +19050,7 @@ rl.on('close', () =&gt; {
 <p>If you would rather do the whole thing on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive, and the tool parses every tweet locally to flag risks, with your data never leaving your computer. For next steps, see <a href="/blog/how-to-delete-old-tweets-2026">how to delete old tweets</a> and <a href="/blog/digital-footprint-health-score">how the health score works</a>.</p>
 `,
   },
-  {
+{
   slug: 'footprint-score-vs-credit-score',
   canonical: '/blog/footprint-score-vs-credit-score',
   title: '数字足迹评分和信用评分不是一回事：3 个关键区别',
@@ -19144,7 +19130,7 @@ rl.on('close', () =&gt; {
 <p>If you have never run a check, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and get a 0-100 score computed locally, with your data never leaving your machine. For context, see <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
 `,
   },
-  {
+{
   slug: 'x-account-locked-recovery-steps',
   canonical: '/blog/x-account-locked-recovery-steps',
   title: 'X 账号被锁了怎么办：一份分步恢复指南',
@@ -19230,7 +19216,7 @@ rl.on('close', () =&gt; {
 <p>If you worry the account is already exposed, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and check locally for suspicious authorizations and privacy leaks, with your data never leaving your machine.</p>
 `,
   },
-  {
+{
   slug: 'delete-tweets-before-background-check',
   canonical: '/blog/delete-tweets-before-background-check',
   title: '背景调查前，先清理这三类旧推文',
@@ -19313,7 +19299,7 @@ rl.on('close', () =&gt; {
 <p>To clean efficiently and safely on your own machine, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and bulk-flag and delete by risk, with your data never leaving your computer. If you are a student abroad, <a href="/blog/chinese-overseas-student-footprint-check">the overseas-student check</a> is worth reading first.</p>
 `,
   },
-  {
+{
   slug: 'chinese-privacy-myths-x-tweets',
   canonical: '/blog/chinese-privacy-myths-x-tweets',
   title: '中国用户最容易忽略的 5 个推文隐私误区',
@@ -19393,7 +19379,7 @@ rl.on('close', () =&gt; {
 <p>To check and clean on your own machine, free and offline, open <a href="/">digital-footprint-health.shop</a>, upload your X archive and let the tool parse and flag risks locally, with your data never leaving your computer. Pair it with <a href="/blog/chinese-vs-western-platform-privacy-settings">the China-vs-West settings comparison</a> to cover both sides.</p>
 `,
   },
-  {
+{
     slug: 'health-score-weighting-breakdown',
     title: '隐私评分权重拆解：你的 0-100 分到底怎么算出来的',
     excerpt: '评分不是随便给的数字。它把手机号、定位、敏感话题等几类风险按不同权重相加，再折算成 0-100。本文拆解每一类的权重来源、为什么某些内容扣分更狠，以及你到底能怎么把分提上去。',
@@ -19513,7 +19499,7 @@ rl.on('close', () =&gt; {
 <p>Every check on digital-footprint-health.shop runs on your device, and your data never leaves your computer. Pair it with <a href="/blog/footprint-score-vs-credit-score">privacy score versus credit score</a> to see why these two numbers are not the same thing at all.</p>
 `,
   },
-  {
+{
     slug: 'x-archive-download-chinese-guide',
     title: '下载 X 数据归档：中文用户一步步实操指南',
     excerpt: '很多中文用户卡在第一步：界面是英文的、邮件半天不来、下载链接打不开。这篇用中文视角走一遍完整流程，顺手把 Windows 解压乱码、压缩包密码、国内网络访问这几个坑都讲了。',
@@ -19592,7 +19578,7 @@ rl.on('close', () =&gt; {
 <p>If the request fails, the <a href="/blog/x-archive-download-failed-fix">download troubleshooting guide</a> covers the common errors. The whole point of grabbing the archive is to see what you left exposed, then decide what to clean up. A local check beats any online tool because nothing leaves your machine. The <a href="/">homepage</a> links straight to the check tool.</p>
 `,
   },
-  {
+{
     slug: 'what-x-archive-contains-faq',
     title: 'X 数据归档里到底包含什么？一篇讲清',
     excerpt: '下载完归档，最该问的是“这里面到底有什么”。它不是只有你发的推文，还带着私信、媒体、登录记录。这篇用问答形式快速讲清，帮你判断哪些内容最该优先清理。',
@@ -19653,7 +19639,7 @@ rl.on('close', () =&gt; {
 <p>To get the archive, see the <a href="/blog/x-archive-download-chinese-guide">download guide</a>. Upload it to <a href="/upload">the free check page</a> and the tool flags these high-risk items on your own device, with the data never leaving your computer. The <a href="/">homepage</a> links to the same tool.</p>
 `,
   },
-  {
+{
     slug: 'request-x-archive-step-by-step-2026',
     title: '申请 X 数据归档：2026 年一步步完整流程（含大账号分卷 ZIP）',
     excerpt: '想清理旧推文，第一步是先下载自己的归档。这篇把 2026 年当前的申请流程走一遍，重点讲一个今年很关键的变化：活跃几年、积累上万条的账号，归档开始拆成多个 100MB 左右的分卷 ZIP。',
@@ -19751,7 +19737,7 @@ rl.on('close', () =&gt; {
 <p>Every archive check on digital-footprint-health.shop runs locally on your device, and the file is not uploaded to any server. If you have never downloaded your own archive, start at the <a href="/upload">free check page</a> or read <a href="/blog/x-archive-download-failed-fix">download troubleshooting</a> to get past step one. For deletion cost, see the <a href="/pricing">pricing page</a>. You can reach the same tools from the <a href="/">homepage</a>.</p>
 `,
   },
-  {
+{
     slug: 'china-public-sector-job-x-tweets-audit',
     title: '体制内、国企求职者，怎么自查 X 上的旧推文风险',
     excerpt: '体制内和国企招聘有政审环节，也会看网络言论。X 在国内打不开，但归档、背景调查公司、别人转存的副本都可能把它翻出来。投递前自己先查一遍，比出事再删强。',
@@ -19828,7 +19814,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop you can run a local check that scans your archive for every hard detail in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get a risk report in minutes. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
 `,
   },
-  {
+{
     slug: 'holiday-season-2026-footprint-cleanup',
     title: '双十一、黑五、年终：2026 促销季前的社媒数字足迹清理清单',
     excerpt: '双十一、黑五、圣诞是一年最大的网购季。很多人入场前从不清社媒足迹，收货地址、手机号顺着晒单和定位全暴露了。促销季前花半小时清一遍，比事后补救划算。',
@@ -19903,7 +19889,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop a local check pulls shipping addresses, phone numbers, and other hard details from your archive in one pass, and the data never leaves your computer. Start at the <a href="/upload">free check page</a> to upload the archive and get the report. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Download help is in <a href="/blog/x-archive-download-failed-fix">this piece</a>.</p>
 `,
   },
-  {
+{
     slug: 'delete-tweets-by-engagement',
     title: '按互动量清理推文：保留高光，删掉风险（X 删除实操）',
     excerpt: '想清理 X 旧推文，全删可惜、全留又怕。一个更省心的办法是按互动量排序：高互动、仍有价值的留着，低互动但带手机号和定位的旧推文优先删。',
@@ -20025,7 +20011,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, a local check ranks every post in your archive by risk type and engagement in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get the ranked risk list in minutes. For trade-offs by scenario, read <a href="/blog/delete-tweets-before-background-check">deleting posts before a background check</a>, and for year-by-year bulk deletion see <a href="/blog/delete-tweets-by-year">delete old tweets by year</a>. For deletion cost, see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
 `,
   },
-  {
+{
     slug: 'chinese-platforms-history-cleanup-guide',
     title: '微博、微信、小红书的历史内容怎么清：和清理 X 不是一回事',
     excerpt: '国内社媒和 X 的删除逻辑完全不同：入口、规则、下架是否等于消失，都不一样。用清理 X 的思路去清微博微信，很容易踩坑。这篇讲清差异和顺序。',
@@ -20094,7 +20080,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, the local check targets X archives and surfaces hard info like phone numbers, locations, and documents in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Pair it with the step-by-step self-check above for domestic platforms.</p>
 `,
   },
-  {
+{
     slug: 'chinese-phone-number-x-tweets-selfcheck',
     title: '中文用户自查：X 推文里泄露的国内手机号和微信怎么清',
     excerpt: '中文用户常在推文里随手留国内手机号或微信 ID，在国内语境下风险比纯英文账号大得多。这篇教你三步自查、准确定位、干净清理。',
@@ -20171,7 +20157,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, a local check scans your archive for every phone number and WeChat ID in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For cross-platform risk see the <a href="/blog/chinese-platforms-history-cleanup-guide">domestic cleanup guide</a>, and for the engagement strategy see <a href="/blog/delete-tweets-by-engagement">this piece</a>. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
 `,
   },
-  {
+{
     slug: 'ccpa-gdpr-deletion-rights-faq-2026',
     title: 'CCPA 与 GDPR 删除权 FAQ：你的推文数据能要求平台删吗（2026）',
     excerpt: 'GDPR（欧盟）和 CCPA（加州）都给了用户的删除权，但范围、对象、例外都不一样。这篇用问答形式讲清：账号删除、向平台主张删除、2026 年有哪些变化。',
@@ -20227,7 +20213,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, a local check helps you locate phone numbers and locations in your archive fast, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion under a restricted account see <a href="/blog/delete-tweets-restricted-account">deleting from a restricted account</a>. For cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>.</p>
 `,
   },
-  {
+{
     slug: 'halloween-social-media-privacy-2026',
     title: '万圣节社媒隐私：晒妆造、发派对定位前先看清这几处',
     excerpt: '万圣节是社媒泄露高发期：妆造照藏着门牌和人脸，派对定位实时发等于广播行踪。节前花几分钟自查，节后顺手清一遍，比出事再删强。',
@@ -20296,7 +20282,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, a local check scans your archive for locations, phone numbers, and other hard info in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A quick self-check around any holiday is worth it.</p>
 `,
   },
-  {
+{
     slug: 'twitter-native-delete-vs-tools-2026',
     title: 'X 自带删除和第三方工具删推文，到底差在哪（2026 实测对比）',
     excerpt: '很多人以为在 X 里点删除就够了。其实 X 自带删除和第三方删除工具，在能删多少、能不能批量、能不能动老推文、删完还搜不搜得到这几件事上，差别很大。这篇用实测讲清边界。',
@@ -20400,7 +20386,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check surfaces phone numbers, locations, and documents from your archive in one pass, and the data never leaves your device. Start at the <a href="/upload">free check page</a> to upload the archive and get the risk list in minutes. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Whether you end up with built-in delete or a tool, see the full range first; it beats deleting blind.</p>
 `,
   },
-  {
+{
     slug: 'chinese-users-x-privacy-settings-checklist',
     title: '中文用户 X 隐私设置清单：逐项收紧，从国内视角看',
     excerpt: '很多中文用户照搬英文教程调 X 隐私设置，却漏掉了国内语境特有的风险：微信 ID、手机号、支付关联。这份清单按国内视角逐项过一遍，比泛泛的教程更贴身。',
@@ -20495,7 +20481,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check scans your archive for phone numbers, WeChat IDs, and locations in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. Tightening settings is step one; the historical cleanup is the larger part.</p>
 `,
   },
-  {
+{
     slug: 'chinese-freelancers-x-client-dm-privacy',
     title: '中文自由职业者：X 上客户 DM 与作品集的隐私清理',
     excerpt: '自由职业者在 X 上靠作品集和 DM 接活，但这也留下两类隐私痕迹：客户聊天里的报价和联系方式、作品集帖里暴露的设备和住址。这篇讲怎么清理又不丢生意。',
@@ -20568,7 +20554,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check surfaces phone numbers, locations, and WeChat IDs from your archive in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A freelancer portfolio is an asset; privacy traces are not, so keep them apart.</p>
 `,
   },
-  {
+{
     slug: 'change-x-username-privacy-faq',
     title: '改 X 用户名能清除旧足迹吗？FAQ',
     excerpt: '有人以为改了 X 用户名（@handle）就像换个身份，旧推文和旧足迹就跟着没了。事实没那么简单。这篇用几个常见问题讲清改用户名到底改了什么、没改什么。',
@@ -20642,7 +20628,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check surfaces phone numbers and locations from your archive in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. A handle change hides the door, it does not clear the rooms.</p>
 `,
   },
-  {
+{
     slug: 'cybersecurity-awareness-month-x-footprint-2026',
     title: '十月是网络安全宣传月：顺手做一次 X 数字足迹审计',
     excerpt: '十月在不少国家是网络安全宣传月，各类机构都会提醒你查密码、查账号。但很少有人提醒你查自己的旧推文。借着这个月的由头，花十五分钟给 X 数字足迹做一次审计，正合适。',
@@ -20707,7 +20693,7 @@ rl.on('close', () =&gt; {
 <p>On digital-footprint-health.shop, an on-device check scans your archive for phone numbers, locations, and WeChat IDs in one pass, with the data never leaving your device. Start at the <a href="/upload">free check page</a> to upload the archive. For deletion cost see the <a href="/pricing">pricing page</a>, and reach the same tools from the <a href="/">homepage</a>. With the awareness month as the prompt, add check your old posts to your list too.</p>
 `,
   },
-  {
+{
     slug: 'local-vs-cloud-tweet-archive-parsing',
     title: '本地解析 vs 云端解析：X 归档到底怎么处理才更私密',
     excerpt: '清理 X 旧推文的第一步是拿到数据归档（ZIP），但拿到之后怎么"读"这份归档，决定了你的隐私边界。本文对比本地解析与云端解析的差别，并给出可落地的技术实现。',
@@ -20856,7 +20842,7 @@ rl.on('close', () =&gt; {
 <p>To see how much you have left behind, first read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then run a check on your own machine with <a href="/blog/browser-side-archive-parsing">in-browser archive parsing</a>. You can also return to the <a href="/">digital-footprint-health.shop homepage</a> for a 100% on-device free option.</p>
 `,
   },
-  {
+{
     slug: 'chinese-content-creators-x-privacy-cleanup',
     title: '中文创作者在 X 上的"人设炸弹"：接商单前，旧推文得先清',
     excerpt: '很多中文创作者把 X 当成"海外版微博"随手发，却忘了品牌方和粉丝都会考古。一条几年前的情绪推文，可能直接影响商单和涨粉。本文从中文本地视角讲怎么系统清理。',
@@ -20943,7 +20929,7 @@ rl.on('close', () =&gt; {
 <p>For a creator-focused audit, start with <a href="/blog/how-to-delete-old-tweets-2026">the 2026 guide to deleting old tweets</a>, then use <a href="/blog/browser-side-archive-parsing">in-browser parsing</a> to flag risky posts on your own machine. The <a href="/">digital-footprint-health.shop homepage</a> also has a 100% on-device free option.</p>
 `,
   },
-  {
+{
     slug: 'passkey-x-account-faq-2026',
     title: 'X 账号能用 Passkey 登录吗？2026 密钥登录常见问答',
     excerpt: 'Passkey（密钥）正在 replaces 密码成为更安全的登录方式。本文回答 X 账号是否支持 Passkey、它比 2FA 强在哪、丢了设备怎么办等高频问题。',
@@ -20993,7 +20979,7 @@ rl.on('close', () =&gt; {
 <p>Sign-in security is only one part of account protection. To check whether your tweets leak a phone number or address, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then scan it locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> has a 100% on-device free check.</p>
 `,
   },
-  {
+{
     slug: 'chinese-exporters-x-b2b-tweets-privacy',
     title: '外贸老板的 X 账号：一条旧推文怎么把客户吓跑',
     excerpt: '很多中国外贸和 B2B 卖家把 X 当免费获客渠道，却没意识到客户会反向背调。晒工厂定位、报价截图、供应商名字，都可能成为丢单原因。本文从中文本地视角讲怎么自查。',
@@ -21080,7 +21066,7 @@ rl.on('close', () =&gt; {
 <p>For a systematic self-check, start with <a href="/blog/how-to-delete-old-tweets-2026">the 2026 guide to deleting old tweets</a>, then flag sensitive posts locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> also has a 100% on-device free option.</p>
 `,
   },
-  {
+{
     slug: 'x-algorithm-change-old-tweets-reach-2026',
     title: '2026 年 X 算法调整，旧推文怎么又被翻出来了',
     excerpt: '2026 年 X 多次调整推荐算法，不少用户发现几年前的旧推文突然又被推到时间线顶部。本文解释算法变化如何影响旧内容曝光，以及该怎么应对。',
@@ -21161,7 +21147,7 @@ rl.on('close', () =&gt; {
 <p>To see which old tweets the algorithm may keep pushing, read <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then flag sensitive content locally with <a href="/blog/browser-side-archive-parsing">in-browser parsing</a>. The <a href="/">digital-footprint-health.shop homepage</a> has a 100% on-device free check.</p>
 `,
   },
-  {
+{
     slug: 'x-data-breach-response-steps',
     title: 'X 账号数据泄露了怎么办：一步步止损与恢复指南',
     excerpt: '如果你的 X 账号出现在某次数据泄露名单里，或你怀疑账号被盗，第一时间怎么止损？本文给出可操作的步骤清单：改密码、踢设备、开 2FA、查异常、清理旧推文、通知相关方。',
@@ -21261,7 +21247,7 @@ rl.on('close', () =&gt; {
 <p>In an age of frequent breaches, no one can guarantee their name stays off every leak list. What you can do is lock the account and clear the old content before trouble arrives. Start by reading <a href="/blog/how-to-download-x-archive">how to download your X archive</a>, then learn <a href="/blog/x-two-factor-backup-codes">how to store 2FA backup codes</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free, 100% on-device footprint check and see exactly how many privacy traces you have left.</p>
 `,
   },
-  {
+{
     slug: 'chinese-real-name-system-x-privacy',
     title: '实名制下，中国用户的 X 账号隐私有什么特殊风险',
     excerpt: '中国大陆实行网络实名制，这一背景让 X 账号的隐私风险与普通海外用户不同。本文从中文用户视角，拆解实名关联、跨平台暴露、以及旧推文被翻出的真实后果。',
@@ -21313,7 +21299,7 @@ rl.on('close', () =&gt; {
 <p>First, reduce the link between your X account and domestic identity data: different email, different nickname per platform. Second, regularly clear Chinese sensitive content on X, especially old posts with real locations, names, or employers. See the <a href="/blog/chinese-platforms-history-cleanup-guide">Chinese platform cleanup guide</a> and the <a href="/blog/chinese-phone-number-x-tweets-selfcheck">phone-number self-check</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free check that recognizes both Chinese and English traces, and see your real exposure under a real-name system.</p>
 `,
   },
-  {
+{
     slug: 'digital-footprint-health-basics-faq',
     title: '数字足迹体检常见问题（2026 版）',
     excerpt: '关于数字足迹体检，你最关心的几个问题：免费吗？会删推文吗？数据上传吗？多久做一次？这里一次说清。',
@@ -21361,7 +21347,7 @@ rl.on('close', () =&gt; {
 <p>Read the score and labels, then clean in priority order: phone or address first, then location, then sensitive stances. For the actual deletion steps, see the <a href="/blog/how-to-delete-old-tweets-2026">complete 2026 guide to deleting old tweets</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, start a free check.</p>
 `,
   },
-  {
+{
     slug: 'chinese-mini-program-vs-x-data',
     title: '微信小程序和 X，哪个更"记得"你？中文用户的双平台数据对比',
     excerpt: '中国用户同时活在微信和 X 两个世界里。本文对比两者在数据存储、可追溯性、清理难度上的差异，帮你认清跨平台的数字足迹。',
@@ -21408,7 +21394,7 @@ rl.on('close', () =&gt; {
 <p>On WeChat, regularly open Settings, then Privacy, then Authorization management, and revoke mini-programs you no longer use, with payment authorizations treated most carefully. On X, download your archive every quarter and clear old tweets with real locations, phone numbers, or emotional stances. Compare with the <a href="/blog/chinese-vs-western-platform-privacy-settings">privacy-setting differences across Chinese and Western platforms</a>, then read <a href="/blog/chinese-content-creators-x-privacy-cleanup">X cleanup for content creators</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free check that shows traces from both platforms at once.</p>
 `,
   },
-  {
+{
     slug: 'black-friday-2026-online-privacy-footprint',
     title: '黑五 2026 来临前，先清理你的数字足迹：购物季隐私清单',
     excerpt: '黑五 2026 不只是打折季，也是数据收割季：你填的收货地址、邮箱、支付信息会被反复利用。本文给出购物前的数字足迹清理清单。',
@@ -21467,7 +21453,7 @@ rl.on('close', () =&gt; {
 <p>Treat check first, then buy as a fixed Black Friday routine. It is far easier than cleanup after the fact. Read the <a href="/blog/holiday-season-2026-footprint-cleanup">holiday footprint cleanup</a> guide, then see <a href="/blog/x-algorithm-change-old-tweets-reach-2026">how algorithms resurface old content</a>. Back on the <a href="/">digital-footprint-health.shop home page</a>, run a free, 100% on-device check and see what you are exposing before you spend.</p>
 `,
   },
-  {
+{
     slug: 'backup-before-delete-tweets',
     title: '删推文前先备份：怎么把要删的内容安全留一份',
     excerpt: '清理 X 历史推文时，删掉就真的找不回来了。本文讲清楚为什么删前要先备份、三种备份方式的差别，以及如何只把你准备删除的那一批单独存一份，避免误删之后追悔。',
@@ -21673,7 +21659,7 @@ rl.on('close', () =&gt; {
       }
     ]
   },
-  {
+{
     slug: 'spot-compromised-x-account-signs',
     title: '账号被盗前的 7 个信号：怎么判断你的 X 账号已经被人动过',
     excerpt: 'X 账号被盗很少是突然发生的，多数早有征兆可循。本文列出 7 个最容易忽略的异常信号，教你在损失扩大前快速判断账号是否被人动过，并给出一步步的处置动作。',
@@ -21804,7 +21790,7 @@ rl.on('close', () =&gt; {
       }
     ]
   },
-  {
+{
     slug: 'chinese-influencers-x-privacy-cleanup',
     title: '粉丝越多的 X 账号，越要清理这些隐私雷区（博主/网红专属）',
     excerpt: '中文圈博主和网红在 X 上比普通用户更危险：粉丝会扒历史、商务合作会留痕、家人信息常被顺手曝光。本文从中文内容创作者的真实场景出发，列出大号最该清理的隐私雷区与可落地的清理顺序。',
@@ -21953,7 +21939,7 @@ rl.on('close', () =&gt; {
       }
     ]
   },
-  {
+{
     slug: 'understand-footprint-report-faq',
     title: '看不懂体检报告？10 个最常问的问题一次说清',
     excerpt: '0-100 健康分怎么看？风险标签都是什么意思？为什么有的推文标红有的标黄？本文用问答形式把体检报告里最容易看不懂的 10 个点一次讲明白。',
@@ -22072,7 +22058,7 @@ rl.on('close', () =&gt; {
       }
     ]
   },
-  {
+{
     slug: 'x-premium-verification-privacy-2026',
     title: '2026 年 X 付费认证与隐私：你花钱买到的到底是什么',
     excerpt: '2026 年 X 的付费认证已经不只是"蓝勾"那么简单。本文梳理付费认证在账号安全、内容分发、数据留存三方面和隐私的关系，帮你在要不要花钱之前看清代价。',
@@ -22187,7 +22173,7 @@ rl.on('close', () =&gt; {
       }
     ]
   },
-  {
+{
     slug: "political-views-old-tweets-career-risk",
     title: "几年前的政治表态推文，正在悄悄影响你的职业",
     excerpt: "你三年前随手转发的那条政治表态，可能正在招聘官的屏幕上被反复端详。本文讲清旧推文为什么会被翻出来、哪些行业最敏感，以及三步把暴露面降下来的实操方法。",
@@ -22329,7 +22315,7 @@ rl.on('close', () =&gt; {
 <p>If you want to see how much you have actually leaked, run an on-device privacy check at <a href="/">digital-footprint-health.shop</a>: upload your archive, the tool parses it on your computer, nothing leaves your machine, and you get a 0-100 health score with a prioritized risk list. Clean the foundation first, then worry about your professional image.</p>
 `
   },
-  {
+{
     slug: "minor-tweets-deletion-rights",
     title: "未成年人的推文，谁有权删除",
     excerpt: "未成年人的社交数据受到额外保护，但家长能不能代删和平台必须删到什么程度并不是一回事。本文理清未成年人删除权的边界，以及家长实际能做的事。",
@@ -22422,7 +22408,7 @@ rl.on('close', () =&gt; {
 <p>To see what hard-private data a child account actually left behind, pull the archive with <a href="/blog/how-to-download-x-archive">archive download</a> and run an on-device check at <a href="/">digital-footprint-health.shop</a>, nothing leaves your computer, and you work through the risk list item by item.</p>
 `
   },
-  {
+{
     slug: "digital-legacy-old-tweets",
     title: "你留下的旧推文，也是一种数字遗产",
     excerpt: "我们很少把社交账号当成遗产来想，但人不在了，账号和里面的旧推文会怎样，是很多人都还没处理的事。本文从心理和习惯角度，聊聊现在就能做的三件事。",
@@ -22497,7 +22483,7 @@ rl.on('close', () =&gt; {
 <p>If you have not done this yet, start with one on-device check: upload your X archive at <a href="/">digital-footprint-health.shop</a>, parse it on your computer with nothing leaving the machine, and see which old content most deserves handling now.</p>
 `
   },
-  {
+{
     slug: "x-archive-missing-recent-tweets",
     title: "为什么 X 归档里常常找不到最近一个月的推文",
     excerpt: "你刚下载的 X 数据归档，可能并不包含最近几周的推文。这不是你操作错了，而是归档本身的快照机制决定的。本文讲清原因、对比不同下载方式，并给出补缺口的实操。",
@@ -22640,7 +22626,7 @@ rl.on('close', () =&gt; {
 <p>If you plan to use the archive for a privacy check, the gap means the score may be overly optimistic, hard-private facts from the last month were not scanned. The safe move is to complete the recent data first. For an on-device parsing tool, see the <a href="/blog/how-to-download-x-archive">archive download guide</a> and upload your archive at <a href="/">digital-footprint-health.shop</a>, where it is parsed locally on your computer with nothing leaving the machine.</p>
 `
   },
-  {
+{
     slug: "chinese-students-abroad-x-privacy-checklist",
     title: "留学生 X 账号隐私自查：签证、回国、求职三道关",
     excerpt: "在海外读书的留学生，X 上的发言比想象中更值钱，签证官、国内用人单位、甚至回国审查都可能看到。这份清单专为中国留学生视角写，照着做能挡掉大部分坑。",
@@ -22741,7 +22727,7 @@ rl.on('close', () =&gt; {
 <p>To scan old posts systematically, the safest path is to pull your X archive on-device and run a check at <a href="/">digital-footprint-health.shop</a>: upload the archive, parse locally on your computer with nothing leaving the machine, and work through the risk list, sensitive items under a student-abroad identity are easier to flag.</p>
 `
   },
-  {
+{
     slug: "ai-scraping-old-tweets-training-data",
     title: "你的旧推文，可能正在给 AI 当训练素材",
     excerpt: "大模型需要海量文本，而公开的旧推文是现成的语料。本文梳理训练数据从哪来、你的旧推文可能落在哪、以及普通用户到底能不能撤回。",
@@ -22814,7 +22800,7 @@ rl.on('close', () =&gt; {
 <p>To see what hard-private content your public posts actually contain, pull your X archive on-device and run a check at <a href="/">digital-footprint-health.shop</a>, parsed locally on your computer, nothing leaves the machine, then clean item by item from the risk list. That is steadier than just worrying about being trained on.</p>
 `
   },
-  {
+{
     slug: 'footprint-checkup-step-by-step',
     title: '数字足迹体检怎么做：从下载归档到拿到 0-100 评分的 7 个步骤',
     excerpt: '一条一条翻推文看不出隐私风险。数字足迹体检把你的 X 数据归档在本机解析，自动标出手机号、住址、定位和敏感话题，给出 0-100 健康评分。本文把从下载 ZIP 到拿到报告的流程拆成 7 个可操作步骤。',
@@ -22938,7 +22924,7 @@ rl.on('close', () =&gt; {
 <p>The usual reply to cleanup advice is "I have nothing to hide." That misses the point. You may have nothing to hide, but you have plenty to lose: a phone number in the wrong hands funds a scam, an address enables real-world harassment, an old opinion resurfaces during a promotion. A footprint check is not about secrecy; it is about reducing the surface area strangers can exploit.</p>
 `
   },
-  {
+{
     slug: 'chinese-national-id-tweets-privacy',
     title: '推文里晒过身份证号？中文用户最容易忽略的 4 类隐私泄露',
     excerpt: '中文用户在 X 上的隐私暴露有自己的特点：身份证号、真实姓名、学籍和单位信息常常顺手就发出去了。本文从中文语境出发，列出 4 类最常被忽视的泄露，以及为什么归档清理比逐条删更高效。',
@@ -23005,7 +22991,7 @@ rl.on('close', () =&gt; {
 <p>Pick one afternoon. Download the archive, run the check, and clear the ID-number and address hits first. They carry the highest real-world cost, and they are the ones most likely to surface during a background check.</p>
 `
   },
-  {
+{
     slug: 'recover-hacked-x-account-faq',
     title: 'X 账号被盗怎么找回：5 个高频问题速答',
     excerpt: '账号突然发广告、密码失效、绑定的邮箱被改？这是 X 账号被盗的典型信号。本文用 5 个高频问答，讲清从锁定账号到找回控制的每一步，以及平时怎么降低被盗概率。',
@@ -23055,7 +23041,7 @@ rl.on('close', () =&gt; {
 <p>Recovery is easier when you notice fast. Set a recurring reminder to check login devices and authorized apps every quarter. The first sign of trouble is usually a device you do not recognize, and catching it early turns a nightmare into a ten-minute fix. Worried about what the attacker saw? Run a <a href="/">free on-device footprint check</a> to see what personal details your old tweets already expose.</p>
 `
   },
-  {
+{
     slug: 'data-portability-rights-x-archive',
     title: '数据可携权是什么：为什么你的 X 归档能完整下载',
     excerpt: '你为什么能一键下载自己在 X 上的全部历史？这背后是「数据可携权」：GDPR 和很多地区法律赋予用户把个人数据完整导出的权利。本文讲清这项权利是什么、归档为什么这么全、以及它和删除权有什么区别。',
@@ -23118,7 +23104,7 @@ rl.on('close', () =&gt; {
 <p>Start by <a href="/">requesting your archive and running a free check</a>.</p>
 `
   },
-  {
+{
     slug: 'ai-search-indexing-old-tweets-2026',
     title: 'AI 搜索开始重播你的旧推文：2026 年该重新清理的 3 个理由',
     excerpt: '传统搜索引擎只是收录你的旧推文，AI 搜索会直接把它们的内容拼进答案里。2026 年多家 AI 搜索上线后，十年前的吐槽被重新端到用户面前的概率高了不少。本文给出现在就该重新清理的 3 个理由。',
@@ -23172,7 +23158,7 @@ rl.on('close', () =&gt; {
 <p>The window is not closed, but it is narrowing. The posts you forget are the ones most likely to speak for you. Run the check this week rather than next, because each indexed copy of an old post already out there is one more source an answer engine can cite. The effort is about an hour; the downside it prevents is open-ended.</p>
 `
   },
-  {
+{
     slug: 'social-media-cleanup-burnout',
     title: '清理倦怠：为什么删推文越删越累，以及怎么打破循环',
     excerpt: '很多人一开始兴致勃勃地清理旧推文，删了两天就放弃了。清理倦怠常被误以为是偷懒，其实多半是方法不对。一次性大扫除注定失败，这篇讲清倦怠从哪来，以及用「小批量+工具」如何真正坚持下来。',
@@ -23242,7 +23228,7 @@ rl.on('close', () =&gt; {
 
 <p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
   },
-  {
+{
     slug: 'x-account-recovery-without-phone',
     title: '换号后怎么找回 X 账号：没有旧手机号也能拿回来',
     excerpt: '旧手机号注销了、SIM 卡丢了、换国家了，X 账号的二步验证还绑着那个号码怎么办？这篇讲清没有旧手机号的几种找回路径，以及平时该怎样留好后路。',
@@ -23305,7 +23291,7 @@ rl.on('close', () =&gt; {
 
 <p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
   },
-  {
+{
     slug: 'chinese-job-switch-tweet-cleanup',
     title: '跳槽前，中国职场人该清理哪些 X 推文（和英文版不一样的思路）',
     excerpt: '国内职场人用 X 的习惯和欧美完全不同：常混用中英文、爱晒工牌和团建、随手定位公司。跳槽谈 offer 前，这些推文比你想的更容易被背调看到。这篇从中文用户的实际习惯出发，讲清该清什么、怎么清。',
@@ -23370,7 +23356,7 @@ rl.on('close', () =&gt; {
 
 <p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
   },
-  {
+{
     slug: 'gdpr-erasure-platform-reality-2026',
     title: 'GDPR 删除权：平台在 2026 年到底会不会真的删你的推文',
     excerpt: 'GDPR 说你有权要求删除自己的数据，但落到 X 这样的平台，现实和法条之间有一道缝。这篇讲清「被遗忘权」在 2026 年的实际执行：平台删了什么、留了什么、你还能怎么自己动手清。',
@@ -23421,7 +23407,7 @@ rl.on('close', () =&gt; {
 
 <p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
   },
-  {
+{
     slug: 'locked-out-x-account-faq',
     title: '被锁死在 X 门外？账号锁定常见问题快答',
     excerpt: '账号突然被锁、登录提示异常活动、二步验证收不到码，这篇用 5 个高频问题，快速说清 X 账号被锁时该做什么、不该做什么。',
@@ -23474,7 +23460,7 @@ rl.on('close', () =&gt; {
 <p>If you haven't run a check yet, upload your X archive at <a href="/upload">digital-footprint-health.shop</a> for a free on-device privacy report that shows exactly which old tweets leak your phone number, location, and sensitive topics. Before cleaning up, browse the <a href="/blog">blog</a> for step-by-step guides, or check <a href="/pricing">deletion pricing</a> to pay per tweet with pause, resume, and refund support.</p>`
 
   },
-  {
+{
     slug: "automated-x-archive-backup-schedule-2026",
     title: "把 X 归档备份变成每月自动任务：脚本、定时与校验",
     excerpt: "手动下载 X 数据归档很容易忘。本文给出一套可落地的自动备份方案：用脚本定时拉取你的 X 数据归档、落盘到本地与云盘、并做完整性校验，确保哪天想清理旧推文时，手边永远有一份完整副本。",
@@ -23498,7 +23484,7 @@ rl.on('close', () =&gt; {
     content: "<h2>为什么要把 X 归档备份自动化</h2>\n<p>你上次下载 X 数据归档是什么时候？对大多数人来说，这个答案要么是\"忘了\"，要么是\"好久以前\"。旧推文清理、账号迁移、甚至应对平台政策变动，都依赖一份完整的归档副本。手动下载的毛病在于它靠你记得去点，而人的记性不靠谱。把这件事变成每月固定运行的自动任务，是降低数字足迹风险里最划算的一步，因为它把\"偶尔想起来才做\"变成\"到点自动发生\"。</p>\n<p>本指南面向普通用户和技术爱好者，不要求你有多深的编程背景。你会得到一条可以复制的思路：定时拉取归档、双份落盘、自动校验。想先搞清楚归档里到底有什么，可以看我们的 <a href=\"/blog/x-archive-missing-recent-tweets\">归档为什么缺了最近的推文</a>。</p>\n<h2>第一步：拿到官方导出链接</h2>\n<p>X 的数据导出在\"设置与隐私 - 你的数据\"里发起。提交后平台会打包你的推文、私信、媒体等，完成后通过邮件或站内通知发一个下载链接。这个链接有时效，通常几天内有效。自动化之前，先确认你能在网页上手动走通一次完整流程，包括收到链接、下载、解压、看到里面的 tweets.js 或 CSV。</p>\n<h2>第二步：用脚本把下载固定下来</h2>\n<p>思路很简单：写一个脚本，每个月用你的导出链接把压缩包下载到固定目录，文件名带上日期。下面是一段极简的伪代码逻辑，你可以用任意语言实现：</p>\n<ul>\n<li>读取环境变量里的导出链接和本地目录</li>\n<li>用日期生成文件名，例如 archive-2026-10.zip</li>\n<li>下载并写入本地磁盘</li>\n<li>立刻计算文件的哈希值并写入一份清单</li>\n<li>把结果写进日志，方便你事后确认有没有跑成功</li>\n</ul>\n<p>如果你更关心本地和云端的解析方式差异，这篇 <a href=\"/blog/local-vs-cloud-tweet-archive-parsing\">本地与云端归档解析对比</a> 值得一读。</p>\n<h2>第三步：定时运行，别依赖记忆</h2>\n<p>在电脑上，macOS 和 Linux 用 cron，Windows 用任务计划程序，都能让脚本每月跑一次。关键是把运行时间和落盘路径固定下来，别每次都临时改。下面是一份常见排期参考：</p>\n<table>\n<thead><tr><th>频率</th><th>适合人群</th><th>落盘位置</th></tr></thead>\n<tbody>\n<tr><td>每月一次</td><td>绝大多数普通用户</td><td>本地 + 加密云盘</td></tr>\n<tr><td>每季度一次</td><td>很少发推的人</td><td>本地一份即可</td></tr>\n<tr><td>每两周一次</td><td>高频发言、怕丢内容的人</td><td>本地 + 两份云盘</td></tr>\n</tbody></table>\n<h2>第四步：双份落盘与加密</h2>\n<p>单份副本的风险是设备坏了就全没了。建议至少两份：一份在本地硬盘，一份在加密云盘。云盘那份最好再用压缩密码或磁盘加密再包一层，避免云服务商侧能看到明文。压缩时选 AES 或等效算法，密码放进本地密码管理器，不要让两个副本用同一个明文目录互相覆盖。</p>\n<h2>第五步：校验完整性，别只看\"下完了\"</h2>\n<p>下载完成不代表完整。归档偶尔会缺条目或下载中断。每次备份后立刻算一次哈希值（如 SHA-256）并记录，下个月对比。哈希变了且文件大小也不同，通常是归档内容本身更新；哈希变了但大小没变，才要警惕损坏。关于怎么逐文件比对，参考 <a href=\"/blog/verify-x-archive-integrity-checksum\">归档完整性哈希校验</a>。</p>\n<h2>第六步：处理链接失效与重试</h2>\n<p>导出链接过期是常事。把重试逻辑写进脚本：先检查本地最新归档的日期，超过阈值就重新发起申请，并等待新链接。等待时间可能从几分钟到几天不等，脚本可以每天探一次，拿到链接再继续下载；一次失败就换个时间重试，不要直接放弃。</p>\n<h2>常见坑</h2>\n<ul>\n<li>把导出令牌写进公开仓库，等于把账号交出去</li>\n<li>只存一份，硬盘坏了就回到\"没有归档\"的状态</li>\n<li>从不校验，等到要用才发现归档是坏的</li>\n<li>脚本默默失败却没人发现，几个月后才察觉</li>\n</ul>\n<p>把 X 归档备份自动化之后，你会发现清理旧推文、应对平台变动都从容很多。回到 <a href=\"/\">首页</a> 可以查看我们整理的其他数字足迹指南。</p>",
     contentEn: "<h2>Why automate your X archive backup</h2>\n<p>When was the last time you downloaded your X data archive? For most people the answer is \"I forgot\" or \"a long time ago\". Cleaning up old tweets, moving accounts, and responding to platform policy shifts all depend on having a complete archive copy. The problem with manual download is that it relies on you remembering to click, and human memory is unreliable. Turning this into a monthly scheduled task is one of the cheapest steps you can take to lower your digital footprint risk, because it changes \"do it when I remember\" into \"it happens on schedule\".</p>\n<p>This guide is for everyday users and hobbyists. You do not need deep programming experience. You will get a copy-paste way of thinking: pull the archive on a schedule, store two copies, and verify them. If you want to know what the archive actually contains, start with our <a href=\"/en/blog/x-archive-missing-recent-tweets\">article on why recent tweets go missing from archives</a>.</p>\n<h2>Step 1: get the official export link</h2>\n<p>X data export lives under Settings and privacy, then Your data. After you request it, the platform packages your tweets, direct messages, and media, then sends a download link by email or in-app notice when ready. That link expires, usually within a few days. Before automating anything, confirm you can walk through the full flow once in the browser, including receiving the link, downloading, extracting, and seeing the tweets.js or CSV inside.</p>\n<h2>Step 2: pin the download with a script</h3>\n<p>The idea is simple: write a script that uses your export link each month to download the archive into a fixed folder, with the date in the filename. Here is the minimal logic you can implement in any language:</p>\n<ul>\n<li>Read the export link and local folder from environment variables</li>\n<li>Build a dated filename, for example archive-2026-10.zip</li>\n<li>Download and write it to local disk</li>\n<li>Compute the file hash immediately and record it in a manifest</li>\n<li>Write the result to a log so you can confirm later that the run succeeded</li>\n</ul>\n<p>If you care about how local and cloud parsing differ, read our <a href=\"/en/blog/local-vs-cloud-tweet-archive-parsing\">local versus cloud archive parsing comparison</a>.</p>\n<h2>Step 3: schedule it instead of trusting memory</h2>\n<p>On a computer, macOS and Linux use cron, Windows uses Task Scheduler, and both can run the script monthly. Pin the run time and the storage path so you are not editing them every time. Here is a common scheduling reference:</p>\n<table>\n<thead><tr><th>Frequency</th><th>Good for</th><th>Storage</th></tr></thead>\n<tbody>\n<tr><td>Monthly</td><td>Most everyday users</td><td>Local plus encrypted cloud</td></tr>\n<tr><td>Quarterly</td><td>People who rarely post</td><td>Local only</td></tr>\n<tr><td>Biweekly</td><td>Heavy posters who fear loss</td><td>Local plus two clouds</td></tr>\n</tbody></table>\n<h2>Step 4: two copies and encryption</h2>\n<p>A single copy is risky because a dead drive means no archive. Keep at least two: one on local disk, one in encrypted cloud storage. Put a zip password or disk encryption on the cloud copy so the provider cannot read plaintext. Use AES or an equivalent when zipping, keep the password in a local password manager, and never let the two copies overwrite each other from the same plain folder.</p>\n<h2>Step 5: verify integrity, do not just watch it finish</h2>\n<p>Finishing a download does not mean it is complete. Archives occasionally drop entries or stop mid-download. Compute a hash such as SHA-256 right after each backup and record it, then compare next month. If the hash changed and the size changed too, the archive content likely updated; if the hash changed but the size did not, that is the sign of corruption to investigate. For a file-by-file method, see our <a href=\"/en/blog/verify-x-archive-integrity-checksum\">archive integrity hashing walkthrough</a>.</p>\n<h2>Step 6: handle link expiry and retries</h2>\n<p>Expired export links are common. Put retry logic in the script: check the local archive date, and if it is past the threshold, request a fresh archive and wait for the new link. The wait can range from minutes to days, so the script can probe once a day, then continue the download once the link arrives, instead of failing once and giving up.</p>\n<h2>Common mistakes</h2>\n<ul>\n<li>Committing the export token to a public repo, which hands over your account</li>\n<li>Keeping one copy so a dead drive returns you to \"no archive\"</li>\n<li>Never verifying, then finding the archive is broken when you need it</li>\n<li>A script that fails silently and nobody notices for months</li>\n</ul>\n<p>Once X archive backup is automated, cleaning old tweets and reacting to platform changes gets much easier. Return to the <a href=\"/\">homepage</a> for the rest of our digital footprint guides.</p>",
   },
-  {
+{
     slug: "verify-x-archive-integrity-checksum",
     title: "怎么判断 X 归档没缺页、没损坏：哈希校验实操",
     excerpt: "归档下下来不代表完整。本文讲清为什么归档会缺条目、怎么用哈希值逐文件比对、以及发现损坏后如何重新申请归档，让你的旧推文副本真正可信。",
@@ -23521,7 +23507,7 @@ rl.on('close', () =&gt; {
     content: "<h2>为什么归档会不完整</h2>\n<p>很多人以为点完下载、压缩包到手就万事大吉，其实归档在三个环节都可能出问题：平台打包时漏了最近的条目、下载过程被网络中断截断、或者解压时部分文件损坏。我们的 <a href=\"/blog/x-archive-missing-recent-tweets\">归档缺最近推文</a> 一文提到，最常见的缺失发生在打包这一步。校验就是在这之后补的一道保险，它不依赖你\"感觉下完了\"，而是用可重复的数字指纹来判断。</p>\n<h2>哈希值是什么，为什么用它</h2>\n<p>哈希值是一串由文件内容算出的固定长度字符。文件内容哪怕只改一个字节，哈希就会完全不同。它相当于文件的指纹：两份文件哈希一致，就能放心认为内容一致。靠肉眼比大小、比名字都不如哈希可靠，因为同名文件内容可能完全不同，而大小相近的文件也可能一字节之差。</p>\n<h2>实操：三步拿到并比对哈希</h2>\n<ul>\n<li>第一次备份后，对归档压缩包运行哈希命令，把输出存进一份清单文件</li>\n<li>第二次备份后，对同样命名的文件再算一次哈希</li>\n<li>把两次的哈希并排对比，一致说明没变，不一致再深究</li>\n</ul>\n<h2>选哪种哈希算法</h2>\n<p>日常用途 SHA-256 足够，它比 MD5 更抗碰撞，也几乎是各系统的默认。除非你有兼容性要求，否则不必退回 MD5。注意比对时要保证两次用的是同一种算法，混用会导致永远对不上。</p>\n<h2>对比清单怎么记才不乱</h2>\n<p>别只记在脑子里。建一个文本清单，每行写\"日期 + 文件名 + 哈希值\"。下次备份时把新行加在后面，历史一目了然。下面是一份示意：</p>\n<table>\n<thead><tr><th>日期</th><th>文件</th><th>哈希前缀</th></tr></thead>\n<tbody>\n<tr><td>2026-09</td><td>archive-2026-09.zip</td><td>9f3c...</td></tr>\n<tr><td>2026-10</td><td>archive-2026-10.zip</td><td>1b7a...</td></tr>\n</tbody></table>\n<h2>媒体文件也要单独核</h2>\n<p>归档里的图片和视频往往是体积最大、最容易在下载中断里缺角的部分。如果只校验整个压缩包，小损坏可能被平均掉。稳妥的做法是对解压后的媒体目录再算一次总哈希，或抽样核对几个大文件的大小与哈希。</p>\n<h2>发现损坏怎么办</h2>\n<p>如果哈希变了但文件大小没变，先怀疑损坏。处理顺序：保留坏的那份别覆盖、重新申请一次归档、下载后立刻算哈希、比对新包和旧包的差异。想建立整套按月自动化的流程，可以参考 <a href=\"/blog/automated-x-archive-backup-schedule-2026\">把归档备份自动化</a>。</p>\n<p>回到 <a href=\"/\">首页</a>，查看更多关于数字足迹的实操指南。</p>",
     contentEn: "<h2>Why archives come out incomplete</h2>\n<p>Many people think that once the download finishes and the zip lands on disk, the job is done. Archives can break at three points: the platform omits recent entries while packaging, the download is cut short by a network drop, or files corrupt during extraction. Our <a href=\"/en/blog/x-archive-missing-recent-tweets\">article on missing recent tweets</a> notes that the most common gap happens at packaging. Verification is the insurance you add afterward, and it does not depend on \"it felt finished\" but on a repeatable digital fingerprint.</p>\n<h2>What a hash is, and why it helps</h2>\n<p>A hash is a fixed-length string computed from file content. Change one byte and the hash becomes completely different. It is a fingerprint for the file: matching hashes let you trust that two files are identical. Eyeballing size or name is far less reliable, because same-named files can differ and similarly sized files can differ by a single byte.</p>\n<h2>Practice: get and compare hashes in three steps</h2>\n<ul>\n<li>After the first backup, run a hash command on the archive and store the output in a manifest</li>\n<li>After the second backup, hash the same named file again</li>\n<li>Put the two hashes side by side; identical means unchanged, different means investigate</li>\n</ul>\n<h2>Which hash algorithm to pick</h2>\n<p>For everyday use SHA-256 is enough. It resists collisions better than MD5 and is the default on most systems. Unless you have a compatibility requirement, there is no reason to fall back to MD5. Make sure both runs use the same algorithm, because mixing them means they will never match.</p>\n<h2>How to keep the comparison tidy</h2>\n<p>Do not keep it in your head. Make a text manifest where each line is date, filename, and hash. Append a new line each backup and the history stays clear. Here is a sketch:</p>\n<table>\n<thead><tr><th>Date</th><th>File</th><th>Hash prefix</th></tr></thead>\n<tbody>\n<tr><td>2026-09</td><td>archive-2026-09.zip</td><td>9f3c...</td></tr>\n<tr><td>2026-10</td><td>archive-2026-10.zip</td><td>1b7a...</td></tr>\n</tbody></table>\n<h2>Check the media files too</h2>\n<p>The images and videos in an archive are usually the largest and the easiest to chip during a dropped download. If you only hash the whole zip, small damage can be averaged out. A safer move is to hash the extracted media directory again, or sample-check a few large files by size and hash.</p>\n<h2>What to do when you find corruption</h2>\n<p>If the hash changed but the size did not, suspect corruption first. The order: keep the bad copy, do not overwrite it, request a fresh archive, hash the new download immediately, and compare the new and old packages. To build the full monthly routine, see our <a href=\"/en/blog/automated-x-archive-backup-schedule-2026\">guide to automating archive backup</a>.</p>\n<p>Return to the <a href=\"/\">homepage</a> for more hands-on digital footprint guides.</p>",
   },
-  {
+{
     slug: "x-suspicious-login-alert-response-steps",
     title: "收到 X 的可疑登录提醒后，按这六步处理",
     excerpt: "一封\"新设备登录\"邮件最容易让人慌。本文把收到提醒后的动作拆成六步：确认是否本人、踢掉会话、改密码、开两步验证、查授权应用、以及事后复盘，帮你把损失压到最低。",
@@ -23544,7 +23530,7 @@ rl.on('close', () =&gt; {
     content: "<h2>先别慌，也别忽略</h2>\n<p>收到\"你的账号在新设备登录\"这类提醒，第一反应往往是慌。但这类邮件也常被用来钓鱼，所以点开链接前先确认它真的来自 X。真正官方提醒会出现在站内通知和绑定的邮箱里，不会催你立刻输入密码，也不会附带可疑的短链接。关于账号被黑后的完整应对，也可以看 <a href=\"/blog/x-data-breach-response-steps\">数据泄露后的处理步骤</a>。</p>\n<h2>第一步：确认是不是本人</h2>\n<p>打开 X 的登录历史，看时间和设备是否和你自己的动作吻合。地点显示不准很常见，别被城市名吓到，重点看时间和设备型号。如果你自己刚换手机或用了新网络，那条提醒很可能就是你自己。</p>\n<h2>第二步：踢掉陌生会话</h2>\n<p>在当前可信设备上，进入\"账号安全 - 登录会话\"，把不认识的设备全部登出。这一步要在改密码之前做，确保对方手里的旧会话失效，避免它趁你改密码的空档继续操作。</p>\n<h2>第三步：改一个强密码</h2>\n<p>用一个没在别处用过的密码，长度优先于符号堆砌。改完密码，所有其他会话会要求重新验证，等于把旧令牌一次性作废。不要在改完密码后还用同一套密码去登录别的服务。</p>\n<h2>第四步：打开两步验证</h2>\n<p>两步验证能把绝大多数自动化盗号挡在门外。优先选验证器应用而非短信，短信在换号或 SIM 交换攻击时更脆弱。备份码单独存一份离线副本，别和账号放在同一台设备上。</p>\n<h2>第五步：清查授权应用</h2>\n<p>很多盗号是通过第三方应用拿到的权限。去\"账号安全 - 应用和会话\"里，把不认识或不再使用的应用全部撤销授权。尤其留意那些要求\"读取私信\"或\"代发推文\"的高权限应用。</p>\n<h2>第六步：事后复盘</h2>\n<p>把这次提醒截图、记录时间和处置动作。日后同类提醒你就能更快判断是误报还是真风险。如果连手机号都收不到验证码，参考 <a href=\"/blog/x-account-recovery-without-phone\">没有手机怎么找回账号</a>。</p>\n<p>更多账号安全内容，回到 <a href=\"/\">首页</a> 继续看。</p>",
     contentEn: "<h2>Do not panic, but do not ignore it</h2>\n<p>The first reaction to a \"your account logged in on a new device\" alert is often panic. These emails are also used for phishing, so before clicking any link, confirm it really came from X. A genuine alert appears in in-app notifications and your bonded email, and it will not rush you to type your password or carry a suspicious short link. For the full response after a breach, see our <a href=\"/en/blog/x-data-breach-response-steps\">data breach response steps</a>.</p>\n<h2>Step 1: confirm if it was you</h2>\n<p>Open X login history and check whether the time and device match your own actions. Location display is often inaccurate, so do not be scared by a city name. Focus on the time and device model. If you just switched phones or used a new network, that alert was probably you.</p>\n<h2>Step 2: revoke strange sessions</h2>\n<p>From a trusted device, go to Account security, then Sessions, and sign out every device you do not recognize. Do this before changing the password so the intruder's old session dies and cannot act during the gap while you change the password.</p>\n<h2>Step 3: set a strong password</h2>\n<p>Use a password you have not reused elsewhere. Length matters more than a pile of symbols. After the change, every other session must re-verify, which invalidates old tokens at once. Do not reuse the new password on other services right after.</p>\n<h2>Step 4: turn on two-factor authentication</h2>\n<p>2FA blocks most automated hijacks. Prefer an authenticator app over SMS, because SMS is weaker under SIM-swap attacks. Keep backup codes in a separate offline copy, not on the same device as the account.</p>\n<h2>Step 5: audit authorized apps</h2>\n<p>Many hijacks gain access through third-party apps. In Account security, Apps and sessions, revoke every app you do not recognize or no longer use. Pay special attention to high-privilege apps that ask to read direct messages or post tweets on your behalf.</p>\n<h2>Step 6: do a post-check</h2>\n<p>Screenshot the alert and record the time and what you did. Next time a similar alert arrives, you can judge faster whether it is a false alarm or a real risk. If you cannot even receive a verification code by phone, see our <a href=\"/en/blog/x-account-recovery-without-phone\">account recovery without a phone</a>.</p>\n<p>For more account security topics, return to the <a href=\"/\">homepage</a>.</p>",
   },
-  {
+{
     slug: "x-trusted-devices-faq",
     title: "X 受信任设备是什么、怎么管：常见问题",
     excerpt: "受信任设备决定了哪些手机和电脑能免验证登录你的 X 账号。本文用问答方式讲清它是什么、怎么移除旧设备、以及换机时该注意什么，降低账号被冒用的可能。",
@@ -23568,7 +23554,7 @@ rl.on('close', () =&gt; {
     content: "<h2>受信任设备到底是什么</h2>\n<p>每次你在某台手机或电脑上登录 X，并勾选\"记住此设备\"或完成一次两步验证后，这台终端就会被标记为受信任。好处是以后登录少一道验证码；坏处是一旦这台设备丢失或被别人拿到，对方可能免验证直接进入你的账号。理解这一点，是管理好它的前提。</p>\n<h2>它和两步验证是什么关系</h2>\n<p>两步验证是登录时的额外关卡，受信任设备是给通过验证的设备发的\"免验证通行证\"。两者配合，安全又不至于太烦。只开两步验证、不管受信任设备，等于留了一扇没锁的侧门，别人拿到你旧手机就能长驱直入。</p>\n<h2>怎么移除旧设备</h2>\n<p>进入\"账号安全 - 登录会话\"，能看到所有活跃设备。对不认识或已不用的，选择登出或移除。移除后那台设备再登录会被要求重新验证，等于把它的通行证收回来。</p>\n<h2>换机和卖旧机前</h2>\n<p>换手机前，先把旧机从受信任列表移除再恢复出厂设置。只恢复出厂不够，因为受信任状态写在账号侧，不在机器本地。卖旧机前这步尤其不能省，否则买你手机的人可能免验证登录。</p>\n<h2>出现不认识的设备</h2>\n<p>列表里冒出陌生设备，往往意味着别人拿到了你的会话令牌。正确顺序是：立刻移除、改密码、开两步验证、查授权应用。不确定是否被盗就看 <a href=\"/blog/recover-hacked-x-account-faq\">账号被盗找回</a>。</p>\n<p>回到 <a href=\"/\">首页</a> 看更多账号安全指南。</p>",
     contentEn: "<h2>What a trusted device actually is</h2>\n<p>When you sign in on a phone or computer and choose to remember it, or after you complete one 2FA check, that terminal is marked trusted. The upside is fewer codes later; the downside is that if the device is lost or taken, someone may sign in without a code. Understanding this is the premise for managing it well.</p>\n<h2>How it relates to two-factor authentication</h2>\n<p>2FA is the per-login extra check, and a trusted device is a skip-pass issued to devices that passed it. Together they stay safe without being annoying. Turning on 2FA but ignoring trusted devices leaves a side door unlocked, so anyone holding your old phone walks straight in.</p>\n<h2>How to remove an old device</h2>\n<p>Go to Account security, then Sessions, to see every active device. For anything you do not recognize or no longer use, sign out or remove it. After removal that device must re-verify to sign in, which revokes its pass.</p>\n<h2>Before switching or selling a device</h2>\n<p>Before changing phones, remove the old one from the trusted list and then factory reset. A factory reset alone is not enough because the trusted status lives on the account side, not on the machine. Do not skip this before selling, or the buyer may sign in without verification.</p>\n<h2>When an unknown device appears</h2>\n<p>An unfamiliar device in the list often means someone holds your session token. The right order: remove it at once, change the password, enable 2FA, and audit connected apps. If you are unsure whether you were hijacked, see our <a href=\"/en/blog/recover-hacked-x-account-faq\">hacked account recovery</a>.</p>\n<p>Return to the <a href=\"/\">homepage</a> for more account security guides.</p>",
   },
-  {
+{
     slug: "x-privacy-updates-october-2026",
     title: "2026 年 10 月 X 隐私与政策变动盘点（及对你旧推文的影响）",
     excerpt: "每月都有政策微调。本文盘点 2026 年 10 月 X 在隐私、数据导出和账号安全上的可见变动，并说明哪些会实际影响你清理旧推文的节奏，帮你判断现在该不该动手。",
@@ -23591,7 +23577,7 @@ rl.on('close', () =&gt; {
     content: "<h2>为什么每月都该看一眼政策</h2>\n<p>平台政策不是一成不变的。隐私条款、数据导出方式、账号安全默认值，都有可能在一个版本更新里悄悄调整。你不需要逐字读条款，但每月花几分钟看一眼可见变动，能在清理旧推文时少踩坑。关于为什么清理本身重要，可以参考 <a href=\"/blog/black-friday-2026-online-privacy-footprint\">大促期间的隐私足迹</a>。</p>\n<h2>本月隐私相关变动</h2>\n<p>2026 年 10 月，X 在隐私设置页把\"下载我的数据\"入口做了更显眼的提示，并细化了导出内容的分类说明。对用户来说，这意味着发起归档后更容易看懂包里有什么，但这并不改变你导出频率的选择。真正值得记一笔的是入口更显眼，可能让更多人养成定期导出的习惯。</p>\n<h2>数据导出与归档</h2>\n<p>本月没有观察到导出队列的明显提速或降速。如果你发现归档好几天没下来，先排查网络、浏览器拦截和邮箱垃圾箱，确认不是本地问题后再怀疑平台。仍卡住就看 <a href=\"/blog/x-archive-download-failed-fix\">下载失败排查</a>。把导出动作排进每月固定日程，比关心快慢更有意义。</p>\n<h2>账号安全默认值的调整</h2>\n<p>本月登录会话和受信任设备的展示更清晰，你在\"账号安全\"页能更直接看到活跃设备。借着这个变动，顺手按 <a href=\"/blog/x-suspicious-login-alert-response-steps\">可疑登录六步</a> 把设备列表清一遍，比平时更值得做。也顺便复查有没有不认识的授权应用挂在账号上。</p>\n<h2>对搜索引擎与第三方存档的影响</h2>\n<p>平台侧的政策变动通常不影响已经存在于搜索引擎缓存或第三方存档里的内容。换句话说，删了旧推文不代表网上副本立刻消失。这提醒我们：清理要趁早，且删完应隔一段时间复查搜索结果，别以为删完就万事大吉。</p>\n<h2>对你清理旧推文节奏的影响</h2>\n<p>小结：本月变动里，真正影响清理节奏的是\"导出更易懂\"，让你评估要删什么时更方便；其余多是展示层调整。删除动作本身的政策没有收紧或放松，按你原有的计划推进即可，不必因为一条公告就突击删帖。</p>\n<table>\n<thead><tr><th>变动项</th><th>是否影响清理</th><th>建议动作</th></tr></thead>\n<tbody>\n<tr><td>隐私页导出入口提示</td><td>间接</td><td>更易看懂归档</td></tr>\n<tr><td>导出分类说明细化</td><td>间接</td><td>无需改变频率</td></tr>\n<tr><td>会话与设备展示增强</td><td>是</td><td>清一遍设备列表</td></tr>\n</tbody></table>\n<p>回到 <a href=\"/\">首页</a> 查看我们持续更新的数字足迹指南。</p>",
     contentEn: "<h2>Why glance at policy every month</h2>\n<p>Platform policy is not fixed. Privacy terms, data-export methods, and account-security defaults can shift quietly in a single update. You do not need to read every clause, but spending a few minutes each month on visible changes helps you avoid surprises while cleaning old tweets. For why cleanup matters, see our <a href=\"/en/blog/black-friday-2026-online-privacy-footprint\">holiday privacy footprint</a>.</p>\n<h2>Privacy changes this month</h2>\n<p>In October 2026, X made the \"download my data\" entry more visible on the privacy page and sharpened the category descriptions in the export. For users this means the archive is easier to understand after you request it, but it does not change how often you export. The detail worth noting is that a more visible entry may push more people to export regularly.</p>\n<h2>Data export and archives</h2>\n<p>No clear speed-up or slowdown in the export queue this month. If an archive has not arrived in days, check your network, browser blockers, and spam folder before blaming the platform. If it is still stuck, see our <a href=\"/en/blog/x-archive-download-failed-fix\">download failure troubleshooting</a>. Scheduling export into a monthly habit matters more than the speed.</p>\n<h2>Account-security default tweaks</h2>\n<p>This month, login sessions and trusted devices display more clearly, so you can see active devices directly in Account security. With that change, running through the <a href=\"/en/blog/x-suspicious-login-alert-response-steps\">six-step suspicious login response</a> to clean the device list is worth doing now more than usual, and glance at any unknown authorized apps while you are there.</p>\n<h2>Effect on search engines and third-party archives</h2>\n<p>Platform-side policy changes usually do not affect content already sitting in search caches or third-party archives. In other words, deleting old tweets does not make online copies vanish at once. This reminds us to clean early and re-check search results after a while, rather than assuming deletion settles everything.</p>\n<h2>Effect on your old-tweet cleanup pace</h2>\n<p>Summary: of this month's changes, the one that really touches cleanup is \"export is easier to read\", which helps you judge what to delete; the rest are display tweaks. The policy on deletion itself did not tighten or loosen, so proceed with your existing plan instead of panic-deleting after one announcement.</p>\n<table>\n<thead><tr><th>Change</th><th>Affects cleanup?</th><th>Suggested action</th></tr></thead>\n<tbody>\n<tr><td>Privacy export entry prompt</td><td>Indirect</td><td>Archive easier to read</td></tr>\n<tr><td>Export category notes</td><td>Indirect</td><td>No change in frequency</td></tr>\n<tr><td>Session and device display</td><td>Yes</td><td>Clean device list</td></tr>\n</tbody></table>\n<p>Return to the <a href=\"/\">homepage</a> for our continuously updated digital footprint guides.</p>",
   },
-  {
+{
     slug: 'old-tweets-financial-info-leak-risk',
     title: '旧推文里的财务信息，可能是你没注意的泄露口',
     excerpt: '工资条截图、退税讨论、带银行名的定位，这些旧推文会暴露你的收入与账户线索。本文梳理四类财务痕迹，并给出三步自查与清理方法。',
@@ -23704,7 +23690,7 @@ rl.on('close', () =&gt; {
 <p>Back on the <a href="/">homepage</a>, upload your X archive to our on-device check and see your financial risk list in 30 seconds. Your data never leaves your computer.</p>
 `
   },
-  {
+{
     slug: 'realtime-location-tweets-safety',
     title: '实时定位推文：你正在直播自己的位置',
     excerpt: '每次打卡、每次「人在某地」的实时推文都在暴露你的行踪。本文说明实时定位的风险，并给出发推前的安全检查。',
@@ -23788,7 +23774,7 @@ rl.on('close', () =&gt; {
 <p>Review the last month of live posts and delete ones still exposing "right now" or "alone". Then disable precise location and check EXIF in old images. If someone has already used this information to harass you, keep evidence and report it to the platform. Back on the <a href="/">homepage</a>, scan your archive for every location-tagged tweet with our on-device tool and clear them in one pass.</p>
 `
   },
-  {
+{
     slug: 'chinese-users-twitter-doxxing-defense',
     title: '中文用户防推文被「人肉」：一份实战清单',
     excerpt: '「人肉搜索」会把公开推文拼成你的现实身份。针对中文用户的语料特点，本文给出可落地的防暴露清单与应对步骤。',
@@ -23874,7 +23860,7 @@ rl.on('close', () =&gt; {
 <p>First delete the key posts that expose your real identity, then tighten your bio and cross-links. If offline harassment starts, keep evidence and report to the platform and the police. Back on the <a href="/">homepage</a>, scan your archive with our on-device tool to flag posts containing your legal name, school, and employer first.</p>
 `
   },
-  {
+{
     slug: 'delete-tweets-before-job-interview',
     title: '面试前，先把这几类推文清掉',
     excerpt: '面试前清理推文是低成本的自我保护。本文列出最该删的 5 类内容，以及一份可照做的清理清单。',
@@ -23957,7 +23943,7 @@ rl.on('close', () =&gt; {
 <p>You do not need to blank out the account, which looks deliberate and may make recruiters suspect you hid something. Keep normal life updates and only remove high-risk items that would mislead a first impression. Treat the account as a public portfolio you maintain, which reads more natural than a last-minute purge and survives repeated looks. Back on the <a href="/">homepage</a>, use our on-device tool to filter deletable tweets by risk label in bulk.</p>
 `
   },
-  {
+{
     slug: 'delete-tweets-after-leaving-job',
     title: '离职后，工作相关的旧推文该不该留',
     excerpt: '离职后，吐槽前公司、晒内部项目的旧推文可能变成隐患。本文帮你在职业自由与安全意识之间做选择。',
@@ -24046,7 +24032,7 @@ rl.on('close', () =&gt; {
 <p>Back on the <a href="/">homepage</a>, filter deletable tweets by risk label with our on-device tool in one pass, and keep an archive copy before deleting.</p>
 `
   },
-  {
+{
     slug: 'free-vs-paid-tweet-deletion-tools-2026',
     title: '免费和付费推文删除工具，到底差在哪',
     excerpt: '删旧推文到底用免费还是付费？免费能处理一部分，但卡在 3200 条限制、手动点不动、没有排程。付费补上的是「量」和「省心」，不是魔法。用一个具体例子看清差别再花钱。',
@@ -24205,7 +24191,7 @@ rl.on('close', () =&gt; {
 <p>Also weigh the cost of doing nothing. A stalled deletion means those posts keep feeding brokers and search indexes every day they remain. The fee for a paid tool is small next to the days or weeks you might spend clicking through the free path. Read the limits closely, pick the smallest plan that covers your count, and you will likely find paid wins on both time and price for any volume above a few hundred posts.</p>
 `,
   },
-  {
+{
     slug: 'cross-border-data-transfer-privacy-2026',
     title: '跨境数据传输：你的旧推文在哪些司法区受保护',
     excerpt: '你的旧推文存在谁的服务器、受哪国法律保护？X 是美国公司，数据主要在美国处理；但你在欧盟、英国或加州时，当地法规赋予你删除权和可携权。看清司法区差异，才知道怎么提请求。',
@@ -24307,7 +24293,7 @@ rl.on('close', () =&gt; {
 <p>Legal requests can take weeks, and during that window your old posts stay live. Use the wait to shrink your surface: delete posts with your home city, workplace, and any family details, since those are what brokers and background checks look for first. Treat the legal route as a backstop, not your first move. When the request finally processes, you will have already removed the items most likely to cause harm, so the slower path matters less. This two-track habit keeps you safer than relying on any single method.</p>
 `,
   },
-  {
+{
     slug: 'chinese-users-data-broker-optout-guide',
     title: '中文用户怎么让数据经纪商删掉你的推文档案',
     excerpt: '数据经纪商会抓取公开推文，拼出你的画像再卖出去。中文用户更危险：同音字、曾用名、境内外双账号一旦出现在旧推文里，更容易被聚合。本文针对中文语料给出可落地的退出步骤。',
@@ -24409,7 +24395,7 @@ rl.on('close', () =&gt; {
 <p>Keep a small note of every broker you contacted: the date, the request ID, and the screenshot of submission. Months later, when you re-check, that note tells you whether a broker quietly re-added you after a data refresh. It also stops you from re-submitting the same request and wondering why nothing changed. A simple spreadsheet with three columns is enough; the point is to make re-checks routine rather than a fresh scramble each time. Pair that habit with source cleanup and the Chinese-language footprint stops growing back.</p>
 `,
   },
-  {
+{
     slug: 'two-factor-authentication-faq-x-2026',
     title: 'X 账号两步验证（2FA）常见问题',
     excerpt: 'X 账号两步验证（2FA）怎么开、丢了备用码怎么办、换手机怎么迁移？这一组高频问题帮你把账号多一道锁，又能避免把自己锁在外面。',
@@ -24496,7 +24482,7 @@ rl.on('close', () =&gt; {
 <p>One last note: 2FA locks the account, not the footprint. Even a rock-solid account still leaves old high-risk tweets open to profiling. Run the on-device tool over those old posts too, and you protect both the account and the trail.</p>
 `,
   },
-  {
+{
     slug: 'x-platform-policy-changes-november-2026',
     title: '2026 年 11 月 X 平台隐私政策变动前瞻',
     excerpt: '11 月 X 可能出现更严格的身份核验、对批量删除类应用的 API 限额、隐私仪表盘改动与数据保留调整。与其等变动落地手忙脚乱，不如提前备份归档、清理高风险推文。',
@@ -24603,7 +24589,7 @@ rl.on('close', () =&gt; {
 <p>When a change actually ships, do not rush to delete everything in one panic session. Instead, download a fresh archive that day, confirm your backup exists, and only then start clearing the highest-risk items. A calm, ordered pass beats a frantic bulk delete that may hit new limits and fail halfway. If deletion slows under the new rules, fall back to native deletion for the rest and finish over a few days. The preparation you did earlier is what turns a stressful launch into a routine tidy-up.</p>
 `,
   },
-  {
+{
     slug: 'delete-tweets-by-date-range-guide',
     title: '按日期范围批量删除推文：清理 2018–2020 旧推文的实操指南',
     excerpt: 'X 原生界面不能按日期批量删推文，只能一条条删最近 3,200 条。要按年份或具体区间清理旧推文，得用数据归档配合本地工具或支持时间范围的第三方工具。本文讲清三种能落地的方法与常见坑。',
@@ -24769,7 +24755,7 @@ rl.on('close', () =&gt; {
 <p>Not sure where your account stands? Run a <a href="/">privacy check on your own device</a> first, then decide which batch to delete based on risk level.</p>
     `,
   },
-  {
+{
     slug: 'footprint-health-score-vs-search-visibility',
     title: '数字足迹健康分高，别人就搜不到你了吗？',
     excerpt: '健康分衡量的是你账号里敏感信息的密度，搜索可见度取决于账号隐私设置和搜索引擎收录。两者不是一回事：清掉高风险内容不会让你的账号从搜索里消失。本文讲清它们真实的关系。',
@@ -24864,7 +24850,7 @@ rl.on('close', () =&gt; {
 <p>Run a <a href="/">privacy check on your own device</a> first to see exactly what you've exposed, then decide whether to tackle content or settings first. That beats cleaning blindly.</p>
     `,
   },
-  {
+{
     slug: 'chinese-users-x-account-closure-checklist',
     title: '注销 X 账号前，中文用户必须清理的 6 类痕迹',
     excerpt: '注销只关掉你能编辑的入口，清不掉已经散出去的信息。中文用户的高风险痕迹和英文用户不同：手机号、微信、拼音姓名、证件、国内平台交叉引用。本文给出注销前必须清理的 6 类痕迹与顺序。',
@@ -24948,7 +24934,7 @@ rl.on('close', () =&gt; {
 <p>Not sure how much you've exposed? Run a <a href="/">privacy check on your own device</a> first. It flags these trace types by risk level, and you just work through the list.</p>
     `,
   },
-  {
+{
     slug: 'social-media-data-retention-laws-2026',
     title: '社交平台会把你的数据保留多久？旧推文受哪些法律管',
     excerpt: '你以为删掉的推文，平台可能还留着备份。本文讲清数据保留的法定义务、X 实际怎么存你的数据，以及 GDPR 与 CCPA 下你能主张的删除、访问、可携权，并给出一份可执行的清理清单。',
@@ -25145,7 +25131,7 @@ rl.on('close', () =&gt; {
 <p>回到<a href="/">首页</a>，免费跑一次 100% 本机的数字足迹体检，先看清楚自己到底留了多少，再决定下一步。</p>
 `,
   },
-  {
+{
     slug: 'weekend-digital-footprint-reset-routine',
     title: '周末两小时，给 X 账号做一次数字足迹大扫除',
     excerpt: '不用等出事才清理。本文给你一套周末两小时可执行的 X 账号数字足迹大扫除流程：下载归档、本机体检、清理高风险、固化习惯，并附常见卡点与排期建议。',
@@ -25255,7 +25241,7 @@ rl.on('close', () =&gt; {
 <p>回到<a href="/">首页</a>，这周末就跑一次免费的本机体检，把两小时用掉，比任何"以后再说"都管用。</p>
 `,
   },
-  {
+{
     slug: 'third-party-apps-your-tweets-data-2026',
     title: '第三方 App 在用你的推文数据做什么？2026 现状盘点',
     excerpt: '你授权过的第三方 App，可能仍在读取你的推文与关系链。本文盘点 2026 年 X 开放生态的数据流向、AI 训练与权限审计，并教你如何收回授权、降低暴露。',
@@ -25372,7 +25358,7 @@ rl.on('close', () =&gt; {
 <p>每年至少撤销一次不用的第三方连接，比事后追着删泄露的数据省力得多。回到<a href="/">首页</a>，先把历史推文的风险看清楚，再回头收拾那些还活着的老授权。</p>
 `,
   },
-  {
+{
     slug: 'switch-from-x-footprint-2026',
     title: '从 X 搬到 Bluesky、Mastodon 或 Threads，旧推文的数字足迹怎么处理',
     excerpt: '2026 年下半年不少人把社交重心迁到 Bluesky、Mastodon 或 Threads。但换平台不会自动抹掉你在 X 上十几年的旧推文，手机号、住址、定位和政治观点都可能留在里面。本文讲迁移前如何用本机体检自查，并对比四个平台的隐私差异。',
@@ -25529,7 +25515,7 @@ rl.on('close', () =&gt; {
       },
     ],
   },
-  {
+{
     slug: 'chinese-rednote-x-crosspost-privacy',
     title: '小红书和 X 双平台发文，旧内容怎么互相暴露隐私',
     excerpt: '很多中文用户同时在小红书（RED）和 X 上活跃，两个平台的账号名、真名和照片常常互通。本文从中文社区的真实习惯出发，讲双平台发文怎么让旧内容互相暴露隐私，以及一套适合中文用户的清理顺序。',
@@ -25629,7 +25615,7 @@ rl.on('close', () =&gt; {
       },
     ],
   },
-  {
+{
     slug: 'delete-old-tweets-vs-hide-faq',
     title: '删推文还是隐藏推文：旧内容隐私处理常见问题',
     excerpt: '打算降低 X 数字足迹时，最常纠结的就是"删"还是"藏"。本文用问答形式讲清删除与隐藏在隐私、可见性和平台留存上的差别，帮你按内容风险选对动作。',
@@ -25722,7 +25708,7 @@ rl.on('close', () =&gt; {
       },
     ],
   },
-  {
+{
     slug: 'singles-day-2026-privacy-footprint',
     title: '双十一 2026 网购狂欢，你的数字足迹正在被商家疯狂读取',
     excerpt: '双十一（11.11）是中文世界最大的网购节点。2026 年的大促里，商家对旧社交内容、浏览历史和账号画像的读取比往年更细。本文讲大促期间你的数字足迹怎么被用，以及下单前能做的几件隐私动作。',
@@ -25820,7 +25806,7 @@ rl.on('close', () =&gt; {
       },
     ],
   },
-  {
+{
     slug: 'chinese-sme-x-account-reputation-privacy',
     title: '中文小微商家 X 账号：声誉和隐私要一起管',
     excerpt: '很多中文小微商家用 X 做出海获客，但账号里混着客户名、报价和后台截图，一旦被搜到就会同时伤隐私和声誉。本文从中文商家的真实场景出发，讲一套"先护隐私、再稳声誉"的做法。',
@@ -25921,12 +25907,11 @@ rl.on('close', () =&gt; {
         aEn: 'Clean old posts with client names, phones, and quotes in bulk, then confirm no residue with a local check.'
       },
     ],
-  }
-,
+  },
   {
     slug: 'year-end-digital-footprint-checklist-2026',
     title: '2026 年终数字足迹自查清单：10 步清理你的 X 账号隐私隐患',
-    excerpt: '一年又快过去了。你在 X 上发过的每一条推文，可能正藏着手机号、住址、旧观点和购物习惯。这份年终自查清单，帮你用 10 步把隐私隐患一次性清理干净。',
+    excerpt: '一年又快过去了。你在 X 上发过的每一条推文，可能正藏着手机号、住址、旧观点和购物习惯。这份年终自查清单，帮你用 10 步把隐私隐患一次性清理干净，并顺手堵上搜索缓存的口子。',
     date: '2026-10-20',
     updatedAt: '2026-10-20',
     author: 'Digital Footprint Health Team',
@@ -25934,14 +25919,14 @@ rl.on('close', () =&gt; {
     tags: ['X/Twitter', '数字足迹', '隐私清理', '年终自查', '隐私保护'],
     canonical: '/blog/year-end-digital-footprint-checklist-2026',
     faq: [
-      { q: '年终自查和平时体检有什么不同？', a: '平时体检看的是「当下评分」，年终自查更看重「全年累积」。一年里你发过促销链接、晒过快递单、吐槽过公司，这些碎片拼起来就是一份完整的画像，日常检查容易漏掉季节性的暴露。', qEn: 'How is a year-end check different from a regular check?', aEn: 'A regular check looks at your score right now. A year-end review captures what accumulated across the whole year: promotional links, parcel photos, workplace rants. Daily scans tend to miss these seasonal exposures.' },
+      { q: '年终自查和平时体检有什么不同？', a: '平时体检看的是当下评分，年终自查更看重全年累积。一年里你发过促销链接、晒过快递单、吐槽过公司，这些碎片拼起来就是一份完整画像，日常检查容易漏掉季节性的暴露。', qEn: 'How is a year-end check different from a regular check?', aEn: 'A regular check looks at your score right now. A year-end review captures what accumulated across the whole year: promotional links, parcel photos, workplace rants. Daily scans tend to miss these seasonal exposures.' },
       { q: '10 步里最该优先做哪一步？', a: '先下载数据归档并搜自己的手机号、住址、邮箱这三类高危险信号。它们直接关联诈骗和现实安全，比观点类内容更急。', qEn: 'Which step should I do first?', aEn: 'Download your archive and search for your phone number, address, and email first. Those three map directly to scams and real-world safety, so they outrank opinion-style content.' },
       { q: '清理完还会被搜索引擎缓存吗？', a: '删除推文后，Google 的快照和第三方存档可能仍保留一段时间。建议删除后顺手提交移除请求，并定期复检。', qEn: 'Will cleanup remove search engine caches too?', aEn: 'After you delete tweets, Google snapshots and third-party archives may keep copies for a while. File removal requests after deletion and re-check periodically.' },
       { q: '需要付费才能清理吗？', a: '自查和定位风险完全免费。只有当你决定删除被 X 限制的老推文（超过 3200 条上限）时，才需要按条付费的工具协助，且支持暂停和恢复。', qEn: 'Do I have to pay to clean up?', aEn: 'Finding and scoring risks is free. You only pay per tweet when you delete posts beyond X’s 3,200-tweet limit, and that step is pauseable and resumable.' },
       { q: '多久做一次比较合适？', a: '建议每季度一次小自查、每年一次大清理。把清单存进手机备忘录，设个年度提醒就不会忘。', qEn: 'How often should I do this?', aEn: 'A light review every quarter and a deep clean once a year works well. Keep the checklist in your notes app with a yearly reminder.' }
     ],
     titleEn: 'Your 2026 Year-End Digital Footprint Checklist: 10 Steps to Clean Up Your X Privacy',
-    excerptEn: 'Another year of tweets is almost behind you. Somewhere in your X history sits a phone number, a home address, an old opinion, or a shopping habit you forgot you shared. This year-end checklist walks you through 10 steps to clear those privacy risks for good.',
+    excerptEn: 'Another year of tweets is almost behind you. Somewhere in your X history sits a phone number, a home address, an old opinion, or a shopping habit you forgot you shared. This year-end checklist walks you through 10 steps to clear those privacy risks for good and close the search-cache gap.',
     categoryEn: 'Privacy Guide',
     tagsEn: ['X/Twitter', 'digital footprint', 'privacy cleanup', 'year-end check', 'privacy'],
     contentEn: `
@@ -25949,43 +25934,51 @@ rl.on('close', () =&gt; {
 
 <h2>Why a year-end check actually matters</h2>
 <p>People treat digital cleanup like spring cleaning: something you mean to do but skip. The problem is that old tweets do not expire. Search engines index them, screenshots preserve them, and background checks pull them. A year-end review is the one scheduled moment when you look at the whole picture instead of one bad post.</p>
-<p>The goal is not perfection. It is to remove the handful of items that carry real risk: contact details, location traces, and anything that could cost you a job or a relationship if resurfaced.</p>
+<p>The goal is not perfection. It is to remove the handful of items that carry real risk: contact details, location traces, and anything that could cost you a job or a relationship if resurfaced. You do not need to delete everything. You need to delete the dangerous things and make the rest harder to find.</p>
 
 <h2>Your 10-step year-end checklist</h2>
-<p>Work through these in order. Steps 1 to 3 find the danger; steps 4 to 7 fix it; steps 8 to 10 keep it from coming back.</p>
+<p>Work through these in order. Steps 1 to 3 find the danger; steps 4 to 7 fix it; steps 8 to 10 keep it from coming back. Each step takes a few minutes, and most of the work is searching your own archive.</p>
 
 <h3>1. Download your full X archive</h3>
-<p>Go to Settings, then Your account, then Download an archive of your data. This ZIP is the only way to reach tweets older than X's 3,200-tweet limit. Without it, you are blind to most of your history.</p>
+<p>Go to Settings, then Your account, then Download an archive of your data. This ZIP is the only way to reach tweets older than X's 3,200-tweet limit. Without it, you are blind to most of your history and you will miss the posts that matter most.</p>
 
 <h3>2. Search for your phone number</h3>
-<p>Open the archive and search every variant of your number. A single old "text me at 138..." post is a direct line for scammers.</p>
+<p>Open the archive and search every variant of your number, including with and without the country code. A single old "text me at 138..." post is a direct line for scammers, and it stays indexed for years.</p>
 
 <h3>3. Search for your address and email</h3>
-<p>Moving announcements, parcel photos, and event check-ins leak these constantly. Flag every match.</p>
+<p>Moving announcements, parcel photos, and event check-ins leak these constantly. Flag every match, even the ones that feel harmless, because together they draw a map of where you live and work.</p>
 
 <h3>4. Run a free footprint check</h3>
-<p>A digital footprint check parses the archive on your own device and scores risk from 0 to 100. It reads nothing aloud and deletes nothing. See <a href="/blog/what-is-digital-footprint-check">what a digital footprint check actually does</a> before you start.</p>
+<p>A digital footprint check parses the archive on your own device and scores risk from 0 to 100. It reads nothing aloud and deletes nothing. See <a href="/blog/what-is-digital-footprint-check">what a digital footprint check actually does</a> before you start, so you know what the score means.</p>
 
 <h3>5. Review your 0-100 health score</h3>
-<p>The score is a fast way to see how bad things are. Read <a href="/blog/digital-footprint-health-score">how the health score is built</a> so the number means something to you.</p>
+<p>The score is a fast way to see how bad things are. Read <a href="/blog/digital-footprint-health-score">how the health score is built</a> so the number means something to you instead of feeling arbitrary.</p>
 
 <h3>6. Triage by risk label</h3>
-<p>Group findings into contact info, location, and sensitive topics. Contact and location go first because they threaten your safety, not just your reputation.</p>
+<p>Group findings into contact info, location, and sensitive topics. Contact and location go first because they threaten your safety, not just your reputation. Sensitive topics matter too, but they are rarely as urgent as a leaked phone number.</p>
 
 <h3>7. Delete the dangerous ones</h3>
-<p>For posts within the 3,200 limit, use X's native delete. For older posts, a per-tweet tool helps, and you can pause and resume. Our <a href="/blog/how-to-delete-old-tweets-2026">complete guide to deleting old tweets</a> covers the mechanics.</p>
+<p>For posts within the 3,200 limit, use X's native delete. For older posts, a per-tweet tool helps, and you can pause and resume. Our <a href="/blog/how-to-delete-old-tweets-2026">complete guide to deleting old tweets</a> covers the mechanics so you do not break threads you want to keep.</p>
 
 <h3>8. Submit search removal requests</h3>
-<p>Deletion does not instantly erase cached copies. Ask Google and other engines to drop the snapshots for your highest-risk posts.</p>
+<p>Deletion does not instantly erase cached copies. Ask Google and other engines to drop the snapshots for your highest-risk posts. This step is easy to skip, and it is the difference between "deleted" and "actually gone from search."</p>
 
 <h3>9. Lock down future posts</h3>
-<p>Turn on two-factor auth, review connected apps, and think for five seconds before posting location or contact details again.</p>
+<p>Turn on two-factor auth, review connected apps, and think for five seconds before posting location or contact details again. The cheapest cleanup is the one you never have to do because you stopped the leak at the source.</p>
 
 <h3>10. Set a reminder for next year</h3>
-<p>Save this checklist. A quarterly light review plus one deep year-end pass keeps the pile from growing back.</p>
+<p>Save this checklist. A quarterly light review plus one deep year-end pass keeps the pile from growing back, and a yearly reminder means you will not forget until something embarrassing resurfaces.</p>
 
 <h2>What to do after the checklist</h2>
-<p>Most people finish step 7 and feel done. The real win is steps 8 to 10: removal requests close the search-cache gap, and the reminder stops next year's pile from forming. If you want a sense of progress over time, our <a href="/blog/60-day-digital-footprint-milestone">60-day milestone walkthrough</a> shows what steady cleanup looks like.</p>
+<p>Most people finish step 7 and feel done. The real win is steps 8 to 10: removal requests close the search-cache gap, and the reminder stops next year's pile from forming. If you want a sense of progress over time, our <a href="/blog/60-day-digital-footprint-milestone">60-day milestone walkthrough</a> shows what steady cleanup looks like when you keep at it.</p>
+
+<h2>Common mistakes to avoid</h2>
+<ul>
+  <li>Deleting only the posts you remember. You forget 90% of what you posted, which is exactly why you need the archive.</li>
+  <li>Skipping step 8. A deleted tweet can still show up in a search snapshot for months.</li>
+  <li>Treating the score as a verdict. It is a priority list, not a grade on you as a person.</li>
+  <li>Doing it once and never again. New posts create new exposure every week.</li>
+</ul>
 
 <h2>Get started</h2>
 <p>Your X account is a public diary of the last decade. A year-end checklist turns that diary from a liability into something you actually control. <a href="/">Run a free, on-device footprint check</a> today and see your 0-100 score before the new year starts.</p>
@@ -25995,43 +25988,51 @@ rl.on('close', () =&gt; {
 
 <h2>为什么年终自查真的有用</h2>
 <p>多数人把清理隐私当成「哪天有空再做」的事，结果永远没做。问题在于：旧推文不会过期。搜索引擎会收录、截图会留存、背调会调取。年终自查是少数几个能让你跳出单条坏帖、看到全貌的固定节点。</p>
-<p>目标不是完美，而是清掉那几类真正有风险的条目：联系信息、位置痕迹，以及任何一旦被翻出来会影响工作 or 关系的内容。</p>
+<p>目标不是完美，而是清掉那几类真正有风险的条目：联系信息、位置痕迹，以及任何一旦被翻出来会影响工作 or 关系的内容。你不需要删光全部，只需要删掉危险的那批，并让剩下的更难被搜到。</p>
 
 <h2>你的 10 步年终清单</h2>
-<p>按顺序走。第 1-3 步负责「找雷」，第 4-7 步负责「拆雷」，第 8-10 步负责「别再长」。</p>
+<p>按顺序走。第 1-3 步负责「找雷」，第 4-7 步负责「拆雷」，第 8-10 步负责「别再长」。每一步几分钟，大部分工作量是在自己的归档里搜索。</p>
 
 <h3>1. 下载完整的 X 数据归档</h3>
-<p>进设置 → 你的账号 → 下载你的数据归档。这个 ZIP 是唯一能触及「超过 3200 条上限」老推文的入口。没有它，你对大半历史其实是瞎的。</p>
+<p>进设置 → 你的账号 → 下载你的数据归档。这个 ZIP 是唯一能触及「超过 3200 条上限」老推文的入口。没有它，你对大半历史其实是瞎的，而最该担心的恰恰是那些老帖。</p>
 
 <h3>2. 搜自己的手机号</h3>
-<p>打开归档，搜你号码的各种写法。一条「私我 138……」的老帖，就是诈骗分子直达你的入口。</p>
+<p>打开归档，搜你号码的各种写法，带不带国家码都搜一遍。一条「私我 138……」的老帖，就是诈骗分子直达你的入口，而且会被收录好几年。</p>
 
 <h3>3. 搜住址和邮箱</h3>
-<p>搬家通告、快递单照片、活动打卡，都在不停泄露这些信息。每一条都标出来。</p>
+<p>搬家通告、快递单照片、活动打卡，都在不停泄露这些信息。每一条都标出来，哪怕看着无害，因为合起来它们就画出了你住哪、在哪上班的地图。</p>
 
 <h3>4. 跑一次免费足迹体检</h3>
-<p>数字足迹体检会在你本机解析归档，给出 0-100 的风险评分。它只读取、不删除。开始前先看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检到底做什么</a>。</p>
+<p>数字足迹体检会在你本机解析归档，给出 0-100 的风险评分。它只读取、不删除。开始前先看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检到底做什么</a>，你就知道那个分数意味着什么。</p>
 
 <h3>5. 看你的 0-100 健康分</h3>
-<p>这个分数能快速判断情况多糟。读 <a href="/blog/digital-footprint-health-score">健康分是怎么算出来的</a>，让数字对你有意义。</p>
+<p>这个分数能快速判断情况多糟。读 <a href="/blog/digital-footprint-health-score">健康分是怎么算出来的</a>，这个数字才对你有意义，而不再是凭空跳出来的一个数。</p>
 
 <h3>6. 按风险标签分流</h3>
-<p>把发现项分成「联系信息 / 位置 / 敏感话题」三组。联系信息和位置优先，因为它们威胁的是人身安全，不止声誉。</p>
+<p>把发现项分成「联系信息 / 位置 / 敏感话题」三组。联系信息和位置优先，因为它们威胁的是人身安全，不止声誉。敏感话题也重要，但通常没泄露手机号那么急。</p>
 
 <h3>7. 删掉危险的那批</h3>
-<p>3200 条以内的用 X 自带删除；更早的老帖交给按条计费的工具，可暂停可恢复。具体手法看 <a href="/blog/how-to-delete-old-tweets-2026">删除旧推文完整指南</a>。</p>
+<p>3200 条以内的用 X 自带删除；更早的老帖交给按条计费的工具，可暂停可恢复。具体手法看 <a href="/blog/how-to-delete-old-tweets-2026">删除旧推文完整指南</a>，免得误删想保留的串。</p>
 
 <h3>8. 提交搜索移除请求</h3>
-<p>删除不会立刻清掉缓存快照。对风险最高的几条，主动向 Google 等引擎申请撤下快照。</p>
+<p>删除不会立刻清掉缓存快照。对风险最高的几条，主动向 Google 等引擎申请撤下快照。这步最容易省，却是「删了」和「搜索里真的没了」之间的差别。</p>
 
 <h3>9. 锁死未来的新帖</h3>
-<p>开启两步验证、复查已授权应用，再发位置或联系方式前多想五秒。</p>
+<p>开启两步验证、复查已授权应用，再发位置或联系方式前多想五秒。最便宜的清理，是从源头就别再漏。</p>
 
 <h3>10. 给明年设个提醒</h3>
-<p>把这份清单存下来。每季度小自查一次、每年深度清理一次，堆子就不会再长回来。</p>
+<p>把这份清单存下来。每季度小自查一次、每年深度清理一次，堆子就不会再长回来，年度提醒也让你不会拖到出事才想起来。</p>
 
 <h2>清单之后该做什么</h2>
 <p>多数人做完第 7 步就觉得完了。真正的收益在第 8-10 步：移除请求堵上搜索缓存的口子，提醒则让明年的堆子长不起来。想看长期效果，<a href="/blog/60-day-digital-footprint-milestone">60 天里程碑实录</a>讲了稳定清理长什么样。</p>
+
+<h2>几个容易踩的坑</h2>
+<ul>
+  <li>只删你记得的帖。你 90% 的发过的东西都忘了，这正是为什么需要归档。</li>
+  <li>跳过第 8 步。删掉的推文可能还在搜索快照里挂好几个月。</li>
+  <li>把分数当审判。它只是优先级清单，不是对你这个人的打分。</li>
+  <li>做一次就再也不做。新帖每周都在制造新暴露。</li>
+</ul>
 
 <h2>现在就开始</h2>
 <p>你的 X 账号是过去十年的公开日记。年终清单能把它从「隐患」变成「你真正能掌控的东西」。 <a href="/">马上跑一次免费、本机的足迹体检</a>，在新年之前先看一眼自己的 0-100 分。</p>
@@ -26040,7 +26041,7 @@ rl.on('close', () =&gt; {
   {
     slug: 'digital-footprint-score-faq-2026',
     title: '数字足迹健康评分 FAQ：0-100 分到底怎么算',
-    excerpt: '0-100 的健康分到底是分数游戏还是真有用？这份 FAQ 回答评分怎么来、低分意味着什么、多久变一次，以及它和你真实风险的关系。',
+    excerpt: '0-100 的健康分到底是分数游戏还是真有用？这份 FAQ 回答评分怎么来、低分意味着什么、多久变一次，以及它和你真实风险的关系，帮你把数字读明白。',
     date: '2026-10-20',
     updatedAt: '2026-10-20',
     author: 'Digital Footprint Health Team',
@@ -26049,13 +26050,13 @@ rl.on('close', () =&gt; {
     canonical: '/blog/digital-footprint-score-faq-2026',
     faq: [
       { q: '0-100 分是怎么算出来的？', a: '评分按风险信号加权：手机号、住址等联系与位置信息权重最高，敏感话题次之，普通内容几乎不计分。命中越多、越危险，分数越低。', qEn: 'How is the 0-100 score calculated?', aEn: 'The score weights risk signals. Contact details and location carry the most weight, sensitive topics less, ordinary posts almost none. More dangerous hits mean a lower score.' },
-      { q: '低分代表什么？', a: '低分说明你的归档里存在可直接用于诈骗或定位的高危信息。它不是羞辱值，而是「该优先处理」的排序。', qEn: 'What does a low score mean?', aEn: 'A low score means your archive contains high-risk info that can be used for scams or locating you. It is a priority rank, not a judgment.' },
+      { q: '低分代表什么？', a: '低分说明你的归档里存在可直接用于诈骗或定位的高危信息。它不是羞辱值，而是「该优先处理」的排序。', qEn: 'What does a low score mean?', aEn: 'A low score means your archive contains high-risk info usable for scams or locating you. It is a priority rank, not a judgment on you.' },
       { q: '分数多久更新一次？', a: '只要你重新跑体检就会重算；它不随时间自动变化。删掉高危推文后再测，分数会立刻上升。', qEn: 'How often does the score change?', aEn: 'It recalculates every time you run a check. It does not change on its own. Delete high-risk tweets and re-run to see it rise.' },
-      { q: '100 分就安全了吗？', a: '100 分代表当前归档里没检出高危信号，但不保证未来不发、也不保证搜索引擎缓存已清。它是快照，不是保证书。', qEn: 'Is 100 safe?', aEn: '100 means no high-risk signals were found in the current archive. It does not guarantee future posts are clean or that caches are cleared. It is a snapshot.' },
+      { q: '100 分就安全了吗？', a: '100 分代表当前归档里没检出高危信号，但不保证未来不发、也不保证搜索引擎缓存已清。它是快照，不是保证书。', qEn: 'Is 100 safe?', aEn: '100 means no high-risk signals were found in the current archive. It does not guarantee future posts are clean or that search caches are cleared. It is a snapshot.' },
       { q: '评分和删除量成正比吗？', a: '不一定。删 100 条普通内容可能分数不变，删 1 条带手机号的帖却可能大幅回升。看的是「风险类型」不是「数量」。', qEn: 'Does score scale with how many tweets you delete?', aEn: 'Not directly. Deleting 100 ordinary posts may change nothing, while removing one post with a phone number can lift the score a lot. Risk type matters more than count.' }
     ],
     titleEn: 'Digital Footprint Health Score FAQ: How the 0-100 Score Actually Works',
-    excerptEn: 'Is the 0-100 health score a real signal or just a number? This FAQ covers where the score comes from, what a low score means, how often it changes, and how it maps to your actual risk.',
+    excerptEn: 'Is the 0-100 health score a real signal or just a number? This FAQ covers where the score comes from, what a low score means, how often it changes, and how it maps to your actual risk, so you can read the number correctly.',
     categoryEn: 'Privacy Guide',
     tagsEn: ['digital footprint', 'health score', 'privacy check', 'FAQ'],
     contentEn: `
@@ -26063,10 +26064,13 @@ rl.on('close', () =&gt; {
 
 <h2>Frequently asked questions</h2>
 <p><strong>How is the 0-100 score calculated?</strong> It weights risk signals. Contact details and location carry the most weight, sensitive topics less, ordinary posts almost none. More dangerous hits mean a lower score.</p>
-<p><strong>What does a low score mean?</strong> A low score means your archive contains high-risk info usable for scams or locating you. It is a priority rank, not a verdict on you.</p>
+<p><strong>What does a low score mean?</strong> A low score means your archive contains high-risk info usable for scams or locating you. It is a priority rank, not a verdict on you as a person.</p>
 <p><strong>How often does the score change?</strong> It recalculates every time you run a check. It does not drift on its own. Delete high-risk tweets and re-run to watch it climb.</p>
 <p><strong>Is 100 safe?</strong> 100 means no high-risk signals were found in the current archive. It does not guarantee future posts stay clean or that search caches are cleared. It is a snapshot, not a warranty.</p>
 <p><strong>Does score scale with deletions?</strong> Not directly. Removing 100 ordinary posts may do nothing, while one post with a phone number can lift the score sharply. Risk type beats raw count.</p>
+
+<h2>How to use the score well</h2>
+<p>Treat the score as a todo list, not a grade. A drop after a new post means that post added risk, so check what it exposed. A steady climb means your cleanup is working. Pair the number with the risk labels so you know which posts to open first.</p>
 
 <h2>Where to go next</h2>
 <p>For the weighting behind each signal, read <a href="/blog/footprint-health-score-meaning">what the health score meaning is</a> and <a href="/blog/health-score-weighting-breakdown">how the weighting breaks down</a>. When you are ready to act, <a href="/">run a free on-device check</a> and watch the number move.</p>
@@ -26081,6 +26085,9 @@ rl.on('close', () =&gt; {
 <p><strong>100 分就安全吗？</strong> 100 分只是当前归档里没检出高危信号，不保证未来不发新帖，也不保证搜索缓存已清。它是快照，不是保证书。</p>
 <p><strong>分数和删除量成正比吗？</strong> 不成正比。删 100 条普通内容可能分数不变，删 1 条带手机号的帖却能大幅回升。看的是风险类型，不是数量。</p>
 
+<h2>怎么把分数用对</h2>
+<p>把分数当待办清单，别当成绩单。发新帖后分数掉，说明那条帖带来了风险，去查它暴露了什么。分数稳步上升，说明清理见效。把数字和风险标签对照着看，你就知道该先点开哪几条。</p>
+
 <h2>接下来看什么</h2>
 <p>想了解每个信号的权重，读 <a href="/blog/footprint-health-score-meaning">健康分到底代表什么</a> 和 <a href="/blog/health-score-weighting-breakdown">权重怎么拆</a>。准备好动手时，<a href="/">跑一次免费本机体检</a>，看数字动起来。</p>
     `
@@ -26088,7 +26095,7 @@ rl.on('close', () =&gt; {
   {
     slug: 'double-12-2026-online-privacy-footprint',
     title: '双12 网购狂欢后的隐私足迹：你的 X 账号泄露了什么',
-    excerpt: '双12 一过，你的快递单、优惠码、购物车截图就铺满了时间线。这些购物痕迹一旦进 X 历史，就成了别人拼你消费习惯的拼图。',
+    excerpt: '双12 一过，你的快递单、优惠码、购物车截图就铺满了时间线。这些购物痕迹一旦进 X 历史，就成了别人拼你消费习惯的拼图。本文讲清暴露点、为什么删原帖不够、以及一套售后自查。',
     date: '2026-10-20',
     updatedAt: '2026-10-20',
     author: 'Digital Footprint Health Team',
@@ -26099,10 +26106,10 @@ rl.on('close', () =&gt; {
       { q: '双12 晒单为什么会泄露隐私？', a: '快递单含姓名电话地址，优惠码绑定账号，购物车截图暴露品牌和预算。三者组合能拼出你的真实身份与消费力。', qEn: 'Why is posting hauls a privacy risk?', aEn: 'Parcel photos carry name, phone, and address. Promo codes tie to accounts. Cart screenshots reveal brands and budget. Together they sketch your real identity and spending power.' },
       { q: '删掉原帖还不够吗？', a: '不够。别人已截图、搜索引擎已收录、转发链还在。删原帖只是第一步，还要处理缓存和存档。', qEn: 'Is deleting the original post enough?', aEn: 'No. Others screenshotted it, search engines indexed it, and reshare chains persist. Deleting the original is only step one; caches and archives remain.' },
       { q: '平时怎么减少购物痕迹？', a: '晒单前打码快递单、不连 wifi 名、不暴露小区名；大促后做一次归档自查。', qEn: 'How do I leave fewer shopping traces?', aEn: 'Blur parcel labels before posting, hide your wifi name and neighborhood, and run an archive self-check after each major sale.' },
-      { q: '和黑五、双11 的隐私风险一样吗？', a: '本质一样，都是「促销期集中晒消费」。区别只在时间节点，清理方法通用，可参考 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a>。', qEn: 'Is this the same as Black Friday risk?', aEn: 'The core risk is identical: a burst of spending posts during a sale. Only the date differs, and the cleanup method is the same. See the <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a>.' }
+      { q: '和黑五、双11 的隐私风险一样吗？', a: '本质一样，都是促销期集中晒消费。区别只在时间节点，清理方法通用，可参考 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a>。', qEn: 'Is this the same as Black Friday risk?', aEn: 'The core risk is identical: a burst of spending posts during a sale. Only the date differs, and the cleanup method is the same. See the <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a>.' }
     ],
     titleEn: 'After Double 12: What Your X Account Reveals About Your Shopping Habits',
-    excerptEn: 'Right after Double 12, parcel photos, promo codes, and cart screenshots fill your timeline. Once those shopping traces enter your X history, they become pieces anyone can use to map your spending habits.',
+    excerptEn: 'Right after Double 12, parcel photos, promo codes, and cart screenshots fill your timeline. Once those shopping traces enter your X history, they become pieces anyone can use to map your spending habits. This piece covers the exposure, why deleting the original is not enough, and a post-sale routine.',
     categoryEn: 'Privacy Industry',
     tagsEn: ['X/Twitter', 'shopping privacy', 'Double 12', 'spending habits', 'privacy'],
     contentEn: `
@@ -26121,7 +26128,7 @@ rl.on('close', () =&gt; {
 
 <h2>Why deletion is not the whole fix</h2>
 <p>Deleting the original post feels like cleanup. It is not enough. Anyone who saw it may have screenshotted it. Search engines indexed it within minutes. A friend may have reshared it. Your archive still holds the original text even after X removes the public copy.</p>
-<p>The same pattern shows up after every sale window. Our <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a> and <a href="/blog/singles-day-2026-privacy-footprint">Singles Day walkthrough</a> cover the same mechanics for other events, and <a href="/blog/holiday-season-2026-footprint-cleanup">the holiday-season cleanup guide</a> gives a broader plan.</p>
+<p>The same pattern shows up after every sale window. Our <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a> and <a href="/blog/singles-day-2026-privacy-footprint">Singles Day walkthrough</a> cover the same mechanics for other events, and <a href="/blog/holiday-season-2026-footprint-cleanup">the holiday-season cleanup guide</a> gives a broader plan that works year-round.</p>
 
 <h2>A simple post-sale routine</h2>
 <ol>
@@ -26129,7 +26136,11 @@ rl.on('close', () =&gt; {
   <li>Keep wifi names and neighborhood landmarks out of the frame.</li>
   <li>Wait a week, then run an archive self-check for "order", "parcel", and brand names.</li>
   <li>Delete what you find, then submit removal requests for cached copies.</li>
+  <li>Repeat after every major sale, not just Double 12.</li>
 </ol>
+
+<h2>Who actually benefits from your traces</h2>
+<p>It is not only scammers. Ad networks build profiles from the signals you post, then charge brands to reach "people who bought X." Reshippers and doxxers use address leaks to tie your online name to a physical place. The cost of one careless photo is paid over years, not days.</p>
 
 <h2>Get started</h2>
 <p>Shopping posts are fun to share, but they are also the easiest way to hand strangers your address. <a href="/">Run a free, on-device footprint check</a> after Double 12 and see what your timeline is quietly telling people.</p>
@@ -26150,7 +26161,7 @@ rl.on('close', () =&gt; {
 
 <h2>为什么「删原帖」不是终点</h2>
 <p>删掉原帖让人感觉清理完了，其实不够。看到的人可能已经截图，搜索引擎几分钟内就已收录，朋友也可能转发过。即便 X 下掉了公开副本，你的归档里还留着原文。</p>
-<p>每个大促窗口都是同一套逻辑。我们的 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a> 和 <a href="/blog/singles-day-2026-privacy-footprint">双11 实录</a> 讲了其他节点的同类机制，<a href="/blog/holiday-season-2026-footprint-cleanup"> holiday 季清理指南</a> 给了更全盘的方案。</p>
+<p>每个大促窗口都是同一套逻辑。我们的 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a> 和 <a href="/blog/singles-day-2026-privacy-footprint">双11 实录</a> 讲了其他节点的同类机制，<a href="/blog/holiday-season-2026-footprint-cleanup"> holiday 季清理指南</a> 给了能全年通用的更全盘方案。</p>
 
 <h2>一套简单的售后自查</h2>
 <ol>
@@ -26158,7 +26169,11 @@ rl.on('close', () =&gt; {
   <li>画面里别带 wifi 名和小区地标。</li>
   <li>过一周，用归档自查「订单 / 快递 / 品牌名」。</li>
   <li>删掉命中的，再对缓存副本提交移除请求。</li>
+  <li>每个大促后都做一遍，不只双12。</li>
 </ol>
+
+<h2>到底谁在拿你的痕迹牟利</h2>
+<p>不止诈骗分子。广告网络用你发的信号建画像，再让品牌付钱去触达「买过 X 的人」。倒卖和起底的人用地址泄露把你的网名和现实住址绑在一起。一张随手拍的代价是按年算的，不是按天。</p>
 
 <h2>现在就开始</h2>
 <p>购物帖好玩，却也是把住址双手奉上的最容易方式。双12 之后 <a href="/">跑一次免费、本机的足迹体检</a>，看看你的时间线正悄悄告诉别人什么。</p>
@@ -26167,7 +26182,7 @@ rl.on('close', () =&gt; {
   {
     slug: 'x-archive-privacy-analysis-guide',
     title: '用 X 数据归档做隐私体检：如何安全分析自己的推文',
-    excerpt: 'X 数据归档是体检的原材料。本文讲清楚归档里到底有什么、为什么必须在本机分析、以及怎么在不上传任何数据的前提下看清自己的隐私风险。',
+    excerpt: 'X 数据归档是体检的原材料。本文讲清楚归档里到底有什么、为什么必须在本机分析、以及怎么在不上传任何数据的前提下看清自己的隐私风险，并顺手处理广告与媒体里的隐藏信号。',
     date: '2026-10-20',
     updatedAt: '2026-10-20',
     author: 'Digital Footprint Health Team',
@@ -26181,14 +26196,14 @@ rl.on('close', () =&gt; {
       { q: '分析完数据会留下副本吗？', a: '正规本机工具只在本地临时解析，可手动删除；切勿用会把归档传服务器的网站。', qEn: 'Does analysis leave a copy of my data?', aEn: 'A proper on-device tool parses locally and can be deleted by you. Never use a website that uploads your archive to its servers.' }
     ],
     titleEn: 'Privacy Analysis With Your X Archive: How to Safely Review Your Own Tweets',
-    excerptEn: 'Your X data archive is the raw material for any footprint check. This guide explains what the archive actually contains, why analysis must happen on your own device, and how to see your privacy risks without uploading anything.',
+    excerptEn: 'Your X data archive is the raw material for any footprint check. This guide explains what the archive actually contains, why analysis must happen on your own device, and how to see your privacy risks without uploading anything, including the hidden signals in ads and media.',
     categoryEn: 'Archive Basics',
     tagsEn: ['X/Twitter', 'data archive', 'privacy check', 'on-device analysis'],
     contentEn: `
 <p>Your X data archive is the single source of truth for any privacy check. Before you can clean up, you have to understand what the archive holds and why the analysis must stay on your own machine.</p>
 
 <h2>What the archive actually contains</h2>
-<p>Most people think of tweets as text. The archive shows the rest: timestamps, location tags, linked devices, ad topics, and media. As <a href="/blog/whats-inside-x-archive-tweets-js">the breakdown of tweets.js</a> explains, the post file is only one layer. Ad data and media metadata carry their own signals.</p>
+<p>Most people think of tweets as text. The archive shows the rest: timestamps, location tags, linked devices, ad topics, and media. As <a href="/blog/whats-inside-x-archive-tweets-js">the breakdown of tweets.js</a> explains, the post file is only one layer. Ad data and media metadata carry their own signals, and those are easy to miss if you only skim the text.</p>
 
 <h2>Why on-device analysis matters</h2>
 <p>Privacy tools face a hard conflict: they handle your most sensitive data, yet many upload it to servers. A trustworthy check should never need to upload your archive, call X's read API for more data, or store your tweets in a database. With on-device parsing, the archive is read locally and only touched by X's write API when you choose to delete.</p>
@@ -26197,9 +26212,13 @@ rl.on('close', () =&gt; {
 <ol>
   <li>Request the archive from <a href="/blog/how-to-download-x-archive">your X settings</a>; it arrives as a ZIP.</li>
   <li>Open it with a tool that runs locally. Pick the format that fits your workflow; <a href="/blog/x-archive-csv-vs-json">CSV versus JSON</a> explains the trade-off.</li>
-  <li>Let it scan for phone numbers, addresses, locations, and sensitive topics.</li>
+  <li>Let it scan for phone numbers, addresses, locations, and sensitive topics across tweets, ads, and media.</li>
   <li>Read the risk list and decide what to delete. Nothing leaves your computer during this step.</li>
+  <li>When you delete, the tool talks to X's write API on your behalf, and only then.</li>
 </ol>
+
+<h2>The signals people miss</h2>
+<p>Tweets get the attention, but two quieter files matter. Ad-interest data shows what X thinks you like, which can reveal health, politics, or finances you never posted about directly. Media metadata can carry device and location clues from the photos you attached. A good check looks at all of it, not just the visible text.</p>
 
 <h2>Get started</h2>
 <p>The archive is the raw material; on-device analysis is the safe way to turn it into a clear risk picture. <a href="/">Start a free footprint check</a> that never uploads your data, and review your own tweets without handing them to anyone.</p>
@@ -26208,7 +26227,7 @@ rl.on('close', () =&gt; {
 <p>X 数据归档是任何隐私体检的唯一真相来源。要清理，先得搞清楚归档里到底有什么，以及为什么分析必须留在你自己的机器上。</p>
 
 <h2>归档里到底有什么</h2>
-<p>多数人以为推文只是文字。归档会露出其余部分：时间戳、位置标签、关联设备、广告主题、媒体文件。正如 <a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 结构拆解</a> 所说，帖子文件只是一层，广告数据和媒体元数据各自带着信号。</p>
+<p>多数人以为推文只是文字。归档会露出其余部分：时间戳、位置标签、关联设备、广告主题、媒体文件。正如 <a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 结构拆解</a> 所说，帖子文件只是一层，广告数据和媒体元数据各自带着信号，只扫文字很容易漏看。</p>
 
 <h2>为什么本机分析最重要</h2>
 <p>隐私工具面对一个硬冲突：它处理你最敏感的数据，却有许多会把数据上传到服务器。负责任的体检绝不需要上传归档、调 X 的读取接口拉更多数据，或在数据库里存你的推文。本机解析时，归档只在本地被读取，只有你选择删除时才碰 X 的写入接口。</p>
@@ -26217,9 +26236,13 @@ rl.on('close', () =&gt; {
 <ol>
   <li>从 <a href="/blog/how-to-download-x-archive">X 设置</a> 申请归档，它是一份 ZIP。</li>
   <li>用本地运行的工具打开。挑适合你工作流的文件格式，<a href="/blog/x-archive-csv-vs-json">CSV 与 JSON 对比</a> 讲了取舍。</li>
-  <li>让它扫描手机号、住址、位置、敏感话题。</li>
+  <li>让它跨推文、广告、媒体扫描手机号、住址、位置、敏感话题。</li>
   <li>读完风险清单再决定删什么。这一步数据不出电脑。</li>
+  <li>真要删时，工具才代你调用 X 的写入接口。</li>
 </ol>
+
+<h2>最容易被漏掉的信号</h2>
+<p>推文抢了注意力，但两个更安静的文件同样要命。广告兴趣数据暴露 X 以为你喜欢什么，可能牵出你从没直接说过的健康、政治或财务倾向。媒体元数据可能从你附的照片里带出设备和位置线索。好的体检全看，不只看明面的文字。</p>
 
 <h2>现在就开始</h2>
 <p>归档是原材料，本机分析是把原材料变成清晰风险图的安全方式。 <a href="/">开启一次绝不上传数据的免费足迹体检</a>，在不把推文交给任何人的前提下看清自己的历史。</p>
@@ -26228,7 +26251,7 @@ rl.on('close', () =&gt; {
   {
     slug: 'workplace-old-tweets-conflict-risk',
     title: '旧推文引爆职场冲突：同事和领导怎么看你的 X 历史',
-    excerpt: '一条吐槽前公司的旧帖，可能在你入职新团队后被同事翻出来，变成真实的职场尴尬甚至冲突。本文讲旧推文如何引发职场矛盾，以及入职前后该怎么自查。',
+    excerpt: '一条吐槽前公司的旧帖，可能在你入职新团队后被同事翻出来，变成真实的职场尴尬甚至冲突。本文讲旧推文如何引发职场矛盾，入职前后该自查哪三类内容，以及离职后为何还要再清一次。',
     date: '2026-10-20',
     updatedAt: '2026-10-20',
     author: 'Digital Footprint Health Team',
@@ -26238,28 +26261,34 @@ rl.on('close', () =&gt; {
     faq: [
       { q: '同事真的会翻我多年前的推文吗？', a: '会，尤其在团队磨合期或意见不合时。旧帖是现成的「了解一个人」材料，比当面聊天更快得出结论。', qEn: 'Do coworkers really dig up old tweets?', aEn: 'Yes, especially during team onboarding or disagreements. Old posts are ready-made material for sizing someone up, faster than talking face to face.' },
       { q: '吐槽前公司算职场风险吗？', a: '算。即便事隔多年，新同事看到你对上家的负面评价，容易先入为主地猜你也会这样对待现团队。', qEn: 'Is ranting about a former employer a risk?', aEn: 'It is. Years later, a new colleague who sees your negative take on a past employer may assume you would talk about the current team the same way.' },
-      { q: '入职前该自查哪些内容？', a: '三类优先：对前雇主/同事的负面评价、行业内的争议立场、暴露团队或客户信息的截图。可结合 <a href="/blog/delete-tweets-before-job-interview">面试前清理指南</a> 一起做。', qEn: 'What should I self-check before starting?', aEn: 'Prioritize three: negative takes on past employers or colleagues, controversial stances in your industry, and screenshots that expose team or client info. Pair it with the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup guide</a>.' },
+      { q: '入职前该自查哪些内容？', a: '三类优先：对前雇主或同事的负面评价、行业内的争议立场、暴露团队或客户信息的截图。可结合 <a href="/blog/delete-tweets-before-job-interview">面试前清理指南</a> 一起做。', qEn: 'What should I self-check before starting?', aEn: 'Prioritize three: negative takes on past employers or colleagues, controversial stances in your industry, and screenshots that expose team or client info. Pair it with the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup guide</a>.' },
       { q: '离职后还要再清一次吗？', a: '建议清。离职情绪最容易让人发危险内容，且新公司背调可能发生在离职后。参考 <a href="/blog/delete-tweets-after-leaving-job">离职后清理要点</a>。', qEn: 'Should I clean up again after leaving?', aEn: 'Yes. Exit emotions push people to post risky content, and new-employer checks can happen after you leave. See the <a href="/blog/delete-tweets-after-leaving-job">post-departure cleanup notes</a>.' }
     ],
     titleEn: 'When Old Tweets Spark Workplace Conflict: What Colleagues and Bosses See',
-    excerptEn: 'An old rant about a former employer can resurface after you join a new team and turn into real workplace awkwardness or conflict. This piece covers how old tweets spark friction and what to self-check before and after you start a job.',
+    excerptEn: 'An old rant about a former employer can resurface after you join a new team and turn into real workplace awkwardness or conflict. This piece covers how old tweets spark friction, which three types of content to self-check before and after a job, and why you should clean up again after leaving.',
     categoryEn: 'Risk Scenarios',
     tagsEn: ['X/Twitter', 'workplace risk', 'old tweets', 'privacy'],
     contentEn: `
 <p>You are three months into a new job. A teammate finds an old thread where you tore into your previous employer. It was years ago and you meant nothing by it. But now a colleague has a fixed idea about you, and a manager quietly wonders if you would do the same here. Old tweets do not stay in the past.</p>
 
 <h2>How old posts spark friction</h2>
-<p>Workplace conflict rarely starts with a shouting match. It starts with a screenshot someone forwards in a group chat, or a search during onboarding. A negative post about a former boss reads as a character signal, not a one-time mood. See <a href="/blog/political-views-old-tweets-career-risk">how political views in old tweets affect careers</a> for the wider pattern.</p>
+<p>Workplace conflict rarely starts with a shouting match. It starts with a screenshot someone forwards in a group chat, or a search during onboarding. A negative post about a former boss reads as a character signal, not a one-time mood. See <a href="/blog/political-views-old-tweets-career-risk">how political views in old tweets affect careers</a> for the wider pattern that recruiters and managers watch for.</p>
 
 <h2>The three highest-risk threads</h2>
 <ul>
-  <li><strong>Negative takes on past employers or colleagues</strong> — the most direct signal that you might disparage the current team.</li>
-  <li><strong>Controversial industry stances</strong> — strong opinions that clash with a new team's culture.</li>
-  <li><strong>Screenshots exposing team or client info</strong> — a direct confidentiality problem.</li>
+  <li><strong>Negative takes on past employers or colleagues</strong> are the most direct signal that you might disparage the current team.</li>
+  <li><strong>Controversial industry stances</strong> clash with a new team's culture even when the topic seems unrelated to the work.</li>
+  <li><strong>Screenshots exposing team or client info</strong> are a direct confidentiality problem, not just an embarrassment.</li>
 </ul>
 
+<h2>Why timing makes it worse</h2>
+<p>The damage is not the post itself. It is the moment it surfaces. A rant from 2019 resurfacing during a 2026 performance review lands completely differently than it would have at the time. People judge the older post by today's standards and today's context, which you cannot control.</p>
+
 <h2>What to check before and after a job</h2>
-<p>Before you interview, run the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup</a> and clear the three threads above. After you leave, emotions run high and risky posts happen; the <a href="/blog/delete-tweets-after-leaving-job">post-departure cleanup notes</a> explain what to remove and when.</p>
+<p>Before you interview, run the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup</a> and clear the three threads above. After you leave, emotions run high and risky posts happen; the <a href="/blog/delete-tweets-after-leaving-job">post-departure cleanup notes</a> explain what to remove and when, because new-employer checks can arrive after your last day.</p>
+
+<h2>A small habit that prevents most of it</h2>
+<p>Before posting anything about work, ask one question: would I be comfortable with my future manager reading this in two years? If the answer is unsure, do not post it, or post it somewhere with no link to your real name. The cleanup after the fact is always harder than the pause before.</p>
 
 <h2>Get started</h2>
 <p>Your X history is part of your professional reputation whether you intend it or not. <a href="/">Run a free, on-device footprint check</a> before your next role change and clear the posts that could spark a conflict you never meant to start.</p>
@@ -26268,23 +26297,28 @@ rl.on('close', () =&gt; {
 <p>你入职新公司三个月了。一位同事翻出你多年前痛批前老板的旧帖。当时只是随口吐槽，可现在同事对你先入为主，领导也暗暗担心你会对现团队如法炮制。旧推文不会停在过去。</p>
 
 <h2>旧帖怎么引发矛盾</h2>
-<p>职场冲突很少从争吵开始，而是从入职磨合期的一次搜索、群里转发的截图开始。一条吐槽前老板的负面帖，被人读成「性格信号」而非「一时情绪」。更宽的模式见 <a href="/blog/political-views-old-tweets-career-risk">旧推文里的政治观点如何影响职业生涯</a>。</p>
+<p>职场冲突很少从争吵开始，而是从入职磨合期的一次搜索、群里转发的截图开始。一条吐槽前老板的负面帖，被人读成性格信号，而不只是一时情绪。更宽的模式见 <a href="/blog/political-views-old-tweets-career-risk">旧推文里的政治观点如何影响职业生涯</a>，那是招聘方和管理者最常盯的一类的信号。</p>
 
 <h2>三类最高危的线头</h2>
 <ul>
-  <li><strong>对前雇主或同事的负面评价</strong> —— 最直接暗示你也会讲现团队坏话。</li>
-  <li><strong>行业内的争议立场</strong> —— 与新团队文化冲突的强观点。</li>
-  <li><strong>暴露团队或客户信息的截图</strong> —— 直接的保密问题。</li>
+  <li><strong>对前雇主或同事的负面评价</strong>：最直接暗示你也会讲现团队坏话。</li>
+  <li><strong>行业内的争议立场</strong>：即便和手头工作无关，也容易和新团队文化撞车。</li>
+  <li><strong>暴露团队或客户信息的截图</strong>：这是直接的保密问题，不只是尴尬。</li>
 </ul>
 
+<h2>为什么时间点让事情更糟</h2>
+<p>伤害不在帖子本身，而在它冒出来的时机。2019 年的一条吐槽，在 2026 年的绩效面谈里被翻出来，分量完全不同。人们会按今天的标准和今天的环境去判那条老帖，而你控制不了。</p>
+
 <h2>入职前、离职后各查一次</h2>
-<p>面试前跑 <a href="/blog/delete-tweets-before-job-interview">面试前清理</a>，清掉上面三类线头。离职时情绪最易让人发危险内容，<a href="/blog/delete-tweets-after-leaving-job">离职后清理要点</a> 讲了该删什么、什么时候删。</p>
+<p>面试前跑 <a href="/blog/delete-tweets-before-job-interview">面试前清理</a>，清掉上面三类线头。离职时情绪最易让人发危险内容，<a href="/blog/delete-tweets-after-leaving-job">离职后清理要点</a> 讲了该删什么、什么时候删，因为新公司的背调可能发生在你离职之后。</p>
+
+<h2>一个能挡掉大部分风险的小习惯</h2>
+<p>发任何和工作有关的帖前，先问一句：两年后我的未来领导看到这条，我会舒服吗？如果答案不确定，就别发，或者发在和真名毫无关联的地方。事后的清理，永远比发之前的停顿更难。</p>
 
 <h2>现在就开始</h2>
 <p>你的 X 历史不管你愿不愿意，都是职业声誉的一部分。下次角色变动前 <a href="/">跑一次免费、本机的足迹体检</a>，清掉那些你从没想引发冲突的帖子。</p>
     `
-  },
-];
+  }];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

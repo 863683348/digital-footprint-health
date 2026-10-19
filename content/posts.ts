@@ -25980,6 +25980,19 @@ rl.on('close', () =&gt; {
   <li>Doing it once and never again. New posts create new exposure every week.</li>
 </ul>
 
+<h2>How to keep it clean afterward</h2>
+<p>One deep clean lasts about half a year, not a full year. What actually stops the pile from growing back is turning the review into a recurring habit instead of a panic response. Here is a cadence you can follow without thinking:</p>
+<table>
+  <thead><tr><th>Cadence</th><th>Action</th><th>Time</th></tr></thead>
+  <tbody>
+    <tr><td>Quarterly</td><td>Run a check, watch the score move, delete contact and location posts from the last quarter</td><td>~20 min</td></tr>
+    <tr><td>Twice a year</td><td>Re-download the archive, search your number and address again, confirm nothing new leaked</td><td>~40 min</td></tr>
+    <tr><td>Yearly</td><td>Walk the full 10 steps and file search removal requests</td><td>~2 hours</td></tr>
+  </tbody>
+</table>
+<p>Put those three dates in your calendar. After each pass, jot down what you found and deleted so the next one is a comparison, not a restart. Most people do not skip cleanup because they dislike it; they skip it because they think they just did it, then a year slips by and something resurfaces at the worst moment.</p>
+<p>If your budget is tight, the quarterly light check plus the yearly deep pass already removes most risk. Paid deletion only matters when a high-risk post sits beyond X's 3,200-tweet limit; for everyday cleanup you will not need it. The people who stay safe are rarely the most careful; they are the ones who turned cleanup into a calendar event they cannot ignore.</p>
+
 <h2>Get started</h2>
 <p>Your X account is a public diary of the last decade. A year-end checklist turns that diary from a liability into something you actually control. <a href="/">Run a free, on-device footprint check</a> today and see your 0-100 score before the new year starts.</p>
     `,
@@ -26034,6 +26047,19 @@ rl.on('close', () =&gt; {
   <li>做一次就再也不做。新帖每周都在制造新暴露。</li>
 </ul>
 
+<h2>清理之后怎么保持</h2>
+<p>一次大清理顶半年，但顶不了一年。真正让风险不再堆积的，是把复查变成固定动作，别等出事才手忙脚乱。下面是一份可以直接照做的节奏表：</p>
+<table>
+  <thead><tr><th>频率</th><th>动作</th><th>大概耗时</th></tr></thead>
+  <tbody>
+    <tr><td>每季度</td><td>跑一次体检，看分数变化，删掉当季新出现的联系信息和位置帖</td><td>约 20 分钟</td></tr>
+    <tr><td>每半年</td><td>重新下载归档，搜一次手机号和住址，确认没有新的泄露</td><td>约 40 分钟</td></tr>
+    <tr><td>每年</td><td>走完整 10 步清单，并向搜索引擎提交移除请求</td><td>约 2 小时</td></tr>
+  </tbody>
+</table>
+<p>把这三个节点写进日历，比靠记忆靠谱得多。每次做完顺手记一句「上次查到什么、删了什么」，下次就能直接对比，不用从零开始。很多人不是不想清，而是总觉得「上次不是刚弄过」，结果一拖又是一年，等真的被翻出来才后悔。</p>
+<p>如果预算有限，优先保证每年一次大清理和每季度一次小自查，已经能挡掉绝大多数风险。付费删除老帖只在你确定某条高危内容在 3200 条限制之外时才需要，平时完全用不到。</p>
+
 <h2>现在就开始</h2>
 <p>你的 X 账号是过去十年的公开日记。年终清单能把它从「隐患」变成「你真正能掌控的东西」。 <a href="/">马上跑一次免费、本机的足迹体检</a>，在新年之前先看一眼自己的 0-100 分。</p>
     `
@@ -26069,6 +26095,13 @@ rl.on('close', () =&gt; {
 <p><strong>Is 100 safe?</strong> 100 means no high-risk signals were found in the current archive. It does not guarantee future posts stay clean or that search caches are cleared. It is a snapshot, not a warranty.</p>
 <p><strong>Does score scale with deletions?</strong> Not directly. Removing 100 ordinary posts may do nothing, while one post with a phone number can lift the score sharply. Risk type beats raw count.</p>
 
+<h2>What kinds of signals the score sees</h2>
+<p>To read the score, you need to know what it watches. The system groups risk into three tiers, weighted from highest to lowest: contact and location info, sensitive topics, and ordinary posts.</p>
+<p><strong>Contact and location info</strong> covers phone numbers, home addresses, emails, and places you frequent. A single hit drops the score sharply because it maps straight to scams and real-world safety. Even a casual "I live in X neighborhood" counts as a location clue, not just a full address.</p>
+<p><strong>Sensitive topics</strong> are politics, health, finances, and contentious events. They are not always urgent, but once folded into a profile they can fuel targeted harassment or differential treatment. Their weight is moderate, yet many of them add up.</p>
+<p><strong>Ordinary posts</strong> barely move the score. News you repost, daily chatter, memes, unless they carry the two higher tiers, have little effect. That is why deleting 100 ordinary posts may change nothing while removing one post with a phone number lifts the score at once.</p>
+<p>Once you see this structure, you know where to spend effort: scan contact and location first, then sensitive topics, and leave ordinary posts for later.</p>
+
 <h2>How to use the score well</h2>
 <p>Treat the score as a todo list, not a grade. A drop after a new post means that post added risk, so check what it exposed. A steady climb means your cleanup is working. Pair the number with the risk labels so you know which posts to open first.</p>
 
@@ -26084,6 +26117,13 @@ rl.on('close', () =&gt; {
 <p><strong>分数多久变一次？</strong> 每次重跑体检就重算，不会自己漂移。删掉高危推文再测，分数会立刻上升。</p>
 <p><strong>100 分就安全吗？</strong> 100 分只是当前归档里没检出高危信号，不保证未来不发新帖，也不保证搜索缓存已清。它是快照，不是保证书。</p>
 <p><strong>分数和删除量成正比吗？</strong> 不成正比。删 100 条普通内容可能分数不变，删 1 条带手机号的帖却能大幅回升。看的是风险类型，不是数量。</p>
+
+<h2>分数背后的信号类型</h2>
+<p>要读懂分数，先得知道它看哪些信号。系统把风险分成三类，权重从高到低依次是：联系与位置信息、敏感话题、普通内容。</p>
+<p><strong>联系与位置信息</strong>包括手机号、住址、邮箱、常去地点。这类只要出现一条，分数就会明显下掉，因为它们直接关联诈骗和现实安全。哪怕你只是随手写了「住某某小区」，也和「留了完整地址」一样计入位置线索。</p>
+<p><strong>敏感话题</strong>指政治、健康、财务、争议事件相关的表达。它们未必立刻危险，但一旦被拼进画像，就可能被用于定向骚扰或区别对待。这类权重中等，数量多了也会拖分。</p>
+<p><strong>普通内容</strong>几乎不计分。你转发的新闻、日常碎碎念、表情包，除非附带上述两类信息，否则对分数影响很小。所以删 100 条普通内容，分数可能纹丝不动，而删 1 条带手机号的帖，分数立刻回升。</p>
+<p>理解这个结构后，你就知道清理该往哪用力：先扫联系与位置，再处理敏感话题，普通内容可以放一放。</p>
 
 <h2>怎么把分数用对</h2>
 <p>把分数当待办清单，别当成绩单。发新帖后分数掉，说明那条帖带来了风险，去查它暴露了什么。分数稳步上升，说明清理见效。把数字和风险标签对照着看，你就知道该先点开哪几条。</p>
@@ -26142,6 +26182,15 @@ rl.on('close', () =&gt; {
 <h2>Who actually benefits from your traces</h2>
 <p>It is not only scammers. Ad networks build profiles from the signals you post, then charge brands to reach "people who bought X." Reshippers and doxxers use address leaks to tie your online name to a physical place. The cost of one careless photo is paid over years, not days.</p>
 
+<h2>Prevent before the sale, not after</h2>
+<p>The best cleanup is never leaving the trace. Before every major sale, set yourself three rules:</p>
+<ul>
+  <li>Blur before you post. Names, phones, and addresses on parcel labels and cart screenshots get blurred or cropped out first.</li>
+  <li>Hide stationary info. Wifi names, neighborhood names, and the landmark by your office stay out of the frame and the caption.</li>
+  <li>Run an archive self-check after the sale. Wait a week for data to settle, then search "order / parcel / brand" and delete what slipped through.</li>
+</ul>
+<p>These three habits let you keep sharing haul posts without turning them into someone else's intelligence feed. Compared with step-by-step cleanup afterward, a three-second check up front costs almost nothing. Most leaks are not dramatic hacks; they are small careless photos that add up into a profile over years. Building the habit before the sale also protects you during job changes, when old posts get scanned the hardest.</p>
+
 <h2>Get started</h2>
 <p>Shopping posts are fun to share, but they are also the easiest way to hand strangers your address. <a href="/">Run a free, on-device footprint check</a> after Double 12 and see what your timeline is quietly telling people.</p>
     `,
@@ -26174,6 +26223,15 @@ rl.on('close', () =&gt; {
 
 <h2>到底谁在拿你的痕迹牟利</h2>
 <p>不止诈骗分子。广告网络用你发的信号建画像，再让品牌付钱去触达「买过 X 的人」。倒卖和起底的人用地址泄露把你的网名和现实住址绑在一起。一张随手拍的代价是按年算的，不是按天。</p>
+
+<h2>大促前预防，胜过事后补救</h2>
+<p>最好的清理是根本不留下痕迹。每次大促前，给自己定三条铁律：</p>
+<ul>
+  <li>晒单前先打码。面单、快递单、购物车截图里的姓名电话地址，一律模糊或裁掉再发。</li>
+  <li>不暴露常驻信息。wifi 名、小区名、公司楼下的地标，别进画面，也别写进文案。</li>
+  <li>大促后做一次归档自查。等一周让数据沉淀，再用关键词搜「订单 / 快递 / 品牌」，把漏网的删掉。</li>
+</ul>
+<p>这三条只要养成习惯，购物帖照样能分享，却不会再变成别人的情报来源。比起事后一步步补救，事前三秒钟的检查成本低到可以忽略。绝大多数泄露都不是惊天动地的黑客攻击，而是一张张随手拍、日积月累拼出来的画像。</p>
 
 <h2>现在就开始</h2>
 <p>购物帖好玩，却也是把住址双手奉上的最容易方式。双12 之后 <a href="/">跑一次免费、本机的足迹体检</a>，看看你的时间线正悄悄告诉别人什么。</p>
@@ -26220,6 +26278,13 @@ rl.on('close', () =&gt; {
 <h2>The signals people miss</h2>
 <p>Tweets get the attention, but two quieter files matter. Ad-interest data shows what X thinks you like, which can reveal health, politics, or finances you never posted about directly. Media metadata can carry device and location clues from the photos you attached. A good check looks at all of it, not just the visible text.</p>
 
+<h2>How to read the risk list</h2>
+<p>When the check finishes, you get a list sorted by risk. Do not panic at the length; read the labels first, then decide what to delete.</p>
+<p><strong>High (red)</strong>: phone number, address, email, live location. These must go, and you should file a search removal request too, or the snapshot stays up for months.</p>
+<p><strong>Medium (yellow)</strong>: sensitive topics, controversial stances, identity-revealing interest tags. Not all need deleting, but if you are job hunting or switching teams, clear the most glaring ones.</p>
+<p><strong>Low (green)</strong>: daily chatter, reposts, memes. Unless you care a lot, leave them. Spend your effort on red and yellow for the best cleanup per minute.</p>
+<p>One practical tip: sort by time, newest first. Recent exposures are most likely still in search caches and most likely to be seen by new colleagues or friends. Old posts matter too, but they get dug up far less often.</p>
+
 <h2>Get started</h2>
 <p>The archive is the raw material; on-device analysis is the safe way to turn it into a clear risk picture. <a href="/">Start a free footprint check</a> that never uploads your data, and review your own tweets without handing them to anyone.</p>
     `,
@@ -26243,6 +26308,13 @@ rl.on('close', () =&gt; {
 
 <h2>最容易被漏掉的信号</h2>
 <p>推文抢了注意力，但两个更安静的文件同样要命。广告兴趣数据暴露 X 以为你喜欢什么，可能牵出你从没直接说过的健康、政治或财务倾向。媒体元数据可能从你附的照片里带出设备和位置线索。好的体检全看，不只看明面的文字。</p>
+
+<h2>怎么解读风险清单</h2>
+<p>体检跑完，你会拿到一份按风险排序的清单。别被长度吓到，先看标签再决定删什么。</p>
+<p><strong>高危（红）</strong>：手机号、住址、邮箱、实时定位。这类必须删，而且要顺手提交搜索移除请求，否则快照还会挂好几个月。</p>
+<p><strong>中危（黄）</strong>：敏感话题、争议立场、能拼出身份的兴趣标签。不一定要全删，但如果你正在找工作或换团队，建议清掉最刺眼的那几条。</p>
+<p><strong>低危（绿）</strong>：普通碎碎念、转发、表情包。除非你特别在意，否则可以放着不管。把精力留给红和黄，清理效率最高。</p>
+<p>一个实用技巧：按时间倒序看，先处理最近的暴露，因为它们最可能还在搜索缓存里、也最容易被同事或新朋友看到。老帖虽然也在，但被翻到的概率低得多。</p>
 
 <h2>现在就开始</h2>
 <p>归档是原材料，本机分析是把原材料变成清晰风险图的安全方式。 <a href="/">开启一次绝不上传数据的免费足迹体检</a>，在不把推文交给任何人的前提下看清自己的历史。</p>
@@ -26290,6 +26362,11 @@ rl.on('close', () =&gt; {
 <h2>A small habit that prevents most of it</h2>
 <p>Before posting anything about work, ask one question: would I be comfortable with my future manager reading this in two years? If the answer is unsure, do not post it, or post it somewhere with no link to your real name. The cleanup after the fact is always harder than the pause before.</p>
 
+<h2>Why managers look at old posts</h2>
+<p>You might think: my boss is too busy to dig up my tweets from three years ago. But in a conflict, people go looking for evidence. A disagreement or a review prompts them to search what you said and treat your past expression as a verdict.</p>
+<p>The harder part is that managers read patterns, not single posts. One rant reads as a mood; ten similar rants become "this is who they are." So when you clean up, do not delete only the most glaring post. Clear the whole cluster of similar topics so no pattern remains.</p>
+<p>There is another layer: industries are small. You assume only current colleagues see it, but recruiters, partners, and future bosses can reach your history through shared connections. Professional reputation crosses companies. Today's teammate can be tomorrow's interviewer elsewhere.</p>
+
 <h2>Get started</h2>
 <p>Your X history is part of your professional reputation whether you intend it or not. <a href="/">Run a free, on-device footprint check</a> before your next role change and clear the posts that could spark a conflict you never meant to start.</p>
     `,
@@ -26314,6 +26391,11 @@ rl.on('close', () =&gt; {
 
 <h2>一个能挡掉大部分风险的小习惯</h2>
 <p>发任何和工作有关的帖前，先问一句：两年后我的未来领导看到这条，我会舒服吗？如果答案不确定，就别发，或者发在和真名毫无关联的地方。事后的清理，永远比发之前的停顿更难。</p>
+
+<h2>管理者为什么会盯旧帖</h2>
+<p>你可能会想：领导那么忙，哪有时间翻我三年前的推文。但现实是，冲突发生时，人会自动去找「证据」。一次意见不合、一次绩效面谈，对方就会去搜你说过什么，把你过去的表达当成判断依据。</p>
+<p>更麻烦的是，管理者看的不是单条内容，而是「模式」。一条吐槽可能只是情绪，但十条同类吐槽就成了「这人一贯这样」的标签。所以清理时别只删最刺眼的那条，要把同主题的成串内容一起处理，避免留下模式。</p>
+<p>还有一层：行业圈子很小。你以为只有现同事看得到，其实猎头、合作方、未来老板都可能通过共同关注链摸到你的历史。职场声誉是跨公司的，今天的新同事，明天可能就是别家的面试官。</p>
 
 <h2>现在就开始</h2>
 <p>你的 X 历史不管你愿不愿意，都是职业声誉的一部分。下次角色变动前 <a href="/">跑一次免费、本机的足迹体检</a>，清掉那些你从没想引发冲突的帖子。</p>

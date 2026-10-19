@@ -25993,6 +25993,10 @@ rl.on('close', () =&gt; {
 <p>Put those three dates in your calendar. After each pass, jot down what you found and deleted so the next one is a comparison, not a restart. Most people do not skip cleanup because they dislike it; they skip it because they think they just did it, then a year slips by and something resurfaces at the worst moment.</p>
 <p>If your budget is tight, the quarterly light check plus the yearly deep pass already removes most risk. Paid deletion only matters when a high-risk post sits beyond X's 3,200-tweet limit; for everyday cleanup you will not need it. The people who stay safe are rarely the most careful; they are the ones who turned cleanup into a calendar event they cannot ignore.</p>
 
+<h2>If you only have ten minutes</h2>
+<p>If a full year-end pass feels like too much today, do the fastest version: download the archive, search your phone number and address, and delete any match you find. That single step removes the items most likely to be used against you, and it takes about ten minutes. Everything else on the checklist can wait until the weekend.</p>
+<p>The point is to stop the highest-risk exposure now, not to finish perfectly. A partial cleanup done today beats a perfect plan you never start. Most people stall because they imagine the whole project at once; shrinking it to one search makes it reachable. When you have more time, come back for steps 4 through 10 and the search removal requests. The relief of knowing the dangerous items are gone is worth far more than an unfinished checklist sitting in your notes, and you will sleep better knowing a stranger cannot piece together where you live from a few old posts.</p>
+
 <h2>Get started</h2>
 <p>Your X account is a public diary of the last decade. A year-end checklist turns that diary from a liability into something you actually control. <a href="/">Run a free, on-device footprint check</a> today and see your 0-100 score before the new year starts.</p>
     `,
@@ -26060,6 +26064,8 @@ rl.on('close', () =&gt; {
 <p>把这三个节点写进日历，比靠记忆靠谱得多。每次做完顺手记一句「上次查到什么、删了什么」，下次就能直接对比，不用从零开始。很多人不是不想清，而是总觉得「上次不是刚弄过」，结果一拖又是一年，等真的被翻出来才后悔。</p>
 <p>如果预算有限，优先保证每年一次大清理和每季度一次小自查，已经能挡掉绝大多数风险。付费删除老帖只在你确定某条高危内容在 3200 条限制之外时才需要，平时完全用不到。</p>
 
+<p>最后提醒一句：清理不是一次性的「删光」，而是和自己的公开记录达成和解。你不必把十年前的每一条都抹掉，只需要让最危险的那几条不再被随手搜到。把精力放在联系信息、位置和容易引发误读的内容上，其余随它去，反而更像一个真实的人，而不像一个把历史擦得干干净净的账号。</p>
+
 <h2>现在就开始</h2>
 <p>你的 X 账号是过去十年的公开日记。年终清单能把它从「隐患」变成「你真正能掌控的东西」。 <a href="/">马上跑一次免费、本机的足迹体检</a>，在新年之前先看一眼自己的 0-100 分。</p>
     `
@@ -26102,8 +26108,10 @@ rl.on('close', () =&gt; {
 <p><strong>Ordinary posts</strong> barely move the score. News you repost, daily chatter, memes, unless they carry the two higher tiers, have little effect. That is why deleting 100 ordinary posts may change nothing while removing one post with a phone number lifts the score at once.</p>
 <p>Once you see this structure, you know where to spend effort: scan contact and location first, then sensitive topics, and leave ordinary posts for later.</p>
 
+<p>One point people miss: the score only reads what is written, not what you meant. You post a rant, and the system does not tell joke from seriousness; it records the signal. So do not count on "everyone knows I was kidding," because someone digging up your old post will not run a background check on your intent first. Treat high-risk content as if it will be read literally, because that is exactly how it will be read by a stranger, a recruiter, or a competitor. A calm, clean profile is far easier to defend in a job talk or a client meeting than a clever line that aged badly.</p>
+
 <h2>How to use the score well</h2>
-<p>Treat the score as a todo list, not a grade. A drop after a new post means that post added risk, so check what it exposed. A steady climb means your cleanup is working. Pair the number with the risk labels so you know which posts to open first.</p>
+<p>Treat the score as a todo list, not a grade. A drop after a new post means that post added risk, so check what it exposed. A steady climb means your cleanup is working. Pair the number with the risk labels so you know which posts to open first. A score that stays flat is not boring; it means your recent posting habits are safe, which is the whole point.</p>
 
 <h2>Where to go next</h2>
 <p>For the weighting behind each signal, read <a href="/blog/footprint-health-score-meaning">what the health score meaning is</a> and <a href="/blog/health-score-weighting-breakdown">how the weighting breaks down</a>. When you are ready to act, <a href="/">run a free on-device check</a> and watch the number move.</p>
@@ -26124,6 +26132,8 @@ rl.on('close', () =&gt; {
 <p><strong>敏感话题</strong>指政治、健康、财务、争议事件相关的表达。它们未必立刻危险，但一旦被拼进画像，就可能被用于定向骚扰或区别对待。这类权重中等，数量多了也会拖分。</p>
 <p><strong>普通内容</strong>几乎不计分。你转发的新闻、日常碎碎念、表情包，除非附带上述两类信息，否则对分数影响很小。所以删 100 条普通内容，分数可能纹丝不动，而删 1 条带手机号的帖，分数立刻回升。</p>
 <p>理解这个结构后，你就知道清理该往哪用力：先扫联系与位置，再处理敏感话题，普通内容可以放一放。</p>
+
+<p>还有一点常被忽略：分数只看「内容里写了什么」，不看「你心里怎么想」。你发一条吐槽，系统不会分辨这是玩笑还是认真，只会记下信号。所以清理时别指望「大家知道我是开玩笑」，因为翻你旧帖的人不会先做背景调查。把高风险内容当作字面意思来处理，最稳妥。</p>
 
 <h2>怎么把分数用对</h2>
 <p>把分数当待办清单，别当成绩单。发新帖后分数掉，说明那条帖带来了风险，去查它暴露了什么。分数稳步上升，说明清理见效。把数字和风险标签对照着看，你就知道该先点开哪几条。</p>
@@ -26191,6 +26201,8 @@ rl.on('close', () =&gt; {
 </ul>
 <p>These three habits let you keep sharing haul posts without turning them into someone else's intelligence feed. Compared with step-by-step cleanup afterward, a three-second check up front costs almost nothing. Most leaks are not dramatic hacks; they are small careless photos that add up into a profile over years. Building the habit before the sale also protects you during job changes, when old posts get scanned the hardest.</p>
 
+<p>If three rules feel like too much to remember, keep one reflex: blur first, share second. Build that habit and most shopping-privacy risk disappears at the source. What slips through can wait for your quarterly archive check, which is more than enough to catch it. The cost of the habit is a few seconds; the cost of skipping it is years of exposure that a new employer or a stranger can read at any time.</p>
+
 <h2>Get started</h2>
 <p>Shopping posts are fun to share, but they are also the easiest way to hand strangers your address. <a href="/">Run a free, on-device footprint check</a> after Double 12 and see what your timeline is quietly telling people.</p>
     `,
@@ -26232,6 +26244,8 @@ rl.on('close', () =&gt; {
   <li>大促后做一次归档自查。等一周让数据沉淀，再用关键词搜「订单 / 快递 / 品牌」，把漏网的删掉。</li>
 </ul>
 <p>这三条只要养成习惯，购物帖照样能分享，却不会再变成别人的情报来源。比起事后一步步补救，事前三秒钟的检查成本低到可以忽略。绝大多数泄露都不是惊天动地的黑客攻击，而是一张张随手拍、日积月累拼出来的画像。</p>
+
+<p>如果觉得三条铁律记不住，就记住一句话：先打码，再分享。只要养成这个反射动作，大部分购物隐私风险在源头就消失了。剩下的交给一年几次的归档自查，完全来得及。</p>
 
 <h2>现在就开始</h2>
 <p>购物帖好玩，却也是把住址双手奉上的最容易方式。双12 之后 <a href="/">跑一次免费、本机的足迹体检</a>，看看你的时间线正悄悄告诉别人什么。</p>
@@ -26285,6 +26299,8 @@ rl.on('close', () =&gt; {
 <p><strong>Low (green)</strong>: daily chatter, reposts, memes. Unless you care a lot, leave them. Spend your effort on red and yellow for the best cleanup per minute.</p>
 <p>One practical tip: sort by time, newest first. Recent exposures are most likely still in search caches and most likely to be seen by new colleagues or friends. Old posts matter too, but they get dug up far less often.</p>
 
+<p>The list is not there to scare you; it is there to queue the work. Once risks are tiered, you know which few items ten minutes can fix today. Many people delay cleanup because a long list feels like nowhere to start; with red, yellow, and green in place, the first step is obvious. Start with red, and you will often clear the bulk of real danger in a single sitting, then move down at a relaxed pace. Progress beats perfection, and a shorter risk list tomorrow is the only measure that matters.</p>
+
 <h2>Get started</h2>
 <p>The archive is the raw material; on-device analysis is the safe way to turn it into a clear risk picture. <a href="/">Start a free footprint check</a> that never uploads your data, and review your own tweets without handing them to anyone.</p>
     `,
@@ -26315,6 +26331,8 @@ rl.on('close', () =&gt; {
 <p><strong>中危（黄）</strong>：敏感话题、争议立场、能拼出身份的兴趣标签。不一定要全删，但如果你正在找工作或换团队，建议清掉最刺眼的那几条。</p>
 <p><strong>低危（绿）</strong>：普通碎碎念、转发、表情包。除非你特别在意，否则可以放着不管。把精力留给红和黄，清理效率最高。</p>
 <p>一个实用技巧：按时间倒序看，先处理最近的暴露，因为它们最可能还在搜索缓存里、也最容易被同事或新朋友看到。老帖虽然也在，但被翻到的概率低得多。</p>
+
+<p>清单不是用来吓自己的，是用来排队的。风险分完层，你就知道今天花十分钟能解决哪几件。很多人迟迟不清理，是因为看着一长串不知从哪下手；按红黄绿排好，第一步就清晰了。</p>
 
 <h2>现在就开始</h2>
 <p>归档是原材料，本机分析是把原材料变成清晰风险图的安全方式。 <a href="/">开启一次绝不上传数据的免费足迹体检</a>，在不把推文交给任何人的前提下看清自己的历史。</p>
@@ -26366,6 +26384,8 @@ rl.on('close', () =&gt; {
 <p>You might think: my boss is too busy to dig up my tweets from three years ago. But in a conflict, people go looking for evidence. A disagreement or a review prompts them to search what you said and treat your past expression as a verdict.</p>
 <p>The harder part is that managers read patterns, not single posts. One rant reads as a mood; ten similar rants become "this is who they are." So when you clean up, do not delete only the most glaring post. Clear the whole cluster of similar topics so no pattern remains.</p>
 <p>There is another layer: industries are small. You assume only current colleagues see it, but recruiters, partners, and future bosses can reach your history through shared connections. Professional reputation crosses companies. Today's teammate can be tomorrow's interviewer elsewhere.</p>
+
+<p>The takeaway is simple: your old posts are not locked in the past, and they are not private to people who already know you. They are part of a public record that travels with you across jobs and years. Cleaning them up is not about hiding who you are; it is about not letting a careless line from a different context define how a new room reads you. A small cleanup now spares a large awkwardness later.</p>
 
 <h2>Get started</h2>
 <p>Your X history is part of your professional reputation whether you intend it or not. <a href="/">Run a free, on-device footprint check</a> before your next role change and clear the posts that could spark a conflict you never meant to start.</p>

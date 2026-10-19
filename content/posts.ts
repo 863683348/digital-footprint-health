@@ -25922,6 +25922,368 @@ rl.on('close', () =&gt; {
       },
     ],
   }
+,
+  {
+    slug: 'year-end-digital-footprint-checklist-2026',
+    title: '2026 年终数字足迹自查清单：10 步清理你的 X 账号隐私隐患',
+    excerpt: '一年又快过去了。你在 X 上发过的每一条推文，可能正藏着手机号、住址、旧观点和购物习惯。这份年终自查清单，帮你用 10 步把隐私隐患一次性清理干净。',
+    date: '2026-10-20',
+    updatedAt: '2026-10-20',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '隐私清理', '年终自查', '隐私保护'],
+    canonical: '/blog/year-end-digital-footprint-checklist-2026',
+    faq: [
+      { q: '年终自查和平时体检有什么不同？', a: '平时体检看的是「当下评分」，年终自查更看重「全年累积」。一年里你发过促销链接、晒过快递单、吐槽过公司，这些碎片拼起来就是一份完整的画像，日常检查容易漏掉季节性的暴露。', qEn: 'How is a year-end check different from a regular check?', aEn: 'A regular check looks at your score right now. A year-end review captures what accumulated across the whole year: promotional links, parcel photos, workplace rants. Daily scans tend to miss these seasonal exposures.' },
+      { q: '10 步里最该优先做哪一步？', a: '先下载数据归档并搜自己的手机号、住址、邮箱这三类高危险信号。它们直接关联诈骗和现实安全，比观点类内容更急。', qEn: 'Which step should I do first?', aEn: 'Download your archive and search for your phone number, address, and email first. Those three map directly to scams and real-world safety, so they outrank opinion-style content.' },
+      { q: '清理完还会被搜索引擎缓存吗？', a: '删除推文后，Google 的快照和第三方存档可能仍保留一段时间。建议删除后顺手提交移除请求，并定期复检。', qEn: 'Will cleanup remove search engine caches too?', aEn: 'After you delete tweets, Google snapshots and third-party archives may keep copies for a while. File removal requests after deletion and re-check periodically.' },
+      { q: '需要付费才能清理吗？', a: '自查和定位风险完全免费。只有当你决定删除被 X 限制的老推文（超过 3200 条上限）时，才需要按条付费的工具协助，且支持暂停和恢复。', qEn: 'Do I have to pay to clean up?', aEn: 'Finding and scoring risks is free. You only pay per tweet when you delete posts beyond X’s 3,200-tweet limit, and that step is pauseable and resumable.' },
+      { q: '多久做一次比较合适？', a: '建议每季度一次小自查、每年一次大清理。把清单存进手机备忘录，设个年度提醒就不会忘。', qEn: 'How often should I do this?', aEn: 'A light review every quarter and a deep clean once a year works well. Keep the checklist in your notes app with a yearly reminder.' }
+    ],
+    titleEn: 'Your 2026 Year-End Digital Footprint Checklist: 10 Steps to Clean Up Your X Privacy',
+    excerptEn: 'Another year of tweets is almost behind you. Somewhere in your X history sits a phone number, a home address, an old opinion, or a shopping habit you forgot you shared. This year-end checklist walks you through 10 steps to clear those privacy risks for good.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy cleanup', 'year-end check', 'privacy'],
+    contentEn: `
+<p>Another year of tweeting is almost behind you. Somewhere in your X history sits a phone number you posted in 2014, a home address from a moving-day photo, an old opinion that aged badly, or a shopping habit you forgot you shared during a sale. None of it feels urgent on a random Tuesday. At year-end, it adds up to a profile anyone can read.</p>
+
+<h2>Why a year-end check actually matters</h2>
+<p>People treat digital cleanup like spring cleaning: something you mean to do but skip. The problem is that old tweets do not expire. Search engines index them, screenshots preserve them, and background checks pull them. A year-end review is the one scheduled moment when you look at the whole picture instead of one bad post.</p>
+<p>The goal is not perfection. It is to remove the handful of items that carry real risk: contact details, location traces, and anything that could cost you a job or a relationship if resurfaced.</p>
+
+<h2>Your 10-step year-end checklist</h2>
+<p>Work through these in order. Steps 1 to 3 find the danger; steps 4 to 7 fix it; steps 8 to 10 keep it from coming back.</p>
+
+<h3>1. Download your full X archive</h3>
+<p>Go to Settings, then Your account, then Download an archive of your data. This ZIP is the only way to reach tweets older than X's 3,200-tweet limit. Without it, you are blind to most of your history.</p>
+
+<h3>2. Search for your phone number</h3>
+<p>Open the archive and search every variant of your number. A single old "text me at 138..." post is a direct line for scammers.</p>
+
+<h3>3. Search for your address and email</h3>
+<p>Moving announcements, parcel photos, and event check-ins leak these constantly. Flag every match.</p>
+
+<h3>4. Run a free footprint check</h3>
+<p>A digital footprint check parses the archive on your own device and scores risk from 0 to 100. It reads nothing aloud and deletes nothing. See <a href="/blog/what-is-digital-footprint-check">what a digital footprint check actually does</a> before you start.</p>
+
+<h3>5. Review your 0-100 health score</h3>
+<p>The score is a fast way to see how bad things are. Read <a href="/blog/digital-footprint-health-score">how the health score is built</a> so the number means something to you.</p>
+
+<h3>6. Triage by risk label</h3>
+<p>Group findings into contact info, location, and sensitive topics. Contact and location go first because they threaten your safety, not just your reputation.</p>
+
+<h3>7. Delete the dangerous ones</h3>
+<p>For posts within the 3,200 limit, use X's native delete. For older posts, a per-tweet tool helps, and you can pause and resume. Our <a href="/blog/how-to-delete-old-tweets-2026">complete guide to deleting old tweets</a> covers the mechanics.</p>
+
+<h3>8. Submit search removal requests</h3>
+<p>Deletion does not instantly erase cached copies. Ask Google and other engines to drop the snapshots for your highest-risk posts.</p>
+
+<h3>9. Lock down future posts</h3>
+<p>Turn on two-factor auth, review connected apps, and think for five seconds before posting location or contact details again.</p>
+
+<h3>10. Set a reminder for next year</h3>
+<p>Save this checklist. A quarterly light review plus one deep year-end pass keeps the pile from growing back.</p>
+
+<h2>What to do after the checklist</h2>
+<p>Most people finish step 7 and feel done. The real win is steps 8 to 10: removal requests close the search-cache gap, and the reminder stops next year's pile from forming. If you want a sense of progress over time, our <a href="/blog/60-day-digital-footprint-milestone">60-day milestone walkthrough</a> shows what steady cleanup looks like.</p>
+
+<h2>Get started</h2>
+<p>Your X account is a public diary of the last decade. A year-end checklist turns that diary from a liability into something you actually control. <a href="/">Run a free, on-device footprint check</a> today and see your 0-100 score before the new year starts.</p>
+    `,
+    content: `
+<p>又一年快过去了。你在 X 上发过的每一条推文，可能正藏着 2014 年留的手机号、搬家那天晒的住址、一条过时的旧观点，或者某次大促里顺手分享的购物习惯。平常哪天看都不觉得急，可到了年终，这些碎片拼起来就是一份谁都能翻看的画像。</p>
+
+<h2>为什么年终自查真的有用</h2>
+<p>多数人把清理隐私当成「哪天有空再做」的事，结果永远没做。问题在于：旧推文不会过期。搜索引擎会收录、截图会留存、背调会调取。年终自查是少数几个能让你跳出单条坏帖、看到全貌的固定节点。</p>
+<p>目标不是完美，而是清掉那几类真正有风险的条目：联系信息、位置痕迹，以及任何一旦被翻出来会影响工作 or 关系的内容。</p>
+
+<h2>你的 10 步年终清单</h2>
+<p>按顺序走。第 1-3 步负责「找雷」，第 4-7 步负责「拆雷」，第 8-10 步负责「别再长」。</p>
+
+<h3>1. 下载完整的 X 数据归档</h3>
+<p>进设置 → 你的账号 → 下载你的数据归档。这个 ZIP 是唯一能触及「超过 3200 条上限」老推文的入口。没有它，你对大半历史其实是瞎的。</p>
+
+<h3>2. 搜自己的手机号</h3>
+<p>打开归档，搜你号码的各种写法。一条「私我 138……」的老帖，就是诈骗分子直达你的入口。</p>
+
+<h3>3. 搜住址和邮箱</h3>
+<p>搬家通告、快递单照片、活动打卡，都在不停泄露这些信息。每一条都标出来。</p>
+
+<h3>4. 跑一次免费足迹体检</h3>
+<p>数字足迹体检会在你本机解析归档，给出 0-100 的风险评分。它只读取、不删除。开始前先看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检到底做什么</a>。</p>
+
+<h3>5. 看你的 0-100 健康分</h3>
+<p>这个分数能快速判断情况多糟。读 <a href="/blog/digital-footprint-health-score">健康分是怎么算出来的</a>，让数字对你有意义。</p>
+
+<h3>6. 按风险标签分流</h3>
+<p>把发现项分成「联系信息 / 位置 / 敏感话题」三组。联系信息和位置优先，因为它们威胁的是人身安全，不止声誉。</p>
+
+<h3>7. 删掉危险的那批</h3>
+<p>3200 条以内的用 X 自带删除；更早的老帖交给按条计费的工具，可暂停可恢复。具体手法看 <a href="/blog/how-to-delete-old-tweets-2026">删除旧推文完整指南</a>。</p>
+
+<h3>8. 提交搜索移除请求</h3>
+<p>删除不会立刻清掉缓存快照。对风险最高的几条，主动向 Google 等引擎申请撤下快照。</p>
+
+<h3>9. 锁死未来的新帖</h3>
+<p>开启两步验证、复查已授权应用，再发位置或联系方式前多想五秒。</p>
+
+<h3>10. 给明年设个提醒</h3>
+<p>把这份清单存下来。每季度小自查一次、每年深度清理一次，堆子就不会再长回来。</p>
+
+<h2>清单之后该做什么</h2>
+<p>多数人做完第 7 步就觉得完了。真正的收益在第 8-10 步：移除请求堵上搜索缓存的口子，提醒则让明年的堆子长不起来。想看长期效果，<a href="/blog/60-day-digital-footprint-milestone">60 天里程碑实录</a>讲了稳定清理长什么样。</p>
+
+<h2>现在就开始</h2>
+<p>你的 X 账号是过去十年的公开日记。年终清单能把它从「隐患」变成「你真正能掌控的东西」。 <a href="/">马上跑一次免费、本机的足迹体检</a>，在新年之前先看一眼自己的 0-100 分。</p>
+    `
+  },
+  {
+    slug: 'digital-footprint-score-faq-2026',
+    title: '数字足迹健康评分 FAQ：0-100 分到底怎么算',
+    excerpt: '0-100 的健康分到底是分数游戏还是真有用？这份 FAQ 回答评分怎么来、低分意味着什么、多久变一次，以及它和你真实风险的关系。',
+    date: '2026-10-20',
+    updatedAt: '2026-10-20',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字足迹', '健康评分', '隐私体检', 'FAQ'],
+    canonical: '/blog/digital-footprint-score-faq-2026',
+    faq: [
+      { q: '0-100 分是怎么算出来的？', a: '评分按风险信号加权：手机号、住址等联系与位置信息权重最高，敏感话题次之，普通内容几乎不计分。命中越多、越危险，分数越低。', qEn: 'How is the 0-100 score calculated?', aEn: 'The score weights risk signals. Contact details and location carry the most weight, sensitive topics less, ordinary posts almost none. More dangerous hits mean a lower score.' },
+      { q: '低分代表什么？', a: '低分说明你的归档里存在可直接用于诈骗或定位的高危信息。它不是羞辱值，而是「该优先处理」的排序。', qEn: 'What does a low score mean?', aEn: 'A low score means your archive contains high-risk info that can be used for scams or locating you. It is a priority rank, not a judgment.' },
+      { q: '分数多久更新一次？', a: '只要你重新跑体检就会重算；它不随时间自动变化。删掉高危推文后再测，分数会立刻上升。', qEn: 'How often does the score change?', aEn: 'It recalculates every time you run a check. It does not change on its own. Delete high-risk tweets and re-run to see it rise.' },
+      { q: '100 分就安全了吗？', a: '100 分代表当前归档里没检出高危信号，但不保证未来不发、也不保证搜索引擎缓存已清。它是快照，不是保证书。', qEn: 'Is 100 safe?', aEn: '100 means no high-risk signals were found in the current archive. It does not guarantee future posts are clean or that caches are cleared. It is a snapshot.' },
+      { q: '评分和删除量成正比吗？', a: '不一定。删 100 条普通内容可能分数不变，删 1 条带手机号的帖却可能大幅回升。看的是「风险类型」不是「数量」。', qEn: 'Does score scale with how many tweets you delete?', aEn: 'Not directly. Deleting 100 ordinary posts may change nothing, while removing one post with a phone number can lift the score a lot. Risk type matters more than count.' }
+    ],
+    titleEn: 'Digital Footprint Health Score FAQ: How the 0-100 Score Actually Works',
+    excerptEn: 'Is the 0-100 health score a real signal or just a number? This FAQ covers where the score comes from, what a low score means, how often it changes, and how it maps to your actual risk.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['digital footprint', 'health score', 'privacy check', 'FAQ'],
+    contentEn: `
+<p>The 0-100 health score is the fastest way to size up your X privacy, but a number alone raises questions. Here are the ones people ask most.</p>
+
+<h2>Frequently asked questions</h2>
+<p><strong>How is the 0-100 score calculated?</strong> It weights risk signals. Contact details and location carry the most weight, sensitive topics less, ordinary posts almost none. More dangerous hits mean a lower score.</p>
+<p><strong>What does a low score mean?</strong> A low score means your archive contains high-risk info usable for scams or locating you. It is a priority rank, not a verdict on you.</p>
+<p><strong>How often does the score change?</strong> It recalculates every time you run a check. It does not drift on its own. Delete high-risk tweets and re-run to watch it climb.</p>
+<p><strong>Is 100 safe?</strong> 100 means no high-risk signals were found in the current archive. It does not guarantee future posts stay clean or that search caches are cleared. It is a snapshot, not a warranty.</p>
+<p><strong>Does score scale with deletions?</strong> Not directly. Removing 100 ordinary posts may do nothing, while one post with a phone number can lift the score sharply. Risk type beats raw count.</p>
+
+<h2>Where to go next</h2>
+<p>For the weighting behind each signal, read <a href="/blog/footprint-health-score-meaning">what the health score meaning is</a> and <a href="/blog/health-score-weighting-breakdown">how the weighting breaks down</a>. When you are ready to act, <a href="/">run a free on-device check</a> and watch the number move.</p>
+    `,
+    content: `
+<p>0-100 的健康分是判断 X 隐私状况最快的方式，但光一个数字会让人疑惑。下面是最常被问到的几个。</p>
+
+<h2>常见问题</h2>
+<p><strong>0-100 分怎么算？</strong> 按风险信号加权。联系信息和位置权重最高，敏感话题次之，普通内容几乎不计。高危命中越多，分数越低。</p>
+<p><strong>低分代表什么？</strong> 低分说明归档里存在可直接用于诈骗或定位的高危信息。它是「该优先处理」的排序，不是对你的评判。</p>
+<p><strong>分数多久变一次？</strong> 每次重跑体检就重算，不会自己漂移。删掉高危推文再测，分数会立刻上升。</p>
+<p><strong>100 分就安全吗？</strong> 100 分只是当前归档里没检出高危信号，不保证未来不发新帖，也不保证搜索缓存已清。它是快照，不是保证书。</p>
+<p><strong>分数和删除量成正比吗？</strong> 不成正比。删 100 条普通内容可能分数不变，删 1 条带手机号的帖却能大幅回升。看的是风险类型，不是数量。</p>
+
+<h2>接下来看什么</h2>
+<p>想了解每个信号的权重，读 <a href="/blog/footprint-health-score-meaning">健康分到底代表什么</a> 和 <a href="/blog/health-score-weighting-breakdown">权重怎么拆</a>。准备好动手时，<a href="/">跑一次免费本机体检</a>，看数字动起来。</p>
+    `
+  },
+  {
+    slug: 'double-12-2026-online-privacy-footprint',
+    title: '双12 网购狂欢后的隐私足迹：你的 X 账号泄露了什么',
+    excerpt: '双12 一过，你的快递单、优惠码、购物车截图就铺满了时间线。这些购物痕迹一旦进 X 历史，就成了别人拼你消费习惯的拼图。',
+    date: '2026-10-20',
+    updatedAt: '2026-10-20',
+    author: 'Digital Footprint Health Team',
+    category: '隐私行业',
+    tags: ['X/Twitter', '网购隐私', '双12', '消费习惯', '隐私保护'],
+    canonical: '/blog/double-12-2026-online-privacy-footprint',
+    faq: [
+      { q: '双12 晒单为什么会泄露隐私？', a: '快递单含姓名电话地址，优惠码绑定账号，购物车截图暴露品牌和预算。三者组合能拼出你的真实身份与消费力。', qEn: 'Why is posting hauls a privacy risk?', aEn: 'Parcel photos carry name, phone, and address. Promo codes tie to accounts. Cart screenshots reveal brands and budget. Together they sketch your real identity and spending power.' },
+      { q: '删掉原帖还不够吗？', a: '不够。别人已截图、搜索引擎已收录、转发链还在。删原帖只是第一步，还要处理缓存和存档。', qEn: 'Is deleting the original post enough?', aEn: 'No. Others screenshotted it, search engines indexed it, and reshare chains persist. Deleting the original is only step one; caches and archives remain.' },
+      { q: '平时怎么减少购物痕迹？', a: '晒单前打码快递单、不连 wifi 名、不暴露小区名；大促后做一次归档自查。', qEn: 'How do I leave fewer shopping traces?', aEn: 'Blur parcel labels before posting, hide your wifi name and neighborhood, and run an archive self-check after each major sale.' },
+      { q: '和黑五、双11 的隐私风险一样吗？', a: '本质一样，都是「促销期集中晒消费」。区别只在时间节点，清理方法通用，可参考 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a>。', qEn: 'Is this the same as Black Friday risk?', aEn: 'The core risk is identical: a burst of spending posts during a sale. Only the date differs, and the cleanup method is the same. See the <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a>.' }
+    ],
+    titleEn: 'After Double 12: What Your X Account Reveals About Your Shopping Habits',
+    excerptEn: 'Right after Double 12, parcel photos, promo codes, and cart screenshots fill your timeline. Once those shopping traces enter your X history, they become pieces anyone can use to map your spending habits.',
+    categoryEn: 'Privacy Industry',
+    tagsEn: ['X/Twitter', 'shopping privacy', 'Double 12', 'spending habits', 'privacy'],
+    contentEn: `
+<p>Double 12 is one of the biggest shopping events of the year, and your timeline shows it. Parcel photos, promo-code wins, and cart screenshots appear within hours. The posts feel harmless in the moment. A year later they are a detailed map of what you buy, where you live, and how much you spend.</p>
+
+<h2>What a single haul post can expose</h2>
+<p>A parcel photo looks like a brag. It is also a data leak. The shipping label may show your name, phone number, and address. The background may show your wifi name or a landmark near home. The product itself tells strangers your budget and interests.</p>
+<table>
+  <thead><tr><th>Trace</th><th>Example</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr><td>Contact info</td><td>Name and phone on a label</td><td>Scam and harassment entry point</td></tr>
+    <tr><td>Location</td><td>Neighborhood or wifi name</td><td>Real-world safety</td></tr>
+    <tr><td>Spending signal</td><td>Brand and cart total</td><td>Targeted scams, price profiling</td></tr>
+  </tbody>
+</table>
+
+<h2>Why deletion is not the whole fix</h2>
+<p>Deleting the original post feels like cleanup. It is not enough. Anyone who saw it may have screenshotted it. Search engines indexed it within minutes. A friend may have reshared it. Your archive still holds the original text even after X removes the public copy.</p>
+<p>The same pattern shows up after every sale window. Our <a href="/blog/black-friday-2026-online-privacy-footprint">Black Friday privacy piece</a> and <a href="/blog/singles-day-2026-privacy-footprint">Singles Day walkthrough</a> cover the same mechanics for other events, and <a href="/blog/holiday-season-2026-footprint-cleanup">the holiday-season cleanup guide</a> gives a broader plan.</p>
+
+<h2>A simple post-sale routine</h2>
+<ol>
+  <li>Blur or crop shipping labels before you ever post a haul.</li>
+  <li>Keep wifi names and neighborhood landmarks out of the frame.</li>
+  <li>Wait a week, then run an archive self-check for "order", "parcel", and brand names.</li>
+  <li>Delete what you find, then submit removal requests for cached copies.</li>
+</ol>
+
+<h2>Get started</h2>
+<p>Shopping posts are fun to share, but they are also the easiest way to hand strangers your address. <a href="/">Run a free, on-device footprint check</a> after Double 12 and see what your timeline is quietly telling people.</p>
+    `,
+    content: `
+<p>双12 是全年最大的购物节点之一，你的时间线也证明了这一点。快递照片、优惠码战绩、购物车截图几小时内刷屏。当时觉得没啥，一年后再看，它们拼出的是你买什么、住哪、花多少的详细地图。</p>
+
+<h2>一条晒单能暴露什么</h2>
+<p>晒快递看似炫耀，其实也在泄密。面单可能带着姓名、电话、住址；背景可能露出 wifi 名或小区地标；商品本身则告诉陌生人你的预算和兴趣。</p>
+<table>
+  <thead><tr><th>痕迹</th><th>例子</th><th>风险</th></tr></thead>
+  <tbody>
+    <tr><td>联系信息</td><td>面单上的姓名电话</td><td>诈骗与骚扰入口</td></tr>
+    <tr><td>位置</td><td>小区或 wifi 名</td><td>现实安全</td></tr>
+    <tr><td>消费信号</td><td>品牌与购物车总额</td><td>定向诈骗、价格画像</td></tr>
+  </tbody>
+</table>
+
+<h2>为什么「删原帖」不是终点</h2>
+<p>删掉原帖让人感觉清理完了，其实不够。看到的人可能已经截图，搜索引擎几分钟内就已收录，朋友也可能转发过。即便 X 下掉了公开副本，你的归档里还留着原文。</p>
+<p>每个大促窗口都是同一套逻辑。我们的 <a href="/blog/black-friday-2026-online-privacy-footprint">黑五隐私篇</a> 和 <a href="/blog/singles-day-2026-privacy-footprint">双11 实录</a> 讲了其他节点的同类机制，<a href="/blog/holiday-season-2026-footprint-cleanup"> holiday 季清理指南</a> 给了更全盘的方案。</p>
+
+<h2>一套简单的售后自查</h2>
+<ol>
+  <li>晒单前先把面单打码或裁掉。</li>
+  <li>画面里别带 wifi 名和小区地标。</li>
+  <li>过一周，用归档自查「订单 / 快递 / 品牌名」。</li>
+  <li>删掉命中的，再对缓存副本提交移除请求。</li>
+</ol>
+
+<h2>现在就开始</h2>
+<p>购物帖好玩，却也是把住址双手奉上的最容易方式。双12 之后 <a href="/">跑一次免费、本机的足迹体检</a>，看看你的时间线正悄悄告诉别人什么。</p>
+    `
+  },
+  {
+    slug: 'x-archive-privacy-analysis-guide',
+    title: '用 X 数据归档做隐私体检：如何安全分析自己的推文',
+    excerpt: 'X 数据归档是体检的原材料。本文讲清楚归档里到底有什么、为什么必须在本机分析、以及怎么在不上传任何数据的前提下看清自己的隐私风险。',
+    date: '2026-10-20',
+    updatedAt: '2026-10-20',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X/Twitter', '数据归档', '隐私体检', '本机分析'],
+    canonical: '/blog/x-archive-privacy-analysis-guide',
+    faq: [
+      { q: '归档分析一定要上传到云端吗？', a: '不需要，也不应该。负责任的体检在本机解析归档，数据不出电脑，只读取、不回传。', qEn: 'Does archive analysis require the cloud?', aEn: 'No, and it should not. A responsible check parses the archive on your device. Data stays on your computer: read locally, never uploaded.' },
+      { q: '归档里最该看哪部分？', a: 'tweets.js 是全量推文，风险最高；但媒体文件和广告数据也藏着位置和兴趣线索，别漏看。', qEn: 'Which part of the archive matters most?', aEn: 'tweets.js holds your full tweet history and the highest risk, but media files and ad data also leak location and interests. Do not skip them.' },
+      { q: 'CSV 和 JSON 版本分析有区别吗？', a: '两者推文内容一致；JSON 保留结构、CSV 压平。区别在工具链，不在结论。详见 <a href="/blog/x-archive-csv-vs-json">CSV 与 JSON 对比</a>。', qEn: 'Do CSV and JSON versions differ for analysis?', aEn: 'They carry the same posts; JSON keeps structure, CSV flattens it. The choice is about tooling, not findings.' },
+      { q: '分析完数据会留下副本吗？', a: '正规本机工具只在本地临时解析，可手动删除；切勿用会把归档传服务器的网站。', qEn: 'Does analysis leave a copy of my data?', aEn: 'A proper on-device tool parses locally and can be deleted by you. Never use a website that uploads your archive to its servers.' }
+    ],
+    titleEn: 'Privacy Analysis With Your X Archive: How to Safely Review Your Own Tweets',
+    excerptEn: 'Your X data archive is the raw material for any footprint check. This guide explains what the archive actually contains, why analysis must happen on your own device, and how to see your privacy risks without uploading anything.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X/Twitter', 'data archive', 'privacy check', 'on-device analysis'],
+    contentEn: `
+<p>Your X data archive is the single source of truth for any privacy check. Before you can clean up, you have to understand what the archive holds and why the analysis must stay on your own machine.</p>
+
+<h2>What the archive actually contains</h2>
+<p>Most people think of tweets as text. The archive shows the rest: timestamps, location tags, linked devices, ad topics, and media. As <a href="/blog/whats-inside-x-archive-tweets-js">the breakdown of tweets.js</a> explains, the post file is only one layer. Ad data and media metadata carry their own signals.</p>
+
+<h2>Why on-device analysis matters</h2>
+<p>Privacy tools face a hard conflict: they handle your most sensitive data, yet many upload it to servers. A trustworthy check should never need to upload your archive, call X's read API for more data, or store your tweets in a database. With on-device parsing, the archive is read locally and only touched by X's write API when you choose to delete.</p>
+
+<h2>How to review safely</h2>
+<ol>
+  <li>Request the archive from <a href="/blog/how-to-download-x-archive">your X settings</a>; it arrives as a ZIP.</li>
+  <li>Open it with a tool that runs locally. Pick the format that fits your workflow; <a href="/blog/x-archive-csv-vs-json">CSV versus JSON</a> explains the trade-off.</li>
+  <li>Let it scan for phone numbers, addresses, locations, and sensitive topics.</li>
+  <li>Read the risk list and decide what to delete. Nothing leaves your computer during this step.</li>
+</ol>
+
+<h2>Get started</h2>
+<p>The archive is the raw material; on-device analysis is the safe way to turn it into a clear risk picture. <a href="/">Start a free footprint check</a> that never uploads your data, and review your own tweets without handing them to anyone.</p>
+    `,
+    content: `
+<p>X 数据归档是任何隐私体检的唯一真相来源。要清理，先得搞清楚归档里到底有什么，以及为什么分析必须留在你自己的机器上。</p>
+
+<h2>归档里到底有什么</h2>
+<p>多数人以为推文只是文字。归档会露出其余部分：时间戳、位置标签、关联设备、广告主题、媒体文件。正如 <a href="/blog/whats-inside-x-archive-tweets-js">tweets.js 结构拆解</a> 所说，帖子文件只是一层，广告数据和媒体元数据各自带着信号。</p>
+
+<h2>为什么本机分析最重要</h2>
+<p>隐私工具面对一个硬冲突：它处理你最敏感的数据，却有许多会把数据上传到服务器。负责任的体检绝不需要上传归档、调 X 的读取接口拉更多数据，或在数据库里存你的推文。本机解析时，归档只在本地被读取，只有你选择删除时才碰 X 的写入接口。</p>
+
+<h2>怎么安全地看</h2>
+<ol>
+  <li>从 <a href="/blog/how-to-download-x-archive">X 设置</a> 申请归档，它是一份 ZIP。</li>
+  <li>用本地运行的工具打开。挑适合你工作流的文件格式，<a href="/blog/x-archive-csv-vs-json">CSV 与 JSON 对比</a> 讲了取舍。</li>
+  <li>让它扫描手机号、住址、位置、敏感话题。</li>
+  <li>读完风险清单再决定删什么。这一步数据不出电脑。</li>
+</ol>
+
+<h2>现在就开始</h2>
+<p>归档是原材料，本机分析是把原材料变成清晰风险图的安全方式。 <a href="/">开启一次绝不上传数据的免费足迹体检</a>，在不把推文交给任何人的前提下看清自己的历史。</p>
+    `
+  },
+  {
+    slug: 'workplace-old-tweets-conflict-risk',
+    title: '旧推文引爆职场冲突：同事和领导怎么看你的 X 历史',
+    excerpt: '一条吐槽前公司的旧帖，可能在你入职新团队后被同事翻出来，变成真实的职场尴尬甚至冲突。本文讲旧推文如何引发职场矛盾，以及入职前后该怎么自查。',
+    date: '2026-10-20',
+    updatedAt: '2026-10-20',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '职场风险', '旧推文', '隐私保护'],
+    canonical: '/blog/workplace-old-tweets-conflict-risk',
+    faq: [
+      { q: '同事真的会翻我多年前的推文吗？', a: '会，尤其在团队磨合期或意见不合时。旧帖是现成的「了解一个人」材料，比当面聊天更快得出结论。', qEn: 'Do coworkers really dig up old tweets?', aEn: 'Yes, especially during team onboarding or disagreements. Old posts are ready-made material for sizing someone up, faster than talking face to face.' },
+      { q: '吐槽前公司算职场风险吗？', a: '算。即便事隔多年，新同事看到你对上家的负面评价，容易先入为主地猜你也会这样对待现团队。', qEn: 'Is ranting about a former employer a risk?', aEn: 'It is. Years later, a new colleague who sees your negative take on a past employer may assume you would talk about the current team the same way.' },
+      { q: '入职前该自查哪些内容？', a: '三类优先：对前雇主/同事的负面评价、行业内的争议立场、暴露团队或客户信息的截图。可结合 <a href="/blog/delete-tweets-before-job-interview">面试前清理指南</a> 一起做。', qEn: 'What should I self-check before starting?', aEn: 'Prioritize three: negative takes on past employers or colleagues, controversial stances in your industry, and screenshots that expose team or client info. Pair it with the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup guide</a>.' },
+      { q: '离职后还要再清一次吗？', a: '建议清。离职情绪最容易让人发危险内容，且新公司背调可能发生在离职后。参考 <a href="/blog/delete-tweets-after-leaving-job">离职后清理要点</a>。', qEn: 'Should I clean up again after leaving?', aEn: 'Yes. Exit emotions push people to post risky content, and new-employer checks can happen after you leave. See the <a href="/blog/delete-tweets-after-leaving-job">post-departure cleanup notes</a>.' }
+    ],
+    titleEn: 'When Old Tweets Spark Workplace Conflict: What Colleagues and Bosses See',
+    excerptEn: 'An old rant about a former employer can resurface after you join a new team and turn into real workplace awkwardness or conflict. This piece covers how old tweets spark friction and what to self-check before and after you start a job.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'workplace risk', 'old tweets', 'privacy'],
+    contentEn: `
+<p>You are three months into a new job. A teammate finds an old thread where you tore into your previous employer. It was years ago and you meant nothing by it. But now a colleague has a fixed idea about you, and a manager quietly wonders if you would do the same here. Old tweets do not stay in the past.</p>
+
+<h2>How old posts spark friction</h2>
+<p>Workplace conflict rarely starts with a shouting match. It starts with a screenshot someone forwards in a group chat, or a search during onboarding. A negative post about a former boss reads as a character signal, not a one-time mood. See <a href="/blog/political-views-old-tweets-career-risk">how political views in old tweets affect careers</a> for the wider pattern.</p>
+
+<h2>The three highest-risk threads</h2>
+<ul>
+  <li><strong>Negative takes on past employers or colleagues</strong> — the most direct signal that you might disparage the current team.</li>
+  <li><strong>Controversial industry stances</strong> — strong opinions that clash with a new team's culture.</li>
+  <li><strong>Screenshots exposing team or client info</strong> — a direct confidentiality problem.</li>
+</ul>
+
+<h2>What to check before and after a job</h2>
+<p>Before you interview, run the <a href="/blog/delete-tweets-before-job-interview">pre-interview cleanup</a> and clear the three threads above. After you leave, emotions run high and risky posts happen; the <a href="/blog/delete-tweets-after-leaving-job">post-departure cleanup notes</a> explain what to remove and when.</p>
+
+<h2>Get started</h2>
+<p>Your X history is part of your professional reputation whether you intend it or not. <a href="/">Run a free, on-device footprint check</a> before your next role change and clear the posts that could spark a conflict you never meant to start.</p>
+    `,
+    content: `
+<p>你入职新公司三个月了。一位同事翻出你多年前痛批前老板的旧帖。当时只是随口吐槽，可现在同事对你先入为主，领导也暗暗担心你会对现团队如法炮制。旧推文不会停在过去。</p>
+
+<h2>旧帖怎么引发矛盾</h2>
+<p>职场冲突很少从争吵开始，而是从入职磨合期的一次搜索、群里转发的截图开始。一条吐槽前老板的负面帖，被人读成「性格信号」而非「一时情绪」。更宽的模式见 <a href="/blog/political-views-old-tweets-career-risk">旧推文里的政治观点如何影响职业生涯</a>。</p>
+
+<h2>三类最高危的线头</h2>
+<ul>
+  <li><strong>对前雇主或同事的负面评价</strong> —— 最直接暗示你也会讲现团队坏话。</li>
+  <li><strong>行业内的争议立场</strong> —— 与新团队文化冲突的强观点。</li>
+  <li><strong>暴露团队或客户信息的截图</strong> —— 直接的保密问题。</li>
+</ul>
+
+<h2>入职前、离职后各查一次</h2>
+<p>面试前跑 <a href="/blog/delete-tweets-before-job-interview">面试前清理</a>，清掉上面三类线头。离职时情绪最易让人发危险内容，<a href="/blog/delete-tweets-after-leaving-job">离职后清理要点</a> 讲了该删什么、什么时候删。</p>
+
+<h2>现在就开始</h2>
+<p>你的 X 历史不管你愿不愿意，都是职业声誉的一部分。下次角色变动前 <a href="/">跑一次免费、本机的足迹体检</a>，清掉那些你从没想引发冲突的帖子。</p>
+    `
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

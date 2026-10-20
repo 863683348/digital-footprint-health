@@ -26420,7 +26420,398 @@ rl.on('close', () =&gt; {
 <h2>现在就开始</h2>
 <p>你的 X 历史不管你愿不愿意，都是职业声誉的一部分。下次角色变动前 <a href="/">跑一次免费、本机的足迹体检</a>，清掉那些你从没想引发冲突的帖子。</p>
     `
-  }];
+  },
+{
+    slug: 'x-archive-secure-storage-guide',
+    title: 'X 数据归档怎么存才安全？本机加密存储完整指南',
+    excerpt: 'X 数据归档（ZIP）含私信、定位和联系方式，本身是极敏感文件。本文对比 BitLocker、FileVault、VeraCrypt、ZIP 密码与 age/gpg 的加密存法，讲清口令管理与备份要点，帮你把归档存得稳妥。',
+    date: '2026-10-21',
+    updatedAt: '2026-10-21',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X/Twitter', '数据归档', '加密存储', '隐私保护', '本机处理'],
+    content: `在申请工作、换城市、或者只是某天突然想起的时候，你大概会想翻翻自己这些年发过的推文。X 的数据归档（那个 ZIP 包）把你几乎全部历史都打包在里面：推文正文、私信、登录记录、甚至上传过的图片 EXIF。问题来了:这个文件本身就极其敏感，存错了地方，等于把一把能开你半扇门的钥匙随手扔在路边。
+
+<h2>为什么归档比你想的更危险</h2>
+<p>归档里的 <code>tweets.js</code> 不只是你写过的字。它通常还带着定位信息、你点过赞的账号、曾经绑定的邮箱和电话，以及和你互动过的人。对招聘官、骗子和熟人来说，这些拼起来就是一份现成的你的画像。所以<strong>归档下载完的第一件事别急着打开看，先想清楚放哪儿</strong>。很多人此刻顺手存进"下载"文件夹，过几个月连它在哪都忘了，更别说它还明文躺着。</p>
+
+<h2>最常见的几种错误存法</h2>
+<ul>
+  <li><strong>发到自己邮箱</strong>:邮件服务商那边有一份明文副本，账号一漏全漏。</li>
+  <li><strong>扔进没加密的云盘</strong>:任何能进你云盘的人都能直接读。</li>
+  <li><strong>截图保存关键证据</strong>:截图散落在相册，反而更难管控。</li>
+  <li><strong>文件名写着"我的隐私归档"</strong>:等于在告诉任何看到的人这里面是什么。</li>
+  <li><strong>解压后忘了删明文</strong>:解压到桌面看一眼，桌面上那份没加密的副本比 ZIP 还危险。</li>
+</ul>
+
+<h2>加密方案怎么选</h2>
+<p>下面这张表按"普通用户能不能上手"排了序。没有绝对最好的方案，只有最适合你设备的。</p>
+<table>
+  <thead><tr><th>方案</th><th>适合谁</th><th>上手难度</th><th>注意点</th></tr></thead>
+  <tbody>
+    <tr><td>BitLocker（Windows 自带）</td><td>Win10/11 专业版用户</td><td>低</td><td>家庭版默认没有，需换方案</td></tr>
+    <tr><td>FileVault（macOS 自带）</td><td>苹果用户</td><td>低</td><td>整机加密，归档跟着盘走</td></tr>
+    <tr><td>VeraCrypt 容器</td><td>想跨平台、可控性强的人</td><td>中</td><td>要记住容器口令，忘了对谁都打不开</td></tr>
+    <tr><td>ZIP 加密码</td><td>临时传一下</td><td>低</td><td>老算法不够稳，别当长期存储</td></tr>
+    <tr><td>age / gpg 命令行加密</td><td>技术用户</td><td>高</td><td>最灵活，但要会命令行</td></tr>
+  </tbody>
+</table>
+<p>我的习惯是：日常用的电脑开整机加密（BitLocker 或 FileVault），归档再单独丢进一个 VeraCrypt 容器。两层不重复，丢一个设备也不会直接暴露归档。</p>
+
+<h2>口令这件事比工具更关键</h2>
+<p>再好的加密，口令写在便利贴上、或者和归档放同一个文件夹，都等于没加密。把口令交给密码管理器，归档文件本身随便命名一个不起眼的名字。一个常见误区是"我用生日加名字当口令总行吧":这种口令被撞库一撞就开。口令长一点、没规律，比挑哪个工具重要得多。如果实在记不住，至少用一句话当口令（比如一段你记得住、别人猜不到的歌词），也比六个字符强。</p>
+
+<h2>先确认设备和云盘的默认加密</h2>
+<p>很多人不知道，自己的电脑可能早就开着整机加密，只是没留意。Windows 专业版默认 BitLocker 常处于开启状态，macOS 装系统时 FileVault 也会问你要不要开。先去设置里看一眼，确认已经是加密状态，再决定要不要给归档加第二层。别在已经加密的盘上又叠一套，徒增麻烦；也别以为"云盘说加密了"就安全:那是服务商那边的加密，和你本地明文存储不是一回事。</p>
+
+<h2>备份也别裸奔</h2>
+<p>归档丢了很麻烦，但加密副本丢了一样麻烦。可以按 3-2-1 的思路：三份副本、两种介质、一份离线。关键是<strong>每一份都先加密再备份</strong>，别把明文归档同步到任何"自动备份"里。想看怎么把归档里的风险推文挑出来，可以先读 <a href="/blog/x-archive-privacy-analysis-guide">X 归档隐私分析指南</a>；下载时踩了坑，参考 <a href="/blog/x-archive-download-failed-fix">归档下载失败排查</a>。</p>
+
+<h2>想分享给信任的人怎么办</h2>
+<p>有时候你要把归档交给律师、或者帮家人做清理。这种时候别直接发 ZIP，先在本地解密、导出对方要的那一段、再单独加密发过去。对方收到的也应该是加密文件，口令走另一个渠道（比如当面说，不要和文件发在同一条消息里）。这一步麻烦，但能避免"为一个人方便，把所有人 expose"的事故。</p>
+
+<h2>先想清楚谁会盯上你的归档</h2>
+<p>威胁模型不用写论文，问自己三句就好：谁认识我、谁想挖我黑料、谁手里有我别的账号？答案越具体，你该加密到什么程度就越清楚。普通人的生活归档，整机加密加一个像样的口令基本够用；如果你做过舆情相关、或者账号本身有公众属性，就值得上 VeraCrypt 容器那一档。想动手清理归档里的风险推文，可以从 <a href="/blog/request-x-archive-step-by-step-2026">一步步申请归档</a> 开始。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 做的是本机隐私体检：你上传归档后，所有解析和评分都在你自己的设备里完成，数据不会上传到任何服务器。全程本机、只读、可控，清完再安心决定存哪儿。</p>`,
+    canonical: '/blog/x-archive-secure-storage-guide',
+    faq: [{ q: '归档下载下来必须先加密吗？', a: '建议是。归档含私信、定位和联系方式，明文放着一旦设备或云盘被入侵就全漏。至少做整机加密，重要文件再单独放加密容器。', qEn: 'Should I encrypt the archive right after downloading?', aEn: 'Yes, ideally. The archive holds DMs, location data, and contact info; left in plaintext it leaks the moment your device or cloud is breached. At minimum use full-disk encryption, and put important files in a separate encrypted container.' },
+{ q: 'ZIP 密码够不够用？', a: '临时传一下够，长期存储不够稳。老版 ZIP 加密算法偏弱，建议用 BitLocker、FileVault 或 VeraCrypt 做长期保存。', qEn: 'Is a ZIP password good enough?', aEn: 'Fine for a one-time send, not for long-term storage. Older ZIP encryption is weak; use BitLocker, FileVault, or VeraCrypt for keeping it around.' },
+{ q: '口令记不住怎么办？', a: '用密码管理器，别写在文件名或同目录。口令长、没规律比挑工具更重要；记不住就用一句别人猜不到的话当口令。', qEn: 'I cannot remember the passphrase, what then?', aEn: 'Use a password manager; do not write it in the file name or same folder. A long, pattern-free passphrase matters more than which tool you choose; if you must, use a sentence nobody would guess.' },
+{ q: '加密之后还能正常做体检和清理吗？', a: '能。解密挂载后本机工具照常读取归档内容，体检和删除都在你设备上完成，数据不出本机。', qEn: 'Can I still run a check and clean up after encrypting?', aEn: 'Yes. After you mount the decrypted volume, on-device tools read the archive normally; the check and deletion happen on your machine, and data never leaves it.' },
+{ q: '归档要不要做离线备份？', a: '要做，但每份先加密再备份。按三份副本、两种介质、一份离线的思路，明文不要进任何自动备份。', qEn: 'Should I keep an offline backup of the archive?', aEn: 'Yes, but encrypt every copy before backing up. Three copies, two media, one offline; never let a plaintext copy into any auto backup.' }],
+    titleEn: 'How to Store Your X Data Archive Securely: A Complete On-Device Guide',
+    excerptEn: 'The X data archive (ZIP) holds DMs, location, and contact info, so it is itself a sensitive file. This guide compares BitLocker, FileVault, VeraCrypt, ZIP password, and age/gpg, then covers passphrase and backup habits so you store it well.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X/Twitter', 'data archive', 'encrypted storage', 'privacy', 'on-device'],
+    contentEn: `When you are job hunting, moving to a new city, or just randomly remember the tweets you posted years ago, you probably want to dig through your history. The X data archive (that ZIP file) packs almost everything: tweet text, direct messages, login records, and even EXIF from images you uploaded. Here is the catch: that file is extremely sensitive. Store it wrong and you have basically left a key to half your life on the sidewalk.
+
+<h2>Why the archive is riskier than it looks</h2>
+<p>The <code>tweets.js</code> inside the archive is not just your words. It usually carries location data, the accounts you liked, old emails and phone numbers, and the people you interacted with. For a recruiter, a scammer, or an acquaintance, those pieces assemble into a ready-made profile of you. So the first thing after downloading is not opening it. It is deciding where it lives. Too many people save it straight to the Downloads folder, then forget where it even is a few months later, let alone that it sits there in plaintext.</p>
+<p>A friend of mine learned this the hard way. He applied for a role and the hiring manager, out of habit, searched his handle. Nothing embarrassing was public, but the archive he had once shared with a freelance designer still sat in that designer's inbox, and it included an old phone number plus a few DMs he had forgotten. No drama, no leak, just a small reminder that the archive outlives the moment you downloaded it. The point is not paranoia. It is that the file travels further than you expect.</p>
+
+<h2>Storage mistakes people make all the time</h2>
+<ul>
+  <li><strong>Emailing it to yourself</strong>: the mail provider now holds a plaintext copy; one account leak exposes all of it.</li>
+  <li><strong>Dropping it in an unencrypted cloud drive</strong>: anyone who gets into that drive can read it directly.</li>
+  <li><strong>Screenshotting the important bits</strong>: screenshots scatter across your photo library and become harder to control.</li>
+  <li><strong>Naming the file "my private archive"</strong>: you are telling anyone who sees it exactly what is inside.</li>
+  <li><strong>Forgetting the unzipped copy</strong>: you unzip to the desktop for a quick look, and that unencrypted folder is even riskier than the ZIP.</li>
+</ul>
+<p>Notice the pattern. Every bad storage choice shares one trait: the archive ends up somewhere a second party can read it without your password. Email, cloud, screenshots, obvious file names, leftover unzipped folders. The fix is not a fancy tool. It is keeping the file in a place only your key opens.</p>
+
+<h2>How to pick an encryption method</h2>
+<p>The table below ranks options by how approachable they are for a normal user. There is no single best tool, only the one that fits your device.</p>
+<table>
+  <thead><tr><th>Method</th><th>For whom</th><th>Ease</th><th>Watch out</th></tr></thead>
+  <tbody>
+    <tr><td>BitLocker (built into Windows)</td><td>Windows 10/11 Pro users</td><td>Low</td><td>Home edition lacks it by default</td></tr>
+    <tr><td>FileVault (built into macOS)</td><td>Apple users</td><td>Low</td><td>Encrypts the whole disk; archive rides along</td></tr>
+    <tr><td>VeraCrypt container</td><td>Cross-platform, more control</td><td>Medium</td><td>Lose the container passphrase and no one opens it</td></tr>
+    <tr><td>ZIP password</td><td>A one-time send</td><td>Low</td><td>Older algorithms are weak; not for long-term storage</td></tr>
+    <tr><td>age / gpg CLI</td><td>Technical users</td><td>High</td><td>Most flexible, needs the command line</td></tr>
+  </tbody>
+</table>
+<p>My own habit: keep full-disk encryption on the computer I use daily (BitLocker or FileVault), then drop the archive into a separate VeraCrypt container. Two layers, not redundant, so losing one device does not expose the archive by itself.</p>
+
+<h2>The passphrase matters more than the tool</h2>
+<p>Strong encryption with the passphrase written on a sticky note, or stored in the same folder as the archive, is no encryption at all. Put the passphrase in a password manager and give the archive file a boring, forgettable name. A common slip is "birthday plus name should be fine" and that kind of passphrase falls to a basic guessing attack. A long, pattern-free passphrase matters more than which tool you pick. If you cannot remember a random string, a sentence you know by heart and nobody would guess beats six characters easily.</p>
+<p>One more habit worth building: rotate the container passphrase when something around you changes. If a device is lost, a password manager account is breached, or a coworker who knew the phrase leaves, treat the old passphrase as burned and set a new one. You do not need to re-encrypt the whole archive for this if your tool supports it. Even a simple re-key saves you from a passphrase that is no longer trustworthy. Encryption is not a set-and-forget switch.</p>
+
+<h2>Check your device and cloud defaults first</h2>
+<p>Many people do not realize their computer may already run full-disk encryption. Windows Pro usually has BitLocker on by default, and macOS asks about FileVault at setup. Look in settings first; if it is already encrypted, you can decide whether a second layer is worth it. Do not stack another layer on top of an already-encrypted disk out of habit. And do not assume "the cloud says it is encrypted" keeps you safe. That is the provider's encryption, which is a different thing from local plaintext storage.</p>
+
+<h2>Do not back up in the nude either</h2>
+<p>Losing the archive is annoying; losing the only encrypted copy is just as bad. A 3-2-1 habit helps: three copies, two media, one offline. The point is <strong>encrypt every copy before it is backed up</strong>, never sync a plaintext archive into any auto backup. To find the risky tweets inside, start with <a href="/blog/x-archive-privacy-analysis-guide">the X archive privacy analysis guide</a>; if the download broke, see <a href="/blog/x-archive-download-failed-fix">archive download failure fixes</a>.</p>
+
+<h2>What if you need to share it with someone you trust</h2>
+<p>Sometimes you hand the archive to a lawyer, or help a family member clean up. Do not just send the ZIP. Decrypt locally, export only the slice the other person needs, then send that as its own encrypted file. The recipient should get an encrypted file too, and the passphrase goes through a different channel: say it in person, not in the same message. This step is a hassle, but it avoids the classic accident of exposing everyone just to help one person.</p>
+
+<h2>Know who actually wants your archive</h2>
+<p>You do not need to write a thesis on threat modeling. Ask three questions: who knows me, who might dig for dirt on me, who holds my other accounts. The more specific the answer, the clearer how hard you should encrypt. For most people, full-disk encryption plus a decent passphrase is enough. If you have done reputation-sensitive work or your account is public, step up to a VeraCrypt container. To start cleaning the risky tweets, begin with <a href="/blog/request-x-archive-step-by-step-2026">how to request your archive step by step</a>.</p>
+
+<h2>When it is fine to just delete the archive</h2>
+<p>Not everything needs to be kept forever. If the archive is years old, you have already deleted the risky posts from the platform, and you have no legal or personal reason to hold the backup, deleting the encrypted copy is a valid option. The trap is deleting the only copy while the plaintext still lingers in some sync folder. Delete the plaintext first, confirm the encrypted copy is the last one, then remove it. A clean zero is better than a messy hoard.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check. After you upload the archive, all parsing and scoring happen on your own machine; nothing is sent to any server. It is on-device, read-only, and under your control, so you can clean up first and decide where to store it later.</p>`,
+},
+{
+    slug: 'footprint-score-misread-risks-2026',
+    title: '数字足迹健康分被误读的 5 个风险（2026）',
+    excerpt: '健康分出来后，分高就放心、分低就慌，都是误读。本文列五个常见坑：把健康分当安全分、低分以为没事、只看总分不看风险清单、当信用分、一次体检管一辈子。',
+    date: '2026-10-21',
+    updatedAt: '2026-10-21',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    tags: ['数字足迹', '健康分', '隐私体检', '误读', '风险清单'],
+    content: `数字足迹健康分出来之后，很多人只看一眼数字就关掉了：分高就放心，分低就慌。其实这个分数很容易被误读，读错比不读更麻烦。下面五个坑，踩中任意一个都可能让你要么白担心、要么真出事还不知道。
+
+<h2>坑一：把"健康分"当成"安全分"</h2>
+<p>0 到 100 的分衡量的是你历史推文里能搜到的隐私痕迹密度，不代表你的账号现在安不安全。一个分很高的人，可能刚被钓鱼、密码还是 123456。分数管的是"过去晒了什么"，账号安全是另一回事，别用一个数把两件事混在一起。</p>
+
+<h2>坑二：分低就以为没事</h2>
+<p>反过来也成立。分数低只说明风险推文少，不代表没有。一条带家庭住址的旧推文，分量就够被盯上，分数再低也救不了那一条。低分给你的是"大致干净"的信号，不是"零风险"的保证。</p>
+
+<h2>坑三：只盯着总分，不看风险清单</h2>
+<p>真正该看的是体检给出的风险标签：电话、地址、定位、敏感话题。总分是把这些压成一个数字，压的过程会丢了重点。先处理标红的那几条，比纠结总分有用得多。有人花半小时研究分数涨了三位，却没看那条带身份证照片的旧帖还挂着。</p>
+
+<h2>坑四：把它当信用分</h2>
+<p>这个分数你自己看、自己用，任何银行、雇主、平台都看不到，也不会影响你能借多少钱。它是一面你自己照的镜子，不是别人给你打的表。拿它和信用分比，只会自己吓自己。</p>
+
+<h2>坑五：一次体检管一辈子</h2>
+<p>你还在发新推文，旧推文也可能被别人转、被搜索引擎重新捡起来。体检是某个时间点的快照，不是永久通行证。建议每换一次工作、每经历一次搬家，就重跑一次，别指望一年前的分数还能代表现在。</p>
+
+<h2>分数到底该怎么用</h2>
+<p>把它当成待办清单的入口，别当成成绩单。分数高，说明这次没漏明显的雷；分数低，说明该动手清了。真正干活的是风险清单，不是那个数字。想搞清分数到底怎么算，看 <a href="/blog/digital-footprint-score-faq-2026">健康分常见问题</a>；新手的入门读 <a href="/blog/digital-footprint-health-basics-faq">数字足迹健康分基础问答</a>。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>在 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">本机隐私体检</a>，分数和风险清单一起出，重点永远标在前面。读分之前，先想清楚你要防的是谁。</p>`,
+    canonical: '/blog/footprint-score-misread-risks-2026',
+    faq: [{ q: '健康分高就等于账号安全吗？', a: '不等于。分数只看历史推文里的隐私痕迹密度，不反映密码、二步验证、是否中过钓鱼。账号安全要单独查。', qEn: 'Does a high health score mean my account is safe?', aEn: 'No. The score only looks at private traces in old tweets; it says nothing about your password, two-factor, or whether you were phished. Account safety is a separate check.' },
+{ q: '分数低是不是就没风险了？', a: '不是。低分只代表风险推文少，一条带住址的旧推文就够危险，分数再低也救不了那一条。', qEn: 'If the score is low, am I risk-free?', aEn: 'No. A low score means few risky tweets, not none. One old post with your home address is enough trouble, and no score fixes that one post.' },
+{ q: '为什么风险清单比总分更该先看？', a: '总分把电话、地址、定位等压成一个数字，会丢掉重点。真正该先处理的是标红的风险项。', qEn: 'Why read the risk list instead of just the total?', aEn: 'The total compresses phone, address, and location into one number and buries what matters. The red-flagged items are what you should fix first.' },
+{ q: '这个分数别人看得到吗？', a: '看不到。它只在你本机生成、自己看，不影响信用、借贷或任何平台给你的评级。', qEn: 'Can other people see this score?', aEn: 'No one else sees it. It is generated on your device for your own use and affects no credit, loan, or platform rating.' }],
+    titleEn: '5 Ways People Misread Their Digital Footprint Health Score (2026)',
+    excerptEn: 'After the health score shows up, high means relax and low means panic, and both are misreads. This piece lists five traps: score as safety, low score as safe, total over risk list, score as credit, one check for life.',
+    categoryEn: 'Check and Score',
+    tagsEn: ['digital footprint', 'health score', 'privacy check', 'misread', 'risk list'],
+    contentEn: `Once the digital footprint health score comes out, most people glance at the number and close it: high means relax, low means panic. The score is easy to misread, and reading it wrong is worse than not reading it. Here are five traps; hit any one and you either worry for nothing or miss a real problem.
+
+<h2>Trap 1: treating the health score as a safety score</h2>
+<p>The 0 to 100 score measures how much private trace is searchable in your old tweets. It says nothing about whether your account is safe right now. Someone with a high score may have just been phished and still use 123456 as a password. The score covers what you posted; account security is a different subject, so do not blend the two into one number.</p>
+
+<h2>Trap 2: a low score feels safe</h2>
+<p>The reverse also holds. A low score only means few risky tweets, not zero. One old post with your home address is enough to draw attention, and no score saves that single post. A low score signals "roughly clean", not a guarantee of zero risk.</p>
+
+<h2>Trap 3: staring at the total, ignoring the risk list</h2>
+<p>What actually matters is the risk tags from the check: phone, address, location, sensitive topic. The total compresses those into one number and loses the point along the way. Fix the red-flagged items first; that beats obsessing over the total. Some people spend half an hour watching the score move three points, yet never notice the old post with an ID photo still sitting there.</p>
+
+<h2>Trap 4: confusing it with a credit score</h2>
+<p>This score is for your own eyes only. No bank, employer, or platform sees it, and it changes nothing about what you can borrow. It is a mirror you hold up to yourself, not a grade someone else assigns you. Compare it to a credit score and you will only scare yourself.</p>
+
+<h2>Trap 5: one check covers a lifetime</h2>
+<p>You keep posting, and old tweets get reshared or picked up again by search engines. A check is a snapshot at a point in time, not a permanent pass. Rerun it every time you change jobs or move house; do not expect last year's number to still represent now, because the person who posted those tweets is not the person you are today.</p>
+
+<h2>How to actually use the score</h2>
+<p>Treat it as the entry to a to-do list, not a report card. A high score means no obvious landmine this time; a low score means it is time to clean. The risk list does the real work, not the digit. For how the score is built, see <a href="/blog/digital-footprint-score-faq-2026">the health score FAQ</a>; beginners should read <a href="/blog/digital-footprint-health-basics-faq">digital footprint score basics</a>.</p>
+<p>One more thing people miss: the score can move even when you do nothing. As search engines re-index old posts or a thread you forgot gets quoted, the searchable privacy surface shifts. So a score you checked last month may already be stale, which is another reason to treat it as a snapshot, not a fixed grade.</p>
+<p>If the number stresses you out, skip it on the first run and go straight to the risk list. The list is where the actionable items live, and you can read the score later once you have fixed the red flags. The score is a summary; the list is the work, and reading them in that order takes the fear out of the number.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Run an <a href="/blog/what-is-digital-footprint-check">on-device privacy check</a> at <a href="/">digital-footprint-health.shop</a> and you get the score and the risk list together, with the important items flagged up front. Before you read the number, decide who you are actually protecting against.</p>`,
+},
+{
+    slug: 'deepfake-protection-x-account-2026',
+    title: '深度伪造时代：保护 X 账号不被仿冒（2026）',
+    excerpt: '开源模型让声音克隆和换脸门槛骤降，普通人最常被拿去骗家人朋友。本文讲账号上锁、简介声明、发现被冒充后的处置，以及如何清理旧素材砍掉原材料。',
+    date: '2026-10-21',
+    updatedAt: '2026-10-21',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['深度伪造', 'X 账号', '冒充', '二步验证', '隐私保护'],
+    content: `前两年"换脸"还像是科幻片里的桥段，现在随便一个开源模型就能拿你的几张照片生成会说话、会点头的视频。对普通 X 用户来说，深度伪造最该防的，是有人拿你的素材冒充你去骗通讯录里的人；政治宣言那种桥段普通人基本碰不到。
+
+<h2>深度伪造能拿你怎么办</h2>
+<ul>
+  <li><strong>声音克隆</strong>:你发过的语音片段，足够合成一段以假乱真的"在吗，借我点钱"。</li>
+  <li><strong>脸换到别处</strong>:把你塞进你从没去过的场合，截图传播后很难撤回。</li>
+  <li><strong>冒充客服或熟人</strong>:结合你公开的主页信息，骗你家人朋友更顺手。</li>
+  <li><strong>伪造截图对话</strong>:把你和别人的私信拼成没说过的话，挑拨关系比骗钱还常见。</li>
+</ul>
+
+<h2>先把自己账号的锁上好</h2>
+<p>伪造要落地，往往先得控制或借用你的身份。把二步验证开起来，能用通行密钥（passkey）就上通行密钥；把备用恢复码离线存好，别截图扔相册。账号一旦被锁的处置流程，看 <a href="/blog/x-account-locked-recovery-steps">X 账号被锁恢复步骤</a>；恢复码怎么管，参考 <a href="/blog/x-two-factor-backup-codes">二步验证备用码</a>。多一道锁，冒充者就算拿到一张你的照片也开不了你的号。</p>
+
+<h2>在个人简介里留句话</h2>
+<p>一个低成本但管用的小动作：在简介里写明"我不会通过私信向任何人借钱、要验证码"。冒充者最怕这种提前说破的声明，因为一旦你公开讲过，别人接到"借钱"私信第一反应就是假的。把它和你的头像、昵称一起，当成账号的门面来维护。</p>
+
+<h2>发现被冒充了怎么办</h2>
+<p>别和假账号对线，先举报。X 的举报入口在账号菜单里，选"假冒身份"这一类通过最快。同时给你真正常联系的人发一句提醒，比逐个解释省事。如果伪造内容涉及你家人，直接走平台之外的方式先告诉他们，别等他们从截图里看到。</p>
+
+<h2>给家人也提个醒</h2>
+<p>很多冒充得手，是因为家里老人或朋友不常上 X，看到"你"发来的私信就信了。提前跟最容易被盯上的人说清楚：凡是涉及钱、验证码、账号密码的私信，一律当面或电话确认，不在这一个 App 里解决。这条比任何技术设置都实在。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>深度伪造用的素材，常常来自你多年没管的旧推文和图片。在 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">本机隐私体检</a>，先把带脸、带定位、带家人的老内容挑出来清理，能砍掉大部分伪造的原材料。</p>`,
+    canonical: '/blog/deepfake-protection-x-account-2026',
+    faq: [{ q: '深度伪造普通人用得上防吗？', a: '用得上。现在开源模型门槛很低，几张照片就能克隆声音和脸，最常被用来骗你家人朋友，不是什么名人专属风险。', qEn: 'Should ordinary people worry about deepfakes?', aEn: 'Yes. Open-source models are cheap now; a few photos clone voice and face, and the usual target is scamming your family and friends, not some celebrity-only risk.' },
+{ q: '账号开了二步验证就安全了？', a: '能挡掉大部分盗号，但挡不掉"冒充"。伪造不一定控制你账号，而是拿你的素材另开假号骗人，所以简介声明也很关键。', qEn: 'Is two-factor enough to be safe?', aEn: 'It stops most account takeovers but not impersonation. A fake may not control your account; it clones your material into a new account, so the bio disclaimer matters too.' },
+{ q: '发现被冒充第一时间做什么？', a: '别对线，先举报选"假冒身份"类，再给真正常联系的人发一句提醒。涉及家人就平台外先说一声。', qEn: 'What is the first move if I am impersonated?', aEn: 'Do not argue; report under the impersonation category, then warn the people you really talk to. If family is involved, tell them off-platform first.' },
+{ q: '个人简介那句话真有用吗？', a: '有用。它把"借钱要验证码"提前说破，别人接到假私信第一反应就是假的，冒充者最怕这种事前声明。', qEn: 'Does the bio line actually help?', aEn: 'It helps. By stating up front that you never ask for money or codes, the first reaction to a fake DM is disbelief, which is exactly what impersonators fear.' }],
+    titleEn: 'Deepfake Defense: Keeping Your X Account From Being Cloned (2026)',
+    excerptEn: 'Open-source models dropped the cost of voice cloning and face swaps, and ordinary users get cloned to scam family and friends. This covers locking the account, a bio disclaimer, what to do if impersonated, and cleaning old material.',
+    categoryEn: 'Account Security',
+    tagsEn: ['deepfake', 'X account', 'impersonation', 'two-factor', 'privacy'],
+    contentEn: `<p>A couple of years ago, face-swapping felt like sci-fi. Now any open-source model can take a few of your photos and make a video of you that talks and nods. For an ordinary X user, the real risk of deepfakes is not being inserted into a political speech. It is being cloned to scam the people in your contacts.</p>
+
+<h2>What a deepfake can do with you</h2>
+<ul>
+  <li><strong>Voice cloning</strong>: a short voice clip you posted is enough to fake a convincing "hey, can you lend me some money".</li>
+  <li><strong>Face onto somewhere else</strong>: dropping you into a place you never visited, then a screenshot spreads and is hard to pull back.</li>
+  <li><strong>Impersonating support or a friend</strong>: paired with your public profile, scamming your family gets easier.</li>
+  <li><strong>Forged chat screenshots</strong>: splicing your DMs into words you never said, which strains relationships more often than it steals money.</li>
+</ul>
+
+<h2>Lock your own account first</h2>
+<p>For a fake to land, it often needs to control or borrow your identity. Turn on two-factor, use a passkey if you can, and store backup codes offline instead of in your photo library. For the steps after a lockout, see <a href="/blog/x-account-locked-recovery-steps">X account locked recovery steps</a>; for managing backup codes, read <a href="/blog/x-two-factor-backup-codes">two-factor backup codes</a>. One more lock means a cloner with a single photo of you still cannot open your account.</p>
+
+<h2>Put a line in your bio</h2>
+<p>One cheap but useful move: state in your bio that you will never ask anyone for money or verification codes over DM. Impersonators hate this kind of upfront disclaimer, because once you have said it publicly, the first reaction to a "loan" DM is that it is fake. Treat it, with your avatar and handle, as the front door of your account.</p>
+
+<h2>What to do if you are impersonated</h2>
+<p>Do not argue with the fake account; report it. The report entry sits in the account menu; pick the "impersonation" category for the fastest route. Then send one note to the people you actually talk to, easier than explaining one by one. If the fake involves your family, tell them through a channel outside the platform first; do not wait for them to see it in a screenshot.</p>
+
+<h2>Warn the people closest to you</h2>
+<p>Many impersonation scams work because an older relative or a friend rarely uses X and believes the DM that appears to come from you. Tell the people most likely to be targeted, up front: any DM about money, verification codes, or passwords gets confirmed in person or by phone, never inside this one app. That rule beats any technical setting.</p>
+<p>A quieter risk is the slow build. A cloner does not need one dramatic video; a few short clips of you saying yes or sure can be stitched into a fake approval of something you never agreed to. That is why the bio line and the family warning matter more than any single dramatic deepfake story in the news.</p>
+<p>Also watch the source photos. The cleaner your old posts are of clear face shots and recognizable places, the less a cloner has to work with. You do not need to vanish; you need to thin the material. A periodic pass that hides the most identifiable images does more than worrying about the technology itself.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Deepfake material often comes from old tweets and photos you stopped managing years ago. Run an <a href="/blog/what-is-digital-footprint-check">on-device privacy check</a> at <a href="/">digital-footprint-health.shop</a> and pull out the old posts with your face, location, or family, which cuts off most of the raw material a clone would use.</p>`,
+},
+{
+    slug: 'pause-resume-bulk-deletion-2026',
+    title: '批量删推文卡住了？暂停与恢复不丢进度的方法',
+    excerpt: '批量删推文最怕删到一半卡住、状态乱掉。本文讲检查点机制、恢复前确认的三件事，以及手动改归档、急着重来、硬绕额度、双窗口几个常见坑。',
+    date: '2026-10-21',
+    updatedAt: '2026-10-21',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['批量删除', '检查点', '暂停恢复', '进度', 'X 推文'],
+    content: `批量删推文最怕的不是删得慢，是删到一半卡住：网络断了、软件崩了、或者你突然想先停一下看看删了哪些。如果工具不记录进度，重启就是从头来，重复删还好，最怕的是状态乱掉你不知道删到哪了。
+
+<h2>为什么会卡住</h2>
+<ul>
+  <li><strong>平台限流</strong>:短时间内删太多，接口会让你慢下来。</li>
+  <li><strong>连接中断</strong>:家里 WiFi 抖一下，长任务最容易中招。</li>
+  <li><strong>你主动暂停</strong>:想先确认某条该不该删，合情合理。</li>
+  <li><strong>软件更新或崩溃</strong>:后台进程被杀，进度没存就白跑。</li>
+</ul>
+
+<h2>能续上的关键：检查点</h2>
+<p>靠谱的删除工具会在每一步记一个"检查点"：哪条已删、哪条待删、当前停在第几页。你暂停或断线后再打开，它从检查点接着跑，不会退回第一条重来。挑工具时这一条比界面好看重要得多。按互动量排删除优先级的思路，看 <a href="/blog/delete-tweets-by-engagement">按互动量删推文</a>；账号被限流时的处理，参考 <a href="/blog/delete-tweets-restricted-account">受限账号删除</a>。</p>
+
+<h2>恢复前先确认三件事</h2>
+<ol>
+  <li><strong>检查点还在不在</strong>:进度文件被清掉，续跑就失效了。</li>
+  <li><strong>有没有重复标记</strong>:同一批里两条被标成同一条，可能漏删或错删。</li>
+  <li><strong>停的位子对不对</strong>:别在中间插一段新条件，容易把顺序搞乱。</li>
+</ol>
+
+<h2>几个常见坑</h2>
+<p>第一，别在删除进行中手动改归档文件，工具读到的和你以为的可能不是同一份。第二，断线后急着点"重新开始"，跳过"继续"，会把已删的又扫一遍、拖慢整体。第三，免费额度用尽就停，别强行绕过限制，反而触发账号异常。第四，别同时开两个清理窗口:两个都写检查点，最后谁覆盖谁都说不清。</p>
+
+<h2>删完之后要不要留个记录</h2>
+<p>建议留。导出一份"已删除清单"（哪怕只是 slug 列表），日后有人拿旧截图来质问，你能说清那条确实清了。清单本身不含内容，存一份加密的就行，不必精心保管。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>在 <a href="/">digital-footprint-health.shop</a> 清理推文是<strong>按条、可暂停、可恢复</strong>的：每删一条都记在本机，你随时能停、随时能接着来，不会因为你关掉页面就前功尽弃。先跑一次 <a href="/blog/what-is-digital-footprint-check">本机体检</a> 圈出要删的，再按节奏清。</p>`,
+    canonical: '/blog/pause-resume-bulk-deletion-2026',
+    faq: [{ q: '批量删除中断了会从第一条重来吗？', a: '看工具有没有检查点。有检查点的从断点续，没有的就重扫，已删的会再被扫一遍拖慢速度。', qEn: 'If bulk deletion is interrupted, does it restart from the first tweet?', aEn: 'Depends on checkpoints. With them it resumes from the break; without them it re-scans, and deleted items get hit again, slowing things down.' },
+{ q: '恢复前最该确认什么？', a: '三件事：检查点文件还在不在、有没有重复标记、停的位子对不对。任一不对都可能漏删或错删。', qEn: 'What should I confirm before resuming?', aEn: 'Three things: the checkpoint file still exists, no duplicate marks, and the stop position is correct. Any one wrong can skip or mis-delete.' },
+{ q: '删除进行中能改归档文件吗？', a: '别改。手动改动会让工具读到的和你以为的不是同一份，状态容易乱。先停、改完、再续。', qEn: 'Can I edit the archive while deletion runs?', aEn: 'Do not. Hand edits make what the tool reads differ from the file you expect, and the state gets messy. Stop, edit, then resume.' },
+{ q: '免费额度用完了硬删会怎样？', a: '可能触发账号异常，反而更麻烦。到额度就停，换个时间或按节奏来，比强行绕过稳。', qEn: 'What if I force-delete after the free quota ends?', aEn: 'It can trip an account flag and make things worse. Stop at the quota and resume later or at a calm pace rather than forcing past it.' }],
+    titleEn: 'Bulk Tweet Deletion Froze? How to Pause and Resume Without Losing Progress',
+    excerptEn: 'Bulk deletion is scary when it freezes halfway and the state gets messy. This explains checkpoints, three things to confirm before resuming, and common pitfalls: hand-editing the archive, rushing to restart, forcing past quota, double windows.',
+    categoryEn: 'Deletion How-To',
+    tagsEn: ['bulk delete', 'checkpoint', 'pause resume', 'progress', 'X tweets'],
+    contentEn: `<p>Bulk-deleting tweets is less scary when it is slow and more scary when it freezes halfway: the network drops, the app crashes, or you decide to pause and check what got deleted. If the tool keeps no progress, restarting means starting over, and the worst case is a muddled state where you cannot tell how far it got.</p>
+<p>Think of the checkpoint like a bookmark in a long book. Without it, every restart sends you to page one; with it, you open right where you stopped. The difference is the difference between a task that finishes and one that never ends. This is why, when picking any bulk tool, the first question should be where it saves progress, not how fast it is.</p>
+
+<h2>Why it freezes</h2>
+<ul>
+  <li><strong>Rate limits</strong>: delete too fast and the API tells you to slow down.</li>
+  <li><strong>Dropped connection</strong>: a wobble in home WiFi hits long tasks the hardest.</li>
+  <li><strong>You pause on purpose</strong>: wanting to confirm whether a tweet should go is perfectly reasonable.</li>
+  <li><strong>App update or crash</strong>: a background process gets killed and the progress is lost.</li>
+</ul>
+
+<h2>The key to resuming: checkpoints</h2>
+<p>A solid deletion tool writes a checkpoint at each step: what is deleted, what is pending, where it stopped. When you pause or the line drops, it resumes from the checkpoint instead of tweet one. This matters more than a pretty interface when you pick a tool. For prioritizing by engagement, see <a href="/blog/delete-tweets-by-engagement">deleting tweets by engagement</a>; for restricted accounts, read <a href="/blog/delete-tweets-restricted-account">deletion on a restricted account</a>.</p>
+
+<h2>Three things to confirm before resuming</h2>
+<ol>
+  <li><strong>The checkpoint still exists</strong>: if the progress file was cleared, resume fails.</li>
+  <li><strong>No duplicate marks</strong>: two items tagged as one can skip or mis-delete.</li>
+  <li><strong>The stop position is right</strong>: do not splice new conditions into the middle; it scrambles the order.</li>
+</ol>
+
+<h2>Common pitfalls</h2>
+<p>First, do not hand-edit the archive while deletion runs; what the tool reads may not be the file you think. Second, after a drop, do not rush to "start over" and skip "resume"; that re-scans deleted items and slows everything. Third, when the free quota runs out, stop; forcing past the limit can trip an account flag. Fourth, do not run two cleanup windows at once: both write checkpoints, and which overwrites which becomes a mess that can cost you an entire evening of redoing work.</p>
+
+<h2>Should you keep a record after deleting</h2>
+<p>Yes, keep one. Export a "deleted list" (even just the slugs) so that if someone later confronts you with an old screenshot, you can show that tweet is indeed gone. The list holds no content, so an encrypted copy is enough; you do not need to baby it.</p>
+<p>There is also a human side to pausing. Deleting in a rush, while annoyed or distracted, is when people mis-tag or skip the wrong posts. A planned pause, stop, review the deleted list, resume tomorrow, produces a cleaner result than a marathon session that leaves you drained. The tool should let you do that without penalty, so use the pause button freely.</p>
+<p>If your tool offers an export of what it plans to delete before it deletes, take it. A preview list lets you catch mistakes while they are still reversible, which is the whole point of doing this carefully.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Cleaning tweets at <a href="/">digital-footprint-health.shop</a> is <strong>per-tweet, pausable, and resumable</strong>: each deletion is recorded on your device, so you can stop anytime and pick up later without losing the work. Run an <a href="/blog/what-is-digital-footprint-check">on-device check</a> first to flag what to delete, then clear at your own pace.</p>`,
+},
+{
+    slug: 'social-platform-migration-privacy-2026',
+    title: '从 X 搬到别的平台前，这份隐私清理清单请收好（2026）',
+    excerpt: '搬去 Bluesky、Mastodon、Threads 前，旧推文、第三方授权、跨平台同发内容都要先清理。本文给搬家前三件事、跨发隐私坑，以及声誉怎么带走、注销前检查。',
+    date: '2026-10-21',
+    updatedAt: '2026-10-21',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['平台迁移', 'X 搬家', '隐私清理', '跨平台', '第三方授权'],
+    content: `这两年从 X 搬去 Bluesky、Mastodon、Threads 的人不少。搬家本身不复杂，复杂的是你留下的那堆历史：旧推文、绑定的第三方应用、还有跨平台发过的同一条内容。搬之前不做清理，等于把旧包袱原样背到新家。
+
+<h2>搬家前先做的三件事</h2>
+<ol>
+  <li><strong>下载并体检归档</strong>:先把自己 X 历史捞出来，圈出风险推文，别等账号注销了再后悔。</li>
+  <li><strong>撤掉第三方应用授权</strong>:很多小工具还挂着你的 X 权限，注销前不收，授权就一直挂着。</li>
+  <li><strong>删掉真正危险的旧内容</strong>:带住址、带家人、带前东家的那条，新平台搜不到，但别人转存的还在。</li>
+</ol>
+
+<h2>跨平台发帖的隐私坑</h2>
+<p>很多人 X 和别的平台同步发。问题在于各平台受众不同，同一条带定位、带真名的内容，在中文圈子和英文圈子被看到的结果不一样。想了解跨平台发帖怎么护隐私，看 <a href="/blog/chinese-rednote-x-crosspost-privacy">中文平台跨发隐私</a>；从 X 整体搬走的思路，参考 <a href="/blog/switch-from-x-footprint-2026">离开 X 的足迹处理</a>。</p>
+
+<h2>声誉怎么带走</h2>
+<p>你在旧平台的积累（粉丝、作品、专业形象）不会自动跟过去。挑一个能代表你的新主页，把重要的作品帖重新发一遍，比指望别人顺着旧链接找你要实在。别把"清空旧号"当成唯一目标:有时候留下干净的代表作，比全删更利于新开始。新平台的第一步也可以是先发一条"我搬到这里了"，给老读者指条路。</p>
+
+<h2>注销前最后检查一遍</h2>
+<p>真要注销账号，先确认三件小事：绑定的邮箱还能收信（以后找回要用）、第三方授权全撤了、重要的私信和图片本地留了备份。注销是不可逆的，按错一步就要不回来。慢一点，比事后拍大腿强。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>搬走之前，先在 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/x-archive-privacy-analysis-guide">归档隐私分析</a>，把要删的老内容一次性圈出来。本机处理、数据不出设备，清完再安心换平台。</p>`,
+    canonical: '/blog/social-platform-migration-privacy-2026',
+    faq: [{ q: '搬去新平台前一定要清旧推文吗？', a: '不一定全清，但风险那条得清。带住址、带家人、带前东家的旧内容，别人转存的还在，新平台搜不到不等于消失。', qEn: 'Must I delete old tweets before moving to a new platform?', aEn: 'Not all of them, but the risky ones. Old posts with your address, family, or former employer survive as reposts; not showing on the new platform is not the same as gone.' },
+{ q: '第三方应用授权为什么搬家前要收？', a: '很多小工具还挂着你的 X 权限，注销前不手动撤，授权会一直挂着，等于留了扇没锁的门。', qEn: 'Why revoke third-party apps before moving?', aEn: 'Small tools still hold your X permission; if you do not revoke before deletion, the grant stays open, like leaving a door unlocked.' },
+{ q: '跨平台同步发同一条有啥问题？', a: '各平台受众不同，同一条带定位带真名的内容在中文和英文圈子被看到的结果不一样，容易误曝。', qEn: 'What is wrong with syncing the same post across platforms?', aEn: 'Audiences differ; the same post with location and real name reads differently in Chinese versus English circles, which easily over-exposes you.' },
+{ q: '旧平台的声誉怎么带到新家？', a: '不会自动跟过去。挑一个代表你的新主页，把重要作品重发一遍，比指望别人顺旧链接找你实在。', qEn: 'How do I carry my reputation to the new platform?', aEn: 'It does not follow on its own. Pick one profile that represents you and repost the important work; that beats hoping people trace old links.' }],
+    titleEn: 'Your Privacy Cleanup Checklist Before Leaving X for Another Platform (2026)',
+    excerptEn: 'Before moving to Bluesky, Mastodon, or Threads, old tweets, third-party grants, and cross-posted content all need cleanup first. This gives three pre-move steps, cross-posting traps, and how to carry your reputation and a last check before deletion.',
+    categoryEn: 'Industry and Ecosystem',
+    tagsEn: ['platform migration', 'leave X', 'privacy cleanup', 'cross-post', 'third-party access'],
+    contentEn: `<p>Over the past couple of years, plenty of people have moved from X to Bluesky, Mastodon, or Threads. The move itself is simple; the hard part is the history you leave behind: old tweets, connected third-party apps, and the same post cross-published everywhere. Skip the cleanup and you carry the old baggage unchanged into the new home.</p>
+<p>A practical note on the archive itself: request it early. X can take a day or more to prepare the download, and if you start the move and only then ask for the archive, you may have already deleted the account before the file is ready. The archive is the one artifact that survives account deletion only if you grabbed it first, so order it before you touch anything else.</p>
+
+<h2>Three things to do before moving</h2>
+<ol>
+  <li><strong>Download and check the archive</strong>: pull your X history out first and flag the risky tweets; do not wait until the account is gone to regret it.</li>
+  <li><strong>Revoke third-party app access</strong>: small tools still hold your X permission; if you do not revoke before deletion, the grant just hangs there.</li>
+  <li><strong>Delete the truly dangerous old content</strong>: the post with your address, family, or former employer will not show on the new platform, but reposts by others still exist.</li>
+</ol>
+
+<h2>Privacy traps in cross-posting</h2>
+<p>Many people sync X with other platforms. The problem is the audiences differ; the same post with location and real name reads differently in a Chinese circle versus an English one. For how cross-posting protects privacy, see <a href="/blog/chinese-rednote-x-crosspost-privacy">cross-posting privacy on Chinese platforms</a>; for the overall move-off-X plan, read <a href="/blog/switch-from-x-footprint-2026">handling your footprint when leaving X</a>.</p>
+
+<h2>How to carry your reputation</h2>
+<p>What you built on the old platform, followers, work, professional image, does not follow automatically. Pick one new profile that represents you and repost the important work; that beats hoping people trace old links. Do not make "wipe the old account" the only goal; sometimes leaving clean representative posts helps a fresh start more than deleting everything. A good first post on the new platform is simply "I have moved here", which points old readers to the right place.</p>
+
+<h2>One last check before you delete</h2>
+<p>If you really plan to delete the account, confirm three small things first: the linked email still receives mail (you may need it to recover later), every third-party grant is revoked, and local backups of important DMs and images exist. Deletion is irreversible; one wrong step and it is gone. Going slow beats slapping your forehead afterward, once the account is already gone and nothing can bring it back.</p>
+<p>Do not underestimate the emotional side of leaving. A platform you used for years holds jokes, arguments, and small moments that matter to you even if they carry no risk. Deciding what to keep as a private export, versus what to delete for privacy, is a choice only you can make. The cleanup is about risk, not about erasing your own history, and that distinction keeps the task sane.</p>
+<p>Finally, tell the people who matter. A short post or message that you have moved, and to where, saves friends from trusting a fake new account that pops up later pretending to be you. Moving platforms is also a chance to reset who can reach you, so review followers and pending requests on the way out.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Before you move, run an <a href="/blog/x-archive-privacy-analysis-guide">archive privacy analysis</a> at <a href="/">digital-footprint-health.shop</a> and flag the old content to delete in one pass. It is on-device, your data never leaves the machine, and you can switch platforms with a clear conscience.</p>`,
+},
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

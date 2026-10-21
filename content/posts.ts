@@ -26811,6 +26811,402 @@ rl.on('close', () =&gt; {
 <h2>About digital-footprint-health.shop</h2>
 <p>Before you move, run an <a href="/blog/x-archive-privacy-analysis-guide">archive privacy analysis</a> at <a href="/">digital-footprint-health.shop</a> and flag the old content to delete in one pass. It is on-device, your data never leaves the machine, and you can switch platforms with a clear conscience.</p>`,
 },
+{
+    slug: `x-archive-size-management-guide`,
+    title: `你的 X 数据归档为什么这么大，以及怎么管`,
+    excerpt: `X 数据归档动辄几百 MB，主要来自媒体文件、私信和多年推文。本文讲清 JSON 与 CSV 的体积差异、按年份拆分的方法，以及在本机安全存储归档的实操清单。`,
+    date: `2026-10-22`,
+    updatedAt: `2026-10-22`,
+    author: `Digital Footprint Health Team`,
+    category: `隐私指南`,
+    tags: [`X/Twitter`, `数据归档`, `隐私存储`, `数字足迹`],
+    content: `<p>你点过 X 的"下载数据归档"后，可能等了一天，拿到一个 300 MB 的 ZIP。解压后更吓人：tweets.js 一个文件就好几百 MB。很多人第一反应是"这东西怎么这么大"，第二反应是"我要拿它干什么"。这篇就把归档体积这件事讲清楚。</p>
+
+<h2>为什么归档会膨胀到几百 MB</h2>
+<p>X 的归档包含你账号里几乎所有东西：每一条公开和受保护的推文、每一条私信、上传的图片和视频、账号资料、登录记录、广告偏好。文字本身很小，真正占空间的是两样东西：媒体文件和私信。一条带 4 张图的推文，文字只有 280 字，图片可能就有几 MB；几年累积下来，媒体文件就能堆到几百 MB。</p>
+<p>另一个常被忽略的是私信。如果你从早期就开始用 X，十几年私信的文本量可能不大，但里面的图片和视频会非常占地方。归档把这些都原样打包，所以体积才会失控。</p>
+
+<h2>JSON 与 CSV：体积差在哪</h2>
+<p>归档默认给你的是 JSON 格式（tweets.js、likes.js 等），里面是结构化的 JavaScript 对象，每个字段都带着键名，冗余很大。CSV 把同样的数据压成纯表格，没有键名重复，体积通常能小很多，但会丢掉嵌套结构和媒体引用。</p>
+<table>
+<thead><tr><th>格式</th><th>体积</th><th>适合做什么</th></tr></thead>
+<tbody>
+<tr><td>JSON（默认）</td><td>最大</td><td>完整还原、工具解析、隐私体检</td></tr>
+<tr><td>CSV</td><td>小很多</td><td>快速筛选、表格分析、长期冷存</td></tr>
+</tbody>
+</table>
+<p>如果你要做隐私体检或批量删除，用 JSON；如果只是想留一份可读的备份，CSV 更省空间。关于两者取舍，可以看 <a href="/blog/x-archive-csv-vs-json">归档 CSV 与 JSON 的详细对比</a>。</p>
+
+<h2>按年份和类型拆分大归档</h2>
+<p>一个 300 MB 的 tweets.js 打开就卡，更别提用工具逐条扫描。可行的做法是按年份拆成多个小文件：把 2015 年的推文单独存一份，2020 年的再存一份。这样每次只加载某一年，体检和删除都快得多。</p>
+<p>按类型拆也合理：把纯文字推文、带图推文、私信分开。文字部分体积小、检索快；媒体部分单独归档到外部硬盘或加密盘，不常打开。拆分后再做隐私体检，工具扫描的范围更小，结果也更聚焦。</p>
+
+<h2>存储归档的安全做法</h2>
+<p>归档里装着你十几年的隐私，不能随手丢在桌面或随便一个网盘。优先存在本机加密盘或外接硬盘，避免长时间放在未加密的云盘里。云盘同步会把你的私信和定位记录也传上去，增大泄露面。</p>
+<p>如果一定要用云，至少选带端到端加密的服务，并且给归档文件再套一层密码压缩。关于本机加密存储的具体做法，参考 <a href="/blog/request-x-archive-step-by-step-2026">归档请求与存储的完整步骤</a>，以及 <a href="/blog/x-archive-secure-storage-guide">归档安全存储指南</a>。</p>
+
+<h2>归档体积影响体检工具的性能</h2>
+<p>隐私体检工具需要把整个归档读进内存再解析。归档越大，解析越慢，超大文件还可能让浏览器标签页崩溃。这也是为什么拆分很重要：把一个 300 MB 文件拆成 10 个 30 MB 文件，工具处理起来稳定得多。</p>
+<p>如果你打算用 <a href="/blog/x-archive-privacy-analysis-guide">归档隐私分析</a> 来扫描风险推文，先把归档按年份拆好，体验会顺畅很多。</p>
+
+<h2>实操清单：三步管好你的大归档</h2>
+<ol>
+<li><strong>下载后先拆年份</strong>：别直接打开那个巨大的 tweets.js，先按年切分。</li>
+<li><strong>媒体单独外存</strong>：图片视频移到加密外接盘，本机只留文字归档。</li>
+<li><strong>冷备份加密压缩</strong>：最终备份套密码压缩，再决定是否上云。</li>
+</ol>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>在动手整理归档之前，可以先到 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>：本机解析你的 X 归档，输出 0-100 健康评分和风险清单，数据全程不出你的电脑。整理完归档，再决定要删除哪些风险推文，整个过程都在你自己设备上完成。</p>`,
+    canonical: `/blog/x-archive-size-management-guide`,
+    faq: [
+{ q: `X 归档一般有多大？`, a: `常见范围从几十 MB 到上 GB 不等，取决于你发了多少年、传了多少图和视频。纯文字推文很小，真正占空间的是媒体文件和私信。`, qEn: `How big is an X archive usually?`, aEn: `It ranges from tens of megabytes to over a gigabyte, depending on how many years you posted and how many images or videos you uploaded. Text tweets are tiny; media files and direct messages do the real damage.` },
+{ q: `为什么归档这么占空间？`, a: `归档把账号里几乎所有东西原样打包：推文、私信、图片、视频、登录记录。文字本身很小，媒体文件累积起来才会膨胀到几百 MB。`, qEn: `Why does the archive take so much space?`, aEn: `The archive bundles nearly everything in your account: tweets, direct messages, images, videos, and login history. Text is small; media files are what pile up to hundreds of megabytes.` },
+{ q: `JSON 和 CSV 哪个更小？`, a: `CSV 通常小很多，因为它不带重复键名；JSON 结构完整但冗余大。做隐私体检用 JSON，纯冷备份用 CSV 更省空间。`, qEn: `Which is smaller, JSON or CSV?`, aEn: `CSV is usually much smaller because it drops repeated key names; JSON keeps the full structure but is verbose. Use JSON for privacy checks and CSV for cold storage.` },
+{ q: `归档能直接删掉吗？`, a: `可以，但建议先拆年份、做隐私体检，再决定删哪些风险内容。归档本身是备份，删之前确认已经扫描过风险推文。`, qEn: `Can I just delete the archive?`, aEn: `You can, but it is better to split by year, run a privacy check, and then decide what to remove. The archive is a backup, so scan it for risky tweets before deleting.` },
+{ q: `超大归档打不开怎么办？`, a: `按年份或类型拆成多个小文件，再逐个用工具解析。拆分后体检和删除都更稳，也能避免浏览器因文件过大崩溃。`, qEn: `What if the archive is too big to open?`, aEn: `Split it by year or by type into smaller files, then parse each one separately. Smaller files make both the privacy check and deletion far more stable.` }
+    ],
+    titleEn: `Why Your X Data Archive Is So Large and How to Manage It`,
+    excerptEn: `An X data archive can easily reach hundreds of megabytes, driven by media files, direct messages, and years of tweets. This guide explains the size gap between JSON and CSV, how to split an archive by year, and a practical checklist for storing it safely on your own machine.`,
+    categoryEn: `Privacy Guide`,
+    tagsEn: [`X/Twitter`, `data archive`, `privacy storage`, `digital footprint`],
+    contentEn: `<p>You click download on your X data archive, wait a day, and get a 300 MB ZIP. Unzip it and it looks worse: a single tweets.js file is itself hundreds of megabytes. Most people react in two steps: first, why is this so big, and second, what am I supposed to do with it. This guide explains archive size from the ground up.</p>
+
+<h2>What actually lives inside the archive</h2>
+<p>Before talking about size, it helps to know what the archive is made of. X bundles nearly everything tied to your account: every public and protected tweet you sent, every direct message thread, every image and video you uploaded, your profile and header, login records, the list of accounts you muted or blocked, your ad and targeting preferences, and a record of the devices you used to sign in. None of those pieces is large on its own, but together they add up fast, and most of the weight sits in a handful of file types.</p>
+
+<h2>Why the archive balloons to hundreds of megabytes</h2>
+<p>An X archive bundles almost everything in your account: every public and protected tweet, every direct message, every uploaded image and video, your profile, login records, and ad preferences. The text itself is tiny. The real space hogs are two things: media files and direct messages. A single tweet with four photos may be only 280 characters of text but several megabytes of images, and over years that media piles up to hundreds of megabytes.</p>
+<p>The other often ignored piece is direct messages. If you have been on X since the early days, a decade of message text is not huge, but the images and videos inside those threads get heavy fast. The archive packages all of it verbatim, which is why the size spirals.</p>
+
+<h2>Why text is cheap but media is not</h2>
+<p>A useful rule of thumb: a year of pure text tweets is often under a megabyte, while a single high resolution photo can be several megabytes and a short video can be tens of megabytes. The archive stores every attachment at full size, not as a thumbnail, so a few active media years dominate the total. When you look at the file size, you are mostly looking at your old photos and clips, not your words.</p>
+
+<h2>JSON versus CSV: where the size gap comes from</h2>
+<p>The default archive gives you JSON files like tweets.js and likes.js. These are structured JavaScript objects where every record carries its field names, which adds a lot of redundant text. CSV flattens the same data into a pure table with no repeated keys, so the file is usually much smaller, but it loses the nested structure and media references.</p>
+<table>
+<thead><tr><th>Format</th><th>Size</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td>JSON (default)</td><td>Largest</td><td>Full restore, tool parsing, privacy check</td></tr>
+<tr><td>CSV</td><td>Much smaller</td><td>Quick filtering, spreadsheet analysis, cold storage</td></tr>
+</tbody>
+</table>
+<p>If you are going to run a privacy check or bulk delete, keep JSON. If you only want a readable backup, CSV saves space. For the tradeoffs in detail, see the <a href="/blog/x-archive-csv-vs-json">CSV versus JSON archive comparison</a>.</p>
+
+<h2>Store the media separately from the text</h2>
+<p>Media is what makes the archive unwieldy, so treat it differently from text. Copy the images and videos to an encrypted external disk and keep only the text archive on your daily machine. That way your regular backups stay small, and the heavy media lives somewhere you open infrequently. When you later run a check, you point the tool at the text archive and never need to haul the whole media library around.</p>
+
+<h2>Split a large archive by year and by type</h2>
+<p>A 300 MB tweets.js is painful to open, let alone scan tweet by tweet with a tool. A practical move is to split it by year into several small files: keep 2015 tweets in one file, 2020 in another. Then you only load one year at a time, and both the check and the deletion run much faster.</p>
+<p>Splitting by type also works well: separate plain text tweets, image tweets, and direct messages. Text is small and quick to search; media goes to an external drive or encrypted disk and is opened rarely. After splitting, a privacy check scans a smaller scope and returns tighter results.</p>
+
+<h2>Name and date your splits</h2>
+<p>When you split by year, give each file a clear name like tweets-2019.json and store them in a dedicated folder. Adding the export date helps you track which snapshot is current. A simple naming habit turns a pile of confusing files into an archive you can actually work through months later, and it prevents you from re-checking the same year twice.</p>
+
+<h2>Safe ways to store the archive</h2>
+<p>Your archive holds more than a decade of private detail, so it should not sit loose on your desktop or in just any cloud folder. Prefer an encrypted local disk or an external drive over leaving it indefinitely in an unencrypted cloud sync, which would copy your messages and location history online and widen the leak surface.</p>
+<p>If you must use the cloud, at least pick a service with end to end encryption and wrap the archive file in a password protected archive. For the concrete local encryption steps, see <a href="/blog/request-x-archive-step-by-step-2026">the full archive request and storage walkthrough</a> and the <a href="/blog/x-archive-secure-storage-guide">secure storage guide</a>.</p>
+
+<h2>Watch out for nested media folders</h2>
+<p>Some archive exports place images and videos in separate folders rather than inline. If you see a media directory next to tweets.js, that folder is usually the heaviest part of the download. Moving it to external storage early, before you do anything else, shrinks what you have to manage and back up on your main machine.</p>
+
+<h2>Archive size affects how well the check tool performs</h2>
+<p>A privacy check tool has to read the whole archive into memory before it can parse it. The bigger the file, the slower the parse, and an oversized file can even crash the browser tab. This is another reason splitting matters: turning one 300 MB file into ten 30 MB files makes the tool far more stable.</p>
+<p>If you plan to use the <a href="/blog/x-archive-privacy-analysis-guide">archive privacy analysis</a> to scan risky tweets, split by year first and the experience will be much smoother.</p>
+
+<h2>How often to refresh and re-check</h2>
+<p>An archive is a snapshot, not a living view. The version you downloaded last year no longer reflects what you posted since. If privacy matters to you, set a rhythm: download a fresh archive every few months, split it, and re-run the check. That catches new risky posts before they sit on the open web for years.</p>
+
+<h2>Three step checklist for taming a big archive</h2>
+<ol>
+<li><strong>Split by year right after download</strong>: do not open that giant tweets.js directly; cut it by year first.</li>
+<li><strong>Move media to external storage</strong>: push images and videos to an encrypted external disk; keep only the text archive on your machine.</li>
+<li><strong>Cold backup as a password archive</strong>: wrap the final backup in a password before deciding whether it ever goes to the cloud.</li>
+</ol>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Before you start reorganizing the archive, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a>: it parses your X archive on your own device, outputs a 0 to 100 health score and a risk list, and your data never leaves your computer. Once the archive is tidy, decide which risky tweets to delete, all on your own hardware.</p>`,
+},
+{
+    slug: `footprint-score-and-engagement-2026`,
+    title: `数字足迹评分与账号互动数据有什么关系`,
+    excerpt: `数字足迹评分衡量的是隐私风险，不是账号热度。高粉丝、高互动并不会让你的评分更安全，本文讲清评分真正看重的维度，以及它和互动数据为什么是两回事。`,
+    date: `2026-10-22`,
+    updatedAt: `2026-10-22`,
+    author: `Digital Footprint Health Team`,
+    category: `隐私评分`,
+    tags: [`数字足迹`, `隐私评分`, `账号安全`, `X/Twitter`],
+    content: `<p>很多人第一次看到数字足迹评分时会默认：分高等于账号好，分低等于账号没人气。这个直觉是错的。评分衡量的永远是隐私风险，和你的粉丝数、点赞数、转发量都没有关系。把一个常见误解拆开讲，能少走很多弯路。</p>
+
+<h2>评分看的是风险，跟热度无关</h2>
+<p>数字足迹体检的评分逻辑是：扫描你的 X 归档，找出手机号、邮箱、住址、定位、身份证、旧雇主、敏感话题这些隐私痕迹，按严重程度和数量给出 0-100 的分数。分越低，留下的隐私痕迹越多越严重。</p>
+<p>它完全不关心你有多少粉丝、哪条推文火了。一个千万粉丝的账号，只要历史推文里写过家庭住址，评分照样会很低。反过来，一个只有几十个粉丝的普通账号，如果十几年都没暴露过真实信息，评分可以很高。</p>
+
+<h2>互动数据和评分是两套体系</h2>
+<p>点赞数、转发数、评论数、阅读量，这些都属于"互动数据"，反映账号的传播表现。评分模型里根本没有这些字段。体检工具读的是归档里的文本内容，不是后台的互动报表。</p>
+<p>所以你会看到一种现象：某条推文互动很高，但因为它暴露了你的实时定位，评分反而被拉低。互动好和隐私安全是两本账，不能互相抵消。</p>
+
+<h2>为什么有人分数低却觉得自己没泄露</h2>
+<p>评分低很多时候是因为一些"顺手发"的内容：周末打卡的咖啡馆定位、吐槽旧公司的只言片语、早年上传的证件照。这些信息单看都不起眼，但归档会把它们全部攒在一起，工具一扫就能定位。</p>
+<p>如果你觉得自己没泄露什么，但评分偏低，最稳妥的做法是跑一次完整体检，看工具具体标出了哪些推文。关于怎么读懂评分，可以参考 <a href="/blog/footprint-score-misread-risks-2026">评分误读风险</a> 和 <a href="/blog/what-is-digital-footprint-check">体检是什么</a>。</p>
+
+<h2>评分和互动该怎么配合看</h2>
+<p>把两者分开用才合理：互动数据用来判断内容传播效果，评分用来判断隐私健康度。做品牌或自媒体的账号，尤其需要同时盯这两根线，传播越好，历史推文被翻出来的概率越高，隐私评分反而更值得定期复查。</p>
+<p>如果你担心公开内容影响现实安全，先提升评分，互动数据交给内容策略去管，不要混为一谈。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>想确认自己的隐私评分到底被什么拉低，可以到 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。它在本机解析你的 X 归档，标出具体的风险推文并给出可操作的删除建议，整个过程数据不出你的电脑。</p>`,
+    canonical: `/blog/footprint-score-and-engagement-2026`,
+    faq: [
+{ q: `评分高代表账号更火吗？`, a: `不。评分衡量隐私风险，和粉丝数、互动量无关。一个百万粉丝的账号，只要暴露了手机号和住址，评分一样会很低。`, qEn: `Does a high score mean the account is popular?`, aEn: `No. The score measures privacy risk and has nothing to do with follower count or engagement. An account with a million followers can still score low if it leaks a phone number and home address.` },
+{ q: `互动数据会影响评分吗？`, a: `不会。点赞数、转发数、评论数都不进入评分模型。评分只看你发过的内容里有没有敏感信息。`, qEn: `Does engagement data affect the score?`, aEn: `It does not. Likes, retweets, and reply counts are not part of the scoring model. The score only looks at whether sensitive information appears in what you posted.` },
+{ q: `为什么分数低但觉得自己没泄露？`, a: `有些信息你自己没注意：定位打卡、旧雇主名、身份证照片。评分工具能在归档里抓到这些，建议跑一次完整体检确认。`, qEn: `Why is my score low when I feel I leaked nothing?`, aEn: `Some details are easy to miss: check in locations, an old employer name, an ID photo. The check tool can catch these in your archive, so run a full scan to confirm.` },
+{ q: `评分能当账号健康度用吗？`, a: `只适合衡量隐私维度。账号的整体健康还包括活跃度、粉丝质量等，那些不在评分范围内。`, qEn: `Can the score represent overall account health?`, aEn: `Only for the privacy dimension. Overall account health also covers activity and follower quality, which the score does not measure.` }
+    ],
+    titleEn: `How Your Digital Footprint Score Relates to Account Engagement`,
+    excerptEn: `A digital footprint score measures privacy risk, not account popularity. A large follower count and high engagement do not make your score safer. This article clarifies what the score actually weighs and why it is a different thing from engagement data.`,
+    categoryEn: `Footprint Score`,
+    tagsEn: [`digital footprint`, `privacy score`, `account security`, `X/Twitter`],
+    contentEn: `<p>When people first see a digital footprint score, many assume a high number means a good account and a low number means an unpopular one. That instinct is wrong. The score always measures privacy risk and has nothing to do with follower count, likes, or retweets. Clearing up this confusion saves a lot of wasted effort.</p>
+
+<h2>The score measures risk, not popularity</h2>
+<p>A digital footprint check works like this: it scans your X archive, finds privacy traces like phone numbers, emails, home addresses, locations, ID photos, old employer names, and sensitive topics, then assigns a 0 to 100 score based on severity and volume. The lower the score, the more and worse the privacy traces.</p>
+<p>It does not care how many followers you have or which tweet went viral. An account with millions of followers scores low if its history reveals a home address. Conversely, a quiet account with a few dozen followers can score high if it never exposed real information over the years.</p>
+
+<h2>Engagement and the score are two separate systems</h2>
+<p>Likes, retweets, replies, and impressions are engagement data that reflect how content spreads. The scoring model does not include any of those fields. The check tool reads the text content of your archive, not the backend engagement report.</p>
+<p>That is why you can see a paradox: a tweet with huge engagement lowers your score because it also exposed your real time location. Strong engagement and privacy safety are separate books that do not cancel each other out.</p>
+
+<h2>Why some people score low while feeling they leaked nothing</h2>
+<p>A low score often comes from offhand posts: a coffee shop check in on the weekend, a stray line complaining about a former company, an ID photo uploaded years ago. Each looks harmless alone, but the archive gathers them all, and a scan pins them down instantly.</p>
+<p>If you feel you leaked nothing yet score low, the safest move is a full check to see exactly which tweets the tool flagged. For reading the score correctly, see <a href="/blog/footprint-score-misread-risks-2026">misreading the score</a> and <a href="/blog/what-is-digital-footprint-check">what a check actually is</a>.</p>
+
+<h2>A quick example of two accounts</h2>
+<p>Take two accounts with the same follower count. Account A posts daily about industry news and never shares personal detail; its score stays high. Account B has fewer posts but once tweeted a photo with a license plate and a home address in the caption; its score drops hard. Same reach, very different privacy posture. The score is telling you about exposure, not influence.</p>
+
+<h2>How to use the score alongside engagement</h2>
+<p>Keep the two separate: engagement shows content reach, the score shows privacy health. Accounts that run a brand or personal media especially need to watch both lines, because the better the reach, the higher the chance old tweets get dug up, which makes a periodic privacy rescan more worth it.</p>
+<p>If you worry that public content affects real world safety, raise the score first by removing risky tweets, and leave engagement to your content strategy. Do not mix the two.</p>
+
+<p>One practical takeaway: if a client or employer asks about your online presence, the engagement numbers and the privacy score answer different questions. Share reach metrics for the former, and keep the privacy score as a private self check. Mixing them in one report only confuses the reader.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>To find out what is actually pulling your privacy score down, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a>. It parses your X archive on your own device, flags the specific risky tweets, and suggests concrete deletions, with your data never leaving your computer.</p>`,
+},
+{
+    slug: `delete-tweets-preserve-threads-2026`,
+    title: `批量删除推文时如何保留对话脉络`,
+    excerpt: `删除一条推文可能让整个对话链断掉。本文讲清线程推文和独立推文的区别、选择性删除的策略，以及让删除工具尊重对话脉络的实操方法。`,
+    date: `2026-10-22`,
+    updatedAt: `2026-10-22`,
+    author: `Digital Footprint Health Team`,
+    category: `删除实操`,
+    tags: [`批量删除`, `推文线程`, `X/Twitter`, `隐私清理`],
+    content: `<p>很多人做隐私清理时只想"把那几条丢人的删了"，结果顺手批量删除，把一条写得很好的长线程也切断了。线程和独立推文不一样：独立推文删了就删了，线程删了中间一节，后面全变成没头没尾的碎片。这篇讲怎么在清理时保住对话脉络。</p>
+
+<h2>线程推文和独立推文的区别</h2>
+<p>独立推文是一句话讲完一件事，前后没有依赖，删掉它不影响任何其它内容。线程推文是连续几条串起来的，靠"回复自己"或编号连成一篇长文，中间任何一条被删，后面的回复就失去上下文。</p>
+<p>你可以用 X 归档很快区分两者：线程推文通常带有 in_reply_to 字段，独立推文没有。做删除前先按这个字段把两类分开，能避免一大半误删。</p>
+
+<h2>选择性删除的策略</h2>
+<p>最稳的做法是分两批处理。第一批只动独立推文：在里面挑出暴露手机号、住址、旧雇主的风险内容删掉，线程一律不动。第二批才考虑线程，如果整条线程都想清掉，从最后一条往前删，保持删除顺序干净。</p>
+<p>如果你只想删线程里的某一节，先想清楚后面是否还依赖它。比如一条科普线程，第 3 节引用了第 1 节的数据，删掉第 1 节，后面整段就站不住脚。这种宁可整条留着，或整条删。</p>
+
+<h2>让删除工具尊重线程</h2>
+<p>不是所有批量删除工具都懂线程。好的工具会读取回复链，允许你把线程整体排除在删除范围外，或者只删线程里被你点名的那几条。运行前一定要看它有没有"线程感知"这个选项。</p>
+<p>如果工具只支持按时间或关键词批量删，风险就很高：一个含敏感词的关键词可能命中整条线程的每一节。关于按范围选择的细节，参考 <a href="/blog/delete-tweets-by-date-range-guide">按日期范围删除指南</a> 和 <a href="/blog/delete-tweets-by-engagement">按互动量删除</a>。</p>
+
+<h2>删除前先备份线程</h2>
+<p>动手之前，把想保留的线程从归档里导出成文本或截图。已删除的推文基本无法恢复，但归档里通常还留着原文，真要恢复也能从那里重建。</p>
+<p>对于需要暂停、恢复的长任务，<a href="/blog/pause-resume-bulk-deletion-2026">批量删除的暂停与恢复</a> 这篇讲了怎么安全地分段执行，避免一次性误删整片内容。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>想既清理风险推文又不伤线程，可以先到 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。它在本机解析你的 X 归档，把风险推文逐条标出，你再决定哪些独立删除、哪些线程保留，整个过程数据不出你的电脑。</p>`,
+    canonical: `/blog/delete-tweets-preserve-threads-2026`,
+    faq: [
+{ q: `删一条推文会影响整个线程吗？`, a: `会。线程是靠前后推文串起来的，删掉中间任何一条，后面的回复就失去上下文，读起来像断片。`, qEn: `Does deleting one tweet break the whole thread?`, aEn: `Yes. A thread is held together by its sequence. Remove any tweet in the middle and the replies after it lose context, reading like a broken fragment.` },
+{ q: `怎么做到只删风险推文不伤线程？`, a: `先把线程和独立推文分开，再只在独立推文里删风险内容；线程推文除非整条线程都不要，否则保留关键节点。`, qEn: `How do I delete risky tweets without harming threads?`, aEn: `Separate threads from standalone tweets first, then only remove risky content among standalone posts. Keep key thread nodes unless you want to drop the whole thread.` },
+{ q: `删除工具能识别线程吗？`, a: `部分工具会读取回复链，允许你把整个线程排除在删除范围外，或只删你点名的那几节。运行前先看它有没有线程感知这个选项。`, qEn: `Can deletion tools recognize threads?`, aEn: `Some tools read reply chains and let you exclude threads from a bulk delete. Check whether your tool supports thread aware deletion before running it.` },
+{ q: `误删了线程节点能恢复吗？`, a: `已删除的推文通常无法恢复，除非你归档里还有原文。所以删除前先确认线程范围，必要时从归档重建。`, qEn: `Can a deleted thread node be recovered?`, aEn: `Deleted tweets usually cannot be recovered unless the original text is still in your archive. Confirm the thread scope before deleting, and rebuild from the archive if needed.` }
+    ],
+    titleEn: `How to Bulk-Delete Tweets While Preserving Conversation Threads`,
+    excerptEn: `Deleting one tweet can snap an entire conversation chain. This article explains the difference between threaded and standalone tweets, a selective deletion strategy, and how to make a deletion tool respect conversation context.`,
+    categoryEn: `Tweet Deletion`,
+    tagsEn: [`bulk delete`, `tweet threads`, `X/Twitter`, `privacy cleanup`],
+    contentEn: `<p>When people do privacy cleanup they often think only about removing the embarrassing posts, then run a bulk delete and accidentally cut a well written long thread in half. Threads and standalone tweets are different: deleting a standalone post is a one off, but deleting a middle section of a thread turns everything after it into context free fragments. This is how to keep the conversation intact while cleaning up.</p>
+
+<h2>The difference between threaded and standalone tweets</h2>
+<p>A standalone tweet says one thing in one post with no dependencies, so removing it affects nothing else. A threaded tweet is several posts chained together, either by replying to yourself or by numbering, forming one long piece. Delete any post in the middle and the replies after it lose their context.</p>
+<p>Your X archive makes the split easy: threaded tweets usually carry an in_reply_to field, standalone ones do not. Sort the two classes by that field before deleting and you avoid most accidental cuts.</p>
+
+<h2>A selective deletion strategy</h2>
+<p>The safest approach is two passes. The first pass touches only standalone tweets: pick out the ones exposing a phone number, home address, or old employer, and leave every thread alone. The second pass considers threads, and if you want to drop a whole thread, delete from the last post backward to keep the order clean.</p>
+<p>If you only want to remove one section of a thread, think through whether later parts depend on it. In a science thread, if section 3 cites data from section 1, dropping section 1 collapses the rest. In that case keep the whole thread or drop it entirely.</p>
+
+<h2>Make the deletion tool respect threads</h2>
+<p>Not every bulk deletion tool understands threads. A good one reads the reply chain and lets you exclude threads from the delete scope, or delete only the specific sections you name. Always check for a thread aware option before running it.</p>
+<p>If a tool only supports bulk delete by time or keyword, the risk is high: one sensitive keyword can hit every section of a thread. For scope selection details, see the <a href="/blog/delete-tweets-by-date-range-guide">date range deletion guide</a> and <a href="/blog/delete-tweets-by-engagement">deletion by engagement</a>.</p>
+
+<h2>Back up threads before deleting</h2>
+<p>Before you start, export the threads you want to keep as text or screenshots from your archive. Deleted tweets are essentially unrecoverable, but the archive usually still holds the original text, so you can rebuild from there if needed.</p>
+<p>For long tasks that need pausing, <a href="/blog/pause-resume-bulk-deletion-2026">pausing and resuming bulk deletion</a> explains how to run the job in safe segments instead of wiping a whole slice at once.</p>
+
+<p>One practical example: suppose a twelve post career thread has one early tweet with your old employer name. Rather than delete that single post and break the chain, export the whole thread, rewrite it with the name removed, and post a clean version. Then delete the original thread as a unit. You keep the knowledge and lose the exposure.</p>
+
+<p>A second pattern keeps the useful shell. If a thread teaches something but one section leaks a detail, copy the safe sections into a fresh draft, drop the risky line, and post the cleaned version. The teaching value survives and the exposure goes away. This takes a few minutes per thread and avoids the all or nothing choice of deleting the whole thing.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>To clean risky tweets without harming threads, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a> first. It parses your X archive on your device, flags risky tweets one by one, and you decide which to delete standalone and which threads to keep, with your data never leaving your computer.</p>`,
+},
+{
+    slug: `x-account-phishing-prevention-2026`,
+    title: `如何识别并防范针对 X 账号的钓鱼攻击`,
+    excerpt: `针对 X 账号的钓鱼从伪造登录页到私信诈骗层出不穷。本文列出最常见的钓鱼套路、快速辨真假的技巧，以及开启双重验证等硬防护手段。`,
+    date: `2026-10-22`,
+    updatedAt: `2026-10-22`,
+    author: `Digital Footprint Health Team`,
+    category: `账号安全`,
+    tags: [`钓鱼攻击`, `账号安全`, `X/Twitter`, `双重验证`],
+    content: `<p>针对 X 账号的钓鱼这几年越来越像真的：伪造的登录页连 logo 都一模一样，私信诈骗能准确叫出你的昵称。但套路再花，底层逻辑不变，它总想骗走你的密码或验证码。这篇帮你建立一套快速辨真假的直觉。</p>
+
+<h2>最常见的两种钓鱼套路</h2>
+<p>第一种是伪造登录页。攻击者发一个链接，页面长得和 X 登录一模一样，你一输入密码，账号就归对方了。这类链接常藏在"有人冒充你发推""你的账号将被冻结"这类恐吓文案里。</p>
+<p>第二种是私信诈骗。对方冒充官方或"安全团队"，说你的账号违规、被盗，要你点链接"验证身份"。X 官方从不会通过私信要你输密码或验证码，这是最快的辨伪点。</p>
+
+<h2>三秒辨真假的技巧</h2>
+<p>看域名是第一铁律。真正的 X 只有 x.com 和 twitter.com 两个域名，其它像 x-verify-login 这类都是假的。把鼠标悬停在任何链接上，先看清它到底指向哪里，再决定点不点。</p>
+<p>第二看语气。官方通知是中性、模板化的；诈骗文案往往制造紧急感，逼你马上行动。越是"不点就封号"的话术，越要停一下。</p>
+<p>第三看渠道。凡是私信里让你登录的，直接当诈骗处理。需要查账号状态，自己打开官方 App，不要走对方给的链接。关于登录异常的处理，参考 <a href="/blog/x-account-locked-recovery-steps">账号被锁后的找回步骤</a>。</p>
+
+<h2>硬防护：把门槛垒高</h2>
+<p>开启双重验证是最基础的一步。即便密码泄露，没有第二步验证对方也进不来。优先用验证器 App 或硬件密钥，短信验证能被 SIM 卡交换攻击绕过，安全性弱一些。</p>
+<p>把备份码离线存好。一旦丢失设备，备份码是你找回账号的救命稻草，存在手机备忘录里等于没存。关于备份码的管理，看 <a href="/blog/x-two-factor-backup-codes">双重验证备份码怎么存</a>。</p>
+
+<h2>账号真被盗了怎么办</h2>
+<p>如果发现异常登录或推文不是自己发的，立刻改密码、撤销所有第三方授权、登出全部设备。这些动作在设置里都能一次完成。关于响应流程，参考 <a href="/blog/x-account-locked-recovery-steps">账号被锁后的找回步骤</a> 和 <a href="/blog/x-account-recovery-without-phone">没有手机如何找回账号</a>。</p>
+<p>平时定期跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>，也能顺带发现账号里暴露过多的隐私，降低被定向钓鱼的概率。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>账号安全始于少泄露真实信息。先到 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>，本机解析你的 X 归档，标出可能被钓鱼利用的隐私痕迹，数据全程不出你的电脑。</p>`,
+    canonical: `/blog/x-account-phishing-prevention-2026`,
+    faq: [
+{ q: `X 钓鱼最常见的是什么形式？`, a: `伪造登录页和私信诈骗最多。伪造登录页诱导你输入密码，私信诈骗冒充官方说你的账号违规，逼你点链接。`, qEn: `What is the most common X phishing form?`, aEn: `Fake login pages and direct message scams dominate. Fake login pages trick you into entering your password, and DM scams impersonate official accounts claiming your account broke a rule to force a click.` },
+{ q: `怎么快速判断一个登录页是假的？`, a: `看域名。X 官方永远是 x.com 或 twitter.com，其它相似域名都是假的。另外官方不会通过私信要你输密码。`, qEn: `How do I quickly tell a login page is fake?`, aEn: `Check the domain. Official X is always x.com or twitter.com; anything similar is fake. Also, official staff never ask for your password over a direct message.` },
+{ q: `开启了双重验证就安全了吗？`, a: `大幅降低风险，但不是万能。钓鱼若骗到你的验证码，仍可能得手，所以验证码也绝不外泄，备份码要离线存。`, qEn: `Am I safe once two factor is on?`, aEn: `It lowers risk a lot but is not magic. If phishing steals your verification code you can still be hit, so never share codes and keep backup codes offline.` },
+{ q: `收到诈骗私信第一步做什么？`, a: `不点链接、不回密码，直接举报并拉黑。然后去官方 App 里自己查账号状态，不要通过私信里的链接登录。`, qEn: `What is the first step after a scam DM?`, aEn: `Do not click, do not reply with a password. Report and block, then check your account status inside the official app instead of logging in through the message link.` }
+    ],
+    titleEn: `How to Spot and Prevent Phishing Attacks on Your X Account`,
+    excerptEn: `Phishing against X accounts keeps evolving, from fake login pages to direct message scams. This article lists the most common phishing patterns, quick ways to tell real from fake, and hard defenses like two factor authentication.`,
+    categoryEn: `Account Security`,
+    tagsEn: [`phishing`, `account security`, `X/Twitter`, `two factor`],
+    contentEn: `<p>Phishing against X accounts has gotten convincing: fake login pages copy the logo exactly, and scam messages can address you by name. But the underlying trick is unchanged, it wants your password or verification code. This builds a quick instinct for telling real from fake.</p>
+
+<h2>The two most common phishing patterns</h2>
+<p>The first is the fake login page. An attacker sends a link to a page that looks just like the X login, and the moment you type your password the account is theirs. These links hide inside scare copy like someone is impersonating you or your account will be frozen.</p>
+<p>The second is the direct message scam. The sender pretends to be official or a security team, claiming your account violated a rule or was compromised and urging you to click a link to verify. X staff never ask for your password or code over a message, which is the fastest tell.</p>
+
+<h2>Three second tricks to spot fakes</h2>
+<p>Check the domain first. Real X uses only x.com and twitter.com; anything like x-verify-login is fake. Hover over any link and read where it actually points before deciding to click.</p>
+<p>Second, read the tone. Official notices are neutral and templated; scam copy manufactures urgency to force immediate action. The more a message says act now or get locked, the more you should pause.</p>
+<p>Third, read the channel. Anything that asks you to log in over a direct message is a scam by default. To check account status, open the official app yourself instead of using the link they sent. For handling odd logins, see <a href="/blog/x-account-locked-recovery-steps">steps after an account lock</a>.</p>
+
+<h2>A quick checklist when a message arrives</h2>
+<p>When a suspicious message lands, run three checks before doing anything: is the sender a verified official account or a lookalike with a similar name; does the link point to x.com or twitter.com; does the text pressure you to act within minutes. If any answer is no, treat it as a scam and report it.</p>
+
+<h2>Hard defense: raise the barrier</h2>
+<p>Turning on two factor authentication is the baseline. Even if the password leaks, the attacker cannot get in without the second step. Prefer an authenticator app or hardware key; SMS verification can be bypassed through a SIM swap, so it is weaker.</p>
+<p>Store backup codes offline. If you lose your device, backup codes are your lifeline, and keeping them in a phone note is as good as not having them. For backup code management, see <a href="/blog/x-two-factor-backup-codes">how to store two factor backup codes</a>.</p>
+
+<p>If you realize you typed a password into a fake page, act within minutes. Change your X password from a clean device, turn on two factor if it was off, and revoke active sessions in settings. Attackers move fast, so the goal is to close the door before they swap the email or recovery options. Even a short delay can let them lock you out.</p>
+
+<h2>What if the account is actually taken over</h2>
+<p>If you see a strange login or tweets you did not write, change the password, revoke all third party grants, and log out every device. All of that is one pass in settings. For the response flow, see <a href="/blog/x-account-locked-recovery-steps">steps after an account lock</a> and <a href="/blog/x-account-recovery-without-phone">recovering without a phone</a>.</p>
+<p>Running a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> regularly also helps surface overexposed privacy in your account, which lowers the odds of being targeted by tailored phishing.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Account safety starts with leaking less real information. Run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a> first: it parses your X archive on your device, flags privacy traces a phisher could exploit, and your data never leaves your computer.</p>`,
+},
+{
+    slug: `chinese-users-x-account-data-portability-2026`,
+    title: `中文用户如何行使 X 数据可携权：一份实操清单`,
+    excerpt: `数据可携权让你有权把自己的数据从平台导出、迁移到别处。对中文用户来说，语言障碍、境外验证邮箱、跨境传输是三道坎。本文用中文视角讲清怎么落地。`,
+    date: `2026-10-22`,
+    updatedAt: `2026-10-22`,
+    author: `Digital Footprint Health Team`,
+    category: `双语市场`,
+    tags: [`数据可携权`, `中文用户`, `X/Twitter`, `隐私权利`],
+    content: `<p>很多中文用户第一次听到"数据可携权"会觉得这是法律条文里的事，离自己很远。但其实它很具体：你有权把平台攒了十几年的关于你的数据，导出来、带走、甚至转到别的服务。X 用"下载数据归档"这一种方式满足了这个权利。问题是，中文用户真的去操作时，会撞上几道很现实的坎。</p>
+
+<h2>第一道坎：界面全是英文</h2>
+<p>X 的设置和归档请求入口长期以英文为主，很多按钮直译过来也拗口。最实用的办法是开浏览器自带的翻译，先把整页流程看懂，再动手点。别急着盲点，因为归档请求一旦提交，要等一天甚至更久才能拿到文件，点错了只能重来。</p>
+<p>请求归档的具体步骤，可以对照 <a href="/blog/request-x-archive-step-by-step-2026">归档请求完整步骤</a> 这篇，它把每一步都标了出来。</p>
+
+<h2>第二道坎：验证邮件发到境外邮箱</h2>
+<p>提交请求后，确认邮件常常发到你注册时填的邮箱。很多老用户当年填的是 Gmail 这类境外邮箱，现在很少打开，结果确认邮件石沉大海，归档请求停在半路。</p>
+<p>建议先去账号设置里把联系邮箱换成你天天在用的那个，再提交请求。如果已经提交但没收到，等够时间后从设置里重新发起，不要反复撞同一个失效邮箱。</p>
+
+<h2>第三道坎：想转去别的平台，格式不通用</h2>
+<p>数据可携权的理想是"带走再转入"，但现实里 X 导出的 JSON 归档，绝大多数国内或新兴平台并不认。你没法点一个按钮就把十几年推文搬过去。</p>
+<p>可行的折中：先把归档导出留底，当作自己的数字资产备份；真正要迁移时，挑重要的内容（比如长文、联系方式清单）手动在新平台重建。关于平台间迁移的隐私坑，参考 <a href="/blog/switch-from-x-footprint-2026">离开 X 时的足迹处理</a>。</p>
+
+<h2>跨境传输要算一笔风险账</h2>
+<p>归档里不仅有推文，还有私信、定位打卡、甚至可能的工作信息。把这些直接上传到某个境外云服务，等于把十几年隐私又交出去一份。对中文用户来说，尤其要警惕把含敏感内容的归档长期放在未加密的云盘。</p>
+<p>更稳的做法是留一份在本机加密备份，只在确实需要时才解密查看。关于本机加密存储，看 <a href="/blog/x-archive-secure-storage-guide">归档安全存储指南</a>。</p>
+
+<h2>一份给中文用户的实操清单</h2>
+<ol>
+<li><strong>开翻译看流程</strong>：别盲点英文按钮，先整体看懂再提交。</li>
+<li><strong>换常用邮箱</strong>：请求前确认联系邮箱是你天天收信的那个。</li>
+<li><strong>导出即备份</strong>：把归档当数字资产留底，不止为了迁移。</li>
+<li><strong>敏感内容本机加密</strong>：私信和定位别长期丢在云盘。</li>
+<li><strong>迁移手动重建</strong>：重要长文挑出来在新平台重发，别指望一键搬运。</li>
+</ol>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p>在导出归档之前，可以先到 <a href="/">digital-footprint-health.shop</a> 跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。它在本机解析你的 X 归档，用中文标出风险推文，帮你决定哪些内容导出后要清理，数据全程不出你的电脑。</p>`,
+    canonical: `/blog/chinese-users-x-account-data-portability-2026`,
+    faq: [
+{ q: `什么是数据可携权？`, a: `简单说，就是你有权利把平台持有的关于你的数据导出来，带走或转到别的服务。X 通过"下载数据归档"来满足这一权利。`, qEn: `What is the right to data portability?`, aEn: `In short, you have the right to export the data a platform holds about you and take it or move it elsewhere. X meets this right through its download your data archive feature.` },
+{ q: `中文用户最容易卡在哪一步？`, a: `三道坎：界面全是英文看不懂、验证邮件发到境外邮箱收不到、想转到国内平台但格式不通用。建议用浏览器翻译先看流程，再换常用邮箱接收。`, qEn: `Where do Chinese speaking users get stuck most?`, aEn: `Three hurdles: the English only interface, verification emails sent to an overseas inbox they cannot reach, and mismatched formats when moving to a local platform. Use browser translation first, then switch to a regularly used email for delivery.` },
+{ q: `导出的数据能直接转到别的平台吗？`, a: `通常不能直接转。X 归档是 JSON，别的平台多半不认。可行做法是先导出留底，再手动在新平台重建重要内容。`, qEn: `Can the exported data move directly to another platform?`, aEn: `Usually not directly. The X archive is JSON that other platforms mostly do not accept. The workable path is to export for safekeeping, then manually rebuild the important parts on the new platform.` },
+{ q: `跨境传输要注意什么？`, a: `归档里可能含私信和定位，跨境上传到境外服务前要评估风险；敏感内容建议留在本机加密备份，而非长期放云。`, qEn: `What about cross border transfer?`, aEn: `The archive may hold direct messages and locations, so assess the risk before uploading it to an overseas service. Keep sensitive content as an encrypted local backup rather than long term cloud storage.` }
+    ],
+    titleEn: `Data Portability Rights for Chinese-Speaking X Users: A Practical Checklist`,
+    excerptEn: `The right to data portability lets you export your data from a platform and move it elsewhere. For Chinese-speaking users, language barriers, overseas verification emails, and cross-border transfer are three real walls. This guide explains how to actually exercise it.`,
+    categoryEn: `Bilingual Markets`,
+    tagsEn: [`data portability`, `Chinese users`, `X/Twitter`, `privacy rights`],
+    contentEn: `<p>Many Chinese-speaking users hear "data portability" for the first time and treat it as something buried in legal text, far from daily life. But it is concrete: you have the right to export the data a platform has collected about you over more than a decade, take it, and even move it to another service. X satisfies this right through its download your data archive feature. The problem is that when Chinese-speaking users actually try it, they hit several very real walls.</p>
+
+<h2>Wall one: an English only interface</h2>
+<p>X settings and the archive request entry have long been mostly English, and many buttons read awkwardly even when translated. The practical move is to turn on your browser translation, understand the whole flow first, then click. Do not blind click, because once the archive request is submitted you wait a day or more for the file, and a wrong click means starting over.</p>
+<p>For the exact steps, follow <a href="/blog/request-x-archive-step-by-step-2026">the full archive request walkthrough</a>, which marks every step.</p>
+
+<h2>Wall two: the verification email lands in an overseas inbox</h2>
+<p>After you submit, the confirmation email often goes to the address you registered with. Many older users entered a Gmail style overseas inbox they rarely open now, so the confirmation vanishes and the request stalls halfway.</p>
+<p>Before submitting, switch the contact email in account settings to one you check every day. If you already submitted and heard nothing, wait long enough then re-initiate from settings rather than hammering the same dead inbox.</p>
+
+<h2>Wall three: moving to another platform, the formats do not match</h2>
+<p>The ideal of portability is export then import, but in reality the JSON archive X exports is not accepted by most local or emerging platforms. There is no button to move a decade of tweets in one go.</p>
+<p>The workable compromise: export the archive as a backup of your own digital asset, then when you truly migrate, pick the important pieces, such as long posts or a contact list, and rebuild them manually on the new platform. For the privacy traps of platform migration, see <a href="/blog/switch-from-x-footprint-2026">handling your footprint when leaving X</a>.</p>
+
+<h2>Cross border transfer is a risk calculation</h2>
+<p>The archive holds not just tweets but direct messages, location check ins, and possibly work details. Uploading all that to an overseas cloud service hands a decade of privacy back out again. Chinese-speaking users especially should avoid leaving sensitive archives in an unencrypted cloud folder long term.</p>
+<p>The steadier path is one encrypted local backup, decrypted only when truly needed. For local encrypted storage, see the <a href="/blog/x-archive-secure-storage-guide">secure storage guide</a>.</p>
+
+<p>There is also a quieter benefit to doing this yourself. Because the check and the export both run on your own device or through X directly, you are not handing your archive to a third party app that might resell it. For users who already worry about where their data ends up, keeping the whole flow in your hands is part of the point.</p>
+
+<h2>A practical checklist for Chinese-speaking users</h2>
+<ol>
+<li><strong>Read the flow with translation on</strong>: do not blind click English buttons; understand it first.</li>
+<li><strong>Switch to a daily email</strong>: confirm the contact email is one you actually check before requesting.</li>
+<li><strong>Treat export as backup</strong>: keep the archive as a digital asset, not only for migration.</li>
+<li><strong>Encrypt sensitive content locally</strong>: do not leave messages and locations in a cloud folder.</li>
+<li><strong>Rebuild manually when migrating</strong>: repost key long posts on the new platform; do not expect one click moving.</li>
+</ol>
+
+<h2>About digital-footprint-health.shop</h2>
+<p>Before exporting the archive, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a>. It parses your X archive on your device and flags risky tweets in Chinese, helping you decide what to clean after export, with your data never leaving your computer.</p>`,
+},
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -27207,6 +27207,658 @@ rl.on('close', () =&gt; {
 <h2>About digital-footprint-health.shop</h2>
 <p>Before exporting the archive, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> at <a href="/">digital-footprint-health.shop</a>. It parses your X archive on your device and flags risky tweets in Chinese, helping you decide what to clean after export, with your data never leaving your computer.</p>`,
 },
+{
+    slug: "footprint-score-tracking-spreadsheet-2026",
+    title: "用表格追踪你的 X 数字足迹评分：2026 年实操清单",
+    excerpt: "一次体检只能告诉你当下的风险。真正把足迹压下去，靠的是每月追踪。本文给你一张可复制的表格模板、四个固定动作，以及家庭共用账号、工具对比等进阶场景，让你的 0-100 健康分逐月可见地变好。",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Digital Footprint Health Team",
+    category: "隐私指南",
+    tags: ["数字足迹", "隐私体检", "X/Twitter", "评分追踪"],
+    canonical: "/blog/footprint-score-tracking-spreadsheet-2026",
+    titleEn: "Track Your X Digital Footprint Score with a Spreadsheet: A 2026 Workflow",
+    excerptEn: "A single check only shows your risk right now. Real improvement comes from tracking month to month. This guide gives you a copy-paste spreadsheet template, four fixed habits, and advanced cases like shared accounts and tool comparisons, so your 0-100 health score improves in a way you can actually see.",
+    categoryEn: "Privacy Guide",
+    tagsEn: ["digital footprint", "privacy check", "X/Twitter", "score tracking"],
+    content: `<p>很多人做完一次数字足迹体检，看到分数就关掉了。一个月后想知道有没有变好，又得重新跑一遍、对着上次的截图凭记忆比较。这很低效，也最容易半途而废。更麻烦的是，分数本身是个结论，它不告诉你"为什么变了"，于是你永远在猜。</p>
+<p>更好的做法是把每次结果落进一张表格，每月固定更新一次。分数变成一条曲线，哪些推文被清理了、哪些风险还在、哪一类在涨，一眼就能看出来。本文把这套方法拆成能直接照做的步骤，并补上几个容易被忽略的进阶场景。</p>
+
+<h2>为什么用表格追踪好过只看分数</h2>
+<p>体检工具给你的 0-100 分是一个结论，不是过程。表格能帮你保留三样东西：时间线、具体风险标签、清理动作。少了这三条，你只能停留在"感觉好像干净了"的阶段，没法真正"确认干净了"。</p>
+<ul>
+  <li><strong>时间线</strong>：同一账号的分数在不同月份有没有下降？</li>
+  <li><strong>风险标签</strong>：手机号、地址、定位，哪一类占比最高？</li>
+  <li><strong>清理动作</strong>：这个月删了哪些，下个月还要处理哪些？</li>
+</ul>
+<p>只有把这三样都记下来，分数波动才有解释。否则分数掉 5 分，你既不知道是哪条推文造成的，也不知道该补删什么。</p>
+
+<h2>表格里该记哪些列</h2>
+<p>一张够用的追踪表只要七列。下面这张模板你可以直接复制到任意表格软件里用。</p>
+<table>
+  <thead>
+    <tr><th>列</th><th>填什么</th><th>例子</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>月份</td><td>体检年月</td><td>2026-10</td></tr>
+    <tr><td>健康分</td><td>0-100 总分</td><td>62</td></tr>
+    <tr><td>高危条数</td><td>含手机/地址的推文数</td><td>14</td></tr>
+    <tr><td>定位条数</td><td>带定位或打卡的推文数</td><td>9</td></tr>
+    <tr><td>本月已删</td><td>当月实际删除数</td><td>11</td></tr>
+    <tr><td>剩余风险</td><td>还没处理的高危条数</td><td>12</td></tr>
+    <tr><td>备注</td><td>特殊事件</td><td>换了工作，重新查一遍</td></tr>
+  </tbody>
+</table>
+<p>填了三个月之后，你就能回答一个关键问题：我的分数在下降吗？如果分数没动但高危条数在减少，说明你清的是低风险内容；如果两者都在降，说明方向对了。单列总分最容易让人误判，分三类记才有诊断价值。</p>
+
+<h2>每月追踪的四个固定动作</h2>
+<ol>
+  <li><strong>同一个月固定一天跑体检</strong>：比如每月 1 号，避免"想起来才做"导致间隔乱掉。</li>
+  <li><strong>把分数和三类条数抄进表格</strong>：只记总分容易误判，三类拆分才有诊断价值。</li>
+  <li><strong>挑本月最该删的 10 条先处理</strong>：优先手机号、住址、登机牌这一类现实风险最高的。</li>
+  <li><strong>在备注里写一句"为什么"</strong>：换工作、搬家、出国，这些节点都要额外多查一次。</li>
+</ol>
+
+<h2>分数掉到多少该立刻行动</h2>
+<p>不同分数段对应的紧迫度不一样。下面这张表给你一个参考阈值，不用死记，但能帮你区分"有空再弄"和"现在就弄"。</p>
+<table>
+  <thead>
+    <tr><th>分数段</th><th>含义</th><th>建议</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>80-100</td><td>基本干净</td><td>每季度复查一次即可</td></tr>
+    <tr><td>60-79</td><td>有可控风险</td><td>每月追踪，顺手清高危条</td></tr>
+    <tr><td>40-59</td><td>风险偏高</td><td>两周内集中清理一轮</td></tr>
+    <tr><td>0-39</td><td>高危暴露</td><td>立即处理手机/地址类推文</td></tr>
+  </tbody>
+</table>
+
+<h2>常见误区：只追分数不追标签</h2>
+<p>最典型的错误是表格里只写总分。总分涨了 3 分，你以为是进步，其实可能是某条高危推文因为时间变旧、权重下降，未必是你真删了它。把"高危条数"和"定位条数"单独成列，才能区分"真变好"和"只是算法变旧"。如果你发现分数在涨、但高危条数纹丝不动，那这个分数上涨是假的，别被它麻痹。</p>
+
+<h2>工具对比：表格 vs 专用仪表盘</h2>
+<p>有人会问，既然有专业仪表盘，为什么还要用表格？答案很简单：表格你完全掌控，数据留在自己电脑里，不会被任何服务拿走。专用仪表盘往往要你把归档上传到它的服务器，这和"本机处理"的隐私原则冲突。表格是免费的、离线的、可审计的；仪表盘省事，但要付出数据上传的代价。对隐私清理这件事，我更建议表格优先。</p>
+
+<h2>和家人共用账号怎么追踪</h2>
+<p>如果 X 账号是家庭共用（比如小号给家人转发），建议每个人单独建一行，别混在一起。混记会让你分不清是谁的推文把分数拉低了，清理时也容易误删别人的内容。最简单的做法：在表格里加一列"归属人"，每人每月一行，这样谁的红线谁负责，互不背锅。</p>
+
+<h2>把表格和归档结合起来</h2>
+<p>表格记录的是"结果"，X 数据归档记录的是"原材料"。两者配合才完整：归档帮你定位具体是哪条推文，表格帮你判断这批推文该不该删。如果你想系统了解归档怎么用，可以参考我们的 <a href="/blog/how-to-download-x-archive">X 数据归档下载指南</a>，以及 <a href="/blog/x-archive-size-management-guide">归档体积管理</a> 的实操建议。体检本身只读，不会动你的归档，所以可以放心反复跑。</p>
+
+<h2>一年后的预期效果</h2>
+<p>坚持一年的人，通常会看到三条变化：高危条数从两位数降到个位数、分数稳定在区间上半部、每次换工作搬家不再手忙脚乱。更重要的是，你建立了一个习惯——新发的推文在发出前就过一遍脑子。追踪的终极目的不是那张表，而是让你对"自己上网留下了什么"始终保持清醒。</p>
+
+<h2>免费开始</h2>
+<p>你不需要任何付费工具就能建立这张表。下载一次 X 数据归档，在本机跑一次免费体检，把分数抄进表格，下个月同一天再来一次。三个月后你会感谢现在动手的自己。</p>
+<p>想马上开始？访问 <a href="/">digital-footprint-health.shop</a>，下载你的 X 数据归档，在本机做一次免费的数字足迹体检，把第一个月的数字写进表格。</p>`,
+    contentEn: `<p>Most people run a digital footprint check once, look at the score, and close the tab. A month later they want to know if things got better, so they run it again and try to compare against a screenshot from memory. That is slow, and it is the easiest routine to abandon. Worse, the score alone is a conclusion, not a story, so you never know why it moved.</p>
+<p>A better habit is to drop each result into a spreadsheet and refresh it on a fixed day every month. The score becomes a line you can watch, and you can see exactly which tweets got cleaned and which risks remain. This guide breaks the method into steps you can follow today, plus a few advanced cases people often miss.</p>
+
+<h2>Why a spreadsheet beats staring at the score</h2>
+<p>A check tool gives you a 0-100 score, which is a conclusion, not a process. A spreadsheet keeps three things a single score loses: a timeline, the specific risk labels, and the cleanup actions. Without those three, you stay stuck at "feels like it is cleaner" instead of actually confirming it.</p>
+<ul>
+  <li><strong>Timeline</strong>: is the same account's score dropping across months?</li>
+  <li><strong>Risk labels</strong>: which bucket is biggest, phone numbers, addresses, or locations?</li>
+  <li><strong>Cleanup actions</strong>: what did you delete this month, and what is left?</li>
+</ul>
+<p>Only when all three are logged does a score swing become explainable. Otherwise a 5-point drop tells you neither which tweet caused it nor what to delete next.</p>
+
+<h2>Columns worth keeping</h2>
+<p>A useful tracking sheet needs only seven columns. Copy this template straight into any spreadsheet tool.</p>
+<table>
+  <thead>
+    <tr><th>Column</th><th>What to enter</th><th>Example</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Month</td><td>Year and month of the check</td><td>2026-10</td></tr>
+    <tr><td>Health score</td><td>Total 0-100</td><td>62</td></tr>
+    <tr><td>High-risk count</td><td>Tweets with phone or address</td><td>14</td></tr>
+    <tr><td>Location count</td><td>Tweets with check-ins</td><td>9</td></tr>
+    <tr><td>Deleted this month</td><td>Actually removed this month</td><td>11</td></tr>
+    <tr><td>Remaining risk</td><td>High-risk tweets still pending</td><td>12</td></tr>
+    <tr><td>Notes</td><td>Special events</td><td>Changed jobs, re-checked</td></tr>
+  </tbody>
+</table>
+<p>After three months you can answer one question that matters: is my score going down? If the score stays flat but high-risk counts fall, you are clearing low-risk content. If both fall, you are on the right track. The total alone misleads; the split is what diagnoses.</p>
+
+<h2>Four fixed monthly habits</h2>
+<ol>
+  <li><strong>Run the check on the same day each month</strong>: the 1st, for example, so the gap never drifts.</li>
+  <li><strong>Copy the score and the three counts into the sheet</strong>: the total alone misleads; the split is what diagnoses.</li>
+  <li><strong>Clear the ten worst tweets first</strong>: lead with phone, address, and boarding-pass tweets, the ones with the highest real-world risk.</li>
+  <li><strong>Write one line of why in Notes</strong>: a new job, a move, travel abroad, each is a reason to check once more.</li>
+</ol>
+
+<h2>When the score means act now</h2>
+<p>Different bands call for different urgency. Use this as a reference, not a rulebook.</p>
+<table>
+  <thead>
+    <tr><th>Band</th><th>Meaning</th><th>Suggested action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>80-100</td><td>Mostly clean</td><td>Quarterly re-check is enough</td></tr>
+    <tr><td>60-79</td><td>Manageable risk</td><td>Track monthly, clear high-risk as you go</td></tr>
+    <tr><td>40-59</td><td>Elevated risk</td><td>One focused cleanup within two weeks</td></tr>
+    <tr><td>0-39</td><td>High exposure</td><td>Handle phone and address tweets immediately</td></tr>
+  </tbody>
+</table>
+
+<h2>The common trap: score only, no labels</h2>
+<p>The classic mistake is logging only the total. The total rises 3 points and you assume progress, but the real cause may be an old high-risk tweet simply aging out of the weighting, not something you deleted. Keeping high-risk and location counts in their own columns separates real improvement from mere aging. If the score climbs while high-risk counts stay put, that climb is fake. Do not let it lull you.</p>
+
+<h2>Spreadsheet vs a dedicated dashboard</h2>
+<p>Some ask, if dashboards exist, why bother with a sheet? Simple: the sheet is fully yours, the data stays on your machine, and nothing gets taken by a service. Dedicated dashboards usually ask you to upload the archive to their server, which clashes with the on-device privacy principle. The sheet is free, offline, and auditable; the dashboard is convenient but costs you an upload. For privacy cleanup I lean sheet-first.</p>
+
+<h2>Tracking a shared family account</h2>
+<p>If the X account is shared with family, give each person their own row instead of mixing. Mixed logs hide whose tweet dragged the score down and risk deleting someone else's content by mistake. The easy fix is one extra column, Owner, with one row per person per month, so each red line has an owner and no one carries blame for another.</p>
+
+<h2>Pair the sheet with your archive</h2>
+<p>The sheet records the result; your X archive records the raw material. Together they are complete: the archive tells you exactly which tweet, the sheet tells you whether that batch should go. For the mechanics of the archive, see our <a href="/blog/how-to-download-x-archive">X data archive download guide</a> and the <a href="/blog/x-archive-size-management-guide">archive size management</a> walkthrough. The check is read-only, so you can run it as often as you like without touching the archive.</p>
+
+<h2>What a year of this looks like</h2>
+<p>People who keep it up for a year usually see three shifts: high-risk counts fall from double digits to single, the score settles in the upper half, and job changes or moves stop triggering panic. The bigger win is the habit, where a new post gets a quick mental pass before it goes out. The point of tracking is not the sheet, it is staying awake to what you leave online.</p>
+
+<h2>How to read the score when it will not move</h2>
+<p>Some months the number barely moves, and that is normal. A flat score is not failure. What matters is the direction of the three counts underneath it. If high-risk and location counts both fall while the score holds, your cleanup is working even though the headline number is quiet. If the score rises but the counts stay flat, the weighting shifted and nothing real changed. Train yourself to read the columns first and the score second.</p>
+<p>A flat month is also a good time to audit the logging itself. Check that you entered the same columns each month, that dates line up, and that no row got skipped. Most tracking breaks not from bad habits but from a missing row three months back that quietly breaks the trend line. Ten seconds of checking saves you from drawing the wrong conclusion later.</p>
+<p>One more tip: keep a separate cell for the date you actually finished the cleanup, not the date you ran the check. The gap between those two dates is your real lag, and watching it shrink over months is its own quiet win.</p>
+
+<h2>A monthly checklist you can paste</h2>
+<p>If you want the shortest possible routine, paste this into your Notes column each month and tick items off:</p>
+<ul>
+  <li>Download or refresh the X archive if more than 30 days passed.</li>
+  <li>Run the on-device check and record the total score.</li>
+  <li>Update high-risk, location, and deleted counts from the last run.</li>
+  <li>Flag the ten worst tweets and schedule their deletion.</li>
+  <li>Note any life event, a move, a job change, or travel, that justifies an extra check.</li>
+</ul>
+<p>Five ticks, roughly ten minutes, once a month. That is the entire system. People overthink footprint cleanup and never start, while a fixed ten-minute loop beats a perfect plan you never run.</p>
+
+<h2>Start for free</h2>
+<p>You need no paid tool to build this sheet. Download your X archive once, run a free on-device check, write the score into the sheet, and come back on the same day next month. Three months from now you will thank the version of you that started today.</p>
+<p>Ready to begin? Visit <a href="/">digital-footprint-health.shop</a>, download your X data archive, and run a free digital footprint check on your own device, then log your first month in the sheet.</p>`,
+    faq: [
+      { q: "追踪表一定要用电脑软件吗？", a: "不需要。任何能记七列、能排序的工具都行，手机上的表格应用也可以。关键在于固定每月更新，软件本身并不重要。", qEn: "Does the tracking sheet have to be on a computer?", aEn: "No. Any tool that holds seven columns and lets you sort works, including a phone spreadsheet app. The fixed monthly update matters more than the software." },
+      { q: "只记总分够不够？", a: "不够。总分容易误判，把高危、定位、已删三类拆开记，才能看出你到底在清什么风险，也能识破\"分数涨了但风险没降\"的假象。", qEn: "Is the total score enough on its own?", aEn: "No. The total misleads. Splitting high-risk, location, and deleted counts shows what risk you are clearing and exposes a fake score climb." },
+      { q: "分数没降但高危条数少了，正常吗？", a: "正常。说明你清的是低风险内容，高危部分还在。下一步应优先处理手机号和住址类推文。", qEn: "My score did not drop but high-risk counts fell. Is that normal?", aEn: "Yes. It means you cleared low-risk content while high-risk stays. Next, prioritise phone-number and address tweets." },
+      { q: "换工作为什么要额外查一次？", a: "背调通常会翻公开社交历史。换工作前后各查一次，能提前发现可能被放大的旧推文。", qEn: "Why check again when changing jobs?", aEn: "Background checks often sweep public social history. Checking just before and after a job change catches old tweets that could be amplified." },
+      { q: "追踪需要付费吗？", a: "不需要。体检本身免费且只读，表格也是你自己维护的，全程零成本。", qEn: "Does tracking cost anything?", aEn: "No. The check is free and read-only, and the sheet is yours to maintain, so the whole routine costs nothing." }
+    ],
+},
+{
+    slug: "x-archive-delete-vs-keep-decision-2026",
+    title: "归档里的推文：删还是留？2026 年决策框架",
+    excerpt: "打开 X 数据归档，几千条旧推文扑面而来。全删太激进，全留又埋雷。本文给你一个按风险分级的决策框架、红档批量删法、黄档典型例子，以及归档过大时的处理思路。",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Digital Footprint Health Team",
+    category: "数据归档",
+    tags: ["X 归档", "删除决策", "隐私清理"],
+    canonical: "/blog/x-archive-delete-vs-keep-decision-2026",
+    titleEn: "Delete or Keep Tweets in Your Archive? A 2026 Decision Framework",
+    excerptEn: "Open your X data archive and thousands of old tweets hit you at once. Deleting all is too aggressive, keeping all is a liability. This framework grades each tweet by risk, shows how to bulk-delete red-tier, gives yellow-tier examples, and handles an oversized archive.",
+    categoryEn: "X Archive",
+    tagsEn: ["X archive", "delete or keep", "privacy cleanup"],
+    content: `<p>第一次下载 X 数据归档的人，几乎都会被体量吓到。十几年的推文堆在一起，你既不敢全删，又不知道留哪些。问题不在于"该不该清理"，而在于"按什么标准清理"。没有标准，你就会陷入"这条要不要删"的无限犹豫。</p>
+
+<h2>先按风险把推文分成三档</h2>
+<p>决策的第一步是分级，不必逐条去读。绝大多数推文可以立刻归到下面三档之一。</p>
+<table>
+  <thead>
+    <tr><th>档位</th><th>特征</th><th>默认动作</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>红档</td><td>手机号、住址、登机牌、证件</td><td>优先删</td></tr>
+    <tr><td>黄档</td><td>情绪化吐槽、旧雇主、敏感观点</td><td>酌情删</td></tr>
+    <tr><td>绿档</td><td>日常碎碎念、公开资讯转发</td><td>可保留</td></tr>
+  </tbody>
+</table>
+
+<h2>三类必须保留的情形</h2>
+<p>不是所有"看起来危险"的推文都该删。以下三类建议保留，删了反而可能吃亏。</p>
+<ul>
+  <li><strong>能证明时间线的推文</strong>：项目发布、作品上线，这一类是你自己的公开履历。</li>
+  <li><strong>有法律或合同价值的记录</strong>：某些沟通记录在未来纠纷里可能是证据。</li>
+  <li><strong>纯中性且无身份信息的内容</strong>：转发公开资讯、行业新闻，风险极低。</li>
+</ul>
+
+<h2>三类该优先删的情形</h2>
+<ul>
+  <li><strong>含直接联系方式的</strong>：手机号、邮箱、微信号，是诈骗和骚扰的入口。</li>
+  <li><strong>暴露常驻位置的</strong>：家庭住址、公司地址、孩子学校，关系现实安全。</li>
+  <li><strong>带身份证件的</strong>：登机牌、护照、工牌，一旦被聚合就是完整的身份拼图。</li>
+</ul>
+
+<h2>分级之后：红档怎么批量删</h2>
+<p>红档最该删，也最容易批量处理。做法不是一条条手动找，而是先用体检工具把红档全部挑出来，按批次删除。每批控制在你能逐条核对的数量，比如 20 条，删完核对一次再继续。这样既能快速压低风险，又不会误删绿档。关于保留原帖上下文的删法，可以参考 <a href="/blog/delete-tweets-preserve-threads-2026">保留对话线程的删除方法</a>。</p>
+
+<h2>黄档的典型例子</h2>
+<p>黄档最磨人，因为它"删了可惜、留着冒险"。几个常见例子：吐槽前公司的那条、深夜对时政的随口评论、和陌生人的争执。判断标准很简单——如果这条被截图发到群里，你会尴尬或受损吗？会，就删；不会，就留。不要因为"当时很爽"就留，也不要因为"可能没事"就留，用"被截图"这个具体场景去想最准。</p>
+
+<h2>归档太大时的处理思路</h2>
+<p>归档超过几百 MB 时，逐条打开看不现实。这时先做体积管理，把媒体文件和文本拆开处理，先清理文本里的高危内容，媒体后面再说。具体做法见 <a href="/blog/x-archive-size-management-guide">归档体积管理指南</a>。文本清理的性价比远高于媒体，因为绝大多数风险暴露来自文字而非图片。</p>
+
+<h2>一个可复制的勾选流程</h2>
+<ol>
+  <li>用体检工具给归档打标，红黄绿自动分级。</li>
+  <li>红档全选，分批删除，每批不超过你能核对的数量。</li>
+  <li>黄档逐条看标题，只删明显会伤人的。</li>
+  <li>绿档不动，保留作为公开履历。</li>
+  <li>删完再跑一次体检，确认红档归零。</li>
+</ol>
+
+<h2>删和留之间还有第三种选择</h2>
+<p>有些推文既不想删、又不想留着公开，可以先用 X 的隐藏功能收起，等想清楚了再决定。关于隐藏和删除的区别，可以参考我们的 <a href="/blog/delete-old-tweets-vs-hide-faq">删除还是隐藏 FAQ</a>。</p>
+
+<h2>开始你的第一轮决策</h2>
+<p>别试图一次读完所有推文。先分级，再处理红档，剩下的慢慢来。想省时间，就用工具自动打标，你只做勾选。</p>
+<p>访问 <a href="/">digital-footprint-health.shop</a>，下载你的 X 数据归档，本机跑一次免费体检，让工具先把红黄绿分好，你再决定删还是留。</p>`,
+    contentEn: `<p>Almost everyone who downloads their X archive for the first time is shocked by the volume. Years of tweets stacked together, and you neither want to delete them all nor know which to keep. The problem is not whether to clean up, but by what standard. Without a standard you spiral into endless "should I delete this one" hesitation.</p>
+
+<h2>Grade tweets into three tiers first</h2>
+<p>The first step is grading, not reading one by one. Most tweets fall into one of three tiers at once.</p>
+<table>
+  <thead>
+    <tr><th>Tier</th><th>Signal</th><th>Default action</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Red</td><td>Phone, address, boarding pass, ID</td><td>Delete first</td></tr>
+    <tr><td>Yellow</td><td>Rants, old employer, sharp opinions</td><td>Case by case</td></tr>
+    <tr><td>Green</td><td>Daily chatter, public info reposts</td><td>Keep</td></tr>
+  </tbody>
+</table>
+
+<h2>Three cases worth keeping</h2>
+<p>Not every risky-looking tweet should go. These three are better kept; deleting them can cost you.</p>
+<ul>
+  <li><strong>Tweets that prove a timeline</strong>: product launches, published work, your own public record.</li>
+  <li><strong>Records with legal or contract value</strong>: some conversations are evidence in a future dispute.</li>
+  <li><strong>Neutral content with no identity info</strong>: reposts of public news carry very low risk.</li>
+</ul>
+
+<h2>Three cases to delete first</h2>
+<ul>
+  <li><strong>Anything with direct contact details</strong>: phone, email, WeChat ID are entry points for scams.</li>
+  <li><strong>Anything exposing a home location</strong>: home, workplace, school, all real-world safety.</li>
+  <li><strong>Anything showing identity documents</strong>: boarding passes, passports, badges complete an identity puzzle.</li>
+</ul>
+
+<h2>After grading: bulk-deleting red</h2>
+<p>Red is the tier to delete and the easiest to batch. The move is not hunting one by one, but letting a check tool flag every red tweet, then deleting in batches you can actually verify, say 20 at a time, re-checking after each. That drives risk down fast without nuking green. For keeping context while cleaning, see <a href="/blog/delete-tweets-preserve-threads-2026">deleting while preserving threads</a>.</p>
+
+<h2>Yellow-tier examples</h2>
+<p>Yellow is the hardest because it is "shame to delete, risk to keep". Common examples: the rant about a former employer, the late-night take on politics, the argument with a stranger. The test is simple: if this were screenshotted into a group chat, would you be embarrassed or harmed? Yes, delete. No, keep. Do not keep it because it felt good then, and do not keep it because it might be fine. Picture the screenshot and you get the right answer.</p>
+
+<h2>When the archive is too big</h2>
+<p>Once the archive passes a few hundred MB, opening tweets one by one is unrealistic. Manage size first: split media from text, clear the high-risk text, and handle media later. The concrete steps are in <a href="/blog/x-archive-size-management-guide">the archive size guide</a>. Text cleanup pays off far more than media, because almost all exposure comes from words, not images.</p>
+
+<h2>A copy-paste checklist</h2>
+<ol>
+  <li>Let a check tool tag the archive into red, yellow, green.</li>
+  <li>Select all red, delete in batches you can actually verify.</li>
+  <li>Read yellow titles only, delete what would clearly hurt.</li>
+  <li>Leave green alone as your public record.</li>
+  <li>Re-run the check to confirm red is at zero.</li>
+</ol>
+
+<h2>A third option between delete and keep</h2>
+<p>Some tweets you neither want public nor want gone. Hide them with X's built-in control and decide later. For the difference between hiding and deleting, see our <a href="/blog/delete-old-tweets-vs-hide-faq">delete vs hide FAQ</a>.</p>
+
+<h2>Do the red pass the same day</h2>
+<p>A practical note: clear the red pass on the same day you download the archive. The longer the archive sits unopened, the more likely you forget it exists and the cleanup never happens. One sitting, red first, is the habit that actually sticks.</p>
+
+<h2>Start your first round</h2>
+<p>Do not try to read every tweet at once. Grade first, clear red, and take the rest slowly. To save time, let a tool tag the tiers and you only check boxes.</p>
+<p>Visit <a href="/">digital-footprint-health.shop</a>, download your X archive, and run a free on-device check so the tool grades red, yellow, and green before you decide what stays.</p>`,
+    faq: [
+      { q: "红档推文一定要全删吗？", a: "建议优先删，尤其是手机号和住址类。它们是现实风险最高的，不留缓冲。", qEn: "Must every red tweet be deleted?", aEn: "Delete them first, especially phone and address tweets. They carry the highest real-world risk, so do not delay." },
+      { q: "隐藏和删除有什么实际区别？", a: "隐藏只是你自己看不到、他人也看不到公开页，内容仍在；删除是从 X 移除。背调场景里隐藏不等于干净。", qEn: "What is the real difference between hide and delete?", aEn: "Hide makes it invisible on the public page but the content stays; delete removes it from X. In a background-check context, hidden is not clean." },
+      { q: "绿档推文留着会有风险吗？", a: "风险很低。纯中性且无身份信息的日常内容，保留作为公开履历通常没问题。", qEn: "Is keeping green tweets risky?", aEn: "Very low. Neutral daily content with no identity info is fine to keep as a public record." },
+      { q: "一轮清理大概要多久？", a: "取决于总量。用工具自动分级后，你只勾选红档，通常半小时到一小时能定第一轮。", qEn: "How long does one cleanup round take?", aEn: "It depends on volume. With a tool grading for you, checking the red tier takes roughly half an hour to an hour for the first round." }
+    ],
+},
+{
+    slug: "x-login-new-device-privacy-checklist-2026",
+    title: "新设备登录 X：隐私自检清单（2026）",
+    excerpt: "收到\"新设备登录\"提醒先别慌，也别无视。本文给你一份五步自检清单、换手机前的准备、公共电脑登录的风险，以及把清单变成自动化的思路。",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Digital Footprint Health Team",
+    category: "账号安全",
+    tags: ["X 账号", "新设备登录", "隐私自检"],
+    canonical: "/blog/x-login-new-device-privacy-checklist-2026",
+    titleEn: "New Device Logged Into X? A Privacy Checklist (2026)",
+    excerptEn: "Got a new device login alert? Do not panic and do not ignore it. This guide gives a five-step checklist, pre-phone-switch prep, the risk of public computers, and how to turn the checklist into a habit.",
+    categoryEn: "Account Security",
+    tagsEn: ["X account", "new device login", "privacy check"],
+    content: `<p>X 的"新设备登录"提醒，是最容易被忽略、也最容易被误读的安全信号。忽略它，可能错过盗号早期；过度紧张，又会在每次换手机时自己吓自己。关键是有一份能照着做的清单，并且知道哪些情况其实正常。</p>
+
+<h2>第一步：确认是不是你自己</h2>
+<p>先问自己三个问题：这台设备我认识吗？这个时间我在登录吗？地点和我当天所在一致吗？三个都说是，基本可以放心。</p>
+<ul>
+  <li>设备型号是否眼熟（你刚换的手机、平板、新电脑）。</li>
+  <li>登录时间是否和你当天的操作吻合。</li>
+  <li>登录地点是否和你物理所在城市一致。</li>
+</ul>
+
+<h2>第二步：核对登录详情</h2>
+<p>进 X 设置里的"账号与安全 → 登录与设备安全"，逐条看最近会话。重点看不认识的设备名和奇怪的登录地点。陌生设备登录的细节，可以参考 <a href="/blog/x-login-alert-unfamiliar-device-faq">陌生设备登录 FAQ</a>。</p>
+
+<h2>第三步：发现可疑立即做的三件事</h2>
+<ol>
+  <li>改密码，且新密码不要在别的网站 reuse。</li>
+  <li>登出所有其他会话，把盗号者挤下线。</li>
+  <li>开启两步验证，优先用身份验证器而非短信。</li>
+</ol>
+
+<h2>第四步：顺手查隐私暴露</h2>
+<p>盗号往往是为了利用你账号里的历史内容。借这个机会跑一次足迹体检，看看红档推文有没有被利用的风险。关于防钓鱼，可以看 <a href="/blog/x-account-phishing-prevention-2026">防钓鱼的 2026 指南</a>。</p>
+
+<h2>第五步：把这次登录记下来</h2>
+<p>如果是你自己的新设备，在备忘录里写一句"哪天、哪台设备登录了 X"。下次再收到提醒，对照一下就知道是不是重复提醒，不会被假警报干扰判断。</p>
+
+<h2>换手机前的准备</h2>
+<p>很多人是换了手机、第一次登录才收到提醒，于是误以为是被盗。其实只要在换机前做两件事，就能把"惊吓"变成"确认"：先把旧设备的 X 登出，再在新手机上登录时顺手记一笔。这样新设备的提醒对你来说就是预期内的，不会和真实盗号混在一起。</p>
+
+<h2>公共电脑登录的风险</h2>
+<p>在网吧、酒店、图书馆的电脑上登录 X，是风险最高的场景。这类设备可能装了键盘记录，登录后也容易忘记退出。原则只有一条：公共电脑只做"看"，不做"登"。如果必须登，用完立刻改密码并登出全部会话。关于新设备登录的更多细节，也可以看 <a href="/blog/x-login-new-device-privacy-checklist-2026">新设备隐私清单</a> 的延伸说明。</p>
+
+<h2>把清单变成自动化</h2>
+<p>五步清单再好，忘了做也等于零。两个小技巧：一是在日历里每月固定一天检查会话列表；二是把"换设备"设成触发动作——每次换手机或重装，第一件事就是去查登录安全。把安全检查绑到具体动作上，比靠记忆力可靠得多。</p>
+
+<h2>什么时候该真的紧张</h2>
+<table>
+  <thead>
+    <tr><th>信号</th><th>含义</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>异地 + 深夜登录</td><td>你清醒时根本没操作，优先怀疑盗号</td></tr>
+    <tr><td>设备名完全陌生</td><td>不是你换的手机，立刻处置</td></tr>
+    <tr><td>登录后立刻改绑定</td><td>典型盗号夺权，马上改密+登出</td></tr>
+  </tbody>
+</table>
+
+<h2>把安全变成习惯</h2>
+<p>新设备提醒只是入口。真正保护账号的是定期体检、开启两步验证、不重用密码这三件事。别等出事才补。</p>
+<p>访问 <a href="/">digital-footprint-health.shop</a>，本机跑一次免费的数字足迹体检，顺带看看你的旧推文里有没有被盗号者盯上的红档内容。</p>`,
+    contentEn: `<p>The "new device logged in" alert from X is one of the most ignored and most misread security signals. Ignore it and you may miss early takeover; over-react and you scare yourself every time you change phones. The fix is a checklist you can follow, plus knowing which cases are actually normal.</p>
+
+<h2>Step 1: Confirm it was you</h2>
+<p>Ask three questions: do I recognise this device, was I signing in at this time, and does the location match where I was? If all three are yes, you are likely fine.</p>
+<ul>
+  <li>Is the device model familiar, a phone or laptop you just switched to?</li>
+  <li>Does the login time match something you were doing that day?</li>
+  <li>Is the login location the city you were physically in?</li>
+</ul>
+
+<h2>Step 2: Check the session details</h2>
+<p>Open X settings, then Account and security, then Sessions and connected devices. Read recent sessions line by line. Watch for device names you do not know and odd login locations. For details on unfamiliar devices, see the <a href="/blog/x-login-alert-unfamiliar-device-faq">unfamiliar device login FAQ</a>.</p>
+
+<h2>Step 3: Three things to do if something looks wrong</h2>
+<ol>
+  <li>Change the password, and do not reuse it on other sites.</li>
+  <li>Log out all other sessions to push the intruder off.</li>
+  <li>Turn on two-factor auth, preferably an authenticator app over SMS.</li>
+</ol>
+
+<h2>Step 4: Check your privacy exposure too</h2>
+<p>Takeovers often aim to exploit the history in your account. Use this moment to run a footprint check and see whether red-tier tweets carry reuse risk. For phishing defence, see the <a href="/blog/x-account-phishing-prevention-2026">2026 phishing prevention guide</a>.</p>
+
+<h2>Step 5: Note this login down</h2>
+<p>If it was your own new device, write one line in a note: which day, which device signed in to X. Next time an alert arrives, you can compare and tell a repeat notice from a real one.</p>
+
+<h2>Prep before switching phones</h2>
+<p>Many people get the alert only after switching phones and logging in for the first time, then mistake it for a breach. Do two things before the switch and the scare becomes a confirmation: sign out of X on the old device, then note the new-phone login when it happens. The new-device alert then becomes expected, not mixed with a real takeover.</p>
+
+<h2>The risk of public computers</h2>
+<p>Logging into X on a cafe, hotel, or library machine is the riskiest scenario. Such devices may carry keyloggers, and it is easy to forget to sign out. One rule: on public computers only look, never log in. If you must, change the password and log out all sessions right after. For more on new-device logins, see the extended notes in the <a href="/blog/x-login-new-device-privacy-checklist-2026">new device privacy checklist</a>.</p>
+
+<h2>Turn the checklist into a habit</h2>
+<p>Even the best five-step list is worthless if forgotten. Two tricks: set a calendar day each month to review the session list, and tie "device change" to a trigger, where switching phones or reinstalling means checking login security first. Binding security to a specific action beats relying on memory.</p>
+
+<h2>When to actually worry</h2>
+<table>
+  <thead>
+    <tr><th>Signal</th><th>What it means</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Foreign city plus late-night login</td><td>You were not awake to do it, suspect takeover</td></tr>
+    <tr><td>Completely unknown device name</td><td>Not a phone you changed, act now</td></tr>
+    <tr><td>Bound email changed right after</td><td>Classic takeover, reset and log out at once</td></tr>
+  </tbody>
+</table>
+
+<h2>Make security a habit</h2>
+<p>The new-device alert is only the entry point. What really protects the account is regular checks, two-factor auth, and no password reuse. Do not wait for an incident.</p>
+<p>Visit <a href="/">digital-footprint-health.shop</a> and run a free on-device footprint check to see whether any red-tier tweets in your history could be attractive to a takeover.</p>`,
+    faq: [
+      { q: "新设备提醒一定是被盗吗？", a: "不一定。换手机、重装 App、换网络都可能触发。先确认设备和地点是否眼熟，再下结论。", qEn: "Does a new device alert mean I was hacked?", aEn: "Not always. A new phone, a reinstall, or a network change can trigger it. Confirm the device and location look familiar before deciding." },
+      { q: "两步验证用短信还是验证器？", a: "优先验证器 App。短信依赖手机号，换号或 SIM 被克隆时会失效，验证器更稳。", qEn: "SMS or authenticator app for two-factor?", aEn: "Prefer an authenticator app. SMS depends on your phone number, which fails if you change it or if the SIM is cloned." },
+      { q: "登出所有会话会把我自己的设备挤掉吗？", a: "会。所以登出后你要重新在自己常用设备上登录一次，这是正常的。", qEn: "Will logging out all sessions kick off my own devices?", aEn: "Yes. You will need to sign in again on your usual devices, which is expected after a forced logout." },
+      { q: "收到提醒但确认是自己，还要做什么？", a: "记一笔就行。把这次登录写进备忘录，下次对照能快速判断是不是重复提醒。", qEn: "If I confirm it was me, what else should I do?", aEn: "Just note it. Write the login in a memo so next time you can quickly tell a repeat notice from a real one." }
+    ],
+},
+{
+    slug: "chinese-users-x-footprint-after-moving-abroad-2026",
+    title: "移居海外后，你的 X 旧足迹怎么办？中文用户实操",
+    excerpt: "很多中文用户出国后，才发现早年用中文发的推文还挂在网上：家庭地址、国内手机号、对国内事件的直白看法。本文从跨境身份切换的角度，给出一份清理清单，并补充中文内容的搜索可见性、不同出国阶段的对应动作。",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["中文用户", "移居海外", "X 足迹", "跨境隐私"],
+    canonical: "/blog/chinese-users-x-footprint-after-moving-abroad-2026",
+    titleEn: "Moved Abroad? What to Do with Your Old X Footprint (Chinese Users)",
+    excerptEn: "Many Chinese users only notice, after moving abroad, that early Chinese-language tweets are still public: home addresses, mainland phone numbers, blunt takes on domestic events. This guide works from the cross-border identity shift, with a cleanup checklist plus search visibility of Chinese content and actions tied to each relocation stage.",
+    categoryEn: "Chinese Market",
+    tagsEn: ["Chinese users", "moved abroad", "X footprint", "cross-border privacy"],
+    content: `<p>出国这件事，很多人是到了异国他乡、准备租房或找工作，才第一次认真想"我以前在网上都发了什么"。而 X（Twitter）恰恰是中文用户早年最放松、也最直白的地方：家庭地址、国内手机号、对国内事件的随口评论，都留在那里。更麻烦的是，这些内容用中文写，搜索和截取的方式和英文不一样，暴露点也更隐蔽。</p>
+
+<h2>跨境身份切换带来的三类新风险</h2>
+<p>人在国内时觉得无所谓的推文，身份一变，风险等级就变了。中文用户最常踩的是这三类。</p>
+<table>
+  <thead>
+    <tr><th>类型</th><th>早年常见内容</th><th>出国后的新风险</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>国内联系方式</td><td>手机号、微信、家庭住址</td><td>跨境诈骗直接入口，且你已不在原地</td></tr>
+    <tr><td>直白政见</td><td>对国内事件的随口评论</td><td>申请签证、永居时的背景材料</td></tr>
+    <tr><td>同乡圈定位</td><td>同城聚会、老乡群打卡</td><td>暴露你仍可被定位的社交网</td></tr>
+  </tbody>
+</table>
+
+<h2>中文语料特有的暴露点</h2>
+<p>中文推文和英文推文风险点不太一样。中文用户要额外留意这几点，它们往往藏在看似普通的句子里。</p>
+<ul>
+  <li><strong>拼音和同音词</strong>：用拼音写人名地名，老熟人能认，但搜索引擎和爬虫也能拼出来。</li>
+  <li><strong>具体区名路段</strong>：写"某某区某某路附近"，定位精度比你想的高。</li>
+  <li><strong>实名吐槽前公司</strong>：中文职场吐槽常带可识别信息，海外背调反而更看重。</li>
+</ul>
+
+<h2>中文内容的搜索可见性</h2>
+<p>一个常被低估的点：中文推文在中文搜索引擎和爬虫眼里同样"可读"。很多人以为"用英文搜索找不到我的中文推文"，其实中文语料的索引并不比英文弱，尤其涉及具体人名、地名、机构名时，反而更容易被精确检索到。所以清理中文推文不能抱"反正搜不到"的侥幸，要按和英文一样、甚至更严的标准处理。</p>
+
+<h2>不同出国阶段对应不同动作</h2>
+<p>清理不是一次性动作，而是跟着出国节奏走。可以分成三个节点：</p>
+<ol>
+  <li><strong>拿到签证前后</strong>：先清直白政见类，这类在背景材料里最敏感。</li>
+  <li><strong>落地租房前</strong>：清掉国内家庭住址和旧手机号，避免跨境骚扰。</li>
+  <li><strong>入职前</strong>：清实名吐槽前公司的内容，海外雇主也会搜。</li>
+</ol>
+<p>稳定下来之后，建议每季度复查一次，因为新发的推文同样会累积风险。</p>
+
+<h2>中文账号和英文账号分开管</h2>
+<p>不少中文用户有两个 X 身份：一个发中文、一个发英文。建议分开评估：中文账号按上面这套清，英文账号按通用规则清。关于跨境数据流动，可以参考 <a href="/blog/chinese-users-x-account-data-portability-2026">中文用户数据可携权</a> 的说明，以及 <a href="/blog/chinese-students-abroad-x-privacy-checklist">留学生隐私清单</a>。</p>
+
+<h2>别把"删了就安全"想得太简单</h2>
+<p>删推文是主动止损，不是时光倒流。早年截图、转发、搜索引擎缓存都还在。所以清理的同时，也要养成新发内容先想"这条三年后还成立吗"的习惯。对中文用户尤其如此——一句气头上的话，几年后在另一种身份下被翻出来，代价可能比当时想的更大。</p>
+
+<h2>动手前先做一次本机体检</h2>
+<p>中文归档往往体量更大、夹杂更多身份信息。先在本机跑一次体检，让工具把红黄绿分好，你再按出境节点处理，比逐条翻省事得多。</p>
+<p>访问 <a href="/">digital-footprint-health.shop</a>，下载你的 X 数据归档，本机跑一次免费体检，先把含国内手机号和住址的中文推文挑出来。</p>`,
+    contentEn: `<p>For many Chinese users, the first time they seriously think about what they posted online is after they have already moved abroad, while renting a flat or applying for a job. X (Twitter) is exactly where the early Chinese-language posts were most relaxed and most blunt: home addresses, mainland phone numbers, offhand comments on domestic events, all still public. Worse, because they are in Chinese, the search and screenshot dynamics differ from English, and the exposure points hide deeper.</p>
+
+<h2>Three new risks from a cross-border identity shift</h2>
+<p>Tweets that felt harmless at home change risk level once your status changes. The three Chinese users hit most often:</p>
+<table>
+  <thead>
+    <tr><th>Type</th><th>Common early content</th><th>New risk after moving</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Mainland contact info</td><td>Phone, WeChat, home address</td><td>Direct entry for cross-border scams, and you are no longer local</td></tr>
+    <tr><td>Blunt opinions</td><td>Offhand takes on domestic events</td><td>Background material for visas and residency</td></tr>
+    <tr><td>Hometown check-ins</td><td>Local meetups, dialet group posts</td><td>Exposes a social graph still pinnable to you</td></tr>
+  </tbody>
+</table>
+
+<h2>Exposure points specific to Chinese-language posts</h2>
+<p>Chinese and English tweets carry different risks. Chinese users should watch a few points that hide in ordinary sentences.</p>
+<ul>
+  <li><strong>Pinyin and homophones</strong>: writing a name in pinyin is readable to old friends, but search engines and crawlers can piece it together too.</li>
+  <li><strong>Specific district and road names</strong>: "near X road in Y district" is far more precise than it feels.</li>
+  <li><strong>Naming a former employer in a rant</strong>: Chinese workplace rants often carry identifiable detail, and overseas checks weigh it more.</li>
+</ul>
+
+<h2>Search visibility of Chinese content</h2>
+<p>One underrated point: Chinese tweets are just as readable to Chinese search engines and crawlers. Many assume "English search won't find my Chinese tweets", but Chinese-language indexing is no weaker than English, and when specific names, places, or institutions appear, precise retrieval is often easier. So cleaning Chinese tweets cannot lean on the excuse of being unfindable. Hold them to the same bar as English, or stricter.</p>
+
+<h2>Actions tied to each relocation stage</h2>
+<p>Cleanup is not one shot; it tracks the move. Three nodes:</p>
+<ol>
+  <li><strong>Around visa approval</strong>: clear blunt opinion posts first, the most sensitive in background material.</li>
+  <li><strong>Before renting abroad</strong>: clear the mainland home address and old phone number to avoid cross-border harassment.</li>
+  <li><strong>Before starting a job</strong>: clear named rants about former employers, overseas ones search too.</li>
+</ol>
+<p>Once settled, re-check quarterly, because new posts accumulate risk too. A short standing rule helps: any post older than a year gets a second look before a major life step.</p>
+
+<h2>Manage Chinese and English accounts separately</h2>
+<p>Many Chinese users keep two X identities, one Chinese, one English. Assess them apart: the Chinese account by the list above, the English one by general rules. On cross-border data movement, see <a href="/blog/chinese-users-x-account-data-portability-2026">data portability for Chinese users</a> and the <a href="/blog/chinese-students-abroad-x-privacy-checklist">privacy checklist for students abroad</a>.</p>
+
+<h2>Deleting is not a time machine</h2>
+<p>Deleting tweets is active damage control, not rewinding the clock. Old screenshots, reposts, and search caches still exist. So alongside cleanup, build the habit of asking, before posting, whether this line still holds in three years. This matters even more for Chinese users: a hot-headed line dug up years later under a different identity can cost more than it seemed at the time.</p>
+
+<h2>Run an on-device check before you start</h2>
+<p>Chinese-language archives tend to be larger and denser with identity info. Run a check on your own device first, let the tool grade red, yellow, green, then act by exit milestone. That beats reading every tweet by hand.</p>
+<p>Visit <a href="/">digital-footprint-health.shop</a>, download your X archive, and run a free on-device check to surface the Chinese posts carrying a mainland phone number or home address.</p>`,
+    faq: [
+      { q: "出国了，早年中文吐槽还要管吗？", a: "要。签证、永居、海外雇主都可能看公开历史。直白政见和实名吐槽前公司，是优先级最高的两类。", qEn: "Now that I live abroad, do old Chinese rants still matter?", aEn: "Yes. Visas, residency, and overseas employers may all read public history. Blunt opinions and named employer rants are the top two priorities." },
+      { q: "用拼音写人名地名算暴露吗？", a: "算。老熟人能认，爬虫和搜索引擎也能拼出来。精度不如明文，但仍有定位价值。", qEn: "Is writing names in pinyin still exposure?", aEn: "It is. Old friends recognise it, and crawlers and search engines can reconstruct it. Less precise than plaintext, but still locatable." },
+      { q: "删了推文就完全干净了吗？", a: "不是。截图、转发、搜索缓存都可能在。删是止损，不是时光倒流，所以新发内容也要谨慎。", qEn: "After deleting tweets, am I fully clean?", aEn: "No. Screenshots, reposts, and search caches may remain. Deletion is control, not a rewind, so be careful with new posts too." },
+      { q: "中文账号和英文账号要分开清理吗？", a: "建议分开。两者受众和风险点不同，按各自规则评估更清楚，也避免漏掉中文特有的暴露点。", qEn: "Should I clean Chinese and English accounts separately?", aEn: "Recommended. Their audiences and risk points differ, so evaluating each by its own rules is clearer and catches Chinese-specific exposure." }
+    ],
+},
+{
+    slug: "x-ads-from-old-tweets-data-2026",
+    title: "广告主如何用你的旧推文定向投放？2026 年真相",
+    excerpt: "你的旧推文不只是\"黑历史\"，也是广告系统的燃料。本文拆解 X 广告定向是怎么用你的历史内容做画像的，并补上一个具体定向例子、广告主还能买到什么，以及清理和定向的关系。",
+    date: "2026-10-23",
+    updatedAt: "2026-10-23",
+    author: "Digital Footprint Health Team",
+    category: "行业与生态",
+    tags: ["X 广告", "数据定向", "旧推文", "隐私行业"],
+    canonical: "/blog/x-ads-from-old-tweets-data-2026",
+    titleEn: "How Advertisers Target You with Your Old Tweets (2026)",
+    excerptEn: "Your old tweets are not just awkward history, they are fuel for ad systems. This piece breaks down how X ad targeting builds a profile from your history, with a concrete targeting example, what else advertisers can buy, and how cleanup relates to targeting.",
+    categoryEn: "Industry",
+    tagsEn: ["X ads", "data targeting", "old tweets", "privacy industry"],
+    content: `<p>很多人清理旧推文，动机是"怕被翻旧账"。但还有一条更少被谈起的链路：你多年前发的内容，一直在悄悄喂给广告系统。理解这条链路，才知道清理到底断了什么，关设置又断了什么。</p>
+
+<h2>广告定向用到了哪些信号</h2>
+<p>X 的广告系统并不是只盯你刚发的那条。它会综合几类历史信号来猜你是谁、想要什么。</p>
+<table>
+  <thead>
+    <tr><th>信号</th><th>例子</th><th>来源</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>兴趣关键词</td><td>你聊过的品牌、爱好</td><td>多年推文文本</td></tr>
+    <tr><td>互动对象</td><td>你转发的账号类型</td><td>关注与互动记录</td></tr>
+    <tr><td>位置轨迹</td><td>打卡、IP 推断城市</td><td>定位与登录</td></tr>
+    <tr><td>设备与语言</td><td>中文界面、常用机型</td><td>客户端信息</td></tr>
+  </tbody>
+</table>
+
+<h2>一个具体的定向例子</h2>
+<p>假设你三年前连发过几条"准备考雅思"和"想去英国读书"的推文，后来再没提过。广告系统仍会把你打上"留学意向"标签，接下来半年持续给你推语言班、租房、汇率换汇的广告。你早就放弃了，但标签还在生效。这就是旧推文作为燃料的典型表现——它不关心你现在想不想，只关心你曾经表现过什么。</p>
+
+<h2>旧推文是怎么变成画像的</h2>
+<ol>
+  <li>系统扫描你历年推文文本，提取反复出现的关键词。</li>
+  <li>把关键词映射到广告主买的"兴趣标签"。</li>
+  <li>你刷新时间线时，优先插入匹配这些标签的广告。</li>
+  <li>你点了哪条广告，又反过来强化标签，形成闭环。</li>
+</ol>
+
+<h2>广告主还能买到什么</h2>
+<p>除了兴趣标签，广告主还能按"相似受众""互动人群""设备语言"等维度买量。你早年用中文发的推文，会把你送进"中文用户"这个池子，于是中文电商、跨境服务、面向华语群体的产品都会来找你。这不是阴谋，是行业标配，但确确实实把你旧内容的价值用到了极致。</p>
+
+<h2>你能关掉多少</h2>
+<p>好消息是，部分定向你可以关。坏消息是，默认大多是开的。</p>
+<ul>
+  <li><strong>个性化广告</strong>：设置里可以关，关了不再用你的活动做定向。</li>
+  <li><strong>兴趣标签</strong>：可以查看并移除一部分系统给你打的标。</li>
+  <li><strong>第三方数据共享</strong>：这一层最不透明，控制权最少。</li>
+</ul>
+
+<h2>清理旧推文在广告链路上的真实效果</h2>
+<p>删掉旧推文，等于抽走系统提取关键词的原材料。已经生成的标签不会瞬间消失，但新内容变干净后，标签会慢慢失准。想了解平台政策变化对这条链路的影响，可以看 <a href="/blog/x-platform-policy-changes-november-2026">11 月平台政策变动</a>，以及 <a href="/blog/ai-search-indexing-old-tweets-2026">AI 搜索如何索引旧推文</a>。</p>
+
+<h2>把主动权拿回来</h2>
+<p>你没法一键清空广告系统里的自己，但可以两步走：设置里关掉个性化，历史上把高危和过度暴露的推文清掉。前者断"未来投喂"，后者减"历史燃料"。两者一起做，才真正把控制权拿回来。</p>
+<p>访问 <a href="/">digital-footprint-health.shop</a>，本机跑一次免费体检，先把那些还在给广告系统供料的红档推文挑出来清掉。</p>`,
+    contentEn: `<p>Most people clean old tweets for one reason: fear of being dug up. But there is a quieter pipeline barely discussed: the things you posted years ago keep feeding ad systems. Understand the pipeline and you know exactly what cleanup cuts and what turning off settings cuts.</p>
+
+<h2>Which signals ad targeting uses</h2>
+<p>X ad systems do not only watch your latest post. They blend several kinds of historical signal to guess who you are and what you want.</p>
+<table>
+  <thead>
+    <tr><th>Signal</th><th>Example</th><th>Source</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Interest keywords</td><td>Brands and hobbies you mention</td><td>Years of tweet text</td></tr>
+    <tr><td>Who you engage</td><td>Account types you repost</td><td>Follow and interaction log</td></tr>
+    <tr><td>Location trail</td><td>Check-ins, IP-inferred city</td><td>Location and login</td></tr>
+    <tr><td>Device and language</td><td>Chinese UI, common handset</td><td>Client info</td></tr>
+  </tbody>
+</table>
+
+<h2>A concrete targeting example</h2>
+<p>Suppose three years ago you posted a few tweets about preparing for IELTS and wanting to study in the UK, then never mentioned it again. The ad system still tags you with study-abroad intent and keeps serving you language schools, housing, and currency ads for the next six months. You gave up long ago, but the label is still live. That is old tweets as fuel in action: it does not care what you want now, only what you once signalled.</p>
+
+<h2>How old tweets become a profile</h2>
+<ol>
+  <li>The system scans your historical tweet text and pulls out repeated keywords.</li>
+  <li>It maps those keywords to interest labels advertisers buy.</li>
+  <li>When you refresh your timeline, ads matching those labels get priority.</li>
+  <li>Which ad you click reinforces the label, closing the loop.</li>
+</ol>
+
+<h2>What else advertisers can buy</h2>
+<p>Beyond interest labels, advertisers can buy by lookalike audiences, engaged audiences, device language, and more. Your early Chinese-language posts put you in the Chinese-user pool, so Chinese e-commerce, cross-border services, and products aimed at Mandarin speakers all come to you. This is not a conspiracy, it is industry standard, but it does use the value of your old content to the maximum.</p>
+
+<h2>How much you can actually turn off</h2>
+<p>The good news: some targeting you can disable. The bad news: most of it is on by default.</p>
+<ul>
+  <li><strong>Personalized ads</strong>: can be switched off in settings, stopping use of your activity for targeting.</li>
+  <li><strong>Interest labels</strong>: you can view and remove at least some the system assigned you.</li>
+  <li><strong>Third-party data sharing</strong>: the least transparent layer, with the least control.</li>
+</ul>
+
+<h2>What cleanup really does to the ad pipeline</h2>
+<p>Deleting old tweets removes the raw material the system extracts keywords from. Labels already built will not vanish at once, but once new content is clean, the labels slowly lose accuracy. For how platform policy shifts affect this, see <a href="/blog/x-platform-policy-changes-november-2026">November platform changes</a> and <a href="/blog/ai-search-indexing-old-tweets-2026">how AI search indexes old tweets</a>.</p>
+
+<h2>A 30-second check you can run today</h2>
+<p>If you want proof before you believe it, open your settings and look at the interest labels the system already assigned you. Most people are surprised by at least one category pulled from a post they forgot. That list is the clearest picture of what old content is still feeding. Clear the tweets behind the oddest labels, refresh in a week, and watch the category thin out. The loop is not magic, it is just keyword extraction, and you can starve it.</p>
+
+<h2>Take the control back</h2>
+<p>You cannot wipe the ad-system version of you with one click, but you can do two things: turn off personalization in settings, and clear the high-risk, over-exposed tweets from history. One cuts future feeding, the other shrinks the historical fuel. Doing both is what actually takes the control back.</p>
+<p>Visit <a href="/">digital-footprint-health.shop</a> and run a free on-device check to surface the red-tier tweets still feeding the ad system, then clear them.</p>`,
+    faq: [
+      { q: "删了旧推文，广告标签会立刻消失吗？", a: "不会立刻。已生成的标签要慢慢失准，但新内容变干净后，定向会越来越不准。", qEn: "Will deleting old tweets make ad labels vanish at once?", aEn: "Not at once. Built labels lose accuracy slowly, but once new content is clean, targeting gets less precise." },
+      { q: "个性化广告能完全关掉吗？", a: "可以在设置里关掉\"用你的活动做定向\"这类开关，但第三方数据共享那层最不透明，控制权有限。", qEn: "Can I fully turn off personalized ads?", aEn: "You can switch off the use of your activity for targeting in settings, but the third-party data layer is the least transparent and gives the least control." },
+      { q: "我的中文推文会被拿来定向吗？", a: "会。文本关键词不分语言，中文里反复出现的品牌、城市、爱好同样会被提取成标签，把你送进中文用户池。", qEn: "Can my Chinese tweets be used for targeting?", aEn: "Yes. Keyword extraction is language-agnostic, so brands, cities, and hobbies repeated in Chinese become labels too, placing you in the Chinese-user pool." },
+      { q: "清理和关设置哪个更重要？", a: "两个都做。关设置断未来投喂，清历史减燃料，单做一样都不完整。", qEn: "Which matters more, cleanup or settings?", aEn: "Do both. Settings cut future feeding, cleanup shrinks the fuel; doing only one leaves the loop open." }
+    ],
+},
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -27859,6 +27859,280 @@ rl.on('close', () =&gt; {
       { q: "清理和关设置哪个更重要？", a: "两个都做。关设置断未来投喂，清历史减燃料，单做一样都不完整。", qEn: "Which matters more, cleanup or settings?", aEn: "Do both. Settings cut future feeding, cleanup shrinks the fuel; doing only one leaves the loop open." }
     ],
 },
+{
+    slug: "auto-delete-old-tweets-schedule-2026",
+    title: "设置自动清理：让旧推文按你的节奏过期",
+    excerpt: "手动清旧推文很难坚持。本文讲怎么用归档体检加保留期规则，让超过一定天数的推文自动进入清理清单，并说明哪些内容不该等、哪些可以留。",
+    date: "2026-10-24",
+    updatedAt: "2026-10-24",
+    author: "Digital Footprint Health Team",
+    category: "删除实操",
+    tags: ["X 自动清理", "保留期", "删除实操", "数字足迹"],
+    canonical: "/blog/auto-delete-old-tweets-schedule-2026",
+    titleEn: "Set Up Automatic Tweet Cleanup: Let Old Tweets Expire on Your Schedule",
+    excerptEn: "Cleaning old tweets by hand rarely lasts. This piece explains how to pair an archive check with a retention rule so tweets older than a set age land on a cleanup list automatically, plus what to delete now versus what can wait.",
+    categoryEn: "Deletion",
+    tagsEn: ["X auto cleanup", "retention period", "tweet deletion", "digital footprint"],
+    content: `<p>很多人心里都想过「等哪天有空，把那些旧推文清一清」。但现实是，那个「有空」几乎永远不会来。新内容不断发，旧内容越积越多，等到真要用了（面试、背调、相亲、跳槽），才意识到有些东西早该删。本文讲一个更省力的办法：不靠意志力，靠规则，让旧推文按你的节奏自动过期。</p>
+
+<p>这套方法的核心，是把「要不要删」这个需要意志力的问题，换成「到点就进清单」这个不需要想的问题。意志力是不可靠的，规则是可靠的。你只需要每周花几分钟确认清单，剩下交给时间。</p>
+
+<h2>为什么「有空再清」不靠谱</h2>
+<p>清理旧推文有三道坎。第一，量太大，几年下来几千条，逐条看不现实。第二，X 只让你删最近约 3200 条，更早的历史被锁在归档里，手动够不着。第三，也是最关键的，它不紧急。不紧急的事，永远排不到前面。所以靠「想起来再清」，结果就是一直不清。</p>
+
+<h2>保留期规则到底在保护你什么</h2>
+<p>保留期规则不是为了藏起你的个性，而是缩小别人能抓取和复用的表面积。旧推文在喂四种你很少想到的事：搜索引擎把它们编入索引，于是 2014 年的一句随意发言，别人一搜你名字还能看到；数据经纪商把它们打包成档案拿去卖；AI 训练管线把它们当原始文本吞进去；广告系统读它们给你打兴趣标签。这些都不需要你同意。保留期规则会在最老的内容继续喂这些管线之前，悄悄把它切掉。</p>
+
+<h2>保留期规则：给推文设一个「保质期」</h2>
+<p>与其纠结「要不要删这条」，不如先定一条简单的规则：超过 N 天的推文，自动进入清理候选。N 取多少看你的风险偏好：</p>
+<table>
+  <thead><tr><th>保留期</th><th>适合谁</th><th>效果</th></tr></thead>
+  <tbody>
+    <tr><td>180 天</td><td>经常换观点、爱吐槽的人</td><td>只留半年内的，历史最干净</td></tr>
+    <tr><td>365 天</td><td>大多数普通用户</td><td>保留一年，平衡记忆与风险</td></tr>
+    <tr><td>730 天</td><td>内容有长期价值的创作者</td><td>留两年，但高危内容仍要单独处理</td></tr>
+  </tbody>
+</table>
+<p>规则一旦定好，就不用每次纠结。到点就进清单，你只需要在清单里做最后一遍确认。数字尽量取整：180、365、730 比 214 好记，而具体切点的重要性，远不如「真有一条规则」这件事本身。</p>
+
+<h2>一条能落地的自动清理流程</h2>
+<ol>
+  <li>下载你的 X 数据归档（ZIP），这是唯一能碰到 3200 条之外历史的方式。</li>
+  <li>用本机体检解析归档，按风险给每条推文打分，标出红档。</li>
+  <li>把「超过保留期 + 红档」的推文自动汇成清理清单。</li>
+  <li>你每周花五分钟过一遍清单，确认后删除。</li>
+  <li>保留期之外的低风险内容，可以选择性保留，不必全清。</li>
+</ol>
+<p>节奏比工具重要。每周五分钟，胜过两年一次、却永远不发生的大扫除，因为那次大扫除根本不会来。</p>
+
+<h2>小提醒：保留期不是免删金牌</h2>
+<p>保留期只管「日常过期」，管不了「出事当时」。如果你刚经历跳槽、分手、搬迁，别等保留期，先把相关的高危内容清掉。规则是底线，不是上限。把保留期当成每月自动修剪，把突发清理当成随时可做的减法，两者配合才稳。</p>
+
+<h2>哪些推文不该等保留期</h2>
+<p>保留期是日常节奏，但有三类内容不能等，发现就该立刻处理：</p>
+<table>
+  <thead><tr><th>内容类型</th><th>为什么不能等</th></tr></thead>
+  <tbody>
+    <tr><td>手机号、住址、证件照</td><td>直接给骗子入口，越早删越安全</td></tr>
+    <tr><td>对前雇主的攻击性言论</td><td>背调时最容易被翻出</td></tr>
+    <tr><td>实时定位、登机牌、门牌</td><td>涉及现实人身安全</td></tr>
+  </tbody>
+</table>
+<p>这类内容不走「保留期到期再删」的流程，而是发现即删。关于按日期批量处理，可以看 <a href="/blog/delete-tweets-by-date">按日期删除</a> 和 <a href="/blog/delete-tweets-by-keyword">按关键词删除</a>。</p>
+
+<h2>保留期规则常见的四个坑</h2>
+<p>四个错误会让规则失效。一是保留期定得太长，比如五年，等于没设。二是只信红档，忘了哪怕绿档推文攒上十年也够多。三是只在 X 界面查最近 3200 条，归档始终没动。四是设完一次就再不复查，直到换工作、搬家、改名这类人生变动发生后，规则早就不再适配。任意一条都会悄悄抵消规则的好处。</p>
+
+<h2>用归档把「自动」变成现实</h2>
+<p>「自动」的前提是你能看到全部历史。X 界面只暴露最近一部分，真正的全量在归档里。先把归档下下来，跑一次本机体检，规则才有数据可跑。想了解归档怎么拿，见 <a href="/blog/how-to-download-x-archive">如何下载 X 归档</a>；想看批量删除的完整操作，见 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除实操</a>。</p>
+
+<h2>多久复查一次规则</h2>
+<p>每三个月设个提醒，看的是规则本身，不是清单。问问保留期还合不合你现在的生活。学生和上市公司员工需要的窗口不同，而合适的窗口会随角色变化而变。一个季度一次的小复查，能让规则一直说真话。</p>
+
+<h2>保留期之外，还有一个隐藏变量</h2>
+<p>除了保留期，还有一件事常被忽略：你的关注者规模。粉丝越多，单条旧推文被翻出的概率越高，越该把保留期收紧。这不是说要删光，而是让规则随影响力一起调整。小号可以宽松一些，大号需要更谨慎，这个变量值得写进你的复查清单，避免等到出事才发现窗口早就不合适。</p>
+
+<h2>把主动权拿回来</h2>
+<p>你不需要某天突然花一整天清理。把「保留期 + 红档清单 + 每周五分钟」这套节奏固定下来，旧推文就会按你的规则慢慢过期，而不是一直堆着等出事。访问 <a href="/">digital-footprint-health.shop</a>，本机跑一次免费体检，先把那些红档推文挑出来，设好你的保留期，剩下的交给节奏。</p>`,
+    contentEn: `<p>Almost everyone has thought, at some point, that they should clean up old tweets when they get a free afternoon. The problem is that free afternoon almost never arrives. New posts keep going out, old ones keep piling up, and by the time you actually need a clean profile, for a job interview, a background check, or a new relationship, some things should have been gone years ago. This piece describes a lighter method: stop relying on willpower, use a rule instead, and let old tweets expire on your schedule.</p>
+
+<h2>Why "I will do it later" never works</h2>
+<p>Cleaning old tweets hits three walls. First, the volume is huge. A few years of posting means thousands of tweets, and reading them one by one is not realistic. Second, X only lets you delete roughly the most recent 3,200 tweets; everything older is locked inside your archive, out of reach from the normal interface. Third, and most important, it is never urgent. Non-urgent tasks always slide to the bottom of the list, so cleaning only when you remember means never cleaning.</p>
+
+<h2>What a retention rule actually protects you from</h2>
+<p>A retention rule is not about hiding your personality. It is about shrinking the surface that other systems can scrape and reuse. Old tweets feed four things you rarely think about. Search engines index them, so a careless line from 2014 can still show up when someone googles your name. Data brokers package them into profiles that get sold. AI training pipelines ingest them as raw text. Ad systems read them to build interest labels about you. None of these wait for your permission. A retention rule quietly cuts the oldest material off before it keeps feeding those pipelines.</p>
+
+<h2>The retention rule: give tweets an expiry date</h2>
+<p>Instead of debating whether to delete each tweet, set one simple rule first: any tweet older than N days automatically becomes a cleanup candidate. How large N should be depends on your risk appetite.</p>
+<table>
+  <thead><tr><th>Retention</th><th>Good for</th><th>Effect</th></tr></thead>
+  <tbody>
+    <tr><td>180 days</td><td>People who change views often or post rants</td><td>Keeps only the last six months, cleanest history</td></tr>
+    <tr><td>365 days</td><td>Most ordinary users</td><td>Keeps one year, balances memory and risk</td></tr>
+    <tr><td>730 days</td><td>Creators with long-term valuable posts</td><td>Keeps two years, but high-risk posts still need separate handling</td></tr>
+  </tbody>
+</table>
+<p>Once the rule is set, you stop debating each time. When a tweet hits the age, it lands on the list, and you only do a final confirmation pass. Keep the number simple. A round figure like 180, 365, or 730 is easier to remember than 214, and the exact cutoff rarely matters more than the habit of having one.</p>
+
+<h2>A cleanup flow you can actually keep</h2>
+<ol>
+  <li>Download your X data archive (ZIP). This is the only way to reach history beyond the recent 3,200 tweets.</li>
+  <li>Run an on-device check that parses the archive, scores each tweet by risk, and flags the red tier.</li>
+  <li>Automatically gather tweets that are both past retention and in the red tier into a cleanup list.</li>
+  <li>Spend five minutes each week going through the list, then confirm and delete.</li>
+  <li>Low-risk posts outside retention can stay selectively; you do not have to wipe everything.</li>
+</ol>
+<p>The rhythm matters more than the tools. Five minutes a week beats one panicked weekend every two years, because the panicked weekend never actually happens.</p>
+
+<h2>What should never wait for retention</h2>
+<p>Retention is the daily rhythm, but some content cannot wait and should be removed the moment you spot it.</p>
+<table>
+  <thead><tr><th>Content type</th><th>Why it cannot wait</th></tr></thead>
+  <tbody>
+    <tr><td>Phone numbers, home address, ID photos</td><td>Direct entry for scammers; delete sooner for safety</td></tr>
+    <tr><td>Attacks on a former employer</td><td>Most likely to surface during a background check</td></tr>
+    <tr><td>Live location, boarding passes, door numbers</td><td>Touches real-world physical safety</td></tr>
+  </tbody>
+</table>
+<p>These do not go through the expire-when-due flow. They are delete-on-sight. For batch handling by date, see <a href="/blog/delete-tweets-by-date">delete tweets by date</a> and <a href="/blog/delete-tweets-by-keyword">delete tweets by keyword</a>.</p>
+
+<h2>Common mistakes with retention rules</h2>
+<p>Four mistakes make the rule useless. The first is setting retention far too long, like five years, which defeats the purpose. The second is trusting the red tier alone and forgetting that even green posts accumulate over a decade. The third is only checking the recent 3,200 tweets in the X interface, which leaves the archive untouched. The fourth is setting the rule once and never reviewing it after a life change such as a new job, a move, or a name change. Any one of these quietly undoes the benefit.</p>
+
+<h2>Make the automation real with your archive</h2>
+<p>Automation needs full history to work from. The X interface only shows the recent slice; the real full record lives in the archive. Download it, run an on-device check, and the rule finally has data to run on. For how to get the archive, see <a href="/blog/how-to-download-x-archive">how to download your X archive</a>. For the full bulk-delete walkthrough, see <a href="/blog/bulk-delete-old-tweets-walkthrough">bulk delete old tweets</a>.</p>
+
+<h2>How often to review the rule</h2>
+<p>Set a calendar reminder every three months to look at the rule itself, not just the list. Ask whether your retention window still fits your life. A student and a public company employee need different windows, and the right window shifts as your role shifts. A short quarterly check keeps the rule honest.</p>
+
+<h2>The hidden variable beyond retention</h2>
+<p>Besides the retention window, one thing is often missed: your follower count. The more followers you have, the higher the chance any old tweet gets dug up, and the tighter your retention should be. This does not mean wiping everything; it means letting the rule shift with your influence. A small account can stay loose, a large one needs more caution, and this variable belongs on your review checklist so you are not surprised when something resurfaces after you forgot the window had quietly stopped fitting your situation.</p>
+
+<h2>Take the control back</h2>
+<p>You do not need one stressful day clearing everything. Lock in the rhythm of retention plus a red-tier list plus five minutes a week, and old tweets will expire by your rules instead of piling up until something breaks. Visit <a href="/">digital-footprint-health.shop</a> and run a free on-device check, surface the red-tier tweets first, set your retention window, and let the rhythm handle the rest.</p>`,
+    faq: [
+      { q: "保留期设多长合适？", a: "看风险偏好。大多数人选 365 天，平衡记忆与风险；爱吐槽或常换观点选 180 天；有长期价值的内容选 730 天。关键是真有一条规则，而不是切点精确到天。", qEn: "How long should retention be?", aEn: "It depends on risk appetite. Most people pick 365 days to balance memory and risk; frequent ranters pick 180; creators with lasting value pick 730. The key is having a rule, not the exact day." },
+      { q: "保留期到了，推文会自动消失吗？", a: "不会自动消失。规则只是把它们汇进清理清单，最后一遍确认和删除仍由你做。这样既不费意志力，也不会误删你还在意的内容。", qEn: "When retention ends, do tweets vanish by themselves?", aEn: "No. The rule only moves them onto a cleanup list; the final confirm and delete is still yours. That keeps the effort low without deleting things you still care about." },
+      { q: "红档内容一定要等保留期吗？", a: "不必。手机号、住址、证件照、对前雇主的攻击言论、实时定位这类，发现即删，不走保留期流程。保留期只管日常节奏，不管高危内容。", qEn: "Must red-tier content wait for retention?", aEn: "No. Phone numbers, home address, ID photos, attacks on a former employer, and live location are delete-on-sight and skip retention. Retention handles the daily rhythm, not high-risk content." },
+      { q: "只清最近 3200 条够吗？", a: "不够。X 界面只暴露最近约 3200 条，更早的历史在归档里。想真正按保留期清，得先下归档，用本机体检把全量历史跑一遍。", qEn: "Is clearing only the recent 3,200 tweets enough?", aEn: "Not enough. The X interface only shows the recent 3,200; older history lives in the archive. To truly run a retention rule you must download the archive and check the full history on device." }
+    ],
+},
+{
+    slug: "chinese-dating-old-tweets-cleanup-2026",
+    title: "相亲前清理旧推文：中文语料里最容易被翻出的三类内容",
+    excerpt: "中文社交语境下，旧推文暴露的点和英文圈不太一样。本文从相亲、交友这个具体场景出发，讲三类在中文语料里最容易被对方或对方朋友翻出的内容，以及清理时的优先级。",
+    date: "2026-10-24",
+    updatedAt: "2026-10-24",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["相亲", "旧推文清理", "中文隐私", "交友安全"],
+    canonical: "/blog/chinese-dating-old-tweets-cleanup-2026",
+    titleEn: "Clean Old Tweets Before Dating: What Chinese Profiles Reveal",
+    excerptEn: "Chinese-language profiles leak different things than English ones. From a dating and matchmaking angle, this piece covers three types of old posts most likely to be dug up by a partner or their friends, and how to prioritize cleanup.",
+    categoryEn: "Chinese Market",
+    tagsEn: ["dating", "old tweet cleanup", "Chinese privacy", "relationship safety"],
+    content: `<p>在中文语境里，清理旧推文往往不是因为「怕被搜到」，而是某个具体场景逼你正视：相亲、交友、见家长前，对方或对方的朋友很可能会去翻你的社交账号。英文圈谈的「数字足迹」多围绕求职和背调，中文语料里容易被翻出的，是另一类内容。</p>
+
+<h2>为什么中文场景不一样</h2>
+<p>很多英文指南担心的是 recruiter。在中文相亲里，担心的对象是对象本人，以及他们身后那些会在群聊里转发截图的朋友和亲戚。一条你觉得很私密的发言，可能顺着你早就忘了的共同好友传出去。这条传播路径，决定了什么算「高危」。</p>
+
+<h2>第一类：前任与旧情伤</h2>
+<p>中文社交里，关于前任的吐槽、复合、骂战最容易被人顺藤摸瓜。哪怕你没指名，熟悉你的人一看时间线和用词就能对上号。相亲对象若顺手一翻，看到大段情绪化内容，第一印象会先打折扣。这类内容建议优先清理，尤其是带具体时间、地点、共同好友痕迹的。「再也不和某行业的人谈恋爱」这种话，对你无害，但陌生人很容易读成减分项。</p>
+
+<h2>第二类：收入与炫富（或哭穷）</h2>
+<p>中文圈子对「收入」「房车」「消费水平」格外敏感。你早年发的炫富、哭穷、攀比，都会成为对方判断你的素材。这些内容不一定有害，但在相亲这种被审视的场景里，过度暴露会让你被动。挑掉最极端的几条，比全部保留更稳妥，正常的生活更新没必要删。</p>
+
+<h2>第三类：对性别、地域、职业的偏见言论</h2>
+<p>几年前的「开个玩笑」式偏见言论，在今天的语境下很容易被重新翻出并放大。对方若和你立场不同，这类内容会成为减分项，甚至被截图传播。无论你现在的观点变没变，历史言论都是别人眼里的证据，而你很少有机会补那句注脚。</p>
+
+<h2>一个常见误解：清理不是全删光</h2>
+<p>把一切清空本身也是个错。一个零历史的账号看起来像被修饰过或假号，而关于美食、旅行、爱好的正常内容，恰恰是你显得真实可信的部分。目标是删掉上面三类风险内容，而不是删掉你整个人格。</p>
+
+<p>顺带一提，相亲场景里最容易被翻出的，往往不是你删得最狠的那条，而是你以为「没啥」却被截图传播的普通发言。所以清理时别只盯着极端内容，也扫一遍那些带具体地点、时间、和共同好友痕迹的中性内容，它们才是被误解的高发区。</p>
+
+<h2>清理优先级建议</h2>
+<ul>
+  <li>先删带具体人名、地点、时间的情绪化内容。</li>
+  <li>再处理极端收入或消费类表态。</li>
+  <li>最后复查偏见言论，挑掉最易被截图的几条。</li>
+</ul>
+<p>如果你想系统地把账号历史过一遍，可以看 <a href="/blog/chinese-platforms-history-cleanup-guide">中文平台历史清理指南</a>，以及 <a href="/blog/chinese-job-switch-tweet-cleanup">跳槽前清理旧推文</a> 的思路也适用于交友场景。访问 <a href="/">digital-footprint-health.shop</a> 跑一次本机体检，把红档内容先挑出来。</p>`,
+    contentEn: `<p>In Chinese social contexts, the reason to clean old tweets is rarely "fear of search engines." It is usually a concrete moment that forces the issue: before a date, a matchmaking meeting, or meeting the family, the other person or their friends are likely to scroll through your profile. English-language privacy writing centers on jobs and background checks. The Chinese-language corpus leaks a different set of things, because the social graph and the topics people judge you on are not the same.</p>
+
+<h2>Why the Chinese context is different</h2>
+<p>Many Western guides worry about a recruiter. In Chinese dating, the worry is the date themselves and the friends and relatives behind them who forward screenshots in group chats. A post that feels private to you can travel through mutual connections you forgot you had. That distribution path changes what counts as risky.</p>
+
+<h2>Type one: ex-partners and old heartbreak</h2>
+<p>In Chinese social circles, rants about an ex, breakups, and fights are the easiest to trace. Even without naming names, people who know you can match the timeline and wording. If a date scrolls back and sees long emotional posts, the first impression drops before you meet. Clear these first, especially ones with specific times, places, or hints about mutual friends. A line like "never dating someone from industry X again" is harmless to you but easy for a stranger to read as a red flag.</p>
+
+<h2>Type two: income and showing off (or complaining)</h2>
+<p>Chinese circles are unusually sensitive to income, housing, cars, and spending level. Old posts that show off, complain about being broke, or compare wealth all become material for the other side to judge you. They are not harmful by themselves, but in a scenario where you are being assessed, over-exposure puts you on the back foot. Dropping the most extreme few is safer than keeping all of them, and you do not need to erase normal life updates.</p>
+
+<h2>Type three: biased remarks about gender, region, or job</h2>
+<p>Joke-style biased remarks from years ago get easily dug up and amplified in today's context. If the other person disagrees with you, this content becomes a negative mark, sometimes screenshot and shared in a group. Whether your views changed or not, old posts are evidence in someone else's eyes, and you rarely get the chance to add the footnote.</p>
+
+<h2>A common misunderstanding: cleanup is not wipe-everything</h2>
+<p>Erasing everything is its own mistake. A profile with zero history looks edited or fake, and normal posts about food, trips, or hobbies are exactly what makes you relatable. The goal is to remove the three risk types above, not your entire personality.</p>
+
+<p>By the way, what gets dug up most in a dating context is rarely the post you deleted hardest, but an ordinary line you thought was harmless and got screenshot instead. So when cleaning, do not stare only at extreme content; also scan the neutral posts with specific places, times, or hints about mutual friends, because those are where misunderstandings cluster the most.</p>
+
+<h2>Priority for cleanup</h2>
+<ul>
+  <li>First delete emotional posts with specific names, places, or times.</li>
+  <li>Then handle extreme income or spending statements.</li>
+  <li>Last, review biased remarks and drop the few most screenshot-prone.</li>
+</ul>
+<p>If you want a systematic pass over account history, see <a href="/blog/chinese-platforms-history-cleanup-guide">the Chinese-platform history cleanup guide</a>, and the approach in <a href="/blog/chinese-job-switch-tweet-cleanup">cleanup before a job switch</a> works for dating too. Visit <a href="/">digital-footprint-health.shop</a> for a free on-device check that surfaces the red-tier posts first.</p>`,
+    faq: [
+      { q: "相亲前一定要清旧推文吗？", a: "不是必须，但值得。清理的目的是去掉最容易被误解的三类内容，让你在第一次被翻看时少点被动，而不是伪造一个空白账号。", qEn: "Do I have to clean before a date?", aEn: "Not required, but worth it. The point is to remove the three most misunderstood types so you are less exposed when first scrolled, not to fake a blank account." },
+      { q: "中文账号和英文账号要分开清吗？", a: "建议分开。两者受众和风险点不同，按各自规则评估更清楚，也能避免漏掉中文特有的暴露点，比如共同好友链和群聊转发。", qEn: "Should I clean Chinese and English accounts separately?", aEn: "Recommended. Their audiences and risk points differ, so evaluating each by its own rules is clearer and catches Chinese-specific exposure like mutual-friend chains and group forwards." },
+      { q: "全删光会不会显得假？", a: "会。零历史的账号看起来像修饰过或假号。保留美食、旅行、爱好这类正常内容，反而让你显得真实可信。", qEn: "Does deleting everything look fake?", aEn: "Yes. A zero-history profile reads as edited or fake. Keeping normal posts about food, trips, and hobbies makes you look genuine." },
+      { q: "前任相关内容最该先删哪些？", a: "带具体人名、地点、时间的情绪化内容最该先删，其次是能让人对上共同好友的暗示。纯观点吐槽反而风险低一些。", qEn: "Which ex-related posts to delete first?", aEn: "Delete emotional posts with specific names, places, or times first, then hints that let people match mutual friends. Plain opinion rants are lower risk." }
+    ],
+},
+{
+    slug: "china-pipl-right-to-erasure-2026",
+    title: "中国个保法下的被遗忘权：你的旧推文能要求平台删除吗",
+    excerpt: "《个人信息保护法》赋予了「删除权」，但它在社交平台旧推文上怎么落地，很多人搞不清。本文讲清楚个保法删除权的边界、X 这类境外平台的实际响应，以及你自己能做的清理动作。",
+    date: "2026-10-24",
+    updatedAt: "2026-10-24",
+    author: "Digital Footprint Health Team",
+    category: "合规与法律",
+    tags: ["个保法", "删除权", "合规", "X 平台"],
+    canonical: "/blog/china-pipl-right-to-erasure-2026",
+    titleEn: "China's PIPL Right to Erasure: Can You Force X to Delete Old Tweets?",
+    excerptEn: "China's Personal Information Protection Law grants a deletion right, but how it applies to old social posts is unclear to most people. This piece explains the limits of that right, how platforms like X actually respond, and what cleanup you can do yourself.",
+    categoryEn: "Compliance",
+    tagsEn: ["PIPL", "right to erasure", "compliance", "X platform"],
+    content: `<p>《个人信息保护法》（个保法）自 2021 年施行后，很多人以为：只要我不想要某条旧推文了，就能依据「删除权」要求平台删掉。现实比这复杂。本文把删除权在旧推文场景下的边界讲清楚。</p>
+
+<h2>个保法删除权到底是什么</h2>
+<p>个保法第 47 条列了几类平台「应当主动删除」的情形，也赋予个人在法定情形下请求删除的权利。它针对的是「个人信息处理者」对其处理的个人信息。关键点在于：你发在 X 上的内容，处理者是 X，而 X 是一家境外公司，这直接带来管辖与执行的难题。</p>
+
+<h2>一个常见误解：删除权不是万能橡皮擦</h2>
+<p>很多人把删除权理解成「我说删就得删」。但法律条文本身有前提和例外，平台也有自己的内容保留政策。已公开的内容、被他人转发的内容、进入了备份的内容，都不一定随一次请求就消失。理解这一点，才不会在出事时高估法律的即时效力。</p>
+
+<p>还有一层常被忽略：个保法的删除权，默认针对「你主动提供的个人信息」，但推文一旦发出，就已经进入公开传播，性质就变了。平台、转发者、搜索引擎都在各自处理这份数据，你能主张的删除范围，比「我发的我就能删」要窄得多。</p>
+
+<h2>境外平台的现实响应</h2>
+<p>理论上，你可以向 X 提交删除请求。但实践中，X 的服务器、运营主体和合规体系都在境外，境内监管对它直接施力的通道有限。多数情况下，平台会按自己的规则处理，而不是按个保法的具体条款逐条执行。换句话说，法律给了你请求权，但跨境执行的确定性并不高。还要分清「删除」和「抹除」：平台可能在主视图标记删除，但副本仍留在备份、搜索引擎缓存和他人的归档里。个保法要求处理者删除，却没法把第三方的每一份拷贝都拽回来。</p>
+
+<h2>与其等平台，不如自己清</h2>
+<p>对普通用户来说，最可靠的「删除」其实是自己动手。X 允许你删除自己的推文，配合数据归档，你能碰到界面之外更早的历史。关于归档怎么拿，见 <a href="/blog/how-to-download-x-archive">如何下载 X 归档</a>；关于按条件批量删除，见 <a href="/blog/delete-tweets-by-keyword">按关键词删除</a> 和 <a href="/blog/delete-tweets-by-date">按日期删除</a>。</p>
+
+<h2>什么时候该认真走法律路径</h2>
+<p>如果你认为某条内容涉及违法处理、或被用于侵害你的权益，且平台不作为，个保法框架下的投诉与举报仍是可选手段，尤其当内容涉及敏感个人信息时。但这类路径成本较高，更适合确有权责争议的情形，而不是日常「想清掉旧 tweet」的需求。</p>
+
+<h2>把主动权拿回来</h2>
+<p>法律是底线，不是日常工具。想让旧推文按你的意愿消失，最稳妥的还是自己清理。访问 <a href="/">digital-footprint-health.shop</a> 跑一次本机体检，先把红档内容挑出来删掉，别把主动权完全交给平台的响应速度。</p>`,
+    contentEn: `<p>Since China's Personal Information Protection Law (PIPL) took effect in 2021, many people assume that if they no longer want an old tweet, they can simply invoke the "right to deletion" and force the platform to remove it. Reality is more complicated. This piece clarifies where that right actually stops when it comes to old social posts.</p>
+
+<h2>What the PIPL deletion right actually is</h2>
+<p>Article 47 of PIPL lists situations where a platform should delete on its own initiative, and it gives individuals the right to request deletion in statutory cases. The right targets the "personal information processor" and the information it processes. The key issue: the content you post on X is processed by X, an overseas company, which immediately raises questions of jurisdiction and enforcement.</p>
+
+<h2>A common misunderstanding: deletion is not a magic eraser</h2>
+<p>Many read the deletion right as "if I say delete, it must be deleted." But the law has conditions and exceptions, and platforms keep their own retention policies. Content already public, content reposted by others, and content inside backups may not vanish after one request. Understanding this stops you from over-estimating how fast the law works when something actually goes wrong.</p>
+
+<p>There is one more layer often missed: PIPL's deletion right targets the personal information you actively provided, but once a tweet is posted it enters public circulation and its nature changes. The platform, the reposter, and the search engine each process that data, and the scope you can demand deletion for is far narrower than the simple idea that what you posted is yours to erase.</p>
+
+<h2>How overseas platforms actually respond</h2>
+<p>In theory you can submit a deletion request to X. In practice, X's servers, operating entities, and compliance systems are outside China, so domestic regulators have limited direct reach. In most cases the platform handles the request by its own rules rather than applying PIPL clause by clause. In other words, the law gives you the right to ask, but cross-border enforcement is far from certain. There is also a gap between deleting and erasing. A platform may mark content as deleted in its main view while copies persist in backups, search engine caches, and other users' archives. PIPL asks processors to delete, but it cannot pull every copy back from every third party.</p>
+
+<h2>Clean it yourself instead of waiting</h2>
+<p>For ordinary users, the most reliable deletion is the one you do yourself. X lets you delete your own tweets, and with your data archive you can reach history older than the interface shows. For how to get the archive, see <a href="/blog/how-to-download-x-archive">how to download your X archive</a>. For conditional bulk deletion, see <a href="/blog/delete-tweets-by-keyword">delete by keyword</a> and <a href="/blog/delete-tweets-by-date">delete by date</a>.</p>
+
+<h2>When the legal path is worth it</h2>
+<p>If you believe a post involves unlawful processing or is being used to harm your rights, and the platform does nothing, the complaint and reporting routes under PIPL remain an option, especially when sensitive personal information is involved. But these paths cost more and fit clear rights disputes better than the everyday wish to clear old tweets.</p>
+
+<h2>Take the control back</h2>
+<p>The law is a floor, not a daily tool. If you want old tweets gone on your terms, the steadiest route is still to clean them yourself. Visit <a href="/">digital-footprint-health.shop</a> and run a free on-device check, surface the red-tier posts first, and delete them, instead of handing all the initiative to the platform's response speed.</p>`,
+    faq: [
+      { q: "个保法能强制 X 删我的旧推文吗？", a: "不能直接强制。个保法针对的是境内的个人信息处理者，而 X 是境外公司，跨境管辖和执行的确定性都不高。法律给你请求权，但不保证平台一定按条款执行。", qEn: "Can PIPL force X to delete my old tweets?", aEn: "Not directly. PIPL targets domestic processors, while X is an overseas company, so cross-border jurisdiction and enforcement are uncertain. The law gives you the right to ask, not a guarantee the platform complies clause by clause." },
+      { q: "向 X 提交删除请求有用吗？", a: "有一定作用，但别高估。平台会按自己的规则处理，可能标记删除，却不一定把备份、缓存和他人归档里的副本都清掉。把它当作减损手段，而非彻底清除。", qEn: "Does submitting a deletion request to X help?", aEn: "It helps somewhat, but do not over-estimate it. The platform handles it by its own rules and may mark content deleted without removing copies in backups, caches, and others' archives. Treat it as damage control, not a full erase." },
+      { q: "删除权适用于被转发的旧内容吗？", a: "很难。一旦内容被他人转发，处理者就不只是 X 一家，删除权无法把每一份副本都拽回来。所以真正可控的清理，仍以你自己账号里的内容为主。", qEn: "Does the deletion right cover reposted content?", aEn: "Hardly. Once reposted, X is not the only processor, and the right cannot pull every copy back. The cleanup you actually control stays the content on your own account." },
+      { q: "自己删和走法律哪个更靠谱？", a: "日常清理自己删最稳。法律路径成本高、周期长，只适合确有权责争议的情形，比如内容涉及违法处理或敏感个人信息被滥用。", qEn: "Self-delete or legal route, which is more reliable?", aEn: "For daily cleanup, self-delete is steadiest. The legal route costs more and takes longer, and fits clear rights disputes such as unlawful processing or misuse of sensitive personal information." }
+    ],
+},
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

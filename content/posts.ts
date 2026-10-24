@@ -28133,6 +28133,278 @@ rl.on('close', () =&gt; {
       { q: "自己删和走法律哪个更靠谱？", a: "日常清理自己删最稳。法律路径成本高、周期长，只适合确有权责争议的情形，比如内容涉及违法处理或敏感个人信息被滥用。", qEn: "Self-delete or legal route, which is more reliable?", aEn: "For daily cleanup, self-delete is steadiest. The legal route costs more and takes longer, and fits clear rights disputes such as unlawful processing or misuse of sensitive personal information." }
     ],
 },
+  {
+    slug: 'email-leak-in-old-tweets-consequences',
+    title: '旧推文泄露邮箱地址，后果比你以为的更严重',
+    excerpt: `很多人只盯着手机号，却忘了旧推文里那一串邮箱地址。邮箱一旦泄露，会沿着钓鱼、撞库、定向人肉三条线扩散，而且很难从网上彻底消失。本文拆解后果与应对。`,
+    date: '2026-10-25',
+    updatedAt: '2026-10-25',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '邮箱泄露', '隐私风险', '账号安全', '旧推文'],
+    content: `<p>很多人以为，只要不把手机号发在推文里就安全了。真正被用来攻击你的，往往是一串看起来无害的邮箱地址。它藏在多年前的抽奖转发里、活动报名的留言里、那句“私信我邮箱”的回复里，甚至你举着名片自拍的照片里。很多人直到账号被盗，才想起自己多年前那条抽奖推文。</p>
+
+<h2>为什么旧推文里会留下邮箱</h2>
+<p>早期玩 X（Twitter）时，大家习惯把邮箱直接写进正文：参与抽奖要留邮箱、找合作要留邮箱、做邮件订阅也要留邮箱。这些推文一旦发出，就会进入搜索引擎和各类归档，多年后仍然能被翻出来。更隐蔽的是图片，名片、工牌、活动签到表上的邮箱比正文更难被发现，也更难清理。</p>
+
+<h2>邮箱泄露后会发生什么</h2>
+<p>邮箱地址本身不像手机号那样能直接打电话骚扰你，但它是互联网账号的通用钥匙。一旦泄露，麻烦会沿着三条线扩散：</p>
+<ul>
+  <li><strong>钓鱼邮件暴增</strong>：你的邮箱会进入各种泄露库，随后收到伪造账单、快递、银行通知的钓鱼邮件。</li>
+  <li><strong>撞库攻击</strong>：多数网站用邮箱作为登录名，攻击者拿邮箱去别的平台试密码，一旦你重复使用密码就会中招。</li>
+  <li><strong>定向人肉</strong>：结合你推文里的其他信息，攻击者能把“邮箱加姓名加公司”拼成完整画像，用于敲诈或冒充。</li>
+</ul>
+<p>这三条线不是孤立的，它们会互相喂养：泄露的邮箱催生钓鱼邮件，钓鱼骗到密码，密码又打开另一个账号、泄露更多数据。切断其中任意一环，整条链都会变短，所以邮箱本身值得第一层防护。</p>
+
+<h2>泄露邮箱与泄露手机号：风险对比</h2>
+<table>
+  <thead><tr><th>对比项</th><th>邮箱泄露</th><th>手机号泄露</th></tr></thead>
+  <tbody>
+    <tr><td>直接骚扰</td><td>垃圾邮件、钓鱼</td><td>电话骚扰、短信诈骗</td></tr>
+    <tr><td>账号风险</td><td>撞库、密码重置攻击</td><td>验证码拦截、SIM 换卡</td></tr>
+    <tr><td>清理难度</td><td>改邮箱或开拦截</td><td>需换号，成本更高</td></tr>
+    <tr><td>搜索可见</td><td>高，长期可检索</td><td>中，部分需数据库</td></tr>
+  </tbody>
+</table>
+
+<h2>怎么判断邮箱已经在外泄名单里</h2>
+<p>几个信号很直观：突然收到大量陌生发件人的邮件；收到“你账号异常”的钓鱼，但那个平台你从没注册过；或者在 Have I Been Pwned 这类服务里查到自己的邮箱。更重要的是，主动做一次<strong>数字足迹体检</strong>，把 X 归档里所有含邮箱的推文一次性找出来。</p>
+
+<h2>发现泄露后怎么办</h2>
+<p>第一步，给邮箱开启登录验证，并换掉所有复用该邮箱的密码。第二步，清理来源，把含邮箱的旧推文删掉或隐藏。具体怎么删，可以看我们的<a href="/blog/email-leak-in-tweets-fix">旧推文邮箱清理实操</a>；如果已经出现账号异常，按<a href="/blog/x-data-breach-response-steps">数据泄露应对步骤</a>处理。</p>
+
+<h2>为什么邮箱泄露比你想的更难消失</h2>
+<p>删掉原推文不等于邮箱从网上消失。搜索引擎的快照、第三方归档站、别人转发的截图，都会保留副本。攻击者甚至不需要原推文，只要一份旧的泄露库就能反复利用。真正管用的做法是让这个邮箱本身不再关键：启用独属于该邮箱的强密码、开启两步验证、对重要账号改用独立邮箱。清理旧推文能减少暴露面，但邮箱自身的防护才是根本。</p>
+
+<h2>一条完整的泄露链条长什么样</h2>
+<p>把时间线拉开，你能更清楚地看到邮箱是怎么从一条旧推文变成真实损失的。假设你在 2019 年转发过一个抽奖，按规则留了邮箱；2021 年那个抽奖站点被拖库，你的邮箱随之进入公开的泄露库；到了 2024 年，某个购物平台也发生泄露，攻击者拿着这批邮箱去批量撞库，而你恰好在这个平台复用了同一套密码，于是账号被盗。整条链的起点，就是七年前随手留的那串邮箱。</p>
+<p>更麻烦的是，攻击者还会做“拼接”。他们把你的邮箱、你推文里提到的公司、你常去的地点、你宠物的名字放在一起，就能伪装成熟人发起精准钓鱼。单独看每条信息都不起眼，组合起来却足以让同事或家人上当。这也是为什么清理旧推文的价值，不在于删掉某一句话，而在于切断这条可拼接的线索。</p>
+<p>还有一个常被忽略的点：邮箱一旦进过泄露库，就会在多个库之间流转。今天在一个论坛泄露库，明天被打包进另一个合集，你几乎无法追踪它去了哪里。所以与其指望“删掉源头就安全”，不如默认它已经扩散，把防护重心放在账号本身。</p>
+
+<h2>发现邮箱泄露后的处理清单</h2>
+<p>如果已经确认邮箱在外泄名单里，按这个顺序处理能把损失压到最低：</p>
+<ol>
+  <li>给这个邮箱开启两步验证，优先用验证器 App 而非短信。</li>
+  <li>把所有复用该邮箱登录的密码全部改掉，且彼此不重复。</li>
+  <li>打开邮箱的登录提醒，出现异地登录立刻处理。</li>
+  <li>把含该邮箱的旧推文删掉或隐藏，缩小被再次利用的源头。</li>
+  <li>留意银行、购物、社交账号的异常登录，发现被盗先冻结再找回。</li>
+</ol>
+<p>这几步里，改密码和开验证是根本，清理推文是收尾。顺序别反过来，否则刚清完帖，密码还被人拿着用，等于白忙。</p>
+
+<h2>用数字足迹体检定位所有邮箱痕迹</h2>
+<p>手工翻几百页推文不现实。<a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>会解析你的 X 数据归档，在本机扫描出每一条含邮箱、手机号、住址的推文，并给出 0 到 100 的健康评分。整个过程 100% 本机完成，数据不出你的电脑。先体检、再清理，比盲目删更安全。访问 <a href="/">digital-footprint-health.shop</a> 开始一次免费体检。</p>`,
+    canonical: '/blog/email-leak-in-old-tweets-consequences',
+    faq: [
+      { q: '旧推文里的邮箱为什么危险？', a: '邮箱是多数网站的登录名，泄露后会被用于钓鱼、撞库和定向人肉，而且很难从网上彻底消失。', qEn: `Why is an email in an old tweet dangerous?`, aEn: `Most sites use your email as the login. Once it leaks, attackers use it for phishing, credential stuffing, and targeted doxxing, and it is hard to erase from the web.` },
+      { q: '删掉原推文邮箱就安全了吗？', a: '不够。搜索引擎快照、第三方归档、他人转发的截图都会保留副本。真正有效的是给邮箱开启两步验证、使用独立强密码，再清理来源推文减少暴露面。', qEn: `Does deleting the tweet make me safe?`, aEn: `Not fully. Search snapshots, archives, and retweets keep copies. The real fix is enabling two step verification on the email, using a unique strong password, and then removing the source tweets to shrink your exposure.` },
+      { q: '怎么批量找出含邮箱的旧推文？', a: '手工翻几百页不现实。用数字足迹体检解析你的 X 归档，在本机一次性扫描出所有含邮箱、手机号、住址的推文并打分，数据不出电脑。', qEn: `How do I find every old tweet with my email?`, aEn: `Manually scrolling hundreds of pages is not realistic. A digital footprint check parses your X archive on your device and flags every tweet containing an email, phone, or address, scoring the risk. Your data never leaves the computer.` },
+      { q: '邮箱泄露和手机号泄露哪个更严重？', a: '取决于攻击方式。手机号直接带来电话和短信诈骗，邮箱则更易触发撞库和钓鱼邮件。两者都应清理，但邮箱自身的登录验证防护更关键。', qEn: `Is an email leak or a phone leak worse?`, aEn: `It depends on the attack. A phone leak brings calls and SMS scams; an email leak drives credential stuffing and phishing. Both should be cleaned, but protecting the email with login verification matters most.` },
+    ],
+    titleEn: 'What Happens When Your Email Leaks Through Old Tweets',
+    excerptEn: `People worry about phone numbers but forget the email addresses sitting in old tweets. Once an email leaks it drives phishing, credential stuffing, and targeted doxxing, and it is hard to erase. This post breaks down the consequences and what to do.`,
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'email leak', 'privacy risk', 'account security', 'old tweets'],
+    contentEn: `<p>Many people think hiding their phone number is enough. The real target is often an email address buried in an old giveaway retweet, an event signup comment, a "DM me your email" reply, or a photo of your business card. Most people only think about it after an account is taken, by which point the old giveaway tweet is long forgotten.</p>
+
+<h2>Why old tweets carry email addresses</h2>
+<p>In the early days of X (Twitter), people typed email addresses straight into posts: you needed one to enter a giveaway, to pitch a collaboration, or to join a mailing list. Once posted, that text lands in search engines and archives and stays findable for years. Worse are the images, business cards, badges, and event sign-in sheets where the email is far harder to spot and far harder to clean.</p>
+
+<h2>What happens after an email leaks</h2>
+<p>An email is not as directly annoying as a phone number, but it is the universal key to most online accounts. Once it leaks, the damage spreads along three lines:</p>
+<ul>
+  <li><strong>Phishing floods in</strong>: your address lands in leak databases, then you receive fake invoices, fake delivery notices, and fake bank alerts.</li>
+  <li><strong>Credential stuffing</strong>: most sites use the email as the login, so attackers try that email and your reused passwords on other platforms.</li>
+  <li><strong>Targeted doxxing</strong>: combined with other details from your tweets, an attacker assembles a full profile of name, email, and employer to extort or impersonate you.</li>
+</ul>
+
+<h2>Email leak vs phone leak: a comparison</h2>
+<table>
+  <thead><tr><th>Factor</th><th>Email leak</th><th>Phone leak</th></tr></thead>
+  <tbody>
+    <tr><td>Direct annoyance</td><td>Spam, phishing</td><td>Calls, SMS scams</td></tr>
+    <tr><td>Account risk</td><td>Stuffing, password reset abuse</td><td>Code interception, SIM swap</td></tr>
+    <tr><td>Cleanup cost</td><td>Change email, enable filtering</td><td>Change number, higher cost</td></tr>
+    <tr><td>Search visibility</td><td>High, long lived</td><td>Medium, needs databases</td></tr>
+  </tbody>
+</table>
+<p>The practical takeaway is that both leaks need cleanup, but the email deserves the stronger lock because it protects every account that uses it as the login. Start there, then deal with the phone.</p>
+
+<h2>How to tell your email is already in a leak list</h2>
+<p>A few signals are obvious: a sudden wave of mail from strangers, phishing that names a service you never signed up for, or a hit when you search your address on a service like Have I Been Pwned. The stronger move is to run a <strong>digital footprint check</strong> that scans your entire X archive and pulls out every tweet containing an email, phone, or address.</p>
+
+<h2>What to do once you find a leak</h2>
+<p>First, turn on login verification for the email and replace every password that reused it. Second, remove the source: delete or hide the old tweets that exposed it. For the deletion steps, see our <a href="/blog/email-leak-in-tweets-fix">guide to removing emails from old tweets</a>. If an account is already compromised, follow the <a href="/blog/x-data-breach-response-steps">data breach response steps</a>.</p>
+
+<h2>Why a leaked email refuses to disappear</h2>
+<p>Deleting the original tweet does not erase the email from the web. Search engine snapshots, third party archives, and other people's retweets all keep copies. An attacker does not even need the original post, just one old leak database to reuse forever. So the real defense is not "delete it all" but "make that email stop mattering": a unique strong password, two step verification, and a separate email for important accounts. Cleaning old tweets shrinks your exposure, but protecting the email itself is the foundation.</p>
+<p>If you want a simple rule, treat every email that has ever appeared in a public post as already exposed, then protect the account rather than chase the post. That mindset removes the false sense of safety that comes from deleting one tweet.</p>
+
+<h2>What a full leak chain looks like</h2>
+<p>Stretch the timeline and you can see how an email moves from one old tweet to real loss. Say you retweeted a giveaway in 2019 and dropped your email to enter. In 2021 that giveaway site was breached and your email landed in a public leak database. By 2024 another shopping platform is breached, attackers take the batch of emails and run credential stuffing against it, and you happened to reuse the same password there, so the account is taken. The start of the whole chain was the email you left casually seven years earlier.</p>
+<p>The harder problem is assembly. Attackers combine your email with the company you mentioned in tweets, the places you frequent, and your pet's name to impersonate someone you know in a precise phish. Each piece looks harmless alone, but together they are enough to fool a coworker or a family member. That is why cleaning old tweets matters less for deleting one sentence and more for cutting the assembled thread.</p>
+<p>One more point people miss: once an email enters a leak database, it travels between databases. Today it is in a forum breach, tomorrow it is bundled into another collection, and you can hardly track where it went. So instead of assuming "delete the source and I am safe," assume it has already spread and put the protection on the account itself.</p>
+
+<h2>A checklist after you find an email leak</h2>
+<p>If you have confirmed the email is in a leak list, work in this order to keep the damage small:</p>
+<ol>
+  <li>Turn on two step verification for that email, preferably an authenticator app over SMS.</li>
+  <li>Change every password that used the email to log in, and make them all different.</li>
+  <li>Switch on login alerts for the email so a sign in from a new place is flagged at once.</li>
+  <li>Delete or hide the old tweets that exposed the email to shrink the reuse source.</li>
+  <li>Watch bank, shopping, and social accounts for odd sign ins; if one is taken, freeze then recover.</li>
+</ol>
+<p>Of these steps, changing passwords and turning on verification are the foundation, and cleaning tweets is the cleanup. Do not reverse the order, or you clear the posts while the password is still in someone's hands, which is wasted effort.</p>
+
+<h2>Find every email trace with a footprint check</h2>
+<p>Scrolling through hundreds of pages by hand is not realistic. A <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> parses your X archive on your own device and flags every tweet with an email, phone, or address, then scores the risk from 0 to 100. The whole process runs 100% on your device, and your data never leaves your computer. Check first, then clean, which beats blind deletion. Visit <a href="/">digital-footprint-health.shop</a> to start a free check.</p>`,
+  },
+  {
+    slug: 'keep-old-tweets-legal-reasons-2026',
+    title: '什么时候不该删旧推文：法律与业务留痕的 5 个理由',
+    excerpt: `清理旧推文不是永远正确的选择。诉讼保全、税务与经营记录、首发证明、合同证据、监管留存，这五种情况反而应该保留。本文给出判断框架与脱敏建议。`,
+    date: '2026-10-25',
+    updatedAt: '2026-10-25',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['X/Twitter', '数据留存', '合规', '法律证据', '旧推文'],
+    content: `<p>隐私清理几乎成了默认动作，但“能删就删”并不适合所有场景。在某些法律和业务的节点上，旧推文反而是你的护身符。下面五种情况，建议先别急着删。</p>
+
+<h2>1. 诉讼保全与证据开示</h2>
+<p>只要牵扯到纠纷、仲裁或监管调查，相关账号的发言可能进入证据开示范围。这时候主动删除，轻则被要求说明，重则被认定为销毁证据。稳妥的做法是先把相关时间段的内容完整导出归档，再决定哪些可以公开、哪些该脱敏。</p>
+
+<h2>2. 税务与经营记录</h2>
+<p>如果你用 X 做业务推广、接单或招商，那些“成交喜报”“服务说明”“报价截图”本质上是经营记录。税务机关或合作方核账时，它们能证明收入来源与业务真实性。个体户尤其要注意，别把能佐账的推文清掉了。</p>
+
+<h2>3. 知识产权与首发证明</h2>
+<p>创意、文案、设计、产品的点子，第一次公开往往就在一条推文里。这条记录能作为“我先想到的、我先发布的”时间证据，在商标争议、抄袭纠纷里很有用。需要证明优先权时，原帖的时间戳比任何事后声明都硬。</p>
+
+<h2>4. 合同与沟通证据</h2>
+<p>很多合作是在公开或半公开对话里敲定的：报价、交付节点、责任划分。即便没有正式合同，这些对话也可能被认定为要约与承诺。保留它们，等于保留了一份低成本的沟通凭证。</p>
+
+<h2>5. 监管留存要求</h2>
+<p>部分行业（金融、医疗、教育相关）对沟通记录有最短留存年限。如果你在这些领域用 X 做客户触达，删得太干净反而可能踩到合规红线。先弄清楚所在行业的要求，再决定留存策略。</p>
+
+<h2>保留不等于裸奔：先脱敏再留</h2>
+<p>要留的是“事实与时间”，不是“隐私”。手机号、住址、邮箱、身份证这类信息，无论是否保留推文，都建议先清理或打码。需要留存证明时，用归档导出（含时间戳）比留公开帖更稳妥，也更好控制可见范围。关于删除权与合规边界，可对照 <a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求权</a>、<a href="/blog/china-pipl-right-to-erasure-2026">中国 PIPL 删除权</a> 与 <a href="/blog/social-media-data-retention-laws-2026">各国留存法律</a> 来判断。</p>
+
+<h2>一个实用的判断顺序</h2>
+<p>看到一条旧推文，先问三件事：它现在是否涉及未结纠纷？它是否承载税务或知识产权证明？它是否含必须留存的监管记录？只要命中一条，就先归档导出、暂不删除；都不命中，再按隐私风险决定清理。想系统梳理，可用 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a> 先把含敏感信息的推文挑出来。访问 <a href="/">digital-footprint-health.shop</a> 了解更多。</p>
+
+<h2>不同身份，留痕重点不同</h2>
+<p>留还是删，还要看你的身份。普通个人用户，优先保留能证明自己权益的记录，比如平台误封时的申诉凭证。个体户和小微企业，经营类、成交类推文要当成账外凭证来管，删之前先导出。如果你是受监管行业的从业者，先查行业最短留存年限，再决定公开帖的清理节奏，避免踩到合规红线。</p>
+<p>一个常被忽略的点是时间。越近的内容越可能与当前纠纷相关，保留价值越高；多年前的普通闲聊，若不涉隐私也无需刻意保留。按“近期优先留、历史按需清”来分档，比一刀切更高效。</p>`,
+    canonical: '/blog/keep-old-tweets-legal-reasons-2026',
+    faq: [
+      { q: '什么情况下绝对不能删旧推文？', a: '牵扯未结纠纷、作为税务或经营记录、需要证明首发或知识产权、承载合同证据、所在行业有强制留存要求时，建议先归档导出再决定，不要直接删。', qEn: `When should I absolutely not delete old tweets?`, aEn: `When they touch an open dispute, serve as tax or business records, prove first publication or IP, hold contract evidence, or fall under a mandatory industry retention rule, export and archive first instead of deleting.` },
+      { q: '保留旧推文会不会泄露隐私？', a: '会，如果里面含手机号、住址、邮箱等。保留的是事实与时间，敏感信息无论是否删帖都建议先打码或清理，用带时间戳的归档导出更可控。', qEn: `Does keeping old tweets leak privacy?`, aEn: `Yes, if they hold a phone, address, or email. Keep the fact and the timestamp; redact or clean sensitive data either way, and a timestamped export gives you more control.` },
+      { q: '个体户用 X 接单，推文算经营记录吗？', a: '算。成交喜报、服务说明、报价截图都能证明收入来源和业务真实性，税务或合作方核账时很有用，别轻易清掉。', qEn: `If I freelance on X, do tweets count as business records?`, aEn: `They do. Deal announcements, service notes, and price screenshots prove income source and business reality, useful for tax or client reconciliation, so avoid wiping them.` },
+      { q: '怎么在保留证明的同时降低风险？', a: '把相关推文完整导出归档（保留时间戳），公开帖里的手机号、邮箱等敏感字段先脱敏，再用归档而非公开帖作为凭证。', qEn: `How do I keep proof while lowering risk?`, aEn: `Export the relevant tweets in full with timestamps, redact sensitive fields like phone or email in public posts, and use the archive rather than the public post as your evidence.` },
+    ],
+    titleEn: 'When You Should Keep Old Tweets: 5 Legal and Business Reasons',
+    excerptEn: `Deleting old tweets is not always the right call. Litigation holds, tax and business records, proof of first publication, contract evidence, and regulatory retention are five cases where keeping them helps. This post gives a decision frame and redaction tips.`,
+    categoryEn: 'Compliance and Law',
+    tagsEn: ['X/Twitter', 'data retention', 'compliance', 'legal evidence', 'old tweets'],
+    contentEn: `<p>Privacy cleanup has become the default move, but "delete when you can" is not right for every situation. At certain legal and business moments, old tweets are actually your shield. Here are five cases where keeping them helps.</p>
+
+<h2>1. Litigation hold and discovery</h2>
+<p>Whenever a dispute, arbitration, or regulatory inquiry is involved, what an account posted can fall into discovery. Deleting on your own then ranges from having to explain yourself to being accused of destroying evidence. The safe path is to export the relevant period in full first, then decide what stays public and what gets redacted.</p>
+
+<h2>2. Tax and business records</h2>
+<p>If you use X for promotion, freelancing, or sales, those "deal closed" posts, service descriptions, and price screenshots are effectively business records. When tax authorities or clients reconcile accounts, they prove where income came from and that the business is real. Solo founders should be especially careful not to wipe posts that support the books.</p>
+
+<h2>3. Intellectual property and proof of first publication</h2>
+<p>An idea for copy, design, or product often appears first in a single tweet. That record serves as timestamped proof of "I thought of it and published it first," which helps in trademark fights and plagiarism claims. When priority matters, the original post's timestamp beats any later statement.</p>
+
+<h2>4. Contract and communication evidence</h2>
+<p>Many deals are settled in public or semi public threads: quotes, delivery dates, division of responsibility. Even without a formal contract, those exchanges can count as offer and acceptance. Keeping them is a low cost communication receipt.</p>
+
+<h2>5. Regulatory retention requirements</h2>
+<p>Some industries, finance, healthcare, education related, require a minimum retention period for communication records. If you use X to reach clients in those fields, deleting too cleanly can itself breach compliance. Learn the rules for your sector before setting a retention policy.</p>
+
+<h2>Keeping is not exposure: redact first</h2>
+<p>What you keep is the fact and the timestamp, not the privacy. Phone numbers, addresses, emails, and ID numbers should be cleaned or masked regardless of whether the tweet stays. For proof, an exported archive with timestamps beats a public post because you control who sees it. On the boundary between deletion rights and compliance, compare the <a href="/blog/gdpr-erasure-request-twitter">GDPR erasure right</a>, the <a href="/blog/china-pipl-right-to-erasure-2026">China PIPL erasure right</a>, and <a href="/blog/social-media-data-retention-laws-2026">retention laws by country</a>.</p>
+
+<h2>A practical order of questions</h2>
+<p>Before an old tweet, ask three things: is it tied to an open dispute, does it carry tax or IP proof, does it hold a required regulatory record? If any answer is yes, export and archive it but do not delete yet. If none apply, decide cleanup by privacy risk. To sort systematically, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> that flags the tweets holding sensitive data first. Visit <a href="/">digital-footprint-health.shop</a> to learn more.</p>
+
+<h2>Different roles, different retention focus</h2>
+<p>Whether to keep or delete also depends on who you are. An ordinary personal user should keep records that prove their own rights, such as the appeal evidence when a platform wrongly suspends an account. Solo founders and small businesses should treat deal and promotion posts like off book records and export them before any deletion. If you work in a regulated industry, check the minimum retention period first, then set the cleanup pace for public posts so you do not cross a compliance line.</p>
+<p>One overlooked point is timing. Recent content is more likely tied to an active dispute and worth keeping; old casual chatter from years ago, if it holds no privacy risk, need not be kept on purpose. Sort by "keep recent first, clear history as needed" rather than applying one rule to all.</p>`,
+  },
+  {
+    slug: 'old-tweets-phishing-social-engineering-2026',
+    title: '旧推文如何成为钓鱼和社会工程攻击的素材库',
+    excerpt: `攻击者不需要黑客技术，只要翻你的旧推文就能拼出一份钓鱼素材：雇主、同事、出差行程、宠物名字。本文讲清他们挖什么、怎么用，以及怎么降低被钓概率。`,
+    date: '2026-10-25',
+    updatedAt: '2026-10-25',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '钓鱼攻击', '社会工程', '账号安全', '旧推文'],
+    content: `<p>一通逼真的钓鱼之所以得手，多半是因为攻击者比你同事还了解你，而非技术有多高。素材就来自你自己几年前发的推文。本文拆开这条攻击链。</p>
+
+<h2>攻击者怎么用你的旧推文</h2>
+<p>社会工程的核心是“让受害者相信对方是自己人”。旧推文提供了大量可信细节：你供职的公司、合作的同事、常去的咖啡馆、刚出生的猫的名字。攻击者把这些拼起来，伪造一封“IT 部门”或“老板”的消息，你很难第一时间识破。</p>
+
+<h2>他们最爱挖的 5 类信息</h2>
+<ul>
+  <li><strong>雇主与同事</strong>：用来冒充内部人员发“账号异常”邮件，或伪造老板要求转账。</li>
+  <li><strong>出差与度假</strong>：你不在家的时段，是入室盗窃和“紧急联系”钓鱼的黄金窗口。</li>
+  <li><strong>宠物与子女名字</strong>：常作为密码提示或安全问题答案，直接降低撞库难度。</li>
+  <li><strong>生日与纪念日</strong>：用于生日福利钓鱼，或推算账号注册信息。</li>
+  <li><strong>常去地点</strong>：咖啡馆、健身房、公司楼下，方便伪造“偶遇”式熟络话术。</li>
+</ul>
+
+<h2>一次典型的钓鱼长什么样</h2>
+<p>攻击者看到你发过“在 A 公司做运营，最近在招人”，于是用伪造的 A 公司邮箱给你发“招聘系统升级，请点链接重设密码”。链接是钓鱼页，登录即被盗。这类手法和我们整理的 <a href="/blog/x-phishing-dm-scams">X 私信钓鱼骗局</a> 高度重合，区别只是素材来自你的历史推文。</p>
+
+<h2>怎么降低被钓概率</h2>
+<p>第一，给重要账号开启两步验证，钓鱼页拿到密码也进不去。第二，对“熟人”发来的链接先核对发件地址，别只看名字。第三，定期清理含个人信息的旧推文，缩小攻击者的素材库。具体防护可看 <a href="/blog/x-account-phishing-prevention-2026">X 账号钓鱼防范 2026</a>，万一中招按 <a href="/blog/recover-hacked-x-account-faq">被盗账号恢复 FAQ</a> 处理。</p>
+
+<h2>别只删，先看清暴露面</h2>
+<p>盲目删容易漏，也不可能删光所有历史。更稳的做法是先做一次<a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>，把含雇主、住址、生日等敏感信息的推文集中标出来，再分批处理。顺手把 SIM 换卡的隐患也排掉，参考 <a href="/blog/sim-swap-attack-x-account-lockout">SIM 换卡攻击锁定账号</a>。访问 <a href="/">digital-footprint-health.shop</a> 开始免费体检。</p>
+
+<h2>一个被拼出来的钓鱼案例</h2>
+<p>把上面的信息组合起来，攻击者能做出相当逼真的骗局。比如你曾发过“下周去上海出差，求推荐静安寺附近的咖啡”，又发过“我们公司用某协作工具”，攻击者便能以“上海分公司的同事”身份，发来“出差期间账号被锁，请点链接解封”的消息。地点、公司、出差状态全部对得上，你很容易信以为真。</p>
+<p>更隐蔽的是“慢热型”。对方先在正常话题下和你互动几天，建立熟悉感，再在某个节点抛出带链接的请求。这种不靠技术的手法，恰恰最难防，因为它利用的是你对“熟人”的信任，而不是系统漏洞。定期清理旧推文里的地点和公司信息，等于提前拆掉了这类素材。</p>`,
+    canonical: '/blog/old-tweets-phishing-social-engineering-2026',
+    faq: [
+      { q: '攻击者真的会翻好几年前的推文吗？', a: '会。旧推文长期可被搜索引擎和归档检索，而且包含大量“只有熟人知道”的细节，正好是社会工程最想要的素材。', qEn: `Do attackers really scroll tweets from years ago?`, aEn: `Yes. Old tweets stay searchable through engines and archives, and they hold the "only an insider would know" details that social engineering feeds on.` },
+      { q: '哪些旧推文信息最危险？', a: '雇主与同事、出差度假时间、宠物和子女名字、生日、常去地点。这些能用来伪造熟络话术或直接降低撞库难度。', qEn: `Which old tweet details are most dangerous?`, aEn: `Employer and coworkers, travel timing, pet and child names, birthdays, and frequent locations. These build a fake familiarity script or lower the bar for stuffing.` },
+      { q: '开了两步验证还能被钓吗？', a: '密码仍可能被盗，但攻击者拿不到第二步验证码，通常进不去重要账号。两步验证是性价比最高的兜底。', qEn: `Can I still be phished with two step verification on?`, aEn: `Your password can still be stolen, but without the second factor the attacker usually cannot enter important accounts. Two step verification is the highest value safety net.` },
+      { q: '怎么系统性清理这类暴露？', a: '先做数字足迹体检，把含雇主、住址、生日的推文集中标出，再分批处理；同时排掉 SIM 换卡隐患。不要指望一次删光。', qEn: `How do I clean this exposure systematically?`, aEn: `Run a digital footprint check to flag tweets with employer, address, and birthday in one pass, then handle them in batches, and close the SIM swap gap too. Do not expect one clean sweep.` },
+    ],
+    titleEn: 'How Old Tweets Feed Phishing and Social Engineering in 2026',
+    excerptEn: `Attackers do not need hacking skill. They scroll your old tweets and assemble a phishing kit: employer, coworkers, travel plans, pet names. This post covers what they mine, how they use it, and how to lower your odds.`,
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'phishing', 'social engineering', 'account security', 'old tweets'],
+    contentEn: `<p>A convincing phishing message often succeeds not because the attacker is skilled, but because they know you better than your coworkers do. The material comes from tweets you posted years ago. This post takes that attack chain apart.</p>
+
+<h2>How attackers use your old tweets</h2>
+<p>Social engineering is about making the victim trust the sender. Old tweets supply the believable details: your employer, the colleagues you named, the cafe you visit, the cat you just got. Attackers stitch these together into a fake "IT department" or "boss" message that is hard to spot at first glance.</p>
+
+<h2>The 5 types of info they mine</h2>
+<ul>
+  <li><strong>Employer and coworkers</strong>: used to impersonate insiders with "account issue" emails or fake boss payment requests.</li>
+  <li><strong>Travel and vacations</strong>: the window when you are away is prime time for burglary and "urgent contact" phishing.</li>
+  <li><strong>Pet and child names</strong>: often doubles as password hints or security question answers, lowering the bar for stuffing.</li>
+  <li><strong>Birthdays and anniversaries</strong>: used for birthday perk phishing or guessing signup details.</li>
+  <li><strong>Frequent locations</strong>: cafes, gyms, the office block, handy for a "ran into you" familiarity script.</li>
+</ul>
+
+<h2>What a typical phish looks like</h2>
+<p>An attacker sees you posted "I do ops at Company A and we are hiring," then sends a forged Company A email saying "the recruiting system upgraded, reset your password here." The link is a phishing page; logging in hands over the account. This mirrors the patterns in our <a href="/blog/x-phishing-dm-scams">X DM phishing scams</a> writeup, except the material comes from your history.</p>
+
+<h2>How to lower your odds</h2>
+<p>First, turn on two step verification for important accounts so a phished password still cannot get in. Second, check the sender address on any "familiar" link, not just the display name. Third, periodically clean old tweets that reveal personal details to shrink the attacker's material. For the prevention steps see <a href="/blog/x-account-phishing-prevention-2026">X account phishing prevention 2026</a>, and if you are hit, follow the <a href="/blog/recover-hacked-x-account-faq">hacked account recovery FAQ</a>.</p>
+
+<h2>Do not just delete, see the exposure first</h2>
+<p>Blind deletion misses things and can never erase all history. The steadier move is a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> that flags tweets holding employer, address, and birthday in one pass, then handle them in batches. While you are at it, close the SIM swap gap too, using <a href="/blog/sim-swap-attack-x-account-lockout">SIM swap account lockout</a> as a reference. Visit <a href="/">digital-footprint-health.shop</a> to start a free check.</p>
+
+<h2>A phish assembled from pieces</h2>
+<p>Combine the details above and an attacker can build a convincing scam. Suppose you once posted "Heading to Shanghai next week, any cafe near Jing'an Temple?" and also "Our team uses a certain collaboration tool." The attacker can then message you as "a colleague from the Shanghai office" saying "your account was locked while traveling, click to restore access." The location, company, and trip all line up, so you are far more likely to believe it.</p>
+<p>The subtler version is slow burn. The sender interacts with you in normal threads for a few days to build familiarity, then drops a link laden request at some point. This technique relies on no tooling, which is exactly why it is hard to defend: it exploits trust in a "familiar" person, not a system flaw. Cleaning location and company details from old tweets in advance takes that material away.</p>`,
+  }
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

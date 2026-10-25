@@ -28405,6 +28405,442 @@ rl.on('close', () =&gt; {
 <p>Combine the details above and an attacker can build a convincing scam. Suppose you once posted "Heading to Shanghai next week, any cafe near Jing'an Temple?" and also "Our team uses a certain collaboration tool." The attacker can then message you as "a colleague from the Shanghai office" saying "your account was locked while traveling, click to restore access." The location, company, and trip all line up, so you are far more likely to believe it.</p>
 <p>The subtler version is slow burn. The sender interacts with you in normal threads for a few days to build familiarity, then drops a link laden request at some point. This technique relies on no tooling, which is exactly why it is hard to defend: it exploits trust in a "familiar" person, not a system flaw. Cleaning location and company details from old tweets in advance takes that material away.</p>`,
   }
+,
+  {
+    slug: 'tweetdeleter-vs-tweetdelete-2026',
+    title: `TweetDeleter 与 TweetDelete 怎么选：2026 隐私向对比`,
+    excerpt: `两款被搜得最多的删推文工具是 TweetDeleter 和 TweetDelete。这篇并排拆解它们各自删什么、怎么保管你的账号与归档、收费与速度差在哪，以及本机方案适合谁。`,
+    date: '2026-10-26',
+    updatedAt: '2026-10-26',
+    author: 'Digital Footprint Health Team',
+    category: `竞品对比`,
+    tags: [`X/Twitter`, `删推文工具`, `TweetDeleter`, `TweetDelete`, `隐私对比`],
+    content: `
+<h2>两款工具各自解决什么问题</h2>
+<p>TweetDeleter 和 TweetDelete 都做同一件事的表层：帮你批量删掉旧推文。但它们的默认思路不一样。TweetDeleter 更偏向「持续托管」，你授权后它按条件（关键词、时间、互动量）长期自动清理，适合不想每次手动操作的人。TweetDelete 更偏向「一次性任务」，你设定一个时间窗口或条件，它跑完一轮就结束，适合只想清掉某段历史的人。</p>
+<p>这个差别决定了后面所有的对比。如果你要的是「设一次、长期省心」，前者更顺手；如果你要的是「把 2016 到 2020 的发疯记录清掉就完事」，后者更轻。</p>
+
+<h2>删除范围与上限</h2>
+<p>两者都受 X 官方 API 限制：只能删你授权账号下的推文，删不掉别人转你的内容，也删不掉已经被平台或你自己删除的。下面是实测层面的差异。</p>
+<table>
+<thead><tr><th>维度</th><th>TweetDeleter</th><th>TweetDelete</th></tr></thead>
+<tbody>
+<tr><td>按时间删除</td><td>支持，可设保留天数</td><td>支持，可设保留天数</td></tr>
+<tr><td>按关键词删除</td><td>支持</td><td>支持（付费档）</td></tr>
+<tr><td>按互动量删除</td><td>支持</td><td>不支持</td></tr>
+<tr><td>长期自动托管</td><td>核心卖点</td><td>有限</td></tr>
+<tr><td>删除速度</td><td>受 API 限流，约每分钟数十条</td><td>受 API 限流，约每分钟数十条</td></tr>
+</tbody>
+</table>
+<p>速度上两者都卡在 X 的 API 限流，没有谁明显更快。所以「谁删得快」基本是个伪命题，真正拉开差距的是删除条件的丰富度。</p>
+
+<h2>它们怎么保管你的凭证和数据</h2>
+<p>这是隐私对比里最该看的一栏。两款都需要你授权 X 账号（OAuth 或账号密码），授权后它们持有访问令牌，可以代表你删帖。问题在两点：令牌存多久、删帖过程中是否下载并保存你的推文。</p>
+<p>TweetDeleter 在托管模式下会周期性拉取你的时间线来判断哪些该删，这意味着你的历史推文会在它的服务器上短暂存在。TweetDelete 的一次性模式在跑完任务后通常会清除本地缓存，但你仍要确认它的隐私条款。无论选哪个，都要去账号设置里定期撤销不再使用的第三方授权，这和我们在 <a href="/blog/old-tweets-phishing-social-engineering-2026">旧推文钓鱼防范</a> 里提到的思路一致：少给第三方长期钥匙。</p>
+
+<h2>价格与速度</h2>
+<table>
+<thead><tr><th>档位</th><th>TweetDeleter</th><th>TweetDelete</th></tr></thead>
+<tbody>
+<tr><td>免费层</td><td>有限次数或 Trial</td><td>有限次数或 Trial</td></tr>
+<tr><td>月付</td><td>有，按功能档分级</td><td>有，按功能档分级</td></tr>
+<tr><td>年付</td><td>有</td><td>有</td></tr>
+<tr><td>按条计费</td><td>不是主模式</td><td>不是主模式</td></tr>
+</tbody>
+</table>
+<p>价格会随时间变动，这里只给结构：两款都是「免费试用 + 订阅」模型，真正能用的删除条件基本都在付费档。如果你只是偶尔清一次，先算清楚订阅周期，别为一次清理开年付。</p>
+
+<h2>哪种情况该选哪一个</h2>
+<ul>
+<li>想要长期自动清理、不在意第三方短期持有数据：TweetDeleter 更顺。</li>
+<li>只想清掉某段历史、用完即走：TweetDelete 更轻，记得任务后撤销授权。</li>
+<li>对「数据出境」敏感、连 OAuth 都不想给：往下看第三种方案。</li>
+</ul>
+
+<h2>一个从不碰你密码的替代方案</h2>
+<p>如果你嫌把账号交给第三方不踏实，还有一条路：先用 X 官方的「下载数据归档」拿到本机 ZIP，再在本机工具里分析哪些推文含手机号、住址、定位，手动或本地批量决定删留。整条链路数据不出你的电脑，令牌也不交给删帖服务。想先看自己暴露面有多大，可以跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>，它会把你归档里的高风险推文标出来。更多删帖条件对比见 <a href="/blog/tweet-deletion-tools-comparison-2026">主流删推文工具横向对比</a>。回到 <a href="/">digital-footprint-health.shop</a> 了解本机方案。</p>
+
+<h2>选之前先问自己三件事</h2>
+<p>第一，你要的是长期托管还是一次性清理？第二，你能接受第三方短期持有你的推文吗？第三，你愿意为这个功能付月费还是只想免费试一次？把这三题答完，两款工具谁更适合你基本就清楚了。</p>`,
+    canonical: '/blog/tweetdeleter-vs-tweetdelete-2026',
+    faq: [
+      { q: `TweetDeleter 和 TweetDelete 能删几年前的推文吗？`, a: `能，只要那些推文还在你账号下且未被删除。两款都靠 X API 按条件批量删，时间范围由你设定的保留天数或日期窗口决定，不受「发帖年份」限制。`, qEn: `Can TweetDeleter and TweetDelete delete tweets from years ago?`, aEn: `Yes, as long as the tweets are still on your account and not already removed. Both use the X API to bulk delete by condition, and the time range is set by the keep days or date window you pick, not by the year posted.` },
+      { q: `两款工具会保存我的 X 密码吗？`, a: `正规授权走 OAuth，工具拿到的是访问令牌而非明文密码；托管模式为持续清理会保留令牌并周期性拉取时间线，所以你的历史推文会在其服务器短暂存在。任务后记得去 X 设置撤销授权。`, qEn: `Do these tools keep my X password?`, aEn: `Proper authorization uses OAuth, so the tool gets an access token rather than your plain password. Managed mode keeps the token and pulls your timeline on a schedule, so your history briefly lives on its servers. Revoke the authorization in X settings after the job.` },
+      { q: `用它们删帖后，谷歌搜索还能看到吗？`, a: `删除会让 X 侧的公开内容消失，但搜索引擎和第三方归档可能有缓存副本，不会立刻消失。清完后再做一轮自身搜索结果排查更稳妥。`, qEn: `After deleting with them, can Google still show the tweets?`, aEn: `Deletion removes the public content on X, but search engines and third party archives may hold cached copies that do not vanish at once. A follow up sweep of your own search results after cleanup is the safer move.` },
+      { q: `哪个更便宜？`, a: `结构相同：免费试用加订阅，真正好用的删除条件多在付费档。偶尔清一次就别开年付；长期自动清理再比较月付档的功能差异。`, qEn: `Which is cheaper?`, aEn: `The structure is the same: free trial plus subscription, and the useful deletion conditions mostly sit behind paid tiers. Clean once and skip the annual plan; for ongoing auto cleanup compare what each monthly tier actually offers.` },
+      { q: `有没有不把账号交给第三方的办法？`, a: `有。用 X 官方下载数据归档拿到本机 ZIP，在本机工具里分析高风险推文后决定删留，数据不出电脑、也不给删帖服务令牌。`, qEn: `Is there a way without handing my account to a third party?`, aEn: `Yes. Use X official download your archive to get a local ZIP, analyze high risk tweets with an on device tool, then decide delete or keep. Data stays on your computer and no token goes to a deletion service.` },
+    ],
+    titleEn: `TweetDeleter vs TweetDelete in 2026: a privacy focused comparison`,
+    excerptEn: `Two of the most searched tweet deletion tools are TweetDeleter and TweetDelete. This side by side breaks down what each one deletes, how they handle your credentials and archive, where price and speed differ, and who an on device option fits.`,
+    categoryEn: `Competitor Comparison`,
+    tagsEn: [`X/Twitter`, `tweet deletion tool`, `TweetDeleter`, `TweetDelete`, `privacy`],
+    contentEn: `
+<h2>What each tool is built to do</h2>
+<p>TweetDeleter and TweetDelete both do the surface level job: bulk delete old tweets. Their default thinking differs. TweetDeleter leans toward ongoing托管 (managed cleanup): you authorize it, then it auto clears on conditions like keywords, age, and engagement, good for people who do not want to do it by hand each time. TweetDelete leans toward a one off task: you set a window or condition, it runs one pass and stops, good for people who just want a slice of history gone.</p>
+<p>That difference drives every other comparison. If you want set once and forget, the first fits. If you want 2016 to 2020 wiped and done, the second is lighter.</p>
+
+<h2>Deletion scope and limits</h2>
+<p>Both are bound by X's official API: they can only delete tweets under the account you authorize, not retweets of you, and not posts already removed. Here is the practical split.</p>
+<table>
+<thead><tr><th>Dimension</th><th>TweetDeleter</th><th>TweetDelete</th></tr></thead>
+<tbody>
+<tr><td>Delete by age</td><td>Yes, keep last N days</td><td>Yes, keep last N days</td></tr>
+<tr><td>Delete by keyword</td><td>Yes</td><td>Yes (paid tier)</td></tr>
+<tr><td>Delete by engagement</td><td>Yes</td><td>No</td></tr>
+<tr><td>Ongoing managed mode</td><td>Core feature</td><td>Limited</td></tr>
+<tr><td>Speed</td><td>API throttled, tens per minute</td><td>API throttled, tens per minute</td></tr>
+</tbody>
+</table>
+<p>On speed both are capped by X's rate limit, so neither is clearly faster. Who deletes quicker is mostly a fake question. The real gap is how many deletion conditions each supports.</p>
+
+<h2>How they hold your credentials and data</h2>
+<p>This is the column that matters most for privacy. Both need you to authorize the X account (OAuth or login), after which they hold an access token and can delete on your behalf. Two things to watch: how long the token is stored, and whether tweets are downloaded and kept during the job.</p>
+<p>In managed mode TweetDeleter periodically pulls your timeline to decide what to delete, which means your history briefly lives on its servers. TweetDelete's one off mode usually clears its local cache after the task, but you should still read its privacy terms. Either way, revoke third party authorizations you no longer use in your account settings. That lines up with the advice in our <a href="/blog/old-tweets-phishing-social-engineering-2026">old tweet phishing</a> piece: give third parties as few long lived keys as possible.</p>
+
+<h2>Price and speed</h2>
+<table>
+<thead><tr><th>Tier</th><th>TweetDeleter</th><th>TweetDelete</th></tr></thead>
+<tbody>
+<tr><td>Free</td><td>Limited trials</td><td>Limited trials</td></tr>
+<tr><td>Monthly</td><td>Yes, feature tiers</td><td>Yes, feature tiers</td></tr>
+<tr><td>Annual</td><td>Yes</td><td>Yes</td></tr>
+<tr><td>Per tweet</td><td>Not the main model</td><td>Not the main model</td></tr>
+</tbody>
+</table>
+<p>Prices move over time, so this is structure only: both run free trial plus subscription, and the deletion conditions you actually want sit behind paid tiers. If you clean once in a while, work out the subscription length before paying for a year.</p>
+
+<h2>Which one fits your situation</h2>
+<ul>
+<li>Want ongoing auto cleanup and do not mind third party short term holding: TweetDeleter fits.</li>
+<li>Want one slice of history gone and then walk away: TweetDelete is lighter, just revoke after the task.</li>
+<li>Sensitive about data leaving your control, will not even give OAuth: see the third option below.</li>
+</ul>
+
+<h2>The option that never touches your password</h2>
+<p>If handing the account to a third party feels wrong, there is another path: use X's official download your archive to get a local ZIP, then analyze on your own machine which tweets hold a phone number, address, or location, and decide delete or keep locally. The whole chain keeps data on your computer and gives no token to a deletion service. To see how exposed you are first, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a>, which flags the high risk tweets in your archive. For more condition comparisons see <a href="/blog/tweet-deletion-tools-comparison-2026">mainstream tweet deletion tools compared</a>. Visit <a href="/">digital-footprint-health.shop</a> to learn the on device approach.</p>
+
+<h2>What a real cleanup looks like on a 5,000 tweet account</h2>
+<p>Numbers make the difference concrete. Say your account holds 5,000 tweets going back eight years, mixed with job rants, travel photos, and replies you forgot. A managed tool can run a weekly pass that removes anything older than your keep window and matches your keyword list, so the backlog shrinks without you touching it. A one pass tool instead clears a date range, finishes, and stops. If your goal is a permanently tidy timeline, the managed model fits; if it is a one time scrub of a bad era, the single pass is enough.</p>
+<p>The catch is cost and exposure. A managed pass keeps pulling your timeline so it can judge what to delete, which means your older tweets sit on the vendor servers for the duration of the subscription. A one pass job downloads, decides, deletes, then clears its cache and walks away. Neither is wrong, but pick with eyes open about where your data travels, because that choice is the real privacy difference between the two tools.</p>
+
+<h2>Mistakes that quietly waste money</h2>
+<p>The first mistake is paying annual for a single cleanup. If you need one pass, a monthly plan you cancel beats a year you never use. The second is trusting a free tool that asks you to upload your archive to a web page, because that hands over every tweet you wrote, including the private ones. The third is assuming speed differs: both tools move at the X API pace, so paying more rarely buys faster deletion. Match the plan to the job and keep your archive local when privacy matters.</p>
+<p>A fourth mistake is forgetting to revoke access after a managed cleanup ends. The token that let the tool delete for you stays valid until you remove it, so make revoking third party access a step you do on the same day the cleanup finishes, not something you remember weeks later when a breach makes it urgent.</p>
+<p>A fifth mistake is skipping the backup. People delete first and realize too late they removed a tweet that proved an alibi or a first publication date. Export the official archive before any bulk delete so the originals are always recoverable, even if a mistake slips through the keyword filter.</p>
+
+<h2>Three questions before you choose</h2>
+<p>First, do you want managed cleanup or a one off? Second, can you accept a third party briefly holding your tweets? Third, will you pay monthly or just try free once? Answer those three and which tool fits becomes clear.</p>`
+  },
+  {
+    slug: 'chinese-users-choose-tweet-archive-tool-2026',
+    title: `中文用户怎么挑 X 归档与清理工具：一份对照清单`,
+    excerpt: `中文用户在选 X 归档和清理工具时，顾虑和英文用户不一样：语言、付款方式、数据是否出境、客服是否懂中文。这份清单帮你按自己的红线逐项打勾。`,
+    date: '2026-10-26',
+    updatedAt: '2026-10-26',
+    author: 'Digital Footprint Health Team',
+    category: `双语市场`,
+    tags: [`中文用户`, `X 归档`, `数据出境`, `隐私工具`, `选型`],
+    content: `
+<h2>为什么中文用户要单独看</h2>
+<p>很多英文评测默认读者用美元付款、客服是英文、服务器在美国。中文用户常卡在三处：支付不便、条款看不全、出问题找不到人。所以这封信不是比参数，而是比「你真正在意的红线」。</p>
+
+<h2>归档和清理的核心差异</h2>
+<p>先分清两件事。「归档」是把你的推文导出成本机文件，数据留在你手里；「清理」是删掉公开推文，动作发生在 X 服务器上。中文用户最该警惕的是：某些「一键清理」工具在删之前会先把你的归档上传到自家服务器，等于把隐私交了出去。优先选明确「本机处理」或「先下载官方归档再本地分析」的方案。</p>
+
+<h2>看哪几个指标</h2>
+<ul>
+<li><strong>数据是否出境</strong>：工具服务器在哪里？条款是否写明不留存？这是中文用户的第一红线。</li>
+<li><strong>语言与客服</strong>：界面和帮助的可用语言，出问题能否用中文沟通。</li>
+<li><strong>付款方式</strong>：是否支持你方便的渠道，避免为一次清理开长期订阅。</li>
+<li><strong>删除可逆性</strong>：删前是否有确认、能否导出备份，避免误删找不回。</li>
+</ul>
+
+<h2>隐私红线：数据出境</h2>
+<p>对「数据不出境」敏感的用户，最稳的路子是用 X 官方「下载数据归档」拿本机 ZIP，再在本地工具里解析。这样既拿到完整归档，又不把令牌交给第三方删帖服务。想先评估暴露面，可参考 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a> 的思路：先标出含手机号、住址的推文，再决定删留。中文场景下的合规背景也可看「中国个人信息保护法（PIPL）下的删除权」。</p>
+
+<h2>归档拿到手之后怎么用</h2>
+<p>很多用户导出归档就停了，其实归档是后续所有清理的起点。拿到本机 ZIP 后，可以先筛出含手机号、住址、精确日期的推文，做成一份「高风险清单」，再决定哪些删、哪些留。这样既不漏删，也不会因为一刀切把有用记录也清掉。想系统做这件事，思路同 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>：先定位，再处理。</p>
+
+<h2>三个常见误区</h2>
+<p>误区一：以为删了推文就等于删了数据。其实搜索引擎和第三方归档可能还有缓存，清完要做一轮自身搜索排查。误区二：认为免费工具一定更安全。免费但要求上传归档到网页，反而把全部历史交了出去。误区三：付年付图省事。偶尔清一次，月付随时退比年付灵活。回到 <a href="/">digital-footprint-health.shop</a> 看本机方案。</p>
+
+<h2>付费前先列需求</h2>
+<p>买任何付费档之前，先写下你真正要什么：一次性还是长期、要清多少条、数据能不能出境。拿这份清单去对照功能，别被营销话术带跑。多数一年只清一次的中文用户，其实只需要官方归档加本机体检，根本用不上海外订阅。</p>
+
+<h2>给中文用户的 3 条建议</h2>
+<p>第一，先看条款里「数据保留」一段，写「不留存」的优先。第二，别为省事把账号长期授权给托管式工具，清理完就撤销。第三，遇到要你上传归档到网页的「免费清理」，先问一句：我的数据去哪了？回到 <a href="/">digital-footprint-health.shop</a> 看本机方案。</p>`,
+    canonical: '/blog/chinese-users-choose-tweet-archive-tool-2026',
+    faq: [
+      { q: `中文用户选工具最该看什么？`, a: `第一是数据是否出境，第二是语言和客服能否用中文沟通，第三是付款是否方便。参数反而是次要的，因为很多工具功能相近。`, qEn: `What should Chinese users check first?`, aEn: `First whether data leaves the country, second whether language and support work in Chinese, third whether payment is convenient. Specs are secondary because many tools are similar in features.` },
+      { q: `「本机处理」和「上传网页清理」差在哪？`, a: `本机处理在你的电脑上解析归档，数据不出门；上传网页清理要把归档发到对方服务器，等于把隐私交出去。敏感用户优先本机。`, qEn: `What is the difference between on device and upload to web cleanup?`, aEn: `On device parses the archive on your computer, data stays local. Upload to web sends the archive to their server, which hands over your privacy. Sensitive users should prefer on device.` },
+      { q: `用美元订阅不方便，有替代吗？`, a: `有。先用 X 官方下载归档拿本机 ZIP，再配合本地工具分析删留，全程不依赖海外订阅。只偶尔清一次的用户尤其适合这条路。`, qEn: `I cannot easily pay in dollars, any alternative?`, aEn: `Yes. Use X official download archive for a local ZIP, then analyze delete or keep with a local tool, with no overseas subscription. This suits users who clean only once in a while.` },
+      { q: `清理前要不要先备份？`, a: `要。任何删除前都先导出归档备份，避免误删后找不到原文。本机归档 ZIP 就是现成的备份。`, qEn: `Should I back up before cleanup?`, aEn: `Yes. Export an archive backup before any deletion so a mistake is recoverable. The local archive ZIP is already a ready backup.` },
+    ],
+    titleEn: `How Chinese X users should pick an archive and cleanup tool: a checklist`,
+    excerptEn: `Chinese users weigh different things when picking an X archive and cleanup tool: language, payment, whether data leaves the country, and whether support speaks Chinese. This checklist helps you tick boxes against your own red lines.`,
+    categoryEn: `Bilingual Market`,
+    tagsEn: [`Chinese users`, `X archive`, `data export`, `privacy tool`, `selection`],
+    contentEn: `
+<h2>Why Chinese users should look separately</h2>
+<p>Many English reviews assume the reader pays in dollars, gets English support, and runs on US servers. Chinese users often stall on three points: awkward payment, incomplete terms, and no one to reach when something breaks. So this is not a spec fight, it is a red line fight.</p>
+
+<h2>The core split: archive vs cleanup</h2>
+<p>First separate two things. Archiving exports your tweets to a local file, data stays with you. Cleanup deletes public tweets, the action happens on X servers. The trap Chinese users should fear most: some one click cleanup tools upload your archive to their own servers before deleting, handing your privacy over. Prefer tools that state on device processing or download the official archive first and analyze locally.</p>
+
+<h2>Which metrics to check</h2>
+<ul>
+<li><strong>Does data leave the country</strong>: where are the tool servers, and do terms state no retention. This is the first red line for Chinese users.</li>
+<li><strong>Language and support</strong>: usable languages for UI and help, and whether you can communicate in Chinese when stuck.</li>
+<li><strong>Payment</strong>: supports a channel you use, so you are not forced into a long subscription for one cleanup.</li>
+<li><strong>Reversibility</strong>: confirmation before delete, and export backup so a mistake is recoverable.</li>
+</ul>
+
+<h2>Privacy red line: data export</h2>
+<p>For users sensitive about data staying local, the steadiest path is X official download your archive to get a local ZIP, then parse it with an on device tool. You keep the full archive and give no token to a third party deletion service. To size up exposure first, follow the logic in our <a href="/blog/what-is-digital-footprint-check">digital footprint check</a>: flag tweets with phone or address before deciding delete or keep. The compliance background for Chinese users is also in China's PIPL erasure right.</p>
+
+<h2>What to do after you have the archive</h2>
+<p>Many users export the archive and stop, but the archive is the start of every cleanup. Once you have the local ZIP, filter tweets with phone number, address, or exact dates into a high risk list, then decide delete or keep. That way you miss nothing and avoid wiping useful records with a blanket pass. To do this systematically, follow the logic in our <a href="/blog/what-is-digital-footprint-check">digital footprint check</a>: locate first, then act.</p>
+
+<h2>Three common myths</h2>
+<p>Myth one: deleting the tweet deletes the data. Search engines and third party archives may still hold caches, so sweep your own search results after cleanup. Myth two: free tools are safer. A free tool that asks you to upload the archive to a web page hands over your whole history. Myth three: annual plans save effort. For one cleanup, a monthly plan you cancel beats a year you never use. Visit <a href="/">digital-footprint-health.shop</a> for the on device option.</p>
+
+<h2>A quick check before you pay</h2>
+<p>Before any paid plan, write down what you actually need: one pass or ongoing, how many tweets, and whether data can leave your computer. Match the plan to that list instead of the marketing. Most Chinese users who clean once a year need only the official archive plus an on device check, with no overseas subscription at all.</p>
+
+<h2>Three tips for Chinese users</h2>
+<p>First, read the data retention clause in terms, prefer those that say no retention. Second, do not leave long lived authorization to a managed tool for convenience, revoke after cleanup. Third, when a free cleanup asks you to upload your archive to a web page, ask where your data goes. Visit <a href="/">digital-footprint-health.shop</a> for the on device option.</p>`
+  },
+  {
+    slug: 'chinese-market-x-deletion-tool-recommendations-2026',
+    title: `中文用户删推文工具推荐逻辑（不堆参数，看场景）`,
+    excerpt: `不列参数表，直接按你的情况对号入座：偶尔清一次、长期自动清、隐私极敏感、预算有限，四种场景对应不同选法。`,
+    date: '2026-10-26',
+    updatedAt: '2026-10-26',
+    author: 'Digital Footprint Health Team',
+    category: `双语市场`,
+    tags: [`中文用户`, `删推文`, `工具推荐`, `场景匹配`, `隐私`],
+    content: `
+<h2>中文场景的特殊性</h2>
+<p>中文用户常见的几类顾虑：支付用不惯海外订阅、怕数据传到境外服务器、希望有中文说明。所以推荐逻辑先看「你属于哪种使用方式」，再看工具。</p>
+
+<h2>按需求对号入座</h2>
+<ul>
+<li><strong>偶尔清一次</strong>：别开年付。用 X 官方下载归档，本机分析后手动或本地批量删，成本最低。</li>
+<li><strong>长期自动清</strong>：选支持托管模式的工具，但清理完定期去 X 设置撤销授权，减少第三方长期持钥。</li>
+<li><strong>隐私极敏感</strong>：只走「官方归档 + 本机解析」链路，不给任何删帖服务令牌。</li>
+<li><strong>预算有限</strong>：先用免费试用看清删除条件是否够用，再决定要不要付费档。</li>
+</ul>
+
+<h2>避坑清单</h2>
+<p>第一，警惕「免费一键清理」却要你上传归档到网页，先问数据去哪。第二，别被「每分钟删几千条」误导，X API 限流下两款都快不了多少。第三，删前一定导出备份。想系统排查暴露面，可先做 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>，把含手机号、住址的推文集中标出。中文合规背景见「中国个人信息保护法（PIPL）下的删除权」。更多工具横向对比看 <a href="/blog/tweet-deletion-tools-comparison-2026">主流删推文工具横向对比</a>。回到 <a href="/">digital-footprint-health.shop</a>。</p>
+
+<h2>具体怎么横向比工具</h2>
+<p>不堆参数，但有些维度值得摆在桌面上比：是否本机处理、是否支持中文界面、删除条件是否含关键词和互动量、能否先预览再删。把这几项列成两列，你手头的候选立刻分出高下，不必逐个看评测。</p>
+
+<h2>清完之后的收尾</h2>
+<p>删完不是结束。第一步，去 X 设置撤销刚才用过的第三方授权，别让令牌一直有效。第二步，做一轮自身搜索，看看还有没有缓存的旧帖露在外面。第三步，把官方归档 ZIP 留好，万一以后要证明某条首发时间还能用上。想先摸清暴露面，可做一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。更多工具对比看 <a href="/blog/tweet-deletion-tools-comparison-2026">主流删推文工具横向对比</a>。回到 <a href="/">digital-footprint-health.shop</a>。</p>
+
+<h2>给不同人群的速选</h2>
+<p>学生党：偶尔清，用官方归档加本机分析，零成本。职场人：怕旧帖影响形象，开短期托管但定期撤授权。出境敏感者：只走官方归档加本机解析，不给任何令牌。预算紧：先用免费档验证删除条件够不够，再决定付费。</p>
+
+<h2>一个简单的决策顺序</h2>
+<p>先问「我要长期还是一次性」，再问「数据能不能出境」，最后看「预算」。三题答完，该选哪种路基本自明，不必逐个比参数。</p>`,
+    canonical: '/blog/chinese-market-x-deletion-tool-recommendations-2026',
+    faq: [
+      { q: `预算有限该选哪种？`, a: `先用官方下载归档做本机分析，几乎零成本；确需自动化再开最短周期的付费档，别一上来就年付。`, qEn: `Tight budget, which to pick?`, aEn: `Start with the official download archive and on device analysis, near zero cost. Only move to automation on the shortest paid cycle if you truly need it, not annual up front.` },
+      { q: `长期自动清安全吗？`, a: `托管模式方便但有第三方持钥风险。清理完定期去 X 设置撤销授权，能明显降低风险。`, qEn: `Is long term auto cleanup safe?`, aEn: `Managed mode is convenient but carries third party key risk. Revoke authorization in X settings periodically after cleanup, and the risk drops sharply.` },
+      { q: `数据出境敏感怎么办？`, a: `只走官方归档加本机解析，不给删帖服务任何令牌，数据全程留在你电脑上。`, qEn: `Sensitive about data leaving the country?`, aEn: `Only use official archive plus on device parsing, give no token to deletion services, and keep data on your computer the whole time.` },
+      { q: `删前备份怎么做？`, a: `用 X 官方下载数据归档得到的 ZIP 就是完整备份，删之前先存好，误删可对照恢复。`, qEn: `How do I back up before deleting?`, aEn: `The ZIP from X official download your archive is a full backup. Save it before deleting so a mistake can be checked and recovered.` },
+    ],
+    titleEn: `How to pick a tweet deletion tool for Chinese users, by scenario not specs`,
+    excerptEn: `No spec table. Match your situation instead: clean once, auto clean long term, privacy extreme, or tight budget. Four scenarios map to four choices.`,
+    categoryEn: `Bilingual Market`,
+    tagsEn: [`Chinese users`, `tweet deletion`, `tool picks`, `scenario match`, `privacy`],
+    contentEn: `
+<h2>Why the Chinese scenario is special</h2>
+<p>Common worries for Chinese users: awkward overseas subscriptions, fear of data sent to foreign servers, and wanting Chinese instructions. So the pick logic starts with what kind of user you are, then the tool.</p>
+
+<h2>Match your need</h2>
+<ul>
+<li><strong>Clean once</strong>: skip annual plans. Use X official download archive, analyze locally, then delete manually or in a local batch. Lowest cost.</li>
+<li><strong>Auto clean long term</strong>: pick a tool with managed mode, but revoke authorization in X settings periodically after cleanup to cut third party long lived keys.</li>
+<li><strong>Privacy extreme</strong>: only the official archive plus on device parse chain, give no token to any deletion service.</li>
+<li><strong>Tight budget</strong>: try the free tier to see if deletion conditions are enough before paying.</li>
+</ul>
+
+<h2>Pitfall list</h2>
+<p>First, beware free one click cleanup that asks you to upload the archive to a web page, ask where data goes. Second, ignore claims of thousands deleted per minute, both tools are capped by X API throttling. Third, always export a backup before deleting. To map exposure systematically, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> that flags tweets with phone or address. The compliance background is in China's PIPL erasure right. For more tool comparisons see <a href="/blog/tweet-deletion-tools-comparison-2026">mainstream tweet deletion tools compared</a>. Visit <a href="/">digital-footprint-health.shop</a>.</p>
+
+<h2>How to compare tools side by side</h2>
+<p>No spec dump, but some angles deserve a place on the table: on device processing, Chinese UI, whether deletion conditions cover keyword and engagement, and whether you can preview before delete. Put these in two columns and your candidates sort themselves, without reading every review.</p>
+
+<h2>Wrap up after the cleanup</h2>
+<p>Deleting is not the end. Step one, revoke the third party authorization you just used in X settings, do not leave the token live. Step two, run a sweep of your own search results to see if cached old posts still show. Step three, keep the official archive ZIP, in case you later need to prove a first publication date. To map exposure first, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a>. For more tool comparisons see <a href="/blog/tweet-deletion-tools-comparison-2026">mainstream tweet deletion tools compared</a>. Visit <a href="/">digital-footprint-health.shop</a>.</p>
+
+<h2>Fast picks for different people</h2>
+<p>Students: clean once in a while, use the official archive plus on device analysis, near zero cost. Professionals: worry about old posts hurting their image, use short term managed mode but revoke often. Privacy strict: only official archive plus on device parse, give no token. Tight budget: try the free tier to confirm deletion conditions are enough before paying.</p>
+
+<h2>A note on free tiers</h2>
+<p>Free tiers are fine for a first look, but watch what they actually let you do. Some free tools only preview, then ask payment the moment you hit delete. Test the real deletion condition on a handful of harmless old tweets before trusting it with your whole history, so you learn the limits without risking anything you care about. If the free tier already covers keyword and age filters, you may not need to pay at all for a single cleanup.</p>
+
+<h2>A simple decision order</h2>
+<p>Ask long term or one off, then whether data can leave the country, then budget. Answer those three and which path fits becomes obvious without comparing specs one by one.</p>`
+  },
+  {
+    slug: 'delete-tweets-by-keyword-faq-2026',
+    title: `按关键词删除推文：5 个高频问答`,
+    excerpt: `想删掉所有带某个词或话题的推文？这篇用问答形式讲清按关键词删除能做什么、不能做什么、速度和坑在哪。`,
+    date: '2026-10-26',
+    updatedAt: '2026-10-26',
+    author: 'Digital Footprint Health Team',
+    category: `删除实操`,
+    tags: [`X/Twitter`, `按关键词删除`, `批量删除`, `FAQ`],
+    content: `
+<h2>先说结论</h2>
+<p>按关键词删除是批量清理里最实用的一种：你给一个词或短语，工具扫一遍你的推文，把命中的删掉。它适合清掉某段黑历史、某个旧项目名、或反复出现的隐私词。</p>
+
+<h2>常见问题</h2>
+<p><strong>问：能删含某个话题标签的推文吗？</strong><br>能，话题标签本质也是文本，只要它出现在推文正文里就能匹配。</p>
+<p><strong>问：删的时候会误伤吗？</strong><br>会，如果关键词太短或太常见（比如「我」「好」），会命中大量无关推文。关键词越长越具体，误伤越少。</p>
+<p><strong>问：速度有多快？</strong><br>卡在 X API 限流，通常每分钟几十到上百条，几千条老推文可能要跑十几分钟到几十分钟。</p>
+<p><strong>问：删完搜索引擎还有吗？</strong><br>X 侧公开内容会消失，但搜索引擎和第三方归档可能有缓存，不会立刻清除，需要额外做搜索结果排查。</p>
+<p><strong>问：删的时候能先预览吗？</strong><br>好工具会先列出命中推文让你确认，再执行删除。先预览能避免把想留的也删掉，尤其关键词偏短时更要看一眼清单。</p>
+
+<p><strong>问：删到一半断网了怎么办？</strong><br>已经删掉的不会回来，没删到的留着下次继续。用支持「暂停恢复」的工具能接着跑，不必从头再来。相关做法见 <a href="/blog/pause-resume-bulk-deletion-2026">暂停恢复批量删除</a>。</p>
+
+<p><strong>问：媒体图片会一起删吗？</strong><br>推文本体删除后，附带的图片链接失效，但 X 媒体库里可能还留着原图。要彻底清理媒体，得另走媒体删除流程，关键词删除只管正文。</p>
+
+<p><strong>问：能只删转推不删原创吗？</strong><br>可以，用「类型」筛选只选转推，再叠加关键词。这样能保住你写的原创，只清掉转发的噪音。</p>
+
+<p><strong>问：被封或锁定的账号能删吗？</strong><br>不能。账号被封时无法授权工具代操作，只能先从官方归档在本机清，等账号恢复后再走 API 删除。</p>
+
+<p><strong>问：删前要不要备份？</strong><br>要。先用官方下载归档存一份完整 ZIP，删错也能对照恢复。配合 <a href="/blog/delete-tweets-by-engagement">按互动量删除</a> 或 <a href="/blog/pause-resume-bulk-deletion-2026">暂停恢复批量删除</a> 能更稳地控制节奏。回到 <a href="/">digital-footprint-health.shop</a> 看本机方案。</p>`,
+    canonical: '/blog/delete-tweets-by-keyword-faq-2026',
+    faq: [
+      { q: `按关键词删除会删掉转推吗？`, a: `只会处理你账号下、正文命中关键词的推文；别人转你的内容不在你的删除权限内。`, qEn: `Does keyword delete remove retweets?`, aEn: `It only touches tweets under your account whose body matches. Retweets of you are outside your deletion rights.` },
+      { q: `关键词支持中文吗？`, a: `支持，中英文关键词都能匹配，前提是推文正文里确实含有该词。`, qEn: `Does keyword support Chinese?`, aEn: `Yes, both Chinese and English keywords match, as long as the word actually appears in the tweet body.` },
+      { q: `一次能删多少条？`, a: `没有硬性上限，但受 X API 限流，量大时要分批跑，中途可暂停恢复。`, qEn: `How many can I delete at once?`, aEn: `No hard cap, but X API throttling applies, so large volumes run in batches with pause and resume.` },
+      { q: `删错了能找回吗？`, a: `删前导出的官方归档 ZIP 是完整备份，可对照原文判断误删，但已删公开内容需重新发布才能恢复。`, qEn: `Can I recover a mistake?`, aEn: `The official archive ZIP exported before delete is a full backup to check against, but removed public content must be reposted to return.` },
+      { q: `关键词删除和按时间删除冲突吗？`, a: `不冲突，两者是独立的筛选条件，可以叠加使用，比如「2020 年以前且含某词」的推文。`, qEn: `Does keyword delete conflict with age delete?`, aEn: `No conflict, they are separate filters and can stack, for example tweets before 2020 that also contain a word.` },
+    ],
+    titleEn: `Delete tweets by keyword: 5 frequent questions`,
+    excerptEn: `Want to remove every tweet with a certain word or topic? This FAQ covers what keyword deletion can and cannot do, plus speed and pitfalls.`,
+    categoryEn: `Deletion Practice`,
+    tagsEn: [`X/Twitter`, `delete by keyword`, `bulk delete`, `FAQ`],
+    contentEn: `
+<h2>The short answer</h2>
+<p>Deleting by keyword is the most useful kind of bulk cleanup: you give a word or phrase, the tool scans your tweets, and removes the matches. It fits clearing a stretch of old history, an old project name, or a privacy word that keeps showing up.</p>
+
+<h2>Common questions</h2>
+<p><strong>Q: Can it delete tweets with a certain hashtag?</strong><br>Yes, a hashtag is text too, so if it appears in the tweet body it matches.</p>
+<p><strong>Q: Will it hit the wrong tweets?</strong><br>Yes, if the keyword is too short or too common (like me or good) it matches loads of unrelated tweets. Longer and more specific keywords cause less collateral damage.</p>
+<p><strong>Q: How fast is it?</strong><br>Capped by X API throttling, usually tens to a hundred plus per minute, so thousands of old tweets can take ten to forty minutes.</p>
+<p><strong>Q: Still show in search after delete?</strong><br>The public content on X disappears, but search engines and third party archives may keep caches that do not clear at once, so a separate search result sweep is needed.</p>
+<p><strong>Q: Can I preview before deleting?</strong><br>A good tool lists the matched tweets for confirmation before it deletes. Preview avoids removing posts you meant to keep, and matters more when the keyword is short.</p>
+
+<p><strong>Q: What if the connection drops mid delete?</strong><br>Tweets already deleted stay gone, the rest wait for next time. A tool with pause and resume picks up where it left off, no restart from zero. See <a href="/blog/pause-resume-bulk-deletion-2026">pause and resume bulk deletion</a> for the approach.</p>
+
+<p><strong>Q: Do attached images go too?</strong><br>When the tweet is removed its image links break, but the original may remain in the X media library. To clear media fully you need a separate media deletion step, keyword delete only handles the text body.</p>
+
+<p><strong>Q: Can I delete retweets but keep my own?</strong><br>Yes, filter by type to select only retweets, then add the keyword. That keeps your original writing and clears only the forwarded noise.</p>
+
+<p><strong>Q: Does it work on a suspended or locked account?</strong><br>No. If the account is suspended you cannot authorize a tool to act on it, so clear what you can from the official archive on your own, and wait for the account to be restored before any API based delete.</p>
+
+<p><strong>Q: How do I know it finished?</strong><br>A good tool shows a count of deleted versus scanned. After it stops, rerun a search in your archive for the same keyword; if matches remain, the tool may have hit a rate limit and you run another pass.</p>
+
+<p><strong>Q: Can I target a date range and a keyword together?</strong><br>Yes, most tools let you stack filters. For example keep tweets from before 2020 that also contain a certain name. Stacking narrows the hit set and cuts collateral damage.</p>
+
+<p><strong>Q: Will deleted tweets hurt my account standing?</strong><br>No, deleting your own tweets is a normal action and does not count against you. It only removes the public content, which is the point when you want less of your past visible.</p>
+
+<p><strong>Q: What about replies and mentions?</strong><br>Keyword delete touches your own replies and posts that contain the word. Mentions by other people are not yours to delete, so they stay unless you remove your own reply that triggered them.</p>
+
+<p><strong>Q: Back up before deleting?</strong><br>Yes. Download the official archive for a full ZIP first, so a mistake is recoverable. Pair it with <a href="/blog/delete-tweets-by-engagement">delete by engagement</a> or <a href="/blog/pause-resume-bulk-deletion-2026">pause and resume bulk deletion</a> to control the pace. Visit <a href="/">digital-footprint-health.shop</a> for the on device option.</p>`
+  },
+  {
+    slug: 'thanksgiving-2026-social-media-privacy',
+    title: `感恩节发帖前：先想清楚你暴露了什么`,
+    excerpt: `感恩节聚餐、旅行、家庭合影都是好素材，但定位、住址、家人信息一旦发出来，可能比你想的留得更久。这篇给节前节后的隐私清单。`,
+    date: '2026-10-26',
+    updatedAt: '2026-10-26',
+    author: 'Digital Footprint Health Team',
+    category: `行业与生态`,
+    tags: [`感恩节`, `社媒隐私`, `家庭合影`, `定位`, `节后清理`],
+    content: `
+<h2>节日发帖暴露了什么</h2>
+<p>一张聚餐照可能带定位，一段「终于到家」可能暴露你不在的空窗，一张全家福可能泄露家人长相和名字。单条看无害，连起来就是一份可被拼凑的画像。</p>
+
+<h2>家庭合影与定位</h2>
+<p>发全家福前，先想清楚：孩子的学校、家里的窗户、墙上的地址牌有没有入镜。定位默认开着时，聚会地点会直接标在地图上。建议发图前关掉定位，或用「事后发、不标实时地点」的方式。</p>
+
+<h2>购物与账号安全</h2>
+<p>节后大量促销链接和「下单成功」截图在流里飞，骗子也会借机发钓鱼私信。别点私信里的陌生链接，重要账号开两步验证。相关防护思路见 <a href="/blog/old-tweets-phishing-social-engineering-2026">旧推文如何成为钓鱼素材</a>。</p>
+
+<h2>节后清理清单</h2>
+<ul>
+<li>导出这一年含住址、定位、生日的高风险推文，统一评估。</li>
+<li>删掉标了实时定位的聚会照，尤其显示家中场景的。</li>
+<li>撤销不再使用的第三方授权，缩小攻击面。</li>
+<li>用 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a> 跑一遍，看哪些旧帖还挂着敏感信息。回到 <a href="/">digital-footprint-health.shop</a> 开始。</li>
+</ul>
+
+<h2>发图前的 30 秒检查</h2>
+<p>发之前花半分钟看三件事：背景里有没有窗户、门牌、学校标志；定位有没有误开；文案里有没有写出具体住址或行程空窗。三者任一命中，就先改图或改文案再发。这一点和 <a href="/blog/old-tweets-phishing-social-engineering-2026">旧推文如何成为钓鱼素材</a> 讲的逻辑一样：细节拼起来就是画像。</p>
+
+<h2>已经发错了怎么办</h2>
+<p>发现发错别慌。第一步立刻删掉那条，缩短暴露窗口。第二步检查同批照片还有没有类似线索。第三步过几天做一轮自身搜索，看看缓存里是否还挂着。想系统排查今年所有暴露点，可跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。回到 <a href="/">digital-footprint-health.shop</a> 开始。</p>
+
+<h2>给家人的一句话提醒</h2>
+<p>老人和孩子往往随手就发。把「发前看背景、关定位、不写住址」三句话存进家庭群，比事后清理省力得多。节前提醒一次，节后清一轮，习惯就养成了。</p>
+
+<h2>一个被忽略的时间差</h2>
+<p>你以为「过几天就沉了」的推文，其实一直在搜索引擎和归档里。节日热度退去后花十分钟做一轮清理，比事后被人翻出来成本低得多。</p>`,
+    canonical: '/blog/thanksgiving-2026-social-media-privacy',
+    faq: [
+      { q: `感恩节发全家福有什么风险？`, a: `可能无意拍到孩子学校、家中地址牌、窗户等线索，配合定位能拼出你的生活轨迹。发前先检查背景，关掉实时定位。`, qEn: `What is the risk of a Thanksgiving family photo?`, aEn: `You may accidentally capture the kids school, a home address plaque, or windows, and with location on it maps your routine. Check the background and turn off live location before posting.` },
+      { q: `节后为什么要清理旧推文？`, a: `假期高热度帖子沉淀在搜索和归档里，含定位或住址的内容长期可被拼凑。节后清一轮成本最低。`, qEn: `Why clean old tweets after the holiday?`, aEn: `High visibility holiday posts settle into search and archives, and location or address content stays assemblable long term. A sweep right after costs the least.` },
+      { q: `定位一定要关吗？`, a: `不是必须，但发家庭或在家场景时建议关。想标地点可用「事后补标城市」而非实时精确位置。`, qEn: `Must I turn off location?`, aEn: `Not mandatory, but for home or family scenes it is wise. If you want a place tag, add the city after the fact rather than a precise live spot.` },
+      { q: `怎么系统排查这一年的暴露？`, a: `先导出官方归档，再用本机工具标出含住址、生日、定位的推文统一处理，或跑一次 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a>。`, qEn: `How do I check this year exposure systematically?`, aEn: `Export the official archive, then use an on device tool to flag tweets with address, birthday, or location and handle them together, or run a digital footprint check.` },
+    ],
+    titleEn: `Before you post this Thanksgiving: what you are actually exposing`,
+    excerptEn: `Thanksgiving dinners, trips, and family photos make good posts, but location, home address, and family details can linger longer than you think. This is a pre and post holiday privacy checklist.`,
+    categoryEn: `Industry and Ecosystem`,
+    tagsEn: [`Thanksgiving`, `social media privacy`, `family photos`, `location`, `post holiday cleanup`],
+    contentEn: `
+<h2>What holiday posting exposes</h2>
+<p>A dinner photo may carry location. A finally home post may reveal the window you were away. A family portrait may leak relatives faces and names. Each alone looks harmless, together they form a profile someone can assemble.</p>
+
+<h2>Family photos and location</h2>
+<p>Before posting the group shot, ask: are the kids school, the window, the address plaque in frame? With location on by default, the gathering spot lands on a map. Turn off location before posting, or post after the fact without a live place tag.</p>
+
+<h2>Shopping and account security</h2>
+<p>After the holiday, promo links and order success screens flood the feed, and scammers ride the wave with phishing DMs. Do not click strange links in messages, and turn on two step verification for important accounts. The defense logic is in our <a href="/blog/old-tweets-phishing-social-engineering-2026">how old tweets feed phishing</a> piece.</p>
+
+<h2>Post holiday cleanup checklist</h2>
+<ul>
+<li>Export this year tweets with address, location, or birthday, and assess them together.</li>
+<li>Delete gathering photos tagged with live location, especially ones showing the home.</li>
+<li>Revoke third party authorizations you no longer use to shrink the attack surface.</li>
+<li>Run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a> to see which old posts still hang on to sensitive info. Visit <a href="/">digital-footprint-health.shop</a> to start.</li>
+</ul>
+
+<h2>A 30 second check before you post</h2>
+<p>Spend half a minute on three things: does the background show a window, a house number, or a school sign; is location on by mistake; does the caption spell out an address or an empty home window. If any hits, fix the image or caption before posting. This is the same logic as our <a href="/blog/old-tweets-phishing-social-engineering-2026">how old tweets feed phishing</a> piece: details add up to a profile.</p>
+
+<h2>What if you already posted wrong</h2>
+<p>Do not panic if you spot a mistake. First delete that post to shorten the exposure window. Second check the rest of the batch for similar clues. Third run a search sweep after a few days to see if caches still hang on. To map this year exposure systematically, run a <a href="/blog/what-is-digital-footprint-check">digital footprint check</a>. Visit <a href="/">digital-footprint-health.shop</a> to start.</p>
+
+<h2>One line for the family</h2>
+<p>Older relatives and kids often post without thinking. Save three lines in the family group: check the background, turn off location, never write the address. A reminder before the holiday and a sweep after beats cleaning up the mess later, and the habit sticks.</p>
+
+<h2>Why holidays attract more scrutiny</h2>
+<p>Holiday posts draw more attention from relatives, coworkers, and strangers alike, so a careless photo spreads faster and stays in more feeds. The same post that feels warm in the moment can be screenshotted and reused later, which is why a quick check before posting pays off far more during holidays than on an ordinary day.</p>
+
+<h2>Make the cleanup a habit, not a chore</h2>
+<p>One sweep a year will not undo years of loose posting, but a short review after each big event keeps the pile small. Set a reminder for the day after the holiday, run a footprint check, and clear the obvious exposures. Small regular passes beat a single panic cleanup when something goes wrong.</p>
+
+<h2>An overlooked time gap</h2>
+<p>Tweets you assume sank after a few days actually sit in search engines and archives. Spending ten minutes cleaning after the holiday buzz fades costs far less than being dug up later.</p>`
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

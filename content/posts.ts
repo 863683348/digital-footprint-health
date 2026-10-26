@@ -28841,7 +28841,372 @@ rl.on('close', () =&gt; {
 <h2>An overlooked time gap</h2>
 <p>Tweets you assume sank after a few days actually sit in search engines and archives. Spending ten minutes cleaning after the holiday buzz fades costs far less than being dug up later.</p>`
   },
-];
+{
+    slug: 'x-api-auth-deletion-scripts-2026',
+    title: '用 X API 写删除脚本：令牌、权限范围与刷新，一次讲清',
+    excerpt: '想用 X API 批量删旧推文，第一步往往卡在鉴权。本文讲清 bearer token、用户令牌、权限范围（scope）和刷新机制，并给出一个最小可运行示例，所有密钥都留在你自己的机器上。',
+    date: '2026-10-27',
+    updatedAt: '2026-10-27',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    tags: ['X API', '删除脚本', '令牌鉴权', '数据隐私', '本机处理'],
+    content: `<p>想批量删掉几年前的旧推文，很多人第一反应是去搜"删除脚本"，然后卡在第一步：怎么让脚本登录上你的 X 账号。官方 API 的鉴权看着吓人，其实就三件事：令牌从哪来、令牌能用多久、它能删什么。把这三件事弄明白，后面的删除逻辑反而是最简单的部分。</p>
+
+<h2>一、官方 API 能删什么，不能删什么</h2>
+<p>先说清楚限制，免得白忙活。X 的 API 对删除有硬性门槛：免费层（Free）基本拿不到删除权限，调删除接口会直接返回 403。要删推文，通常得用 Pro 或更高层级，并且走用户上下文授权。API 只能删你<strong>自己账号下</strong>的推文，不能删别人的，也不能删转推里别人写的内容。</p>
+<p>还有一条老限制经常被忽略：通过 API 一次最多处理你最近 3200 条推文范围内的内容。更早的历史，得先下载完整归档，再针对归档里的推文 ID 逐条操作。换句话说，归档和 API 是两套配合使用的工具：归档负责把老数据捞出来，API 负责按 ID 精准删除，不是二选一。</p>
+<p>这里有个实际影响：如果你账号有上万条推文，想清掉 2015 年的内容，光靠 API 翻页是翻不到的，必须先有归档。很多人以为写了脚本就能一把梭，结果卡在根本读不到那么老的数据，就是这个原因。</p>
+
+<h2>二、三种令牌，别拿错</h2>
+<p>鉴权的核心是"令牌"（token）。不同场景用不同的令牌，拿错了一定返回 401。</p>
+<table>
+<thead><tr><th>令牌类型</th><th>怎么来</th><th>能删推文吗</th><th>适合谁</th></tr></thead>
+<tbody>
+<tr><td>应用令牌（App-only Bearer）</td><td>开发者后台直接生成</td><td>不能</td><td>只读分析、查数据</td></tr>
+<tr><td>用户令牌（User Context，OAuth 1.0a）</td><td>用户授权后换取</td><td>能</td><td>删自己推文</td></tr>
+<tr><td>OAuth 2.0 用户上下文</td><td>授权码流程换取</td><td>能（需对应 scope）</td><td>新应用、网页端</td></tr>
+</tbody>
+</table>
+<p>如果你只是想删自己的旧推文，用"用户令牌"那条路最稳。应用令牌看着简单，但它只有应用的身份，没有你的身份，调删除接口会直接被拒。要区分也很简单：应用令牌通常以固定前缀开头且只跟在应用配置里；用户令牌是用户授权后换来的，和具体账号绑定。</p>
+
+<h2>三、权限范围（scope）怎么填才不会 401</h2>
+<p>OAuth 2.0 授权时要声明 scope。删推文需要 <code>tweet.read</code> 和 <code>tweet.write</code>，少一个都不行。很多人踩坑是把 read 写成了 readonly，或者漏了 write，结果授权成功了但一调删除就报错。这种错误特别烦：授权弹窗明明点了同意，代码却告诉你没权限。</p>
+<p>一个实用的做法：授权完成后，把返回的权限范围打印出来核对一遍，确认同时包含读和写，再开始写删除逻辑。这一步只要 30 秒，能省下后面一小时的排查。如果返回里只有 read 没有 write，回去重新走授权流程，别在代码里瞎改。</p>
+
+<h2>四、令牌会过期，刷新比重新申请更省事</h2>
+<p>用户令牌不是永久的。OAuth 1.0a 的令牌相对长效，能撑很久；但 OAuth 2.0 的 access token 通常几小时就过期，需要靠 refresh token 换新。把刷新逻辑写进脚本，比每次手动去后台重新授权要省心得多。</p>
+<p>但要注意两点。第一，refresh token 本身也要安全保存，它和 access token 一样敏感。第二，有些配置下刷新一次后旧 token 立即失效。所以脚本里建议先换到新 token、验证能用，再写回本地存储，避免刷新到一半崩了、新旧都没有的尴尬。</p>
+
+<h2>五、一个最小可运行示例</h2>
+<p>下面是一段思路（伪代码），重点看结构而不是某行语法。真实接口名和参数以官方文档为准。</p>
+<ul>
+<li>用本地存好的 refresh token 换 access token；</li>
+<li>读归档或数据库里的目标推文 ID 列表；</li>
+<li>在每小时限速内逐条调用删除接口；</li>
+<li>成功的记下来，失败的退避重试；</li>
+<li>全部跑完输出一份删除报告。</li>
+</ul>
+<p>限速是新手最容易翻车的地方。官方对每个接口有独立配额，删推文和读推文分开算。下面这张表是常见档位，具体数字以你账号层级为准：</p>
+<table>
+<thead><tr><th>操作</th><th>大致限速</th><th>超限后果</th></tr></thead>
+<tbody>
+<tr><td>读单条推文</td><td>每 15 分钟数百次</td><td>返回 429，需等待</td></tr>
+<tr><td>删除推文</td><td>每 15 分钟数十次</td><td>返回 429，需退避</td></tr>
+<tr><td>批量读时间线</td><td>更低频</td><td>容易被限流</td></tr>
+</tbody>
+</table>
+<p>建议每删一条之后 sleep 一小段，或者按返回头里的剩余配额动态调整速度，别一口气并发打满。并发越高不代表越快，反而更容易被限流导致整体更慢。</p>
+
+<h2>六、把密钥留在自己机器上</h2>
+<p>最后也是最重要的一点：令牌、refresh token、API key 全都只存在你本地，不要写进会公开分享的脚本，更不要提交到公开仓库。一个常见失误是把含密钥的脚本推到了 GitHub，几小时内就被机器人扫走滥用，账号直接被封。</p>
+<p>如果你不想自己折腾整套鉴权，也可以用本机运行的工具：上传 X 数据归档，在本地解析并标记要删的推文，再决定要不要走 API 删除。密钥始终不离开你的电脑，整体风险低很多。哪怕最后一步才用 API，前面的解析和筛选都在本地完成，敏感数据从不上传。</p>
+
+<h2>七、常见报错与应对</h2>
+<p>即便鉴权都正确，删推文时仍可能撞上几个固定报错。401 表示令牌失效或 scope 不对，先换令牌、再核对 scope。403 通常是层级不够，免费层调删除必现，得升级到 Pro 或更高。429 是触发限速，按返回头的剩余配额退避几秒再继续，别硬扛。把这三种报错和处理方式写进脚本日志，跑完一眼就能看出卡在哪。</p>
+<p>还有一个容易被忽略的点：删除接口偶尔会返回成功但推文还在。遇到这种情况，别立刻重试同一条，先单独查一下这条推文的状态，确认是真删了还是接口抖动。给脚本加一个删后核对的小步骤，比盲目重试更稳，也能避免同一条被反复打、把限速打满。</p>
+<p>关于 digital-footprint-health.shop：这是一个在本机运行的隐私体检工具，解析你的 X 归档生成风险清单，支持按条删除风险推文，全程数据不出本机。你可以在 <a href="/">首页</a> 了解工作原理，或到 <a href="/blog">博客</a> 看更多数据安全实践。</p>`,
+    canonical: '/blog/x-api-auth-deletion-scripts-2026',
+    faq: [
+      { q: '免费 X 账号能用 API 删推文吗？', a: '基本不能。删除接口需要 Pro 及以上层级的权限，免费层通常只能做只读操作，调删除会返回 403。', qEn: 'Can a free X account delete tweets through the API?', aEn: 'Almost never. The delete endpoint requires Pro or a higher tier; the Free tier is mostly read-only and returns 403 on delete.' },
+      { q: '应用令牌为什么删不了我的推文？', a: '应用令牌只有"应用身份"，没有"你的身份"。删推文必须走用户上下文授权拿到的用户令牌。', qEn: 'Why can an app token not delete my tweets?', aEn: 'An app token carries the app identity, not yours. Deletion requires a user-context token issued after you authorize.' },
+      { q: '为什么授权成功了还是 401？', a: '多半是 scope 漏了 tweet.write，或者 read/write 拼写和官方不一致。授权后打印 scope 核对即可。', qEn: 'Why do I still get 401 after a successful authorization?', aEn: 'Usually the scope is missing tweet.write, or read/write is misspelled versus the official names. Print the scope after auth to check.' },
+      { q: '令牌过期了必须手动重新授权吗？', a: 'OAuth 2.0 可以用 refresh token 自动换新；把刷新逻辑写进脚本就能免手动。OAuth 1.0a 的令牌相对长效。', qEn: 'Do I have to re-authorize by hand when a token expires?', aEn: 'OAuth 2.0 can renew automatically with a refresh token if you put the logic in the script. OAuth 1.0a tokens last much longer.' },
+      { q: '脚本里的密钥怎么存才安全？', a: '只放本地文件、不进版本库、不写进会分享的代码片段；用完的日志里也别打印明文令牌。', qEn: 'How should I store secrets used by the script?', aEn: 'Keep them in a local file only, never in version control or shared snippets, and do not print raw tokens in logs.' }
+    ],
+    titleEn: 'Writing a Tweet Deletion Script with the X API: Tokens, Scopes, and Refresh',
+    excerptEn: 'The first hurdle in scripting tweet deletion is authentication. This guide covers bearer tokens, user-context tokens, OAuth scopes, and refreshing, with a minimal working example. All secrets stay on your own machine.',
+    categoryEn: 'Technical',
+    tagsEn: ['X API', 'deletion script', 'token auth', 'data privacy', 'local processing'],
+    contentEn: `<p>If you want to bulk-delete years of old tweets, the first search result is usually a "deletion script," and the first thing people get stuck on is how to log that script into their X account. API auth looks intimidating, but it really comes down to three questions: where does the token come from, how long does it last, and what can it delete. Once those are clear, the deletion logic is the easy part.</p>
+
+<h2>What the API can and cannot delete</h2>
+<p>Let me set the limits up front so you do not waste effort. X's API has hard gates on deletion. The Free tier basically cannot get delete permission, and calling the delete endpoint returns 403. To remove tweets you usually need Pro or higher, with user-context authorization. The API only deletes tweets <strong>under your own account</strong> - not other people's, and not quoted snippets someone else wrote.</p>
+<p>There is also the old limit people forget: through the API you can only reach tweets within your most recent 3,200. For anything older, download the full archive first, then operate on the tweet IDs inside it. The archive and the API are two tools that work together: the archive pulls out the old data, the API deletes by ID. Not an either/or.</p>
+<p>Here is the practical catch: if your account has tens of thousands of tweets and you want to clear 2015 posts, API pagination alone will never reach that far. You need the archive first. A lot of people assume a script will just sweep everything, then get stuck because it literally cannot read data that old.</p>
+
+<h2>Three kinds of tokens, do not grab the wrong one</h2>
+<p>Auth centers on the token. Different flows issue different tokens, and the wrong one always returns 401.</p>
+<table>
+<thead><tr><th>Token type</th><th>How you get it</th><th>Can it delete?</th><th>Who it fits</th></tr></thead>
+<tbody>
+<tr><td>App-only Bearer</td><td>Generated in the developer console</td><td>No</td><td>Read-only analytics</td></tr>
+<tr><td>User Context (OAuth 1.0a)</td><td>Exchanged after user authorization</td><td>Yes</td><td>Deleting your own tweets</td></tr>
+<tr><td>OAuth 2.0 user context</td><td>Authorization-code flow</td><td>Yes (with the right scope)</td><td>New apps, web clients</td></tr>
+</tbody>
+</table>
+<p>If you just want to delete your own old tweets, the user-context path is the most reliable. The app-only token looks simpler, but it carries the app's identity, not yours, so the delete endpoint rejects it. The difference is easy to spot: an app token has a fixed prefix and lives only in app config, while a user token is bound to a specific account after authorization.</p>
+
+<h2>Scopes: how to avoid a 401</h2>
+<p>OAuth 2.0 asks you to declare a scope at authorization. Deleting tweets needs both <code>tweet.read</code> and <code>tweet.write</code>. Leave either out and you will authorize fine but fail the moment you call delete. A common slip is writing read as readonly, or dropping write entirely. It is an annoying error: the consent screen said yes, yet the code says no permission.</p>
+<p>One practical habit: after authorization, print the granted scope and confirm read and write are both there before writing any deletion code. It takes 30 seconds and saves an hour of debugging later. If the response has read but no write, go back through the auth flow again - do not hack around it in code.</p>
+
+<h2>Tokens expire, and refresh beats re-authorizing</h2>
+<p>User tokens are not forever. OAuth 1.0a tokens last a long time; OAuth 2.0 access tokens often expire in a few hours and need a refresh token to renew. Baking the refresh step into the script is far less annoying than re-authorizing by hand every time.</p>
+<p>Two caveats. First, store the refresh token safely - it is just as sensitive as the access token. Second, in some setups a refresh invalidates the old access token immediately. In the script, swap to the new token, verify it works, then write it back locally. Do not crash mid-refresh and lose both.</p>
+
+<h2>A minimal working example</h2>
+<p>Here is the shape of it (pseudocode); watch the structure rather than any one line. Real endpoint names follow the official docs.</p>
+<ul>
+<li>Exchange the stored refresh token for a fresh access token;</li>
+<li>Read the target tweet-ID list from your archive or database;</li>
+<li>Call the delete endpoint within the hourly rate limit;</li>
+<li>Log successes, retry failures with backoff;</li>
+<li>Emit a deletion report when done.</li>
+</ul>
+<p>Rate limits are where beginners trip. Each endpoint has its own quota, and delete and read are counted separately. The table below shows common tiers; your actual numbers depend on your account level:</p>
+<table>
+<thead><tr><th>Operation</th><th>Rough limit</th><th>Over-limit result</th></tr></thead>
+<tbody>
+<tr><td>Read one tweet</td><td>Hundreds per 15 min</td><td>429, must wait</td></tr>
+<tr><td>Delete a tweet</td><td>Tens per 15 min</td><td>429, must back off</td></tr>
+<tr><td>Bulk read timeline</td><td>Even lower</td><td>Likely throttled</td></tr>
+</tbody>
+</table>
+<p>Sleep briefly after each deletion, or adjust speed from the remaining-quota header, instead of firing requests in parallel. Higher concurrency does not mean faster; it tends to trip throttling and slow the whole run down.</p>
+
+<h2>Keep the secrets on your own machine</h2>
+<p>The most important point: tokens, refresh tokens, and API keys live only on your local disk. Do not paste them into a script you plan to share, and never commit them to a public repo. A frequent mistake is pushing a keyed script to GitHub, where bots scrape it within hours and the account gets banned.</p>
+<p>If you would rather not wire up the whole auth flow yourself, a local tool works too: upload your X archive, parse it on your machine, mark the tweets you want gone, then decide whether to delete through the API. The keys never leave your computer, which cuts the risk down a lot. Even if the last step uses the API, the parsing and filtering happen locally, so sensitive data is never uploaded.</p>
+
+<h2>Common errors and how to handle them</h2>
+<p>Even with auth sorted, you can still hit a few fixed errors when deleting. A 401 means the token expired or the scope is wrong: swap the token, then re-check the scope. A 403 usually means the tier is too low; the Free tier always fails on delete, so you need Pro or higher. A 429 means you hit the rate limit; back off a few seconds using the remaining-quota header instead of pushing through. Log these three errors and their handling, and you can see at a glance where the run got stuck.</p>
+<p>One more easily missed point: the delete endpoint sometimes returns success while the tweet is still there. When that happens, do not immediately retry the same tweet; query its status on its own to confirm whether it was really deleted or just a blip. Adding a verify-after-delete step to the script is steadier than blind retries, and it avoids hammering the same tweet and burning the whole rate budget.</p>
+<p>digital-footprint-health.shop is a privacy-check tool that runs on your own machine. It parses your X archive, builds a risk list, and lets you delete risky tweets one by one, with the data never leaving your computer. See <a href="/">the homepage</a> for how it works, or the <a href="/blog">blog</a> for more data-safety practices.</p>`,
+  },
+{
+    slug: 'encrypt-x-archive-locally-2026',
+    title: '把 X 归档加密存放在本机：普通人也能做的 5 步',
+    excerpt: '下载下来的 X 归档里全是你的私信、定位、手机号，直接扔在桌面等于把隐私摊开。本文用 5 步教你在本机把它加密，不依赖任何云端。',
+    date: '2026-10-27',
+    updatedAt: '2026-10-27',
+    author: 'Digital Footprint Health Team',
+    category: '技术进阶',
+    tags: ['X 归档', '本地加密', '数据备份', '隐私保护'],
+    content: `<p>下载完 X 归档，很多人顺手解压到桌面，然后就忘了。这个 ZIP 里装着你的私信、常去的位置、绑定的手机号，甚至通讯录。它不该跟你的其他文件平起平坐地躺在硬盘里。加密存放不是极客专利，普通人按下面 5 步也能做。</p>
+
+<h2>第一步：先验证归档没被改过</h2>
+<p>解压前，先核对文件大小和你下载时看到的是否一致。如果来源可疑，别急着解压。归档是个人隐私的集中地，第一步永远是确认它没在传输途中被掉包。如果你是从官方"下载数据"入口拿的，这一步基本可以跳过，但顺手看一眼总没坏处。</p>
+
+<h2>第二步：找一个本机加密工具</h2>
+<p>你不需要花钱买软件。系统自带的工具就够用：macOS 用磁盘工具建加密映像，Windows 用 BitLocker 或一个开源的本地加密小程序。关键是"本地"这两个字：工具在离线状态就能完成加密，不需要把文件传到某个服务器。如果某个工具要求你先把文件上传再加密，那就不是本地方案，慎用。</p>
+
+<h2>第三步：把解压后的文件夹整体放进加密容器</h2>
+<p>不要只加密某一个文件。归档展开后是几十个文件夹、几万个小文件，整体装进一个加密容器里，管理起来最省心。设一个你记得住、但又不是"123456"的口令。口令越长越杂越好，但前提是你能记住，否则加密容器本身就变成了你进不去的保险箱。</p>
+
+<h2>第四步：原始 ZIP 和明文副本就地删除</h2>
+<p>加密完成后，桌面上的原始 ZIP、解压出的明文文件夹都要删掉。只删进回收站不够，用系统提供的"安全擦除"或彻底删除，避免被恢复软件捡回去。很多人以为清空回收站就安全了，其实普通删除只是把文件标记为可覆盖，专业恢复工具照样能读出来。</p>
+
+<h2>第五步：备份加密容器到离线硬盘</h2>
+<p>加密容器本身也要有备份，但备份盘别一直插在电脑上。一块只存归档、平时断电收起来的移动硬盘，比"云盘同步"更不容易在账号被盗时一起沦陷。你可以每季度把最新的加密容器拷一份到这块盘，旧的不用删，多留几个版本反而更稳。</p>
+
+<h2>顺手做三件小事</h2>
+<p>除了上面 5 步，平时还能顺手降低风险。第一，归档下载完就立刻加密，别等会儿，等久了往往就忘在桌面。第二，给加密容器起个不起眼的名字，别叫 X 隐私归档，免得别人一眼看出价值。第三，旧设备卖掉或送修前，先确认里面没有遗留的明文归档副本，很多人栽在这步。</p>
+<p>如果你还没下载归档，或者想先看看里面到底有哪些隐私点，可以先用 digital-footprint-health.shop 在本机做一次体检：它只解析、不删除，也不会把你的数据上传。入口在 <a href="/">首页</a>，相关说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/encrypt-x-archive-locally-2026',
+    faq: [
+      { q: '加密归档会不会让以后没法搜索内容？', a: '会多一个打开步骤，但搜索照常。加密容器挂载后和普通文件夹一样用，只是多了一层口令保护。', qEn: 'Does encrypting the archive stop me from searching it later?', aEn: 'It adds one open step, but search still works. Once the container is mounted it behaves like a normal folder behind a passphrase.' },
+      { q: '一定要用付费软件吗？', a: '不需要。macOS 磁盘工具、Windows BitLocker 都是系统自带，离线就能用。', qEn: 'Do I need paid software?', aEn: 'No. macOS Disk Utility and Windows BitLocker ship with the OS and work offline.' },
+      { q: '云盘同步加密容器安全吗？', a: '比明文同步安全，但仍建议有一份离线备份，防账号整体被盗时一起丢失。', qEn: 'Is syncing the encrypted container to the cloud safe?', aEn: 'Safer than syncing plaintext, but keep an offline copy too, in case the whole account is breached.' },
+      { q: '删掉的明文还能被恢复吗？', a: '普通删除可能被恢复软件捡回，所以用安全擦除或彻底删除，而不是只清空回收站。', qEn: 'Can deleted plaintext be recovered?', aEn: 'A normal delete can be recovered by forensic tools, so use secure erase rather than just emptying the bin.' }
+    ],
+    titleEn: 'Encrypting Your X Archive Locally: A 5-Step Guide Anyone Can Follow',
+    excerptEn: 'Your X archive holds DMs, locations, and phone numbers. Leaving it on the desktop is like leaving your privacy open. Five steps to encrypt it locally, with no cloud involved.',
+    categoryEn: 'Technical',
+    tagsEn: ['X archive', 'local encryption', 'data backup', 'privacy'],
+    contentEn: `<p>After downloading an X archive, many people just unzip it to the desktop and forget about it. That ZIP holds your DMs, frequent locations, linked phone number, sometimes a contact list. It should not sit on your drive at the same level as everything else. Encrypting it is not just for engineers - anyone can do it in five steps.</p>
+
+<h2>Step 1: verify the archive is intact</h2>
+<p>Before unzipping, check the file size against what you saw at download. If the source looks off, do not unzip yet. The archive is a concentrated copy of your private life, so step one is always confirming it was not swapped in transit. If you pulled it from the official "download your data" screen, you can mostly skip this, but a glance costs nothing.</p>
+
+<h2>Step 2: pick a local encryption tool</h2>
+<p>You do not need to buy anything. Built-in tools are enough: on macOS, use Disk Utility to make an encrypted image; on Windows, BitLocker or a small open-source local encrypter. The point is the word "local": the tool finishes encryption offline, without sending the file to a server. If a tool asks you to upload first and encrypt later, that is not a local solution, so be careful with it.</p>
+
+<h2>Step 3: put the whole unzipped folder in an encrypted container</h2>
+<p>Do not encrypt just one file. The unzipped archive is dozens of folders and tens of thousands of small files; wrapping the whole thing in one encrypted container is the least painful to manage. Set a passphrase you can remember but is not "123456". Longer and messier is better, as long as you can recall it - otherwise the container becomes a safe you cannot open.</p>
+
+<h2>Step 4: delete the original ZIP and the plaintext copy</h2>
+<p>Once encrypted, remove the desktop ZIP and the unzipped plaintext folder. Emptying the recycle bin is not enough; use a secure-erase or full delete so recovery software cannot pull it back. Plenty of people think clearing the bin is safe, but a normal delete only marks the file as overwritable, and forensic tools can still read it.</p>
+
+<h2>Step 5: back up the container to an offline disk</h2>
+<p>The encrypted container itself needs a backup, but do not leave the backup drive plugged in. A portable disk that holds only the archive and stays powered off most of the time is harder to lose in a single account-breach than any always-synced cloud folder. Copy the latest container to that disk each quarter; keeping a few versions is actually safer than replacing the old one.</p>
+
+<h2>Three small habits to add</h2>
+<p>Beyond the five steps, you can lower risk in daily life. First, encrypt the archive the moment it finishes downloading; do not say later, because later usually means it sits on the desktop and gets forgotten. Second, give the encrypted container an unremarkable name, not X-private-archive, which tells anyone who sees it exactly what is worth stealing. Third, before selling or repairing an old device, confirm no plaintext archive copy is left on it; plenty of people get burned right here. A short weekly check of where your archive copies actually live beats any single big cleanup, because the real risk is rarely the first copy you made, but the one you forgot.</p>
+<p>If you have not downloaded the archive yet, or want to see what privacy points it actually contains, run a check with digital-footprint-health.shop on your own machine first: it only parses, never deletes, and never uploads your data. Start at <a href="/">the homepage</a>, with notes on the <a href="/blog">blog</a>.</p>`,
+  },
+{
+    slug: 'x-session-token-theft-prevention-2026',
+    title: '会话令牌被盗怎么办：从 X 会话劫持看账号防盗',
+    excerpt: '很多"被盗号"不是密码泄露，而是会话令牌被偷走。本文讲清会话令牌为什么比密码更难防、哪些习惯会把它送出去，以及中招后怎么收。',
+    date: '2026-10-27',
+    updatedAt: '2026-10-27',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['会话劫持', '令牌盗用', '账号防盗', 'X 安全'],
+    content: `<p>你改了复杂密码，开了两步验证，结果账号还是被人登进去了。这种情况越来越常见，原因往往不是密码，而是一串叫"会话令牌"的东西被偷了。它比密码更隐蔽，因为攻击者拿到它之后，不需要知道你的密码就能一直赖在账号里。</p>
+
+<h2>会话令牌到底是什么</h2>
+<p>每次你登录成功，服务器会发给你一个会话令牌，相当于这张门票有效期内你不用再验票。浏览器把它存在本地，之后每次请求都带着它。问题在于：门票一旦被人复制走，对方就能凭它直接进入，哪怕你中途改了密码。</p>
+
+<h2>令牌是怎么被偷走的</h2>
+<ul>
+<li>在公共电脑或没退出的设备上登录，令牌留在了本机；</li>
+<li>点了伪造的登录页，令牌被中间人截走；</li>
+<li>装了来路不明的浏览器插件，它有权读取页面里的令牌；</li>
+<li>连了不安全的公共 Wi-Fi，明文流量被嗅探。</li>
+</ul>
+<p>注意，这里没有一条是"密码太弱"。令牌盗窃专门绕开密码这一层，所以你密码再强也挡不住。</p>
+
+<h2>日常怎么防</h2>
+<p>第一步是把"退出登录"当习惯，尤其在别人的设备或公用电脑上。第二步是浏览器插件只装必需的，来源不明的坚决不装，因为插件能读到的内容比你想的多。第三步是登录页地址一定核对清楚，X 的域名只有那一个，多一个字母都该警觉。</p>
+<p>第四步经常被忽略：定期到"已登录设备"列表里把不认识的设备踢掉。这一步等于把可能已经泄露的令牌当场作废，比等出事再补救省心得多。很多人从没点开过这个列表，直到账号出问题才想起来。</p>
+
+<h2>怀疑中招了，按这个顺序收</h2>
+<p>先改密码。虽然令牌还在，但改密码能逼出一部分旧会话，给攻击者制造障碍。然后去"登出所有设备"，这是直接让偷到的令牌失效的关键一步，很多人漏掉这步，只改了密码以为没事。最后检查账号里有没有被偷偷改过的资料、绑定的邮箱或转发规则，有的话一并还原，并留意有没有陌生的已授权第三方应用。</p>
+<h2>怎么判断自己是不是已经中招</h2>
+<p>除了账号被发了奇怪推文这种明显信号，还有更隐蔽的征兆：登录地突然变成陌生城市、已登录设备里多了一台不认识的手机、绑定的邮箱收到改密提醒但你没操作。这些往往比被盗发帖更早出现。养成每月看一次安全日志的习惯，比出事后再补救成本低得多。一旦看到异常登录，立刻走前面的收流程，别等更多证据。</p>
+<p>如果你担心自己多年发的推文里已经泄露了手机号、住址这类信息，可以先做一次本机体检，把风险点列出来再决定怎么清理。digital-footprint-health.shop 的体检在 <a href="/">首页</a> 就能开始，说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/x-session-token-theft-prevention-2026',
+    faq: [
+      { q: '开了两步验证还会被会话劫持吗？', a: '会。两步验证挡的是"用密码登录"那一步，但令牌一旦泄露，攻击者已经跳过登录，验证不再触发。', qEn: 'Can session hijacking happen even with two-step verification?', aEn: 'Yes. Two-step blocks the password-login step, but a leaked token skips login entirely, so verification never fires.' },
+      { q: '改密码能踢掉偷令牌的人吗？', a: '部分能。改密码会作废一部分旧会话，但要彻底清除，还得手动"登出所有设备"。', qEn: 'Does changing the password kick out the token thief?', aEn: 'Partly. A password change invalidates some old sessions, but to be sure, use "sign out of all devices" too.' },
+      { q: '浏览器插件真的能读到我的令牌？', a: '有读取页面内容权限的插件理论上可以。所以只装必需、来源可信的插件。', qEn: 'Can a browser extension really read my token?', aEn: 'An extension with page-content permission can, in theory. So install only what you need, from sources you trust.' },
+      { q: '公共 Wi-Fi 一定危险吗？', a: '明文流量有被嗅探的风险。能用手机热点就别用开放 Wi-Fi，或者确保连接是加密的。', qEn: 'Is public Wi-Fi always dangerous?', aEn: 'Plaintext traffic can be sniffed. Use your phone hotspot or confirm the connection is encrypted before logging in.' }
+    ],
+    titleEn: 'Session Token Theft: How to Protect Your X Account from Session Hijacking',
+    excerptEn: 'Many "hijacked accounts" are not password leaks at all - the session token got stolen. This piece explains why tokens are harder to defend than passwords, the habits that hand them over, and what to do if it happens.',
+    categoryEn: 'Account Security',
+    tagsEn: ['session hijacking', 'token theft', 'account safety', 'X security'],
+    contentEn: `<p>You set a long password, turned on two-step verification, and the account still got broken into. This is happening more often, and the cause is usually not the password - a string called a session token was stolen. It is sneakier than a password because once an attacker has it, they can stay in the account without ever learning your password.</p>
+
+<h2>What a session token actually is</h2>
+<p>Every time you log in successfully, the server hands you a session token - think of it as your pass being valid, no need to show ID again. The browser stores it locally and sends it with every later request. The catch: once that pass is copied, the other person walks straight in, even if you change your password midway.</p>
+
+<h2>How tokens get stolen</h2>
+<ul>
+<li>Logging in on a public or shared computer and never signing out, leaving the token on the machine;</li>
+<li>Clicking a fake login page where a middleman intercepts the token;</li>
+<li>Installing an untrusted browser extension that can read tokens from the page;</li>
+<li>Using unsafe public Wi-Fi where traffic is sniffed in plaintext.</li>
+</ul>
+<p>Notice none of these is "weak password." Token theft goes around the password layer entirely, so a strong password alone will not stop it.</p>
+
+<h2>How to defend day to day</h2>
+<p>Step one is treating "sign out" as a habit, especially on borrowed or public machines. Step two is installing only the browser extensions you actually need and skipping anything from an unknown source, because extensions can read more of the page than you expect. Step three is checking the login URL carefully - X has exactly one domain, and one stray letter should set off alarm bells.</p>
+<p>Step four gets ignored a lot: periodically open the "logged-in devices" list and boot any device you do not recognize. That step invalidates a possibly leaked token on the spot, which beats cleaning up after the fact. Many people have never opened that list until something goes wrong.</p>
+
+<h2>If you suspect a breach, do this in order</h2>
+<p>First change the password. The token may still be live, but a password change forces out some old sessions and puts obstacles in the attacker's way. Then sign out of all devices; that is the step that actually kills the stolen token, and many people skip it, thinking a password change was enough. Finally check for silently changed profile, linked email, or forwarding rules, and revert whatever you find. Also look for unfamiliar third-party apps that were granted access.</p>
+<h2>How to tell if you have already been hit</h2>
+<p>Beyond the obvious sign of strange tweets posted from your account, there are quieter warnings: a login city you have never been to, an unknown phone in the signed-in devices list, or a password-change alert for your linked email that you did not trigger. These usually show up earlier than posts made by the attacker. Make it a habit to glance at the security log once a month; it costs far less than cleaning up after the fact. The moment you see an odd login, run the recovery steps above instead of waiting for more proof.</p>
+<p>If you worry that years of tweets already leaked your phone number or address, run a local check first to list the risk points before deciding how to clean up. The check at digital-footprint-health.shop starts on the <a href="/">homepage</a>, with notes on the <a href="/blog">blog</a>.</p>`,
+  },
+{
+    slug: 'chinese-tech-workers-x-data-hygiene-2026',
+    title: '在 X 上做技术分享的中国工程师，先管好这 3 类数据',
+    excerpt: '越来越多中国工程师在 X 上分享技术、找机会，但也把工号、真名、公司内网截图一并发了出去。本文从中文用户的真实场景出发，列出最该先清理的三类数据。',
+    date: '2026-10-27',
+    updatedAt: '2026-10-27',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中国工程师', 'X 出海', '求职隐私', '技术分享', '数据卫生'],
+    content: `<p>这两年，在 X 上用中文聊技术、发周报、找海外机会的工程师明显多了。这本身是好事，但很多人顺手就把职场里不该外露的信息一起带了出来：工号、真名拼音、公司内网截图。海外招聘方看的是你的能力，不是你的内部权限。从国内职场习惯走到公开社交平台，有几道坎得先迈过去。</p>
+
+<h2>第一类：能定位到"你是谁"的真实信息</h2>
+<p>真名、拼音全名、学历证书编号、工牌照片，这些东西单独看没事，凑在一起就能被人从多个平台拼出你的完整身份。尤其是同时挂着求职标签时，过度暴露反而让招聘方担心你分不清公私边界。建议把真名和工号从公开推文里拿掉，用昵称和项目代号代替。如果真想建立个人品牌，昵称用久了同样能积累认知，没必要拿真名去换。</p>
+
+<h2>第二类：公司内网和代码的截图</h2>
+<p>一张看起来普通的架构图，可能带着内网域名、同事的真名、客户项目名。很多公司员工协议里明确禁止外发这类材料，轻则违规，重则泄密，严重的会牵扯到保密义务甚至法律责任。发技术心得完全可以脱敏：把字段名、服务名、URL 都换成示例，表达同样的设计思路。读者要的是你的思考方式，不是你公司的真实配置。</p>
+
+<h2>第三类：暴露作息和情绪的碎片</h2>
+<p>"刚下夜班""又被 oncall 叫醒""准备跑路"这类碎碎念，单独发无所谓，但长期累积会形成清晰的作息和情绪画像，被不怀好意的人用来社工或定向骚扰。不是不能发，而是注意别把精确时间、具体楼层、团队人数写得一清二楚。顺手把定位关掉，比事后删帖省心得多。</p>
+
+<h2>一个低成本的自查办法</h2>
+<p>不用每次发之前都紧张。可以每隔一两个月，把自己账号里最早的一批推文过一遍，重点看上面三类有没有遗漏。想更系统一点，把 X 归档下载下来在本机扫一遍，比靠肉眼翻时间线快得多。国内工程师常犯的毛病是"发的时候没想那么多"，等想清理时已经攒了几千条，这时候批量工具比手删高效。</p>
+<h2>已经发了敏感内容的，怎么一步步脱敏</h2>
+<p>如果过去的推文里已经有工号、真名，不用把账号清空重来。先把最危险的几条，带手机号、住址、定位的，单独挑出来删掉或设为仅自己可见；再把含有公司内网信息的截图编辑掉关键部分。剩下的轻度暴露，比如真名拼音，可以保留，只要不和工号、公司名同时出现就行。这种分级处理比一刀切删光更现实，也保留你积累的内容资产。</p>
+<p>digital-footprint-health.shop 支持在本机解析你的 X 归档，把手机号、地址、定位这类风险点标出来，全程不上传。入口在 <a href="/">首页</a>，更多中文场景说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/chinese-tech-workers-x-data-hygiene-2026',
+    faq: [
+      { q: '用真名发技术内容真的有风险吗？', a: '单独发技术没啥，但和工号、公司名、住址放一起，容易被拼出完整身份，也容易被定向骚扰。', qEn: 'Is there real risk in posting tech under my real name?', aEn: 'Posting tech alone is fine, but paired with employee ID, company, and address it can be pieced into a full identity and targeted.' },
+      { q: '公司架构图怎么发才不违规？', a: '把字段名、服务名、内网域名都换成示例，保留设计思路即可，没必要用真实素材。', qEn: 'How do I share an architecture diagram without breaking rules?', aEn: 'Replace field names, service names, and intranet domains with examples; keep the design idea, drop the real assets.' },
+      { q: '吐槽加班算过度暴露吗？', a: '偶尔发没事，但别把精确时间、楼层、团队人数写齐，长期累积会形成清晰作息画像。', qEn: 'Does complaining about overtime count as over-sharing?', aEn: 'Occasional posts are fine, but do not pack in exact times, floor, and team size - over time that builds a clear routine profile.' },
+      { q: '中文用户自查有什么便宜的办法？', a: '每隔一两个月翻一遍最早的推文看三类信息，或下载归档在本机扫描，比肉眼翻时间线快。', qEn: 'Any cheap self-check for Chinese users?', aEn: 'Every month or two re-read your earliest tweets for those three types, or download the archive and scan it locally - faster than the timeline.' }
+    ],
+    titleEn: 'Chinese Engineers Sharing on X: Three Data Types to Clean Up First',
+    excerptEn: 'More Chinese engineers are sharing tech and hunting opportunities on X, but many also post employee IDs, real names, and intranet screenshots. Written from the Chinese user perspective, this piece lists the three data types to clean up first.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['Chinese engineers', 'X abroad', 'job-hunt privacy', 'tech sharing', 'data hygiene'],
+    contentEn: `<p>Over the last couple of years, far more engineers writing in Chinese have been using X to share tech, post weekly notes, and look for roles overseas. That is a good thing, but a lot of people also carry over information that should stay at work: employee IDs, real-name pinyin, intranet screenshots. Overseas recruiters want to see your skill, not your internal access. Moving from domestic workplace habits to a public social platform means clearing a few hurdles first.</p>
+
+<h2>Type 1: real-info that pins down who you are</h2>
+<p>Real name, full pinyin, certificate numbers, badge photos - each is harmless alone, but together they let someone reconstruct your full identity across platforms. When you also carry a job-hunt tag, over-exposing makes recruiters wonder if you mix work and public lines. Drop the real name and employee ID from public posts; use a handle and project codenames instead. If you want a personal brand, a handle used long enough builds recognition on its own - you do not need your real name for it.</p>
+
+<h2>Type 2: intranet and code screenshots</h2>
+<p>An ordinary-looking architecture diagram can carry an intranet domain, a colleague's real name, a client project name. Many employment agreements explicitly forbid sharing such material; at best it is a policy violation, at worst a leak that touches confidentiality obligations and even legal duty. You can share the lesson with everything desensitized - swap field names, service names, and URLs for examples, and the design point lands the same way. Readers want your thinking, not your company's real config.</p>
+
+<h2>Type 3: fragments that reveal routine and mood</h2>
+<p>"Just off the night shift," "oncall woke me again," "thinking of quitting" - posted alone they are fine, but over time they build a clear picture of your schedule and mood that someone hostile can use for social engineering. Not saying do not post; just avoid writing the exact time, floor, and team size in one place. Turning off location tags beats deleting posts after the fact.</p>
+
+<h2>A low-cost self-check</h2>
+<p>You do not need to panic before every post. Every month or two, scroll back through your earliest tweets and look specifically for those three types. For something more systematic, download your X archive and scan it locally - far faster than reading the timeline by eye. The common slip among engineers is "did not think about it when posting," and by the time they want to clean up there are thousands of tweets; a batch tool beats manual delete then.</p>
+<h2>If you already posted something sensitive, how to clean up step by step</h2>
+<p>If past tweets already carry your employee ID or real name, you do not need to wipe the account and start over. First single out the riskiest few, the ones with phone number, address, or location, and delete or switch them to private. Then edit out the key parts of any screenshots that show intranet details. The remaining light exposure, like real-name pinyin, can stay as long as it does not appear alongside your employee ID and company name. This tiered approach is more realistic than deleting everything, and it keeps the content assets you have built. For Chinese engineers especially, a consistent handle over time earns more trust than a real name ever would, so the trade-off is usually worth it.</p>
+<p>digital-footprint-health.shop parses your X archive on your own machine and flags risks like phone numbers, addresses, and locations, with nothing uploaded. Start on the <a href="/">homepage</a>; more China-specific notes are on the <a href="/blog">blog</a>.</p>`,
+  },
+{
+    slug: 'social-platform-policy-changes-october-2026',
+    title: '2026 年 10 月社交平台隐私政策变动：对普通用户意味着什么',
+    excerpt: '临近 2026 年底，几家主流社交平台陆续更新了隐私与数据条款。本文梳理 10 月这轮变动里，和普通人删除旧内容、导出数据最相关的几件事。',
+    date: '2026-10-27',
+    updatedAt: '2026-10-27',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['隐私政策', '平台变动', '数据控制', '2026 十月'],
+    content: `<p>每到第四季度，平台们就会集中更新条款，今年 10 月也不例外。对只在 X 上发发推文、偶尔清理旧内容的普通人来说，真正要关心的不是措辞变化，而是"你删东西、拿数据的路径有没有变"。下面挑三件和日常最相关的说。</p>
+
+<h2>数据导出入口变得更显眼了</h2>
+<p>多家平台把"下载我的数据"从深层设置挪到了账号主页附近，步骤从七八步压到三四步。这是好事，意味着你想做本机体检、自己掌控归档，门槛更低了。如果你一直犹豫"会不会太麻烦"，现在可以试一次。顺带一提，导出变简单也意味着别人导出你的互动记录更容易，所以清理旧内容比过去更值得做。</p>
+
+<h2>删除的"宽限期"被拉长</h2>
+<p>有平台把删除后的可恢复窗口从 30 天改成了更长，目的是给用户反悔时间。但反过来想：你以为"删了"的内容，在宽限期内仍可能被平台内部保留。真要彻底消失，得看各家最终的物理清除节奏，不能假设点完删除就立刻没了。对在意隐私的人，最好的办法是删之前就确认内容没有敏感信息，而不是指望删除动作本身。</p>
+
+<h2>第三方工具的授权更严格了</h2>
+<p>新条款普遍收紧了对第三方删除、分析工具的接口授权，要求更明确的 scope 和更短的令牌有效期。对普通用户是保护，对靠脚本批量操作的人则意味着：旧脚本可能突然 401，得按新规则重新走授权。如果你一直用某个第三方工具清推文，这个月最好留意它的登录是否还正常。</p>
+
+<h2>普通人该怎么做</h2>
+<p>别等条款把你逼到被动。趁着导出变简单，先把归档下载到本机；清理旧内容时优先处理带手机号、住址、精确定位的高风险推文；用第三方工具前看清它申请的权限范围，只给必要的。这几件事都不复杂，难的是养成习惯。</p>
+<h2>出海用户要额外留意的一点</h2>
+<p>如果你在海外平台做业务或求职，这轮变动里最该盯的是第三方授权。很多出海工具靠 API 帮你管理账号，新条款收紧后，它们可能突然登不上，导致你误以为自己被限流。遇到工具登录异常，先去平台的已授权应用列表确认权限是否被收回，别急着换号。把授权范围记下来，比每次出状况再翻条款高效。</p>
+<p>想在本机安全地看自己归档里有哪些隐私点，digital-footprint-health.shop 可以帮忙：解析、标记、按需删除，数据不出电脑。入口在 <a href="/">首页</a>，最新实践在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/social-platform-policy-changes-october-2026',
+    faq: [
+      { q: '10 月这轮变动会影响我删推文吗？', a: '直接影响有限，但第三方删除工具的接口授权更严，旧脚本可能突然失效需重新授权。', qEn: 'Will the October changes affect my tweet deletion?', aEn: 'Direct impact is limited, but third-party tools face tighter API auth, so old scripts may break and need re-authorization.' },
+      { q: '点删除就等于彻底没了吗？', a: '不一定。部分平台有更长的可恢复宽限期，期间内容仍可能内部保留。', qEn: 'Does clicking delete mean it is gone for good?', aEn: 'Not always. Some platforms keep a longer recoverable window, during which the content may still exist internally.' },
+      { q: '现在导出数据比之前容易了吗？', a: '对，多家平台把导出入口挪到更显眼的位置，步骤也减少了。', qEn: 'Is exporting data easier now than before?', aEn: 'Yes. Several platforms moved export closer to the account home and cut the number of steps.' },
+      { q: '我该怎么应对这些变动？', a: '先把归档下到本机，清理时优先处理带手机号地址的高风险推文，用工具前看清授权范围。', qEn: 'How should I respond to these changes?', aEn: 'Pull your archive locally, clean high-risk tweets with phone or address first, and read a tool scope before granting it.' }
+    ],
+    titleEn: 'October 2026 Social Platform Privacy Changes: What They Mean for You',
+    excerptEn: 'Heading into late 2026, several major platforms refreshed their privacy and data terms. This roundup covers the October changes that matter most for deleting old posts and exporting your data.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['privacy policy', 'platform changes', 'data control', 'October 2026'],
+    contentEn: `<p>Every fourth quarter, platforms batch their terms updates, and October 2026 is no exception. For someone who just posts on X and occasionally cleans up old content, the real question is not the wording - it is whether the path to delete things and grab your data changed. Here are the three shifts closest to daily use.</p>
+
+<h2>Data export moved front and center</h2>
+<p>Several platforms pulled "download my data" out of deep settings and next to the account home, cutting the steps from seven or eight to three or four. That is a win: if you wanted to run a local check and control your own archive, the barrier just dropped. If you kept putting it off as "too much hassle," now is a good time to try. One side effect: easier export also means others can pull your interaction history more easily, so cleaning old content is more worth doing than before.</p>
+
+<h2>The deletion "grace period" got longer</h2>
+<p>One platform stretched the recoverable window after deletion from 30 days to longer, meant to give users a chance to change their mind. The flip side: content you think is "deleted" may still sit in internal storage during the grace period. For it to truly vanish you have to look at each platform's final purge cadence; do not assume a click on delete erases it at once. If privacy matters to you, the best move is to make sure the content has no sensitive info before you delete, rather than trust the delete action itself.</p>
+
+<h2>Third-party tool authorization tightened</h2>
+<p>The new terms broadly tighten API authorization for third-party deletion and analytics tools, demanding clearer scopes and shorter token lifetimes. Good for ordinary users, annoying for anyone scripting bulk ops: old scripts may suddenly 401 and need re-authorization under the new rules. If you rely on a third-party tool to clear tweets, this month is a good time to check whether its login still works.</p>
+
+<h2>What an ordinary user should do</h2>
+<p>Do not wait to be cornered by the terms. While export is easier, pull your archive down locally. When cleaning up, handle high-risk tweets - phone number, address, precise location - first. Before using a third-party tool, read the scope it asks for and grant only what it needs. None of this is complicated; the hard part is making it a habit.</p>
+<h2>One extra note for users going global</h2>
+<p>If you run a business or job hunt on overseas platforms, the change to watch most is third-party authorization. Many global tools manage your account through the API, and after the tighter terms they may suddenly fail to log in, making you think you have been throttled. When a tool will not sign in, first open the platform authorized apps list to see if permission was revoked, rather than rushing to switch accounts. Jot the granted scope down somewhere; it beats flipping through terms every time something breaks.</p>
+<p>To see the privacy points in your archive safely on your own machine, digital-footprint-health.shop can help: it parses, flags, and deletes on demand, with data never leaving the computer. Start on the <a href="/">homepage</a>; latest practices are on the <a href="/blog">blog</a>.</p>`,
+  }];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

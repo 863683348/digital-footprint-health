@@ -29206,7 +29206,400 @@ rl.on('close', () =&gt; {
 <h2>One extra note for users going global</h2>
 <p>If you run a business or job hunt on overseas platforms, the change to watch most is third-party authorization. Many global tools manage your account through the API, and after the tighter terms they may suddenly fail to log in, making you think you have been throttled. When a tool will not sign in, first open the platform authorized apps list to see if permission was revoked, rather than rushing to switch accounts. Jot the granted scope down somewhere; it beats flipping through terms every time something breaks.</p>
 <p>To see the privacy points in your archive safely on your own machine, digital-footprint-health.shop can help: it parses, flags, and deletes on demand, with data never leaving the computer. Start on the <a href="/">homepage</a>; latest practices are on the <a href="/blog">blog</a>.</p>`,
-  }];
+  },
+  {
+    slug: 'child-minor-account-data-protection-2026',
+    title: '未成年人账号数据保护：家长与青少年该怎么做（2026）',
+    excerpt: '未成年人的 X 历史推文里可能藏着学校、住址、同框照片等敏感信息。了解 COPPA、GDPR 第 8 条与年龄适配设计法规下，家长和孩子分别有哪些权利与清理路径。',
+    date: '2026-10-28',
+    updatedAt: '2026-10-28',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['未成年人', '数字足迹', '隐私保护', 'X/Twitter', '家长指南'],
+    canonical: '/blog/child-minor-account-data-protection-2026',
+    faq: [
+      { q: '未成年人自己发的推文能被删除吗？', a: '可以。在多数司法辖区，未成年人（或对其行使权利的监护人）有权请求删除其账号下的内容。X 提供账号内删除功能，更早的历史推文则需通过数据归档解析后批量处理。', qEn: 'Can a minor delete their own tweets?', aEn: 'Yes. In most jurisdictions a minor, or a parent acting on their behalf, can request deletion of account content. X offers in-app deletion; older tweets need bulk cleanup through the data archive.' },
+      { q: '家长能替孩子删掉 X 上的旧推文吗？', a: '账号持有者本人操作最稳妥。家长可以协助孩子登录账号、下载归档、一起筛选风险内容，但最终删除动作应由账号所有者发起，避免触发平台的安全校验。', qEn: 'Can a parent delete a child\'s old tweets?', aEn: 'It is safest when the account owner does it. Parents can help the child log in, download the archive, and review risky content together, but the deletion itself should be initiated by the account owner to avoid triggering security checks.' },
+      { q: 'COPPA 是什么？它保护多小的孩子？', a: 'COPPA（美国儿童在线隐私保护法）主要约束面向 13 岁以下儿童的在线服务在收集数据前的家长同意义务；它虽不直接命令社交平台删除用户内容，但奠定了未成年人数据最小化的底线。', qEn: 'What is COPPA and whom does it protect?', aEn: 'COPPA (Children\'s Online Privacy Protection Act) requires parental consent before online services collect data from under-13 users. It does not directly order platforms to delete user posts, but it sets the floor for minimizing minor data.' },
+      { q: '年龄适配设计法规对 X 有什么影响？', a: '以英国 Age Appropriate Design Code 为代表的规定，要求平台对未成年用户采用更严格的默认隐私设置、关闭行为广告、限制数据留存。这意味着青少年账号的默认曝光应比成人更低。', qEn: 'How does age-appropriate design law affect X?', aEn: 'Rules like the UK Age Appropriate Design Code require stricter default privacy for minor accounts, turned-off behavioral ads, and limited retention, so teen accounts should be less exposed by default than adult ones.' },
+      { q: '孩子的旧推文被索引到搜索引擎了怎么办？', a: '先清理账号内高风险内容，再针对仍出现在搜索结果里的页面提交移除请求。可参考我们的删除权指南，结合平台工具与搜索引擎的移除流程处理。', qEn: 'What if a child\'s old tweet shows up in search engines?', aEn: 'First clean the high-risk content in the account, then submit removal requests for pages still indexed. Combine platform tools with search-engine removal flows as described in our deletion-rights guide.' },
+    ],
+    titleEn: 'Minor and Child Account Data Protection on X: A 2026 Guide for Parents and Teens',
+    excerptEn: 'A teen account on X can leak school names, home addresses, and tagged photos. This 2026 guide explains what parents and minors can do under COPPA, GDPR Article 8, and age-appropriate design rules.',
+    categoryEn: 'Compliance & Legal',
+    tagsEn: ['minors', 'digital footprint', 'privacy', 'X/Twitter', 'parent guide'],
+    contentEn: `<p>A teenager's X account is a decade-long diary that was probably public the entire time. School names, home addresses, tagged photos, and offhand rants can sit in search indexes long after the kid has grown up. This guide covers what parents and minors can actually do in 2026.</p>
+
+<h2>Why minor data is more sensitive than adult data</h2>
+<p>Children rarely understand the permanence of what they post. Three factors make teen accounts higher risk:</p>
+<ul>
+  <li><strong>Identity is still forming</strong>: a joke at 14 can resurface during a college or job background check at 22.</li>
+  <li><strong>Real-world safety</strong>: school names and neighborhoods let strangers build a physical profile.</li>
+  <li><strong>Long tail of indexing</strong>: old posts are scraped and cached; deletion is damage control, not a time machine.</li>
+</ul>
+
+<h2>The main legal frameworks</h2>
+<table>
+  <thead>
+    <tr><th>Framework</th><th>Applies to</th><th>Core requirement</th><th>Effect on deletion</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>COPPA</td><td>US, under-13 services</td><td>Parental consent before data collection</td><td>Sets a minimization floor for minor data</td></tr>
+    <tr><td>GDPR Art. 8</td><td>EU, under-16 (member-state variable)</td><td>Consent needs parental authorization</td><td>Supports erasure requests by guardians</td></tr>
+    <tr><td>Age-Appropriate Design</td><td>UK and similar regimes</td><td>Safer defaults for minor accounts</td><td>Lower default exposure by design</td></tr>
+  </tbody>
+</table>
+<p>None of these laws order a platform to delete a specific user post on demand, but together they strengthen a minor's right to request cleanup and limit how long data is kept.</p>
+
+<h2>What parents can do: a four-step check</h2>
+<ol>
+  <li><strong>Inventory the account.</strong> Sit with your child and scroll the visible timeline together.</li>
+  <li><strong>Download the archive.</strong> Settings -> Your account -> Download an archive of your data. This reaches posts the app cannot show (older than ~3,200).</li>
+  <li><strong>Score the footprint.</strong> A free on-device check parses the archive locally and flags phone numbers, addresses, and locations without uploading anything.</li>
+  <li><strong>Clean what matters.</strong> Delete the high-risk items first; keep the harmless ones if the child prefers.</li>
+</ol>
+
+<h2>A self-check list for teens</h2>
+<ul>
+  <li>Did I ever post my school name or uniform?</li>
+  <li>Are there check-ins that reveal my daily route?</li>
+  <li>Did I tag friends in photos that expose their addresses?</li>
+  <li>Would I be comfortable if a stranger read this in five years?</li>
+</ul>
+
+<h2>Platform responsibility and your deletion right</h2>
+<p>Platforms must honor lawful erasure requests and apply safer defaults to minor accounts. But the fastest lever is still your own cleanup: you control what stays. Start with a free footprint check at <a href="/">digital-footprint-health.shop</a>, then read our <a href="/blog/what-is-digital-footprint-check">introduction to digital footprint checks</a> and the <a href="/blog/how-to-delete-old-tweets-2026">guide to deleting old tweets</a>.</p>`.trim(),
+    content: `<p>青少年的 X 账号，本质上是一份可能被公开了整整十年的日记。学校名字、家庭住址、同框照片，还有十四岁时随手发的牢骚，都可能一直躺在搜索引擎的缓存里，等孩子二十二岁求职时才跳出来。</p>
+
+<h2>为什么未成年人的数据比成人更敏感</h2>
+<p>孩子往往意识不到自己发的东西有多持久。三个因素让青少年账号风险更高：</p>
+<ul>
+  <li><strong>身份还在形成期</strong>：十四岁的玩笑，可能在二十二岁的背景调查里变成污点。</li>
+  <li><strong>现实安全风险</strong>：学校名、小区名让陌生人拼出你的物理轨迹。</li>
+  <li><strong>索引的长尾效应</strong>：旧推文被抓取、被缓存，删除只是止损，不是时光机。</li>
+</ul>
+
+<h2>主要法律框架</h2>
+<table>
+  <thead>
+    <tr><th>法规</th><th>适用对象</th><th>核心要求</th><th>对删除的影响</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>COPPA</td><td>美国，13 岁以下服务</td><td>收集数据前需家长同意</td><td>奠定未成年人数据最小化底线</td></tr>
+    <tr><td>GDPR 第 8 条</td><td>欧盟，16 岁以下（各国可下调）</td><td>同意需监护人授权</td><td>支持监护人提出删除请求</td></tr>
+    <tr><td>年龄适配设计</td><td>英国及类似辖区</td><td>未成年账号更严格默认隐私</td><td>默认曝光更低</td></tr>
+  </tbody>
+</table>
+<p>这些法律都不会命令平台"按需求删掉某条用户推文"，但合在一起，它们强化了未成年人请求清理、限制数据留存的权利。</p>
+
+<h2>家长能做什么：四步检查法</h2>
+<ol>
+  <li><strong>盘点账号</strong>：和孩子坐下来，一起翻看可见时间线。</li>
+  <li><strong>下载归档</strong>：设置 → 你的账号 → 下载数据归档。这能触达 App 里看不到的（3200 条之前的）旧推文。</li>
+  <li><strong>给足迹打分</strong>：一次免费的本机体检会在本地解析归档，标出手机号、住址和定位，且不上传任何数据。</li>
+  <li><strong>清理要紧的</strong>：先删高风险项，孩子想留的无害内容可以保留。</li>
+</ol>
+
+<h2>青少年自查清单</h2>
+<ul>
+  <li>我发过学校名字或校服照吗？</li>
+  <li>有没有暴露日常路线的打卡？</li>
+  <li>我是不是在照片里 tag 了朋友、顺带暴露了他们住址？</li>
+  <li>如果五年后陌生人读到这条，我会舒服吗？</li>
+</ul>
+
+<h2>平台责任与你的删除权</h2>
+<p>平台必须依法处理删除请求，并对未成年账号采用更安全的默认设置。但最快的抓手仍是你自己：留什么、删什么由你掌握。先在 <a href="/">digital-footprint-health.shop</a> 做一次免费足迹体检，再读我们的<a href="/blog/what-is-digital-footprint-check">数字足迹体检入门</a>与<a href="/blog/how-to-delete-old-tweets-2026">删除旧推文指南</a>。</p>`.trim(),
+  },
+  {
+    slug: 'footprint-score-recovery-timeline-2026',
+    title: '清理后数字足迹评分多久回升？恢复时间线',
+    excerpt: '删掉高风险推文后，0-100 健康评分不会立刻变绿。本文拆解评分口径、为什么清理后存在滞后，以及分阶段恢复时间线与加速方法。',
+    date: '2026-10-28',
+    updatedAt: '2026-10-28',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['数字足迹', '体检评分', '隐私清理', '恢复时间'],
+    canonical: '/blog/footprint-score-recovery-timeline-2026',
+    faq: [
+      { q: '删完推文为什么评分没马上涨？', a: '评分基于最近一次解析的归档快照，清理动作不会自动刷新快照；此外搜索引擎和第三方缓存仍保留旧页面，需要时间衰减。', qEn: 'Why didn\'t my score rise right after deleting?', aEn: 'The score is based on the most recent parsed archive snapshot; cleanup does not auto-refresh it, and search engines plus third-party caches still hold old pages that fade over time.' },
+      { q: '重新跑一次体检会更新分数吗？', a: '会。重新解析最新归档后，已删除的内容不再计入风险清单，分数会按新快照重新计算。', qEn: 'Does re-running the check update the score?', aEn: 'Yes. Re-parsing the latest archive excludes deleted content from the risk list and recomputes the score from the new snapshot.' },
+      { q: '有没有办法让分数回升更快？', a: '先删高风险（手机号、住址、定位），再分批处理敏感内容；同时清理在搜索引擎中仍被索引的旧页面，能缩短外部衰减周期。', qEn: 'Can I speed up the recovery?', aEn: 'Delete high-risk items (phone, address, location) first, then batch the sensitive ones, and also clear old pages still indexed by search engines to shorten the external decay cycle.' },
+      { q: '分数会回到 100 吗？', a: '理论上可以，只要归档里不再有命中风险标签的内容且外部索引已清理干净；但历史被截图传播的内容不在可控范围内。', qEn: 'Can the score reach 100?', aEn: 'In theory yes, once the archive has no risk-tagged content and external indexes are cleared; but anything already screenshotted and spread is outside your control.' },
+    ],
+    titleEn: 'How Long Until Your Footprint Score Recovers After Cleanup?',
+    excerptEn: 'After you delete risky tweets, the 0-100 health score does not turn green instantly. This piece explains the scoring, why there is a lag, and a staged recovery timeline with ways to speed it up.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['digital footprint', 'health score', 'cleanup', 'recovery'],
+    contentEn: `<p>You deleted the risky tweets. You open the dashboard expecting a green 95. It still says 61. Here is why, and when it actually moves.</p>
+
+<h2>How the score is calculated</h2>
+<p>The 0-100 health score is derived from the most recent archive snapshot your tool parsed: each tweet is labeled phone / address / location / sensitive-topic, weighted by severity, then rolled into one number. The score is a snapshot, not a live feed.</p>
+
+<h2>Why cleanup does not instantly lift the score</h2>
+<ul>
+  <li><strong>Snapshot lag.</strong> Deleting in the app does not re-parse the archive; the score still reflects the old file until you run a new check.</li>
+  <li><strong>External caches.</strong> Search engines and data brokers keep copies of old pages that decay slowly.</li>
+  <li><strong>Re-ingestion.</strong> Some platforms re-surface archived content during controversies, re-exposing what you thought was gone.</li>
+</ul>
+
+<h2>A staged recovery timeline</h2>
+<table>
+  <thead>
+    <tr><th>Stage</th><th>Timeframe</th><th>Score movement</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Immediate</td><td>0-24h</td><td>None until re-check</td><td>Snapshot not refreshed</td></tr>
+    <tr><td>Re-parse</td><td>After new check</td><td>+10 to +30</td><td>Deleted items drop from risk list</td></tr>
+    <tr><td>Cache decay</td><td>2-8 weeks</td><td>+5 to +15</td><td>Search indexes expire old pages</td></tr>
+    <tr><td>Steady state</td><td>2-3 months</td><td>Plateaus</td><td>External copies mostly gone</td></tr>
+  </tbody>
+</table>
+
+<h2>How to speed it up</h2>
+<ol>
+  <li>Re-run the check right after a cleanup batch so the snapshot updates.</li>
+  <li>Prioritize phone, address, and location hits; they weigh the most.</li>
+  <li>Submit removal requests for pages still indexed by search engines.</li>
+</ol>
+<p>Start a free, on-device check at <a href="/">digital-footprint-health.shop</a>, then review our <a href="/blog/what-is-digital-footprint-check">footprint check explainer</a> and the <a href="/blog/delete-tweets-by-date-range-guide">date-range deletion guide</a>.</p>`.trim(),
+    content: `<p>你删掉了高风险推文，打开面板期待一个绿色 95，结果它还是 61。为什么，以及它到底什么时候动，下面说清楚。</p>
+
+<h2>评分是怎么算出来的</h2>
+<p>0-100 健康评分来自你的工具最近一次解析的归档快照：每条推文被打上"手机号 / 住址 / 定位 / 敏感话题"标签，按严重程度加权，最后汇成一个数字。它是快照，不是实时流。</p>
+
+<h2>为什么清理后分数不立刻涨</h2>
+<ul>
+  <li><strong>快照滞后</strong>：在 App 里删除不会重新解析归档，分数仍反映旧文件，直到你再跑一次体检。</li>
+  <li><strong>外部缓存</strong>：搜索引擎和数据经纪商保留旧页面副本，缓慢衰减。</li>
+  <li><strong>再被翻出</strong>：争议期平台可能重新曝光已归档内容，把以为删掉的东西又摆上台面。</li>
+</ul>
+
+<h2>分阶段恢复时间线</h2>
+<table>
+  <thead>
+    <tr><th>阶段</th><th>时间窗</th><th>分数变化</th><th>原因</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>即时</td><td>0-24 小时</td><td>未重跑前无变化</td><td>快照未刷新</td></tr>
+    <tr><td>重解析</td><td>重新体检后</td><td>+10 至 +30</td><td>已删项移出风险清单</td></tr>
+    <tr><td>缓存衰减</td><td>2-8 周</td><td>+5 至 +15</td><td>搜索索引过期旧页面</td></tr>
+    <tr><td>稳态</td><td>2-3 个月</td><td>趋于平稳</td><td>外部副本基本消失</td></tr>
+  </tbody>
+</table>
+
+<h2>如何加速回升</h2>
+<ol>
+  <li>每清完一批就重跑体检，让快照更新。</li>
+  <li>优先处理手机号、住址、定位命中，它们权重最高。</li>
+  <li>对仍被搜索引擎索引的旧页面提交移除请求。</li>
+</ol>
+<p>在 <a href="/">digital-footprint-health.shop</a> 做一次免费本机体检，再读我们的<a href="/blog/what-is-digital-footprint-check">足迹体检说明</a>与<a href="/blog/delete-tweets-by-date-range-guide">按日期范围删除指南</a>。</p>`.trim(),
+  },
+  {
+    slug: 'x-account-recovery-without-phone-2026',
+    title: '手机号丢了怎么找回 X 账号？无手机恢复指南',
+    excerpt: 'SIM 卡丢失、换号或遭遇 SIM 交换攻击时，绑定手机可能反而成为障碍。本文给出不依赖手机的四条找回路径与恢复后的必做动作。',
+    date: '2026-10-28',
+    updatedAt: '2026-10-28',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X账号', '账号恢复', '两步验证', 'SIM卡', '安全'],
+    canonical: '/blog/x-account-recovery-without-phone-2026',
+    faq: [
+      { q: '手机号丢了还能找回 X 账号吗？', a: '能。只要你还持有备用邮箱、备份码或一台已登录的设备，就可以绕开手机完成验证。', qEn: 'Can I still recover my X account without the phone?', aEn: 'Yes. If you still have a backup email, recovery codes, or a device already logged in, you can verify without the phone.' },
+      { q: '两步验证的备份码在哪里？', a: '在开启 2FA 时平台会提供一组一次性备份码，应离线保存；丢失后可在已登录设备上重新生成。', qEn: 'Where are my 2FA backup codes?', aEn: 'When you enabled 2FA the platform showed a set of one-time backup codes to store offline; if lost, regenerate them from a device already signed in.' },
+      { q: '什么是 SIM 交换攻击？', a: '攻击者诱骗运营商把你的号码转到其 SIM 卡，从而截获短信验证码。开启应用内验证器、关闭短信 2FA 可大幅降低风险。', qEn: 'What is a SIM swap attack?', aEn: 'An attacker tricks the carrier into moving your number to their SIM to intercept SMS codes. App-based authenticators and disabling SMS 2FA sharply cut the risk.' },
+      { q: '找回后第一件事该做什么？', a: '立即解绑旧号码、更换密码、重新生成备份码，并检查登录设备列表踢掉陌生设备。', qEn: 'What should I do first after recovery?', aEn: 'Immediately unlink the old number, change your password, regenerate backup codes, and review the device list to remove anything unfamiliar.' },
+    ],
+    titleEn: 'How to Recover Your X Account Without a Phone Number',
+    excerptEn: 'When your SIM is lost, changed, or hit by a swap attack, the phone you bound can become the obstacle. This guide gives four phone-free recovery paths and the steps to take right after.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X account', 'account recovery', '2FA', 'SIM swap', 'security'],
+    contentEn: `<p>Losing the phone number tied to your X account feels like losing the keys to the house. But the number is only one of several recovery channels, and in a SIM swap it is the one an attacker already controls.</p>
+
+<h2>The most common lost-phone scenarios</h2>
+<ul>
+  <li>The SIM is physically lost or destroyed.</li>
+  <li>You switched carriers and the old number was recycled.</li>
+  <li>A SIM swap attacker moved your number to their device.</li>
+</ul>
+
+<h2>Four paths that do not need the phone</h2>
+<ol>
+  <li><strong>Backup codes.</strong> The one-time codes from when you enabled 2FA still work; use one to sign in, then re-link a new method.</li>
+  <li><strong>Backup email.</strong> If a recovery email is attached, verification links arrive there instead of SMS.</li>
+  <li><strong>An already-signed-in device.</strong> A laptop or tablet you use daily can approve the login and let you change settings.</li>
+  <li><strong>Support appeal.</strong> As a last resort, submit identity proof through the official appeal flow; expect a slower turnaround.</li>
+</ol>
+
+<h2>Defend against SIM swap</h2>
+<ul>
+  <li>Use an app-based authenticator instead of SMS for 2FA.</li>
+  <li>Add a carrier PIN or port-freeze with your mobile provider.</li>
+  <li>Never publish the phone number that secures your account.</li>
+</ul>
+
+<h2>Three things to do right after recovery</h2>
+<ol>
+  <li>Unlink the old number and attach the new one.</li>
+  <li>Rotate your password and regenerate backup codes.</li>
+  <li>Open the device list and remove anything you do not recognize.</li>
+</ol>
+<p>Protect the account that holds your footprint: pair recovery with a free on-device check at <a href="/">digital-footprint-health.shop</a>, and read our <a href="/blog/what-is-digital-footprint-check">footprint check intro</a> plus the <a href="/blog/right-to-be-forgotten-twitter">right-to-be-forgotten overview</a>.</p>`.trim(),
+    content: `<p>丢了绑定 X 账号的手机号，感觉像丢了家门钥匙。但号码只是众多恢复通道之一；而在 SIM 交换攻击里，它恰恰是被攻击者控制的那个。</p>
+
+<h2>最常见的"丢手机"场景</h2>
+<ul>
+  <li>SIM 卡物理丢失或损坏。</li>
+  <li>换了运营商，旧号码被回收。</li>
+  <li>SIM 交换攻击者把你的号码迁到了他的卡上。</li>
+</ul>
+
+<h2>不靠手机的四条找回路径</h2>
+<ol>
+  <li><strong>备份码</strong>：开启 2FA 时给的一次性码依然有效，用一张登录后再重新绑定新方式。</li>
+  <li><strong>备用邮箱</strong>：若绑定了恢复邮箱，验证链接会发到邮箱而非短信。</li>
+  <li><strong>已登录设备</strong>：日常在用的笔记本或平板可以批准登录并改设置。</li>
+  <li><strong>申诉通道</strong>：最后手段，走官方申诉提交身份凭证，处理周期更长。</li>
+</ol>
+
+<h2>防 SIM 交换攻击</h2>
+<ul>
+  <li>用应用内验证器替代短信做 2FA。</li>
+  <li>向运营商加设账户 PIN 或携号冻结。</li>
+  <li>绝不在网上公开守护你账号的那个手机号。</li>
+</ul>
+
+<h2>找回后必做的三件事</h2>
+<ol>
+  <li>解绑旧号码，绑定新号码。</li>
+  <li>改密码并重新生成备份码。</li>
+  <li>打开设备列表，踢掉不认识的设备。</li>
+</ol>
+<p>守住装着你足迹的账号：把恢复和一次免费本机体检一起做，访问 <a href="/">digital-footprint-health.shop</a>，再读我们的<a href="/blog/what-is-digital-footprint-check">足迹体检入门</a>与<a href="/blog/right-to-be-forgotten-twitter">被遗忘权概览</a>。</p>`.trim(),
+  },
+  {
+    slug: 'chinese-users-data-deletion-rights-faq-2026',
+    title: '中国用户的数据删除权：PIPL 视角 FAQ',
+    excerpt: '《个人信息保护法》赋予你请求删除个人信息的权利。本文从中文用户视角，讲清哪些情况能要求删除、平台不删怎么办，以及与 GDPR 删除权的差别。',
+    date: '2026-10-28',
+    updatedAt: '2026-10-28',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['PIPL', '个人信息保护法', '数据删除权', '中文指南'],
+    canonical: '/blog/chinese-users-data-deletion-rights-faq-2026',
+    faq: [
+      { q: 'PIPL 下的删除权是什么？', a: '《个人信息保护法》第 47 条列明，当处理目的已实现、保存期限届满、你撤回同意或处理者违规时，你有权请求删除你的个人信息。', qEn: 'What is the deletion right under PIPL?', aEn: 'Article 47 of China\'s PIPL lets you request deletion when the purpose is met, the retention period ends, you withdraw consent, or the handler violated the law.' },
+      { q: '哪些情况我有权要求平台删除？', a: '典型包括：账号注销后仍有残留画像、营销短信退订后仍被推送、未经同意被收集信息、或是处理者泄露了你的数据。', qEn: 'When can I demand a platform delete my data?', aEn: 'Typical cases: leftover profiles after account closure, marketing still sent after opt-out, data collected without consent, or a breach by the handler.' },
+      { q: '平台不删怎么办？', a: '先走平台内投诉与个人信息保护负责人渠道；无果可向履行个人信息保护职责的部门举报，或依法提起诉讼。', qEn: 'What if the platform refuses?', aEn: 'First use the in-platform complaint and the personal-information-protection officer channel; if unresolved, report to the regulator or file a lawsuit.' },
+      { q: '和 GDPR 的删除权有什么不同？', a: '两者都源于「被遗忘」理念，但 PIPL 把「撤回同意」和「违规处理」作为独立触发条件，且更强调处理者的主动删除义务；GDPR 则围绕「删除权」有更细的例外清单。', qEn: 'How does it differ from GDPR\'s right?', aEn: 'Both stem from the right-to-be-forgotten idea, but PIPL lists withdrawal of consent and unlawful processing as separate triggers and stresses the handler\'s proactive duty, while GDPR wraps it in a more detailed list of exceptions.' },
+    ],
+    titleEn: 'Data Deletion Rights for Users in China: A PIPL FAQ',
+    excerptEn: 'China\'s PIPL grants you the right to request deletion of personal information. Written from a China-user perspective, this FAQ covers when you can ask, what to do if a platform refuses, and how it differs from GDPR.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['PIPL', 'data deletion', 'China privacy', 'user rights'],
+    contentEn: `<p>If you are based in China, your deletion rights come from the Personal Information Protection Law (PIPL), not GDPR. Here is the practical version.</p>
+
+<h2>When you can ask for deletion</h2>
+<ul>
+  <li>The purpose of processing is fulfilled.</li>
+  <li>The retention period has expired.</li>
+  <li>You withdraw consent.</li>
+  <li>The handler broke the rules or leaked your data.</li>
+</ul>
+
+<h2>What to do if a platform stalls</h2>
+<ol>
+  <li>Use the in-app complaint and the appointed protection officer.</li>
+  <li>Keep records of your request and their reply.</li>
+  <li>Escalate to the regulator or court if ignored.</li>
+</ol>
+
+<h2>PIPL vs GDPR in one line</h2>
+<p>PIPL treats withdrawn consent and unlawful processing as distinct triggers and leans on the handler's duty to delete; GDPR centers on a detailed right-to-erasure with more explicit exceptions.</p>
+<p>For your own X history, the fastest cleanup is still in your hands: run a free on-device check at <a href="/">digital-footprint-health.shop</a> and read the <a href="/blog/how-to-delete-old-tweets-2026">old-tweet deletion guide</a>.</p>`.trim(),
+    content: `<p>如果你身在中国，你的删除权来自《个人信息保护法》（PIPL），与 GDPR 分属不同法域。下面讲实用的版本。</p>
+
+<h2>哪些情况可以要求删除</h2>
+<ul>
+  <li>处理目的已经实现。</li>
+  <li>保存期限已经届满。</li>
+  <li>你撤回了同意。</li>
+  <li>处理者违规或者泄露了你的数据。</li>
+</ul>
+
+<h2>平台拖延不删怎么办</h2>
+<ol>
+  <li>走 App 内投诉，并联系其个人信息保护负责人。</li>
+  <li>保留你提请求、对方回复的凭证。</li>
+  <li>被无视就向监管部门举报或提起诉讼。</li>
+</ol>
+
+<h2>PIPL 与 GDPR 一句话区别</h2>
+<p>PIPL 把"撤回同意"和"违规处理"列为独立触发条件，更强调处理者主动删除的义务；GDPR 则围绕"删除权"给出更细的例外清单。</p>
+<p>对自己 X 上的历史，最快的清理仍在你手里：在 <a href="/">digital-footprint-health.shop</a> 做一次免费本机体检，再读<a href="/blog/how-to-delete-old-tweets-2026">旧推文删除指南</a>。</p>`.trim(),
+  },
+  {
+    slug: 'november-2026-social-platform-policy-update',
+    title: '2026 年 11 月社交平台隐私政策变动追踪',
+    excerpt: '每月都有平台调整数据留存、索引与删除规则。本文追踪 2026 年 11 月值得普通用户关注的隐私政策变动，以及对清理策略的影响。',
+    date: '2026-10-28',
+    updatedAt: '2026-10-28',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['隐私政策', '平台变动', '2026', '时效追踪'],
+    canonical: '/blog/november-2026-social-platform-policy-update',
+    faq: [
+      { q: '为什么每月都要看隐私政策变动？', a: '平台对索引、留存和删除 API 的调整，会直接影响你旧推文能否被找到、能否被批量删除，以及第三方还能保留多久。', qEn: 'Why track privacy-policy changes monthly?', aEn: 'Platform tweaks to indexing, retention, and deletion APIs directly affect whether your old tweets are findable, deletable in bulk, and how long third parties keep them.' },
+      { q: '11 月哪些变动最影响普通用户？', a: '重点看三件事：搜索引擎对旧帖的索引策略、平台自身的留存周期、以及删除接口是否放宽批量上限。', qEn: 'Which November changes hit ordinary users most?', aEn: 'Watch three things: how search engines index old posts, the platform\'s own retention window, and whether the deletion API raises bulk limits.' },
+      { q: '政策变动后我该先做什么？', a: '先重新下载归档，确认哪些旧内容还在；再按新规则制定清理批次，优先处理高风险项。', qEn: 'What should I do first after a change?', aEn: 'Re-download the archive to confirm what old content remains, then plan cleanup batches under the new rules, prioritizing high-risk items.' },
+      { q: '这些变动会影响我之前的删除吗？', a: '已删除的内容通常不受影响；但第三方缓存和外部索引的清理节奏可能随政策调整而变快或变慢。', qEn: 'Will these changes affect deletions I already made?', aEn: 'Already-deleted content is usually unaffected; but the pace of third-party cache and external index cleanup may speed up or slow down with policy.' },
+    ],
+    titleEn: 'November 2026 Social Platform Privacy Policy Changes to Watch',
+    excerptEn: 'Platforms tweak data retention, indexing, and deletion rules every month. This November 2026 roundup tracks privacy-policy moves that matter to ordinary users and what they mean for your cleanup plan.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['privacy policy', 'platform changes', '2026', 'timely'],
+    contentEn: `<p>Privacy policies do not sit still. Each month brings quiet changes to how platforms index, retain, and let you delete. Here is the November 2026 watchlist.</p>
+
+<h2>Changes worth watching this month</h2>
+<ul>
+  <li><strong>Search indexing of old posts.</strong> If a platform tightens indexing, fewer old tweets surface in Google; if it loosens, more resurface.</li>
+  <li><strong>Retention windows.</strong> Longer platform retention means your archive keeps growing and third parties hold data longer.</li>
+  <li><strong>Bulk deletion limits.</strong> Any raise in the per-request deletion cap changes how fast you can clean a large history.</li>
+</ul>
+
+<h2>What it means for ordinary users</h2>
+<p>A stricter retention or tighter indexing can work in your favor by shrinking your visible footprint. But a lower deletion cap slows a big cleanup. The safe move is to act before limits tighten.</p>
+
+<h2>What you should do</h2>
+<ol>
+  <li>Re-download your archive to see what still exists.</li>
+  <li>Re-check the footprint score under the new rules.</li>
+  <li>Batch-delete high-risk items first.</li>
+</ol>
+<p>Stay ahead of policy drift with a free on-device check at <a href="/">digital-footprint-health.shop</a>, and pair it with our <a href="/blog/data-brokers-selling-your-tweets">guide on data brokers</a> and the <a href="/blog/gdpr-erasure-request-twitter">GDPR erasure walkthrough</a>.</p>`.trim(),
+    content: `<p>隐私政策从不会静止。每个月，平台都在悄悄调整索引、留存和删除的方式。下面是 2026 年 11 月的观察清单。</p>
+
+<h2>本月值得关注的变动</h2>
+<ul>
+  <li><strong>旧帖的搜索索引</strong>：平台若收紧索引，旧推文更少出现在 Google；若放开，更多会被翻出。</li>
+  <li><strong>留存周期</strong>：平台留存越久，你的归档越大，第三方保留数据也越久。</li>
+  <li><strong>批量删除上限</strong>：单次删除配额上调，意味着大历史能清得更快。</li>
+</ul>
+
+<h2>对普通用户意味着什么</h2>
+<p>更严的留存、更紧的索引，往往能缩小你的可见足迹；但更低的删除上限会拖慢一次大清理。稳妥做法是趁限制收紧前先动手。</p>
+
+<h2>你该做什么</h2>
+<ol>
+  <li>重新下载归档，看清还有哪些旧内容在。</li>
+  <li>按新规则重跑一次足迹评分。</li>
+  <li>先批量删掉高风险项。</li>
+</ol>
+<p>用 <a href="/">digital-footprint-health.shop</a> 的免费本机体检跑在政策漂移前面，再搭配我们的<a href="/blog/data-brokers-selling-your-tweets">数据经纪商指南</a>与<a href="/blog/gdpr-erasure-request-twitter">GDPR 删除权实操</a>。</p>`.trim(),
+  },
+];
 
 export function getPost(slug: string): BlogPost | undefined {
   return allPosts.find((p) => p.slug === slug);

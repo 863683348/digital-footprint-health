@@ -29599,6 +29599,439 @@ rl.on('close', () =&gt; {
 </ol>
 <p>用 <a href="/">digital-footprint-health.shop</a> 的免费本机体检跑在政策漂移前面，再搭配我们的<a href="/blog/data-brokers-selling-your-tweets">数据经纪商指南</a>与<a href="/blog/gdpr-erasure-request-twitter">GDPR 删除权实操</a>。</p>`.trim(),
   },
+  {
+    slug: 'ai-recruiting-tools-read-old-tweets-2026',
+    title: '2026 年 AI 招聘筛选如何读取你的 X 旧推文：一份深度拆解',
+    excerpt: '2026 年，AI 招聘筛选已经不止看简历。你的 X 旧推文被模型读取、被打分成维度。本文拆开讲清它读的是什么、风险在哪，以及普通人能做的几件事。',
+    date: '2026-10-29',
+    updatedAt: '2026-10-29',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['AI 招聘', 'X 旧推文', '背景调查', '数字足迹', '求职隐私'],
+    content: `<p>2026 年，越来越多公司在招聘环节引入 AI 筛选。简历之外，你的社交媒体痕迹也成了可参考的信号，尤其是 X（Twitter）这种公开平台——十年前发的旧推文，可能还在被爬取、被模型读取。这篇文章把"AI 招聘工具到底怎么读你的旧推文"拆开讲清楚，顺便说说普通人能做什么。</p>
+
+<h2>AI 招聘筛选到底在"读"什么</h2>
+<p>先区分两类动作。一类是公司自己用模型扫你的公开主页，另一类是第三方背调工具批量抓取公开推文再打分。它们并不在意你想表达什么，只统计一组可量化的特征：你提到的公司名、负面情绪词出现的频率、争议话题被提及的次数。模型基本不在乎语境，它只数特征。</p>
+
+<h2>你的推文被变成了哪些维度</h2>
+<ul>
+<li>情绪倾向：高频负面词会被标记，哪怕你那是在吐槽天气；</li>
+<li>话题归属：政治、宗教、健康类内容容易被单独归类；</li>
+<li>身份线索：你无意间写下的雇主、学校、城市，会被拼成一张画像；</li>
+<li>互动对象：你常 @ 的人、常转发的账号，也会进入关联分析。</li>
+</ul>
+<p>这些维度单独看都无害，组合起来就能给别人"贴标签"，而你大概率不知道那张标签长什么样。</p>
+
+<h2>最容易被算法盯上的三类旧推文</h2>
+<p>第一类是带精确身份信息的，比如工牌照片、含公司内网的截图。第二类是情绪化表达，尤其是那些被截图传播过的争议内容。第三类是定位打卡，长期暴露你的常驻城市和生活半径。这三类的共同点是：机器很好识别，人也很好利用。</p>
+
+<h2>模型读不懂语境，这恰恰是风险</h2>
+<p>一句反讽、一个梗、一段只有圈内人才懂的自嘲，在模型眼里很可能就是"负面情绪"或"争议倾向"的计数。你以为自己表达得很清楚，但打分表不会回来问你原意。这种错位在招聘这种高利害场景里尤其要命，因为很少有人会为一条旧推文给你辩解的机会。</p>
+
+<h2>清理还是依赖平台，这是个选择</h2>
+<p>有人觉得"平台会自己忘掉"，但现实是删除有宽限期、转发和截图不在你控制范围内。与其赌平台，不如自己动手把高风险内容清掉。批量工具能按关键词、日期、是否含手机号来筛，比一条条翻时间线现实得多。关于公开主页暴露了什么，可以看这篇 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>。</p>
+
+<h2>求职前两周该做的三件事</h2>
+<ul>
+<li>把 X 归档下载下来，在本机过一遍，重点看手机号、住址、精确定位；</li>
+<li>挑出最容易引发误读的争议内容，删掉或设为仅自己可见；</li>
+<li>检查授权过的第三方应用，收回不再需要的访问权限。</li>
+</ul>
+<p>这三步不复杂，难的是养成习惯，而不是等猎头找上门才手忙脚乱。</p>
+
+<h2>一个本机优先的思路</h2>
+
+<h2>一个真实的错位案例</h2>
+<p>我认识的一位工程师，面试前完全没料到会被刷掉。后来托人打听才知道，对方用的工具抓到了他三年前一条调侃前东家的推文，模型把它归进了"负面情绪加争议倾向"。那条推文当时只是圈内自嘲，转发个位数，他自己早忘了。内容被抽掉语境之后的二次解读，往往才是真正伤人的部分。</p>
+<h2>筛查工具大致分三档</h2>
+<p>不点名具体产品，按能力分大概三档。第一档只做关键词和情绪统计，便宜但误报最多。第二档把你的推文、转发、关注对象拼成一张画像，再和岗位要求做匹配，这类最容易产生刻板标签。第三档接入了更深的语义模型，能识别反讽和主题，但代价是它读得越多，你留给自己的解释空间越小。普通人很难知道对方用的是哪一档，所以最稳的做法是默认对方用最强那一档，提前把公开面收拾干净。</p>
+<h2>给求职者的几条具体动作</h2>
+<ul>
+<li>面试前把公开主页当第二份简历对待，过一遍最容易误读的内容；</li>
+<li>别只删负面，按风险类型清理：身份暴露、情绪化、争议话题，分三批处理；</li>
+<li>收回不再用的第三方授权，少一个数据出口就少一份被拼图的可能；</li>
+<li>岗位敏感时，考虑把旧号设为仅自己可见，而不是一刀切删光，删光反而显得刻意。</li>
+</ul>
+<p>这些动作不复杂，难的是在本来没事的时候就去做的自律。</p>
+<h2>平台不会替你负责</h2>
+<p>很多人默认"发都发了，平台会处理"。但删除有宽限期，转发和截图不在你手里，平台自己的隐私设置也经常改来改去。把高风险内容先清掉，比指望平台忘记更靠谱。批量工具能按关键词、日期、是否含手机号来筛，比一条条翻时间线现实得多。</p>
+<h2>先从看清开始</h2>
+<p>如果你不知道自己暴露了多少，清理就是盲打。先把 X 归档下载到本机，在电脑上过一遍手机号、地址、精确定位，比在手机上一条条翻更有用。像 digital-footprint-health.shop 这类工具，解析、标记、删除都在你机器上完成，数据不上传，入口在 <a href="/">首页</a>。想看清公开主页到底暴露了什么，可以顺着 <a href="/blog/what-is-digital-footprint-check">数字足迹体检</a> 这篇往下看。</p>
+<h2>把清理当成长期习惯</h2>
+<p>数字身份不是清理一次就一劳永逸。你每发一条、每转一次，画像就在更新。比较好的节奏是每季度把归档拉下来过一遍，像体检一样。关于平台能不能替你负责，<a href="/blog/social-platform-policy-changes-october-2026">近期平台政策变动</a> 这篇也值得一读。</p>
+<p>如果你的目的是"先看清自己暴露了什么"，那把归档下载到本机、在电脑上解析最稳妥。像 digital-footprint-health.shop 这类工具，解析、标记、删除都在你机器上完成，数据不上传。入口在 <a href="/">首页</a>，更多中文场景说明在 <a href="/blog">博客</a>。想更系统一点，可以看 <a href="/blog/chinese-tech-workers-x-data-hygiene-2026">中文工程师的数据卫生</a> 这篇。</p>`,
+    canonical: '/blog/ai-recruiting-tools-read-old-tweets-2026',
+    faq: [
+      { q: '招聘方真的会用 AI 读我的旧推文吗？', a: '不少公司和第三方背调工具已经在做。公开主页本来就能被抓取，AI 只是把"人肉翻看"变成了"批量打分"，规模大了很多。', qEn: 'Do recruiters actually use AI to read my old tweets?', aEn: 'Many companies and third-party screening tools already do. A public profile was always scrapeable; AI just turned manual skimming into bulk scoring at far larger scale.' },
+      { q: '只删负面推文就够了？', a: '不够。模型还会看身份线索和互动对象，光删负面情绪那几条，剩下的画像照样能拼出来。建议按"风险类型"而不是"心情"来清。', qEn: 'Is deleting negative tweets enough?', aEn: 'No. The model also reads identity cues and who you interact with; removing only the moody posts leaves the rest of the profile intact. Clean by risk type, not by mood.' },
+      { q: '平台自己的删除能保护我吗？', a: '不完全。删除常有宽限期，而且转发和截图不在你手里。把高风险内容先清掉，比指望平台"忘记"更靠谱。', qEn: 'Does the platform deleteing it protect me?', aEn: 'Not fully. Deletion often has a grace period, and reposts or screenshots are out of your hands. Clearing high-risk content yourself beats trusting the platform to forget.' },
+      { q: '我该怎么快速看清自己暴露了什么？', a: '把 X 归档下载到本机解析最快。像 digital-footprint-health.shop 在本机标出手机号、地址、定位，数据不出电脑。', qEn: 'How do I quickly see what I have exposed?', aEn: 'Download your X archive and parse it locally. Tools like digital-footprint-health.shop flag phone numbers, addresses and locations on your own machine, with nothing uploaded.' },
+      { q: '求职前多久该做这次清理？', a: '建议至少提前两周。批量清理加等待平台同步，比面试前夜手忙脚乱稳得多。', qEn: 'How far ahead of a job search should I clean up?', aEn: 'At least two weeks. Bulk cleanup plus waiting for platform sync is far steadier than a panic session the night before an interview.' },
+    ],
+    titleEn: 'How AI Recruiting Tools Read Your Old X Tweets in 2026: A Deep Dive',
+    excerptEn: 'In 2026, AI recruiting screens look past the resume. Your old X tweets get scraped and scored into dimensions. This piece breaks down what gets read, where the risk sits, and what you can actually do.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['AI recruiting', 'old X tweets', 'background check', 'digital footprint', 'job-hunt privacy'],
+    contentEn: `<p>In 2026, more companies pull AI into hiring. Beyond the resume, your social traces become a reference signal, and on a public platform like X (Twitter) a tweet from ten years ago may still be scraped and read by a model. This piece breaks down what an AI recruiting tool actually reads from your old tweets, where the risk sits, and what an ordinary person can do.</p>
+
+<h2>What an AI recruiting screen actually reads</h2>
+<p>First, two different actions. One is a company running its own model over your public profile. The other is a third-party screening tool bulk-scraping public tweets and then scoring them. Neither reads what you meant to say; both read quantifiable features: company names you mention, how often negative words appear, how many times a controversial topic comes up. The model mostly ignores context and just counts features.</p>
+
+<h2>Which dimensions your tweets become</h2>
+<ul>
+<li>Sentiment tilt: frequent negative words get flagged, even if you were complaining about the weather;</li>
+<li>Topic buckets: politics, religion, health content tends to be sorted on its own;</li>
+<li>Identity cues: employer, school, city you wrote down without thinking get assembled into a profile;</li>
+<li>Who you interact with: accounts you @ or retweet regularly feed association analysis.</li>
+</ul>
+<p>Each dimension alone is harmless; combined, they let someone label you, and you probably never see what that label looks like.</p>
+
+<h2>The three types of old tweets algorithms lock onto</h2>
+<p>First, anything with precise identity data: badge photos, screenshots that leak an intranet domain. Second, emotional posts, especially controversial ones that got screenshotted. Third, location check-ins that reveal your home city and daily radius over time. The common thread: machines read them easily and people exploit them easily.</p>
+
+<h2>The model misses context, and that is the danger</h2>
+<p>A sarcastic line, an in-joke, a self-deprecating post only your circle gets may read to the model as "negative" or "controversial" counts. You thought you expressed yourself clearly, but the scorecard never comes back to ask your intent. That mismatch is especially costly in hiring, where few people get a chance to explain a stray old tweet.</p>
+
+<h2>Clean up or trust the platform, a real choice</h2>
+<p>Some assume the platform "forgets." In reality deletion has a grace period, and reposts and screenshots are outside your control. Rather than bet on the platform, clean the high-risk content yourself. Batch tools filter by keyword, date, or whether a phone number is present, which beats scrolling the timeline one post at a time. For what a public profile exposes, see <a href="/blog/what-is-digital-footprint-check">this explainer on footprint checks</a>.</p>
+
+<h2>Three things to do two weeks before applying</h2>
+<ul>
+<li>Pull your X archive and run it locally, focusing on phone numbers, addresses, precise locations;</li>
+<li>Single out the most misreadable controversial posts and delete or privatize them;</li>
+<li>Review authorized third-party apps and revoke access you no longer need.</li>
+</ul>
+<p>None of this is hard; the hard part is making it a habit instead of panicking when a recruiter appears.</p>
+
+<h2>A local-first approach</h2>
+
+<h2>A real mismatch, in practice</h2>
+<p>An engineer I know lost an interview he never expected to lose. Someone later found out the tool the employer used had picked up a three-year-old tweet where he'd joked about a former employer; the model filed it under "negative sentiment plus controversy." The post was an in-joke, shared a handful of times, and he'd long forgotten it. The damage wasn't what he said; it was how that post read once stripped from its context and re-scored.</p>
+<h2>Three rough tiers of screening tools</h2>
+<p>Without naming products, the capabilities split into three bands. The first only counts keywords and sentiment: cheap, crude, and the most error-prone. The second assembles your tweets, retweets, and who you follow into a profile and matches it against the role, which is where stereotyping creeps in. The third leans on deeper semantic models that catch sarcasm and topics, but the cost is simple: the more it reads, the less room you have to explain yourself. You rarely know which tier a given employer uses, so the safe move is to assume the strongest one and tidy your public surface beforehand.</p>
+<h2>Concrete actions for job seekers</h2>
+<ul>
+<li>Treat your public profile as a second resume before any interview, and scan the posts most likely to be misread;</li>
+<li>Don't just delete the negative; clean by risk type: identity exposure, emotional posts, controversial topics, in three passes;</li>
+<li>Revoke third-party authorizations you no longer use, so there's one fewer data outlet to be stitched from;</li>
+<li>If the role is sensitive, consider setting the old account to private rather than wiping it wholesale, which can look evasive.</li>
+</ul>
+<p>None of this is hard; the hard part is the discipline to do it when nothing seems wrong.</p>
+<h2>The platform won't cover for you</h2>
+<p>Plenty of people assume that once something is posted, the platform handles it. But deletion has a grace period, reposts and screenshots sit outside your control, and the platform's own privacy settings keep shifting. Clearing the high-risk content yourself beats trusting the platform to forget. Batch tools that filter by keyword, date, or the presence of a phone number beat scrolling the timeline one post at a time.</p>
+<h2>Start by seeing clearly</h2>
+<p>If you don't know how much you've exposed, cleanup is shooting in the dark. Download your X archive and run it on your own computer, scanning for phone numbers, addresses, and precise locations; that beats flipping through posts on a phone. Tools like digital-footprint-health.shop parse, flag, and delete on your machine, with nothing uploaded; the entry point is the <a href="/">homepage</a>. To see what a public profile actually exposes, follow the thread from <a href="/blog/what-is-digital-footprint-check">this footprint check piece</a>.</p>
+<h2>Make cleanup a standing habit</h2>
+<p>Your digital identity isn't a one-time cleanup. Every post and retweet updates the picture. A reasonable rhythm is to pull your archive once a quarter and skim it like a check-up. For whether the platform will cover you, <a href="/blog/social-platform-policy-changes-october-2026">recent policy shifts</a> are worth a read. The trend line is clear even when the timelines are not.</p>
+<h2>What they still can't see</h2>
+<p>Screening tools read what's public, not what's private. Accounts set to followers-only, direct messages, and posts that were deleted and purged fall outside the scrape. That's the edge ordinary users actually have: the less you leave public, the less there is to score. A quiet account is not suspicious; it is simply a smaller target.</p>
+<p>If your goal is to see what you have exposed, downloading the archive and parsing it on your own computer is steadiest. Tools like digital-footprint-health.shop parse, flag, and delete on your machine, with nothing uploaded. Start on the <a href="/">homepage</a>; more China-specific notes are on the <a href="/blog">blog</a>. For a systematic take, read <a href="/blog/chinese-tech-workers-x-data-hygiene-2026">data hygiene for Chinese engineers</a>.</p>`,
+    },
+  {
+    slug: 'chinese-users-data-broker-deletion-guide-2026',
+    title: '中文用户向数据经纪商申请删除：一份本土化操作指南',
+    excerpt: '数据经纪商会收集并售卖你的公开信息。本文从中文用户的真实场景出发，讲清怎么找到这些经纪商、提交删除请求时中英文材料怎么写、以及常见的卡点。',
+    date: '2026-10-29',
+    updatedAt: '2026-10-29',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['数据经纪商', '删除权', '中文用户', '隐私保护', '本土化'],
+    content: `<p>很多人第一次听说"数据经纪商"，是发现自己从没用过的 App 或网站居然有自己手机号的时候。这些公司专门收集公开信息、再打包卖给别人。对中文用户来说，跨国经纪商的界面和流程往往不友好，本文从真实场景出发，给出一份能落地的操作指南。</p>
+
+<h2>数据经纪商到底收集了什么</h2>
+<p>它们主要吃公开数据：你发过的帖子、企业黄页、公开工商记录、新闻报道里出现的名字。整理成"这个人可能住哪、在哪上班、和谁有关联"的档案。这些信息单独看不算机密，但聚到一起，骚扰电话和精准诈骗就有了原料。</p>
+
+<h2>中文用户先弄清"归谁管"</h2>
+<p>这一步最容易被忽略。如果你的信息被境外经纪商收录，适用的是对方所在地的法律；如果是境内机构，则要按国内的个人信息保护规则走。先判断对方注册地，再决定用哪套话术和哪个申诉入口，别一上来就中英混杂地乱发邮件。</p>
+
+<h2>提交删除请求时，中文材料怎么写</h2>
+<p>写请求时把三件事说清楚：你是谁（提供能验证身份的公开信息，而不是更多隐私）、你要求删除的具体字段、你依据的权利条款。中文用户常犯的错是附了一堆身份证照片，反而扩大了暴露面。能用公开信息证明"这是我"就够了，别把敏感证件塞进邮件。</p>
+
+<h2>英文邮件的写法要点</h2>
+<p>给境外经纪商发请求，主题直接写"Data deletion request under [法律名]"，正文用短句列点：身份、要删的字段、法律依据、回复期限。对方客服可能只会套模板回复，所以第一次发就要把权利要求写明白，省得来回拉扯。更多权利细节可看 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 删除权 FAQ</a>。</p>
+
+<h2>常见卡点与应对</h2>
+<ul>
+<li>对方要求付费：正规经纪商处理删除不应收费，收费可视为 red flag；</li>
+<li>回复"找不到你的记录"：换关键词再查，很多人被收录时用的不是本名；</li>
+<li>删了又出现：说明源头还在持续供给，要追到上游平台一起处理。</li>
+</ul>
+<p>这类事没有一键搞定，把它当成季度小任务比年底突击更轻松。</p>
+
+<h2>一个本机优先的辅助思路</h2>
+
+<h2>国内的经纪商长什么样</h2>
+<p>和国外不同，国内很少用"数据经纪商"这个叫法，更多是营销数据公司、风控服务商、以及各类 App 的后台标签系统。你的手机号、设备号、购物记录，常常在你看不到的地方被拼接、转卖、再用于画像。申请删除时，先搞清楚对方到底拿了你的哪类数据，比直接发一封模板邮件有用。</p>
+<h2>申请时的几个实用细节</h2>
+<p>留好截图和单号，写明你要删的是"与我相关的全部衍生数据"而不是某一条；如果对方以"服务必要"拒绝，可以要求它说明依据哪条条款。处理周期通常两到四周，别指望三天搞定。关于平台侧能不能兜底，<a href="/blog/data-broker-removal-vs-tweet-deletion">数据经纪商移除与推文删除的区别</a> 这篇讲得更细。</p>
+<p>经纪商吃的是公开数据，所以源头清理更治本。把 X 归档下到本机，用 digital-footprint-health.shop 标出手机号、地址这类高风险字段，先在自己机器上收敛暴露面。入口在 <a href="/">首页</a>，中文场景说明在 <a href="/blog">博客</a>。也可以参考 <a href="/blog/data-broker-removal-vs-tweet-deletion">数据经纪商删除与推文删除的区别</a>。</p>`,
+    canonical: '/blog/chinese-users-data-broker-deletion-guide-2026',
+    faq: [
+      { q: '数据经纪商合法吗？', a: '在很多地区，收集公开信息本身不违法，但出售和留存要受隐私法规约束，用户通常有权要求删除。具体看对方注册地的法律。', qEn: 'Are data brokers legal?', aEn: 'In many regions collecting public info is legal, but reselling and retention are bound by privacy law, and users usually have a deletion right. It depends on where the broker is registered.' },
+      { q: '中文用户发英文请求会被忽略吗？', a: '不会，但写清法律依据比语言更重要。主题写明适用的法律条款，正文短句列点，对方客服才容易处理。', qEn: 'Will a Chinese user\'s English request be ignored?', aEn: 'No, but stating the legal basis matters more than the language. Put the applicable law in the subject and keep the body in short bullet points.' },
+      { q: '要附身份证证明身份吗？', a: '尽量别。用公开信息能证明"这是我"就够了，塞敏感证件反而扩大暴露面。', qEn: 'Should I attach my ID to prove who I am?', aEn: 'Try not to. Public info that proves the record is yours is enough; sending sensitive documents only widens your exposure.' },
+      { q: '删了为什么又出现？', a: '说明上游还在持续供给数据。要追到原始发布平台一起处理，单点删除会被反复刷新。', qEn: 'Why did it reappear after deletion?', aEn: 'The upstream source is still feeding data. You have to address the original platform too; a single deletion gets refreshed.' },
+    ],
+    titleEn: 'A Localized Guide for Chinese Users: Requesting Deletion from Data Brokers',
+    excerptEn: 'Data brokers collect and resell your public info. Written from the Chinese user perspective, this guide covers how to find these brokers, what to put in Chinese and English deletion requests, and the usual stuck points.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['data brokers', 'right to delete', 'Chinese users', 'privacy', 'localization'],
+    contentEn: `<p>Many people first hear "data broker" when an app or site they never used somehow has their phone number. These companies scrape public information and repackage it for sale. For Chinese users the interfaces and flows of cross-border brokers are often unfriendly, so this guide works from real scenarios into something you can actually do.</p>
+
+<h2>What data brokers actually collect</h2>
+<p>They mostly eat public data: posts you made, business directories, public company records, names that show up in news. They assemble a profile of where you might live, where you work, who you are tied to. None of it is secret alone, but stitched together it becomes raw material for spam calls and targeted scams.</p>
+
+<h2>Chinese users: first settle "who governs this"</h2>
+<p>This step gets skipped most. If an overseas broker holds your info, the law of its location applies; if a domestic entity does, the local personal-information rules apply. Judge the registration first, then pick the wording and the complaint channel, instead of firing off a mixed Chinese-English email at random.</p>
+
+<h2>What to write in the Chinese request</h2>
+<p>Make three things clear: who you are (provide public info that verifies identity, not more privacy), the exact fields you want removed, and the right you rely on. The common slip is attaching a pile of ID photos, which only widens exposure. Public info that proves "this is me" is enough; do not stuff sensitive documents into the email.</p>
+
+<h2>How to write the English email</h2>
+<p>To an overseas broker, put "Data deletion request under [law]" in the subject and use short bullet points in the body: identity, fields to delete, legal basis, reply deadline. Their support may only answer with templates, so state the claim clearly the first time to avoid back-and-forth. For more on the rights, see <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">the CCPA and GDPR deletion FAQ</a>.</p>
+
+<h2>Common stuck points and what to do</h2>
+<ul>
+<li>They ask for payment: a legitimate broker should not charge to process deletion; a fee is a red flag;</li>
+<li>"No record found": search with other keywords, many people are indexed under a name they no longer use;</li>
+<li>It reappears: the source keeps feeding data, so you must chase the upstream platform too.</li>
+</ul>
+<p>None of this is one-click; treat it as a quarterly small task rather than a year-end scramble.</p>
+
+<h2>A local-first supporting idea</h2>
+
+<h2>What brokers look like domestically</h2>
+<p>Unlike overseas, the term "data broker" is rarely used here; the reality is marketing-data firms, risk-control services, and the backend tagging systems behind various apps. Your phone number, device ID, and purchase history often get stitched and resold where you can't see it. Before asking for deletion, work out which type of data the other side actually holds; that beats sending a template email blind.</p>
+<h2>Practical details when you file</h2>
+<p>Keep screenshots and a ticket number, and state that you want all derived data related to you removed, not just one record. If they refuse on "service necessity," ask which clause they're citing. The cycle is usually two to four weeks, not three days. For whether the platform side can step in, <a href="/blog/data-broker-removal-vs-tweet-deletion">this piece on broker removal versus tweet deletion</a> goes deeper.</p>
+<p>Brokers feed on public data, so source cleanup goes deeper. Pull your X archive locally and use digital-footprint-health.shop to flag high-risk fields like phone numbers and addresses, tightening your exposure on your own machine. Start on the <a href="/">homepage</a>; China-specific notes are on the <a href="/blog">blog</a>. Also worth reading: <a href="/blog/data-broker-removal-vs-tweet-deletion">data broker removal vs tweet deletion</a>.</p>`,
+    },
+  {
+    slug: 'social-media-detox-anxiety-relief-2026',
+    title: '清理旧推文也能缓解焦虑：数字排毒的心理学',
+    excerpt: '数字排毒不只是"少刷手机"。把多年累积的旧推文清理一遍，常常能实实在在地减轻焦虑。本文从心理角度讲清为什么，以及怎么做得不痛苦。',
+    date: '2026-10-29',
+    updatedAt: '2026-10-29',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['数字排毒', '清理焦虑', '心理健康', '旧推文', '习惯养成'],
+    content: `<p>说到数字排毒，很多人想到的就是"少刷手机"。但另一种更有效的做法，是回头清理自己多年累积的旧推文。很多人做完一轮之后，最先冒出来的感觉是心里松了一口气，至于账号有没有"干净"反而不重要了。这背后有清楚的心理机制。</p>
+
+<h2>焦虑来自"过去的我"随时会被翻出</h2>
+<p>我们在不同人生阶段说过不同的话。年轻时随口一句、吵架时的一句狠话、低谷时的一串抱怨，都安静地躺在时间线里。只要它们还在，就有一根隐形的弦：哪天被人翻出来怎么办。清理掉，好比剪断那根弦，和抹掉记忆是两码事。</p>
+
+<h2>"失控感"是焦虑的燃料</h2>
+<p>社交平台上的内容，删除有宽限期、转发不在你手里、截图满天飞。这种"我说了不算"的感觉，会持续喂养焦虑。把能控制的先控制起来——比如本机归档里的高风险字段——能找回一点掌控感，而掌控感本身就是镇静剂。</p>
+
+<h2>怎么清理才不痛苦</h2>
+<ul>
+<li>别追求"全删光"，分级处理：最危险的先删，轻度的留着；</li>
+<li>用工具按关键词和日期批量筛，别一条条肉眼翻；</li>
+<li>设个固定节奏，比如每季度一次，而不是攒几年一次性崩溃。</li>
+</ul>
+<p>把清理当成体检而不是大扫除，心理压力会小很多。</p>
+
+<h2>清理之后，建立新习惯</h2>
+<p>真正让焦虑不回来的，是发之前多想两秒：这条会不会在未来的某天让我尴尬？不需要每条都活得像个公关稿，只要少留几颗"定时炸弹"就行。关于发推前的红线，可以看 <a href="/blog/chinese-tech-workers-x-data-hygiene-2026">中文工程师的数据卫生</a>。</p>
+
+<h2>一个低门槛的开始</h2>
+
+<h2>断联焦虑不是矫情</h2>
+<p>停更几天就开始心慌，是因为大脑把"有没有人互动"当成了安全感来源。点赞和评论原本是随机的小奖励，一旦撤掉，人会本能地觉得被冷落。先承认这是生理反应，而不是自己性格有问题，焦虑会轻一点。</p>
+<h2>一个渐进的退法</h2>
+<p>别一上来就注销。先把推送关掉、把 App 移出首屏，每天固定只看两次。空出来的时间别硬塞给另一个屏幕，去走走路、翻翻纸质东西。两周后你会发现，错过的大多是噪音。关于长期怎么和数字身份相处，<a href="/blog/social-media-privacy-regulation-trends-2026">监管趋势</a> 这篇也值得一看。</p>
+
+<h2>两周后会发生什么</h2>
+<p>多数人坚持两周后会发现两件事：一是刷手机的时间短了，二是看到未读红点时不再心慌。你没突然多了意志力，只是那个"被需要"的开关被调低了。如果某天又忍不住狂刷，别自责，把它当成一次数据采样就好。</p>
+<p>如果你一直没动手，多半是觉得"太麻烦"。其实把 X 归档下到本机，用 digital-footprint-health.shop 在本机标出风险点，比翻时间线快得多，数据也不出电脑。入口在 <a href="/">首页</a>，更多说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/social-media-detox-anxiety-relief-2026',
+    faq: [
+      { q: '清理旧推文真能缓解焦虑吗？', a: '对很多人是的。焦虑常来自"过去的我说过的话随时被翻出"的不确定感，清理掉最危险的那些，这种悬着的感觉会明显减轻。', qEn: 'Can cleaning old tweets really ease anxiety?', aEn: 'For many people, yes. Anxiety often comes from the uncertainty that something you said may surface anytime; removing the riskiest posts noticeably lowers that hanging feeling.' },
+      { q: '是不是该把所有旧推文都删了？', a: '没必要，分级处理更现实。最危险、最易误读的先删，轻度的留着反而保留你的内容资产。', qEn: 'Should I delete all old tweets?', aEn: 'Not needed. Tiered cleanup is more realistic: delete the riskiest and most misreadable first, keep the light ones as your content asset.' },
+      { q: '多久清理一次比较好？', a: '建议每季度一次的小清理，比攒几年一次性崩溃轻松得多，也更容易坚持。', qEn: 'How often should I clean up?', aEn: 'A small quarterly cleanup beats a once-every-few-years breakdown, and it is far easier to keep up.' },
+      { q: '不懂技术也能做吗？', a: '能。本机解析工具不用写代码，下载归档、跑一遍、按标记删就行。', qEn: 'Can a non-technical person do this?', aEn: 'Yes. Local parsing tools need no coding: download the archive, run it once, delete by the flags it shows.' },
+    ],
+    titleEn: 'Clearing Old Tweets Can Ease Anxiety: The Psychology of Digital Detox',
+    excerptEn: 'Digital detox is more than using your phone less. Cleaning years of old tweets often genuinely lowers anxiety. This piece explains the psychology and how to do it without misery.',
+    categoryEn: 'Psychology & Habits',
+    tagsEn: ['digital detox', 'cleanup anxiety', 'mental health', 'old tweets', 'habit building'],
+    contentEn: `<p>When people say digital detox, many think "use the phone less." Another, often more effective move is going back and cleaning the old tweets you have stacked up over years. After a round of this, the most common feeling is not "my account is clean" but "I can breathe easier." There is a clear mechanism behind it.</p>
+
+<h2>Anxiety comes from "the past me" being dug up anytime</h2>
+<p>We say different things at different life stages. A careless line when young, a harsh reply in a fight, a string of complaints at a low point, all sit quietly in the timeline. As long as they are there, an invisible string stays taut: what if someone digs this up someday. Cleaning them is not erasing memory; it is cutting that string.</p>
+
+<h2>"Loss of control" feeds anxiety</h2>
+<p>Content on a social platform has a deletion grace period, reposts you do not control, screenshots everywhere. That "I do not get the final say" feeling keeps feeding anxiety. Taking back what you can control, like the high-risk fields in your local archive, restores a bit of agency, and agency itself is a sedative.</p>
+
+<h2>How to clean without misery</h2>
+<ul>
+<li>Do not aim to "delete everything"; tier it: riskiest first, light ones stay;</li>
+<li>Use tools to filter by keyword and date in bulk, not eyeballing the timeline;</li>
+<li>Set a fixed cadence, say quarterly, instead of a once-every-few-years breakdown.</li>
+</ul>
+<p>Treat cleanup like a checkup, not a deep clean, and the mental load drops.</p>
+
+<h2>After cleanup, build the new habit</h2>
+<p>What really keeps anxiety away is pausing two seconds before posting: will this embarrass me someday? You do not need every post to read like a press release, just fewer "time bombs." For the red lines before posting, see <a href="/blog/chinese-tech-workers-x-data-hygiene-2026">data hygiene for Chinese engineers</a>.</p>
+
+<h2>A low-barrier start</h2>
+
+<h2>Detox anxiety is not vanity</h2>
+<p>Feeling panicky after a few days offline happens because the brain started treating "did anyone interact" as a source of safety. Likes and comments were random small rewards; pull them away and a person instinctively feels left out. Recognizing this as a physical reaction, not a character flaw, already takes the edge off.</p>
+<h2>A gradual way to step back</h2>
+<p>Don't delete the account on day one. Turn off notifications first, move the app off the home screen, and check it on a fixed schedule twice a day. Don't fill the freed time with another screen; walk, or read something printed. After two weeks you'll notice most of what you missed was noise. For the longer game of living with a digital identity, <a href="/blog/social-media-privacy-regulation-trends-2026">this regulation-trends piece</a> is worth a look. The goal isn't to disappear, it's to decide when you show up.</p>
+
+<h2>What happens after two weeks</h2>
+<p>Most people who last two weeks notice two things: phone time drops, and the red badge stops triggering panic. That isn't stronger willpower; it's the "needed by others" switch turned down. If you relapse into a scrolling binge one day, don't scold yourself; treat it as one more data point.</p>
+<p>If you have never started, it is probably because it feels "too much trouble." Pulling your X archive locally and using digital-footprint-health.shop to flag risks on your machine is far faster than scrolling the timeline, and nothing leaves the computer. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+    },
+  {
+    slug: 'x-old-tweets-legal-rights-faq-2026',
+    title: 'X 旧推文法律维权 FAQ：中文用户最常问的 4 个问题',
+    excerpt: '旧推文被滥用、被翻旧账、被要求删除却删不掉，怎么办？本文用 FAQ 形式回答中文用户关于 X 旧推文法律权利最常问的四个问题。',
+    date: '2026-10-29',
+    updatedAt: '2026-10-29',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['旧推文', '法律维权', '删除权', '隐私权', '中文用户'],
+    content: `<p>旧推文带来的麻烦，多半要等很久以后才冒出来，发的时候往往毫无征兆。被别人拿去断章取义、被翻旧账、想删却卡在平台流程里——这类问题中文用户问得最多。下面用四个问答把最常见的说清楚。</p>
+
+<h2>问题一：别人拿我的旧推文做文章，我能怎么办</h2>
+<p>先看对方怎么用。如果是公开引用且基本忠实，空间有限；如果是断章取义、配上误导表述造成你社会评价下降，可能涉及名誉相关权利。保留截图和链接作为证据，再决定发函还是平台投诉。更多背景见 <a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求权</a>。</p>
+
+<h2>问题二：我想删掉旧推文，平台却说不行</h2>
+<p>自己账号下的内容，删除通常是账号持有人的权利，平台流程卡住多是因为身份校验或宽限期。先走官方删除入口，别用第三方工具绕过，反而容易把账号权限搞乱。实在删不掉高风险内容，就先设为仅自己可见，至少缩小可见范围。</p>
+
+<h2>问题三：境外法律能管到我的旧推文吗</h2>
+<p>看适用法域。如果你的信息被境外实体处理，对方的合规义务跟着注册地走；如果你在境内，则按本地个人信息规则主张。不要假设"平台在海外就管不到"，也不要假设"在海外就自动适用某部法律"，先定位对方注册地。</p>
+
+<h2>问题四：被要求提供旧推文作为证据，必须给吗</h2>
+<p>只有在合法程序下、由有权机关依法调取时才必须配合；普通个人或公司私下发来"把某天推文发我"的要求，你没有义务照做。判断不了时，别急着把数据发出去，先确认对方身份和依据。</p>
+
+<h2>一个本机优先的收尾</h2>
+
+<h2>你手里的法律依据</h2>
+<p>在部分地区，法律确实给了你要求删除或更正数据的权利，比如欧盟的被遗忘权、加州的相关隐私条款。但这类权利通常针对"控制你数据的平台或经纪商"，不是强制某个陌生人删掉他转发的截图。理解边界，才不会在申诉时碰壁。</p>
+<h2>平台条款能帮你到哪一步</h2>
+<p>大多数平台的服务条款允许你删除自己发布的内容，也允许对侵权内容发起申诉。但条款覆盖不到别人截的图、别的站点转走的数据。想系统了解删除请求怎么写，<a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求怎么发</a> 和 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 删除权答疑</a> 这两篇可以接着看。</p>
+
+<h2>跨境情形的坑</h2>
+<p>如果你常驻国内、但内容发在海外平台，适用法律会更乱：平台注册地、你所在地区、数据存储地可能分属不同法域。删除请求不是一张表填完就生效，往往要按对方所在地的规则走。先把"我在哪个法域提请求"想清楚，比盲目发模板邮件有用。更具体的写法可以参考 <a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求</a> 和 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 答疑</a>。</p>
+<p>法律路径慢，源头收敛快。把 X 归档下到本机，用 digital-footprint-health.shop 标出手机号、地址这类高风险字段，先在自己机器上把暴露面收住。入口在 <a href="/">首页</a>，中文说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/x-old-tweets-legal-rights-faq-2026',
+    faq: [
+      { q: '别人断章取义用我的旧推文，能维权吗？', a: '如果造成社会评价下降，可能涉及名誉相关权利。先留好截图和链接证据，再决定发函或平台投诉。', qEn: 'Can I act if someone misuses my old tweet out of context?', aEn: 'If it lowers your social standing, reputation-related rights may apply. Keep screenshots and links as evidence, then decide on a letter or platform complaint.' },
+      { q: '平台不让删旧推文怎么办？', a: '先走官方删除入口，多为身份校验或宽限期问题。实在删不掉就设为仅自己可见，先缩小可见范围。', qEn: 'What if the platform will not let me delete an old tweet?', aEn: 'Use the official deletion path first; it is often identity check or grace period. If it truly will not delete, switch it to private to shrink the audience.' },
+      { q: '境外法律管得到我的旧推文吗？', a: '看对方注册地。境外实体按当地合规义务走，境内按本地规则主张，别想当然。', qEn: 'Does overseas law reach my old tweets?', aEn: 'It depends on where the other party is registered. Overseas entities follow local obligations; domestic ones follow local rules. Do not assume.' },
+      { q: '被要求提供旧推文当证据，必须给吗？', a: '只有依法定程序由有权机关调取才必须配合；普通私下要求没有义务照做，先确认身份和依据。', qEn: 'Must I hand over old tweets as evidence if asked?', aEn: 'Only a competent authority acting through legal process can compel it; a private request carries no obligation. Confirm identity and basis first.' },
+    ],
+    titleEn: 'X Old Tweets and Your Legal Rights: 4 FAQs Chinese Users Ask Most',
+    excerptEn: 'Old tweets misused, dug up later, or stuck in a delete loop? This FAQ answers the four legal-rights questions Chinese users ask most about their old X tweets.',
+    categoryEn: 'Compliance & Law',
+    tagsEn: ['old tweets', 'legal rights', 'right to delete', 'privacy', 'Chinese users'],
+    contentEn: `<p>The trouble with old tweets usually is not when you post them, but much later. Taken out of context, dug up, or stuck in a delete loop you cannot finish, these are the questions Chinese users ask most. Four answers below.</p>
+
+<h2>Q1: Someone uses my old tweet against me, what can I do</h2>
+<p>Look at how they use it. Open citation that stays faithful has limited room; twisted quoting paired with misleading framing that lowers your standing may touch reputation-related rights. Keep screenshots and links as evidence before deciding on a letter or a platform complaint. More background in <a href="/blog/gdpr-erasure-request-twitter">the GDPR erasure request piece</a>.</p>
+
+<h2>Q2: I want to delete an old tweet but the platform says no</h2>
+<p>Content under your own account is normally yours to delete; a stuck flow is usually identity verification or a grace period. Use the official delete path first; do not route around it with third-party tools and scramble your account permissions. If a high-risk post truly will not delete, switch it to private to shrink who can see it.</p>
+
+<h2>Q3: Can overseas law reach my old tweets</h2>
+<p>It depends on the applicable jurisdiction. If an overseas entity processes your info, its compliance duty follows its registration; if you are domestic, local personal-information rules apply. Do not assume "the platform is overseas so ungoverned" nor "overseas so some law auto-applies"; locate the registration first.</p>
+
+<h2>Q4: Asked to provide old tweets as evidence, must I</h2>
+<p>Only a competent authority acting through legal process can compel it. A private message from an individual or company asking "send me that day's tweets" carries no obligation. When unsure, do not rush to send data; confirm who they are and on what basis.</p>
+
+<h2>A local-first close</h2>
+
+<h2>The legal footing you actually have</h2>
+<p>In some regions, the law does give you a right to ask for deletion or correction of your data, such as the EU right to erasure and California's privacy provisions. But those rights usually target the platform or broker that controls your data, not a stranger who reposted a screenshot. Knowing the boundary keeps your complaint from hitting a wall.</p>
+<h2>How far platform terms can take you</h2>
+<p>Most platform terms let you delete what you posted and file a report against infringing content. They don't reach screenshots someone else took or data another site copied. For a systematic take on how to write a deletion request, <a href="/blog/gdpr-erasure-request-twitter">this piece on filing a GDPR erasure request</a> and <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">the CCPA and GDPR deletion FAQ</a> are the next reads. Treat the law as a lever, not a guarantee.</p>
+
+<h2>The cross-border trap</h2>
+<p>If you live domestically but post on overseas platforms, the applicable law gets messy: the platform's country of registration, your own region, and where the data is stored may fall under different jurisdictions. A deletion request isn't a one-form affair; it usually follows the rules of the place you file in. Work out which jurisdiction you're invoking before firing off a template email. For the actual wording, see the <a href="/blog/gdpr-erasure-request-twitter">GDPR erasure request</a> and the <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA and GDPR FAQ</a>.</p>
+<p>Legal paths are slow; source tightening is fast. Pull your X archive locally and use digital-footprint-health.shop to flag high-risk fields like phone numbers and addresses, holding your exposure on your own machine. Start on the <a href="/">homepage</a>; Chinese notes are on the <a href="/blog">blog</a>.</p>`,
+    },
+  {
+    slug: 'social-media-privacy-regulation-trends-2026',
+    title: '2026 年社交媒体隐私法规趋势：普通用户要盯的 3 个方向',
+    excerpt: '临近 2026 年底，隐私法规一边收紧、一边细化。本文盘点三个和普通人删除旧内容、导出数据最相关的趋势方向，帮你提前做打算。',
+    date: '2026-10-29',
+    updatedAt: '2026-10-29',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['隐私法规', '2026 趋势', '数据权利', '平台监管', '删除权'],
+    content: `<p>每到年底，隐私法规都会有一轮集中变化。2026 年下半年的基调是"一边收紧、一边细化"：大的框架在落地，细节的执行口径也在变。对只在社交平台发发内容、偶尔清理旧痕迹的普通人来说，真正该盯的是下面三个方向。</p>
+
+<h2>方向一：删除权的执行口径在变细</h2>
+<p>"你可以要求删除"已经写进不少法律，但过去卡在"怎么证明删干净了"。2026 年越来越多监管要求平台给出可核验的删除结果，而不只是回一封"已处理"的模板邮件。对普通人意味着：提请求时把要删的字段写具体，拿回的确认才更有用。</p>
+
+<h2>方向二：数据可携权从口号变流程</h2>
+<p>把自己的数据导出来、带走、换平台，这件事今年被多家平台做成了更顺的入口。导出变简单，既是权利落地，也意味着别人导出你的互动记录更容易。所以清理旧内容比过去更该排上日程，而不是等条款逼你被动。</p>
+
+<h2>方向三：第三方授权被重点盯防</h2>
+<p>靠 API 帮你管理账号的第三方工具，今年普遍被要求更短的令牌有效期和更明确的权限范围。对普通用户是保护，对用脚本批量操作的人则是提醒：旧授权可能突然失效。用工具前看清它申请的 scope，只给必要的。</p>
+
+<h2>普通人现在能做的三件事</h2>
+<ul>
+<li>趁着导出变简单，先把归档下到本机留底；</li>
+<li>清理时优先处理带手机号、住址、精确定位的高风险推文；</li>
+<li>定期收回不再使用的第三方授权。</li>
+</ul>
+<p>这些都不复杂，难的是在条款变化前养成习惯。更多平台侧的近期变动，可看 <a href="/blog/social-platform-policy-changes-october-2026">2026 年 10 月平台隐私政策变动</a>。</p>
+
+<h2>一个本机优先的提醒</h2>
+
+<h2>2026 年几个看得清的方向</h2>
+<p>一是平台对"可下载归档"的颗粒度更细，用户能看清自己到底留下了什么；二是部分地区的监管开始要求平台在删除后真正清除缓存和备份，而不只是前端隐藏；三是针对未成年人的数据收集被收紧。这些变动不喧哗，但直接影响你清理后的留存状态。</p>
+<h2>不同地区节奏不一样</h2>
+<p>欧盟侧偏重"删除权"的执行细节，美国各州各自立法、进度参差，亚洲市场更多靠平台自律。对普通用户来说，最实在的动作是：别等监管替你出手，先把能控制的公开面收拢。想看具体平台近况，<a href="/blog/social-platform-policy-changes-october-2026">十月平台政策变动</a> 这篇有更新。</p>
+
+<h2>对用户最实在的影响</h2>
+<p>监管再热闹，落到个人身上就三件事：删除后别以为立刻干净（缓存还在）、授权过的应用定期收回、归档别一直躺在下载目录里。把这三件做成季度习惯，比追着每条新法规跑更管用。想看具体平台近况，<a href="/blog/social-platform-policy-changes-october-2026">十月平台政策变动</a> 这篇有更新。</p>
+<p>法规落地有快有慢，但你的暴露面今天就能收。把 X 归档下到本机，用 digital-footprint-health.shop 在本机解析、标记、删除，数据不出电脑。入口在 <a href="/">首页</a>，更多说明在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/social-media-privacy-regulation-trends-2026',
+    faq: [
+      { q: '2026 年隐私法规对我影响大吗？', a: '直接影响有限，但删除权和第三方授权的细则变化，会让你提请求、用工具的方式更顺，也更需要主动清理。', qEn: 'Will 2026 privacy rules affect me much?', aEn: 'Direct impact is limited, but finer deletion-right and third-party-auth rules make requests and tools smoother, and make proactive cleanup more necessary.' },
+      { q: '删除权现在更好用了吗？', a: '趋势是平台要给出可核验的删除结果，而不只是模板回复。提请求时把字段写具体，确认才更有用。', qEn: 'Is the right to delete more usable now?', aEn: 'The trend pushes platforms to give verifiable deletion results, not just template replies. State the exact fields so the confirmation is useful.' },
+      { q: '第三方工具为什么突然登不上？', a: '今年普遍收紧了令牌有效期和权限范围，旧授权可能失效。去已授权应用列表确认权限是否被收回。', qEn: 'Why did my third-party tool suddenly fail to log in?', aEn: 'Token lifetimes and scopes were tightened this year, so old authorizations may lapse. Check the authorized-apps list to see if permission was revoked.' },
+    ],
+    titleEn: '2026 Social Media Privacy Regulation Trends: 3 Directions to Watch',
+    excerptEn: 'Toward the end of 2026, privacy rules are both tightening and getting finer. This roundup covers three trends closest to deleting old content and exporting your data.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['privacy regulation', '2026 trends', 'data rights', 'platform oversight', 'right to delete'],
+    contentEn: `<p>Every year-end brings a round of privacy-rule changes. The second half of 2026 runs a "tighten and refine" rhythm: big frameworks land while the execution details shift. For someone who just posts and occasionally cleans old traces, the three directions below are the ones to watch.</p>
+
+<h2>Direction 1: the right to delete is getting specific</h2>
+<p>"You may request deletion" is already in many laws, but the snag was proving it actually happened. Through 2026 more regulators expect a verifiable deletion result, not a template "done" email. For ordinary users that means naming the exact fields when you ask, so the confirmation you get back is actually useful.</p>
+
+<h2>Direction 2: data portability moves from slogan to flow</h2>
+<p>Exporting your data, taking it, switching platforms, got smoother entry points at several platforms this year. Easier export is a right landing, but it also means others can pull your interaction history more easily. So cleaning old content deserves a slot on your calendar rather than waiting to be cornered by terms.</p>
+
+<h2>Direction 3: third-party authorization is under the spotlight</h2>
+<p>Tools that manage your account through the API broadly face shorter token lifetimes and clearer scopes this year. Protection for ordinary users, and a nudge for anyone scripting bulk ops: old authorizations may lapse without warning. Read the scope a tool asks for and grant only what it needs.</p>
+
+<h2>Three things you can do now</h2>
+<ul>
+<li>Pull your archive locally while export is easier, as a backup;</li>
+<li>When cleaning, handle high-risk tweets with phone, address, precise location first;</li>
+<li>Periodically revoke third-party authorizations you no longer use.</li>
+</ul>
+<p>None of this is hard; the hard part is building the habit before terms force it. For more recent platform-side changes, see <a href="/blog/social-platform-policy-changes-october-2026">October 2026 platform privacy changes</a>.</p>
+
+<h2>A local-first reminder</h2>
+
+<h2>A few directions visible in 2026</h2>
+<p>First, platforms are making downloadable archives more granular, so users can see exactly what they left behind. Second, some regions are starting to require platforms to truly purge caches and backups after deletion, not just hide content on the front end. Third, data collection from minors is being tightened. These shifts are quiet, but they directly shape what stays after you clean up.</p>
+<h2>The pace differs by region</h2>
+<p>The EU side leans into the execution details of the right to deletion; US states legislate separately and move at different speeds; Asian markets rely more on platform self-regulation. For ordinary users the most practical move is simple: don't wait for regulators to act for you, tighten the public surface you control first. For specific platform updates, <a href="/blog/social-platform-policy-changes-october-2026">this October policy-changes piece</a> stays current.</p>
+
+<h2>The most practical impact on users</h2>
+<p>Whatever the regulation chatter, it lands on individuals as three things: don't assume a deletion is instant (caches linger), revoke app authorizations on a schedule, and don't leave archives sitting in your downloads folder. Make those three a quarterly habit and you'll outrun most of the new rules. The law moves slowly, and your own cleanup doesn't have to wait for it. For specific platform updates, <a href="/blog/social-platform-policy-changes-october-2026">this October policy-changes piece</a> stays current.</p>
+<p>Rules land at different speeds, but your exposure you can tighten today. Pull your X archive locally and use digital-footprint-health.shop to parse, flag, and delete on your machine, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+    },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

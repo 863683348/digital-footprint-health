@@ -30031,7 +30031,444 @@ rl.on('close', () =&gt; {
 <h2>The most practical impact on users</h2>
 <p>Whatever the regulation chatter, it lands on individuals as three things: don't assume a deletion is instant (caches linger), revoke app authorizations on a schedule, and don't leave archives sitting in your downloads folder. Make those three a quarterly habit and you'll outrun most of the new rules. The law moves slowly, and your own cleanup doesn't have to wait for it. For specific platform updates, <a href="/blog/social-platform-policy-changes-october-2026">this October policy-changes piece</a> stays current.</p>
 <p>Rules land at different speeds, but your exposure you can tighten today. Pull your X archive locally and use digital-footprint-health.shop to parse, flag, and delete on your machine, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
-    },
+    },  {
+    slug: 'complete-digital-footprint-health-checklist-2026',
+    title: '2026 数字足迹体检完整清单：五步收紧你的 X 账号隐私',
+    excerpt: '一份可以每年复用的清单：从安全拉取 X 归档、本机解析高风险痕迹、风险分级、按序清理，到养成季度习惯。全程本机处理，数据不上传。',
+    date: '2026-10-30',
+    updatedAt: '2026-10-30',
+    author: 'Digital Footprint Health Team',
+    category: '隐私指南',
+    tags: ['X/Twitter', '数字足迹', '隐私体检', '隐私保护', '账号安全'],
+    content: `<p>大多数人记不住自己十年前发过什么。但招聘方、诈骗者和搜索引擎都记得。一份固定的年度体检清单，能让你在被动出事之前，主动把 X 账号的公共裸露面收一遍。本篇把整套动作拆成五步，可逐年复用，也适合第一次做体检的人照着走。</p>
+<p>需要提前说明：这份清单是一套循环，不能只做一次就丢下。每年走一遍，你就能在暴露面变大之前把它压下去，不必等负面事件发生后才仓促补救。</p>
+
+<h2>为什么每年都要做一遍</h2>
+<p>你的数字足迹不是静止的。新发的推文、新授权的第三方应用、平台上不断变化的删除政策，都会改变你的暴露面。每年做一次完整体检，比出事之后再补救成本低得多。把它当成换季整理衣柜一样的例行公事，而不是等到被翻旧账才动手。</p>
+<p>另一个常被忽略的点是：平台本身也在变。删除接口、归档格式、第三方授权时效都可能调整，去年还能用的操作今年未必仍然有效。每年走一遍清单，等于顺手确认这些通道是否还通，避免真要用时才发现流程已经变了。</p>
+
+<h2>第一步：拉取并安全保存你的 X 归档</h2>
+<p>从 X 的账户设置里申请数据归档，通常一天内就能拿到一个 ZIP 压缩包。这个包里装着你的全部历史推文、私信元数据和媒体文件，是做体检的唯一完整数据源。把它存到本地加密盘，不要长期留在下载文件夹里，更不要随手发给别人或备份到公开云盘。</p>
+<p>关于具体入口和常见失败排查，可参考 <a href="/blog/how-to-download-x-archive">X 归档下载指南</a>。拿到归档后先校验大小和解压是否正常，损坏的归档会让你后面白忙一场。如果归档体积很大，也可以先看 <a href="/blog/x-archive-secure-storage-guide">归档安全存储</a> 一文，学怎么分目录保存。</p>
+
+<h2>第二步：用本机工具解析，识别高风险痕迹</h2>
+<p>归档本身只是原始数据，肉眼翻完几万条推文不现实。用 digital-footprint-health.shop 在本机解析归档，工具会扫描手机号、邮箱、家庭住址、精确定位和敏感话题，给出 0-100 的健康评分与风险清单。全程本机处理，你的归档不会被上传到任何服务器，这也是和普通云端工具最关键的区别。</p>
+<p>解析完成后，优先看健康分低的项目。分数低代表高风险痕迹集中，先把这部分定位出来，后面清理才有针对性，而不是一条条盲删。如果你更关心中文语料里的隐蔽暴露点，可以参考 <a href="/blog/x-archive-download-chinese-guide">中文用户归档指南</a>，那里讲了怎么把中文长尾也纳入检索。</p>
+
+<h2>第三步：给风险分级</h2>
+<p>不是所有旧推文都同样危险。可以按下面这张表快速分级，再决定动作优先级：</p>
+<table>
+<thead><tr><th>风险等级</th><th>典型内容</th><th>建议动作</th></tr></thead>
+<tbody>
+<tr><td>高</td><td>手机号、家庭住址、登机牌、工牌照片</td><td>立即清理</td></tr>
+<tr><td>中</td><td>前雇主吐槽、情绪化言论、身份证件</td><td>30 天内处理</td></tr>
+<tr><td>低</td><td>普通生活碎碎念、公开观点</td><td>视情况保留</td></tr>
+</tbody>
+</table>
+<p>分级的意义在于把有限的精力放在真正会伤人的内容上。高风险的几条，往往比几百条中低风险的碎碎念更值得先处理。分级之后，建议你把高风险项单独列一张清单，处理完一项划掉一项，避免遗漏。</p>
+
+<h2>第四步：按优先级清理</h2>
+<p>先处理高风险项，再处理中风险项。如果历史推文超过平台允许直接删除的 3200 条上限，只能靠解析归档后批量清理，具体流程见 <a href="/blog/bulk-delete-old-tweets-walkthrough">批量删除旧推文实操</a>。清理前建议先保留一份归档副本，避免误删后无法找回。</p>
+<p>清理不是一次性工程。建议每处理完一批就重新跑一次体检，确认高风险项确实清零，而不是凭感觉认为已经干净。很多人第一次清理后会发现还有遗漏，第二次复查往往能多清掉几十条真正高危的内容。</p>
+
+<h2>第五步：养成季度习惯</h2>
+<p>一次大扫除不够。把拉归档、查授权、清高风险做成每季度一次的例行动作，比等法规或裁员来逼你动手要从容。关于评分怎么算，可看 <a href="/blog/footprint-score-weighting-explained">健康分权重解读</a>，理解分数背后的指标，才知道下一季该盯什么。</p>
+<p>季度习惯不必每次都做完整五步。日常的轻量动作可以是：收回一两个不再使用的第三方授权、复查一次登录设备、扫一眼新发的推文有没有泄露定位。真正的重活，每年做一次完整版就够。</p>
+
+<h2>常见误区</h2>
+<p>第一个误区是认为删了就消失。删除在前端生效，但搜索引擎缓存和别人保存的截图仍可能留着旧内容。第二个误区是只清理推文却忘了收归档和授权，等于只堵了半个口子。第三个误区是追求完全清零，这既不现实也没必要，把高风险项清零、中风险项压到可接受范围，就已经达标。</p>
+
+<h2>年度节奏怎么排最省力</h2>
+<p>把完整五步留给每年一次的大动作，日常只做轻量维护，是大多数人能坚持下去的节奏。完整版负责把高风险项清零、把中风险项压下来；日常版负责收回一两个不再使用的授权、复查一次登录设备、扫一眼新发的推文有没有泄露定位。两者配合，你的暴露面只会越来越小，不会在不知不觉中悄悄变大。</p>
+<p>如果和家人或团队共用一个视角，建议把体检结论写成一张可对照的表，谁处理到哪一步一目了然。这样下次不用从零回忆，直接勾掉已完成的项目，心理负担也会小很多。</p>
+
+<h2>哪些信号说明该提前做</h2>
+<p>年度清单是底线，不是天花板。如果你正在换工作、准备签证或背景调查、卷入公开争议，或者刚发现账号被盗，就别等年度节点，立刻走一遍。这些时刻的共同点是：你的公开面会被陌生人拿着放大镜看，平时那种"反正也没人翻"的侥幸会瞬间失效。</p>
+<p>还有一个常被忽略的信号是平台本身的变化。当 X 调整了删除政策、归档格式或授权机制，你去年熟悉的操作可能就失效了。把一次体检当作顺手验证这些通道是否还通，比真要用的那一刻才发现流程断了要省心得多。</p>
+<table>
+<thead><tr><th>触发信号</th><th>建议动作</th></tr></thead>
+<tbody>
+<tr><td>换工作或背景调查</td><td>立即做一次完整体检</td></tr>
+<tr><td>平台删除政策调整</td><td>验证旧流程是否仍可用</td></tr>
+<tr><td>账号出现陌生登录</td><td>先加固，再顺手清理历史</td></tr>
+</tbody>
+</table>
+<p>把这张表留着，它就是下一年度体检的基线。有了它，每年的动作从"重新想一遍"变成"对照勾掉"，成本和心理负担都低得多。</p>
+
+<h2>开始你的体检</h2>
+<p>别等被翻旧账才动手。现在就把 X 归档拉到本地，用 digital-footprint-health.shop 在本机解析、标记和删除，全程不上传任何数据。从 <a href="/">首页</a> 开始，更多内容在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/complete-digital-footprint-health-checklist-2026',
+    faq: [
+      { q: "年度体检清单和一次性清理有什么区别？", a: "一次性清理只解决当下暴露的问题，而年度清单把拉归档、解析、分级、清理、复查做成一个可复用的流程，并固定成每季度一次的习惯，能持续压低暴露面。", qEn: "How is an annual checklist different from a one-off cleanup?", aEn: "A one-off cleanup only fixes today exposure, while the checklist turns pull, parse, rank, clean, and recheck into a reusable flow and a quarterly habit that keeps your surface small over time." },
+      { q: "归档一定要本机解析吗？", a: "强烈建议本机解析。归档里全是你的敏感历史，上传到云端工具等于把隐私交给别人。本机处理能保证数据不出你的电脑。", qEn: "Does the archive have to be parsed on device?", aEn: "On-device parsing is strongly recommended. The archive holds your sensitive history, and uploading it to a cloud tool hands your privacy to someone else. Local processing keeps the data on your computer." },
+      { q: "健康分很低代表什么？", a: "健康分低代表高风险痕迹集中，比如手机号、住址、精确定位被扫描命中。优先处理这些高分项能最快降低真实风险。", qEn: "What does a very low health score mean?", aEn: "A low score means high-risk traces are concentrated, such as phone numbers, addresses, and precise locations being flagged. Clearing those items first lowers real risk fastest." },
+      { q: "清理后还需要复查吗？", a: "需要。平台存在缓存和备份，删除未必即时在前端彻底消失，建议每批清理后重新跑一次体检确认高风险项清零。", qEn: "Should I recheck after cleanup?", aEn: "Yes. Platform caches and backups mean a deletion may not vanish from the front end instantly, so rerun the check after each batch to confirm high-risk items are gone." },
+      { q: "清单里哪些步骤最容易漏掉？", a: "最常被漏掉的是第三方授权复查和归档的安全保存。很多人清理完推文却忘了收回旧应用权限，或把归档长期留在下载文件夹。", qEn: "Which steps do people skip most?", aEn: "The most skipped steps are reviewing third-party authorizations and storing the archive safely. Many clear tweets but forget to revoke old app access or leave the archive in downloads for months." }
+    ],
+    titleEn: 'The Complete 2026 Digital Footprint Health Checklist',
+    excerptEn: 'A checklist you can reuse every year: pull and store your X archive safely, scan for high-risk traces on your own device, rank the risks, clean in priority order, and turn it into a quarterly habit. Nothing gets uploaded.',
+    categoryEn: 'Privacy Guide',
+    tagsEn: ['X/Twitter', 'digital footprint', 'privacy check', 'account security'],
+    contentEn: `<p>Most people cannot remember what they posted ten years ago. Employers, scammers, and search engines can. A fixed yearly checklist lets you tighten your X account public surface before something forces you to. This piece breaks the whole routine into five steps you can reuse each year, and it works for a first-time check too.</p>
+<p>One thing up front: this checklist is a loop, not a one-off task. Walk it every year and you shrink your exposure before it grows, instead of scrambling after a bad event.</p>
+
+<h2>Why run this every year</h2>
+<p>Your digital footprint is not static. New posts, newly authorized third-party apps, and shifting deletion policies all change your exposure. Doing one full check each year costs far less than cleaning up after an incident. Treat it like seasonal closet cleaning, not a panic response after someone digs up your past.</p>
+<p>One detail people miss: the platform itself changes. Deletion endpoints, archive formats, and third-party token lifetimes get adjusted, and an operation that worked last year may not work this year. Walking the checklist annually also quietly confirms those paths still function, so you are not surprised when you actually need them.</p>
+
+<h2>Step 1: pull and store your X archive safely</h2>
+<p>Request your data archive from X account settings; you usually get a ZIP within a day. The package holds your full tweet history, direct message metadata, and media files, and it is the only complete source for a real check. Store it on an encrypted local drive, not in your downloads folder where it can sit for months, and never hand it to someone else or drop it in a public cloud folder.</p>
+<p>For the exact entry point and common failure fixes, see our <a href="/blog/how-to-download-x-archive">X archive download guide</a>. After you get the archive, verify its size and that it unzips cleanly; a corrupted archive wastes every later step. If the archive is large, our <a href="/blog/x-archive-secure-storage-guide">archive storage guide</a> shows how to keep it organized by folder.</p>
+
+<h2>Step 2: scan on your own device</h2>
+<p>The archive is raw data, and reading tens of thousands of tweets by eye is not realistic. Use digital-footprint-health.shop to parse the archive on your device. It scans for phone numbers, emails, home addresses, precise locations, and sensitive topics, then gives a 0-100 health score with a risk list. Processing stays on your machine; the archive is never uploaded to any server, which is the key difference from ordinary cloud tools.</p>
+<p>When parsing finishes, look first at the low-scoring items. A low score means concentrated high-risk traces, and locating them gives your later cleanup a target instead of blind deleting one post at a time. If you care about hidden exposure in Chinese-language posts, our <a href="/blog/x-archive-download-chinese-guide">Chinese user archive guide</a> covers folding Chinese long-tail terms into the search.</p>
+
+<h2>Step 3: rank the risk</h2>
+<p>Not every old tweet carries the same risk. Triage quickly with this table, then decide priority:</p>
+<table>
+<thead><tr><th>Level</th><th>Typical content</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>High</td><td>Phone, home address, boarding pass, work badge photo</td><td>Remove now</td></tr>
+<tr><td>Medium</td><td>Rants about a former employer, heated opinions, ID documents</td><td>Within 30 days</td></tr>
+<tr><td>Low</td><td>Ordinary life updates, public views</td><td>Keep as you like</td></tr>
+</tbody>
+</table>
+<p>Ranking matters because it puts limited energy on content that actually hurts. A few high-risk posts often deserve attention before hundreds of low-risk status updates. After ranking, keep a separate list of high-risk items and cross each off as you clear it so nothing slips.</p>
+
+<h2>Step 4: clean in priority order</h2>
+<p>Clear high-risk items first, then medium ones. If your history goes past the platform delete limit of about 3,200 recent tweets, you can only reach older ones by parsing the archive and deleting in bulk. The full flow is in our <a href="/blog/bulk-delete-old-tweets-walkthrough">bulk deletion walkthrough</a>. Keep an archive copy before you start so a mistaken deletion is not permanent.</p>
+<p>Cleanup is not a one-off project. After each batch, run the check again to confirm high-risk items are actually gone rather than assuming you are clean. Many people find a second pass surfaces dozens more genuinely risky posts they missed the first time.</p>
+
+<h2>Step 5: make it a quarterly habit</h2>
+<p>One big cleanup does not last. Turn pull-archive, review-authorizations, clear-high-risk into a quarterly routine so you are never cornered by a policy change or a layoff. For how the score is built, read <a href="/blog/footprint-score-weighting-explained">health score weighting explained</a>, and you will know which metric to watch next quarter.</p>
+<p>The quarterly habit does not have to be the full five steps every time. Light ongoing actions are enough: revoke one or two unused third-party authorizations, recheck login devices, and glance at new posts for leaked location. Save the heavy full pass for once a year.</p>
+
+<h2>Common mistakes</h2>
+<p>The first mistake is assuming deletion erases. A deletion takes effect on the front end, but search caches and screenshots others saved can keep old content visible. The second is cleaning tweets while forgetting the archive and authorizations, which leaves half the door open. The third is chasing a perfect blank slate, which is neither realistic nor necessary; clearing high-risk items and pulling medium ones to an acceptable level already meets the bar.</p>
+
+<h2>How to pace the yearly rhythm with least effort</h2>
+<p>Saving the full five steps for one big annual pass and keeping daily maintenance light is the rhythm most people actually stick to. The full version clears high-risk items and pulls medium ones down. The daily version revokes a couple of authorizations you no longer use, rechecks login devices, and glances at new posts for leaked location. Together they shrink your surface over time instead of letting it quietly grow.</p>
+<p>If you share the view with family or a team, write the conclusions into a table everyone can compare against, so you never wonder who handled what. Next time you simply tick completed items instead of rebuilding the plan from memory, and the mental load drops a lot.</p>
+
+<h2>Signals that mean run it early</h2>
+<p>The annual checklist is a floor, not a ceiling. Changing jobs, applying for a visa, getting pulled into public controversy, or discovering a breach all call for an immediate pass rather than waiting for the yearly date. These moments share a pattern: strangers read your public surface under a magnifier, and the usual comfort that nobody looks evaporates at once.</p>
+<p>A platform change is another trigger people miss. When deletion policy, archive format, or authorization mechanics shift, the steps you trusted last year can stop working. A check also quietly confirms those paths still function, which beats finding out the flow is dead exactly when you need it.</p>
+<table>
+<thead><tr><th>Trigger</th><th>Suggested action</th></tr></thead>
+<tbody>
+<tr><td>Job change or background check</td><td>Run a full check now</td></tr>
+<tr><td>Platform policy shift</td><td>Verify old flow still works</td></tr>
+<tr><td>Unrecognized login</td><td>Harden first, then clean history</td></tr>
+</tbody>
+</table>
+
+<h2>What a realistic target looks like</h2>
+<p>A healthy footprint is not an empty one. The goal is to remove the handful of items that could genuinely harm you, keep the posts that represent who you are, and stop worrying about the rest. People who aim for a perfect blank slate usually exhaust themselves and quit, which leaves the real risks untouched. A smaller, repeatable routine beats a dramatic one-time purge every time, because the surface you protect stays protected long after the excitement fades.</p>
+<p>One more practical note: screening and cleanup are rarely a single event. Employers may re-check after an offer, and platforms keep changing, so the habit matters more than any one clean slate. Build the loop, and each future pass costs you almost nothing.</p>
+
+<h2>Start your check</h2>
+<p>Do not wait to be dug up. Pull your X archive locally and use digital-footprint-health.shop to parse, flag, and delete on your machine, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'social-media-background-check-trends-2026',
+    title: '2026 招聘背调新趋势：雇主如何筛查你的社媒历史',
+    excerpt: '2026 年招聘背调正在从手动翻看转向工具化、自动化。了解雇主用哪些方式筛查你的 X 历史，以及你能在被筛前做些什么。',
+    date: '2026-10-30',
+    updatedAt: '2026-10-30',
+    author: 'Digital Footprint Health Team',
+    category: '行业洞察',
+    tags: ['X/Twitter', '招聘背调', '社媒筛查', '隐私风险'],
+    content: `<p>求职季让人睡不着的，几乎都是过去十年随手发的推文，面试反而不算什么。2026 年，招聘方对候选人社媒历史的筛查正在变得更系统、更自动，理解这套机制，才能在被筛之前主动收一遍。</p>
+
+<h2>从人工翻看转向工具筛查</h2>
+<p>早几年，HR 多是面试前手动翻一下你的主页。现在越来越多团队用专门的筛选工具批量拉取公开资料，按关键词和情感倾向打分。公开推文、旧帖子和互动记录都可能被纳入评分范围，甚至你转发的别人内容也会被算进去。</p>
+<p>更值得注意的是，这类工具正在和申请人跟踪系统打通，社媒评分会直接进候选人的档案，而不只是某个 HR 的个人印象。这意味着一次不当的旧帖，影响范围比过去更大。</p>
+
+<h2>招聘方实际在查什么</h2>
+<p>常见的筛查维度包括：辱骂性或歧视性言论、泄露前雇主或客户信息、与岗位明显冲突的公开立场、以及能定位你真实身份的生活痕迹。关于工具如何读取旧推文，可参考 <a href="/blog/ai-recruiting-tools-read-old-tweets-2026">招聘工具读取旧推文</a> 一文。</p>
+<ul>
+<li>公开推文全文与转发</li>
+<li>个人主页上的置顶和简介</li>
+<li>被截图流传的旧帖子</li>
+<li>能反查真实身份的地理和联系方式</li>
+</ul>
+
+<h2>为什么旧帖子比你想的更持久</h2>
+<p>删除并不等于消失。搜索引擎缓存、第三方存档和别人保存的截图，都会让你的旧内容在删除后依然可被找到。主动清理只能降低概率，不能完全清零。这也是为什么建议定期做体检，而不是等投递简历前一夜才慌忙处理。把清理当成求职准备的一部分，节奏会从容很多。</p>
+
+<h2>投递前你能做的三件事</h2>
+<p>第一，把高风险推文按 <a href="/blog/complete-digital-footprint-health-checklist-2026">年度体检清单</a> 里的分级方法先处理掉；第二，收回不必要的第三方授权，减少数据被额外抓取的面；第三，把公开主页的简介和置顶调整成你愿意被看到的样子。这三步不需要一次做完，但越早开始越主动。</p>
+
+<h2>免费工具和付费工具怎么选</h2>
+<p>市面上筛查工具很多，但站在被筛的一方，你更该关心的是自己能不能先看到结果。别把希望寄托在"对方用了多先进的工具"上，那超出你的控制。你能控制的是：在投递前用自己的本机工具过一遍，把明显高风险的内容先收掉。免费和付费的区别，主要在于批量速度和报告是否好看，而不是能不能发现手机号、住址这类硬伤。</p>
+<p>如果预算有限，本机解析加人工分级已经能覆盖绝大多数风险点。把省下的钱花在加密盘和定期习惯上，比买一份华丽的筛查报告更划算。真正决定结果的，是你有没有动手，而不是用的工具贵不贵。</p>
+
+<h2>主动而不是被动</h2>
+<p>筛查只会越来越普遍。与其担心被翻旧账，不如把清理当成求职准备的一部分。用 digital-footprint-health.shop 在本机解析你的 X 归档，标记高风险内容后再决定删留，全程数据不上传。从 <a href="/">首页</a> 开始，更多在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/social-media-background-check-trends-2026',
+    faq: [
+      { q: "雇主真的会系统筛查社媒吗？", a: "越来越普遍。2026 年不少团队已经改用批量筛查工具，按关键词和语气给候选人公开资料打分，而不只是面试前手动翻看，有些甚至直接接入招聘系统。", qEn: "Do employers really screen social media systematically?", aEn: "It is increasingly common. In 2026 many teams use bulk screening tools that score a candidate public profile by keyword and tone rather than manually scrolling before an interview, and some feed the score straight into the hiring system." },
+      { q: "删掉的推文还会被查到吗？", a: "有可能。搜索引擎缓存、第三方存档和别人保存的截图都可能让旧内容在删除后依然可见，所以主动清理只能降低概率而非彻底清零。", qEn: "Can deleted tweets still be found?", aEn: "Possibly. Search caches, third-party archives, and screenshots others saved can keep old content visible after deletion, so proactive cleanup lowers the chance rather than wiping it." },
+      { q: "投递前最该先处理什么？", a: "先按风险分级处理高风险推文，比如手机号、住址和针对前雇主的言论，再收回不必要的第三方授权，最后调整公开简介和置顶。", qEn: "What should I handle first before applying?", aEn: "First clear high-risk posts by ranking, such as phone numbers, addresses, and rants about a former employer, then revoke unneeded authorizations, then tidy your public bio and pinned post." },
+      { q: "第三方授权和背调有什么关系？", a: "授予过的应用可能持续读取你的互动历史，等于多了一个被抓取的数据面。定期收回不再使用的授权能缩小暴露范围。", qEn: "How do third-party authorizations relate to screening?", aEn: "Apps you authorized may keep reading your interaction history, adding a scraped data surface. Revoking ones you no longer use regularly shrinks your exposure." }
+    ],
+    titleEn: 'How Employers Screen Your Social Media History in 2026',
+    excerptEn: 'In 2026 background checks are shifting from manual scrolling to tooling and automation. Learn the ways employers screen your X history and what you can do before they do.',
+    categoryEn: 'Industry Insights',
+    tagsEn: ['X/Twitter', 'background check', 'social screening', 'privacy risk'],
+    contentEn: `<p>The most stressful part of job season is rarely the interview. It is the tweets you posted without thinking ten years ago. In 2026, employer screening of candidate social history is becoming more systematic and more automated, and understanding that machinery lets you tighten things before they do.</p>
+
+<h2>From manual scrolling to tooling</h2>
+<p>A few years ago a recruiter might glance at your profile before a call. Now more teams use dedicated screening tools that pull public data in bulk and score it by keyword and tone. Public tweets, old posts, and interaction records can all feed the score, and even posts you only retweeted get counted.</p>
+<p>What matters more is that these tools are being wired into applicant tracking systems, so a social score lands in your candidate file rather than staying one recruiter informal impression. A single bad old post therefore reaches further than it used to.</p>
+
+<h2>What employers actually check</h2>
+<p>Common screening dimensions include abusive or discriminatory language, leaks of a former employer or client, public stances clearly at odds with the role, and life traces that reveal your real identity. For how these tools read old tweets, see our piece on <a href="/blog/ai-recruiting-tools-read-old-tweets-2026">recruiting tools reading old tweets</a>.</p>
+<ul>
+<li>Full public tweet text and retweets</li>
+<li>Profile bio and pinned posts</li>
+<li>Old posts that were screenshotted and spread</li>
+<li>Geography and contact details that reverse-identify you</li>
+</ul>
+
+<h2>Why old posts outlive deletion</h2>
+<p>Deletion is not erasure. Search engine caches, third-party archives, and screenshots others saved keep your old content findable after you delete it. Proactive cleanup lowers the odds but never zeros them, which is why a regular check beats a panic cleanup the night before you apply. Treating cleanup as part of job prep makes the rhythm far calmer.</p>
+
+<h2>Three things to do before applying</h2>
+<p>First, handle high-risk tweets using the ranking method in our <a href="/blog/complete-digital-footprint-health-checklist-2026">annual checklist</a>. Second, revoke unnecessary third-party authorizations to shrink the surface that can be scraped. Third, shape your public bio and pinned post into something you are comfortable being seen. None of these needs to happen at once, but the earlier you start the more control you keep.</p>
+
+<h2>Free versus paid screening tools</h2>
+<p>There are many screening tools on the market, but from the screened side the question that matters is whether you can see the result first. Do not pin your hopes on how advanced the employer tool is, because that sits outside your control. What you control is running your own on-device check before applying and clearing the obviously high-risk content first. The gap between free and paid mostly shows up in batch speed and how polished the report looks, not in whether phone numbers or addresses get caught.</p>
+<p>If budget is tight, on-device parsing plus manual ranking already covers most risk points. Spend the saved money on an encrypted drive and a regular habit instead of a fancy screening report, and you come out ahead. What decides the outcome is whether you acted, not how expensive the tool was.</p>
+
+<h2>Screening is rarely one pass</h2>
+<p>Employers sometimes re-check after an offer, so a clean profile on application day is not the finish line. Treat the first pass as the baseline, and the next recheck becomes a quick comparison rather than a fresh scramble. That is the real payoff of building the habit early: each future review costs you almost nothing because the groundwork is already done. Most candidates scramble once and assume the matter is closed, which is exactly when a later recheck catches them off guard.</p>
+
+<h2>Be proactive, not reactive</h2>
+<p>Screening will only get more common. Instead of fearing a dug-up past, treat cleanup as part of job prep. Use digital-footprint-health.shop to parse your X archive on your device, flag high-risk content, then decide what to keep or remove, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'chinese-returnees-x-footprint-cleanup-2026',
+    title: '海归求职前，先把 X 上的旧自己清干净',
+    excerpt: '回国求职的节点，往往也是旧社媒被翻得最勤的时候。面向海归场景，聊聊哪些 X 历史最该在回国前处理，以及为什么中文语料里的暴露点更隐蔽。',
+    date: '2026-10-30',
+    updatedAt: '2026-10-30',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['X/Twitter', '海归', '回国求职', '隐私清理', '中文语料'],
+    content: `<p>海归回国求职，材料要过的不只是简历。很多同学在海外时习惯用 X 记录生活、发表观点，这些中文夹杂英文的旧帖子，回国后反而成了最容易被翻、也最容易被误读的内容。本文专门从海归视角，聊聊回国前该清理什么，以及中文语料里那些比英文更隐蔽的暴露点。</p>
+
+<h2>海归为什么更该重视</h2>
+<p>海外生活期间发的推文，常常混合中英文、带着对当地文化的吐槽、还夹杂着能定位你行踪的打卡和聚会照片。这些内容在本土招聘方眼里，解读方式和你发的时候完全不同，风险也更高。尤其是涉及前雇主、导师和同学的抱怨，回国后有概率被更严格地审视。</p>
+
+<h2>最该先处理的几类</h2>
+<ul>
+<li>能反查真实身份的学号、工牌、宿舍和航班信息</li>
+<li>对前雇主、导师或同学的抱怨性言论</li>
+<li>涉及敏感社会话题且语气情绪化的长帖</li>
+<li>暴露家庭住址和日常动线的定位打卡</li>
+</ul>
+<p>和通用清理不同的是，海归语料里很多暴露点藏在中文表述里，按英文关键词去筛会漏掉一大半。关于中文长尾的挖掘思路，可看 <a href="/blog/x-archive-download-chinese-guide">中文用户归档下载指南</a>，那里讲了怎么把中文特有的生活痕迹也纳入检索。</p>
+
+<h2>中文语料的隐蔽暴露点</h2>
+<p>中文帖子很少直接写手机号，但一句提到小区名、快递柜、常去咖啡店的内容，配合定位就能拼出你的生活动线。这类信息用英文检索工具几乎查不出来，只能靠人工结合上下文判断，这也是为什么建议本机解析后逐条过，而不是依赖自动关键词匹配。</p>
+<p>另一个容易被忽略的是中文里的称呼和关系网。你随口提到的导师姓名、项目代号、同门关系，都可能在不经意间暴露你的学术或职场坐标，这类信息在英文语料里很少出现，但在中文圈子里很常见。</p>
+
+<h2>回国前三个月的清理节奏</h2>
+<p>别等到拿到 offer 才动手。建议回国前三个月就开始：先用工具把归档拉到本地，按风险分级处理高风险项，再慢慢收中风险项。处理完一批就复查一次，避免遗漏。关于分级方法，参考 <a href="/blog/complete-digital-footprint-health-checklist-2026">年度体检清单</a>。</p>
+
+<h2>中文归档的检索要注意什么</h2>
+<p>中文用户的归档里，暴露点往往不在字段里，而在叙述里。一句提到小区名、常去咖啡店、孩子学校的内容，单独看无害，拼上定位就能还原你的日常动线。用本机工具解析后，建议把这类"软信息"也纳入人工复核，而不是只信自动关键词匹配。关于怎么把中文长尾纳入检索，可再看 <a href="/blog/x-archive-download-chinese-guide">中文用户归档指南</a>。</p>
+<p>另外，中文圈子里很常见的称呼和关系网，比如导师姓名、项目代号、同门关系，也可能在不经意间暴露你的学术或职场坐标。这些信号在英文语料里很少出现，却是中文帖子最容易踩的坑。</p>
+
+<h2>用本机工具更安心</h2>
+<p>海归的归档里往往同时有中英文敏感内容，更不适合上传到任何云端工具。用 digital-footprint-health.shop 在本机解析 X 归档，标记后再决定删留，全程数据不出本机。从 <a href="/">首页</a> 开始，更多内容在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/chinese-returnees-x-footprint-cleanup-2026',
+    faq: [
+      { q: "海归的 X 历史比普通用户更危险吗？", a: "风险点更隐蔽而不一定更多。中英文混合、对当地文化的吐槽和定位打卡，在本土招聘方眼里误读概率更高，所以建议回国前专门过一遍。", qEn: "Is a returnee X history riskier than average?", aEn: "The risk points are sneakier rather than simply more numerous. Mixed-language posts, rants about local culture, and check-ins read differently to domestic recruiters, so a dedicated pass before returning is wise." },
+      { q: "中文帖子里的暴露点为什么难查？", a: "中文很少直接写敏感字段，但小区名、快递柜、常去店铺配合定位就能拼出生活轨迹，英文检索工具基本查不到，需要结合上下文人工判断。", qEn: "Why are exposure points in Chinese posts hard to find?", aEn: "Chinese text rarely states sensitive fields directly, but apartment names, parcel lockers, and regular spots plus location reconstruct a routine, and English tools miss it, so human context is needed." },
+      { q: "回国前多久开始清理比较合适？", a: "建议提前三个月。先用工具把归档拉到本地分级处理高风险项，再慢慢收中风险项，每批复查，避免临近入职才匆忙动手。", qEn: "How far ahead of returning should I start?", aEn: "About three months ahead. Pull the archive locally, clear high-risk items by rank, then work through medium ones, rechecking each batch instead of rushing right before starting." },
+      { q: "海归归档能不能直接用云端工具？", a: "不建议。海归归档常同时含中英文敏感内容，上传云端等于把隐私交给别人，本机解析再决定删留更安全。", qEn: "Can returnees just use a cloud tool?", aEn: "Not recommended. A returnee archive often holds both Chinese and English sensitive content, and uploading it hands your privacy to others; on-device parsing then deciding is safer." }
+    ],
+    titleEn: 'Cleaning Your X Footprint Before Returning to China for Work',
+    excerptEn: 'The moment you return home for a job is often when old social accounts get scrutinized most. For returnees, this covers which X history to handle before coming back and why Chinese-language exposure points are sneakier.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['X/Twitter', 'returnees', 'job search', 'privacy cleanup', 'Chinese content'],
+    contentEn: `<p>Returning home for a job means more than polishing a resume. Many students got used to logging life and opinions on X while abroad, and those old posts, mixing Chinese and English, get scrutinized hardest and misread most when you come back. This piece looks at what to clean before returning, from a returnee viewpoint, including the exposure points that hide in Chinese text.</p>
+
+<h2>Why returnees should care more</h2>
+<p>Tweets posted during overseas life often mix languages, carry rants about local culture, and include check-ins and party photos that place you. To a domestic recruiter those read very differently from how you meant them, and the risk is higher. Complaints about a former employer, advisor, or classmate in particular get examined more strictly once you are back.</p>
+
+<h2>Types to handle first</h2>
+<ul>
+<li>Student IDs, work badges, dorm, and flight details that reverse-identify you</li>
+<li>Complaints about a former employer, advisor, or classmate</li>
+<li>Long emotional posts on sensitive social topics</li>
+<li>Check-ins that expose your home and daily routes</li>
+</ul>
+<p>Unlike a generic cleanup, many exposure points in returnee content hide in Chinese wording, and filtering by English keywords misses most of them. For mining Chinese long-tail terms, see our <a href="/blog/x-archive-download-chinese-guide">Chinese user archive guide</a>, which covers folding Chinese-specific life traces into the search.</p>
+
+<h2>The sneaky exposure in Chinese text</h2>
+<p>Chinese posts rarely spell out a phone number, but a line about your apartment complex, a parcel locker, or a regular cafe, combined with location, can reconstruct your daily route. English search tools almost never catch this, so it takes human context, which is why on-device parsing followed by a manual pass beats relying on automatic keyword matching.</p>
+<p>Another overlooked angle is the names and relationships in Chinese posts. A mentor name, a project codename, or a lab connection mentioned in passing can quietly expose your academic or workplace coordinates. This kind of signal is rare in English content but common in Chinese circles.</p>
+
+<h2>A three-month cleanup rhythm before return</h2>
+<p>Do not wait for an offer. Start three months before returning: pull the archive locally, rank and clear high-risk items, then work through medium ones. Recheck after each batch so nothing slips. For the ranking method, see the <a href="/blog/complete-digital-footprint-health-checklist-2026">annual checklist</a>.</p>
+
+<h2>What Chinese-archive search needs</h2>
+<p>In a Chinese user archive, the exposure points often hide in the narrative rather than in fields. A line about your apartment complex, a regular cafe, or your child school looks harmless alone, but combined with location it reconstructs your daily route. After on-device parsing, fold this soft information into a manual review instead of trusting automatic keyword matching alone. For mining Chinese long-tail terms, revisit our <a href="/blog/x-archive-download-chinese-guide">Chinese user archive guide</a>.</p>
+<p>Another angle common in Chinese circles is names and relationships: a mentor name, a project codename, or a lab connection mentioned in passing can quietly expose your academic or workplace coordinates. This signal is rare in English content but is among the easiest traps in Chinese posts, so it deserves a dedicated pass. Treating Chinese content as simply translated English is the single biggest mistake returnees make, because the risk lives in the local context, not the vocabulary. The fix is straightforward: read the archive the way a local recruiter would, not the way an English tool would.</p>
+
+<h2>Why a returnee archive deserves its own pass</h2>
+<p>A returnee archive is not just a bigger archive; it carries a different risk shape because the audience that may read it later is local and context-aware. Treating it as a generic cleanup undersells the real exposure, so give it a dedicated, slower pass rather than folding it into a routine sweep.</p>
+
+<h2>Use an on-device tool for peace of mind</h2>
+<p>A returnee archive often holds both Chinese and English sensitive content, which makes uploading it to any cloud tool a bad idea. Use digital-footprint-health.shop to parse your X archive on your device, flag items, then decide what stays or goes, with nothing leaving your machine. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'guilt-over-old-tweets-2026',
+    title: '为十年前的推文感到羞耻？如何与你的数字足迹和解',
+    excerpt: '旧推文带来的羞耻感很真实，但一直内耗没有帮助。换个角度看待数字足迹，把清理变成一次主动整理，而不是自我审判。',
+    date: '2026-10-30',
+    updatedAt: '2026-10-30',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['X/Twitter', '数字极简', '心理', '清理习惯', '焦虑'],
+    content: `<p>几乎每个人都曾想穿越回去删掉某条推文。那种羞耻感很真实，但如果它变成长期内耗，反而会让清理停滞。本文想帮你和数字足迹和解，把焦虑转成一次主动整理，而不是反复审判过去的自己。</p>
+
+<h2>羞耻感从哪来</h2>
+<p>我们都在成长，十年前的你本来就不该和今天一致。问题在于，X 把成长过程永久摊开，别人却只截取某一刻。理解这一点，就能把旧推文从人格审判降格为成长痕迹，羞耻感也会随之松动。</p>
+<p>另一个来源是比较。你看到的旧推文是去掉上下文的片段，而别人带着今天的标尺来量。把同样的标准用在自己身上，自然会觉得处处是错。承认当时的你信息有限、视角有限，是和解的第一步。</p>
+
+<h2>别把清理变成自我审判</h2>
+<p>很多人一打开归档就被淹没，于是一条条自我检讨，结果越清越焦虑。更好的做法是先分级、再处理：用 <a href="/blog/complete-digital-footprint-health-checklist-2026">年度体检清单</a> 把高风险项挑出来优先处理，而不是通读每一条。把注意力放在可能伤人的内容上，而不是评判当年的自己。</p>
+
+<h2>数字极简的思路</h2>
+<p>把数字足迹当成实体物品来整理：留下真正代表你的，处理掉可能伤人的，其余随它去。和 <a href="/blog/social-media-detox-anxiety-relief-2026">社媒戒断焦虑缓解</a> 一样，目标是降低噪音，不必追求一张白纸。极简的重点在于让你对留下什么更有掌控感，清空本身并不是目标。</p>
+
+<h2>设定一个停止线</h2>
+<p>清理到一定程度就要停。没有人能把过去清零，也没必要。给自己一个标准：高风险项清零、中风险项处理完，就合上归档。反复翻看只会反复触发羞耻，而停止线能帮你把这件事画上句号。</p>
+
+<h2>把"清理"重新定义成"整理"</h2>
+<p>很多人卡住，是因为把清理当成了认错。一旦打开归档就进入自我审判模式，每条都反复纠结"我当时怎么那么傻"，结果越清越难受，最后干脆关掉不看了。换个框架：把这次清理当成给十年前的自己做一次收纳，和认错没有关系。留下的代表你，处理的代表你不再需要的暴露，其余随它去。</p>
+<p>这个框架还能帮你止损。当你把注意力从"评判过去"转到"管理风险"，羞耻感会退到第二位，行动反而顺畅。和 <a href="/blog/social-media-detox-anxiety-relief-2026">社媒戒断焦虑缓解</a> 的思路一致：目标是降低噪音，不是追求一张白纸。</p>
+
+<h2>给未来的自己留一句话</h2>
+<p>清理完合上归档前，写一句话给未来的自己：比如"高风险已清，中风险已压，剩下的随它"。下次再想翻旧账时，先读这句话，往往就能把冲动压下去。这句话本身就是停止线的一部分，比任何外部规则都管用。</p>
+
+<h2>用工具把情绪和操作分开</h2>
+<p>本机工具帮你做客观标记，不替你做价值判断。用 digital-footprint-health.shop 在本机解析 X 归档，按风险清单处理，全程数据不上传。从 <a href="/">首页</a> 开始，更多在 <a href="/blog">博客</a>。</p>`,
+    canonical: '/blog/guilt-over-old-tweets-2026',
+    faq: [
+      { q: "为旧推文羞耻是正常的吗？", a: "非常正常。成长本就会让过去的自己显得陌生，关键在于别让这种情绪变成长期内耗，而是把它转成一次主动整理。承认当时的你视角有限，是和解的第一步。", qEn: "Is it normal to feel shame about old tweets?", aEn: "Very normal. Growth naturally makes your past self look foreign, and the key is not letting that feeling become long-term rumination but a trigger for one deliberate tidy-up. Admitting the past you had limited perspective is the first step." },
+      { q: "怎么避免清理时越清越焦虑？", a: "先分级再处理，不要通读每一条。用体检清单把高风险项优先挑出来，处理完一批就停，避免反复翻看触发羞耻。", qEn: "How do I avoid getting more anxious while cleaning?", aEn: "Rank before reading everything. Use the checklist to surface high-risk items first, handle a batch, then stop, instead of reopening the archive repeatedly." },
+      { q: "一定要把过去清零吗？", a: "不需要也不可能。设定停止线：高风险清零、中风险处理完就合上归档，追求白纸既不现实也没必要。", qEn: "Do I have to wipe the past clean?", aEn: "Neither needed nor possible. Set a stop line: high-risk gone and medium handled, then close the archive. A blank slate is neither realistic nor necessary." },
+      { q: "工具能替我做价值判断吗？", a: "不能也不该。工具只做客观标记，删留决定由你做。本机解析的好处是数据不出本机，判断权始终在你手里。", qEn: "Can a tool make the value judgment for me?", aEn: "No, and it should not. A tool only flags objectively; you decide what stays or goes. On-device parsing keeps the data on your machine and the decision with you." }
+    ],
+    titleEn: 'Feeling Guilty About Old Tweets? How to Make Peace With Your Digital Footprint',
+    excerptEn: 'Shame about old tweets is real, but spiraling over it helps no one. Reframe your footprint as something you can tidy on purpose instead of a verdict on who you were.',
+    categoryEn: 'Psychology and Habits',
+    tagsEn: ['X/Twitter', 'digital minimalism', 'mindset', 'cleanup habit', 'anxiety'],
+    contentEn: `<p>Almost everyone has wanted to travel back and delete a tweet. The shame is real, but when it turns into long-term rumination it stalls the cleanup itself. This piece helps you make peace with your footprint and turn anxiety into one deliberate tidy-up rather than a repeated trial of who you were.</p>
+
+<h2>Where the shame comes from</h2>
+<p>We all grow, and the person from ten years ago was never supposed to match who you are now. The problem is that X spreads the growth permanently while others grab a single moment. Seeing that reframes old tweets from a character verdict to a growth trail, and the shame loosens.</p>
+<p>Another source is comparison. The old tweet you see is a context-stripped fragment, and others measure it with today ruler. Apply the same standard to yourself and of course everything looks wrong. Admitting that the past you had limited information and perspective is the first step to peace.</p>
+
+<h2>Do not turn cleanup into self-trial</h2>
+<p>Many people open the archive, get overwhelmed, and interrogate themselves post by post, only growing more anxious. A better path is rank first, then act: use the <a href="/blog/complete-digital-footprint-health-checklist-2026">annual checklist</a> to pull high-risk items to the front instead of reading everything. Keep attention on content that could hurt, not on judging the past you.</p>
+
+<h2>A digital-minimalism mindset</h2>
+<p>Treat your footprint like physical stuff: keep what represents you, handle what could hurt, and let the rest be. Like <a href="/blog/social-media-detox-anxiety-relief-2026">relief from social detox anxiety</a>, the goal is less noise, not a blank slate. Minimalism is not emptying, it is gaining control over what stays.</p>
+
+<h2>Draw a stop line</h2>
+<p>At some point you stop. No one can wipe the past, and no one needs to. Give yourself a standard: high-risk items gone, medium ones handled, then close the archive. Reopening it just re-triggers shame, and a stop line lets you end the matter.</p>
+
+<h2>Redefine cleanup as tidying</h2>
+<p>Many people stall because they treat cleanup as confessing a mistake. The moment they open the archive they enter self-trial mode, agonizing over every post with "how could I have been so silly," and the result is they feel worse and eventually close it without finishing. Try a different frame: you are not confessing, you are decluttering the person you were ten years ago. Keep what represents you, handle what you no longer need exposed, and let the rest be.</p>
+<p>This frame also limits the damage. When attention shifts from judging the past to managing risk, shame moves to the background and action gets easier. The logic mirrors our <a href="/blog/social-media-detox-anxiety-relief-2026">relief from social detox anxiety</a>: the aim is less noise, not a blank slate.</p>
+
+<h2>Leave one line for your future self</h2>
+<p>Before closing the archive, write one line to your future self, something like "high-risk cleared, medium handled, the rest can stay." The next time you feel the urge to dig up old posts, read that line first, and the impulse usually fades. That line is part of your stop line, and it works better than any external rule because it speaks in your own voice. People who skip this step tend to reopen the archive on a bad day and undo their own peace, so the thirty seconds it takes is worth it.</p>
+
+<h2>A small ritual that helps</h2>
+<p>If the shame spikes on a particular day, try a five-minute ritual: open the archive, read one old post with curiosity instead of judgment, then close it. The point is not to clean anything in that moment, but to practice looking without flinching. Over a few weeks this dulls the shame response, and the real cleanup gets easier because you are no longer bracing for it.</p>
+
+<h2>Separate emotion from action with a tool</h2>
+<p>An on-device tool flags risks objectively without passing judgment on you. Use digital-footprint-health.shop to parse your X archive on your device, work the risk list, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>`,
+  },
+  {
+    slug: 'unrecognized-login-x-recovery-2026',
+    title: 'X 账号出现陌生登录记录？一步步找回并加固',
+    excerpt: '在登录记录里看到不认识的设备和地点，先别慌。按步骤确认、踢出会话、改密、开启双重验证，并清理可能连带暴露的历史推文。',
+    date: '2026-10-30',
+    updatedAt: '2026-10-30',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X/Twitter', '账号安全', '陌生登录', '双重验证', '账号找回'],
+    content: `<p>在账号的登录记录里看到陌生设备和地点，第一反应往往是慌。按正确顺序处理，绝大多数情况都能在几分钟内控制住。本文给一套可照做的步骤，从确认到加固一次讲清。</p>
+
+<h2>第一步：确认是不是自己</h2>
+<p>先排除误报。你换手机、重装 App、或用不同网络都可能生成陌生记录。对照时间点和设备型号，确认确实不是自己操作后，再进入处置流程。如果登录方式异常导致无法接收验证码，可参考 <a href="/blog/x-account-recovery-without-phone-2026">无手机找回账号</a>。</p>
+
+<h2>第二步：立刻踢出可疑会话</h2>
+<p>在账号设置的安全页里，逐个检查活跃会话，把不认识的设备和地点全部登出。这一步能立刻切断对方的控制权，比改密码更优先，因为对方可能已改了绑定信息。登出后再观察几分钟，确认没有新的可疑会话冒出来。</p>
+
+<h2>第三步：改密码并开启双重验证</h2>
+<p>踢出会话后马上改一个没用过的强密码，并开启双重验证。双重验证能挡住绝大多数仅凭密码的入侵。关于登录设备检查的常规做法，见 <a href="/blog/complete-digital-footprint-health-checklist-2026">年度体检清单</a> 里的设备复查环节。改密码时顺手把安全问题的答案也换成只有你知道的内容。</p>
+
+<h2>第四步：检查第三方授权</h2>
+<p>很多入侵来自你早就忘了的旧应用授权。收回不再使用的第三方授权，能堵住对方借应用通道再次进来的口子。这一步常被忽略，但旧授权往往比密码更持久地开放着你的数据面。</p>
+
+<h2>第五步：顺手清理暴露的历史</h2>
+<p>如果账号真被人翻过，你留在旧推文里的手机号、住址可能已被看到。趁这次加固，按风险分级处理高风险历史推文，避免二次伤害。用 digital-footprint-health.shop 在本机解析 X 归档，标记后决定删留，全程数据不上传。从 <a href="/">首页</a> 开始，更多在 <a href="/blog">博客</a>。</p>
+
+<h2>陌生登录常见是什么造成的</h2>
+<p>多数陌生登录来自口令复用和密码泄露库撞库，并非高明的黑客手段。你在别处用过、又在那边泄露过的密码，会被拿去批量尝试登录 X。所以这次改密码时，别只在 X 内部换，要去你复用过这个密码的其他站点也一并改掉，否则同一条密码还会继续被人拿来试。关于无手机情况下的找回，可看 <a href="/blog/x-account-recovery-without-phone-2026">无手机找回账号</a>。</p>
+<p>另一类常见原因是旧设备没退出。你卖掉的手机、报废的平板、公司电脑，如果当初没手动登出，就可能一直挂在活跃会话里。定期清理会话列表，比事后救火省力得多。</p>
+
+<h2>加固之后还要做什么</h2>
+<p>账号找回不等于结束。接下来两周留意是否有异常私信、关注变化或陌生应用授权重新出现。把设备复查和授权清理写进你的季度习惯，能避免同一条路被走第二次。</p>`,
+    canonical: '/blog/unrecognized-login-x-recovery-2026',
+    faq: [
+      { q: "陌生登录记录一定是被盗了吗？", a: "不一定。换设备、重装 App 或切换网络都可能生成陌生记录。先核对时间和设备型号，确认不是自己再进入处置流程。", qEn: "Does an unknown login always mean a breach?", aEn: "Not always. A new device, a reinstalled app, or a different network can all create unfamiliar records. Check the time and device model before assuming a breach." },
+      { q: "发现可疑登录先改密码还是先踢会话？", a: "先踢会话。对方可能已改绑定信息，先登出可疑设备能立刻切断控制权，再改密码和开双重验证更稳妥。", qEn: "Revoke the session or change the password first?", aEn: "Revoke the session first. The attacker may have changed bound details, so logging out the device cuts control immediately, then changing the password and enabling two-factor is safer." },
+      { q: "双重验证真的有必要开吗？", a: "非常有必要。它能挡住绝大多数仅凭密码的入侵，是性价比最高的加固步骤，建议和改密码一起做。", qEn: "Is two-factor really necessary?", aEn: "Very much so. It blocks most password-only intrusions and is the highest-value hardening step, best done together with the password change." },
+      { q: "账号被翻过后历史推文要处理吗？", a: "建议处理高风险项。手机号、住址等一旦被看到就有二次伤害风险，趁加固时按风险分级清理更安心。", qEn: "Should I handle old tweets after a breach?", aEn: "Handling high-risk items is wise. Phone numbers and addresses, once seen, carry second-harm risk, so ranking and clearing them during hardening brings peace of mind." }
+    ],
+    titleEn: 'Found an Unrecognized Login on X? Steps to Recover and Lock Down',
+    excerptEn: 'Seeing an unknown device or location in your login history is alarming but fixable. Confirm, revoke the session, change the password, turn on two-factor, and clean history that may have been exposed.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X/Twitter', 'account security', 'unrecognized login', 'two-factor', 'account recovery'],
+    contentEn: `<p>Finding an unknown device or location in your login history triggers panic first. Handled in the right order, most cases are contained within minutes. This piece gives a checklist you can follow, from confirmation to hardening.</p>
+
+<h2>Step 1: confirm it is not you</h2>
+<p>Rule out false alarms first. A new phone, a reinstalled app, or a different network can all generate unfamiliar records. Match the timestamp and device model; only move to response steps once you are sure it was not you. If the login path makes verification codes unreachable, see <a href="/blog/x-account-recovery-without-phone-2026">account recovery without a phone</a>.</p>
+
+<h2>Step 2: revoke the suspicious session immediately</h2>
+<p>In the account settings security page, review active sessions and log out every device and location you do not recognize. This instantly cuts the attacker control and outranks changing the password, because they may have already changed bound details. After logging out, watch for a few minutes to confirm no new suspicious session appears.</p>
+
+<h2>Step 3: change the password and turn on two-factor</h2>
+<p>After revoking sessions, set a fresh strong password you have never used and enable two-factor. Two-factor blocks most password-only intrusions. For the routine device review, see the device-check section of our <a href="/blog/complete-digital-footprint-health-checklist-2026">annual checklist</a>. While changing the password, also swap security-question answers for things only you know.</p>
+
+<h2>Step 4: review third-party authorizations</h2>
+<p>Many intrusions ride on app authorizations you forgot. Revoking third-party access you no longer use closes the channel an attacker could re-enter through. This step is often skipped, yet old authorizations keep your data surface open longer than the password does.</p>
+
+<h2>Step 5: clean exposed history while you are at it</h2>
+<p>If the account was truly accessed, the phone numbers and addresses in your old tweets may have been seen. While hardening, rank and clear high-risk history to avoid second-harm. Use digital-footprint-health.shop to parse your X archive on your device, flag items, then decide what stays or goes, with nothing uploaded. Start on the <a href="/">homepage</a>; more is on the <a href="/blog">blog</a>.</p>
+
+<h2>What usually causes an unrecognized login</h2>
+<p>Most unrecognized logins are not clever hackers but credential stuffing from password leaks. A password you reused on another site that later leaked gets tried in bulk against X. So when you change the password this time, do not only swap it inside X; also change it on the other sites where you reused it, or the same password keeps getting tested elsewhere. For recovery when the phone path fails, see our <a href="/blog/x-account-recovery-without-phone-2026">account recovery without a phone</a>.</p>
+<p>Another common cause is old devices that were never signed out. The phone you sold, the tablet you scrapped, the work laptop, if they were not manually logged out, they can stay on the active session list. Clearing that list regularly is far easier than firefighting after a breach. The pattern repeats because people treat one account as isolated when credentials are shared across many, so a single leak quietly undermines accounts you thought were safe.</p>
+
+<h2>A quick way to judge severity</h2>
+<p>If the unknown session is from a location you have never visited and a device you do not own, assume the worst and move fast through the steps above. If it is a city you traveled to last month on a phone you still have, it is probably a delayed record rather than a live breach. Judging severity correctly stops you from either panicking over nothing or ignoring something real.</p>
+
+<h2>What to do after hardening</h2>
+<p>Recovering the account is not the end. For the next two weeks watch for odd direct messages, follower changes, or a forgotten app authorization reappearing. Writing device review and authorization cleanup into your quarterly habit stops the same path being walked twice.</p>`,
+  },
+
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

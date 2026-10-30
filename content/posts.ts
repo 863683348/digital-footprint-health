@@ -30469,6 +30469,368 @@ rl.on('close', () =&gt; {
 <p>Recovering the account is not the end. For the next two weeks watch for odd direct messages, follower changes, or a forgotten app authorization reappearing. Writing device review and authorization cleanup into your quarterly habit stops the same path being walked twice.</p>`,
   },
 
+  {
+    slug: 'home-address-leak-old-tweets-2026',
+    title: '旧推文正在泄露你的家庭住址：搬家、新房、快递那些定位信号',
+    excerpt: '你三年前那句「终于搬进新家」、晒出的小区门禁、楼下那家咖啡馆，都可能拼出你的家庭住址。本文拆解旧推文是怎么一步步暴露坐标的，并给出本机自查与清理的实操步骤。',
+    date: '2026-10-31',
+    updatedAt: '2026-10-31',
+    author: 'Digital Footprint Health Team',
+    category: '风险场景',
+    tags: ['X/Twitter', '住址泄露', '数字足迹', '隐私保护', '人肉搜索'],
+    content: `
+<h2>为什么旧推文能拼出你的住址</h2>
+<p>社交平台上的定位泄露，往往不是一条推文写明了「我家在某某路 18 号」，而是十几条看似无害的内容互相印证。攻击者（或只是好奇的人）用公开信息就能完成定位：你晒的小区门禁、常去的咖啡馆、孩子学校的校服、窗外那栋标志建筑，都是坐标碎片。</p>
+<p>更麻烦的是，这些碎片大多发生在多年以前，你早就忘了发过，但它们一直被搜索引擎收录、被截图存档、被数据经纪商打包。等到你换工作、闹纠纷、或者只是被陌生人盯上，这些旧推文会被重新翻出来，而且你几乎无法控制它们被谁看到。</p>
+
+<h2>最常见的四类住址信号</h2>
+<ul>
+  <li><strong>搬家和房屋相关</strong>：搬家当天、新房装修、交房验房、物业通知——这些动态天然带时间窗口，对照你当时的定位打卡就能锁定小区。</li>
+  <li><strong>常驻地标</strong>：你反复出现的咖啡馆、健身房、公园、超市，结合营业时间和你发帖的时段，能缩小到一两个街区。</li>
+  <li><strong>窗外和室内视角</strong>：窗外的楼型、阳台对面的招牌、小区的中庭布局，老练的人能从一张照片反推楼盘。</li>
+  <li><strong>亲子与学校</strong>：校服、校车、学校活动、班级群里的定位，是最容易被忽视的一类，却直接关联到未成年人和家庭地址。</li>
+</ul>
+
+<h2>真实风险：从骚扰到物理安全</h2>
+<p>住址泄露的后果不只是「被人知道住哪」。它会被用于定向骚扰、快递包裹盗窃、线下纠缠，更严重时会升级为人肉搜索和线下威胁。对公众人物、举报人、家暴受害者而言，旧推文里的住址碎片可能直接危及人身安全，这不是危言耸听，而是已经反复发生过的真实案例。</p>
+<table>
+  <thead><tr><th>信号类型</th><th>风险等级</th><th>典型场景</th></tr></thead>
+  <tbody>
+    <tr><td>小区门禁 / 楼道</td><td>高</td><td>直接指向居住楼栋</td></tr>
+    <tr><td>常去店铺 + 时段</td><td>中</td><td>缩小到街区范围</td></tr>
+    <tr><td>窗外建筑特征</td><td>中</td><td>反推具体楼盘</td></tr>
+    <tr><td>学校 / 校服</td><td>高</td><td>关联到未成年人</td></tr>
+  </tbody>
+</table>
+
+<h2>本机自查：三步找出住址碎片</h2>
+<p>你不需要雇人，也不需要把数据交给任何第三方。X 提供的数据归档（ZIP）里包含你发过的全部推文文本、图片的 EXIF 和被标记的定位。做法是：</p>
+<ol>
+  <li>从 X 账号设置里申请并下载你的数据归档。</li>
+  <li>在本机解析归档，扫描含住址关键词（小区、路名、楼栋、快递、搬家）和带定位的推文。</li>
+  <li>对命中的内容做人工确认，区分「确实暴露住址」和「只是提到地名」。</li>
+</ol>
+<p>关键在于「本机处理」：数据全程不离开你的电脑，解析完即可丢弃中间文件，避免二次泄露。这一步不需要联网，也不需要经过任何来路不明的在线服务。</p>
+
+<h2>已经泄露了怎么办：分步补救</h2>
+<p>如果你怀疑住址已经外泄，先别慌，也别急着删光账号——那反而可能销毁证据。先做三件事：第一，把还能看到的公开帖子里最直接暴露门牌号、楼栋、小区名的几条处理掉；第二，检查账号的登录设备和授权应用，踢掉不认识的设备；第三，给住址相关的重要账号（银行、邮箱、社交）开启登录提醒，任何新设备登录都会通知你。</p>
+<p>如果已经出现线下骚扰，保留截图和记录，必要时报警或申请平台介入。住址泄露的处理逻辑是「先止血、再清理、最后设防」，而不是一次性大扫除。</p>
+
+<h2>三类人尤其要上心</h2>
+<ul>
+  <li><strong>公众人物与举报人</strong>：你的旧推文更容易被定向翻找，住址一旦暴露后果直接，建议把账号里所有带地标的旧内容做一次彻底筛查。</li>
+  <li><strong>家暴与骚扰受害者</strong>：隐藏现住址是安全底线，发图前务必确认窗外、信箱、门牌没有任何可识别信息。</li>
+  <li><strong>普通上班族</strong>：你可能不担心被人肉，但求职背调、客户背景核查都会翻旧账，一条带公司定位和负面评价的旧推文足够让机会溜走。</li>
+</ul>
+
+<h2>清理原则：删之前先想清楚</h2>
+<p>发现住址碎片后，删除要谨慎。X 只允许删除最近约 3,200 条推文，更早的历史必须通过归档才能触达；而且删掉一条带定位的旧推文，并不会让已经截图或收录的副本消失。所以优先处理的是「未来还会被搜索到」的源头，而不是指望删除能抹掉过去。</p>
+<p>如果你需要批量、按关键词、跨年份地清理，建议先把整个归档解析清楚，再决定哪些必须删、哪些可以保留。处理完别忘了对归档里的图片做一次本地检查，EXIF 里的定位有时比文字更精确。</p>
+
+<h2>工具能帮你到哪一步</h2>
+<p>自动化工具有它的边界：它能在一份归档里快速标出含住址关键词和定位的推文，帮你省去逐条翻看的体力活；但它不能替你判断「这条该不该删」，也不能让已经被截图收录的副本消失。所以工具负责「发现」，你负责「决策」。</p>
+<p>把发现交给本机解析，把判断留给自己，是这套流程最稳的地方：数据不出电脑，决策不假手于人。</p>
+
+<h2>长期习惯：让新推文不再暴露坐标</h2>
+<ul>
+  <li>发图前抹掉 EXIF，尤其是定位和机型。</li>
+  <li>避免在「家附近的地标」连续打卡，错开时间和地点。</li>
+  <li>不要同时晒「搬家」和「具体小区外观」。</li>
+  <li>涉及孩子的内容，永远不要带可识别的地标或校服特写。</li>
+</ul>
+<p>隐私不是发完就结束，而是每一次发图前多想两秒。想系统检查自己账号里还藏着哪些住址信号，可以到 <a href="/">digital-footprint-health.shop</a> 做一次本机体检，首页的 <a href="/blog">博客</a> 里也有更多关于 <a href="/upload">归档解析与清理</a> 的实操说明。</p>
+`,
+    canonical: '/blog/home-address-leak-old-tweets-2026',
+    titleEn: 'How Old Tweets Leak Your Home Address (and What to Do)',
+    excerptEn: 'That "finally moved into the new place" post, your building entrance, the coffee shop downstairs — together they can pin down where you live. This guide shows how old tweets expose your address and how to find and remove those signals on your own device.',
+    categoryEn: 'Risk Scenarios',
+    tagsEn: ['X/Twitter', 'address leak', 'digital footprint', 'privacy', 'doxxing'],
+    contentEn: `
+<h2>Why old tweets can pin down your home</h2>
+<p>Address leaks on social platforms rarely come from one post that says "I live at 18 Something Road." More often, a dozen harmless-looking posts confirm each other. The building entrance you photographed, the coffee shop you mention every week, your kid's school uniform, the landmark outside your window — these are all location fragments.</p>
+<p>The trouble is they were posted years ago. You forgot them, but search engines indexed them, screenshots archived them, and data brokers packaged them. When you change jobs, get into a dispute, or simply attract the wrong kind of attention, those old tweets get dug back up, and you have almost no control over who sees them.</p>
+
+<h2>Four common types of address signals</h2>
+<ul>
+  <li><strong>Moving and housing</strong>: move-in day, renovation, handover inspection, property notices — these carry a time window that, matched with your check-in at the time, narrows down the complex.</li>
+  <li><strong>Recurring landmarks</strong>: the cafe, gym, park, or supermarket you keep appearing at, combined with posting times, can shrink the area to a block or two.</li>
+  <li><strong>Window and interior views</strong>: the building shape outside, the sign across the balcony, the courtyard layout — experienced eyes reverse-engineer the development from one photo.</li>
+  <li><strong>Children and schools</strong>: uniforms, school buses, events, location-tagged class groups — the most overlooked type, yet it links directly to minors and a home address.</li>
+</ul>
+
+<h2>The real risk: from harassment to physical safety</h2>
+<p>An exposed address is not just "people knowing where you live." It feeds targeted harassment, package theft, in-person stalking, and at its worst doxxing and offline threats. For public figures, whistleblowers, and domestic-violence survivors, address fragments in old tweets can be a direct physical danger. This is not hypothetical — it has happened repeatedly.</p>
+<table>
+  <thead><tr><th>Signal type</th><th>Risk</th><th>Typical scenario</th></tr></thead>
+  <tbody>
+    <tr><td>Building entrance / hallway</td><td>High</td><td>Points to the exact building</td></tr>
+    <tr><td>Frequent spots + timing</td><td>Medium</td><td>Narrows to a few blocks</td></tr>
+    <tr><td>Exterior architecture</td><td>Medium</td><td>Reverse-identifies the complex</td></tr>
+    <tr><td>School / uniform</td><td>High</td><td>Links to minors</td></tr>
+  </tbody>
+</table>
+
+<h2>Check on your own device: three steps</h2>
+<p>You do not need to hire anyone or hand your data to a third party. The X data archive (ZIP) contains every tweet you posted, image EXIF, and tagged locations. The process:</p>
+<ol>
+  <li>Request and download your X data archive from account settings.</li>
+  <li>Parse the archive on your own device, scanning for address keywords (complex, road, building, delivery, moving) and location-tagged posts.</li>
+  <li>Manually confirm hits, separating "actually exposes the address" from "just mentions a place name."</li>
+</ol>
+<p>The key word is "on your own device": data never leaves your computer, and you can discard intermediate files afterward to avoid a second leak. This step needs no network and no unknown online service.</p>
+
+<h2>Already leaked? Step-by-step remediation</h2>
+<p>If you suspect your address is already out, do not panic and do not wipe your account — that can destroy evidence. Do three things first: handle the most direct exposures (building number, block, complex name) among still-visible posts; review signed-in devices and authorized apps, and kick out anything unrecognized; and turn on login alerts for address-sensitive accounts like banking, email, and social, so any new device notifies you.</p>
+<p>If offline harassment already started, keep screenshots and records, and report to the platform or police when needed. The logic for address leaks is "stop the bleeding, then clean up, then prevent" — not one big sweep.</p>
+
+<h2>Three groups that should care most</h2>
+<ul>
+  <li><strong>Public figures and whistleblowers</strong>: your old tweets get dug up on purpose, and a leaked address has immediate consequences. Screen the whole account for landmark-bearing old content.</li>
+  <li><strong>Domestic-violence and harassment survivors</strong>: hiding the current address is a safety baseline. Before posting any photo, confirm no window, mailbox, or doorplate reveals identifying info.</li>
+  <li><strong>Ordinary employees</strong>: you may not fear doxxing, but job and client background checks dig through old posts. One old tweet with a company location and a negative remark can cost an opportunity.</li>
+</ul>
+
+<h2>Cleanup rule: think before you delete</h2>
+<p>Once you find address fragments, delete carefully. X only lets you delete the most recent ~3,200 tweets; anything older must be reached through the archive. And deleting a location-tagged old tweet does not make the screenshots or cached copies disappear. So prioritize the source that "will still be searchable," not the fantasy that deletion erases the past.</p>
+<p>If you need bulk, keyword-based, cross-year cleanup, parse the whole archive first, then decide what must go. Afterward, do a local pass on the images — EXIF location is sometimes more precise than the text.</p>
+
+<h2>What a tool can and cannot do</h2>
+<p>Automation has limits. It can quickly flag posts in an archive that contain address keywords or location tags, saving you from reading everything by hand. It cannot decide "should this be deleted," and it cannot make screenshotted copies disappear. So the tool handles discovery; you handle judgment.</p>
+<p>Letting the machine discover on your own device, and keeping the decision with yourself, is the steadiest version of this workflow: data never leaves the computer, and the call is never outsourced.</p>
+
+<h2>Long-term habit: stop new posts from leaking</h2>
+<ul>
+  <li>Strip EXIF before posting photos, especially location and device.</li>
+  <li>Avoid repeated check-ins at "landmarks near home"; vary time and place.</li>
+  <li>Do not post both "I moved" and "a photo of the exact complex."</li>
+  <li>Never include recognizable landmarks or uniform close-ups in anything about your kids.</li>
+</ul>
+
+<h2>A 15-minute weekly habit that compounds</h2>
+<p>The hardest part of footprint hygiene is not knowing what to do; it is doing it consistently without it turning into a second job. The fix is a tiny, repeatable routine rather than occasional big purges. Once a week, set a timer for fifteen minutes and do only three things: skim the last week of your posts for any photo that went out with location still attached, search your own handle for the two or three keywords that worry you most, glance at the signed-in devices list for anything unfamiliar.</p>
+<p>None of these steps needs special tools, and none takes more than a few minutes. The point is that small, regular passes keep the exposed surface small, so a red-band emergency never builds up silently. People who attempt one massive cleanup per year usually discover the damage is already done by the time they look. A weekly quarter-hour is dull, but it is also the only cadence that actually holds.</p>
+<ul>
+  <li>Pick the same day and time each week so the habit sticks.</li>
+  <li>Keep a short note of what you checked, so you are not repeating the same scan.</li>
+  <li>If a week gets busy, drop to "just check new photos" rather than skipping entirely.</li>
+</ul>
+<p>The payoff shows up quietly. Three months in, the search results for your name stop surfacing that old apartment photo, the school-event tag, the angry reply from a former colleague. Nothing dramatic happens — just less of you out there, and less that a stranger can assemble without your knowledge. That is the entire goal: not a spotless record, but a smaller, calmer one you actually control.</p>
+<p>Privacy is not finished once you post; it is two extra seconds of thought before you hit send. To systematically check what address signals are still hidden in your account, run an on-device check at <a href="/">digital-footprint-health.shop</a>. The <a href="/blog">blog</a> also has more hands-on notes on <a href="/upload">archive parsing and cleanup</a>.</p>
+`,
+    faq: [
+      { q: '旧推文真的能定位到我家吗？', a: '能，但通常不是靠一条推文，而是多条内容互相印证：小区门禁、常去店铺、窗外建筑、学校校服等碎片组合后，有心人就能缩小到具体楼栋甚至房间。', qEn: 'Can old tweets really locate my home?', aEn: 'Yes, but usually not from one post. Building entrances, frequent spots, exterior architecture, and school uniforms combine to narrow down to a specific building. It is pattern-matching across many posts.' },
+      { q: '我已经删了那条带定位的推文，还有风险吗？', a: '有。删除只影响平台上的当前版本，已经被搜索引擎收录、被截图或进入数据经纪商数据库的副本不会消失。真正要处理的是仍能被搜到的源头。', qEn: 'I deleted the location-tagged tweet. Am I safe?', aEn: 'Not entirely. Deletion only affects the live version; copies already indexed by search engines, screenshotted, or ingested by data brokers remain. The source still searchable is what matters.' },
+      { q: '怎么在本机自查住址碎片？', a: '下载你的 X 数据归档（ZIP），用本机工具解析，扫描住址关键词和带定位的推文，全程数据不出电脑。不要把这些数据交给来路不明的在线服务。', qEn: 'How do I check for address fragments on my own device?', aEn: 'Download your X data archive (ZIP), parse it locally, and scan for address keywords and location-tagged posts. Keep the data on your computer; do not hand it to unknown online services.' },
+      { q: '孩子相关的旧推文要特别处理吗？', a: '要。校服、校车、学校活动类内容直接关联到未成年人，风险等级最高，建议优先清理，且以后发图永远不要带可识别的地标或校服特写。', qEn: 'Should I treat kids-related old posts specially?', aEn: 'Yes. Uniforms, school buses, and school events link directly to minors and carry the highest risk. Clean them first, and never post recognizable landmarks or uniform close-ups going forward.' },
+      { q: '清理后怎么防止新推文再次泄露？', a: '发图前抹掉 EXIF，避免在家附近地标连续打卡，不要同时晒「搬家」和具体小区外观，涉及孩子的内容不带可识别地标。', qEn: 'After cleanup, how do I stop new posts leaking again?', aEn: 'Strip EXIF before posting, avoid repeated check-ins near home, never pair "I moved" with a photo of the exact complex, and keep kids content free of recognizable landmarks.' },
+    ],
+  },
+  {
+    slug: 'footprint-score-traffic-light-guide-2026',
+    title: '数字足迹健康评分红黄绿：0 到 100 分每一档到底什么意思',
+    excerpt: '体检给的 0-100 分到底怎么读？本文把红、黄、绿三档拆开讲：每一档代表的风险程度、对应的处理优先级，以及你真正该动手做的那几件事。',
+    date: '2026-10-31',
+    updatedAt: '2026-10-31',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    tags: ['数字足迹', '健康评分', '隐私体检', '风险评估', 'X/Twitter'],
+    content: `
+<h2>评分不是考试，是风险温度计</h2>
+<p>数字足迹体检给出的 0-100 分，本质上是一支「风险温度计」，不是成绩排名。分数越低，代表你账号里可被利用的隐私痕迹越多、越危险；分数越高，代表暴露面已经收得很干净。它衡量的是「泄露可能性与危害程度」，不是你这个人好不好。很多人看到低分就焦虑，其实低分只是提醒你该处理哪一类内容。</p>
+
+<h2>三档怎么切分</h2>
+<table>
+  <thead><tr><th>档位</th><th>分数区间</th><th>含义</th><th>行动优先级</th></tr></thead>
+  <tbody>
+    <tr><td>红（高危）</td><td>0-39</td><td>存在手机号、住址、身份证等可直接用于诈骗或人肉搜索的痕迹</td><td>立即处理</td></tr>
+    <tr><td>黄（中危）</td><td>40-74</td><td>有定位、敏感话题、可识别地标等中等风险内容</td><td>本月内清理</td></tr>
+    <tr><td>绿（低危）</td><td>75-100</td><td>少量低风险内容，整体暴露面可控</td><td>定期复查</td></tr>
+  </tbody>
+</table>
+
+<h2>红灯：先做这三件事</h2>
+<p>如果你落在红色区间，不要试图一次性删光所有推文，那既不现实也容易误删。按危害排序：</p>
+<ol>
+  <li>先处理含手机号、住址、身份证照片的内容——这些是唯一能直接造成现实伤害的信号。</li>
+  <li>再处理明确写出公司、客户、同事姓名且带负面评价的内容。</li>
+  <li>最后才是泛化的敏感话题。</li>
+</ol>
+
+<h2>黄灯：别被数字吓住</h2>
+<p>黄色区间最常见，也最容易被误解。它不代表「你马上要出事」，而是提醒你账号里还有一批定位打卡、旧照片、情绪化发言，长期积累会成为背景噪音，在求职或争议时被翻出来。这个区间的目标不是清零，而是把最容易被搜索到的那几条压下去。把精力放在搜索结果前几页里最显眼的几条，比盲目全删有效率得多。</p>
+
+<h2>绿灯：保持，而不是躺平</h2>
+<p>绿色不代表永远安全。平台政策在变，旧内容会被重新索引，新的发图习惯也可能引入新风险。绿区的正确做法是设一个固定节奏，比如每季度复查一次，重点看新发的图片有没有带 EXIF、有没有无意透露定位。保持干净比一次清干净更重要。</p>
+
+<h2>分数算错了吗：三个常见误读</h2>
+<ul>
+  <li><strong>误读一「分数低就是我做错了事」</strong>：分数只反映公开痕迹，和你的品行无关，很多人只是早年发图没注意。</li>
+  <li><strong>误读二「分数高就万事大吉」</strong>：高分只代表当前快照，一次带定位的新图就能把它拉下来。</li>
+  <li><strong>误读三「删得越多分越高」</strong>：精准删掉高危的几条，比乱删一百条更有效，后者还可能误伤正常内容。</li>
+</ul>
+
+<h2>不同人生阶段，关注点不同</h2>
+<p>求职季的人，最该盯的是公司名、同事名、负面评价这几类；刚搬家的的人，优先处理门牌和小区外观；有孩子的家庭，校服和学校的定位是重中之重。分数是一个总览，真正动手时要结合你当下的人生阶段，而不是对着一个数字瞎忙。</p>
+
+<h2>分数会一夜变红吗</h2>
+<p>通常不会，但有两种例外：一是你刚刚经历换工作、公开争议或账号被盗，旧内容被重新翻找；二是你新发的图片带上了精确定位。分数只是快照，真正决定风险的是「谁在什么时候翻你的旧账」。想看自己当前落在哪一档，可以到 <a href="/">digital-footprint-health.shop</a> 跑一次本机体检，<a href="/blog">博客</a> 里也有关于 <a href="/upload">归档解析流程</a> 的详细说明。</p>
+`,
+    canonical: '/blog/footprint-score-traffic-light-guide-2026',
+    titleEn: 'What Your Digital Footprint Score Means: The 0-100 Red/Yellow/Green Bands',
+    excerptEn: 'What does the 0-100 score from a footprint check actually tell you? This guide breaks down the red, yellow, and green bands: the risk each implies, the priority for action, and the few things you should actually do.',
+    categoryEn: 'Health Score',
+    tagsEn: ['digital footprint', 'health score', 'privacy check', 'risk assessment', 'X/Twitter'],
+    contentEn: `
+<h2>The score is a thermometer, not an exam</h2>
+<p>The 0-100 score from a footprint check is essentially a "risk thermometer," not a grade ranking. A lower score means more privacy traces in your account that can be exploited; a higher score means the exposed surface is already cleaned up. It measures "likelihood and impact of leakage," not whether you are a good person. Many people panic at a low score, but a low score just tells you which content to handle.</p>
+
+<h2>How the three bands split</h2>
+<table>
+  <thead><tr><th>Band</th><th>Range</th><th>Meaning</th><th>Action priority</th></tr></thead>
+  <tbody>
+    <tr><td>Red (high)</td><td>0-39</td><td>Traces like phone, address, ID photos that enable scams or doxxing</td><td>Act now</td></tr>
+    <tr><td>Yellow (medium)</td><td>40-74</td><td>Location, sensitive topics, recognizable landmarks</td><td>Clean this month</td></tr>
+    <tr><td>Green (low)</td><td>75-100</td><td>Little low-risk content, controllable exposure</td><td>Review periodically</td></tr>
+  </tbody>
+</table>
+
+<h2>Red: do these three things first</h2>
+<p>If you are in the red band, do not try to delete every tweet at once — that is unrealistic and error-prone. Sort by harm:</p>
+<ol>
+  <li>First handle content with phone numbers, home addresses, or ID photos — the only signals that cause real-world harm directly.</li>
+  <li>Then content that names your company, clients, or colleagues with negative remarks.</li>
+  <li>Last, the generalized sensitive topics.</li>
+</ol>
+
+<h2>Yellow: do not let the number scare you</h2>
+<p>The yellow band is the most common and the most misunderstood. It does not mean "something will happen to you tomorrow." It signals a batch of check-ins, old photos, and emotional posts that accumulate as background noise and can be dug up during a job hunt or a dispute. The goal here is not zero — it is pushing down the few posts most likely to be searched. Focusing on the most visible items in the first page of results beats blind bulk deletion.</p>
+
+<h2>Green: maintain, do not coast</h2>
+<p>Green does not mean permanently safe. Platform policies change, old content gets re-indexed, and new posting habits can introduce fresh risk. The right move in the green zone is a fixed rhythm — say, a quarterly re-check — focused on whether new photos carry EXIF or reveal location by accident. Staying clean beats one big cleanup.</p>
+
+<h2>Is the score wrong? Three common misreads</h2>
+<ul>
+  <li><strong>Misread 1, "low score means I did something wrong"</strong>: the score only reflects public traces, not your character; many people just posted photos carelessly years ago.</li>
+  <li><strong>Misread 2, "high score means all clear"</strong>: a high score is only a current snapshot; one precisely located new photo can pull it down.</li>
+  <li><strong>Misread 3, "delete more, score higher"</strong>: precisely removing a few high-risk posts beats deleting a hundred randomly, and the latter can damage normal content.</li>
+</ul>
+
+<h2>Different life stages, different focus</h2>
+<p>Job seekers should watch company names, colleague names, and negative remarks. Someone who just moved should prioritize doorplates and complex exteriors. Families with kids must treat uniforms and school locations as top priority. The score is an overview; real action should fit your current life stage, not chase a single number.</p>
+
+<h2>Can the score turn red overnight?</h2>
+<p>Usually not, but two exceptions exist: a job change, public dispute, or account takeover that brings old content back into focus, and newly posted photos with precise location. The score is a snapshot; what really drives risk is "who digs up your old accounts, and when."</p>
+
+<h2>One number worth remembering</h2>
+<p>If you remember nothing else, remember this: the score is a prompt, not a verdict. A single red-band item left unhandled does more damage than a hundred yellow-band items left alone, so spend your effort on the few dangerous posts rather than the many mild ones. Treat the number as a way to decide where to look next, not as a grade to celebrate or fear.</p>
+<p>To see which band you are in right now, run an on-device check at <a href="/">digital-footprint-health.shop</a>. The <a href="/blog">blog</a> also explains the <a href="/upload">archive parsing flow</a> in detail.</p>
+`,
+    faq: [
+      { q: '0 分和 100 分分别代表什么？', a: '0 分代表账号里存在大量可直接用于诈骗或人肉搜索的高危痕迹（手机号、住址、证件）；100 分代表暴露面已清理得很干净，只剩极少量低风险内容。', qEn: 'What do 0 and 100 mean?', aEn: '0 means many high-risk traces usable for scams or doxxing (phone, address, ID). 100 means the exposed surface is clean, with only minimal low-risk content left.' },
+      { q: '分数低是不是一定出事？', a: '不是。分数是风险温度计，衡量的是「泄露可能性与危害」，不代表已经发生了坏事。红灯提示你该优先处理最危险的那几类内容。', qEn: 'Does a low score mean something bad already happened?', aEn: 'No. The score is a risk thermometer measuring "likelihood and impact," not a record of harm done. Red tells you which content to fix first.' },
+      { q: '黄灯要不要立刻全删？', a: '不必。黄灯的目标是压下去最容易被搜索到的那几条，而不是清零。一次性全删既难操作也容易误删正常内容。', qEn: 'Should I delete everything in the yellow band immediately?', aEn: 'No need. The goal is to push down the few most searchable posts, not to zero everything out. Bulk deletion is hard to do cleanly and risks removing fine content.' },
+      { q: '分数多久会变？', a: '分数是基于当前归档的快照，平时变化很慢；但在换工作、公开争议、账号被盗或新发精确定位图片时可能快速变红。建议每季度复查一次。', qEn: 'How often does the score change?', aEn: 'It is a snapshot of the current archive and usually changes slowly, but can swing red fast after a job change, public dispute, takeover, or a precisely located new photo. A quarterly re-check is reasonable.' },
+    ],
+  },
+  {
+    slug: 'platform-policy-roundup-november-2026',
+    title: '2026 年 11 月社交平台隐私政策月度盘点：对旧推文意味着什么',
+    excerpt: '每月一更的平台隐私政策里，藏着和你旧推文直接相关的变化：数据保留时长、删除接口、可追溯性、跨平台迁移。本文盘点 2026 年 11 月值得关注的几条。',
+    date: '2026-10-31',
+    updatedAt: '2026-10-31',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['平台政策', '数据保留', '隐私合规', '删除接口', 'X/Twitter'],
+    content: `
+<h2>为什么旧推文要盯着政策看</h2>
+<p>你以为删掉的推文，平台可能按自己的保留策略多存了一段时间；你以为能批量删，接口却悄悄加了限制。政策变动不会大张旗鼓通知你，但会悄悄改变「你能不能清干净旧账」这件事。每月盘点一次，是为了不被沉默地改变。对普通人来说，最该关心的从来不是政策本身，而是政策落到自己账号上的那几个具体动作。</p>
+
+<h2>2026 年 11 月值得关注的几条</h2>
+<table>
+  <thead><tr><th>方向</th><th>变化要点</th><th>对旧推文的影响</th></tr></thead>
+  <tbody>
+    <tr><td>数据保留</td><td>部分平台延长了「已删除内容」的服务端保留窗口</td><td>你点删除后，副本可能在后端多留数月</td></tr>
+    <tr><td>删除接口</td><td>批量删除的速率与配额被重新设定</td><td>大批量清理要更久，需分批次</td></tr>
+    <tr><td>可追溯性</td><td>更多元数据被标注为「不可删」</td><td>定位、设备等信息比正文更难彻底清除</td></tr>
+    <tr><td>跨平台迁移</td><td>导出格式趋于统一，但字段映射不一致</td><td>换平台时旧内容迁移更容易丢字段</td></tr>
+  </tbody>
+</table>
+
+<h2>保留窗口变长：删除不等于消失</h2>
+<p>这是本月最该警惕的一点。当平台把「已删除内容」的服务端保留时间拉长，你主动删除的动作，只意味着「前端看不到了」，而后端副本仍按政策留存。对在意隐私的人，这意味着：清理要从「源头可搜索性」入手，而不是指望删除抹掉一切。换句话说，与其纠结过去删没删干净，不如把力气花在「未来别人搜你时看到什么」。</p>
+
+<h2>删除接口收紧：分批才是现实路径</h2>
+<p>速率和配额调整之后，想一次性清掉几千条旧推文往往不再现实。可行的做法是：先解析整份归档，按风险排序，再分批、按关键词提交删除。节奏慢一点，但每一批都可确认、可回退。切忌为了图快用来历不明的第三方工具暴力删除，那可能触发账号风控甚至封号。</p>
+
+<h2>可追溯元数据：最难清的一类</h2>
+<p>当定位、设备型号、IP 段等元数据被标记为不可删，正文删得再干净也留着「骨架」。这类信息通常在图片 EXIF 和后台日志里，用户侧几乎无法直接改。应对方式是在发图阶段就前置处理，而不是事后补救。一个实用的原则是：发出去的图片默认带定位，那就默认不发原图。</p>
+
+<h2>政策变动的预警信号</h2>
+<p>你不需要读完整份政策原文。真正值得警惕的信号就几个：删除按钮变灰或加确认步骤、批量操作突然报错或限速、账号设置里出现「数据保留」相关的新开关、导出归档的体积或字段明显变化。看到其中任意一种，就说明平台侧的清理规则已经动了。</p>
+
+<h2>横向看：平台之间的差异</h2>
+<p>同样一条旧推文，在不同平台上的命运并不一样。有的平台默认保留更久，有的对删除接口更宽松，有的在导出时丢字段更严重。所以「换平台」本身不是隐私解药——你只是把旧账从一个仓库搬到另一个仓库，清不干净的本质没变。真正通用的解法是：无论在哪，都自己握有一份本机归档。</p>
+
+<h2>该怎么做：把主动权拿回自己手里</h2>
+<ul>
+  <li>定期下载自己的归档，掌握「平台之外」的副本。</li>
+  <li>清理前先解析，按风险和关键词排优先级，别盲目全删。</li>
+  <li>发图就抹 EXIF，从源头减少可追溯元数据。</li>
+  <li>把政策变化当成提醒，而不是恐慌理由。</li>
+</ul>
+<p>政策会一直变，但「本机掌握自己的数据」这条不变。想看自己账号当前还留着哪些可被清掉的内容，可以到 <a href="/">digital-footprint-health.shop</a> 做一次本机体检，<a href="/blog">博客</a> 里也整理了关于 <a href="/upload">归档导出与清理节奏</a> 的更多内容。</p>
+`,
+    canonical: '/blog/platform-policy-roundup-november-2026',
+    titleEn: 'November 2026 Social Platform Privacy Policy Roundup',
+    excerptEn: 'Hidden in the monthly platform privacy updates are changes that hit your old tweets directly: data retention, deletion APIs, traceability, cross-platform migration. This roundup covers the November 2026 items worth watching.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['platform policy', 'data retention', 'privacy compliance', 'deletion API', 'X/Twitter'],
+    contentEn: `
+<h2>Why watch policy for old tweets</h2>
+<p>A tweet you thought was deleted may stay on the platform's servers longer than its retention policy states; a bulk delete you expected might hit new limits. Policy changes are not announced loudly, but they quietly reshape whether you can actually clean up your old accounts. A monthly check keeps you from being changed silently. For ordinary users, what matters is never the policy text itself, but the few concrete actions it lands on your own account.</p>
+
+<h2>November 2026 items worth watching</h2>
+<table>
+  <thead><tr><th>Area</th><th>What changed</th><th>Impact on old tweets</th></tr></thead>
+  <tbody>
+    <tr><td>Retention</td><td>Some platforms extended server-side retention of "deleted" content</td><td>After you delete, copies may linger for months</td></tr>
+    <tr><td>Deletion API</td><td>Rate and quota for bulk deletion re-set</td><td>Large cleanups take longer, need batching</td></tr>
+    <tr><td>Traceability</td><td>More metadata marked "non-deletable"</td><td>Location, device harder to fully clear than text</td></tr>
+    <tr><td>Cross-platform</td><td>Export formats converge, field mapping still inconsistent</td><td>Migrating old content risks losing fields</td></tr>
+  </tbody>
+</table>
+
+<h2>Longer retention: delete is not gone</h2>
+<p>This is the most important point this month. When a platform extends server-side retention of deleted content, your delete action only means "not visible on the front end" — the back-end copy stays per policy. For privacy-minded users, cleanup has to target "source searchability," not the fantasy that deletion erases everything. In other words, instead of worrying whether the past is clean, spend the effort on "what others see when they search you in the future."</p>
+
+<h2>Tighter deletion API: batching is the realistic path</h2>
+<p>After rate and quota changes, wiping thousands of old tweets in one shot is often no longer realistic. The workable approach: parse the whole archive first, rank by risk, then submit deletions in batches by keyword. Slower, but each batch is confirmable and reversible. Do not, for speed, use unknown third-party tools to force-delete — that can trigger account risk control or even a ban.</p>
+
+<h2>Traceable metadata: the hardest class to clear</h2>
+<p>When location, device model, and IP range are marked non-deletable, even a perfectly cleaned body leaves the "skeleton." This metadata lives in image EXIF and server logs, almost impossible for users to edit directly. The answer is front-loading it at post time, not fixing afterward. A practical rule: if an outgoing photo carries location by default, then by default do not send the original.</p>
+
+<h2>Warning signs of policy shift</h2>
+<p>You do not need to read the full policy text. The signals worth watching are few: the delete button greys out or adds confirmation steps, bulk actions suddenly error or throttle, a new "data retention" toggle appears in settings, or the exported archive's size or fields change noticeably. Any one of these means the platform-side cleanup rules have moved.</p>
+
+<h2>Cross-platform: the differences</h2>
+<p>The same old tweet meets a different fate on different platforms. Some retain longer by default, some are looser on the deletion API, some lose more fields on export. So "switching platforms" is not a privacy cure — you only move the old ledger from one warehouse to another; the fact that it stays dirty does not change. The universally applicable fix is owning an on-device archive yourself, on any platform.</p>
+
+<h2>What to do: keep the initiative</h2>
+<ul>
+  <li>Download your own archive regularly to hold a copy "outside the platform."</li>
+  <li>Parse before cleaning; rank by risk and keyword instead of blind bulk delete.</li>
+  <li>Strip EXIF at post time to cut traceable metadata at the source.</li>
+  <li>Treat policy shifts as reminders, not reasons to panic.</li>
+</ul>
+<p>Policy will keep changing, but "holding your own data on your own device" does not. To see what is still left in your account that can be cleared, run an on-device check at <a href="/">digital-footprint-health.shop</a>. The <a href="/blog">blog</a> also collects more on <a href="/upload">archive export and cleanup cadence</a>.</p>
+`,
+    faq: [
+      { q: '平台政策变了，我之前删的推文会回来吗？', a: '通常不会「回来」显示，但如果服务端保留窗口延长，已删内容的副本可能在后端多存数月。前端看不到，不代表后端彻底清除。', qEn: 'If policy changes, will my deleted tweets come back?', aEn: 'Usually they will not reappear in the UI, but if server-side retention is extended, deleted copies may linger for months. Not visible does not mean fully erased.' },
+      { q: '删除接口收紧后，我还能批量清旧推文吗？', a: '能，只是要更慢。解析整份归档、按风险排序、分批次按关键词提交，每批可确认可回退，比一次性硬删更稳。', qEn: 'With a tighter deletion API, can I still bulk-clean old tweets?', aEn: 'Yes, just slower. Parse the whole archive, rank by risk, submit in keyword batches; each batch is confirmable and reversible, steadier than one hard purge.' },
+      { q: '为什么定位和设备信息比正文更难删？', a: '这类元数据常驻在图片 EXIF 和后台日志，且越来越多被标记为「不可删」，用户侧几乎无法直接改，所以要从发图阶段就前置处理。', qEn: 'Why are location and device harder to delete than the text?', aEn: 'This metadata lives in image EXIF and server logs and is increasingly marked non-deletable, so users cannot edit it directly. Handle it at post time instead.' },
+      { q: '我该怎么跟上政策变化？', a: '每月看一次平台隐私更新摘要即可，重点是保持「本机掌握自己归档」的习惯，而不是被每条新规吓到。', qEn: 'How do I keep up with policy changes?', aEn: 'A monthly glance at platform privacy update summaries is enough. The point is keeping the habit of holding your own archive on-device, not reacting to every new rule.' },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

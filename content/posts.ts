@@ -30542,24 +30542,24 @@ rl.on('close', () =&gt; {
 `,
     canonical: '/blog/home-address-leak-old-tweets-2026',
     titleEn: 'How Old Tweets Leak Your Home Address (and What to Do)',
-    excerptEn: 'That "finally moved into the new place" post, your building entrance, the coffee shop downstairs — together they can pin down where you live. This guide shows how old tweets expose your address and how to find and remove those signals on your own device.',
+    excerptEn: 'That "finally moved into the new place" post, your building entrance, the coffee shop downstairs. Together, they can pin down where you live. This guide shows how old tweets expose your address and how to find and remove those signals on your own device.',
     categoryEn: 'Risk Scenarios',
     tagsEn: ['X/Twitter', 'address leak', 'digital footprint', 'privacy', 'doxxing'],
     contentEn: `
 <h2>Why old tweets can pin down your home</h2>
-<p>Address leaks on social platforms rarely come from one post that says "I live at 18 Something Road." More often, a dozen harmless-looking posts confirm each other. The building entrance you photographed, the coffee shop you mention every week, your kid's school uniform, the landmark outside your window — these are all location fragments.</p>
+<p>Address leaks on social platforms rarely come from one post that says "I live at 18 Something Road." More often, a dozen harmless-looking posts confirm each other. The building entrance you photographed, the coffee shop you mention every week, your kid's school uniform, the landmark outside your window. All of these are location fragments.</p>
 <p>The trouble is they were posted years ago. You forgot them, but search engines indexed them, screenshots archived them, and data brokers packaged them. When you change jobs, get into a dispute, or simply attract the wrong kind of attention, those old tweets get dug back up, and you have almost no control over who sees them.</p>
 
 <h2>Four common types of address signals</h2>
 <ul>
-  <li><strong>Moving and housing</strong>: move-in day, renovation, handover inspection, property notices — these carry a time window that, matched with your check-in at the time, narrows down the complex.</li>
+  <li><strong>Moving and housing</strong>: move-in day, renovation, handover inspection, property notices. These carry a time window that, matched with your check-in at the time, narrows down the complex.</li>
   <li><strong>Recurring landmarks</strong>: the cafe, gym, park, or supermarket you keep appearing at, combined with posting times, can shrink the area to a block or two.</li>
-  <li><strong>Window and interior views</strong>: the building shape outside, the sign across the balcony, the courtyard layout — experienced eyes reverse-engineer the development from one photo.</li>
-  <li><strong>Children and schools</strong>: uniforms, school buses, events, location-tagged class groups — the most overlooked type, yet it links directly to minors and a home address.</li>
+  <li><strong>Window and interior views</strong>: the building shape outside, the sign across the balcony, the courtyard layout. Experienced eyes reverse-engineer the development from one photo.</li>
+  <li><strong>Children and schools</strong>: uniforms, school buses, events, location-tagged class groups. This is the most overlooked type, yet it links directly to minors and a home address.</li>
 </ul>
 
 <h2>The real risk: from harassment to physical safety</h2>
-<p>An exposed address is not just "people knowing where you live." It feeds targeted harassment, package theft, in-person stalking, and at its worst doxxing and offline threats. For public figures, whistleblowers, and domestic-violence survivors, address fragments in old tweets can be a direct physical danger. This is not hypothetical — it has happened repeatedly.</p>
+<p>An exposed address is not just "people knowing where you live." It feeds targeted harassment, package theft, in-person stalking, and at its worst doxxing and offline threats. For public figures, whistleblowers, and domestic-violence survivors, address fragments in old tweets can be a direct physical danger. This is not hypothetical. It has happened repeatedly.</p>
 <table>
   <thead><tr><th>Signal type</th><th>Risk</th><th>Typical scenario</th></tr></thead>
   <tbody>
@@ -30580,8 +30580,8 @@ rl.on('close', () =&gt; {
 <p>The key word is "on your own device": data never leaves your computer, and you can discard intermediate files afterward to avoid a second leak. This step needs no network and no unknown online service.</p>
 
 <h2>Already leaked? Step-by-step remediation</h2>
-<p>If you suspect your address is already out, do not panic and do not wipe your account — that can destroy evidence. Do three things first: handle the most direct exposures (building number, block, complex name) among still-visible posts; review signed-in devices and authorized apps, and kick out anything unrecognized; and turn on login alerts for address-sensitive accounts like banking, email, and social, so any new device notifies you.</p>
-<p>If offline harassment already started, keep screenshots and records, and report to the platform or police when needed. The logic for address leaks is "stop the bleeding, then clean up, then prevent" — not one big sweep.</p>
+<p>If you suspect your address is already out, do not panic and do not wipe your account, since that can destroy evidence. Do three things first: handle the most direct exposures (building number, block, complex name) among still-visible posts; review signed-in devices and authorized apps, and kick out anything unrecognized; and turn on login alerts for address-sensitive accounts like banking, email, and social, so any new device notifies you.</p>
+<p>If offline harassment already started, keep screenshots and records, and report to the platform or police when needed. The logic for address leaks is "stop the bleeding, then clean up, then prevent, not one big sweep.</p>
 
 <h2>Three groups that should care most</h2>
 <ul>
@@ -30592,7 +30592,7 @@ rl.on('close', () =&gt; {
 
 <h2>Cleanup rule: think before you delete</h2>
 <p>Once you find address fragments, delete carefully. X only lets you delete the most recent ~3,200 tweets; anything older must be reached through the archive. And deleting a location-tagged old tweet does not make the screenshots or cached copies disappear. So prioritize the source that "will still be searchable," not the fantasy that deletion erases the past.</p>
-<p>If you need bulk, keyword-based, cross-year cleanup, parse the whole archive first, then decide what must go. Afterward, do a local pass on the images — EXIF location is sometimes more precise than the text.</p>
+<p>If you need bulk, keyword-based, cross-year cleanup, parse the whole archive first, then decide what must go. Afterward, do a local pass on the images, because EXIF location is sometimes more precise than the text.</p>
 
 <h2>What a tool can and cannot do</h2>
 <p>Automation has limits. It can quickly flag posts in an archive that contain address keywords or location tags, saving you from reading everything by hand. It cannot decide "should this be deleted," and it cannot make screenshotted copies disappear. So the tool handles discovery; you handle judgment.</p>
@@ -30614,7 +30614,7 @@ rl.on('close', () =&gt; {
   <li>Keep a short note of what you checked, so you are not repeating the same scan.</li>
   <li>If a week gets busy, drop to "just check new photos" rather than skipping entirely.</li>
 </ul>
-<p>The payoff shows up quietly. Three months in, the search results for your name stop surfacing that old apartment photo, the school-event tag, the angry reply from a former colleague. Nothing dramatic happens — just less of you out there, and less that a stranger can assemble without your knowledge. That is the entire goal: not a spotless record, but a smaller, calmer one you actually control.</p>
+<p>The payoff shows up quietly. Three months in, the search results for your name stop surfacing that old apartment photo, the school-event tag, the angry reply from a former colleague. Nothing dramatic happens. There is just less of you out there, and less that a stranger can assemble without your knowledge. That is the entire goal: not a spotless record, but a smaller, calmer one you actually control.</p>
 <p>Privacy is not finished once you post; it is two extra seconds of thought before you hit send. To systematically check what address signals are still hidden in your account, run an on-device check at <a href="/">digital-footprint-health.shop</a>. The <a href="/blog">blog</a> also has more hands-on notes on <a href="/upload">archive parsing and cleanup</a>.</p>
 `,
     faq: [
@@ -30695,18 +30695,18 @@ rl.on('close', () =&gt; {
 </table>
 
 <h2>Red: do these three things first</h2>
-<p>If you are in the red band, do not try to delete every tweet at once — that is unrealistic and error-prone. Sort by harm:</p>
+<p>If you are in the red band, do not try to delete every tweet at once, which is unrealistic and error-prone. Sort by harm:</p>
 <ol>
-  <li>First handle content with phone numbers, home addresses, or ID photos — the only signals that cause real-world harm directly.</li>
+  <li>First handle content with phone numbers, home addresses, or ID photos. These are the only signals that cause real-world harm directly.</li>
   <li>Then content that names your company, clients, or colleagues with negative remarks.</li>
   <li>Last, the generalized sensitive topics.</li>
 </ol>
 
 <h2>Yellow: do not let the number scare you</h2>
-<p>The yellow band is the most common and the most misunderstood. It does not mean "something will happen to you tomorrow." It signals a batch of check-ins, old photos, and emotional posts that accumulate as background noise and can be dug up during a job hunt or a dispute. The goal here is not zero — it is pushing down the few posts most likely to be searched. Focusing on the most visible items in the first page of results beats blind bulk deletion.</p>
+<p>The yellow band is the most common and the most misunderstood. It does not mean "something will happen to you tomorrow." It signals a batch of check-ins, old photos, and emotional posts that accumulate as background noise and can be dug up during a job hunt or a dispute. The goal here is not zero. It is pushing down the few posts most likely to be searched. Focusing on the most visible items in the first page of results beats blind bulk deletion.</p>
 
 <h2>Green: maintain, do not coast</h2>
-<p>Green does not mean permanently safe. Platform policies change, old content gets re-indexed, and new posting habits can introduce fresh risk. The right move in the green zone is a fixed rhythm — say, a quarterly re-check — focused on whether new photos carry EXIF or reveal location by accident. Staying clean beats one big cleanup.</p>
+<p>Green does not mean permanently safe. Platform policies change, old content gets re-indexed, and new posting habits can introduce fresh risk. The right move in the green zone is a fixed rhythm (say, a quarterly re-check) focused on whether new photos carry EXIF or reveal location by accident. Staying clean beats one big cleanup.</p>
 
 <h2>Is the score wrong? Three common misreads</h2>
 <ul>
@@ -30801,10 +30801,10 @@ rl.on('close', () =&gt; {
 </table>
 
 <h2>Longer retention: delete is not gone</h2>
-<p>This is the most important point this month. When a platform extends server-side retention of deleted content, your delete action only means "not visible on the front end" — the back-end copy stays per policy. For privacy-minded users, cleanup has to target "source searchability," not the fantasy that deletion erases everything. In other words, instead of worrying whether the past is clean, spend the effort on "what others see when they search you in the future."</p>
+<p>This is the most important point this month. When a platform extends server-side retention of deleted content, your delete action only means "not visible on the front end," and the back-end copy stays per policy. For privacy-minded users, cleanup has to target "source searchability," not the fantasy that deletion erases everything. In other words, instead of worrying whether the past is clean, spend the effort on "what others see when they search you in the future."</p>
 
 <h2>Tighter deletion API: batching is the realistic path</h2>
-<p>After rate and quota changes, wiping thousands of old tweets in one shot is often no longer realistic. The workable approach: parse the whole archive first, rank by risk, then submit deletions in batches by keyword. Slower, but each batch is confirmable and reversible. Do not, for speed, use unknown third-party tools to force-delete — that can trigger account risk control or even a ban.</p>
+<p>After rate and quota changes, wiping thousands of old tweets in one shot is often no longer realistic. The workable approach: parse the whole archive first, rank by risk, then submit deletions in batches by keyword. Slower, but each batch is confirmable and reversible. Do not, for speed, use unknown third-party tools to force-delete, which can trigger account risk control or even a ban.</p>
 
 <h2>Traceable metadata: the hardest class to clear</h2>
 <p>When location, device model, and IP range are marked non-deletable, even a perfectly cleaned body leaves the "skeleton." This metadata lives in image EXIF and server logs, almost impossible for users to edit directly. The answer is front-loading it at post time, not fixing afterward. A practical rule: if an outgoing photo carries location by default, then by default do not send the original.</p>
@@ -30813,7 +30813,7 @@ rl.on('close', () =&gt; {
 <p>You do not need to read the full policy text. The signals worth watching are few: the delete button greys out or adds confirmation steps, bulk actions suddenly error or throttle, a new "data retention" toggle appears in settings, or the exported archive's size or fields change noticeably. Any one of these means the platform-side cleanup rules have moved.</p>
 
 <h2>Cross-platform: the differences</h2>
-<p>The same old tweet meets a different fate on different platforms. Some retain longer by default, some are looser on the deletion API, some lose more fields on export. So "switching platforms" is not a privacy cure — you only move the old ledger from one warehouse to another; the fact that it stays dirty does not change. The universally applicable fix is owning an on-device archive yourself, on any platform.</p>
+<p>The same old tweet meets a different fate on different platforms. Some retain longer by default, some are looser on the deletion API, some lose more fields on export. So "switching platforms" is not a privacy cure. You only move the old ledger from one warehouse to another; the fact that it stays dirty does not change. The universally applicable fix is owning an on-device archive yourself, on any platform.</p>
 
 <h2>What to do: keep the initiative</h2>
 <ul>

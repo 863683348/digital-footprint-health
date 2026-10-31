@@ -30831,6 +30831,320 @@ rl.on('close', () =&gt; {
       { q: '我该怎么跟上政策变化？', a: '每月看一次平台隐私更新摘要即可，重点是保持「本机掌握自己归档」的习惯，而不是被每条新规吓到。', qEn: 'How do I keep up with policy changes?', aEn: 'A monthly glance at platform privacy update summaries is enough. The point is keeping the habit of holding your own archive on-device, not reacting to every new rule.' },
     ],
   },
+  {
+    slug: 'best-tweet-deletion-tool-2026',
+    title: '2026 年推文删除工具怎么选：一份能直接照着买的对比清单',
+    excerpt: '想清理 X 上的旧推文，市面上的删除工具看得人眼花。本文从本机处理、能删多老的推文、价格与暂停退款四个维度，帮你按自己的情况挑出最合适的那一款。',
+    date: '2026-11-01',
+    updatedAt: '2026-11-01',
+    author: 'Digital Footprint Health Team',
+    category: '工具对比',
+    tags: ['推文删除工具', 'X/Twitter', '隐私清理', '工具对比'],
+    content: `
+<p>你决定清理 X 上的旧推文，打开搜索框输入「推文删除工具」，跳出来十几个名字：有的按条收费，有的包月，有的号称免费，有的要你把账号密码交给网页。到底哪一款适合你？这篇文章不堆参数，只帮你按四个维度做决定。</p>
+
+<h2>第一步：先想清楚你要删什么</h2>
+<p>工具没有绝对的「最好」，只有「最合适」。先问自己三个问题：你要删的推文主要集中在最近几千条，还是十年前的老帖？你愿意把 X 账号授权给第三方应用吗？你的预算是几杯咖啡，还是零？把这三个答案写下来，后面四个维度就有了权重。</p>
+<ul>
+  <li><strong>只清最近的内容</strong>：X 官方自带的删除功能就能覆盖，不必花钱。</li>
+  <li><strong>要清 3200 条以外的老帖</strong>：必须依赖你的 X 数据归档（ZIP），这是绝大多数工具有没有用的分水岭。</li>
+  <li><strong>怕账号泄露</strong>：优先选本机处理、不碰你密码的方案。</li>
+</ul>
+
+<h2>四个维度横向对比</h2>
+<p>把候选工具放在同一张表里看，差异立刻清楚：</p>
+<table>
+  <tr><th>维度</th><th>对普通用户的意义</th><th>重点关注</th></tr>
+  <tr><td>是否本机处理</td><td>你的归档要不要离开电脑</td><td>纯本机 &gt; 上传云端</td></tr>
+  <tr><td>能删多老的推文</td><td>3200 条限制之外的老帖能不能清</td><td>必须读归档才算数</td></tr>
+  <tr><td>计费方式</td><td>按条、包月、还是一次性</td><td>按条最灵活，包月适合大批量</td></tr>
+  <tr><td>暂停与退款</td><td>中途反悔能不能停</td><td>可暂停、按比例退更稳妥</td></tr>
+</table>
+
+<h2>本机处理为什么重要</h2>
+<p>删除工具分两类：一类让你把 X 账号授权给它，它在服务器上替你操作；另一类只处理你本地那份数据归档，删除指令仍由你自己的环境发出。后者最省心的地方在于，你的归档和账号凭证都不会离开你的电脑。对在意隐私的人，这一条往往比价格更关键。</p>
+
+<h2>价格与退款怎么看才不踩坑</h2>
+<p>免费工具通常有隐性限制：每天只能删几十条，或者只覆盖最近的内容。付费工具里，按条计费适合偶尔清理的人，包月适合要一次性清掉几千条的人。无论哪种，先看清楚三点：能不能暂停、删到一半不想删了能不能退、有没有隐藏的自动续费。把这三点和商家的说明对一遍，再决定。</p>
+
+<h2>按人群给建议</h2>
+<ul>
+  <li><strong>只想删最近吐槽的人</strong>：先用 X 官方删除，零成本试水。</li>
+  <li><strong>要清十年老帖的求职者</strong>：选能读归档、本机处理的工具，按条付费更划算。</li>
+  <li><strong>一次要清几千条的人</strong>：包月方案摊下来单条最便宜，但务必确认可暂停。</li>
+  <li><strong>完全不愿交账号的人</strong>：只选本机处理那一档，哪怕慢一点。</li>
+</ul>
+
+<h2>归档读取这一步到底在做什么</h2>
+<p>很多工具有没有用，关键看它能不能读取你的 X 数据归档。X 在「设置 - 你的数据」里提供一份 ZIP 下载，里面的 tweets.js 记录了你全部历史推文。能解析这个文件的工具，才能触及 3200 条限制之外的老帖；只能调用官方接口的，到 3200 条就停了。判断一款工具值不值得买，先问它要不要这个归档。</p>
+
+<h2>常见营销话术怎么拆</h2>
+<p>「一键清空」「永久删除」「官方合作」这类说法要打问号。一键清空往往只清最近的内容；永久删除要看后端是否真从 X 删掉，还是只在本地标记；官方合作几乎都是套话。把商家的承诺逐条对照上面四个维度，话术就现形了。</p>
+
+<h2>三种典型账号的清理路径</h2>
+<ul>
+  <li><strong>普通用户</strong>：下载一次归档，用本机工具扫一遍，只删高风险几条，半小时够用。</li>
+  <li><strong>公众人物</strong>：历史长、曝光高，建议分批、按年份处理，避免一次性大规模删除引发关注。</li>
+  <li><strong>已泄露过的账号</strong>：先改密码、开两步验证，再做清理，顺序不能反。</li>
+</ul>
+
+<h2>免费工具能撑到哪一步</h2>
+<p>如果你只是想把最近几百条吐槽清掉，免费工具和官方删除都够用，不必花钱。但凡涉及十年的归档、按条计费更划算的旧帖、或你不愿交账号的场景，免费方案就会卡住。先想清楚范围，再决定要不要付费，别被首屏的「免费」两个字带节奏。</p>
+
+<h2>动手前先备份一份归档</h2>
+<p>不管选哪款工具，第一步都应该是下载并留存一份完整的 X 数据归档。这听起来多余，但很有必要：万一删除过程中出现误操作，或者你之后后悔删了某条，有备份就能找回来。归档是 ZIP 文件，存在你自己的硬盘上，不依赖任何第三方，也不会过期。把它当成这次清理的「底稿」，清理前后都留着，心里更踏实。很多人只在出事之后才想起备份，那时往往已经晚了。多花十分钟下载一次，换的是整次清理的安心。</p>
+
+<h2>别被「官方合作」和「永久删除」带偏</h2>
+<p>这两句是最常见的话术。和 X 真正有合作的删除工具极少，绝大多数标榜「官方」的只是营销词。至于「永久删除」，关键看后端是真从 X 服务器删掉，还是只在本地把记录隐藏。前者才叫永久，后者只是你这边看不见。下单前把这两点想清楚，能帮你避开一大半夸大宣传。工具只是手段，你真正要清的是不想留的内容，没必要为了某个听起来很厉害的标签去买单。把判断标准握在自己手里，比记住任何一句广告词都管用。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供 100% 本机、数据不出电脑的隐私体检，先把你的 X 归档扫出 0-100 健康评分和风险清单，再按需清理风险推文。可暂停、可恢复、可退款。也可以先读我们的 <a href="/blog/tweet-deletion-tools-comparison-2026">推文删除工具综合对比</a>，或看看 <a href="/blog/free-vs-paid-tweet-deletion-tools-2026">免费与付费工具的真实差别</a>，再决定怎么买。</p>
+`,
+    canonical: '/blog/best-tweet-deletion-tool-2026',
+    faq: [
+      { q: '免费推文删除工具真的能用吗？', a: '能用，但通常有上限，比如每天只能删几十条，或者只覆盖最近的内容。要清大量老帖，免费工具会非常慢甚至做不到。', qEn: 'Do free tweet deletion tools actually work?', aEn: 'They work, but usually with caps: only a few dozen deletes per day, or only recent posts. For large old archives they are slow or simply unable to reach far back.' },
+      { q: '把 X 账号授权给删除工具有风险吗？', a: '有。授权后第三方能在一段时间内以你的身份操作。如果你在意账号安全，优先选只处理本地归档、不收你密码的本机方案。', qEn: 'Is granting a deletion tool access to my X account risky?', aEn: 'Yes. Once authorized, a third party can act as you for a window of time. If account safety matters, prefer an on-device tool that only processes your local archive and never asks for your password.' },
+      { q: '按条收费和包月哪个更划算？', a: '偶尔清理选按条，一次清几千条选包月更便宜。关键看你要删的总量，以及包月是否允许中途暂停。', qEn: 'Per tweet or monthly, which is cheaper?', aEn: 'Occasional cleaning favors per-tweet; a one-time sweep of thousands favors monthly. The key is your total volume and whether monthly plans allow pausing.' },
+      { q: '能删掉 3200 条限制之外的老推文吗？', a: '官方界面删不了，必须下载你的 X 数据归档（ZIP），从归档里定位老推文再删除。能读归档的工具才能做到。', qEn: 'Can I delete tweets older than the 3,200 limit?', aEn: 'Not from the official interface. You must download your X data archive (ZIP), locate old posts inside it, and delete from there. Only archive-reading tools can do this.' },
+      { q: '选错工具能退款吗？', a: '取决于商家条款。下单前看清楚是否支持暂停、中途退款和自动续费，把这三点和说明逐条对一遍再付钱。', qEn: 'Can I get a refund if I pick the wrong tool?', aEn: 'It depends on the vendor. Before paying, check whether pause, midway refund, and auto-renewal are supported, and match each against the stated terms.' },
+    ],
+    titleEn: 'How to Choose the Best Tweet Deletion Tool in 2026',
+    excerptEn: 'Shopping for a tweet deletion tool in 2026 is noisy. This guide compares the options on on-device processing, how far back they reach, price, and pause-and-refund terms so you can pick the one that fits your situation.',
+    categoryEn: 'Tool Comparison',
+    tagsEn: ['tweet deletion tool', 'X/Twitter', 'privacy cleanup', 'tool comparison'],
+    contentEn: `
+<p>You have decided to clean up your old tweets on X. You type "tweet deletion tool" into a search box and get a dozen names: some charge per tweet, some monthly, some claim to be free, and some ask for your account password. Which one is right for you? This article skips the spec sheet and helps you decide on four dimensions.</p>
+
+<h2>Step 1: know what you are actually deleting</h2>
+<p>There is no universally best tool, only the best fit. Ask yourself three questions first: are the tweets you want gone from the last few thousand, or from ten years ago? Are you comfortable granting a third-party app access to your X account? Is your budget a couple of coffees, or zero? Write those answers down, and the four dimensions below gain weight.</p>
+<ul>
+  <li><strong>Only recent content:</strong> X's built-in delete already covers it, no payment needed.</li>
+  <li><strong>Old posts beyond 3,200:</strong> you must use your X data archive (ZIP). This is the line that separates useful tools from useless ones.</li>
+  <li><strong>Afraid of account leaks:</strong> prefer on-device processing that never touches your password.</li>
+</ul>
+
+<h2>Four dimensions side by side</h2>
+<p>Put candidates on one table and the differences become obvious:</p>
+<table>
+  <tr><th>Dimension</th><th>Why it matters</th><th>What to look for</th></tr>
+  <tr><td>On-device or not</td><td>Does your archive leave the computer</td><td>Pure local beats cloud upload</td></tr>
+  <tr><td>How far back</td><td>Can it reach pre-3,200 posts</td><td>Must read the archive</td></tr>
+  <tr><td>Pricing model</td><td>Per tweet, monthly, or one-off</td><td>Per tweet is flexible, monthly suits bulk</td></tr>
+  <tr><td>Pause and refund</td><td>Can you stop midway</td><td>Pausable and prorated is safer</td></tr>
+</table>
+
+<h2>Why on-device processing matters</h2>
+<p>Deletion tools split into two camps. One asks you to authorize your X account and operates from its own servers. The other only processes your local archive, and the delete commands still leave from your own environment. The second camp's big advantage is that your archive and credentials never leave your computer. For privacy-minded users, this point often outweighs price.</p>
+
+<h2>Reading price and refund terms without the traps</h2>
+<p>Free tools usually hide limits: only a few dozen deletes per day, or only recent posts. Among paid tools, per-tweet fits occasional cleaning, monthly fits a one-time sweep of thousands. Either way, check three things first: can you pause, can you get a refund if you stop halfway, and is there sneaky auto-renewal. Match those three against the vendor's wording before you pay.</p>
+
+<h2>Recommendations by situation</h2>
+<ul>
+  <li><strong>Only recent rants:</strong> start with X's native delete, zero cost.</li>
+  <li><strong>Job seeker with a decade of posts:</strong> pick an archive-reading, on-device tool; per-tweet is cheaper.</li>
+  <li><strong>Sweeping thousands at once:</strong> monthly works out cheapest per tweet, but confirm pausability.</li>
+  <li><strong>Will not hand over the account:</strong> choose the on-device tier even if slower.</li>
+</ul>
+
+<h2>What archive reading actually does</h2>
+<p>Whether a tool is useful comes down to one thing: can it read your X data archive. X offers a ZIP download under Settings, Your data, and the tweets.js inside records your entire posting history. A tool that parses that file can reach posts beyond the 3,200 limit; one that only calls the official API stops at 3,200. To judge if a tool is worth buying, first ask whether it needs that archive.</p>
+
+<h2>Taking apart the marketing lines</h2>
+<p>Phrases like "one-click wipe", "permanent deletion", and "official partner" deserve doubt. A one-click wipe usually only touches recent posts. "Permanent" depends on whether the backend truly deletes from X or just marks locally. "Official partner" is almost always fluff. Line up each vendor promise against the four dimensions above and the fluff falls apart.</p>
+
+<h2>Cleanup paths for three account types</h2>
+<ul>
+  <li><strong>Ordinary user:</strong> download the archive once, scan with an on-device tool, delete only the high-risk few; half an hour is enough.</li>
+  <li><strong>Public figure:</strong> long history and high exposure call for batch, year-by-year handling to avoid drawing attention with one massive delete.</li>
+  <li><strong>Previously leaked account:</strong> change the password and turn on two-factor first, then clean. The order matters.</li>
+</ul>
+
+<h2>How far free tools get you</h2>
+<p>If you only want to clear a few hundred recent rants, free tools and the native delete are enough, no payment needed. The moment your case involves a decade of archive, per-tweet pricing, or refusing to hand over the account, free options stall. Decide the scope first, then whether to pay, instead of being pulled by the word "free" on the landing page.</p>
+
+<h2>Back up the archive before you touch anything</h2>
+<p>No matter which tool you pick, step one should be downloading and keeping a complete copy of your X data archive. It sounds redundant, but it matters: if something goes wrong during deletion, or you later regret removing a specific post, the backup lets you recover it. The archive is a ZIP file sitting on your own drive, depending on no third party and never expiring. Treat it as the master copy for this cleanup, keep it before and after, and you will feel calmer. Many people only think of backup after something breaks, and by then it is often too late. Spending ten extra minutes to download once buys you peace of mind across the whole cleanup.</p>
+
+<h2>Do not get pulled by "official partner" and "permanent"</h2>
+<p>These two phrases are the most common lines. Very few deletion tools genuinely partner with X; most that claim "official" are just marketing words. As for "permanent deletion", the question is whether the backend truly removes posts from X's servers or only hides them locally. The first is real permanence; the second is just invisibility on your side. Thinking through both points before paying helps you dodge the bulk of inflated claims. The tool is only a means; what you really want to clear is the content you do not want to keep, not some impressive-sounding label. Keeping the judgment standard in your own hands works better than remembering any single ad slogan.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> offers a 100% on-device privacy check where your data never leaves your computer. It scans your X archive into a 0-100 health score and a risk list, then cleans risky tweets on demand, with pause, resume, and refund. You can also read our <a href="/blog/tweet-deletion-tools-comparison-2026">full tool comparison</a> or the <a href="/blog/free-vs-paid-tweet-deletion-tools-2026">real difference between free and paid</a> before buying. Pick by fit rather than by slogan, and the cleanup stops feeling like a gamble you might regret later. A tool that respects your archive is worth far more to you than one with the loudest advertisement.</p>
+`,
+  },
+  {
+    slug: 'x-account-security-audit-checklist-2026',
+    title: 'X 账号安全自检清单：10 分钟排查最常见的五个漏洞',
+    excerpt: '账号被盗、冒名发帖、私密信息外泄，往往源于几个被忽略的设置。这份十分钟自检清单，帮你逐项排查 X 账号最常见的五个安全漏洞。',
+    date: '2026-11-01',
+    updatedAt: '2026-11-01',
+    author: 'Digital Footprint Health Team',
+    category: '账号安全',
+    tags: ['X 账号安全', '两步验证', '登录设备', '隐私保护'],
+    content: `
+<p>多数 X 账号出事，不是因为黑客多厉害，而是几个基础设置常年没人看。花十分钟，按下面五项逐项过一遍，你能堵住绝大多数常见漏洞。</p>
+
+<h2>1. 两步验证是否真的开着</h2>
+<p>先确认两步验证（2FA）处于启用状态，而且绑定的不是短信这一种方式。短信验证码在 SIM 卡交换攻击面前很脆弱。打开设置里的两步验证，优先绑定验证器应用或硬件密钥，并保存好备用恢复码，离线存放。</p>
+
+<h2>2. 登录设备列表有没有陌生人</h2>
+<p>进入「登录的设备与会话」页面，逐条核对：有没有不认识的手机、浏览器或地区？发现可疑设备，立刻点退出，并顺手改一次密码。不少人被盗号，第一步就是从这里看到陌生设备开始的。</p>
+
+<h2>3. 已授权的第三方应用</h2>
+<p>X 允许很多第三方应用读取你的账号。打开「已连接的应用」列表，把不再使用、不熟悉、或索取权限过高的应用全部撤销授权。一个被遗忘的授权，可能就是日后自动发垃圾帖的入口。</p>
+
+<h2>4. 邮箱与手机号是否被改</h2>
+<p>账号恢复依赖邮箱和手机号。检查这两个联系方式是否仍是你本人掌控，且邮箱本身开启了独立的两步验证。如果恢复入口被人改掉，你连找回账号都会变得困难。</p>
+
+<h2>5. 旧推文里的隐私痕迹</h2>
+<p>安全不只是登录环节，也包括你发过什么。十年里你可能晒过登机牌、工牌、家庭住址。这些旧推文本身就是社工攻击的素材。定期做一遍隐私体检，把高风险推文清理掉，和上面的登录检查同样重要。</p>
+
+<h2>账号被盗后的 24 小时清单</h2>
+<p>如果已经出现可疑发帖或登录提醒，按这个顺序处理：退出所有设备、改密码、开两步验证、撤销陌生应用授权、通知关注者。每一步都围绕一个目标：把攻击者踢出去，并堵住入口。拖得越久，波及越大。处理完这五项，再回头做一遍前面的五项基础自检，确认没有遗漏。</p>
+
+<h2>把邮箱也纳入安全圈</h2>
+<p>很多人只盯 X 本身，忘了恢复邮箱才是真正的总闸。给邮箱单独设一个强密码和两步验证，别和 X 用同一套。邮箱一旦被攻破，X 的找回流程反而成了攻击者的捷径。账号安全不是单点，而是一条链，最弱的一环决定整体强度。</p>
+
+<h2>多久复查一次比较合适</h2>
+<p>对大多数人，每季度一次足够；听到大型平台泄露新闻时顺手查一遍也合理。改动过密码、丢失过手机之后，应当立刻复查，别等季度到了才想起来。把自检固定成一个小习惯，比出事再补救轻松得多。另外，换手机或重装应用后，记得重新核对设备列表，别让旧设备的登录状态一直挂着。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供 100% 本机、数据不出电脑的隐私体检，帮你把旧推文里的手机号、地址、定位扫出来并清理。也可以先读 <a href="/blog/enable-2fa-x-account">如何开启 X 两步验证</a> 和 <a href="/blog/login-device-audit-x-account">登录设备排查指南</a>，把账号安全逐项补齐。</p>
+`,
+    canonical: '/blog/x-account-security-audit-checklist-2026',
+    faq: [
+      { q: '多久做一次账号安全自检比较合适？', a: '建议每季度一次，或者每次你听到有大型平台泄露新闻时顺手查一遍。改动过密码或丢失手机后，应当立刻复查。', qEn: 'How often should I run a security audit?', aEn: 'Once a quarter is a good rhythm, or whenever you hear of a major breach. Do it immediately after changing passwords or losing a phone.' },
+      { q: '短信验证码为什么不够安全？', a: '短信依赖运营商网络，攻击者可以通过 SIM 卡交换把验证码截到自己手机上。验证器应用或硬件密钥不受这一攻击影响。', qEn: 'Why is SMS verification not enough?', aEn: 'SMS rides on the carrier network, where an attacker can intercept codes through a SIM swap. Authenticator apps and hardware keys are not exposed to that attack.' },
+      { q: '发现陌生登录设备该怎么办？', a: '先点退出该设备，立刻修改密码，再复查已授权应用列表。如果账号已经出现异常发帖，按账号恢复流程处理并开启两步验证。', qEn: 'What if I see an unknown device?', aEn: 'Sign it out, change your password right away, then review the authorized apps list. If the account is already posting odd content, follow the recovery flow and enable two-factor.' },
+      { q: '撤销第三方应用授权会影响正常使用吗？', a: '只会影响那个应用本身，比如你用过某款发图工具，撤销后它不能再读你的账号。日常刷 X 不受影响。重新需要时再授权即可。', qEn: 'Does revoking app access break normal use?', aEn: 'It only affects that specific app, for example a photo tool you once used. Browsing X normally is unaffected. Re-authorize later if you need it.' },
+    ],
+    titleEn: 'X Account Security Audit Checklist: 10 Minutes, Five Common Gaps',
+    excerptEn: 'Hijacked accounts, impersonation, and leaked private data usually trace back to a handful of ignored settings. This 10-minute checklist walks through the five most common X account security gaps.',
+    categoryEn: 'Account Security',
+    tagsEn: ['X account security', 'two-factor', 'login devices', 'privacy'],
+    contentEn: `
+<p>Most X account incidents are not caused by skilled hackers but by a few basic settings nobody reviewed. Spend ten minutes going through the five items below, and you close off the majority of common gaps.</p>
+
+<h2>1. Is two-factor actually on</h2>
+<p>Confirm two-factor authentication is enabled, and that it is not relying on SMS alone. SMS codes are weak against SIM-swap attacks. Open the two-factor settings, prefer an authenticator app or hardware key, and store backup codes offline.</p>
+
+<h2>2. Any strangers in the device list</h2>
+<p>Open the devices and sessions page and check each entry: unknown phone, browser, or region? If you see a suspicious device, sign it out and change your password. Many hijackings start exactly here.</p>
+
+<h2>3. Authorized third-party apps</h2>
+<p>X lets many third-party apps read your account. Open the connected apps list and revoke anything you no longer use, do not recognize, or that asks for too much permission. One forgotten authorization can become the entry point for automated spam later.</p>
+
+<h2>4. Email and phone not changed</h2>
+<p>Account recovery depends on your email and phone. Verify both are still under your control, and that the email itself has its own two-factor on. If the recovery path is taken over, even getting the account back gets hard.</p>
+
+<h2>5. Privacy traces in old tweets</h2>
+<p>Security is not only about login. What you posted matters too. Over ten years you may have shared boarding passes, work badges, or home addresses. Those old posts are raw material for social engineering. A periodic privacy check to clear high-risk tweets is as important as the login checks above.</p>
+
+<h2>The 24-hour checklist after a hijack</h2>
+<p>If you already see suspicious posts or login alerts, act in this order: sign out all devices, change your password, turn on two-factor, revoke strange app authorizations, and warn followers. Every step aims at one goal: kick the attacker out and seal the entry. The longer you wait, the wider the blast. Once those five are done, walk the five basic checks again to confirm nothing was missed.</p>
+
+<h2>Bring the email into the security circle</h2>
+<p>Many people watch X but forget the recovery email is the real master switch. Give the email its own strong password and two-factor, separate from X. Once the email is taken, X's recovery flow becomes the attacker's shortcut. Account security is a chain, not a single point, and the weakest link sets the real strength.</p>
+
+<h2>How often to recheck</h2>
+<p>For most people, quarterly is enough, or right after any breach headline. After a password change or a lost phone, check immediately instead of waiting for the quarter. Turning the audit into a small habit is far easier than fixing a crisis. Also, after changing phones or reinstalling apps, recheck the device list so old sessions do not linger.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> offers a 100% on-device privacy check where your data never leaves your computer, surfacing phone numbers, addresses, and locations hidden in old tweets so you can clean them. You can also read <a href="/blog/enable-2fa-x-account">how to turn on X two-factor</a> and the <a href="/blog/login-device-audit-x-account">device audit guide</a> to close the login gaps first. After the five-step audit, drop a calendar reminder so the habit actually repeats; a one-time check is useful, but a quarterly rhythm is what keeps the account safe across the years. Set the reminder now, while the urgency is still fresh, rather than waiting for the next scare.</p>
+`,
+  },
+  {
+    slug: 'old-tweets-and-mental-health-2026',
+    title: '旧推文与心理健康：为什么清理朋友圈能让人松一口气',
+    excerpt: '很多人以为删旧推文只是为了求职，其实它和情绪也有关系。翻到多年前的尴尬发言，那种羞耻和焦虑是真实的。本文聊聊清理旧推文为什么能缓解心理负担。',
+    date: '2026-11-01',
+    updatedAt: '2026-11-01',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['旧推文', '数字极简', '焦虑缓解', '心理健康'],
+    content: `
+<p>我们常把删旧推文说成一件功利的事：为了求职、为了形象。但做过的人大多有另一种感受：清理完，心里松了一口气。这种轻松不是错觉，它和心理健康直接相关。</p>
+
+<h2>旧推文为什么让人焦虑</h2>
+<p>人在不同阶段会说出不同阶段的话。十年前的你，可能发过偏激的观点、深夜的情绪、对别人的刻薄评价。当你某天偶然翻到，第一反应往往是「我当时怎么会这样说」。这种对自己过去的否定，会悄悄变成长期的心理负担，尤其在你想往前走的时候。</p>
+
+<h2>清理不是抹除，是卸下</h2>
+<p>清理旧推文不等于否认过去。它更像是整理房间：你不需要扔掉所有回忆，只是把那些让你半夜睡不着的旧物搬走。留下你想留的，移走让你难受的，空间就清爽了。把这个动作当成一种自我照顾，不必上升到自我审查的高度。</p>
+
+<h2>三步缓解「数字羞耻」</h2>
+<ul>
+  <li><strong>先体检，再动手</strong>：用隐私体检把高风险推文列出来，你不必一条条手动翻十年记录。</li>
+  <li><strong>分批处理</strong>：一次清几十条就好，别逼自己一天删完，避免陷入反复纠结。</li>
+  <li><strong>设一个停止线</strong>：清到你觉得「可以了」就停，不必追求清零。适度保留反而更真实。</li>
+</ul>
+
+<h2>和刷手机成瘾分开看</h2>
+<p>清理旧推文和戒掉刷手机是两件事。前者是处理过去，后者是管理现在。把两者混在一起，容易让人既焦虑又拖延。先处理「已经存在的旧内容」，再谈「以后少刷」，节奏会舒服很多。</p>
+
+<h2>当清理本身变成另一种焦虑</h2>
+<p>有人越删越慌：删完担心删多了，没删又怕漏。这种循环说明清理已经从「照顾自己」滑向「强迫」。给自己定一条明确的停止线，比如清完高风险那批就停，剩下的随它去。允许不完美，反而走得更远。真正要处理的不是每一条旧推文，而是那些让你今晚睡不着的几条。</p>
+
+<h2>不同性格的人怎么对待旧推文</h2>
+<ul>
+  <li><strong>完美主义者</strong>：最容易卡在反复检查，建议只做体检清单，不逐条翻十年记录。</li>
+  <li><strong>拖延型</strong>：把清理拆成每周十分钟，别等「有空」的大块时间，那往往永远不会来。</li>
+  <li><strong>敏感型</strong>：先删最扎心的几条，哪怕只删三条，也能立刻松一口气。</li>
+</ul>
+
+<h2>清理之后怎么看待过去</h2>
+<p>留下来的旧推文也是你的一部分。不必因为几年前的自己不够成熟而羞耻，那恰恰说明你在成长。处理旧内容的意义，是让你更自在地往前走，来路不必强行抹掉。把这件事当成一次整理，别搞成一次审判，心态会轻松很多。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供 100% 本机、数据不出电脑的隐私体检，把十年旧推文里的风险内容一次性扫出，让你不必手动翻找。也可以读 <a href="/blog/old-tweets-anxiety-cleanup">旧推文焦虑怎么破</a> 和 <a href="/blog/social-media-detox-anxiety-relief-2026">社交媒体断舍离指南</a>，把这件事做得更轻松。</p>
+`,
+    canonical: '/blog/old-tweets-and-mental-health-2026',
+    faq: [
+      { q: '删旧推文算不算逃避过去？', a: '不算。清理是为了减少长期心理负担，不是否认发生过什么。你可以留下想留的，只移走真正让你难受的内容。', qEn: 'Is deleting old tweets avoiding the past?', aEn: 'No. The point is to lower a long-term mental load, not to deny what happened. Keep what you want and only move out what truly hurts.' },
+      { q: '一天之内全删完更好吗？', a: '不一定。一次性清空容易让人陷入反复纠结和自我审查。分批、设停止线，反而更可持续、心理压力更小。', qEn: 'Is it better to delete everything in one day?', aEn: 'Not necessarily. A one-day purge can trap you in second-guessing and self-censorship. Batching with a stop line is more sustainable and less stressful.' },
+      { q: '清理旧推文和戒手机是一回事吗？', a: '不是。清理是处理已经存在的内容，戒手机是管理以后的使用习惯。先处理过去，再谈减少使用，节奏更顺。', qEn: 'Is clearing tweets the same as quitting the phone?', aEn: 'They are different. Clearing handles what already exists; quitting the phone manages future habits. Deal with the past first, then cut usage.' },
+      { q: '有没有不手动翻十年记录的办法？', a: '有。隐私体检类工具会直接把高风险推文列成清单，你按清单决定删哪条，省去逐条翻找的消耗。', qEn: 'Is there a way without scrolling a decade by hand?', aEn: 'Yes. A privacy check tool lists high-risk posts directly, and you decide from the list, which spares the exhausting manual scroll.' },
+    ],
+    titleEn: 'Old Tweets and Mental Health: Why Clearing Your Feed Lightens the Load',
+    excerptEn: 'Many people think deleting old tweets is only for job hunts. The emotional side is real too. Stumbling on an embarrassing post from years ago brings genuine shame and anxiety. Here is why clearing old tweets can ease that weight.',
+    categoryEn: 'Mindset and Habits',
+    tagsEn: ['old tweets', 'digital minimalism', 'anxiety relief', 'mental health'],
+    contentEn: `
+<p>We usually frame deleting old tweets as a practical task: for jobs, for image. Yet people who do it often describe something else: a sense of relief afterward. That lightness is not imaginary, and it connects directly to mental health.</p>
+
+<h2>Why old tweets create anxiety</h2>
+<p>People say different things at different stages of life. The you from ten years ago may have posted harsh opinions, late-night emotions, or unkind remarks about others. When you stumble on them, the first reaction is often "why did I say that." That rejection of your past self quietly becomes a long-term weight, especially when you are trying to move forward.</p>
+
+<h2>Clearing is not erasing</h2>
+<p>Clearing old tweets is not denying the past. It is closer to tidying a room: you do not throw away every memory, you just move out the old items that keep you awake at night. Keep what you want, move out what hurts, and the space feels clean. Treat it as self-care, not self-censorship.</p>
+
+<h2>Three steps to ease digital shame</h2>
+<ul>
+  <li><strong>Check before you act:</strong> a privacy check lists the high-risk posts so you do not scroll a decade by hand.</li>
+  <li><strong>Batch the work:</strong> clear a few dozen at a time; do not force a one-day purge that traps you in second-guessing.</li>
+  <li><strong>Set a stop line:</strong> stop when it feels "enough." You do not need a blank slate. Keeping some is more honest.</li>
+</ul>
+
+<h2>Keep it separate from scroll addiction</h2>
+<p>Clearing old tweets and quitting mindless scrolling are two different things. One handles the past, the other manages the present. Mixing them makes people both anxious and stuck. Handle "what already exists" first, then talk about "scrolling less," and the pace feels better.</p>
+
+<h2>When cleaning becomes its own anxiety</h2>
+<p>Some people get more anxious as they delete: worried they deleted too much, or missed something. That loop means cleaning slid from self-care into compulsion. Set a clear stop line, for example clear the high-risk batch and stop, leaving the rest alone. Allowing imperfection is what keeps you going. What really needs handling is not every old tweet, but the few that keep you up tonight.</p>
+
+<h2>Different personalities, different approaches</h2>
+<ul>
+  <li><strong>Perfectionists</strong> tend to stall in repeated checks; use only the checklist, not manual scrolling.</li>
+  <li><strong>Procrastinators</strong> should split cleaning into ten minutes a week instead of waiting for a free block.</li>
+  <li><strong>Sensitive types</strong> can delete just the few most painful posts, even three, and feel relief at once.</li>
+</ul>
+
+<h2>How to view the past afterward</h2>
+<p>The posts you keep are also part of you. There is no shame in a younger self that was less polished; it shows you grew. The point of handling old content is to move forward more comfortably, not to erase where you came from. Treat it as a tidy-up, not a trial, and the mindset gets lighter.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> offers a 100% on-device privacy check where your data never leaves your computer, surfacing risky content from ten years of tweets in one pass so you do not have to dig manually. You can also read <a href="/blog/old-tweets-anxiety-cleanup">how to break old-tweet anxiety</a> and the <a href="/blog/social-media-detox-anxiety-relief-2026">social media detox guide</a> to make the whole thing easier. A small, honest cleanup beats a perfect one every time.</p>
+`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

@@ -31145,6 +31145,353 @@ rl.on('close', () =&gt; {
 <p><a href="/">digital-footprint-health.shop</a> offers a 100% on-device privacy check where your data never leaves your computer, surfacing risky content from ten years of tweets in one pass so you do not have to dig manually. You can also read <a href="/blog/old-tweets-anxiety-cleanup">how to break old-tweet anxiety</a> and the <a href="/blog/social-media-detox-anxiety-relief-2026">social media detox guide</a> to make the whole thing easier. A small, honest cleanup beats a perfect one every time.</p>
 `,
   },
+  {
+    slug: 'gdpr-vs-ccpa-tweet-deletion-2026',
+    title: 'GDPR 与 CCPA 删帖权对比：旧推文在不同法域下怎么删',
+    excerpt: 'GDPR 和 CCPA 都给了你删除旧推文的权利，但响应时限、覆盖范围和实际操作差别很大。本文用一张表讲清两部法规的差异，以及中国用户该参考哪一条。',
+    date: '2026-11-02',
+    updatedAt: '2026-11-02',
+    author: 'Digital Footprint Health Team',
+    category: '合规与法律',
+    tags: ['GDPR', 'CCPA', '删帖权', '隐私法规', '数据删除'],
+    canonical: '/blog/gdpr-vs-ccpa-tweet-deletion-2026',
+    faq: [
+      { q: "GDPR 删帖可以要求平台删哪些数据？", a: "凡是与你相关的个人数据都可以要求删除，包括历史推文、私信元数据和定位记录，但平台在少数法定例外下可以保留。", qEn: "What data can I ask to be deleted under GDPR?", aEn: "Any personal data tied to you can be requested for deletion, including historical tweets, direct-message metadata and location records, though the platform may keep some under narrow statutory exceptions." },
+      { q: "CCPA 的 45 天时限从哪天算？", a: "从平台确认收到你的删除请求那天起算，若需延长会再通知你一次，最长可再加 45 天。", qEn: "When does the CCPA 45-day clock start?", aEn: "It starts when the platform confirms it received your deletion request, and if an extension is needed you get one more notice, adding up to another 45 days." },
+      { q: "中国用户要按哪部法规走？", a: "优先看国内个人信息保护法（PIPL）的删除权，若你曾在欧盟或加州居留，可同时援引 GDPR 或 CCPA。", qEn: "Which law should China-based users follow?", aEn: "Default to the deletion right under China PIPL, and if you have lived in the EU or California you can also invoke GDPR or CCPA." },
+      { q: "只删自己可见的推文够吗？", a: "不够。第三方数据中介可能已抓取并存储你的旧推文，正规的删除流程应同时向平台和中介提出请求。", qEn: "Is deleting only what I can see enough?", aEn: "No. Third-party data brokers may have already scraped and stored your old tweets, so a proper deletion flow should also reach those brokers." },
+      { q: "提交删除请求后怎么证明平台处理过？", a: "保留平台回执、响应时间截图和最终确认邮件，作为后续争议时的证据。", qEn: "How do I prove a platform processed my request?", aEn: "Keep the platform receipt, a screenshot of the response time and the final confirmation email as evidence if a dispute comes up later." }
+    ],
+    titleEn: 'GDPR vs CCPA: How Old Tweets Get Deleted Under Different Privacy Laws',
+    excerptEn: 'GDPR and CCPA both give you the right to delete old tweets, but their deadlines, scope and real steps differ a lot. This guide compares the two laws in one table and explains which one matters for you.',
+    categoryEn: 'Compliance & Law',
+    tagsEn: ['GDPR', 'CCPA', 'right to deletion', 'privacy law', 'data erasure'],
+    content: `<p>很多人以为删掉一条推文就万事大吉，其实背后牵涉两部最重要的隐私法规：欧盟的 GDPR 和加州的 CCPA。如果你的旧推文里夹着手机号、住址或政治观点，弄清这两部法规的删帖权，能帮你在求职背调、签证审查甚至数据泄露时多一层保护。本文先把两部法规的核心差异讲清楚，再给一套真正能落地的删帖步骤。</p>
+
+<h2>两部法规分别管什么</h2>
+<p>GDPR（通用数据保护条例）覆盖所有处理欧盟居民数据的服务商，X（Twitter）也在其列。它把被遗忘权写进了法条，你可以要求平台删除与你相关的个人数据。CCPA（加州消费者隐私法）面向加州居民，重点是删除权和知情选择权，覆盖面更偏消费数据。</p>
+
+<h2>删帖权时间线对比</h2>
+<table>
+<thead><tr><th>维度</th><th>GDPR</th><th>CCPA</th></tr></thead>
+<tbody>
+<tr><td>响应时限</td><td>通常 1 个月，复杂可延至 2 个月</td><td>45 个自然日，可延长一次</td></tr>
+<tr><td>适用范围</td><td>欧盟居民的数据</td><td>加州居民的数据</td></tr>
+<tr><td>是否覆盖旧推文</td><td>是，历史帖子同样适用</td><td>是，但限于平台主动收集的数据</td></tr>
+<tr><td>能否拒绝</td><td>少数法定例外可拒绝</td><td>可因完成交易等理由保留</td></tr>
+</tbody>
+</table>
+<p>可以看到，GDPR 的时限更宽松但保护更强，CCPA 则给了明确的可延长窗口。无论哪一部，旧推文都不在豁免之外。</p>
+
+<h2>中国用户实际该怎么参考</h2>
+<p>如果你是中国用户，国内对应的是个人信息保护法（PIPL），同样支持删除权。三套法规叠加时，建议优先走 X 平台自带的删除与归档流程，再用本机体检工具扫一遍残留。可以先读 <a href="/blog/china-pipl-right-to-erasure-2026">PIPL 删除权实操</a> 了解国内法条，再对照 <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 常见问题</a>。</p>
+
+<h2>真正能落地的删帖步骤</h2>
+<ul>
+<li>第一步：下载你的 X 数据归档，确认要删的内容范围（见 <a href="/blog/how-to-download-x-archive">归档下载教程</a>）。</li>
+<li>第二步：用平台原生删除或批量工具清理风险推文（见 <a href="/blog/how-to-delete-old-tweets-2026">删旧推文指南</a>）。</li>
+<li>第三步：向平台提交正式删除请求，保留回执与响应时间截图。</li>
+<li>第四步：用 <a href="/blog/digital-footprint-health-score">数字足迹评分</a> 复检是否还有遗漏。</li>
+</ul>
+
+<h2>常见误区</h2>
+<p>误区一是以为隐藏等于删除，实际上平台后台数据可能仍在。误区二是只删自己可见的内容，却忘了第三方数据中介可能已抓取。误区三是拖到背调前才动手，响应时限可能赶不上。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供 100% 本机的隐私体检，你的数据不会离开电脑。它能一次性扫描十年推文中的手机号、地址和敏感话题，并给出可操作的清理清单。配合 <a href="/blog/gdpr-erasure-request-twitter">GDPR 删除请求模板</a>，你可以把法规权利变成实际动作。</p>`,
+    contentEn: `<p>Many people think deleting a single tweet is the end of the story. Behind it sit two of the most important privacy laws: the EU GDPR and California CCPA. If your old tweets carry a phone number, home address or political opinion, knowing your deletion rights under these laws adds a layer of protection during job background checks, visa reviews and data breaches. This guide breaks down the core difference first, then gives steps you can actually follow.</p>
+
+<h2>What each law covers</h2>
+<p>GDPR (General Data Protection Regulation) applies to any service that processes the data of EU residents, and X (Twitter) is included. It writes the right to be forgotten into law, so you can ask a platform to erase personal data tied to you. CCPA (California Consumer Privacy Act) targets California residents and centers on a deletion right plus a right to know, with a scope that leans toward consumer data.</p>
+
+<h2>Deletion rights at a glance</h2>
+<table>
+<thead><tr><th>Area</th><th>GDPR</th><th>CCPA</th></tr></thead>
+<tbody>
+<tr><td>Response window</td><td>Usually 1 month, extendable to 2</td><td>45 calendar days, extendable once</td></tr>
+<tr><td>Who it covers</td><td>Data of EU residents</td><td>Data of California residents</td></tr>
+<tr><td>Old tweets included</td><td>Yes, historical posts apply</td><td>Yes, but only data the platform collected</td></tr>
+<tr><td>Can it refuse</td><td>Few statutory exceptions</td><td>May keep data to complete a transaction</td></tr>
+</tbody>
+</table>
+<p>In short, GDPR gives a softer deadline but stronger protection, while CCPA sets a clear extendable window. Under either law, old tweets are not exempt.</p>
+
+<h2>What this means for China-based users</h2>
+<p>If you are in China, the domestic rule is PIPL (Personal Information Protection Law), which also supports a deletion right. When three frameworks overlap, start with X native deletion and archive flows, then sweep leftovers with an on-device check. Read <a href="/blog/china-pipl-right-to-erasure-2026">PIPL deletion in practice</a> for the local statute, then compare it with <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA and GDPR FAQ</a>.</p>
+
+<h2>Steps you can actually take</h2>
+<ul>
+<li>Step 1: Download your X data archive and map what needs to go (see <a href="/blog/how-to-download-x-archive">the archive download guide</a>).</li>
+<li>Step 2: Clear risky tweets with native deletion or a bulk tool (see <a href="/blog/how-to-delete-old-tweets-2026">the old-tweet deletion guide</a>).</li>
+<li>Step 3: File a formal deletion request with the platform and keep the receipt plus a screenshot of the response time.</li>
+<li>Step 4: Re-check with <a href="/blog/digital-footprint-health-score">the digital footprint score</a> to catch anything left behind.</li>
+</ul>
+
+<h2>Common mistakes</h2>
+<p>Mistake one is thinking hide equals delete, when the platform may still hold the data in the backend. Mistake two is deleting only what you can see while a third-party data broker has already scraped it. Mistake three is waiting until a background check is already scheduled, when the response window no longer fits.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> offers a 100% on-device privacy check where your data never leaves your computer. It scans ten years of tweets for phone numbers, addresses and sensitive topics in one pass and returns an actionable cleanup list. Pair it with <a href="/blog/gdpr-erasure-request-twitter">the GDPR erasure request template</a> to turn a legal right into a real action.</p>`,
+  },
+  {
+    slug: 'chinese-job-seekers-x-cleanup-2026',
+    title: '海归与校招党必看：求职前如何清理 X 上的旧推文',
+    excerpt: '国内的秋招、春招和海外背调越来越常翻候选人的社媒。本文从中文求职场景出发，讲清哪些旧推文最容易被背调盯上，以及一套不踩坑的清理顺序。',
+    date: '2026-11-02',
+    updatedAt: '2026-11-02',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['求职', '背调', '社媒清理', '海归', '校招'],
+    canonical: '/blog/chinese-job-seekers-x-cleanup-2026',
+    faq: [
+      { q: "背调真的会翻好几年前的推文吗？", a: "会。很多第三方背调公司直接抓取公开社媒，几年前的内容同样在范围内，不能抱侥幸心理。", qEn: "Do background checks really look at tweets from years ago?", aEn: "Yes. Many third-party screeners scrape public social accounts directly, so older posts are in scope and luck is a poor strategy." },
+      { q: "只把账号设为私密够不够？", a: "不够。设为私密只限制未来可见，已索引的历史内容和第三方缓存仍是风险点，建议主动清理。", qEn: "Is switching the account to private enough?", aEn: "No. Private only limits future visibility; already-indexed history and third-party caches remain a risk, so active cleanup is better." },
+      { q: "海归申请海外岗要额外注意什么？", a: "要同时看英文版内容，机翻会放大语气问题，最好中英两版一起过。", qEn: "What extra care do returnee applications need?", aEn: "Review the English side too, since translation amplifies tone problems; clean both versions together." },
+      { q: "清理后还能证明那些推文存在过吗？", a: "一般不需要。背调看的是当前公开状态，删除并复核通过即可，不必保留已删内容。", qEn: "Should I keep proof the tweets existed?", aEn: "Usually not. Screeners look at current public state, so deletion plus a clean re-check is enough; you do not need to keep deleted content." }
+    ],
+    titleEn: 'Cleaning Your X History Before a Job Search: A China-Focused Guide',
+    excerptEn: 'Campus recruiting and overseas background checks in China increasingly scan a candidate social media. Written for Chinese job seekers, this guide shows which old tweets attract the most scrutiny and a safe cleanup order.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['job search', 'background check', 'social cleanup', 'returnees', 'campus recruit'],
+    content: `<p>每年秋招和春招季，都会有同学因为一条几年前的推文在背调环节栽跟头。国内越来越多的雇主、以及打算出海或回流的岗位，会把候选人的 X（Twitter）动态当成参考。本文不照搬英文模板，而是从中文求职的真实场景出发，帮你把清理做对。</p>
+
+<h2>背调最常盯的三种内容</h2>
+<ul>
+<li>情绪化吐槽：对前公司、同事或客户的负面评价，背调方会重点看。</li>
+<li>敏感话题表态：涉及地域、性别、宗教或政治的激烈发言，容易引发误读。</li>
+<li>身份与联系方式：手机号、住址、证件号一旦外露，风险远高于内容本身。</li>
+</ul>
+
+<h2>海归岗位的特殊点</h2>
+<p>申请海外或合资岗位时，对方可能直接看英文账号。中文吐槽配上机翻，常常比原文更难看。建议把中英文两版内容一起过一遍，而不是只清中文。可以配合 <a href="/blog/chinese-returnees-x-footprint-cleanup-2026">海归账号清理专题</a> 一起操作。</p>
+
+<h2>推荐的清理顺序</h2>
+<ol>
+<li>先下载归档，用本机工具一次性标出手机号、地址和敏感词（见 <a href="/blog/how-to-download-x-archive">归档下载</a>）。</li>
+<li>优先删掉带真实身份信息的推文，再处理情绪化与敏感表态。</li>
+<li>批量删除用工具比手动快得多（见 <a href="/blog/how-to-delete-old-tweets-2026">删旧推文指南</a>）。</li>
+<li>收尾再用 <a href="/blog/footprint-score-traffic-light-guide-2026">红绿灯评分</a> 复核是否还有遗漏。</li>
+</ol>
+
+<h2>别踩的两个坑</h2>
+<p>坑一是临到面试才动手，批量删除的响应时间可能赶不上。坑二是只隐藏不删除，后台数据仍可被合规调取。提前一个月做，才是稳妥节奏。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 的体检在本地完成，数据不出电脑，适合求职前自己做一次隐私体检。它能把十年推文里的身份信息和敏感话题列成清单，让你按风险高低逐一处理，而不是凭记忆乱删。</p>`,
+    contentEn: `<p>Every fall and spring recruiting season, a few candidates lose ground because of a tweet they posted years ago. More employers in China, plus roles aimed at overseas or returning talent, now read a candidate X (Twitter) activity as a reference. This guide is written for Chinese job seekers rather than translated from an English template, so it fits the real local scenario.</p>
+
+<h2>Three types of content screeners watch most</h2>
+<ul>
+<li>Venting posts: negative comments about a past employer, coworker or client get the closest look.</li>
+<li>Strong takes on sensitive topics: sharp statements about region, gender, religion or politics are easy to misread.</li>
+<li>Identity and contact details: a leaked phone number or address is riskier than the words themselves.</li>
+</ul>
+
+<h2>What returnee roles add</h2>
+<p>When you apply for an overseas or joint-venture role, the other side may read the English side of your account directly. A Chinese rant run through machine translation often looks worse than the original, so review both language versions instead of only the Chinese one. Pair this with <a href="/blog/chinese-returnees-x-footprint-cleanup-2026">the returnee cleanup guide</a>.</p>
+
+<h2>A cleanup order that works</h2>
+<ol>
+<li>Start by downloading your archive and flagging phone numbers, addresses and sensitive terms on device (see <a href="/blog/how-to-download-x-archive">archive download</a>).</li>
+<li>Delete posts with real identity info first, then the emotional and sensitive ones.</li>
+<li>Use a bulk tool instead of manual deletion (see <a href="/blog/how-to-delete-old-tweets-2026">the deletion guide</a>).</li>
+<li>Finish with <a href="/blog/footprint-score-traffic-light-guide-2026">the traffic-light score</a> to catch leftovers.</li>
+</ol>
+
+<h2>Two traps to avoid</h2>
+<p>Trap one is starting the night before an interview, when bulk deletion response time may not fit. Trap two is hiding instead of deleting, because backend data can still be pulled in a compliant check. Starting a month early is the calm pace.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs its check locally, so your data never leaves the computer, which suits a pre-job privacy sweep. It lists identity info and sensitive topics from ten years of tweets so you can work by risk level instead of deleting from memory.</p>`,
+  },
+  {
+    slug: 'chinese-students-abroad-x-privacy-2026',
+    title: '留学生视角：在海外如何用 X 又不留隐私隐患',
+    excerpt: '签证、奖学金和回国政审都可能和你的社媒挂钩。本文站在留学生角度，讲清哪些 X 内容会影响身份申请，以及如何边用边清。',
+    date: '2026-11-02',
+    updatedAt: '2026-11-02',
+    author: 'Digital Footprint Health Team',
+    category: '中文市场',
+    tags: ['留学生', '签证', '奖学金', '社媒隐私', '海外'],
+    canonical: '/blog/chinese-students-abroad-x-privacy-2026',
+    faq: [
+      { q: "签证官真的会看我的公开推文吗？", a: "部分国家会，尤其涉及安全或敏感专业时，公开账号是常见核查项。", qEn: "Do visa officers really read my public tweets?", aEn: "Some countries do, especially for security or sensitive majors, where a public account is a routine check." },
+      { q: "用私密账号发敏感内容就安全了吗？", a: "相对安全但仍可能被截图传播，最稳妥的是不发布可识别身份的高风险内容。", qEn: "Is a private account safe for sensitive posts?", aEn: "Safer but screenshots can still spread, so the calm move is not posting high-risk content that identifies you." },
+      { q: "回国政审会追溯多久的社媒？", a: "没有统一时限，建议把留学期间的公开内容都视为可能被看，提前清理。", qEn: "How far back does home screening look?", aEn: "There is no fixed window, so treat everything posted during study as potentially visible and clean ahead." },
+      { q: "定位打卡要不要关？", a: "建议关掉实时定位，尤其涉及居留地点时，减少被误读的可能。", qEn: "Should I turn off location check-ins?", aEn: "Turn off live location, especially when it reveals residence, to lower the chance of misreading." }
+    ],
+    titleEn: 'Studying Abroad and X: How to Post Without Leaving a Privacy Trail',
+    excerptEn: 'Visa, scholarship and home-country screening can all touch your social media. Written from a Chinese student perspective, this guide covers which X posts affect status applications and how to post while staying clean.',
+    categoryEn: 'Chinese Market',
+    tagsEn: ['study abroad', 'visa', 'scholarship', 'social privacy', 'overseas'],
+    content: `<p>对留学生来说，X（Twitter）既是获取资讯的渠道，也是容易踩雷的地方。签证官、奖学金委员会，乃至回国后的政审，都可能顺手看一眼公开账号。本文从留学生最常遇到的几个节点出发，给出可执行的隐私建议。</p>
+
+<h2>哪些内容会影响身份申请</h2>
+<ul>
+<li>政治相关表态：部分国家在签证面谈时会关注申请人的公开政治表达。</li>
+<li>违规或边缘内容：涉及签证身份、打工灰色地带的言论，风险被放大。</li>
+<li>定位与行程：实时定位可能暴露你不在校或违反居留要求。</li>
+</ul>
+
+<h2>奖学金与实习的隐形门槛</h2>
+<p>不少奖学金和名企实习会做社媒筛查，重点看你是否与项目价值观冲突。中文圈里随手转发的梗图和情绪帖，翻译成英文后常被误读。建议把 <a href="/blog/chinese-students-abroad-x-privacy-2026">这类内容</a> 与求职清理一起规划。</p>
+
+<h2>边用边清的节奏</h2>
+<ol>
+<li>每月下载一次归档，确认没有新暴露的身份信息。</li>
+<li>对高风险话题用私密账号或限时可见，而不是完全公开。</li>
+<li>毕业或换身份前，集中清理一轮（见 <a href="/blog/how-to-delete-old-tweets-2026">删旧推文指南</a>）。</li>
+<li>用 <a href="/blog/digital-footprint-health-score">评分工具</a> 复核残留。</li>
+</ol>
+
+<h2>回国政审要提前准备</h2>
+<p>部分涉密或体制内岗位会看海外社媒记录，建议离境前就做一次完整清理，而不是临到申请才补救。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 在本地运行，适合留学生定期自查。它把十年推文里的定位和敏感表态列出来，让你能在不泄露数据的前提下，安心地继续用 X。</p>`,
+    contentEn: `<p>For students abroad, X (Twitter) is both a news channel and a place to slip up. Visa officers, scholarship committees and even home-country screening can glance at a public account. This guide starts from the moments students hit most and gives steps you can use.</p>
+
+<h2>What can affect a status application</h2>
+<ul>
+<li>Political expression: some countries look at an applicant public political posts during the visa interview.</li>
+<li>Edge or rule-bending content: talk about visa status or gray-area work gets amplified in risk.</li>
+<li>Live location: real-time check-ins may show you are off campus or breaking residence terms.</li>
+</ul>
+
+<h2>The hidden bar for scholarships and internships</h2>
+<p>Many scholarships and name-brand internships screen social media, focusing on whether you clash with the program values. Memes and emotional posts shared casually in Chinese circles are often misread once translated. Plan this cleanup together with job-search prep.</p>
+
+<h2>A post-and-clean rhythm</h2>
+<ol>
+<li>Download your archive monthly to confirm no new identity leak.</li>
+<li>Use a private account or time-limited visibility for high-risk topics instead of full public.</li>
+<li>Do a concentrated cleanup before graduation or a status change (see <a href="/blog/how-to-delete-old-tweets-2026">the deletion guide</a>).</li>
+<li>Re-check leftovers with <a href="/blog/digital-footprint-health-score">the score tool</a>.</li>
+</ol>
+
+<h2>Home-country screening needs lead time</h2>
+<p>Some sensitive or government-linked roles review overseas social records, so do a full cleanup before leaving rather than scrambling at application time.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs locally, which suits students who check themselves on a schedule. It lists location leaks and sensitive takes from ten years of tweets so you can keep using X without handing over your data.</p>`,
+  },
+  {
+    slug: 'delete-tweets-by-date-range-faq-2026',
+    title: '按时间范围删推文：常见问题与实操解答',
+    excerpt: '想只删某段时间内的旧推文，而不是全部清空？本文用问答形式讲清按日期范围删除的可行性、工具限制和注意事项。',
+    date: '2026-11-02',
+    updatedAt: '2026-11-02',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['删推文', '日期范围', '批量删除', 'FAQ'],
+    canonical: '/blog/delete-tweets-by-date-range-faq-2026',
+    faq: [
+      { q: "能只删某一年的推文吗？", a: "可以，但需要先下载归档并用支持日期筛选的工具，原生删除做不到按年份精确删。", qEn: "Can I delete only one year of tweets?", aEn: "Yes, but you need the archive plus a date-filtering tool; native deletion cannot target a specific year." },
+      { q: "按日期删和全删哪个更安全？", a: "按日期删更可控，能保住有价值的内容，也降低短时间海量删除触发风控的概率。", qEn: "Is date-range or full deletion safer?", aEn: "Date-range is more controllable, keeps valuable posts and lowers the risk of a burst that trips risk control." },
+      { q: "删之前必须备份吗？", a: "强烈建议备份归档，因为删除不可逆，备份能防止误删重要记忆。", qEn: "Must I back up before deleting?", aEn: "Backing up the archive is strongly advised because deletion is final and a backup prevents losing key memories." },
+      { q: "工具删太快会被封号吗？", a: "匀速删除一般不会，但短时间内发海量删除请求可能触发风控，建议分批并留间隔。", qEn: "Will fast tool deletion get me banned?", aEn: "A steady pace is usually fine, but a huge burst of delete calls in minutes may trip risk control, so batch with gaps." },
+      { q: "删完多久搜索引擎才更新？", a: "不同引擎节奏不同，通常几天到几周，可主动提交移除请求加快（见 <a href=\"/blog/google-remove-old-tweets-from-search\">搜索移除指南</a>）。", qEn: "How long until search engines update after deletion?", aEn: "It varies by engine, usually days to weeks, and you can speed it up with a removal request (see the search removal guide)." }
+    ],
+    titleEn: 'Deleting Tweets by Date Range: FAQ and Practical Answers',
+    excerptEn: 'Want to delete only tweets from a certain period instead of wiping everything? This FAQ explains whether date-range deletion works, tool limits and what to watch.',
+    categoryEn: 'Deletion Guide',
+    tagsEn: ['delete tweets', 'date range', 'bulk delete', 'FAQ'],
+    content: `<p>很多人不想清空整个账号，只想删掉某几年里最冒险的推文。按日期范围删除是最实用的折中方案。下面用问答形式把最常见的疑问讲清楚。</p>
+
+<h2>常见问题</h2>
+<h3>平台原生删除支持选日期吗？</h3>
+<p>X 原生删除一次只能处理单条或近期批量，不能按自定义日期区间筛选。要精确按年份删，得先下载归档再用工具筛。</p>
+
+<h3>归档工具怎么按日期筛？</h3>
+<p>下载归档后，工具会带每条推文的时间戳，你可以设定起始和结束日期，只导出该区间的内容再删（见 <a href="/blog/how-to-download-x-archive">归档下载教程</a>）。</p>
+
+<h3>删完还能恢复吗？</h3>
+<p>删除是不可逆的，删前建议先备份归档，避免误删重要记忆。</p>
+
+<h3>有没有次数限制？</h3>
+<p>X 对删除接口有频率限制，大批量删除要分批次并留出间隔（见 <a href="/blog/how-to-delete-old-tweets-2026">删旧推文指南</a>）。</p>
+
+<h3>删了历史推文会影响账号吗？</h3>
+<p>正常删除不会处罚账号，但短时间内海量删除可能触发风控，建议匀速进行。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 本机体检会按推文时间标注风险，帮你快速定位某段时间的危险内容，再决定删还是留。</p>`,
+    contentEn: `<p>Many people do not want to wipe the whole account, only the riskiest tweets from certain years. Deleting by date range is the most practical middle ground. The FAQ below answers the common questions.</p>
+
+<h2>Frequently asked questions</h2>
+<h3>Does native deletion support date picking?</h3>
+<p>X native deletion handles one tweet or a recent batch at a time, not a custom date interval. For precise year-based deletion, download the archive first and filter with a tool.</p>
+
+<h3>How do archive tools filter by date?</h3>
+<p>After download, each tweet carries a timestamp, so you can set a start and end date and export only that window before deleting (see <a href="/blog/how-to-download-x-archive">the archive guide</a>).</p>
+
+<h3>Can I recover after deleting?</h3>
+<p>Deletion is final, so back up the archive before you start to avoid losing important memories.</p>
+
+<h3>Is there a rate limit?</h3>
+<p>X caps the deletion API, so large batches need spacing between runs (see <a href="/blog/how-to-delete-old-tweets-2026">the deletion guide</a>).</p>
+
+<h3>Does deleting history hurt the account?</h3>
+<p>Normal deletion does not penalize the account, but a huge burst in a short time may trigger risk control, so keep a steady pace.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> tags risk by tweet date on device, helping you locate dangerous content from a specific period before deciding what to cut.</p>`,
+  },
+  {
+    slug: 'black-friday-2026-data-broker-optout',
+    title: '黑五购物前必做：退出数据中介，守住你的数字足迹',
+    excerpt: '黑五和网一前后，广告商和数据中介会疯狂收集你的消费轨迹。本文讲清为什么节前退出数据中介能减少一年的隐私麻烦，以及具体怎么做。',
+    date: '2026-11-02',
+    updatedAt: '2026-11-02',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['黑五', '数据中介', '隐私', '退出', '消费'],
+    canonical: '/blog/black-friday-2026-data-broker-optout',
+    faq: [
+      { q: "退出数据中介真的有用吗？", a: "有用。退出后中介停止对外售卖你的画像，能减少后续一年的精准广告和电话推销。", qEn: "Does opting out of data brokers actually help?", aEn: "It does. After opt-out the broker stops selling your profile, which cuts a year of targeted ads and cold calls." },
+      { q: "黑五前多久退比较合适？", a: "提前一两周最稳，因为部分中介处理退出请求需要时间，赶在购物高峰前生效。", qEn: "A week or two ahead works, since some brokers take time to process the request before the shopping spike.", aEn: "A week or two ahead is the safe window, because some brokers need time to process the request before the shopping peak takes effect." },
+      { q: "退出后还会被重新收录吗？", a: "可能。新注册或新授权会再次进入库，建议每年黑五前都复查一次。", qEn: "Can I be re-added after opt-out?", aEn: "Possibly. New sign-ups or new permissions re-enter the database, so re-check every Black Friday." },
+      { q: "免费退还是付费退？", a: "主流 broker 的法定退出入口都是免费的，凡是收费的快速删除服务都要先核实资质再付费。", qEn: "Is opt-out free or paid?", aEn: "The statutory opt-out entry of major brokers is free; any paid quick-deletion service should be verified before you pay." }
+    ],
+    titleEn: 'Before Black Friday 2026: Opt Out of Data Brokers to Protect Your Footprint',
+    excerptEn: 'Around Black Friday and Cyber Monday, advertisers and data brokers scoop up your shopping trail. This guide explains why opting out before the season cuts a year of privacy hassle and how to do it.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['Black Friday', 'data broker', 'privacy', 'opt out', 'shopping'],
+    content: `<p>每到黑五和网一，邮箱、短信和首页广告都会精准得让人不舒服。背后是数据中介在节前集中收集你的消费轨迹。与其事后补救，不如在剁手前先退出主要数据中介，从源头减少一年的隐私麻烦。</p>
+
+<h2>节前为什么是退出窗口</h2>
+<p>数据中介靠匹配你的邮箱、手机和设备 ID 来拼出画像。黑五前的购物、领券、注册行为会让匹配信号暴涨。提前退出，等于在画像最肥的时候关掉水龙头。</p>
+
+<h2>三步退出法</h2>
+<ol>
+<li>先查自己是否在中介库里，很多主流中介提供查找入口。</li>
+<li>逐家提交退出请求，截图保存确认页。</li>
+<li>用 <a href="/blog/digital-footprint-health-score">数字足迹评分</a> 和本机体检，复查还有没有外泄的邮箱和手机。</li>
+</ol>
+
+<h2>别只退中介，旧推文也清一下</h2>
+<p>中介会抓取公开社媒，黑五前顺手清理带身份信息的旧推文（见 <a href="/blog/how-to-delete-old-tweets-2026">删旧推文指南</a>），能让画像更干净。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 在本地扫描你的旧推文，不把数据上传，适合节前做一次快速隐私体检，再决定退出和清理的范围。</p>`,
+    contentEn: `<p>Every Black Friday and Cyber Monday, the emails, texts and homepage ads get uncomfortably precise. Behind them, data brokers concentrate on collecting your shopping trail before the season. Instead of cleaning up later, opt out of the main brokers before you spend, and cut a year of privacy hassle at the source.</p>
+
+<h2>Why the pre-season window matters</h2>
+<p>Brokers build a profile by matching your email, phone and device ID. The coupon claims, sign-ups and purchases around Black Friday spike those match signals. Opting out early shuts the tap while the profile is richest.</p>
+
+<h2>A three-step opt-out</h2>
+<ol>
+<li>Check whether you are already in a broker database; most major brokers offer a lookup page.</li>
+<li>File an opt-out request with each one and screenshot the confirmation.</li>
+<li>Re-check leaked email and phone with <a href="/blog/digital-footprint-health-score">the footprint score</a> and an on-device sweep.</li>
+</ol>
+
+<h2>Do not stop at brokers</h2>
+<p>Brokers scrape public social media, so clearing identity-bearing old tweets before Black Friday (see <a href="/blog/how-to-delete-old-tweets-2026">the deletion guide</a>) makes the profile cleaner.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> scans your old tweets on device without uploading, which fits a quick pre-season privacy check before you decide the scope of opt-out and cleanup.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

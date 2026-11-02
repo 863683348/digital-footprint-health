@@ -31492,6 +31492,413 @@ rl.on('close', () =&gt; {
 <h2>About digital-footprint-health.shop</h2>
 <p><a href="/">digital-footprint-health.shop</a> scans your old tweets on device without uploading, which fits a quick pre-season privacy check before you decide the scope of opt-out and cleanup.</p>`,
   },
+{
+    slug: 'tweets-js-vs-like-js-privacy-2026',
+    title: 'tweets.js 和 like.js 有什么不一样？从隐私角度看 X 数据归档',
+    excerpt: '下载 X 数据归档后，很多人只盯着 tweets.js，却忽略了 like.js。两个文件记录的隐私信息完全不同，清理策略也得分开。本文从隐私角度拆开讲清楚，并给出一套可落地的两步清理思路。',
+    date: '2026-11-03',
+    updatedAt: '2026-11-03',
+    author: 'Digital Footprint Health Team',
+    category: '技术解析',
+    tags: ['X/Twitter', '数据归档', 'tweets.js', '隐私清理'],
+    canonical: '/blog/tweets-js-vs-like-js-privacy-2026',
+    faq: [{ q: 'tweets.js 和 like.js 哪个更危险？', a: '通常 like.js 更危险，因为它记录的是你无意间暴露的偏好和立场，比自己发的推文更容易被用于用户画像。', qEn: 'Which file is more dangerous, tweets.js or like.js?', aEn: 'Usually like.js is the higher risk, because it records preferences and stances you revealed without thinking, which feed profile building more readily than your own posts.' }, { q: 'like.js 里的点赞能彻底删干净吗？', a: '在账号里取消点赞会从线上移除，但已经下载的归档副本仍保留记录。清理时要同时处理线上账号和本地归档。', qEn: 'Can the likes in like.js be fully removed?', aEn: 'Unliking clears it from your account, but any archive copy you already downloaded still holds the record, so clean both the live account and the archive.' }, { q: '体检工具会读取我的点赞历史吗？', a: '本机体检只解析你上传的归档文件，不会连你的 X 账号，也不会上传任何数据，点赞历史只在你电脑上被分析。', qEn: 'Will a check tool read my like history?', aEn: 'An on-device check only parses the archive file you upload. It never connects to your X account and never uploads anything, so your like history is analyzed only on your computer.' }, { q: '两个文件都要保留吗？', a: '如果只是为了隐私清理，处理完高风险项后可以删除本地归档副本；若想留作个人记录，建议先加密再存储。', qEn: 'Should I keep both files?', aEn: 'For privacy cleanup, once high-risk items are handled you can delete the local archive. If you want it as a personal record, encrypt it first.' }, { q: '删除推文会影响 like.js 吗？', a: '不会。删除你发的推文只影响 tweets.js 对应记录；like.js 记录的是你点过赞的别人的内容，需要在账号里单独取消点赞。', qEn: 'Does deleting tweets affect like.js?', aEn: 'No. Deleting your own tweets only changes tweets.js. like.js records posts by other people that you liked, and those need to be unliked separately in your account.' }],
+    titleEn: 'tweets.js vs like.js: What Each File in Your X Archive Really Stores',
+    excerptEn: 'After you download your X (Twitter) data archive, tweets.js gets all the attention and like.js is ignored. The two files store very different private data, and you should clean them with two different plans. Here is the privacy breakdown, plus a workflow you can actually follow.',
+    categoryEn: 'Technical Deep Dive',
+    tagsEn: ['X/Twitter', 'data archive', 'tweets.js', 'privacy'],
+    contentEn: `
+<p>When you download your X (Twitter) data archive, most people open tweets.js to see what they posted. There is another file that gets far less attention: like.js. The two files store very different kinds of private information, and you should clean them with two different mindsets. Understand both, and you will know which data deserves attention first, instead of spending an hour cleaning the safe parts while the risky parts sit untouched.</p>
+
+<h2>What tweets.js actually contains</h2>
+<p>tweets.js holds the posts you created yourself. That sounds obvious, but the detail matters for cleanup. It stores the full text of every tweet, the exact timestamp, the client or device used to post, and the engagement numbers attached to each post. If you ever turned on location, the coordinates or labeled place can show up too. Media attachments carry their own metadata. The key point is that this is data you produced on purpose. You can see it, you can recall posting it, and you have direct control over removing it.</p>
+
+<h2>Why like.js is the quieter risk</h2>
+<p>like.js records every piece of content you reacted to. It is a running log of the opinions you approved, the accounts you followed closely enough to like, and the topics that pulled an emotional response from you. A like feels weightless in the moment, which is exactly why it is dangerous in aggregate. Hundreds of small signals combine into a profile of your beliefs, your vulnerabilities, and your habits. Advertisers, recruiters doing background checks, and recommendation algorithms all feed on that profile. The uncomfortable part is that most of like.js points at other people's content, so you cannot simply delete it the way you delete your own tweets. You have to go back into the account and undo the likes one by one.</p>
+
+<h2>Two different cleanup jobs</h2>
+<p>Because the files are different, the work is different. For tweets.js the job is removing your own content: you can filter by date, by keyword, or by media type and delete in batches. For like.js the job is withdrawing the preference signals you left behind: you cancel likes inside the account settings, and then you destroy the archive copy that already captured them. A sensible priority is to handle the high-sensitivity preferences in like.js first, then clean the exposed content in tweets.js.</p>
+
+<table>
+<thead><tr><th>Dimension</th><th>tweets.js</th><th>like.js</th></tr></thead>
+<tbody>
+<tr><td>Who created it</td><td>You, on purpose</td><td>You, almost by reflex</td></tr>
+<tr><td>Sensitivity</td><td>Moderate, depends on topics</td><td>Often high, reveals stance</td></tr>
+<tr><td>Cleanup method</td><td>Delete your own posts</td><td>Cancel likes in account</td></tr>
+<tr><td>Your control</td><td>Direct</td><td>Limited, spread across others</td></tr>
+<tr><td>Leftover risk</td><td>Archive copy</td><td>Archive copy plus live signals</td></tr>
+</tbody>
+</table>
+
+<h2>A two-step cleanup that works</h2>
+<p>Step one is pulling the signals back online. Inside your X account, cancel the high-sensitivity likes and delete the posts that expose too much. Step two is destroying the local copy. The archive zip you downloaded contains like.js and tweets.js; once cleanup is done, delete the folder or store it encrypted. Leaving the unzipped archive on a laptop or a cloud drive is how old signals resurface years later.</p>
+
+<h2>How an on-device check helps</h2>
+<p>A local check tool parses the archive you upload without connecting to your account and without sending anything anywhere. It can highlight the high-sensitivity preferences buried in like.js and the location or contact details hiding in tweets.js, then hand you a checklist you can act on. Because nothing leaves your computer, you get the map of your risks without adding a new risk.</p>
+
+<h2>Who should care the most</h2>
+<p>If your account is years old and you have liked freely, this split matters more than you think. Job seekers, people in regulated industries, and anyone who has changed strong public opinions all carry a like.js that no longer matches who they are. The same is true for anyone who has ever posted from a personal address or tagged a specific city. You do not need to be a public figure for a decade of quiet signals to shape what a stranger assumes about you, which is exactly why the cleanup should start with the file most people never open.</p>
+
+<h2>Myths worth dropping</h2>
+<p>Myth one: deleting my tweets makes me clean. No, like.js is still there. Myth two: I downloaded the archive just as a backup. It is also a privacy snapshot that needs careful disposal. Myth three: a one-click third-party cleaner is easiest. Only use one if you have confirmed it does not upload your archive off your machine.</p>
+
+<h2>A five-step checklist you can start tonight</h2>
+<p>You do not need a full day to make real progress. Open your archive, find like.js, and skim the first page of liked topics; that single view shows the stance profile you have been building without meaning to. Next, cancel three likes you would not defend today, the ones tied to opinions you have outgrown. Then open tweets.js and search for any post containing a location, a phone number, or an email address, and delete those first because they are the easiest to exploit. After that, scroll your old media and remove anything you no longer recognize or that shows a place you once lived. Finally, delete the unzipped archive folder or move it into an encrypted container you control. Five small moves add up to one noticeably quieter footprint.</p>
+<p>Repeat this every few months and the archive stops being a growing liability and becomes a manageable snapshot. The goal is not perfection but momentum; a partial cleanup finished this week beats a flawless plan you never begin. Keep the two files separate in your mind, act on like.js before tweets.js, and the next export will feel like maintenance instead of a crisis. Most people feel a real sense of relief once the high-sensitivity preferences are gone, because the part of the archive they feared is exactly the part they can now see and control.</p>
+<p>Consider a concrete case. Someone preparing for a job change often forgets that years of casual likes hint at political views, health concerns, and financial stress that a careful recruiter could piece together. Cleaning like.js first removes that thread before a single resume is sent. The tweets.js side can wait, because a thoughtful post is far less revealing than a thousand unconscious likes. This ordering is the whole point of telling the two files apart: spend your limited time where the risk is highest, not where the volume is largest.</p>
+<p>If you are unsure where to begin, start with the likes, not the posts. Open like.js and read the first twenty entries out loud; many people are surprised by what they endorsed. That surprise is useful signal. From there, work backward by date, cancelling anything that no longer fits the person you are today. You do not have to finish in one sitting. Even clearing the most recent year meaningfully reduces the profile that algorithms and employers can reconstruct from your history.</p>
+
+<h2>What to do next</h2>
+<p>Start by telling the two files apart, then clean in order. If you want a structured pass over your own archive, run a <a href="/">digital footprint health check</a> on your machine, or read the <a href="/blog/what-is-digital-footprint-check">basics of a digital footprint check</a> before you begin. You can also compare approaches in our <a href="/blog/x-archive-download-failed-fix">archive download troubleshooting guide</a>.</p>
+`,
+    content: `
+<p>下载 X 的数据归档后，大多数人的第一反应是打开 tweets.js，翻看自己发过的推文。但归档里还有一个文件常被忽略：like.js。它记录的是你点过赞的每一条内容，信息密度和敏感度往往比你自己发的推文更高。本文从隐私角度拆解这两个文件，说明为什么清理策略必须分开，并给出一套可落地的两步流程。</p>
+
+<h2>tweets.js 里到底存了什么</h2>
+<p>tweets.js 保存的是你自己创建的帖子。这听起来理所当然，但细节对清理很关键。它存着你每一条推文的完整正文、准确的时间戳、发布时使用的客户端或设备，以及每条推文附带的互动数据。如果你曾经开过定位，坐标或标注的地点也可能出现在里面。媒体附件则带着自己的元数据。关键点是：这些都是你主动产生的数据。你能看到它、记得发过它，也有直接的控制权去删除它。</p>
+
+<h2>为什么 like.js 是更安静的风险</h2>
+<p>like.js 记录的是你做出反应的每一条内容。它是你认同过的观点、你关注到愿意点赞的账号、以及牵动你情绪的话题的一份连续日志。点赞在当下感觉毫无分量，而这恰恰是它在聚合时危险的原因。几百个微小信号叠加成一份关于你的立场、弱点和习惯的画像。广告主、做背景调查的招聘方、以及推荐算法，全都以这份画像为食。让人不安的地方在于：like.js 里大部分指向的是别人发布的内容，所以你没法像删自己推文那样简单地把它删掉。你必须回到账号里，一条一条把赞取消。</p>
+
+<h2>两种清理其实是两件事</h2>
+<p>因为两个文件不同，工作也就不同。对 tweets.js 来说，任务是移除你自己的内容：你可以按日期、按关键词、按媒体类型筛选，然后批量删除。对 like.js 来说，任务是收回你留下的偏好信号：你在账号设置里取消点赞，然后再销毁已经把这些都记录下来的归档副本。一个合理的优先级是：先处理 like.js 里高敏感的偏好，再清理 tweets.js 里暴露的内容。</p>
+
+<table>
+<thead><tr><th>维度</th><th>tweets.js</th><th>like.js</th></tr></thead>
+<tbody>
+<tr><td>由谁产生</td><td>你，有意为之</td><td>你，几乎出于本能</td></tr>
+<tr><td>敏感度</td><td>中等，取决于话题</td><td>往往偏高，暴露立场</td></tr>
+<tr><td>清理方式</td><td>删除自己的推文</td><td>在账号内取消点赞</td></tr>
+<tr><td>可控程度</td><td>直接</td><td>有限，分散在他人内容</td></tr>
+<tr><td>遗留风险</td><td>归档副本</td><td>归档副本加线上信号</td></tr>
+</tbody>
+</table>
+
+<h2>一套能落地的两步清理</h2>
+<p>第一步，把线上信号收回来。在 X 账号里取消高敏感的点赞，删除暴露过多的推文。第二步，销毁本地副本。你下载的归档 zip 里包含 like.js 和 tweets.js；清理完成后，删除这个文件夹，或者把它加密后再存储。把未压缩的归档留在笔记本或某个云盘上，正是旧信号在多年后重新浮出水面的原因。</p>
+
+<h2>本机体检能帮你什么</h2>
+<p>本机体检工具解析你上传的归档，不连你的账号，也不把任何东西发出去。它可以高亮 like.js 里埋着的高敏感偏好，以及 tweets.js 里藏着的位置或联系方式，然后交给你一份能直接执行的清单。因为数据从不离开你的电脑，你在拿到风险地图的同时，没有引入新的风险。</p>
+
+<h2>该丢掉的几个误区</h2>
+<p>误区一：删了推文我就干净了。错，like.js 还在。误区二：我下载归档只是为了备份。它同时也是一份隐私快照，需要妥善处置。误区三：第三方一键清理最省事。只有在你确认它不会把你的归档上传到别的机器时，才用它。</p>
+
+<h2>今晚就能开始的五步清单</h2>
+<p>你不需要腾出一整天就能真正推进。打开归档，找到 like.js，扫一眼点赞话题的第一页；光是这一眼，就让你看到自己无意间构筑的立场画像。接着，取消三个你今天已经不愿认领的点赞，就是那些和你已经放下观点绑定的。然后打开 tweets.js，搜索任何含定位、手机号或邮箱的帖子，先删这些，因为它们最容易被利用。之后，翻一遍旧媒体，移除任何你已认不出、或暴露了曾经住址的内容。最后，删除解压出来的归档文件夹，或者把它移进你掌控的加密容器。五个小动作，汇成一份明显更安静的足迹。</p>
+<p>如果你每隔几个月重复一次，归档就不再是不断膨胀的负债，而是一份可控的快照。关键不在完美，而在惯性；这周做一半的清理，胜过永远不开始的那份完美计划。在心里把两个文件分开，先动 like.js 再动 tweets.js，下一次导出就会像维护而非危机。大多数人发现，高敏感偏好一旦清掉，会有真实的轻松感，因为他们害怕的那部分归档，恰恰成了现在能看见、能控制的那部分。</p>
+<p>想一个具体的场景。准备换工作的人常常忘记，多年来随手点的赞，早已暗示出政治看法、健康顾虑和财务压力，而一个细心的招聘方完全能拼出这幅图。先清 like.js，是在一份简历发出之前就剪断这条线。tweets.js 那边可以等，因为一条用心的帖子，远比一千次无意识的点赞暴露得少。分清两个文件，意义全在于此：把有限的时间花在风险最高的地方，体量最大的地方可以往后放。</p>
+<p>如果你不确定从哪开始，先从点赞、而非帖子开始。打开 like.js，把前二十条念出声；很多人会惊讶于自己曾背书过什么。这份惊讶，就是有用的信号。然后按日期往回走，取消任何不再符合今日你的内容。你不必一次做完。哪怕只清掉最近这一年，也已经明显削弱了算法和雇主能从你历史里重建的画像。</p>
+
+<h2>接下来怎么做</h2>
+<p>先从分清这两个文件开始，再按顺序清理。如果你想对自己那份归档做一次结构化梳理，可以在本机跑一次 <a href="/">数字足迹体检</a>，或者先读读 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>。你也可以在我们的 <a href="/blog/x-archive-download-failed-fix">归档下载排错指南</a> 里对比不同做法。</p>
+`,
+},
+{
+    slug: 'x-archive-partial-download-resume-2026',
+    title: 'X 数据归档下载到一半断了怎么办？断点续传与重试的完整思路',
+    excerpt: 'X 的数据归档动辄几百 MB，网络一抖就容易下载到一半失败。本文讲清楚归档下载为什么会中断、怎么用浏览器和命令行安全地续传或重下，以及下载完成后怎么校验文件没损坏。',
+    date: '2026-11-03',
+    updatedAt: '2026-11-03',
+    author: 'Digital Footprint Health Team',
+    category: '技术解析',
+    tags: ['X/Twitter', '数据归档', '下载中断', '断点续传'],
+    canonical: '/blog/x-archive-partial-download-resume-2026',
+    faq: [{ q: '归档下载到 99% 失败了，要整包重下吗？', a: '不一定。浏览器通常会保留已下载的临时文件，部分客户端支持续传；若不支持，重新请求归档一般会生成新链接，旧的部分可丢弃。', qEn: 'My archive download failed at 99 percent, do I restart the whole thing?', aEn: 'Not always. The browser often keeps a partial temp file, and some clients support resume. If not, requesting the archive again usually gives a fresh link and you can drop the old partial.' }, { q: '怎么确认下载下来的 zip 没损坏？', a: '下载完先比对文件大小是否和页面提示一致，再用系统自带的解压工具试着解压一次，能正常解压且没有报错就基本没问题。', qEn: 'How do I confirm the downloaded zip is not corrupted?', aEn: 'Compare the file size with what the page reported, then try extracting it once with your system unzip tool. If it extracts without errors, it is fine.' }, { q: '用命令行下载会更稳吗？', a: '通常会。命令行工具支持断点续传和超时重试，比浏览器在弱网下更不容易整包失败。', qEn: 'Is a command-line download more stable?', aEn: 'Usually yes. Command-line tools support resume and retry on timeout, so they fail less often than a browser on a weak connection.' }, { q: '下载中断会不会泄露我的数据？', a: '下载中断本身不会泄露数据，风险在于未完成的临时文件留在了本地磁盘或下载目录，清理归档时要一并处理。', qEn: 'Does a failed download leak my data?', aEn: 'The interruption itself does not leak data. The risk is the partial temp file left in your downloads folder, which you should handle when cleaning up.' }],
+    titleEn: 'X Archive Download Stuck at 50 Percent? How to Resume and Retry Safely',
+    excerptEn: 'X data archives can be hundreds of megabytes, and a single network hiccup can break the download halfway. This guide explains why archive downloads stall, how to resume or re-request safely with a browser or the command line, and how to verify the file is not corrupted once it finishes.',
+    categoryEn: 'Technical Deep Dive',
+    tagsEn: ['X/Twitter', 'data archive', 'download', 'resume'],
+    contentEn: `
+<p>X data archives are not small. A long-lived account can produce an archive of several hundred megabytes, sometimes more, and that size is exactly what makes the download fragile. One dropped connection, one sleep-and-wake cycle, or one proxy reset can leave you staring at a failed transfer. The good news is that a broken download is almost never a data loss event. It is an interruption you can work around.</p>
+
+<h2>Why the download breaks in the first place</h2>
+<p>The archive is generated on demand and served as a single large file. Long transfers give the network many chances to fail: a Wi-Fi handoff, a laptop going to sleep, a VPN tunnel dropping, or a proxy that caps long connections. None of these touch the data on X's side. They only stop the bytes from reaching your disk. That distinction matters, because it means you can simply try again without worrying that your data was altered.</p>
+
+<h2>Resume from the browser first</h2>
+<p>Start with the simplest path. Many browsers keep the partial file and, when you click the link again, continue from where they stopped. If your browser shows the download as paused rather than failed, resume it. If it shows failed, check the downloads folder for a temp file with the right name; some setups let you point a download manager at the same URL to finish the job. Avoid opening the half-written zip, since a truncated archive will not extract cleanly.</p>
+
+<h2>Re-request a fresh link when needed</h2>
+<p>If the resume option is gone, go back to the archive request page and ask for the archive again. X typically issues a new download link. The old partial file can then be deleted. Do not assume the first link is still valid after a long wait; expired links are a common reason a retry appears to fail immediately.</p>
+
+<h2>Command line is steadier on weak networks</h2>
+<p>When the browser keeps failing, a command-line download is usually more reliable. Tools that support continue and retry-on-timeout will pick up a partial file and finish it, and they tolerate sleep-and-wake cycles better than a browser tab. The trade-off is a little setup, but for a multi-hundred-megabyte file it pays off. Keep the same output path so the tool knows where the partial data already sits.</p>
+
+<h2>Verify the file before you trust it</h2>
+<p>Once the download reports complete, do not just double-click it. Compare the file size with what the request page reported. Then extract it once with your system unzip tool. A clean extraction with no errors means the archive is intact. If extraction stops with a checksum or unexpected-end-of-file error, the file is truncated and you should re-download.</p>
+
+<h2>Handle the leftovers</h2>
+<p>A failed or abandoned download leaves a partial file in your downloads folder. That file is still part of your private archive, so when you are done, delete partials along with the final archive if you no longer need them. Encrypt first if you want to keep a copy. For a broader plan on what to do after the download, see our <a href="/blog/x-archive-size-limit-2026">guide to archive size limits</a> and the <a href="/blog/merge-multiple-x-archives-2026">guide to merging several archives</a>.</p>
+
+<h2>When a download feels stuck, stay calm</h2>
+<p>A stuck download is annoying but rarely permanent. Note the exact point where it failed, switch to a wired connection if you can, and try the resume or re-request path described above. Most failures clear on the second attempt once the brief network cause is gone, so there is no need to treat one interrupted transfer as a wall. Keep the partial file until you have a verified complete copy, because deleting it too early forces a full restart you could have avoided.</p>
+`,
+    content: `
+<p>X 的数据归档并不小。一个用了很久的账号，归档可能达到几百 MB，甚至更多，而恰恰是这种体积让下载变得脆弱。一次掉线、一次睡眠唤醒、或者一次代理重置，都可能让你面对一个失败的传输。好消息是：下载中断几乎从来不是数据丢失事件，它只是一次可以绕过的打断。</p>
+
+<h2>下载为什么会断</h2>
+<p>归档是按需生成的，作为一个单独的大文件提供。长时间的传输给了网络很多失败的机会：一次 Wi-Fi 切换、笔记本睡眠、VPN 隧道断开，或者一个对长连接设了上限的代理。这些都不会触碰 X 那一侧的数据，它们只是阻止字节到达你的磁盘。这个区别很关键，因为它意味着你完全可以再试一次，而不必担心数据被改动了。</p>
+
+<h2>先从浏览器续传</h2>
+<p>从最简单的路径开始。很多浏览器会保留未完成的文件，当你再次点击链接时，从中断的地方继续。如果浏览器显示下载是「已暂停」、而非「失败」，就恢复它。如果显示失败，去下载文件夹找一下带正确名称的临时文件；有些环境下你可以让下载管理器指向同一个 URL 把任务完成。不要去打开那个只写了一半的 zip，因为被截断的归档无法正常解压。</p>
+
+<h2>必要时重新申请新链接</h2>
+<p>如果续传选项已经没了，回到归档申请页面，重新请求一次归档。X 通常会签发一个新的下载链接，旧的临时文件就可以删掉了。不要想当然地认为第一个链接在等了很久之后还有效；链接过期是重试时看似立刻失败的常见原因。</p>
+
+<h2>弱网下命令行更稳</h2>
+<p>当浏览器反复失败时，命令行下载通常更可靠。支持续传和超时重试的工具会接上已有的临时文件把它下完，而且比浏览器标签页更能扛住睡眠唤醒。代价是要做一点准备，但对几百 MB 的文件来说很值得。保持相同的输出路径，工具才知道已下载的数据在哪。</p>
+
+<h2>信任之前先校验</h2>
+<p>下载显示完成后，别急着双击打开。先把文件大小和申请页面报告的数字比对一下。然后用系统自带的解压工具解压一次。一次没有报错的干净解压，说明归档是完整的。如果解压停在某个校验和或「文件意外结束」的错误上，说明文件被截断了，应当重新下载。</p>
+
+<h2>处理残留</h2>
+<p>一次失败或放弃的下载，会在下载文件夹里留下临时文件。这个文件仍然属于你的私有归档的一部分，所以收尾时，如果不再需要，把临时文件和最终归档一起删掉。想留副本就先加密。关于下载之后该做什么，可以看我们的 <a href="/blog/x-archive-size-limit-2026">归档体积上限指南</a>，以及 <a href="/blog/merge-multiple-x-archives-2026">合并多份归档的指南</a>。</p>
+
+<h2>下载卡住时，先别慌</h2>
+<p>卡住的下载很烦，但很少是永久的。记下它失败的确切位置，如果可以就换成有线连接，然后走上面讲的续传或重新申请路径。多数失败在短暂的网路原因消失后，第二次尝试就能成功，所以没必要把一次中断当成一堵墙。在拿到验证过的完整副本之前，保留那个临时文件，因为过早删掉它会迫使你做一次本可避免的重头再来。</p>
+`,
+},
+{
+    slug: 'merge-multiple-x-archives-2026',
+    title: '我有好几份 X 归档，怎么合并成一份完整记录？',
+    excerpt: '很多人因为换号、重新申请或定期备份，手里攒了好几份 X 数据归档。本文讲清楚合并前要先看什么、哪些字段可以直接拼、哪些会冲突，以及合并后怎么避免重复和遗漏。',
+    date: '2026-11-03',
+    updatedAt: '2026-11-03',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X/Twitter', '数据归档', '合并', '重复数据'],
+    canonical: '/blog/merge-multiple-x-archives-2026',
+    faq: [{ q: '多份归档能直接拼成一个文件吗？', a: '不能直接把 zip 拼起来。要先分别解压，再把里面的同名数据文件按字段合并，否则会互相覆盖或留下重复。', qEn: 'Can I just combine several archives into one file?', aEn: 'Not by joining the zips. Unzip each one first, then merge the matching data files by field, or they will overwrite each other or leave duplicates.' }, { q: '合并后推文会重复吗？', a: '可能。同一账号不同时间导出的归档会有重叠时间段，合并时要按 id 去重，否则同一条推文会出现多次。', qEn: 'Will merged tweets duplicate?', aEn: 'Possibly. Archives exported at different times overlap, so deduplicate by id or the same tweet shows up more than once.' }, { q: 'like.js 也要合并吗？', a: '要，like.js 也按 id 合并，因为不同次导出的点赞同样有重叠。', qEn: 'Should I merge like.js too?', aEn: 'Yes, merge like.js the same way by id, because your likes also overlap across exports.' }, { q: '合并完怎么验证没漏？', a: '合并后统计各文件的记录数，和每份来源的数量加总对照，再去重后的数量应当小于等于来源加总。', qEn: 'How do I verify nothing was missed after merging?', aEn: 'Count records in each merged file and compare with the sum of sources. After dedupe, the count should be at or below the sum.' }],
+    titleEn: 'I Have Several X Archives. How Do I Merge Them Into One Complete Record?',
+    excerptEn: 'Many people end up with several X data archives after switching accounts, re-requesting, or backing up on a schedule. This article explains what to check before merging, which fields can be joined directly, which ones conflict, and how to avoid duplicates and gaps afterward.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X/Twitter', 'data archive', 'merge', 'dedupe'],
+    contentEn: `
+<p>It is common to accumulate more than one X archive. You switched accounts, you re-requested after a policy change, or you simply exported on a schedule. Now you have a folder of zips and a reasonable question: can they become one clean record? The answer is yes, but not by stacking the files. Merging is a field-by-field job.</p>
+
+<h2>Look before you merge</h2>
+<p>Before touching anything, note the export date on each archive. Archives taken close together overlap heavily; archives years apart barely touch. Knowing the overlap tells you how much deduplication you will need later. Also check which files each archive actually contains. Some exports omit media or include different modules, and a mismatch explains why a merge feels incomplete.</p>
+
+<h2>Do not concatenate the zips</h2>
+<p>Joining two zip files does not merge their contents; it produces a broken container. Unzip each archive into its own folder first. Inside, you will find data files with predictable names such as tweets.js and like.js. Those are the pieces you merge, not the wrappers.</p>
+
+<h2>Which fields join cleanly</h2>
+<p>Most X data files are lists of records keyed by an id. For tweets.js, the tweet id is the natural key. For like.js, the liked post id is the key. When two archives both contain the same id, you keep one copy. When they contain different ids, you keep both. This id-based join is what prevents duplicates and gaps at the same time.</p>
+
+<table>
+<thead><tr><th>File</th><th>Join key</th><th>Overlap risk</th></tr></thead>
+<tbody>
+<tr><td>tweets.js</td><td>tweet id</td><td>High across close dates</td></tr>
+<tr><td>like.js</td><td>liked post id</td><td>High across close dates</td></tr>
+<tr><td>profile</td><td>account id</td><td>Low, but fields differ</td></tr>
+</tbody>
+</table>
+
+<h2>Where conflicts appear</h2>
+<p>The tricky part is not the lists but the singleton files. Profile and settings data appear once per archive, and two archives may disagree because you changed something between exports. Pick the newer archive as the source of truth for those singletons, and keep the lists from all archives merged together. Mixing a new list with an old profile is fine; mixing two profiles is not.</p>
+
+<h2>A worked example</h2>
+<p>Suppose you have a 2021 archive and a 2024 archive. The 2024 file already contains everything from 2021 plus three more years, so a naive merge would duplicate the entire early period. Deduplicating by id collapses that overlap to a single copy, and the merged set ends up only as large as the newest archive plus whatever the oldest held that the newest lost. This is why the id join matters more than the file count. Without it, your merged archive grows with every export you add, and the duplicate tweets make later cleanup slower instead of faster. The same logic applies to like.js, where overlapping likes across exports are even more common than overlapping posts.</p>
+
+<h2>Verify after the merge</h2>
+<p>Count records in each merged file and compare the total with the sum of the sources. After deduplication, the merged count should be at or below the sum, never above it. If it is above, something was copied twice. Open the result and spot-check a known old tweet and a known recent like to confirm both ends survived the merge. A quick diff against the source archives, even done by eye, catches most mistakes before they ever matter.</p>
+
+<h2>Keep the merged set private</h2>
+<p>A merged archive is more complete, which also means more sensitive in one place. Store it encrypted, and when you are finished analyzing it, delete the working copies. If you want help reading what you merged, an <a href="/">on-device footprint check</a> can parse it locally without uploading. For context on sizing, see our <a href="/blog/x-archive-size-limit-2026">archive size limit guide</a>.</p>
+`,
+    content: `
+<p>攒下不止一份 X 归档是很常见的事。你换过号、在政策变动后重新申请过，或者干脆按节奏定期导出。现在你有一个装满了 zip 的文件夹，以及一个合理的问题：它们能合成一份干净的记录吗？答案是能，但不是把文件叠起来。合并是按字段做的工作。</p>
+
+<h2>合并前先看清</h2>
+<p>在动任何东西之前，先记下每份归档的导出日期。时间相近的归档重叠严重；相隔几年的几乎不沾边。知道重叠多少，你才知道后面要做多少去重。还要检查每份归档实际包含哪些文件。有些导出不含媒体，或包含不同模块，这种不一致正是合并后感觉缺了东西的原因。</p>
+
+<h2>别把 zip 直接拼起来</h2>
+<p>把两个 zip 拼在一起并不会合并内容，只会得到一个损坏的容器。先把每份归档解压到各自的文件夹。里面会有名字可预期的数据文件，比如 tweets.js 和 like.js。这些才是你要合并的零件，外层包装不在合并范围内。</p>
+
+<h2>哪些字段能干净地拼接</h2>
+<p>大多数 X 数据文件都是按 id 索引的记录列表。对 tweets.js 来说，推文 id 是天然主键。对 like.js 来说，被点赞帖子的 id 是主键。当两份归档都含同一个 id，你保留一份；当它们含不同的 id，你两份都留。这种基于 id 的拼接，同时防止了重复和遗漏。</p>
+
+<table>
+<thead><tr><th>文件</th><th>拼接主键</th><th>重叠风险</th></tr></thead>
+<tbody>
+<tr><td>tweets.js</td><td>推文 id</td><td>相近日期时高</td></tr>
+<tr><td>like.js</td><td>被点赞帖子 id</td><td>相近日期时高</td></tr>
+<tr><td>profile</td><td>账号 id</td><td>低，但字段不同</td></tr>
+</tbody>
+</table>
+
+<h2>冲突会出现在哪</h2>
+<p>真正麻烦的是那些只出现一次的文件，列表本身反倒好处理。profile 和设置数据每份归档各一份，两份可能不一致，因为你在两次导出之间改过东西。对那些单例文件，选较新的那一份归档作为事实来源；而列表则把各份归档合并在一起。把新列表和旧 profile 混用没问题；把两份 profile 混用则不行。</p>
+
+<h2>一个具体例子</h2>
+<p>假设你有一份 2021 的归档和一份 2024 的归档。2024 那份已经包含了 2021 的全部，再加三年，所以简单的合并会把整个早期时段重复一遍。按 id 去重会把这段重叠压成一份，合并集最终只等于最新归档的大小，加上最旧归档里、而最新归档已丢失的那些。这正是 id 拼接比文件数量更重要的原因。没有它，每加一份导出，合并归档就随之膨胀，重复的推文反而让之后的清理更慢。同样的逻辑也适用于 like.js，跨导出的点赞重叠比帖子重叠更常见。</p>
+
+<h2>合并后验证</h2>
+<p>统计每个合并后文件里的记录数，和来源加总比对。去重之后，合并数量应当小于等于来源之和，绝不该大于。如果大于，说明有东西被复制了两次。打开结果，抽查一条已知的旧推文和一条已知的新点赞，确认两头都挺过了合并。</p>
+
+<h2>把合并集保管好</h2>
+<p>合并后的归档更完整，也就意味着更敏感、都集中在一处。加密存储；分析完之后，删掉工作副本。如果你想读懂合并出来的东西，<a href="/">本机足迹体检</a> 可以在不上传的情况下本地解析它。关于体积的背景，见我们的 <a href="/blog/x-archive-size-limit-2026">归档体积上限指南</a>。</p>
+`,
+},
+{
+    slug: 'x-archive-size-limit-2026',
+    title: 'X 数据归档有大小上限吗？大账号导出失败的常见原因',
+    excerpt: '账号越老、发得越多，X 归档的体积就越大，导出也越容易出问题。本文讲清楚归档到底受不受体积限制、大归档为什么常导出失败，以及把体积降下来的几个实际办法。',
+    date: '2026-11-03',
+    updatedAt: '2026-11-03',
+    author: 'Digital Footprint Health Team',
+    category: '归档入门',
+    tags: ['X/Twitter', '数据归档', '体积上限', '导出失败'],
+    canonical: '/blog/x-archive-size-limit-2026',
+    faq: [{ q: 'X 对归档体积有硬性上限吗？', a: 'X 没有公开一个固定的单文件上限，但超大归档在生成和下载环节更容易超时或中断，实际体验上像是有上限。', qEn: 'Does X enforce a hard size limit on archives?', aEn: 'X does not publish a fixed single-file cap, but very large archives time out or break during generation and download, so it feels capped in practice.' }, { q: '大账号导出经常失败，根因是什么？', a: '主要是生成任务在服务器侧超时、媒体附件太多拖慢打包、以及下载时弱网中断三者叠加。', qEn: 'Why do large accounts fail to export often?', aEn: 'Mostly server-side generation timeouts, too many media attachments slowing the packaging, and weak-network interruptions during download, all at once.' }, { q: '怎么把归档体积降下来？', a: '导出时不要勾选媒体，或者先清理掉大量旧推文和媒体再申请归档，体积会明显下降。', qEn: 'How do I shrink the archive size?', aEn: 'Skip media in the export, or clean out many old tweets and media before requesting the archive; the size drops noticeably.' }, { q: '体积降了之后还值得做足迹体检吗？', a: '值得。即使不含媒体，正文、点赞和定位信息已经足够勾勒出你的足迹风险。', qEn: 'Is a footprint check still worth it after shrinking?', aEn: 'Yes. Even without media, the text, likes, and location data are enough to map your footprint risk.' }],
+    titleEn: 'Is There a Size Limit on X Archives? Why Big Accounts Fail to Export',
+    excerptEn: 'The older and more active your account, the larger your X archive grows and the more likely the export is to fail. This article clarifies whether archives are actually capped, why large exports break, and a few practical ways to bring the size down.',
+    categoryEn: 'Archive Basics',
+    tagsEn: ['X/Twitter', 'data archive', 'size limit', 'export failed'],
+    contentEn: `
+<p>As accounts age, their archives grow. A decade of posts, likes, and attached media turns into a heavy file, and heavy files are exactly the ones that fail to export or download. People reasonably ask whether X imposes a hard size limit. The honest answer is that there is no published fixed cap, but the practical ceiling shows up in how the export behaves.</p>
+
+<h2>The limit is not a number, it is a process</h2>
+<p>X generates archives on demand. For a small account that takes seconds. For a large one it takes minutes, and the longer the job runs, the more chances something times out. There is no sign that says your account is too big; instead the request quietly fails or the download stalls. So the constraint is less a wall and more a series of soft failures along the pipeline.</p>
+
+<h2>Why big archives break</h2>
+<p>Three things pile up. First, server-side generation can time out before the package is ready. Second, media attachments, especially video, multiply the size and slow packaging far more than text does. Third, the download itself is long enough that a weak network breaks it. Any one of these is survivable; all three together are why large accounts feel cursed.</p>
+
+<table>
+<thead><tr><th>Factor</th><th>Effect</th><th>What helps</th></tr></thead>
+<tbody>
+<tr><td>Generation timeout</td><td>Request fails silently</td><td>Retry at off-peak hours</td></tr>
+<tr><td>Media attachments</td><td>Large, slow package</td><td>Export without media</td></tr>
+<tr><td>Long download</td><td>Interrupts on weak net</td><td>Resume or command line</td></tr>
+</tbody>
+</table>
+
+<h2>What actually counts as too big</h2>
+<p>There is no published number, but a useful rule of thumb is that once an archive passes a few hundred megabytes, both generation and download start to feel unreliable. Text alone stays small even for heavy posters, so the size is almost always driven by media. If your account is media-heavy, expect the export to be the kind of job that benefits from off-peak timing and a resume-capable downloader. Treat the size as a signal about what is inside: a large archive is a media archive, and a media archive is a privacy archive, because images and videos leak location and context that text never does. Shrinking it is therefore both a technical fix and a privacy win. Plan the export around the size instead of fighting it, and the process becomes predictable. A smaller archive also means a faster and cheaper footprint check later, which keeps the whole cleanup loop affordable. When in doubt, export without media first and add it back only if a specific need appears.</p>
+
+<h2>Shrink before you request</h2>
+<p>The most reliable fix is to make the archive smaller before asking for it. When requesting, skip the media option if you only need text and likes. Better still, clean out a large batch of old posts and their media first, then export; the resulting file is dramatically lighter and far more likely to succeed. This also reduces what you later have to review.</p>
+
+<h2>You still get a useful picture</h2>
+<p>Some worry that dropping media leaves the archive incomplete. For a privacy review, the text, the likes, and any location data already outline your footprint risk clearly. Media matters for nostalgia, less for the question of what your archive reveals about you. If you want the lighter file analyzed, an <a href="/">on-device check</a> reads it locally. After export, our <a href="/blog/x-archive-partial-download-resume-2026">download resume guide</a> covers what to do if the transfer breaks.</p>
+
+<h2>Plan for the next export</h2>
+<p>If you export on a schedule, keep the media off by default and only include it when you specifically need it. That one choice turns a fragile multi-hundred-megabyte job into a small, repeatable one. For handling several exports over time, see the <a href="/blog/merge-multiple-x-archives-2026">merge guide</a>.</p>
+`,
+    content: `
+<p>随着账号变老，归档也在长大。十年的推文、点赞和附件媒体，会汇成一个沉重的文件，而沉重的文件，恰恰就是那些导出或下载会失败的文件。人们很自然地问：X 是不是对归档体积有硬性上限？诚实的回答是：并没有一个公开的固定上限，但那道实际的天花板，体现在导出怎么表现上。</p>
+
+<h2>上限没有固定数字，只是个过程</h2>
+<p>X 按需生成归档。小账号几秒就好；大账号要几分钟，而任务跑得越久，超时的机会就越多。没有任何标志告诉你账号太大了；相反，请求会悄悄失败，或者下载卡住。所以限制与其说是一堵墙，不如说是管道上的一系列软失败。</p>
+
+<h2>大归档为什么会断</h2>
+<p>三件事会叠起来。第一，服务器侧生成可能在打包就绪前就超时。第二，媒体附件，尤其是视频，会让体积成倍增加，并且比纯文本更拖慢打包。第三，下载本身足够长，弱网就会把它打断。单独任何一件都还能扛，三件一起，正是大账号感觉被诅咒的原因。</p>
+
+<table>
+<thead><tr><th>因素</th><th>影响</th><th>对策</th></tr></thead>
+<tbody>
+<tr><td>生成超时</td><td>请求静默失败</td><td>错峰重试</td></tr>
+<tr><td>媒体附件</td><td>体积大、打包慢</td><td>导出时不带媒体</td></tr>
+<tr><td>长下载</td><td>弱网打断</td><td>续传或命令行</td></tr>
+</tbody>
+</table>
+
+<h2>到底多大算太大</h2>
+<p>虽然没有公开的数字，但一个实用的经验是：一旦归档超过几百 MB，生成和下载都开始变得不可靠。纯文字即使对高频发布者也仍然很小，所以体积几乎总是由媒体驱动的。如果你的账号媒体密集，就预期这次导出是那种能从错峰时机和可用续传的下载器获益的任务。把体积当作内部内容的信号：大归档就是媒体归档，而媒体归档就是隐私归档，因为图片和视频会泄漏文字永远不会泄漏的定位与上下文。因此缩小它既是技术修复，也是隐私收益。围绕体积来规划导出，别和它对抗，整个过程就会变得可预测。更小的归档也意味着之后更快、更便宜的足迹体检，让整个清理循环负担得起。</p>
+
+<h2>申请前先瘦身</h2>
+<p>最可靠的办法，是在申请之前就让归档变小。申请时如果你只需要正文和点赞，就勾掉媒体选项。更好的是，先清掉一大批旧推文和它们的媒体，再导出；得到的文件会轻得多，成功概率也高得多。这也会减少你之后要审阅的内容。</p>
+
+<h2>你依然能得到有用的画像</h2>
+<p>有人担心去掉媒体会让归档不完整。对隐私审阅来说，正文、点赞以及任何定位数据，已经能清晰勾勒出你的足迹风险。媒体对怀旧重要，对「归档暴露了你什么」这个问题则不那么重要。如果你想分析这份轻量文件，<a href="/">本机体检</a> 会在本地读取它。导出之后，我们的 <a href="/blog/x-archive-partial-download-resume-2026">下载续传指南</a> 讲了传输中断该怎么办。</p>
+
+<h2>为下一次导出做计划</h2>
+<p>如果你按节奏导出，默认就不带媒体，只在确实需要时再勾上。这一个选择，就能把一份脆弱的几百 MB 任务，变成一份轻量、可重复的任务。关于如何处置跨时间的多份导出，见 <a href="/blog/merge-multiple-x-archives-2026">合并指南</a>。</p>
+`,
+},
+{
+    slug: 'delete-tweets-by-media-type-2026',
+    title: '按媒体类型删推文：图片、视频、投票、链接分别怎么清',
+    excerpt: '清理推文时，按媒体类型分批改比一条条翻更高效。本文讲清楚图片、视频、投票、纯链接四类内容的删除思路差异，以及哪些类型在归档里最容易暴露隐私。',
+    date: '2026-11-03',
+    updatedAt: '2026-11-03',
+    author: 'Digital Footprint Health Team',
+    category: '删除实操',
+    tags: ['X/Twitter', '删除推文', '媒体类型', '隐私清理'],
+    canonical: '/blog/delete-tweets-by-media-type-2026',
+    faq: [{ q: '按媒体类型删和按时间删，哪个更好？', a: '看目标。想快速降低暴露面就按媒体类型，想抹掉某段经历就按时间。两者也可以叠加使用。', qEn: 'Is deleting by media type better than by date?', aEn: 'It depends on the goal. Media type is faster for lowering exposure; date is better for erasing a period. You can combine both.' }, { q: '哪类媒体最容易暴露隐私？', a: '带定位的图片和视频最危险，其次是有可识别背景或人脸的影像；纯文字和链接相对低。', qEn: 'Which media type exposes the most privacy?', aEn: 'Geotagged photos and videos are the riskiest, then images with recognizable backgrounds or faces. Plain text and links are lower.' }, { q: '投票类推文删了还有记录吗？', a: '线上删除后不再公开，但归档里的投票记录若已下载，仍需单独清理本地副本。', qEn: 'Does a deleted poll still leave a record?', aEn: 'Once deleted it is no longer public, but if you downloaded the archive, the poll record in it still needs local cleanup.' }, { q: '删媒体推文会连附件一起删吗？', a: '删除推文会从线上移除帖子和其媒体，但曾经同步到别处的副本（如其他平台转发）不在 X 控制范围内。', qEn: 'Does deleting a media tweet remove the attachment too?', aEn: 'Deleting the tweet removes the post and its media from X, but copies synced elsewhere are outside X control.' }],
+    titleEn: 'Delete Tweets by Media Type: How to Clear Photos, Videos, Polls, and Links',
+    excerptEn: 'When cleaning up tweets, filtering by media type is far more efficient than scrolling one by one. This article explains the different deletion logic for photos, videos, polls, and plain links, and which types in your archive expose the most privacy.',
+    categoryEn: 'Deletion Practice',
+    tagsEn: ['X/Twitter', 'delete tweets', 'media type', 'privacy'],
+    contentEn: `
+<p>Cleaning a timeline one post at a time is slow and easy to abandon. A faster mental model is to group tweets by what they contain. Photos, videos, polls, and plain links each carry a different kind of risk, and they each deserve a different deletion plan. Sort by media type first, and the work gets both faster and smarter.</p>
+
+<h2>Photos: the location trap</h2>
+<p>Photos are the most common privacy leak because a single image can carry embedded location and recognizable background. Even without geotags, a photo of your street, your office, or a friend's face can reveal more than a paragraph of text. When deleting by media type, treat photos as the top priority. In the archive, tweets.js marks media on each post, so you can pull every photo tweet into one batch and review it together.</p>
+
+<h2>Videos: heavier and stickier</h2>
+<p>Videos are heavier to store and often captured longer moments of your life, which makes them richer in accidental detail. They also tend to be re-shared, so a deleted video may still exist on other platforms. Delete the originals in your account, and remember that the archive copy is separate: clean both. If a video was geotagged, it combines the photo risk with far more context.</p>
+
+<h2>Polls: small but worth removing</h2>
+<p>Polls feel low-stakes, yet a poll you posted about a workplace, a health topic, or a local event is a quiet signal about who you are. Deleting polls is quick and removes that signal from public view. The catch is the archive: a downloaded poll record survives unless you also clear the local copy, so include polls in your archive cleanup pass.</p>
+
+<h2>Plain links and text: lower, not zero</h2>
+<p>Links and text posts are the lowest risk by media type, but they are not risk-free. A link can point to a profile, a location tag, or an old account you forgot. A text post can name a person or a place. Sort these last, and only after the media-heavy batches are done. They are the long tail that rounds out a thorough cleanup.</p>
+
+<table>
+<thead><tr><th>Type</th><th>Privacy weight</th><th>Delete order</th></tr></thead>
+<tbody>
+<tr><td>Geotagged photo or video</td><td>High</td><td>First</td></tr>
+<tr><td>Photo with faces or places</td><td>High</td><td>First</td></tr>
+<tr><td>Poll</td><td>Medium</td><td>Second</td></tr>
+<tr><td>Plain link or text</td><td>Low</td><td>Last</td></tr>
+</tbody>
+</table>
+
+<h2>Why media type beats scrolling</h2>
+<p>Sorting by media type works because risk is not evenly spread across your timeline. A handful of photos and videos carry most of the exposure, while hundreds of text posts carry little. Targeting media first means you remove the bulk of the risk in a fraction of the effort, then sweep the long text tail at leisure. This is the difference between a cleanup that finishes and one that stalls on post number forty.</p>
+
+<h2>Combine with other filters</h2>
+<p>Media type is one axis. You can stack it with a date range or a keyword filter to target a specific chapter of your life. For example, delete all photo tweets from a given year, then all polls from the same year. If you want a date-based pass instead, our <a href="/blog/delete-tweets-by-date-range-faq-2026">date-range deletion FAQ</a> covers that path. To find every media tweet in your archive quickly, run an <a href="/">on-device check</a> that lists them by type.</p>
+
+<h2>Finish the archive too</h2>
+<p>Deleting online changes what the public sees. It does not change the copy already in your downloaded archive. After the account pass, open the archive and clear the same media types there, or encrypt the archive and store it where only you can reach it. A half-done cleanup that leaves the archive intact is the most common way old posts resurface.</p>
+`,
+    content: `
+<p>一条一条翻时间线来清理，又慢又容易放弃。一个更快的心智模型，是按推文包含的内容来分组。图片、视频、投票和纯链接，各自携带不同类型的风险，也各自值得不同的删除方案。先按媒体类型分类，工作既快又聪明。</p>
+
+<h2>图片：定位陷阱</h2>
+<p>图片是最常见的隐私泄漏源，因为单张图就能带上内嵌定位和一眼可认的背景。即使没有地理标签，一张你家门口、办公室、或朋友脸庞的照片，能暴露的比一段文字还多。按媒体类型删除时，把图片列为最高优先级。在归档里，tweets.js 给每条帖子标了媒体，所以你可以把所有图片推文拉进同一批，一起审阅。</p>
+
+<h2>视频：更重也更黏</h2>
+<p>视频存储更重，常常捕捉了你生活中更长的片段，因此在不经意间包含的细节更丰富。而且视频往往被转发，所以删掉的视频可能仍存在于其他平台。先在账号里删掉原视频，并记住归档副本是独立的：两处都要清。如果视频带过定位，它就结合了图片的风险和更厚的上下文。</p>
+
+<h2>投票：微小但值得移除</h2>
+<p>投票看似无关紧要，但一条你关于职场、健康话题或本地事件的投票，是关于你是谁的安静信号。删除投票很快，也能把这个信号从公开视野移除。坑在于归档：下载下来的投票记录会留着，除非你也清理本地副本，所以把投票纳入你的归档清理一轮。</p>
+
+<h2>纯链接和文字：低，但不是零</h2>
+<p>链接和文字帖按媒体类型风险最低，但并非没有风险。一个链接可能指向某个资料页、某个定位标签，或你忘了的旧账号。一条文字帖可能点出某个人或某个地方。把这些放到最后，等媒体密集的批次都处理完。它们是需要收尾的长尾，让清理更彻底。</p>
+
+<table>
+<thead><tr><th>类型</th><th>隐私权重</th><th>删除顺序</th></tr></thead>
+<tbody>
+<tr><td>带定位的照片或视频</td><td>高</td><td>最先</td></tr>
+<tr><td>含人脸或地点的照片</td><td>高</td><td>最先</td></tr>
+<tr><td>投票</td><td>中</td><td>其次</td></tr>
+<tr><td>纯链接或文字</td><td>低</td><td>最后</td></tr>
+</tbody>
+</table>
+
+<h2>为什么按媒体类型胜过一条条翻</h2>
+<p>按媒体类型分类之所以有效，是因为风险在时间线上并不是均匀分布的。少数图片和视频承载了大部分暴露，而几百条文字帖几乎不承载。先瞄准媒体，意味着你用一小部分精力就移除了大部分风险，然后从容地扫掉长长的文字尾巴。这正是能做完的清理，和卡在第 40 条就放弃的清理之间的差别。</p>
+
+<h2>和其他筛选叠加</h2>
+<p>媒体类型是一个维度。你可以把它和日期范围或关键词筛选叠起来，瞄准你人生的某个章节。比如，先删某一年所有的图片推文，再删同一年所有的投票。如果你想走基于日期的路线，我们的 <a href="/blog/delete-tweets-by-date-range-faq-2026">按日期范围删除 FAQ</a> 讲了那条路。要快速找出归档里每条媒体推文，跑一次 <a href="/">本机体检</a>，它会按类型列出来。</p>
+
+<h2>归档也要收尾</h2>
+<p>线上删除改变的是公众能看到什么，它改变不了已经躺在你的下载归档里的副本。账号一轮清完之后，打开归档，把同样的媒体类型也清掉，或者把归档加密、存到只有你能碰的地方。只做一半、留下完整归档的清理，是旧推文重新浮出水面最常见的路子。</p>
+`,
+},
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

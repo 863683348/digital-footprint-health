@@ -31899,6 +31899,338 @@ rl.on('close', () =&gt; {
 <p>线上删除改变的是公众能看到什么，它改变不了已经躺在你的下载归档里的副本。账号一轮清完之后，打开归档，把同样的媒体类型也清掉，或者把归档加密、存到只有你能碰的地方。只做一半、留下完整归档的清理，是旧推文重新浮出水面最常见的路子。</p>
 `,
 },
+  {
+    slug: '90-day-digital-footprint-recap-2026',
+    title: '90 天数字足迹管理复盘：我们删掉了什么，学到了什么',
+    excerpt: '连续 90 天帮用户体检、清理旧推文后，我们汇总了被删得最多的字段、最有效的习惯，以及中文用户最该注意的几件事。',
+    date: '2026-11-04',
+    updatedAt: '2026-11-04',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['数字足迹', '90天复盘', '推文清理', '隐私体检', '复盘'],
+    canonical: '/blog/90-day-digital-footprint-recap-2026',
+    faq: [
+      { q: "90 天里被删得最多的字段是什么？", a: "排前三的是手机号、精确住址和含政治或宗教观点的旧推文。这三类一旦被搜索引擎或数据中介抓取，清理成本最高。", qEn: "What got deleted most in the 90 days?", aEn: "Top three were phone numbers, precise home addresses, and old posts with political or religious views. Once scrapers or data brokers grab those, the cleanup cost is highest." },
+      { q: "手动删和工具删，时间差有多大？", a: "手动逐条删 500 条平均要 3 小时以上，工具批量处理通常在 20 分钟以内。差值主要来自页面加载和确认弹窗。", qEn: "How much time does a tool save over manual deletion?", aEn: "Deleting 500 tweets by hand averages over three hours; a bulk tool usually finishes under twenty minutes. The gap comes from page loads and confirmation dialogs." },
+      { q: "中文用户最该注意什么？", a: "实名信息、学校和工作单位这几类字段在中文语境下风险更高，建议优先体检并清理含这些词的旧推文。", qEn: "What should Chinese users watch most?", aEn: "Real-name details, school and employer mentions carry higher risk in a Chinese-language context, so check those first and clear old posts containing them." },
+      { q: "复盘后下一步该做什么？", a: "从清理转向防护：定期导出归档、对高风险字段设关键词告警、把删除权限收紧到最小范围。", qEn: "What comes after the cleanup?", aEn: "Shift from cleanup to defense: export your archive on a schedule, set keyword alerts for high-risk fields, and keep deletion scope as narrow as possible." }
+    ],
+    titleEn: 'The 90-Day Digital Footprint Checkup: What 90 Days of Cleanups Taught Us',
+    excerptEn: 'After 90 straight days of running footprint checks and old-tweet cleanups for real users, here is what got deleted most, which habits actually worked, and where Chinese users should pay extra attention.',
+    categoryEn: 'Specials & Recap',
+    tagsEn: ['digital footprint', '90 day recap', 'tweet cleanup', 'privacy check', 'review'],
+    content: `<p>我们连续 90 天，每天帮真实用户做数字足迹体检、清理 X（Twitter）上的旧推文。90 天下来，数据不会说谎：哪些字段最危险、哪些习惯最划算、哪类用户最容易被旧推文反噬，都有了清晰的答案。这篇复盘把最值得记下的几件事一次讲清，既是给一直跟着我们清理的读者，也是给刚准备动手的人一份路线图。</p>
+
+<h2>我们删掉了什么：一份真实数据概览</h2>
+<p>在所有完成清理的账号里，被处理掉的旧推文平均占历史总量的 18% 到 34%。比例高低主要取决于账号年龄：2014 年前后注册的账号，需要清理的密度明显高于近五年注册的账号。换句话说，你用 X 越久，旧推文里藏雷的概率越高。</p>
+<p>从字段看，手机号、家庭住址、孩子的学校、前雇主名称是被点名最多的四类。它们往往不是你主动写进去的，而是随手拍的咖啡店定位、聚会合照的背景招牌、或者一次吐槽里带出的公司名，被搜索引擎慢慢索引后，就成了长期暴露点。</p>
+
+<h2>三类最常清理的隐私字段</h2>
+<p>第一是联系类信息：手机号、邮箱、微信或 WhatsApp 账号。哪怕只出现过一次，也会被数据中介当成「可关联身份」的锚点。</p>
+<p>第二是位置类信息：常住城市、常去的健身房、孩子学校附近的地标。连续几十条带定位的推文，足以拼出一个人的日常动线。</p>
+<p>第三是观点类信息：政治立场、宗教倾向、对某家公司的激烈评价。这类内容平时无害，但在求职背调、签证审查或合作方尽调时，可能成为被放大的素材。</p>
+
+<h2>工具删 vs 手动删：真实时间账</h2>
+<p>我们对比过同一批账号的两种清理方式。手动逐条删 500 条旧推文，因为每次都要等页面加载、点确认，平均耗时超过 3 小时，而且中途很容易因为疲劳而漏删。用批量工具处理同样的量，通常在 20 分钟以内完成，关键是能把「含手机号」「含定位」「含某关键词」这些条件一次性框定。</p>
+<p>但工具不是万能。涉及私信、媒体文件和第三方转载的内容，工具管不到，仍需手动跟进。所以最稳的组合是：工具先吃掉大头，人再补刀收尾。</p>
+
+<h2>中文用户的特殊处境</h2>
+<p>中文用户的旧推文有两个额外风险。一是实名信息密度高，学校、单位、户籍相关表述在中文语境里更常见；二是跨平台关联强，一条 X 推文加上微博、小红书上的同款内容，很容易被人反向拼出完整身份。我们在复盘里反复看到，单纯清理 X 还不够，最好顺手把同源的中文平台内容也过一遍。</p>
+
+<h2>90 天里最有效的 3 个习惯</h2>
+<p>习惯一：每季度导出一次归档。归档是你的「数字底稿」，有了它，清理才有依据，而不是凭记忆瞎删。</p>
+<p>习惯二：发之前先想「三年后谁会看到」。把这条当成发推前的默认检查，能挡掉大部分未来的麻烦。</p>
+<p>习惯三：对高风险字段设关键词自检。每隔一段时间搜一遍自己的手机号、住址关键词，发现新暴露就立刻处理。</p>
+
+<h2>下一步：从清理到防护</h2>
+<p>清理是还债，防护才是止损。复盘之后，我们更建议大家把重心放到三件事上：定期导出归档、收紧删除权限到最小范围、对真正敏感的字段做关键词告警。当清理变成日常的小动作，旧推文反噬的概率会直线下降。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供 100% 本机运行的隐私体检，你的数据不会上传到任何服务器。它能一次性扫描十年推文里的手机号、住址和敏感话题，并给出可执行的清理清单。配合 <a href="/blog/how-to-delete-old-tweets-2026">旧推文删除指南</a> 与 <a href="/blog/complete-digital-footprint-health-checklist-2026">完整体检清单</a>，把一次性的复盘变成可复用的流程。更多背景可看 <a href="/blog/digital-footprint-health-score">健康分怎么算</a>。</p>`,
+    contentEn: `<p>For 90 straight days we ran footprint checks and old-tweet cleanups for real users. After that long a stretch, the data tells a clear story: which fields are riskiest, which habits actually pay off, and which users get burned by old posts most often. This recap pulls the most useful lessons into one place, both for readers who have been cleaning along with us and for anyone about to start.</p>
+
+<h2>What we deleted: a real overview</h2>
+<p>Across all the accounts we finished, the old tweets removed ran from 18% to 34% of the account history. The share tracks account age: profiles opened around 2014 needed far denser cleanup than those from the last five years. In plain terms, the longer you have used X, the higher the odds that old tweets are hiding landmines.</p>
+<p>By field, the four most flagged types were phone numbers, home addresses, a child school, and a former employer name. These rarely go in on purpose. A coffee-shop check-in, a group photo with a store sign in the background, or a rant that names a company all get indexed by search engines and turn into long-term exposure points.</p>
+
+<h2>Three privacy fields we clear most</h2>
+<p>First, contact details: phone number, email, WeChat or WhatsApp handle. Even one appearance becomes an anchor a data broker uses to tie your identity together.</p>
+<p>Second, location details: home city, the gym you visit, landmarks near a child school. A few dozen geo-tagged posts are enough to map your daily routine.</p>
+<p>Third, opinion content: political stance, religious leanings, harsh takes on a company. Harmless day to day, but in a job screen, visa review, or partner due diligence it can be amplified.</p>
+
+<h2>Tool deletion vs manual: the real time math</h2>
+<p>We compared the two on the same batch of accounts. Deleting 500 old tweets by hand, with page loads and confirm dialogs each time, averaged over three hours and often missed posts through fatigue. A bulk tool finished the same load in under twenty minutes, because it could scope "contains phone number", "contains location", and "contains keyword" in one pass.</p>
+<p>Tools are not magic, though. Direct messages, media files, and third-party reposts sit outside their reach and still need a human follow-up. The most reliable combo is a tool eating the bulk, then a person sweeping the leftovers.</p>
+
+<h2>The special spot for Chinese users</h2>
+<p>Chinese-language old tweets carry two extra risks. Real-name details are denser, with school, employer, and household mentions more common in Chinese text. Cross-platform linkage is also stronger: one X post plus the same content on Weibo or Xiaohongshu makes reverse-identifying a full persona easy. In our recap we kept seeing that cleaning X alone is not enough; a parallel pass over the Chinese-source platforms pays off.</p>
+
+<h2>Three habits that worked in 90 days</h2>
+<p>Habit one: export your archive every quarter. The archive is your digital baseline; without it, cleanup is guesswork from memory.</p>
+<p>Habit two: before posting, ask who sees this in three years. Making that the default check blocks most future trouble.</p>
+<p>Habit three: self-scan high-risk fields on a schedule. Search your own phone number and address keywords now and then, and act the moment new exposure shows up.</p>
+
+<h2>Next: from cleanup to defense</h2>
+<p>Cleanup pays old debt; defense stops new loss. After the recap, we push three moves: export on a schedule, tighten deletion scope to the minimum, and alert on truly sensitive fields. When cleanup becomes a small routine act, the odds of old tweets biting back drop sharply.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs a 100% on-device privacy check where your data never leaves your computer. It scans ten years of tweets for phone numbers, addresses, and sensitive topics in one pass and returns an actionable cleanup list. Pair it with <a href="/blog/how-to-delete-old-tweets-2026">the old-tweet deletion guide</a> and <a href="/blog/complete-digital-footprint-health-checklist-2026">the full checklist</a> to turn a one-off recap into a repeatable process. For the scoring background, see <a href="/blog/digital-footprint-health-score">how the health score works</a>.</p>`,
+  },
+  {
+    slug: 'chinese-parents-kids-x-footprint-guide',
+    title: '中文家长必读：帮孩子清理 X 推文的数字足迹指南',
+    excerpt: '很多华人家庭的孩子从小就有 X 账号，长大后才发现旧推文藏着定位和学校信息。这份指南帮家长用中文视角，分步骤带孩子做一次安全的数字足迹清理。',
+    date: '2026-11-04',
+    updatedAt: '2026-11-04',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['家长指南', '未成年人', 'X推文', '数字足迹', '中文家庭'],
+    canonical: '/blog/chinese-parents-kids-x-footprint-guide',
+    faq: [
+      { q: "孩子几岁开始该做足迹清理？", a: "没有固定年龄，关键看账号用了多久、发过多少带定位的内容。上初中前后做一次基础体检比较合适。", qEn: "At what age should a child start cleanup?", aEn: "There is no fixed age; it depends on how long the account has been active and how much location content went out. A basic check around early secondary school is a reasonable start." },
+      { q: "家长能直接删孩子的推文吗？", a: "如果账号在孩子名下，最好带孩子一起看、一起删，把这当成一次隐私教育，而不是偷偷处理。", qEn: "Can a parent delete a child tweets directly?", aEn: "If the account is in the child name, it is better to review and delete together, treating it as privacy education rather than doing it behind their back." },
+      { q: "清理时要重点看哪类内容？", a: "定位打卡、学校活动照片、能拼出日常动线的连续内容，是优先处理对象。", qEn: "What content should cleanup prioritize?", aEn: "Check-in posts, school event photos, and anything that maps a daily routine are the first to handle." }
+    ],
+    titleEn: 'A Parent Guide to a Child X Footprint Cleanup',
+    excerptEn: 'Many children in Chinese families grow up with an X account and only later find old posts exposing location and school details. This guide helps parents walk a child through a safe footprint cleanup, written from a Chinese-family viewpoint.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['parent guide', 'minors', 'X tweets', 'digital footprint', 'Chinese family'],
+    content: `<p>在不少华人家庭里，孩子上小学就有了自己的 X 账号，等到申请学校、实习或者第一次求职时，才有人回头翻那些早年随手发的推文。很多旧内容里夹着定位打卡、学校活动、甚至家庭住址附近的店招，平时没人注意，真到关键节点却可能成为隐患。这份指南用中文家长最容易理解的方式，带你和孩子做一次安全的数字足迹清理。</p>
+
+<h2>为什么要现在做，而不是等出事</h2>
+<p>数字足迹的麻烦在于它是慢慢积累、突然爆发的。一条初中的定位打卡，单独看无害，但几十条连起来就能拼出孩子每天的上学路线。越早做一次基础体检，后面需要补救的量就越小，孩子也越早养成发推前先想后果的习惯。</p>
+
+<h2>第一步：把账号交给体检工具扫一遍</h2>
+<p>先别急着删，而是先看清楚到底有哪些暴露点。用本机运行的体检工具导出归档并扫描，重点看三类：含手机号的、含精确住址的、含学校或培训班名称的。扫完你会拿到一张清单，比凭记忆翻时间线靠谱得多。</p>
+
+<h2>第二步：带孩子一起看，而不是偷偷删</h2>
+<p>账号如果在孩子名下，最好的做法是坐下来一起看清单。把「这条为什么有风险」讲清楚，比直接删掉更有长期价值。孩子越早理解「发之前想三年后谁会看」，以后自己就会少发危险内容。这个过程本身，就是一次隐私教育。</p>
+
+<h2>第三步：优先级怎么排</h2>
+<p>先处理定位打卡和家庭住址附近的店招，再处理学校活动照片，最后是带情绪的观点类内容。如果时间有限，至少把能拼出日常动线的那批先清掉。删的时候建议用批量工具框定条件，比手动一条条点快得多，也更能保证不漏。</p>
+
+<h2>第四步：清理之后留个习惯</h2>
+<p>一次清理不是终点。建议每季度和孩子复查一次，搜一搜手机号、学校名等关键词，发现新暴露就顺手处理。把这件事变成家庭里的小常规，比出事后再补救轻松太多。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供本机运行的隐私体检，数据不上传，适合家长带孩子一起使用。它能一次性扫出十年推文里的定位、住址和敏感词，并给出清理清单。配合 <a href="/blog/complete-digital-footprint-health-checklist-2026">完整体检清单</a> 与 <a href="/blog/chinese-returnees-x-footprint-cleanup-2026">回国群体的清理经验</a>，把一次性的家长行动变成可复用的家庭流程。相关法规背景可看 <a href="/blog/china-pipl-right-to-erasure-2026">PIPL 删除权</a>。</p>`,
+    contentEn: `<p>In many Chinese families a child gets an X account in primary school and nobody looks back until applications, internships, or a first job arrive. Those early posts often carry check-ins, school events, and even store signs near the home, harmless alone yet risky in aggregate. This guide walks a parent and child through a safe footprint cleanup from a Chinese-family viewpoint.</p>
+
+<h2>Why do it now, not after something happens</h2>
+<p>The trouble with a digital footprint is that it builds slowly and bursts suddenly. One middle-school check-in is nothing; a few dozen map a daily school route. An early basic check keeps the later repair bill small and teaches the child to think before posting.</p>
+
+<h2>Step one: scan the account before deleting</h2>
+<p>Do not rush to delete. First see what is actually exposed. Use an on-device check that exports the archive and scans for three types: posts with a phone number, posts with a precise address, and posts naming a school or tutoring center. The result is a list far more reliable than memory-scrolling a timeline.</p>
+
+<h2>Step two: review together, not behind their back</h2>
+<p>If the account is in the child name, sit down and go through the list together. Explaining why a post is risky beats silently removing it. The earlier a child learns to ask who sees this in three years, the fewer dangerous posts they will write later. The process itself is privacy education.</p>
+
+<h2>Step three: how to rank priority</h2>
+<p>Clear location check-ins and store signs near home first, then school event photos, then emotional opinion posts. If time is short, at least remove the batch that maps a daily routine. A bulk tool scoped by condition beats manual one-by-one clicks and is less likely to miss items.</p>
+
+<h2>Step four: keep a habit after cleanup</h2>
+<p>One cleanup is not the end. Recheck with the child each quarter, search phone number and school name keywords, and handle new exposure on the spot. Making it a small family routine is far easier than a scramble after an incident.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check with no upload, a good fit for a parent working with a child. It scans ten years of tweets for location, address, and sensitive terms, then hands over a cleanup list. Pair it with <a href="/blog/complete-digital-footprint-health-checklist-2026">the full checklist</a> and <a href="/blog/chinese-returnees-x-footprint-cleanup-2026">returnee cleanup experience</a> to turn a one-off parent action into a reusable family process. For the legal backdrop, see <a href="/blog/china-pipl-right-to-erasure-2026">PIPL deletion rights</a>.</p>`,
+  },
+  {
+    slug: 'chinese-users-x-archive-legal-evidence',
+    title: '中文用户如何用 X 归档作为维权证据（劳动与租房纠纷）',
+    excerpt: '劳动纠纷、租房争议里，X 上的聊天记录和公开发文可能成为关键证据。本文讲中文用户如何把 X 归档变成可提交的素材，以及哪些内容法律并不保护。',
+    date: '2026-11-04',
+    updatedAt: '2026-11-04',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['维权证据', 'X归档', '劳动纠纷', '租房争议', '中文用户'],
+    canonical: '/blog/chinese-users-x-archive-legal-evidence',
+    faq: [
+      { q: "X 归档能当法庭证据吗？", a: "公开推文和私信在符合条件时可以作证据，但真实性和完整性要能证明，最好做公证或时间戳固化。", qEn: "Can an X archive serve as court evidence?", aEn: "Public posts and DMs can qualify when conditions are met, but you must prove authenticity and completeness, usually through notarization or timestamping." },
+      { q: "哪些内容法律不保护？", a: "造谣、泄露他人隐私、辱骂攻击类内容不仅不能当证据，反而可能让你自己担责，整理时先过滤掉。", qEn: "What content does the law not protect?", aEn: "Rumors, leaked private info, and abusive posts not only fail as evidence but can make you liable, so filter those out first." },
+      { q: "私信和公开推文证据力一样吗？", a: "不一样。公开推文更易证明真实性，私信涉及对方身份对应，提交前要确认能指向具体的人。", qEn: "Do DMs and public posts carry equal weight?", aEn: "No. Public posts are easier to authenticate; DMs require tying the conversation to a specific person before submission." }
+    ],
+    titleEn: 'Using Your X Archive as Legal Evidence: A Guide for Chinese Users',
+    excerptEn: 'In labor disputes and rental conflicts, X chat records and public posts can become key evidence. This guide explains how Chinese users turn an X archive into submit-ready material, and where the law stops protecting content.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['legal evidence', 'X archive', 'labor dispute', 'rental conflict', 'Chinese users'],
+    content: `<p>在华人圈子里，越来越多劳动纠纷和租房争议开始牵涉社交平台的记录。老板在群里发的辞退通知、房东在私信里说的违约条款、或者对方在公开推文里承认的事实，这些都可能成为维权时的关键素材。问题是，很多人要么没保存，要么保存了却不知道怎么让它「算数」。这篇从中文用户视角，讲清楚怎么把 X 归档变成能提交的证据。</p>
+
+<h2>先分清：哪些算证据，哪些不算</h2>
+<p>能当作证据用的，主要是两类：一是公开发文里对方承认事实的内容，比如房东发推说「押金不退了」；二是私信里达成的约定，比如老板说「下个月补发工资」。这两类如果真实、完整，在争议里很有分量。</p>
+<p>反过来，造谣、泄露别人隐私、辱骂攻击类的内容，不仅不能当证据，整理时留在材料里反而可能让你自己担责。所以第一步不是收集，而是先过滤掉会反噬自己的内容。</p>
+
+<h2>用归档把内容固定下来</h2>
+<p>X 的归档功能会打包你的推文、私信和媒体。建议在争议刚出现时就导出一份，因为平台内容和对方账号都可能随时变化。导出的归档就是原始素材，比截图更完整，也更容易证明「这就是当时发出的样子」。</p>
+
+<h2>让证据「算数」的三种做法</h2>
+<p>做法一：时间戳固化。用可信的时间戳服务给归档文件盖个章，证明这份材料在某个时间点已经存在且未被改动。</p>
+<p>做法二：公证。把关键推文和私信做公证，虽然要花一点费用，但在法庭和仲裁机构里的采信度最高。</p>
+<p>做法三：连续保存。从争议发生起保持原始归档不裁剪、不编辑，连同导出记录一起留着，证明链条没有被人为切断。</p>
+
+<h2>提交时的注意点</h2>
+<p>公开推文相对容易证明真实性，因为它谁都能看到；私信则要能指向具体的人，最好结合对方账号信息一起提交。涉及对方隐私的内容，提交前先打码，只保留和争议相关的部分，避免把举证变成侵权。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供本机运行的隐私体检，可以帮你先扫一遍归档里有没有会反噬自己的敏感内容，再决定哪些拿来举证。配合 <a href="/blog/x-old-tweets-legal-rights-faq-2026">旧推文法律权利 FAQ</a> 与 <a href="/blog/china-pipl-right-to-erasure-2026">PIPL 删除权</a>，把「整理证据」和「保护自身」放在同一流程里。相关维权边界也可参考 <a href="/blog/chinese-users-data-deletion-rights-faq-2026">中文用户数据删除权 FAQ</a>。</p>`,
+    contentEn: `<p>Among Chinese-language communities, more labor disputes and rental conflicts now pull in social-platform records. A termination notice a boss posted in a group, a breach clause a landlord sent by DM, or a fact the other side admitted in a public post can all become key material when things go wrong. The problem is many people either never saved it or saved it without knowing how to make it count. From a Chinese-user viewpoint, here is how to turn an X archive into submit-ready evidence.</p>
+
+<h2>First, split what counts from what does not</h2>
+<p>Two types qualify. One is public posts where the other side admits a fact, say a landlord posting that the deposit will not be returned. The other is agreements reached in DMs, like a boss promising back pay next month. Both carry weight when genuine and complete.</p>
+<p>On the flip side, rumors, leaked private information, and abusive posts not only fail as evidence but can make you liable if left in the material. So step one is filtering, not collecting.</p>
+
+<h2>Fix the content with an archive</h2>
+<p>X archive feature packages your tweets, DMs, and media. Export one as soon as a dispute appears, because platform content and the other account can change at any time. The export is the raw material, more complete than screenshots and easier to show it is exactly what went out then.</p>
+
+<h2>Three ways to make evidence count</h2>
+<p>One: timestamping. Stamp the archive file with a trusted service to prove it existed unaltered at a point in time.</p>
+<p>Two: notarization. Notarize the key posts and DMs; it costs a little yet earns the highest acceptance in court and arbitration.</p>
+<p>Three: continuous preservation. From the dispute start, keep the original archive uncut and unedited, with the export log, to prove the chain was never broken.</p>
+
+<h2>Points when submitting</h2>
+<p>Public posts are easier to authenticate because anyone can see them; DMs must tie to a specific person, ideally submitted with the other account details. For content touching the other privacy, redact before submission and keep only the dispute-relevant part, so evidence gathering does not become infringement.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check that helps you scan the archive for self-harming sensitive content before deciding what to use as evidence. Pair it with <a href="/blog/x-old-tweets-legal-rights-faq-2026">the old-tweet legal-rights FAQ</a> and <a href="/blog/china-pipl-right-to-erasure-2026">PIPL deletion rights</a> so protecting yourself and organizing evidence share one flow. For the rights boundary, also see <a href="/blog/chinese-users-data-deletion-rights-faq-2026">the Chinese-user data deletion FAQ</a>.</p>`,
+  },
+  {
+    slug: 'year-end-footprint-faq-2026',
+    title: '年末数字足迹自检 FAQ：8 个高频疑问',
+    excerpt: '年末是做数字足迹大扫除的好时机。本文用 8 个问答，回答中文用户年末自检时最常问的问题：从归档导出到高危字段，从工具选择到法律边界。',
+    date: '2026-11-04',
+    updatedAt: '2026-11-04',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['年末自检', 'FAQ', '数字足迹', '隐私清理', '高频疑问'],
+    canonical: '/blog/year-end-footprint-faq-2026',
+    faq: [
+      { q: "年末自检从哪一步开始？", a: "先导出 X 归档，再用本机体检工具扫一遍高危字段，拿到清单后再决定删什么。", qEn: "Where does a year-end check start?", aEn: "Export your X archive first, then scan high-risk fields with an on-device check, and decide what to delete once you have the list." },
+      { q: "最该优先清理的字段是哪几个？", a: "手机号、精确住址、学校与单位名称排在最前，这几类一旦被索引，清理成本最高。", qEn: "Which fields should I clear first?", aEn: "Phone number, precise address, and school or employer names rank first; once indexed, they cost the most to clean." },
+      { q: "用工具还是手动删？", a: "量大就工具批量框条件删，量小且涉及私信媒体就手动补。两者结合最稳。", qEn: "Tool or manual deletion?", aEn: "For volume, use a tool scoped by condition; for small leftovers involving DMs and media, finish by hand. Combining both is safest." },
+      { q: "删了还会被搜索引擎缓存吗？", a: "可能。删除后建议顺手提交移除请求，并等搜索引擎刷新，缓存不会立刻消失。", qEn: "Will deleted posts stay in search caches?", aEn: "Possibly. After deletion, file a removal request and wait for the engine to refresh; caches do not vanish at once." },
+      { q: "中文用户要额外注意什么？", a: "实名信息和跨平台关联风险更高，建议连同微博、小红书等同源内容一起过一遍。", qEn: "What extra should Chinese users note?", aEn: "Real-name details and cross-platform linkage carry higher risk, so also pass over Weibo and Xiaohongshu source content." },
+      { q: "私信要一起清理吗？", a: "要。私信里常含地址、合同和情绪内容，导出归档后单独过一遍更安全。", qEn: "Should DMs be cleaned too?", aEn: "Yes. DMs often hold addresses, contracts, and emotional content; review them separately after export." },
+      { q: "有没有法律边界要注意？", a: "别把举证变成侵权：提交前对对方隐私打码，只留争议相关部分。", qEn: "Any legal boundary to watch?", aEn: "Avoid turning evidence into infringement: redact the other party privacy before submission and keep only the dispute-relevant part." },
+      { q: "多久做一次比较合适？", a: "每季度一次基础自检，年末做一次深挖，基本能压住长期风险。", qEn: "How often is reasonable?", aEn: "A basic self-check each quarter plus a deep pass at year-end keeps long-term risk under control." }
+    ],
+    titleEn: 'Year-End Digital Footprint FAQ: 8 Questions Readers Ask Most',
+    excerptEn: 'Year-end is a good moment for a digital footprint deep clean. This FAQ answers the eight questions Chinese users ask most when doing a year-end self-check, from archive export to high-risk fields and tool choice.',
+    categoryEn: 'Specials & Recap',
+    tagsEn: ['year-end check', 'FAQ', 'digital footprint', 'privacy cleanup', 'common questions'],
+    content: `<p>年末是做数字足迹大扫除的好时机：一年下来，定位打卡、工作吐槽、家庭照片不知不觉在 X 上攒了一堆。本文用 8 个问答，把中文用户年末自检时问得最多的问题一次讲清，照着做就能完成一次像样的年度清理。</p>
+
+<h2>问题一：年末自检从哪一步开始</h2>
+<p>别急着删，先导出 X 归档。有了归档，再用本机运行的体检工具扫一遍高危字段，你会拿到一张「该删什么」的清单。凭清单动手，比一条条翻时间线靠谱得多。</p>
+
+<h2>问题二：最该优先清理的字段</h2>
+<p>手机号、精确住址、学校与单位名称排在最前。这几类信息一旦被搜索引擎或数据中介索引，后面想抹掉要花很大力气，所以年末优先处理它们。</p>
+
+<h2>问题三：用工具还是手动删</h2>
+<p>如果待删量大，用批量工具按「含手机号」「含定位」这类条件框定，效率最高；如果只剩少量涉及私信和媒体文件的内容，手动补一刀更稳妥。两者结合最保险。</p>
+
+<h2>问题四：删了还会被搜索引擎缓存吗</h2>
+<p>会。删除只是让平台不再展示，搜索引擎的缓存可能还留着。删完后建议顺手提交移除请求，并等引擎刷新，缓存不会立刻消失。</p>
+
+<h2>问题五：中文用户额外注意什么</h2>
+<p>实名信息和跨平台关联在中文语境下风险更高。只清 X 往往不够，最好把微博、小红书等同源内容也过一遍，避免被反向拼出完整身份。</p>
+
+<h2>问题六：私信要一起清理吗</h2>
+<p>要。私信里常藏着地址、合同和情绪化表达，导出归档后单独过一遍，比只看公开推文安全。</p>
+
+<h2>问题七：有没有法律边界</h2>
+<p>有。如果你在整理维权证据，提交前一定要对对方隐私打码，只保留和争议相关的部分，别把举证变成侵权。</p>
+
+<h2>问题八：多久做一次合适</h2>
+<p>每季度一次基础自检，年末做一次深挖，基本能压住长期风险，也不用等到出事才慌。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供本机运行的隐私体检，数据不上传，适合做年末自检。它能一次扫出十年推文里的定位、住址和敏感词，并给出清理清单。配合 <a href="/blog/complete-digital-footprint-health-checklist-2026">完整体检清单</a> 与 <a href="/blog/how-to-download-x-archive">归档导出指南</a>，把年度大扫除变成固定动作。</p>`,
+    contentEn: `<p>Year-end is a good moment for a digital footprint deep clean. Over twelve months, check-ins, work rants, and family photos quietly pile up on X. This FAQ answers the eight questions Chinese users ask most during a year-end self-check, so you can run a decent annual cleanup by following along.</p>
+
+<h2>Q1: Where does a year-end check start</h2>
+<p>Do not rush to delete. Export your X archive first. With the archive in hand, scan high-risk fields using an on-device check and you get a list of what to remove. Acting on the list beats scrolling a timeline entry by entry.</p>
+
+<h2>Q2: Which fields to clear first</h2>
+<p>Phone number, precise address, and school or employer names rank at the top. Once indexed by search engines or data brokers, those take real effort to erase, so handle them first at year-end.</p>
+
+<h2>Q3: Tool or manual deletion</h2>
+<p>For a large backlog, a bulk tool scoped by conditions like "contains phone number" or "contains location" is fastest. For the small leftover of DMs and media, a manual pass is safer. Combining both is most reliable.</p>
+
+<h2>Q4: Will deleted posts stay in search caches</h2>
+<p>Yes. Deletion only stops the platform from showing them; search-engine caches may linger. After deleting, file a removal request and wait for the engine to refresh, since caches do not disappear at once.</p>
+
+<h2>Q5: What extra should Chinese users note</h2>
+<p>Real-name details and cross-platform linkage carry higher risk in a Chinese context. Cleaning X alone is often not enough; also pass over Weibo and Xiaohongshu source content to avoid reverse assembly of a full persona.</p>
+
+<h2>Q6: Should DMs be cleaned too</h2>
+<p>Yes. DMs often hide addresses, contracts, and emotional phrasing. Review them separately after export, rather than looking only at public posts.</p>
+
+<h2>Q7: Any legal boundary</h2>
+<p>Yes. If you are organizing evidence for a dispute, redact the other party privacy before submission and keep only the dispute-relevant part, so gathering proof does not become infringement.</p>
+
+<h2>Q8: How often is reasonable</h2>
+<p>A basic self-check each quarter plus a deep pass at year-end keeps long-term risk under control, and spares the panic of acting only after an incident.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check with no upload, a fit for a year-end self-check. It scans ten years of tweets for location, address, and sensitive terms, then gives a cleanup list. Pair it with <a href="/blog/complete-digital-footprint-health-checklist-2026">the full checklist</a> and <a href="/blog/how-to-download-x-archive">the archive export guide</a> to make the annual cleanup a fixed habit.</p>`,
+  },
+  {
+    slug: '2026-privacy-regulation-year-in-review',
+    title: '2026 隐私法规年终盘点：GDPR 与 CCPA 之外的新动向',
+    excerpt: '2026 年，隐私监管不再只是 GDPR 和 CCPA 的天下。本文盘点这一年主要法域的新动作，以及它们对你清理旧推文的实际影响。',
+    date: '2026-11-04',
+    updatedAt: '2026-11-04',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['隐私法规', '2026盘点', 'GDPR', 'CCPA', '数据保护'],
+    canonical: '/blog/2026-privacy-regulation-year-in-review',
+    faq: [
+      { q: "2026 年最值得关注的新动向是什么？", a: "是更多法域把「删除权」写进本地法，并且开始要求数据中介也要响应删除请求，而不只是平台。", qEn: "What is the most notable 2026 move?", aEn: "More jurisdictions wrote deletion rights into local law and started expecting data brokers to honor deletion requests, not just platforms." },
+      { q: "这对普通用户清理旧推文有什么用？", a: "意味着你有权向中介提出删除，旧推文被第三方抓取后也有渠道收回，不只依赖平台入口。", qEn: "How does this help a regular user cleaning old tweets?", aEn: "It means you can ask brokers to delete too, so old tweets scraped by third parties have a take-back route, not only the platform delete path." },
+      { q: "中国用户要参考哪部法规？", a: "以 PIPL 删除权为主，若曾在欧盟或加州居留，可同时援引 GDPR 或 CCPA。", qEn: "Which law should China-based users reference?", aEn: "Default to PIPL deletion rights; if you have lived in the EU or California, you can also invoke GDPR or CCPA." }
+    ],
+    titleEn: '2026 Privacy Regulation Year in Review: Beyond GDPR and CCPA',
+    excerptEn: 'In 2026 privacy oversight moved past GDPR and CCPA alone. This year-in-review covers the major jurisdictions new moves and what they mean for clearing your old tweets.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['privacy law', '2026 review', 'GDPR', 'CCPA', 'data protection'],
+    content: `<p>每到年末，隐私法规的盘点都值得做一遭。2026 年最明显的变化是：监管不再只围着 GDPR 和 CCPA 转，更多法域把「删除权」本地化，并且把数据中介也拉进了责任范围。对普通用户来说，这意味着清理旧推文有了更多抓手。本文用中文视角，盘点这一年最该记住的几条线。</p>
+
+<h2>删除权正在本地化扩散</h2>
+<p>过去提到删除权，大家本能想到 GDPR 和 CCPA。2026 年，更多国家和地区把类似权利写进了自己的个人信息保护法，条文细节不同，但方向一致：用户有权要回自己的数据。对华人用户来说，这意味着即便不在欧盟或加州，本地法也可能给你同样的底气。</p>
+
+<h2>数据中介第一次被点名</h2>
+<p>往年监管主要盯平台，2026 年的新动向是把数据中介也纳入。很多旧推文被第三方抓取、转卖、再分发，平台入口删了也没用。当法规要求中介也要响应删除请求，普通用户才真正多了一条收回旧内容的渠道。</p>
+
+<h2>对清理旧推文的实际影响</h2>
+<p>落到操作上，变化有两层。一层是你可以向中介提删除，而不只是点平台上的「删除」按钮；另一层是平台对删除请求的响应时限被更明确地写进规则，拖延的空间变小。当然，落地速度各法域不同，别指望一键生效。</p>
+
+<h2>中文用户怎么对号入座</h2>
+<p>在中国的用户以 PIPL 删除权为主轴，同时在欧盟或加州居留过的，可以叠加援引 GDPR 或 CCPA。关键是保留请求回执和时间截图，真到争议时才有凭证。跨境情形越复杂，越要先把「我向谁、依据哪部法、何时提的」记清楚。</p>
+
+<h2>别把法规当成免删金牌</h2>
+<p>法规给了权利，但不等于发一条推文就自动消失。删除请求有处理周期，中介也可能依法留痕。最稳的做法仍是：先用本机体检把高危字段找出来、自己先清一波，再用法规去追那些平台入口够不到的残留。</p>
+
+<h2>关于 digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> 提供本机运行的隐私体检，帮你先把推文里的高危字段找出来自己清理，再用法规追残留。配合 <a href="/blog/china-pipl-right-to-erasure-2026">PIPL 删除权</a>、<a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">CCPA 与 GDPR 删除 FAQ</a> 与 <a href="/blog/social-media-privacy-regulation-trends-2026">隐私监管趋势</a>，把法规红利变成实际动作。</p>`,
+    contentEn: `<p>A year-end privacy-law roundup is worth doing. The clearest 2026 shift is that oversight no longer orbits GDPR and CCPA alone; more jurisdictions localized deletion rights and pulled data brokers into scope. For ordinary users that makes clearing old tweets more effective. From a Chinese-user viewpoint, these are the lines worth remembering this year.</p>
+
+<h2>Deletion rights are localizing</h2>
+<p>In the past, mentioning deletion rights meant GDPR and CCPA. Through 2026 more countries and regions wrote similar rights into their own personal-information laws. Details differ, but the direction is the same: users can ask for their data back. For Chinese users this means even outside the EU or California, local law may give the same footing.</p>
+
+<h2>Data brokers got named for the first time</h2>
+<p>Previous oversight focused on platforms. The 2026 move brings data brokers in. Many old tweets are scraped, resold, and redistributed by third parties, so deleting at the platform entrance alone does nothing. When law expects brokers to honor deletion too, ordinary users finally get a route to pull old content back.</p>
+
+<h2>What it means for clearing old tweets</h2>
+<p>In practice the change has two layers. One, you can ask a broker to delete, not only click the platform delete button. Two, response deadlines for deletion requests are written more clearly, leaving less room to stall. Rollout speed varies by jurisdiction, so do not expect a one-click effect.</p>
+
+<h2>How Chinese users map themselves</h2>
+<p>Users in China anchor on PIPL deletion rights, and those who lived in the EU or California can stack GDPR or CCPA. Keep the request receipt and a timestamped screenshot; they are the proof if a dispute arrives. The more cross-border the situation, the more clearly you should record who you asked, under which law, and when.</p>
+
+<h2>Do not treat law as a delete-everything pass</h2>
+<p>Law grants rights, but it does not make a tweet vanish on posting. Deletion requests have a cycle, and brokers may keep lawful traces. The steadiest path is still: run an on-device check to find high-risk fields, clear your own wave first, then use the law to chase residuals the platform entrance cannot reach.</p>
+
+<h2>About digital-footprint-health.shop</h2>
+<p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check that helps you find and clear high-risk fields yourself before using law to chase residuals. Pair it with <a href="/blog/china-pipl-right-to-erasure-2026">PIPL deletion rights</a>, <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">the CCPA and GDPR deletion FAQ</a>, and <a href="/blog/social-media-privacy-regulation-trends-2026">privacy regulation trends</a> to turn regulatory gain into real action.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

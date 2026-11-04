@@ -32231,6 +32231,486 @@ rl.on('close', () =&gt; {
 <h2>About digital-footprint-health.shop</h2>
 <p><a href="/">digital-footprint-health.shop</a> runs an on-device privacy check that helps you find and clear high-risk fields yourself before using law to chase residuals. Pair it with <a href="/blog/china-pipl-right-to-erasure-2026">PIPL deletion rights</a>, <a href="/blog/ccpa-gdpr-deletion-rights-faq-2026">the CCPA and GDPR deletion FAQ</a>, and <a href="/blog/social-media-privacy-regulation-trends-2026">privacy regulation trends</a> to turn regulatory gain into real action.</p>`,
   },
+  {
+    slug: "identity-theft-risk-old-tweets-2026",
+    title: "旧推文如何成为身份盗用的拼图：攻击者实际在找什么",
+    excerpt: "你十年前的旧推文可能正在被拼凑成你的身份。本文拆解身份盗用者如何从归档里提取姓名、定位、家庭信息，并给出一套能落地的清理流程。",
+    date: "2026-11-05",
+    updatedAt: "2026-11-05",
+    author: "Digital Footprint Health Team",
+    category: "风险场景",
+    tags: ["X/Twitter", "身份盗用", "数字足迹", "隐私保护", "数据经纪商"],
+    canonical: "/blog/identity-theft-risk-old-tweets-2026",
+    faq: [
+      { q: "旧推文真的会被用来盗用身份吗？", a: "会，但通常是多条低敏信息交叉拼凑，单条泄露很少单独造成问题。归档被抓取后，姓名、公司、家庭、定位会被自动聚合成档案。", qEn: "Can old tweets really be used for identity theft?", aEn: "Yes, but usually through crossing several low-sensitivity pieces rather than one leak. Once archives are scraped, name, employer, family, and location get aggregated into a profile." },
+      { q: "删掉推文就安全了吗？", a: "不完全。你删除的是自己时间线上的可见内容，搜索引擎缓存和第三方存档可能仍有副本，所以需要周期性体检加对经纪商发删除请求。", qEn: "Am I safe after deleting tweets?", aEn: "Not entirely. You remove what is visible on your timeline, but search caches and third-party archives may keep copies, so pair periodic checks with erasure requests to brokers." },
+      { q: "哪些旧推文最该先删？", a: "含证件照片、联系方式、家庭信息和常驻定位的高敏内容优先，尤其是能拼出安全问题的片段。", qEn: "Which old tweets should I delete first?", aEn: "Prioritize high-risk content with ID photos, contact info, family details, and recurring locations, especially fragments that could answer security questions." },
+      { q: "数据经纪商是什么，和我有关吗？", a: "它们是定期抓取并出售公开社交数据的公司，你删除原帖后它们可能仍保留副本，所以清理要包括向它们发删除请求。", qEn: "What are data brokers, and why do they matter to me?", aEn: "They are companies that scrape and resell public social data on a schedule. Even after you delete the original, they may keep copies, so cleanup should include erasure requests to them." },
+      { q: "多久做一次数字足迹体检？", a: "建议每 3 到 6 个月一次，因为新的抓取和发推会持续改变你的暴露面。", qEn: "How often should I run a footprint check?", aEn: "Every three to six months is a good rhythm, because new scraping and new posts keep changing your exposure." }
+    ],
+    titleEn: "How Old Tweets Fuel Identity Theft: What Attackers Actually Look For",
+    excerptEn: "Your old tweets may be quietly rebuilt into your identity. This guide breaks down what identity thieves extract from archives: name, location, family details, and a cleanup workflow you can follow.",
+    categoryEn: "Risk Scenarios",
+    tagsEn: ["X/Twitter", "identity theft", "digital footprint", "privacy", "data brokers"],
+    content: `<p>你十年前随手发的一条「今天入职新公司啦」配工位照，可能正在被陌生人拼凑成你的完整身份。身份盗用很少靠一次大规模泄露完成，更多时候是从公开信息里一点点攒出来的，而你的旧推文，是最容易被忽略、也最容易获取的一块拼图。</p>
+
+<h2>为什么旧推文会成为身份盗用的原料</h2>
+<p>大多数人的账号安全意识集中在密码和两步验证上，却很少有人回头看自己十年前发过什么。问题在于：你当年觉得无害的内容，放到今天的信息环境里，可能刚好补上了攻击者缺的那一块。</p>
+<ul>
+  <li><strong>身份锚点</strong>：真实姓名、母校、入职公司、出生城市，单独看无关紧要，组合起来就是一份简历。</li>
+  <li><strong>关系网络</strong>：你 @ 过谁、和谁互动，勾勒出你的同事、家人、客户名单。</li>
+  <li><strong>行为轨迹</strong>：打卡、出差、周末去向，能推断出你的住址和工作节奏。</li>
+</ul>
+
+<h2>攻击者实际在旧归档里找什么</h2>
+<p>身份盗用者通常不会逐条读你的推文。他们用脚本批量抓取归档，再按关键词过滤出高价值片段。</p>
+<table>
+  <thead><tr><th>线索类型</th><th>常见出现形式</th><th>可被用于</th></tr></thead>
+  <tbody>
+    <tr><td>证件照片</td><td>工牌、准考证、登机牌</td><td>伪造身份、社工话术</td></tr>
+    <tr><td>联系方式</td><td>留给他人的电话、邮箱</td><td>钓鱼、骚扰</td></tr>
+    <tr><td>家庭信息</td><td>孩子学校、宠物名、配偶</td><td>安全问题破解</td></tr>
+    <tr><td>位置</td><td>常去咖啡馆、通勤车站</td><td>线下接触、跟踪</td></tr>
+  </tbody>
+</table>
+
+<h2>三组数据如何拼出「你」</h2>
+<p>身份盗用真正的危险来自多条低敏感信息的交叉，单条推文往往并不起眼。一个真实常见的组合：一条「终于拿到驾照」的推文给出出生年月线索，一条「母校校庆」给出教育背景，一条「搬新家啦」的窗外照片暴露了小区外观。三者单独无害，合起来足以通过不少平台的找回密码安全问题。</p>
+<p>很多人在安全问题答案上的保护意识远低于对密码的保护。你 2014 年写下的「第一只宠物叫什么」，到现在可能仍然是银行或邮箱的备用验证问题，而答案就躺在某条旧推文里。这类信息一旦被聚合，攻击者甚至能冒充你致电运营商办理补卡，进而接管手机号。</p>
+
+<h2>为什么十年前的推文现在更危险</h2>
+<p>过去攻击者手动拼凑身份成本高、规模小。今天的大语言模型可以从海量公开文本里自动抽取实体并关联：你的名字、公司、家人、常去地点会被自动聚合成档案，再喂给钓鱼或社工脚本。这意味着单条「无害」旧推文的价值被放大了，模型不需要你发过完整简历，只要足够多的碎片就能推断轮廓。</p>
+<p>2026 年的身份盗用防护，因此要从清理旧公开内容开始，等账号真的出事再补救往往太晚。</p>
+
+<h2>旧推文被挖掘的典型场景</h2>
+<ul>
+  <li><strong>求职背景调查</strong>：HR 或第三方背调公司会搜候选人的历史发言，一条偏激旧帖可能直接影响录用。</li>
+  <li><strong>金融风控</strong>：部分机构在授信或反欺诈环节会检索申请人的公开社交画像。</li>
+  <li><strong>定向诈骗</strong>：骗子用你的旧动态伪造「熟人」语境，降低受害者的戒备。</li>
+</ul>
+
+<h2>数据经纪商让事情更复杂</h2>
+<p>你的旧推文被删除，不代表它真的消失。数据经纪商会定期抓取并打包出售公开社交数据，很多第三方存档站点在你删除后仍保留副本。只靠手动删推文不够，你还得周期性地做数字足迹体检，看看哪里还有残留。</p>
+<p>想从体检入手，可以先看我们的<a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>，了解本机扫描如何覆盖你全部历史推文。</p>
+
+<h2>给高曝光人群的特殊提醒</h2>
+<p>求职者、自由职业者、公众人物和跨境从业者，旧推文的暴露成本更高。一次看似随意的「出差城市加酒店」组合，可能成为定向攻击的入口。这类人群建议把复检频率提高到每季度一次，并在每次重大职业变动后补做一次。</p>
+
+<h2>一套能落地的清理流程</h2>
+<ol>
+  <li>下载并解析你的 X 数据归档，完整历史不限于最近 3,200 条。</li>
+  <li>用体检工具扫描手机号、邮箱、住址、定位和教育、雇主信息。</li>
+  <li>按风险优先级批量删除高敏感推文，保留低风险内容。</li>
+  <li>对无法删除的第三方存档，走 GDPR 或 CCPA 删除请求，详见<a href="/blog/gdpr-vs-ccpa-tweet-deletion-2026">GDPR 与 CCPA 删除权对比</a>。</li>
+  <li>每 3 到 6 个月复检一次，因为新的抓取会不断发生。</li>
+</ol>
+
+<h2>常见误区：删了就没事</h2>
+<p>很多人以为点完删除就万事大吉。但公开社交平台的删除是分层的：你删的是自己时间线上的可见内容，搜索引擎的缓存、第三方存档、别人转发的截图都不在你控制范围内。真正降低风险的做法是体检找出高敏点、批量删除、对经纪商发删除请求这三件事一起做，仅做其中一件效果有限。</p>
+
+<h2>怀疑身份被冒用时怎么办</h2>
+<p>如果你发现有人用你的旧信息注册账号或发起钓鱼，第一步是冻结相关平台并启用登录告警，第二步收集截图证据，第三步向平台和必要时向监管机构举报。保留一份你已删除高风险推文的记录，也能在纠纷中证明你尽到了注意义务。</p>
+<p>中文用户在跨境场景下还要留意存档的法律取证价值，可参考我们的<a href="/blog/chinese-users-x-archive-legal-evidence">中文用户 X 归档的法律证据指南</a>。</p>
+
+<p>数字足迹管理要当成周期性体检加按需删除的习惯，靠一次性清理撑不住长期。从今天开始，花十分钟看看十年前的自己留下了什么。回到 <a href="/">digital-footprint-health.shop</a> 免费做一次本机体检。</p>`,
+    contentEn: `<p>That offhand tweet you posted ten years ago, the one with a "first day at the new job" photo and your desk in the background, may be quietly helping a stranger rebuild your identity. Identity theft rarely comes from one big breach. More often it is assembled piece by piece from public information, and your old tweets are the easiest, most overlooked chunk of that puzzle.</p>
+
+<h2>Why old tweets feed identity theft</h2>
+<p>Most people focus their account security on passwords and two-factor auth, and almost nobody looks back at what they posted a decade ago. The problem is that what felt harmless back then can fill exactly the gap an attacker is missing today.</p>
+<ul>
+  <li><strong>Identity anchors</strong>: your real name, school, employer, and birth city seem trivial alone, but together they form a resume.</li>
+  <li><strong>Relationship graph</strong>: who you mentioned and interacted with maps out coworkers, family, and clients.</li>
+  <li><strong>Behavioral trail</strong>: check-ins, trips, and weekend spots reveal your home and work rhythm.</li>
+</ul>
+
+<h2>What attackers actually scan for in an old archive</h2>
+<p>Identity thieves rarely read your tweets one by one. They script bulk downloads of archives and filter for high-value fragments by keyword.</p>
+<table>
+  <thead><tr><th>Signal type</th><th>Common form</th><th>Can be used for</th></tr></thead>
+  <tbody>
+    <tr><td>ID photos</td><td>work badge, exam pass, boarding pass</td><td>fake identity, social engineering</td></tr>
+    <tr><td>Contact info</td><td>phone or email left for someone</td><td>phishing, harassment</td></tr>
+    <tr><td>Family details</td><td>child's school, pet name, spouse</td><td>security-question bypass</td></tr>
+    <tr><td>Location</td><td>favorite cafe, commute station</td><td>offline contact, stalking</td></tr>
+  </tbody>
+</table>
+
+<h2>How three data points rebuild "you"</h2>
+<p>The real danger is not one tweet, it is the crossing of several low-sensitivity ones. A common real combination: a "finally got my license" tweet hints at your birth year, an "alma mater reunion" post gives education history, and a "moved to a new place" photo with the window view exposes the neighborhood. Each is harmless alone, yet together they can clear the security questions on more than a few platforms.</p>
+<p>Worse, people protect their security-question answers far less carefully than their passwords. The "name of your first pet" you wrote in 2014 may still be a backup verification question for your bank or email, and the answer is sitting in an old tweet. Once aggregated, this information lets an attacker impersonate you on a support call and take over your phone number.</p>
+
+<h2>Why a ten-year-old tweet is more dangerous now</h2>
+<p>In the past, hand-assembling an identity was expensive and small-scale. Today, large language models pull entities out of huge public text corpora and link them automatically: your name, employer, family, and frequent locations get aggregated into a profile that feeds phishing or social-engineering scripts. A single "harmless" old tweet gains value because the model does not need a full resume from you, just enough fragments to infer the outline.</p>
+<p>That is why identity-theft defense in 2026 starts with cleaning up old public content rather than waiting for an account to be compromised.</p>
+
+<h2>Typical situations where old tweets get mined</h2>
+<ul>
+  <li><strong>Job background checks</strong>: recruiters or third-party screeners search a candidate's history, and one heated old post can affect hiring.</li>
+  <li><strong>Financial risk control</strong>: some institutions search an applicant's public social profile during credit or fraud review.</li>
+  <li><strong>Targeted scams</strong>: fraudsters use your old activity to fake a "familiar" context and lower the victim's guard.</li>
+</ul>
+
+<h2>Data brokers make it messier</h2>
+<p>Deleting your old tweets does not mean they are gone. Data brokers scrape and resell public social data on a schedule, and many third-party archive sites keep copies after you delete. Manual deletion alone is not enough: you also need periodic digital footprint checks to see where residue remains.</p>
+<p>To start with a check, read our <a href="/blog/what-is-digital-footprint-check">guide to what a digital footprint check is</a> and how on-device scanning covers your entire tweet history.</p>
+
+<h2>Special note for high-visibility people</h2>
+<p>Job seekers, freelancers, public figures, and cross-border professionals pay a higher price for exposed old tweets. A casual "travel city plus hotel" combo can become an entry point for targeted attacks. These groups should raise the re-check frequency to once per quarter and run an extra check after each major career change.</p>
+
+<h2>A cleanup workflow you can actually follow</h2>
+<ol>
+  <li>Download and parse your full X data archive, not just the most recent 3,200 tweets.</li>
+  <li>Scan with a footprint tool for phone numbers, emails, addresses, locations, education, and employer details.</li>
+  <li>Delete high-risk tweets in bulk by priority, keeping low-risk content intact.</li>
+  <li>For third-party copies you cannot delete, file a GDPR or CCPA erasure request. See our <a href="/blog/gdpr-vs-ccpa-tweet-deletion-2026">GDPR vs CCPA deletion rights comparison</a>.</li>
+  <li>Re-check every three to six months, because new scraping keeps happening.</li>
+</ol>
+
+<h2>Myth: deleting means it is gone</h2>
+<p>Many people assume one click on delete settles it. But deletion on a public platform is layered: you remove what is visible on your timeline, while search-engine caches, third-party archives, and screenshots others took stay outside your control. The way to actually lower risk is to combine three actions: find the high-sensitivity spots with a check, delete in bulk, and send erasure requests to brokers. Doing only one of them leaves the door open.</p>
+
+<h2>What to do if you suspect misuse</h2>
+<p>If you find someone using your old details to register accounts or run phishing, first freeze the relevant platforms and turn on login alerts, then collect screenshot evidence, then report to the platform and, when needed, to a regulator. Keeping a record that you deleted high-risk tweets also shows you exercised reasonable care if a dispute arises.</p>
+<p>Chinese users should note the forensic value of archives in cross-border cases; our <a href="/blog/chinese-users-x-archive-legal-evidence">legal-evidence guide for Chinese X users</a> covers the specifics.</p>
+
+<h2>What this means for your next cleanup</h2>
+<p>The takeaway is practical: the older and denser your archive, the more material an aggregator can draw from. A single cautious year of posting does not erase a decade of loose posts, so the cleanup has to cover the whole history, not just recent months. Start with the highest-sensitivity categories and work down the list.</p>
+
+<p>Managing your footprint is not a one-time cleanup, it is a habit of periodic checks plus targeted deletion. Start today: spend ten minutes seeing what your past self left behind. Go to <a href="/">digital-footprint-health.shop</a> and run a free on-device check.</p>`,
+  },
+  {
+    slug: "location-data-leak-tweets-2026",
+    title: "推文里的定位泄露：一张打卡照如何暴露你的家和公司",
+    excerpt: "定位信息不只藏在打卡按钮里，还藏在照片背景、geotag 和发推时间规律中。本文教你看清推文里的常驻地点并降低泄露。",
+    date: "2026-11-05",
+    updatedAt: "2026-11-05",
+    author: "Digital Footprint Health Team",
+    category: "风险场景",
+    tags: ["X/Twitter", "定位泄露", "隐私保护", "数字足迹"],
+    canonical: "/blog/location-data-leak-tweets-2026",
+    faq: [
+      { q: "推文里的定位是怎么泄露的？", a: "来自显式 geotag、照片背景里的地标，以及你反复打卡形成的习惯地点。", qEn: "How does location leak through tweets?", aEn: "From explicit geotags, landmarks in photo backgrounds, and the habitual places you check into repeatedly." },
+      { q: "关掉打卡就能避免吗？", a: "不够。早期 X 会在上传时带上照片 EXIF 里的隐藏坐标，即使你没手动选位置。", qEn: "Does turning off check-ins solve it?", aEn: "No. Early X versions attached hidden EXIF coordinates from photos on upload, even without a manual location pick." },
+      { q: "怎么找出推文里的常驻地点？", a: "用本机体检解析完整归档，把文本、背景和 geotag 里的地点聚合成风险清单。", qEn: "How do I find my recurring places in tweets?", aEn: "Run an on-device check that parses the full archive and aggregates places from text, backgrounds, and geotags into a risk list." },
+      { q: "发现家附近定位被暴露怎么办？", a: "删除含清晰地标的旧推文，关闭新发推的默认定位，并对无法逐条处理的做批量删除。", qEn: "I found my home area exposed, what now?", aEn: "Delete old tweets with clear landmarks, turn off default location on new posts, and bulk-delete what you cannot handle one by one." }
+    ],
+    titleEn: "Location Leaks in Your Tweets: How a Check-in Photo Reveals Home and Office",
+    excerptEn: "Location data hides not just in the check-in button but in photo backgrounds, geotags, and posting-time patterns. Learn to spot your recurring places and cut the leak.",
+    categoryEn: "Risk Scenarios",
+    tagsEn: ["X/Twitter", "location leak", "privacy", "digital footprint"],
+    content: `<p>一张看似普通的「周末在常去的咖啡馆打卡」照片，可能比你想的更能暴露你的生活半径。推文里的定位信息不只在打卡按钮里，它还藏在照片背景、街区招牌、通勤车站和出游 geotag 里。</p>
+
+<h2>定位信息藏在哪些地方</h2>
+<ul>
+  <li><strong>显式 geotag</strong>：你开启定位后 X 自动附加的经纬度。</li>
+  <li><strong>照片背景</strong>：窗外可见的楼栋、招牌、地铁站名。</li>
+  <li><strong>习惯性打卡</strong>：同一家咖啡馆、健身房、公园反复出现。</li>
+  <li><strong>时间规律</strong>：每天固定时间发推，等于公开你的作息。</li>
+</ul>
+
+<h2>为什么家和工作地点最敏感</h2>
+<p>当「家附近」和「公司附近」两类地点在归档里反复出现，攻击者用简单的频次统计就能圈出你的常驻范围。结合你发推的时间，甚至能推断你几点出门、几点回家。这类信息一旦被线下骚扰或跟踪利用，风险是直接的。</p>
+
+<h2>geotag 与照片 EXIF 的差别</h2>
+<p>很多人以为不点打卡就安全，其实早期 X 会在上传时把相机写入照片的 EXIF 坐标一起带上，即使你没手动选位置。老照片里的隐藏坐标比可见打卡更隐蔽。体检工具读的是归档里的原始数据，所以能抓到这类隐藏定位。</p>
+
+<h2>一次体检能发现什么</h2>
+<p>数字足迹体检会解析你的完整归档，把推文文本、图片背景和 geotag 里出现的地点聚合成一张风险清单。比起手动翻几百页时间线，本机扫描能在几分钟内标出高频地点。可以先看我们的<a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>了解流程。</p>
+
+<h2>高频地点怎么被用来画像</h2>
+<p>攻击者不需要知道你的精确住址。只要掌握「工作日早九点在 A 站、晚七点在 B 站、周末在 C 咖啡馆」这种规律，就能画出你的活动骨架。配合你发推时提到的公司名，家与公司两点一线基本就清楚了。</p>
+
+<h2>降低定位泄露的实操步骤</h2>
+<ol>
+  <li>关闭 X 的发推默认定位附加。</li>
+  <li>删除含清晰地标背景的高敏旧推文，尤其家门口和工位。</li>
+  <li>对无法逐条处理的，按批次批量删除并保留低风险内容。</li>
+  <li>若归档下载本身失败，先按<a href="/blog/x-archive-download-failed-fix">X 归档下载失败排查</a>修好再体检。</li>
+</ol>
+
+<h2>给经常出差的人</h2>
+<p>出差族的风险更高：酒店大堂、机场、客户办公楼都会进入归档。建议每次出差回来做一次针对性清理，删掉带具体地标的打卡，只保留无定位的感想类内容。</p>
+
+<h2>定位泄露的连锁反应</h2>
+<p>一旦家或公司的常驻地点被确认，攻击者还能顺藤摸瓜：从你家附近的商圈推你常去的店，从你公司附近的车站推你通勤路线。这些衍生信息比单条定位更难察觉，却能拼出你一天的完整动线。先切断源头，整条链才不会形成。</p>
+
+<p>定位泄露是可预防的。回到 <a href="/">digital-footprint-health.shop</a> 用本机体检找出你推文里的常驻地点。</p>`,
+    contentEn: `<p>A seemingly ordinary "weekend check-in at my usual cafe" photo can reveal more about your life radius than you expect. Location data in tweets is not only in the check-in button. It hides in photo backgrounds, street signs, commute stations, and travel geotags.</p>
+
+<h2>Where location data actually hides</h2>
+<ul>
+  <li><strong>Explicit geotag</strong>: the latitude and longitude X attaches when you enable location.</li>
+  <li><strong>Photo background</strong>: visible buildings, shop signs, subway names behind you.</li>
+  <li><strong>Habitual check-ins</strong>: the same cafe, gym, or park appearing again and again.</li>
+  <li><strong>Time patterns</strong>: posting at the same hours daily broadcasts your routine.</li>
+</ul>
+
+<h2>Why home and work locations are the most sensitive</h2>
+<p>When two clusters, "near home" and "near work", repeat across your archive, a simple frequency count lets an attacker draw your regular range. Combined with posting times, they can even infer when you leave and return. Once used for offline harassment or stalking, the risk is immediate.</p>
+
+<h2>geotag versus photo EXIF</h2>
+<p>Many people think skipping the check-in keeps them safe, but early X versions attached camera-written EXIF coordinates from photos on upload, even without a manual location pick. Hidden coordinates in old photos are stealthier than visible check-ins. A check tool reads the raw archive data, so it catches this hidden location.</p>
+
+<h2>What a check uncovers</h2>
+<p>A digital footprint check parses your full archive and aggregates places from tweet text, photo backgrounds, and geotags into a risk list. Instead of scrolling hundreds of timeline pages by hand, on-device scanning flags high-frequency locations in minutes. Start with our <a href="/blog/what-is-digital-footprint-check">guide to what a footprint check is</a>.</p>
+
+<h2>How frequent places build a profile</h2>
+<p>An attacker does not need your exact address. Knowing the pattern "weekday 9am at station A, 7pm at station B, weekends at cafe C" already sketches your activity skeleton. Combined with the company name you mention when posting, the home-to-work line becomes clear.</p>
+
+<h2>Practical steps to cut location leaks</h2>
+<ol>
+  <li>Turn off X's default location attachment on new posts.</li>
+  <li>Delete old high-sensitivity tweets with clear landmark backgrounds, especially near home and your desk.</li>
+  <li>For content you cannot handle one by one, delete in batches and keep low-risk posts.</li>
+  <li>If the archive download itself fails, fix it first with our <a href="/blog/x-archive-download-failed-fix">X archive download failure guide</a>, then run the check.</li>
+</ol>
+
+<h2>For frequent travelers</h2>
+<p>Travelers carry higher risk: hotel lobbies, airports, and client offices all enter the archive. A good habit is a targeted cleanup after each trip, removing check-ins with concrete landmarks and keeping only location-free reflections.</p>
+
+<h2>The chain reaction of a location leak</h2>
+<p>Once your home or work area is confirmed, an attacker can follow the thread: your regular shops near home, your commute line near the office. These derived details are harder to notice than a single check-in, yet they sketch your full daily route. Cutting the source early keeps the whole chain from forming. The same logic applies to travel: one airport photo can later reveal your frequent routes, so clean trip posts soon after you return.</p>
+
+<p>Location leaks are preventable. Go to <a href="/">digital-footprint-health.shop</a> and use the on-device check to find your recurring places in old tweets.</p>`,
+  },
+  {
+    slug: "footprint-score-misconceptions-2026",
+    title: "数字足迹评分的 5 个常见误解",
+    excerpt: "0 到 100 的评分方便理解，也带来误解。本文澄清「满分才安全」「删得越多分越高」「评一次就够」等五个常见误区。",
+    date: "2026-11-05",
+    updatedAt: "2026-11-05",
+    author: "Digital Footprint Health Team",
+    category: "体检与评分",
+    tags: ["数字足迹", "隐私体检", "评分", "隐私保护"],
+    canonical: "/blog/footprint-score-misconceptions-2026",
+    faq: [
+      { q: "数字足迹评分怎么算出来的？", a: "体检工具解析你的完整归档，对手机号、邮箱、住址、定位等高风险类型出现频率和暴露程度打分。", qEn: "How is the footprint score calculated?", aEn: "A check tool parses your full archive and scores the frequency and exposure of high-risk types like phone, email, address, and location." },
+      { q: "分数低一定要全删吗？", a: "不必。分数只提示哪类高敏信息偏多，按风险优先级删比一刀切更有效。", qEn: "Does a low score mean I must delete everything?", aEn: "No. The score only flags which high-risk category appears often; deleting by priority beats a blanket wipe." },
+      { q: "体检会删除我的推文吗？", a: "不会，体检只读不删且免费，删除是独立的按条计费步骤。", qEn: "Does the check delete my tweets?", aEn: "No, the check is read-only and free; deletion is a separate per-tweet step." },
+      { q: "评过一次还要再评吗？", a: "要。新发推、新抓取和第三方存档更新都会改变暴露面，复检应成习惯。", qEn: "Do I need to check again after one check?", aEn: "Yes. New posts, new scraping, and updated archives change your exposure, so re-checks should be a habit." }
+    ],
+    titleEn: "5 Misconceptions About Your Digital Footprint Score",
+    excerptEn: "A 0 to 100 score helps comprehension but breeds myths. This post clears up five common ones, from 100 means safe to one check is enough.",
+    categoryEn: "Checkup and Scoring",
+    tagsEn: ["digital footprint", "privacy check", "score", "privacy"],
+    content: `<p>数字足迹评分把复杂的隐私风险压缩成一个 0 到 100 的数字，方便理解，但也带来不少误解。下面把最常见的五个说清楚。</p>
+
+<h2>误解一：100 分等于绝对安全</h2>
+<p>评分反映的是「当前扫描覆盖到的历史推文」里没发现明显暴露。它是一份体检表，并不等于毕业证。你之后新发的推文、第三方存档里的副本，都不在分数里。分数回到 90 以上只说明这一轮扫描干净。</p>
+
+<h2>误解二：分数低就一定有危险账号</h2>
+<p>低分通常只是提示「有几类高敏信息出现频率偏高」，比如你爱发带定位的打卡照。它不等于已经被人盗用。分数只帮你定位该先删哪类内容，并不判定你是否已经受害。</p>
+
+<h2>误解三：删得越多分越高</h2>
+<p>盲目全删会丢掉有价值的正常内容，而且分数看的是高风险类型有没有被清除，和删除条数没有直接关系。按风险优先级删，比一刀切更有效。</p>
+
+<h2>误解四：体检会顺手删掉推文</h2>
+<p>体检本身只读不删，完全免费。删除是独立、可选、按条计费的步骤，由你控制。想了解完整流程，先看<a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a>和<a href="/blog/digital-footprint-health-basics-faq">数字足迹基础 FAQ</a>。</p>
+
+<h2>误解五：评过一次就一劳永逸</h2>
+<p>新抓取、新发推、第三方存档更新都会改变你的暴露面。把复检当成定期习惯，比追求一次性高分更有意义。</p>
+
+<h2>分数该怎么用才对</h2>
+<p>把分数当成仪表盘，而非成绩单来看待。分数下降时，先看是哪一类信息在增多，再决定删哪批；分数稳定时，保持每季度的复检节奏即可。它真正的价值是帮你把「看不到的风险」变成「可以排序的清单」。</p>
+
+<h2>分数和删除工具怎么配合</h2>
+<p>体检和删除是两套动作。体检负责「发现问题并排序」，删除负责「按优先级处理」。只体检不删除，风险一直在；只删除不体检，容易误删或漏删。两者配套，才形成闭环。</p>
+
+<h2>分数高低的实用判读</h2>
+<p>分数在 80 到 90 之间，说明扫描到了少量中低风险信息，优先处理定位类即可；分数低于 60，通常意味着证件、联系方式或家庭信息已较集中地出现，建议立即做一轮批量删除。分数只是排序工具，具体动作要看清单里的分类。分数短期波动常来自一次发推高峰，不必慌，看趋势即可。</p>
+
+<h2>不同人群的关注重点</h2>
+<p>求职者多看教育和工作相关提及，家长多看孩子和学校相关提及，频繁出差者多看酒店和机场。按自己的身份挑重点，比盯着总分更高效。分数长期居高不下时，再回头看某类内容是否发得太密。</p>
+
+<p>分数只是工具，目标在分数之外。回到 <a href="/">digital-footprint-health.shop</a> 做一次本机体检，看看你真实的暴露面。</p>`,
+    contentEn: `<p>A digital footprint score compresses a messy privacy risk into a single 0 to 100 number. That helps comprehension, but it also breeds misunderstanding. Here are the five most common ones.</p>
+
+<h2>Misconception 1: 100 means you are perfectly safe</h2>
+<p>The score reflects that the history your current scan covers shows no obvious exposure. It is a checkup, not a diploma. Tweets you post later and copies held by third-party archives are not in the score. Getting back above 90 only means this round came back clean.</p>
+
+<h2>Misconception 2: a low score means your account is compromised</h2>
+<p>A low score usually just flags that a few high-sensitivity categories appear often, say you post lots of location-tagged check-ins. It does not mean someone already stole your identity. The score helps you decide which content to delete first, not whether you are a victim.</p>
+
+<h2>Misconception 3: delete more and the score goes up</h2>
+<p>Blindly deleting everything throws away normal valuable content, and the score cares more about whether high-risk types are cleared than about how many posts you removed. Deleting by priority beats a blanket wipe.</p>
+
+<h2>Misconception 4: the check deletes tweets for you</h2>
+<p>The check is read-only and free. Deletion is a separate, optional, per-tweet step you control. For the full flow, start with our <a href="/blog/what-is-digital-footprint-check">guide to what a footprint check is</a> and the <a href="/blog/digital-footprint-health-basics-faq">digital footprint basics FAQ</a>.</p>
+
+<h2>Misconception 5: one check and you are done</h2>
+<p>New scraping, new posts, and updated third-party archives all change your exposure. Treat re-checks as a regular habit rather than chasing a one-time high score.</p>
+
+<h2>How to use the score the right way</h2>
+<p>Treat the score as a dashboard, not a report card. When it drops, look at which category grew and decide which batch to delete. When it stays steady, keep a quarterly re-check rhythm. Its real value is turning invisible risk into a sortable list.</p>
+
+<h2>How the score works with the delete tool</h2>
+<p>Check and delete are two separate actions. The check finds and ranks problems; the delete handles them by priority. Checking without deleting leaves risk in place; deleting without checking risks wrong or missed removals. Together they close the loop.</p>
+
+<h2>Reading the score in practice</h2>
+<p>A score between 80 and 90 means a few low-to-medium risk items showed up; handling location types first is usually enough. Below 60 often means ID, contact, or family details appear in a concentrated way, and a bulk-delete round is worth doing right away. The score only ranks, so the real action follows the category list. A short-term dip after a posting spike is normal, so watch the trend rather than a single number.</p>
+
+<h2>What different people should watch</h2>
+<p>Job seekers should watch education and employer mentions, parents should watch child and school mentions, and frequent travelers should watch hotels and airports. Pick the focus that matches your situation instead of staring at the total. When the score stays high for weeks, check whether one content type is simply posted too often.</p>
+
+<h2>Score versus the full picture</h2>
+<p>A high score is a useful signal, but it only reflects what a single scan covered. Archived copies, removed posts, and broker-held data sit outside it. Pair the number with a manual look at your oldest and most personal threads, then decide whether a targeted cleanup is worth the time.</p>
+
+<p>The score is a tool, not a goal. Go to <a href="/">digital-footprint-health.shop</a> and run an on-device check to see your real exposure.</p>`,
+  },
+  {
+    slug: "delete-tweets-by-year-faq-2026",
+    title: "按年份删除推文常见问题（FAQ）",
+    excerpt: "按年份批量删除是清理高频需求。本文用问答形式回答能否只删某年、是否受 3,200 条限制、能否按类型删、删完能否恢复等常见问题。",
+    date: "2026-11-05",
+    updatedAt: "2026-11-05",
+    author: "Digital Footprint Health Team",
+    category: "删除实操",
+    tags: ["X/Twitter", "批量删除", "按年份删除", "隐私清理"],
+    canonical: "/blog/delete-tweets-by-year-faq-2026",
+    faq: [
+      { q: "能只删某一年的推文吗？", a: "可以，解析归档后按年份过滤删除，不必整库清空。", qEn: "Can I delete only one year?", aEn: "Yes, parse the archive and filter by year; no need to wipe the whole account." },
+      { q: "按年份删会受 3,200 条限制吗？", a: "手动删会受限，但按归档批量删能覆盖更早历史。", qEn: "Does year deletion hit the 3,200 limit?", aEn: "Manual deletion is capped, but archive-based bulk deletion covers earlier history." },
+      { q: "能按类型删吗？", a: "能，比如只删带图或只删转推，参考按媒体类型删除。", qEn: "Can I delete by type?", aEn: "Yes, for example only media tweets or only retweets; see delete by media type." },
+      { q: "删完能恢复吗？", a: "不能，删除不可逆，建议先备份归档。", qEn: "Can deleted tweets be recovered?", aEn: "No, deletion is permanent, so back up the archive first." },
+      { q: "删除会通知对方吗？", a: "不会，这是你时间线上的操作。", qEn: "Does deletion notify the other person?", aEn: "No, it is an action on your own timeline." }
+    ],
+    titleEn: "Deleting Tweets by Year: Frequently Asked Questions",
+    excerptEn: "Deleting by year is a common bulk-cleanup need. This FAQ answers whether you can target one year, the 3,200 limit, deletion by type, and recovery.",
+    categoryEn: "Deletion How-To",
+    tagsEn: ["X/Twitter", "bulk delete", "delete by year", "privacy cleanup"],
+    content: `<p>按年份删除推文是批量清理里最常见的需求之一。下面用问答形式把高频问题说清楚。</p>
+
+<h2>常见问题</h2>
+<p><strong>Q：能只删 2015 到 2018 年的推文吗？</strong><br>A：可以。X 数据归档包含完整历史，体检和删除工具按年份过滤即可，不必整库清空。详见<a href="/blog/delete-tweets-by-date-range-faq-2026">按日期范围删除 FAQ</a>。</p>
+<p><strong>Q：按年份删会碰得到 3,200 条限制吗？</strong><br>A：手动删会被限制挡住，但解析归档后按年份批量删除能覆盖更早的历史，不受界面限制。</p>
+<p><strong>Q：能按类型删，不按年份吗？</strong><br>A：可以，比如只删带图的或只删转推，参考<a href="/blog/delete-tweets-by-media-type-2026">按媒体类型删除</a>。</p>
+<p><strong>Q：删完还能恢复吗？</strong><br>A：删除不可逆，建议先导出归档备份再操作。</p>
+<p><strong>Q：删除会通知对方或被公开吗？</strong><br>A：删除是你自己时间线上的操作，对方不会收到通知。</p>
+
+<h2>按年份删的三种常见用法</h2>
+<ul>
+  <li><strong>毕业清理</strong>：删掉求学阶段的青涩内容，保留职业相关内容。</li>
+  <li><strong>换工作清理</strong>：清掉上一家公司的日常提及，减少职业交叉。</li>
+  <li><strong>年末归档</strong>：每年底按计划删掉敏感旧年份，形成节奏。</li>
+</ul>
+
+<h2>按年份删之前先备份</h2>
+<p>任何批量删除前，都建议先导出一份归档留底。万一误删了想保留的内容，备份能让你快速找回，也能在账号纠纷时作为凭证。归档本身不包含删除操作，所以先备份再删，永远是更稳的顺序。备份和删除是配套动作，少一步都不稳。</p>
+
+<p>想按年份清理，先回到 <a href="/">digital-footprint-health.shop</a> 下载归档并体检。</p>`,
+    contentEn: `<p>Deleting tweets by year is one of the most common bulk-cleanup needs. Here are the frequent questions, answered.</p>
+
+<h2>Frequently asked questions</h2>
+<p><strong>Q: Can I delete only 2015 to 2018?</strong><br>A: Yes. The X archive holds your full history, so a check and delete tool can filter by year without wiping the whole account. See our <a href="/blog/delete-tweets-by-date-range-faq-2026">delete by date range FAQ</a>.</p>
+<p><strong>Q: Does year-based deletion hit the 3,200 limit?</strong><br>A: Manual deletion is blocked by the limit, but parsing the archive and deleting by year covers earlier history without the interface cap.</p>
+<p><strong>Q: Can I delete by type instead of by year?</strong><br>A: Yes, for example only media tweets or only retweets. See <a href="/blog/delete-tweets-by-media-type-2026">delete by media type</a>.</p>
+<p><strong>Q: Can deleted tweets be recovered?</strong><br>A: Deletion is permanent, so export an archive backup before you start.</p>
+<p><strong>Q: Does deletion notify the other person?</strong><br>A: No, it is an action on your own timeline and the other side gets no notice.</p>
+
+<h2>Three common ways to use year deletion</h2>
+<ul>
+  <li><strong>Graduation cleanup</strong>: remove school-era posts while keeping career content.</li>
+  <li><strong>Job-change cleanup</strong>: clear daily mentions of a former employer to reduce overlap.</li>
+  <li><strong>Year-end archive</strong>: delete a sensitive old year on schedule each December.</li>
+</ul>
+
+<h2>Back up before deleting by year</h2>
+<p>Before any bulk delete, export an archive copy as a safety net. If you remove something you later want back, the archive is the only place to recover it, and it also serves as evidence in an account dispute. The export itself contains no delete operation, so backing up first and deleting second is always the steadier order.</p>
+
+<p>To clean by year, go to <a href="/">digital-footprint-health.shop</a>, download your archive, and run a check first.</p>`,
+  },
+  {
+    slug: "chinese-year-end-footprint-cleanup-2026",
+    title: "年末大扫除不止家里：中文用户 X 账号数字足迹清理清单",
+    excerpt: "双十一、年终奖、春节返乡让中文用户年末暴露面更大。本文给出一份针对手机号、住址、定位三类高敏信息的年末清理清单。",
+    date: "2026-11-05",
+    updatedAt: "2026-11-05",
+    author: "Digital Footprint Health Team",
+    category: "双语市场",
+    tags: ["X/Twitter", "中文用户", "年末清理", "数字足迹", "隐私保护"],
+    canonical: "/blog/chinese-year-end-footprint-cleanup-2026",
+    faq: [
+      { q: "中文用户年末为什么要特别清理？", a: "双十一、年终奖、春节返乡会在社交平台留下密集定位、消费和人际线索，暴露面比平时更大。", qEn: "Why should Chinese users clean up especially at year-end?", aEn: "Singles Day, bonuses, and Spring Festival travel leave a dense trail of location, spending, and relationship signals, widening exposure more than usual." },
+      { q: "中文用户最该删哪类旧推文？", a: "返乡打卡、消费截图、工牌类高敏内容优先，这些最容易关联到真实身份。", qEn: "Which old tweets should Chinese users delete first?", aEn: "Hometown check-ins, spending screenshots, and badge photos first, since these most easily link to a real identity." },
+      { q: "跨境场景下旧归档有什么用？", a: "可能被用作证据材料，所以清理既是隐私也是风险控制，详见法律证据指南。", qEn: "What is the use of old archives in cross-border cases?", aEn: "They may serve as evidence, so cleanup is both privacy and risk control; see the legal-evidence guide." },
+      { q: "留学生还要留意什么？", a: "雇主和学校相关的旧内容，以及境外平台上的身份关联，参考留学生隐私清理。", qEn: "What should students abroad watch for?", aEn: "Old employer and school content plus identity links on foreign platforms; see privacy cleanup for Chinese students abroad." }
+    ],
+    titleEn: "Year-End Digital Footprint Cleanup for Chinese X Users",
+    excerptEn: "Singles Day, bonuses, and Spring Festival travel widen Chinese users year-end exposure. This checklist targets phone, address, and location risks with an on-device approach.",
+    categoryEn: "Bilingual Market",
+    tagsEn: ["X/Twitter", "Chinese users", "year-end cleanup", "digital footprint", "privacy"],
+    content: `<p>中文用户的年末和英文用户不太一样：双十一、年终奖、春节返乡，每一波都在社交平台留下大量定位、消费和人际线索。趁年末做一次 X 账号数字足迹清理，比平时更值得。</p>
+
+<h2>中文用户的三个高敏点</h2>
+<ul>
+  <li><strong>返乡定位</strong>：春节前后密集的「到家了」「老家」打卡，直接暴露常住地与籍贯。</li>
+  <li><strong>消费截图</strong>：双十一订单、年终奖到账截图，泄露收入区间和支付习惯。</li>
+  <li><strong>人际网络</strong>：@ 同事、客户、亲属的频率，勾勒出职场与家庭关系。</li>
+</ul>
+
+<h2>为什么中文用户更要周期性清理</h2>
+<p>中文互联网环境下，实名信息与社交账号高度绑定，一条旧推文被关联到真实身份的概率更高。加上跨境场景下旧归档可能被用作证据材料，清理既是隐私也是风险控制。可参考<a href="/blog/chinese-users-x-archive-legal-evidence">中文用户 X 归档法律证据指南</a>。</p>
+
+<h2>一份能落地的年末清单</h2>
+<ol>
+  <li>导出 X 数据归档，保留备份。</li>
+  <li>用本机体检扫描手机号、住址、定位三类高敏信息。</li>
+  <li>优先删除返乡打卡、消费截图和工牌类旧推文。</li>
+  <li>留学生群体另需注意雇主与学校相关的旧内容，见<a href="/blog/chinese-students-abroad-x-privacy-2026">留学生 X 隐私清理</a>。</li>
+  <li>把复检加入每年年末习惯，和家里大扫除一起做。</li>
+</ol>
+
+<h2>双十一前后的特别留意</h2>
+<p>大促期间大家爱晒订单和收货信息，收货地址、手机号、真实姓名经常一起出现在一张截图里。这类内容一旦外泄，诈骗短信和钓鱼链接会精准找上门。建议大促结束后统一清理一波带订单的推文。</p>
+
+<h2>春节返乡的隐私节奏</h2>
+<p>返乡打卡、亲友合照、老家窗景，是春节最高频的暴露来源。发之前想清楚：这张图会不会暴露你长期不在家，或者暴露家人样貌。宁可发无定位的感想，也少发带具体地标的实况。</p>
+
+<h2>中文用户常被忽略的两类内容</h2>
+<p>一是「前公司吐槽」，很多人在离职前后发过对上级或同事的不满，这类内容在背调时最容易被翻出；二是「家庭群转发」，养生谣言或情绪化转发看似无害，却会暴露你的立场和家庭结构。这两类内容的共同点是「当时顺手发、事后难想起」，正因如此才要在年末统一清理。年末清理时这两类建议优先。</p>
+
+<h2>把清理变成家庭习惯</h2>
+<p>不少中文用户的家人也在同一平台活跃，互相 @ 会暴露彼此关系。建议把年终数字足迹清理当成家庭集体动作，顺手帮父母检查一遍高敏旧内容，既保护自己也保护家人。春节期间多发合照，老人出镜的频率高，提前清一遍旧动态更稳妥。</p>
+
+<p>中文用户的足迹清理，关键是周期性和本机：数据不出电脑，风险自己掌控。回到 <a href="/">digital-footprint-health.shop</a> 免费体检。</p>`,
+    contentEn: `<p>Chinese X users face a distinct year-end rhythm: Singles Day shopping, year-end bonuses, and Spring Festival travel each leave a dense trail of location, spending, and relationship signals. A year-end footprint cleanup matters more than at other times.</p>
+
+<h2>Three high-sensitivity spots for Chinese users</h2>
+<ul>
+  <li><strong>Hometown check-ins</strong>: dense "made it home" or "back in my hometown" posts around the holiday directly expose where you live and your native place.</li>
+  <li><strong>Spending screenshots</strong>: Singles Day orders and bonus deposits leak income range and payment habits.</li>
+  <li><strong>Relationship network</strong>: how often you mention coworkers, clients, and relatives maps your work and family graph.</li>
+</ul>
+
+<h2>Why periodic cleanup matters more here</h2>
+<p>In the Chinese internet context, real-name identity is tightly bound to social accounts, so the chance an old tweet gets linked to your real identity is higher. Add cross-border cases where old archives may serve as evidence, and cleanup becomes risk control rather than fuss. See our <a href="/blog/chinese-users-x-archive-legal-evidence">legal-evidence guide for Chinese X users</a>.</p>
+
+<h2>A year-end checklist you can follow</h2>
+<ol>
+  <li>Export your X archive and keep a backup.</li>
+  <li>Run an on-device check for three high-risk types: phone, address, location.</li>
+  <li>Prioritize deleting hometown check-ins, spending screenshots, and badge photos.</li>
+  <li>Students abroad should also handle old employer and school content; see <a href="/blog/chinese-students-abroad-x-privacy-2026">privacy cleanup for Chinese students abroad</a>.</li>
+  <li>Make re-checks a yearly habit, alongside the home spring cleaning.</li>
+</ol>
+
+<h2>Watch out around Singles Day</h2>
+<p>During the shopping festival people love to share orders and delivery info. Address, phone, and real name often appear together in one screenshot. Once leaked, scam texts and phishing links find you with precision. A good habit is a cleanup pass right after the festival to remove order screenshots.</p>
+
+<h2>Privacy rhythm for Spring Festival travel</h2>
+<p>Hometown check-ins, group photos with relatives, and window views of the old home are the highest-frequency exposure sources of the holiday. Before posting, ask whether the image reveals you are away from home for long, or shows family faces. Prefer location-free reflections over live updates with concrete landmarks.</p>
+
+<h2>Two content types Chinese users overlook</h2>
+<p>One is complaints about a former employer, posted around resignation and easy to surface during a background check. The other is family-group forwards, where health rumors or emotional reposts seem harmless yet reveal your stance and family structure. Both share a pattern: posted in the moment, forgotten later, which is exactly why a year-end pass should target them first.</p>
+
+<h2>Make it a family habit</h2>
+<p>Many Chinese users have family active on the same platform, and mutual mentions expose each other's relationships. Treat the year-end cleanup as a household action, and help parents review their own high-risk old posts while you are at it. Holiday group photos put elders on camera often, so a pre-holiday sweep of old posts is the safer move.</p>
+
+<h2>A quick start for this year-end</h2>
+<p>If you have never done this before, start small: export the archive, run one check, and delete the ten oldest posts that expose your phone, address, or hometown. A short first pass already cuts most of the year-end risk, and you can deepen the cleanup in the years that follow.</p>
+
+<p>For Chinese users, the key is periodic and on-device: your data stays on your computer, and you keep control of the risk. Go to <a href="/">digital-footprint-health.shop</a> for a free check.</p>`,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

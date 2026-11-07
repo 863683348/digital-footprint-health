@@ -33536,6 +33536,292 @@ rl.on('close', () =&gt; {
 <p>To try the no-upload approach first, see our <a href="/blog/what-is-digital-footprint-check">guide to what a footprint check is</a>. For handling third-party copies after deletion, read the <a href="/blog/gdpr-vs-ccpa-tweet-deletion-2026">GDPR vs CCPA deletion comparison</a>.</p>
 <p>Go back to <a href="/">digital-footprint-health.shop</a> and run a free on-device check. Your data stays on your device, and you get the upper hand starting from your own hands.</p>`,
   },
+  {
+    slug: 'day-100-countdown-footprint-cleanup-2026',
+    title: '第 100 天倒计时：你的数字足迹清理清单',
+    excerpt: '100 天数字足迹计划进入尾声。无论你是刚拿到归档，还是已经清理过一轮，这份三天清单都能帮你在年末把 X 账号里的高风险痕迹彻底归置好。本机处理，数据不出电脑。',
+    date: '2026-11-08',
+    updatedAt: '2026-11-08',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['数字足迹', '隐私清理', '年终复盘', 'X/Twitter', '本机处理'],
+    canonical: '/blog/day-100-countdown-footprint-cleanup-2026',
+    content: `
+<p>我们做这个 100 天计划，初衷很简单：大多数人的 X 账号里，都躺着几年前随手发出、如今却可能带来麻烦的推文。手机号、家庭住址、对前雇主的吐槽、一张定位在老家的打卡照。这些东西不会自己消失，但可以在年末一次性归置干净。</p>
+
+<h2>为什么挑这时候做</h2>
+<p>年末有三个现实的推力。第一，招聘季还在延续，不少公司在发 offer 前会翻候选人的社媒；第二，新年决心往往从「整理」开始，数字生活也该算进去；第三，你今年发的归档和去年相比又厚了一层，越早处理，后面要翻的旧账越少。趁着年底这几周集中处理，比拖到明年春天再面对一堆旧账要轻松。</p>
+<p>更重要的是，X 只让你在自己的界面删掉最近约 3,200 条推文。更早的历史被锁在归档文件里，不解析就够不着。所以清理的第一步永远是先把归档拿到手，别急着打开 App 一条条翻。归档才是你真正能完全掌控的那份副本。</p>
+
+<h2>三天清单</h2>
+<p>把这件事拆成三个可控的晚上，比周末突击一整天更不容易半途而废。</p>
+<h3>第一天：下载归档</h3>
+<p>在 X 的设置里申请一份完整的数据归档（ZIP）。它通常包含 tweets.js、账户信息、私信等文件。中文用户注意，归档里还会带出你早年绑定的手机号区号、实名相关的痕迹，这正是后面要重点看的部分。拿到后先存一份到本地硬盘，再开始任何操作，这样将来想回味某条旧推文也找得回来。如果申请之后一直没收到邮件，去垃圾箱翻一下，或者换个时间段重新申请，有时队列会卡住。</p>
+<h3>第二天：跑一次本机体检</h3>
+<p>把归档上传到本机体检工具，它会在你的电脑上扫描每一条推文，标出手机号、邮箱、住址、定位和敏感话题，并给出一个 0 到 100 的健康评分。整个过程数据不出本机，连网络都不用开就能完成扫描，扫描完你就能看到一份按风险排序的清单。想知道评分怎么算，可以先读一读 <a href="/blog/digital-footprint-health-score">数字足迹健康分是怎么回事</a>。</p>
+<h3>第三天：按风险清理</h3>
+<p>别一上来就全删。先看体检报告里标红的高风险项，比如含手机号的推文、暴露住址的打卡，优先处理这几类。剩下中低风险的，可以留到春节期间慢慢筛。如果一次性删太多，不妨分几天做，既能控制节奏，也方便你边删边回头看看有没有误伤。关于「按年删除」的具体操作，<a href="/blog/delete-tweets-by-year-faq-2026">按年份删除推文的常见问题</a> 里有更细的问答。</p>
+
+<h2>不同身份的优先级</h2>
+<p>同样是清理，侧重点不一样。</p>
+<ul>
+  <li><strong>正在求职的人</strong>：优先清掉对前雇主的过激评价、能定位到公司的内部信息，以及任何带真实姓名和照片的薪资讨论。</li>
+  <li><strong>创业者和小团队</strong>：重点看早期产品吐槽、竞品评价，还有把工作号和生活号混在一起时暴露的客户信息。</li>
+  <li><strong>普通用户</strong>：先把手机号、家庭住址、孩子学校这一类硬隐私清掉，其余按心情来。</li>
+</ul>
+
+<h2>一张表看懂时间投入</h2>
+<table>
+  <thead><tr><th>步骤</th><th>所需时间</th><th>产出</th></tr></thead>
+  <tbody>
+    <tr><td>下载归档</td><td>申请后等待数小时到一天</td><td>一份完整 ZIP</td></tr>
+    <tr><td>本机体检</td><td>约 1 分钟</td><td>0-100 健康分 + 风险清单</td></tr>
+    <tr><td>高风险清理</td><td>约 30 分钟</td><td>手机号、住址等硬隐私归零</td></tr>
+    <tr><td>中低风险筛选</td><td>碎片化，可延续数周</td><td>逐步降低长期曝光</td></tr>
+  </tbody>
+</table>
+
+<h2>两个常见误区</h2>
+<p>第一个误区是「删了就彻底没了」。实际上已删的推文仍可能被搜索引擎缓存、被第三方抓取留存。体检的意义在于先看清哪些已经外泄，再决定要不要进一步处理。第二个误区是「只删不备份」，动手前务必留一份归档副本，将来想回味某条旧推文时还能找得回来。</p>
+<p>如果你还没下载过归档，<a href="/blog/how-to-download-x-archive">这份下载指南</a> 一步步讲清楚了入口和常见报错。准备好归档和清单，年末这三天就能把账号收拾利落。</p>
+
+<h2>清理之后怎么确认真的生效</h2>
+<p>删完不是结束。过一两天用站内搜索，或者拿自己的名字加年份去 Google 搜一下，看看还有没有旧推文的残页。体检报告里标红的项，删完之后可以重新跑一遍归档做比对，确认分数确实往下走了。如果某条怎么都删不掉，比如受系统限制，或者早就被第三方抓取留存，至少你知道它在哪，将来被问起能说清楚，不必慌。</p>
+<p>工具选择上，与其在好几个删除工具之间反复横跳，不如先把本机体检跑通，看清风险再决定要不要上工具。想了解不同工具的差异，可以看 <a href="/blog/tweet-deletion-tools-comparison-2026">推文删除工具对比</a>，按需取舍。</p>
+
+<h2>清理的节奏比数量重要</h2>
+<p>很多人一上来就想把几年推文一次性删光，结果要么删到手软，要么误删了想留的内容。更稳的做法是把「清零硬隐私」和「慢慢筛回忆」分开：第一步只针对手机号、住址这类高风险项，半小时就能完成；剩下的中低风险推文，可以利用通勤、睡前的碎片时间一点点判断。这样既不会半途而废，也不会因为赶进度而错删。</p>
+
+<h2>现在就开始</h2>
+<p><a href="/">上传你的 X 归档</a>，一分钟拿到本机体检报告，看清风险再决定删什么。数据全程留在本机，不上传、不留存。</p>
+`,
+    titleEn: '3 Days to Day 100: Your Digital Footprint Cleanup Checklist',
+    excerptEn: 'The 100-day digital footprint plan is wrapping up. Whether you just got your archive or already cleaned once, this three-day checklist helps you settle high-risk traces on your X account before year end. Everything runs on your own device.',
+    categoryEn: 'Specials & Recap',
+    tagsEn: ['digital footprint', 'privacy cleanup', 'year-end review', 'X/Twitter', 'on-device'],
+    contentEn: `
+<p>The point of running a 100-day footprint plan was simple: most X accounts carry tweets posted years ago that now carry real risk. A phone number, a home address, a rant about a former employer, a check-in photo pinned to your hometown. None of it disappears on its own, but all of it can be sorted out in one focused pass before the year ends.</p>
+
+<h2>Why do it right now</h2>
+<p>Three practical forces push toward year-end. First, hiring seasons stretch late, and many companies scan a candidate social profile before an offer goes out. Second, new-year resolutions usually start with tidying, and your digital life deserves a slot on that list. Third, this year archive is already thicker than last year archive, so the earlier you act, the less old debt you will face later. Handling it in these few weeks before the holiday beats facing a pile of old posts next spring.</p>
+<p>The key constraint: X only lets you delete the most recent roughly 3,200 tweets from the app interface. Everything older is locked inside your data archive. You cannot reach it without parsing that file first, which is why step one is always to obtain the archive, not to scroll the app. The archive is the one copy you fully control. The archive you pulled last year is already a year out of date, so this year posts have stacked on top without a fresh look.</p>
+
+<h2>The three-day checklist</h2>
+<p>Split the work across three manageable evenings. That beats a single weekend burst, which is easy to abandon halfway.</p>
+<h3>Day one: request the archive</h3>
+<p>In X settings, request a full data archive as a ZIP. It usually contains tweets.js, account info, and direct messages. Note for users in China: the archive also surfaces early-bound phone area codes and real-name traces, exactly the items to watch later. Once downloaded, store one copy on local disk before doing anything else, so a tweet you later want to reread is still recoverable. If the email never arrives, check the spam folder or retry at a different hour, because the queue sometimes stalls.</p>
+<h3>Day two: run an on-device check</h3>
+<p>Upload the archive to an on-device checker. It scans every tweet on your computer, flags phone numbers, emails, addresses, locations and sensitive topics, and returns a 0 to 100 health score. Your data never leaves the machine, and the scan completes without even opening a network connection. When it finishes you get a risk-ranked list. To understand how the score is built, read <a href="/en/blog/digital-footprint-health-score">how the digital footprint health score works</a>.</p>
+<h3>Day three: clean by risk</h3>
+<p>Do not delete everything at once. Start with the red items in the report: tweets with phone numbers, check-ins that reveal your home, and anything tied to a real name. Lower-risk items can wait until the holiday break. If a large batch feels like too much, spread it across several days so you keep control of the pace and can glance back for accidental deletions. For the mechanics of deleting by year, <a href="/en/blog/delete-tweets-by-year-faq-2026">the by-year deletion FAQ</a> covers the common questions.</p>
+
+<h2>Priority by who you are</h2>
+<p>The same cleanup looks different per role.</p>
+<ul>
+  <li><strong>Job seekers</strong>: clear harsh takes about former employers, internal info that identifies your company, and any salary talk with your real name and photo attached.</li>
+  <li><strong>Founders and small teams</strong>: watch early product complaints, competitor jabs, and client details leaked when a work account and a personal account got mixed.</li>
+  <li><strong>Regular users</strong>: zero out hard privacy first, phone number, home address, child school, then decide the rest by mood.</li>
+</ul>
+
+<h2>Time investment at a glance</h2>
+<table>
+  <thead><tr><th>Step</th><th>Time needed</th><th>Output</th></tr></thead>
+  <tbody>
+    <tr><td>Request archive</td><td>wait hours to a day after request</td><td>one complete ZIP</td></tr>
+    <tr><td>On-device check</td><td>about 1 minute</td><td>0-100 score plus risk list</td></tr>
+    <tr><td>High-risk cleanup</td><td>about 30 minutes</td><td>phone, address and hard privacy gone</td></tr>
+    <tr><td>Low-risk sorting</td><td>fragmented, can span weeks</td><td>steady drop in long-term exposure</td></tr>
+  </tbody>
+</table>
+
+<h2>Two common mistakes</h2>
+<p>The first mistake is thinking deletion means gone forever. Deleted tweets can still sit in search-engine caches and third-party scrapes. The value of a check is seeing what already leaked, then deciding whether more action is worth it. The second mistake is deleting without a backup. Keep one archive copy before you start, so a tweet you later want to reread is still recoverable.</p>
+<p>If you have never downloaded an archive, <a href="/en/blog/how-to-download-x-archive">this download guide</a> walks through the entry point and the usual errors. With the archive and the checklist in hand, three evenings are enough to put the account in order.</p>
+
+<h2>How to confirm it actually worked</h2>
+<p>Deleting is not the end. A day or two later, search your own name plus a year inside the platform, or run the same on Google, and see whether old tweet pages still surface. For the red items in the report, re-run the archive comparison after cleanup to confirm the score moved down. If one post simply will not go away, say because of a platform limit or because a third party already scraped it, at least you know where it sits, so you can answer calmly if asked later.</p>
+<p>On tool choice, instead of jumping between several deletion tools, get the on-device check working first and see the risk before deciding whether a tool is even needed. For the differences between tools, <a href="/en/blog/tweet-deletion-tools-comparison-2026">the deletion tool comparison</a> helps you pick.</p>
+
+<h2>Rhythm matters more than volume</h2>
+<p>Many people try to wipe years of tweets in one sitting, then either burn out or delete something they wanted to keep. A steadier approach separates clearing hard privacy from sorting memories slowly. Step one targets only high-risk items like phone numbers and addresses, done in about half an hour. The remaining low-risk posts can be judged in small slices during commutes or before sleep. This way you neither abandon the project nor mistakenly delete in a rush. The same idea applies to how often you repeat the check: a light scan every few months beats a frantic year-end purge, because risk quietly piles up in the gaps between those scans.</p>
+
+<h2>Start now</h2>
+<p><a href="/">Upload your X archive</a> and get an on-device report in about a minute. See the risk first, then decide what to remove. Your data stays on your machine the whole time.</p>
+`,
+    faq: [
+      { q: '现在才开始清理，会不会太晚？', a: '不会。任何时间点开始都比一直拖着好。年末只是个顺势的节点，真正重要的是先把归档拿到、跑一次体检，再按风险逐批处理，不必追求一次清空。', qEn: 'Is it too late to start cleaning now?', aEn: 'No. Starting at any point beats leaving it forever. Year end is just a convenient milestone. The real move is to get the archive, run one check, then clear by risk in batches. You do not need a single sweep.' },
+      { q: '三天清单一定要连续三天做完吗？', a: '不必。清单只是把任务拆成「下载、体检、清理」三块，你可以分散到几个晚上。关键是先把归档申请了，因为它需要等待时间，越早提交越早拿到。', qEn: 'Do the three days have to be consecutive?', aEn: 'No. The list only splits the work into three blocks: download, check, clean. Spread them across evenings if you like. The key is to request the archive early, because delivery takes time.' },
+      { q: '体检会动我的推文吗？', a: '不会。体检是只读分析，只扫描和评分，不删除任何内容。删除是独立、可选、按条计费的步骤，完全由你控制。', qEn: 'Does the check touch my tweets?', aEn: 'No. The check is read-only analysis. It only scans and scores, never deletes. Deletion is a separate, optional, per-tweet step you control entirely.' },
+      { q: '为什么不能直接在 App 里删老推文？', a: 'X 的 App 界面只允许删除最近约 3,200 条，更早的历史被锁在归档文件里。要清理更早的推文，必须先下载并解析归档。详见 <a href="/blog/why-can-you-only-delete-3200-tweets">为什么只能删最近 3200 条</a>。', qEn: 'Why can I not just delete old tweets in the app?', aEn: 'The app interface only allows deleting the most recent roughly 3,200 tweets. Older history is locked inside the archive file. To reach earlier tweets you must download and parse the archive first. See <a href="/en/blog/why-can-you-only-delete-3200-tweets">why only the last 3,200 can be deleted</a>.' },
+      { q: '清理完还需要再做吗？', a: '建议养成节奏。每半年或每次换工作、换城市时跑一次体检，比一年攒一大堆再突击要轻松。把清理当成定期维护，别当成一年一次的大扫除。', qEn: 'Do I need to repeat this after cleaning?', aEn: 'A routine helps. Run a check every six months, or whenever you change jobs or cities. Treating cleanup as regular maintenance beats one giant yearly burst.' },
+    ],
+  },
+  {
+    slug: 'sentimental-old-tweets-keep-or-delete-2026',
+    title: '舍不得删的旧推文，到底该留还是删？',
+    excerpt: '有些旧推文承载回忆，有些暗藏风险。本文给你一套判断框架：哪三类可以安心保留，哪三类建议删除，以及不想删也不想冒险时的折中方案。',
+    date: '2026-11-08',
+    updatedAt: '2026-11-08',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['旧推文', '情感与隐私', '清理决策', '数字极简'],
+    canonical: '/blog/sentimental-old-tweets-keep-or-delete-2026',
+    content: `
+<p>清理数字足迹，技术其实好办，真正难的是心理上的纠结。一条十年前和朋友的玩笑、一张刚工作时青涩的打卡，删了像抹掉一段记忆，留着又怕哪天被翻出来。这篇不替你做决定，只给你一套能落地的判断框架。</p>
+
+<h2>情感和风险的拉扯</h2>
+<p>我们舍不得删，通常因为推文附带了「当时的自己」：第一次出差、刚养的猫、和已不联系的人聊过的天。但风险来自内容本身，不是情绪。所以判断时要把两件事分开：这条推文对我的意义有多大，它对外暴露的信息有多危险。意义大、风险低，可以留；意义小、风险高，优先删。</p>
+
+<h2>三类可以安心保留</h2>
+<ul>
+  <li><strong>纯描述的生活片段</strong>：没有姓名、没有定位、没有联系方式，只是「今天天气真好」这类内容，风险极低。</li>
+  <li><strong>已设为私密的推文</strong>：你早已把账号或单条设为仅自己可见，外人根本看不到，留着无妨。</li>
+  <li><strong>早期的学习记录</strong>：技术笔记、读书摘抄、转发的行业文章，这些反而能展示你的成长轨迹，对外还是加分项。</li>
+</ul>
+
+<h2>三类建议删除</h2>
+<ul>
+  <li><strong>含手机号或邮箱的</strong>：这是最直接的诈骗入口，无论多有意义都建议清掉。</li>
+  <li><strong>暴露住址或常去地点的</strong>：打卡、外卖、小区名，这类信息一旦被恶意使用，会威胁现实安全。</li>
+  <li><strong>对前雇主或熟人的过激评价</strong>：情绪上头时写的话，几年后可能成为求职或关系的隐患。</li>
+</ul>
+
+<h2>一个能立刻做的小练习</h2>
+<p>打开体检报告，圈出风险最高的三条推文，问自己：这条有联系方式吗？有具体地点吗？有能认出我身份的信息吗？三条里只要有任意一条命中，就优先处理。剩下的按「意义大不大」排个序，意义小的先删，意义大的留作纪念或设为私密。十分钟就能分出轻重。</p>
+<p>另外，不同平台的默认可见范围不一样。X 的公开推文会被搜索引擎长期收录，而设为私密的账号内容外人看不到。同样一条内容，发在公开时间线和锁起来的账号里，风险天差地别，别用一套习惯套所有平台。</p>
+
+<h2>折中方案：先归档，再限制</h2>
+<p>既不舍得删、又担心风险，最稳的做法是把归档留一份在本地，然后把账号里对应的推文删掉或设为私密。这样回忆还在硬盘里，网上的痕迹却收敛了。关于「舍不得删」背后的心理阻力，<a href="/blog/psychological-barriers-deleting-old-tweets-2026">这篇分析</a> 讲得更透。</p>
+<p>如果你纠结的是「到底哪些该删」，先跑一次 <a href="/blog/what-is-digital-footprint-check">本机体检</a>，让报告按风险帮你排好序，比凭感觉翻要高效得多。</p>
+
+<h2>一个小提醒</h2>
+<p>清理不是自我审查，也不是否定过去。它只是给未来的自己少留几个坑。真有舍不得的，截个图存进私人相册，比留在公开时间线更安心。</p>
+<p><a href="/">上传你的归档</a>，先看清风险分布，再决定每条推文的去留。</p>
+`,
+    titleEn: 'Sentimental Old Tweets: Keep or Delete?',
+    excerptEn: 'Some old tweets carry memories, others carry risk. This piece gives a practical framework: three types worth keeping, three worth deleting, and a middle path when you want neither.',
+    categoryEn: 'Psychology & Habits',
+    tagsEn: ['old tweets', 'emotion and privacy', 'cleanup decision', 'digital minimalism'],
+    contentEn: `
+<p>The hardest part of footprint cleanup is rarely technical. It is the mental block. A joke with a friend ten years ago, an early-career check-in, a photo of a cat you no longer have, all feel like erasing a piece of memory if deleted, yet risky if left public. This article will not decide for you. It gives a framework you can actually use.</p>
+
+<h2>Emotion versus risk</h2>
+<p>We hesitate because a tweet carries the person we were: a first business trip, a newly adopted pet, a chat with someone no longer in touch. But risk comes from the content itself, not the feeling. So separate the two questions: how much does this tweet mean to me, and how dangerous is the information it exposes. High meaning and low risk can stay. Low meaning and high risk should go first.</p>
+
+<h2>Three types worth keeping</h2>
+<ul>
+  <li><strong>Pure descriptive moments</strong>: no names, no location, no contact info, the kind of "nice weather today" post, risk is minimal.</li>
+  <li><strong>Tweets already set private</strong>: if you locked the account or the single post to just yourself, outsiders cannot see it, so keep it.</li>
+  <li><strong>Early learning records</strong>: technical notes, reading highlights, shared industry articles. These show your growth and read as a plus to outsiders.</li>
+</ul>
+
+<h2>Three types worth deleting</h2>
+<ul>
+  <li><strong>Those with phone or email</strong>: the most direct entry point for scams, clear them regardless of meaning.</li>
+  <li><strong>Those exposing home or frequent places</strong>: check-ins, food delivery, neighborhood names. In the wrong hands this threatens real-world safety.</li>
+  <li><strong>Harsh takes on former employers or acquaintances</strong>: words written in heat can become a hiring or relationship liability years later.</li>
+</ul>
+
+<h2>A small exercise you can do now</h2>
+<p>Open the report, circle the three highest-risk tweets, and ask: does this hold a contact method, a specific place, or anything that identifies me. If any one of those hits, handle it first. For the rest, sort by how much they mean to you, delete the low-meaning ones, and keep or lock the meaningful ones. Ten minutes is enough to tell the weights apart.</p>
+<p>Also, default visibility differs across platforms. Public X posts get indexed by search engines for a long time, while content on a locked account stays invisible to outsiders. The same post carries wildly different risk on a public timeline versus a locked account, so do not apply one habit to every platform.</p>
+
+<h2>The middle path: archive, then restrict</h2>
+<p>If you neither want to delete nor accept the risk, the safest move is to keep one local copy of the archive, then delete or lock the matching tweets on the account. The memory stays on your disk while the public trace shrinks. For the psychology behind that hesitation, <a href="/en/blog/psychological-barriers-deleting-old-tweets-2026">this analysis</a> goes deeper.</p>
+<p>If you are stuck on what to delete at all, run <a href="/en/blog/what-is-digital-footprint-check">an on-device check</a> first. Let the report rank risk for you, which beats scrolling by feel.</p>
+
+<h2>One small reminder</h2>
+<p>Cleanup is not self-censorship, and it is not denying the past. It simply leaves fewer traps for future you. For something truly precious, screenshot it into a private album. That is calmer than leaving it on a public timeline.</p>
+<p><a href="/">Upload your archive</a>, see the risk map, then decide the fate of each tweet.</p>
+`,
+    faq: [
+      { q: '删了会不会后悔？', a: '可以先留一份归档在本地再删，回忆还在硬盘里。真舍不得的，截图存进私人相册比留在公开时间线更安心。', qEn: 'Will I regret deleting?', aEn: 'Keep one local archive copy before deleting, so the memory stays on disk. For something truly precious, a screenshot in a private album beats a public timeline.' },
+      { q: '设为私密算不算清理？', a: '算。对外看不到，风险就收敛了。私密是「留回忆、降风险」的折中，适合舍不得删但又有点顾虑的推文。', qEn: 'Does setting private count as cleanup?', aEn: 'Yes. If outsiders cannot see it, the risk shrinks. Private mode is the middle path for tweets you want to keep yet feel uneasy about.' },
+      { q: '怎么快速判断一条该不该删？', a: '问自己两个问题：它含手机号、住址、真实姓名吗？它对外暴露的信息被滥用会有后果吗？两个都否，基本可以留。', qEn: 'How do I quickly judge a tweet?', aEn: 'Ask two questions: does it hold a phone number, address, or real name, and would misuse of what it exposes cause harm. If both are no, it can stay.' },
+      { q: '早期技术笔记要删吗？', a: '不建议。这类内容风险低，还能展示你的成长轨迹，对求职和业内形象反而是加分项。', qEn: 'Should I delete early technical notes?', aEn: 'Better not. Such content carries low risk and shows your growth, which helps both job hunts and your professional image.' },
+    ],
+  },
+  {
+    slug: 'chinese-new-year-footprint-prep-2027',
+    title: '2027 春节前，中文用户怎么自查 X 足迹',
+    excerpt: '春节是大扫除的季节，你的 X 账号也该清一遍。针对中文用户常踩的坑：手机号、微信 ID、实名信息、家乡定位，这份自查清单用中文搜索习惯组织，照着做就行。',
+    date: '2026-11-08',
+    updatedAt: '2026-11-08',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文用户', '春节清理', 'X 足迹', '隐私自查', '实名信息'],
+    canonical: '/blog/chinese-new-year-footprint-prep-2027',
+    content: `
+<p>农历新年讲究辞旧迎新，很多人会趁年前大扫除。其实你的 X 账号也该来一次「数字大扫除」。中文用户和海外用户踩的坑不太一样：我们更容易在推文里留下手机号、微信 ID、实名相关的痕迹，还有定位在家乡的打卡。这篇就按中文用户的实际习惯，给一份能直接照做的自查清单。</p>
+
+<h2>为什么春节前适合做</h2>
+<p>一来年底本来就忙「整理」，顺手把账号也理了最自然；二来春节走亲访友，难免被问起工作、收入、孩子学校，这些话题早年在网上聊过的痕迹，最好先自己心里有数；三来新年换头像、发合照之前，先把旧的风险清掉，新的一年发得更安心。</p>
+
+<h2>中文用户最容易泄露的四类信息</h2>
+<ul>
+  <li><strong>手机号与微信 ID</strong>：早期为了「方便联系」，很多人把手机号或微信号直接写在简介或推文里，这是最容易被用来诈骗的入口。</li>
+  <li><strong>实名与证件照</strong>：身份证、工牌、准考证这类照片，哪怕打过码，也可能通过背景细节反推身份。</li>
+  <li><strong>家乡与常驻地定位</strong>：「回到 XX 老家」「XX 火锅真好吃」这类带地名的打卡，长期积累会描绘出你的活动范围。</li>
+  <li><strong>工作与收入细节</strong>：对前公司的评价、具体薪资数字、客户名称，都是求职和商务场景里的隐患。</li>
+</ul>
+<p>这些信息的危险不在于单条推文，而在于长期积累后被拼出你的完整画像。比如「老家 XX」加「XX 火锅」加「每年回 XX 过年」，三方一交叉，你的活动范围就清楚了。所以清理时别只看单条，要把同类信息一起看。</p>
+
+<h2>三步自查</h2>
+<h3>第一步：下载中文账号的归档</h3>
+<p>在 X 设置里申请数据归档。中文用户注意，归档里除了推文，还会带出你早年绑定的手机号区号、实名注册时留下的线索，这正是第二步要重点看的部分。</p>
+<h3>第二步：本机体检，按风险排序</h3>
+<p>把归档上传到本机工具，它会扫描出手机号、邮箱、住址、定位等风险项，并给出 0 到 100 的健康分。数据全程在本机，不上传。看完报告你就知道哪类信息最该先清。也可以参考 <a href="/blog/chinese-year-end-footprint-cleanup-2026">中文用户年终清理指南</a> 里更细的操作。</p>
+<h3>第三步：按风险删，不必全清</h3>
+<p>先处理含手机号、微信 ID、住址的高风险推文，中低风险的留到春节期间慢慢筛。删除是可选的、按条计费的，你完全掌控节奏。顺手把简介里多余的手机号、微信 ID 清掉，比事后补救省心得多。真正重要的联系方式，放到私信里一对一给就好。</p>
+
+<h2>给父母家人也做一份</h2>
+<p>长辈的账号往往更早、更随意地留过手机号和生活照。趁过年回家，帮父母也下一遍归档、跑一次体检，把硬隐私清掉。这比事后补救省心得多。</p>
+<p>如果你还在犹豫「到底哪些该删」，先 <a href="/blog/what-is-digital-footprint-check">跑一次本机体检</a>，让报告替你排好序。</p>
+
+<h2>新年从清爽的账号开始</h2>
+<p><a href="/">上传你的 X 归档</a>，一分钟拿到本机体检报告，看清风险再动手。数据全程留在本机，安全又省心。</p>
+`,
+    titleEn: 'Before Lunar New Year 2027: A X Footprint Self-Check for Chinese-Speaking Users',
+    excerptEn: 'The lunar new year is a season for tidying, and your X account deserves the same. Chinese-speaking users face distinct leaks: phone numbers, WeChat IDs, real-name traces, hometown check-ins. This self-check follows how Chinese users actually search and post.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['Chinese users', 'spring festival cleanup', 'X footprint', 'privacy self-check', 'real-name info'],
+    contentEn: `
+<p>The lunar new year is about clearing the old to welcome the new, and many people deep-clean the home before the holiday. Your X account deserves the same digital sweep. The traps Chinese-speaking users hit differ from those elsewhere: phone numbers, WeChat IDs, real-name traces, and hometown check-ins show up far more often. This self-check is organized the way Chinese users actually search and post, so you can follow it directly.</p>
+
+<h2>Why the pre-holiday window fits</h2>
+<p>For one, year-end is already a tidying season, so adding the account feels natural. Two, holiday visits bring questions about work, income, and children school, topics many of us once posted about openly, so it helps to know your own trail first. Three, before you swap avatars and post reunion photos, clearing old risk lets the new year start cleaner.</p>
+
+<h2>Four leak types Chinese users hit most</h2>
+<ul>
+  <li><strong>Phone numbers and WeChat IDs</strong>: early on, many wrote contact info straight into the bio or a tweet for convenience. That is the easiest entry point for scams.</li>
+  <li><strong>Real-name and document photos</strong>: ID cards, work badges, exam admit slips, even blurred, can be reverse-identified through background details.</li>
+  <li><strong>Hometown and routine locations</strong>: "back in my hometown XX" or "XX hotpot is great" pins your movement range over time.</li>
+  <li><strong>Work and income details</strong>: takes on a former firm, exact salary figures, client names, all liabilities in hiring and business contexts.</li>
+</ul>
+<p>The danger is not in a single tweet but in the full picture built over years. "Hometown XX" plus "XX hotpot" plus "go back to XX every year" cross-reference into your movement range. So when cleaning, do not look at one post alone, look at the same category as a group.</p>
+
+<h2>Three-step self-check</h2>
+<h3>Step one: download the archive for the Chinese account</h3>
+<p>Request the data archive in X settings. Note for Chinese users: beyond tweets, the archive also reveals the phone area code bound years ago and real-name registration clues, exactly what step two examines.</p>
+<h3>Step two: run an on-device check, rank by risk</h3>
+<p>Upload the archive to an on-device tool. It scans phone, email, address, and location risks, then returns a 0 to 100 health score. Data stays on the machine, nothing uploaded. After the report you know which category to clear first. The <a href="/en/blog/chinese-year-end-footprint-cleanup-2026">year-end cleanup guide for Chinese users</a> goes deeper on the steps.</p>
+<h3>Step three: delete by risk, not all at once</h3>
+<p>Clear high-risk tweets with phone, WeChat ID, or address first. Lower-risk items can wait through the holiday. Deletion is optional and per-tweet, so you control the pace. While you are at it, strip the spare phone number and WeChat ID from the bio, which saves trouble later than fixing a leak after it spreads. Real contact info belongs in a one-to-one direct message.</p>
+
+<h2>Do one for parents too</h2>
+<p>Older family accounts often left phone numbers and life photos earlier and more casually. While home for the holiday, help parents request an archive and run a check, then clear the hard privacy. That beats fixing a leak after it spreads.</p>
+<p>If you are unsure what to delete at all, <a href="/en/blog/what-is-digital-footprint-check">run an on-device check</a> first and let the report rank it for you.</p>
+
+<h2>Start the new year with a clean account</h2>
+<p><a href="/">Upload your X archive</a> and get an on-device report in about a minute. See the risk, then act. Your data stays on your machine the whole time.</p>
+`,
+    faq: [
+      { q: '微信 ID 写在简介里，一定要改吗？', a: '建议改。简介是公开且长期可见的，微信 ID 等于直接给了别人一个联系和诈骗入口。换成「私信联系」更安全。', qEn: 'My WeChat ID is in my bio. Must I change it?', aEn: 'Better change it. A bio is public and long-lived, and a WeChat ID is a direct contact and scam entry point. "message me" is safer.' },
+      { q: '打过码的证件照还危险吗？', a: '仍有风险。背景里的桌面、书本、工牌反光都可能泄露身份。这类照片建议直接删，不要只靠打码。', qEn: 'Is a blurred ID photo still risky?', aEn: 'Yes. Desktop, books, or badge glare in the background can still reveal identity. Delete such photos rather than rely on blurring.' },
+      { q: '家乡地名提一下不行吗？', a: '偶尔提没问题，但要避免长期、高频地暴露具体区县和常去地点，否则会被拼出你的活动范围。', qEn: 'Is mentioning my hometown a problem?', aEn: 'Once in a while is fine, but avoid frequent, specific district and routine-location posts, or your movement range gets mapped.' },
+      { q: '帮父母清理要注意什么？', a: '先下载他们的归档、跑一次本机体检，重点清手机号和照片。操作上帮他们做，但解释清楚为什么，避免以后又发回去。', qEn: 'What to watch when cleaning for parents?', aEn: 'Download their archive and run one on-device check, focusing on phone numbers and photos. Do the work for them, but explain why, so they do not repost later.' },
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

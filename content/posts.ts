@@ -33822,6 +33822,438 @@ rl.on('close', () =&gt; {
       { q: '帮父母清理要注意什么？', a: '先下载他们的归档、跑一次本机体检，重点清手机号和照片。操作上帮他们做，但解释清楚为什么，避免以后又发回去。', qEn: 'What to watch when cleaning for parents?', aEn: 'Download their archive and run one on-device check, focusing on phone numbers and photos. Do the work for them, but explain why, so they do not repost later.' },
     ],
   },
+{
+    slug: '2027-digital-footprint-privacy-trends',
+    title: '2027 年数字足迹与社媒隐私的五个趋势',
+    excerpt: 'AI 抓取、州级隐私法、平台限制、数据经纪商、本机工具：2027 年你的旧推文比从前更危险。本文给出五个趋势和一份年底清理清单。',
+    date: '2026-11-10',
+    updatedAt: '2026-11-10',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['数字足迹', '社媒隐私', '2027 趋势', '数据经纪商', 'AI 抓取'],
+    canonical: '/blog/2027-digital-footprint-privacy-trends',
+    titleEn: 'Five Privacy Trends Shaping Your Digital Footprint in 2027',
+    excerptEn: 'AI scrapers, state privacy laws, platform limits, data brokers, and on-device tools make your old tweets riskier than ever. Here are five trends and an end-of-year cleanup checklist.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['digital footprint', 'social media privacy', '2027 trends', 'data brokers', 'AI scraping'],
+    content: `
+
+<p>2027 年，你几年前发的旧推文比以往任何时候都更危险。原因不是你发了更多，而是读它们的人变了：AI 回答引擎在抓取全网历史帖子训练模型，招聘工具把十年前的发言当成背调材料，数据经纪商把你的定位、手机号打包转卖。本文梳理 2027 年数字足迹与社媒隐私的五个趋势，帮你在年底做一次彻底的清理，也顺便说清哪些动作真正有用、哪些只是心理安慰。</p>
+
+<h2>一、AI 抓取让旧推文变成永久素材</h2>
+<p>2025 年起，AI 回答引擎开始大规模索引公开社交内容。到 2027 年，你 2012 年的一条吐槽，可能已经被喂进某个模型的训练集，或者成为某次检索增强回答的引用来源。它不会因为你在 X 上删除就立刻消失，模型权重里的痕迹很难回退，这点很多人还没意识到。</p>
+<p>应对办法很直接：把 2018 年以前的公开帖视为高风险，优先清理含住址、证件、前雇主的内容；对仍想保留的，考虑设为仅自己可见或直接删除原文。别抱侥幸心理，认为"那条没什么人看"——抓取工具不看热度，只看文本。</p>
+
+<h2>二、监管继续收紧：遗忘权与州级隐私法</h2>
+<p>欧盟 GDPR 的被遗忘权已运行多年，2027 年更多地区跟上。美国多个州（加州、弗吉尼亚、科罗拉多等）的隐私法赋予用户删除权与数据可携权，平台收到合规删除请求的处理时效在缩短。但个性化广告与位置追踪的边界仍在反复拉扯，远没到松口气的地步，新的案子还在不断冒出来。</p>
+<p>要点很清楚：你有权向平台请求删除自己的数据；可一旦社交帖子被第三方抓取，平台无法替你从全网清除。真正的防线是发之前想清楚，加上定期自清，而不是等法律替你擦屁股。</p>
+
+<h2>三、平台政策走向：限制、归档与 API</h2>
+<p>X 至今只允许删除最近约 3,200 条推文，更早的历史被锁在账号里，你没法用界面删。唯一能触达全部历史的方式是下载数据归档（ZIP），解析后逐条处理。2027 年这一限制没有松动迹象，反而是 API 调用成本上升，让自动化清理更依赖本机工具，也更考验普通用户的耐心。</p>
+<table>
+  <thead><tr><th>清理方式</th><th>能删的范围</th><th>成本</th></tr></thead>
+  <tbody>
+    <tr><td>网页界面手动删</td><td>最近 3,200 条</td><td>免费但极慢</td></tr>
+    <tr><td>官方删除请求</td><td>部分账号数据</td><td>免费，时效慢</td></tr>
+    <tr><td>解析数据归档后删</td><td>全部历史</td><td>按条计费，可暂停</td></tr>
+  </tbody>
+</table>
+<p>三种方式里，只有解析归档能碰到 3,200 条之外的旧帖。如果你有 2015 年以前的账号，这条路基本是唯一的出路，别在界面上跟加载不出来的旧帖较劲。</p>
+
+<h2>四、数据经纪商生态：你的痕迹在被买卖</h2>
+<p>数据经纪商从公开来源聚合你的手机号、邮箱、住址、政治倾向，再卖给广告主、催收公司甚至背景调查机构。你的推文是它们的免费原料。2027 年，要求经纪商删除（opt-out）的渠道更多，但过程仍然分散、繁琐，要一家家填表，且没有统一入口。</p>
+<p>应对：把删推文和向经纪商 opt-out 当成一个组合动作。清理源头加上切断下游，效果才完整，只做一半等于没做，因为经纪商手里的副本还在持续产生价值。</p>
+
+<h2>五、本机工具成为主流：隐私不再依赖云</h2>
+<p>2027 年的一个明显变化：用户更信任数据不出本机的工具。把归档上传到别人服务器做分析，等于又制造一份可被攻击的副本，也等于把最敏感的内容交给了第三方。本机解析、本机加密、只在你点击删除时才调用平台写入接口，成为隐私工具的底线标准，媒体也开始拿这个做评测维度。</p>
+<p>判断一个工具值不值得用，先看它会不会把你的原始归档发到云端。会发的，直接排除，不管它界面多好看、宣传多响。</p>
+
+<h2>六、给内容创作者与自由职业者的提醒</h2>
+<p>如果你靠社媒接单或做个人品牌，旧帖的暴露面更大：客户会搜你、合作方会查你、黑子会挖你。2027 年越来越多商务背调前置到第一次私信之前。建议把"接单前自检"写进流程，删掉早年报价、客户名、收入数字的炫耀帖，这些在合作谈判里只会让你被动。</p>
+
+<h2>七、年底清理别只做表面</h2>
+<p>很多人年末突击删一波就以为完了，但风险是每天新增的。真正有效的做法是季度自清：量小、压力低、不容易漏。把"每季度跑一次本机体检 + 删高风险旧帖 + 向经纪商 opt-out"设成日历提醒，比年末爆肝靠谱得多。</p>
+
+<h2>八、给普通用户的 2027 行动清单</h2>
+<ol>
+  <li>下载一次 X 数据归档，留好加密备份。</li>
+  <li>跑一次本机数字足迹体检，拿到 0-100 风险评分。</li>
+  <li>按风险清单删除含手机号、住址、证件的旧帖。</li>
+  <li>向两到三家主要数据经纪商提交 opt-out。</li>
+  <li>把每季度自清写进日历，别等出事再救火。</li>
+</ol>
+<h2>九、家庭账号：别让家人替你暴露</h2>
+<p>家庭共用账号、伴侣绑定的邮箱、孩子的小号，都是容易被忽略的暴露面。2027 年建议做一次家庭账号体检：把共用邮箱、定位共享、家庭相册里的证件照过一遍。这些往往比你自己发的更危险，因为你控制不了家人怎么发。</p>
+<h2>十、2027 工具选型清单</h2>
+<p>选工具时看三件事：是否本机处理、是否开源可查、删除是否按条计费且可暂停。三点都满足再考虑付费。界面好看、免费噱头多但把归档发云端的，一律排除。隐私工具的底线，是它永远碰不到你的原始数据之外的东西。</p>
+<p>想从一次免费体检开始？访问 <a href="/">digital-footprint-health.shop</a>，在本机上传归档即可拿到评分与风险清单，数据全程不出你的电脑。也可以读我们的 <a href="/blog/how-to-delete-old-tweets-2026">X 旧推文删除完整指南</a> 了解步骤。</p>
+
+`.trim(),
+    contentEn: `
+
+<p>In 2027 your old tweets are riskier than they have ever been. Not because you post more, but because the people reading them changed: AI answer engines scrape years of public posts to train models, recruiting tools treat a decade-old status as a background-check signal, and data brokers package your location and phone number for resale. This piece walks through five privacy trends for your digital footprint in 2027 and gives you an end-of-year cleanup checklist, plus a frank note on which actions actually help.</p>
+
+<h2>1. AI scrapers turn old posts into permanent training data</h2>
+<p>Since 2025, AI answer engines have indexed huge volumes of public social content. By 2027 a throwaway rant from 2012 may already sit inside some model's training set, or show up as a cited source in a retrieval-augmented answer. Deleting it on X does not pull it back out of the model weights, which are hard to undo, and most users still do not realize this.</p>
+<p>What to do: treat anything public before 2018 as high risk. Delete posts that expose your address, ID documents, or former employer. For things you want to keep, switch them to private or remove the original. Do not assume a post was harmless because few people saw it; scrapers ignore popularity and read the text.</p>
+
+<h2>2. Regulation tightens: erasure rights and state privacy laws</h2>
+<p>The EU GDPR right to erasure has run for years, and by 2027 more regions followed. Several US states (California, Virginia, Colorado and others) grant deletion and data-portability rights, and platforms are under shorter deadlines to honor compliant deletion requests. But the line around targeted ads and location tracking is still being fought, so do not assume the problem is solved, and new cases keep surfacing.</p>
+<p>The point is simple: you can ask a platform to delete your data, but once a post was scraped by a third party, the platform cannot scrub it from the whole web. The real defense is thinking before you post plus cleaning up on a schedule, not waiting for the law to clean up after you.</p>
+
+<h2>3. Platform policy: limits, archives, and APIs</h2>
+<p>X still lets you delete only the most recent roughly 3,200 tweets; older history is locked inside the account and unavailable from the interface. The only way to reach everything is to download your data archive (ZIP), parse it, and act on each post. In 2027 that limit has not loosened, and rising API costs push automated cleanup toward on-device tooling, which also tests ordinary users' patience.</p>
+<table>
+  <thead><tr><th>Method</th><th>Reach</th><th>Cost</th></tr></thead>
+  <tbody>
+    <tr><td>Manual delete in the app</td><td>Most recent 3,200</td><td>Free but very slow</td></tr>
+    <tr><td>Official deletion request</td><td>Some account data</td><td>Free, slow turnaround</td></tr>
+    <tr><td>Delete after parsing archive</td><td>Full history</td><td>Per-tweet, pausable</td></tr>
+  </tbody>
+</table>
+<p>Of the three, only archive parsing reaches posts older than 3,200. If your account predates 2015, that path is basically your only option, so stop wrestling with posts that will not load in the interface.</p>
+
+<h2>4. The data-broker ecosystem buys and sells your traces</h2>
+<p>Data brokers aggregate your phone number, email, address, and political leanings from public sources, then resell them to advertisers, collectors, and background-check firms. Your tweets are free raw material. In 2027 more opt-out channels exist, but the process is still scattered and tedious, with a form for every broker and no central door.</p>
+<p>Treat tweet deletion and broker opt-out as one combined action. Clean the source and cut the downstream, or you have only done half the job, because the broker copy keeps generating value on its own.</p>
+
+<h2>5. On-device tools go mainstream: privacy stops trusting the cloud</h2>
+<p>A clear shift in 2027 is that users trust tools which keep data on their own machine. Uploading an archive to someone else's server for analysis just creates another copy that can be attacked, and hands your most sensitive content to a third party. Parsing locally, encrypting locally, and calling the platform write API only when you click delete became the baseline standard for privacy tools, and reviewers now use it as a criterion.</p>
+<p>To judge whether a tool is worth using, check first whether it ships your raw archive to the cloud. If it does, skip it regardless of how polished the interface or loud the marketing.</p>
+
+<h2>6. A note for creators and freelancers</h2>
+<p>If you take client work or build a personal brand, your old posts have a wider exposure surface: clients search you, partners check you, bad actors dig through you. In 2027 more business vetting happens before the first DM. Put a self-check before onboarding into your workflow, and delete early posts that bragged about rates, named clients, or leaked income figures; those only weaken you in a negotiation.</p>
+
+<h2>7. Do not stop at surface cleanup at year-end</h2>
+<p>Many people do one burst of deletion in December and call it done, but risk accumulates every day. The method that actually works is quarterly self-cleanup: smaller batches, lower stress, fewer misses. Set a calendar reminder for a quarterly on-device check plus high-risk deletion plus broker opt-out; it beats a year-end cram far more reliably.</p>
+
+<h2>8. An end-of-2027 action checklist</h2>
+<ol>
+  <li>Download your X archive once and keep an encrypted backup.</li>
+  <li>Run an on-device footprint check and read your 0-100 risk score.</li>
+  <li>Delete old posts with phone numbers, addresses, or ID documents using the risk list.</li>
+  <li>Submit opt-out requests to two or three major data brokers.</li>
+  <li>Put quarterly self-cleanup on your calendar so you are not scrambling after an incident.</li>
+</ol>
+<h2>9. Family accounts: do not let family expose you</h2>
+<p>Shared household accounts, a partner's linked email, and a child's side account are all overlooked exposure surfaces. In 2027 run a family-account check: review shared emails, location sharing, and ID photos in family albums. These are often riskier than what you post yourself, because you cannot control how family posts.</p>
+<h2>10. A 2027 tool-selection checklist</h2>
+<p>When picking a tool, check three things: does it process on device, is it open enough to inspect, and is deletion per-tweet and pausable. Only pay if all three hold. Pretty interface and free hooks do not excuse shipping your archive to the cloud. The floor for a privacy tool is that it never touches anything beyond your raw data. If a vendor cannot say in one sentence where your archive goes, that is your answer.</p>
+<h2>11. Mistakes people still make in 2027</h2>
+<p>Three habits keep surfacing in our checks. First, deleting in the app but never downloading the archive, which leaves everything past the recent 3,200 tweets untouched and still searchable. Second, trusting a "free" cloud tool with the archive, which just copies the risk onto a new server you do not control. Third, doing one big purge and then forgetting it, so new posts accumulate unseen for a full year. None of these is a real cleanup; they are the appearance of one, and scrapers do not care which one you picked.</p>
+<p>If you want the score to move, pair archive parsing with on-device deletion and a quarterly cadence. The tool only shows the risk; the follow-through is yours, and it is the part that actually changes the number. A quiet quarterly routine beats a loud December panic every single time.</p>
+<p>Want to start with a free check? Visit <a href="/">digital-footprint-health.shop</a> and upload your archive on your own device to get a score and risk list; your data never leaves your computer. You can also read our <a href="/blog/how-to-delete-old-tweets-2026">complete guide to deleting old tweets on X</a>.</p>
+
+`.trim(),
+    faq: [
+      { q: '2027 年删除旧推文还有用吗？', a: '有用，但要及时。删除能清除平台上的公开帖，降低被搜索和截图的概率；只是已被 AI 模型或第三方抓取的部分难以撤回，所以越早清理越好。', qEn: 'Is deleting old tweets still useful in 2027?', aEn: 'Yes, but do it early. Deletion clears public posts on the platform and lowers the chance of search indexing and screenshots. Parts already scraped by AI models or third parties are hard to retract, so the sooner the better.' },
+      { q: 'AI 回答引擎会抓我的推文吗？', a: '会。公开帖被检索增强类工具抓取是常态，且抓取后进入训练集就很难回退。把 2018 年前的公开帖当高风险处理最稳妥。', qEn: 'Do AI answer engines scrape my tweets?', aEn: 'They do. Public posts are routinely pulled in by retrieval-augmented tools, and once inside a training set the trace is hard to undo. Treating pre-2018 public posts as high risk is the safest move.' },
+      { q: '数据经纪商 opt-out 是什么？', a: 'opt-out 是要求数据经纪商停止收集并删除与你相关的记录。过程要逐家提交，但能切断下游转卖，和删推文配合才完整。', qEn: 'What is a data-broker opt-out?', aEn: 'An opt-out asks a data broker to stop collecting and delete records tied to you. You submit it broker by broker, but it cuts off downstream resale and only works fully alongside tweet deletion.' },
+      { q: '本机工具比云端工具安全在哪？', a: '本机工具只在你的电脑解析归档，原始数据不发到服务器，减少一份可被攻击的副本。云端工具则会额外制造一份云端备份。', qEn: 'How are on-device tools safer than cloud tools?', aEn: 'On-device tools parse your archive only on your computer and never send the raw data to a server, so there is one less copy an attacker can reach. Cloud tools create an extra copy in their infrastructure.' },
+      { q: '个人用户从哪一步开始？', a: '先下载一次 X 数据归档，再跑一次本机体检拿到风险评分，然后按清单删高风险旧帖。免费体检就能看到问题在哪。', qEn: 'Where should an individual start?', aEn: 'Download your X archive once, run an on-device check for a risk score, then delete high-risk old posts by the list. A free check already shows you where the problems are.' }
+    ],
+  },
+{
+    slug: '100-day-footprint-health-lessons-2026',
+    title: '100 天数字足迹健康管理，我们学到的五件事',
+    excerpt: '连做 100 天数字足迹清理后，哪些动作真正降了风险、哪些只是自我安慰？这份复盘把踩过的坑和有效的方法分开讲。',
+    date: '2026-11-10',
+    updatedAt: '2026-11-10',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['100 天复盘', '数字足迹', '清理经验', '隐私习惯'],
+    canonical: '/blog/100-day-footprint-health-lessons-2026',
+    titleEn: 'Five Things We Learned Running 100 Days of Digital Footprint Care',
+    excerptEn: 'After 100 days of footprint cleanup, which actions actually lowered risk and which were just comfort? This recap separates the real wins from the busywork.',
+    categoryEn: 'Specials & Recap',
+    tagsEn: ['100-day recap', 'digital footprint', 'cleanup lessons', 'privacy habits'],
+    content: `
+
+<p>我们连续 100 天做数字足迹清理和内容沉淀，到 Day 99 回头看，有些动作确实把风险压下去了，有些只是让自己感觉在做事。下面五条是真正有用的经验，也把中途踩过的坑摊开讲。</p>
+
+<h2>一、体检比删除更该先做</h2>
+<p>很多人一上来就猛删，结果漏掉最危险的几条。先跑一次本机体检，拿到 0-100 评分和风险清单，才知道该先删什么。评分本身不改变任何东西，但它告诉你优先级，避免在低风险吐槽上耗尽耐心。</p>
+
+<h2>二、含联系方式的旧帖是头等风险</h2>
+<p>100 天里被反复提到的雷区就两类：手机号、住址。这两条一旦暴露， scam 和骚扰直接找上门，而且很难撤回。把它们排在清理队列最前面，比删一百条无关吐槽都值。证件照、工牌同理，属于同一档。</p>
+
+<h2>三、每季度一次比年末突击有效</h2>
+<p>年末集中清理听起来爽，但风险是每天都在新增的，突击只能覆盖到当下。把自清写进季度日历，每次量小、压力低，也更不容易漏。我们试过两种节奏，季度制的遗漏明显更少，人也更愿意坚持。</p>
+
+<h2>四、删推文要连数据经纪商一起</h2>
+<p>只删平台上的帖，经纪商手里的副本还在持续转卖。opt-out 很烦，要逐家填表，但和删帖是配套动作，少一个都不完整。这是我们中途才补上的教训：前几轮只删平台，后来发现经纪商那层完全没动。</p>
+
+<h2>五、工具可信的前提是本机处理</h2>
+<p>凡是把归档发到云端的工具，都多制造了一份可被攻击的副本，也多了一个会倒闭、会泄露、会转卖的第三方。100 天下来，我们更确信：数据不出本机，是隐私工具的底线，没有例外。界面再顺眼，只要归档出本机，就不用。</p>
+
+<h2>六、顺手可做的小习惯</h2>
+<p>复盘里还有几个低成本习惯值得记：发帖前默认当公开；定位、POI 能关就关；工牌和家庭照不在社媒发原图；每年重设一次谁能看你的旧内容。这些不费劲，但长期把暴露面压得很低。</p>
+<h2>七、工具怎么帮人坚持下来</h2>
+<p>光靠自觉，季度自清很难不中断。我们这 100 天里，真正让人坚持下来的不是意志力，而是把流程工具化：归档解析、风险清单、按条删除都交给本机工具，人只做"看清单、点确认"这一步。门槛越低，中断越少。工具本身不替你决策，但它把"每次都要从头折腾"的摩擦降到零，习惯才留得住。</p>
+<p>另一个关键是别追求一次清干净。每轮只处理风险清单里的前几十条，剩下的留给下个季度。这样既不挫败，也不会因为"反正清不完"就干脆不开始。慢，但稳，而且不反弹。</p>
+<p>想自己跑一次体检？访问 <a href="/">digital-footprint-health.shop</a>，本机上传归档即可，数据全程不出电脑。也可看 <a href="/blog/what-is-digital-footprint-check">数字足迹体检是什么</a> 打底。</p>
+
+`.trim(),
+    contentEn: `
+
+<p>We ran digital footprint cleanup and content work for 100 straight days. At Day 99 it is clear which actions actually lowered risk and which only felt productive. Here are the five lessons that mattered, including the mistakes we hit along the way.</p>
+
+<h2>1. Check before you delete</h2>
+<p>Many people start deleting blindly and miss the most dangerous posts. Run an on-device check first, get a 0-100 score and a risk list, then you know what to delete first. The score changes nothing by itself, but it sets your priority and stops you burning patience on low-risk hot takes.</p>
+
+<h2>2. Old posts with contact info are the top risk</h2>
+<p>Across 100 days the repeated landmines were just two types: phone numbers and home addresses. Once exposed, scams and harassment arrive directly, and withdrawal is hard. Put them at the front of the cleanup queue; that beats deleting a hundred irrelevant posts. ID photos and work badges sit in the same tier.</p>
+
+<h2>3. Quarterly beats a year-end sprint</h2>
+<p>A big year-end purge feels good but risk accumulates daily, so a sprint only covers the present. Put self-cleanup on a quarterly calendar: smaller batches, lower stress, fewer misses. We tried both rhythms; the quarterly one missed far less and was easier to keep.</p>
+
+<h2>4. Delete tweets together with data brokers</h2>
+<p>Deleting only on the platform leaves the broker copy intact and still reselling. Opt-out is annoying and needs a form per broker, but it pairs with deletion; skip either and the job is half done. This was a mid-course lesson: early rounds deleted only on platform, then we found the broker layer untouched.</p>
+
+<h2>5. A tool earns trust only by processing on device</h2>
+<p>Any tool that sends your archive to the cloud creates one more copy that can be attacked, and one more third party that can shut down, leak, or resell. After 100 days we are more sure: data staying on your device is the floor for privacy tools, no exceptions. However polished the interface, if the archive leaves your machine, skip it. No free tier is worth a copy of your archive on someone else's disk, no matter the pitch.</p>
+
+<h2>6. Low-cost habits worth keeping</h2>
+<p>The recap also surfaced a few cheap habits: assume public before posting, turn off location and POI when you can, never post work badges or family photos at full resolution, and re-review who can see your old content once a year. None of these cost effort, but over time they keep the exposure surface low.</p>
+<h2>7. How a tool helps you actually keep it up</h2>
+<p>Willpower alone rarely carries a quarterly routine. What kept us going across 100 days was not discipline but tooling the process: archive parsing, a risk list, and per-post deletion all handled on device, so the human step is only "read the list, click confirm." Lower the friction and you lower the drop-off. The tool makes no decisions for you, but it removes the from-scratch scramble every time, and that is what lets the habit stick. We tried reminders alone and they faded by week six; the tool is what held.</p>
+<p>The other key is to stop chasing a perfect one-time purge. Each round, handle only the first few dozen items on the risk list and leave the rest for next quarter. That way you avoid both the burnout and the "why bother if it never ends" shutdown. Slow, steady, and it does not bounce back. The 100-day run proved the point: the accounts we kept clean were the ones with a tool in the loop, not the ones where we promised we would remember.</p>
+<p>Want to run a check yourself? Visit <a href="/">digital-footprint-health.shop</a> and upload your archive on your device; your data never leaves the computer. See also <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>.</p>
+
+`.trim(),
+    faq: [
+      { q: '100 天清理真有必要吗？', a: '没必要每天做，但持续 100 天让我们看清了节奏：季度自清足够，关键是别停。每天都做只是把量摊薄，价值在坚持不在频率。', qEn: 'Is 100 days of cleanup necessary?', aEn: 'You do not need to do it daily, but 100 days showed the rhythm: quarterly self-cleanup is enough, the point is not stopping. Doing it every day just spreads the volume; the value is consistency, not frequency.' },
+      { q: '最先该删的是哪类旧帖？', a: '含手机号、住址、证件照的。这两类直接关联现实安全和骚扰，优先级远高于观点类旧帖。', qEn: 'Which old posts should I delete first?', aEn: 'Posts with phone numbers, home addresses, or ID photos. These tie directly to real-world safety and harassment, far above opinion posts in priority.' },
+      { q: '年末突击清理够不够？', a: '不够。风险每日新增，突击只做表面。季度自清量小、不易漏，更可持续。', qEn: 'Is a year-end sprint enough?', aEn: 'No. Risk grows daily and a sprint stays surface level. Quarterly cleanup is smaller, less likely to miss things, and more sustainable.' },
+      { q: '为什么强调本机处理？', a: '云端工具会多存一份你的归档副本，增加泄露面，也多一个会倒闭或转卖的第三方。本机处理让原始数据不离开你的电脑。', qEn: 'Why insist on on-device processing?', aEn: 'Cloud tools keep an extra copy of your archive, widen the leak surface, and add a third party that can shut down or resell. On-device processing keeps the raw data on your computer.' }
+    ],
+  },
+{
+    slug: 'chinese-users-2027-footprint-resolutions',
+    title: '中文用户 2027 数字足迹新年计划：三个本地化动作',
+    excerpt: '回国求职、微信微博跨平台、中文语境背调——中文用户的数字足迹有自己的坑。这份新年计划只讲中文用户真正会遇到的场景。',
+    date: '2026-11-10',
+    updatedAt: '2026-11-10',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文用户', '数字足迹', '新年计划', '跨平台隐私', '求职背调'],
+    canonical: '/blog/chinese-users-2027-footprint-resolutions',
+    titleEn: '2027 Digital Footprint Resolutions for Chinese-Speaking Users',
+    excerptEn: 'Returning home for jobs, cross-platform WeChat and Weibo trails, Chinese-language background checks: Chinese-speaking users have their own footprint traps. This plan covers scenarios that actually happen.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['Chinese users', 'digital footprint', 'new year plan', 'cross-platform privacy', 'job screening'],
+    content: `
+
+<p>英文世界的隐私建议常把 X 当成唯一战场，但中文用户的故事不一样：你可能同时在微博、微信、小红书、抖音留下痕迹，回国求职时背调看的是中文材料，家人群里转发的旧图也藏着定位。这份 2027 新年计划，只讲中文用户真的会遇到的场景，不照搬英文那套。</p>
+
+<h2>一、把跨平台当成一件事</h2>
+<p>很多人只在 X 上清理，却忘了微博早年晒的登机牌、微信里发的家庭定位、小红书带 POI 的打卡。这些平台的中文检索同样能拼出你的住址和行程。新年第一步：把四个平台列出来，逐个过一遍含位置和证件的旧内容，别让清理停在 X 上。</p>
+
+<h2>二、回国求职前的背调自查</h2>
+<p>国内背调越来越看社媒。十年前在微博怼前公司、在朋友圈发过的工牌照片，都可能被翻出来。建议求职前两个月做一轮自查，把明显不合适的公开内容设为仅自己可见或删除，别等 HR 先看到。这和英文世界"雇主搜 LinkedIn"是同一种风险，只是材料换成中文。</p>
+
+<h2>三、家人群里的图也要管</h2>
+<p>父母在家族群转发的你小时候照片、带门牌的搬家图，往往比你自己发的更危险，因为你控制不了源头。能撤回就撤回，不能撤回就委婉提醒长辈别带定位转发。这块最容易被忽略，却是真实泄露的高发地。</p>
+
+<h2>四、微信的隐藏雷：朋友圈和群文件</h2>
+<p>朋友圈默认仅好友可见，但背调时截图流出很常见；群里转发的文件、定位、接龙，也都会沉淀成痕迹。工牌、定位、孩子照片建议设为仅自己可见，群里的敏感图及时撤回。微信的"仅三天可见"只能盖新增，盖不住历史，别高估它。</p>
+
+<h2>五、一个可执行的新年清单</h2>
+<ol>
+  <li>列清自己活跃的四个中文平台账号。</li>
+  <li>各平台搜一遍自己的手机号、住址、工牌关键词。</li>
+  <li>求职季前两个月做一轮背调自查。</li>
+  <li>跟长辈说清楚：含定位的图别往群里转。</li>
+  <li>X 上的中文旧帖用本机归档体检一并管。</li>
+</ol>
+<h2>六、把清单变成季度习惯</h2>
+<p>这五个动作做一次不难，难的是别让它烂尾。建议把"四个平台搜一遍关键词 + 求职季前自查 + 提醒长辈"写成一条季度提醒，到点在手机上点开照做。中文用户的痕迹分散在好几个 App，没有固定节奏很容易半年不动，等背调找上门才想起来，那就晚了。</p>
+<p>另外，每轮自查后顺手记一下"哪些平台已清、哪些还漏着"，存个备忘录。下一轮照着勾，不会重复劳动，也不会假装清了其实没清。清单的价值不在写得多漂亮，在于你真的每季度照它跑一遍。</p>
+<p>顺带一提，X 上的中文旧帖也别漏：访问 <a href="/">digital-footprint-health.shop</a> 用本机归档体检，能一并看到风险清单。中文用户的多平台痕迹，最好用同一套流程管起来，别东一榔头西一棒槌。</p>
+
+`.trim(),
+    contentEn: `
+
+<p>English-language privacy advice often treats X as the only battlefield, but Chinese-speaking users have a different story: you may leave traces across Weibo, WeChat, Xiaohongshu, and Douyin at once; a background check for a job back home reads Chinese material; and old photos forwarded in family groups still carry location. This 2027 plan covers scenarios that actually happen for Chinese-speaking users, not a translated copy of the English playbook.</p>
+
+<h2>1. Treat cross-platform as one task</h2>
+<p>Many people clean only X and forget the boarding pass posted on Weibo years ago, the home location sent in WeChat, or the POI-tagged check-in on Xiaohongshu. Chinese-language search across these platforms can still piece together your address and routine. Step one for the new year: list the four platforms you use and review old location- and ID-bearing content on each, instead of stopping at X.</p>
+
+<h2>2. Self-check before a job search back home</h2>
+<p>Domestic background checks increasingly look at social media. A decade-old Weibo rant at a former employer or a work-badge photo in Moments can resurface. Do one self-check about two months before job hunting, and set clearly unsuitable public content to private or delete it, rather than letting HR see it first. This is the same risk as English-world employers scanning LinkedIn, just with Chinese material.</p>
+
+<h2>3. Manage images in family groups too</h2>
+<p>Childhood photos or moving notices with a doorplate, forwarded by parents in a family group, are often riskier than what you post yourself because you cannot control the source. Recall what you can, and gently tell elders not to forward location-tagged images. This is the most overlooked piece and a real leak hotspot.</p>
+
+<h2>4. WeChat hidden mines: Moments and group files</h2>
+<p>Moments default to friends only, but screenshots leak during checks; files, locations, and polls forwarded in groups also settle into traces. Set work badges, locations, and kids photos to only-self, and recall sensitive images in groups. WeChat's three-day visibility only covers new posts and misses history, so do not overrate it.</p>
+
+<h2>5. A doable new-year checklist</h2>
+<ol>
+  <li>List the four Chinese platforms where you are active.</li>
+  <li>Search each for your phone number, address, and work-badge keywords.</li>
+  <li>Run a background-check self-review two months before job hunting.</li>
+  <li>Ask elders not to forward location-tagged images in groups.</li>
+  <li>Manage old Chinese posts on X with an on-device archive check.</li>
+</ol>
+<h2>6. Turn the checklist into a quarterly habit</h2>
+<p>Doing these five actions once is easy; letting them die is the real risk. Write "search the four platforms for keywords, self-check before job season, remind elders" as a single quarterly reminder and just open it when the alarm goes off. Chinese-speaking users spread traces across several apps, and with no fixed rhythm it is easy to do nothing for half a year, then remember only when a check lands on your door. A reminder you must build from scratch each time is a reminder you will skip.</p>
+<p>Also, after each round jot down which platforms are cleared and which still leak, in a note. Next round you tick against it, so you avoid both repeating work and pretending you cleaned when you did not. The value of a checklist is not how pretty it looks but that you actually run it every quarter. We have seen users keep a checklist for a year and others drop it in a month; the gap was almost always whether the steps were one tap, not one good intention.</p>
+<p>While you are at it, do not skip old Chinese posts on X: visit <a href="/">digital-footprint-health.shop</a> for an on-device archive check that shows a risk list. Multi-platform traces for Chinese-speaking users are best managed under one workflow, not scattered across tools.</p>
+
+`.trim(),
+    faq: [
+      { q: '中文用户和英文用户清理重点有何不同？', a: '英文建议常盯 X，但中文用户还摊在微博、微信、小红书、抖音，且国内背调看中文材料。跨平台 + 中文语境背调是独有坑，不能照搬。', qEn: 'How do cleanup priorities differ for Chinese-speaking users?', aEn: 'English advice fixates on X, but Chinese-speaking users also spread across Weibo, WeChat, Xiaohongshu, and Douyin, and domestic checks read Chinese material. Cross-platform plus Chinese-context screening are the unique traps, not a copy-paste.' },
+      { q: '家人群转发的图怎么处理？', a: '能撤回就撤回，不能撤回就提醒长辈别带定位转发。这部分你控制不了源头，只能从转发环节拦。', qEn: 'What about images forwarded in family groups?', aEn: 'Recall what you can, and remind elders not to forward location-tagged images. You cannot control the source, only the forwarding step.' },
+      { q: '求职前多久该自查？', a: '建议求职前两个月做一轮。太早自查后还会发新内容，太晚又来不及改公开可见范围。', qEn: 'How long before a job search should I self-check?', aEn: 'About two months before. Checking too early leaves new posts after it; too late leaves no time to change public visibility.' },
+      { q: 'POI 打卡是什么风险？', a: '带 POI 的打卡会把你常去的店、公司、住址附近位置暴露出来，长期积累能拼出日常动线。', qEn: 'What is the risk of POI check-ins?', aEn: 'POI-tagged check-ins expose shops, workplaces, and near-home locations you visit often, and over time they reveal your daily route.' }
+    ],
+  },
+{
+    slug: 'footprint-score-faq-2027',
+    title: '数字足迹评分 FAQ：0-100 分怎么读',
+    excerpt: '评分到底看什么、多少分算安全、多久重测一次？关于数字足迹健康评分最常见的几个问题，一次说清。',
+    date: '2026-11-10',
+    updatedAt: '2026-11-10',
+    author: 'Digital Footprint Health Team',
+    category: '隐私体检',
+    tags: ['足迹评分', 'FAQ', '隐私体检', '风险等级'],
+    canonical: '/blog/footprint-score-faq-2027',
+    titleEn: 'Digital Footprint Score FAQ: How to Read 0-100',
+    excerptEn: 'What the score actually looks at, what counts as safe, and how often to re-test. The most common questions about the digital footprint health score, answered.',
+    categoryEn: 'Privacy Check',
+    tagsEn: ['footprint score', 'FAQ', 'privacy check', 'risk level'],
+    content: `
+
+<p>数字足迹健康评分用 0-100 表示你账号的隐私风险，分数越高越安全。下面几个问题最常被人问到，一次说清，免得你对着分数瞎猜。</p>
+
+<h2>评分看哪些内容</h2>
+<p>主要看归档里推文暴露的手机号、邮箱、住址、定位，以及敏感话题的密度。每类按风险权重计分，最后汇总成 0-100。也就是说，分数反映的是"你暴露了多少高风险信息"，不是发了多少条。</p>
+
+<h2>多少分算安全</h2>
+<p>没有绝对线，但 80 分以上通常意味着高风险项已清理；60 分以下建议优先处理含联系方式的旧帖。分数本身是优先级信号，不是及格卷，别为了凑高分去删无关内容。</p>
+
+<h2>多久重测一次</h2>
+<p>每次大清理后重测一次最直接。日常节奏上，季度自清配季度重测就够了，不必天天跑。归档没变，分数也不会变，频繁重测只是浪费时间。</p>
+
+<h2>评分会删我的推文吗</h2>
+<p>不会。评分只读不写，删除是你在看清风险后单独决定的步骤，工具和评分都不碰你的账号。你可以反复测，放心。</p>
+
+<h2>分数低一定要全删吗</h2>
+<p>不必。先删含联系方式和证件的，观点类旧帖风险低，可按需保留。分数用来排优先级，不是强制清空，留着有留存价值的旧内容没问题。</p>
+<p>想拿自己的分数？访问 <a href="/">digital-footprint-health.shop</a> 本机上传归档即可，数据不出电脑，体检和评分都免费。</p>
+
+`.trim(),
+    contentEn: `
+
+<p>The digital footprint health score uses 0-100 to show your account privacy risk; a higher number means safer. Here are the questions people ask most, answered in one place so you stop guessing at the number.</p>
+
+<h2>What the score looks at</h2>
+<p>Mostly the phone numbers, emails, addresses, and locations exposed in archived tweets, plus the density of sensitive topics. Each type is weighted by risk and summed into 0-100. In other words, the score reflects how much high-risk info you exposed, not how many posts you made.</p>
+
+<h2>What counts as safe</h2>
+<p>There is no hard line, but 80+ usually means high-risk items are cleared; below 60 suggests dealing with contact-bearing old posts first. The score is a priority signal, not a pass-fail exam, so do not delete harmless posts just to push the number up.</p>
+
+<h2>How often to retest</h2>
+<p>Retest right after a big cleanup. For routine cadence, quarterly self-cleanup with quarterly retest is enough; no need to run it daily. If the archive did not change, the score will not change, so frequent retests only waste time.</p>
+
+<h2>Does the score delete my tweets</h2>
+<p>No. The score is read-only. Deletion is a separate step you choose after seeing the risk; neither the tool nor the score touches your account. You can test as often as you like.</p>
+
+<h2>Must a low score mean deleting everything</h2>
+<p>No. Delete contact and ID posts first; opinion posts are low risk and can stay. The score sets priority, not a forced wipe, and keeping posts with留存 value is fine.</p>
+<p>Want your own score? Visit <a href="/">digital-footprint-health.shop</a> and upload your archive on device; your data stays on your computer and the check and score are free. Run it after any big cleanup and you will see the risk number move, which is the only feedback that tells you the work actually landed.</p>
+
+`.trim(),
+    faq: [
+      { q: '0 分和 100 分分别是什么意思？', a: '100 分代表归档里几乎没暴露高风险信息；0 分代表大量手机号、住址等高风险内容未清理。分数越高越安全。', qEn: 'What do 0 and 100 mean?', aEn: '100 means the archive exposes almost no high-risk info; 0 means lots of phone numbers and addresses are still uncleaned. Higher is safer.' },
+      { q: '评分会误报吗？', a: '会。比如把快递单号当成手机号、把地名当成住址都可能误标。所以评分是优先级参考，删前自己确认一下。', qEn: 'Can the score false-positive?', aEn: 'Yes. A tracking number read as a phone number, or a place name read as an address, can be mislabeled. The score is a priority hint; confirm before deleting.' },
+      { q: '同个账号两次评分不一样正常吗？', a: '正常。归档内容变（删了帖或换了归档）分数就变；算法本身固定时，差异来自数据而非评分。', qEn: 'Is it normal for the same account to score differently twice?', aEn: 'Yes. When the archive changes (posts deleted or a fresh archive), the score changes. With a fixed method the difference comes from data, not the scoring.' },
+      { q: '分数低一定要全删吗？', a: '不必。先删含联系方式和证件的，观点类旧帖风险低，可按需保留。分数用来排优先级，不是强制清空。', qEn: 'Must a low score mean deleting everything?', aEn: 'No. Delete contact and ID posts first; opinion posts are low risk and can stay. The score sets priority, not a forced wipe.' },
+      { q: '评分要花钱吗？', a: '体检和评分免费且只读。只有你决定清理时，才按条计费删除，且可暂停退款。', qEn: 'Does scoring cost money?', aEn: 'The check and score are free and read-only. You pay per tweet only when you choose to clean up, and it is pausable and refundable.' }
+    ],
+  },
+{
+    slug: 'chinese-social-platforms-footprint-2027-guide',
+    title: '中文多平台足迹管理指南：微博微信小红书怎么清',
+    excerpt: 'X 之外，中文用户还摊在微博、微信、小红书、抖音。四个平台各自的痕迹特点和清理入口不同，这份指南按平台拆开讲。',
+    date: '2026-11-10',
+    updatedAt: '2026-11-10',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文平台', '微博', '微信', '小红书', '足迹清理'],
+    canonical: '/blog/chinese-social-platforms-footprint-2027-guide',
+    titleEn: 'Managing Your Footprint Across Chinese Platforms: Weibo, WeChat, Xiaohongshu',
+    excerptEn: 'Beyond X, Chinese-speaking users spread across Weibo, WeChat, Xiaohongshu, and Douyin. Each platform leaves different traces and has different cleanup entry points. This guide breaks it down by platform.',
+    categoryEn: 'Bilingual Market',
+    tagsEn: ['Chinese platforms', 'Weibo', 'WeChat', 'Xiaohongshu', 'footprint cleanup'],
+    content: `
+
+<p>英文攻略把 X 当主战场，但中文用户的足迹分散在四个平台，每个的痕迹特点和清理入口都不一样。下面按平台拆开讲，方便你逐个过，也把"只清 X 等于白清一半"这件事说透。</p>
+
+<h2>微博：最像 X，也最该先清</h2>
+<p>微博公开性强，早年晒的登机牌、工牌、住址都还在搜索里。清理入口在「设置-账号安全-微博删除」，但历史太久的帖界面删不动，得靠数据下载后解析。搜索自己的手机号、住址关键词先定位，比一条条翻高效得多。</p>
+
+<h2>微信：朋友圈和群是隐藏雷</h2>
+<p>朋友圈默认仅好友可见，但背调时截图流出很常见。工牌、定位、孩子照片建议设为仅自己可见。家族群转发的含定位图，靠提醒长辈解决。微信的"仅三天可见"只能盖新增，盖不住历史，别高估它。</p>
+
+<h2>小红书：POI 打卡暴露动线</h2>
+<p>小红书带 POI 的笔记会把你常去的店、公司、住址附近暴露出来。改笔记去掉 POI，或设为私密。长期积累能拼出日常路线，这块很多人完全没意识。</p>
+
+<h2>抖音：定位和评论区都留痕</h2>
+<p>抖音的 IP 属地、定位、评论区发言都算足迹。公开视频的定位建议关掉，争议评论区尽量别留真名相关信息。IP 属地个人一般关不掉，但定位标签可以关。</p>
+
+<h2>一个统一做法</h2>
+<ol>
+  <li>四个平台各搜一遍自己的手机号、住址、工牌关键词。</li>
+  <li>含定位的笔记和打卡改私密或去 POI。</li>
+  <li>朋友圈敏感内容设为仅自己可见。</li>
+  <li>X 上的中文旧帖用 <a href="/">digital-footprint-health.shop</a> 本机归档体检一并管。</li>
+</ol>
+<h2>六、别高估"仅三天可见"和"私密账号"</h2>
+<p>很多人以为设了私密账号或仅三天可见就万事大吉，其实不是。私密账号挡的是未来的新关注，挡不住已经截图的人；老帖的曝光面是既成事实，开关改的是未来，不是过去。仅三天可见只盖新增，盖不住历史帖。真正危险的旧内容，靠这两个开关一个都清不掉。它们方便，但不能替代"主动去翻、去删、去设仅自己可见"这一步。截图一旦出去，开关就关不回来了，所以源头清理才是真防线。</p>
+<h2>七、把四平台串成季度流程</h2>
+<p>零散清理容易漏。建议建一个季度模板：每月一个平台，四个月轮完一轮，第五个月回到第一个复查。这样既不会一次负担太重，也不会某个平台晾半年。模板里记清每个平台的清理入口和关键词，下一轮直接照做，别每次都重新摸索。X 上的中文旧帖交给本机归档体检统一管，不单独费心。这样四个平台加 X 一年轮三轮，覆盖得住，也不觉得累。</p>
+<p>四个平台 + X，最好用同一套流程季度自清，别只盯一个。哪个平台漏了，前面清理的成效就打折。</p>
+
+`.trim(),
+    contentEn: `
+
+<p>English guides treat X as the main battlefield, but Chinese-speaking users spread across four platforms, each leaving different traces and with different cleanup entry points. Here is the breakdown by platform, and a clear case for why clearing only X leaves half the job undone.</p>
+
+<h2>Weibo: most X-like, clear it first</h2>
+<p>Weibo is public by default, and boarding passes, work badges, and addresses from years ago still sit in search. The cleanup entry is Settings - Account Security - delete Weibo, but very old posts are not deletable from the interface; you need a data download and parse. Search your phone number and address keywords to locate them, which beats scrolling endlessly.</p>
+
+<h2>WeChat: Moments and groups are hidden mines</h2>
+<p>Moments default to friends only, but screenshots leak during checks. Work badges, locations, and kids photos should be set to only-self. Location-tagged images forwarded in family groups are handled by reminding elders. WeChat's three-day visibility only covers new posts and misses history, so do not overrate it.</p>
+
+<h2>Xiaohongshu: POI check-ins expose your route</h2>
+<p>POI-tagged notes on Xiaohongshu expose shops you visit often, your workplace, and near-home locations. Edit notes to drop the POI or set them private. Over time they reveal your daily route, and most users are unaware of this. Treat every POI tag as a small map of your week, because that is exactly what it is to a scraper.</p>
+
+<h2>Douyin: location and comments leave traces</h2>
+<p>Douyin IP region, location tags, and comment-section posts all count as footprint. Turn off location on public videos, and avoid real-name details in argument threads. Comments under your real name are the same leak, so watch the threads, not just the video. IP region usually cannot be turned off by the user, but location tags can.</p>
+
+<h2>One unified approach</h2>
+<ol>
+  <li>Search each of the four platforms for your phone number, address, and work-badge keywords.</li>
+  <li>Set location notes and check-ins to private or remove the POI.</li>
+  <li>Set sensitive Moments to only-self.</li>
+  <li>Manage old Chinese posts on X with an <a href="/">digital-footprint-health.shop</a> on-device archive check.</li>
+</ol>
+<h2>6. Do not overrate "three-day visibility" and "private account"</h2>
+<p>Many people think a private account or three-day visibility settles it, but it does not. Private blocks future followers, not people who already screenshotted you; three-day visibility only covers new posts and misses history. Neither switch clears the old content that is actually risky. They are convenient, but they cannot replace the active step of scrolling back, deleting, and setting things to only-self. A screenshot that already exists is outside any switch's reach, so source cleanup is the only real defense.</p>
+<h2>7. String the four platforms into one quarterly flow</h2>
+<p>Scattered cleanup leaks. Build a quarterly template: one platform per month, four months to a full round, then revisit the first in month five. That keeps any single round light and stops one platform sitting untouched for half a year. Note each platform's cleanup entry and keywords in the template so the next round just runs it instead of relearning from scratch. The four platforms share the same leakage logic, so one template covers all of them once you write it down.</p>
+<p>Old Chinese posts on X go to the on-device archive check, handled in the same pass rather than as a separate chore. The point is not to be perfect on day one but to have a rhythm you will actually keep, because a rhythm you abandon cleans nothing. We have watched users keep a private account for years while their old posts sat open the whole time, which is the trap these switches invite. Run the four platforms and X as one quarterly workflow, not one at a time; skip any platform and the cleanup elsewhere loses effect.</p>
+
+`.trim(),
+    faq: [
+      { q: '四个平台里哪个最该先清？', a: '微博。它公开性最强、历史帖最易被搜索，且早年暴露的证件住址最多。先清微博收益最大。', qEn: 'Which platform should I clear first?', aEn: 'Weibo. It is the most public, its old posts are easiest to search, and it holds the most exposed IDs and addresses from years ago. Clearing it first pays off most.' },
+      { q: '朋友圈仅好友可见就安全吗？', a: '不完全。背调时截图流出很常见，工牌和定位仍可能外泄。敏感内容建议设为仅自己可见。', qEn: 'Is friends-only Moments safe?', aEn: 'Not fully. Screenshots leak during checks, so work badges and locations can still escape. Set sensitive content to only-self.' },
+      { q: '小红书 POI 一定要去吗？', a: '长期看建议去。POI 会暴露常去地点，积累后拼出日常动线。不改也不致命，但属于可降的风险。', qEn: 'Must I remove Xiaohongshu POI?', aEn: 'Over time, yes. POI exposes places you visit and builds a daily route. Not fatal if kept, but it is reducible risk.' },
+      { q: '抖音 IP 属地能关吗？', a: 'IP 属地是平台按登录地展示，个人一般关不掉；但定位标签可以关，公开视频别带定位即可降低暴露。', qEn: 'Can I turn off Douyin IP region?', aEn: 'IP region is shown by the platform from login location and usually cannot be turned off by the user, but location tags can be off; just keep public videos location-free to lower exposure.' }
+    ],
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

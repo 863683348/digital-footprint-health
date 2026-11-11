@@ -34254,6 +34254,377 @@ rl.on('close', () =&gt; {
       { q: '抖音 IP 属地能关吗？', a: 'IP 属地是平台按登录地展示，个人一般关不掉；但定位标签可以关，公开视频别带定位即可降低暴露。', qEn: 'Can I turn off Douyin IP region?', aEn: 'IP region is shown by the platform from login location and usually cannot be turned off by the user, but location tags can be off; just keep public videos location-free to lower exposure.' }
     ],
   },
+  {
+    slug: 'take-control-your-digital-footprint-100-days',
+    title: '100 天，你已掌握数字足迹的主动权',
+    excerpt: '100 天前你第一次下载 X 归档，今天你已能主动决定哪些旧推文留下、哪些该清理。这篇收官复盘讲清：为什么掌控比删除更重要，以及 0-100 健康分到底在量什么。',
+    date: '2026-11-11',
+    updatedAt: '2026-11-11',
+    author: 'Digital Footprint Health Team',
+    category: '特辑与复盘',
+    tags: ['数字足迹', '隐私清理', '100天', 'X/Twitter', '隐私保护'],
+    content: `
+
+<p>100 天前，你第一次点开 X 的“下载数据归档”，等来了那个几百 MB 的 ZIP。今天，你已经能主动决定哪些旧推文留下、哪些该清理。这 100 天里最关键的不是“删了多少”，而是你重新拿回了过去十年数字痕迹的主动权。</p>
+
+<h2>起点：一份被公开了十年的日记</h2>
+<p>大多数人的 X 账号，本质是一份持续十年的公开日记。2009 年你发过“今天搬家到 xx 路”；2013 年你晒过登机牌；2019 年你深夜吐槽前公司。当年它们只是情绪，今天却可能成为简历上的污点、诈骗分子的素材、或者猎头搜索你时的第一个结果。</p>
+<p>数字足迹体检（digital footprint check）做的第一件事，就是帮你把这份“忘了的过去”翻出来，用 0-100 健康分量化它到底有多危险。</p>
+
+<h2>100 天里，你做对的 5 件事</h2>
+<ul>
+  <li><strong>先体检，再清理</strong>：体检只读不删，免费，让你看清风险排序。</li>
+  <li><strong>按风险优先级删</strong>：先删含手机号、住址的高危推文，而不是凭感觉。</li>
+  <li><strong>保留有温度的记忆</strong>：不是所有旧推文都该删，有些值得留着。</li>
+  <li><strong>用归档做备份</strong>：清理前先留一份完整归档，随时可回看。</li>
+  <li><strong>把清理变成习惯</strong>：一次大扫除不如每月 15 分钟的小维护。</li>
+</ul>
+
+<h2>0-100 健康分到底在量什么</h2>
+<p>健康分不是随便给的数字，它综合了四类信号：</p>
+<table>
+  <thead>
+    <tr><th>信号</th><th>代表什么</th><th>权重</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>联系信息</td><td>手机号 / 邮箱 / 微信号是否外露</td><td>高</td></tr>
+    <tr><td>位置数据</td><td>家庭 / 公司 / 旅行定位</td><td>高</td></tr>
+    <tr><td>敏感内容</td><td>抱怨前公司、不成熟言论</td><td>中</td></tr>
+    <tr><td>账号安全</td><td>是否开启两步验证、有无异常登录</td><td>中</td></tr>
+  </tbody>
+</table>
+<p>分数越低，说明暴露在外的隐私越多。一次体检通常能在几分钟内标出最危险的几十条推文。</p>
+
+<h2>为什么掌控胜过清空</h2>
+<p>很多人以为清理就是把账号“洗白”。但彻底清空既不可能（X 只允许删最近约 3,200 条），也没必要。真正有用的是<strong>掌控</strong>：你知道自己留下了什么、哪些风险高、什么时候该处理。</p>
+<p>一份十年账号里，值得删的可能只有 5%，值得留的有 90%，剩下 5% 看心情。把精力放在那 5% 高危内容上，效率远高于盲目全删。</p>
+
+<h2>接下来：把清理变成习惯</h2>
+<p>100 天的收官不是结束。建议你每月固定一个“足迹维护日”，花 15 分钟跑一次体检、处理新出现的高危内容。未来的你，会感谢现在主动管理的自己。</p>
+<p>想从第一步开始？先看看 <a href="/blog/what-is-digital-footprint-check">什么是数字足迹体检</a>，再读 <a href="/blog/how-to-delete-old-tweets-2026">删除旧推文的完整指南</a>。对评分有疑问，看 <a href="/blog/footprint-score-faq-2027">健康分 FAQ</a>。</p>
+<p>在数字足迹体检（digital-footprint-health.shop），你上传 X 归档后能在自己的电脑上完成全部分析与评分，数据不出本机。准备好掌控自己的数字足迹，就从一次免费体检开始：<a href="/">立即上传归档</a>。</p>
+
+    `,
+    canonical: '/blog/take-control-your-digital-footprint-100-days',
+    faq: [
+      { q: '100 天计划结束后，我还要继续清理吗？', a: '建议继续，但频率可以降低。每月花 15 分钟跑一次体检、处理新出现的高危内容即可，不必像最初那样集中大扫除。', qEn: 'Should I keep cleaning after the 100 days end?', aEn: 'Yes, but less often. Spend 15 minutes each month running a check and handling new high-risk content. You no longer need the early intensive purges.' },
+      { q: '健康分低就一定要全删吗？', a: '不需要。健康分只是告诉你风险排序，约 5% 的高危内容（手机号、住址）才优先处理，其余可以保留。', qEn: 'Does a low score mean I must delete everything?', aEn: 'No. The score only ranks risk. Focus on the roughly 5 percent that exposes phone numbers or addresses. The rest can stay.' },
+      { q: '数字足迹体检真的会删除我的推文吗？', a: '不会。体检只读不删，完全免费；删除是独立、可选、按条计费的步骤，由你决定。', qEn: 'Does the footprint check delete my tweets?', aEn: 'No. The check is read-only and free. Deletion is a separate, optional, per-tweet step you control.' },
+      { q: '为什么不能直接把账号清空？', a: 'X 平台只允许删除最近约 3,200 条推文，更早的历史被锁在归档里。只有解析归档才能触达并清理那些旧推文。', qEn: 'Why can\'t I just wipe the account?', aEn: 'X only lets you delete the most recent roughly 3,200 tweets. Older history is locked inside the archive. Only by parsing the archive can you reach and clean those old posts.' },
+      { q: '我的归档数据分析会传到服务器吗？', a: '不会。数字足迹体检在本机完成全部解析与评分，数据不出你的电脑，密钥也只存在本地。', qEn: 'Is my archive data sent to a server?', aEn: 'No. digital-footprint-health.shop parses and scores everything on your device. Your data never leaves your computer, and the key stays local.' },
+    ],
+    titleEn: '100 Days In: You Now Control Your Digital Footprint',
+    excerptEn: '100 days ago you downloaded your first X archive. Today you decide what stays and what goes. This finale recap explains why controlling your footprint matters more than deleting it, and what the 0-100 score really measures.',
+    categoryEn: 'Special & Recap',
+    tagsEn: ['digital footprint', 'privacy cleanup', '100 days', 'X/Twitter', 'online privacy'],
+    contentEn: `
+
+<p>100 days ago you downloaded your first X archive and waited for that few-hundred-megabyte ZIP. Today you decide which old tweets stay and which ones go. The biggest change over these 100 days was not how many posts you deleted. It was getting control of a decade of digital traces back into your own hands.</p>
+
+<h2>The starting point: a diary you left public for ten years</h2>
+<p>For most people an X account is a public diary that has run for a decade. In 2009 you posted "just moved to xx road". In 2013 you shared a boarding pass. In 2019 you ranted about a former employer late at night. Back then they were just feelings. Today they can be a stain on a resume, material for scammers, or the first result when a recruiter searches your name.</p>
+<p>A digital footprint check does one thing first: it pulls that forgotten past back into view and scores how risky it really is, on a 0-100 scale.</p>
+
+<h2>Five things you got right in 100 days</h2>
+<ul>
+  <li><strong>Check before you clean.</strong> The check is read-only and free, so you see the risk order first.</li>
+  <li><strong>Delete by risk priority.</strong> Remove tweets with phone numbers and home addresses before anything else.</li>
+  <li><strong>Keep the warm memories.</strong> Not every old post should go; some are worth keeping.</li>
+  <li><strong>Back up with the archive.</strong> Keep a full copy before cleaning, so you can revisit anytime.</li>
+  <li><strong>Make cleanup a habit.</strong> One big purge beats nothing, but small monthly maintenance beats a one-time scramble.</li>
+</ul>
+
+<h2>What the 0-100 health score actually measures</h2>
+<p>The score is not a random number. It combines four signal groups:</p>
+<table>
+  <thead>
+    <tr><th>Signal</th><th>What it captures</th><th>Weight</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Contact info</td><td>Phone, email, WeChat ID exposed in posts</td><td>High</td></tr>
+    <tr><td>Location data</td><td>Home, office, travel check-ins</td><td>High</td></tr>
+    <tr><td>Sensitive content</td><td>Rants about employers, immature takes</td><td>Medium</td></tr>
+    <tr><td>Account safety</td><td>Two-factor on, no strange logins</td><td>Medium</td></tr>
+  </tbody>
+</table>
+<p>A lower score means more private data is exposed. One check usually flags the riskiest few dozen tweets within minutes.</p>
+
+<h2>Why control beats wiping</h2>
+<p>Many people think cleanup means scrubbing the account clean. That is impossible (X only lets you delete the most recent roughly 3,200 tweets) and unnecessary. What works is control: knowing what you left, which risks are high, and when to act.</p>
+<p>In a ten-year account, maybe 5 percent is worth deleting, 90 percent is worth keeping, and 5 percent is a mood call. Spend your energy on that risky 5 percent instead of blind mass deletion.</p>
+
+<h2>Next: turn cleanup into a habit</h2>
+<p>The 100-day mark is not the end. Pick one "footprint maintenance day" each month and spend 15 minutes running a check and handling new high-risk content. Future you will thank present you for staying on top of it.</p>
+<p>Start at step one: read <a href="/blog/what-is-digital-footprint-check">what a digital footprint check is</a>, then the <a href="/blog/how-to-delete-old-tweets-2026">full guide to deleting old tweets</a>. For scoring questions, see the <a href="/blog/footprint-score-faq-2027">health score FAQ</a>.</p>
+<p>At digital-footprint-health.shop you upload your X archive and run the entire analysis and scoring on your own computer. Your data never leaves the device. Take control of your digital footprint with one free check: <a href="/">upload your archive now</a>.</p>
+
+    `,
+  },
+  {
+    slug: 'chinese-users-100-day-footprint-journey',
+    title: '100 天，中文用户怎么一步步清理数字足迹',
+    excerpt: '英文世界的清理教程很多，但中文用户面对的场景很不一样：拼音名检索、跨平台残留、国内求职背调升级。这 100 天我们陪很多中文用户走通了一条自己的清理路径。',
+    date: '2026-11-11',
+    updatedAt: '2026-11-11',
+    author: 'Digital Footprint Health Team',
+    category: '双语市场',
+    tags: ['中文用户', '数字足迹', '隐私清理', '求职背调', 'X/Twitter'],
+    content: `
+
+<p>英文世界的“清理旧推文”教程很多，但中文用户面对的场景很不一样：你的名字可能是拼音、你的旧内容散落在 X、微博、微信朋友圈，而国内的求职背调正在越来越认真。这 100 天，我们陪很多中文用户走过了一条属于自己的清理路径。</p>
+
+<h2>中文用户的三个特殊痛点</h2>
+<ul>
+  <li><strong>拼音名检索</strong>：搜索“张三”很难，但搜“zhangsan”或“zhangsan1990”命中率极高，旧推文更容易被找到。</li>
+  <li><strong>跨平台残留</strong>：X 之外，微博、微信朋友圈、知乎的旧内容同样会被背调看到。</li>
+  <li><strong>求职背调升级</strong>：不少国内公司在发 offer 前会搜候选人姓名加社交账号，X 上的英文吐槽也在范围内。</li>
+</ul>
+
+<h2>一条适合中文用户的清理顺序</h2>
+<ol>
+  <li>先用 X 归档把英文旧推文全部导出，跑一次本机体检。</li>
+  <li>优先处理含真实姓名、手机号、住址的高危内容。</li>
+  <li>再把微博、微信里暴露定位和生活细节的旧内容过一遍。</li>
+  <li>对“吐槽前公司”“行业黑话”这类软风险内容，按求职方向判断去留。</li>
+  <li>最后留一份归档备份，方便日后回看而非反复焦虑。</li>
+</ol>
+
+<h2>中文搜索下的长尾风险</h2>
+<p>很多人以为“用英文发就安全”。但招聘方常用的中文搜索引擎加拼音名组合，恰恰能拼出你的完整画像。一个实用做法是：用英文写观点、用中文写生活，并且对任何含定位、证件、薪资的内容零容忍。</p>
+<p>把 X 上的英文旧推文和国内平台的旧内容一起管理，才算真正守住数字足迹。更多中文场景，可看 <a href="/blog/chinese-new-year-footprint-prep-2027">中文用户年末清理清单</a> 与 <a href="/blog/chinese-users-2027-footprint-resolutions">2027 中文用户足迹目标</a>。</p>
+<p>在数字足迹体检（digital-footprint-health.shop），你上传 X 归档后能在自己的电脑上完成全部分析与评分，中文界面也能读懂你的旧推文。开始一次免费体检：<a href="/">上传归档</a>。</p>
+
+    `,
+    canonical: '/blog/chinese-users-100-day-footprint-journey',
+    faq: [
+      { q: '用拼音名搜索真的能找到我的旧推文吗？', a: '能。招聘方和陌生人常用“姓名拼音加平台”组合检索，命中率比搜中文名高得多，所以英文旧推文同样要清理。', qEn: 'Can romanized name search really find my old tweets?', aEn: 'Yes. Recruiters and strangers often search "name in pinyin + platform", which hits far more than the Chinese characters. English old tweets need cleanup too.' },
+      { q: '国内平台（微博 / 微信）的旧内容也要管吗？', a: '要。求职背调不只看 X，微博、微信朋友圈、知乎的旧内容同样会被看到，建议一起纳入清理范围。', qEn: 'Should I also manage old Weibo and WeChat content?', aEn: 'Yes. Screening looks beyond X. Old Weibo, WeChat Moments, and Zhihu content are in scope too, so bring them into your cleanup plan.' },
+      { q: '中文用户做体检，界面能看懂吗？', a: '可以。数字足迹体检支持中文界面，能识别并解读你中文旧推文中的隐私风险，评分也用中文展示。', qEn: 'Can Chinese users read the check interface?', aEn: 'Yes. digital-footprint-health.shop offers a Chinese interface that reads and explains privacy risks in your Chinese old posts, with scores shown in Chinese.' },
+      { q: '英文写观点、中文写生活，真的更安全吗？', a: '相对更安全。关键是任何含定位、证件、薪资的内容零容忍，语言不是唯一因素，但分开写能降低被拼接画像的概率。', qEn: 'Is "opinions in English, life in Chinese" actually safer?', aEn: 'Relatively. The key is zero tolerance for any post with location, ID, or salary details. Language is not the only factor, but splitting lowers the chance of profile reconstruction.' },
+    ],
+    titleEn: 'A Chinese User\'s 100-Day Digital Footprint Cleanup (What Actually Worked)',
+    excerptEn: 'English cleanup guides miss the Chinese reality: romanized name search, cross-platform residue, and stricter local screening. Over 100 days we walked many Chinese users through a path that actually fits.',
+    categoryEn: 'Bilingual Markets',
+    tagsEn: ['Chinese users', 'digital footprint', 'privacy cleanup', 'background check', 'X/Twitter'],
+    contentEn: `
+
+<p>There are many guides on cleaning old tweets in English, but Chinese users face a different reality. Your name may be romanized, your old posts spread across X, Weibo, and WeChat, and background checks in China are getting thorough. Over these 100 days we walked many Chinese users through a path of their own.</p>
+
+<h2>Three pain points unique to Chinese users</h2>
+<ul>
+  <li><strong>Romanized name search.</strong> Searching the Chinese characters is hard, but "zhangsan" or "zhangsan1990" hits old posts far more often.</li>
+  <li><strong>Cross-platform residue.</strong> Beyond X, old content on Weibo, WeChat Moments, and Zhihu also shows up in checks.</li>
+  <li><strong>Rising employment screening.</strong> Many domestic companies search a candidate's name plus social handles before an offer, and English rants on X are in scope.</li>
+</ul>
+
+<h2>A cleanup order that fits Chinese users</h2>
+<ol>
+  <li>Export all English old tweets from the X archive and run an on-device check.</li>
+  <li>Prioritize posts with real names, phone numbers, and home addresses.</li>
+  <li>Review old Weibo and WeChat content that exposes location or daily details.</li>
+  <li>Judge soft-risk content like employer rants by your career direction.</li>
+  <li>Keep an archive backup so you can revisit instead of re-worrying.</li>
+</ol>
+
+<h2>The long-tail risk under Chinese search</h2>
+<p>Many assume English posts are safe. But recruiters combine Chinese search engines with romanized names, which reconstructs a full profile. A practical rule: write opinions in English, write daily life in Chinese, and show zero tolerance for any post with location, ID, or salary details.</p>
+<p>Managing English old tweets on X together with old content on domestic platforms is what real footprint control looks like. For more Chinese scenarios, see the <a href="/blog/chinese-new-year-footprint-prep-2027">year-end cleanup checklist</a> and <a href="/blog/chinese-users-2027-footprint-resolutions">2027 resolutions for Chinese users</a>.</p>
+<p>At digital-footprint-health.shop you upload your X archive and run the full analysis and scoring on your own computer, with a Chinese interface that reads your old posts. Start a free check: <a href="/">upload your archive</a>.</p>
+
+    `,
+  },
+  {
+    slug: 'social-media-privacy-predictions-2027',
+    title: '2027 年社交平台隐私趋势：旧推文会被怎样对待',
+    excerpt: '2026 年平台对历史内容的态度正在变化：更长留存、更主动的 AI 检索、更严合规。展望 2027，旧推文不会自动消失，反而会面临更精细的对待。',
+    date: '2026-11-11',
+    updatedAt: '2026-11-11',
+    author: 'Digital Footprint Health Team',
+    category: '行业与生态',
+    tags: ['隐私趋势', 'AI 检索', '数据留存', '社交平台', '2027'],
+    content: `
+
+<p>2026 年，平台对“历史内容”的态度正在悄悄变化：更长的留存、更主动的 AI 检索、更严的合规要求。展望 2027，旧推文不会自动消失，反而会面临更精细的对待。这篇时效分析帮你看清接下来一年要注意什么。</p>
+
+<h2>趋势一：AI 检索让旧推文更可见</h2>
+<p>招聘方和媒体越来越多用 AI 工具批量检索候选人历史发言。这意味着一条 2015 年的旧推文，可能在 2027 年被 AI 重新翻出来，并自动生成“人物画像”。主动清理比被动被发现更稳妥。</p>
+
+<h2>趋势二：平台留存更久、删除更难</h2>
+<ul>
+  <li>X 只允许删最近约 3,200 条，更早的历史只能靠归档处理。</li>
+  <li>部分平台开始把“软删除”改为“长期留存加受限访问”，表面删了实则还在。</li>
+  <li>跨平台数据经纪商持续收集并转卖你的历史内容。</li>
+</ul>
+
+<h2>趋势三：合规要求双向收紧</h2>
+<p>一边是 GDPR、CCPA 等法规给用户删除权；另一边是平台以“安全”为名延长留存。2027 年，用户主动管理足迹的能力，会比依赖平台更可靠。</p>
+
+<h2>给 2027 的 3 条行动建议</h2>
+<ol>
+  <li>每季度跑一次体检，别等求职或舆情爆发才动手。</li>
+  <li>把归档当“时间胶囊”，定期备份而非只删不存。</li>
+  <li>新发文前多想一步：这条三年后被人看到，我会尴尬吗？</li>
+</ol>
+<p>想看更宏观的行业走向，可读 <a href="/blog/2027-digital-footprint-privacy-trends">2027 数字足迹隐私大趋势</a>，以及 <a href="/blog/chinese-social-platforms-footprint-2027-guide">中文平台足迹 2027 指南</a>。</p>
+<p>在数字足迹体检（digital-footprint-health.shop），你能用归档在本地跑体检，提前看清 2027 年会被 AI 检索到的旧内容。免费开始：<a href="/">上传归档</a>。</p>
+
+    `,
+    canonical: '/blog/social-media-privacy-predictions-2027',
+    faq: [
+      { q: '2027 年 AI 检索会让旧推文更危险吗？', a: '会。AI 工具能批量、自动地翻出历史发言并生成画像，一条多年前的旧推文可能在毫无预兆时被重新翻出。提前清理是更稳的选择。', qEn: 'Will AI search make old tweets more dangerous in 2027?', aEn: 'Yes. AI tools can batch-scan history and build profiles automatically, so an old post may resurface with no warning. Proactive cleanup is the safer bet.' },
+      { q: '平台说已删除就真的没了吗？', a: '不一定。部分平台改为“受限访问”式留存，表面删了实则还在系统里。最可靠的还是你自己掌控归档与删除。', qEn: 'If a platform says deleted, is it really gone?', aEn: 'Not always. Some platforms keep content under restricted access, so deleted is not gone. The reliable path is controlling your own archive and deletions.' },
+      { q: '普通用户怎么应对更长的留存？', a: '每季度跑一次体检、定期备份归档、发文前多想一步长期后果。把管理权握在自己手里，而不是依赖平台。', qEn: 'How should ordinary users respond to longer retention?', aEn: 'Run a check each quarter, back up your archive, and think about long-term consequences before posting. Keep control in your own hands rather than trusting platforms.' },
+      { q: '数据经纪商真的在卖我的旧推文吗？', a: '是的，跨平台数据经纪商会持续收集并转卖用户历史内容。这也是为什么主动清理、减少外露比指望平台保护更实际。', qEn: 'Do data brokers really sell my old tweets?', aEn: 'Yes, cross-platform data brokers keep collecting and reselling user history. That is why active cleanup and less exposure beat hoping platforms protect you.' },
+    ],
+    titleEn: 'Social Media Privacy in 2027: How Platforms Will Treat Your Old Posts',
+    excerptEn: 'In 2026 platforms changed how they treat history: longer retention, more active AI search, stricter compliance. In 2027 old tweets will not vanish; they will face finer treatment.',
+    categoryEn: 'Industry & Ecosystem',
+    tagsEn: ['privacy trends', 'AI search', 'data retention', 'social platforms', '2027'],
+    contentEn: `
+
+<p>In 2026 platforms quietly changed how they treat historical content: longer retention, more active AI search, and stricter compliance. Looking at 2027, old tweets will not vanish on their own. They will face finer treatment. This timely analysis shows what to watch over the next year.</p>
+
+<h2>Trend 1: AI search makes old tweets more visible</h2>
+<p>Recruiters and media increasingly use AI tools to scan a candidate's full history. A 2015 post may be dug up again in 2027 and turned into an auto-generated profile. Cleaning proactively beats being found passively.</p>
+
+<h2>Trend 2: Longer retention, harder deletion</h2>
+<ul>
+  <li>X only lets you delete the most recent roughly 3,200 tweets; older history needs the archive.</li>
+  <li>Some platforms move from soft delete to long retention with restricted access, so deleted is not gone.</li>
+  <li>Cross-platform data brokers keep collecting and reselling your history.</li>
+</ul>
+
+<h2>Trend 3: Compliance tightens both ways</h2>
+<p>On one side, laws like GDPR and CCPA grant deletion rights. On the other, platforms extend retention in the name of safety. In 2027, your own ability to manage your footprint will beat relying on platforms.</p>
+
+<h2>Three actions for 2027</h2>
+<ol>
+  <li>Run a check every quarter; do not wait for a job hunt or a crisis.</li>
+  <li>Treat the archive as a time capsule: back up regularly rather than only deleting.</li>
+  <li>Before posting, ask: would I be embarrassed if this surfaced in three years?</li>
+</ol>
+<p>For the bigger picture, read the <a href="/blog/2027-digital-footprint-privacy-trends">2027 digital footprint privacy trends</a> and the <a href="/blog/chinese-social-platforms-footprint-2027-guide">2027 guide for Chinese platforms</a>.</p>
+<p>At digital-footprint-health.shop you run the check locally from your archive, so you can see old content an AI might surface in 2027 before anyone else does. Start free: <a href="/">upload your archive</a>.</p>
+
+    `,
+  },
+  {
+    slug: 'digital-footprint-faq-finale-2026',
+    title: '数字足迹 FAQ：100 天里被问得最多的 5 个问题',
+    excerpt: '100 天里被问得最多的问题其实就这几个：体检要钱吗、会删推文吗、数据出本机吗、为什么不能一次删光、健康分低必须全删吗。一次说清。',
+    date: '2026-11-11',
+    updatedAt: '2026-11-11',
+    author: 'Digital Footprint Health Team',
+    category: '体检与评分',
+    tags: ['数字足迹', 'FAQ', '隐私体检', 'X/Twitter', '常见问题'],
+    content: `
+
+<p>100 天里，我们被问得最多的问题其实就这几个。把它们一次说清，比任何长文都实用。</p>
+<h2>1. 体检要钱吗？</h2>
+<p>体检本身完全免费，而且只读不删。只有你决定清理时，才按条付费删除。</p>
+<h2>2. 体检会删我的推文吗？</h2>
+<p>不会。删除是独立、可选、按条计费的步骤，完全由你控制。</p>
+<h2>3. 我的数据会上传到服务器吗？</h2>
+<p>不会。数字足迹体检在本机完成解析与评分，数据不出你的电脑。</p>
+<h2>4. 为什么不能一次性删光？</h2>
+<p>X 只允许删最近约 3,200 条，更早的历史锁在归档里，只能靠解析归档处理。</p>
+<h2>5. 健康分低必须全删吗？</h2>
+<p>不必。分数只做风险排序，优先处理约 5% 含手机号、住址的高危内容即可。</p>
+<p>更多细节看 <a href="/blog/footprint-score-faq-2027">健康分 FAQ</a>。开始免费体检：<a href="/">上传归档</a>。</p>
+<p>在数字足迹体检（digital-footprint-health.shop），你上传 X 归档后能在自己的电脑上完成全部分析与评分。</p>
+
+    `,
+    canonical: '/blog/digital-footprint-faq-finale-2026',
+    faq: [
+      { q: '数字足迹体检免费吗？', a: '免费且只读，不会删除任何内容；只有你决定清理时才按条付费。', qEn: 'Is the digital footprint check free?', aEn: 'Yes, it is free and read-only, and deletes nothing. You only pay per tweet when you choose to clean up.' },
+      { q: '体检会删除我的推文吗？', a: '不会。删除是独立、可选、按条计费的步骤，完全由你决定。', qEn: 'Does the check delete my tweets?', aEn: 'No. Deletion is a separate, optional, per-tweet step that you control entirely.' },
+      { q: '我的数据会离开我的电脑吗？', a: '不会。全部解析与评分在本机完成，数据不出设备，密钥只存本地。', qEn: 'Does my data leave my computer?', aEn: 'No. All parsing and scoring happen on your device. Your data never leaves, and the key stays local.' },
+      { q: '为什么不能一次性删光所有推文？', a: 'X 只允许删最近约 3,200 条，更早的历史被锁在归档里，只能解析归档才能清理。', qEn: 'Why can\'t I delete all tweets at once?', aEn: 'X only allows deleting the most recent roughly 3,200 tweets. Older history is locked in the archive and requires parsing.' },
+      { q: '健康分低就一定要全删吗？', a: '不需要。健康分只做风险排序，优先处理约 5% 含手机号、住址的高危内容即可。', qEn: 'Does a low score mean I must delete everything?', aEn: 'No. The score only ranks risk. Prioritize the roughly 5 percent that exposes phone numbers or addresses.' },
+    ],
+    titleEn: 'Digital Footprint FAQ: The 5 Questions We Heard Most Over 100 Days',
+    excerptEn: 'The most asked questions over 100 days boiled down to a few: does the check cost, does it delete, does data leave the device, why not delete all at once, must a low score mean total deletion. Answered once.',
+    categoryEn: 'Check & Score',
+    tagsEn: ['digital footprint', 'FAQ', 'privacy check', 'X/Twitter', 'common questions'],
+    contentEn: `
+
+<p>Over 100 days the most asked questions boiled down to a few. Answering them once is more useful than any long essay.</p>
+<h2>1. Does the check cost money?</h2>
+<p>The check itself is free and read-only. You only pay per tweet when you decide to clean up.</p>
+<h2>2. Does the check delete my tweets?</h2>
+<p>No. Deletion is a separate, optional, per-tweet step you fully control.</p>
+<h2>3. Is my data uploaded to a server?</h2>
+<p>No. digital-footprint-health.shop parses and scores everything on your device. Your data never leaves your computer.</p>
+<h2>4. Why can't I delete everything at once?</h2>
+<p>X only lets you delete the most recent roughly 3,200 tweets. Older history is locked in the archive and needs parsing.</p>
+<h2>5. Must a low score mean total deletion?</h2>
+<p>No. The score only ranks risk. Focus on the roughly 5 percent with phone numbers or addresses.</p>
+<p>For more, see the <a href="/blog/footprint-score-faq-2027">health score FAQ</a>. Start a free check: <a href="/">upload your archive</a>.</p>
+<p>At digital-footprint-health.shop you upload your X archive and run the full analysis and scoring on your own computer.</p>
+
+    `,
+  },
+  {
+    slug: 'digital-minimalism-habits-100-days',
+    title: '100 天后，把少发一点变成长期习惯',
+    excerpt: '清理旧推文只是前半场，真正的挑战是别再制造新的风险。100 天后最大的收获是学会发之前想一步。这篇讲怎么把数字极简变成能坚持的习惯。',
+    date: '2026-11-11',
+    updatedAt: '2026-11-11',
+    author: 'Digital Footprint Health Team',
+    category: '心理与习惯',
+    tags: ['数字极简', '清理习惯', '隐私保护', 'X/Twitter', '心理健康'],
+    content: `
+
+<p>清理旧推文只是前半场，真正的挑战是别再制造新的风险。100 天后，很多人最大的收获不是删了多少，而是学会了“发之前想一步”。这篇讲怎么把数字极简变成能坚持的习惯。</p>
+
+<h2>为什么清理容易、克制难</h2>
+<p>大扫除有成就感，但日常克制没有即时反馈。于是旧的刚删完，新的又带着定位、情绪、吐槽冒出来。习惯要解决的，正是这个反复。</p>
+
+<h2>三个低成本的小习惯</h2>
+<ul>
+  <li><strong>发前等 10 分钟</strong>：带情绪的推文先存草稿，十分钟后大概率不想发了。</li>
+  <li><strong>默认不标定位</strong>：旅行、餐厅、公司打卡一律关掉定位，少留现实坐标。</li>
+  <li><strong>每月一次小体检</strong>：不追求清零，只处理当月新出现的高危内容。</li>
+</ul>
+
+<h2>把少即是多写进日常</h2>
+<p>数字极简不是不发声，而是更克制地发声。一条经过思考的推文，比十条随手发的更有价值，也更安全。当你把“发之前想一步”变成肌肉记忆，足迹自然干净。</p>
+<p>如果曾因旧推文焦虑，看看 <a href="/blog/old-tweets-and-mental-health-2026">旧推文与心理健康</a>，以及 <a href="/blog/psychological-barriers-deleting-old-tweets-2026">删不动旧推文的心理阻碍</a>。开始管理：<a href="/">上传归档做体检</a>。</p>
+<p>在数字足迹体检（digital-footprint-health.shop），你上传 X 归档后能在自己的电脑上完成全部分析与评分，帮你把克制建立在看清风险之上。</p>
+
+    `,
+    canonical: '/blog/digital-minimalism-habits-100-days',
+    faq: [
+      { q: '清理完旧推文，为什么还会焦虑？', a: '因为新推文仍在制造风险。清理解决过去，克制才解决未来。把发前多想一步变成习惯，焦虑才会真正下降。', qEn: 'Why do I still feel anxious after cleaning old tweets?', aEn: 'Because new tweets keep creating risk. Cleanup fixes the past; restraint fixes the future. Making "think before posting" a habit is what lowers the anxiety.' },
+      { q: '数字极简是不是就不能发东西了？', a: '不是。极简是更克制地发声，一条经过思考的推文比十条随手发的更有价值也更安全。', qEn: 'Does digital minimalism mean not posting at all?', aEn: 'No. It means expressing more carefully. One thoughtful tweet beats ten offhand ones in both value and safety.' },
+      { q: '每月一次小体检够吗？', a: '对大多数人够。不必追求清零，只处理当月新出现的高危内容（定位、手机号、情绪化吐槽）即可。', qEn: 'Is one small check a month enough?', aEn: 'For most people, yes. Skip the清零 goal and just handle that month\'s new high-risk content like locations, phone numbers, and emotional rants.' },
+      { q: '怎么克服删不动旧推文的心理？', a: '先把清理当成备份而非销毁：保留归档，只删真正高危的 5%。看到风险排序后，行动会自然发生。', qEn: 'How do I overcome the block against deleting old tweets?', aEn: 'Treat cleanup as backup, not destruction: keep the archive and delete only the truly risky 5 percent. Once you see the risk order, action follows.' },
+    ],
+    titleEn: 'After 100 Days: Turning "Post Less" Into a Lasting Habit',
+    excerptEn: 'Cleaning old tweets is only half the work. The real challenge is not creating new risk. After 100 days the biggest gain is thinking before posting. Here is how to make digital minimalism stick.',
+    categoryEn: 'Psychology & Habits',
+    tagsEn: ['digital minimalism', 'cleanup habit', 'privacy', 'X/Twitter', 'mental health'],
+    contentEn: `
+
+<p>Cleaning old tweets is only the first half. The real challenge is not creating new risk. After 100 days many people's biggest gain was not how much they deleted, but learning to think one step before posting. This piece is about turning digital minimalism into a habit you keep.</p>
+
+<h2>Why cleanup is easy but restraint is hard</h2>
+<p>A big purge feels rewarding, but daily restraint has no instant feedback. So you finish deleting the old, and the new shows up with location, emotion, and rants. The habit is what fixes that loop.</p>
+
+<h2>Three low-cost habits</h2>
+<ul>
+  <li><strong>Wait ten minutes before posting.</strong> Save emotional tweets as drafts; most lose their pull after ten minutes.</li>
+  <li><strong>Default to no location tag.</strong> Turn off check-ins for travel, restaurants, and the office to leave fewer real-world coordinates.</li>
+  <li><strong>One small check a month.</strong> Skip the清零 goal; just handle that month's new high-risk content.</li>
+</ul>
+
+<h2>Write "less is more" into daily life</h2>
+<p>Digital minimalism is not silence. It is more restrained expression. One thoughtful tweet beats ten offhand ones in value and in safety. When thinking before posting becomes muscle memory, your footprint stays clean on its own.</p>
+<p>If old tweets have caused anxiety, read <a href="/blog/old-tweets-and-mental-health-2026">old tweets and mental health</a> and <a href="/blog/psychological-barriers-deleting-old-tweets-2026">the psychological barriers to deleting</a>. Start managing: <a href="/">upload your archive for a check</a>.</p>
+<p>At digital-footprint-health.shop you upload your X archive and run the full analysis and scoring on your own computer, so your restraint is built on seeing the real risk.</p>
+
+    `,
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {
